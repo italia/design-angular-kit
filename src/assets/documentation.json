@@ -1,0 +1,205 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "DesignAngularKitService",
+            "id": "injectable-DesignAngularKitService-11b65ab9478269bdb45ee1067ae1c049",
+            "file": "projects/design-angular-kit/src/lib/design-angular-kit.service.ts",
+            "properties": [],
+            "methods": [],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class DesignAngularKitService {\n\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        }
+    ],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "DesignAngularKitComponent",
+            "id": "component-DesignAngularKitComponent-b845d962abe99d05a5d2dda1939e4f3b",
+            "file": "projects/design-angular-kit/src/lib/design-angular-kit.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-design-angular-kit",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<p>\n  design-angular-kit works!\n</p>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "emptyInput",
+                    "line": 25,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "length",
+                    "args": [
+                        {
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 46,
+                    "description": "",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 697,
+                                "end": 703,
+                                "flags": 0,
+                                "escapedText": "target"
+                            },
+                            "type": "string",
+                            "tagName": {
+                                "pos": 682,
+                                "end": 687,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>The target to calculate the length</p>\n",
+                            "typeExpression": {
+                                "pos": 688,
+                                "end": 696,
+                                "flags": 0,
+                                "kind": 274,
+                                "type": {
+                                    "pos": 689,
+                                    "end": 695,
+                                    "flags": 1048576,
+                                    "kind": 137
+                                }
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 634,
+                                "end": 641,
+                                "flags": 0,
+                                "escapedText": "example"
+                            },
+                            "comment": "<p>length(&#39;yo&#39;)</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 746,
+                                "end": 753,
+                                "flags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>The target string length</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>The awesome design-angular kit component</p>\n<p>Can filter types of todos :</p>\n<table class=\"table table-bordered compodoc-table\">\n<thead>\n<tr>\n<th>Type</th>\n<th>API</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>completed</td>\n<td>displayCompleted</td>\n</tr>\n<tr>\n<td>all</td>\n<td>displayAll</td>\n</tr>\n<tr>\n<td>remaining</td>\n<td>displayRemaining</td>\n</tr>\n</tbody>\n</table>\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, OnInit } from '@angular/core';\n\n/**\n * The awesome design-angular kit component\n *\n * Can filter types of todos :\n *\n * | Type | API |\n * | --- | --- |\n * | completed | displayCompleted |\n * | all | displayAll |\n * | remaining | displayRemaining |\n */\n@Component({\n  selector: 'it-design-angular-kit',\n  template: `\n    <p>\n      design-angular-kit works!\n    </p>\n  `,\n  styles: []\n})\nexport class DesignAngularKitComponent implements OnInit {\n\n  @Input() public emptyInput: string;\n\n  /**\n   * @ignore\n   */\n  @Output() ignoredOutput: number;\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n  /**\n   * @example\n   *\n   * length('yo')\n   * \n   *\n   * @param {string} target  The target to calculate the length\n   * @returns The target string length\n   */\n  public length(target:string) : number {\n    return target.length;\n  };\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 30
+            },
+            "implements": [
+                "OnInit"
+            ]
+        }
+    ],
+    "modules": [
+        {
+            "name": "DesignAngularKitModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "DesignAngularKitComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "DesignAngularKitComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": [],
+    "routes": [],
+    "coverage": {
+        "count": 10,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/design-angular-kit/src/lib/design-angular-kit.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DesignAngularKitComponent",
+                "coveragePercent": 20,
+                "coverageCount": "1/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/design-angular-kit.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "DesignAngularKitService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            }
+        ]
+    }
+}

@@ -27,9 +27,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css",
+              "./node_modules/bootstrap-italia/dist/css/italia-icon-font.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap-italia/dist/js/bootstrap-italia.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
