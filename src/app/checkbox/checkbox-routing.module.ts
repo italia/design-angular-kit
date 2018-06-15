@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CheckboxExampleComponent } from './checkbox-example/checkbox-example.component';
+import { CheckboxIndexComponent } from './checkbox-index/checkbox-index.component';
 
 const routes: Routes = [
-  { path: '', component: CheckboxExampleComponent }
+  { path: '', component: CheckboxIndexComponent }
 ];
 
 @NgModule({

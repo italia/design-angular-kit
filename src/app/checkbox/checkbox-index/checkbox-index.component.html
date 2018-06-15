@@ -1,7 +1,25 @@
 
 
-<it-example html="&lt;it-checkbox [(ngModel)]=&quot;model&quot; [label]=&quot;label&quot; [disabled]=&quot;disabled&quot;&gt;&lt;/it-checkbox&gt;
-&lt;it-checkbox [(ngModel)]=&quot;disabled&quot; label=&quot;Disable&quot;&gt;&lt;/it-checkbox&gt;
+<div html="&lt;div class=&quot;card w-50 mt-2&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;h4 class=&quot;card-title&quot;&gt;Configurazione checkbox&lt;/h4&gt;
+
+    &lt;p class=&quot;card-text&quot; class=&quot;example-section&quot;&gt;
+      &lt;it-checkbox [(ngModel)]=&quot;checked&quot; label=&quot;Spuntato&quot;&gt;&lt;/it-checkbox&gt;
+      &lt;it-checkbox [(ngModel)]=&quot;disabled&quot; label=&quot;Disabilitato&quot;&gt;&lt;/it-checkbox&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;card w-50 mt-2&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;h4 class=&quot;card-title&quot;&gt;Risultato&lt;/h4&gt;
+
+    &lt;p class=&quot;card-text&quot; class=&quot;example-section&quot;&gt;
+        &lt;it-checkbox [(ngModel)]=&quot;checked&quot; [label]=&quot;label&quot; [disabled]=&quot;disabled&quot;&gt;&lt;/it-checkbox&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 " typescript="import { Component, OnInit } from &#39;@angular/core&#39;;
 
 @Component({
@@ -11,10 +29,10 @@
 })
 export class CheckboxExampleComponent {
 
-  model = true;
-  label = &#39;Label&#39;;
+  checked = true;
+  label = &#39;Sono una checkbox&#39;;
   disabled = false;
 
 }
 " >
-</it-example>
+</div>

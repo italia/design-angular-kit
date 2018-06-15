@@ -5,14 +5,10 @@ import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_a
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DesignAngularKitDocComponent } from './design-angular-kit-doc/design-angular-kit-doc.component';
-import { CheckboxIndexComponent } from './checkbox/checkbox-index/checkbox-index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DesignAngularKitDocComponent,
-    CheckboxIndexComponent
   ],
   imports: [
     BrowserModule,

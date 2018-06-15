@@ -1,10 +1,10 @@
 {% set html %}
-  {% include "../checkbox-example.component.html" %}
+  {% include "../checkbox-example/checkbox-example.component.html" %}
 {% endset %}
 
 {% set typescript %}
-  {% include "../checkbox-example.component.ts" %}
+  {% include "../checkbox-example/checkbox-example.component.ts" %}
 {% endset %}
 
-<it-example html="{{ html | escape }}" typescript="{{ typescript | escape }}" >
-</it-example>
+<div html="{{ html | escape }}" typescript="{{ typescript | escape }}" >
+</div>
