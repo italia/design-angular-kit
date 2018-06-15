@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 
 import { CheckboxRoutingModule } from './checkbox-routing.module';
-import { CheckboxExampleComponent } from './checkbox-example.component';
+import { CheckboxExampleComponent } from './checkbox-example/checkbox-example.component';
 
 @NgModule({
   imports: [
