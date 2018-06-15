@@ -38,7 +38,7 @@ export class DesignAngularKitComponent implements OnInit {
    * @example
    *
    * length('yo')
-   * 
+   *
    *
    * @param {string} target  The target to calculate the length
    * @returns The target string length
