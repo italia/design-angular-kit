@@ -1,22 +1,22 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs" id="checkbox-tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="tab1a-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Descrizione</a>
+    <a class="nav-link active" id="checkbox-description-tab" data-toggle="tab" href="#checkbox-description-tab-content" role="tab" aria-controls="checkbox-description-tab-content" aria-selected="true">Descrizione</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">API</a>
+    <a class="nav-link" id="checkbox-api-tab" data-toggle="tab" href="#checkbox-api-tab-content" role="tab" aria-controls="checkbox-api-tab-content" aria-selected="false">API</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">Esempi</a>
+    <a class="nav-link" id="checkbox-examples-tab" data-toggle="tab" href="#checkbox-examples-tab-content" role="tab" aria-controls="checkbox-examples-tab-content" aria-selected="false">Esempi</a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane p-3 fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1a-tab">
+<div class="tab-content" id="checkbox-content-tab">
+  <div class="tab-pane p-3 fade show active" id="checkbox-description-tab-content" role="tabpanel" aria-labelledby="checkbox-description-tab-content">
     <div [innerHTML]="component.description"></div>
   </div>
-  <div class="tab-pane p-3 fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+  <div class="tab-pane p-3 fade" id="checkbox-api-tab-content" role="tabpanel" aria-labelledby="checkbox-api-tab-content">
     <h1>DA IMPLEMENTARE</h1>
   </div>
-  <div class="tab-pane p-3 fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+  <div class="tab-pane p-3 fade" id="checkbox-examples-tab-content" role="tabpanel" aria-labelledby="checkbox-examples-tab-content">
     <it-checkbox-examples></it-checkbox-examples>
   </div>
 </div>
