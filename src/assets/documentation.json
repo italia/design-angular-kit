@@ -179,7 +179,7 @@
     "components": [
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-93e901fc4c0df3425516705257288ec3",
+            "id": "component-CheckboxComponent-02720828716ab1b99b4928c890f399ec",
             "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -202,12 +202,12 @@
             "inputsClass": [
                 {
                     "name": "disabled",
-                    "line": 14,
+                    "line": 25,
                     "type": "boolean"
                 },
                 {
                     "name": "label",
-                    "line": 13,
+                    "line": 24,
                     "type": "string"
                 }
             ],
@@ -219,7 +219,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 27,
                     "modifierKind": [
                         114
                     ]
@@ -370,9 +370,9 @@
             ],
             "hostBindings": [],
             "hostListeners": [],
-            "description": "",
+            "description": "<p>The awesome design-angular kit Checkbox</p>\n<p>Inputs:</p>\n<table class=\"table table-bordered compodoc-table\">\n<thead>\n<tr>\n<th>Name</th>\n<th>Type</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>label</td>\n<td>string</td>\n</tr>\n<tr>\n<td>disabled</td>\n<td>boolean</td>\n</tr>\n</tbody>\n</table>\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { NG_VALUE_ACCESSOR } from '@angular/forms';\n\nimport { ValueAccessorBase } from '../value-accessor-base';\n\n@Component({\n  selector: 'it-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: CheckboxComponent, multi: true }]\n})\nexport class CheckboxComponent extends ValueAccessorBase<boolean> {\n  @Input() label: string;\n  @Input() disabled: boolean;\n\n  public identifier = `checkbox-${identifier++}`;\n}\n\nlet identifier = 0;\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { NG_VALUE_ACCESSOR } from '@angular/forms';\n\nimport { ValueAccessorBase } from '../value-accessor-base';\n\n/**\n * The awesome design-angular kit Checkbox\n *\n * Inputs:\n *\n * | Name | Type |\n * | --- | --- |\n * | label | string |\n * | disabled | boolean |\n *\n */\n@Component({\n  selector: 'it-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: CheckboxComponent, multi: true }]\n})\nexport class CheckboxComponent extends ValueAccessorBase<boolean> {\n  @Input() label: string;\n  @Input() disabled: boolean;\n\n  public identifier = `checkbox-${identifier++}`;\n}\n\nlet identifier = 0;\n",
             "extends": "ValueAccessorBase",
             "templateData": "<div class=\"form-check\">\n  <input [id]=\"identifier\" type=\"checkbox\" [(ngModel)]=\"value\" [disabled]=\"disabled\">\n  <label [attr.for]=\"identifier\">{{label}}</label>\n</div>\n"
         },
@@ -562,7 +562,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 5,
+        "count": 7,
         "status": "low",
         "files": [
             {
@@ -570,8 +570,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coveragePercent": 9,
+                "coverageCount": "1/11",
                 "status": "low"
             },
             {

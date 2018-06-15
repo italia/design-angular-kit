@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-checkbox-index',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckboxIndexComponent implements OnInit {
 
-  constructor() { }
+  component: any;
+
+  constructor() {
+    this.component = (<any>Documentation).components.find(component => component.name === 'CheckboxComponent');
+  }
 
   ngOnInit() {
   }
