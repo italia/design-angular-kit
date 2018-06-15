@@ -1,30 +1,384 @@
 {
     "pipes": [],
     "interfaces": [],
-    "injectables": [
+    "injectables": [],
+    "classes": [
         {
-            "name": "DesignAngularKitService",
-            "id": "injectable-DesignAngularKitService-11b65ab9478269bdb45ee1067ae1c049",
-            "file": "projects/design-angular-kit/src/lib/design-angular-kit.service.ts",
-            "properties": [],
-            "methods": [],
-            "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class DesignAngularKitService {\n\n  constructor() { }\n}\n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "args": [],
-                "line": 6
+            "name": "ValueAccessorBase",
+            "id": "class-ValueAccessorBase-5aea3c3ef2cb9d6e8749181ef6989016",
+            "file": "projects/design-angular-kit/src/lib/value-accessor-base.ts",
+            "type": "class",
+            "sourceCode": "import {ControlValueAccessor} from '@angular/forms';\n\nexport class ValueAccessorBase<T> implements ControlValueAccessor {\n  private innerValue: T;\n  private changed = new Array<(value: T) => void>();\n  private touched = new Array<() => void>();\n\n  get value(): T {\n    return this.innerValue;\n  }\n\n  set value(value: T) {\n    if (this.innerValue !== value) {\n      this.innerValue = value;\n      this.changed.forEach(f => f(value));\n    }\n  }\n\n  touch() {\n    this.touched.forEach(f => f());\n  }\n\n  writeValue(value: T) {\n    this.innerValue = value;\n  }\n\n  registerOnChange(fn: (value: T) => void) {\n    this.changed.push(fn);\n  }\n\n  registerOnTouched(fn: () => void) {\n    this.touched.push(fn);\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "changed",
+                    "defaultValue": "new Array<(value: T) => void>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "innerValue",
+                    "type": "T",
+                    "optional": false,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "touched",
+                    "defaultValue": "new Array<() => void>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "T"
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "T"
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "touch",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "T"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 12,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "value",
+                        "type": "",
+                        "returnType": "T",
+                        "line": 8
+                    }
+                }
             },
-            "type": "injectable"
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
         }
     ],
-    "classes": [],
     "directives": [],
     "components": [
         {
+            "name": "CheckboxComponent",
+            "id": "component-CheckboxComponent-93e901fc4c0df3425516705257288ec3",
+            "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{ : , : , : true }"
+                }
+            ],
+            "selector": "it-checkbox",
+            "styleUrls": [
+                "checkbox.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./checkbox.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "line": 14,
+                    "type": "boolean"
+                },
+                {
+                    "name": "label",
+                    "line": 13,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "identifier",
+                    "defaultValue": "`checkbox-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "changed",
+                    "defaultValue": "new Array<(value: T) => void>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5,
+                    "modifierKind": [
+                        112
+                    ],
+                    "inheritance": {
+                        "file": "ValueAccessorBase"
+                    }
+                },
+                {
+                    "name": "innerValue",
+                    "type": "T",
+                    "optional": false,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        112
+                    ],
+                    "inheritance": {
+                        "file": "ValueAccessorBase"
+                    }
+                },
+                {
+                    "name": "touched",
+                    "defaultValue": "new Array<() => void>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        112
+                    ],
+                    "inheritance": {
+                        "file": "ValueAccessorBase"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "T"
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "T"
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ValueAccessorBase"
+                    }
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ValueAccessorBase"
+                    }
+                },
+                {
+                    "name": "touch",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "inheritance": {
+                        "file": "ValueAccessorBase"
+                    }
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "T"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ValueAccessorBase"
+                    }
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { NG_VALUE_ACCESSOR } from '@angular/forms';\n\nimport { ValueAccessorBase } from '../value-accessor-base';\n\n@Component({\n  selector: 'it-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: CheckboxComponent, multi: true }]\n})\nexport class CheckboxComponent extends ValueAccessorBase<boolean> {\n  @Input() label: string;\n  @Input() disabled: boolean;\n\n  public identifier = `checkbox-${identifier++}`;\n}\n\nlet identifier = 0;\n",
+            "extends": "ValueAccessorBase",
+            "templateData": "<div class=\"form-check\">\n  <input [id]=\"identifier\" type=\"checkbox\" [(ngModel)]=\"value\" [disabled]=\"disabled\">\n  <label [attr.for]=\"identifier\">{{label}}</label>\n</div>\n"
+        },
+        {
             "name": "DesignAngularKitComponent",
-            "id": "component-DesignAngularKitComponent-b845d962abe99d05a5d2dda1939e4f3b",
+            "id": "component-DesignAngularKitComponent-102ac760454abb72afeedd52f325ef74",
             "file": "projects/design-angular-kit/src/lib/design-angular-kit.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -66,27 +420,27 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 697,
-                                "end": 703,
+                                "pos": 696,
+                                "end": 702,
                                 "flags": 0,
                                 "escapedText": "target"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 682,
-                                "end": 687,
+                                "pos": 681,
+                                "end": 686,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
                             "comment": "<p>The target to calculate the length</p>\n",
                             "typeExpression": {
-                                "pos": 688,
-                                "end": 696,
+                                "pos": 687,
+                                "end": 695,
                                 "flags": 0,
                                 "kind": 274,
                                 "type": {
-                                    "pos": 689,
-                                    "end": 695,
+                                    "pos": 688,
+                                    "end": 694,
                                     "flags": 1048576,
                                     "kind": 137
                                 }
@@ -103,8 +457,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 746,
-                                "end": 753,
+                                "pos": 745,
+                                "end": 752,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -125,7 +479,7 @@
             "hostListeners": [],
             "description": "<p>The awesome design-angular kit component</p>\n<p>Can filter types of todos :</p>\n<table class=\"table table-bordered compodoc-table\">\n<thead>\n<tr>\n<th>Type</th>\n<th>API</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>completed</td>\n<td>displayCompleted</td>\n</tr>\n<tr>\n<td>all</td>\n<td>displayAll</td>\n</tr>\n<tr>\n<td>remaining</td>\n<td>displayRemaining</td>\n</tr>\n</tbody>\n</table>\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, OnInit } from '@angular/core';\n\n/**\n * The awesome design-angular kit component\n *\n * Can filter types of todos :\n *\n * | Type | API |\n * | --- | --- |\n * | completed | displayCompleted |\n * | all | displayAll |\n * | remaining | displayRemaining |\n */\n@Component({\n  selector: 'it-design-angular-kit',\n  template: `\n    <p>\n      design-angular-kit works!\n    </p>\n  `,\n  styles: []\n})\nexport class DesignAngularKitComponent implements OnInit {\n\n  @Input() public emptyInput: string;\n\n  /**\n   * @ignore\n   */\n  @Output() ignoredOutput: number;\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n  /**\n   * @example\n   *\n   * length('yo')\n   * \n   *\n   * @param {string} target  The target to calculate the length\n   * @returns The target string length\n   */\n  public length(target:string) : number {\n    return target.length;\n  };\n\n}\n",
+            "sourceCode": "import { Component, Input, Output, OnInit } from '@angular/core';\n\n/**\n * The awesome design-angular kit component\n *\n * Can filter types of todos :\n *\n * | Type | API |\n * | --- | --- |\n * | completed | displayCompleted |\n * | all | displayAll |\n * | remaining | displayRemaining |\n */\n@Component({\n  selector: 'it-design-angular-kit',\n  template: `\n    <p>\n      design-angular-kit works!\n    </p>\n  `,\n  styles: []\n})\nexport class DesignAngularKitComponent implements OnInit {\n\n  @Input() public emptyInput: string;\n\n  /**\n   * @ignore\n   */\n  @Output() ignoredOutput: number;\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n  /**\n   * @example\n   *\n   * length('yo')\n   *\n   *\n   * @param {string} target  The target to calculate the length\n   * @returns The target string length\n   */\n  public length(target:string) : number {\n    return target.length;\n  };\n\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -149,7 +503,7 @@
                     "type": "declarations",
                     "elements": [
                         {
-                            "name": "DesignAngularKitComponent"
+                            "name": "CheckboxComponent"
                         }
                     ]
                 },
@@ -161,7 +515,7 @@
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "DesignAngularKitComponent"
+                            "name": "CheckboxComponent"
                         }
                     ]
                 },
@@ -176,12 +530,60 @@
             ]
         }
     ],
-    "miscellaneous": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
     "routes": [],
     "coverage": {
-        "count": 10,
+        "count": 5,
         "status": "low",
         "files": [
+            {
+                "filePath": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CheckboxComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
             {
                 "filePath": "projects/design-angular-kit/src/lib/design-angular-kit.component.ts",
                 "type": "component",
@@ -192,12 +594,12 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/design-angular-kit/src/lib/design-angular-kit.service.ts",
-                "type": "injectable",
-                "linktype": "injectable",
-                "name": "DesignAngularKitService",
+                "filePath": "projects/design-angular-kit/src/lib/value-accessor-base.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ValueAccessorBase",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/8",
                 "status": "low"
             }
         ]

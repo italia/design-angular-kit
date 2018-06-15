@@ -1,0 +1,20 @@
+
+
+<it-example html="&lt;it-checkbox [(ngModel)]=&quot;model&quot; [label]=&quot;label&quot; [disabled]=&quot;disabled&quot;&gt;&lt;/it-checkbox&gt;
+&lt;it-checkbox [(ngModel)]=&quot;disabled&quot; label=&quot;Disable&quot;&gt;&lt;/it-checkbox&gt;
+" typescript="import { Component, OnInit } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;it-checkbox-example&#39;,
+  templateUrl: &#39;./checkbox-example.component.html&#39;,
+  styleUrls: [&#39;./checkbox-example.component.scss&#39;]
+})
+export class CheckboxExampleComponent {
+
+  model = true;
+  label = &#39;Label&#39;;
+  disabled = false;
+
+}
+" >
+</it-example>

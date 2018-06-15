@@ -6,6 +6,7 @@ import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_a
 
 import { CheckboxRoutingModule } from './checkbox-routing.module';
 import { CheckboxExampleComponent } from './checkbox-example.component';
+import { CheckboxIndexComponent } from './checkbox-index/checkbox-index.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { CheckboxExampleComponent } from './checkbox-example.component';
     DesignAngularKitModule,
     CheckboxRoutingModule
   ],
-  declarations: [CheckboxExampleComponent]
+  declarations: [CheckboxExampleComponent, CheckboxIndexComponent]
 })
 export class CheckboxModule { }
