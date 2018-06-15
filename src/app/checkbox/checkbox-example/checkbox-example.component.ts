@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckboxExampleComponent {
 
-  model = true;
-  label = 'Label';
+  checked = true;
+  label = 'Sono una checkbox';
   disabled = false;
 
 }

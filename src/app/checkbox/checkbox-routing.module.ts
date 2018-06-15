@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CheckboxExampleComponent } from './checkbox-example.component';
+import { CheckboxExampleComponent } from './checkbox-example/checkbox-example.component';
 
 const routes: Routes = [
   { path: '', component: CheckboxExampleComponent }
