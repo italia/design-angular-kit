@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run compodoc && concurrently \"nunjucks **/*.tpl -w\" \"ng serve\"",
+    "start": "npm run compodoc && concurrently \"nunjucks src/app/**/*.tpl -w\" \"ng serve\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,6 +23,7 @@
     "@angular/router": "^6.0.3",
     "bootstrap-italia": "^0.9.1",
     "core-js": "^2.5.4",
+    "ngx-highlightjs": "^2.1.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

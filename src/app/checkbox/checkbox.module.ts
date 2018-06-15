@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 
+import { SharedModule } from '../shared/shared.module';
+
 import { CheckboxRoutingModule } from './checkbox-routing.module';
 import { CheckboxIndexComponent } from './checkbox-index/checkbox-index.component';
 import { CheckboxExampleComponent } from './checkbox-example/checkbox-example.component';
@@ -13,6 +15,7 @@ import { CheckboxExampleComponent } from './checkbox-example/checkbox-example.co
     CommonModule,
     FormsModule,
     DesignAngularKitModule,
+    SharedModule,
     CheckboxRoutingModule
   ],
   declarations: [CheckboxExampleComponent, CheckboxIndexComponent]
