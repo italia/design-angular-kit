@@ -1,0 +1,6 @@
+<div class="bd-sidebar">
+  <nav class="bd-links">
+    <it-table-of-content-item [tocItem]="tocItem" *ngFor="let tocItem of tableOfContent" (click)="toggle($event, tocItem)"></it-table-of-content-item>
+  </nav>
+</div>
+

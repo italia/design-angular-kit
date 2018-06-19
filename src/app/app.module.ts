@@ -5,10 +5,16 @@ import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_a
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TableOfContentComponent } from './table-of-content/table-of-content.component';
+import { TableOfContentItemComponent } from './table-of-content-item/table-of-content-item.component';
+import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableOfContentComponent,
+    TableOfContentItemComponent,
+    RouterDispatcherComponent
   ],
   imports: [
     BrowserModule,
