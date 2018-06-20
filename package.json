@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "npm run compodoc && concurrently \"nunjucks src/app/**/*.tpl -w\" \"ng serve\"",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test design-angular-kit",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "compodoc": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets"

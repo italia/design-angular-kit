@@ -1,4 +1,9 @@
-<div class="form-check">
-  <input [id]="identifier" type="checkbox" [(ngModel)]="value" [disabled]="disabled">
-  <label [attr.for]="identifier">{{label}}</label>
+<div class=form-check>
+  <input type=checkbox
+    [id]=inputId
+    [checked]=checked
+    [disabled]=disabled
+    (change)=handleChange($event)>
+  <label
+    [attr.for]=inputId>{{label}}</label>
 </div>
