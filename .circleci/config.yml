@@ -1,40 +1,65 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
+var_1: &docker_image circleci/node:8-browsers
+var_2: &cache_key design-angular-kit-{{ .Branch }}-{{ checksum "package.json" }}
+
+# Each job will inherit these defaults
+anchor_1: &job_defaults
+  working_directory: ~/design-angular-kit
+  docker:
+    - image: *docker_image
+
 version: 2
+
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.11
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+    <<: *job_defaults
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
+          key: *cache_key
       - run: npm install
-
       - save_cache:
+          key: *cache_key
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
-      - run: echo "Continuous Integration OK"
+            - "node_modules"
+  test:
+    <<: *job_defaults
+    steps:
+      - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
+      # - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
+  lint:
+    <<: *job_defaults
+    steps:
+      - run: npm run lint
 
+  package:
+    <<: *job_defaults
+    steps:
+      - run:
+          name: Skip this job for Pull Requests and Fork builds
+          # Note, `|| true` on the end makes this step always exit 0
+          command: '[[ -v CIRCLE_PR_NUMBER
+              || "$CIRCLE_PROJECT_USERNAME" != "apuliasoft"
+              || "$CIRCLE_PROJECT_REPONAME" != "design-angular-kit"
+          ]] && circleci step halt || true'
+      # Generate and publish NPM package + Publish docs to Github Pages
+  
+  documentation:
+    <<: *job_defaults
+    steps:
+      - run:
+          name: Skip this job for Pull Requests and Fork builds
+          # Note, `|| true` on the end makes this step always exit 0
+          command: '[[ -v CIRCLE_PR_NUMBER
+              || "$CIRCLE_PROJECT_USERNAME" != "apuliasoft"
+              || "$CIRCLE_PROJECT_REPONAME" != "design-angular-kit"
+          ]] && circleci step halt || true'
 
-
+workflows:
+  version: 2
+  default_workflow:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - lint
