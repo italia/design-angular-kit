@@ -24,16 +24,19 @@ jobs:
   test:
     <<: *job_defaults
     steps:
+      - checkout
       - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
       # - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
   lint:
     <<: *job_defaults
     steps:
+      - checkout
       - run: npm run lint
 
   package:
     <<: *job_defaults
     steps:
+      - checkout
       - run:
           name: Skip this job for Pull Requests and Fork builds
           # Note, `|| true` on the end makes this step always exit 0
@@ -46,6 +49,7 @@ jobs:
   documentation:
     <<: *job_defaults
     steps:
+      - checkout
       - run:
           name: Skip this job for Pull Requests and Fork builds
           # Note, `|| true` on the end makes this step always exit 0
