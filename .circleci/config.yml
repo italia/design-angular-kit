@@ -25,12 +25,14 @@ jobs:
     <<: *job_defaults
     steps:
       - checkout
+      - run: export PATH=$PATH:~/design-angular-kit/node_modules/.bin/
       - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
       # - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
   lint:
     <<: *job_defaults
     steps:
       - checkout
+      - run: export PATH=$PATH:~/design-angular-kit/node_modules/.bin/
       - run: npm run lint
 
   package:
