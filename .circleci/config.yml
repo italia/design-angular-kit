@@ -28,7 +28,7 @@ jobs:
       - restore_cache:
           key: *cache_key
       - run: export PATH=$PATH:~/design-angular-kit/node_modules/.bin/
-      - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
+      - run: xvfb-run -a npm run test -- --watch=false --no-progress --browsers=ChromeNoSandbox
       # - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
   lint:
     <<: *job_defaults
