@@ -5,6 +5,29 @@ import { FormsModule, NgModel } from '@angular/forms';
 
 import { CheckboxComponent } from './checkbox.component';
 
+/** Componente per testare una singola checkbox. */
+@Component({
+  template: `
+  <div>
+    <it-checkbox [checked]="isChecked" [label]="label" [disabled]="isDisabled"></it-checkbox>
+  </div>`
+})
+class SingleCheckboxComponent {
+  isChecked = false;
+  label = 'Simple checkbox';
+  isDisabled = false;
+}
+
+/** Componente per testare un CheckboxComponent con ngModel. */
+@Component({
+  template: `
+    <it-checkbox [(ngModel)]="isGood" label="Be good"></it-checkbox>
+  `,
+})
+class CheckboxWithNgModleComponent {
+  isGood = false;
+}
+
 describe('CheckboxComponent', () => {
 
   beforeEach(fakeAsync(() => {
@@ -158,26 +181,3 @@ describe('CheckboxComponent', () => {
     });
   });
 });
-
-/** Componente per testare una singola checkbox. */
-@Component({
-  template: `
-  <div>
-    <it-checkbox [checked]="isChecked" [label]="label" [disabled]="isDisabled"></it-checkbox>
-  </div>`
-})
-class SingleCheckboxComponent {
-  isChecked = false;
-  label = 'Simple checkbox';
-  isDisabled = false;
-}
-
-/** Componente per testare un CheckboxComponent con ngModel. */
-@Component({
-  template: `
-    <it-checkbox [(ngModel)]="isGood" label="Be good"></it-checkbox>
-  `,
-})
-class CheckboxWithNgModleComponent {
-  isGood = false;
-}
