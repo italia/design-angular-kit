@@ -16,17 +16,18 @@ export class TableOfContentComponent implements OnInit {
     this.getTableOfContent();
   }
 
-  getTableOfContent():void {
+  getTableOfContent(): void {
     this.tableOfContent = this.tocService.getTableOfContent();
   }
 
   public toggle(event, tocItem) {
     this.tableOfContent = this.tableOfContent.map((item) => {
-      let newTocItem = item;
-      if(item.label === tocItem.label){
+      const newTocItem = item;
+      if (item.label === tocItem.label) {
         newTocItem.active = true;
-        if (newTocItem.links.length > 0)
+        if (newTocItem.links.length > 0) {
           newTocItem.links[0].active = true;
+        }
       } else {
         newTocItem.active = false;
       }

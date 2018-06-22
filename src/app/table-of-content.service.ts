@@ -8,7 +8,7 @@ export class TableOfContentService {
   constructor() { }
 
   getTableOfContent() {
-    //TODO prendere da un file json di configurazione
+    // TODO prendere da un file json di configurazione
     return [
       {
         label: 'Informazioni',
