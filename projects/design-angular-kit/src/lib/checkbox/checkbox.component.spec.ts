@@ -123,10 +123,14 @@ describe('CheckboxComponent', () => {
     });
 
     it('dovrebbe mantenere immutato lo stato di check al click se disabilitato', () => {
+      expect(checkboxInstance.checked).toBe(false);
+
       testComponent.isDisabled = true;
       fixture.detectChanges();
 
       checkboxNativeElement.click();
+      fixture.detectChanges();
+
       expect(checkboxInstance.checked).toBe(false);
     });
 
@@ -169,6 +173,8 @@ describe('CheckboxComponent', () => {
     }));
 
     it('dovrebbe cambiare lo stato di check al click', () => {
+      expect(checkboxInstance.checked).toBe(false);
+
       inputElement.click();
       fixture.detectChanges();
 
