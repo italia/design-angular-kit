@@ -1,6 +1,9 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ExpectedConditions } from 'protractor';
 
 export class CheckboxPage {
+  private readonly CHECKBOX_URL = '/componenti/checkbox';
+  private readonly ID_EXAMPLE_TAB = 'checkbox-examples-tab';
+
   private readonly ID_CHECKBOX_SPUNTATO = 'checkbox-0';
   private readonly ID_CHECKBOX_DISABILITATO = 'checkbox-1';
   private readonly ID_CHECKBOX_RISULTATO = 'checkbox-2';
@@ -18,7 +21,9 @@ export class CheckboxPage {
   private readonly ATTR_DISABLED = 'disabled';
 
   async go() {
-    return await browser.get('/checkbox');
+    await browser.get(this.CHECKBOX_URL);
+    await element(by.id(this.ID_EXAMPLE_TAB)).click();
+    return await browser.sleep(500);
   }
 
   async clickSpuntatoCheckbox() {
