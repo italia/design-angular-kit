@@ -9,15 +9,8 @@ export class CheckboxChange {
 }
 
 /**
- * The awesome design-angular kit Checkbox
- *
- * Inputs:
- *
- * | Name | Type |
- * | --- | --- |
- * | label | string |
- * | disabled | boolean |
- *
+ * Una checkbox con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,
+ * ed espone una API simile. Una `<it-checkbox>` può essere checked, unchecked, o disabled.
  */
 @Component({
   selector: 'it-checkbox',
@@ -27,6 +20,9 @@ export class CheckboxChange {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent implements ControlValueAccessor {
+  /**
+   * Se la checkbox è selezionata.
+   */
   @Input()
   get checked(): boolean { return this._checked; }
   set checked(value: boolean) {
@@ -37,9 +33,15 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
   private _checked = false;
 
+  /**
+   * L'etichetta della checkbox.
+   */
   @Input()
   label: string;
 
+  /**
+   * Se la checkbox è disabilitata.
+   */
   @Input()
   get disabled() { return this._disabled; }
   set disabled(value: any) {
@@ -50,6 +52,9 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
   private _disabled = false;
 
+  /**
+   * Evento emesso quando il valore `checked` della checkbox cambia.
+   */
   @Output() readonly change: EventEmitter<CheckboxChange> =
     new EventEmitter<CheckboxChange>();
 
