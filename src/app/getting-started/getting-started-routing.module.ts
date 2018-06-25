@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CheckboxIndexComponent } from './checkbox-index/checkbox-index.component';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
 
 const routes: Routes = [
-  { path: '', component: CheckboxIndexComponent }
+  { path: '', component: GettingStartedComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CheckboxRoutingModule { }
+export class GettingStartedRoutingModule { }
