@@ -1,4 +1,6 @@
 [![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
+[![CircleCI](https://circleci.com/gh/apuliasoft/design-angular-kit.svg?style=svg)](https://circleci.com/gh/apuliasoft/design-angular-kit)
+[![Maintainability](https://api.codeclimate.com/v1/badges/05006c545bb28be9f300/maintainability)](https://codeclimate.com/github/apuliasoft/design-angular-kit/maintainability)
 [![License](https://img.shields.io/github/license/apuliasoft/design-angular-kit.svg)](https://github.com/apuliasoft/design-angular-kit/blob/master/LICENSE)
 
 # Design Angular Kit
