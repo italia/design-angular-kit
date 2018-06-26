@@ -43,8 +43,8 @@ export class CheckboxComponent implements ControlValueAccessor {
    * Se la checkbox è disabilitata.
    */
   @Input()
-  get disabled() { return this._disabled; }
-  set disabled(value: any) {
+  get disabled(): boolean { return this._disabled; }
+  set disabled(value: boolean) {
     if (value !== this.disabled) {
       this._disabled = value;
       this._changeDetectorRef.markForCheck();
