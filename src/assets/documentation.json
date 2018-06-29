@@ -31,6 +31,35 @@
             "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
+        },
+        {
+            "name": "ToggleChange",
+            "id": "class-ToggleChange-96bbfccd611f40d2afe13f6321b42ce3",
+            "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+            "type": "class",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy } from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\n\nlet identifier = 0;\n\nexport class ToggleChange {\n  source: ToggleComponent;\n  checked: boolean;\n}\n\n/**\n * Una toggle con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\n * ed espone una API simile. Una `<it-toggle>` può essere checked, unchecked, o disabled.\n */\n@Component({\n  selector: 'it-toggle',\n  templateUrl: './toggle.component.html',\n  styleUrls: ['./toggle.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ToggleComponent), multi: true }],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ToggleComponent implements ControlValueAccessor {\n  /**\n   * Se la toggle è selezionata.\n   */\n  @Input()\n  get checked(): boolean { return this._checked; }\n  set checked(value: boolean) {\n    if (value !== this.checked) {\n      this._checked = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _checked = false;\n\n  /**\n   * L'etichetta della toggle.\n   */\n  @Input()\n  label: string;\n\n  /**\n   * Se la toggle è disabilitata.\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) {\n    if (value !== this.disabled) {\n      this._disabled = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _disabled = false;\n\n  /**\n   * Evento emesso quando il valore `checked` della toggle cambia.\n   */\n  @Output() readonly change: EventEmitter<ToggleChange> =\n    new EventEmitter<ToggleChange>();\n\n    inputId = `toggle-${identifier++}`;\n\n  private _onTouched: () => any = () => {};\n\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef\n  ) { }\n\n  writeValue(value: any) {\n    this.checked = !!value;\n  }\n\n  registerOnChange(fn: (value: any) => void) {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n\n  handleChange(event: Event) {\n    event.stopPropagation();\n    if (!this.disabled) {\n      this._toggle();\n      this._emitChangeEvent();\n    }\n  }\n\n  private _toggle(): void {\n    this.checked = !this.checked;\n  }\n\n  private _emitChangeEvent() {\n    const event = new ToggleChange();\n    event.source = this;\n    event.checked = this.checked;\n\n    this._controlValueAccessorChangeFn(this.checked);\n    this.change.emit(event);\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "checked",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "source",
+                    "type": "ToggleComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
         }
     ],
     "directives": [],
@@ -344,6 +373,316 @@
                 }
             },
             "templateData": "<div class=form-check>\n  <input type=checkbox\n    [id]=inputId\n    [checked]=checked\n    [disabled]=disabled\n    (change)=handleChange($event)>\n  <label\n    [attr.for]=inputId>{{label}}</label>\n</div>\n"
+        },
+        {
+            "name": "ToggleComponent",
+            "id": "component-ToggleComponent-96bbfccd611f40d2afe13f6321b42ce3",
+            "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{ : , : (() => ), : true }"
+                }
+            ],
+            "selector": "it-toggle",
+            "styleUrls": [
+                "toggle.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./toggle.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "checked",
+                    "description": "<p>Se la toggle è selezionata.</p>\n",
+                    "line": 27,
+                    "type": "boolean"
+                },
+                {
+                    "name": "disabled",
+                    "description": "<p>Se la toggle è disabilitata.</p>\n",
+                    "line": 46,
+                    "type": "boolean"
+                },
+                {
+                    "name": "label",
+                    "description": "<p>L&#39;etichetta della toggle.</p>\n",
+                    "line": 40,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "change",
+                    "defaultValue": "new EventEmitter<ToggleChange>()",
+                    "description": "<p>Evento emesso quando il valore <code>checked</code> della toggle cambia.</p>\n",
+                    "line": 58,
+                    "type": "EventEmitter<ToggleChange>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_checked",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_controlValueAccessorChangeFn",
+                    "defaultValue": "() => { }",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 65,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_disabled",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_onTouched",
+                    "defaultValue": "() => {}",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "inputId",
+                    "defaultValue": "`toggle-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_emitChangeEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 95,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_toggle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 91,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "handleChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "any"
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "any"
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Una toggle con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\ned espone una API simile. Una <code>&lt;it-toggle&gt;</code> può essere checked, unchecked, o disabled.</p>\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy } from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\n\nlet identifier = 0;\n\nexport class ToggleChange {\n  source: ToggleComponent;\n  checked: boolean;\n}\n\n/**\n * Una toggle con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\n * ed espone una API simile. Una `<it-toggle>` può essere checked, unchecked, o disabled.\n */\n@Component({\n  selector: 'it-toggle',\n  templateUrl: './toggle.component.html',\n  styleUrls: ['./toggle.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ToggleComponent), multi: true }],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ToggleComponent implements ControlValueAccessor {\n  /**\n   * Se la toggle è selezionata.\n   */\n  @Input()\n  get checked(): boolean { return this._checked; }\n  set checked(value: boolean) {\n    if (value !== this.checked) {\n      this._checked = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _checked = false;\n\n  /**\n   * L'etichetta della toggle.\n   */\n  @Input()\n  label: string;\n\n  /**\n   * Se la toggle è disabilitata.\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) {\n    if (value !== this.disabled) {\n      this._disabled = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _disabled = false;\n\n  /**\n   * Evento emesso quando il valore `checked` della toggle cambia.\n   */\n  @Output() readonly change: EventEmitter<ToggleChange> =\n    new EventEmitter<ToggleChange>();\n\n    inputId = `toggle-${identifier++}`;\n\n  private _onTouched: () => any = () => {};\n\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef\n  ) { }\n\n  writeValue(value: any) {\n    this.checked = !!value;\n  }\n\n  registerOnChange(fn: (value: any) => void) {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n\n  handleChange(event: Event) {\n    event.stopPropagation();\n    if (!this.disabled) {\n      this._toggle();\n      this._emitChangeEvent();\n    }\n  }\n\n  private _toggle(): void {\n    this.checked = !this.checked;\n  }\n\n  private _emitChangeEvent() {\n    const event = new ToggleChange();\n    event.source = this;\n    event.checked = this.checked;\n\n    this._controlValueAccessorChangeFn(this.checked);\n    this.change.emit(event);\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef"
+                    }
+                ],
+                "line": 65,
+                "jsdoctags": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "checked": {
+                    "name": "checked",
+                    "setSignature": {
+                        "name": "checked",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 28,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "disabled": {
+                    "name": "disabled",
+                    "setSignature": {
+                        "name": "disabled",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 47,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<div class=\"form-check\">\n  <div class=\"toggles\">\n    <label [attr.for]=inputId>\n      {{label}}\n      <input type=checkbox\n        [id]=inputId\n        [checked]=checked\n        [disabled]=disabled\n        (change)=handleChange($event)>\n      <span class=\"lever\"></span>\n    </label>\n  </div>\n</div>"
         }
     ],
     "modules": [
@@ -359,6 +698,9 @@
                     "elements": [
                         {
                             "name": "CheckboxComponent"
+                        },
+                        {
+                            "name": "ToggleComponent"
                         }
                     ]
                 },
@@ -371,6 +713,9 @@
                     "elements": [
                         {
                             "name": "CheckboxComponent"
+                        },
+                        {
+                            "name": "ToggleComponent"
                         }
                     ]
                 },
@@ -394,6 +739,14 @@
                 "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
                 "type": "number",
                 "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "type": "number",
+                "defaultValue": "0"
             }
         ],
         "functions": [],
@@ -406,6 +759,16 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/toggle/toggle.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -440,6 +803,34 @@
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToggleComponent",
+                "coveragePercent": 29,
+                "coverageCount": "5/17",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ToggleChange",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

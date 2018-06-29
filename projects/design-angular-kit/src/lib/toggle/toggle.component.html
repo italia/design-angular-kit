@@ -1,0 +1,13 @@
+<div class="form-check">
+  <div class="toggles">
+    <label [attr.for]=inputId>
+      {{label}}
+      <input type=checkbox
+        [id]=inputId
+        [checked]=checked
+        [disabled]=disabled
+        (change)=handleChange($event)>
+      <span class="lever"></span>
+    </label>
+  </div>
+</div>
