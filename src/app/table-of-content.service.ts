@@ -31,6 +31,10 @@ export class TableOfContentService {
           {
             label: 'Checkbox',
             link: '/componenti/checkbox',
+          },
+          {
+            label: 'Toggle',
+            link: '/componenti/toggle',
           }
         ]
       }

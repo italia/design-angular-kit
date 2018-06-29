@@ -1,0 +1,20 @@
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Configurazione toggle</h4>
+
+    <p class="card-text" class="example-section">
+      <it-toggle [(ngModel)]="checked" label="Spuntato"></it-toggle>
+      <it-toggle [(ngModel)]="disabled" label="Disabilitato"></it-toggle>
+    </p>
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Risultato</h4>
+
+    <p class="card-text" class="example-section">
+        <it-toggle [(ngModel)]="checked" [label]="label" [disabled]="disabled"></it-toggle>
+    </p>
+  </div>
+</div>
