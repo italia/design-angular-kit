@@ -344,6 +344,53 @@
                 }
             },
             "templateData": "<div class=form-check>\n  <input type=checkbox\n    [id]=inputId\n    [checked]=checked\n    [disabled]=disabled\n    (change)=handleChange($event)>\n  <label\n    [attr.for]=inputId>{{label}}</label>\n</div>\n"
+        },
+        {
+            "name": "ProgressBarComponent",
+            "id": "component-ProgressBarComponent-cabb409fb7204a45e97a4964c0f84eb4",
+            "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-progress-bar",
+            "styleUrls": [
+                "progress-bar.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./progress-bar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'it-progress-bar',\n  templateUrl: './progress-bar.component.html',\n  styleUrls: ['./progress-bar.component.css']\n})\nexport class ProgressBarComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"progress\">\n  <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 25%\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>\n</div>"
         }
     ],
     "modules": [
@@ -359,6 +406,9 @@
                     "elements": [
                         {
                             "name": "CheckboxComponent"
+                        },
+                        {
+                            "name": "ProgressBarComponent"
                         }
                     ]
                 },
@@ -371,6 +421,9 @@
                     "elements": [
                         {
                             "name": "CheckboxComponent"
+                        },
+                        {
+                            "name": "ProgressBarComponent"
                         }
                     ]
                 },
@@ -417,7 +470,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 9,
+        "count": 7,
         "status": "low",
         "files": [
             {
@@ -446,6 +499,15 @@
                 "name": "identifier",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProgressBarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             }
         ]
