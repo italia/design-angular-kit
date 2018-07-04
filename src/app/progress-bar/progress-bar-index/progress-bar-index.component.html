@@ -1,0 +1,52 @@
+<h1>Barra di avanzamento</h1>
+<h5>Il componente Barra di avanzamento utilizzabile per mostare dei progressi</h5>
+
+<ul class="nav nav-tabs" id="progress-bar-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="progress-bar-description-tab" data-toggle="tab" href="#progress-bar-description-tab-content" role="tab" aria-controls="progress-bar-description-tab-content" aria-selected="true">Descrizione</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="progress-bar-api-tab" data-toggle="tab" href="#progress-bar-api-tab-content" role="tab" aria-controls="progress-bar-api-tab-content" aria-selected="false">API</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="progress-bar-examples-tab" data-toggle="tab" href="#progress-bar-examples-tab-content" role="tab" aria-controls="progress-bar-examples-tab-content" aria-selected="false">Esempi</a>
+  </li>
+</ul>
+<div class="tab-content" id="progress-bar-content-tab">
+  <div class="tab-pane p-3 fade show active" id="progress-bar-description-tab-content" role="tabpanel" aria-labelledby="progress-bar-description-tab-content">
+    <div [innerHTML]="component.description"></div>
+  </div>
+  <div class="tab-pane p-3 fade" id="progress-bar-api-tab-content" role="tabpanel" aria-labelledby="progress-bar-api-tab-content">
+    <!-- TODO: da spostare in una componente ad hoc -->
+    <div *ngIf="component.inputsClass.length > 0">
+      <h3>Input</h3>
+      <div *ngFor="let input of component.inputsClass">
+        <table class="table table-bordered table-sm">
+          <tbody>
+            <tr>
+              <td style="width: 20%">
+                <code>{{input.name}}</code>
+              </td>
+              <td style="width: 80%">
+                <p>
+                  <em>Tipo: </em>
+                  <code>{{input.type}}</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="component.outputsClass.length > 0">
+      <h3>Output</h3>
+      <!-- TODO: usare lo stesso componente di input -->
+    </div>
+  </div>
+  <div class="tab-pane p-3 fade" id="progress-bar-examples-tab-content" role="tabpanel" aria-labelledby="progress-bar-examples-tab-content">
+    <it-progress-bar-examples></it-progress-bar-examples>
+  </div>
+</div>

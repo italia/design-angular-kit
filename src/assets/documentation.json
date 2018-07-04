@@ -1,6 +1,69 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "ProgressBarBackgroundClasses",
+            "id": "interface-ProgressBarBackgroundClasses-b389a81df334aad8501182a932c68eca",
+            "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+            "type": "interface",
+            "sourceCode": "import {\n  Component,\n  ChangeDetectionStrategy,\n  ElementRef,\n  Inject,\n  Input,\n  Optional,\n  ViewEncapsulation\n} from '@angular/core';\n\nconst BG_DEFAULT = undefined;\nconst BG_DANGER = 'bg-danger';\nconst BG_INFO = 'bg-info';\nconst BG_WARNING = 'bg-warning';\nconst BG_SUCCESS = 'bg-success';\n\nexport type ProgressBarBackgroundClass = undefined | 'bg-danger' | 'bg-warning' | 'bg-info' | 'bg-success';\n\nexport interface ProgressBarBackgroundClasses {\n  readonly BG_DEFAULT: ProgressBarBackgroundClass;\n  readonly BG_DANGER: ProgressBarBackgroundClass;\n  readonly BG_INFO: ProgressBarBackgroundClass;\n  readonly BG_WARNING: ProgressBarBackgroundClass;\n  readonly BG_SUCCESS: ProgressBarBackgroundClass;\n}\n\nexport const PROGRESS_BAR_BACKGROUND_CLASSES: ProgressBarBackgroundClasses = {\n  BG_DEFAULT: BG_DEFAULT,\n  BG_DANGER: BG_DANGER,\n  BG_INFO: BG_INFO,\n  BG_WARNING: BG_WARNING,\n  BG_SUCCESS: BG_SUCCESS,\n};\n\nlet progressbarId = 0;\n\n/**\n * Una barra di avanzamento con design bootstrap italia.\n */\n@Component({\n  selector: 'it-progress-bar',\n  templateUrl: './progress-bar.component.html',\n  styleUrls: ['./progress-bar.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ProgressBarComponent {\n\n  public static readonly PROGRESS_BAR_DEFAULT_MIN = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_MAX = 100;\n  public static readonly PROGRESS_BAR_DEFAULT_VALUE = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_HEIGHT = 20;\n  public static readonly PROGRESS_BAR_DEFAULT_LABEL = '';\n  public static readonly PROGRESS_BAR_DEFAULT_BG = BG_DEFAULT;\n\n  protected progressbarId = `it-progress-bar-${progressbarId++}`;\n\n  /**\n   * L'altezza della barra di avanzamento.\n   */\n  @Input()\n  get height(): number { return this._height; }\n  set height(v: number) { this._height = v; }\n  protected _height = ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT;\n\n  /**\n   * Il valore minimo della barra di avanzamento.\n   */\n  @Input()\n  get min(): number { return this._min; }\n  set min(v: number) { this._min = Math.round(v); }\n  protected _min = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN;\n\n  /**\n   * Il valore massimo della barra di avanzamento.\n   */\n  @Input()\n  get max(): number { return this._max; }\n  set max(v: number) { this._max = Math.round(v); }\n  protected _max = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX;\n\n  /**\n   * L'attuale valore della barra di avanzamento.\n   */\n  @Input()\n  get value(): number { return this._value; }\n  set value(v: number) { this._value = Math.min(Math.max(v, this._min), this._max); }\n  protected _value = ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE;\n\n  /**\n   * L'etichetta della barra di avanzamento.\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(v: string) { this._label = v; }\n  protected _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;\n\n  /**\n   * Il colore della barra di avanzamento.\n   */\n  @Input()\n  get bgColor(): ProgressBarBackgroundClass { return this._bgColor; }\n  set bgColor(v: ProgressBarBackgroundClass) { this._bgColor = v; }\n  protected _bgColor: ProgressBarBackgroundClass = ProgressBarComponent.PROGRESS_BAR_DEFAULT_BG;\n\n  public valuePercentage(): number {\n    return ((this.value - this.min) * 100) / (this.max - this.min);\n  }\n\n  protected pgStyle() {\n    return { 'width' : this.valuePercentage() + '%' };\n  }\n\n  protected pgClass() {\n    const progressbarClass = { 'progress-bar' : true };\n    if (this.bgColor) {\n      progressbarClass[this.bgColor] = true;\n    }\n    return progressbarClass;\n  }\n\n  constructor() { }\n\n}\n",
+            "properties": [
+                {
+                    "name": "BG_DANGER",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "BG_DEFAULT",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "BG_INFO",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "BG_SUCCESS",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "BG_WARNING",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
     "injectables": [],
     "classes": [
         {
@@ -347,8 +410,9 @@
         },
         {
             "name": "ProgressBarComponent",
-            "id": "component-ProgressBarComponent-cabb409fb7204a45e97a4964c0f84eb4",
+            "id": "component-ProgressBarComponent-b389a81df334aad8501182a932c68eca",
             "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -363,34 +427,389 @@
                 "./progress-bar.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "bgColor",
+                    "description": "<p>Il colore della barra di avanzamento.</p>\n",
+                    "line": 101,
+                    "type": "ProgressBarBackgroundClass"
+                },
+                {
+                    "name": "height",
+                    "description": "<p>L&#39;altezza della barra di avanzamento.</p>\n",
+                    "line": 61,
+                    "type": "number"
+                },
+                {
+                    "name": "label",
+                    "description": "<p>L&#39;etichetta della barra di avanzamento.</p>\n",
+                    "line": 93,
+                    "type": "string"
+                },
+                {
+                    "name": "max",
+                    "description": "<p>Il valore massimo della barra di avanzamento.</p>\n",
+                    "line": 77,
+                    "type": "number"
+                },
+                {
+                    "name": "min",
+                    "description": "<p>Il valore minimo della barra di avanzamento.</p>\n",
+                    "line": 69,
+                    "type": "number"
+                },
+                {
+                    "name": "value",
+                    "description": "<p>L&#39;attuale valore della barra di avanzamento.</p>\n",
+                    "line": 85,
+                    "type": "number"
+                }
+            ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_bgColor",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_BG",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 103,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_height",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_label",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 95,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_max",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 79,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_min",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_value",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 87,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_BG",
+                    "defaultValue": "BG_DEFAULT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_HEIGHT",
+                    "defaultValue": "20",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 51,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_LABEL",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 52,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_MAX",
+                    "defaultValue": "100",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 49,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_MIN",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 48,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_VALUE",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 50,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "progressbarId",
+                    "defaultValue": "`it-progress-bar-${progressbarId++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 55,
+                    "modifierKind": [
+                        113
+                    ]
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "ngOnInit",
+                    "name": "pgClass",
                     "args": [],
                     "optional": false,
-                    "returnType": "void",
+                    "returnType": "{ 'progress-bar': boolean; }",
                     "typeParameters": [],
-                    "line": 12
+                    "line": 113,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "pgStyle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{ 'width': string; }",
+                    "typeParameters": [],
+                    "line": 109,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "valuePercentage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 105,
+                    "modifierKind": [
+                        114
+                    ]
                 }
             ],
             "hostBindings": [],
             "hostListeners": [],
-            "description": "",
+            "description": "<p>Una barra di avanzamento con design bootstrap italia.</p>\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'it-progress-bar',\n  templateUrl: './progress-bar.component.html',\n  styleUrls: ['./progress-bar.component.css']\n})\nexport class ProgressBarComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n}\n",
+            "sourceCode": "import {\n  Component,\n  ChangeDetectionStrategy,\n  ElementRef,\n  Inject,\n  Input,\n  Optional,\n  ViewEncapsulation\n} from '@angular/core';\n\nconst BG_DEFAULT = undefined;\nconst BG_DANGER = 'bg-danger';\nconst BG_INFO = 'bg-info';\nconst BG_WARNING = 'bg-warning';\nconst BG_SUCCESS = 'bg-success';\n\nexport type ProgressBarBackgroundClass = undefined | 'bg-danger' | 'bg-warning' | 'bg-info' | 'bg-success';\n\nexport interface ProgressBarBackgroundClasses {\n  readonly BG_DEFAULT: ProgressBarBackgroundClass;\n  readonly BG_DANGER: ProgressBarBackgroundClass;\n  readonly BG_INFO: ProgressBarBackgroundClass;\n  readonly BG_WARNING: ProgressBarBackgroundClass;\n  readonly BG_SUCCESS: ProgressBarBackgroundClass;\n}\n\nexport const PROGRESS_BAR_BACKGROUND_CLASSES: ProgressBarBackgroundClasses = {\n  BG_DEFAULT: BG_DEFAULT,\n  BG_DANGER: BG_DANGER,\n  BG_INFO: BG_INFO,\n  BG_WARNING: BG_WARNING,\n  BG_SUCCESS: BG_SUCCESS,\n};\n\nlet progressbarId = 0;\n\n/**\n * Una barra di avanzamento con design bootstrap italia.\n */\n@Component({\n  selector: 'it-progress-bar',\n  templateUrl: './progress-bar.component.html',\n  styleUrls: ['./progress-bar.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ProgressBarComponent {\n\n  public static readonly PROGRESS_BAR_DEFAULT_MIN = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_MAX = 100;\n  public static readonly PROGRESS_BAR_DEFAULT_VALUE = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_HEIGHT = 20;\n  public static readonly PROGRESS_BAR_DEFAULT_LABEL = '';\n  public static readonly PROGRESS_BAR_DEFAULT_BG = BG_DEFAULT;\n\n  protected progressbarId = `it-progress-bar-${progressbarId++}`;\n\n  /**\n   * L'altezza della barra di avanzamento.\n   */\n  @Input()\n  get height(): number { return this._height; }\n  set height(v: number) { this._height = v; }\n  protected _height = ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT;\n\n  /**\n   * Il valore minimo della barra di avanzamento.\n   */\n  @Input()\n  get min(): number { return this._min; }\n  set min(v: number) { this._min = Math.round(v); }\n  protected _min = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN;\n\n  /**\n   * Il valore massimo della barra di avanzamento.\n   */\n  @Input()\n  get max(): number { return this._max; }\n  set max(v: number) { this._max = Math.round(v); }\n  protected _max = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX;\n\n  /**\n   * L'attuale valore della barra di avanzamento.\n   */\n  @Input()\n  get value(): number { return this._value; }\n  set value(v: number) { this._value = Math.min(Math.max(v, this._min), this._max); }\n  protected _value = ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE;\n\n  /**\n   * L'etichetta della barra di avanzamento.\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(v: string) { this._label = v; }\n  protected _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;\n\n  /**\n   * Il colore della barra di avanzamento.\n   */\n  @Input()\n  get bgColor(): ProgressBarBackgroundClass { return this._bgColor; }\n  set bgColor(v: ProgressBarBackgroundClass) { this._bgColor = v; }\n  protected _bgColor: ProgressBarBackgroundClass = ProgressBarComponent.PROGRESS_BAR_DEFAULT_BG;\n\n  public valuePercentage(): number {\n    return ((this.value - this.min) * 100) / (this.max - this.min);\n  }\n\n  protected pgStyle() {\n    return { 'width' : this.valuePercentage() + '%' };\n  }\n\n  protected pgClass() {\n    const progressbarClass = { 'progress-bar' : true };\n    if (this.bgColor) {\n      progressbarClass[this.bgColor] = true;\n    }\n    return progressbarClass;\n  }\n\n  constructor() { }\n\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
                 "args": [],
-                "line": 8
+                "line": 119
             },
-            "implements": [
-                "OnInit"
-            ],
-            "templateData": "<div class=\"progress\">\n  <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 25%\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>\n</div>"
+            "accessors": {
+                "height": {
+                    "name": "height",
+                    "setSignature": {
+                        "name": "height",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 62,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "min": {
+                    "name": "min",
+                    "setSignature": {
+                        "name": "min",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 70,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "max": {
+                    "name": "max",
+                    "setSignature": {
+                        "name": "max",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 78,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 86,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "label": {
+                    "name": "label",
+                    "setSignature": {
+                        "name": "label",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 94,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "bgColor": {
+                    "name": "bgColor",
+                    "setSignature": {
+                        "name": "bgColor",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 102,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<div class=\"progress\" [ngStyle]=\"{'height': height + 'px'}\">\n  <div role=\"progressbar\" [id]=\"progressbarId\" [ngClass]=\"pgClass()\" [ngStyle]=\"pgStyle()\"\n    [attr.aria-valuenow]=\"value\" [attr.aria-valuemin]=\"min\" [attr.aria-valuemax]=\"max\" >\n    {{label}}\n  </div>\n</div>"
         }
     ],
     "modules": [
@@ -441,18 +860,142 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "BG_DANGER",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "string",
+                "defaultValue": "'bg-danger'"
+            },
+            {
+                "name": "BG_DEFAULT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "",
+                "defaultValue": "undefined"
+            },
+            {
+                "name": "BG_INFO",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "string",
+                "defaultValue": "'bg-info'"
+            },
+            {
+                "name": "BG_SUCCESS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "string",
+                "defaultValue": "'bg-success'"
+            },
+            {
+                "name": "BG_WARNING",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "string",
+                "defaultValue": "'bg-warning'"
+            },
+            {
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
                 "type": "number",
                 "defaultValue": "0"
+            },
+            {
+                "name": "PROGRESS_BAR_BACKGROUND_CLASSES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "ProgressBarBackgroundClasses",
+                "defaultValue": "{\n  BG_DEFAULT: BG_DEFAULT,\n  BG_DANGER: BG_DANGER,\n  BG_INFO: BG_INFO,\n  BG_WARNING: BG_WARNING,\n  BG_SUCCESS: BG_SUCCESS,\n}"
+            },
+            {
+                "name": "progressbarId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "number",
+                "defaultValue": "0"
             }
         ],
         "functions": [],
-        "typealiases": [],
+        "typealiases": [
+            {
+                "name": "ProgressBarBackgroundClass",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "undefined | \"bg-danger\" | \"bg-warning\" | \"bg-info\" | \"bg-success\"",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "description": "",
+                "kind": 168
+            }
+        ],
         "enumerations": [],
         "groupedVariables": {
+            "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts": [
+                {
+                    "name": "BG_DANGER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bg-danger'"
+                },
+                {
+                    "name": "BG_DEFAULT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "",
+                    "defaultValue": "undefined"
+                },
+                {
+                    "name": "BG_INFO",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bg-info'"
+                },
+                {
+                    "name": "BG_SUCCESS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bg-success'"
+                },
+                {
+                    "name": "BG_WARNING",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bg-warning'"
+                },
+                {
+                    "name": "PROGRESS_BAR_BACKGROUND_CLASSES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "ProgressBarBackgroundClasses",
+                    "defaultValue": "{\n  BG_DEFAULT: BG_DEFAULT,\n  BG_DANGER: BG_DANGER,\n  BG_INFO: BG_INFO,\n  BG_WARNING: BG_WARNING,\n  BG_SUCCESS: BG_SUCCESS,\n}"
+                },
+                {
+                    "name": "progressbarId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
                 {
                     "name": "identifier",
@@ -466,11 +1009,23 @@
         },
         "groupedFunctions": {},
         "groupedEnumerations": {},
-        "groupedTypeAliases": {}
+        "groupedTypeAliases": {
+            "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts": [
+                {
+                    "name": "ProgressBarBackgroundClass",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "undefined | \"bg-danger\" | \"bg-warning\" | \"bg-info\" | \"bg-success\"",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "description": "",
+                    "kind": 168
+                }
+            ]
+        }
     },
     "routes": [],
     "coverage": {
-        "count": 7,
+        "count": 4,
         "status": "low",
         "files": [
             {
@@ -506,8 +1061,87 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ProgressBarComponent",
+                "coveragePercent": 29,
+                "coverageCount": "7/24",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ProgressBarBackgroundClasses",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_DANGER",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_DEFAULT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_INFO",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_SUCCESS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_WARNING",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PROGRESS_BAR_BACKGROUND_CLASSES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "progressbarId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             }
         ]
