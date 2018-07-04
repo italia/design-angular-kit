@@ -1,11 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+let tabIdentifier = 0;
+let tabContentIdentifier = 0;
+let tabHtmlIdentifier = 0;
+let tabTypescriptIdentifier = 0;
+let tabCssIdentifier = 0;
+
 @Component({
   selector: 'it-source-display',
   templateUrl: './source-display.component.html',
   styleUrls: ['./source-display.component.scss']
 })
 export class SourceDisplayComponent implements OnInit {
+
+  private idTab: string = `source-display-tab-${tabIdentifier++}`;
+  private idTabContent: string = `source-display-tab-content-${tabContentIdentifier++}`;
+  private idTabHtml: string = `tab-html-${tabHtmlIdentifier++}`;
+  private idTypescript: string = `tab-typescript-${tabTypescriptIdentifier++}`;
+  private idTabCss: string = `tab-css-${tabCssIdentifier++}`;
+
   @Input() html: string;
   @Input() typescript: string;
   @Input() css: string;
@@ -13,6 +26,13 @@ export class SourceDisplayComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
+    this.html = this.html.replace(/\/{\/{/g, '{{');
+    this.html = this.html.replace(/\/}\/}/g, '}}');
 
+    this.typescript = this.typescript.replace(/\/{\/{/g, '{{');
+    this.typescript = this.typescript.replace(/\/}\/}/g, '}}');
+
+    this.css = this.css.replace(/\/{\/{/g, '{{');
+    this.css = this.css.replace(/\/}\/}/g, '}}');
+  }
 }

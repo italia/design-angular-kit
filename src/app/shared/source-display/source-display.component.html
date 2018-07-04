@@ -1,16 +1,16 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item"><a class="nav-link active" id="tab1a-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">HTML</a></li>
-  <li class="nav-item"><a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">TS</a></li>
-  <li class="nav-item"><a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">CSS</a></li>
+<ul class="nav nav-tabs" [id]="idTab" role="tablist">
+  <li *ngIf="html" class="nav-item"><a class="nav-link active" data-toggle="tab" href="#{{idTabHtml}}" role="tab" [attr.aria-controls]="idTabHtml" aria-selected="true">HTML</a></li>
+  <li *ngIf="typescript" class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{idTypescript}}" role="tab" [attr.aria-controls]="idTypescript" aria-selected="false">TS</a></li>
+  <li *ngIf="css" class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{idTabCss}}" role="tab" [attr.aria-controls]="idTabCss" aria-selected="false">CSS</a></li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane p-3 fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1a-tab">
-    <pre><code highlight [textContent]="html"></code></pre>
+<div class="tab-content" [id]="idTabContent">
+  <div *ngIf="html" class="tab-pane p-3 fade show active" [id]="idTabHtml" role="tabpanel" aria-labelledby="html-tab">
+    <pre><code highlight [language]="['html']" [textContent]="html"></code></pre>
   </div>
-  <div class="tab-pane p-3 fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-    <pre><code highlight [textContent]="typescript"></code></pre>
+  <div *ngIf="typescript" class="tab-pane p-3 fade" [id]="idTypescript" role="tabpanel" aria-labelledby="typescript-tab">
+    <pre><code highlight [language]="['typescript']" [textContent]="typescript"></code></pre>
   </div>
-  <div class="tab-pane p-3 fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-    <pre><code highlight [textContent]="css"></code></pre>
+  <div *ngIf="css" class="tab-pane p-3 fade" [id]="idTabCss" role="tabpanel" aria-labelledby="css-tab">
+    <pre><code highlight [language]="['scss']" [textContent]="css"></code></pre>
   </div>
 </div>
