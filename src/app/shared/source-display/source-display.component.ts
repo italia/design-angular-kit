@@ -13,11 +13,11 @@ let tabCssIdentifier = 0;
 })
 export class SourceDisplayComponent implements OnInit {
 
-  private idTab: string = `source-display-tab-${tabIdentifier++}`;
-  private idTabContent: string = `source-display-tab-content-${tabContentIdentifier++}`;
-  private idTabHtml: string = `tab-html-${tabHtmlIdentifier++}`;
-  private idTypescript: string = `tab-typescript-${tabTypescriptIdentifier++}`;
-  private idTabCss: string = `tab-css-${tabCssIdentifier++}`;
+  private idTab = `source-display-tab-${tabIdentifier++}`;
+  private idTabContent = `source-display-tab-content-${tabContentIdentifier++}`;
+  private idTabHtml = `tab-html-${tabHtmlIdentifier++}`;
+  private idTypescript = `tab-typescript-${tabTypescriptIdentifier++}`;
+  private idTabCss = `tab-css-${tabCssIdentifier++}`;
 
   @Input() html: string;
   @Input() typescript: string;
