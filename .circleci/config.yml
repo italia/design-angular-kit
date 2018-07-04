@@ -51,7 +51,7 @@ jobs:
           name: Skip this job for Pull Requests and Fork builds
           # Note, `|| true` on the end makes this step always exit 0
           command: '[[ -v CIRCLE_PR_NUMBER
-              || "$CIRCLE_PROJECT_USERNAME" != "apuliasoft"
+              || "$CIRCLE_PROJECT_USERNAME" != "italia"
               || "$CIRCLE_PROJECT_REPONAME" != "design-angular-kit"
           ]] && circleci step halt || true'
       # Generate and publish NPM package + Publish docs to Github Pages
@@ -64,7 +64,7 @@ jobs:
           name: Skip this job for Pull Requests and Fork builds
           # Note, `|| true` on the end makes this step always exit 0
           command: '[[ -v CIRCLE_PR_NUMBER
-              || "$CIRCLE_PROJECT_USERNAME" != "apuliasoft"
+              || "$CIRCLE_PROJECT_USERNAME" != "italia"
               || "$CIRCLE_PROJECT_REPONAME" != "design-angular-kit"
           ]] && circleci step halt || true'
 
