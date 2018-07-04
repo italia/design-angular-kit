@@ -1,0 +1,97 @@
+
+
+
+
+
+
+
+
+<it-radio-example></it-radio-example>
+
+<it-source-display html="
+  &lt;div class=&quot;card w-50 mt-2&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;h4 class=&quot;card-title&quot;&gt;Configurazione&lt;/h4&gt;
+
+    &lt;p class=&quot;card-text&quot; class=&quot;example-section&quot;&gt;
+      &lt;it-checkbox [(ngModel)]=&quot;disabled&quot; label=&quot;Disabilitato&quot;&gt;&lt;/it-checkbox&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;card w-50 mt-2&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;h4 class=&quot;card-title&quot;&gt;Risultato&lt;/h4&gt;
+
+    &lt;div class=&quot;card-text&quot; class=&quot;example-section&quot;&gt;
+      &lt;it-radio-group [(ngModel)]=&quot;selectedColor&quot; [disabled]=&quot;disabled&quot;&gt;
+        &lt;it-radio-button *ngFor=&quot;let color of colors&quot; [value]=&quot;color&quot; [label]=&quot;color&quot;&gt;&lt;/it-radio-button&gt;
+      &lt;/it-radio-group&gt;
+      &lt;div class=&quot;example-selected-value&quot;&gt;Colore selezionato: /{/{selectedColor/}/}&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+" typescript="
+  import { Component, OnInit } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;it-radio-example&#39;,
+  templateUrl: &#39;./radio-example.component.html&#39;,
+  styleUrls: [&#39;./radio-example.component.scss&#39;]
+})
+export class RadioExampleComponent {
+
+  colors= [
+    &#39;Rosso&#39;,
+    &#39;Blu&#39;,
+    &#39;Giallo&#39;
+  ];
+
+  selectedColor = &#39;Blu&#39;;
+
+}
+
+" >
+</it-source-display>
+
+<it-radio-checked-example></it-radio-checked-example>
+
+<it-source-display html="
+  &lt;div class=&quot;card w-50 mt-2&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;h4 class=&quot;card-title&quot;&gt;Radio checked&lt;/h4&gt;
+
+    &lt;div class=&quot;card-text&quot; class=&quot;example-section&quot;&gt;
+      &lt;it-radio-button name=&quot;nation&quot; value=&quot;USA&quot; label=&quot;USA&quot; (change)=&quot;changeCurrentlySelected($event)&quot;&gt;&lt;/it-radio-button&gt;
+      &lt;it-radio-button name=&quot;nation&quot; value=&quot;Italia&quot; label=&quot;Italia&quot; [checked]=&quot;italiaChecked&quot; (change)=&quot;changeCurrentlySelected($event)&quot;&gt;&lt;/it-radio-button&gt;
+      &lt;it-radio-button name=&quot;nation&quot; value=&quot;Spagna&quot; label=&quot;Spagna&quot; (change)=&quot;changeCurrentlySelected($event)&quot;&gt;&lt;/it-radio-button&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;example-selected-value&quot;&gt;Nazione selezionata: /{/{selectedNation/}/}&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+" typescript="
+  import { Component, OnInit } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;it-radio-checked-example&#39;,
+  templateUrl: &#39;./radio-checked-example.component.html&#39;,
+  styleUrls: [&#39;./radio-checked-example.component.scss&#39;]
+})
+export class RadioCheckedExampleComponent {
+
+  selectedNation: string = &#39;Italia&#39;;
+
+  italiaChecked: boolean = true;
+
+  changeCurrentlySelected($event) {
+    this.selectedNation = $event.value;
+  }
+
+}
+
+" >
+</it-source-display>

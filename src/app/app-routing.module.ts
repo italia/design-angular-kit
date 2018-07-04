@@ -11,7 +11,8 @@ const routes: Routes = [
   ]},
   { path: 'componenti', component: RouterDispatcherComponent, children: [
     { path: '', redirectTo: 'checkbox', pathMatch: 'full' },
-    { path: 'checkbox', loadChildren: 'src/app/checkbox/checkbox.module#CheckboxModule' }
+    { path: 'checkbox', loadChildren: 'src/app/checkbox/checkbox.module#CheckboxModule' },
+    { path: 'radio', loadChildren: 'src/app/radio/radio.module#RadioModule' }
   ]}
 ];
 

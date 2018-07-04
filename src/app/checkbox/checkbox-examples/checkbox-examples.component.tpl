@@ -8,5 +8,5 @@
 
 <it-checkbox-example></it-checkbox-example>
 
-<it-source-display html="{{ html | escape }}" typescript="{{ typescript | escape }}" >
+<it-source-display html="{$ html | escape $}" typescript="{$ typescript | escape $}" >
 </it-source-display>
