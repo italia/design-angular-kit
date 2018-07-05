@@ -26,17 +26,17 @@ export class SourceDisplayComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if(this.html){
+    if (this.html) {
       this.html = this.html.replace(/\/{\/{/g, '{{');
       this.html = this.html.replace(/\/}\/}/g, '}}');
     }
 
-    if(this.typescript){
+    if (this.typescript) {
       this.typescript = this.typescript.replace(/\/{\/{/g, '{{');
       this.typescript = this.typescript.replace(/\/}\/}/g, '}}');
     }
 
-    if(this.css){
+    if (this.css) {
       this.css = this.css.replace(/\/{\/{/g, '{{');
       this.css = this.css.replace(/\/}\/}/g, '}}');
     }

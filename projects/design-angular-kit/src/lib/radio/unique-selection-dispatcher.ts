@@ -31,7 +31,7 @@ export class UniqueSelectionDispatcher implements OnDestroy {
    * @param name Name of the item.
    */
   notify(id: string, name: string) {
-    for (let listener of this._listeners) {
+    for (const listener of this._listeners) {
       listener(id, name);
     }
   }

@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RadioCheckedExampleComponent {
 
-  selectedNation: string = 'Italia';
+  selectedNation = 'Italia';
 
-  italiaChecked: boolean = true;
+  italiaChecked = true;
 
   changeCurrentlySelected($event) {
     this.selectedNation = $event.value;

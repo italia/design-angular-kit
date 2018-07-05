@@ -16,9 +16,9 @@ import { RadioGroupDirective, RadioButtonComponent, RadioChange } from './radio.
   </it-radio-group>
   `
 })
-class RadiosInsideRadioGroup {
-  isFirstDisabled: boolean = false;
-  isGroupDisabled: boolean = false;
+class RadiosInsideRadioGroupComponent {
+  isFirstDisabled = false;
+  isGroupDisabled = false;
   groupValue: string | null = null;
 }
 
@@ -33,7 +33,7 @@ class RadiosInsideRadioGroup {
     <it-radio-button id="nameless" value="no-name">No name</it-radio-button>
   `
 })
-class StandaloneRadioButtons { }
+class StandaloneRadioButtonsComponent { }
 
 @Component({
   template: `
@@ -42,7 +42,7 @@ class StandaloneRadioButtons { }
   </it-radio-group>
   `
 })
-class RadioGroupWithNgModel {
+class RadioGroupWithNgModelComponent {
   modelValue: string;
   options = [
     {label: 'Vanilla', value: 'vanilla'},
@@ -55,7 +55,7 @@ class RadioGroupWithNgModel {
 @Component({
   template: `<it-radio-button>One</it-radio-button>`
 })
-class DisableableRadioButton {
+class DisableableRadioButtonComponent {
   @ViewChild(RadioButtonComponent) itRadioButton;
 
   set disabled(value: boolean) {
@@ -69,10 +69,10 @@ describe('RadioComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [
-        DisableableRadioButton,
-        RadiosInsideRadioGroup,
-        RadioGroupWithNgModel,
-        StandaloneRadioButtons,
+        DisableableRadioButtonComponent,
+        RadiosInsideRadioGroupComponent,
+        RadioGroupWithNgModelComponent,
+        StandaloneRadioButtonsComponent,
         RadioButtonComponent,
         RadioGroupDirective
       ]
@@ -82,17 +82,17 @@ describe('RadioComponent', () => {
   }));
 
   describe('all\'interno di un gruppo', () => {
-    let fixture: ComponentFixture<RadiosInsideRadioGroup>;
+    let fixture: ComponentFixture<RadiosInsideRadioGroupComponent>;
     let groupDebugElement: DebugElement;
     let radioDebugElements: DebugElement[];
     let radioLabelElements: HTMLLabelElement[];
     let radioInputElements: HTMLInputElement[];
     let groupInstance: RadioGroupDirective;
     let radioInstances: RadioButtonComponent[];
-    let testComponent: RadiosInsideRadioGroup;
+    let testComponent: RadiosInsideRadioGroupComponent;
 
     beforeEach(async(() => {
-      fixture = TestBed.createComponent(RadiosInsideRadioGroup);
+      fixture = TestBed.createComponent(RadiosInsideRadioGroupComponent);
       fixture.detectChanges();
 
       testComponent = fixture.debugElement.componentInstance;
@@ -318,18 +318,18 @@ describe('RadioComponent', () => {
   });
 
   describe('gruppo con ngModel', () => {
-    let fixture: ComponentFixture<RadioGroupWithNgModel>;
+    let fixture: ComponentFixture<RadioGroupWithNgModelComponent>;
     let groupDebugElement: DebugElement;
     let radioDebugElements: DebugElement[];
     let innerRadios: DebugElement[];
     let radioLabelElements: HTMLLabelElement[];
     let groupInstance: RadioGroupDirective;
     let radioInstances: RadioButtonComponent[];
-    let testComponent: RadioGroupWithNgModel;
+    let testComponent: RadioGroupWithNgModelComponent;
     let groupNgModel: NgModel;
 
     beforeEach(() => {
-      fixture = TestBed.createComponent(RadioGroupWithNgModel);
+      fixture = TestBed.createComponent(RadioGroupWithNgModelComponent);
       fixture.detectChanges();
 
       testComponent = fixture.debugElement.componentInstance;
@@ -369,7 +369,7 @@ describe('RadioComponent', () => {
       for (const radio of radioInstances) {
         expect(radio.checked).toBe(groupInstance.value === radio.value);
       }
-      expect(groupInstance.selected!.value).toBe(groupInstance.value);
+      expect(groupInstance.selected.value).toBe(groupInstance.value);
     });
 
     it('Dovrebbe avere il corretto stato della form all\'inizio e dopo l\'interazione', () => {
@@ -429,13 +429,13 @@ describe('RadioComponent', () => {
   });
 
   describe('disabilitabile', () => {
-    let fixture: ComponentFixture<DisableableRadioButton>;
+    let fixture: ComponentFixture<DisableableRadioButtonComponent>;
     let radioInstance: RadioButtonComponent;
     let radioNativeElement: HTMLInputElement;
-    let testComponent: DisableableRadioButton;
+    let testComponent: DisableableRadioButtonComponent;
 
     beforeEach(() => {
-      fixture = TestBed.createComponent(DisableableRadioButton);
+      fixture = TestBed.createComponent(DisableableRadioButtonComponent);
       fixture.detectChanges();
 
       testComponent = fixture.debugElement.componentInstance;
@@ -461,29 +461,29 @@ describe('RadioComponent', () => {
   });
 
   describe('radio button standalone', () => {
-    let fixture: ComponentFixture<StandaloneRadioButtons>;
+    let fixture: ComponentFixture<StandaloneRadioButtonsComponent>;
     let radioDebugElements: DebugElement[];
     let seasonRadioInstances: RadioButtonComponent[];
     let weatherRadioInstances: RadioButtonComponent[];
     let fruitRadioNativeInputs: HTMLElement[];
-    let testComponent: StandaloneRadioButtons;
+    let testComponent: StandaloneRadioButtonsComponent;
 
     beforeEach(() => {
-      fixture = TestBed.createComponent(StandaloneRadioButtons);
+      fixture = TestBed.createComponent(StandaloneRadioButtonsComponent);
       fixture.detectChanges();
 
       testComponent = fixture.debugElement.componentInstance;
 
       radioDebugElements = fixture.debugElement.queryAll(By.directive(RadioButtonComponent));
       seasonRadioInstances = radioDebugElements
-          .filter(debugEl => debugEl.componentInstance.name == 'season')
+          .filter(debugEl => debugEl.componentInstance.name === 'season')
           .map(debugEl => debugEl.componentInstance);
       weatherRadioInstances = radioDebugElements
-          .filter(debugEl => debugEl.componentInstance.name == 'weather')
+          .filter(debugEl => debugEl.componentInstance.name === 'weather')
           .map(debugEl => debugEl.componentInstance);
 
       const fruitRadioNativeElements = radioDebugElements
-          .filter(debugEl => debugEl.componentInstance.name == 'fruit')
+          .filter(debugEl => debugEl.componentInstance.name === 'fruit')
           .map(debugEl => debugEl.nativeElement);
 
       fruitRadioNativeInputs = [];

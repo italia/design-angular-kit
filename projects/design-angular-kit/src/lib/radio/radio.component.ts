@@ -1,19 +1,28 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy, AfterContentInit, Directive, ContentChildren, QueryList, OnInit, AfterViewInit, OnDestroy, Optional } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef,
+  forwardRef,
+  ChangeDetectionStrategy,
+  AfterContentInit,
+  Directive,
+  ContentChildren,
+  QueryList,
+  OnInit,
+  OnDestroy,
+  Optional,
+  HostBinding
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { UniqueSelectionDispatcher } from './unique-selection-dispatcher';
-
 
 let identifier = 0;
 
 function _coerceBooleanProperty(value: any): boolean {
   return value != null && `${value}` !== 'false';
 }
-
-export const IT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => RadioGroupDirective),
-  multi: true
-};
 
 export class RadioChange {
   constructor(
@@ -23,14 +32,17 @@ export class RadioChange {
 }
 
 @Directive({
-  selector: 'it-radio-group',
+  selector: 'it-radio-group', // tslint:disable-line
   exportAs: 'itRadioGroup',
-  providers: [IT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR],
-  host: {
-    'role': 'radiogroup'
-  }
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => RadioGroupDirective),
+    multi: true
+  }]
 })
 export class RadioGroupDirective implements AfterContentInit, ControlValueAccessor {
+
+  @HostBinding('attr.role') role = 'radiogroup';
 
   /**
    * Il valore selezionato per il gruppo. Dovrebbe essere uguale al valore del radio button selezionato se
@@ -41,21 +53,18 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
   private _value: any = null;
 
   /** L'attributo HTML name da applicare ai radio button in questo gruppo */
-  private _name: string = `it-radio-group-${identifier++}`;
+  private _name = `it-radio-group-${identifier++}`;
 
   /** Il radio button attualmente selezionato. */
   private _selected: RadioButtonComponent | null = null;
 
   /** se `value` è stato settato al suo valore iniziale. */
-  private _isInitialized: boolean = false;
+  private _isInitialized = false;
 
   /** Se il radio group è disabilitato. */
-  private _disabled: boolean = false;
+  private _disabled = false;
 
-  /** Il metodo da chiamare per aggiornare ngModel */
-  _controlValueAccessorChangeFn: (value: any) => void = () => { };
 
-  onTouched: () => any = () => { };
 
   /**
    * Evento emesso quando il valore del gruppo cambia.
@@ -65,8 +74,12 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
   @Output() readonly change: EventEmitter<RadioChange> = new EventEmitter<RadioChange>();
 
   /** radio buttons figli. */
-  @ContentChildren(forwardRef(() => RadioButtonComponent), { descendants: true })
-  _radios: QueryList<RadioButtonComponent>;
+  @ContentChildren(forwardRef(() => RadioButtonComponent), { descendants: true }) _radios: QueryList<RadioButtonComponent>; // tslint:disable-line
+
+  /** Il metodo da chiamare per aggiornare ngModel */
+  _controlValueAccessorChangeFn: (value: any) => void = () => { };
+
+  onTouched: () => any = () => { };
 
   /** Nome del gruppo di radio button. Tutti i radio button all'interno del gruppo avranno questo nome. */
   @Input()
@@ -142,20 +155,20 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
     const isAlreadySelected = this._selected !== null && this._selected.value === this._value;
 
     // if (this._radios && !isAlreadySelected) {
-      this._selected = null;
-      this._radios.forEach(radio => {
-        radio.checked = this.value === radio.value;
-        if (radio.checked) {
-          this._selected = radio;
-        }
-      });
+    this._selected = null;
+    this._radios.forEach(radio => {
+      radio.checked = this.value === radio.value;
+      if (radio.checked) {
+        this._selected = radio;
+      }
+    });
     // }
   }
 
   /** Invia l'evento change con la selezione corrente e il valore del gruppo. */
   _emitChangeEvent(): void {
     if (this._isInitialized) {
-      this.change.emit(new RadioChange(this._selected!, this._value));
+      this.change.emit(new RadioChange(this._selected, this._value));
     }
   }
 
@@ -192,7 +205,7 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
 })
 export class RadioButtonComponent implements OnInit, OnDestroy {
 
-  private id: string = `radio-${identifier++}`;
+  private id = `radio-${identifier++}`;
 
   /** Attributo 'name' usato per raggruppare i radio button per un'unica selezione. */
   @Input() name: string;
@@ -261,7 +274,7 @@ export class RadioButtonComponent implements OnInit, OnDestroy {
   radioGroup: RadioGroupDirective;
 
   /** Se il radio button è checked. */
-  private _checked: boolean = false;
+  private _checked = false;
 
   /** Se il radio button è disabled. */
   private _disabled: boolean;
@@ -269,7 +282,7 @@ export class RadioButtonComponent implements OnInit, OnDestroy {
   /** il valore assegnato al radio button. */
   private _value: any = null;
 
-  private _removeUniqueSelectionListener: () => void = () => {};
+  private _removeUniqueSelectionListener: () => void = () => { };
 
   constructor(
     @Optional() radioGroup: RadioGroupDirective,

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RadioExampleComponent {
 
-  colors= [
+  colors = [
     'Rosso',
     'Blu',
     'Giallo'
