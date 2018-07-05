@@ -52,7 +52,7 @@
       &lt;it-progress-bar [value]=&quot;valueExDanger&quot; [min]=&quot;minExDanger&quot; [max]=&quot;maxExDanger&quot; [bgColor]=&quot;bgColorDanger&quot;&gt;&lt;/it-progress-bar&gt;
     &lt;/p&gt;
   &lt;/div&gt;
-&lt;/div&gt;" typescript="import { Component, OnInit } from &#39;@angular/core&#39;;
+&lt;/div&gt;" typescript="import { Component } from &#39;@angular/core&#39;;
 import { PROGRESS_BAR_BACKGROUND_CLASSES } from &#39;projects/design-angular-kit/src/public_api&#39;;
 
 @Component({
@@ -60,7 +60,7 @@ import { PROGRESS_BAR_BACKGROUND_CLASSES } from &#39;projects/design-angular-kit
   templateUrl: &#39;./progress-bar-example.component.html&#39;,
   styleUrls: [&#39;./progress-bar-example.component.scss&#39;]
 })
-export class ProgressBarExampleComponent implements OnInit {
+export class ProgressBarExampleComponent {
 
   protected valueEx1 = 50;
   protected minEx1 = 0;
@@ -95,11 +95,6 @@ export class ProgressBarExampleComponent implements OnInit {
   protected minExDanger = 0;
   protected maxExDanger = 100;
   protected bgColorDanger = PROGRESS_BAR_BACKGROUND_CLASSES.BG_DANGER;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
 " >

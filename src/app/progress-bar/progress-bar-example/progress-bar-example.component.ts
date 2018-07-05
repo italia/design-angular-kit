@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PROGRESS_BAR_BACKGROUND_CLASSES } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
@@ -6,7 +6,7 @@ import { PROGRESS_BAR_BACKGROUND_CLASSES } from 'projects/design-angular-kit/src
   templateUrl: './progress-bar-example.component.html',
   styleUrls: ['./progress-bar-example.component.scss']
 })
-export class ProgressBarExampleComponent implements OnInit {
+export class ProgressBarExampleComponent {
 
   protected valueEx1 = 50;
   protected minEx1 = 0;
@@ -41,10 +41,5 @@ export class ProgressBarExampleComponent implements OnInit {
   protected minExDanger = 0;
   protected maxExDanger = 100;
   protected bgColorDanger = PROGRESS_BAR_BACKGROUND_CLASSES.BG_DANGER;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
