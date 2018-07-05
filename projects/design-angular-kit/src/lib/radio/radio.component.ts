@@ -5,6 +5,10 @@ import { UniqueSelectionDispatcher } from './unique-selection-dispatcher';
 
 let identifier = 0;
 
+function _coerceBooleanProperty(value: any): boolean {
+  return value != null && `${value}` !== 'false';
+}
+
 export const IT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => RadioGroupDirective),
@@ -103,7 +107,7 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
   @Input()
   get disabled(): boolean { return this._disabled; }
   set disabled(value) {
-    this._disabled = !!value;
+    this._disabled = _coerceBooleanProperty(value);
     this._markRadiosForCheck();
   }
 
@@ -201,7 +205,7 @@ export class RadioButtonComponent implements OnInit, OnDestroy {
   @Input()
   get checked(): boolean { return this._checked; }
   set checked(value: boolean) {
-    const newCheckedState = !!value;
+    const newCheckedState = _coerceBooleanProperty(value);
     if (this._checked !== newCheckedState) {
       this._checked = newCheckedState;
       if (newCheckedState && this.radioGroup && this.radioGroup.value !== this.value) {
@@ -321,5 +325,4 @@ export class RadioButtonComponent implements OnInit, OnDestroy {
       }
     }
   }
-
 }
