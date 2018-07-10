@@ -28,7 +28,7 @@ jobs:
           root: *working_directory
           paths:
             - "src/assets/documentation.json"
-            - "**/*-examples.component.html"
+            - "src/app/*/*/*-examples.component.html"
   test:
     <<: *job_defaults
     steps:
