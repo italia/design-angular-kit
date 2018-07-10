@@ -23,6 +23,9 @@ jobs:
           key: *cache_key
           paths:
             - "node_modules"
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
             - "/src/assets/documentation.json"
             - "/**/*-examples.component.html"
   test:
