@@ -42,6 +42,8 @@ jobs:
       - checkout
       - restore_cache:
           key: *cache_key
+      - attach_workspace:
+        - at: *working_directory
       - run: xvfb-run -a npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
   lint:
     <<: *job_defaults
