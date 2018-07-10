@@ -152,9 +152,6 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
 
   /** Aggiorna il radio button `selected` a seconda del suo _value. */
   private _updateSelectedRadioFromValue(): void {
-    const isAlreadySelected = this._selected !== null && this._selected.value === this._value;
-
-    // if (this._radios && !isAlreadySelected) {
     this._selected = null;
     this._radios.forEach(radio => {
       radio.checked = this.value === radio.value;
@@ -162,7 +159,6 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
         this._selected = radio;
       }
     });
-    // }
   }
 
   /** Invia l'evento change con la selezione corrente e il valore del gruppo. */
