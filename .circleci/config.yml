@@ -27,8 +27,8 @@ jobs:
       - persist_to_workspace:
           root: *working_directory
           paths:
-            - "/src/assets/documentation.json"
-            - "/**/*-examples.component.html"
+            - "src/assets/documentation.json"
+            - "**/*-examples.component.html"
   test:
     <<: *job_defaults
     steps:
