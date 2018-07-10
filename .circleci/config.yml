@@ -17,6 +17,8 @@ jobs:
       - restore_cache:
           key: *cache_key
       - run: npm install
+      - run: npm run compodoc
+      - run: npm run nunjucks
       - save_cache:
           key: *cache_key
           paths:
@@ -55,7 +57,7 @@ jobs:
               || "$CIRCLE_PROJECT_REPONAME" != "design-angular-kit"
           ]] && circleci step halt || true'
       # Generate and publish NPM package + Publish docs to Github Pages
-  
+
   documentation:
     <<: *job_defaults
     steps:
