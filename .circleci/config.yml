@@ -23,6 +23,8 @@ jobs:
           key: *cache_key
           paths:
             - "node_modules"
+            - "/src/assets/documentation.json"
+            - "/**/*-examples.component.html"
   test:
     <<: *job_defaults
     steps:
