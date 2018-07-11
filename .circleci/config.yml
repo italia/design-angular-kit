@@ -72,13 +72,10 @@ jobs:
       - checkout
       - restore_cache:
           key: *cache_key
-      - run:
-          name: Skip this job for Pull Requests and Fork builds
-          # Note, `|| true` on the end makes this step always exit 0
-          command: '[[ -v CIRCLE_PR_NUMBER
-              || "$CIRCLE_PROJECT_USERNAME" != "italia"
-              || "$CIRCLE_PROJECT_REPONAME" != "design-angular-kit"
-          ]] && circleci step halt || true'
+      - attach_workspace:
+          at: *working_directory
+      - run: npm run build
+      - run: ./github-pages.sh
 
 workflows:
   version: 2
@@ -97,6 +94,6 @@ workflows:
       - documentation:
           requires:
             - build
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
