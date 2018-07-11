@@ -621,9 +621,9 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/francesco/workspaces/team-digitale/design-angular-kit/node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css */"./node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css");
-__webpack_require__(/*! /Users/francesco/workspaces/team-digitale/design-angular-kit/node_modules/bootstrap-italia/dist/css/italia-icon-font.css */"./node_modules/bootstrap-italia/dist/css/italia-icon-font.css");
-module.exports = __webpack_require__(/*! /Users/francesco/workspaces/team-digitale/design-angular-kit/src/styles.scss */"./src/styles.scss");
+__webpack_require__(/*! /home/circleci/design-angular-kit/node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css */"./node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css");
+__webpack_require__(/*! /home/circleci/design-angular-kit/node_modules/bootstrap-italia/dist/css/italia-icon-font.css */"./node_modules/bootstrap-italia/dist/css/italia-icon-font.css");
+module.exports = __webpack_require__(/*! /home/circleci/design-angular-kit/src/styles.scss */"./src/styles.scss");
 
 
 /***/ })
