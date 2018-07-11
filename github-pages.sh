@@ -1,8 +1,12 @@
 #!/bin/bash
 set -x -e
-git clone git@github.com:$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git -b gh-pages
+cd ..
+git clone git@github.com:$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git -b gh-pages docs
+
+rm -rfv docs/*
+cp -r design-angular-kit/dist/design-angular-kit-bundle/* docs
 pwd
-ls -l
+ls -l docs
 
 # cd examples/todomvc
 # npm install
