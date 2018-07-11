@@ -1,9 +1,10 @@
 var_1: &docker_image circleci/node:8-browsers
 var_2: &cache_key design-angular-kit-{{ .Branch }}-{{ checksum "package.json" }}
+var_3: &working_directory ~/design-angular-kit
 
 # Each job will inherit these defaults
 anchor_1: &job_defaults
-  working_directory: ~/design-angular-kit
+  working_directory: *working_directory
   docker:
     - image: *docker_image
 
@@ -17,10 +18,17 @@ jobs:
       - restore_cache:
           key: *cache_key
       - run: npm install
+      - run: npm run compodoc
+      - run: npm run nunjucks
       - save_cache:
           key: *cache_key
           paths:
             - "node_modules"
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - "src/assets/documentation.json"
+            - "src/app/*/*/*-examples.component.html"
   test:
     <<: *job_defaults
     steps:
@@ -34,6 +42,8 @@ jobs:
       - checkout
       - restore_cache:
           key: *cache_key
+      - attach_workspace:
+          at: *working_directory
       - run: xvfb-run -a npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
   lint:
     <<: *job_defaults
@@ -84,9 +94,9 @@ workflows:
       - lint:
           requires:
             - build
-      # - documentation:
-      #     requires:
-      #       - build
-      #     filters:
-      #       branches:
-      #         only: master
+      - documentation:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
