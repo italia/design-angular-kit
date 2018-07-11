@@ -74,14 +74,22 @@ jobs:
           key: *cache_key
       - attach_workspace:
           at: *working_directory
-      - run: npm run build
-      - run: ./github-pages.sh
+      - run:
+          name: Deploy GitHub Pages
+          command: |
+            git config --global user.email "$GIT_AUTHOR_EMAIL"
+            git config --global user.name "$GIT_AUTHOR_NAME"
+            npm run build
+            ./github-pages.sh
 
 workflows:
   version: 2
   default_workflow:
     jobs:
       - build
+          filters:
+            branches:
+              ignore: gh-pages
       - test:
           requires:
             - build

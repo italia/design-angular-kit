@@ -11,6 +11,6 @@ cd docs
 git config --global user.email "teamdigitale@governo.it"
 git config --global user.name $CIRCLE_PROJECT_USERNAME
 
-git add .
+git add -A
 git commit -m "publi:ship: $CIRCLE_BUILD_NUM"
 git push --force origin gh-pages
