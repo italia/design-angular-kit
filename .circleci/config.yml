@@ -55,11 +55,13 @@ jobs:
               || "$CIRCLE_PROJECT_REPONAME" != "design-angular-kit"
           ]] && circleci step halt || true'
       # Generate and publish NPM package + Publish docs to Github Pages
-  
+
   documentation:
     <<: *job_defaults
     steps:
       - checkout
+      - restore_cache:
+          key: *cache_key
       - run:
           name: Skip this job for Pull Requests and Fork builds
           # Note, `|| true` on the end makes this step always exit 0
@@ -82,3 +84,9 @@ workflows:
       - lint:
           requires:
             - build
+      # - documentation:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         only: master
