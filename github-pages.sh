@@ -2,7 +2,7 @@
 set -x -e
 git clone git@github.com:$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git -b gh-pages
 pwd
-ls -l gh-pages
+ls -l
 
 # cd examples/todomvc
 # npm install
