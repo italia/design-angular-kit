@@ -18,6 +18,7 @@
     "postpublish": "./update-version.sh"
   },
   "release": {
+    "branch": "release",
     "pkgRoot": "dist/design-angular-kit"
   },
   "config": {
