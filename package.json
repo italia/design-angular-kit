@@ -32,7 +32,12 @@
       "@semantic-release/npm",
       {
         "path": "@semantic-release/git",
-        "assets": [ "CHANGELOG.md", "package.json", "package-lock.json", "projects/design-angular-kit/package.json" ]
+        "assets": [
+          "CHANGELOG.md",
+          "package.json",
+          "package-lock.json",
+          "projects/design-angular-kit/package.json"
+        ]
       }
     ],
     "publish": [
