@@ -18,7 +18,7 @@
     "postpublish": "./update-version.sh"
   },
   "release": {
-    "branch": "release",
+    "branch": "feature/26-pacchetto-npm",
     "pkgRoot": "dist/design-angular-kit"
   },
   "config": {
