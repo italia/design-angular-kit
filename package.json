@@ -1,6 +1,10 @@
 {
   "name": "design-angular-kit-bundle",
-  "version": "0.0.0-development",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/italia/design-angular-kit.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "npm run compodoc && concurrently \"npm run nunjucks -- -w\" \"ng serve\"",
@@ -11,9 +15,16 @@
     "compodoc": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks": "nunjucks src/app/**/*.tpl",
     "semantic-release": "semantic-release",
-    "postpublish": ""
+    "postpublish": "./update-version.sh"
   },
-  "private": true,
+  "release": {
+    "pkgRoot": "dist/design-angular-kit"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "dependencies": {
     "@angular/animations": "^6.0.3",
     "@angular/common": "^6.0.3",
@@ -59,18 +70,5 @@
     "tslib": "^1.7.1",
     "tslint": "~5.9.1",
     "typescript": "~2.7.2"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/italia/design-angular-kit.git"
-  },
-  "release": {
-    "npmPublish": false,
-    "pkgRoot": "dist/design-angular-kit"
   }
 }
