@@ -29,6 +29,7 @@ jobs:
           paths:
             - "src/assets/documentation.json"
             - "src/app/*/*/*-examples.component.html"
+
   test:
     <<: *job_defaults
     steps:
@@ -57,14 +58,14 @@ jobs:
     <<: *job_defaults
     steps:
       - checkout
+      - restore_cache:
+          key: *cache_key
       - run:
-          name: Skip this job for Pull Requests and Fork builds
-          # Note, `|| true` on the end makes this step always exit 0
-          command: '[[ -v CIRCLE_PR_NUMBER
-              || "$CIRCLE_PROJECT_USERNAME" != "italia"
-              || "$CIRCLE_PROJECT_REPONAME" != "design-angular-kit"
-          ]] && circleci step halt || true'
-      # Generate and publish NPM package + Publish docs to Github Pages
+          name: Create release
+          command: npm run build -- design-angular-kit --prod
+      - run:
+          name: Semantic release
+          command: npm run semantic-release
 
   documentation:
     <<: *job_defaults
@@ -92,3 +93,11 @@ workflows:
       - lint:
           requires:
             - build
+      - package:
+          requires:
+            - test
+            - e2e
+            - lint
+          filters:
+            branches:
+              only: master
