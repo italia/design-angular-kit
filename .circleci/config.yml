@@ -79,7 +79,7 @@ jobs:
           command: |
             git config --global user.email "$GIT_AUTHOR_EMAIL"
             git config --global user.name "$GIT_AUTHOR_NAME"
-            npm run build -- --base-href /design-angular-kit/
+            npm run build -- --base-href /design-angular-kit/#/
             ./github-pages.sh
 
 workflows:

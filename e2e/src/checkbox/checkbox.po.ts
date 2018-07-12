@@ -1,7 +1,7 @@
 import { browser, by, element, ExpectedConditions } from 'protractor';
 
 export class CheckboxPage {
-  private readonly CHECKBOX_URL = '/componenti/checkbox';
+  private readonly CHECKBOX_URL = '/#/componenti/checkbox';
   private readonly ID_EXAMPLE_TAB = 'checkbox-examples-tab';
 
   private readonly ID_CHECKBOX_SPUNTATO = 'checkbox-0';
