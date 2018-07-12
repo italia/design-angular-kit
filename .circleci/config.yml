@@ -100,4 +100,4 @@ workflows:
             - lint
           filters:
             branches:
-              only: master
+              only: feature/26-pacchetto-npm
