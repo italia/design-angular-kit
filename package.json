@@ -1,6 +1,6 @@
 {
   "name": "design-angular-kit-bundle",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "scripts": {
     "ng": "ng",
     "start": "npm run compodoc && concurrently \"npm run nunjucks -- -w\" \"ng serve\"",
@@ -9,7 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "compodoc": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
-    "nunjucks": "nunjucks src/app/**/*.tpl"
+    "nunjucks": "nunjucks src/app/**/*.tpl",
+    "semantic-release": "semantic-release",
+    "postpublish": ""
   },
   "private": true,
   "dependencies": {
@@ -51,6 +53,7 @@
     "ng-packagr": "^3.0.0-rc.2",
     "nunjucks-cli": "^0.5.1",
     "protractor": "~5.3.0",
+    "semantic-release": "^15.7.1",
     "ts-node": "~5.0.1",
     "tsickle": ">=0.25.5",
     "tslib": "^1.7.1",
@@ -61,5 +64,13 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/italia/design-angular-kit.git"
+  },
+  "release": {
+    "npmPublish": false,
+    "pkgRoot": "dist/design-angular-kit"
   }
 }
