@@ -12,17 +12,6 @@
 </head>
 
 <body>
-  <script>
-    (function () {
-      var redirect = sessionStorage.redirect;
-      delete sessionStorage.redirect;
-      if (redirect && redirect != location.href) {
-        history.replaceState(null, null, redirect);
-      }
-    })();
-
-  </script>
-
   <header class="navbar navbar-dark sticky-top">
     <div class="navbar-brand pl-3">
       <h4>Design Angular Kit</h4>
