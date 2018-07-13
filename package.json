@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run compodoc && concurrently \"npm run nunjucks -- -w\" \"ng serve\"",
+    "start": "npm run compodoc && concurrently \"npm run nunjucks --options nunjucks.json -w\" \"ng serve\"",
     "build": "ng build",
     "test": "ng test design-angular-kit",
     "lint": "ng lint",
