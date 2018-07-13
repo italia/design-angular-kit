@@ -1,6 +1,6 @@
 {
   "name": "design-angular-kit-bundle",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "license": " BSD-3-Clause",
   "repository": {
     "type": "git",
@@ -18,7 +18,6 @@
     "semantic-release": "semantic-release"
   },
   "release": {
-    "branch": "feature/26-pacchetto-npm",
     "pkgRoot": "dist/design-angular-kit",
     "verifyConditions": [
       "@semantic-release/changelog",
