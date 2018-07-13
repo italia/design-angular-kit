@@ -316,6 +316,17 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
     if ((changes['itPopover'] || changes['title'] || changes['disablePopover']) && this._isDisabled()) {
       this.hide();
     }
+
+    if (changes['placement']) {
+      if (this._windowRef) {
+        this._windowRef.instance.applyPlacement(
+          positionElements(
+            this._elementRef.nativeElement, this._windowRef.location.nativeElement,
+            this.placement, this.container === 'body'
+          )
+        );
+      }
+    }
   }
 
   ngOnDestroy() {
