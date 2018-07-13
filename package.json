@@ -31,7 +31,7 @@
       "@semantic-release/npm",
       {
         "path": "@semantic-release/exec",
-        "cmd": "update-version.sh"
+        "cmd": "./update-version.sh"
       },
       {
         "path": "@semantic-release/git",
