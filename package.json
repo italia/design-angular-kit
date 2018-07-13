@@ -21,10 +21,6 @@
     "branch": "feature/26-pacchetto-npm",
     "pkgRoot": "dist/design-angular-kit",
     "verifyConditions": [
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "update-version.sh"
-      },
       "@semantic-release/changelog",
       "@semantic-release/npm",
       "@semantic-release/github",
@@ -33,6 +29,10 @@
     "prepare": [
       "@semantic-release/changelog",
       "@semantic-release/npm",
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "update-version.sh"
+      },
       {
         "path": "@semantic-release/git",
         "assets": [
