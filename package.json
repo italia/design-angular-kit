@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run compodoc && concurrently \"nunjucks src/app/**/*.tpl -w\" \"ng serve\"",
+    "start": "npm run compodoc && concurrently \"npm run nunjucks -- -w\" \"ng serve\"",
     "build": "ng build",
     "test": "ng test design-angular-kit",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "compodoc": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets"
+    "compodoc": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
+    "nunjucks": "nunjucks src/app/**/*.tpl"
   },
   "private": true,
   "dependencies": {
