@@ -3,4 +3,5 @@
  */
 
 export * from './lib/checkbox/checkbox.component';
+export * from './lib/popover/popover.directive';
 export * from './lib/design-angular-kit.module';
