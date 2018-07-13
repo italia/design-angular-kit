@@ -3,10 +3,10 @@
     "interfaces": [
         {
             "name": "PopoverTriggers",
-            "id": "interface-PopoverTriggers-70b158ed1f7c5a9ccc42c06de9edbc8e",
+            "id": "interface-PopoverTriggers-d6d761f4f67c218599ae023fd685e46c",
             "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
             "type": "interface",
-            "sourceCode": "import {\n  Directive,\n  Input,\n  Output,\n  EventEmitter,\n  OnInit,\n  OnDestroy,\n  OnChanges,\n  Injector,\n  Renderer2,\n  ComponentRef,\n  ElementRef,\n  TemplateRef,\n  ViewContainerRef,\n  ComponentFactoryResolver,\n  NgZone,\n  SimpleChanges,\n} from '@angular/core';\n\nimport { listenToTriggers } from './triggers';\nimport { positionElements, Placement, PlacementArray } from './positioning';\nimport { PopupService } from './popup';\nimport { PopoverConfig } from './popover.config';\nimport { PopoverComponent } from './popover.component';\nimport { Subscription } from 'rxjs';\n\nexport type PopoverTrigger = undefined | 'click' | 'focus';\n\nexport interface PopoverTriggers {\n  readonly CLICK_TRIGGER: PopoverTrigger;\n  readonly FOCUS_TRIGGER: PopoverTrigger;\n}\n\nexport const POPOVER_TRIGGERS: PopoverTriggers = {\n  CLICK_TRIGGER: 'click',\n  FOCUS_TRIGGER: 'focus'\n};\n\nlet identifier = 0;\n\n/**\n * Una direttiva per la creazione di un popover.\n */\n@Directive({\n  selector: '[it-popover]', // tslint:disable-line\n  exportAs: 'it-popover',\n  providers: [PopoverConfig]\n})\nexport class PopoverDirective implements OnInit, OnDestroy, OnChanges {\n  /**\n   * Contenuto da mostrare nel popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-popover')\n  get itPopover(): string | TemplateRef<any> { return this._itPopover; }\n  set itPopover(value: string | TemplateRef<any>) { this._itPopover = value; }\n  private _itPopover: string | TemplateRef<any>;\n\n  /**\n   * Titolo del popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-title')\n  get title(): string { return this._title; }\n  set title(value: string) { this._title = value; }\n  private _title: string;\n\n  /**\n   * Il collocamento accettato dal popover:\n   *    \"top\", \"top-left\", \"top-right\", \"bottom\", \"bottom-left\", \"bottom-right\",\n   *    \"left\", \"left-top\", \"left-bottom\", \"right\", \"right-top\", \"right-bottom\"\n   * ed array dei valori soprariportati.\n   */\n  @Input('it-placement')\n  get placement(): PlacementArray { return this._placement; }\n  set placement(value: PlacementArray) { this._placement = value; }\n  private _placement: PlacementArray;\n\n  /**\n   * Specifica gli eventi che dovrebbero innescare il popover. Supporta una lista con nomi di eventi separati da spazi.\n   */\n  @Input('it-triggers')\n  get triggers(): PopoverTrigger { return this._triggers; }\n  set triggers(value: PopoverTrigger) { this._triggers = value; }\n  private _triggers: PopoverTrigger;\n\n  /**\n   * Un selettore che specifica l'elemento in cui il popover dovrebbe essere aggiunto.\n   * Attualmente supporta solo \"body\".\n   */\n  @Input('it-container')\n  get container(): string { return this._container; }\n  set container(value: string) { this._container = value; }\n  private _container: string;\n\n  /**\n   * Evento da emettere quando il popover sta per essere mostrato\n   */\n  @Output('show')\n  get showEvent(): EventEmitter<PopoverDirective> { return this._showEvent; }\n  set showEvent(value: EventEmitter<PopoverDirective>) { this._showEvent = value; }\n  private _showEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover è mostrato\n   */\n  @Output('shown')\n  get shownEvent(): EventEmitter<PopoverDirective> { return this._shownEvent; }\n  set shownEvent(value: EventEmitter<PopoverDirective>) { this._shownEvent = value; }\n  private _shownEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover viene inserito nel DOM\n   */\n  @Output('inserted')\n  get insertedEvent(): EventEmitter<PopoverDirective> { return this._insertedEvent; }\n  set insertedEvent(value: EventEmitter<PopoverDirective>) { this._insertedEvent = value; }\n  private _insertedEvent = new EventEmitter<PopoverDirective>();\n  /**\n   * Evento da emettere quando il popover sta per essere nascosto\n   */\n  @Output('hide')\n  get hideEvent(): EventEmitter<PopoverDirective> { return this._hideEvent; }\n  set hideEvent(value: EventEmitter<PopoverDirective>) { this._hideEvent = value; }\n  private _hideEvent = new EventEmitter<PopoverDirective>();\n  /**\n   * Evento da emettere quando il popover è nascosto\n   */\n  @Output('hidden')\n  get hiddenEvent(): EventEmitter<PopoverDirective> { return this._hiddenEvent; }\n  set hiddenEvent(value: EventEmitter<PopoverDirective>) { this._hiddenEvent = value; }\n  private _hiddenEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.\n   */\n  private _disablePopover = false;\n\n  @Input('it-disabled')\n  get disablePopover() { return this._disablePopover; }\n  set disablePopover(value: any) { this._disablePopover = value != null && `${value}` !== 'false'; }\n\n  private _itPopoverWindowId = `it-popover-${identifier++}`;\n  private _popupService: PopupService<PopoverComponent>;\n  private _windowRef: ComponentRef<PopoverComponent>;\n  private _unregisterListenersFn;\n  private _zoneSubscription: Subscription;\n  private _isDisabled(): boolean {\n    if (this.disablePopover) {\n      return true;\n    }\n    if (!this.itPopover && !this.title) {\n      return true;\n    }\n    return false;\n  }\n\n  constructor(\n      private _elementRef: ElementRef<HTMLElement>,\n      private _renderer: Renderer2,\n      injector: Injector,\n      componentFactoryResolver: ComponentFactoryResolver,\n      viewContainerRef: ViewContainerRef,\n      config: PopoverConfig,\n      ngZone: NgZone\n  ) {\n    this.placement = config.placement;\n    this.triggers = config.triggers;\n    this.container = config.container;\n    this.disablePopover = config.disablePopover;\n    this._popupService = new PopupService<PopoverComponent>(\n      PopoverComponent, injector, viewContainerRef, _renderer, componentFactoryResolver);\n\n    this._zoneSubscription = ngZone.onStable.subscribe(() => {\n      if (this._windowRef) {\n        this._windowRef.instance.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n      }\n    });\n  }\n\n  /**\n   * Apre il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   * Il context è un valore opzionale da iniettare nel template del popover quando esso viene creato.\n   */\n  show(context?: any) {\n    if (!this._isDisabled()) {\n      // Scatena l'evento per segnalare l'inizio del processo per visualizzare il popover\n      this.showEvent.emit(this);\n\n      if (!this._windowRef) {\n        this._windowRef = this._popupService.open(this.itPopover, context);\n\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.title = this.title;\n        popoverComponent.id = this._itPopoverWindowId;\n\n        this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._itPopoverWindowId);\n\n        if (this.container === 'body') {\n          window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);\n        }\n\n        this._windowRef.changeDetectorRef.detectChanges();\n        this._windowRef.changeDetectorRef.markForCheck();\n\n        // Posiziona il popover attorno all'elemento\n        popoverComponent.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n\n        // Scatena l'evento per segnalare l'inserimento nel DOM\n        this.insertedEvent.emit(this);\n      } else {\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.hidden = false;\n      }\n\n      // Scatena l'evento per segnalare che il popover è stato visualizzato\n      this.shownEvent.emit(this);\n    }\n  }\n\n  /**\n   * Chiude il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  hide() {\n    // Scatena l'evento per segnalare l'inizio del processo per nascondere il popover\n    this.hideEvent.emit(this);\n    if (this._windowRef) {\n      const popoverComponent = this._windowRef.instance;\n      popoverComponent.hidden = true;\n\n      // Scatena l'evento per segnalare che il popover è stato nascosto\n      this.hiddenEvent.emit(this);\n    }\n  }\n\n  /**\n   * Apre/chiude il un popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  toggle() {\n    if (this._windowRef) {\n      if (this._windowRef.instance.hidden) {\n        this.show();\n      } else {\n        this.hide();\n      }\n    } else {\n      this.show();\n    }\n  }\n\n  /**\n   * Nasconde e distrugge il popover di un elemento.\n   */\n  dispose() {\n    if (this._windowRef) {\n      this._renderer.removeAttribute(this._elementRef.nativeElement, 'aria-describedby');\n      this._popupService.close();\n      this._windowRef = null;\n    }\n  }\n\n  /**\n   * Fornisce al popover di un elemento la possibilità di essere mostrato.\n   */\n  enable() {\n    if (this._isDisabled()) {\n      this.disablePopover = false;\n    }\n  }\n\n  /**\n   * Rimuove la capacità di mostrare il popover di un elemento.\n   */\n  disable() {\n    if (!this._isDisabled()) {\n      this.disablePopover = true;\n    }\n  }\n\n  /**\n   * Attiva/disattiva la possibilità che il popover di un elemento sia mostrato o nascosto.\n   */\n  toggleEnabled() {\n    if (this._isDisabled()) {\n      this.enable();\n    } else {\n      this.disable();\n    }\n  }\n\n  ngOnInit() {\n    this._unregisterListenersFn = listenToTriggers(\n      this._renderer, this._elementRef.nativeElement, this.triggers,\n      this.show.bind(this), this.hide.bind(this), this.toggle.bind(this)\n    );\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    // Chiude il popover se titolo e contenuti risultano vuoti, o se disablePopover è impostato a vero\n    if ((changes['itPopover'] || changes['title'] || changes['disablePopover']) && this._isDisabled()) {\n      this.hide();\n    }\n  }\n\n  ngOnDestroy() {\n    this.dispose();\n    this._unregisterListenersFn();\n    this._zoneSubscription.unsubscribe();\n  }\n\n}\n",
+            "sourceCode": "import {\n  Directive,\n  Input,\n  Output,\n  EventEmitter,\n  OnInit,\n  OnDestroy,\n  OnChanges,\n  Injector,\n  Renderer2,\n  ComponentRef,\n  ElementRef,\n  TemplateRef,\n  ViewContainerRef,\n  ComponentFactoryResolver,\n  NgZone,\n  SimpleChanges,\n} from '@angular/core';\n\nimport { listenToTriggers } from './triggers';\nimport { positionElements, Placement, PlacementArray } from './positioning';\nimport { PopupService } from './popup';\nimport { PopoverConfig } from './popover.config';\nimport { PopoverComponent } from './popover.component';\nimport { Subscription } from 'rxjs';\n\nexport type PopoverTrigger = undefined | 'click' | 'focus';\n\nexport interface PopoverTriggers {\n  readonly CLICK_TRIGGER: PopoverTrigger;\n  readonly FOCUS_TRIGGER: PopoverTrigger;\n}\n\nexport const POPOVER_TRIGGERS: PopoverTriggers = {\n  CLICK_TRIGGER: 'click',\n  FOCUS_TRIGGER: 'focus'\n};\n\nlet identifier = 0;\n\n/**\n * Una direttiva per la creazione di un popover.\n */\n@Directive({\n  selector: '[it-popover]', // tslint:disable-line\n  exportAs: 'it-popover',\n  providers: [PopoverConfig]\n})\nexport class PopoverDirective implements OnInit, OnDestroy, OnChanges {\n  /**\n   * Contenuto da mostrare nel popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-popover')\n  get itPopover(): string | TemplateRef<any> { return this._itPopover; }\n  set itPopover(value: string | TemplateRef<any>) { this._itPopover = value; }\n  private _itPopover: string | TemplateRef<any>;\n\n  /**\n   * Titolo del popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-title')\n  get title(): string { return this._title; }\n  set title(value: string) { this._title = value; }\n  private _title: string;\n\n  /**\n   * Il collocamento accettato dal popover:\n   *    \"top\", \"top-left\", \"top-right\", \"bottom\", \"bottom-left\", \"bottom-right\",\n   *    \"left\", \"left-top\", \"left-bottom\", \"right\", \"right-top\", \"right-bottom\"\n   * ed array dei valori soprariportati.\n   */\n  @Input('it-placement')\n  get placement(): PlacementArray { return this._placement; }\n  set placement(value: PlacementArray) { this._placement = value; }\n  private _placement: PlacementArray;\n\n  /**\n   * Specifica gli eventi che dovrebbero innescare il popover. Supporta una lista con nomi di eventi separati da spazi.\n   */\n  @Input('it-triggers')\n  get triggers(): PopoverTrigger { return this._triggers; }\n  set triggers(value: PopoverTrigger) { this._triggers = value; }\n  private _triggers: PopoverTrigger;\n\n  /**\n   * Un selettore che specifica l'elemento in cui il popover dovrebbe essere aggiunto.\n   * Attualmente supporta solo \"body\".\n   */\n  @Input('it-container')\n  get container(): string { return this._container; }\n  set container(value: string) { this._container = value; }\n  private _container: string;\n\n  /**\n   * Evento da emettere quando il popover sta per essere mostrato\n   */\n  @Output('show')\n  get showEvent(): EventEmitter<PopoverDirective> { return this._showEvent; }\n  set showEvent(value: EventEmitter<PopoverDirective>) { this._showEvent = value; }\n  private _showEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover è mostrato\n   */\n  @Output('shown')\n  get shownEvent(): EventEmitter<PopoverDirective> { return this._shownEvent; }\n  set shownEvent(value: EventEmitter<PopoverDirective>) { this._shownEvent = value; }\n  private _shownEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover viene inserito nel DOM\n   */\n  @Output('inserted')\n  get insertedEvent(): EventEmitter<PopoverDirective> { return this._insertedEvent; }\n  set insertedEvent(value: EventEmitter<PopoverDirective>) { this._insertedEvent = value; }\n  private _insertedEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover sta per essere nascosto\n   */\n  @Output('hide')\n  get hideEvent(): EventEmitter<PopoverDirective> { return this._hideEvent; }\n  set hideEvent(value: EventEmitter<PopoverDirective>) { this._hideEvent = value; }\n  private _hideEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover è nascosto\n   */\n  @Output('hidden')\n  get hiddenEvent(): EventEmitter<PopoverDirective> { return this._hiddenEvent; }\n  set hiddenEvent(value: EventEmitter<PopoverDirective>) { this._hiddenEvent = value; }\n  private _hiddenEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.\n   */\n  @Input('it-disabled')\n  get disablePopover() { return this._disablePopover; }\n  set disablePopover(value: any) { this._disablePopover = value != null && `${value}` !== 'false'; }\n  private _disablePopover = false;\n\n  private _itPopoverWindowId = `it-popover-${identifier++}`;\n  private _popupService: PopupService<PopoverComponent>;\n  private _windowRef: ComponentRef<PopoverComponent>;\n  private _unregisterListenersFn;\n  private _zoneSubscription: Subscription;\n  private _isDisabled(): boolean {\n    if (this.disablePopover) {\n      return true;\n    }\n    if (!this.itPopover && !this.title) {\n      return true;\n    }\n    return false;\n  }\n\n  constructor(\n      private _elementRef: ElementRef<HTMLElement>,\n      private _renderer: Renderer2,\n      injector: Injector,\n      componentFactoryResolver: ComponentFactoryResolver,\n      viewContainerRef: ViewContainerRef,\n      config: PopoverConfig,\n      ngZone: NgZone\n  ) {\n    this.placement = config.placement;\n    this.triggers = config.triggers;\n    this.container = config.container;\n    this.disablePopover = config.disablePopover;\n    this._popupService = new PopupService<PopoverComponent>(\n      PopoverComponent, injector, viewContainerRef, _renderer, componentFactoryResolver);\n\n    this._zoneSubscription = ngZone.onStable.subscribe(() => {\n      if (this._windowRef) {\n        this._windowRef.instance.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n      }\n    });\n  }\n\n  /**\n   * Apre il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   * Il context è un valore opzionale da iniettare nel template del popover quando esso viene creato.\n   */\n  show(context?: any) {\n    if (!this._isDisabled()) {\n      // Scatena l'evento per segnalare l'inizio del processo per visualizzare il popover\n      this.showEvent.emit(this);\n\n      if (!this._windowRef) {\n        this._windowRef = this._popupService.open(this.itPopover, context);\n\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.title = this.title;\n        popoverComponent.id = this._itPopoverWindowId;\n\n        this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._itPopoverWindowId);\n\n        if (this.container === 'body') {\n          window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);\n        }\n\n        this._windowRef.changeDetectorRef.detectChanges();\n        this._windowRef.changeDetectorRef.markForCheck();\n\n        // Posiziona il popover attorno all'elemento\n        popoverComponent.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n\n        // Scatena l'evento per segnalare l'inserimento nel DOM\n        this.insertedEvent.emit(this);\n      } else {\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.hidden = false;\n      }\n\n      // Scatena l'evento per segnalare che il popover è stato visualizzato\n      this.shownEvent.emit(this);\n    }\n  }\n\n  /**\n   * Chiude il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  hide() {\n    // Scatena l'evento per segnalare l'inizio del processo per nascondere il popover\n    this.hideEvent.emit(this);\n    if (this._windowRef) {\n      const popoverComponent = this._windowRef.instance;\n      popoverComponent.hidden = true;\n\n      // Scatena l'evento per segnalare che il popover è stato nascosto\n      this.hiddenEvent.emit(this);\n    }\n  }\n\n  /**\n   * Apre/chiude il un popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  toggle() {\n    if (this._windowRef) {\n      if (this._windowRef.instance.hidden) {\n        this.show();\n      } else {\n        this.hide();\n      }\n    } else {\n      this.show();\n    }\n  }\n\n  /**\n   * Nasconde e distrugge il popover di un elemento.\n   */\n  dispose() {\n    if (this._windowRef) {\n      this._renderer.removeAttribute(this._elementRef.nativeElement, 'aria-describedby');\n      this._popupService.close();\n      this._windowRef = null;\n    }\n  }\n\n  /**\n   * Fornisce al popover di un elemento la possibilità di essere mostrato.\n   */\n  enable() {\n    if (this._isDisabled()) {\n      this.disablePopover = false;\n    }\n  }\n\n  /**\n   * Rimuove la capacità di mostrare il popover di un elemento.\n   */\n  disable() {\n    if (!this._isDisabled()) {\n      this.disablePopover = true;\n    }\n  }\n\n  /**\n   * Attiva/disattiva la possibilità che il popover di un elemento sia mostrato o nascosto.\n   */\n  toggleEnabled() {\n    if (this._isDisabled()) {\n      this.enable();\n    } else {\n      this.disable();\n    }\n  }\n\n  ngOnInit() {\n    this._unregisterListenersFn = listenToTriggers(\n      this._renderer, this._elementRef.nativeElement, this.triggers,\n      this.show.bind(this), this.hide.bind(this), this.toggle.bind(this)\n    );\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    // Chiude il popover se titolo e contenuti risultano vuoti, o se disablePopover è impostato a vero\n    if ((changes['itPopover'] || changes['title'] || changes['disablePopover']) && this._isDisabled()) {\n      this.hide();\n    }\n\n    if (changes['placement']) {\n      if (this._windowRef) {\n        this._windowRef.instance.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n      }\n    }\n  }\n\n  ngOnDestroy() {\n    this.dispose();\n    this._unregisterListenersFn();\n    this._zoneSubscription.unsubscribe();\n  }\n\n}\n",
             "properties": [
                 {
                     "name": "CLICK_TRIGGER",
@@ -808,6 +808,35 @@
             "hostListeners": []
         },
         {
+            "name": "ToggleChange",
+            "id": "class-ToggleChange-96bbfccd611f40d2afe13f6321b42ce3",
+            "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+            "type": "class",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy } from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\n\nlet identifier = 0;\n\nexport class ToggleChange {\n  source: ToggleComponent;\n  checked: boolean;\n}\n\n/**\n * Una toggle con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\n * ed espone una API simile. Una `<it-toggle>` può essere checked, unchecked, o disabled.\n */\n@Component({\n  selector: 'it-toggle',\n  templateUrl: './toggle.component.html',\n  styleUrls: ['./toggle.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ToggleComponent), multi: true }],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ToggleComponent implements ControlValueAccessor {\n  /**\n   * Se la toggle è selezionata.\n   */\n  @Input()\n  get checked(): boolean { return this._checked; }\n  set checked(value: boolean) {\n    if (value !== this.checked) {\n      this._checked = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _checked = false;\n\n  /**\n   * L'etichetta della toggle.\n   */\n  @Input()\n  label: string;\n\n  /**\n   * Se la toggle è disabilitata.\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) {\n    if (value !== this.disabled) {\n      this._disabled = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _disabled = false;\n\n  /**\n   * Evento emesso quando il valore `checked` della toggle cambia.\n   */\n  @Output() readonly change: EventEmitter<ToggleChange> =\n    new EventEmitter<ToggleChange>();\n\n    inputId = `toggle-${identifier++}`;\n\n  private _onTouched: () => any = () => {};\n\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef\n  ) { }\n\n  writeValue(value: any) {\n    this.checked = !!value;\n  }\n\n  registerOnChange(fn: (value: any) => void) {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n\n  handleChange(event: Event) {\n    event.stopPropagation();\n    if (!this.disabled) {\n      this._toggle();\n      this._emitChangeEvent();\n    }\n  }\n\n  private _toggle(): void {\n    this.checked = !this.checked;\n  }\n\n  private _emitChangeEvent() {\n    const event = new ToggleChange();\n    event.source = this;\n    event.checked = this.checked;\n\n    this._controlValueAccessorChangeFn(this.checked);\n    this.change.emit(event);\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "checked",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "source",
+                    "type": "ToggleComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
             "name": "Trigger",
             "id": "class-Trigger-84d625e97878e2ae767e28f4d6bb0896",
             "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
@@ -909,11 +938,11 @@
     "directives": [
         {
             "name": "PopoverDirective",
-            "id": "directive-PopoverDirective-70b158ed1f7c5a9ccc42c06de9edbc8e",
+            "id": "directive-PopoverDirective-d6d761f4f67c218599ae023fd685e46c",
             "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
             "type": "directive",
             "description": "<p>Una direttiva per la creazione di un popover.</p>\n",
-            "sourceCode": "import {\n  Directive,\n  Input,\n  Output,\n  EventEmitter,\n  OnInit,\n  OnDestroy,\n  OnChanges,\n  Injector,\n  Renderer2,\n  ComponentRef,\n  ElementRef,\n  TemplateRef,\n  ViewContainerRef,\n  ComponentFactoryResolver,\n  NgZone,\n  SimpleChanges,\n} from '@angular/core';\n\nimport { listenToTriggers } from './triggers';\nimport { positionElements, Placement, PlacementArray } from './positioning';\nimport { PopupService } from './popup';\nimport { PopoverConfig } from './popover.config';\nimport { PopoverComponent } from './popover.component';\nimport { Subscription } from 'rxjs';\n\nexport type PopoverTrigger = undefined | 'click' | 'focus';\n\nexport interface PopoverTriggers {\n  readonly CLICK_TRIGGER: PopoverTrigger;\n  readonly FOCUS_TRIGGER: PopoverTrigger;\n}\n\nexport const POPOVER_TRIGGERS: PopoverTriggers = {\n  CLICK_TRIGGER: 'click',\n  FOCUS_TRIGGER: 'focus'\n};\n\nlet identifier = 0;\n\n/**\n * Una direttiva per la creazione di un popover.\n */\n@Directive({\n  selector: '[it-popover]', // tslint:disable-line\n  exportAs: 'it-popover',\n  providers: [PopoverConfig]\n})\nexport class PopoverDirective implements OnInit, OnDestroy, OnChanges {\n  /**\n   * Contenuto da mostrare nel popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-popover')\n  get itPopover(): string | TemplateRef<any> { return this._itPopover; }\n  set itPopover(value: string | TemplateRef<any>) { this._itPopover = value; }\n  private _itPopover: string | TemplateRef<any>;\n\n  /**\n   * Titolo del popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-title')\n  get title(): string { return this._title; }\n  set title(value: string) { this._title = value; }\n  private _title: string;\n\n  /**\n   * Il collocamento accettato dal popover:\n   *    \"top\", \"top-left\", \"top-right\", \"bottom\", \"bottom-left\", \"bottom-right\",\n   *    \"left\", \"left-top\", \"left-bottom\", \"right\", \"right-top\", \"right-bottom\"\n   * ed array dei valori soprariportati.\n   */\n  @Input('it-placement')\n  get placement(): PlacementArray { return this._placement; }\n  set placement(value: PlacementArray) { this._placement = value; }\n  private _placement: PlacementArray;\n\n  /**\n   * Specifica gli eventi che dovrebbero innescare il popover. Supporta una lista con nomi di eventi separati da spazi.\n   */\n  @Input('it-triggers')\n  get triggers(): PopoverTrigger { return this._triggers; }\n  set triggers(value: PopoverTrigger) { this._triggers = value; }\n  private _triggers: PopoverTrigger;\n\n  /**\n   * Un selettore che specifica l'elemento in cui il popover dovrebbe essere aggiunto.\n   * Attualmente supporta solo \"body\".\n   */\n  @Input('it-container')\n  get container(): string { return this._container; }\n  set container(value: string) { this._container = value; }\n  private _container: string;\n\n  /**\n   * Evento da emettere quando il popover sta per essere mostrato\n   */\n  @Output('show')\n  get showEvent(): EventEmitter<PopoverDirective> { return this._showEvent; }\n  set showEvent(value: EventEmitter<PopoverDirective>) { this._showEvent = value; }\n  private _showEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover è mostrato\n   */\n  @Output('shown')\n  get shownEvent(): EventEmitter<PopoverDirective> { return this._shownEvent; }\n  set shownEvent(value: EventEmitter<PopoverDirective>) { this._shownEvent = value; }\n  private _shownEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover viene inserito nel DOM\n   */\n  @Output('inserted')\n  get insertedEvent(): EventEmitter<PopoverDirective> { return this._insertedEvent; }\n  set insertedEvent(value: EventEmitter<PopoverDirective>) { this._insertedEvent = value; }\n  private _insertedEvent = new EventEmitter<PopoverDirective>();\n  /**\n   * Evento da emettere quando il popover sta per essere nascosto\n   */\n  @Output('hide')\n  get hideEvent(): EventEmitter<PopoverDirective> { return this._hideEvent; }\n  set hideEvent(value: EventEmitter<PopoverDirective>) { this._hideEvent = value; }\n  private _hideEvent = new EventEmitter<PopoverDirective>();\n  /**\n   * Evento da emettere quando il popover è nascosto\n   */\n  @Output('hidden')\n  get hiddenEvent(): EventEmitter<PopoverDirective> { return this._hiddenEvent; }\n  set hiddenEvent(value: EventEmitter<PopoverDirective>) { this._hiddenEvent = value; }\n  private _hiddenEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.\n   */\n  private _disablePopover = false;\n\n  @Input('it-disabled')\n  get disablePopover() { return this._disablePopover; }\n  set disablePopover(value: any) { this._disablePopover = value != null && `${value}` !== 'false'; }\n\n  private _itPopoverWindowId = `it-popover-${identifier++}`;\n  private _popupService: PopupService<PopoverComponent>;\n  private _windowRef: ComponentRef<PopoverComponent>;\n  private _unregisterListenersFn;\n  private _zoneSubscription: Subscription;\n  private _isDisabled(): boolean {\n    if (this.disablePopover) {\n      return true;\n    }\n    if (!this.itPopover && !this.title) {\n      return true;\n    }\n    return false;\n  }\n\n  constructor(\n      private _elementRef: ElementRef<HTMLElement>,\n      private _renderer: Renderer2,\n      injector: Injector,\n      componentFactoryResolver: ComponentFactoryResolver,\n      viewContainerRef: ViewContainerRef,\n      config: PopoverConfig,\n      ngZone: NgZone\n  ) {\n    this.placement = config.placement;\n    this.triggers = config.triggers;\n    this.container = config.container;\n    this.disablePopover = config.disablePopover;\n    this._popupService = new PopupService<PopoverComponent>(\n      PopoverComponent, injector, viewContainerRef, _renderer, componentFactoryResolver);\n\n    this._zoneSubscription = ngZone.onStable.subscribe(() => {\n      if (this._windowRef) {\n        this._windowRef.instance.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n      }\n    });\n  }\n\n  /**\n   * Apre il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   * Il context è un valore opzionale da iniettare nel template del popover quando esso viene creato.\n   */\n  show(context?: any) {\n    if (!this._isDisabled()) {\n      // Scatena l'evento per segnalare l'inizio del processo per visualizzare il popover\n      this.showEvent.emit(this);\n\n      if (!this._windowRef) {\n        this._windowRef = this._popupService.open(this.itPopover, context);\n\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.title = this.title;\n        popoverComponent.id = this._itPopoverWindowId;\n\n        this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._itPopoverWindowId);\n\n        if (this.container === 'body') {\n          window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);\n        }\n\n        this._windowRef.changeDetectorRef.detectChanges();\n        this._windowRef.changeDetectorRef.markForCheck();\n\n        // Posiziona il popover attorno all'elemento\n        popoverComponent.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n\n        // Scatena l'evento per segnalare l'inserimento nel DOM\n        this.insertedEvent.emit(this);\n      } else {\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.hidden = false;\n      }\n\n      // Scatena l'evento per segnalare che il popover è stato visualizzato\n      this.shownEvent.emit(this);\n    }\n  }\n\n  /**\n   * Chiude il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  hide() {\n    // Scatena l'evento per segnalare l'inizio del processo per nascondere il popover\n    this.hideEvent.emit(this);\n    if (this._windowRef) {\n      const popoverComponent = this._windowRef.instance;\n      popoverComponent.hidden = true;\n\n      // Scatena l'evento per segnalare che il popover è stato nascosto\n      this.hiddenEvent.emit(this);\n    }\n  }\n\n  /**\n   * Apre/chiude il un popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  toggle() {\n    if (this._windowRef) {\n      if (this._windowRef.instance.hidden) {\n        this.show();\n      } else {\n        this.hide();\n      }\n    } else {\n      this.show();\n    }\n  }\n\n  /**\n   * Nasconde e distrugge il popover di un elemento.\n   */\n  dispose() {\n    if (this._windowRef) {\n      this._renderer.removeAttribute(this._elementRef.nativeElement, 'aria-describedby');\n      this._popupService.close();\n      this._windowRef = null;\n    }\n  }\n\n  /**\n   * Fornisce al popover di un elemento la possibilità di essere mostrato.\n   */\n  enable() {\n    if (this._isDisabled()) {\n      this.disablePopover = false;\n    }\n  }\n\n  /**\n   * Rimuove la capacità di mostrare il popover di un elemento.\n   */\n  disable() {\n    if (!this._isDisabled()) {\n      this.disablePopover = true;\n    }\n  }\n\n  /**\n   * Attiva/disattiva la possibilità che il popover di un elemento sia mostrato o nascosto.\n   */\n  toggleEnabled() {\n    if (this._isDisabled()) {\n      this.enable();\n    } else {\n      this.disable();\n    }\n  }\n\n  ngOnInit() {\n    this._unregisterListenersFn = listenToTriggers(\n      this._renderer, this._elementRef.nativeElement, this.triggers,\n      this.show.bind(this), this.hide.bind(this), this.toggle.bind(this)\n    );\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    // Chiude il popover se titolo e contenuti risultano vuoti, o se disablePopover è impostato a vero\n    if ((changes['itPopover'] || changes['title'] || changes['disablePopover']) && this._isDisabled()) {\n      this.hide();\n    }\n  }\n\n  ngOnDestroy() {\n    this.dispose();\n    this._unregisterListenersFn();\n    this._zoneSubscription.unsubscribe();\n  }\n\n}\n",
+            "sourceCode": "import {\n  Directive,\n  Input,\n  Output,\n  EventEmitter,\n  OnInit,\n  OnDestroy,\n  OnChanges,\n  Injector,\n  Renderer2,\n  ComponentRef,\n  ElementRef,\n  TemplateRef,\n  ViewContainerRef,\n  ComponentFactoryResolver,\n  NgZone,\n  SimpleChanges,\n} from '@angular/core';\n\nimport { listenToTriggers } from './triggers';\nimport { positionElements, Placement, PlacementArray } from './positioning';\nimport { PopupService } from './popup';\nimport { PopoverConfig } from './popover.config';\nimport { PopoverComponent } from './popover.component';\nimport { Subscription } from 'rxjs';\n\nexport type PopoverTrigger = undefined | 'click' | 'focus';\n\nexport interface PopoverTriggers {\n  readonly CLICK_TRIGGER: PopoverTrigger;\n  readonly FOCUS_TRIGGER: PopoverTrigger;\n}\n\nexport const POPOVER_TRIGGERS: PopoverTriggers = {\n  CLICK_TRIGGER: 'click',\n  FOCUS_TRIGGER: 'focus'\n};\n\nlet identifier = 0;\n\n/**\n * Una direttiva per la creazione di un popover.\n */\n@Directive({\n  selector: '[it-popover]', // tslint:disable-line\n  exportAs: 'it-popover',\n  providers: [PopoverConfig]\n})\nexport class PopoverDirective implements OnInit, OnDestroy, OnChanges {\n  /**\n   * Contenuto da mostrare nel popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-popover')\n  get itPopover(): string | TemplateRef<any> { return this._itPopover; }\n  set itPopover(value: string | TemplateRef<any>) { this._itPopover = value; }\n  private _itPopover: string | TemplateRef<any>;\n\n  /**\n   * Titolo del popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-title')\n  get title(): string { return this._title; }\n  set title(value: string) { this._title = value; }\n  private _title: string;\n\n  /**\n   * Il collocamento accettato dal popover:\n   *    \"top\", \"top-left\", \"top-right\", \"bottom\", \"bottom-left\", \"bottom-right\",\n   *    \"left\", \"left-top\", \"left-bottom\", \"right\", \"right-top\", \"right-bottom\"\n   * ed array dei valori soprariportati.\n   */\n  @Input('it-placement')\n  get placement(): PlacementArray { return this._placement; }\n  set placement(value: PlacementArray) { this._placement = value; }\n  private _placement: PlacementArray;\n\n  /**\n   * Specifica gli eventi che dovrebbero innescare il popover. Supporta una lista con nomi di eventi separati da spazi.\n   */\n  @Input('it-triggers')\n  get triggers(): PopoverTrigger { return this._triggers; }\n  set triggers(value: PopoverTrigger) { this._triggers = value; }\n  private _triggers: PopoverTrigger;\n\n  /**\n   * Un selettore che specifica l'elemento in cui il popover dovrebbe essere aggiunto.\n   * Attualmente supporta solo \"body\".\n   */\n  @Input('it-container')\n  get container(): string { return this._container; }\n  set container(value: string) { this._container = value; }\n  private _container: string;\n\n  /**\n   * Evento da emettere quando il popover sta per essere mostrato\n   */\n  @Output('show')\n  get showEvent(): EventEmitter<PopoverDirective> { return this._showEvent; }\n  set showEvent(value: EventEmitter<PopoverDirective>) { this._showEvent = value; }\n  private _showEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover è mostrato\n   */\n  @Output('shown')\n  get shownEvent(): EventEmitter<PopoverDirective> { return this._shownEvent; }\n  set shownEvent(value: EventEmitter<PopoverDirective>) { this._shownEvent = value; }\n  private _shownEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover viene inserito nel DOM\n   */\n  @Output('inserted')\n  get insertedEvent(): EventEmitter<PopoverDirective> { return this._insertedEvent; }\n  set insertedEvent(value: EventEmitter<PopoverDirective>) { this._insertedEvent = value; }\n  private _insertedEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover sta per essere nascosto\n   */\n  @Output('hide')\n  get hideEvent(): EventEmitter<PopoverDirective> { return this._hideEvent; }\n  set hideEvent(value: EventEmitter<PopoverDirective>) { this._hideEvent = value; }\n  private _hideEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover è nascosto\n   */\n  @Output('hidden')\n  get hiddenEvent(): EventEmitter<PopoverDirective> { return this._hiddenEvent; }\n  set hiddenEvent(value: EventEmitter<PopoverDirective>) { this._hiddenEvent = value; }\n  private _hiddenEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.\n   */\n  @Input('it-disabled')\n  get disablePopover() { return this._disablePopover; }\n  set disablePopover(value: any) { this._disablePopover = value != null && `${value}` !== 'false'; }\n  private _disablePopover = false;\n\n  private _itPopoverWindowId = `it-popover-${identifier++}`;\n  private _popupService: PopupService<PopoverComponent>;\n  private _windowRef: ComponentRef<PopoverComponent>;\n  private _unregisterListenersFn;\n  private _zoneSubscription: Subscription;\n  private _isDisabled(): boolean {\n    if (this.disablePopover) {\n      return true;\n    }\n    if (!this.itPopover && !this.title) {\n      return true;\n    }\n    return false;\n  }\n\n  constructor(\n      private _elementRef: ElementRef<HTMLElement>,\n      private _renderer: Renderer2,\n      injector: Injector,\n      componentFactoryResolver: ComponentFactoryResolver,\n      viewContainerRef: ViewContainerRef,\n      config: PopoverConfig,\n      ngZone: NgZone\n  ) {\n    this.placement = config.placement;\n    this.triggers = config.triggers;\n    this.container = config.container;\n    this.disablePopover = config.disablePopover;\n    this._popupService = new PopupService<PopoverComponent>(\n      PopoverComponent, injector, viewContainerRef, _renderer, componentFactoryResolver);\n\n    this._zoneSubscription = ngZone.onStable.subscribe(() => {\n      if (this._windowRef) {\n        this._windowRef.instance.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n      }\n    });\n  }\n\n  /**\n   * Apre il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   * Il context è un valore opzionale da iniettare nel template del popover quando esso viene creato.\n   */\n  show(context?: any) {\n    if (!this._isDisabled()) {\n      // Scatena l'evento per segnalare l'inizio del processo per visualizzare il popover\n      this.showEvent.emit(this);\n\n      if (!this._windowRef) {\n        this._windowRef = this._popupService.open(this.itPopover, context);\n\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.title = this.title;\n        popoverComponent.id = this._itPopoverWindowId;\n\n        this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._itPopoverWindowId);\n\n        if (this.container === 'body') {\n          window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);\n        }\n\n        this._windowRef.changeDetectorRef.detectChanges();\n        this._windowRef.changeDetectorRef.markForCheck();\n\n        // Posiziona il popover attorno all'elemento\n        popoverComponent.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n\n        // Scatena l'evento per segnalare l'inserimento nel DOM\n        this.insertedEvent.emit(this);\n      } else {\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.hidden = false;\n      }\n\n      // Scatena l'evento per segnalare che il popover è stato visualizzato\n      this.shownEvent.emit(this);\n    }\n  }\n\n  /**\n   * Chiude il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  hide() {\n    // Scatena l'evento per segnalare l'inizio del processo per nascondere il popover\n    this.hideEvent.emit(this);\n    if (this._windowRef) {\n      const popoverComponent = this._windowRef.instance;\n      popoverComponent.hidden = true;\n\n      // Scatena l'evento per segnalare che il popover è stato nascosto\n      this.hiddenEvent.emit(this);\n    }\n  }\n\n  /**\n   * Apre/chiude il un popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  toggle() {\n    if (this._windowRef) {\n      if (this._windowRef.instance.hidden) {\n        this.show();\n      } else {\n        this.hide();\n      }\n    } else {\n      this.show();\n    }\n  }\n\n  /**\n   * Nasconde e distrugge il popover di un elemento.\n   */\n  dispose() {\n    if (this._windowRef) {\n      this._renderer.removeAttribute(this._elementRef.nativeElement, 'aria-describedby');\n      this._popupService.close();\n      this._windowRef = null;\n    }\n  }\n\n  /**\n   * Fornisce al popover di un elemento la possibilità di essere mostrato.\n   */\n  enable() {\n    if (this._isDisabled()) {\n      this.disablePopover = false;\n    }\n  }\n\n  /**\n   * Rimuove la capacità di mostrare il popover di un elemento.\n   */\n  disable() {\n    if (!this._isDisabled()) {\n      this.disablePopover = true;\n    }\n  }\n\n  /**\n   * Attiva/disattiva la possibilità che il popover di un elemento sia mostrato o nascosto.\n   */\n  toggleEnabled() {\n    if (this._isDisabled()) {\n      this.enable();\n    } else {\n      this.disable();\n    }\n  }\n\n  ngOnInit() {\n    this._unregisterListenersFn = listenToTriggers(\n      this._renderer, this._elementRef.nativeElement, this.triggers,\n      this.show.bind(this), this.hide.bind(this), this.toggle.bind(this)\n    );\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    // Chiude il popover se titolo e contenuti risultano vuoti, o se disablePopover è impostato a vero\n    if ((changes['itPopover'] || changes['title'] || changes['disablePopover']) && this._isDisabled()) {\n      this.hide();\n    }\n\n    if (changes['placement']) {\n      if (this._windowRef) {\n        this._windowRef.instance.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n      }\n    }\n  }\n\n  ngOnDestroy() {\n    this.dispose();\n    this._unregisterListenersFn();\n    this._zoneSubscription.unsubscribe();\n  }\n\n}\n",
             "selector": "[it-popover]",
             "providers": [
                 {
@@ -929,6 +958,7 @@
                 },
                 {
                     "name": "it-disabled",
+                    "description": "<p>Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.</p>\n",
                     "line": 145
                 },
                 {
@@ -960,13 +990,13 @@
                 {
                     "name": "hidden",
                     "description": "<p>Evento da emettere quando il popover è nascosto</p>\n",
-                    "line": 135,
+                    "line": 137,
                     "type": "EventEmitter<PopoverDirective>"
                 },
                 {
                     "name": "hide",
                     "description": "<p>Evento da emettere quando il popover sta per essere nascosto</p>\n",
-                    "line": 128,
+                    "line": 129,
                     "type": "EventEmitter<PopoverDirective>"
                 },
                 {
@@ -1006,8 +1036,8 @@
                     "defaultValue": "false",
                     "type": "",
                     "optional": false,
-                    "description": "<p>Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.</p>\n",
-                    "line": 142,
+                    "description": "",
+                    "line": 147,
                     "modifierKind": [
                         112
                     ]
@@ -1018,7 +1048,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 137,
+                    "line": 139,
                     "modifierKind": [
                         112
                     ]
@@ -1029,7 +1059,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 130,
+                    "line": 131,
                     "modifierKind": [
                         112
                     ]
@@ -1061,7 +1091,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 148,
+                    "line": 149,
                     "modifierKind": [
                         112
                     ]
@@ -1081,7 +1111,7 @@
                     "type": "PopupService<PopoverComponent>",
                     "optional": false,
                     "description": "",
-                    "line": 149,
+                    "line": 150,
                     "modifierKind": [
                         112
                     ]
@@ -1133,7 +1163,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 151,
+                    "line": 152,
                     "modifierKind": [
                         112
                     ]
@@ -1143,7 +1173,7 @@
                     "type": "ComponentRef<PopoverComponent>",
                     "optional": false,
                     "description": "",
-                    "line": 150,
+                    "line": 151,
                     "modifierKind": [
                         112
                     ]
@@ -1153,7 +1183,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 152,
+                    "line": 153,
                     "modifierKind": [
                         112
                     ]
@@ -1166,7 +1196,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 153,
+                    "line": 154,
                     "modifierKind": [
                         112
                     ]
@@ -1177,7 +1207,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 289,
+                    "line": 290,
                     "description": "<p>Rimuove la capacità di mostrare il popover di un elemento.</p>\n"
                 },
                 {
@@ -1186,7 +1216,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 269,
+                    "line": 270,
                     "description": "<p>Nasconde e distrugge il popover di un elemento.</p>\n"
                 },
                 {
@@ -1195,7 +1225,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 280,
+                    "line": 281,
                     "description": "<p>Fornisce al popover di un elemento la possibilità di essere mostrato.</p>\n"
                 },
                 {
@@ -1204,7 +1234,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 239,
+                    "line": 240,
                     "description": "<p>Chiude il popover di un elemento. È considerato un azionamento &quot;manuale&quot; del popover.</p>\n"
                 },
                 {
@@ -1218,7 +1248,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 313,
+                    "line": 314,
                     "jsdoctags": [
                         {
                             "name": "changes",
@@ -1235,7 +1265,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 320
+                    "line": 332
                 },
                 {
                     "name": "ngOnInit",
@@ -1243,7 +1273,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 306
+                    "line": 307
                 },
                 {
                     "name": "show",
@@ -1257,7 +1287,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 195,
+                    "line": 196,
                     "description": "<p>Apre il popover di un elemento. È considerato un azionamento &quot;manuale&quot; del popover.\nIl context è un valore opzionale da iniettare nel template del popover quando esso viene creato.</p>\n",
                     "jsdoctags": [
                         {
@@ -1276,7 +1306,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 254,
+                    "line": 255,
                     "description": "<p>Apre/chiude il un popover di un elemento. È considerato un azionamento &quot;manuale&quot; del popover.</p>\n"
                 },
                 {
@@ -1285,7 +1315,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 298,
+                    "line": 299,
                     "description": "<p>Attiva/disattiva la possibilità che il popover di un elemento sia mostrato o nascosto.</p>\n"
                 }
             ],
@@ -1327,7 +1357,7 @@
                         "type": "NgZone"
                     }
                 ],
-                "line": 161,
+                "line": 162,
                 "jsdoctags": [
                     {
                         "name": "_elementRef",
@@ -1585,7 +1615,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 129,
+                        "line": 130,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -1609,7 +1639,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 136,
+                        "line": 138,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -2075,6 +2105,316 @@
                 ]
             },
             "templateData": "<div class=\"arrow\"></div>\n<h3 class=\"popover-header\">{{title}}</h3>\n<div class=\"popover-body\">\n  <ng-content></ng-content>\n</div>"
+        },
+        {
+            "name": "ToggleComponent",
+            "id": "component-ToggleComponent-96bbfccd611f40d2afe13f6321b42ce3",
+            "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{ : , : (() => ), : true }"
+                }
+            ],
+            "selector": "it-toggle",
+            "styleUrls": [
+                "toggle.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./toggle.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "checked",
+                    "description": "<p>Se la toggle è selezionata.</p>\n",
+                    "line": 27,
+                    "type": "boolean"
+                },
+                {
+                    "name": "disabled",
+                    "description": "<p>Se la toggle è disabilitata.</p>\n",
+                    "line": 46,
+                    "type": "boolean"
+                },
+                {
+                    "name": "label",
+                    "description": "<p>L&#39;etichetta della toggle.</p>\n",
+                    "line": 40,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "change",
+                    "defaultValue": "new EventEmitter<ToggleChange>()",
+                    "description": "<p>Evento emesso quando il valore <code>checked</code> della toggle cambia.</p>\n",
+                    "line": 58,
+                    "type": "EventEmitter<ToggleChange>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_checked",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_controlValueAccessorChangeFn",
+                    "defaultValue": "() => { }",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 65,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_disabled",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_onTouched",
+                    "defaultValue": "() => {}",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "inputId",
+                    "defaultValue": "`toggle-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_emitChangeEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 95,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_toggle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 91,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "handleChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "any"
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "any"
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Una toggle con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\ned espone una API simile. Una <code>&lt;it-toggle&gt;</code> può essere checked, unchecked, o disabled.</p>\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy } from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\n\nlet identifier = 0;\n\nexport class ToggleChange {\n  source: ToggleComponent;\n  checked: boolean;\n}\n\n/**\n * Una toggle con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\n * ed espone una API simile. Una `<it-toggle>` può essere checked, unchecked, o disabled.\n */\n@Component({\n  selector: 'it-toggle',\n  templateUrl: './toggle.component.html',\n  styleUrls: ['./toggle.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ToggleComponent), multi: true }],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ToggleComponent implements ControlValueAccessor {\n  /**\n   * Se la toggle è selezionata.\n   */\n  @Input()\n  get checked(): boolean { return this._checked; }\n  set checked(value: boolean) {\n    if (value !== this.checked) {\n      this._checked = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _checked = false;\n\n  /**\n   * L'etichetta della toggle.\n   */\n  @Input()\n  label: string;\n\n  /**\n   * Se la toggle è disabilitata.\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) {\n    if (value !== this.disabled) {\n      this._disabled = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _disabled = false;\n\n  /**\n   * Evento emesso quando il valore `checked` della toggle cambia.\n   */\n  @Output() readonly change: EventEmitter<ToggleChange> =\n    new EventEmitter<ToggleChange>();\n\n    inputId = `toggle-${identifier++}`;\n\n  private _onTouched: () => any = () => {};\n\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef\n  ) { }\n\n  writeValue(value: any) {\n    this.checked = !!value;\n  }\n\n  registerOnChange(fn: (value: any) => void) {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n\n  handleChange(event: Event) {\n    event.stopPropagation();\n    if (!this.disabled) {\n      this._toggle();\n      this._emitChangeEvent();\n    }\n  }\n\n  private _toggle(): void {\n    this.checked = !this.checked;\n  }\n\n  private _emitChangeEvent() {\n    const event = new ToggleChange();\n    event.source = this;\n    event.checked = this.checked;\n\n    this._controlValueAccessorChangeFn(this.checked);\n    this.change.emit(event);\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef"
+                    }
+                ],
+                "line": 65,
+                "jsdoctags": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "checked": {
+                    "name": "checked",
+                    "setSignature": {
+                        "name": "checked",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 28,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "disabled": {
+                    "name": "disabled",
+                    "setSignature": {
+                        "name": "disabled",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 47,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<div class=\"form-check\">\n  <div class=\"toggles\">\n    <label [attr.for]=inputId>\n      {{label}}\n      <input type=checkbox\n        [id]=inputId\n        [checked]=checked\n        [disabled]=disabled\n        (change)=handleChange($event)>\n      <span class=\"lever\"></span>\n    </label>\n  </div>\n</div>"
         }
     ],
     "modules": [
@@ -2096,6 +2436,9 @@
                         },
                         {
                             "name": "PopoverDirective"
+                        },
+                        {
+                            "name": "ToggleComponent"
                         }
                     ]
                 },
@@ -2111,6 +2454,9 @@
                         },
                         {
                             "name": "PopoverDirective"
+                        },
+                        {
+                            "name": "ToggleComponent"
                         }
                     ]
                 },
@@ -2148,6 +2494,14 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -2432,6 +2786,16 @@
                     "defaultValue": "{\n  CLICK_TRIGGER: 'click',\n  FOCUS_TRIGGER: 'focus'\n}"
                 }
             ],
+            "projects/design-angular-kit/src/lib/toggle/toggle.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "projects/design-angular-kit/src/lib/popover/positioning.ts": [
                 {
                     "name": "positionService",
@@ -2663,7 +3027,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 5,
+        "count": 6,
         "status": "low",
         "files": [
             {
@@ -2848,6 +3212,34 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "noopFn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToggleComponent",
+                "coveragePercent": 29,
+                "coverageCount": "5/17",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ToggleChange",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

@@ -1,0 +1,124 @@
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Esempio</h4>
+
+    <p class="card-text" class="example-section">
+      <button type="button" class="btn btn-lg btn-danger" it-popover="Popover di esempio" it-title="Titolo del Popover">
+        Clicca per attivare/disattivare il popover
+      </button>
+    </p>
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Le quattro direzioni</h4>
+
+    <p class="card-text" class="example-section">
+      <button type="button" class="btn btn-outline-secondary mr-2" it-placement="top"
+        it-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover in alto
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" it-placement="right"
+        it-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover a destra
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" it-placement="bottom"
+        it-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover in basso
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" it-placement="left"
+        it-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover a sinistra
+      </button>
+    </p>
+
+    <p class="card-text" class="example-section">
+      <button type="button" class="btn btn-lg btn-danger" it-popover="Popover di esempio" it-title="Titolo del Popover" 
+        [it-placement]="currentPlacement">
+        Clicca per il popover ricollocabile
+      </button>
+
+      <button type="button" class="btn btn-lg btn-primary" (click)="changeCurrentPlacement()">
+        Cambia il collocamento della popover
+      </button>
+    </p>
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Dismiss al click successivo</h4>
+
+    <p class="card-text" class="example-section">
+      <a tabindex="0" class="btn btn-lg btn-danger" role="button" 
+        it-triggers="focus" it-title="Dismissible popover"
+        it-popover="Ed ecco alcuni contenuti sorprendenti. È molto coinvolgente. Non trovi?">
+        Dismissible popover
+      </a>
+    </p>
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Elementi disabilitati (disabled & it-disabled)</h4>
+
+    <p class="card-text" class="example-section">
+      <span class="d-inline-block" it-popover="Popover disabilitato">
+        <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>
+          Elemento disabilitato con popover abilitato
+        </button>
+      </span>
+    </p>
+
+    <p class="card-text" class="example-section">
+      <span class="d-inline-block" it-popover="Popover disabilitato" it-disabled>
+        <button class="btn btn-primary" style="pointer-events: none;" type="button">
+          Elemento attivo con popover disabilitato
+        </button>
+      </span>
+    </p>
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+    <div class="card-body">
+      <h4 class="card-title">Elementi disabilitati (disabled & it-disabled)</h4>
+  
+      <p class="card-text" class="example-section">
+        <button type="button" class="btn btn-lg btn-danger" it-popover="Popover di esempio" it-title="Titolo del Popover" 
+          (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
+          #destructiblePopover="it-popover">
+          Clicca per il popover distruttibile
+        </button>
+  
+        <button type="button" class="btn btn-lg btn-primary" (click)="destructiblePopover.dispose()">
+          Distruggi il popover
+        </button>
+      </p>
+
+      <p class="card-text" class="example-section">
+        Ultima emissione dell'evento show = {{showTime}}
+      </p>
+      
+      <p class="card-text" class="example-section">
+        Ultima emissione dell'evento shown = {{shownTime}}
+      </p>
+      
+      <p class="card-text" class="example-section">
+        Ultima emissione dell'evento inserted = {{insertedTime}}
+      </p>
+      
+      <p class="card-text" class="example-section">
+        Ultima emissione dell'evento hide = {{hideTime}}
+      </p>
+      
+      <p class="card-text" class="example-section">
+        Ultima emissione dell'evento hidden = {{hiddenTime}}
+      </p>
+    </div>
+  </div>

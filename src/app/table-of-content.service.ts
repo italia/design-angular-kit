@@ -35,6 +35,10 @@ export class TableOfContentService {
           {
             label: 'Toggle',
             link: '/componenti/toggle',
+          },
+          {
+            label: 'Popover',
+            link: '/componenti/popover',
           }
         ]
       }

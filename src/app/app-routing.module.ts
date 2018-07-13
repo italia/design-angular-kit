@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'componenti', component: RouterDispatcherComponent, children: [
     { path: '', redirectTo: 'checkbox', pathMatch: 'full' },
     { path: 'checkbox', loadChildren: 'src/app/checkbox/checkbox.module#CheckboxModule' },
-    { path: 'toggle', loadChildren: 'src/app/toggle/toggle.module#ToggleModule' }
+    { path: 'toggle', loadChildren: 'src/app/toggle/toggle.module#ToggleModule' },
+    { path: 'popover', loadChildren: 'src/app/popover/popover.module#PopoverModule' }
   ]}
 ];
 
