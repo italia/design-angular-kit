@@ -39,6 +39,10 @@ export class TableOfContentService {
           {
             label: 'Popover',
             link: '/componenti/popover',
+          },
+          {
+            label: 'Radio button',
+            link: '/componenti/radio',
           }
         ]
       }
