@@ -142,8 +142,8 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
    * Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.
    */
   @Input('it-disabled')
-  get disablePopover() { return this._disablePopover; }
-  set disablePopover(value: any) { this._disablePopover = value != null && `${value}` !== 'false'; }
+  get disablePopover(): boolean { return this._disablePopover; }
+  set disablePopover(value: boolean) { this._disablePopover = value != null && `${value}` !== 'false'; }
   private _disablePopover = false;
 
   private _itPopoverWindowId = `it-popover-${identifier++}`;
