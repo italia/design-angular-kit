@@ -315,9 +315,7 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
     // Chiude il popover se titolo e contenuti risultano vuoti, o se disablePopover è impostato a vero
     if ((changes['itPopover'] || changes['title'] || changes['disablePopover']) && this._isDisabled()) {
       this.hide();
-    }
-
-    if (changes['placement']) {
+    } else if (changes['placement']) {
       if (this._windowRef) {
         this._windowRef.instance.applyPlacement(
           positionElements(
@@ -325,6 +323,12 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
             this.placement, this.container === 'body'
           )
         );
+      }
+    } else if (changes['container']) {
+      const isShown = this._windowRef ? !this._windowRef.instance.hidden : false;
+      this.dispose();
+      if (isShown) {
+        this.show();
       }
     }
   }
