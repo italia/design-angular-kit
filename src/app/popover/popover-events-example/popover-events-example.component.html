@@ -1,0 +1,37 @@
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Eventi popover</h4>
+
+    <p class="card-text" class="example-section">
+      <button type="button" class="btn btn-lg btn-danger" it-popover="Popover di esempio" it-title="Titolo del Popover" 
+        (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
+        #destructiblePopover="it-popover">
+        Clicca per il popover distruttibile
+      </button>
+
+      <button type="button" class="btn btn-lg btn-primary" (click)="destructiblePopover.dispose()">
+        Distruggi il popover
+      </button>
+    </p>
+
+    <p class="card-text" class="example-section">
+      Ultima emissione dell'evento show = {{showTime}}
+    </p>
+    
+    <p class="card-text" class="example-section">
+      Ultima emissione dell'evento shown = {{shownTime}}
+    </p>
+    
+    <p class="card-text" class="example-section">
+      Ultima emissione dell'evento inserted = {{insertedTime}}
+    </p>
+    
+    <p class="card-text" class="example-section">
+      Ultima emissione dell'evento hide = {{hideTime}}
+    </p>
+    
+    <p class="card-text" class="example-section">
+      Ultima emissione dell'evento hidden = {{hiddenTime}}
+    </p>
+  </div>
+</div>

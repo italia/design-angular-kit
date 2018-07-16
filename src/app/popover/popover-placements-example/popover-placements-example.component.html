@@ -1,0 +1,38 @@
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Le quattro direzioni</h4>
+
+    <p class="card-text" class="example-section">
+      <button type="button" class="btn btn-outline-secondary mr-2" it-placement="top"
+        it-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover in alto
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" it-placement="right"
+        it-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover a destra
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" it-placement="bottom"
+        it-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover in basso
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" it-placement="left"
+        it-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover a sinistra
+      </button>
+    </p>
+
+    <p class="card-text" class="example-section">
+      <button type="button" class="btn btn-lg btn-danger" it-popover="Popover di esempio" it-title="Titolo del Popover" 
+        [it-placement]="currentPlacement">
+        Clicca per il popover ricollocabile
+      </button>
+
+      <button type="button" class="btn btn-lg btn-primary" (click)="changeCurrentPlacement()">
+        Cambia il collocamento della popover
+      </button>
+    </p>
+  </div>
+</div>
