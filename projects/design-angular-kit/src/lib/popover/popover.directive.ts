@@ -268,6 +268,11 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
    * Nasconde e distrugge il popover di un elemento.
    */
   dispose() {
+    const isShown = this._windowRef ? !this._windowRef.instance.hidden : false;
+    if (isShown) {
+      this.hide();
+    }
+
     if (this._windowRef) {
       this._renderer.removeAttribute(this._elementRef.nativeElement, 'aria-describedby');
       this._popupService.close();
@@ -329,6 +334,17 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
       this.dispose();
       if (isShown) {
         this.show();
+      }
+    } else if (changes['triggers']) {
+      this.dispose();
+
+      const triggersChangers = changes['triggers'];
+      if (triggersChangers.previousValue !== triggersChangers.currentValue && !triggersChangers.firstChange) {
+        this._unregisterListenersFn();
+        this._unregisterListenersFn = listenToTriggers(
+          this._renderer, this._elementRef.nativeElement, this.triggers,
+          this.show.bind(this), this.hide.bind(this), this.toggle.bind(this)
+        );
       }
     }
   }
