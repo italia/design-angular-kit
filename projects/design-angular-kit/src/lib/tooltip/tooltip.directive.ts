@@ -46,20 +46,12 @@ let identifier = 0;
 })
 export class TooltipDirective implements OnInit, OnDestroy, OnChanges {
   /**
-   * Contenuto da mostrare nel tooltip. In assenza di titolo e contenuto, il tooltip non si aprirà.
+   * Contenuto da mostrare nel tooltip. In assenza di contenuto, il tooltip non si aprirà.
    */
   @Input('it-tooltip')
   get itTooltip(): string | TemplateRef<any> { return this._itTooltip; }
   set itTooltip(value: string | TemplateRef<any>) { this._itTooltip = value; }
   private _itTooltip: string | TemplateRef<any>;
-
-  /**
-   * Titolo del tooltip. In assenza di titolo e contenuto, il tooltip non si aprirà.
-   */
-  @Input()
-  get title(): string { return this._title; }
-  set title(value: string) { this._title = value; }
-  private _title: string;
 
   /**
    * Il collocamento accettato dal tooltip:
@@ -138,7 +130,7 @@ export class TooltipDirective implements OnInit, OnDestroy, OnChanges {
     if (this.disableTooltip) {
       return true;
     }
-    if (!this.itTooltip && !this.title) {
+    if (!this.itTooltip) {
       return true;
     }
     return false;
@@ -184,7 +176,6 @@ export class TooltipDirective implements OnInit, OnDestroy, OnChanges {
         this._windowRef = this._popupService.open(this.itTooltip, context);
 
         const tooltipComponent = this._windowRef.instance;
-        tooltipComponent.title = this.title;
         tooltipComponent.id = this._itTooltipWindowId;
 
         this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._itTooltipWindowId);
@@ -299,8 +290,8 @@ export class TooltipDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // Chiude il tooltip se titolo e contenuti risultano vuoti, o se disableTooltip è impostato a vero
-    if ((changes['itTooltip'] || changes['title'] || changes['disableTooltip']) && this._isDisabled()) {
+    // Chiude il tooltip se il contenuto risulta vuoto, o se disableTooltip è impostato a vero
+    if ((changes['itTooltip'] || changes['disableTooltip']) && this._isDisabled()) {
       this.hide();
     } else if (changes['placement']) {
       if (this._windowRef) {

@@ -16,28 +16,27 @@ import { Placement } from './positioning';
 })
 export class TooltipComponent {
   @Input() placement: Placement = 'right';
-  @Input() title: string;
 
   @Input() @HostBinding('id') id: string;
   @Input() @HostBinding('hidden') hidden = false;
 
   @HostBinding('attr.role') role = 'tooltip';
   @HostBinding('class') get myCssClass(): string {
-    return 'popover bs-popover-' + this.placement.split('-')[0] + ' bs-popover-' + this.placement;
+    return 'tooltip show bs-tooltip-' + this.placement.split('-')[0] + ' bs-tooltip-' + this.placement;
   }
 
   constructor(private _element: ElementRef<HTMLElement>, private _renderer: Renderer2) {}
 
   applyPlacement(_placement: Placement) {
     // Rimuovi le classi della posizione precedente
-    this._renderer.removeClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString().split('-')[0]);
-    this._renderer.removeClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString());
+    this._renderer.removeClass(this._element.nativeElement, 'bs-tooltip-' + this.placement.toString().split('-')[0]);
+    this._renderer.removeClass(this._element.nativeElement, 'bs-tooltip-' + this.placement.toString());
 
     // Imposta la nuova posizione
     this.placement = _placement;
 
     // Applica le classi della nuova posizione
-    this._renderer.addClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString().split('-')[0]);
-    this._renderer.addClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString());
+    this._renderer.addClass(this._element.nativeElement, 'bs-tooltip-' + this.placement.toString().split('-')[0]);
+    this._renderer.addClass(this._element.nativeElement, 'bs-tooltip-' + this.placement.toString());
   }
 }
