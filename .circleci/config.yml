@@ -1,5 +1,5 @@
 var_1: &docker_image circleci/node:8-browsers
-var_2: &cache_key ${CACHE_VERSION}-design-angular-kit-{{ .Branch }}-{{ checksum "package.json" }}
+var_2: &cache_key '${CACHE_VERSION}'-design-angular-kit-{{ .Branch }}-{{ checksum "package.json" }}
 var_3: &working_directory ~/design-angular-kit
 
 # Each job will inherit these defaults
