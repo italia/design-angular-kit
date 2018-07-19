@@ -1,0 +1,38 @@
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Le quattro direzioni</h4>
+
+    <p class="card-text" class="example-section">
+      <button type="button" class="btn btn-outline-secondary mr-2" placement="top"
+        it-tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Tooltip in alto
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" placement="right"
+        it-tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Tooltip a destra
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" placement="bottom"
+        it-tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Tooltip in basso
+      </button>
+      
+      <button type="button" class="btn btn-outline-secondary mr-2" placement="left"
+        it-tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Tooltip a sinistra
+      </button>
+    </p>
+
+    <p class="card-text" class="example-section">
+      <button type="button" class="btn btn-lg btn-danger" it-tooltip="Tooltip di esempio" it-title="Titolo del Tooltip" 
+        [placement]="currentPlacement">
+        Clicca per il tooltip ricollocabile
+      </button>
+
+      <button type="button" class="btn btn-lg btn-primary" (click)="changeCurrentPlacement()">
+        Cambia il collocamento della tooltip
+      </button>
+    </p>
+  </div>
+</div>
