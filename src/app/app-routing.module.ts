@@ -13,7 +13,8 @@ const routes: Routes = [
     { path: '', redirectTo: 'checkbox', pathMatch: 'full' },
     { path: 'checkbox', loadChildren: 'src/app/checkbox/checkbox.module#CheckboxModule' },
     { path: 'toggle', loadChildren: 'src/app/toggle/toggle.module#ToggleModule' },
-    { path: 'radio', loadChildren: 'src/app/radio/radio.module#RadioModule' }
+    { path: 'radio', loadChildren: 'src/app/radio/radio.module#RadioModule' },
+    { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' }
   ]}
 ];
 

@@ -246,6 +246,187 @@
     ],
     "directives": [
         {
+            "name": "BadgeDirective",
+            "id": "directive-BadgeDirective-ad75471a6e0ad670607b58ec905627e0",
+            "file": "projects/design-angular-kit/src/lib/badge/badge.directive.ts",
+            "type": "directive",
+            "description": "<p>Una badge con design bootstrap italia.</p>\n",
+            "sourceCode": "import { Directive, ElementRef, Input, HostBinding } from '@angular/core';\nimport { ThemeColor, THEME_COLORS } from '../models/ThemeColor';\n\nfunction _coerceBooleanProperty(value: any): boolean {\n  return value != null && `${value}` !== 'false';\n}\n\n/**\n * Una badge con design bootstrap italia.\n */\n@Directive({\n  selector: '[it-badge]', // tslint:disable-line\n  exportAs: 'itBadge'\n})\nexport class BadgeDirective {\n\n  /**\n   * (Opzionale) indica il colore del badge. Può essere `primary`, `secondary`, `danger`, `warning`, `info`, `success`, `light` o `dark`.\n   * Se non viene fornito o il valore è diverso da quelli previsti il suo valore di default è `light`.\n   */\n  @Input()\n  get badgeColor(): any {\n    return this._badgeColor;\n  }\n  set badgeColor(value: any) {\n    if (ThemeColor.is(value)) {\n      this._badgeColor = value;\n    } else {\n      this._badgeColor = THEME_COLORS.LIGHT;\n    }\n  }\n  private _badgeColor = THEME_COLORS.LIGHT;\n\n  /**\n   * La direttiva che abilita l'elemento come badge. Mostra il testo come contenuto del badge.\n   * Se valutato ad `undefined` `null` o stringa vuota il badge non viene mostrato.\n   */\n  @Input('it-badge')\n  @HostBinding('innerText')\n  get badgeText(): string { return this._badgeText; }\n  set badgeText(value: string) {\n    if (value) {\n      this._badgeText = value;\n    } else {\n      this._badgeText = '';\n    }\n  }\n  private _badgeText = '';\n\n  private _isPill = false;\n  /**\n   * Indica se il badge è arrotondato o meno.\n   */\n  @Input()\n  get isPill(): boolean { return this._isPill; }\n  set isPill(value: boolean) {\n    this._isPill = _coerceBooleanProperty(value);\n  }\n\n  private getBadgeColorClassName(): string {\n    return `badge-${this._badgeColor}`;\n  }\n\n  @HostBinding('class')\n  get hostClasses(): string {\n    return [\n      'badge',\n      this.getBadgeColorClassName(),\n      this.isPill ? 'badge-pill' : '',\n    ].join(' ');\n  }\n\n  constructor(private el: ElementRef) { }\n\n}\n",
+            "selector": "[it-badge]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "badgeColor",
+                    "description": "<p>(Opzionale) indica il colore del badge. Può essere <code>primary</code>, <code>secondary</code>, <code>danger</code>, <code>warning</code>, <code>info</code>, <code>success</code>, <code>light</code> o <code>dark</code>.\nSe non viene fornito o il valore è diverso da quelli previsti il suo valore di default è <code>light</code>.</p>\n",
+                    "line": 22,
+                    "type": "any"
+                },
+                {
+                    "name": "isPill",
+                    "description": "<p>Indica se il badge è arrotondato o meno.</p>\n",
+                    "line": 55,
+                    "type": "boolean"
+                },
+                {
+                    "name": "it-badge",
+                    "description": "<p>La direttiva che abilita l&#39;elemento come badge. Mostra il testo come contenuto del badge.\nSe valutato ad <code>undefined</code> <code>null</code> o stringa vuota il badge non viene mostrato.</p>\n",
+                    "line": 40,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "line": 65,
+                    "type": "string"
+                }
+            ],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "_badgeColor",
+                    "defaultValue": "THEME_COLORS.LIGHT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_badgeText",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 48,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_isPill",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 50,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getBadgeColorClassName",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 60,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef"
+                    }
+                ],
+                "line": 71,
+                "jsdoctags": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "badgeColor": {
+                    "name": "badgeColor",
+                    "setSignature": {
+                        "name": "badgeColor",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 25,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "badgeText": {
+                    "name": "badgeText",
+                    "setSignature": {
+                        "name": "badgeText",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 41,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "isPill": {
+                    "name": "isPill",
+                    "setSignature": {
+                        "name": "isPill",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 56,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
             "name": "RadioGroupDirective",
             "id": "directive-RadioGroupDirective-f3c9f47b372b86287f191401e6791bc4",
             "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
@@ -1599,6 +1780,9 @@
                     "type": "declarations",
                     "elements": [
                         {
+                            "name": "BadgeDirective"
+                        },
+                        {
                             "name": "CheckboxComponent"
                         },
                         {
@@ -1619,6 +1803,9 @@
                 {
                     "type": "exports",
                     "elements": [
+                        {
+                            "name": "BadgeDirective"
+                        },
                         {
                             "name": "CheckboxComponent"
                         },
@@ -1647,10 +1834,34 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "DANGER",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "string",
+                "defaultValue": "'danger'"
+            },
+            {
+                "name": "DARK",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "string",
+                "defaultValue": "'dark'"
+            },
+            {
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -1663,15 +1874,93 @@
                 "defaultValue": "0"
             },
             {
-                "name": "identifier",
+                "name": "INFO",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
-                "type": "number",
-                "defaultValue": "0"
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "string",
+                "defaultValue": "'info'"
+            },
+            {
+                "name": "LIGHT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "string",
+                "defaultValue": "'light'"
+            },
+            {
+                "name": "PRIMARY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "string",
+                "defaultValue": "'primary'"
+            },
+            {
+                "name": "SECONDARY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "string",
+                "defaultValue": "'secondary'"
+            },
+            {
+                "name": "SUCCESS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "string",
+                "defaultValue": "'success'"
+            },
+            {
+                "name": "THEME_COLORS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "object",
+                "defaultValue": "{\n  PRIMARY: PRIMARY,\n  SECONDARY: SECONDARY,\n  DANGER: DANGER,\n  WARNING: WARNING,\n  INFO: INFO,\n  SUCCESS: SUCCESS,\n  LIGHT: LIGHT,\n  DARK: DARK\n}"
+            },
+            {
+                "name": "ThemeColor",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "",
+                "defaultValue": "t.keyof({\n  primary: null,\n  secondary: null,\n  danger: null,\n  warning: null,\n  info: null,\n  success: null,\n  light: null,\n  dark: null,\n})"
+            },
+            {
+                "name": "WARNING",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "string",
+                "defaultValue": "'warning'"
             }
         ],
         "functions": [
+            {
+                "name": "_coerceBooleanProperty",
+                "file": "projects/design-angular-kit/src/lib/badge/badge.directive.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "value",
+                        "type": "any"
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "value",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             {
                 "name": "_coerceBooleanProperty",
                 "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
@@ -1708,22 +1997,94 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "projects/design-angular-kit/src/lib/models/ThemeColor.ts": [
+                {
+                    "name": "DANGER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "string",
+                    "defaultValue": "'danger'"
+                },
+                {
+                    "name": "DARK",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "string",
+                    "defaultValue": "'dark'"
+                },
+                {
+                    "name": "INFO",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "string",
+                    "defaultValue": "'info'"
+                },
+                {
+                    "name": "LIGHT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "string",
+                    "defaultValue": "'light'"
+                },
+                {
+                    "name": "PRIMARY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "string",
+                    "defaultValue": "'primary'"
+                },
+                {
+                    "name": "SECONDARY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "string",
+                    "defaultValue": "'secondary'"
+                },
+                {
+                    "name": "SUCCESS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "string",
+                    "defaultValue": "'success'"
+                },
+                {
+                    "name": "THEME_COLORS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  PRIMARY: PRIMARY,\n  SECONDARY: SECONDARY,\n  DANGER: DANGER,\n  WARNING: WARNING,\n  INFO: INFO,\n  SUCCESS: SUCCESS,\n  LIGHT: LIGHT,\n  DARK: DARK\n}"
+                },
+                {
+                    "name": "ThemeColor",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "",
+                    "defaultValue": "t.keyof({\n  primary: null,\n  secondary: null,\n  danger: null,\n  warning: null,\n  info: null,\n  success: null,\n  light: null,\n  dark: null,\n})"
+                },
+                {
+                    "name": "WARNING",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                    "type": "string",
+                    "defaultValue": "'warning'"
+                }
+            ],
             "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -1737,9 +2098,43 @@
                     "type": "number",
                     "defaultValue": "0"
                 }
+            ],
+            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
             ]
         },
         "groupedFunctions": {
+            "projects/design-angular-kit/src/lib/badge/badge.directive.ts": [
+                {
+                    "name": "_coerceBooleanProperty",
+                    "file": "projects/design-angular-kit/src/lib/badge/badge.directive.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
                 {
                     "name": "_coerceBooleanProperty",
@@ -1782,9 +2177,27 @@
     },
     "routes": [],
     "coverage": {
-        "count": 19,
+        "count": 11,
         "status": "low",
         "files": [
+            {
+                "filePath": "projects/design-angular-kit/src/lib/badge/badge.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "BadgeDirective",
+                "coveragePercent": 40,
+                "coverageCount": "4/10",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/badge/badge.directive.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "_coerceBooleanProperty",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
             {
                 "filePath": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
                 "type": "component",
@@ -1809,6 +2222,106 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DANGER",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DARK",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "INFO",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LIGHT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PRIMARY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SECONDARY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SUCCESS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "THEME_COLORS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ThemeColor",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WARNING",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
