@@ -14,6 +14,14 @@
   {% include "../tooltip-placements-example/tooltip-placements-example.component.ts" %}
 {% endset %}
 
+{% set disabledHtml %}
+  {% include "../tooltip-disabled-example/tooltip-disabled-example.component.html" %}
+{% endset %}
+
+{% set disabledTs %}
+  {% include "../tooltip-disabled-example/tooltip-disabled-example.component.ts" %}
+{% endset %}
+
 {% set eventsHtml %}
   {% include "../tooltip-events-example/tooltip-events-example.component.html" %}
 {% endset %}
@@ -32,6 +40,12 @@
 
 <it-source-display html="{$ placementsHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
   typescript="{$ placementsTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+</it-source-display>
+
+<it-tooltip-disabled-example></it-tooltip-disabled-example>
+
+<it-source-display html="{$ disabledHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
+  typescript="{$ disabledTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
 
 <it-tooltip-events-example></it-tooltip-events-example>

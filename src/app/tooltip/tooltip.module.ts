@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 import { TooltipPlacementsExampleComponent } from './tooltip-placements-example/tooltip-placements-example.component';
 import { TooltipEventsExampleComponent } from './tooltip-events-example/tooltip-events-example.component';
+import { TooltipDisabledExampleComponent } from './tooltip-disabled-example/tooltip-disabled-example.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { TooltipEventsExampleComponent } from './tooltip-events-example/tooltip-
   ],
   declarations: [
     TooltipExampleComponent, TooltipExamplesComponent, TooltipIndexComponent,
-    TooltipPlacementsExampleComponent, TooltipEventsExampleComponent
+    TooltipPlacementsExampleComponent, TooltipEventsExampleComponent, TooltipDisabledExampleComponent
   ]
 })
 export class TooltipModule { }
