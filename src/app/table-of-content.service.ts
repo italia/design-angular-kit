@@ -35,6 +35,10 @@ export class TableOfContentService {
           {
             label: 'Toggle',
             link: '/componenti/toggle',
+          },
+          {
+            label: 'Radio button',
+            link: '/componenti/radio',
           }
         ]
       }

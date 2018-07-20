@@ -1,0 +1,23 @@
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Configurazione</h4>
+
+    <p class="card-text" class="example-section">
+      <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
+    </p>
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Risultato</h4>
+
+    <div class="card-text" class="example-section">
+      <it-radio-group [(ngModel)]="selectedColor" [disabled]="disabled">
+        <it-radio-button *ngFor="let color of colors" [value]="color" [label]="color"></it-radio-button>
+      </it-radio-group>
+      <div class="example-selected-value">Colore selezionato: {{selectedColor}}</div>
+    </div>
+  </div>
+</div>
+

@@ -8,5 +8,5 @@
 
 <it-toggle-example></it-toggle-example>
 
-<it-source-display html="{{ html | escape }}" typescript="{{ typescript | escape }}" >
+<it-source-display html="{$ html $}" typescript="{$ typescript $}" >
 </it-source-display>

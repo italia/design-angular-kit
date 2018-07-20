@@ -38,7 +38,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-
 # Generated files
 /**/*-examples.component.html
 /src/assets/documentation.json
