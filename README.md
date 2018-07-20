@@ -1,7 +1,7 @@
 [![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
-[![CircleCI](https://circleci.com/gh/apuliasoft/design-angular-kit.svg?style=svg)](https://circleci.com/gh/apuliasoft/design-angular-kit)
-[![Maintainability](https://api.codeclimate.com/v1/badges/05006c545bb28be9f300/maintainability)](https://codeclimate.com/github/apuliasoft/design-angular-kit/maintainability)
-[![License](https://img.shields.io/github/license/apuliasoft/design-angular-kit.svg)](https://github.com/apuliasoft/design-angular-kit/blob/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/italia/design-angular-kit.svg?style=svg)](https://circleci.com/gh/italia/design-angular-kit)
+[![Maintainability](https://api.codeclimate.com/v1/badges/05006c545bb28be9f300/maintainability)](https://codeclimate.com/github/italia/design-angular-kit/maintainability)
+[![License](https://img.shields.io/github/license/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/blob/master/LICENSE)
 
 # Design Angular Kit
 
@@ -10,8 +10,8 @@ Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di 
 _Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato!_
 
 #### Link veloci
-[Documentazione, demo e guide](https://apuliasoft.github.io/design-angular-kit/) |
-[Contributi](https://github.com/apuliasoft/design-angular-kit/blob/master/CONTRIBUTING.md) |
+[Documentazione, demo e guide](https://italia.github.io/design-angular-kit/) |
+[Contributi](https://github.com/italia/design-angular-kit/blob/master/CONTRIBUTING.md) |
 [Template StackBlitz](https://stackblitz.com/edit/design-angular-kit-issue)
 
 ## Come iniziare
@@ -37,7 +37,7 @@ Vuoi segnalare un bug o fare una richiesta?
 
 Prima di tutto assicurati che sia un problema relativo al tema Design Angular Kit e non alla libreria Bootstrap Italia da cui deriva 
 (in tal caso puoi fare riferimento al [repository di Bootstrap Italia](https://github.com/italia/bootstrap-italia)), poi
-dai un'occhiata a come [creare una issue](https://github.com/apuliasoft/design-angular-kit/blob/master/CONTRIBUTING.md#creare-una-issue).
+dai un'occhiata a come [creare una issue](https://github.com/italia/design-angular-kit/blob/master/CONTRIBUTING.md#creare-una-issue).
 
 ## Come contribuire
 
@@ -45,7 +45,7 @@ Vorresti dare una mano su Design Angular Kit? **Sei nel posto giusto!**
  
 Se non l'hai già fatto, inizia spendendo qualche minuto per approfondire la tua conoscenza sulle
 [linee guida di design per i servizi web della PA](https://design-italia.readthedocs.io/it/stable/index.html),
-e fai riferimento alle [indicazioni su come contribuire a Design Angular Kit](https://github.com/apuliasoft/design-angular-kit/blob/master/CONTRIBUTING.md).
+e fai riferimento alle [indicazioni su come contribuire a Design Angular Kit](https://github.com/italia/design-angular-kit/blob/master/CONTRIBUTING.md).
 
 <!-- A questo punto, è necessario impostare il tuo ambiente locale per la compilazione dei file sorgente e la generazione
 della documentazione. Alla [pagina relativa agli strumenti di compilazione](https://italia.github.io/bootstrap-italia/docs/come-iniziare/strumenti-di-compilazione/)
