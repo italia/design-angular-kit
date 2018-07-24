@@ -5,11 +5,11 @@
     <p class="card-text" class="example-section">
       <button type="button" class="btn btn-lg btn-danger" it-popover="Popover di esempio" it-title="Titolo del Popover" 
         (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
-        #destructiblePopover="it-popover">
+        #destructiblePopover="it-popover" id="popover-example-disposable">
         Clicca per il popover distruttibile
       </button>
 
-      <button type="button" class="btn btn-lg btn-primary" (click)="destructiblePopover.dispose()">
+      <button type="button" class="btn btn-lg btn-primary" (click)="destructiblePopover.dispose()" id="popover-dispose-button">
         Distruggi il popover
       </button>
     </p>

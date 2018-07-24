@@ -1,14 +1,14 @@
 <div class="card w-50 mt-2">
   <div class="card-body">
-    <h4 class="card-title">Dismiss al click successivo</h4>
+    <h4 class="card-title" id="popover-lose-focus">Dismiss al click successivo</h4>
 
     <p class="card-text" class="example-section">
       <a tabindex="0" class="btn btn-lg btn-danger" role="button" 
         [it-triggers]="popoverTrigger" it-title="Dismissible popover"
-        it-popover="Ed ecco alcuni contenuti sorprendenti. È molto coinvolgente. Non trovi?">
+        it-popover="Ed ecco alcuni contenuti sorprendenti. È molto coinvolgente. Non trovi?" id="popover-example-focus">
         Dismissible popover
       </a>
-      <button type="button" class="btn btn-lg btn-primary" (click)="toggleTrigger()">
+      <button type="button" class="btn btn-lg btn-primary" (click)="toggleTrigger()" id="popover-focus-button">
         Clicca per cambiare il trigger da {{popoverTrigger}} a {{previousTrigger}}
       </button>
     </p>
