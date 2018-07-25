@@ -1,7 +1,7 @@
 import { browser, by, element, ExpectedConditions, ElementFinder } from 'protractor';
 
 export class PopoverPage {
-  private readonly TOOLTIP_URL = '/componenti/popover';
+  private readonly TOOLTIP_URL = '/#/componenti/popover';
   private readonly ID_EXAMPLE_TAB = 'popover-examples-tab';
 
   private readonly ID_TOOLTIP_PLACEMENT_BUTTON = 'popover-placements-button';
