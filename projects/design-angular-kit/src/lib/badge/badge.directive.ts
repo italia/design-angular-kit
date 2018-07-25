@@ -1,9 +1,6 @@
 import { Directive, ElementRef, Input, HostBinding } from '@angular/core';
 import { ThemeColor, THEME_COLORS } from '../models/ThemeColor';
-
-function _coerceBooleanProperty(value: any): boolean {
-  return value != null && `${value}` !== 'false';
-}
+import { Util } from '../util/util';
 
 /**
  * Una badge con design bootstrap italia.
@@ -54,7 +51,7 @@ export class BadgeDirective {
   @Input()
   get isPill(): boolean { return this._isPill; }
   set isPill(value: boolean) {
-    this._isPill = _coerceBooleanProperty(value);
+    this._isPill = Util.coerceBooleanProperty(value);
   }
 
   private getBadgeColorClassName(): string {
