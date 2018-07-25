@@ -7,30 +7,7 @@ import {
   Optional,
   ViewEncapsulation
 } from '@angular/core';
-
-const BG_DEFAULT = undefined;
-const BG_DANGER = 'bg-danger';
-const BG_INFO = 'bg-info';
-const BG_WARNING = 'bg-warning';
-const BG_SUCCESS = 'bg-success';
-
-export type ProgressBarBackgroundClass = undefined | 'bg-danger' | 'bg-warning' | 'bg-info' | 'bg-success';
-
-export interface ProgressBarBackgroundClasses {
-  readonly BG_DEFAULT: ProgressBarBackgroundClass;
-  readonly BG_DANGER: ProgressBarBackgroundClass;
-  readonly BG_INFO: ProgressBarBackgroundClass;
-  readonly BG_WARNING: ProgressBarBackgroundClass;
-  readonly BG_SUCCESS: ProgressBarBackgroundClass;
-}
-
-export const PROGRESS_BAR_BACKGROUND_CLASSES: ProgressBarBackgroundClasses = {
-  BG_DEFAULT: BG_DEFAULT,
-  BG_DANGER: BG_DANGER,
-  BG_INFO: BG_INFO,
-  BG_WARNING: BG_WARNING,
-  BG_SUCCESS: BG_SUCCESS,
-};
+import { ThemeColor, THEME_COLORS } from '../models/ThemeColor';
 
 let progressbarId = 0;
 
@@ -50,7 +27,6 @@ export class ProgressBarComponent {
   public static readonly PROGRESS_BAR_DEFAULT_VALUE = 0;
   public static readonly PROGRESS_BAR_DEFAULT_HEIGHT = 20;
   public static readonly PROGRESS_BAR_DEFAULT_LABEL = '';
-  public static readonly PROGRESS_BAR_DEFAULT_BG = BG_DEFAULT;
 
   protected progressbarId = `it-progress-bar-${progressbarId++}`;
 
@@ -98,9 +74,17 @@ export class ProgressBarComponent {
    * Il colore della barra di avanzamento.
    */
   @Input()
-  get bgColor(): ProgressBarBackgroundClass { return this._bgColor; }
-  set bgColor(v: ProgressBarBackgroundClass) { this._bgColor = v; }
-  protected _bgColor: ProgressBarBackgroundClass = ProgressBarComponent.PROGRESS_BAR_DEFAULT_BG;
+  get color(): any {
+    return this._color;
+  }
+  set color(value: any) {
+    if (ThemeColor.is(value)) {
+      this._color = value;
+    } else {
+      this._color = THEME_COLORS.PRIMARY;
+    }
+  }
+  protected _color = THEME_COLORS.PRIMARY;
 
   public valuePercentage(): number {
     return ((this.value - this.min) * 100) / (this.max - this.min);
@@ -112,8 +96,8 @@ export class ProgressBarComponent {
 
   protected pgClass() {
     const progressbarClass = { 'progress-bar' : true };
-    if (this.bgColor) {
-      progressbarClass[this.bgColor] = true;
+    if (this.color) {
+      progressbarClass[`bg-${this.color}`] = true;
     }
     return progressbarClass;
   }
