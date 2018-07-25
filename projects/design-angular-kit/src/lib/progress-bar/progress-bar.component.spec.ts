@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
-import { ProgressBarComponent, PROGRESS_BAR_BACKGROUND_CLASSES, ProgressBarBackgroundClass } from './progress-bar.component';
+import { ProgressBarComponent } from './progress-bar.component';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
   template: `
   <div>
     <it-progress-bar [min]="min" [max]="max" [value]="value"
-      [label]="label" [height]="height" [bgColor]="bgColor">
+      [label]="label" [height]="height" [color]="bgColor">
     </it-progress-bar>
   </div>`
 })
@@ -19,7 +19,7 @@ class SingleProgressBarComponent {
   value = 150;
   label = 'Simple progress bar';
   height = 40;
-  bgColor: ProgressBarBackgroundClass = PROGRESS_BAR_BACKGROUND_CLASSES.BG_DEFAULT;
+  bgColor = '';
 }
 
 describe('ProgressBarComponent', () => {
@@ -98,27 +98,27 @@ describe('ProgressBarComponent', () => {
     });
 
     it('dovrebbe mostrare una barra di avanzamento con diversi sfondi', () => {
-      expect(progressBarInstance.bgColor).toBe(PROGRESS_BAR_BACKGROUND_CLASSES.BG_DEFAULT);
+      expect(progressBarInstance.color).toBe('primary');
 
-      testComponent.bgColor = PROGRESS_BAR_BACKGROUND_CLASSES.BG_INFO;
+      testComponent.bgColor = 'info';
       fixture.detectChanges();
 
-      expect(progressBarInstance.bgColor).toBe(PROGRESS_BAR_BACKGROUND_CLASSES.BG_INFO);
+      expect(progressBarInstance.color).toBe('info');
 
-      testComponent.bgColor = PROGRESS_BAR_BACKGROUND_CLASSES.BG_SUCCESS;
+      testComponent.bgColor = 'success';
       fixture.detectChanges();
 
-      expect(progressBarInstance.bgColor).toBe(PROGRESS_BAR_BACKGROUND_CLASSES.BG_SUCCESS);
+      expect(progressBarInstance.color).toBe('success');
 
-      testComponent.bgColor = PROGRESS_BAR_BACKGROUND_CLASSES.BG_WARNING;
+      testComponent.bgColor = 'warning';
       fixture.detectChanges();
 
-      expect(progressBarInstance.bgColor).toBe(PROGRESS_BAR_BACKGROUND_CLASSES.BG_WARNING);
+      expect(progressBarInstance.color).toBe('warning');
 
-      testComponent.bgColor = PROGRESS_BAR_BACKGROUND_CLASSES.BG_DANGER;
+      testComponent.bgColor = 'danger';
       fixture.detectChanges();
 
-      expect(progressBarInstance.bgColor).toBe(PROGRESS_BAR_BACKGROUND_CLASSES.BG_DANGER);
+      expect(progressBarInstance.color).toBe('danger');
     });
   });
 });
