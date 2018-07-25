@@ -9,6 +9,9 @@ import { ProgressBarRoutingModule } from './progress-bar-routing.module';
 import { ProgressBarExampleComponent } from './progress-bar-example/progress-bar-example.component';
 import { ProgressBarExamplesComponent } from './progress-bar-examples/progress-bar-examples.component';
 import { ProgressBarIndexComponent } from './progress-bar-index/progress-bar-index.component';
+import { ProgressBarLabelComponent } from './progress-bar-label/progress-bar-label.component';
+import { ProgressBarHeightComponent } from './progress-bar-height/progress-bar-height.component';
+import { ProgressBarBgComponent } from './progress-bar-bg/progress-bar-bg.component';
 
 @NgModule({
   imports: [
@@ -17,6 +20,6 @@ import { ProgressBarIndexComponent } from './progress-bar-index/progress-bar-ind
     SharedModule,
     ProgressBarRoutingModule
   ],
-  declarations: [ProgressBarExampleComponent, ProgressBarExamplesComponent, ProgressBarIndexComponent]
+  declarations: [ProgressBarExampleComponent, ProgressBarExamplesComponent, ProgressBarIndexComponent, ProgressBarLabelComponent, ProgressBarHeightComponent, ProgressBarBgComponent]
 })
 export class ProgressBarModule { }
