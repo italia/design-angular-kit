@@ -20,6 +20,9 @@ import { ProgressBarBgComponent } from './progress-bar-bg/progress-bar-bg.compon
     SharedModule,
     ProgressBarRoutingModule
   ],
-  declarations: [ProgressBarExampleComponent, ProgressBarExamplesComponent, ProgressBarIndexComponent, ProgressBarLabelComponent, ProgressBarHeightComponent, ProgressBarBgComponent]
+  declarations: [
+    ProgressBarExampleComponent, ProgressBarExamplesComponent, ProgressBarIndexComponent,
+    ProgressBarLabelComponent, ProgressBarHeightComponent, ProgressBarBgComponent
+  ]
 })
 export class ProgressBarModule { }
