@@ -70,7 +70,7 @@ describe('BadgeDirective', () => {
       expect(nativeElement.classList).toContain('badge-danger');
     });
 
-    it(`dovrebbe settare la classe di colore di default dell'elemento host badgeColor assume un valore non valido`, () => {
+    it(`dovrebbe impostare la classe di default all'elemento se la proprietà badgeColor assume un valore non valido`, () => {
       expect(nativeElement.classList).toContain('badge-primary');
       testComponent.color = 'nonvalido';
       fixture.detectChanges();
@@ -78,7 +78,7 @@ describe('BadgeDirective', () => {
       expect(nativeElement.classList).toContain('badge-light');
     });
 
-    it(`dovrebbe settare la classe di badge-pill sull'elemento host se la proprietà isPill è true`, () => {
+    it(`dovrebbe impostare la classe badge-pill all'elemento se la proprietà isPill è true`, () => {
       expect(nativeElement.classList).not.toContain('badge-pill');
       testComponent.isPill = true;
       fixture.detectChanges();
