@@ -29,6 +29,7 @@
 /connect.lock
 /coverage
 /libpeerconnection.log
+.npmrc
 npm-debug.log
 yarn-error.log
 testem.log
@@ -37,3 +38,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Generated files
+/**/*-examples.component.html
+/src/assets/documentation.json

@@ -13,11 +13,11 @@ let tabCssIdentifier = 0;
 })
 export class SourceDisplayComponent implements OnInit {
 
-  private idTab = `source-display-tab-${tabIdentifier++}`;
-  private idTabContent = `source-display-tab-content-${tabContentIdentifier++}`;
-  private idTabHtml = `tab-html-${tabHtmlIdentifier++}`;
-  private idTypescript = `tab-typescript-${tabTypescriptIdentifier++}`;
-  private idTabCss = `tab-css-${tabCssIdentifier++}`;
+  idTab = `source-display-tab-${tabIdentifier++}`;
+  idTabContent = `source-display-tab-content-${tabContentIdentifier++}`;
+  idTabHtml = `tab-html-${tabHtmlIdentifier++}`;
+  idTypescript = `tab-typescript-${tabTypescriptIdentifier++}`;
+  idTabCss = `tab-css-${tabCssIdentifier++}`;
 
   @Input() html: string;
   @Input() typescript: string;
@@ -26,13 +26,19 @@ export class SourceDisplayComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.html = this.html.replace(/\/{\/{/g, '{{');
-    this.html = this.html.replace(/\/}\/}/g, '}}');
+    if (this.html) {
+      this.html = this.html.replace(/\/{\/{/g, '{{');
+      this.html = this.html.replace(/\/}\/}/g, '}}');
+    }
 
-    this.typescript = this.typescript.replace(/\/{\/{/g, '{{');
-    this.typescript = this.typescript.replace(/\/}\/}/g, '}}');
+    if (this.typescript) {
+      this.typescript = this.typescript.replace(/\/{\/{/g, '{{');
+      this.typescript = this.typescript.replace(/\/}\/}/g, '}}');
+    }
 
-    this.css = this.css.replace(/\/{\/{/g, '{{');
-    this.css = this.css.replace(/\/}\/}/g, '}}');
+    if (this.css) {
+      this.css = this.css.replace(/\/{\/{/g, '{{');
+      this.css = this.css.replace(/\/}\/}/g, '}}');
+    }
   }
 }

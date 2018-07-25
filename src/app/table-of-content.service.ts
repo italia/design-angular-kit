@@ -35,6 +35,14 @@ export class TableOfContentService {
           {
             label: 'Progress Bar',
             link: '/componenti/progress-bar',
+          },
+          {
+            label: 'Toggle',
+            link: '/componenti/toggle',
+          },
+          {
+            label: 'Radio button',
+            link: '/componenti/radio',
           }
         ]
       }
