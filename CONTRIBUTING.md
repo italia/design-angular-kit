@@ -5,7 +5,7 @@ dal resto della comunità degli sviluppatori.
 
 ## Creare una issue
 
-L'[issue tracker](https://github.com/apuliasoft/design-angular-kit/issues) è il posto giusto dove inserire segnalazioni di bug,
+L'[issue tracker](https://github.com/italia/design-angular-kit/issues) è il posto giusto dove inserire segnalazioni di bug,
 richieste di nuove funzionalità e creazione di pull request, nel rispetto di queste condizioni:
 
 - Per favore, **non** usare l'issue tracker per richieste di supporto personali.

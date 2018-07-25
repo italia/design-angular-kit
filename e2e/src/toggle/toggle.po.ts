@@ -1,7 +1,7 @@
 import { browser, by, element, ExpectedConditions } from 'protractor';
 
 export class TogglePage {
-  private readonly TOGGLE_URL = '/componenti/toggle';
+  private readonly TOGGLE_URL = '/#/componenti/toggle';
   private readonly ID_EXAMPLE_TAB = 'toggle-examples-tab';
 
   private readonly ID_TOGGLE_SPUNTATO = 'toggle-0';

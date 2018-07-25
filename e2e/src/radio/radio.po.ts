@@ -1,7 +1,7 @@
 import { browser, by, element, ExpectedConditions } from 'protractor';
 
 export class RadioPage {
-  private readonly RADIO_URL = '/componenti/radio';
+  private readonly RADIO_URL = '/#/componenti/radio';
   private readonly ID_EXAMPLE_TAB = 'radio-examples-tab';
 
   private readonly ID_CHECKBOX_DISABILITATO = 'checkbox-0';
