@@ -15,4 +15,6 @@ export class RadioExampleComponent {
 
   selectedColor = 'Blu';
 
+  disabled = false;
+
 }
