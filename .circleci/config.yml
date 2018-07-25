@@ -1,4 +1,4 @@
-var_1: &docker_image circleci/node:8-browsers
+var_1: &docker_image circleci/node:latest-browsers
 var_2: &cache_key design-angular-kit-{{ .Branch }}-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
 var_3: &working_directory ~/design-angular-kit
 
