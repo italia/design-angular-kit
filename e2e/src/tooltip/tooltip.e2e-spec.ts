@@ -65,7 +65,6 @@ describe('Tooltip', () => {
     const isPresent = await page.existsDisposableExampleTooltip();
     expect(isPresent).toBeTruthy();
 
-    // fare mouse out o qualcosa del genere per nascondere il tooltip?
     await page.disposeExampleTooltip();
 
     const isDisposed = await page.existsDisposableExampleTooltip();
