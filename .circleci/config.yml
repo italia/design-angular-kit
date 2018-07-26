@@ -17,7 +17,6 @@ jobs:
       - checkout
       - restore_cache:
           key: *cache_key
-      - run: rm package-lock.json
       - run: npm install
       - run: npm run compodoc-compile
       - run: npm run nunjucks-compile
