@@ -17,6 +17,8 @@ export class BadgeExampleComponent {
     'dark'
   ];
 
+  selectedColor;
+
   badgeText = 'New';
 
   isPill = false;
