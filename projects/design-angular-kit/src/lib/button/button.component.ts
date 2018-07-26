@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, HostBinding, Output, HostListener } from '@angular/core';
-import { ThemeColor, THEME_COLORS } from '../models/ThemeColor';
-import { ButtonSize, BUTTON_SIZES } from '../models/ButtonSize';
+import { Component, OnInit, Input } from '@angular/core';
+import { ThemeColor } from '../models/ThemeColor';
+import { ButtonSize } from '../models/ButtonSize';
+
+let identifier = 0;
 
 /**
  * Un bottone con design bootstrap italia. Supporta tutte le funzionalità di un bottone HTML5.
@@ -11,6 +13,8 @@ import { ButtonSize, BUTTON_SIZES } from '../models/ButtonSize';
   styleUrls: ['./button.component.css']
 })
 export class ButtonComponent implements OnInit {
+
+  id = `button-${identifier++}`;
 
   /**
    * Se presente, il pulsante avrà un effetto di trasparenza e non reagirà al click
