@@ -17,7 +17,7 @@ jobs:
       - checkout
       - restore_cache:
           key: *cache_key
-      - run: npm install
+      - run: yarn install
       - run: npm run compodoc-compile
       - run: npm run nunjucks-compile
       - save_cache:
