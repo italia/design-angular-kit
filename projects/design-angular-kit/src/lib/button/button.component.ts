@@ -86,7 +86,7 @@ export class ButtonComponent implements OnInit {
   }
   private _size;
 
-  protected get buttonClass() {
+  get buttonClass() {
     let cssClass = 'btn';
 
     if (this.color) {
