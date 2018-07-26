@@ -1,5 +1,5 @@
 var_1: &docker_image circleci/node:8-browsers
-var_2: &cache_key design-angular-kit-{{ .Branch }}-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
+var_2: &cache_key design-angular-kit-{{ .Branch }}-{{ checksum "package-lock.json" }}-{{ .Environment.CACHE_VERSION }}
 var_3: &working_directory ~/design-angular-kit
 
 # Each job will inherit these defaults
@@ -29,6 +29,20 @@ jobs:
           paths:
             - "src/assets/documentation.json"
             - "src/app/*/*/*-examples.component.html"
+
+  minification:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - attach_workspace:
+          at: *working_directory
+      - run: npm run build -- --prod --base-href /design-angular-kit/
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - "dist/"
 
   test:
     <<: *job_defaults
@@ -80,7 +94,6 @@ jobs:
           command: |
             git config --global user.email "$GIT_AUTHOR_EMAIL"
             git config --global user.name "$GIT_AUTHOR_NAME"
-            npm run build -- --prod --base-href /design-angular-kit/
             ./github-pages.sh
 
 workflows:
@@ -91,6 +104,9 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
+      - minification:
+          requires:
+            - build
       - test:
           requires:
             - build
@@ -102,6 +118,7 @@ workflows:
             - build
       - package:
           requires:
+            - minification
             - test
             - e2e
             - lint
@@ -110,6 +127,7 @@ workflows:
               only: master
       - documentation:
           requires:
+            - minification
             - test
             - e2e
             - lint
