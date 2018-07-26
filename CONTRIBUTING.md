@@ -5,7 +5,7 @@ dal resto della comunità degli sviluppatori.
 
 ## Creare una issue
 
-L'[issue tracker](https://github.com/apuliasoft/design-angular-kit/issues) è il posto giusto dove inserire segnalazioni di bug,
+L'[issue tracker](https://github.com/italia/design-angular-kit/issues) è il posto giusto dove inserire segnalazioni di bug,
 richieste di nuove funzionalità e creazione di pull request, nel rispetto di queste condizioni:
 
 - Per favore, **non** usare l'issue tracker per richieste di supporto personali.
@@ -24,6 +24,10 @@ Per prendere in carico una issue, è necessario effettuare il fork del repositor
 Nel caso di contributor con accesso in scrittura al repository, è consigliabile creare un branch nominato in questo modo: `feature/##-descrizione-issue`, dove `##` è il numero di issue lavorata.
 
 Al termine della lavorazione, per proporre il proprio codice per l'approvazione, è sufficiente aprire una Pull Request ([qui](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) le istruzioni nel caso di fork), assicurandosi di rispettare la checklist descritta nel [template preimpostato](https://github.com/italia/bootstrap-italia/blob/master/PULL_REQUEST_TEMPLATE.md).
+
+**design-angular-kit** usa i messaggi di commit per determinare il tipo di cambiamento nella codebase. Seguendo una convenzione per i messaggi di commit è possibile determinare automaticamente il prossimo numero di [versione semantica](https://semver.org/), generare un changelog e pubblicare la release.
+
+La condizione necessaria per l'approvazione di una Pull Request, dunque, è usare la [Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). Strumenti come [commitizen](https://github.com/commitizen/cz-cli) e [semantic-git-commit-cli](https://github.com/JPeer264/node-semantic-git-commit-cli) possono essere usati per aiutare i contributor e ottenere messaggi di commit validi.
 
 ## Issue e label
 
