@@ -54,8 +54,62 @@ describe('Button', () => {
     expect(isDisabled).toBeTruthy();
   });
 
-  /* it('dovrebbe poter aver un colore diverso e poi avere un colore a contorno', async () => {
-      
-  }); */
+  it('dovrebbe poter avere diverse dimensioni', async () => {
+    let buttonClasses = await page.getButtonClasses();
+    expect(page.isButtonStandardSize()).toBeTruthy();
+
+    await page.clickElement(page.ID_RADIO_XS);
+    buttonClasses = await page.getButtonClasses();
+    const isXsSize = buttonClasses.indexOf('btn-xs') > -1;
+    expect(page.isButtonStandardSize()).toBeFalsy();
+    expect(isXsSize).toBeTruthy();
+
+    await page.clickElement(page.ID_RADIO_SM);
+    buttonClasses = await page.getButtonClasses();
+    const isSmSize = buttonClasses.indexOf('btn-sm') > -1;
+    expect(page.isButtonStandardSize()).toBeFalsy();
+    expect(isSmSize).toBeTruthy();
+
+    await page.clickElement(page.ID_RADIO_LG);
+    buttonClasses = await page.getButtonClasses();
+    const isLgSize = buttonClasses.indexOf('btn-lg') > -1;
+    expect(page.isButtonStandardSize()).toBeFalsy();
+    expect(isLgSize).toBeTruthy();
+
+    await page.clickElement(page.ID_RADIO_STANDARD);
+    buttonClasses = await page.getButtonClasses();
+    expect(page.isButtonStandardSize()).toBeTruthy();
+  });
+
+  it('dovrebbe poter aver un colore diverso e poi avere un colore a contorno', async () => {
+    expect(page.isButtonColored()).toBeFalsy();
+    expect(page.isButtonOutlined()).toBeFalsy();
+
+    await page.clickElement(page.ID_RADIO_PRIMARY);
+    let buttonClasses = await page.getButtonClasses();
+    const isPrimaryColored = buttonClasses.indexOf('btn-primary') > -1;
+    expect(page.isButtonColored()).toBeTruthy();
+    expect(page.isButtonOutlined()).toBeFalsy();
+    expect(isPrimaryColored).toBeTruthy();
+
+    await page.clickOutlineCheckbox();
+    buttonClasses = await page.getButtonClasses();
+    const isPrimaryOutlined = buttonClasses.indexOf('btn-outline-primary') > -1;
+    expect(page.isButtonColored()).toBeFalsy();
+    expect(page.isButtonOutlined()).toBeTruthy();
+    expect(isPrimaryOutlined).toBeTruthy();
+
+    await page.clickElement(page.ID_RADIO_SECONDARY);
+    buttonClasses = await page.getButtonClasses();
+    const isSecondaryOutlined = buttonClasses.indexOf('btn-outline-secondary') > -1;
+    expect(page.isButtonColored()).toBeFalsy();
+    expect(page.isButtonOutlined()).toBeTruthy();
+    expect(isSecondaryOutlined).toBeTruthy();
+
+    await page.clickOutlineCheckbox();
+    await page.clickElement(page.ID_RADIO_NONE);
+    expect(page.isButtonColored()).toBeFalsy();
+    expect(page.isButtonOutlined()).toBeFalsy();
+  });
 
 });
