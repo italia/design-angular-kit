@@ -1,7 +1,7 @@
 import { browser, by, element, ExpectedConditions, ElementFinder } from 'protractor';
 
 export class TooltipPage {
-  private readonly TOOLTIP_URL = '/componenti/tooltip';
+  private readonly TOOLTIP_URL = '/#/componenti/tooltip';
   private readonly ID_EXAMPLE_TAB = 'tooltip-examples-tab';
 
   private readonly ID_TOOLTIP_PLACEMENT_BUTTON = 'tooltip-placement-button';
