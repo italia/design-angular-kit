@@ -201,7 +201,7 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
 })
 export class RadioButtonComponent implements OnInit, OnDestroy {
 
-  private id = `radio-${identifier++}`;
+  id = `radio-${identifier++}`;
 
   /** Attributo 'name' usato per raggruppare i radio button per un'unica selezione. */
   @Input() name: string;

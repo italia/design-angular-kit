@@ -7,14 +7,15 @@ import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.compone
 import { ToggleComponent } from './toggle/toggle.component';
 import { TooltipDirective } from './tooltip/tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
+import { BadgeDirective } from './badge/badge.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule
   ],
-  declarations: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, TooltipDirective, TooltipComponent],
-  exports: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, TooltipDirective],
+  declarations: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, TooltipDirective, TooltipComponent],
+  exports: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, TooltipDirective],
   entryComponents: [TooltipComponent]
 })
 export class DesignAngularKitModule { }

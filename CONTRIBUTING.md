@@ -25,6 +25,10 @@ Nel caso di contributor con accesso in scrittura al repository, è consigliabile
 
 Al termine della lavorazione, per proporre il proprio codice per l'approvazione, è sufficiente aprire una Pull Request ([qui](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) le istruzioni nel caso di fork), assicurandosi di rispettare la checklist descritta nel [template preimpostato](https://github.com/italia/bootstrap-italia/blob/master/PULL_REQUEST_TEMPLATE.md).
 
+**design-angular-kit** usa i messaggi di commit per determinare il tipo di cambiamento nella codebase. Seguendo una convenzione per i messaggi di commit è possibile determinare automaticamente il prossimo numero di [versione semantica](https://semver.org/), generare un changelog e pubblicare la release.
+
+La condizione necessaria per l'approvazione di una Pull Request, dunque, è usare la [Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). Strumenti come [commitizen](https://github.com/commitizen/cz-cli) e [semantic-git-commit-cli](https://github.com/JPeer264/node-semantic-git-commit-cli) possono essere usati per aiutare i contributor e ottenere messaggi di commit validi.
+
 ## Issue e label
 
 Il repository di Design Angular Kit usa alcune label per identificare le issue (criticità):
