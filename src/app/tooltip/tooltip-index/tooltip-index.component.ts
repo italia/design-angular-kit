@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import * as Documentation from '../../../assets/documentation.json';
 
 @Component({
@@ -6,15 +6,12 @@ import * as Documentation from '../../../assets/documentation.json';
   templateUrl: './tooltip-index.component.html',
   styleUrls: ['./tooltip-index.component.scss']
 })
-export class TooltipIndexComponent implements OnInit {
+export class TooltipIndexComponent {
 
   directive: any;
 
   constructor() {
     this.directive = (<any>Documentation).directives.find(directive => directive.name === 'TooltipDirective');
-  }
-
-  ngOnInit() {
   }
 
 }
