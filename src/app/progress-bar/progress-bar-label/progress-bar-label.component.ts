@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressBarLabelComponent implements OnInit {
 
-  protected valueEx = 25;
-  protected minEx = 0;
-  protected maxEx = 100;
-  protected labelEx = '25%';
+  valueEx = 25;
+  minEx = 0;
+  maxEx = 100;
+  labelEx = '25%';
 
   constructor() { }
 

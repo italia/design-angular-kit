@@ -7,25 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressBarBgComponent implements OnInit {
 
-  protected valueExInfo = 25;
-  protected minExInfo = 0;
-  protected maxExInfo = 100;
-  protected bgColorInfo = 'info';
+  valueExInfo = 25;
+  minExInfo = 0;
+  maxExInfo = 100;
+  bgColorInfo = 'info';
 
-  protected valueExSuccess = 50;
-  protected minExSuccess = 0;
-  protected maxExSuccess = 100;
-  protected bgColorSuccess = 'success';
+  valueExSuccess = 50;
+  minExSuccess = 0;
+  maxExSuccess = 100;
+  bgColorSuccess = 'success';
 
-  protected valueExWarning = 75;
-  protected minExWarning = 0;
-  protected maxExWarning = 100;
-  protected bgColorWarning = 'warning';
+  valueExWarning = 75;
+  minExWarning = 0;
+  maxExWarning = 100;
+  bgColorWarning = 'warning';
 
-  protected valueExDanger = 100;
-  protected minExDanger = 0;
-  protected maxExDanger = 100;
-  protected bgColorDanger = 'danger';
+  valueExDanger = 100;
+  minExDanger = 0;
+  maxExDanger = 100;
+  bgColorDanger = 'danger';
 
   constructor() { }
 

@@ -8,7 +8,7 @@
 
 <it-progress-bar-example></it-progress-bar-example>
 
-<it-source-display html="{$ html | escape $}" typescript="{$ typescript | escape $}" >
+<it-source-display html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
 
 {% set labelHtml %}
@@ -21,7 +21,7 @@
 
 <it-progress-bar-label></it-progress-bar-label>
 
-<it-source-display html="{$ labelHtml | escape $}" typescript="{$ labelTs | escape $}" >
+<it-source-display html="{$ labelHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ labelTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
 
 {% set heightHtml %}
@@ -34,7 +34,7 @@
 
 <it-progress-bar-height></it-progress-bar-height>
 
-<it-source-display html="{$ heightHtml | escape $}" typescript="{$ heightTs | escape $}" >
+<it-source-display html="{$ heightHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ heightTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
 
 {% set bgHtml %}
@@ -47,5 +47,5 @@
 
 <it-progress-bar-bg></it-progress-bar-bg>
 
-<it-source-display html="{$ bgHtml | escape $}" typescript="{$ bgTs | escape $}" >
+<it-source-display html="{$ bgHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ bgTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>

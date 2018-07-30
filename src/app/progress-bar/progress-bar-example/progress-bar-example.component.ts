@@ -7,8 +7,6 @@ import { Component } from '@angular/core';
 })
 export class ProgressBarExampleComponent {
 
-  protected valueEx = 50;
-  protected minEx = 0;
-  protected maxEx = 100;
+  valueEx = 50;
 
 }

@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressBarHeightComponent implements OnInit {
 
-  protected valueEx = 50;
-  protected minEx = 0;
-  protected maxEx = 100;
-  protected heightEx = 40;
+  valueEx = 50;
+  minEx = 0;
+  maxEx = 100;
+  heightEx = 40;
 
   constructor() { }
 
