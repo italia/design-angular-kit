@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PopoverDirective } from 'projects/design-angular-kit/src/public_api';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-popover-focus-example',

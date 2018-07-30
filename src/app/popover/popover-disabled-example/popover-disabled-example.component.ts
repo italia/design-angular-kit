@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './popover-disabled-example.component.html',
   styleUrls: ['./popover-disabled-example.component.scss']
 })
-export class PopoverDisabledExampleComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class PopoverDisabledExampleComponent {
 
 }

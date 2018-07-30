@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Placement } from 'projects/design-angular-kit/src/lib/popover/positioning';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-popover-example',
