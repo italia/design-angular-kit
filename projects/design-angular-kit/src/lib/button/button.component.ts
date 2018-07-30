@@ -63,6 +63,8 @@ export class ButtonComponent implements OnInit {
   set color(value: any) {
     if (ThemeColor.is(value)) {
       this._color = value;
+    } else {
+      this._color = undefined;
     }
   }
   private _color;
@@ -82,6 +84,8 @@ export class ButtonComponent implements OnInit {
   set size(value: any) {
     if (ButtonSize.is(value)) {
       this._size = value;
+    } else {
+      this._size = undefined;
     }
   }
   private _size;
