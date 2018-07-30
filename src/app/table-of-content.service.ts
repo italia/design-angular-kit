@@ -43,6 +43,10 @@ export class TableOfContentService {
           {
             label: 'Button',
             link: '/componenti/button',
+          },
+          {
+            label: 'Badge',
+            link: '/componenti/badge',
           }
         ]
       }

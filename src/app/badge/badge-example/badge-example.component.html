@@ -1,0 +1,28 @@
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Configurazione badge</h4>
+
+    <div class="card-text" class="example-section">
+
+      <label for="exampleInputText"><strong>Testo badge</strong></label>
+      <input type="text" class="form-control" id="exampleInputText" [(ngModel)]="badgeText">
+      <hr>
+      <label for="color"><strong>Colore Badge</strong></label>
+      <it-radio-group id="color" [(ngModel)]="selectedColor">
+        <it-radio-button *ngFor="let color of colors" [value]="color" [label]="color"></it-radio-button>
+      </it-radio-group>
+      <hr>
+      <it-checkbox [(ngModel)]="isPill" label="Pill"></it-checkbox>
+    </div>
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Risultato badge</h4>
+
+    <h5>Testo di esempio <span [it-badge]="badgeText" [badgeColor]="selectedColor" [isPill]="isPill"></span></h5>
+
+    <h5>Link di esempio <a href="#" it-badge="link" [badgeColor]="selectedColor"></a></h5>
+  </div>
+</div>
