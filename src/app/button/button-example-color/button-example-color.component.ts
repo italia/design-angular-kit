@@ -7,11 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonExampleColorComponent implements OnInit {
 
-  primaryColor = 'primary';
-  secondaryColor = 'secondary';
-  isDisabled = true;
-  isOutlined = true;
-
   constructor() { }
 
   ngOnInit() {

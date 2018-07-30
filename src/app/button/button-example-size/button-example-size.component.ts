@@ -7,13 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonExampleSizeComponent implements OnInit {
 
-  primaryColor = 'primary';
-  secondaryColor = 'secondary';
-
-  lgSize = 'lg';
-  smSize = 'sm';
-  xsSize = 'xs';
-
   constructor() { }
 
   ngOnInit() {
