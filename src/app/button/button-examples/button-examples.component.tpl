@@ -36,3 +36,16 @@
 
 <it-source-display html="{$ sizeHtml | escape $}" typescript="{$ sizeTs | escape $}" >
 </it-source-display>
+
+{% set interactiveHtml %}
+  {% include "../button-example-interactive/button-example-interactive.component.html" %}
+{% endset %}
+
+{% set interactiveTs %}
+  {% include "../button-example-interactive/button-example-interactive.component.ts" %}
+{% endset %}
+
+<it-button-example-interactive></it-button-example-interactive>
+
+<it-source-display html="{$ interactiveHtml | escape $}" typescript="{$ interactiveTs | escape $}" >
+</it-source-display>

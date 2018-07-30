@@ -45,7 +45,7 @@ export class ButtonComponent implements OnInit {
   /**
    * Stabilisce il colore del pulsante a seconda delle classi di bootstrap.
    * Può avere valori:
-   * <ul style="list-style: none;">
+   * <ul>
    * <li> primary
    * <li> secondary
    * <li> danger
@@ -69,7 +69,7 @@ export class ButtonComponent implements OnInit {
 
   /**
    * Indica la grandezza del pulsante. Può assumere i valori:
-   * <ul style="list-style: none;">
+   * <ul>
    * <li> lg
    * <li> sm
    * <li> xs
