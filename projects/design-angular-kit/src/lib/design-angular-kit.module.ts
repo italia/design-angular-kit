@@ -14,7 +14,10 @@ import { BadgeDirective } from './badge/badge.directive';
     CommonModule,
     FormsModule
   ],
-  declarations: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, PopoverDirective, PopoverComponent],
+  declarations: [
+    CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent,
+    BadgeDirective, PopoverDirective, PopoverComponent
+  ],
   exports: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, PopoverDirective],
   entryComponents: [PopoverComponent]
 })
