@@ -28,7 +28,7 @@ export class ProgressBarComponent {
   public static readonly PROGRESS_BAR_DEFAULT_HEIGHT = 20;
   public static readonly PROGRESS_BAR_DEFAULT_LABEL = '';
 
-  protected progressbarId = `it-progress-bar-${progressbarId++}`;
+  progressbarId = `it-progress-bar-${progressbarId++}`;
 
   /**
    * L'altezza della barra di avanzamento.
@@ -36,7 +36,7 @@ export class ProgressBarComponent {
   @Input()
   get height(): number { return this._height; }
   set height(v: number) { this._height = v; }
-  protected _height = ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT;
+  private _height = ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT;
 
   /**
    * Il valore minimo della barra di avanzamento.
@@ -44,7 +44,7 @@ export class ProgressBarComponent {
   @Input()
   get min(): number { return this._min; }
   set min(v: number) { this._min = Math.round(v); }
-  protected _min = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN;
+  private _min = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN;
 
   /**
    * Il valore massimo della barra di avanzamento.
@@ -52,7 +52,7 @@ export class ProgressBarComponent {
   @Input()
   get max(): number { return this._max; }
   set max(v: number) { this._max = Math.round(v); }
-  protected _max = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX;
+  private _max = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX;
 
   /**
    * L'attuale valore della barra di avanzamento.
@@ -60,7 +60,7 @@ export class ProgressBarComponent {
   @Input()
   get value(): number { return this._value; }
   set value(v: number) { this._value = Math.min(Math.max(v, this._min), this._max); }
-  protected _value = ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE;
+  private _value = ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE;
 
   /**
    * L'etichetta della barra di avanzamento.
@@ -68,7 +68,7 @@ export class ProgressBarComponent {
   @Input()
   get label(): string { return this._label; }
   set label(v: string) { this._label = v; }
-  protected _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;
+  private _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;
 
   /**
    * Il colore della barra di avanzamento.
@@ -84,17 +84,17 @@ export class ProgressBarComponent {
       this._color = THEME_COLORS.PRIMARY;
     }
   }
-  protected _color = THEME_COLORS.PRIMARY;
+  private _color = THEME_COLORS.PRIMARY;
 
-  public valuePercentage(): number {
+  valuePercentage(): number {
     return ((this.value - this.min) * 100) / (this.max - this.min);
   }
 
-  protected pgStyle() {
+  pgStyle() {
     return { 'width' : this.valuePercentage() + '%' };
   }
 
-  protected pgClass() {
+  pgClass() {
     const progressbarClass = { 'progress-bar' : true };
     if (this.color) {
       progressbarClass[`bg-${this.color}`] = true;
