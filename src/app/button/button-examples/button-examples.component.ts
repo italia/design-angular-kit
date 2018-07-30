@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './button-examples.component.html',
   styleUrls: ['./button-examples.component.scss']
 })
-export class ButtonExamplesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class ButtonExamplesComponent {
 
 }

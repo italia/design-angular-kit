@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-button-example-interactive',
   templateUrl: './button-example-interactive.component.html',
   styleUrls: ['./button-example-interactive.component.scss']
 })
-export class ButtonExampleInteractiveComponent implements OnInit {
+export class ButtonExampleInteractiveComponent {
 
   block = false;
   outline = false;
@@ -13,11 +13,6 @@ export class ButtonExampleInteractiveComponent implements OnInit {
   selectedColor = '';
   selectedSize = '';
   count = 0;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   increaseCount() {
     this.count++;
