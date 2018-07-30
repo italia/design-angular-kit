@@ -60,6 +60,7 @@
     "@angular/router": "^6.0.3",
     "bootstrap-italia": "^0.9.1",
     "core-js": "^2.5.4",
+    "io-ts": "^1.2.1",
     "ngx-highlightjs": "^2.1.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

@@ -7,14 +7,15 @@ import { PopoverDirective } from './popover/popover.directive';
 import { PopoverComponent } from './popover/popover.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import { BadgeDirective } from './badge/badge.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule
   ],
-  declarations: [CheckboxComponent, ToggleComponent, PopoverDirective, PopoverComponent, RadioGroupDirective, RadioButtonComponent],
-  exports: [CheckboxComponent, ToggleComponent, PopoverDirective, RadioGroupDirective, RadioButtonComponent],
+  declarations: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, PopoverDirective, PopoverComponent],
+  exports: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, PopoverDirective],
   entryComponents: [PopoverComponent]
 })
 export class DesignAngularKitModule { }
