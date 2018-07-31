@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ThemeColor } from '../models/ThemeColor';
 import { ButtonSize } from '../models/ButtonSize';
+import { Util } from '../util/util';
 
 let identifier = 0;
 
@@ -12,7 +13,7 @@ let identifier = 0;
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.css']
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
 
   id = `button-${identifier++}`;
 
@@ -21,7 +22,7 @@ export class ButtonComponent implements OnInit {
    */
   @Input()
   get disabled(): boolean { return this._disabled; }
-  set disabled(value: boolean) { this._disabled = value != null && `${value}` !== 'false'; }
+  set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }
   private _disabled = false;
 
   /**
@@ -31,7 +32,7 @@ export class ButtonComponent implements OnInit {
    */
   @Input()
   get outline(): boolean { return this._outline; }
-  set outline(value: boolean) { this._outline = value != null && `${value}` !== 'false'; }
+  set outline(value: boolean) { this._outline = Util.coerceBooleanProperty(value); }
   private _outline = false;
 
   /**
@@ -39,7 +40,7 @@ export class ButtonComponent implements OnInit {
    */
   @Input()
   get block(): boolean { return this._block; }
-  set block(value: boolean) { this._block = value != null && `${value}` !== 'false'; }
+  set block(value: boolean) { this._block = Util.coerceBooleanProperty(value); }
   private _block = false;
 
   /**
@@ -114,11 +115,6 @@ export class ButtonComponent implements OnInit {
     }
 
     return cssClass;
-  }
-
-  constructor() { }
-
-  ngOnInit() {
   }
 
 }
