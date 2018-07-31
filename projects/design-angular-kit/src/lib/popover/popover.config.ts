@@ -14,7 +14,7 @@ import { INTERACTION_TRIGGERS } from '../models/InteractionTrigger';
  * Il servizio può essere iniettato, tipicamente in un root component, per impostare i valori delle proprietà in
  * modo tale da fornire i valori di default per tutti i popover utilizzati in un'applicazione.
  */
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class PopoverConfig {
   placement: PlacementArray = 'right';
   triggers = INTERACTION_TRIGGERS.CLICK;

@@ -40,8 +40,7 @@ let identifier = 0;
  */
 @Directive({
   selector: '[it-popover]', // tslint:disable-line
-  exportAs: 'it-popover',
-  providers: [PopoverConfig]
+  exportAs: 'it-popover'
 })
 export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
   /**
@@ -141,7 +140,7 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
    */
   @Input('disabled')
   get disablePopover(): boolean { return this._disablePopover; }
-  set disablePopover(value: boolean) { this._disablePopover = Util.coerceBooleanProperty(value) }
+  set disablePopover(value: boolean) { this._disablePopover = Util.coerceBooleanProperty(value); }
   private _disablePopover = false;
 
   private _itPopoverWindowId = `it-popover-${identifier++}`;
