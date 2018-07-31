@@ -10,9 +10,9 @@ import { DesignAngularKitModule } from '../design-angular-kit.module';
 /** Componente per testare una singola popover. */
 @Component({
   template: `<button type="button" class="btn btn-lg btn-danger"
-    [it-popover]="popoverContent" [it-title]="popoverTitle"
-    [it-triggers]="popoverTrigger" [it-placement]="popoverPlacement"
-    [it-disabled]="popoverDisableFlag"
+    [it-popover]="popoverContent" [title]="popoverTitle"
+    [triggers]="popoverTrigger" [placement]="popoverPlacement"
+    [disabled]="popoverDisableFlag"
     #popoverDirective="it-popover">
     Clicca per attivare/disattivare il popover
   </button>`
