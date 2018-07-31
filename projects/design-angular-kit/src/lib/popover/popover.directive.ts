@@ -30,18 +30,8 @@ import { PopupService } from './popup';
 import { PopoverConfig } from './popover.config';
 import { PopoverComponent } from './popover.component';
 import { Subscription } from 'rxjs';
-
-export type PopoverTrigger = undefined | 'click' | 'focus';
-
-export interface PopoverTriggers {
-  readonly CLICK_TRIGGER: PopoverTrigger;
-  readonly FOCUS_TRIGGER: PopoverTrigger;
-}
-
-export const POPOVER_TRIGGERS: PopoverTriggers = {
-  CLICK_TRIGGER: 'click',
-  FOCUS_TRIGGER: 'focus'
-};
+import { INTERACTION_TRIGGERS, InteractionTrigger } from '../models/InteractionTrigger';
+import { Util } from '../util/util';
 
 let identifier = 0;
 
@@ -65,7 +55,7 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
   /**
    * Titolo del popover. In assenza di titolo e contenuto, il popover non si aprirà.
    */
-  @Input('it-title')
+  @Input()
   get title(): string { return this._title; }
   set title(value: string) { this._title = value; }
   private _title: string;
@@ -76,7 +66,7 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
    *    "left", "left-top", "left-bottom", "right", "right-top", "right-bottom"
    * ed array dei valori soprariportati.
    */
-  @Input('it-placement')
+  @Input()
   get placement(): PlacementArray { return this._placement; }
   set placement(value: PlacementArray) { this._placement = value; }
   private _placement: PlacementArray;
@@ -84,16 +74,24 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
   /**
    * Specifica gli eventi che dovrebbero innescare il popover. Supporta una lista con nomi di eventi separati da spazi.
    */
-  @Input('it-triggers')
-  get triggers(): PopoverTrigger { return this._triggers; }
-  set triggers(value: PopoverTrigger) { this._triggers = value; }
-  private _triggers: PopoverTrigger;
+  @Input()
+  get triggers(): any {
+    return this._triggers;
+  }
+  set triggers(value: any) {
+    if (InteractionTrigger.is(value)) {
+      this._triggers = value;
+    } else {
+      this._triggers = INTERACTION_TRIGGERS.CLICK;
+    }
+  }
+  private _triggers;
 
   /**
    * Un selettore che specifica l'elemento in cui il popover dovrebbe essere aggiunto.
    * Attualmente supporta solo "body".
    */
-  @Input('it-container')
+  @Input()
   get container(): string { return this._container; }
   set container(value: string) { this._container = value; }
   private _container: string;
@@ -141,9 +139,9 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
   /**
    * Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.
    */
-  @Input('it-disabled')
+  @Input('disabled')
   get disablePopover(): boolean { return this._disablePopover; }
-  set disablePopover(value: boolean) { this._disablePopover = value != null && `${value}` !== 'false'; }
+  set disablePopover(value: boolean) { this._disablePopover = Util.coerceBooleanProperty(value) }
   private _disablePopover = false;
 
   private _itPopoverWindowId = `it-popover-${identifier++}`;

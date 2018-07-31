@@ -7,7 +7,7 @@
  */
 import { Injectable } from '@angular/core';
 import { PlacementArray } from './positioning';
-import { PopoverTrigger } from './popover.directive';
+import { INTERACTION_TRIGGERS } from '../models/InteractionTrigger';
 
 /**
  * Servizio di configurazione per la direttiva ItPopover.
@@ -17,7 +17,7 @@ import { PopoverTrigger } from './popover.directive';
 @Injectable()
 export class PopoverConfig {
   placement: PlacementArray = 'right';
-  triggers: PopoverTrigger = 'click';
+  triggers = INTERACTION_TRIGGERS.CLICK;
   container: string;
   disablePopover = false;
 }
