@@ -31,6 +31,7 @@ import { PopupService } from './popup';
 import { TooltipConfig } from './tooltip.config';
 import { TooltipComponent } from './tooltip.component';
 import { Subscription } from 'rxjs';
+import { Util } from '../util/util';
 
 const TRIGGER = 'hover';
 
@@ -41,8 +42,7 @@ let identifier = 0;
  */
 @Directive({
   selector: '[it-tooltip]', // tslint:disable-line
-  exportAs: 'it-tooltip',
-  providers: [TooltipConfig]
+  exportAs: 'it-tooltip'
 })
 export class TooltipDirective implements OnInit, OnDestroy, OnChanges {
   /**
@@ -118,7 +118,7 @@ export class TooltipDirective implements OnInit, OnDestroy, OnChanges {
    */
   @Input('disabled')
   get disableTooltip(): boolean { return this._disableTooltip; }
-  set disableTooltip(value: boolean) { this._disableTooltip = value != null && `${value}` !== 'false'; }
+  set disableTooltip(value: boolean) { this._disableTooltip = Util.coerceBooleanProperty(value); }
   private _disableTooltip = false;
 
   private _itTooltipWindowId = `it-tooltip-${identifier++}`;

@@ -13,7 +13,7 @@ import { PlacementArray } from './positioning';
  * Il servizio può essere iniettato, tipicamente in un root component, per impostare i valori delle proprietà in
  * modo tale da fornire i valori di default per tutti i tooltip utilizzati in un'applicazione.
  */
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class TooltipConfig {
   placement: PlacementArray = 'right';
   container: string;
