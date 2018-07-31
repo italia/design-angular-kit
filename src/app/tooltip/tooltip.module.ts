@@ -10,6 +10,7 @@ import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_a
 import { TooltipPlacementsExampleComponent } from './tooltip-placements-example/tooltip-placements-example.component';
 import { TooltipEventsExampleComponent } from './tooltip-events-example/tooltip-events-example.component';
 import { TooltipDisabledExampleComponent } from './tooltip-disabled-example/tooltip-disabled-example.component';
+import { TooltipConfigExampleComponent } from './tooltip-config-example/tooltip-config-example.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { TooltipDisabledExampleComponent } from './tooltip-disabled-example/tool
   ],
   declarations: [
     TooltipExampleComponent, TooltipExamplesComponent, TooltipIndexComponent,
-    TooltipPlacementsExampleComponent, TooltipEventsExampleComponent, TooltipDisabledExampleComponent
+    TooltipPlacementsExampleComponent, TooltipEventsExampleComponent,
+    TooltipDisabledExampleComponent, TooltipConfigExampleComponent
   ]
 })
 export class TooltipModule { }

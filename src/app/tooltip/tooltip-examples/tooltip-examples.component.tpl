@@ -30,6 +30,14 @@
   {% include "../tooltip-events-example/tooltip-events-example.component.ts" %}
 {% endset %}
 
+{% set configHtml %}
+  {% include "../tooltip-config-example/tooltip-config-example.component.html" %}
+{% endset %}
+
+{% set configTs %}
+  {% include "../tooltip-config-example/tooltip-config-example.component.ts" %}
+{% endset %}
+
 <it-tooltip-example></it-tooltip-example>
 
 <it-source-display html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
@@ -52,4 +60,10 @@
 
 <it-source-display html="{$ eventsHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
   typescript="{$ eventsTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+</it-source-display>
+
+<it-tooltip-config-example></it-tooltip-config-example>
+
+<it-source-display html="{$ configHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
+  typescript="{$ configTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
