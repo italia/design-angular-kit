@@ -32,8 +32,9 @@ import { TooltipConfig } from './tooltip.config';
 import { TooltipComponent } from './tooltip.component';
 import { Subscription } from 'rxjs';
 import { Util } from '../util/util';
+import { INTERACTION_TRIGGERS } from '../models/InteractionTrigger';
 
-const TRIGGER = 'hover';
+const TRIGGER = INTERACTION_TRIGGERS.HOVER;
 
 let identifier = 0;
 
