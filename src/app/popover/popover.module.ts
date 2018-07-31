@@ -13,6 +13,7 @@ import { PopoverFocusExampleComponent } from './popover-focus-example/popover-fo
 import { PopoverDisabledExampleComponent } from './popover-disabled-example/popover-disabled-example.component';
 import { PopoverEventsExampleComponent } from './popover-events-example/popover-events-example.component';
 import { PopoverContainerExampleComponent } from './popover-container-example/popover-container-example.component';
+import { PopoverConfigExampleComponent } from './popover-config-example/popover-config-example.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { PopoverContainerExampleComponent } from './popover-container-example/po
   declarations: [
     PopoverExamplesComponent, PopoverIndexComponent, PopoverExampleComponent,
     PopoverPlacementsExampleComponent, PopoverFocusExampleComponent,
-    PopoverDisabledExampleComponent, PopoverEventsExampleComponent, PopoverContainerExampleComponent
+    PopoverDisabledExampleComponent, PopoverEventsExampleComponent,
+    PopoverContainerExampleComponent, PopoverConfigExampleComponent
   ]
 })
 export class PopoverModule { }

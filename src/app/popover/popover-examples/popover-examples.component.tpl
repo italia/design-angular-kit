@@ -46,6 +46,14 @@
   {% include "../popover-events-example/popover-events-example.component.ts" %}
 {% endset %}
 
+{% set configHtml %}
+  {% include "../popover-config-example/popover-config-example.component.html" %}
+{% endset %}
+
+{% set configTs %}
+  {% include "../popover-config-example/popover-config-example.component.ts" %}
+{% endset %}
+
 <it-popover-example></it-popover-example>
 
 <it-source-display 
@@ -86,4 +94,11 @@
 <it-source-display 
   html="{$ eventsHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
   typescript="{$ eventsTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+</it-source-display>
+
+<it-popover-config-example></it-popover-config-example>
+
+<it-source-display 
+  html="{$ configHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
+  typescript="{$ configTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
