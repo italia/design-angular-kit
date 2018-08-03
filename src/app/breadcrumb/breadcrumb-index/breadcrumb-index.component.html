@@ -1,0 +1,73 @@
+<h1>Breadcrumb</h1>
+<h5>Il componente Breadcrumb utilizzabile per la navigazione</h5>
+
+<ul class="nav nav-tabs" id="breadcrumb-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="breadcrumb-description-tab" data-toggle="tab" href="#breadcrumb-description-tab-content" role="tab" aria-controls="breadcrumb-description-tab-content" aria-selected="true">Descrizione</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="breadcrumb-api-tab" data-toggle="tab" href="#breadcrumb-api-tab-content" role="tab" aria-controls="breadcrumb-api-tab-content" aria-selected="false">API</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="breadcrumb-examples-tab" data-toggle="tab" href="#breadcrumb-examples-tab-content" role="tab" aria-controls="breadcrumb-examples-tab-content" aria-selected="false">Esempi</a>
+  </li>
+</ul>
+<div class="tab-content" id="breadcrumb-content-tab">
+  <div class="tab-pane p-3 fade show active" id="breadcrumb-description-tab-content" role="tabpanel" aria-labelledby="breadcrumb-description-tab-content">
+    <div [innerHTML]="component.description"></div>
+  </div>
+  <div class="tab-pane p-3 fade" id="breadcrumb-api-tab-content" role="tabpanel" aria-labelledby="breadcrumb-api-tab-content">
+    <!-- TODO: da spostare in una componente ad hoc -->
+    <div *ngIf="component.inputsClass.length > 0">
+      <h3>Input</h3>
+      <div *ngFor="let input of component.inputsClass">
+        <table class="table table-bordered table-sm">
+          <tbody>
+            <tr>
+              <td style="width: 20%">
+                <code>{{input.name}}</code>
+              </td>
+              <td style="width: 80%">
+                <p>
+                  <em>Tipo: </em>
+                  <code>{{input.type}}</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Item Input</h3>
+      <div *ngFor="let input of subcomponent.inputsClass">
+        <table class="table table-bordered table-sm">
+          <tbody>
+            <tr>
+              <td style="width: 20%">
+                <code>{{input.name}}</code>
+              </td>
+              <td style="width: 80%">
+                <p>
+                  <em>Tipo: </em>
+                  <code>{{input.type}}</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="component.outputsClass.length > 0">
+      <h3>Output</h3>
+      <!-- TODO: usare lo stesso componente di input -->
+    </div>
+  </div>
+  <div class="tab-pane p-3 fade" id="breadcrumb-examples-tab-content" role="tabpanel" aria-labelledby="breadcrumb-examples-tab-content">
+    <it-breadcrumb-examples></it-breadcrumb-examples>
+  </div>
+</div>
