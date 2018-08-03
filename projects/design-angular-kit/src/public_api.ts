@@ -6,4 +6,6 @@ export * from './lib/checkbox/checkbox.component';
 export * from './lib/toggle/toggle.component';
 export * from './lib/radio/radio.component';
 export * from './lib/badge/badge.directive';
+export * from './lib/breadcrumb/breadcrumb.component';
+export * from './lib/breadcrumb/breadcrumb-item.component';
 export * from './lib/design-angular-kit.module';
