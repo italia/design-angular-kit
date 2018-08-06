@@ -6,6 +6,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
 
 @NgModule({
@@ -13,7 +14,24 @@ import { BadgeDirective } from './badge/badge.directive';
     CommonModule,
     FormsModule
   ],
-  declarations: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, ProgressBarComponent],
-  exports: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, ProgressBarComponent]
+
+  declarations: [
+    CheckboxComponent,
+    ToggleComponent,
+    RadioGroupDirective,
+    RadioButtonComponent,
+    BadgeDirective,
+    ProgressBarComponent,
+    ButtonComponent
+  ],
+  exports: [
+    CheckboxComponent,
+    ToggleComponent,
+    RadioGroupDirective,
+    RadioButtonComponent,
+    BadgeDirective,
+    ProgressBarComponent,
+    ButtonComponent
+  ]
 })
 export class DesignAngularKitModule { }

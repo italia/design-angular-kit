@@ -1,0 +1,52 @@
+<h1>Button</h1>
+<h5>Il componente per l'uso di bottoni</h5>
+
+<ul class="nav nav-tabs" id="button-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="button-description-tab" data-toggle="tab" href="#button-description-tab-content" role="tab" aria-controls="button-description-tab-content" aria-selected="true">Descrizione</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="button-api-tab" data-toggle="tab" href="#button-api-tab-content" role="tab" aria-controls="button-api-tab-content" aria-selected="false">API</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="button-examples-tab" data-toggle="tab" href="#button-examples-tab-content" role="tab" aria-controls="button-examples-tab-content" aria-selected="false">Esempi</a>
+  </li>
+</ul>
+<div class="tab-content" id="button-content-tab">
+  <div class="tab-pane p-3 fade show active" id="button-description-tab-content" role="tabpanel" aria-labelledby="button-description-tab-content">
+    <div [innerHTML]="component.description"></div>
+  </div>
+  <div class="tab-pane p-3 fade" id="button-api-tab-content" role="tabpanel" aria-labelledby="button-api-tab-content">
+    <!-- TODO: da spostare in una componente ad hoc -->
+    <div *ngIf="component.inputsClass.length > 0">
+      <h3>Input</h3>
+      <div *ngFor="let input of component.inputsClass">
+        <table class="table table-bordered table-sm">
+          <tbody>
+            <tr>
+              <td style="width: 20%">
+                <code>{{input.name}}</code>
+              </td>
+              <td style="width: 80%">
+                <p>
+                  <em>Tipo: </em>
+                  <code>{{input.type}}</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="component.outputsClass.length > 0">
+      <h3>Output</h3>
+      <!-- TODO: usare lo stesso componente di input -->
+    </div>
+  </div>
+  <div class="tab-pane p-3 fade" id="button-examples-tab-content" role="tabpanel" aria-labelledby="button-examples-tab-content">
+    <it-button-examples></it-button-examples>
+  </div>
+</div>
