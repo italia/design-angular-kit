@@ -6,6 +6,8 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import { TooltipDirective } from './tooltip/tooltip.directive';
+import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
 
@@ -14,7 +16,6 @@ import { BadgeDirective } from './badge/badge.directive';
     CommonModule,
     FormsModule
   ],
-
   declarations: [
     CheckboxComponent,
     ToggleComponent,
@@ -22,7 +23,9 @@ import { BadgeDirective } from './badge/badge.directive';
     RadioButtonComponent,
     BadgeDirective,
     ProgressBarComponent,
-    ButtonComponent
+    ButtonComponent,
+    TooltipDirective,
+    TooltipComponent
   ],
   exports: [
     CheckboxComponent,
@@ -31,7 +34,9 @@ import { BadgeDirective } from './badge/badge.directive';
     RadioButtonComponent,
     BadgeDirective,
     ProgressBarComponent,
-    ButtonComponent
-  ]
+    ButtonComponent,
+    TooltipDirective
+  ],
+  entryComponents: [TooltipComponent]
 })
 export class DesignAngularKitModule { }

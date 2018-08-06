@@ -45,6 +45,10 @@ export class TableOfContentService {
             link: '/componenti/radio',
           },
           {
+            label: 'Tooltip',
+            link: '/componenti/tooltip',
+          },
+          {
             label: 'Button',
             link: '/componenti/button',
           },
