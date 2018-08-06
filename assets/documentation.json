@@ -1187,6 +1187,385 @@
             "templateData": "<div class=form-check>\n  <input type=checkbox\n    [id]=inputId\n    [checked]=checked\n    [disabled]=disabled\n    (change)=handleChange($event)>\n  <label\n    [attr.for]=inputId>{{label}}</label>\n</div>\n"
         },
         {
+            "name": "ProgressBarComponent",
+            "id": "component-ProgressBarComponent-4b50cab345688be6ce20081228e12c40",
+            "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-progress-bar",
+            "styleUrls": [
+                "progress-bar.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./progress-bar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "description": "<p>Il colore della barra di avanzamento.</p>\n",
+                    "line": 77,
+                    "type": "any"
+                },
+                {
+                    "name": "height",
+                    "description": "<p>L&#39;altezza della barra di avanzamento.</p>\n",
+                    "line": 37,
+                    "type": "number"
+                },
+                {
+                    "name": "label",
+                    "description": "<p>L&#39;etichetta della barra di avanzamento.</p>\n",
+                    "line": 69,
+                    "type": "string"
+                },
+                {
+                    "name": "max",
+                    "description": "<p>Il valore massimo della barra di avanzamento.</p>\n",
+                    "line": 53,
+                    "type": "number"
+                },
+                {
+                    "name": "min",
+                    "description": "<p>Il valore minimo della barra di avanzamento.</p>\n",
+                    "line": 45,
+                    "type": "number"
+                },
+                {
+                    "name": "value",
+                    "description": "<p>L&#39;attuale valore della barra di avanzamento.</p>\n",
+                    "line": 61,
+                    "type": "number"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_color",
+                    "defaultValue": "THEME_COLORS.PRIMARY",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 87,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_height",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_label",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_max",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 55,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_min",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_value",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_HEIGHT",
+                    "defaultValue": "20",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_LABEL",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_MAX",
+                    "defaultValue": "100",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_MIN",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_VALUE",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "progressbarId",
+                    "defaultValue": "`it-progress-bar-${progressbarId++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "pgClass",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{ 'progress-bar': boolean; }",
+                    "typeParameters": [],
+                    "line": 97
+                },
+                {
+                    "name": "pgStyle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{ 'width': string; }",
+                    "typeParameters": [],
+                    "line": 93
+                },
+                {
+                    "name": "valuePercentage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 89
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Una barra di avanzamento con design bootstrap italia.</p>\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  ChangeDetectionStrategy,\n  ElementRef,\n  Inject,\n  Input,\n  Optional,\n  ViewEncapsulation\n} from '@angular/core';\nimport { ThemeColor, THEME_COLORS } from '../models/ThemeColor';\n\nlet progressbarId = 0;\n\n/**\n * Una barra di avanzamento con design bootstrap italia.\n */\n@Component({\n  selector: 'it-progress-bar',\n  templateUrl: './progress-bar.component.html',\n  styleUrls: ['./progress-bar.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ProgressBarComponent {\n\n  public static readonly PROGRESS_BAR_DEFAULT_MIN = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_MAX = 100;\n  public static readonly PROGRESS_BAR_DEFAULT_VALUE = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_HEIGHT = 20;\n  public static readonly PROGRESS_BAR_DEFAULT_LABEL = '';\n\n  progressbarId = `it-progress-bar-${progressbarId++}`;\n\n  /**\n   * L'altezza della barra di avanzamento.\n   */\n  @Input()\n  get height(): number { return this._height; }\n  set height(v: number) { this._height = v; }\n  private _height = ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT;\n\n  /**\n   * Il valore minimo della barra di avanzamento.\n   */\n  @Input()\n  get min(): number { return this._min; }\n  set min(v: number) { this._min = Math.round(v); }\n  private _min = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN;\n\n  /**\n   * Il valore massimo della barra di avanzamento.\n   */\n  @Input()\n  get max(): number { return this._max; }\n  set max(v: number) { this._max = Math.round(v); }\n  private _max = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX;\n\n  /**\n   * L'attuale valore della barra di avanzamento.\n   */\n  @Input()\n  get value(): number { return this._value; }\n  set value(v: number) { this._value = Math.min(Math.max(v, this._min), this._max); }\n  private _value = ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE;\n\n  /**\n   * L'etichetta della barra di avanzamento.\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(v: string) { this._label = v; }\n  private _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;\n\n  /**\n   * Il colore della barra di avanzamento.\n   */\n  @Input()\n  get color(): any {\n    return this._color;\n  }\n  set color(value: any) {\n    if (ThemeColor.is(value)) {\n      this._color = value;\n    } else {\n      this._color = THEME_COLORS.PRIMARY;\n    }\n  }\n  private _color = THEME_COLORS.PRIMARY;\n\n  valuePercentage(): number {\n    return ((this.value - this.min) * 100) / (this.max - this.min);\n  }\n\n  pgStyle() {\n    return { 'width' : this.valuePercentage() + '%' };\n  }\n\n  pgClass() {\n    const progressbarClass = { 'progress-bar' : true };\n    if (this.color) {\n      progressbarClass[`bg-${this.color}`] = true;\n    }\n    return progressbarClass;\n  }\n\n  constructor() { }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 103
+            },
+            "accessors": {
+                "height": {
+                    "name": "height",
+                    "setSignature": {
+                        "name": "height",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 38,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "min": {
+                    "name": "min",
+                    "setSignature": {
+                        "name": "min",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 46,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "max": {
+                    "name": "max",
+                    "setSignature": {
+                        "name": "max",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 54,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 62,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "label": {
+                    "name": "label",
+                    "setSignature": {
+                        "name": "label",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 70,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "color": {
+                    "name": "color",
+                    "setSignature": {
+                        "name": "color",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 80,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<div class=\"progress\" [ngStyle]=\"{'height': height + 'px'}\">\n  <div role=\"progressbar\" [id]=\"progressbarId\" [ngClass]=\"pgClass()\" [ngStyle]=\"pgStyle()\"\n    [attr.aria-valuenow]=\"value\" [attr.aria-valuemin]=\"min\" [attr.aria-valuemax]=\"max\" >\n    {{label}}\n  </div>\n</div>"
+        },
+        {
             "name": "RadioButtonComponent",
             "id": "component-RadioButtonComponent-f64fd0c7b01c8d4779c6a1f6316e64e0",
             "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
@@ -1823,6 +2202,9 @@
                             "name": "CheckboxComponent"
                         },
                         {
+                            "name": "ProgressBarComponent"
+                        },
+                        {
                             "name": "RadioButtonComponent"
                         },
                         {
@@ -1845,6 +2227,9 @@
                         },
                         {
                             "name": "CheckboxComponent"
+                        },
+                        {
+                            "name": "ProgressBarComponent"
                         },
                         {
                             "name": "RadioButtonComponent"
@@ -1933,6 +2318,14 @@
                 "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
                 "type": "string",
                 "defaultValue": "'primary'"
+            },
+            {
+                "name": "progressbarId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "number",
+                "defaultValue": "0"
             },
             {
                 "name": "SECONDARY",
@@ -2123,6 +2516,16 @@
                     "type": "number",
                     "defaultValue": "0"
                 }
+            ],
+            "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts": [
+                {
+                    "name": "progressbarId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
             ]
         },
         "groupedFunctions": {
@@ -2304,6 +2707,25 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "WARNING",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProgressBarComponent",
+                "coveragePercent": 30,
+                "coverageCount": "7/23",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "progressbarId",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
