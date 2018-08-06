@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/italia/design-angular-kit/compare/v0.3.0...v0.4.0) (2018-08-06)
+
+
+### Features
+
+* **Tooltip:** implementa la componente tooltip ([ab051d1](https://github.com/italia/design-angular-kit/commit/ab051d1))
+
 # [0.3.0](https://github.com/italia/design-angular-kit/compare/v0.2.1...v0.3.0) (2018-08-06)
 
 
