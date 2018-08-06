@@ -368,22 +368,22 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-@angular/common@6.1.0
+@angular/common@6.1.1
 MIT
 MIT
 
-@angular/platform-browser@6.1.0
+@angular/platform-browser@6.1.1
 MIT
 MIT
 
-@angular/router@6.1.0
+@angular/router@6.1.1
 MIT
 MIT
 
-@angular/core@6.1.0
+@angular/core@6.1.1
 MIT
 MIT
 
-@angular/forms@6.1.0
+@angular/forms@6.1.1
 MIT
 MIT
