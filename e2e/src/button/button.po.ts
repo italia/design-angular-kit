@@ -5,24 +5,28 @@ export class ButtonPage {
   private readonly ID_EXAMPLE_TAB = 'button-examples-tab';
 
   private readonly ID_BUTTON = 'button-0';
-  private readonly ID_CHECKBOX_DISABLE = 'disabled-checkbox';
-  private readonly ID_CHECKBOX_BLOCK = 'block-checkbox';
-  private readonly ID_CHECKBOX_OUTLINE = 'outline-checkbox';
+  private readonly ID_CHECKBOX_DISABLE = this.getLabelForAttribute('checkbox-0');
+  private readonly ID_CHECKBOX_BLOCK = this.getLabelForAttribute('checkbox-1');
+  private readonly ID_CHECKBOX_OUTLINE = this.getLabelForAttribute('checkbox-2');
 
-  public readonly ID_RADIO_STANDARD = 'radio-standard';
-  public readonly ID_RADIO_LG = 'radio-lg';
-  public readonly ID_RADIO_XS = 'radio-xs';
-  public readonly ID_RADIO_SM = 'radio-sm';
+  public readonly ID_RADIO_STANDARD = this.getLabelForAttribute('radio-1');
+  public readonly ID_RADIO_LG = this.getLabelForAttribute('radio-2');
+  public readonly ID_RADIO_SM = this.getLabelForAttribute('radio-3');
+  public readonly ID_RADIO_XS = this.getLabelForAttribute('radio-4');
 
-  public readonly ID_RADIO_NONE = 'radio-none';
-  public readonly ID_RADIO_PRIMARY = 'radio-primary';
-  public readonly ID_RADIO_SECONDARY = 'radio-secondary';
-  public readonly ID_RADIO_SUCCESS = 'radio-success';
-  public readonly ID_RADIO_WARNING = 'radio-warning';
-  public readonly ID_RADIO_DANGER = 'radio-danger';
-  public readonly ID_RADIO_INFO = 'radio-info';
-  public readonly ID_RADIO_LIGHT = 'radio-light';
-  public readonly ID_RADIO_DARK = 'radio-dark';
+  public readonly ID_RADIO_NONE = this.getLabelForAttribute('radio-6');
+  public readonly ID_RADIO_PRIMARY = this.getLabelForAttribute('radio-7');
+  public readonly ID_RADIO_SECONDARY = this.getLabelForAttribute('radio-8');
+  public readonly ID_RADIO_SUCCESS = this.getLabelForAttribute('radio-9');
+  public readonly ID_RADIO_WARNING = this.getLabelForAttribute('radio-10');
+  public readonly ID_RADIO_DANGER = this.getLabelForAttribute('radio-11');
+  public readonly ID_RADIO_INFO = this.getLabelForAttribute('radio-12');
+  public readonly ID_RADIO_LIGHT = this.getLabelForAttribute('radio-13');
+  public readonly ID_RADIO_DARK = this.getLabelForAttribute('radio-14');
+
+  private getLabelForAttribute(attr: string) {
+    return `[for="${attr}"]`;
+  }
 
   async go() {
     await browser.get(this.BUTTON_URL);
@@ -35,7 +39,7 @@ export class ButtonPage {
   }
 
   async clickElement(id: string) {
-    await element(by.id(id)).click();
+    await element(by.css(id)).click();
   }
 
   async clickDisabledCheckbox() {
