@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class TabsExampleComponent {
 
+  isDarkTheme = false;
+
+  isDisabled = false;
+
   tabs = [
     {
       label: 'tab1',

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 
@@ -14,6 +15,7 @@ import { TabsIndexComponent } from './tabs-index/tabs-index.component';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     DesignAngularKitModule,
     SharedModule,
     TabsRoutingModule

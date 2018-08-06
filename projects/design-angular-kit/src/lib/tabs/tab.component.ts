@@ -11,6 +11,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Util } from '../util/util';
 
 @Component({
   selector: 'it-tab',
@@ -28,8 +29,13 @@ export class TabComponent implements OnChanges, OnDestroy {
   /** aria label del tab. */
   @Input('aria-label') ariaLabel: string; // tslint:disable-line
 
-  /** Testo della tab. */
-  @Input() disabled = '';
+  /** Se la tab è disabilitata. */
+  @Input()
+  get disabled() { return this._disabled; }
+  set disabled(value: any) {
+    this._disabled = Util.coerceBooleanProperty(value);
+  }
+  private _disabled = false;
 
   /** Emette un evento ogni volta che la label cambia. */
   readonly _labelChange = new Subject<void>();
