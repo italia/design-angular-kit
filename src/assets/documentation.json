@@ -1,0 +1,1149 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "ProgressBarBackgroundClasses",
+            "id": "interface-ProgressBarBackgroundClasses-b389a81df334aad8501182a932c68eca",
+            "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+            "type": "interface",
+            "sourceCode": "import {\n  Component,\n  ChangeDetectionStrategy,\n  ElementRef,\n  Inject,\n  Input,\n  Optional,\n  ViewEncapsulation\n} from '@angular/core';\n\nconst BG_DEFAULT = undefined;\nconst BG_DANGER = 'bg-danger';\nconst BG_INFO = 'bg-info';\nconst BG_WARNING = 'bg-warning';\nconst BG_SUCCESS = 'bg-success';\n\nexport type ProgressBarBackgroundClass = undefined | 'bg-danger' | 'bg-warning' | 'bg-info' | 'bg-success';\n\nexport interface ProgressBarBackgroundClasses {\n  readonly BG_DEFAULT: ProgressBarBackgroundClass;\n  readonly BG_DANGER: ProgressBarBackgroundClass;\n  readonly BG_INFO: ProgressBarBackgroundClass;\n  readonly BG_WARNING: ProgressBarBackgroundClass;\n  readonly BG_SUCCESS: ProgressBarBackgroundClass;\n}\n\nexport const PROGRESS_BAR_BACKGROUND_CLASSES: ProgressBarBackgroundClasses = {\n  BG_DEFAULT: BG_DEFAULT,\n  BG_DANGER: BG_DANGER,\n  BG_INFO: BG_INFO,\n  BG_WARNING: BG_WARNING,\n  BG_SUCCESS: BG_SUCCESS,\n};\n\nlet progressbarId = 0;\n\n/**\n * Una barra di avanzamento con design bootstrap italia.\n */\n@Component({\n  selector: 'it-progress-bar',\n  templateUrl: './progress-bar.component.html',\n  styleUrls: ['./progress-bar.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ProgressBarComponent {\n\n  public static readonly PROGRESS_BAR_DEFAULT_MIN = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_MAX = 100;\n  public static readonly PROGRESS_BAR_DEFAULT_VALUE = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_HEIGHT = 20;\n  public static readonly PROGRESS_BAR_DEFAULT_LABEL = '';\n  public static readonly PROGRESS_BAR_DEFAULT_BG = BG_DEFAULT;\n\n  protected progressbarId = `it-progress-bar-${progressbarId++}`;\n\n  /**\n   * L'altezza della barra di avanzamento.\n   */\n  @Input()\n  get height(): number { return this._height; }\n  set height(v: number) { this._height = v; }\n  protected _height = ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT;\n\n  /**\n   * Il valore minimo della barra di avanzamento.\n   */\n  @Input()\n  get min(): number { return this._min; }\n  set min(v: number) { this._min = Math.round(v); }\n  protected _min = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN;\n\n  /**\n   * Il valore massimo della barra di avanzamento.\n   */\n  @Input()\n  get max(): number { return this._max; }\n  set max(v: number) { this._max = Math.round(v); }\n  protected _max = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX;\n\n  /**\n   * L'attuale valore della barra di avanzamento.\n   */\n  @Input()\n  get value(): number { return this._value; }\n  set value(v: number) { this._value = Math.min(Math.max(v, this._min), this._max); }\n  protected _value = ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE;\n\n  /**\n   * L'etichetta della barra di avanzamento.\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(v: string) { this._label = v; }\n  protected _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;\n\n  /**\n   * Il colore della barra di avanzamento.\n   */\n  @Input()\n  get bgColor(): ProgressBarBackgroundClass { return this._bgColor; }\n  set bgColor(v: ProgressBarBackgroundClass) { this._bgColor = v; }\n  protected _bgColor: ProgressBarBackgroundClass = ProgressBarComponent.PROGRESS_BAR_DEFAULT_BG;\n\n  public valuePercentage(): number {\n    return ((this.value - this.min) * 100) / (this.max - this.min);\n  }\n\n  protected pgStyle() {\n    return { 'width' : this.valuePercentage() + '%' };\n  }\n\n  protected pgClass() {\n    const progressbarClass = { 'progress-bar' : true };\n    if (this.bgColor) {\n      progressbarClass[this.bgColor] = true;\n    }\n    return progressbarClass;\n  }\n\n  constructor() { }\n\n}\n",
+            "properties": [
+                {
+                    "name": "BG_DANGER",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "BG_DEFAULT",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "BG_INFO",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "BG_SUCCESS",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "BG_WARNING",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [],
+    "classes": [
+        {
+            "name": "CheckboxChange",
+            "id": "class-CheckboxChange-061d883b3f4d581a0a4d05a1d1a8bf78",
+            "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+            "type": "class",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy } from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\n\nlet identifier = 0;\n\nexport class CheckboxChange {\n  source: CheckboxComponent;\n  checked: boolean;\n}\n\n/**\n * Una checkbox con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\n * ed espone una API simile. Una `<it-checkbox>` può essere checked, unchecked, o disabled.\n */\n@Component({\n  selector: 'it-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CheckboxComponent), multi: true }],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class CheckboxComponent implements ControlValueAccessor {\n  /**\n   * Se la checkbox è selezionata.\n   */\n  @Input()\n  get checked(): boolean { return this._checked; }\n  set checked(value: boolean) {\n    if (value !== this.checked) {\n      this._checked = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _checked = false;\n\n  /**\n   * L'etichetta della checkbox.\n   */\n  @Input()\n  label: string;\n\n  /**\n   * Se la checkbox è disabilitata.\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) {\n    if (value !== this.disabled) {\n      this._disabled = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _disabled = false;\n\n  /**\n   * Evento emesso quando il valore `checked` della checkbox cambia.\n   */\n  @Output() readonly change: EventEmitter<CheckboxChange> =\n    new EventEmitter<CheckboxChange>();\n\n    inputId = `checkbox-${identifier++}`;\n\n  private _onTouched: () => any = () => {};\n\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef\n  ) { }\n\n  writeValue(value: any) {\n    this.checked = !!value;\n  }\n\n  registerOnChange(fn: (value: any) => void) {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n\n  handleChange(event: Event) {\n    event.stopPropagation();\n    if (!this.disabled) {\n      this._toggle();\n      this._emitChangeEvent();\n    }\n  }\n\n  private _toggle(): void {\n    this.checked = !this.checked;\n  }\n\n  private _emitChangeEvent() {\n    const event = new CheckboxChange();\n    event.source = this;\n    event.checked = this.checked;\n\n    this._controlValueAccessorChangeFn(this.checked);\n    this.change.emit(event);\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "checked",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "source",
+                    "type": "CheckboxComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "CheckboxComponent",
+            "id": "component-CheckboxComponent-061d883b3f4d581a0a4d05a1d1a8bf78",
+            "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{ : , : (() => ), : true }"
+                }
+            ],
+            "selector": "it-checkbox",
+            "styleUrls": [
+                "checkbox.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./checkbox.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "checked",
+                    "description": "<p>Se la checkbox è selezionata.</p>\n",
+                    "line": 27,
+                    "type": "boolean"
+                },
+                {
+                    "name": "disabled",
+                    "description": "<p>Se la checkbox è disabilitata.</p>\n",
+                    "line": 46,
+                    "type": "boolean"
+                },
+                {
+                    "name": "label",
+                    "description": "<p>L&#39;etichetta della checkbox.</p>\n",
+                    "line": 40,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "change",
+                    "defaultValue": "new EventEmitter<CheckboxChange>()",
+                    "description": "<p>Evento emesso quando il valore <code>checked</code> della checkbox cambia.</p>\n",
+                    "line": 58,
+                    "type": "EventEmitter<CheckboxChange>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_checked",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_controlValueAccessorChangeFn",
+                    "defaultValue": "() => { }",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 65,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_disabled",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_onTouched",
+                    "defaultValue": "() => {}",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "inputId",
+                    "defaultValue": "`checkbox-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_emitChangeEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 95,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_toggle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 91,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "handleChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "any"
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "any"
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Una checkbox con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\ned espone una API simile. Una <code>&lt;it-checkbox&gt;</code> può essere checked, unchecked, o disabled.</p>\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy } from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\n\nlet identifier = 0;\n\nexport class CheckboxChange {\n  source: CheckboxComponent;\n  checked: boolean;\n}\n\n/**\n * Una checkbox con design bootstrap italia. Supporta tutte le funzionalità di una checkbox HTML5,\n * ed espone una API simile. Una `<it-checkbox>` può essere checked, unchecked, o disabled.\n */\n@Component({\n  selector: 'it-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.css'],\n  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CheckboxComponent), multi: true }],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class CheckboxComponent implements ControlValueAccessor {\n  /**\n   * Se la checkbox è selezionata.\n   */\n  @Input()\n  get checked(): boolean { return this._checked; }\n  set checked(value: boolean) {\n    if (value !== this.checked) {\n      this._checked = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _checked = false;\n\n  /**\n   * L'etichetta della checkbox.\n   */\n  @Input()\n  label: string;\n\n  /**\n   * Se la checkbox è disabilitata.\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) {\n    if (value !== this.disabled) {\n      this._disabled = value;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n  private _disabled = false;\n\n  /**\n   * Evento emesso quando il valore `checked` della checkbox cambia.\n   */\n  @Output() readonly change: EventEmitter<CheckboxChange> =\n    new EventEmitter<CheckboxChange>();\n\n    inputId = `checkbox-${identifier++}`;\n\n  private _onTouched: () => any = () => {};\n\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef\n  ) { }\n\n  writeValue(value: any) {\n    this.checked = !!value;\n  }\n\n  registerOnChange(fn: (value: any) => void) {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n\n  handleChange(event: Event) {\n    event.stopPropagation();\n    if (!this.disabled) {\n      this._toggle();\n      this._emitChangeEvent();\n    }\n  }\n\n  private _toggle(): void {\n    this.checked = !this.checked;\n  }\n\n  private _emitChangeEvent() {\n    const event = new CheckboxChange();\n    event.source = this;\n    event.checked = this.checked;\n\n    this._controlValueAccessorChangeFn(this.checked);\n    this.change.emit(event);\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef"
+                    }
+                ],
+                "line": 65,
+                "jsdoctags": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "checked": {
+                    "name": "checked",
+                    "setSignature": {
+                        "name": "checked",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 28,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "disabled": {
+                    "name": "disabled",
+                    "setSignature": {
+                        "name": "disabled",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 47,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<div class=form-check>\n  <input type=checkbox\n    [id]=inputId\n    [checked]=checked\n    [disabled]=disabled\n    (change)=handleChange($event)>\n  <label\n    [attr.for]=inputId>{{label}}</label>\n</div>\n"
+        },
+        {
+            "name": "ProgressBarComponent",
+            "id": "component-ProgressBarComponent-b389a81df334aad8501182a932c68eca",
+            "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-progress-bar",
+            "styleUrls": [
+                "progress-bar.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./progress-bar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "bgColor",
+                    "description": "<p>Il colore della barra di avanzamento.</p>\n",
+                    "line": 101,
+                    "type": "ProgressBarBackgroundClass"
+                },
+                {
+                    "name": "height",
+                    "description": "<p>L&#39;altezza della barra di avanzamento.</p>\n",
+                    "line": 61,
+                    "type": "number"
+                },
+                {
+                    "name": "label",
+                    "description": "<p>L&#39;etichetta della barra di avanzamento.</p>\n",
+                    "line": 93,
+                    "type": "string"
+                },
+                {
+                    "name": "max",
+                    "description": "<p>Il valore massimo della barra di avanzamento.</p>\n",
+                    "line": 77,
+                    "type": "number"
+                },
+                {
+                    "name": "min",
+                    "description": "<p>Il valore minimo della barra di avanzamento.</p>\n",
+                    "line": 69,
+                    "type": "number"
+                },
+                {
+                    "name": "value",
+                    "description": "<p>L&#39;attuale valore della barra di avanzamento.</p>\n",
+                    "line": 85,
+                    "type": "number"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_bgColor",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_BG",
+                    "type": "ProgressBarBackgroundClass",
+                    "optional": false,
+                    "description": "",
+                    "line": 103,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_height",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_label",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 95,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_max",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 79,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_min",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "_value",
+                    "defaultValue": "ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 87,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_BG",
+                    "defaultValue": "BG_DEFAULT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_HEIGHT",
+                    "defaultValue": "20",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 51,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_LABEL",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 52,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_MAX",
+                    "defaultValue": "100",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 49,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_MIN",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 48,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "PROGRESS_BAR_DEFAULT_VALUE",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 50,
+                    "modifierKind": [
+                        115,
+                        132
+                    ]
+                },
+                {
+                    "name": "progressbarId",
+                    "defaultValue": "`it-progress-bar-${progressbarId++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 55,
+                    "modifierKind": [
+                        113
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "pgClass",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{ 'progress-bar': boolean; }",
+                    "typeParameters": [],
+                    "line": 113,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "pgStyle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{ 'width': string; }",
+                    "typeParameters": [],
+                    "line": 109,
+                    "modifierKind": [
+                        113
+                    ]
+                },
+                {
+                    "name": "valuePercentage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 105,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Una barra di avanzamento con design bootstrap italia.</p>\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  ChangeDetectionStrategy,\n  ElementRef,\n  Inject,\n  Input,\n  Optional,\n  ViewEncapsulation\n} from '@angular/core';\n\nconst BG_DEFAULT = undefined;\nconst BG_DANGER = 'bg-danger';\nconst BG_INFO = 'bg-info';\nconst BG_WARNING = 'bg-warning';\nconst BG_SUCCESS = 'bg-success';\n\nexport type ProgressBarBackgroundClass = undefined | 'bg-danger' | 'bg-warning' | 'bg-info' | 'bg-success';\n\nexport interface ProgressBarBackgroundClasses {\n  readonly BG_DEFAULT: ProgressBarBackgroundClass;\n  readonly BG_DANGER: ProgressBarBackgroundClass;\n  readonly BG_INFO: ProgressBarBackgroundClass;\n  readonly BG_WARNING: ProgressBarBackgroundClass;\n  readonly BG_SUCCESS: ProgressBarBackgroundClass;\n}\n\nexport const PROGRESS_BAR_BACKGROUND_CLASSES: ProgressBarBackgroundClasses = {\n  BG_DEFAULT: BG_DEFAULT,\n  BG_DANGER: BG_DANGER,\n  BG_INFO: BG_INFO,\n  BG_WARNING: BG_WARNING,\n  BG_SUCCESS: BG_SUCCESS,\n};\n\nlet progressbarId = 0;\n\n/**\n * Una barra di avanzamento con design bootstrap italia.\n */\n@Component({\n  selector: 'it-progress-bar',\n  templateUrl: './progress-bar.component.html',\n  styleUrls: ['./progress-bar.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ProgressBarComponent {\n\n  public static readonly PROGRESS_BAR_DEFAULT_MIN = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_MAX = 100;\n  public static readonly PROGRESS_BAR_DEFAULT_VALUE = 0;\n  public static readonly PROGRESS_BAR_DEFAULT_HEIGHT = 20;\n  public static readonly PROGRESS_BAR_DEFAULT_LABEL = '';\n  public static readonly PROGRESS_BAR_DEFAULT_BG = BG_DEFAULT;\n\n  protected progressbarId = `it-progress-bar-${progressbarId++}`;\n\n  /**\n   * L'altezza della barra di avanzamento.\n   */\n  @Input()\n  get height(): number { return this._height; }\n  set height(v: number) { this._height = v; }\n  protected _height = ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT;\n\n  /**\n   * Il valore minimo della barra di avanzamento.\n   */\n  @Input()\n  get min(): number { return this._min; }\n  set min(v: number) { this._min = Math.round(v); }\n  protected _min = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MIN;\n\n  /**\n   * Il valore massimo della barra di avanzamento.\n   */\n  @Input()\n  get max(): number { return this._max; }\n  set max(v: number) { this._max = Math.round(v); }\n  protected _max = ProgressBarComponent.PROGRESS_BAR_DEFAULT_MAX;\n\n  /**\n   * L'attuale valore della barra di avanzamento.\n   */\n  @Input()\n  get value(): number { return this._value; }\n  set value(v: number) { this._value = Math.min(Math.max(v, this._min), this._max); }\n  protected _value = ProgressBarComponent.PROGRESS_BAR_DEFAULT_VALUE;\n\n  /**\n   * L'etichetta della barra di avanzamento.\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(v: string) { this._label = v; }\n  protected _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;\n\n  /**\n   * Il colore della barra di avanzamento.\n   */\n  @Input()\n  get bgColor(): ProgressBarBackgroundClass { return this._bgColor; }\n  set bgColor(v: ProgressBarBackgroundClass) { this._bgColor = v; }\n  protected _bgColor: ProgressBarBackgroundClass = ProgressBarComponent.PROGRESS_BAR_DEFAULT_BG;\n\n  public valuePercentage(): number {\n    return ((this.value - this.min) * 100) / (this.max - this.min);\n  }\n\n  protected pgStyle() {\n    return { 'width' : this.valuePercentage() + '%' };\n  }\n\n  protected pgClass() {\n    const progressbarClass = { 'progress-bar' : true };\n    if (this.bgColor) {\n      progressbarClass[this.bgColor] = true;\n    }\n    return progressbarClass;\n  }\n\n  constructor() { }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 119
+            },
+            "accessors": {
+                "height": {
+                    "name": "height",
+                    "setSignature": {
+                        "name": "height",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 62,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "min": {
+                    "name": "min",
+                    "setSignature": {
+                        "name": "min",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 70,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "max": {
+                    "name": "max",
+                    "setSignature": {
+                        "name": "max",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 78,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 86,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "label": {
+                    "name": "label",
+                    "setSignature": {
+                        "name": "label",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 94,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "bgColor": {
+                    "name": "bgColor",
+                    "setSignature": {
+                        "name": "bgColor",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 102,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<div class=\"progress\" [ngStyle]=\"{'height': height + 'px'}\">\n  <div role=\"progressbar\" [id]=\"progressbarId\" [ngClass]=\"pgClass()\" [ngStyle]=\"pgStyle()\"\n    [attr.aria-valuenow]=\"value\" [attr.aria-valuemin]=\"min\" [attr.aria-valuemax]=\"max\" >\n    {{label}}\n  </div>\n</div>"
+        }
+    ],
+    "modules": [
+        {
+            "name": "DesignAngularKitModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "CheckboxComponent"
+                        },
+                        {
+                            "name": "ProgressBarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CheckboxComponent"
+                        },
+                        {
+                            "name": "ProgressBarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "BG_DANGER",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "string",
+                "defaultValue": "'bg-danger'"
+            },
+            {
+                "name": "BG_DEFAULT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "",
+                "defaultValue": "undefined"
+            },
+            {
+                "name": "BG_INFO",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "string",
+                "defaultValue": "'bg-info'"
+            },
+            {
+                "name": "BG_SUCCESS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "string",
+                "defaultValue": "'bg-success'"
+            },
+            {
+                "name": "BG_WARNING",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "string",
+                "defaultValue": "'bg-warning'"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "PROGRESS_BAR_BACKGROUND_CLASSES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "ProgressBarBackgroundClasses",
+                "defaultValue": "{\n  BG_DEFAULT: BG_DEFAULT,\n  BG_DANGER: BG_DANGER,\n  BG_INFO: BG_INFO,\n  BG_WARNING: BG_WARNING,\n  BG_SUCCESS: BG_SUCCESS,\n}"
+            },
+            {
+                "name": "progressbarId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "ProgressBarBackgroundClass",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "undefined | \"bg-danger\" | \"bg-warning\" | \"bg-info\" | \"bg-success\"",
+                "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "description": "",
+                "kind": 168
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts": [
+                {
+                    "name": "BG_DANGER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bg-danger'"
+                },
+                {
+                    "name": "BG_DEFAULT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "",
+                    "defaultValue": "undefined"
+                },
+                {
+                    "name": "BG_INFO",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bg-info'"
+                },
+                {
+                    "name": "BG_SUCCESS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bg-success'"
+                },
+                {
+                    "name": "BG_WARNING",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bg-warning'"
+                },
+                {
+                    "name": "PROGRESS_BAR_BACKGROUND_CLASSES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "ProgressBarBackgroundClasses",
+                    "defaultValue": "{\n  BG_DEFAULT: BG_DEFAULT,\n  BG_DANGER: BG_DANGER,\n  BG_INFO: BG_INFO,\n  BG_WARNING: BG_WARNING,\n  BG_SUCCESS: BG_SUCCESS,\n}"
+                },
+                {
+                    "name": "progressbarId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts": [
+                {
+                    "name": "ProgressBarBackgroundClass",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "undefined | \"bg-danger\" | \"bg-warning\" | \"bg-info\" | \"bg-success\"",
+                    "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                    "description": "",
+                    "kind": 168
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 4,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CheckboxComponent",
+                "coveragePercent": 29,
+                "coverageCount": "5/17",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "CheckboxChange",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProgressBarComponent",
+                "coveragePercent": 29,
+                "coverageCount": "7/24",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ProgressBarBackgroundClasses",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_DANGER",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_DEFAULT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_INFO",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_SUCCESS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BG_WARNING",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PROGRESS_BAR_BACKGROUND_CLASSES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "progressbarId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
