@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/italia/design-angular-kit/compare/v0.1.0...v0.2.0) (2018-08-06)
+
+
+### Features
+
+* **ProgressBar:** implementa progress bar ([931cdfd](https://github.com/italia/design-angular-kit/commit/931cdfd)), closes [#18](https://github.com/italia/design-angular-kit/issues/18)
+
 # [0.1.0](https://github.com/italia/design-angular-kit/compare/v0.0.0...v0.1.0) (2018-07-25)
 
 
