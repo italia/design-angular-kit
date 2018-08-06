@@ -1,0 +1,28 @@
+<ul class="nav nav-tabs" role="tablist">
+
+  <li class="nav-item" *ngFor="let tab of _tabs; let i = index">
+    <a
+      role="tab"
+      [attr.href]="'#' + _getTabContentId(i)"
+      [attr.aria-controls]="_getTabContentId(i)"
+      [attr.aria-selected]="selectedIndex == i"
+      [ngClass]="{ 'nav-link': true, 'active': selectedIndex == i }"
+      [id]="_getTabLabelId(i)"
+      data-toggle="tab">{{tab.label}}</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <ng-container *ngFor="let tab of _tabs; let i = index">
+    <div
+      [ngClass]="{ 'tab-pane p-3': true, 'show active': selectedIndex == i }"
+      [id]="_getTabContentId(i)"
+      role="tabpanel"
+      [attr.aria-labelledby]="_getTabLabelId(i)">
+      <ng-container *ngTemplateOutlet="tab._implicitContent"></ng-container>
+    </div>
+  </ng-container>
+
+</div>
+
+
+

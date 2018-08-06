@@ -14,7 +14,8 @@ const routes: Routes = [
     { path: 'checkbox', loadChildren: 'src/app/checkbox/checkbox.module#CheckboxModule' },
     { path: 'toggle', loadChildren: 'src/app/toggle/toggle.module#ToggleModule' },
     { path: 'radio', loadChildren: 'src/app/radio/radio.module#RadioModule' },
-    { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' }
+    { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' },
+    { path: 'tabs', loadChildren: 'src/app/tabs/tabs.module#TabsModule' }
   ]}
 ];
 

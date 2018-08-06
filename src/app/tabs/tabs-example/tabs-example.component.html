@@ -1,0 +1,23 @@
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Configurazione tabs</h4>
+
+
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Risultato tabs</h4>
+    <it-tab-group>
+      <it-tab *ngFor="let tab of tabs" [label]="tab.label">
+        {{tab.content}}
+      </it-tab>
+      <it-tab label="custom">
+        <div it-badge="ciao">
+
+        </div>
+      </it-tab>
+    </it-tab-group>
+  </div>
+</div>
