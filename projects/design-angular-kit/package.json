@@ -1,6 +1,6 @@
 {
   "name": "design-angular-kit",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "license": " BSD-3-Clause",
   "repository": {
     "type": "git",
@@ -9,7 +9,8 @@
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/form": "^6.0.0-rc.0 || ^6.0.0",
-    "bootstrap-italia": "^0.9.1"
+    "@angular/forms": "^6.0.0-rc.0 || ^6.0.0",
+    "bootstrap-italia": "^0.9.1",
+    "io-ts": "^1.2.1"
   }
 }

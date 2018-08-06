@@ -27,7 +27,12 @@ describe('Button', () => {
     expect(actualValue).toBe(BUTTON_TEXT + 0);
     expect(isDisabled).toBeFalsy();
 
-    await page.clickDisabledCheckbox();
+    try {
+      await page.clickDisabledCheckbox();
+    } catch (ex) {
+      console.log(ex);
+    }
+
     await page.clickButton();
 
     actualValue = await page.getButtonText();
