@@ -100,13 +100,14 @@ describe('BreadcrumbComponent', () => {
   });
 
   it('dovrebbe poter cambiare il separatore', () => {
-    testComponent.separator = '~';
+    const TILDE_CHAR =  '~';
+    testComponent.separator = TILDE_CHAR;
     fixture.detectChanges();
 
-    expect(breadcrumbInstance.separator).toBe('~');
+    expect(breadcrumbInstance.separator).toBe(TILDE_CHAR);
     let isSeparatorSetforItems = true;
     breadcrumbItemInstances.forEach(
-      item => isSeparatorSetforItems = (isSeparatorSetforItems && item.separator === '~')
+      item => isSeparatorSetforItems = (isSeparatorSetforItems && item.separator === TILDE_CHAR)
     );
     expect(isSeparatorSetforItems).toBeTruthy();
   });
