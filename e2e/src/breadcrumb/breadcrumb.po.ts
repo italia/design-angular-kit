@@ -39,8 +39,8 @@ export class BreadcrumbPage {
     return await browser.sleep(500);
   }
 
-  async isLastItem(element: ElementFinder) {
-    const classes = await this.getBreadcrumbItemClasses(element);
+  async isLastItem(el: ElementFinder) {
+    const classes = await this.getBreadcrumbItemClasses(el);
     return classes.indexOf('active') > -1;
   }
 
