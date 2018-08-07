@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
+let identifier = 0;
+
 @Component({
   selector: 'it-breadcrumb-item',
   templateUrl: './breadcrumb-item.component.html',
@@ -7,6 +9,7 @@ import { Component, OnInit, Input, ElementRef, ChangeDetectionStrategy, ChangeDe
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbItemComponent {
+  id = `it-breadcrumb-item-${identifier++}`;
 
   constructor(private _cdRef: ChangeDetectorRef, private _elemRef: ElementRef) { }
 
