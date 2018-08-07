@@ -7,19 +7,59 @@
     <p class="card-text" class="example-section">
       <it-checkbox [(ngModel)]="isDisabled" label="Disabilita tab custom"></it-checkbox>
     </p>
-
+    <p class="card-text" class="example-section">
+      <it-checkbox [(ngModel)]="isPill" label="Navigazione con pill"></it-checkbox>
+    </p>
   </div>
 </div>
 
 <div class="card w-50 mt-2">
   <div class="card-body">
     <h4 class="card-title">Risultato tabs</h4>
-    <it-tab-group [dark]="isDarkTheme">
+    <it-tab-group [dark]="isDarkTheme" [pill]="isPill">
       <it-tab *ngFor="let tab of tabs" [label]="tab.label">
         {{tab.content}}
       </it-tab>
       <it-tab label="custom" [disabled]="isDisabled">
         <div it-badge="ciao"></div>
+      </it-tab>
+    </it-tab-group>
+  </div>
+</div>
+
+
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Configurazione tabs</h4>
+    <div>
+      <span> indice del tab selezionato: </span>
+      <input type="number" [formControl]="selected">
+    </div>
+
+    <div>
+      <it-button color="primary" (click)="addTab(selectAfterAdding.checked)">
+        Aggiungi un nuovo tab
+      </it-button>
+      <it-checkbox #selectAfterAdding label="Seleziona il tab dopo averlo aggiunto"></it-checkbox>
+    </div>
+  </div>
+</div>
+
+<div class="card w-50 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Risultato tabs</h4>
+    <it-tab-group [selectedIndex]="selected.value"
+                  (selectedIndexChange)="selected.setValue($event)">
+      <it-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+        contenuto del {{tab}} tab
+
+        <it-button mat-raised-button
+                color="primary"
+                [disabled]="tabs.length === 1"
+                (click)="removeTab(index)">
+          Cancella tab
+        </it-button>
       </it-tab>
     </it-tab-group>
   </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'it-tabs-example',
@@ -10,6 +11,8 @@ export class TabsExampleComponent {
   isDarkTheme = false;
 
   isDisabled = false;
+
+  isPill = false;
 
   tabs = [
     {
@@ -25,5 +28,23 @@ export class TabsExampleComponent {
       content: 'content3'
     }
   ];
+
+
+  // Altro esempio
+
+  secondtabs = ['First', 'Second', 'Third'];
+  selected = new FormControl(0);
+
+  addTab(selectAfterAdding: boolean) {
+    this.secondtabs.push('New');
+
+    if (selectAfterAdding) {
+      this.selected.setValue(this.tabs.length - 1);
+    }
+  }
+
+  removeTab(index: number) {
+    this.tabs.splice(index, 1);
+  }
 
 }

@@ -58,6 +58,15 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
   /** Subscription ai cambiamenti alle label dei tab. */
   private _tabLabelSubscription = Subscription.EMPTY;
 
+  /** Se le tab sono formattate come pill. */
+  @Input()
+  get pill() { return this._isPill; }
+  set pill(value: any) {
+    this._isPill = Util.coerceBooleanProperty(value);
+  }
+  private _isPill = false;
+
+
   /** l'indice della tab attiva. */
   @Input()
   get selectedIndex(): number | null { return this._selectedIndex; }

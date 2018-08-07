@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs" [ngClass]="{'nav-dark': dark}" role="tablist">
+<ul class="nav" [ngClass]="{'nav-dark': dark, 'nav-tabs': !pill, 'nav-pills mb-3': pill}" role="tablist">
 
   <li class="nav-item" *ngFor="let tab of _tabs; let i = index">
     <a
@@ -8,7 +8,10 @@
       [attr.aria-selected]="selectedIndex == i"
       [ngClass]="{ 'nav-link': true, 'active': selectedIndex == i, 'disabled': tab.disabled }"
       [id]="_getTabLabelId(i)"
-      data-toggle="tab">{{tab.label}}</a>
+      data-toggle="tab">
+      <i *ngIf="tab.icon" class="it-ico-lg d-block text-center" [ngClass]="tab.icon"></i>
+      {{tab.label}}
+    </a>
   </li>
 </ul>
 <div class="tab-content">

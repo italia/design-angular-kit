@@ -37,6 +37,11 @@ export class TabComponent implements OnChanges, OnDestroy {
   }
   private _disabled = false;
 
+  /**
+   * La stringa rappresentante l'icona da utilizzare nel titolo della tab. Es. `it-file`
+   */
+  @Input() icon: string | null = null;
+
   /** Emette un evento ogni volta che la label cambia. */
   readonly _labelChange = new Subject<void>();
 
