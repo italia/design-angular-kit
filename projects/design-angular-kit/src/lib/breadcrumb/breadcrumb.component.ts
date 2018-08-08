@@ -6,6 +6,7 @@ import { BreadcrumbItemComponent } from './breadcrumb-item.component';
 import { Util } from '../util/util';
 import { Subscription } from 'rxjs';
 
+const DEFAULT_SEPARATOR = '/';
 let identifier = 0;
 
 /**
@@ -34,8 +35,8 @@ export class BreadcrumbComponent implements AfterContentInit, OnChanges, OnDestr
    */
   @Input()
   get separator(): string { return this._separator; }
-  set separator(value: string) { this._separator = value; }
-  private _separator = '/';
+  set separator(value: string) { this._separator = value ? value : DEFAULT_SEPARATOR; }
+  private _separator = DEFAULT_SEPARATOR;
 
   @ContentChildren(forwardRef(() => BreadcrumbItemComponent), { descendants: true })
   private _items: QueryList<BreadcrumbItemComponent>;
