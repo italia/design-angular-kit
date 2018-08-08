@@ -5,8 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { PopoverDirective } from './popover/popover.directive';
 import { PopoverComponent } from './popover/popover.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import { TooltipDirective } from './tooltip/tooltip.directive';
+import { TooltipComponent } from './tooltip/tooltip.component';
+import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
 
 @NgModule({
@@ -15,10 +19,29 @@ import { BadgeDirective } from './badge/badge.directive';
     FormsModule
   ],
   declarations: [
-    CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent,
-    BadgeDirective, PopoverDirective, PopoverComponent
+    CheckboxComponent,
+    ToggleComponent,
+    RadioGroupDirective,
+    RadioButtonComponent,
+    BadgeDirective,
+    ProgressBarComponent,
+    ButtonComponent,
+    TooltipDirective,
+    TooltipComponent,
+    PopoverDirective,
+    PopoverComponent
   ],
-  exports: [CheckboxComponent, ToggleComponent, RadioGroupDirective, RadioButtonComponent, BadgeDirective, PopoverDirective],
-  entryComponents: [PopoverComponent]
+  exports: [
+    CheckboxComponent,
+    ToggleComponent,
+    RadioGroupDirective,
+    RadioButtonComponent,
+    BadgeDirective,
+    ProgressBarComponent,
+    ButtonComponent,
+    TooltipDirective,
+    PopoverDirective
+  ],
+  entryComponents: [TooltipComponent, PopoverComponent]
 })
 export class DesignAngularKitModule { }
