@@ -1,7 +1,6 @@
 import {
-  Component, OnInit, Input, ContentChildren, QueryList, forwardRef,
-  AfterViewInit, AfterContentInit, SimpleChanges,
-  ChangeDetectionStrategy, OnChanges
+  Component, Input, ContentChildren, QueryList, forwardRef,
+  AfterContentInit, OnChanges, OnDestroy, SimpleChanges, ChangeDetectionStrategy
 } from '@angular/core';
 import { BreadcrumbItemComponent } from './breadcrumb-item.component';
 import { Util } from '../util/util';
@@ -18,7 +17,7 @@ let identifier = 0;
   styleUrls: ['./breadcrumb.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BreadcrumbComponent implements AfterContentInit, OnChanges {
+export class BreadcrumbComponent implements AfterContentInit, OnChanges, OnDestroy {
   id = `it-breadcrumb-${identifier++}`;
 
   /**
@@ -45,12 +44,10 @@ export class BreadcrumbComponent implements AfterContentInit, OnChanges {
     return 'breadcrumb' + (this._dark ? ' dark' : '');
   }
 
+  private _subscription = Subscription.EMPTY;
+
   ngAfterContentInit() {
     this._reloadBreadcrumbs(this._items);
-
-    this._items.changes.subscribe(items => {
-      this._reloadBreadcrumbs(items);
-    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -61,10 +58,29 @@ export class BreadcrumbComponent implements AfterContentInit, OnChanges {
     }
   }
 
+  ngOnDestroy() {
+    if (this._subscription) {
+      this._subscription.unsubscribe();
+    }
+  }
+
   private _reloadBreadcrumbs(currentItems: QueryList<BreadcrumbItemComponent>) {
     currentItems.forEach(item => {
       item.separator = this.separator;
       item.isLast = (item === currentItems.last);
+    });
+
+    this._subscribeToChanges();
+  }
+
+
+  private _subscribeToChanges() {
+    if (this._subscription) {
+      this._subscription.unsubscribe();
+    }
+
+    this._subscription = this._items.changes.subscribe(items => {
+      this._reloadBreadcrumbs(items);
     });
   }
 
