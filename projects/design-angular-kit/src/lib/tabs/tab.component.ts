@@ -5,7 +5,6 @@ import {
   Input,
   ChangeDetectionStrategy,
   ViewEncapsulation,
-  ViewContainerRef,
   SimpleChanges,
   TemplateRef,
   ViewChild
@@ -13,6 +12,10 @@ import {
 import { Subject } from 'rxjs';
 import { Util } from '../util/util';
 
+/**
+ * Un componente tab con design bootstrap italia. Indica la singola tab di un insieme di tab.
+ * Utilizzabile con il tag `<it-tab>` all'interno di un tag `<it-tab-group>`.
+ */
 @Component({
   selector: 'it-tab',
   exportAs: 'itTab',
@@ -26,7 +29,7 @@ export class TabComponent implements OnChanges, OnDestroy {
   /** Testo della tab. */
   @Input() label = '';
 
-  /** aria label del tab. */
+  /** Aria label del tab. */
   @Input('aria-label') ariaLabel: string; // tslint:disable-line
 
   /** Se la tab è disabilitata. */
@@ -66,10 +69,6 @@ export class TabComponent implements OnChanges, OnDestroy {
   isActive = false;
 
   @ViewChild(TemplateRef) _implicitContent: TemplateRef<any>;
-
-  constructor(
-    private _viewContainerRef: ViewContainerRef
-  ) {}
 
   ngOnDestroy(): void {
     this._disableChange.complete();

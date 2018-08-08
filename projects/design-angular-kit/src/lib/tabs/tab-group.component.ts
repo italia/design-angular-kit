@@ -17,7 +17,7 @@ import { Subscription, merge } from 'rxjs';
 import { Util } from '../util/util';
 import { TabComponent } from './tab.component';
 
-/** Usper generare ID univoci per ogni componente tab */
+/** Usato per generare ID univoci per ogni componente tab */
 let nextId = 0;
 
 /** Un change event emesso ai cambi di selezione. */
@@ -28,14 +28,9 @@ export class TabChangeEvent {
   tab: TabComponent;
 }
 
-/**
- * Material design tab-group component.  Supports basic tab pairs (label + content) and includes
- * animated ink-bar, keyboard navigation, and screen reader.
- * See: https://material.io/design/components/tabs.html
- */
-
  /**
- * Un componente tab-group con design bootstrap italia. Supporta tab di base con una label e un contenuto.
+ * Un componente tab-group con design bootstrap italia. Utilizzabile con il tag `<it-tab-group>`
+ * Supporta al suo interno tab di base ``<it-tab> con una label e un contenuto.
  */
 @Component({
   selector: 'it-tab-group',
@@ -105,12 +100,20 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
    * a new selected tab should transition in (from the left or right).
    */
   ngAfterContentChecked(): void {
+    this.changeTab(this._indexToSelect);
+  }
+
+  changeTab(newIndex: number): void {
+
     // Non fissare `indexToSelect` immediatamente nel setter perchè può accadere che
     // il numero di tab cambi prima che avvenga la change detection.
-    const indexToSelect = this._indexToSelect = this._clampTabIndex(this._indexToSelect);
+    const indexToSelect = this._indexToSelect = this._clampTabIndex(newIndex);
 
-    // Se c'è un cambiamento nell'indice selezionato, emetti un change event. Non dovrebbe scattare
-    // se l'indice selezionato non è stato inizializzato.
+    // Se il nuovo tab è disabilitato, non fare niente
+    if (this._tabs.toArray()[indexToSelect].disabled) {
+      return;
+    }
+
     if (this._selectedIndex !== indexToSelect && this._selectedIndex != null) {
       const tabChangeEvent = this._createChangeEvent(indexToSelect);
       this.selectedTabChange.emit(tabChangeEvent);
@@ -212,14 +215,6 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
   _getTabContentId(i: number): string {
     return `it-tab-content-${this._groupId}-${i}`;
   }
-
-  // TODO: capire se serve
-  /** Handle click events, setting new selected index if appropriate. */
-  // _handleClick(tab: MatTab, tabHeader: MatTabHeader, idx: number) {
-  //   if (!tab.disabled) {
-  //     this.selectedIndex = tabHeader.focusIndex = idx;
-  //   }
-  // }
 
   /** restituisce il tabIndex del tab. */
   _getTabIndex(tab: TabComponent, idx: number): number | null {

@@ -10,6 +10,7 @@ import { TabsRoutingModule } from './tabs-routing.module';
 import { TabsExampleComponent } from './tabs-example/tabs-example.component';
 import { TabsExamplesComponent } from './tabs-examples/tabs-examples.component';
 import { TabsIndexComponent } from './tabs-index/tabs-index.component';
+import { TabsDynamicExampleComponent } from './tabs-dynamic-example/tabs-dynamic-example.component';
 
 
 @NgModule({
@@ -21,6 +22,6 @@ import { TabsIndexComponent } from './tabs-index/tabs-index.component';
     SharedModule,
     TabsRoutingModule
   ],
-  declarations: [TabsExampleComponent, TabsExamplesComponent, TabsIndexComponent]
+  declarations: [TabsExampleComponent, TabsExamplesComponent, TabsIndexComponent, TabsDynamicExampleComponent]
 })
 export class TabsModule { }

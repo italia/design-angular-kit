@@ -1,0 +1,7 @@
+.nav-link {
+  cursor: pointer;
+  &.disabled:hover:not([href]) {
+    color: #b1b1b3;
+    text-decoration: none;
+  }
+}
