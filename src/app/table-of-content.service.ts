@@ -33,12 +33,24 @@ export class TableOfContentService {
             link: '/componenti/checkbox',
           },
           {
+            label: 'Progress Bar',
+            link: '/componenti/progress-bar',
+          },
+          {
             label: 'Toggle',
             link: '/componenti/toggle',
           },
           {
             label: 'Radio button',
             link: '/componenti/radio',
+          },
+          {
+            label: 'Tooltip',
+            link: '/componenti/tooltip',
+          },
+          {
+            label: 'Button',
+            link: '/componenti/button',
           },
           {
             label: 'Badge',

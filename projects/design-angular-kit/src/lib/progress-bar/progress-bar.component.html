@@ -1,0 +1,6 @@
+<div class="progress" [ngStyle]="{'height': height + 'px'}">
+  <div role="progressbar" [id]="progressbarId" [ngClass]="pgClass()" [ngStyle]="pgStyle()"
+    [attr.aria-valuenow]="value" [attr.aria-valuemin]="min" [attr.aria-valuemax]="max" >
+    {{label}}
+  </div>
+</div>
