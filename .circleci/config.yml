@@ -131,6 +131,6 @@ workflows:
             - test
             - e2e
             - lint
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
