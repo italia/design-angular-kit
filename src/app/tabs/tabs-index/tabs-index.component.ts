@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import * as Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-tabs-index',
   templateUrl: './tabs-index.component.html',
   styleUrls: ['./tabs-index.component.scss']
 })
-export class TabsIndexComponent implements OnInit {
+export class TabsIndexComponent {
 
-  constructor() { }
+  tabGroupComponent: any;
+  tabComponent: any;
 
-  ngOnInit() {
+  constructor() {
+    this.tabGroupComponent = (<any>Documentation).components.find(component => component.name === 'TabGroupComponent');
+    this.tabComponent = (<any>Documentation).components.find(component => component.name === 'TabComponent');
   }
 
 }

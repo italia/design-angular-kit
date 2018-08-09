@@ -16,15 +16,18 @@ export class TabsExampleComponent {
   tabs = [
     {
       label: 'tab1',
-      content: 'content1'
+      content: 'content1',
+      icon: 'it-file'
     },
     {
       label: 'tab2',
-      content: 'content2'
+      content: 'content2',
+      icon: 'it-calendar'
     },
     {
       label: 'tab3',
-      content: 'content3'
+      content: 'content3',
+      icon: 'it-comment'
     }
   ];
 }

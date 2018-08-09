@@ -1,11 +1,10 @@
 <div class="card w-50 mt-2">
     <div class="card-body">
       <h4 class="card-title">Configurazione tabs</h4>
-      <div>
+      <div class="form-group">
         <span> indice del tab selezionato: </span>
         <input type="number" [formControl]="selected">
       </div>
-
       <div>
         <it-button color="primary" (click)="addTab(selectAfterAdding)">
           Aggiungi un nuovo tab

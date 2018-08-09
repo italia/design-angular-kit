@@ -17,11 +17,12 @@
   <div class="card-body">
     <h4 class="card-title">Risultato tabs</h4>
     <it-tab-group [dark]="isDarkTheme" [pill]="isPill">
-      <it-tab *ngFor="let tab of tabs" [label]="tab.label">
+      <it-tab *ngFor="let tab of tabs" [label]="tab.label" [icon]="tab.icon">
         {{tab.content}}
       </it-tab>
-      <it-tab label="custom" [disabled]="isDisabled">
-        <div it-badge="ciao"></div>
+      <it-tab label="custom" [disabled]="isDisabled" icon="it-settings">
+        <h4>Titolo</h4>
+        <p>Contenuto complesso <span it-badge="badge"></span></p>
       </it-tab>
     </it-tab-group>
   </div>

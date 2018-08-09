@@ -27,15 +27,15 @@ import { Util } from '../util/util';
 export class TabComponent implements OnChanges, OnDestroy {
 
   /** Testo della tab. */
-  @Input() label = '';
+  @Input() label: string;
 
   /** Aria label del tab. */
   @Input('aria-label') ariaLabel: string; // tslint:disable-line
 
   /** Se la tab è disabilitata. */
   @Input()
-  get disabled() { return this._disabled; }
-  set disabled(value: any) {
+  get disabled(): boolean { return this._disabled; }
+  set disabled(value) {
     this._disabled = Util.coerceBooleanProperty(value);
   }
   private _disabled = false;
@@ -52,7 +52,7 @@ export class TabComponent implements OnChanges, OnDestroy {
   readonly _disableChange = new Subject<void>();
 
   /**
-   * la posizione relativa della tab dove 0 rappresenta il centro, i negativi sono a sinistra
+   * La posizione relativa della tab dove 0 rappresenta il centro, i negativi sono a sinistra
    * e i positivi sono a destra.
    */
   position: number | null = null;

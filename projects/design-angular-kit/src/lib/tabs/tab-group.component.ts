@@ -29,7 +29,8 @@ export class TabChangeEvent {
 }
 
  /**
- * Un componente tab-group con design bootstrap italia. Utilizzabile con il tag `<it-tab-group>`
+ * Un componente tab-group con design bootstrap italia. Utilizzabile con il tag `<it-tab-group>`.
+ *
  * Supporta al suo interno tab di base ``<it-tab> con una label e un contenuto.
  */
 @Component({
@@ -55,14 +56,14 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
 
   /** Se le tab sono formattate come pill. */
   @Input()
-  get pill() { return this._isPill; }
-  set pill(value: any) {
+  get pill(): boolean { return this._isPill; }
+  set pill(value) {
     this._isPill = Util.coerceBooleanProperty(value);
   }
   private _isPill = false;
 
 
-  /** l'indice della tab attiva. */
+  /** L'indice della tab attiva. */
   @Input()
   get selectedIndex(): number | null { return this._selectedIndex; }
   set selectedIndex(value: number | null) {
@@ -89,15 +90,13 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
 
   private _groupId: number;
 
-  constructor(elementRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) {
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {
     this._groupId = nextId++;
   }
 
   /**
-   * After the content is checked, this component knows what tabs have been defined
-   * and what the selected index should be. This is where we can know exactly what position
-   * each tab should be in according to the new selected index, and additionally we know how
-   * a new selected tab should transition in (from the left or right).
+   * Dopo che il contenuto è controllato, il componente conosce i tab che sono stati definiti
+   * e qual è l'indice del tab selezionato.
    */
   ngAfterContentChecked(): void {
     this.changeTab(this._indexToSelect);
@@ -123,7 +122,6 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
     }
 
     // Setta la posizione per ogni tab e opzionalmente una origine sul prossimo tab selezionato.
-    // TODO: da controllare
     this._tabs.forEach((tab: TabComponent, index: number) => {
       tab.position = index - indexToSelect;
       tab.isActive = index === indexToSelect;
@@ -222,6 +220,11 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
       return null;
     }
     return this.selectedIndex === idx ? 0 : -1;
+  }
+
+  _handleClick($event: Event, index: number): void {
+    $event.preventDefault();
+    this.changeTab(index);
   }
 
 }
