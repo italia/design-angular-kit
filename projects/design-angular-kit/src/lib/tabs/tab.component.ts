@@ -27,10 +27,16 @@ import { Util } from '../util/util';
 export class TabComponent implements OnChanges, OnDestroy {
 
   /** Testo della tab. */
-  @Input() label: string;
+  @Input() label: string = ''; // tslint:disable-line
 
   /** Aria label del tab. */
   @Input('aria-label') ariaLabel: string; // tslint:disable-line
+
+  /**
+   * Riferimento all'elemento dal quale il tab è etichettato.
+   * Viene azzerto se `aria-label` è impostato.
+   */
+  @Input('aria-labelledby') ariaLabelledby: string; // tslint:disable-line
 
   /** Se la tab è disabilitata. */
   @Input()
@@ -58,12 +64,6 @@ export class TabComponent implements OnChanges, OnDestroy {
   position: number | null = null;
 
   /**
-   * La posizione relativa iniziale del tab se è stato creato e selezionato dopo che era stato
-   * già selezionato un tab. Fornisce un contesto della posizione in cui dovrebbe essere originato un tab.
-   */
-  origin: number | null = null;
-
-  /**
    * Se il tab è attivo.
    */
   isActive = false;
@@ -76,7 +76,9 @@ export class TabComponent implements OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('label')) {
+    if (changes.hasOwnProperty('label')
+        || changes.hasOwnProperty('ariaLabel')
+        || changes.hasOwnProperty('ariaLabelledby')) {
       this._labelChange.next();
     }
 

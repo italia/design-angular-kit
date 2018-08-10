@@ -10,6 +10,7 @@ export class TabsDynamicExampleComponent {
 
   tabs = ['Primo', 'Secondo', 'Terzo'];
   selected = new FormControl(0);
+  selectAfterAdding = false;
 
   addTab(selectAfterAdding: boolean) {
     this.tabs.push('Nuovo');

@@ -109,7 +109,7 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
     const indexToSelect = this._indexToSelect = this._clampTabIndex(newIndex);
 
     // Se il nuovo tab è disabilitato, non fare niente
-    if (this._tabs.toArray()[indexToSelect].disabled) {
+    if (this._tabs && this._tabs.length > 0 && this._tabs.toArray()[indexToSelect].disabled) {
       return;
     }
 
@@ -121,16 +121,10 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
       Promise.resolve().then(() => this.selectedIndexChange.emit(indexToSelect));
     }
 
-    // Setta la posizione per ogni tab e opzionalmente una origine sul prossimo tab selezionato.
+    // Setta la posizione per ogni tab.
     this._tabs.forEach((tab: TabComponent, index: number) => {
       tab.position = index - indexToSelect;
       tab.isActive = index === indexToSelect;
-
-      // Se c'è già un tab selezionato, setta una origin per il prossimo tab selezionato
-      // Se non ne ha già uno assegnato.
-      if (this._selectedIndex != null && tab.position === 0 && !tab.origin) {
-        tab.origin = indexToSelect - this._selectedIndex;
-      }
     });
 
     if (this._selectedIndex !== indexToSelect) {
