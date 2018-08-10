@@ -55,6 +55,10 @@ export class TableOfContentService {
           {
             label: 'Badge',
             link: '/componenti/badge',
+          },
+          {
+            label: 'Dropdown',
+            link: '/componenti/dropdown',
           }
         ]
       }
