@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ICON_POSITIONS } from 'projects/design-angular-kit/src/lib/models/IconPosition';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-dropdown-example',
   templateUrl: './dropdown-example.component.html',
   styleUrls: ['./dropdown-example.component.scss']
 })
-export class DropdownExampleComponent implements OnInit {
+export class DropdownExampleComponent {
   color = '';
   label = 'Click me';
   isDark = false;
@@ -35,11 +34,6 @@ export class DropdownExampleComponent implements OnInit {
   openTime = '';
   closeTime = '';
   toggleTime = '';
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   onOpenEvent() {
     this.openTime = (new Date()).toISOString();
