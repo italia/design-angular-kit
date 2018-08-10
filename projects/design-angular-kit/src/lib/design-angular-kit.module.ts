@@ -10,6 +10,10 @@ import { TooltipDirective } from './tooltip/tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { DropdownItemComponent } from './dropdown/dropdown-item.component';
+import { DropdownHeaderComponent } from './dropdown/dropdown-header.component';
+import { DropdownDividerComponent } from './dropdown/dropdown-divider.component';
 
 @NgModule({
   imports: [
@@ -25,7 +29,11 @@ import { BadgeDirective } from './badge/badge.directive';
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
-    TooltipComponent
+    TooltipComponent,
+    DropdownComponent,
+    DropdownItemComponent,
+    DropdownHeaderComponent,
+    DropdownDividerComponent
   ],
   exports: [
     CheckboxComponent,
@@ -35,7 +43,11 @@ import { BadgeDirective } from './badge/badge.directive';
     BadgeDirective,
     ProgressBarComponent,
     ButtonComponent,
-    TooltipDirective
+    TooltipDirective,
+    DropdownComponent,
+    DropdownItemComponent,
+    DropdownHeaderComponent,
+    DropdownDividerComponent
   ],
   entryComponents: [TooltipComponent]
 })

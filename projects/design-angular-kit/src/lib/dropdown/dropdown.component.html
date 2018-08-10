@@ -1,0 +1,15 @@
+<div class="dropdown" [class.show]="isOpen" [id]="id">
+  <button #dropdownButton [class]="dropdownButtonClass" 
+    type="button" id="dropdownMenuButton"
+    aria-haspopup="true" [attr.aria-expanded]="isOpen">
+    {{label}}
+  </button>
+  <div #dropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+    [class.dark]="dark" [class.full-width]="fullWidth" [class.show]="isOpen">
+    <div class="link-list-wrapper">
+      <ul class="link-list">
+        <ng-content></ng-content>
+      </ul>
+    </div>
+  </div>
+</div>

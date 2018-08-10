@@ -10,4 +10,8 @@ export * from './lib/tooltip/tooltip.directive';
 export * from './lib/tooltip/tooltip.config';
 export * from './lib/button/button.component';
 export * from './lib/badge/badge.directive';
+export * from './lib/dropdown/dropdown.component';
+export * from './lib/dropdown/dropdown-item.component';
+export * from './lib/dropdown/dropdown-header.component';
+export * from './lib/dropdown/dropdown-divider.component';
 export * from './lib/design-angular-kit.module';
