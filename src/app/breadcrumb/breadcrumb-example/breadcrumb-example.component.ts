@@ -13,7 +13,7 @@ export class BreadcrumbExampleComponent {
     this._icon = value;
     this.items.forEach(item => item.icon = this._icon);
   }
-  _icon = 'it-favorite';
+  private _icon = 'it-favorite';
 
 
   separator = '/';
