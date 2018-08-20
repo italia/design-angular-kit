@@ -7,10 +7,4 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopoverContainerExampleComponent {
 
-  currentContainer = '';
-
-  toggleContainer() {
-    this.currentContainer = (this.currentContainer === 'body') ? '' : 'body';
-  }
-
 }

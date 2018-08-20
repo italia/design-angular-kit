@@ -4,12 +4,8 @@
 
     <p class="card-text" class="example-section">
       <button type="button" class="btn btn-lg btn-danger" it-popover="Popover di esempio" title="Titolo del Popover"
-        [container]="currentContainer">
-        Container attuale: {{currentContainer}}
-      </button>
-
-      <button type="button" class="btn btn-lg btn-primary" (click)="toggleContainer()">
-        Cambia il container del popover
+        container="body">
+        Popover con container nel body
       </button>
     </p>
   </div>

@@ -4,13 +4,10 @@
 
     <p class="card-text" class="example-section">
       <a tabindex="0" class="btn btn-lg btn-danger" role="button" 
-        [triggers]="popoverTrigger" title="Dismissible popover"
+        triggers="focus" title="Dismissible popover"
         it-popover="Ed ecco alcuni contenuti sorprendenti. È molto coinvolgente. Non trovi?" id="popover-example-focus">
         Dismissible popover
       </a>
-      <button type="button" class="btn btn-lg btn-primary" (click)="toggleTrigger()" id="popover-focus-button">
-        Clicca per cambiare il trigger da {{popoverTrigger}} a {{previousTrigger}}
-      </button>
     </p>
   </div>
 </div>

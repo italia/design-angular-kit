@@ -6,11 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./popover-focus-example.component.scss']
 })
 export class PopoverFocusExampleComponent {
-  popoverTrigger = 'focus';
-  previousTrigger = 'click';
 
-  toggleTrigger() {
-    this.popoverTrigger = (this.popoverTrigger === 'click') ? 'focus' : 'click';
-    this.previousTrigger = (this.popoverTrigger === 'click') ? 'focus' : 'click';
-  }
 }

@@ -1,3 +1,11 @@
+{% set interactiveHtml %}
+  {% include "../popover-interactive-example/popover-interactive-example.component.html" %}
+{% endset %}
+
+{% set interactiveTs %}
+  {% include "../popover-interactive-example/popover-interactive-example.component.ts" %}
+{% endset %}
+
 {% set html %}
   {% include "../popover-example/popover-example.component.html" %}
 {% endset %}
@@ -38,14 +46,6 @@
   {% include "../popover-disabled-example/popover-disabled-example.component.ts" %}
 {% endset %}
 
-{% set eventsHtml %}
-  {% include "../popover-events-example/popover-events-example.component.html" %}
-{% endset %}
-
-{% set eventsTs %}
-  {% include "../popover-events-example/popover-events-example.component.ts" %}
-{% endset %}
-
 {% set configHtml %}
   {% include "../popover-config-example/popover-config-example.component.html" %}
 {% endset %}
@@ -53,6 +53,13 @@
 {% set configTs %}
   {% include "../popover-config-example/popover-config-example.component.ts" %}
 {% endset %}
+
+<it-popover-interactive-example></it-popover-interactive-example>
+
+<it-source-display 
+  html="{$ interactiveHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
+  typescript="{$ interactiveTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+</it-source-display>
 
 <it-popover-example></it-popover-example>
 
@@ -87,13 +94,6 @@
 <it-source-display 
   html="{$ disabledHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
   typescript="{$ disabledTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
-</it-source-display>
-
-<it-popover-events-example></it-popover-events-example>
-
-<it-source-display 
-  html="{$ eventsHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ eventsTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
 
 <it-popover-config-example></it-popover-config-example>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { PopoverRoutingModule } from './popover-routing.module';
 import { PopoverExampleComponent } from './popover-example/popover-example.component';
@@ -11,9 +12,9 @@ import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_a
 import { PopoverPlacementsExampleComponent } from './popover-placements-example/popover-placements-example.component';
 import { PopoverFocusExampleComponent } from './popover-focus-example/popover-focus-example.component';
 import { PopoverDisabledExampleComponent } from './popover-disabled-example/popover-disabled-example.component';
-import { PopoverEventsExampleComponent } from './popover-events-example/popover-events-example.component';
 import { PopoverContainerExampleComponent } from './popover-container-example/popover-container-example.component';
 import { PopoverConfigExampleComponent } from './popover-config-example/popover-config-example.component';
+import { PopoverInteractiveExampleComponent } from './popover-interactive-example/popover-interactive-example.component';
 
 @NgModule({
   imports: [
@@ -21,13 +22,13 @@ import { PopoverConfigExampleComponent } from './popover-config-example/popover-
     PopoverRoutingModule,
     DesignAngularKitModule,
     SharedModule,
-    PopoverRoutingModule
+    FormsModule
   ],
   declarations: [
     PopoverExamplesComponent, PopoverIndexComponent, PopoverExampleComponent,
     PopoverPlacementsExampleComponent, PopoverFocusExampleComponent,
-    PopoverDisabledExampleComponent, PopoverEventsExampleComponent,
-    PopoverContainerExampleComponent, PopoverConfigExampleComponent
+    PopoverDisabledExampleComponent, PopoverContainerExampleComponent,
+    PopoverConfigExampleComponent, PopoverInteractiveExampleComponent
   ]
 })
 export class PopoverModule { }
