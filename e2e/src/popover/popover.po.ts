@@ -26,7 +26,6 @@ export class PopoverPage {
   async go() {
     await browser.get(this.POPOVER_URL);
     await element(by.id(this.ID_EXAMPLE_TAB)).click();
-    await browser.driver.manage().window().maximize();
     return await browser.sleep(500);
   }
 
