@@ -73,7 +73,7 @@ describe('Breadcrumb', () => {
     });
   });
 
-  it('dovrebbe poter cambiare l\'icona per tutti i suoi elementi', async () => {
+  it('dovrebbe poter cambiare l\'icona o disattivarla per tutti i suoi elementi', async () => {
     const breadcrumbItemsIcons: ElementFinder[] = await page.getBreadcrumbItemsIcon();
 
     const FAVORITE_ICON = 'it-favorite';
@@ -83,16 +83,16 @@ describe('Breadcrumb', () => {
 
     page.clickFacebookIcon();
 
-    const FACEBOOK_ICON = 'it-facebook';
+    const LINK_ICON = 'it-link';
     breadcrumbItemsIcons.forEach(item => {
-      expect(item.getAttribute('class')).toBe(FACEBOOK_ICON);
+      expect(item.getAttribute('class')).toBe(LINK_ICON);
     });
 
     page.clickFlickrIcon();
 
-    const FLICKR_ICON = 'it-flickr';
+    const ICON_NONE = '';
     breadcrumbItemsIcons.forEach(item => {
-      expect(item.getAttribute('class')).toBe(FLICKR_ICON);
+      expect(item.getAttribute('class')).toBe(ICON_NONE);
     });
   });
 
