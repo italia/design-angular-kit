@@ -18,7 +18,8 @@
     <div class="card-body">
       <h4 class="card-title">Risultato tabs</h4>
       <it-tab-group [selectedIndex]="selected.value"
-                    (selectedIndexChange)="selected.setValue($event)">
+                    (selectedIndexChange)="selected.setValue($event)"
+                    class="dynamic-tab-group">
         <it-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
           contenuto del {{tab}} tab
 
