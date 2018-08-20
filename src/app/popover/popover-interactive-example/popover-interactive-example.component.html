@@ -3,14 +3,12 @@
     <h4 class="card-title">Esempio Popover</h4>
 
     <div class="card-text">
-      <span class="d-inline-block">
-        <button id="popover-interactive-button" class="btn btn-primary" [it-popover]="myDescription" [title]="myTitle"
-          [container]="container" [placement]="placement" [triggers]="trigger" [disabled]="disabled" [class.disabled]="disabled"
-          (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
-          #interactivePopover="it-popover">
-          Bottone con popover
-        </button>
-      </span>
+      <button id="popover-interactive-button" class="btn btn-primary" [it-popover]="myDescription" [title]="myTitle"
+        [container]="container" [placement]="placement" [triggers]="trigger" [disabled]="disabled" [class.disabled]="disabled"
+        (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
+        #interactivePopover="it-popover">
+        Bottone con popover
+      </button>
 
       <it-checkbox [(ngModel)]="disabled" label="Disabilita bottone e popover" id="disable-popover-checkbox"></it-checkbox>
       <it-checkbox [(ngModel)]="removeTitle" label="Rimuovi titolo" id="remove-title-checkbox"></it-checkbox>
