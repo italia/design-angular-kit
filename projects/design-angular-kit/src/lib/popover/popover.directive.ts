@@ -30,7 +30,7 @@ import { PopupService } from './popup';
 import { PopoverConfig } from './popover.config';
 import { PopoverComponent } from './popover.component';
 import { Subscription } from 'rxjs';
-import { INTERACTION_TRIGGERS, InteractionTrigger } from '../models/InteractionTrigger';
+import { POPOVER_TRIGGERS, PopoverTrigger } from '../models/InteractionTrigger';
 import { Util } from '../util/util';
 
 let identifier = 0;
@@ -78,10 +78,10 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
     return this._triggers;
   }
   set triggers(value: any) {
-    if (InteractionTrigger.is(value)) {
+    if (PopoverTrigger.is(value)) {
       this._triggers = value;
     } else {
-      this._triggers = INTERACTION_TRIGGERS.CLICK;
+      this._triggers = POPOVER_TRIGGERS.CLICK;
     }
   }
   private _triggers;
@@ -315,8 +315,27 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     // Chiude il popover se titolo e contenuti risultano vuoti, o se disablePopover è impostato a vero
-    if ((changes['itPopover'] || changes['title'] || changes['disablePopover']) && this._isDisabled()) {
-      this.hide();
+    if (changes['itPopover'] || changes['title'] || changes['disablePopover']) {
+      if (this._windowRef) {
+        const isShown = !this._windowRef.instance.hidden;
+        if (changes['itPopover']) {
+          this._windowRef.instance.setNewContent(this.itPopover);
+          this._windowRef.changeDetectorRef.detectChanges();
+          this._windowRef.changeDetectorRef.markForCheck();
+        }
+        if (changes['title']) {
+          this._windowRef.instance.title = this.title;
+        }
+
+
+        if (isShown) {
+          if (!this._isDisabled()) {
+            this.show();
+          } else {
+            this.hide();
+          }
+        }
+      }
     } else if (changes['placement']) {
       if (this._windowRef) {
         this._windowRef.instance.applyPlacement(
