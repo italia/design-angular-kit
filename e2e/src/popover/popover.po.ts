@@ -25,6 +25,7 @@ export class PopoverPage {
 
   async go() {
     await browser.get(this.POPOVER_URL);
+    await browser.executeScript(`document.querySelector('header').remove()`);
     await element(by.id(this.ID_EXAMPLE_TAB)).click();
     return await browser.sleep(500);
   }
