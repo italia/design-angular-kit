@@ -38,7 +38,7 @@ export class PopoverPage {
   }
 
   async clickOverStandardExample() {
-    await element(by.id(this.ID_POPOVER_INTERACTIVE_BUTTON)).click();
+    await browser.actions().mouseMove(element(by.id(this.ID_POPOVER_INTERACTIVE_BUTTON))).click().perform();
   }
 
   async clickOverTopPlacement() {
