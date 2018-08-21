@@ -1,4 +1,4 @@
-import { browser, by, element, ExpectedConditions, ElementFinder, protractor } from 'protractor';
+import { browser, by, element } from 'protractor';
 
 export class PopoverPage {
   private readonly POPOVER_URL = '/#/componenti/popover';
@@ -7,13 +7,6 @@ export class PopoverPage {
   private readonly ID_POPOVER_INTERACTIVE_BUTTON = 'popover-interactive-button';
   private readonly ID_POPOVER_DISPOSE_BUTTON = 'popover-disposing-button';
 
-  private readonly ID_CHECKBOX_DISABLED = this.getLabelForAttribute('checkbox-0');
-  private readonly ID_CHECKBOX_TITLE = this.getLabelForAttribute('checkbox-1');
-
-  private readonly ID_RADIO_ADHOC = this.getLabelForAttribute('radio-1');
-  private readonly ID_RADIO_BODY = this.getLabelForAttribute('radio-2');
-
-  private readonly ID_RADIO_CLICK = this.getLabelForAttribute('radio-4');
   private readonly ID_RADIO_FOCUS = this.getLabelForAttribute('radio-5');
 
   private readonly ID_RADIO_RIGHT = this.getLabelForAttribute('radio-7');
@@ -25,6 +18,7 @@ export class PopoverPage {
 
   async go() {
     await browser.get(this.POPOVER_URL);
+    await browser.executeScript(`document.querySelector('header').remove()`);
     await element(by.id(this.ID_EXAMPLE_TAB)).click();
     return await browser.sleep(500);
   }
@@ -38,7 +32,7 @@ export class PopoverPage {
   }
 
   async clickOverStandardExample() {
-    await element(by.cssContainingText('.btn-primary', 'Bottone con popover')).click();
+    await element(by.id(this.ID_POPOVER_INTERACTIVE_BUTTON)).click();
   }
 
   async clickOverTopPlacement() {
