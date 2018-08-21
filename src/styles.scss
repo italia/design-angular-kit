@@ -2,3 +2,26 @@
   min-height: 5rem;
   z-index: 1070;
 }
+
+.bd-logo-title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: unset;
+  margin-bottom: 0;
+}
+@media (min-width: 576px) {
+  .bd-logo-title {
+    font-size: 24px;
+  }
+}
+.bd-logo-subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: unset;
+}
+.bd-navbar .navbar-nav .nav-link {
+  padding-right: .5rem;
+  padding-left: .5rem;
+  color: #fff;
+}
