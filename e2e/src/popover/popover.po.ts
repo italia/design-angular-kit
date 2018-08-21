@@ -38,10 +38,7 @@ export class PopoverPage {
   }
 
   async clickOverStandardExample() {
-    const ec = protractor.ExpectedConditions;
-    const elm = element(by.id(this.ID_POPOVER_INTERACTIVE_BUTTON));
-    await browser.wait(ec.elementToBeClickable(elm), 5000);
-    await elm.click();
+    await element(by.cssContainingText('.btn-primary', 'Bottone con popover')).click();
   }
 
   async clickOverTopPlacement() {
