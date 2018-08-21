@@ -3,7 +3,7 @@
     <h4 class="card-title">Esempio Popover</h4>
 
     <div class="card-text">
-      <button id="popover-interactive-button" class="btn btn-primary" [it-popover]="myDescription" [title]="myTitle"
+      <button type="button" id="popover-interactive-button" class="btn btn-primary" [it-popover]="myDescription" [title]="myTitle"
         [container]="container" [placement]="placement" [triggers]="trigger" [disabled]="disabled" [class.disabled]="disabled"
         (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
         #interactivePopover="it-popover">
