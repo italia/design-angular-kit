@@ -6,8 +6,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'info', pathMatch: 'full' },
   { path: 'info', component: RouterDispatcherComponent, children: [
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-    { path: 'welcome', loadChildren: 'src/app/welcome/welcome.module#WelcomeModule' },
-    { path: 'getting-started', loadChildren: 'src/app/getting-started/getting-started.module#GettingStartedModule' }
+    { path: 'welcome', loadChildren: 'src/app/welcome/welcome.module#WelcomeModule' }
   ]},
   { path: 'componenti', component: RouterDispatcherComponent, children: [
     { path: '', redirectTo: 'checkbox', pathMatch: 'full' },
