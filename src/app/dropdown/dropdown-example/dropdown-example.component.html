@@ -79,26 +79,32 @@
     <div *ngFor="let item of items; let i = index">
       <h4>Item #{{i + 1}}</h4>
       <div class="row">
-        <div class="form-check col-4">
+        <div class="form-check col-3">
           <h5>Opzioni</h5>
           <it-checkbox [(ngModel)]="item.active" label="Attivo" id="active-checkbox"></it-checkbox>
           <it-checkbox [(ngModel)]="item.disabled" label="Disabilitato" id="disabled-checkbox"></it-checkbox>
           <it-checkbox [(ngModel)]="item.large" label="Grande" id="large-checkbox"></it-checkbox>
         </div>
-        <div class="form-check col-4">
+        <div class="form-check col-3">
+          <h5>Icona</h5>
+          <it-radio-group [(ngModel)]="item.icon">
+            <it-radio-button id="radio-none" name="none" [value]="undefined" label="Nessuna"></it-radio-button>
+            <it-radio-button id="radio-favorite" name="favorite" value="it-favorite" label="it-favorite"></it-radio-button>
+            <it-radio-button id="radio-link" name="link" value="it-link" label="it-link"></it-radio-button>
+          </it-radio-group>
+        </div>
+        <div class="form-check col-3">
           <h5>Posizione Icona</h5>
           <it-radio-group [(ngModel)]="item.iconPosition">
             <it-radio-button id="radio-left" name="left" value="left" label="Sinistra"></it-radio-button>
             <it-radio-button id="radio-right" name="right" value="right" label="Destra"></it-radio-button>
           </it-radio-group>
         </div>
-        <div class="form-check col-4">
-          <h5>Icona</h5>
-          <it-radio-group [(ngModel)]="item.icon">
-            <it-radio-button id="radio-favorite" name="favorite" value="it-favorite" label="Favorite"></it-radio-button>
-            <it-radio-button id="radio-facebook" name="facebook" value="it-facebook" label="Facebook"></it-radio-button>
-            <it-radio-button id="radio-twitter" name="twitter" value="it-twitter" label="Twitter"></it-radio-button>
-            <it-radio-button id="radio-flickr" name="flickr" value="it-flickr" label="Flickr"></it-radio-button>
+        <div class="form-check col-3">
+          <h5>Link</h5>
+          <it-radio-group [(ngModel)]="item.link">
+            <it-radio-button id="radio-google" name="google" value="https://www.google.com" label="Google"></it-radio-button>
+            <it-radio-button id="radio-yahoo" name="yahoo" value="https:/www.yahoo.com" label="Yahoo"></it-radio-button>
           </it-radio-group>
         </div>
       </div>
