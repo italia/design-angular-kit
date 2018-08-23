@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Util } from '../util/util';
 import { IconPosition, ICON_POSITIONS } from '../models/IconPosition';
 
@@ -15,16 +15,13 @@ let identifier = 0;
 export class DropdownItemComponent {
   id = `dropdown-item-${identifier++}`;
 
-  @ViewChild('dropdownItemLink')
-  private _dropdownItemLink: ElementRef;
-
   /**
    * Il link alla pagina verso cui andare al click sull'elemento del dropdown
    */
   @Input()
-  get link(): string { return this._link; }
+  get link(): string { return !this.disabled ? this._link : ''; }
   set link(value: string) { this._link = value; }
-  private _link = undefined;
+  private _link = '';
 
   /**
    * Se presente indica che l'elemento viene renderizzato come elemento attivo.
@@ -43,14 +40,6 @@ export class DropdownItemComponent {
   get disabled(): boolean { return this._disabled; }
   set disabled(value: boolean) {
     this._disabled = Util.coerceBooleanProperty(value);
-    const nativeEl = this._dropdownItemLink.nativeElement;
-    if (this._disabled) {
-      nativeEl.setAttribute('aria-disabled', 'disabled');
-      nativeEl.removeAttribute('href');
-    } else {
-      nativeEl.removeAttribute('aria-disabled');
-      nativeEl.setAttribute('href', this.link);
-    }
   }
   private _disabled = false;
 

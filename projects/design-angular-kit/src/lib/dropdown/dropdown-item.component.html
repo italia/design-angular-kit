@@ -1,11 +1,17 @@
 <li [id]="id">
-  <a #dropdownItemLink [class]="dropdownItemClass"
-    [class.large]="large" [class.active]="active"
-    [class.disabled]="disabled" [class.disabled-item-link]="disabled">
+  <a [attr.href]="link"
+    [attr.tabindex]="this.disabled ? -1 : 0"
+    [class]="dropdownItemClass"
+    [ngClass]="{
+      'large' : large, 
+      'active' : active,
+      'disabled' : disabled,
+      'disabled-item-link' : disabled
+    }">
+    <i [class]="iconClass" aria-hidden="true" *ngIf="icon && iconPosition === 'left'"></i>
     <span>
-      <i [class]="iconClass" aria-hidden="true" *ngIf="icon && iconPosition === 'left'"></i>
       <ng-content></ng-content>
-      <i [class]="iconClass" aria-hidden="true" *ngIf="icon && iconPosition === 'right'"></i>
     </span>
+    <i [class]="iconClass" aria-hidden="true" *ngIf="icon && iconPosition === 'right'"></i>
   </a>
 </li>
