@@ -10,6 +10,7 @@ import { TooltipDirective } from './tooltip/tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
+import { FormInputComponent } from './form-input/form-input.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { BadgeDirective } from './badge/badge.directive';
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
-    TooltipComponent
+    TooltipComponent,
+    FormInputComponent
   ],
   exports: [
     CheckboxComponent,
@@ -35,7 +37,8 @@ import { BadgeDirective } from './badge/badge.directive';
     BadgeDirective,
     ProgressBarComponent,
     ButtonComponent,
-    TooltipDirective
+    TooltipDirective,
+    FormInputComponent
   ],
   entryComponents: [TooltipComponent]
 })

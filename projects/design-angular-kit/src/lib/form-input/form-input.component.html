@@ -1,0 +1,28 @@
+<div class="form-group">
+  <i *ngIf="icon" [class]="icon" [ngClass]="{ 'ico-prefix': true }"></i>
+  <input (focus)="onFocus()" (blur)="onBlur($event.target)"
+    [type]="type" 
+    [id]="id"
+    [disabled]="disabled"
+    [readOnly]="readOnly"
+    [ngClass]="{
+      'form-control' : !readOnly,
+      'form-password' : (isPasswordMode && pwStrengthMeter && !readOnly),
+      'form-control-plaintext' : readOnly,
+      'autocomplete' : isAutocompletable
+    }"/>
+  <span class="btn-eye" 
+    *ngIf="isPasswordMode"
+    (click)="isPasswordVisible = !isPasswordVisible"
+    [ngClass]="{
+      'eye-on' : !isPasswordVisible,
+      'eye-off' : isPasswordVisible
+    }">
+  </span>
+  <label [attr.for]="id" [ngClass]="{ 'active' : isLabelActive }">
+    {{label}}
+  </label>
+  <small *ngIf="note" [id]="id" class="form-text text-muted">
+    {{note}}
+  </small>
+</div>
