@@ -16,7 +16,8 @@ const routes: Routes = [
     { path: 'radio', loadChildren: 'src/app/radio/radio.module#RadioModule' },
     { path: 'tooltip', loadChildren: 'src/app/tooltip/tooltip.module#TooltipModule' },
     { path: 'button', loadChildren: 'src/app/button/button.module#ButtonModule' },
-    { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' }
+    { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' },
+    { path: 'form-input', loadChildren: 'src/app/form-input/form-input.module#FormInputModule' }
   ]}
 ];
 

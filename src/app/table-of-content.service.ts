@@ -51,6 +51,10 @@ export class TableOfContentService {
           {
             label: 'Badge',
             link: '/componenti/badge',
+          },
+          {
+            label: 'Form Input',
+            link: '/componenti/form-input',
           }
         ]
       }
