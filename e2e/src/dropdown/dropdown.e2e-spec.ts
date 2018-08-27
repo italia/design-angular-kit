@@ -11,8 +11,6 @@ describe('Dropdown', () => {
   });
 
   it('dovrebbe passare da sfondo chiaro a scuro', async () => {
-    await page.clickDropdownButton();
-
     let isDropdownDark = await page.isDropdownDark();
     expect(isDropdownDark).toBeFalsy();
 
@@ -24,8 +22,6 @@ describe('Dropdown', () => {
   });
 
   it('dovrebbe passare da disposizione standard/verticale a fullwidth/orizzontale', async () => {
-    await page.clickDropdownButton();
-
     let isDropdownFullWidth = await page.isDropdownFullWidth();
     expect(isDropdownFullWidth).toBeFalsy();
 
