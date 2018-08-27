@@ -15,7 +15,6 @@ describe('Dropdown', () => {
     expect(isDropdownDark).toBeFalsy();
 
     await page.clickDarkBackgroundRadio();
-    await page.clickDropdownButton();
 
     isDropdownDark = await page.isDropdownDark();
     expect(isDropdownDark).toBeTruthy();
@@ -26,7 +25,6 @@ describe('Dropdown', () => {
     expect(isDropdownFullWidth).toBeFalsy();
 
     await page.clickFullWidthRadio();
-    await page.clickDropdownButton();
 
     isDropdownFullWidth = await page.isDropdownFullWidth();
     expect(isDropdownFullWidth).toBeTruthy();
