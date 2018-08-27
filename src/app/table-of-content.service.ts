@@ -17,10 +17,6 @@ export class TableOfContentService {
           {
             label: 'Benvenuti',
             link: '/info/welcome',
-          },
-          {
-            label: 'Getting started',
-            link: '/info/getting-started'
           }
         ]
       },
