@@ -34,7 +34,7 @@ export class TabComponent implements OnChanges, OnDestroy {
 
   /**
    * Riferimento all'elemento dal quale il tab è etichettato.
-   * Viene azzerto se `aria-label` è impostato.
+   * Viene resettato se `aria-label` è impostato.
    */
   @Input('aria-labelledby') ariaLabelledby: string; // tslint:disable-line
 

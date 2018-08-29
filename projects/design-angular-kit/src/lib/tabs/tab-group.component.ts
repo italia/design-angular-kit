@@ -8,7 +8,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  ElementRef,
   ChangeDetectorRef,
   AfterContentChecked,
   OnDestroy
@@ -31,7 +30,7 @@ export class TabChangeEvent {
  /**
  * Un componente tab-group con design bootstrap italia. Utilizzabile con il tag `<it-tab-group>`.
  *
- * Supporta al suo interno tab di base ``<it-tab> con una label e un contenuto.
+ * Supporta al suo interno tab di base `<it-tab>` con una label e un contenuto.
  */
 @Component({
   selector: 'it-tab-group',
