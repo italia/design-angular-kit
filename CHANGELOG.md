@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/italia/design-angular-kit/compare/v0.4.0...v0.5.0) (2018-08-30)
+
+
+### Features
+
+* **Tabs:** implementa la componente dei Tab ([cb4a810](https://github.com/italia/design-angular-kit/commit/cb4a810)), closes [#47](https://github.com/italia/design-angular-kit/issues/47)
+
 # [0.4.0](https://github.com/italia/design-angular-kit/compare/v0.3.0...v0.4.0) (2018-08-06)
 
 
