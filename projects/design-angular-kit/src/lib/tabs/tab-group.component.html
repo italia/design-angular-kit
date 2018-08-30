@@ -1,0 +1,29 @@
+<ul class="nav" [ngClass]="{'nav-dark': dark, 'nav-tabs': !pill, 'nav-pills mb-3': pill}" role="tablist">
+
+  <li class="nav-item" *ngFor="let tab of _tabs; let i = index">
+    <a
+      href="#"
+      role="tab"
+      [attr.aria-controls]="_getTabContentId(i)"
+      [attr.aria-selected]="selectedIndex == i"
+      [attr.aria-label]="tab.ariaLabel || null"
+      [attr.aria-labelledby]="(!tab.ariaLabel && tab.ariaLabelledby) ? tab.ariaLabelledby : null"
+      [ngClass]="{ 'nav-link': true, 'active': selectedIndex == i, 'disabled': tab.disabled }"
+      [id]="_getTabLabelId(i)"
+      (click)="_handleClick($event, i)">
+      <i *ngIf="tab.icon" class="it-ico-lg d-block text-center" [ngClass]="tab.icon"></i>
+      {{tab.label}}
+    </a>
+  </li>
+</ul>
+<div class="tab-content">
+  <ng-container *ngFor="let tab of _tabs; let i = index">
+    <div
+      [ngClass]="{ 'tab-pane p-3': true, 'show active': selectedIndex == i }"
+      [id]="_getTabContentId(i)"
+      role="tabpanel"
+      [attr.aria-labelledby]="_getTabLabelId(i)">
+      <ng-container *ngTemplateOutlet="tab._implicitContent"></ng-container>
+    </div>
+  </ng-container>
+</div>

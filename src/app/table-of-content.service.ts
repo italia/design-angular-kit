@@ -17,10 +17,6 @@ export class TableOfContentService {
           {
             label: 'Benvenuti',
             link: '/info/welcome',
-          },
-          {
-            label: 'Getting started',
-            link: '/info/getting-started'
           }
         ]
       },
@@ -59,6 +55,10 @@ export class TableOfContentService {
           {
             label: 'Breadcrumb',
             link: '/componenti/breadcrumb',
+          },
+          {
+            label: 'Tabs',
+            link: '/componenti/tabs',
           }
         ]
       }

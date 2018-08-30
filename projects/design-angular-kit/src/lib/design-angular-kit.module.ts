@@ -12,6 +12,8 @@ import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component';
+import { TabGroupComponent } from './tabs/tab-group.component';
+import { TabComponent } from './tabs/tab.component';
 
 @NgModule({
   imports: [
@@ -24,6 +26,8 @@ import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component'
     RadioGroupDirective,
     RadioButtonComponent,
     BadgeDirective,
+    TabGroupComponent,
+    TabComponent,
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
@@ -37,6 +41,8 @@ import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component'
     RadioGroupDirective,
     RadioButtonComponent,
     BadgeDirective,
+    TabGroupComponent,
+    TabComponent,
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
