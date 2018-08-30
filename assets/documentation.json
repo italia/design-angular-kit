@@ -860,7 +860,7 @@
                     "pos": 7,
                     "end": 17,
                     "flags": 0,
-                    "kind": 284,
+                    "kind": 288,
                     "atToken": {
                         "pos": 7,
                         "end": 8,
@@ -1053,7 +1053,7 @@
                     "pos": 7,
                     "end": 17,
                     "flags": 0,
-                    "kind": 284,
+                    "kind": 288,
                     "atToken": {
                         "pos": 7,
                         "end": 8,
@@ -1307,7 +1307,8 @@
             "selector": "it-radio-group",
             "providers": [
                 {
-                    "name": "{\n    : , : (() => ), : true\n}"
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => RadioGroupDirective), multi: true\n}",
+                    "type": "directive"
                 }
             ],
             "inputsClass": [
@@ -2642,7 +2643,8 @@
             "outputs": [],
             "providers": [
                 {
-                    "name": "{ : , : (() => ), : true }"
+                    "name": "{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CheckboxComponent), multi: true }",
+                    "type": "component"
                 }
             ],
             "selector": "it-checkbox",
@@ -3639,7 +3641,8 @@
             "outputs": [],
             "providers": [
                 {
-                    "name": "{ : , : (() => ), : true }"
+                    "name": "{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ToggleComponent), multi: true }",
+                    "type": "component"
                 }
             ],
             "selector": "it-toggle",
