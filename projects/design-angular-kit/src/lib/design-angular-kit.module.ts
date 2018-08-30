@@ -10,6 +10,8 @@ import { TooltipDirective } from './tooltip/tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
+import { TabGroupComponent } from './tabs/tab-group.component';
+import { TabComponent } from './tabs/tab.component';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import { BadgeDirective } from './badge/badge.directive';
     RadioGroupDirective,
     RadioButtonComponent,
     BadgeDirective,
+    TabGroupComponent,
+    TabComponent,
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
@@ -33,6 +37,8 @@ import { BadgeDirective } from './badge/badge.directive';
     RadioGroupDirective,
     RadioButtonComponent,
     BadgeDirective,
+    TabGroupComponent,
+    TabComponent,
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective
