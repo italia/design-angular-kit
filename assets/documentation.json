@@ -948,6 +948,36 @@
             "hostListeners": []
         },
         {
+            "name": "TabChangeEvent",
+            "id": "class-TabChangeEvent-d31b47ec794f20784ea8a5d89c7fb2d1",
+            "file": "projects/design-angular-kit/src/lib/tabs/tab-group.component.ts",
+            "type": "class",
+            "sourceCode": "import {\n  Component,\n  AfterContentInit,\n  ContentChildren,\n  QueryList,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n  Input,\n  Output,\n  EventEmitter,\n  ChangeDetectorRef,\n  AfterContentChecked,\n  OnDestroy\n} from '@angular/core';\nimport { Subscription, merge } from 'rxjs';\nimport { Util } from '../util/util';\nimport { TabComponent } from './tab.component';\n\n/** Usato per generare ID univoci per ogni componente tab */\nlet nextId = 0;\n\n/** Un change event emesso ai cambi di selezione. */\nexport class TabChangeEvent {\n  /** Indice del tab selezionato. */\n  index: number;\n  /** Riferimento al tab selezionato. */\n  tab: TabComponent;\n}\n\n /**\n * Un componente tab-group con design bootstrap italia. Utilizzabile con il tag `<it-tab-group>`.\n *\n * Supporta al suo interno tab di base `<it-tab>` con una label e un contenuto.\n */\n@Component({\n  selector: 'it-tab-group',\n  exportAs: 'itTabGroup',\n  templateUrl: './tab-group.component.html',\n  styleUrls: ['./tab-group.component.scss'],\n  encapsulation: ViewEncapsulation.None,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class TabGroupComponent implements AfterContentInit, AfterContentChecked, OnDestroy {\n\n  @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;\n\n  /** L'indice del tab che dovrebbe essere selezionato dopo che il contenuto e' stato controllato */\n  private _indexToSelect: number | null = 0;\n\n  /** Subscription all'aggiunta e rimozione di tab. */\n  private _tabsSubscription = Subscription.EMPTY;\n\n  /** Subscription ai cambiamenti alle label dei tab. */\n  private _tabLabelSubscription = Subscription.EMPTY;\n\n  /** Se le tab sono formattate come pill. */\n  @Input()\n  get pill(): boolean { return this._isPill; }\n  set pill(value) {\n    this._isPill = Util.coerceBooleanProperty(value);\n  }\n  private _isPill = false;\n\n\n  /** L'indice della tab attiva. */\n  @Input()\n  get selectedIndex(): number | null { return this._selectedIndex; }\n  set selectedIndex(value: number | null) {\n    this._indexToSelect = Util.coerceNumberProperty(value, null);\n  }\n  private _selectedIndex: number | null = null;\n\n  /**\n   * Se il tab-group ha un tema scuro\n   */\n  @Input()\n  get dark(): boolean { return this._dark; }\n  set dark(value) {\n    this._dark = Util.coerceBooleanProperty(value);\n  }\n  private _dark = false;\n\n  /** abilita il supporto al data-binding bidirezionale `[(selectedIndex)]` */\n  @Output() readonly selectedIndexChange: EventEmitter<number> = new EventEmitter<number>();\n\n  /** emesso quando la selezione del tab cambia. */\n  @Output() readonly selectedTabChange: EventEmitter<TabChangeEvent> =\n      new EventEmitter<TabChangeEvent>(true);\n\n  private _groupId: number;\n\n  constructor(private _changeDetectorRef: ChangeDetectorRef) {\n    this._groupId = nextId++;\n  }\n\n  /**\n   * Dopo che il contenuto è controllato, il componente conosce i tab che sono stati definiti\n   * e qual è l'indice del tab selezionato.\n   */\n  ngAfterContentChecked(): void {\n    this.changeTab(this._indexToSelect);\n  }\n\n  changeTab(newIndex: number): void {\n\n    // Non fissare `indexToSelect` immediatamente nel setter perchè può accadere che\n    // il numero di tab cambi prima che avvenga la change detection.\n    const indexToSelect = this._indexToSelect = this._clampTabIndex(newIndex);\n\n    // Se il nuovo tab è disabilitato, non fare niente\n    if (this._tabs && this._tabs.length > 0 && this._tabs.toArray()[indexToSelect].disabled) {\n      return;\n    }\n\n    if (this._selectedIndex !== indexToSelect && this._selectedIndex != null) {\n      const tabChangeEvent = this._createChangeEvent(indexToSelect);\n      this.selectedTabChange.emit(tabChangeEvent);\n      // Emetto questo valore dopo che è partita la change detection\n      // dal momento che il contenuto controllato potrebbe contenere questa variabile\n      Promise.resolve().then(() => this.selectedIndexChange.emit(indexToSelect));\n    }\n\n    // Setta la posizione per ogni tab.\n    this._tabs.forEach((tab: TabComponent, index: number) => {\n      tab.position = index - indexToSelect;\n      tab.isActive = index === indexToSelect;\n    });\n\n    if (this._selectedIndex !== indexToSelect) {\n      this._selectedIndex = indexToSelect;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n\n  ngAfterContentInit(): void {\n    this._subscribeToTabLabels();\n\n    // Sottoscrivi al cambiamento nel numero di tab, così da\n    // poter ri-renderizzare il contenuto quando nuove tab vengono aggiunte o rimosse.\n    this._tabsSubscription = this._tabs.changes.subscribe(() => {\n      const indexToSelect = this._clampTabIndex(this._indexToSelect);\n\n      // Mantieni il tab selezionato precedentemente se un nuovo tab è aggiunto o rimosso e non ci sono\n      // cambiamenti espliciti che selezionino un tab differente.\n      if (indexToSelect === this._selectedIndex) {\n        const tabs = this._tabs.toArray();\n\n        for (let i = 0; i < tabs.length; i++) {\n          if (tabs[i].isActive) {\n            // Assegna `_indexToSelect` e `_selectedIndex` in modo da non emettere un change event\n            // per evitare al consumer loop infiniti in alcuni casi limite come ad esempio\n            // se si aggiunge un tab all'interno dell'evento `selectedIndexChange`.\n            this._indexToSelect = this._selectedIndex = i;\n            break;\n          }\n        }\n      }\n\n      this._subscribeToTabLabels();\n      this._changeDetectorRef.markForCheck();\n    });\n  }\n\n  ngOnDestroy(): void {\n    this._tabsSubscription.unsubscribe();\n    this._tabLabelSubscription.unsubscribe();\n  }\n\n  private _createChangeEvent(index: number): TabChangeEvent {\n    const event = new TabChangeEvent;\n    event.index = index;\n    if (this._tabs && this._tabs.length) {\n      event.tab = this._tabs.toArray()[index];\n    }\n    return event;\n  }\n\n  /**\n   * Sottoscrivi a cambiamenti nelle label dei tab. Necessario perchè l'input per la label è sul TabComponent\n   * mentre il data binding è all'interno di TabGroupComponent. Per fare in modo che il binding sia aggiornato\n   * bisogna sottoscriversi ai cambiamenti e azionare la change detection in maniera manuale.\n   */\n  private _subscribeToTabLabels() {\n    if (this._tabLabelSubscription) {\n      this._tabLabelSubscription.unsubscribe();\n    }\n\n    this._tabLabelSubscription = merge(\n        ...this._tabs.map(tab => tab._disableChange),\n        ...this._tabs.map(tab => tab._labelChange)).subscribe(() => {\n      this._changeDetectorRef.markForCheck();\n    });\n  }\n\n  /** fissa l'indice tra 0 e la dimensione dei tab. */\n  private _clampTabIndex(index: number | null): number {\n    return Math.min(this._tabs.length - 1, Math.max(index || 0, 0));\n  }\n\n  /** ritorna un id univoco per ogni label di tab */\n  _getTabLabelId(i: number): string {\n    return `it-tab-label-${this._groupId}-${i}`;\n  }\n\n  /** ritorna un id univoco per ogni elemento di contenuto del tab */\n  _getTabContentId(i: number): string {\n    return `it-tab-content-${this._groupId}-${i}`;\n  }\n\n  /** restituisce il tabIndex del tab. */\n  _getTabIndex(tab: TabComponent, idx: number): number | null {\n    if (tab.disabled) {\n      return null;\n    }\n    return this.selectedIndex === idx ? 0 : -1;\n  }\n\n  _handleClick($event: Event, index: number): void {\n    $event.preventDefault();\n    this.changeTab(index);\n  }\n\n}\n",
+            "properties": [
+                {
+                    "name": "index",
+                    "type": "number",
+                    "optional": false,
+                    "description": "<p>Indice del tab selezionato. </p>\n",
+                    "line": 25
+                },
+                {
+                    "name": "tab",
+                    "type": "TabComponent",
+                    "optional": false,
+                    "description": "<p>Riferimento al tab selezionato. </p>\n",
+                    "line": 27
+                }
+            ],
+            "description": "<p>Un change event emesso ai cambi di selezione. </p>\n",
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
             "name": "ToggleChange",
             "id": "class-ToggleChange-96bbfccd611f40d2afe13f6321b42ce3",
             "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
@@ -1076,12 +1106,37 @@
         },
         {
             "name": "Util",
-            "id": "class-Util-3bc296cb8174f177e5e978ba0d32c847",
+            "id": "class-Util-d3154055912b3cc057a36097887c5ec6",
             "file": "projects/design-angular-kit/src/lib/util/util.ts",
             "type": "class",
-            "sourceCode": "export class Util {\n  static coerceBooleanProperty(value: any): boolean {\n    return value != null && `${value}` !== 'false';\n  }\n}\n",
+            "sourceCode": "export class Util {\n  static coerceBooleanProperty(value: any): boolean {\n    return value != null && `${value}` !== 'false';\n  }\n\n  static coerceNumberProperty(value: any, fallbackValue = 0): number {\n    return Util._isNumberValue(value) ? Number(value) : fallbackValue;\n  }\n\n  static _isNumberValue(value: any): boolean {\n    return !isNaN(parseFloat(value as any)) && !isNaN(Number(value));\n\n  }\n}\n",
             "properties": [],
             "methods": [
+                {
+                    "name": "_isNumberValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 10,
+                    "modifierKind": [
+                        115
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "coerceBooleanProperty",
                     "args": [
@@ -1101,6 +1156,44 @@
                         {
                             "name": "value",
                             "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "coerceNumberProperty",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        },
+                        {
+                            "name": "fallbackValue",
+                            "type": "number",
+                            "defaultValue": "0"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 6,
+                    "modifierKind": [
+                        115
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "fallbackValue",
+                            "type": "number",
+                            "defaultValue": "0",
                             "tagName": {
                                 "text": "param"
                             }
@@ -3631,6 +3724,674 @@
             "templateData": "<div class=\"form-check\">\n  <input type=\"radio\"\n    [id]=\"id\"\n    [checked]=\"checked\"\n    [disabled]=\"disabled\"\n    [attr.name]=\"name\"\n    (change)=\"_onInputChange($event)\">\n  <label\n    [attr.for]=\"id\">{{label}}</label>\n</div>\n"
         },
         {
+            "name": "TabComponent",
+            "id": "component-TabComponent-8806f7530f06112669b5d54879564957",
+            "file": "projects/design-angular-kit/src/lib/tabs/tab.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "exportAs": "itTab",
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-tab",
+            "styleUrls": [
+                "tab.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tab.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "aria-label",
+                    "description": "<p>Aria label del tab. </p>\n",
+                    "line": 33,
+                    "type": "string"
+                },
+                {
+                    "name": "aria-labelledby",
+                    "description": "<p>Riferimento all&#39;elemento dal quale il tab è etichettato.\nViene resettato se <code>aria-label</code> è impostato.</p>\n",
+                    "line": 39,
+                    "type": "string"
+                },
+                {
+                    "name": "disabled",
+                    "description": "<p>Se la tab è disabilitata. </p>\n",
+                    "line": 43,
+                    "type": "boolean"
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "null",
+                    "description": "<p>La stringa rappresentante l&#39;icona da utilizzare nel titolo della tab. Es. <code>it-file</code></p>\n",
+                    "line": 52,
+                    "type": "string | null"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "description": "<p>Testo della tab. </p>\n",
+                    "line": 30,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_disableChange",
+                    "defaultValue": "new Subject<void>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "<p>Emette un evento ogni volta che l&#39;attributo disabled cambia </p>\n",
+                    "line": 58,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "_disabled",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_implicitContent",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
+                    "decorators": [
+                        {
+                            "name": "ViewChild"
+                        }
+                    ]
+                },
+                {
+                    "name": "_labelChange",
+                    "defaultValue": "new Subject<void>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "<p>Emette un evento ogni volta che la label cambia. </p>\n",
+                    "line": 55,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "isActive",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "<p>Se il tab è attivo.</p>\n",
+                    "line": 69
+                },
+                {
+                    "name": "position",
+                    "defaultValue": "null",
+                    "type": "number | null",
+                    "optional": false,
+                    "description": "<p>La posizione relativa della tab dove 0 rappresenta il centro, i negativi sono a sinistra\ne i positivi sono a destra.</p>\n",
+                    "line": 64
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 73
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Un componente tab con design bootstrap italia. Indica la singola tab di un insieme di tab.\nUtilizzabile con il tag <code>&lt;it-tab&gt;</code> all&#39;interno di un tag <code>&lt;it-tab-group&gt;</code>.</p>\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  OnDestroy,\n  OnChanges,\n  Input,\n  ChangeDetectionStrategy,\n  ViewEncapsulation,\n  SimpleChanges,\n  TemplateRef,\n  ViewChild\n} from '@angular/core';\nimport { Subject } from 'rxjs';\nimport { Util } from '../util/util';\n\n/**\n * Un componente tab con design bootstrap italia. Indica la singola tab di un insieme di tab.\n * Utilizzabile con il tag `<it-tab>` all'interno di un tag `<it-tab-group>`.\n */\n@Component({\n  selector: 'it-tab',\n  exportAs: 'itTab',\n  templateUrl: './tab.component.html',\n  styleUrls: ['./tab.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n})\nexport class TabComponent implements OnChanges, OnDestroy {\n\n  /** Testo della tab. */\n  @Input() label: string = ''; // tslint:disable-line\n\n  /** Aria label del tab. */\n  @Input('aria-label') ariaLabel: string; // tslint:disable-line\n\n  /**\n   * Riferimento all'elemento dal quale il tab è etichettato.\n   * Viene resettato se `aria-label` è impostato.\n   */\n  @Input('aria-labelledby') ariaLabelledby: string; // tslint:disable-line\n\n  /** Se la tab è disabilitata. */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value) {\n    this._disabled = Util.coerceBooleanProperty(value);\n  }\n  private _disabled = false;\n\n  /**\n   * La stringa rappresentante l'icona da utilizzare nel titolo della tab. Es. `it-file`\n   */\n  @Input() icon: string | null = null;\n\n  /** Emette un evento ogni volta che la label cambia. */\n  readonly _labelChange = new Subject<void>();\n\n  /** Emette un evento ogni volta che l'attributo disabled cambia */\n  readonly _disableChange = new Subject<void>();\n\n  /**\n   * La posizione relativa della tab dove 0 rappresenta il centro, i negativi sono a sinistra\n   * e i positivi sono a destra.\n   */\n  position: number | null = null;\n\n  /**\n   * Se il tab è attivo.\n   */\n  isActive = false;\n\n  @ViewChild(TemplateRef) _implicitContent: TemplateRef<any>;\n\n  ngOnDestroy(): void {\n    this._disableChange.complete();\n    this._labelChange.complete();\n  }\n\n  ngOnChanges(changes: SimpleChanges): void {\n    if (changes.hasOwnProperty('label')\n        || changes.hasOwnProperty('ariaLabel')\n        || changes.hasOwnProperty('ariaLabelledby')) {\n      this._labelChange.next();\n    }\n\n    if (changes.hasOwnProperty('disabled')) {\n      this._disableChange.next();\n    }\n  }\n\n}\n",
+            "implements": [
+                "OnChanges",
+                "OnDestroy"
+            ],
+            "accessors": {
+                "disabled": {
+                    "name": "disabled",
+                    "setSignature": {
+                        "name": "disabled",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 44,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<ng-template><ng-content></ng-content></ng-template>\n"
+        },
+        {
+            "name": "TabGroupComponent",
+            "id": "component-TabGroupComponent-d31b47ec794f20784ea8a5d89c7fb2d1",
+            "file": "projects/design-angular-kit/src/lib/tabs/tab-group.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "exportAs": "itTabGroup",
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-tab-group",
+            "styleUrls": [
+                "tab-group.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tab-group.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "dark",
+                    "description": "<p>Se il tab-group ha un tema scuro</p>\n",
+                    "line": 77,
+                    "type": "boolean"
+                },
+                {
+                    "name": "pill",
+                    "description": "<p>Se le tab sono formattate come pill. </p>\n",
+                    "line": 58,
+                    "type": "boolean"
+                },
+                {
+                    "name": "selectedIndex",
+                    "description": "<p>L&#39;indice della tab attiva. </p>\n",
+                    "line": 67,
+                    "type": "number | null"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selectedIndexChange",
+                    "defaultValue": "new EventEmitter<number>()",
+                    "description": "<p>abilita il supporto al data-binding bidirezionale <code>[(selectedIndex)]</code> </p>\n",
+                    "line": 84,
+                    "type": "EventEmitter<number>"
+                },
+                {
+                    "name": "selectedTabChange",
+                    "defaultValue": "new EventEmitter<TabChangeEvent>(true)",
+                    "description": "<p>emesso quando la selezione del tab cambia. </p>\n",
+                    "line": 87,
+                    "type": "EventEmitter<TabChangeEvent>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_dark",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 81,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_groupId",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 90,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_indexToSelect",
+                    "defaultValue": "0",
+                    "type": "number | null",
+                    "optional": false,
+                    "description": "<p>L&#39;indice del tab che dovrebbe essere selezionato dopo che il contenuto e&#39; stato controllato </p>\n",
+                    "line": 48,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_isPill",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 62,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_selectedIndex",
+                    "defaultValue": "null",
+                    "type": "number | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_tabLabelSubscription",
+                    "defaultValue": "Subscription.EMPTY",
+                    "type": "",
+                    "optional": false,
+                    "description": "<p>Subscription ai cambiamenti alle label dei tab. </p>\n",
+                    "line": 54,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_tabs",
+                    "type": "QueryList<TabComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 45,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren"
+                        }
+                    ]
+                },
+                {
+                    "name": "_tabsSubscription",
+                    "defaultValue": "Subscription.EMPTY",
+                    "type": "",
+                    "optional": false,
+                    "description": "<p>Subscription all&#39;aggiunta e rimozione di tab. </p>\n",
+                    "line": 51,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_clampTabIndex",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number | null"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 196,
+                    "description": "<p>fissa l&#39;indice tra 0 e la dimensione dei tab. </p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number | null",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_createChangeEvent",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "TabChangeEvent",
+                    "typeParameters": [],
+                    "line": 169,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_getTabContentId",
+                    "args": [
+                        {
+                            "name": "i",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 206,
+                    "description": "<p>ritorna un id univoco per ogni elemento di contenuto del tab </p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "i",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_getTabIndex",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "TabComponent"
+                        },
+                        {
+                            "name": "idx",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number | null",
+                    "typeParameters": [],
+                    "line": 211,
+                    "description": "<p>restituisce il tabIndex del tab. </p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "TabComponent",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "idx",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_getTabLabelId",
+                    "args": [
+                        {
+                            "name": "i",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 201,
+                    "description": "<p>ritorna un id univoco per ogni label di tab </p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "i",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_handleClick",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "Event"
+                        },
+                        {
+                            "name": "index",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 218,
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "Event",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_subscribeToTabLabels",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 183,
+                    "description": "<p>Sottoscrivi a cambiamenti nelle label dei tab. Necessario perchè l&#39;input per la label è sul TabComponent\nmentre il data binding è all&#39;interno di TabGroupComponent. Per fare in modo che il binding sia aggiornato\nbisogna sottoscriversi ai cambiamenti e azionare la change detection in maniera manuale.</p>\n",
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "changeTab",
+                    "args": [
+                        {
+                            "name": "newIndex",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 104,
+                    "jsdoctags": [
+                        {
+                            "name": "newIndex",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterContentChecked",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 100,
+                    "description": "<p>Dopo che il contenuto è controllato, il componente conosce i tab che sono stati definiti\ne qual è l&#39;indice del tab selezionato.</p>\n"
+                },
+                {
+                    "name": "ngAfterContentInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 135
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 164
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Un componente tab-group con design bootstrap italia. Utilizzabile con il tag <code>&lt;it-tab-group&gt;</code>.</p>\n<p>Supporta al suo interno tab di base <code>&lt;it-tab&gt;</code> con una label e un contenuto.</p>\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  AfterContentInit,\n  ContentChildren,\n  QueryList,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n  Input,\n  Output,\n  EventEmitter,\n  ChangeDetectorRef,\n  AfterContentChecked,\n  OnDestroy\n} from '@angular/core';\nimport { Subscription, merge } from 'rxjs';\nimport { Util } from '../util/util';\nimport { TabComponent } from './tab.component';\n\n/** Usato per generare ID univoci per ogni componente tab */\nlet nextId = 0;\n\n/** Un change event emesso ai cambi di selezione. */\nexport class TabChangeEvent {\n  /** Indice del tab selezionato. */\n  index: number;\n  /** Riferimento al tab selezionato. */\n  tab: TabComponent;\n}\n\n /**\n * Un componente tab-group con design bootstrap italia. Utilizzabile con il tag `<it-tab-group>`.\n *\n * Supporta al suo interno tab di base `<it-tab>` con una label e un contenuto.\n */\n@Component({\n  selector: 'it-tab-group',\n  exportAs: 'itTabGroup',\n  templateUrl: './tab-group.component.html',\n  styleUrls: ['./tab-group.component.scss'],\n  encapsulation: ViewEncapsulation.None,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class TabGroupComponent implements AfterContentInit, AfterContentChecked, OnDestroy {\n\n  @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;\n\n  /** L'indice del tab che dovrebbe essere selezionato dopo che il contenuto e' stato controllato */\n  private _indexToSelect: number | null = 0;\n\n  /** Subscription all'aggiunta e rimozione di tab. */\n  private _tabsSubscription = Subscription.EMPTY;\n\n  /** Subscription ai cambiamenti alle label dei tab. */\n  private _tabLabelSubscription = Subscription.EMPTY;\n\n  /** Se le tab sono formattate come pill. */\n  @Input()\n  get pill(): boolean { return this._isPill; }\n  set pill(value) {\n    this._isPill = Util.coerceBooleanProperty(value);\n  }\n  private _isPill = false;\n\n\n  /** L'indice della tab attiva. */\n  @Input()\n  get selectedIndex(): number | null { return this._selectedIndex; }\n  set selectedIndex(value: number | null) {\n    this._indexToSelect = Util.coerceNumberProperty(value, null);\n  }\n  private _selectedIndex: number | null = null;\n\n  /**\n   * Se il tab-group ha un tema scuro\n   */\n  @Input()\n  get dark(): boolean { return this._dark; }\n  set dark(value) {\n    this._dark = Util.coerceBooleanProperty(value);\n  }\n  private _dark = false;\n\n  /** abilita il supporto al data-binding bidirezionale `[(selectedIndex)]` */\n  @Output() readonly selectedIndexChange: EventEmitter<number> = new EventEmitter<number>();\n\n  /** emesso quando la selezione del tab cambia. */\n  @Output() readonly selectedTabChange: EventEmitter<TabChangeEvent> =\n      new EventEmitter<TabChangeEvent>(true);\n\n  private _groupId: number;\n\n  constructor(private _changeDetectorRef: ChangeDetectorRef) {\n    this._groupId = nextId++;\n  }\n\n  /**\n   * Dopo che il contenuto è controllato, il componente conosce i tab che sono stati definiti\n   * e qual è l'indice del tab selezionato.\n   */\n  ngAfterContentChecked(): void {\n    this.changeTab(this._indexToSelect);\n  }\n\n  changeTab(newIndex: number): void {\n\n    // Non fissare `indexToSelect` immediatamente nel setter perchè può accadere che\n    // il numero di tab cambi prima che avvenga la change detection.\n    const indexToSelect = this._indexToSelect = this._clampTabIndex(newIndex);\n\n    // Se il nuovo tab è disabilitato, non fare niente\n    if (this._tabs && this._tabs.length > 0 && this._tabs.toArray()[indexToSelect].disabled) {\n      return;\n    }\n\n    if (this._selectedIndex !== indexToSelect && this._selectedIndex != null) {\n      const tabChangeEvent = this._createChangeEvent(indexToSelect);\n      this.selectedTabChange.emit(tabChangeEvent);\n      // Emetto questo valore dopo che è partita la change detection\n      // dal momento che il contenuto controllato potrebbe contenere questa variabile\n      Promise.resolve().then(() => this.selectedIndexChange.emit(indexToSelect));\n    }\n\n    // Setta la posizione per ogni tab.\n    this._tabs.forEach((tab: TabComponent, index: number) => {\n      tab.position = index - indexToSelect;\n      tab.isActive = index === indexToSelect;\n    });\n\n    if (this._selectedIndex !== indexToSelect) {\n      this._selectedIndex = indexToSelect;\n      this._changeDetectorRef.markForCheck();\n    }\n  }\n\n  ngAfterContentInit(): void {\n    this._subscribeToTabLabels();\n\n    // Sottoscrivi al cambiamento nel numero di tab, così da\n    // poter ri-renderizzare il contenuto quando nuove tab vengono aggiunte o rimosse.\n    this._tabsSubscription = this._tabs.changes.subscribe(() => {\n      const indexToSelect = this._clampTabIndex(this._indexToSelect);\n\n      // Mantieni il tab selezionato precedentemente se un nuovo tab è aggiunto o rimosso e non ci sono\n      // cambiamenti espliciti che selezionino un tab differente.\n      if (indexToSelect === this._selectedIndex) {\n        const tabs = this._tabs.toArray();\n\n        for (let i = 0; i < tabs.length; i++) {\n          if (tabs[i].isActive) {\n            // Assegna `_indexToSelect` e `_selectedIndex` in modo da non emettere un change event\n            // per evitare al consumer loop infiniti in alcuni casi limite come ad esempio\n            // se si aggiunge un tab all'interno dell'evento `selectedIndexChange`.\n            this._indexToSelect = this._selectedIndex = i;\n            break;\n          }\n        }\n      }\n\n      this._subscribeToTabLabels();\n      this._changeDetectorRef.markForCheck();\n    });\n  }\n\n  ngOnDestroy(): void {\n    this._tabsSubscription.unsubscribe();\n    this._tabLabelSubscription.unsubscribe();\n  }\n\n  private _createChangeEvent(index: number): TabChangeEvent {\n    const event = new TabChangeEvent;\n    event.index = index;\n    if (this._tabs && this._tabs.length) {\n      event.tab = this._tabs.toArray()[index];\n    }\n    return event;\n  }\n\n  /**\n   * Sottoscrivi a cambiamenti nelle label dei tab. Necessario perchè l'input per la label è sul TabComponent\n   * mentre il data binding è all'interno di TabGroupComponent. Per fare in modo che il binding sia aggiornato\n   * bisogna sottoscriversi ai cambiamenti e azionare la change detection in maniera manuale.\n   */\n  private _subscribeToTabLabels() {\n    if (this._tabLabelSubscription) {\n      this._tabLabelSubscription.unsubscribe();\n    }\n\n    this._tabLabelSubscription = merge(\n        ...this._tabs.map(tab => tab._disableChange),\n        ...this._tabs.map(tab => tab._labelChange)).subscribe(() => {\n      this._changeDetectorRef.markForCheck();\n    });\n  }\n\n  /** fissa l'indice tra 0 e la dimensione dei tab. */\n  private _clampTabIndex(index: number | null): number {\n    return Math.min(this._tabs.length - 1, Math.max(index || 0, 0));\n  }\n\n  /** ritorna un id univoco per ogni label di tab */\n  _getTabLabelId(i: number): string {\n    return `it-tab-label-${this._groupId}-${i}`;\n  }\n\n  /** ritorna un id univoco per ogni elemento di contenuto del tab */\n  _getTabContentId(i: number): string {\n    return `it-tab-content-${this._groupId}-${i}`;\n  }\n\n  /** restituisce il tabIndex del tab. */\n  _getTabIndex(tab: TabComponent, idx: number): number | null {\n    if (tab.disabled) {\n      return null;\n    }\n    return this.selectedIndex === idx ? 0 : -1;\n  }\n\n  _handleClick($event: Event, index: number): void {\n    $event.preventDefault();\n    this.changeTab(index);\n  }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef"
+                    }
+                ],
+                "line": 90,
+                "jsdoctags": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "AfterContentInit",
+                "AfterContentChecked",
+                "OnDestroy"
+            ],
+            "accessors": {
+                "pill": {
+                    "name": "pill",
+                    "setSignature": {
+                        "name": "pill",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 59,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "selectedIndex": {
+                    "name": "selectedIndex",
+                    "setSignature": {
+                        "name": "selectedIndex",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 68,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "dark": {
+                    "name": "dark",
+                    "setSignature": {
+                        "name": "dark",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 78,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<ul class=\"nav\" [ngClass]=\"{'nav-dark': dark, 'nav-tabs': !pill, 'nav-pills mb-3': pill}\" role=\"tablist\">\n\n  <li class=\"nav-item\" *ngFor=\"let tab of _tabs; let i = index\">\n    <a\n      href=\"#\"\n      role=\"tab\"\n      [attr.aria-controls]=\"_getTabContentId(i)\"\n      [attr.aria-selected]=\"selectedIndex == i\"\n      [attr.aria-label]=\"tab.ariaLabel || null\"\n      [attr.aria-labelledby]=\"(!tab.ariaLabel && tab.ariaLabelledby) ? tab.ariaLabelledby : null\"\n      [ngClass]=\"{ 'nav-link': true, 'active': selectedIndex == i, 'disabled': tab.disabled }\"\n      [id]=\"_getTabLabelId(i)\"\n      (click)=\"_handleClick($event, i)\">\n      <i *ngIf=\"tab.icon\" class=\"it-ico-lg d-block text-center\" [ngClass]=\"tab.icon\"></i>\n      {{tab.label}}\n    </a>\n  </li>\n</ul>\n<div class=\"tab-content\">\n  <ng-container *ngFor=\"let tab of _tabs; let i = index\">\n    <div\n      [ngClass]=\"{ 'tab-pane p-3': true, 'show active': selectedIndex == i }\"\n      [id]=\"_getTabContentId(i)\"\n      role=\"tabpanel\"\n      [attr.aria-labelledby]=\"_getTabLabelId(i)\">\n      <ng-container *ngTemplateOutlet=\"tab._implicitContent\"></ng-container>\n    </div>\n  </ng-container>\n</div>\n"
+        },
+        {
             "name": "ToggleComponent",
             "id": "component-ToggleComponent-96bbfccd611f40d2afe13f6321b42ce3",
             "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
@@ -4084,6 +4845,12 @@
                             "name": "RadioGroupDirective"
                         },
                         {
+                            "name": "TabComponent"
+                        },
+                        {
+                            "name": "TabGroupComponent"
+                        },
+                        {
                             "name": "ToggleComponent"
                         },
                         {
@@ -4118,6 +4885,12 @@
                         },
                         {
                             "name": "RadioGroupDirective"
+                        },
+                        {
+                            "name": "TabComponent"
+                        },
+                        {
+                            "name": "TabGroupComponent"
                         },
                         {
                             "name": "ToggleComponent"
@@ -4283,6 +5056,15 @@
                 "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
                 "type": "string",
                 "defaultValue": "'light'"
+            },
+            {
+                "name": "nextId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/tabs/tab-group.component.ts",
+                "type": "number",
+                "defaultValue": "0",
+                "description": "<p>Usato per generare ID univoci per ogni componente tab </p>\n"
             },
             {
                 "name": "noopFn",
@@ -4855,6 +5637,17 @@
                     "defaultValue": "0"
                 }
             ],
+            "projects/design-angular-kit/src/lib/tabs/tab-group.component.ts": [
+                {
+                    "name": "nextId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/tabs/tab-group.component.ts",
+                    "type": "number",
+                    "defaultValue": "0",
+                    "description": "<p>Usato per generare ID univoci per ogni componente tab </p>\n"
+                }
+            ],
             "projects/design-angular-kit/src/lib/tooltip/positioning.ts": [
                 {
                     "name": "positionService",
@@ -5120,7 +5913,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 8,
+        "count": 13,
         "status": "low",
         "files": [
             {
@@ -5454,6 +6247,43 @@
                 "status": "good"
             },
             {
+                "filePath": "projects/design-angular-kit/src/lib/tabs/tab-group.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabGroupComponent",
+                "coveragePercent": 57,
+                "coverageCount": "15/26",
+                "status": "good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/tabs/tab-group.component.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TabChangeEvent",
+                "coveragePercent": 100,
+                "coverageCount": "3/3",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/tabs/tab-group.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextId",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/tabs/tab.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabComponent",
+                "coveragePercent": 71,
+                "coverageCount": "10/14",
+                "status": "good"
+            },
+            {
                 "filePath": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -5636,7 +6466,7 @@
                 "linktype": "classe",
                 "name": "Util",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/4",
                 "status": "low"
             }
         ]
