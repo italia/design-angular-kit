@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/italia/design-angular-kit/compare/v0.5.0...v0.6.0) (2018-08-31)
+
+
+### Features
+
+* **Breadcrumb:** implementa componente Breadcrumb ([829d5bc](https://github.com/italia/design-angular-kit/commit/829d5bc)), closes [#46](https://github.com/italia/design-angular-kit/issues/46)
+
 # [0.5.0](https://github.com/italia/design-angular-kit/compare/v0.4.0...v0.5.0) (2018-08-30)
 
 
