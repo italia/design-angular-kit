@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/italia/design-angular-kit/compare/v0.7.0...v0.8.0) (2018-08-31)
+
+
+### Features
+
+* **Popover:** implementa la direttiva popover ([717801e](https://github.com/italia/design-angular-kit/commit/717801e)), closes [#23](https://github.com/italia/design-angular-kit/issues/23)
+
 # [0.7.0](https://github.com/italia/design-angular-kit/compare/v0.6.0...v0.7.0) (2018-08-31)
 
 
