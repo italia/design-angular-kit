@@ -3,6 +3,48 @@
     "interfaces": [],
     "injectables": [
         {
+            "name": "PopoverConfig",
+            "id": "injectable-PopoverConfig-0aceb14611b3603beec381e9bbc3629d",
+            "file": "projects/design-angular-kit/src/lib/popover/popover.config.ts",
+            "properties": [
+                {
+                    "name": "container",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "disablePopover",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "placement",
+                    "defaultValue": "'right'",
+                    "type": "PlacementArray",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "triggers",
+                    "defaultValue": "INTERACTION_TRIGGERS.CLICK",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                }
+            ],
+            "methods": [],
+            "description": "<p>Servizio di configurazione per la direttiva ItPopover.\nIl servizio può essere iniettato, tipicamente in un root component, per impostare i valori delle proprietà in\nmodo tale da fornire i valori di default per tutti i popover utilizzati in un&#39;applicazione.</p>\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { PlacementArray } from './positioning';\nimport { INTERACTION_TRIGGERS } from '../models/InteractionTrigger';\n\n/**\n * Servizio di configurazione per la direttiva ItPopover.\n * Il servizio può essere iniettato, tipicamente in un root component, per impostare i valori delle proprietà in\n * modo tale da fornire i valori di default per tutti i popover utilizzati in un'applicazione.\n */\n@Injectable({providedIn: 'root'})\nexport class PopoverConfig {\n  placement: PlacementArray = 'right';\n  triggers = INTERACTION_TRIGGERS.CLICK;\n  container: string;\n  disablePopover = false;\n}\n",
+            "type": "injectable"
+        },
+        {
             "name": "TooltipConfig",
             "id": "injectable-TooltipConfig-8c9a4576ac9f6bbe99cd756e1397d629",
             "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.config.ts",
@@ -185,7 +227,7 @@
         {
             "name": "ContentRef",
             "id": "class-ContentRef-523bfb791c84a31c65717949ff12889f",
-            "file": "projects/design-angular-kit/src/lib/tooltip/popup.ts",
+            "file": "projects/design-angular-kit/src/lib/popover/popup.ts",
             "type": "class",
             "sourceCode": "import {\n    Injector,\n    TemplateRef,\n    ViewRef,\n    ViewContainerRef,\n    Renderer2,\n    ComponentRef,\n    ComponentFactoryResolver\n} from '@angular/core';\n\nexport class ContentRef {\n    constructor(public nodes: any[], public viewRef?: ViewRef, public componentRef?: ComponentRef<any>) { }\n}\n\nexport class PopupService<T> {\n    private _windowRef: ComponentRef<T>;\n    private _contentRef: ContentRef;\n\n    constructor(\n        private _type: any, private _injector: Injector, private _viewContainerRef: ViewContainerRef,\n        private _renderer: Renderer2, private _componentFactoryResolver: ComponentFactoryResolver) { }\n\n    open(content?: string | TemplateRef<any>, context?: any): ComponentRef<T> {\n        if (!this._windowRef) {\n            this._contentRef = this._getContentRef(content, context);\n            this._windowRef = this._viewContainerRef.createComponent(\n                this._componentFactoryResolver.resolveComponentFactory<T>(this._type), 0, this._injector,\n                this._contentRef.nodes);\n        }\n\n        return this._windowRef;\n    }\n\n    close() {\n        if (this._windowRef) {\n            this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._windowRef.hostView));\n            this._windowRef = null;\n\n            if (this._contentRef.viewRef) {\n                this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._contentRef.viewRef));\n                this._contentRef = null;\n            }\n        }\n    }\n\n    private _getContentRef(content: string | TemplateRef<any>, context?: any): ContentRef {\n        if (!content) {\n            return new ContentRef([]);\n        } else if (content instanceof TemplateRef) {\n            const viewRef = this._viewContainerRef.createEmbeddedView(<TemplateRef<T>>content, context);\n            return new ContentRef([viewRef.rootNodes], viewRef);\n        } else {\n            return new ContentRef([[this._renderer.createText(`${content}`)]]);\n        }\n    }\n}\n",
             "constructorObj": {
@@ -274,9 +316,103 @@
             "hostListeners": []
         },
         {
+            "name": "ContentRef",
+            "id": "class-ContentRef-523bfb791c84a31c65717949ff12889f-1",
+            "file": "projects/design-angular-kit/src/lib/tooltip/popup.ts",
+            "type": "class",
+            "sourceCode": "import {\n    Injector,\n    TemplateRef,\n    ViewRef,\n    ViewContainerRef,\n    Renderer2,\n    ComponentRef,\n    ComponentFactoryResolver\n} from '@angular/core';\n\nexport class ContentRef {\n    constructor(public nodes: any[], public viewRef?: ViewRef, public componentRef?: ComponentRef<any>) { }\n}\n\nexport class PopupService<T> {\n    private _windowRef: ComponentRef<T>;\n    private _contentRef: ContentRef;\n\n    constructor(\n        private _type: any, private _injector: Injector, private _viewContainerRef: ViewContainerRef,\n        private _renderer: Renderer2, private _componentFactoryResolver: ComponentFactoryResolver) { }\n\n    open(content?: string | TemplateRef<any>, context?: any): ComponentRef<T> {\n        if (!this._windowRef) {\n            this._contentRef = this._getContentRef(content, context);\n            this._windowRef = this._viewContainerRef.createComponent(\n                this._componentFactoryResolver.resolveComponentFactory<T>(this._type), 0, this._injector,\n                this._contentRef.nodes);\n        }\n\n        return this._windowRef;\n    }\n\n    close() {\n        if (this._windowRef) {\n            this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._windowRef.hostView));\n            this._windowRef = null;\n\n            if (this._contentRef.viewRef) {\n                this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._contentRef.viewRef));\n                this._contentRef = null;\n            }\n        }\n    }\n\n    private _getContentRef(content: string | TemplateRef<any>, context?: any): ContentRef {\n        if (!content) {\n            return new ContentRef([]);\n        } else if (content instanceof TemplateRef) {\n            const viewRef = this._viewContainerRef.createEmbeddedView(<TemplateRef<T>>content, context);\n            return new ContentRef([viewRef.rootNodes], viewRef);\n        } else {\n            return new ContentRef([[this._renderer.createText(`${content}`)]]);\n        }\n    }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "nodes",
+                        "type": "any[]"
+                    },
+                    {
+                        "name": "viewRef",
+                        "type": "ViewRef",
+                        "optional": true
+                    },
+                    {
+                        "name": "componentRef",
+                        "type": "ComponentRef<any>",
+                        "optional": true
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "nodes",
+                        "type": "any[]",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "viewRef",
+                        "type": "ViewRef",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "componentRef",
+                        "type": "ComponentRef<any>",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "componentRef",
+                    "type": "ComponentRef<any>",
+                    "optional": true,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "nodes",
+                    "type": "any[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "viewRef",
+                    "type": "ViewRef",
+                    "optional": true,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "ContentRef-1"
+        },
+        {
             "name": "PopupService",
             "id": "class-PopupService-523bfb791c84a31c65717949ff12889f",
-            "file": "projects/design-angular-kit/src/lib/tooltip/popup.ts",
+            "file": "projects/design-angular-kit/src/lib/popover/popup.ts",
             "type": "class",
             "sourceCode": "import {\n    Injector,\n    TemplateRef,\n    ViewRef,\n    ViewContainerRef,\n    Renderer2,\n    ComponentRef,\n    ComponentFactoryResolver\n} from '@angular/core';\n\nexport class ContentRef {\n    constructor(public nodes: any[], public viewRef?: ViewRef, public componentRef?: ComponentRef<any>) { }\n}\n\nexport class PopupService<T> {\n    private _windowRef: ComponentRef<T>;\n    private _contentRef: ContentRef;\n\n    constructor(\n        private _type: any, private _injector: Injector, private _viewContainerRef: ViewContainerRef,\n        private _renderer: Renderer2, private _componentFactoryResolver: ComponentFactoryResolver) { }\n\n    open(content?: string | TemplateRef<any>, context?: any): ComponentRef<T> {\n        if (!this._windowRef) {\n            this._contentRef = this._getContentRef(content, context);\n            this._windowRef = this._viewContainerRef.createComponent(\n                this._componentFactoryResolver.resolveComponentFactory<T>(this._type), 0, this._injector,\n                this._contentRef.nodes);\n        }\n\n        return this._windowRef;\n    }\n\n    close() {\n        if (this._windowRef) {\n            this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._windowRef.hostView));\n            this._windowRef = null;\n\n            if (this._contentRef.viewRef) {\n                this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._contentRef.viewRef));\n                this._contentRef = null;\n            }\n        }\n    }\n\n    private _getContentRef(content: string | TemplateRef<any>, context?: any): ContentRef {\n        if (!content) {\n            return new ContentRef([]);\n        } else if (content instanceof TemplateRef) {\n            const viewRef = this._viewContainerRef.createEmbeddedView(<TemplateRef<T>>content, context);\n            return new ContentRef([viewRef.rootNodes], viewRef);\n        } else {\n            return new ContentRef([[this._renderer.createText(`${content}`)]]);\n        }\n    }\n}\n",
             "constructorObj": {
@@ -457,9 +593,195 @@
             "hostListeners": []
         },
         {
+            "name": "PopupService",
+            "id": "class-PopupService-523bfb791c84a31c65717949ff12889f-1",
+            "file": "projects/design-angular-kit/src/lib/tooltip/popup.ts",
+            "type": "class",
+            "sourceCode": "import {\n    Injector,\n    TemplateRef,\n    ViewRef,\n    ViewContainerRef,\n    Renderer2,\n    ComponentRef,\n    ComponentFactoryResolver\n} from '@angular/core';\n\nexport class ContentRef {\n    constructor(public nodes: any[], public viewRef?: ViewRef, public componentRef?: ComponentRef<any>) { }\n}\n\nexport class PopupService<T> {\n    private _windowRef: ComponentRef<T>;\n    private _contentRef: ContentRef;\n\n    constructor(\n        private _type: any, private _injector: Injector, private _viewContainerRef: ViewContainerRef,\n        private _renderer: Renderer2, private _componentFactoryResolver: ComponentFactoryResolver) { }\n\n    open(content?: string | TemplateRef<any>, context?: any): ComponentRef<T> {\n        if (!this._windowRef) {\n            this._contentRef = this._getContentRef(content, context);\n            this._windowRef = this._viewContainerRef.createComponent(\n                this._componentFactoryResolver.resolveComponentFactory<T>(this._type), 0, this._injector,\n                this._contentRef.nodes);\n        }\n\n        return this._windowRef;\n    }\n\n    close() {\n        if (this._windowRef) {\n            this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._windowRef.hostView));\n            this._windowRef = null;\n\n            if (this._contentRef.viewRef) {\n                this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._contentRef.viewRef));\n                this._contentRef = null;\n            }\n        }\n    }\n\n    private _getContentRef(content: string | TemplateRef<any>, context?: any): ContentRef {\n        if (!content) {\n            return new ContentRef([]);\n        } else if (content instanceof TemplateRef) {\n            const viewRef = this._viewContainerRef.createEmbeddedView(<TemplateRef<T>>content, context);\n            return new ContentRef([viewRef.rootNodes], viewRef);\n        } else {\n            return new ContentRef([[this._renderer.createText(`${content}`)]]);\n        }\n    }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_type",
+                        "type": "any"
+                    },
+                    {
+                        "name": "_injector",
+                        "type": "Injector"
+                    },
+                    {
+                        "name": "_viewContainerRef",
+                        "type": "ViewContainerRef"
+                    },
+                    {
+                        "name": "_renderer",
+                        "type": "Renderer2"
+                    },
+                    {
+                        "name": "_componentFactoryResolver",
+                        "type": "ComponentFactoryResolver"
+                    }
+                ],
+                "line": 24,
+                "jsdoctags": [
+                    {
+                        "name": "_type",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_injector",
+                        "type": "Injector",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_viewContainerRef",
+                        "type": "ViewContainerRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_componentFactoryResolver",
+                        "type": "ComponentFactoryResolver",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "_contentRef",
+                    "type": "ContentRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_windowRef",
+                    "type": "ComponentRef<T>",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "_getContentRef",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "string | TemplateRef<any>"
+                        },
+                        {
+                            "name": "context",
+                            "type": "any",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ContentRef",
+                    "typeParameters": [],
+                    "line": 53,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "string | TemplateRef<any>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "context",
+                            "type": "any",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "close",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41
+                },
+                {
+                    "name": "open",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "string | TemplateRef<any>",
+                            "optional": true
+                        },
+                        {
+                            "name": "context",
+                            "type": "any",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ComponentRef<T>",
+                    "typeParameters": [],
+                    "line": 30,
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "string | TemplateRef<any>",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "context",
+                            "type": "any",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "PopupService-1"
+        },
+        {
             "name": "Positioning",
             "id": "class-Positioning-a45943c7e0df8c7de490f2f7d88e8858",
-            "file": "projects/design-angular-kit/src/lib/tooltip/positioning.ts",
+            "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
             "type": "class",
             "sourceCode": "export class Positioning {\n    private getAllStyles(element: HTMLElement) { return window.getComputedStyle(element); }\n\n    private getStyle(element: HTMLElement, prop: string): string { return this.getAllStyles(element)[prop]; }\n\n    private isStaticPositioned(element: HTMLElement): boolean {\n        return (this.getStyle(element, 'position') || 'static') === 'static';\n    }\n\n    private offsetParent(element: HTMLElement): HTMLElement {\n        let offsetParentEl = <HTMLElement>element.offsetParent || document.documentElement;\n\n        while (offsetParentEl && offsetParentEl !== document.documentElement && this.isStaticPositioned(offsetParentEl)) {\n            offsetParentEl = <HTMLElement>offsetParentEl.offsetParent;\n        }\n\n        return offsetParentEl || document.documentElement;\n    }\n\n    position(element: HTMLElement, round = true): ClientRect {\n        let elPosition: ClientRect;\n        let parentOffset: ClientRect = { width: 0, height: 0, top: 0, bottom: 0, left: 0, right: 0 };\n\n        if (this.getStyle(element, 'position') === 'fixed') {\n            elPosition = element.getBoundingClientRect();\n        } else {\n            const offsetParentEl = this.offsetParent(element);\n\n            elPosition = this.offset(element, false);\n\n            if (offsetParentEl !== document.documentElement) {\n                parentOffset = this.offset(offsetParentEl, false);\n            }\n\n            parentOffset.top += offsetParentEl.clientTop;\n            parentOffset.left += offsetParentEl.clientLeft;\n        }\n\n        elPosition.top -= parentOffset.top;\n        elPosition.bottom -= parentOffset.top;\n        elPosition.left -= parentOffset.left;\n        elPosition.right -= parentOffset.left;\n\n        if (round) {\n            elPosition.top = Math.round(elPosition.top);\n            elPosition.bottom = Math.round(elPosition.bottom);\n            elPosition.left = Math.round(elPosition.left);\n            elPosition.right = Math.round(elPosition.right);\n        }\n\n        return elPosition;\n    }\n\n    offset(element: HTMLElement, round = true): ClientRect {\n        const elBcr = element.getBoundingClientRect();\n        const viewportOffset = {\n            top: window.pageYOffset - document.documentElement.clientTop,\n            left: window.pageXOffset - document.documentElement.clientLeft\n        };\n\n        const elOffset = {\n            height: elBcr.height || element.offsetHeight,\n            width: elBcr.width || element.offsetWidth,\n            top: elBcr.top + viewportOffset.top,\n            bottom: elBcr.bottom + viewportOffset.top,\n            left: elBcr.left + viewportOffset.left,\n            right: elBcr.right + viewportOffset.left\n        };\n\n        if (round) {\n            elOffset.height = Math.round(elOffset.height);\n            elOffset.width = Math.round(elOffset.width);\n            elOffset.top = Math.round(elOffset.top);\n            elOffset.bottom = Math.round(elOffset.bottom);\n            elOffset.left = Math.round(elOffset.left);\n            elOffset.right = Math.round(elOffset.right);\n        }\n\n        return elOffset;\n    }\n\n    positionElements(hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean):\n        ClientRect {\n        const hostElPosition = appendToBody ? this.offset(hostElement, false) : this.position(hostElement, false);\n        const targetElStyles = this.getAllStyles(targetElement);\n        const targetElBCR = targetElement.getBoundingClientRect();\n        const placementPrimary = placement.split('-')[0] || 'top';\n        const placementSecondary = placement.split('-')[1] || 'center';\n\n        const targetElPosition: ClientRect = {\n            'height': targetElBCR.height || targetElement.offsetHeight,\n            'width': targetElBCR.width || targetElement.offsetWidth,\n            'top': 0,\n            'bottom': targetElBCR.height || targetElement.offsetHeight,\n            'left': 0,\n            'right': targetElBCR.width || targetElement.offsetWidth\n        };\n\n        switch (placementPrimary) {\n            case 'top':\n                targetElPosition.top =\n                    hostElPosition.top - (targetElement.offsetHeight + parseFloat(targetElStyles.marginBottom));\n                break;\n            case 'bottom':\n                targetElPosition.top = hostElPosition.top + hostElPosition.height;\n                break;\n            case 'left':\n                targetElPosition.left =\n                    hostElPosition.left - (targetElement.offsetWidth + parseFloat(targetElStyles.marginRight));\n                break;\n            case 'right':\n                targetElPosition.left = hostElPosition.left + hostElPosition.width;\n                break;\n        }\n\n        switch (placementSecondary) {\n            case 'top':\n                targetElPosition.top = hostElPosition.top;\n                break;\n            case 'bottom':\n                targetElPosition.top = hostElPosition.top + hostElPosition.height - targetElement.offsetHeight;\n                break;\n            case 'left':\n                targetElPosition.left = hostElPosition.left;\n                break;\n            case 'right':\n                targetElPosition.left = hostElPosition.left + hostElPosition.width - targetElement.offsetWidth;\n                break;\n            case 'center':\n                if (placementPrimary === 'top' || placementPrimary === 'bottom') {\n                    targetElPosition.left = hostElPosition.left + hostElPosition.width / 2 - targetElement.offsetWidth / 2;\n                } else {\n                    targetElPosition.top = hostElPosition.top + hostElPosition.height / 2 - targetElement.offsetHeight / 2;\n                }\n                break;\n        }\n\n        targetElPosition.top = Math.round(targetElPosition.top);\n        targetElPosition.bottom = Math.round(targetElPosition.bottom);\n        targetElPosition.left = Math.round(targetElPosition.left);\n        targetElPosition.right = Math.round(targetElPosition.right);\n\n        return targetElPosition;\n    }\n\n    // Restituisce i collocamenti disponibili per l'elemento target nella viewport in base all'elemento host\n    getAvailablePlacements(hostElement: HTMLElement, targetElement: HTMLElement): string[] {\n        const availablePlacements: Array<string> = [];\n        const hostElemClientRect = hostElement.getBoundingClientRect();\n        const targetElemClientRect = targetElement.getBoundingClientRect();\n        const html = document.documentElement;\n        const windowHeight = window.innerHeight || html.clientHeight;\n        const windowWidth = window.innerWidth || html.clientWidth;\n        const hostElemClientRectHorCenter = hostElemClientRect.left + hostElemClientRect.width / 2;\n        const hostElemClientRectVerCenter = hostElemClientRect.top + hostElemClientRect.height / 2;\n\n        // controlla se la larghezza dell'elemento target può essere collocata tra la sinistra dell'host e l'inizio della viewport\n        // e controlla anche se l'altezza del target è nella viewport\n        if (targetElemClientRect.width < hostElemClientRect.left) {\n            // controlla solo per la sinistra\n            if (hostElemClientRectVerCenter > targetElemClientRect.height / 2 &&\n                windowHeight - hostElemClientRectVerCenter > targetElemClientRect.height / 2) {\n                availablePlacements.splice(availablePlacements.length, 1, 'left');\n            }\n            // controlla solo per le varianti di sinistra left-top and left-bottom\n            this.setSecondaryPlacementForLeftRight(hostElemClientRect, targetElemClientRect, 'left', availablePlacements);\n        }\n\n        // controlla se l'altezza del target è minore della cima dell'host\n        if (targetElemClientRect.height < hostElemClientRect.top) {\n            if (hostElemClientRectHorCenter > targetElemClientRect.width / 2 &&\n                windowWidth - hostElemClientRectHorCenter > targetElemClientRect.width / 2) {\n                availablePlacements.splice(availablePlacements.length, 1, 'top');\n            }\n            this.setSecondaryPlacementForTopBottom(hostElemClientRect, targetElemClientRect, 'top', availablePlacements);\n        }\n\n        // controlla se la larghezza dell'elemento target può essere collocata tra la destra dell'host e la fine della viewport\n        // e controlla anche se l'altezza del target è nella viewport\n        if (windowWidth - hostElemClientRect.right > targetElemClientRect.width) {\n            // controlla solo per la destra\n            if (hostElemClientRectVerCenter > targetElemClientRect.height / 2 &&\n                windowHeight - hostElemClientRectVerCenter > targetElemClientRect.height / 2) {\n                availablePlacements.splice(availablePlacements.length, 1, 'right');\n            }\n            // controlla solo per le varianti di destra right-top and right-bottom\n            this.setSecondaryPlacementForLeftRight(hostElemClientRect, targetElemClientRect, 'right', availablePlacements);\n        }\n\n        // controlla se c'è abbastanza spazio tra la base dell'host e la fine della viewport per l'altezza del target\n        if (windowHeight - hostElemClientRect.bottom > targetElemClientRect.height) {\n            if (hostElemClientRectHorCenter > targetElemClientRect.width / 2 &&\n                windowWidth - hostElemClientRectHorCenter > targetElemClientRect.width / 2) {\n                availablePlacements.splice(availablePlacements.length, 1, 'bottom');\n            }\n            this.setSecondaryPlacementForTopBottom(hostElemClientRect, targetElemClientRect, 'bottom', availablePlacements);\n        }\n\n        return availablePlacements;\n    }\n\n    /**\n     * Controlla se il collocamento secondario per sinistra e destra è disponibile, come left-top, left-bottom, right-top e right-bottom\n     * primaryplacement: left|right\n     * availablePlacementArr: array con i collocamenti disponibili\n     */\n    private setSecondaryPlacementForLeftRight(\n        hostElemClientRect: ClientRect, targetElemClientRect: ClientRect, primaryPlacement: string,\n        availablePlacementArr: Array<string>) {\n        const html = document.documentElement;\n        // check for left-bottom\n        if (targetElemClientRect.height <= hostElemClientRect.bottom) {\n            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-bottom');\n        }\n        if ((window.innerHeight || html.clientHeight) - hostElemClientRect.top >= targetElemClientRect.height) {\n            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-top');\n        }\n    }\n\n    /**\n     * Controlla se il collocamento secondario per sopra e sotto è disponibile, come top-left, top-right, bottom-left, bottom-right\n     * primaryplacement: top|bottom\n     * availablePlacementArr: array con i collocamenti disponibili\n     */\n    private setSecondaryPlacementForTopBottom(\n        hostElemClientRect: ClientRect, targetElemClientRect: ClientRect, primaryPlacement: string,\n        availablePlacementArr: Array<string>) {\n        const html = document.documentElement;\n        // check for left-bottom\n        if ((window.innerWidth || html.clientWidth) - hostElemClientRect.left >= targetElemClientRect.width) {\n            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-left');\n        }\n        if (targetElemClientRect.width <= hostElemClientRect.right) {\n            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-right');\n        }\n    }\n}\n\nconst positionService = new Positioning();\n\n/*\n * Accetta l'array del collocamento e applica il collocamento adatto in base alla viewport.\n * Ritorna il collocamento applicato.\n * In caso di collocamento auto, i collocamenti sono selezionati in ordine\n *   'top', 'bottom', 'left', 'right',\n *   'top-left', 'top-right',\n *   'bottom-left', 'bottom-right',\n *   'left-top', 'left-bottom',\n *   'right-top', 'right-bottom'.\n * */\nexport function positionElements(\n    hostElement: HTMLElement, targetElement: HTMLElement, placement: string | Placement | PlacementArray,\n    appendToBody?: boolean): Placement {\n    const placementVals: Array<Placement> = Array.isArray(placement) ? placement : [placement as Placement];\n\n    // Sostituisce il collocamento auto con altri collocamenti\n    let hasAuto = placementVals.findIndex(val => val === 'auto');\n    if (hasAuto >= 0) {\n        ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'left-top',\n            'left-bottom', 'right-top', 'right-bottom',\n        ].forEach(function (obj) {\n            if (placementVals.find(val => val.search('^' + obj) !== -1) == null) {\n                placementVals.splice(hasAuto++, 1, obj as Placement);\n            }\n        });\n    }\n\n    // coordinate per dove posizionare\n    let topVal = 0, leftVal = 0;\n    let appliedPlacement: Placement;\n    // prendere i collocamenti disponibili\n    const availablePlacements = positionService.getAvailablePlacements(hostElement, targetElement);\n    // iterare sui collocamenti acquisiti\n    for (const { item, index } of toItemIndexes(placementVals)) {\n        // Controlla se il collocamento passato è presente nel collocamento disponibile, altrimenti applica l'ultimo collocamento nella\n        // lista del collocamento passato\n        if ((availablePlacements.find(val => val === item) != null) || (placementVals.length === index + 1)) {\n            appliedPlacement = <Placement>item;\n            const pos = positionService.positionElements(hostElement, targetElement, item, appendToBody);\n            topVal = pos.top;\n            leftVal = pos.left;\n            break;\n        }\n    }\n    targetElement.style.top = `${topVal}px`;\n    targetElement.style.left = `${leftVal}px`;\n    return appliedPlacement;\n}\n\n// Funzione per prendere l'indice e l'oggetto di un array\nfunction toItemIndexes<T>(a: T[]) {\n    return a.map((item, index) => ({ item, index }));\n}\n\nexport type Placement = 'auto' | 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' |\n    'bottom-right' | 'left-top' | 'left-bottom' | 'right-top' | 'right-bottom';\n\nexport type PlacementArray = Placement | Array<Placement>;\n",
             "properties": [],
@@ -882,6 +1204,434 @@
             "hostListeners": []
         },
         {
+            "name": "Positioning",
+            "id": "class-Positioning-a45943c7e0df8c7de490f2f7d88e8858-1",
+            "file": "projects/design-angular-kit/src/lib/tooltip/positioning.ts",
+            "type": "class",
+            "sourceCode": "export class Positioning {\n    private getAllStyles(element: HTMLElement) { return window.getComputedStyle(element); }\n\n    private getStyle(element: HTMLElement, prop: string): string { return this.getAllStyles(element)[prop]; }\n\n    private isStaticPositioned(element: HTMLElement): boolean {\n        return (this.getStyle(element, 'position') || 'static') === 'static';\n    }\n\n    private offsetParent(element: HTMLElement): HTMLElement {\n        let offsetParentEl = <HTMLElement>element.offsetParent || document.documentElement;\n\n        while (offsetParentEl && offsetParentEl !== document.documentElement && this.isStaticPositioned(offsetParentEl)) {\n            offsetParentEl = <HTMLElement>offsetParentEl.offsetParent;\n        }\n\n        return offsetParentEl || document.documentElement;\n    }\n\n    position(element: HTMLElement, round = true): ClientRect {\n        let elPosition: ClientRect;\n        let parentOffset: ClientRect = { width: 0, height: 0, top: 0, bottom: 0, left: 0, right: 0 };\n\n        if (this.getStyle(element, 'position') === 'fixed') {\n            elPosition = element.getBoundingClientRect();\n        } else {\n            const offsetParentEl = this.offsetParent(element);\n\n            elPosition = this.offset(element, false);\n\n            if (offsetParentEl !== document.documentElement) {\n                parentOffset = this.offset(offsetParentEl, false);\n            }\n\n            parentOffset.top += offsetParentEl.clientTop;\n            parentOffset.left += offsetParentEl.clientLeft;\n        }\n\n        elPosition.top -= parentOffset.top;\n        elPosition.bottom -= parentOffset.top;\n        elPosition.left -= parentOffset.left;\n        elPosition.right -= parentOffset.left;\n\n        if (round) {\n            elPosition.top = Math.round(elPosition.top);\n            elPosition.bottom = Math.round(elPosition.bottom);\n            elPosition.left = Math.round(elPosition.left);\n            elPosition.right = Math.round(elPosition.right);\n        }\n\n        return elPosition;\n    }\n\n    offset(element: HTMLElement, round = true): ClientRect {\n        const elBcr = element.getBoundingClientRect();\n        const viewportOffset = {\n            top: window.pageYOffset - document.documentElement.clientTop,\n            left: window.pageXOffset - document.documentElement.clientLeft\n        };\n\n        const elOffset = {\n            height: elBcr.height || element.offsetHeight,\n            width: elBcr.width || element.offsetWidth,\n            top: elBcr.top + viewportOffset.top,\n            bottom: elBcr.bottom + viewportOffset.top,\n            left: elBcr.left + viewportOffset.left,\n            right: elBcr.right + viewportOffset.left\n        };\n\n        if (round) {\n            elOffset.height = Math.round(elOffset.height);\n            elOffset.width = Math.round(elOffset.width);\n            elOffset.top = Math.round(elOffset.top);\n            elOffset.bottom = Math.round(elOffset.bottom);\n            elOffset.left = Math.round(elOffset.left);\n            elOffset.right = Math.round(elOffset.right);\n        }\n\n        return elOffset;\n    }\n\n    positionElements(hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean):\n        ClientRect {\n        const hostElPosition = appendToBody ? this.offset(hostElement, false) : this.position(hostElement, false);\n        const targetElStyles = this.getAllStyles(targetElement);\n        const targetElBCR = targetElement.getBoundingClientRect();\n        const placementPrimary = placement.split('-')[0] || 'top';\n        const placementSecondary = placement.split('-')[1] || 'center';\n\n        const targetElPosition: ClientRect = {\n            'height': targetElBCR.height || targetElement.offsetHeight,\n            'width': targetElBCR.width || targetElement.offsetWidth,\n            'top': 0,\n            'bottom': targetElBCR.height || targetElement.offsetHeight,\n            'left': 0,\n            'right': targetElBCR.width || targetElement.offsetWidth\n        };\n\n        switch (placementPrimary) {\n            case 'top':\n                targetElPosition.top =\n                    hostElPosition.top - (targetElement.offsetHeight + parseFloat(targetElStyles.marginBottom));\n                break;\n            case 'bottom':\n                targetElPosition.top = hostElPosition.top + hostElPosition.height;\n                break;\n            case 'left':\n                targetElPosition.left =\n                    hostElPosition.left - (targetElement.offsetWidth + parseFloat(targetElStyles.marginRight));\n                break;\n            case 'right':\n                targetElPosition.left = hostElPosition.left + hostElPosition.width;\n                break;\n        }\n\n        switch (placementSecondary) {\n            case 'top':\n                targetElPosition.top = hostElPosition.top;\n                break;\n            case 'bottom':\n                targetElPosition.top = hostElPosition.top + hostElPosition.height - targetElement.offsetHeight;\n                break;\n            case 'left':\n                targetElPosition.left = hostElPosition.left;\n                break;\n            case 'right':\n                targetElPosition.left = hostElPosition.left + hostElPosition.width - targetElement.offsetWidth;\n                break;\n            case 'center':\n                if (placementPrimary === 'top' || placementPrimary === 'bottom') {\n                    targetElPosition.left = hostElPosition.left + hostElPosition.width / 2 - targetElement.offsetWidth / 2;\n                } else {\n                    targetElPosition.top = hostElPosition.top + hostElPosition.height / 2 - targetElement.offsetHeight / 2;\n                }\n                break;\n        }\n\n        targetElPosition.top = Math.round(targetElPosition.top);\n        targetElPosition.bottom = Math.round(targetElPosition.bottom);\n        targetElPosition.left = Math.round(targetElPosition.left);\n        targetElPosition.right = Math.round(targetElPosition.right);\n\n        return targetElPosition;\n    }\n\n    // Restituisce i collocamenti disponibili per l'elemento target nella viewport in base all'elemento host\n    getAvailablePlacements(hostElement: HTMLElement, targetElement: HTMLElement): string[] {\n        const availablePlacements: Array<string> = [];\n        const hostElemClientRect = hostElement.getBoundingClientRect();\n        const targetElemClientRect = targetElement.getBoundingClientRect();\n        const html = document.documentElement;\n        const windowHeight = window.innerHeight || html.clientHeight;\n        const windowWidth = window.innerWidth || html.clientWidth;\n        const hostElemClientRectHorCenter = hostElemClientRect.left + hostElemClientRect.width / 2;\n        const hostElemClientRectVerCenter = hostElemClientRect.top + hostElemClientRect.height / 2;\n\n        // controlla se la larghezza dell'elemento target può essere collocata tra la sinistra dell'host e l'inizio della viewport\n        // e controlla anche se l'altezza del target è nella viewport\n        if (targetElemClientRect.width < hostElemClientRect.left) {\n            // controlla solo per la sinistra\n            if (hostElemClientRectVerCenter > targetElemClientRect.height / 2 &&\n                windowHeight - hostElemClientRectVerCenter > targetElemClientRect.height / 2) {\n                availablePlacements.splice(availablePlacements.length, 1, 'left');\n            }\n            // controlla solo per le varianti di sinistra left-top and left-bottom\n            this.setSecondaryPlacementForLeftRight(hostElemClientRect, targetElemClientRect, 'left', availablePlacements);\n        }\n\n        // controlla se l'altezza del target è minore della cima dell'host\n        if (targetElemClientRect.height < hostElemClientRect.top) {\n            if (hostElemClientRectHorCenter > targetElemClientRect.width / 2 &&\n                windowWidth - hostElemClientRectHorCenter > targetElemClientRect.width / 2) {\n                availablePlacements.splice(availablePlacements.length, 1, 'top');\n            }\n            this.setSecondaryPlacementForTopBottom(hostElemClientRect, targetElemClientRect, 'top', availablePlacements);\n        }\n\n        // controlla se la larghezza dell'elemento target può essere collocata tra la destra dell'host e la fine della viewport\n        // e controlla anche se l'altezza del target è nella viewport\n        if (windowWidth - hostElemClientRect.right > targetElemClientRect.width) {\n            // controlla solo per la destra\n            if (hostElemClientRectVerCenter > targetElemClientRect.height / 2 &&\n                windowHeight - hostElemClientRectVerCenter > targetElemClientRect.height / 2) {\n                availablePlacements.splice(availablePlacements.length, 1, 'right');\n            }\n            // controlla solo per le varianti di destra right-top and right-bottom\n            this.setSecondaryPlacementForLeftRight(hostElemClientRect, targetElemClientRect, 'right', availablePlacements);\n        }\n\n        // controlla se c'è abbastanza spazio tra la base dell'host e la fine della viewport per l'altezza del target\n        if (windowHeight - hostElemClientRect.bottom > targetElemClientRect.height) {\n            if (hostElemClientRectHorCenter > targetElemClientRect.width / 2 &&\n                windowWidth - hostElemClientRectHorCenter > targetElemClientRect.width / 2) {\n                availablePlacements.splice(availablePlacements.length, 1, 'bottom');\n            }\n            this.setSecondaryPlacementForTopBottom(hostElemClientRect, targetElemClientRect, 'bottom', availablePlacements);\n        }\n\n        return availablePlacements;\n    }\n\n    /**\n     * Controlla se il collocamento secondario per sinistra e destra è disponibile, come left-top, left-bottom, right-top e right-bottom\n     * primaryplacement: left|right\n     * availablePlacementArr: array con i collocamenti disponibili\n     */\n    private setSecondaryPlacementForLeftRight(\n        hostElemClientRect: ClientRect, targetElemClientRect: ClientRect, primaryPlacement: string,\n        availablePlacementArr: Array<string>) {\n        const html = document.documentElement;\n        // check for left-bottom\n        if (targetElemClientRect.height <= hostElemClientRect.bottom) {\n            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-bottom');\n        }\n        if ((window.innerHeight || html.clientHeight) - hostElemClientRect.top >= targetElemClientRect.height) {\n            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-top');\n        }\n    }\n\n    /**\n     * Controlla se il collocamento secondario per sopra e sotto è disponibile, come top-left, top-right, bottom-left, bottom-right\n     * primaryplacement: top|bottom\n     * availablePlacementArr: array con i collocamenti disponibili\n     */\n    private setSecondaryPlacementForTopBottom(\n        hostElemClientRect: ClientRect, targetElemClientRect: ClientRect, primaryPlacement: string,\n        availablePlacementArr: Array<string>) {\n        const html = document.documentElement;\n        // check for left-bottom\n        if ((window.innerWidth || html.clientWidth) - hostElemClientRect.left >= targetElemClientRect.width) {\n            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-left');\n        }\n        if (targetElemClientRect.width <= hostElemClientRect.right) {\n            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-right');\n        }\n    }\n}\n\nconst positionService = new Positioning();\n\n/*\n * Accetta l'array del collocamento e applica il collocamento adatto in base alla viewport.\n * Ritorna il collocamento applicato.\n * In caso di collocamento auto, i collocamenti sono selezionati in ordine\n *   'top', 'bottom', 'left', 'right',\n *   'top-left', 'top-right',\n *   'bottom-left', 'bottom-right',\n *   'left-top', 'left-bottom',\n *   'right-top', 'right-bottom'.\n * */\nexport function positionElements(\n    hostElement: HTMLElement, targetElement: HTMLElement, placement: string | Placement | PlacementArray,\n    appendToBody?: boolean): Placement {\n    const placementVals: Array<Placement> = Array.isArray(placement) ? placement : [placement as Placement];\n\n    // Sostituisce il collocamento auto con altri collocamenti\n    let hasAuto = placementVals.findIndex(val => val === 'auto');\n    if (hasAuto >= 0) {\n        ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'left-top',\n            'left-bottom', 'right-top', 'right-bottom',\n        ].forEach(function (obj) {\n            if (placementVals.find(val => val.search('^' + obj) !== -1) == null) {\n                placementVals.splice(hasAuto++, 1, obj as Placement);\n            }\n        });\n    }\n\n    // coordinate per dove posizionare\n    let topVal = 0, leftVal = 0;\n    let appliedPlacement: Placement;\n    // prendere i collocamenti disponibili\n    const availablePlacements = positionService.getAvailablePlacements(hostElement, targetElement);\n    // iterare sui collocamenti acquisiti\n    for (const { item, index } of toItemIndexes(placementVals)) {\n        // Controlla se il collocamento passato è presente nel collocamento disponibile, altrimenti applica l'ultimo collocamento nella\n        // lista del collocamento passato\n        if ((availablePlacements.find(val => val === item) != null) || (placementVals.length === index + 1)) {\n            appliedPlacement = <Placement>item;\n            const pos = positionService.positionElements(hostElement, targetElement, item, appendToBody);\n            topVal = pos.top;\n            leftVal = pos.left;\n            break;\n        }\n    }\n    targetElement.style.top = `${topVal}px`;\n    targetElement.style.left = `${leftVal}px`;\n    return appliedPlacement;\n}\n\n// Funzione per prendere l'indice e l'oggetto di un array\nfunction toItemIndexes<T>(a: T[]) {\n    return a.map((item, index) => ({ item, index }));\n}\n\nexport type Placement = 'auto' | 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' |\n    'bottom-right' | 'left-top' | 'left-bottom' | 'right-top' | 'right-bottom';\n\nexport type PlacementArray = Placement | Array<Placement>;\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getAllStyles",
+                    "args": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 9,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getAvailablePlacements",
+                    "args": [
+                        {
+                            "name": "hostElement",
+                            "type": "HTMLElement"
+                        },
+                        {
+                            "name": "targetElement",
+                            "type": "HTMLElement"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string[]",
+                    "typeParameters": [],
+                    "line": 154,
+                    "jsdoctags": [
+                        {
+                            "name": "hostElement",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "targetElement",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getStyle",
+                    "args": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement"
+                        },
+                        {
+                            "name": "prop",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 11,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "prop",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isStaticPositioned",
+                    "args": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 13,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "offset",
+                    "args": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement"
+                        },
+                        {
+                            "name": "round",
+                            "type": "",
+                            "defaultValue": "true"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ClientRect",
+                    "typeParameters": [],
+                    "line": 61,
+                    "jsdoctags": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "round",
+                            "type": "",
+                            "defaultValue": "true",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "offsetParent",
+                    "args": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "HTMLElement",
+                    "typeParameters": [],
+                    "line": 17,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "position",
+                    "args": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement"
+                        },
+                        {
+                            "name": "round",
+                            "type": "",
+                            "defaultValue": "true"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ClientRect",
+                    "typeParameters": [],
+                    "line": 27,
+                    "jsdoctags": [
+                        {
+                            "name": "element",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "round",
+                            "type": "",
+                            "defaultValue": "true",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "positionElements",
+                    "args": [
+                        {
+                            "name": "hostElement",
+                            "type": "HTMLElement"
+                        },
+                        {
+                            "name": "targetElement",
+                            "type": "HTMLElement"
+                        },
+                        {
+                            "name": "placement",
+                            "type": "string"
+                        },
+                        {
+                            "name": "appendToBody",
+                            "type": "boolean",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ClientRect",
+                    "typeParameters": [],
+                    "line": 89,
+                    "jsdoctags": [
+                        {
+                            "name": "hostElement",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "targetElement",
+                            "type": "HTMLElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "placement",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "appendToBody",
+                            "type": "boolean",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setSecondaryPlacementForLeftRight",
+                    "args": [
+                        {
+                            "name": "hostElemClientRect",
+                            "type": "ClientRect"
+                        },
+                        {
+                            "name": "targetElemClientRect",
+                            "type": "ClientRect"
+                        },
+                        {
+                            "name": "primaryPlacement",
+                            "type": "string"
+                        },
+                        {
+                            "name": "availablePlacementArr",
+                            "type": "Array<string>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 214,
+                    "description": "<p>Controlla se il collocamento secondario per sinistra e destra è disponibile, come left-top, left-bottom, right-top e right-bottom\nprimaryplacement: left|right\navailablePlacementArr: array con i collocamenti disponibili</p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hostElemClientRect",
+                            "type": "ClientRect",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "targetElemClientRect",
+                            "type": "ClientRect",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "primaryPlacement",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "availablePlacementArr",
+                            "type": "Array<string>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setSecondaryPlacementForTopBottom",
+                    "args": [
+                        {
+                            "name": "hostElemClientRect",
+                            "type": "ClientRect"
+                        },
+                        {
+                            "name": "targetElemClientRect",
+                            "type": "ClientRect"
+                        },
+                        {
+                            "name": "primaryPlacement",
+                            "type": "string"
+                        },
+                        {
+                            "name": "availablePlacementArr",
+                            "type": "Array<string>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 232,
+                    "description": "<p>Controlla se il collocamento secondario per sopra e sotto è disponibile, come top-left, top-right, bottom-left, bottom-right\nprimaryplacement: top|bottom\navailablePlacementArr: array con i collocamenti disponibili</p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hostElemClientRect",
+                            "type": "ClientRect",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "targetElemClientRect",
+                            "type": "ClientRect",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "primaryPlacement",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "availablePlacementArr",
+                            "type": "Array<string>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "jsdoctags": [
+                {
+                    "pos": 7,
+                    "end": 17,
+                    "flags": 0,
+                    "kind": 288,
+                    "atToken": {
+                        "pos": 7,
+                        "end": 8,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 8,
+                        "end": 15,
+                        "flags": 0,
+                        "escapedText": "license"
+                    },
+                    "comment": "Copyright Angular ng-bootstrap team All Rights Reserved.\n\nUse of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at https://raw.githubusercontent.com/ng-bootstrap/ng-bootstrap/master/LICENSE"
+                }
+            ],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "Positioning-1"
+        },
+        {
             "name": "RadioChange",
             "id": "class-RadioChange-f64fd0c7b01c8d4779c6a1f6316e64e0",
             "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
@@ -1009,7 +1759,7 @@
         {
             "name": "Trigger",
             "id": "class-Trigger-84d625e97878e2ae767e28f4d6bb0896",
-            "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
+            "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
             "type": "class",
             "sourceCode": "export class Trigger {\n    constructor(public open: string, public close?: string) {\n        if (!close) {\n            this.close = open;\n        }\n    }\n\n    isManual() { return this.open === 'manual' || this.close === 'manual'; }\n}\n\nconst DEFAULT_ALIASES = {\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n};\n\nexport function parseTriggers(triggers: string, aliases = DEFAULT_ALIASES): Trigger[] {\n    const trimmedTriggers = (triggers || '').trim();\n\n    if (trimmedTriggers.length === 0) {\n        return [];\n    }\n\n    const parsedTriggers = trimmedTriggers.split(/\\s+/).map(trigger => trigger.split(':')).map((triggerPair) => {\n        const alias = aliases[triggerPair[0]] || triggerPair;\n        return new Trigger(alias[0], alias[1]);\n    });\n\n    const manualTriggers = parsedTriggers.filter(triggerPair => triggerPair.isManual());\n\n    if (manualTriggers.length > 1) {\n        throw new Error('Triggers parse error: only one manual trigger is allowed');\n    }\n\n    if (manualTriggers.length === 1 && parsedTriggers.length > 1) {\n        throw new Error('Triggers parse error: manual trigger can\\'t be mixed with other triggers');\n    }\n\n    return parsedTriggers;\n}\n\nconst noopFn = () => { };\n\nexport function listenToTriggers(renderer: any, nativeElement: any, triggers: string, openFn, closeFn, toggleFn) {\n    const parsedTriggers = parseTriggers(triggers);\n    const listeners = [];\n\n    if (parsedTriggers.length === 1 && parsedTriggers[0].isManual()) {\n        return noopFn;\n    }\n\n    parsedTriggers.forEach((trigger: Trigger) => {\n        if (trigger.open === trigger.close) {\n            listeners.push(renderer.listen(nativeElement, trigger.open, toggleFn));\n        } else {\n            listeners.push(\n                renderer.listen(nativeElement, trigger.open, openFn), renderer.listen(nativeElement, trigger.close, closeFn));\n        }\n    });\n\n    return () => { listeners.forEach(unsubscribeFn => unsubscribeFn()); };\n}\n",
             "constructorObj": {
@@ -1103,6 +1853,107 @@
             "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
+        },
+        {
+            "name": "Trigger",
+            "id": "class-Trigger-84d625e97878e2ae767e28f4d6bb0896-1",
+            "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
+            "type": "class",
+            "sourceCode": "export class Trigger {\n    constructor(public open: string, public close?: string) {\n        if (!close) {\n            this.close = open;\n        }\n    }\n\n    isManual() { return this.open === 'manual' || this.close === 'manual'; }\n}\n\nconst DEFAULT_ALIASES = {\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n};\n\nexport function parseTriggers(triggers: string, aliases = DEFAULT_ALIASES): Trigger[] {\n    const trimmedTriggers = (triggers || '').trim();\n\n    if (trimmedTriggers.length === 0) {\n        return [];\n    }\n\n    const parsedTriggers = trimmedTriggers.split(/\\s+/).map(trigger => trigger.split(':')).map((triggerPair) => {\n        const alias = aliases[triggerPair[0]] || triggerPair;\n        return new Trigger(alias[0], alias[1]);\n    });\n\n    const manualTriggers = parsedTriggers.filter(triggerPair => triggerPair.isManual());\n\n    if (manualTriggers.length > 1) {\n        throw new Error('Triggers parse error: only one manual trigger is allowed');\n    }\n\n    if (manualTriggers.length === 1 && parsedTriggers.length > 1) {\n        throw new Error('Triggers parse error: manual trigger can\\'t be mixed with other triggers');\n    }\n\n    return parsedTriggers;\n}\n\nconst noopFn = () => { };\n\nexport function listenToTriggers(renderer: any, nativeElement: any, triggers: string, openFn, closeFn, toggleFn) {\n    const parsedTriggers = parseTriggers(triggers);\n    const listeners = [];\n\n    if (parsedTriggers.length === 1 && parsedTriggers[0].isManual()) {\n        return noopFn;\n    }\n\n    parsedTriggers.forEach((trigger: Trigger) => {\n        if (trigger.open === trigger.close) {\n            listeners.push(renderer.listen(nativeElement, trigger.open, toggleFn));\n        } else {\n            listeners.push(\n                renderer.listen(nativeElement, trigger.open, openFn), renderer.listen(nativeElement, trigger.close, closeFn));\n        }\n    });\n\n    return () => { listeners.forEach(unsubscribeFn => unsubscribeFn()); };\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "open",
+                        "type": "string"
+                    },
+                    {
+                        "name": "close",
+                        "type": "string",
+                        "optional": true
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "open",
+                        "type": "string",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "close",
+                        "type": "string",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "close",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "open",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "isManual",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 15
+                }
+            ],
+            "indexSignatures": [],
+            "jsdoctags": [
+                {
+                    "pos": 7,
+                    "end": 17,
+                    "flags": 0,
+                    "kind": 288,
+                    "atToken": {
+                        "pos": 7,
+                        "end": 8,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 8,
+                        "end": 15,
+                        "flags": 0,
+                        "escapedText": "license"
+                    },
+                    "comment": "Copyright Angular ng-bootstrap team All Rights Reserved.\n\nUse of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at https://raw.githubusercontent.com/ng-bootstrap/ng-bootstrap/master/LICENSE"
+                }
+            ],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "Trigger-1"
         },
         {
             "name": "Util",
@@ -1377,6 +2228,744 @@
                         ],
                         "returnType": "void",
                         "line": 53,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "name": "PopoverDirective",
+            "id": "directive-PopoverDirective-118736281c288dddd50447b52b2c6e72",
+            "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
+            "type": "directive",
+            "description": "<p>Una direttiva per la creazione di un popover.</p>\n",
+            "sourceCode": "import {\n  Directive,\n  Input,\n  Output,\n  EventEmitter,\n  OnInit,\n  OnDestroy,\n  OnChanges,\n  Injector,\n  Renderer2,\n  ComponentRef,\n  ElementRef,\n  TemplateRef,\n  ViewContainerRef,\n  ComponentFactoryResolver,\n  NgZone,\n  SimpleChanges,\n} from '@angular/core';\n\nimport { listenToTriggers } from './triggers';\nimport { positionElements, Placement, PlacementArray } from './positioning';\nimport { PopupService } from './popup';\nimport { PopoverConfig } from './popover.config';\nimport { PopoverComponent } from './popover.component';\nimport { Subscription } from 'rxjs';\nimport { POPOVER_TRIGGERS, PopoverTrigger } from '../models/InteractionTrigger';\nimport { Util } from '../util/util';\n\nlet identifier = 0;\n\n/**\n * Una direttiva per la creazione di un popover.\n */\n@Directive({\n  selector: '[it-popover]', // tslint:disable-line\n  exportAs: 'it-popover'\n})\nexport class PopoverDirective implements OnInit, OnDestroy, OnChanges {\n  /**\n   * Contenuto da mostrare nel popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input('it-popover')\n  get itPopover(): string | TemplateRef<any> { return this._itPopover; }\n  set itPopover(value: string | TemplateRef<any>) { this._itPopover = value; }\n  private _itPopover: string | TemplateRef<any>;\n\n  /**\n   * Titolo del popover. In assenza di titolo e contenuto, il popover non si aprirà.\n   */\n  @Input()\n  get title(): string { return this._title; }\n  set title(value: string) { this._title = value; }\n  private _title: string;\n\n  /**\n   * Il collocamento accettato dal popover:\n   *    \"top\", \"top-left\", \"top-right\", \"bottom\", \"bottom-left\", \"bottom-right\",\n   *    \"left\", \"left-top\", \"left-bottom\", \"right\", \"right-top\", \"right-bottom\"\n   * ed array dei valori soprariportati.\n   */\n  @Input()\n  get placement(): PlacementArray { return this._placement; }\n  set placement(value: PlacementArray) { this._placement = value; }\n  private _placement: PlacementArray;\n\n  /**\n   * Specifica gli eventi che dovrebbero innescare il popover. Supporta una lista con nomi di eventi separati da spazi.\n   */\n  @Input()\n  get triggers(): any {\n    return this._triggers;\n  }\n  set triggers(value: any) {\n    if (PopoverTrigger.is(value)) {\n      this._triggers = value;\n    } else {\n      this._triggers = POPOVER_TRIGGERS.CLICK;\n    }\n  }\n  private _triggers;\n\n  /**\n   * Un selettore che specifica l'elemento in cui il popover dovrebbe essere aggiunto.\n   * Attualmente supporta solo \"body\".\n   */\n  @Input()\n  get container(): string { return this._container; }\n  set container(value: string) { this._container = value; }\n  private _container: string;\n\n  /**\n   * Evento da emettere quando il popover sta per essere mostrato\n   */\n  @Output('show')\n  get showEvent(): EventEmitter<PopoverDirective> { return this._showEvent; }\n  set showEvent(value: EventEmitter<PopoverDirective>) { this._showEvent = value; }\n  private _showEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover è mostrato\n   */\n  @Output('shown')\n  get shownEvent(): EventEmitter<PopoverDirective> { return this._shownEvent; }\n  set shownEvent(value: EventEmitter<PopoverDirective>) { this._shownEvent = value; }\n  private _shownEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover viene inserito nel DOM\n   */\n  @Output('inserted')\n  get insertedEvent(): EventEmitter<PopoverDirective> { return this._insertedEvent; }\n  set insertedEvent(value: EventEmitter<PopoverDirective>) { this._insertedEvent = value; }\n  private _insertedEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover sta per essere nascosto\n   */\n  @Output('hide')\n  get hideEvent(): EventEmitter<PopoverDirective> { return this._hideEvent; }\n  set hideEvent(value: EventEmitter<PopoverDirective>) { this._hideEvent = value; }\n  private _hideEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Evento da emettere quando il popover è nascosto\n   */\n  @Output('hidden')\n  get hiddenEvent(): EventEmitter<PopoverDirective> { return this._hiddenEvent; }\n  set hiddenEvent(value: EventEmitter<PopoverDirective>) { this._hiddenEvent = value; }\n  private _hiddenEvent = new EventEmitter<PopoverDirective>();\n\n  /**\n   * Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.\n   */\n  @Input('disabled')\n  get disablePopover(): boolean { return this._disablePopover; }\n  set disablePopover(value: boolean) { this._disablePopover = Util.coerceBooleanProperty(value); }\n  private _disablePopover = false;\n\n  private _itPopoverWindowId = `it-popover-${identifier++}`;\n  private _popupService: PopupService<PopoverComponent>;\n  private _windowRef: ComponentRef<PopoverComponent>;\n  private _unregisterListenersFn;\n  private _zoneSubscription: Subscription;\n  private _isDisabled(): boolean {\n    if (this.disablePopover) {\n      return true;\n    }\n    if (!this.itPopover && !this.title) {\n      return true;\n    }\n    return false;\n  }\n\n  constructor(\n      private _elementRef: ElementRef<HTMLElement>,\n      private _renderer: Renderer2,\n      injector: Injector,\n      componentFactoryResolver: ComponentFactoryResolver,\n      viewContainerRef: ViewContainerRef,\n      config: PopoverConfig,\n      ngZone: NgZone\n  ) {\n    this.placement = config.placement;\n    this.triggers = config.triggers;\n    this.container = config.container;\n    this.disablePopover = config.disablePopover;\n    this._popupService = new PopupService<PopoverComponent>(\n      PopoverComponent, injector, viewContainerRef, _renderer, componentFactoryResolver);\n\n    this._zoneSubscription = ngZone.onStable.subscribe(() => {\n      if (this._windowRef) {\n        this._windowRef.instance.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n      }\n    });\n  }\n\n  /**\n   * Apre il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   * Il context è un valore opzionale da iniettare nel template del popover quando esso viene creato.\n   */\n  show(context?: any) {\n    if (!this._isDisabled()) {\n      // Scatena l'evento per segnalare l'inizio del processo per visualizzare il popover\n      this.showEvent.emit(this);\n\n      if (!this._windowRef) {\n        this._windowRef = this._popupService.open(this.itPopover, context);\n\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.title = this.title;\n        popoverComponent.id = this._itPopoverWindowId;\n\n        this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._itPopoverWindowId);\n\n        if (this.container === 'body') {\n          window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);\n        }\n\n        this._windowRef.changeDetectorRef.detectChanges();\n        this._windowRef.changeDetectorRef.markForCheck();\n\n        // Posiziona il popover attorno all'elemento\n        popoverComponent.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n\n        // Scatena l'evento per segnalare l'inserimento nel DOM\n        this.insertedEvent.emit(this);\n      } else {\n        const popoverComponent = this._windowRef.instance;\n        popoverComponent.hidden = false;\n      }\n\n      // Scatena l'evento per segnalare che il popover è stato visualizzato\n      this.shownEvent.emit(this);\n    }\n  }\n\n  /**\n   * Chiude il popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  hide() {\n    // Scatena l'evento per segnalare l'inizio del processo per nascondere il popover\n    this.hideEvent.emit(this);\n    if (this._windowRef) {\n      const popoverComponent = this._windowRef.instance;\n      popoverComponent.hidden = true;\n\n      // Scatena l'evento per segnalare che il popover è stato nascosto\n      this.hiddenEvent.emit(this);\n    }\n  }\n\n  /**\n   * Apre/chiude il un popover di un elemento. È considerato un azionamento \"manuale\" del popover.\n   */\n  toggle() {\n    if (this._windowRef) {\n      if (this._windowRef.instance.hidden) {\n        this.show();\n      } else {\n        this.hide();\n      }\n    } else {\n      this.show();\n    }\n  }\n\n  /**\n   * Nasconde e distrugge il popover di un elemento.\n   */\n  dispose() {\n    const isShown = this._windowRef ? !this._windowRef.instance.hidden : false;\n    if (isShown) {\n      this.hide();\n    }\n\n    if (this._windowRef) {\n      this._renderer.removeAttribute(this._elementRef.nativeElement, 'aria-describedby');\n      this._popupService.close();\n      this._windowRef = null;\n    }\n  }\n\n  /**\n   * Fornisce al popover di un elemento la possibilità di essere mostrato.\n   */\n  enable() {\n    if (this._isDisabled()) {\n      this.disablePopover = false;\n    }\n  }\n\n  /**\n   * Rimuove la capacità di mostrare il popover di un elemento.\n   */\n  disable() {\n    if (!this._isDisabled()) {\n      this.disablePopover = true;\n    }\n  }\n\n  /**\n   * Attiva/disattiva la possibilità che il popover di un elemento sia mostrato o nascosto.\n   */\n  toggleEnabled() {\n    if (this._isDisabled()) {\n      this.enable();\n    } else {\n      this.disable();\n    }\n  }\n\n  ngOnInit() {\n    this._unregisterListenersFn = listenToTriggers(\n      this._renderer, this._elementRef.nativeElement, this.triggers,\n      this.show.bind(this), this.hide.bind(this), this.toggle.bind(this)\n    );\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    // Chiude il popover se titolo e contenuti risultano vuoti, o se disablePopover è impostato a vero\n    if (changes['itPopover'] || changes['title'] || changes['disablePopover']) {\n      if (this._windowRef) {\n        const isShown = !this._windowRef.instance.hidden;\n        if (changes['itPopover']) {\n          this._windowRef.instance.setNewContent(this.itPopover);\n          this._windowRef.changeDetectorRef.detectChanges();\n          this._windowRef.changeDetectorRef.markForCheck();\n        }\n        if (changes['title']) {\n          this._windowRef.instance.title = this.title;\n        }\n\n\n        if (isShown) {\n          if (!this._isDisabled()) {\n            this.show();\n          } else {\n            this.hide();\n          }\n        }\n      }\n    } else if (changes['placement']) {\n      if (this._windowRef) {\n        this._windowRef.instance.applyPlacement(\n          positionElements(\n            this._elementRef.nativeElement, this._windowRef.location.nativeElement,\n            this.placement, this.container === 'body'\n          )\n        );\n      }\n    } else if (changes['container']) {\n      const isShown = this._windowRef ? !this._windowRef.instance.hidden : false;\n      this.dispose();\n      if (isShown) {\n        this.show();\n      }\n    } else if (changes['triggers']) {\n      this.dispose();\n\n      const triggersChangers = changes['triggers'];\n      if (triggersChangers.previousValue !== triggersChangers.currentValue && !triggersChangers.firstChange) {\n        this._unregisterListenersFn();\n        this._unregisterListenersFn = listenToTriggers(\n          this._renderer, this._elementRef.nativeElement, this.triggers,\n          this.show.bind(this), this.hide.bind(this), this.toggle.bind(this)\n        );\n      }\n    }\n  }\n\n  ngOnDestroy() {\n    this.dispose();\n    this._unregisterListenersFn();\n    this._zoneSubscription.unsubscribe();\n  }\n\n}\n",
+            "selector": "[it-popover]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "container",
+                    "description": "<p>Un selettore che specifica l&#39;elemento in cui il popover dovrebbe essere aggiunto.\nAttualmente supporta solo &quot;body&quot;.</p>\n",
+                    "line": 94,
+                    "type": "string"
+                },
+                {
+                    "name": "disabled",
+                    "description": "<p>Un flag utilizzato per indicare se un popover è disabilitato, così da non doverlo mostrare.</p>\n",
+                    "line": 142,
+                    "type": "boolean"
+                },
+                {
+                    "name": "it-popover",
+                    "description": "<p>Contenuto da mostrare nel popover. In assenza di titolo e contenuto, il popover non si aprirà.</p>\n",
+                    "line": 50,
+                    "type": "string | TemplateRef<any>"
+                },
+                {
+                    "name": "placement",
+                    "description": "<p>Il collocamento accettato dal popover:\n    &quot;top&quot;, &quot;top-left&quot;, &quot;top-right&quot;, &quot;bottom&quot;, &quot;bottom-left&quot;, &quot;bottom-right&quot;,\n    &quot;left&quot;, &quot;left-top&quot;, &quot;left-bottom&quot;, &quot;right&quot;, &quot;right-top&quot;, &quot;right-bottom&quot;\ned array dei valori soprariportati.</p>\n",
+                    "line": 69,
+                    "type": "PlacementArray"
+                },
+                {
+                    "name": "title",
+                    "description": "<p>Titolo del popover. In assenza di titolo e contenuto, il popover non si aprirà.</p>\n",
+                    "line": 58,
+                    "type": "string"
+                },
+                {
+                    "name": "triggers",
+                    "description": "<p>Specifica gli eventi che dovrebbero innescare il popover. Supporta una lista con nomi di eventi separati da spazi.</p>\n",
+                    "line": 77,
+                    "type": "any"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "hidden",
+                    "description": "<p>Evento da emettere quando il popover è nascosto</p>\n",
+                    "line": 134,
+                    "type": "EventEmitter<PopoverDirective>"
+                },
+                {
+                    "name": "hide",
+                    "description": "<p>Evento da emettere quando il popover sta per essere nascosto</p>\n",
+                    "line": 126,
+                    "type": "EventEmitter<PopoverDirective>"
+                },
+                {
+                    "name": "inserted",
+                    "description": "<p>Evento da emettere quando il popover viene inserito nel DOM</p>\n",
+                    "line": 118,
+                    "type": "EventEmitter<PopoverDirective>"
+                },
+                {
+                    "name": "show",
+                    "description": "<p>Evento da emettere quando il popover sta per essere mostrato</p>\n",
+                    "line": 102,
+                    "type": "EventEmitter<PopoverDirective>"
+                },
+                {
+                    "name": "shown",
+                    "description": "<p>Evento da emettere quando il popover è mostrato</p>\n",
+                    "line": 110,
+                    "type": "EventEmitter<PopoverDirective>"
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "_container",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 96,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_disablePopover",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 144,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_hiddenEvent",
+                    "defaultValue": "new EventEmitter<PopoverDirective>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 136,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_hideEvent",
+                    "defaultValue": "new EventEmitter<PopoverDirective>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 128,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_insertedEvent",
+                    "defaultValue": "new EventEmitter<PopoverDirective>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 120,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_itPopover",
+                    "type": "string | TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 52,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_itPopoverWindowId",
+                    "defaultValue": "`it-popover-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 146,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_placement",
+                    "type": "PlacementArray",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_popupService",
+                    "type": "PopupService<PopoverComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 147,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_showEvent",
+                    "defaultValue": "new EventEmitter<PopoverDirective>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 104,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_shownEvent",
+                    "defaultValue": "new EventEmitter<PopoverDirective>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 112,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_title",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 60,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_triggers",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 87,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_unregisterListenersFn",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 149,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_windowRef",
+                    "type": "ComponentRef<PopoverComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 148,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_zoneSubscription",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 150,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_isDisabled",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 151,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "disable",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 292,
+                    "description": "<p>Rimuove la capacità di mostrare il popover di un elemento.</p>\n"
+                },
+                {
+                    "name": "dispose",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 267,
+                    "description": "<p>Nasconde e distrugge il popover di un elemento.</p>\n"
+                },
+                {
+                    "name": "enable",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 283,
+                    "description": "<p>Fornisce al popover di un elemento la possibilità di essere mostrato.</p>\n"
+                },
+                {
+                    "name": "hide",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 237,
+                    "description": "<p>Chiude il popover di un elemento. È considerato un azionamento &quot;manuale&quot; del popover.</p>\n"
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 316,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 368
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 309
+                },
+                {
+                    "name": "show",
+                    "args": [
+                        {
+                            "name": "context",
+                            "type": "any",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 193,
+                    "description": "<p>Apre il popover di un elemento. È considerato un azionamento &quot;manuale&quot; del popover.\nIl context è un valore opzionale da iniettare nel template del popover quando esso viene creato.</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "context",
+                            "type": "any",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 252,
+                    "description": "<p>Apre/chiude il un popover di un elemento. È considerato un azionamento &quot;manuale&quot; del popover.</p>\n"
+                },
+                {
+                    "name": "toggleEnabled",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 301,
+                    "description": "<p>Attiva/disattiva la possibilità che il popover di un elemento sia mostrato o nascosto.</p>\n"
+                }
+            ],
+            "implements": [
+                "OnInit",
+                "OnDestroy",
+                "OnChanges"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_elementRef",
+                        "type": "ElementRef<HTMLElement>"
+                    },
+                    {
+                        "name": "_renderer",
+                        "type": "Renderer2"
+                    },
+                    {
+                        "name": "injector",
+                        "type": "Injector"
+                    },
+                    {
+                        "name": "componentFactoryResolver",
+                        "type": "ComponentFactoryResolver"
+                    },
+                    {
+                        "name": "viewContainerRef",
+                        "type": "ViewContainerRef"
+                    },
+                    {
+                        "name": "config",
+                        "type": "PopoverConfig"
+                    },
+                    {
+                        "name": "ngZone",
+                        "type": "NgZone"
+                    }
+                ],
+                "line": 159,
+                "jsdoctags": [
+                    {
+                        "name": "_elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "injector",
+                        "type": "Injector",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "componentFactoryResolver",
+                        "type": "ComponentFactoryResolver",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "viewContainerRef",
+                        "type": "ViewContainerRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "config",
+                        "type": "PopoverConfig",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "ngZone",
+                        "type": "NgZone",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "itPopover": {
+                    "name": "itPopover",
+                    "setSignature": {
+                        "name": "itPopover",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 51,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "title": {
+                    "name": "title",
+                    "setSignature": {
+                        "name": "title",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 59,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "placement": {
+                    "name": "placement",
+                    "setSignature": {
+                        "name": "placement",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 70,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "triggers": {
+                    "name": "triggers",
+                    "setSignature": {
+                        "name": "triggers",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 80,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "container": {
+                    "name": "container",
+                    "setSignature": {
+                        "name": "container",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 95,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "showEvent": {
+                    "name": "showEvent",
+                    "setSignature": {
+                        "name": "showEvent",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 103,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "shownEvent": {
+                    "name": "shownEvent",
+                    "setSignature": {
+                        "name": "shownEvent",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 111,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "insertedEvent": {
+                    "name": "insertedEvent",
+                    "setSignature": {
+                        "name": "insertedEvent",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 119,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "hideEvent": {
+                    "name": "hideEvent",
+                    "setSignature": {
+                        "name": "hideEvent",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 127,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "hiddenEvent": {
+                    "name": "hiddenEvent",
+                    "setSignature": {
+                        "name": "hiddenEvent",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 135,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "disablePopover": {
+                    "name": "disablePopover",
+                    "setSignature": {
+                        "name": "disablePopover",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 143,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -4361,6 +5950,216 @@
             "templateData": "<li [id]=\"id\">\n  <a [attr.href]=\"link\"\n    [attr.tabindex]=\"this.disabled ? -1 : 0\"\n    [class]=\"dropdownItemClass\"\n    [ngClass]=\"{\n      'large' : large, \n      'active' : active,\n      'disabled' : disabled,\n      'disabled-item-link' : disabled\n    }\">\n    <i [class]=\"iconClass\" aria-hidden=\"true\" *ngIf=\"icon && iconPosition === 'left'\"></i>\n    <span>\n      <ng-content></ng-content>\n    </span>\n    <i [class]=\"iconClass\" aria-hidden=\"true\" *ngIf=\"icon && iconPosition === 'right'\"></i>\n  </a>\n</li>"
         },
         {
+            "name": "PopoverComponent",
+            "id": "component-PopoverComponent-d576eec209239c43a402486b384c55a8",
+            "file": "projects/design-angular-kit/src/lib/popover/popover.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-popover-window",
+            "styleUrls": [
+                "popover.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./popover.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "hidden",
+                    "defaultValue": "false",
+                    "line": 34
+                },
+                {
+                    "name": "id",
+                    "line": 33,
+                    "type": "string"
+                },
+                {
+                    "name": "placement",
+                    "defaultValue": "'right'",
+                    "line": 23,
+                    "type": "Placement"
+                },
+                {
+                    "name": "title",
+                    "line": 26
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_title",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "applyPlacement",
+                    "args": [
+                        {
+                            "name": "_placement",
+                            "type": "Placement"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "jsdoctags": [
+                        {
+                            "name": "_placement",
+                            "type": "Placement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setNewContent",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "string | TemplateRef<any>"
+                        },
+                        {
+                            "name": "context",
+                            "type": "any",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 59,
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "string | TemplateRef<any>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "context",
+                            "type": "any",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [
+                {
+                    "name": "attr.role",
+                    "defaultValue": "'tooltip'",
+                    "line": 36
+                },
+                {
+                    "name": "class",
+                    "line": 37,
+                    "type": "string"
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "type": "component",
+            "sourceCode": "import {\n  Component, ChangeDetectionStrategy,\n  ElementRef, Renderer2, Input, HostBinding,\n  ChangeDetectorRef, TemplateRef, ViewContainerRef\n} from '@angular/core';\nimport { Placement } from './positioning';\nimport { ContentRef } from './popup';\n\n@Component({\n  selector: 'it-popover-window',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  templateUrl: './popover.component.html',\n  styleUrls: ['./popover.component.css']\n})\nexport class PopoverComponent {\n  @Input() placement: Placement = 'right';\n\n  @Input()\n  get title() { return this._title; }\n  set title(value: string) {\n    this._title = value;\n    this._changeDetectorRef.detectChanges();\n  }\n  private _title: string;\n\n  @Input() @HostBinding('id') id: string;\n  @Input() @HostBinding('hidden') hidden = false;\n\n  @HostBinding('attr.role') role = 'tooltip';\n  @HostBinding('class') get myCssClass(): string {\n    return 'popover bs-popover-' + this.placement.split('-')[0] + ' bs-popover-' + this.placement;\n  }\n\n  constructor(\n    private _element: ElementRef<HTMLElement>, private _renderer: Renderer2,\n    private _changeDetectorRef: ChangeDetectorRef, private _viewContainerRef: ViewContainerRef\n  ) {}\n\n  applyPlacement(_placement: Placement) {\n    // Rimuovi le classi della posizione precedente\n    this._renderer.removeClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString().split('-')[0]);\n    this._renderer.removeClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString());\n\n    // Imposta la nuova posizione\n    this.placement = _placement;\n\n    // Applica le classi della nuova posizione\n    this._renderer.addClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString().split('-')[0]);\n    this._renderer.addClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString());\n  }\n\n  setNewContent(content: string | TemplateRef<any>, context?: any) {\n    const contentElement = this._element.nativeElement.querySelector('.popover-body');\n\n    let newContent: ContentRef;\n    if (!content) {\n      newContent = new ContentRef([]);\n    } else if (content instanceof TemplateRef) {\n      const viewRef = this._viewContainerRef.createEmbeddedView(<TemplateRef<PopoverComponent>>content, context);\n      newContent = new ContentRef([viewRef.rootNodes], viewRef);\n    } else {\n      newContent = new ContentRef([[this._renderer.createText(`${content}`)]]);\n    }\n\n    const childNodes = contentElement.childNodes;\n    for (let i = 0; i < childNodes.length; i++) {\n      this._renderer.removeChild(contentElement, childNodes[i]);\n    }\n\n    newContent.nodes.forEach(newNode => {\n      newNode.forEach(newChild => this._renderer.appendChild(contentElement, newChild));\n    });\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_element",
+                        "type": "ElementRef<HTMLElement>"
+                    },
+                    {
+                        "name": "_renderer",
+                        "type": "Renderer2"
+                    },
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef"
+                    },
+                    {
+                        "name": "_viewContainerRef",
+                        "type": "ViewContainerRef"
+                    }
+                ],
+                "line": 39,
+                "jsdoctags": [
+                    {
+                        "name": "_element",
+                        "type": "ElementRef<HTMLElement>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_viewContainerRef",
+                        "type": "ViewContainerRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "title": {
+                    "name": "title",
+                    "setSignature": {
+                        "name": "title",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 27,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<div class=\"arrow\"></div>\n<h3 class=\"popover-header\">{{title}}</h3>\n<div class=\"popover-body\">\n  <ng-content></ng-content>\n</div>"
+        },
+        {
             "name": "ProgressBarComponent",
             "id": "component-ProgressBarComponent-4b50cab345688be6ce20081228e12c40",
             "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
@@ -6178,6 +7977,12 @@
                             "name": "DropdownItemComponent"
                         },
                         {
+                            "name": "PopoverComponent"
+                        },
+                        {
+                            "name": "PopoverDirective"
+                        },
+                        {
                             "name": "ProgressBarComponent"
                         },
                         {
@@ -6236,6 +8041,9 @@
                         },
                         {
                             "name": "DropdownItemComponent"
+                        },
+                        {
+                            "name": "PopoverDirective"
                         },
                         {
                             "name": "ProgressBarComponent"
@@ -6322,6 +8130,14 @@
                 "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
             },
             {
+                "name": "DEFAULT_ALIASES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "type": "object",
+                "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
+            },
+            {
                 "name": "DEFAULT_COLOR",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -6373,30 +8189,6 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
                 "type": "number",
                 "defaultValue": "0"
@@ -6421,6 +8213,14 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
                 "type": "number",
                 "defaultValue": "0"
@@ -6429,7 +8229,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -6445,7 +8245,31 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
+                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -6515,6 +8339,14 @@
                 "defaultValue": "() => { }"
             },
             {
+                "name": "noopFn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "type": "",
+                "defaultValue": "() => { }"
+            },
+            {
                 "name": "PLACEMENT_PROPERTY",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -6529,6 +8361,30 @@
                 "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
                 "type": "string",
                 "defaultValue": "'bottom-start'"
+            },
+            {
+                "name": "POPOVER_TRIGGERS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
+                "type": "object",
+                "defaultValue": "{\n  CLICK: CLICK,\n  FOCUS: FOCUS,\n}"
+            },
+            {
+                "name": "PopoverTrigger",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
+                "type": "",
+                "defaultValue": "t.keyof({\n  click: null,\n  focus: null,\n})"
+            },
+            {
+                "name": "positionService",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "type": "",
+                "defaultValue": "new Positioning()"
             },
             {
                 "name": "positionService",
@@ -6652,6 +8508,81 @@
             },
             {
                 "name": "listenToTriggers",
+                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "renderer",
+                        "type": "any"
+                    },
+                    {
+                        "name": "nativeElement",
+                        "type": "any"
+                    },
+                    {
+                        "name": "triggers"
+                    },
+                    {
+                        "name": "openFn",
+                        "type": ""
+                    },
+                    {
+                        "name": "closeFn",
+                        "type": ""
+                    },
+                    {
+                        "name": "toggleFn",
+                        "type": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "renderer",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "nativeElement",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "triggers",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "openFn",
+                        "type": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "closeFn",
+                        "type": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "toggleFn",
+                        "type": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "listenToTriggers",
                 "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
@@ -6727,6 +8658,37 @@
             },
             {
                 "name": "parseTriggers",
+                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "triggers"
+                    },
+                    {
+                        "name": "aliases",
+                        "type": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "triggers",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "aliases",
+                        "type": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "parseTriggers",
                 "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
@@ -6750,6 +8712,57 @@
                     {
                         "name": "aliases",
                         "type": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "positionElements",
+                "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hostElement"
+                    },
+                    {
+                        "name": "targetElement"
+                    },
+                    {
+                        "name": "placement"
+                    },
+                    {
+                        "name": "appendToBody",
+                        "type": "boolean",
+                        "optional": true
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hostElement",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "targetElement",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "placement",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "appendToBody",
+                        "type": "boolean",
+                        "optional": true,
                         "tagName": {
                             "text": "param"
                         }
@@ -6809,6 +8822,26 @@
             },
             {
                 "name": "toItemIndexes",
+                "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "a"
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "a",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "toItemIndexes",
                 "file": "projects/design-angular-kit/src/lib/tooltip/positioning.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
@@ -6834,7 +8867,25 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "\"auto\" | \"top\" | \"bottom\" | \"left\" | \"right\" | \"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\" | \"left-top\" | \"left-bottom\" | \"right-top\" | \"right-bottom\"",
+                "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "description": "",
+                "kind": 168
+            },
+            {
+                "name": "Placement",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"auto\" | \"top\" | \"bottom\" | \"left\" | \"right\" | \"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\" | \"left-top\" | \"left-bottom\" | \"right-top\" | \"right-bottom\"",
                 "file": "projects/design-angular-kit/src/lib/tooltip/positioning.ts",
+                "description": "",
+                "kind": 168
+            },
+            {
+                "name": "PlacementArray",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "Placement | Array<Placement>",
+                "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
                 "description": "",
                 "kind": 168
             },
@@ -6941,6 +8992,22 @@
                     "file": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
                     "type": "",
                     "defaultValue": "t.keyof({\n  click: null,\n  focus: null,\n  hover: null,\n})"
+                },
+                {
+                    "name": "POPOVER_TRIGGERS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  CLICK: CLICK,\n  FOCUS: FOCUS,\n}"
+                },
+                {
+                    "name": "PopoverTrigger",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
+                    "type": "",
+                    "defaultValue": "t.keyof({\n  click: null,\n  focus: null,\n})"
                 }
             ],
             "projects/design-angular-kit/src/lib/models/ThemeColor.ts": [
@@ -7043,6 +9110,24 @@
                     "defaultValue": "() => { }"
                 }
             ],
+            "projects/design-angular-kit/src/lib/popover/triggers.ts": [
+                {
+                    "name": "DEFAULT_ALIASES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                    "type": "object",
+                    "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
+                },
+                {
+                    "name": "noopFn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                    "type": "",
+                    "defaultValue": "() => { }"
+                }
+            ],
             "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts": [
                 {
                     "name": "DEFAULT_COLOR",
@@ -7129,36 +9214,6 @@
                     "defaultValue": "'right'"
                 }
             ],
-            "projects/design-angular-kit/src/lib/toggle/toggle.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
             "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts": [
                 {
                     "name": "identifier",
@@ -7179,12 +9234,32 @@
                     "defaultValue": "0"
                 }
             ],
+            "projects/design-angular-kit/src/lib/popover/popover.directive.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/button/button.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -7207,12 +9282,32 @@
                     "defaultValue": "INTERACTION_TRIGGERS.HOVER"
                 }
             ],
-            "projects/design-angular-kit/src/lib/button/button.component.ts": [
+            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
+                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/toggle/toggle.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -7226,6 +9321,16 @@
                     "type": "number",
                     "defaultValue": "0",
                     "description": "<p>Usato per generare ID univoci per ogni componente tab </p>\n"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/popover/positioning.ts": [
+                {
+                    "name": "positionService",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                    "type": "",
+                    "defaultValue": "new Positioning()"
                 }
             ],
             "projects/design-angular-kit/src/lib/tooltip/positioning.ts": [
@@ -7267,6 +9372,114 @@
                         {
                             "name": "value",
                             "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "projects/design-angular-kit/src/lib/popover/triggers.ts": [
+                {
+                    "name": "listenToTriggers",
+                    "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "renderer",
+                            "type": "any"
+                        },
+                        {
+                            "name": "nativeElement",
+                            "type": "any"
+                        },
+                        {
+                            "name": "triggers"
+                        },
+                        {
+                            "name": "openFn",
+                            "type": ""
+                        },
+                        {
+                            "name": "closeFn",
+                            "type": ""
+                        },
+                        {
+                            "name": "toggleFn",
+                            "type": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "renderer",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "nativeElement",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "triggers",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "openFn",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "closeFn",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "toggleFn",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "parseTriggers",
+                    "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "triggers"
+                        },
+                        {
+                            "name": "aliases",
+                            "type": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "triggers",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "aliases",
+                            "type": "",
                             "tagName": {
                                 "text": "param"
                             }
@@ -7382,6 +9595,79 @@
                     ]
                 }
             ],
+            "projects/design-angular-kit/src/lib/popover/positioning.ts": [
+                {
+                    "name": "positionElements",
+                    "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hostElement"
+                        },
+                        {
+                            "name": "targetElement"
+                        },
+                        {
+                            "name": "placement"
+                        },
+                        {
+                            "name": "appendToBody",
+                            "type": "boolean",
+                            "optional": true
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hostElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "targetElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "placement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "appendToBody",
+                            "type": "boolean",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toItemIndexes",
+                    "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "a"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "a",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "projects/design-angular-kit/src/lib/tooltip/positioning.ts": [
                 {
                     "name": "positionElements",
@@ -7458,6 +9744,26 @@
         },
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "projects/design-angular-kit/src/lib/popover/positioning.ts": [
+                {
+                    "name": "Placement",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"auto\" | \"top\" | \"bottom\" | \"left\" | \"right\" | \"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\" | \"left-top\" | \"left-bottom\" | \"right-top\" | \"right-bottom\"",
+                    "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                    "description": "",
+                    "kind": 168
+                },
+                {
+                    "name": "PlacementArray",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "Placement | Array<Placement>",
+                    "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                    "description": "",
+                    "kind": 168
+                }
+            ],
             "projects/design-angular-kit/src/lib/tooltip/positioning.ts": [
                 {
                     "name": "Placement",
@@ -7493,7 +9799,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 11,
+        "count": 10,
         "status": "low",
         "files": [
             {
@@ -7837,6 +10143,26 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "POPOVER_TRIGGERS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PopoverTrigger",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -7932,6 +10258,145 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "WARNING",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/popover.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PopoverComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/popover.config.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "PopoverConfig",
+                "coveragePercent": 20,
+                "coverageCount": "1/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "PopoverDirective",
+                "coveragePercent": 47,
+                "coverageCount": "19/40",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/popup.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ContentRef",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/popup.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "PopupService",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "Positioning",
+                "coveragePercent": 18,
+                "coverageCount": "2/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "positionElements",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "toItemIndexes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "positionService",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "Trigger",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "listenToTriggers",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "parseTriggers",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEFAULT_ALIASES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "noopFn",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
