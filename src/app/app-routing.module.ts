@@ -18,7 +18,8 @@ const routes: Routes = [
     { path: 'tabs', loadChildren: 'src/app/tabs/tabs.module#TabsModule' },
     { path: 'tooltip', loadChildren: 'src/app/tooltip/tooltip.module#TooltipModule' },
     { path: 'button', loadChildren: 'src/app/button/button.module#ButtonModule' },
-    { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' }
+    { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' },
+    { path: 'dropdown', loadChildren: 'src/app/dropdown/dropdown.module#DropdownModule' },
   ]}
 ];
 

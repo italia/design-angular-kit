@@ -10,6 +10,10 @@ import { TooltipDirective } from './tooltip/tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { DropdownItemComponent } from './dropdown/dropdown-item.component';
+import { DropdownHeaderComponent } from './dropdown/dropdown-header.component';
+import { DropdownDividerComponent } from './dropdown/dropdown-divider.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component';
 import { TabGroupComponent } from './tabs/tab-group.component';
@@ -32,6 +36,10 @@ import { TabComponent } from './tabs/tab.component';
     ButtonComponent,
     TooltipDirective,
     TooltipComponent,
+    DropdownComponent,
+    DropdownItemComponent,
+    DropdownHeaderComponent,
+    DropdownDividerComponent,
     BreadcrumbComponent,
     BreadcrumbItemComponent
   ],
@@ -46,6 +54,10 @@ import { TabComponent } from './tabs/tab.component';
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
+    DropdownComponent,
+    DropdownItemComponent,
+    DropdownHeaderComponent,
+    DropdownDividerComponent,
     BreadcrumbComponent,
     BreadcrumbItemComponent
   ],
