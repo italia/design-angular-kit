@@ -2473,6 +2473,488 @@
     ],
     "components": [
         {
+            "name": "BreadcrumbComponent",
+            "id": "component-BreadcrumbComponent-71c8ef5db9bfe43bda2d2528e05471b4",
+            "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-breadcrumb",
+            "styleUrls": [
+                "breadcrumb.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./breadcrumb.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "dark",
+                    "description": "<p>Indica che il breadcrumb utilizza il tema di colorazione scura.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
+                    "line": 29,
+                    "type": "boolean"
+                },
+                {
+                    "name": "separator",
+                    "description": "<p>Il carattere che verrà usato come separatore tra gli elementi del breadcrumb</p>\n",
+                    "line": 37,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_dark",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_items",
+                    "type": "QueryList<BreadcrumbItemComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 42,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren"
+                        }
+                    ],
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_separator",
+                    "defaultValue": "DEFAULT_SEPARATOR",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_subscription",
+                    "defaultValue": "Subscription.EMPTY",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 48,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "`it-breadcrumb-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_reloadBreadcrumbs",
+                    "args": [
+                        {
+                            "name": "currentItems",
+                            "type": "QueryList<BreadcrumbItemComponent>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 68,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "currentItems",
+                            "type": "QueryList<BreadcrumbItemComponent>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_subscribeToChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "ngAfterContentInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 62
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Una componente che indica la posizione della pagina corrente all’interno di una gerarchia di navigazione</p>\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component, Input, ContentChildren, QueryList, forwardRef,\n  AfterContentInit, OnChanges, OnDestroy, SimpleChanges, ChangeDetectionStrategy\n} from '@angular/core';\nimport { BreadcrumbItemComponent } from './breadcrumb-item.component';\nimport { Util } from '../util/util';\nimport { Subscription } from 'rxjs';\n\nconst DEFAULT_SEPARATOR = '/';\nlet identifier = 0;\n\n/**\n * Una componente che indica la posizione della pagina corrente all’interno di una gerarchia di navigazione\n */\n@Component({\n  selector: 'it-breadcrumb',\n  templateUrl: './breadcrumb.component.html',\n  styleUrls: ['./breadcrumb.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class BreadcrumbComponent implements AfterContentInit, OnChanges, OnDestroy {\n  id = `it-breadcrumb-${identifier++}`;\n\n  /**\n   * Indica che il breadcrumb utilizza il tema di colorazione scura.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get dark(): boolean { return this._dark; }\n  set dark(value: boolean) { this._dark = Util.coerceBooleanProperty(value); }\n  private _dark = false;\n\n  /**\n   * Il carattere che verrà usato come separatore tra gli elementi del breadcrumb\n   */\n  @Input()\n  get separator(): string { return this._separator; }\n  set separator(value: string) { this._separator = value ? value : DEFAULT_SEPARATOR; }\n  private _separator = DEFAULT_SEPARATOR;\n\n  @ContentChildren(forwardRef(() => BreadcrumbItemComponent), { descendants: true })\n  private _items: QueryList<BreadcrumbItemComponent>;\n\n  get breadcrumbClass() {\n    return 'breadcrumb' + (this._dark ? ' dark' : '');\n  }\n\n  private _subscription = Subscription.EMPTY;\n\n  ngAfterContentInit() {\n    this._reloadBreadcrumbs(this._items);\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes['separator']) {\n      if (!changes['separator'].firstChange) {\n        this._reloadBreadcrumbs(this._items);\n      }\n    }\n  }\n\n  ngOnDestroy() {\n    if (this._subscription) {\n      this._subscription.unsubscribe();\n    }\n  }\n\n  private _reloadBreadcrumbs(currentItems: QueryList<BreadcrumbItemComponent>) {\n    currentItems.forEach(item => {\n      item.separator = this.separator;\n      item.isLast = (item === currentItems.last);\n    });\n\n    this._subscribeToChanges();\n  }\n\n\n  private _subscribeToChanges() {\n    if (this._subscription) {\n      this._subscription.unsubscribe();\n    }\n\n    this._subscription = this._items.changes.subscribe(items => {\n      this._reloadBreadcrumbs(items);\n    });\n  }\n\n}\n",
+            "implements": [
+                "AfterContentInit",
+                "OnChanges",
+                "OnDestroy"
+            ],
+            "accessors": {
+                "dark": {
+                    "name": "dark",
+                    "setSignature": {
+                        "name": "dark",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 30,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "separator": {
+                    "name": "separator",
+                    "setSignature": {
+                        "name": "separator",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 38,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "breadcrumbClass": {
+                    "name": "breadcrumbClass",
+                    "getSignature": {
+                        "name": "breadcrumbClass",
+                        "type": "",
+                        "returnType": "",
+                        "line": 44
+                    }
+                }
+            },
+            "templateData": "<nav class=\"breadcrumb-container\" aria-label=\"breadcrumb\" [id]=\"id\">\n  <ol [ngClass]=\"breadcrumbClass\">\n    <ng-content></ng-content>\n  </ol>\n</nav>"
+        },
+        {
+            "name": "BreadcrumbItemComponent",
+            "id": "component-BreadcrumbItemComponent-8a2772aac7f9b15ab503ac6ac15c216a",
+            "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-breadcrumb-item",
+            "styleUrls": [
+                "breadcrumb-item.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./breadcrumb-item.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "icon",
+                    "description": "<p>La classe dell&#39;icona da usare prima del testo dell&#39;elemento del breadcrumb</p>\n",
+                    "line": 28,
+                    "type": "string"
+                },
+                {
+                    "name": "link",
+                    "description": "<p>Il link alla pagina verso cui andare al click di questo elemento del breadcrumb</p>\n",
+                    "line": 20,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_icon",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_isLast",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 49,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_link",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_separator",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "`it-breadcrumb-item-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';\n\nlet identifier = 0;\n\n@Component({\n  selector: 'it-breadcrumb-item',\n  templateUrl: './breadcrumb-item.component.html',\n  styleUrls: ['./breadcrumb-item.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class BreadcrumbItemComponent {\n  id = `it-breadcrumb-item-${identifier++}`;\n\n  constructor(private _cdRef: ChangeDetectorRef, private _elemRef: ElementRef) { }\n\n  /**\n   * Il link alla pagina verso cui andare al click di questo elemento del breadcrumb\n   */\n  @Input()\n  get link(): string { return this._link; }\n  set link(value: string) { this._link = value; }\n  private _link: string;\n\n  /**\n   * La classe dell'icona da usare prima del testo dell'elemento del breadcrumb\n   */\n  @Input()\n  get icon(): string { return this._icon; }\n  set icon(value: string) { this._icon = value; }\n  private _icon: string;\n\n  get separator(): string { return this._separator; }\n  set separator(value: string) { this._separator = value; }\n  private _separator: string;\n\n  get isLast(): boolean { return this._isLast; }\n  set isLast(value: boolean) {\n    this._isLast = value;\n    const breadcrumbItem = this._elemRef.nativeElement.querySelector('.breadcrumb-item');\n    if (this._isLast) {\n      breadcrumbItem.setAttribute('aria-current', 'page');\n    } else {\n      if (breadcrumbItem.hasAttribute('aria-current')) {\n        breadcrumbItem.removeAttribute('aria-current');\n      }\n    }\n    this._cdRef.detectChanges();\n  }\n  private _isLast = false;\n\n  get breadcrumbClass() {\n    return 'breadcrumb-item' + (this.isLast ? ' active' : '');\n  }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_cdRef",
+                        "type": "ChangeDetectorRef"
+                    },
+                    {
+                        "name": "_elemRef",
+                        "type": "ElementRef"
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "_cdRef",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_elemRef",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "link": {
+                    "name": "link",
+                    "setSignature": {
+                        "name": "link",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 21,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "icon": {
+                    "name": "icon",
+                    "setSignature": {
+                        "name": "icon",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 29,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "separator": {
+                    "name": "separator",
+                    "setSignature": {
+                        "name": "separator",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 33,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "separator",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 32
+                    }
+                },
+                "isLast": {
+                    "name": "isLast",
+                    "setSignature": {
+                        "name": "isLast",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 37,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "isLast",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 36
+                    }
+                },
+                "breadcrumbClass": {
+                    "name": "breadcrumbClass",
+                    "getSignature": {
+                        "name": "breadcrumbClass",
+                        "type": "",
+                        "returnType": "",
+                        "line": 51
+                    }
+                }
+            },
+            "templateData": "<li [class]=\"breadcrumbClass\" [id]=\"id\">\n  <i [class]=\"icon\" *ngIf=\"icon\"></i>\n  <a [href]=\"link\">\n    <ng-content></ng-content>\n  </a> <span class=\"separator\" *ngIf=\"!isLast\">{{separator}}</span>\n</li>\n"
+        },
+        {
             "name": "ButtonComponent",
             "id": "component-ButtonComponent-3099c24c7b4788edf94c96720a59209f",
             "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
@@ -4830,6 +5312,12 @@
                             "name": "BadgeDirective"
                         },
                         {
+                            "name": "BreadcrumbComponent"
+                        },
+                        {
+                            "name": "BreadcrumbItemComponent"
+                        },
+                        {
                             "name": "ButtonComponent"
                         },
                         {
@@ -4870,6 +5358,12 @@
                     "elements": [
                         {
                             "name": "BadgeDirective"
+                        },
+                        {
+                            "name": "BreadcrumbComponent"
+                        },
+                        {
+                            "name": "BreadcrumbItemComponent"
                         },
                         {
                             "name": "ButtonComponent"
@@ -4962,6 +5456,14 @@
                 "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
             },
             {
+                "name": "DEFAULT_SEPARATOR",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "string",
+                "defaultValue": "'/'"
+            },
+            {
                 "name": "FOCUS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4976,6 +5478,38 @@
                 "file": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
                 "type": "string",
                 "defaultValue": "'hover'"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "number",
+                "defaultValue": "0"
             },
             {
                 "name": "identifier",
@@ -4997,23 +5531,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -5579,6 +6097,54 @@
                     "defaultValue": "() => { }"
                 }
             ],
+            "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts": [
+                {
+                    "name": "DEFAULT_SEPARATOR",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                    "type": "string",
+                    "defaultValue": "'/'"
+                },
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/button/button.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts": [
                 {
                     "name": "identifier",
@@ -5607,32 +6173,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "projects/design-angular-kit/src/lib/button/button.component.ts": [
+            "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -5913,7 +6459,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 13,
+        "count": 12,
         "status": "low",
         "files": [
             {
@@ -5924,6 +6470,54 @@
                 "coveragePercent": 40,
                 "coverageCount": "4/10",
                 "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BreadcrumbItemComponent",
+                "coveragePercent": 22,
+                "coverageCount": "2/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BreadcrumbComponent",
+                "coveragePercent": 23,
+                "coverageCount": "3/13",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEFAULT_SEPARATOR",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/button/button.component.ts",
