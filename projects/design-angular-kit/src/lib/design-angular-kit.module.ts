@@ -10,6 +10,7 @@ import { TooltipDirective } from './tooltip/tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
+import { CollapseDirective } from './collapse/collapse.directive';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { BadgeDirective } from './badge/badge.directive';
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
-    TooltipComponent
+    TooltipComponent,
+    CollapseDirective
   ],
   exports: [
     CheckboxComponent,
@@ -35,7 +37,8 @@ import { BadgeDirective } from './badge/badge.directive';
     BadgeDirective,
     ProgressBarComponent,
     ButtonComponent,
-    TooltipDirective
+    TooltipDirective,
+    CollapseDirective
   ],
   entryComponents: [TooltipComponent]
 })
