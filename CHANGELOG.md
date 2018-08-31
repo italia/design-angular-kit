@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/italia/design-angular-kit/compare/v0.6.0...v0.7.0) (2018-08-31)
+
+
+### Features
+
+* **Dropdown:** implementa la componente Dropdown ([556e3ef](https://github.com/italia/design-angular-kit/commit/556e3ef)), closes [#45](https://github.com/italia/design-angular-kit/issues/45)
+
 # [0.6.0](https://github.com/italia/design-angular-kit/compare/v0.5.0...v0.6.0) (2018-08-31)
 
 
