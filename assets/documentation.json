@@ -3519,6 +3519,848 @@
             "templateData": "<div class=form-check>\n  <input type=checkbox\n    [id]=inputId\n    [checked]=checked\n    [disabled]=disabled\n    (change)=handleChange($event)>\n  <label\n    [attr.for]=inputId>{{label}}</label>\n</div>\n"
         },
         {
+            "name": "DropdownComponent",
+            "id": "component-DropdownComponent-d00c4b0cda5a4882cf61e164e811bcaf",
+            "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-dropdown",
+            "styleUrls": [
+                "dropdown.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./dropdown.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "description": "<p>Il colore del pulsante che attiva il dropdown.\nPuò assumere i valori primary, secondary, danger, warning, info, warning, success, light e dark</p>\n",
+                    "line": 57,
+                    "type": "any"
+                },
+                {
+                    "name": "dark",
+                    "description": "<p>Se presente indica che il dropdown utilizza il tema di colorazione scura.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
+                    "line": 39,
+                    "type": "boolean"
+                },
+                {
+                    "name": "fullWidth",
+                    "description": "<p>Se presente indica che le voci del dropdown si sviluppano orizzontalmente.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
+                    "line": 48,
+                    "type": "boolean"
+                },
+                {
+                    "name": "label",
+                    "description": "<p>Il testo presente sul pulsante che attiva il dropdown</p>\n",
+                    "line": 71,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClose",
+                    "description": "<p>Evento che viene lanciato ogni volta che il dropdown viene chiuso</p>\n",
+                    "line": 87,
+                    "type": "EventEmitter<DropdownComponent>"
+                },
+                {
+                    "name": "onOpen",
+                    "description": "<p>Evento che viene lanciato ogni volta che il dropdown viene aperto</p>\n",
+                    "line": 79,
+                    "type": "EventEmitter<DropdownComponent>"
+                },
+                {
+                    "name": "onToggle",
+                    "description": "<p>Evento che viene lanciato ogni volta che il dropdown viene aperto oppure chiuso</p>\n",
+                    "line": 95,
+                    "type": "EventEmitter<DropdownComponent>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_color",
+                    "defaultValue": "DEFAULT_COLOR",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 65,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_dark",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_dropdownButton",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "decorators": [
+                        {
+                            "name": "ViewChild"
+                        }
+                    ],
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_dropdownMenu",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "decorators": [
+                        {
+                            "name": "ViewChild"
+                        }
+                    ],
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_fullWidth",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 50,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_isOpen",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_label",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 73,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_onClose",
+                    "defaultValue": "new EventEmitter<DropdownComponent>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 89,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_onOpen",
+                    "defaultValue": "new EventEmitter<DropdownComponent>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 81,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_onToggle",
+                    "defaultValue": "new EventEmitter<DropdownComponent>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 97,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "`dropdown-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_close",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 141,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_open",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 133,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_toggle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 124,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "document:click",
+                    "args": [
+                        {
+                            "name": "target",
+                            "type": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event.target"
+                    ],
+                    "line": 100
+                },
+                {
+                    "name": "document:focusin",
+                    "args": [
+                        {
+                            "name": "target",
+                            "type": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event.target"
+                    ],
+                    "line": 109
+                }
+            ],
+            "description": "<p>Componente usata per attivare o disattivare overlay contestuali per visualizzare elenchi di link e altro ancora con questi menù a tendina</p>\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener, ChangeDetectionStrategy\n} from '@angular/core';\nimport { Util } from '../util/util';\nimport { ThemeColor } from '../models/ThemeColor';\n\nlet identifier = 0;\n\nconst DEFAULT_COLOR = 'dropdown';\nconst PLACEMENT_PROPERTY = 'x-placement';\nconst PLACEMENT_VALUE = 'bottom-start';\n\n/**\n * Componente usata per attivare o disattivare overlay contestuali per visualizzare elenchi di link e altro ancora con questi menù a tendina\n */\n@Component({\n  selector: 'it-dropdown',\n  templateUrl: './dropdown.component.html',\n  styleUrls: ['./dropdown.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class DropdownComponent {\n  @ViewChild('dropdownMenu')\n  private _dropdownMenu: ElementRef;\n\n  @ViewChild('dropdownButton')\n  private _dropdownButton: ElementRef;\n\n  id = `dropdown-${identifier++}`;\n\n  get isOpen(): boolean { return this._isOpen; }\n  private _isOpen = false;\n\n  /**\n   * Se presente indica che il dropdown utilizza il tema di colorazione scura.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get dark(): boolean { return this._dark; }\n  set dark(value: boolean) { this._dark = Util.coerceBooleanProperty(value); }\n  private _dark = false;\n\n  /**\n   * Se presente indica che le voci del dropdown si sviluppano orizzontalmente.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get fullWidth(): boolean { return this._fullWidth; }\n  set fullWidth(value: boolean) { this._fullWidth = Util.coerceBooleanProperty(value); }\n  private _fullWidth = false;\n\n  /**\n   * Il colore del pulsante che attiva il dropdown.\n   * Può assumere i valori primary, secondary, danger, warning, info, warning, success, light e dark\n   */\n  @Input()\n  get color(): any { return this._color; }\n  set color(value: any) {\n    if (ThemeColor.is(value)) {\n      this._color = value;\n    } else {\n      this._color = DEFAULT_COLOR;\n    }\n  }\n  private _color = DEFAULT_COLOR;\n\n  /**\n   * Il testo presente sul pulsante che attiva il dropdown\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(value: string) { this._label = value; }\n  private _label = '';\n\n  /**\n   * Evento che viene lanciato ogni volta che il dropdown viene aperto\n   */\n  @Output()\n  get onOpen(): EventEmitter<DropdownComponent> { return this._onOpen; }\n  set onOpen(value: EventEmitter<DropdownComponent>) { this._onOpen = value; }\n  private _onOpen = new EventEmitter<DropdownComponent>();\n\n  /**\n   * Evento che viene lanciato ogni volta che il dropdown viene chiuso\n   */\n  @Output()\n  get onClose(): EventEmitter<DropdownComponent> { return this._onClose; }\n  set onClose(value: EventEmitter<DropdownComponent>) { this._onClose = value; }\n  private _onClose = new EventEmitter<DropdownComponent>();\n\n  /**\n   * Evento che viene lanciato ogni volta che il dropdown viene aperto oppure chiuso\n   */\n  @Output()\n  get onToggle(): EventEmitter<DropdownComponent> { return this._onToggle; }\n  set onToggle(value: EventEmitter<DropdownComponent>) { this._onToggle = value; }\n  private _onToggle = new EventEmitter<DropdownComponent>();\n\n  @HostListener('document:click', ['$event.target'])\n  onClick(target) {\n    if (target === this._dropdownButton.nativeElement) {\n      this._toggle();\n    } else if (this.isOpen) {\n      this._close();\n    }\n  }\n\n  @HostListener('document:focusin', ['$event.target'])\n  onFocus(target) {\n    const isPartOfDropdown = (this._eleRef.nativeElement as HTMLElement).contains(target);\n    if (!isPartOfDropdown && this.isOpen) {\n      this._close();\n    }\n  }\n\n  get dropdownButtonClass() {\n    return `btn btn-${this.color} dropdown-toggle`;\n  }\n\n  constructor(private _eleRef: ElementRef) {\n\n  }\n\n  private _toggle() {\n    if (this._isOpen) {\n      this._close();\n    } else {\n      this._open();\n    }\n    this.onToggle.emit(this);\n  }\n\n  private _open() {\n    if (!this._isOpen) {\n      this._isOpen = true;\n      this._dropdownMenu.nativeElement.setAttribute(PLACEMENT_PROPERTY, PLACEMENT_VALUE);\n      this.onOpen.emit(this);\n    }\n  }\n\n  private _close() {\n    if (this._isOpen) {\n      this._isOpen = false;\n      this._dropdownMenu.nativeElement.removeAttribute(PLACEMENT_PROPERTY);\n      this.onClose.emit(this);\n    }\n  }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_eleRef",
+                        "type": "ElementRef"
+                    }
+                ],
+                "line": 118,
+                "jsdoctags": [
+                    {
+                        "name": "_eleRef",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "isOpen": {
+                    "name": "isOpen",
+                    "getSignature": {
+                        "name": "isOpen",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 31
+                    }
+                },
+                "dark": {
+                    "name": "dark",
+                    "setSignature": {
+                        "name": "dark",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 40,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "fullWidth": {
+                    "name": "fullWidth",
+                    "setSignature": {
+                        "name": "fullWidth",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 49,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "color": {
+                    "name": "color",
+                    "setSignature": {
+                        "name": "color",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 58,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "label": {
+                    "name": "label",
+                    "setSignature": {
+                        "name": "label",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 72,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "onOpen": {
+                    "name": "onOpen",
+                    "setSignature": {
+                        "name": "onOpen",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 80,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "onClose": {
+                    "name": "onClose",
+                    "setSignature": {
+                        "name": "onClose",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 88,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "onToggle": {
+                    "name": "onToggle",
+                    "setSignature": {
+                        "name": "onToggle",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 96,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "dropdownButtonClass": {
+                    "name": "dropdownButtonClass",
+                    "getSignature": {
+                        "name": "dropdownButtonClass",
+                        "type": "",
+                        "returnType": "",
+                        "line": 116
+                    }
+                }
+            },
+            "templateData": "<div class=\"dropdown\" [class.show]=\"isOpen\" [id]=\"id\">\n  <button #dropdownButton [class]=\"dropdownButtonClass\" \n    type=\"button\" id=\"dropdownMenuButton\"\n    aria-haspopup=\"true\" [attr.aria-expanded]=\"isOpen\">\n    {{label}}\n  </button>\n  <div #dropdownMenu class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\"\n    [class.dark]=\"dark\" [class.full-width]=\"fullWidth\" [class.show]=\"isOpen\">\n    <div class=\"link-list-wrapper\">\n      <ul class=\"link-list\">\n        <ng-content></ng-content>\n      </ul>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "DropdownDividerComponent",
+            "id": "component-DropdownDividerComponent-b8de426ec2d0b4fbbdb4bd3bd2f1bd98",
+            "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-divider.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-dropdown-divider",
+            "styleUrls": [
+                "dropdown-divider.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./dropdown-divider.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'it-dropdown-divider',\n  templateUrl: './dropdown-divider.component.html',\n  styleUrls: ['./dropdown-divider.component.css']\n})\nexport class DropdownDividerComponent {\n\n}\n",
+            "templateData": "<li>\n  <span class=\"divider\"></span>\n</li>"
+        },
+        {
+            "name": "DropdownHeaderComponent",
+            "id": "component-DropdownHeaderComponent-cb1531bcae8c1ef2b2bdaf7ada490bbd",
+            "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-dropdown-header",
+            "styleUrls": [
+                "dropdown-header.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./dropdown-header.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "id",
+                    "defaultValue": "`dropdown-header-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\nlet identifier = 0;\n\n@Component({\n  selector: 'it-dropdown-header',\n  templateUrl: './dropdown-header.component.html',\n  styleUrls: ['./dropdown-header.component.css']\n})\nexport class DropdownHeaderComponent {\n  id = `dropdown-header-${identifier++}`;\n}\n",
+            "templateData": "<li [id]=\"id\">\n  <h3>\n    <ng-content></ng-content>\n  </h3>\n</li>"
+        },
+        {
+            "name": "DropdownItemComponent",
+            "id": "component-DropdownItemComponent-842cdb058fe44854cf632b835cd0788b",
+            "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-dropdown-item",
+            "styleUrls": [
+                "dropdown-item.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./dropdown-item.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "active",
+                    "description": "<p>Se presente indica che l&#39;elemento viene renderizzato come elemento attivo.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
+                    "line": 31,
+                    "type": "boolean"
+                },
+                {
+                    "name": "disabled",
+                    "description": "<p>Se presente indica che l&#39;elemento è disabilitato.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
+                    "line": 40,
+                    "type": "boolean"
+                },
+                {
+                    "name": "icon",
+                    "description": "<p>La classe dell&#39;icona da usare prima o dopo del testo dell&#39;elemento del dropdown</p>\n",
+                    "line": 59,
+                    "type": "string"
+                },
+                {
+                    "name": "iconPosition",
+                    "description": "<p>La posizione dell&#39;icona rispetto al testo dell&#39;elemento del dropdown.\nPuò assumere valori right o left.</p>\n",
+                    "line": 68,
+                    "type": "any"
+                },
+                {
+                    "name": "large",
+                    "description": "<p>Se presente indica che il testo dell&#39;elemento viene renderizzato più grande.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
+                    "line": 51,
+                    "type": "boolean"
+                },
+                {
+                    "name": "link",
+                    "description": "<p>Il link alla pagina verso cui andare al click sull&#39;elemento del dropdown</p>\n",
+                    "line": 22,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_active",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_disabled",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_icon",
+                    "defaultValue": "undefined",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_iconPosition",
+                    "defaultValue": "ICON_POSITIONS.RIGHT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 76,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_large",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_link",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "`dropdown-item-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Componente usata per visualizzare una voce di menù all&#39;interno di una dropdown</p>\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input} from '@angular/core';\nimport { Util } from '../util/util';\nimport { IconPosition, ICON_POSITIONS } from '../models/IconPosition';\n\nlet identifier = 0;\n\n/**\n * Componente usata per visualizzare una voce di menù all'interno di una dropdown\n */\n@Component({\n  selector: 'it-dropdown-item',\n  templateUrl: './dropdown-item.component.html',\n  styleUrls: ['./dropdown-item.component.css']\n})\nexport class DropdownItemComponent {\n  id = `dropdown-item-${identifier++}`;\n\n  /**\n   * Il link alla pagina verso cui andare al click sull'elemento del dropdown\n   */\n  @Input()\n  get link(): string { return !this.disabled ? this._link : ''; }\n  set link(value: string) { this._link = value; }\n  private _link = '';\n\n  /**\n   * Se presente indica che l'elemento viene renderizzato come elemento attivo.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get active(): boolean { return this._active; }\n  set active(value: boolean) { this._active = Util.coerceBooleanProperty(value); }\n  private _active = false;\n\n  /**\n   * Se presente indica che l'elemento è disabilitato.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) {\n    this._disabled = Util.coerceBooleanProperty(value);\n  }\n  private _disabled = false;\n\n  /**\n   * Se presente indica che il testo dell'elemento viene renderizzato più grande.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get large(): boolean { return this._large; }\n  set large(value: boolean) { this._large = Util.coerceBooleanProperty(value); }\n  private _large = false;\n\n  /**\n   * La classe dell'icona da usare prima o dopo del testo dell'elemento del dropdown\n   */\n  @Input()\n  get icon(): string { return this._icon; }\n  set icon(value: string) { this._icon = value; }\n  private _icon = undefined;\n\n  /**\n   * La posizione dell'icona rispetto al testo dell'elemento del dropdown.\n   * Può assumere valori right o left.\n   */\n  @Input()\n  get iconPosition(): any { return this._iconPosition; }\n  set iconPosition(value: any) {\n    if (IconPosition.is(value)) {\n      this._iconPosition = value;\n    } else {\n      this._iconPosition = ICON_POSITIONS.RIGHT;\n    }\n  }\n  private _iconPosition = ICON_POSITIONS.RIGHT;\n\n  get dropdownItemClass() {\n    return `list-item ${this.iconPosition}-icon`;\n  }\n\n  get iconClass() {\n    return `${this.icon} ${this.iconPosition}`;\n  }\n\n}\n",
+            "accessors": {
+                "link": {
+                    "name": "link",
+                    "setSignature": {
+                        "name": "link",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 23,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "active": {
+                    "name": "active",
+                    "setSignature": {
+                        "name": "active",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 32,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "disabled": {
+                    "name": "disabled",
+                    "setSignature": {
+                        "name": "disabled",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 41,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "large": {
+                    "name": "large",
+                    "setSignature": {
+                        "name": "large",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 52,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "icon": {
+                    "name": "icon",
+                    "setSignature": {
+                        "name": "icon",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 60,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "iconPosition": {
+                    "name": "iconPosition",
+                    "setSignature": {
+                        "name": "iconPosition",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 69,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "dropdownItemClass": {
+                    "name": "dropdownItemClass",
+                    "getSignature": {
+                        "name": "dropdownItemClass",
+                        "type": "",
+                        "returnType": "",
+                        "line": 78
+                    }
+                },
+                "iconClass": {
+                    "name": "iconClass",
+                    "getSignature": {
+                        "name": "iconClass",
+                        "type": "",
+                        "returnType": "",
+                        "line": 82
+                    }
+                }
+            },
+            "templateData": "<li [id]=\"id\">\n  <a [attr.href]=\"link\"\n    [attr.tabindex]=\"this.disabled ? -1 : 0\"\n    [class]=\"dropdownItemClass\"\n    [ngClass]=\"{\n      'large' : large, \n      'active' : active,\n      'disabled' : disabled,\n      'disabled-item-link' : disabled\n    }\">\n    <i [class]=\"iconClass\" aria-hidden=\"true\" *ngIf=\"icon && iconPosition === 'left'\"></i>\n    <span>\n      <ng-content></ng-content>\n    </span>\n    <i [class]=\"iconClass\" aria-hidden=\"true\" *ngIf=\"icon && iconPosition === 'right'\"></i>\n  </a>\n</li>"
+        },
+        {
             "name": "ProgressBarComponent",
             "id": "component-ProgressBarComponent-4b50cab345688be6ce20081228e12c40",
             "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
@@ -5324,6 +6166,18 @@
                             "name": "CheckboxComponent"
                         },
                         {
+                            "name": "DropdownComponent"
+                        },
+                        {
+                            "name": "DropdownDividerComponent"
+                        },
+                        {
+                            "name": "DropdownHeaderComponent"
+                        },
+                        {
+                            "name": "DropdownItemComponent"
+                        },
+                        {
                             "name": "ProgressBarComponent"
                         },
                         {
@@ -5370,6 +6224,18 @@
                         },
                         {
                             "name": "CheckboxComponent"
+                        },
+                        {
+                            "name": "DropdownComponent"
+                        },
+                        {
+                            "name": "DropdownDividerComponent"
+                        },
+                        {
+                            "name": "DropdownHeaderComponent"
+                        },
+                        {
+                            "name": "DropdownItemComponent"
                         },
                         {
                             "name": "ProgressBarComponent"
@@ -5456,6 +6322,14 @@
                 "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
             },
             {
+                "name": "DEFAULT_COLOR",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "string",
+                "defaultValue": "'dropdown'"
+            },
+            {
                 "name": "DEFAULT_SEPARATOR",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -5480,26 +6354,34 @@
                 "defaultValue": "'hover'"
             },
             {
+                "name": "ICON_POSITIONS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                "type": "object",
+                "defaultValue": "{\n  LEFT: LEFT,\n  RIGHT: RIGHT\n}"
+            },
+            {
+                "name": "IconPosition",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                "type": "",
+                "defaultValue": "t.keyof({\n  right: null,\n  left: null\n})"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -5515,7 +6397,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -5523,7 +6405,15 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -5532,6 +6422,30 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -5558,6 +6472,14 @@
                 "file": "projects/design-angular-kit/src/lib/models/InteractionTrigger.ts",
                 "type": "",
                 "defaultValue": "t.keyof({\n  click: null,\n  focus: null,\n  hover: null,\n})"
+            },
+            {
+                "name": "LEFT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                "type": "string",
+                "defaultValue": "'left'"
             },
             {
                 "name": "LG",
@@ -5593,6 +6515,22 @@
                 "defaultValue": "() => { }"
             },
             {
+                "name": "PLACEMENT_PROPERTY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "string",
+                "defaultValue": "'x-placement'"
+            },
+            {
+                "name": "PLACEMENT_VALUE",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "string",
+                "defaultValue": "'bottom-start'"
+            },
+            {
                 "name": "positionService",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -5615,6 +6553,14 @@
                 "file": "projects/design-angular-kit/src/lib/progress-bar/progress-bar.component.ts",
                 "type": "number",
                 "defaultValue": "0"
+            },
+            {
+                "name": "RIGHT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                "type": "string",
+                "defaultValue": "'right'"
             },
             {
                 "name": "SECONDARY",
@@ -6097,6 +7043,40 @@
                     "defaultValue": "() => { }"
                 }
             ],
+            "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts": [
+                {
+                    "name": "DEFAULT_COLOR",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                    "type": "string",
+                    "defaultValue": "'dropdown'"
+                },
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                },
+                {
+                    "name": "PLACEMENT_PROPERTY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                    "type": "string",
+                    "defaultValue": "'x-placement'"
+                },
+                {
+                    "name": "PLACEMENT_VALUE",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                    "type": "string",
+                    "defaultValue": "'bottom-start'"
+                }
+            ],
             "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts": [
                 {
                     "name": "DEFAULT_SEPARATOR",
@@ -6115,6 +7095,50 @@
                     "defaultValue": "0"
                 }
             ],
+            "projects/design-angular-kit/src/lib/models/IconPosition.ts": [
+                {
+                    "name": "ICON_POSITIONS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  LEFT: LEFT,\n  RIGHT: RIGHT\n}"
+                },
+                {
+                    "name": "IconPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                    "type": "",
+                    "defaultValue": "t.keyof({\n  right: null,\n  left: null\n})"
+                },
+                {
+                    "name": "LEFT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                    "type": "string",
+                    "defaultValue": "'left'"
+                },
+                {
+                    "name": "RIGHT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                    "type": "string",
+                    "defaultValue": "'right'"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/toggle/toggle.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
                 {
                     "name": "identifier",
@@ -6125,22 +7149,42 @@
                     "defaultValue": "0"
                 }
             ],
-            "projects/design-angular-kit/src/lib/button/button.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
             "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -6163,22 +7207,12 @@
                     "defaultValue": "INTERACTION_TRIGGERS.HOVER"
                 }
             ],
-            "projects/design-angular-kit/src/lib/toggle/toggle.component.ts": [
+            "projects/design-angular-kit/src/lib/button/button.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -6459,7 +7493,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 12,
+        "count": 11,
         "status": "low",
         "files": [
             {
@@ -6567,6 +7601,102 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown-divider.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DropdownDividerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DropdownHeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DropdownItemComponent",
+                "coveragePercent": 50,
+                "coverageCount": "7/14",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DropdownComponent",
+                "coveragePercent": 32,
+                "coverageCount": "8/25",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEFAULT_COLOR",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PLACEMENT_PROPERTY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PLACEMENT_VALUE",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/design-angular-kit/src/lib/models/ButtonSize.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -6612,6 +7742,46 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "XS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ICON_POSITIONS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "IconPosition",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LEFT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "RIGHT",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
