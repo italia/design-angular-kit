@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { PopoverDirective } from './popover/popover.directive';
+import { PopoverComponent } from './popover/popover.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
@@ -36,6 +38,8 @@ import { TabComponent } from './tabs/tab.component';
     ButtonComponent,
     TooltipDirective,
     TooltipComponent,
+    PopoverDirective,
+    PopoverComponent,
     DropdownComponent,
     DropdownItemComponent,
     DropdownHeaderComponent,
@@ -54,6 +58,7 @@ import { TabComponent } from './tabs/tab.component';
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
+    PopoverDirective,
     DropdownComponent,
     DropdownItemComponent,
     DropdownHeaderComponent,
@@ -61,6 +66,6 @@ import { TabComponent } from './tabs/tab.component';
     BreadcrumbComponent,
     BreadcrumbItemComponent
   ],
-  entryComponents: [TooltipComponent]
+  entryComponents: [TooltipComponent, PopoverComponent]
 })
 export class DesignAngularKitModule { }
