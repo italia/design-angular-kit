@@ -10,6 +10,8 @@ import { TooltipDirective } from './tooltip/tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component';
 import { TabGroupComponent } from './tabs/tab-group.component';
 import { TabComponent } from './tabs/tab.component';
 
@@ -29,7 +31,9 @@ import { TabComponent } from './tabs/tab.component';
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
-    TooltipComponent
+    TooltipComponent,
+    BreadcrumbComponent,
+    BreadcrumbItemComponent
   ],
   exports: [
     CheckboxComponent,
@@ -41,7 +45,9 @@ import { TabComponent } from './tabs/tab.component';
     TabComponent,
     ProgressBarComponent,
     ButtonComponent,
-    TooltipDirective
+    TooltipDirective,
+    BreadcrumbComponent,
+    BreadcrumbItemComponent
   ],
   entryComponents: [TooltipComponent]
 })
