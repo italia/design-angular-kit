@@ -11,6 +11,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
 import { FormInputComponent } from './form-input/form-input.component';
+import { PasswordStrengthMeterComponent } from './form-input/password-strength-meter.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { FormInputComponent } from './form-input/form-input.component';
     ButtonComponent,
     TooltipDirective,
     TooltipComponent,
-    FormInputComponent
+    FormInputComponent,
+    PasswordStrengthMeterComponent
   ],
   exports: [
     CheckboxComponent,

@@ -1,16 +1,23 @@
 <div class="form-group">
   <i *ngIf="icon" [class]="icon" [ngClass]="{ 'ico-prefix': true }"></i>
-  <input (focus)="onFocus()" (blur)="onBlur($event.target)"
+  <input #inputElement
+    (focus)="onFocus()"
+    (blur)="onBlur()" 
+    (change)="onChange()"
+    (input)="onInput()"
     [type]="type" 
     [id]="id"
     [disabled]="disabled"
-    [readOnly]="readOnly"
+    [readonly]="readonly"
+    [placeholder]="placeholder"
     [ngClass]="{
-      'form-control' : !readOnly,
-      'form-password' : (isPasswordMode && pwStrengthMeter && !readOnly),
-      'form-control-plaintext' : readOnly,
-      'autocomplete' : isAutocompletable
-    }"/>
+      'form-control' : !readonly,
+      'form-password' : (isPasswordMode && pwStrengthMeter && !readonly),
+      'form-control-plaintext' : readonly,
+      'autocomplete' : isAutocompletable()
+    }"
+    [attr.aria-labelledby]="note ? noteId : undefined"
+    [(ngModel)]="value"/>
   <span class="btn-eye" 
     *ngIf="isPasswordMode"
     (click)="isPasswordVisible = !isPasswordVisible"
@@ -19,10 +26,16 @@
       'eye-off' : isPasswordVisible
     }">
   </span>
+  <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">
+    <li *ngFor="let entry of getRelatedEntries()" (click)="onEntryClick(entry)">
+      {{entry}}
+    </li>
+  </ul>
   <label [attr.for]="id" [ngClass]="{ 'active' : isLabelActive }">
     {{label}}
   </label>
-  <small *ngIf="note" [id]="id" class="form-text text-muted">
+  <it-password-strength-meter [password]="value" *ngIf="isPasswordMode && pwStrengthMeter"></it-password-strength-meter>
+  <small [id]="noteId" class="form-text text-muted" *ngIf="note">
     {{note}}
   </small>
 </div>
