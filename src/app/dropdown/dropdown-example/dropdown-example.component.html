@@ -1,0 +1,114 @@
+<div class="card w-100 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Esempio Dropdown</h4>
+    <p class="card-text" class="example-section">
+      <it-dropdown
+        [color]="color"
+        [label]="label"
+        [dark]="isDark"
+        [fullWidth]="isFullWidth"
+        (onOpen)="onOpenEvent()"
+        (onClose)="onCloseEvent()" 
+        (onToggle)="onToggleEvent()">
+        <it-dropdown-header>Header 1</it-dropdown-header>
+        <it-dropdown-divider></it-dropdown-divider>
+        <it-dropdown-item *ngFor="let item of items"
+          [link]="item.link"
+          [active]="item.active"
+          [disabled]="item.disabled"
+          [large]="item.large"
+          [icon]="item.icon"
+          [iconPosition]="item.iconPosition">
+          {{item.text}}
+        </it-dropdown-item>
+      </it-dropdown>
+    </p>
+
+    <p class="card-text" class="example-section">
+      Open: {{openTime}}
+    </p>
+
+    <p class="card-text" class="example-section">
+      Close: {{closeTime}}
+    </p>
+    
+    <p class="card-text" class="example-section">
+      Toggle: {{toggleTime}}
+    </p>
+
+    <div class="row">
+      <div class="form-check col-3">
+        <h5>Opzioni</h5>
+        <it-checkbox [(ngModel)]="isFullWidth" label="Disposizione orizzontale" id="fullwidth-checkbox"></it-checkbox>
+        <it-checkbox [(ngModel)]="isDark" label="Sfondo scuro" id="darktheme-checkbox"></it-checkbox>
+      </div>
+      <div class="form-check col-2">
+        <h5>Testo</h5>
+        <it-radio-group [(ngModel)]="label">
+          <it-radio-button id="radio-click" name="clickMe" value="Click me" label="Click me"></it-radio-button>
+          <it-radio-button id="radio-check" name="check" value="Check" label="Check"></it-radio-button>
+          <it-radio-button id="radio-hello" name="hello" value="Hello world!" label="Hello world!"></it-radio-button>
+        </it-radio-group>
+      </div>
+      <div class="form-check col-7">
+        <h5>Colorazione</h5>
+        <it-radio-group [(ngModel)]="color">
+          <div class="row">
+            <div class="form-check col-5">
+              <it-radio-button id="radio-none" name="none" value="" label="None"></it-radio-button>
+              <it-radio-button id="radio-primary" name="primary" value="primary" label="Primary"></it-radio-button>
+              <it-radio-button id="radio-secondary" name="secondary" value="secondary" label="Secondary"></it-radio-button>
+            </div>
+            <div class="form-check col-4">
+              <it-radio-button id="radio-success" name="success" value="success" label="Success"></it-radio-button>
+              <it-radio-button id="radio-warning" name="warning" value="warning" label="Warning"></it-radio-button>
+              <it-radio-button id="radio-danger" name="danger" value="danger" label="Danger"></it-radio-button>
+            </div>
+            <div class="form-check col-3">
+              <it-radio-button id="radio-info" name="info" value="info" label="Info"></it-radio-button>
+              <it-radio-button id="radio-light" name="light" value="light" label="Light"></it-radio-button>
+              <it-radio-button id="radio-dark" name="dark" value="dark" label="Dark"></it-radio-button>
+            </div>
+          </div>
+        </it-radio-group>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div *ngFor="let item of items; let i = index">
+      <h4>Item #{{i + 1}}</h4>
+      <div class="row">
+        <div class="form-check col-3">
+          <h5>Opzioni</h5>
+          <it-checkbox [(ngModel)]="item.active" label="Attivo" id="active-checkbox"></it-checkbox>
+          <it-checkbox [(ngModel)]="item.disabled" label="Disabilitato" id="disabled-checkbox"></it-checkbox>
+          <it-checkbox [(ngModel)]="item.large" label="Grande" id="large-checkbox"></it-checkbox>
+        </div>
+        <div class="form-check col-3">
+          <h5>Icona</h5>
+          <it-radio-group [(ngModel)]="item.icon">
+            <it-radio-button id="radio-none" name="none" [value]="undefined" label="Nessuna"></it-radio-button>
+            <it-radio-button id="radio-favorite" name="favorite" value="it-favorite" label="it-favorite"></it-radio-button>
+            <it-radio-button id="radio-link" name="link" value="it-link" label="it-link"></it-radio-button>
+          </it-radio-group>
+        </div>
+        <div class="form-check col-3">
+          <h5>Posizione Icona</h5>
+          <it-radio-group [(ngModel)]="item.iconPosition">
+            <it-radio-button id="radio-left" name="left" value="left" label="Sinistra"></it-radio-button>
+            <it-radio-button id="radio-right" name="right" value="right" label="Destra"></it-radio-button>
+          </it-radio-group>
+        </div>
+        <div class="form-check col-3">
+          <h5>Link</h5>
+          <it-radio-group [(ngModel)]="item.link">
+            <it-radio-button id="radio-google" name="google" value="https://www.google.com" label="Google"></it-radio-button>
+            <it-radio-button id="radio-yahoo" name="yahoo" value="https:/www.yahoo.com" label="Yahoo"></it-radio-button>
+          </it-radio-group>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
