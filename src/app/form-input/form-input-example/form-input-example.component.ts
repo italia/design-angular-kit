@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ContentChild } from '@angular/core';
 
 @Component({
   selector: 'it-form-input-example',
@@ -6,24 +6,56 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-input-example.component.scss']
 })
 export class FormInputExampleComponent {
-
+  i = 0;
   readOnly = false;
   disabled = false;
-  type = 'text';
+  type = 'password';
   icon = 'it-favorite';
-  note = '';
+  value = 'myNgModel';
+  psm = false;
+
+  get placeholder() {
+    return this.hasPlaceholder ? this.type : '';
+  }
+
+  get label() {
+    return this.hasLabel ? 'Label dell\'input' : '';
+  }
+
+  get note() {
+    return this.hasNote ? 'non condivideremo mai i tuoi dati' : '';
+  }
+
+  get hasPlaceholder(): boolean {
+    return this._hasPlaceholder;
+  }
+  set hasPlaceholder(value: boolean) {
+    this._hasPlaceholder = value;
+  }
+  private _hasPlaceholder = true;
+
+  get hasLabel(): boolean {
+    return this._hasLabel;
+  }
+  set hasLabel(value: boolean) {
+    this._hasLabel = value;
+  }
+  private _hasLabel = true;
 
   get hasNote(): boolean {
     return this._hasNote;
   }
   set hasNote(value: boolean) {
     this._hasNote = value;
-
-    if (this._hasNote) {
-      this.note = 'Esempio di input';
-    } else {
-      this.note = '';
-    }
   }
   private _hasNote = false;
+
+  get data(): Array<string> {
+    return this._data;
+  }
+  set data(value: Array<string>) {
+    this._data = value.map(string => string.trim());
+  }
+  private _data = ['Lino', 'Metro', 'litro', 'melo', 'legno', 'pasqualino'];
+
 }

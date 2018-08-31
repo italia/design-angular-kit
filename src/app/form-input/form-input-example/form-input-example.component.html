@@ -3,16 +3,26 @@
       <h4 class="card-title">Interazione con Form Input</h4>
   
       <div class="card-text">
-        <it-input id="interactive-button" label="Label dell'input" [note]="note"
-          [disabled]="disabled" [readOnly]="readOnly" [type]="type" [icon]="icon">
+        <it-input id="interactive-button" [label]="label" [placeholder]="placeholder" [note]="note"
+          [disabled]="disabled" [readonly]="readOnly" [type]="type" [icon]="icon" [(ngModel)]="value" [autoCompleteData]="data"
+          [pwStrengthMeter]="psm" [note]="note">
         </it-input>
+
+        <div class="form-group" aria-labelledby="autocompleteInputTextHelp" *ngIf="type === 'search'">
+          <input type="text" class="form-control" id="autocompleteInputText" [value]="data.join(', ')" (input)="data = $event.target.value.split(',')">
+          <label class="active" for="autocompleteInputText">Stringhe per l'autocompletamento</label>
+          <small id="autocompleteInputTextHelp" class="form-text text-muted">da separare con una virgola</small>
+        </div>
   
         <div class="row">
           <div class="form-check col-3">
             <h5>Opzioni</h5>
             <it-checkbox [(ngModel)]="disabled" label="Disabled" id="disabled-checkbox"></it-checkbox>
             <it-checkbox [(ngModel)]="readOnly" label="Readonly" id="readonly-checkbox"></it-checkbox>
+            <it-checkbox [(ngModel)]="hasLabel" label="Label" id="has-label-checkbox"></it-checkbox>
+            <it-checkbox [(ngModel)]="hasPlaceholder" label="Placeholder" id="has-placeholder-checkbox"></it-checkbox>
             <it-checkbox [(ngModel)]="hasNote" label="Note" id="has-note-checkbox"></it-checkbox>
+            <it-checkbox [(ngModel)]="psm" label="Password Strength Meter" id="psm-checkbox" *ngIf="type === 'password'"></it-checkbox>
           </div>
           <div class="form-check col-5">
             <h5>Tipo Input</h5>
