@@ -1,0 +1,6 @@
+<li [class]="breadcrumbClass" [id]="id">
+  <i [class]="icon" *ngIf="icon"></i>
+  <a [href]="link">
+    <ng-content></ng-content>
+  </a> <span class="separator" *ngIf="!isLast">{{separator}}</span>
+</li>
