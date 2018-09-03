@@ -1,4 +1,4 @@
-import { Directive, Output, EventEmitter, HostBinding} from '@angular/core';
+import { Directive, Output, EventEmitter, HostBinding, Input} from '@angular/core';
 
 /**
  * Per ottimizzare l’ingombro dei contenuti di una pagina si possono usare degli elementi richiudibili
@@ -12,6 +12,14 @@ import { Directive, Output, EventEmitter, HostBinding} from '@angular/core';
 export class CollapseDirective {
 
   private _isDisposed = false;
+
+  /**
+   * La direttiva di collapse che opzionalmente contiene il predicato che ne stabilisce
+   * che sarà avvalorato a true quando il collapse è espanso, a false altrimenti
+   */
+  @Input('it-collapse')
+  get itCollapse(): boolean { return this._isShown; }
+  set itCollapse(value: boolean) { this._isShown = value != null && `${value}` === 'true'; }
   private _isShown = false;
 
   /**
@@ -56,12 +64,16 @@ export class CollapseDirective {
   }
 
   show() {
+    this.showEvent.emit();
     this._isShown = true;
+    this.shownEvent.emit();
   }
 
   hide() {
+    this.hideEvent.emit();
     if (!this._isDisposed) {
       this._isShown = false;
+      this.hiddenEvent.emit();
     }
   }
 
