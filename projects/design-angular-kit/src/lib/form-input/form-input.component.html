@@ -16,8 +16,7 @@
       'form-control-plaintext' : readonly,
       'autocomplete' : isAutocompletable()
     }"
-    [attr.aria-labelledby]="note ? noteId : undefined"
-    [(ngModel)]="value"/>
+    [attr.aria-labelledby]="note ? noteId : undefined"/>
   <span class="btn-eye" 
     *ngIf="isPasswordMode"
     (click)="isPasswordVisible = !isPasswordVisible"

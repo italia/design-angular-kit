@@ -5,6 +5,7 @@ import {
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { InputType, INPUT_TYPES } from '../models/InputType';
 import { Util } from '../util/util';
+import { isNumber } from 'util';
 
 let identifier = 0;
 
@@ -45,6 +46,12 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   }
   set type(value: any) {
     if (InputType.is(value)) {
+      if (value === INPUT_TYPES.NUMBER) {
+        if (!isNumber(this.value)) {
+          this.value = '';
+          this.onChange();
+        }
+      }
       this._type = value;
     } else {
       this._type = INPUT_TYPES.TEXT;
