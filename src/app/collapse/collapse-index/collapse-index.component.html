@@ -18,6 +18,7 @@
   </div>
   <div class="tab-pane p-3 fade" id="collapse-api-tab-content" role="tabpanel" aria-labelledby="collapse-api-tab-content">
     <!-- TODO: da spostare in una componente ad hoc -->
+    <h2>Direttiva Collapse</h2>
     <div *ngIf="directive.inputsClass.length > 0">
       <h3>Input</h3>
       <div *ngFor="let input of directive.inputsClass">
@@ -42,6 +43,62 @@
       </div>
     </div>
     <div *ngIf="directive.outputsClass.length > 0">
+      <h3>Output</h3>
+      <!-- TODO: usare lo stesso componente di input -->
+    </div>
+    <h2>Collapse Group</h2>
+    <div *ngIf="groupComponent.inputsClass.length > 0">
+        <h3>Input</h3>
+        <div *ngFor="let input of groupComponent.inputsClass">
+          <table class="table table-bordered table-sm">
+            <tbody>
+              <tr>
+                <td style="width: 20%">
+                  <code>{{input.name}}</code>
+                </td>
+                <td style="width: 80%">
+                  <p>
+                    <em>Tipo: </em>
+                    <code>{{input.type}}</code>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <div *ngIf="groupComponent.outputsClass.length > 0">
+      <h3>Output</h3>
+      <!-- TODO: usare lo stesso componente di input -->
+    </div>
+    <h2>Collapse Item</h2>
+    <div *ngIf="itemComponent.inputsClass.length > 0">
+      <h3>Input</h3>
+      <div *ngFor="let input of itemComponent.inputsClass">
+        <table class="table table-bordered table-sm">
+          <tbody>
+            <tr>
+              <td style="width: 20%">
+                <code>{{input.name}}</code>
+              </td>
+              <td style="width: 80%">
+                <p>
+                  <em>Tipo: </em>
+                  <code>{{input.type}}</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="itemComponent.outputsClass.length > 0">
       <h3>Output</h3>
       <!-- TODO: usare lo stesso componente di input -->
     </div>
