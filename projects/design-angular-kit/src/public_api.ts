@@ -11,4 +11,6 @@ export * from './lib/tooltip/tooltip.config';
 export * from './lib/button/button.component';
 export * from './lib/badge/badge.directive';
 export * from './lib/collapse/collapse.directive';
+export * from './lib/collapse/collapse-item.component';
+export * from './lib/collapse/collapse-group.component';
 export * from './lib/design-angular-kit.module';
