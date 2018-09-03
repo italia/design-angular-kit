@@ -5,11 +5,24 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './collapse-example.component.html',
   styleUrls: ['./collapse-example.component.scss']
 })
-export class CollapseExampleComponent implements OnInit {
+export class CollapseExampleComponent {
 
-  constructor() { }
+  isShown = false;
 
-  ngOnInit() {
+  logShow() {
+    console.log(`Show: ${(new Date()).toISOString()}`);
+  }
+
+  logShown() {
+    console.log(`Shown: ${(new Date()).toISOString()}`);
+  }
+
+  logHide() {
+    console.log(`Hide: ${(new Date()).toISOString()}`);
+  }
+
+  logHidden() {
+    console.log(`Hidden: ${(new Date()).toISOString()}`);
   }
 
 }
