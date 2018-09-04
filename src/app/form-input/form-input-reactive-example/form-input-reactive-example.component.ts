@@ -7,13 +7,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form-input-reactive-example.component.scss']
 })
 export class FormInputReactiveExampleComponent implements OnInit {
+  private _hasPlaceholder = true;
+  private _hasLabel = true;
+  private _hasNote = false;
 
+  formGroup: FormGroup;
   i = 0;
   readOnly = false;
   disabled = false;
   type = 'password';
   icon = 'it-favorite';
-  psm = false;
+  isValid = false;
 
   get placeholder() {
     return this.hasPlaceholder ? this.type : '';
@@ -33,7 +37,6 @@ export class FormInputReactiveExampleComponent implements OnInit {
   set hasPlaceholder(value: boolean) {
     this._hasPlaceholder = value;
   }
-  private _hasPlaceholder = true;
 
   get hasLabel(): boolean {
     return this._hasLabel;
@@ -41,7 +44,6 @@ export class FormInputReactiveExampleComponent implements OnInit {
   set hasLabel(value: boolean) {
     this._hasLabel = value;
   }
-  private _hasLabel = true;
 
   get hasNote(): boolean {
     return this._hasNote;
@@ -49,17 +51,6 @@ export class FormInputReactiveExampleComponent implements OnInit {
   set hasNote(value: boolean) {
     this._hasNote = value;
   }
-  private _hasNote = false;
-
-  get data(): Array<string> {
-    return this._data;
-  }
-  set data(value: Array<string>) {
-    this._data = value.map(string => string.trim());
-  }
-  private _data = ['Lino', 'Metro', 'litro', 'melo', 'legno', 'pasqualino'];
-
-  formGroup: FormGroup;
 
   constructor(private _fb: FormBuilder) {
     this.formGroup = this._fb.group({
@@ -69,8 +60,6 @@ export class FormInputReactiveExampleComponent implements OnInit {
       this._validateControls();
     });
   }
-
-  isValid: boolean;
 
   ngOnInit() {
     this._validateControls();

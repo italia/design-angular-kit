@@ -17,13 +17,13 @@
 <it-form-input-example></it-form-input-example>
 
 <it-source-display
-  html="{$ html | escape $}"
-  typescript="{$ typescript | escape $}">
+  html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
+  typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
 
 <it-form-input-reactive-example></it-form-input-reactive-example>
 
 <it-source-display
-  html="{$ reactiveHtml | escape $}"
-  typescript="{$ reactiveTs | escape $}">
+  html="{$ reactiveHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
+  typescript="{$ reactiveTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}">
 </it-source-display>

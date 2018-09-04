@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './form-input-examples.component.html',
   styleUrls: ['./form-input-examples.component.scss']
 })
-export class FormInputExamplesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class FormInputExamplesComponent {
 
 }

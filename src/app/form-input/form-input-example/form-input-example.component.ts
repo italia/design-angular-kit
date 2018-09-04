@@ -12,7 +12,6 @@ export class FormInputExampleComponent {
   type = 'password';
   icon = 'it-favorite';
   value = 'myNgModel';
-  psm = false;
 
   get placeholder() {
     return this.hasPlaceholder ? this.type : '';
@@ -49,13 +48,5 @@ export class FormInputExampleComponent {
     this._hasNote = value;
   }
   private _hasNote = false;
-
-  get data(): Array<string> {
-    return this._data;
-  }
-  set data(value: Array<string>) {
-    this._data = value.map(string => string.trim());
-  }
-  private _data = ['Lino', 'Metro', 'litro', 'melo', 'legno', 'pasqualino'];
 
 }
