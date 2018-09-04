@@ -7,14 +7,13 @@
     (input)="onInput()"
     [type]="type" 
     [id]="id"
+    [name]="name"
     [disabled]="disabled"
     [readonly]="readonly"
     [placeholder]="placeholder"
     [ngClass]="{
       'form-control' : !readonly,
-      'form-password' : (isPasswordMode && pwStrengthMeter && !readonly),
-      'form-control-plaintext' : readonly,
-      'autocomplete' : isAutocompletable()
+      'form-control-plaintext' : readonly
     }"
     [attr.aria-labelledby]="note ? noteId : undefined"/>
   <span class="btn-eye" 
@@ -25,16 +24,10 @@
       'eye-off' : isPasswordVisible
     }">
   </span>
-  <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">
-    <li *ngFor="let entry of getRelatedEntries()" (click)="onEntryClick(entry)">
-      {{entry}}
-    </li>
-  </ul>
   <label [attr.for]="id" [ngClass]="{ 'active' : isLabelActive }">
     {{label}}
   </label>
-  <it-password-strength-meter [password]="value" *ngIf="isPasswordMode && pwStrengthMeter"></it-password-strength-meter>
-  <small [id]="noteId" class="form-text text-muted" *ngIf="note">
+  <small [id]="noteId()" class="form-text text-muted" *ngIf="note">
     {{note}}
   </small>
 </div>

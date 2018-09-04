@@ -5,7 +5,6 @@ import {
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { InputType, INPUT_TYPES } from '../models/InputType';
 import { Util } from '../util/util';
-import { isNumber } from 'util';
 
 let identifier = 0;
 
@@ -31,11 +30,32 @@ export class FormInputChange {
   }]
 })
 export class FormInputComponent implements AfterContentInit, ControlValueAccessor {
-  id = `form-input-${identifier++}`;
-  noteId = `${this.id}-note`;
-
   @ViewChild('inputElement')
   private _inputElement: ElementRef;
+
+  /**
+   * Indica l'id dell'elemento HTML
+   */
+  @Input()
+  get id(): string {
+    return this._id;
+  }
+  set id(value: string) {
+    this._id = value;
+  }
+  private _id = `form-input-${identifier++}`;
+
+  /**
+   * Indica l'attributo name del componente HTML
+   */
+  @Input()
+  get name(): string {
+    return this._id;
+  }
+  set name(value: string) {
+    this.id = value;
+  }
+  private _name: string;
 
   /**
    * Indica il tipo di campo. Puo' assumere i valori text, email, password, number, tel e search
@@ -59,7 +79,6 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
 
     this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;
     this._isPasswordVisible = false;
-    this._showAutocompletion = false;
   }
   private _type = INPUT_TYPES.TEXT;
 
@@ -95,17 +114,6 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   private _placeholder: string;
 
   /**
-   * Opzionale.
-   * Disponibile solo se il type è password.
-   * Se presente indica se il widget di robustezza password è presente.
-   * Accetta una espressione booleana o può essere usato come attributo senza valore
-   */
-  @Input()
-  get pwStrengthMeter(): boolean { return this._pwStrengthMeter; }
-  set pwStrengthMeter(value: boolean) { this._pwStrengthMeter = Util.coerceBooleanProperty(value); }
-  private _pwStrengthMeter = false;
-
-  /**
    * Indica l'icona da visualizzare a sinistra del campo di input
    */
   @Input()
@@ -132,16 +140,6 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   get readonly(): boolean { return this._readonly; }
   set readonly(value: boolean) { this._readonly = Util.coerceBooleanProperty(value); }
   private _readonly = false;
-
-  /**
-   * Opzionale.
-   * Disponibile solo se il type è search.
-   * Indica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input
-   */
-  @Input()
-  get autoCompleteData(): Array<string> { return this._autoCompleteData; }
-  set autoCompleteData(value: Array<string>) { this._autoCompleteData = value; }
-  private _autoCompleteData: Array<string>;
 
   get value(): any { return this._inputElement.nativeElement.value; }
   set value(value: any) { this._inputElement.nativeElement.value = value; }
@@ -180,7 +178,6 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   }
   private _isPasswordVisible = false;
 
-  private _showAutocompletion = false;
   private _isInitialized = false;
   private _controlValueAccessorChangeFn: (value: any) => void = () => { };
   private _onTouched: () => any = () => { };
@@ -188,34 +185,6 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   private _emitChangeEvent(): void {
     if (this._isInitialized) {
       this.change.emit(new FormInputChange(this, this.value));
-    }
-  }
-
-  getRelatedEntries() {
-    if (this.value && this._showAutocompletion) {
-      const lowercaseValue = this.value.toLowerCase();
-      const lowercaseData = this._autoCompleteData.map(string => {
-        return { original : string, lowercase : string.toLowerCase() };
-      });
-
-      const relatedEntries = [];
-      lowercaseData.forEach(lowercaseEntry => {
-        if ((lowercaseEntry.lowercase).includes(lowercaseValue)) {
-          relatedEntries.push(lowercaseEntry.original);
-        }
-      });
-
-      return relatedEntries;
-    } else {
-      return [];
-    }
-  }
-
-  isAutocompletable() {
-    if (this._autoCompleteData && this._type === INPUT_TYPES.SEARCH) {
-      return this._autoCompleteData.length > 0;
-    } else {
-      return false;
     }
   }
 
@@ -251,10 +220,6 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   }
 
   onInput() {
-    if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this._showAutocompletion) {
-      this._showAutocompletion = true;
-    }
-
     this._emitChangeEvent();
     this._controlValueAccessorChangeFn(this.value);
   }
@@ -273,10 +238,8 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
     }
   }
 
-  onEntryClick(entry) {
-    this.value = entry;
-    this._showAutocompletion = false;
-    this.onChange();
+  noteId() {
+    return `${this.id}-note`;
   }
 
 }
