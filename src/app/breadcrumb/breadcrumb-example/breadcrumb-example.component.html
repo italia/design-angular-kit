@@ -1,0 +1,39 @@
+<div class="card w-100 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Esempio Breadcrumb</h4>
+
+    <div class="card-text">
+      <it-breadcrumb [dark]="isDark" [separator]="separator">
+        <it-breadcrumb-item *ngFor="let item of items"
+          [link]="item.link" [icon]="item.icon">
+          {{item.label}}
+        </it-breadcrumb-item>
+      </it-breadcrumb>
+
+      <div class="row">
+        <div class="form-check col-4">
+          <h5>Azioni</h5>
+          <it-checkbox [(ngModel)]="isDark" label="Sfondo scuro" id="dark-checkbox"></it-checkbox>
+          <button type="button" id="add-button" class="btn btn-primary btn-lg btn-block" (click)="insert()">Aggiungi breadcrumb</button>
+          <button type="button" id="remove-button" class="btn btn-primary btn-lg btn-block" (click)="remove()">Rimuovi breadcrumb</button>
+        </div>
+        <div class="form-check col-3">
+          <h5>Separatore</h5>
+          <it-radio-group [(ngModel)]="separator">
+            <it-radio-button id="radio-sl" name="sl" value="/" label="/"></it-radio-button>
+            <it-radio-button id="radio-gt" name="gt" value=">" label=">"></it-radio-button>
+            <it-radio-button id="radio-tl" name="tl" value="~" label="~"></it-radio-button>
+          </it-radio-group>
+        </div>
+        <div class="form-check col-5">
+          <h5>Icona</h5>
+          <it-radio-group [(ngModel)]="icon">
+            <it-radio-button id="radio-none" name="none" [value]="undefined" label="Nessuna"></it-radio-button>
+            <it-radio-button id="radio-favorite" name="it-favorite" value="it-favorite" label="it-favorite"></it-radio-button>
+            <it-radio-button id="radio-link" name="it-link" value="it-link" label="it-link"></it-radio-button>
+          </it-radio-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
