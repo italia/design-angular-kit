@@ -7,7 +7,8 @@ import { FormInputExamplesComponent } from './form-input-examples/form-input-exa
 import { FormInputIndexComponent } from './form-input-index/form-input-index.component';
 import { SharedModule } from '../shared/shared.module';
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormInputReactiveExampleComponent } from './form-input-reactive-example/form-input-reactive-example.component';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     DesignAngularKitModule,
     SharedModule,
-    FormInputRoutingModule
+    FormInputRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [FormInputExampleComponent, FormInputExamplesComponent, FormInputIndexComponent]
+  declarations: [FormInputExampleComponent, FormInputExamplesComponent, FormInputIndexComponent, FormInputReactiveExampleComponent]
 })
 export class FormInputModule { }

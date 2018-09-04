@@ -41,13 +41,13 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
    * Indica il tipo di campo. Puo' assumere i valori text, email, password, number, tel e search
    */
   @Input()
-  get type(): any {
+  get type() {
     return this._type;
   }
-  set type(value: any) {
+  set type(value: string) {
     if (InputType.is(value)) {
       if (value === INPUT_TYPES.NUMBER) {
-        if (!isNumber(this.value)) {
+        if (isNaN(Number(this.value))) {
           this.value = '';
           this.onChange();
         }

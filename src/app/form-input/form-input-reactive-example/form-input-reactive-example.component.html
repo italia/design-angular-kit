@@ -1,13 +1,16 @@
 <div class="card w-100 mt-2">
     <div class="card-body">
-      <h4 class="card-title">Interazione con Form Input</h4>
+      <h4 class="card-title">Interazione con Form Input regolato da un Form Group</h4>
   
       <div class="card-text">
-        <it-input id="interactive-button" [label]="label" [placeholder]="placeholder" [note]="note"
-          [disabled]="disabled" [readonly]="readOnly" [type]="type" [icon]="icon" [(ngModel)]="value" [autoCompleteData]="data"
-          [pwStrengthMeter]="psm" [note]="note">
-        </it-input>
-        
+        <form [formGroup]="formGroup"> 
+          <it-input id="interactive-button" formControlName="value" [label]="label" [placeholder]="placeholder" [note]="note"
+            [readonly]="readOnly" [type]="type" [icon]="icon" [autoCompleteData]="data"
+            [pwStrengthMeter]="psm" [note]="note">
+          </it-input>
+          <i [class]="isValid ? 'it-check' : 'it-no'" [ngStyle]="{'color': isValid ?  'green': 'red'}"></i> {{ isValid ? 'Valido' : 'Non valido. Occorono almeno 8 caratteri'}}
+        </form>
+
         <div class="form-group" aria-labelledby="autocompleteInputTextHelp" *ngIf="type === 'search'">
           <input type="text" class="form-control" id="autocompleteInputText" [value]="data.join(', ')" (input)="data = $event.target.value.split(',')">
           <label class="active" for="autocompleteInputText">Stringhe per l'autocompletamento</label>
