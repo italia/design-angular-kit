@@ -1,0 +1,46 @@
+<div *ngIf="component.inputsClass.length > 0">
+  <h3>Input</h3>
+  <div *ngFor="let input of component.inputsClass">
+    <table class="table table-bordered table-sm">
+      <tbody>
+        <tr>
+          <td style="width: 20%">
+            <code>{{input.name}}</code>
+          </td>
+          <td style="width: 80%">
+            <p>
+              <em>Tipo: </em>
+              <code>{{input.type}}</code>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="component.outputsClass.length > 0">
+  <h3>Output</h3>
+  <div *ngFor="let output of component.outputsClass">
+    <table class="table table-bordered table-sm">
+      <tbody>
+        <tr>
+          <td style="width: 20%">
+            <code>{{output.name}}</code>
+          </td>
+          <td style="width: 80%">
+            <p>
+              <em>Tipo: </em>
+              <code>{{output.type}}</code>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-md-2" colspan="2" [innerHTML]="output.description"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

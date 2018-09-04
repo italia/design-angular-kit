@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HighlightModule } from 'ngx-highlightjs';
 
 import { SourceDisplayComponent } from './source-display/source-display.component';
+import { ApiParametersComponent } from './api-parameters/api-parameters.component';
 
 @NgModule({
   imports: [
@@ -10,10 +11,12 @@ import { SourceDisplayComponent } from './source-display/source-display.componen
     HighlightModule.forRoot({ theme: 'agate'})
   ],
   declarations: [
-    SourceDisplayComponent
+    SourceDisplayComponent,
+    ApiParametersComponent
   ],
   exports: [
-    SourceDisplayComponent
+    SourceDisplayComponent,
+    ApiParametersComponent
   ]
 })
 export class SharedModule { }
