@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 import { CollapseGroupExampleComponent } from './collapse-group-example/collapse-group-example.component';
+import { CollapseNestedExampleComponent } from './collapse-nested-example/collapse-nested-example.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { CollapseGroupExampleComponent } from './collapse-group-example/collapse
     SharedModule,
     CollapseRoutingModule
   ],
-  declarations: [CollapseExampleComponent, CollapseExamplesComponent, CollapseIndexComponent, CollapseGroupExampleComponent]
+  declarations: [CollapseExampleComponent, CollapseExamplesComponent, CollapseIndexComponent,
+    CollapseGroupExampleComponent, CollapseNestedExampleComponent]
 })
 export class CollapseModule { }

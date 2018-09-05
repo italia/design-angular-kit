@@ -2,8 +2,9 @@
     <div class="card-body">
       <h4 class="card-title">Esempio Collapse Group con Collapse Item</h4>
   
-      <div class="card-text" class="example-section">      
-        <it-collapse-group accordion>
+      <div class="card-text" class="example-section">
+        <it-checkbox [(ngModel)]="accordion" label="Accordion"></it-checkbox>
+        <it-collapse-group [accordion]="accordion">
           <it-collapse-item header="titolo">
             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
           </it-collapse-item>
