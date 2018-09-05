@@ -3,7 +3,8 @@
     {{header}}
   </button>
 </div>
-<div [id]="id" #collapse="it-collapse" it-collapse role="tabpanel" [attr.aria-labelledby]="headingId">
+<div [id]="id" #collapse="it-collapse" it-collapse 
+  (show)="show()" (hide)="hide()" (shown)="shown()" (hidden)="hidden()" role="tabpanel" [attr.aria-labelledby]="headingId">
   <div class="collapse-body">
     <ng-content></ng-content>
   </div>
