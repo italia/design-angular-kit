@@ -26,33 +26,33 @@ export class CollapseDirective {
    * Evento da emettere quando il collapse sta per essere mostrato
    */
   @Output('show')
-  get showEvent(): EventEmitter<void> { return this._showEvent; }
-  set showEvent(value: EventEmitter<void>) { this._showEvent = value; }
-  private _showEvent = new EventEmitter<void>();
+  get showEvent(): EventEmitter<CollapseDirective> { return this._showEvent; }
+  set showEvent(value: EventEmitter<CollapseDirective>) { this._showEvent = value; }
+  private _showEvent = new EventEmitter<CollapseDirective>();
 
   /**
    * Evento da emettere quando il collapse è mostrato
    */
   @Output('shown')
-  get shownEvent(): EventEmitter<void> { return this._shownEvent; }
-  set shownEvent(value: EventEmitter<void>) { this._shownEvent = value; }
-  private _shownEvent = new EventEmitter<void>();
+  get shownEvent(): EventEmitter<CollapseDirective> { return this._shownEvent; }
+  set shownEvent(value: EventEmitter<CollapseDirective>) { this._shownEvent = value; }
+  private _shownEvent = new EventEmitter<CollapseDirective>();
 
   /**
    * Evento da emettere quando il collapse sta per essere nascosto
    */
   @Output('hide')
-  get hideEvent(): EventEmitter<void> { return this._hideEvent; }
-  set hideEvent(value: EventEmitter<void>) { this._hideEvent = value; }
-  private _hideEvent = new EventEmitter<void>();
+  get hideEvent(): EventEmitter<CollapseDirective> { return this._hideEvent; }
+  set hideEvent(value: EventEmitter<CollapseDirective>) { this._hideEvent = value; }
+  private _hideEvent = new EventEmitter<CollapseDirective>();
 
   /**
    * Evento da emettere quando il collapse è nascosto
    */
   @Output('hidden')
-  get hiddenEvent(): EventEmitter<void> { return this._hiddenEvent; }
-  set hiddenEvent(value: EventEmitter<void>) { this._hiddenEvent = value; }
-  private _hiddenEvent = new EventEmitter<void>();
+  get hiddenEvent(): EventEmitter<CollapseDirective> { return this._hiddenEvent; }
+  set hiddenEvent(value: EventEmitter<CollapseDirective>) { this._hiddenEvent = value; }
+  private _hiddenEvent = new EventEmitter<CollapseDirective>();
 
   @HostBinding('class')
   get cssClass() {
@@ -64,16 +64,16 @@ export class CollapseDirective {
   }
 
   show() {
-    this.showEvent.emit();
+    this.showEvent.emit(this);
     this._isShown = true;
-    this.shownEvent.emit();
+    this.shownEvent.emit(this);
   }
 
   hide() {
-    this.hideEvent.emit();
+    this.hideEvent.emit(this);
     if (!this._isDisposed) {
       this._isShown = false;
-      this.hiddenEvent.emit();
+      this.hiddenEvent.emit(this);
     }
   }
 
