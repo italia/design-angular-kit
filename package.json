@@ -12,7 +12,7 @@
     "build": "ng build",
     "test": "ng test design-angular-kit",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "npm run compodoc-compile && ng e2e",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
     "semantic-release": "semantic-release"
