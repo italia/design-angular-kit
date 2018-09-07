@@ -59,6 +59,7 @@ export class FormInputPage {
 
   async go() {
     await browser.get(this.FORM_INPUT_URL);
+    await browser.executeScript(`document.querySelector('header').remove()`);
     await element(by.id(this.ID_EXAMPLE_TAB)).click();
     return await browser.sleep(500);
   }
