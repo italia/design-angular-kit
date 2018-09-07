@@ -67,17 +67,17 @@ yarn
 4. Lanciare l'applicazione in locale
 
 ```
-npm start
+yarn start
 ```
 
 5. Per eseguire i test di unità eseguire il comando
 
 ```
-npm test
+yarn test
 ```
 
 6. Per eseguire i test end to end eseguire il comando
 
 ```
-npm run e2e
+yarn run e2e
 ```
