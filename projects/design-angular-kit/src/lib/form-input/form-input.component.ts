@@ -58,10 +58,10 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   private _name: string;
 
   /**
-   * Indica il tipo di campo. Puo' assumere i valori text, email, password, number, tel e search
+   * Indica il tipo di campo. Puo' assumere i valori text, email, password e number
    */
   @Input()
-  get type() {
+  get type(): string {
     return this._type;
   }
   set type(value: string) {
@@ -108,7 +108,7 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
         return '';
       }
     }
-    return this._placeholder;
+    return this._placeholder || '';
   }
   set placeholder(value: string) { this._placeholder = value; }
   private _placeholder: string;
