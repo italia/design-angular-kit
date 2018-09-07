@@ -37,6 +37,10 @@ export class TableOfContentService {
             link: '/componenti/toggle',
           },
           {
+            label: 'Popover',
+            link: '/componenti/popover',
+          },
+          {
             label: 'Radio button',
             link: '/componenti/radio',
           },
@@ -55,6 +59,18 @@ export class TableOfContentService {
           {
             label: 'Collapse',
             link: '/componenti/collapse',
+          },
+          {
+            label: 'Dropdown',
+            link: '/componenti/dropdown',
+          },
+          {
+            label: 'Breadcrumb',
+            link: '/componenti/breadcrumb',
+          },
+          {
+            label: 'Tabs',
+            link: '/componenti/tabs',
           }
         ]
       }

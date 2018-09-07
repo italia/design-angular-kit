@@ -1,3 +1,31 @@
+# [0.8.0](https://github.com/italia/design-angular-kit/compare/v0.7.0...v0.8.0) (2018-08-31)
+
+
+### Features
+
+* **Popover:** implementa la direttiva popover ([717801e](https://github.com/italia/design-angular-kit/commit/717801e)), closes [#23](https://github.com/italia/design-angular-kit/issues/23)
+
+# [0.7.0](https://github.com/italia/design-angular-kit/compare/v0.6.0...v0.7.0) (2018-08-31)
+
+
+### Features
+
+* **Dropdown:** implementa la componente Dropdown ([556e3ef](https://github.com/italia/design-angular-kit/commit/556e3ef)), closes [#45](https://github.com/italia/design-angular-kit/issues/45)
+
+# [0.6.0](https://github.com/italia/design-angular-kit/compare/v0.5.0...v0.6.0) (2018-08-31)
+
+
+### Features
+
+* **Breadcrumb:** implementa componente Breadcrumb ([829d5bc](https://github.com/italia/design-angular-kit/commit/829d5bc)), closes [#46](https://github.com/italia/design-angular-kit/issues/46)
+
+# [0.5.0](https://github.com/italia/design-angular-kit/compare/v0.4.0...v0.5.0) (2018-08-30)
+
+
+### Features
+
+* **Tabs:** implementa la componente dei Tab ([cb4a810](https://github.com/italia/design-angular-kit/commit/cb4a810)), closes [#47](https://github.com/italia/design-angular-kit/issues/47)
+
 # [0.4.0](https://github.com/italia/design-angular-kit/compare/v0.3.0...v0.4.0) (2018-08-06)
 
 
