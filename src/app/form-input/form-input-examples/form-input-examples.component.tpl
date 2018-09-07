@@ -6,6 +6,14 @@
   {% include "../form-input-example/form-input-example.component.ts" %}
 {% endset %}
 
+{% set tdvHtml %}
+  {% include "../template-driven-validation-example/template-driven-validation-example.component.html" %}
+{% endset %}
+
+{% set tdvTs %}
+  {% include "../template-driven-validation-example/template-driven-validation-example.component.ts" %}
+{% endset %}
+
 {% set reactiveHtml %}
   {% include "../form-input-reactive-example/form-input-reactive-example.component.html" %}
 {% endset %}
@@ -19,6 +27,13 @@
 <it-source-display
   html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
   typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+</it-source-display>
+
+<it-template-driven-validation-example></it-template-driven-validation-example>
+
+<it-source-display
+  html="{$ tdvHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
+  typescript="{$ tdvTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}">
 </it-source-display>
 
 <it-form-input-reactive-example></it-form-input-reactive-example>
