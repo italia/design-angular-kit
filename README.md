@@ -47,6 +47,37 @@ Se non l'hai già fatto, inizia spendendo qualche minuto per approfondire la tua
 [linee guida di design per i servizi web della PA](https://design-italia.readthedocs.io/it/stable/index.html),
 e fai riferimento alle [indicazioni su come contribuire a Design Angular Kit](https://github.com/italia/design-angular-kit/blob/master/CONTRIBUTING.md).
 
-<!-- A questo punto, è necessario impostare il tuo ambiente locale per la compilazione dei file sorgente e la generazione
-della documentazione. Alla [pagina relativa agli strumenti di compilazione](https://italia.github.io/bootstrap-italia/docs/come-iniziare/strumenti-di-compilazione/)
-è possibile avere tutte le informazioni necessarie a questo scopo. -->
+A questo punto, è necessario impostare il tuo ambiente locale per la compilazione dei file sorgente e la generazione
+della documentazione:
+
+1. Clonare il progetto
+
+```
+git clone https://github.com/italia/design-angular-kit.git
+```
+
+2. Installare [Node.js](https://nodejs.org) e [Yarn](https://yarnpkg.com)
+
+3. Nella cartella di progetto installare le dipendenze con il tool Yarn
+
+```
+yarn
+```
+
+4. Lanciare l'applicazione in locale
+
+```
+npm start
+```
+
+5. Per eseguire i test di unità eseguire il comando
+
+```
+npm test
+```
+
+6. Per eseguire i test end to end eseguire il comando
+
+```
+npm run e2e
+```
