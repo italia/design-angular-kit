@@ -13,7 +13,6 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
 import { FormInputComponent } from './form-input/form-input.component';
-import { PasswordStrengthMeterComponent } from './form-input/password-strength-meter.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { DropdownItemComponent } from './dropdown/dropdown-item.component';
 import { DropdownHeaderComponent } from './dropdown/dropdown-header.component';
@@ -41,7 +40,6 @@ import { TabComponent } from './tabs/tab.component';
     TooltipDirective,
     TooltipComponent,
     FormInputComponent,
-    PasswordStrengthMeterComponent,
     PopoverDirective,
     PopoverComponent,
     DropdownComponent,
