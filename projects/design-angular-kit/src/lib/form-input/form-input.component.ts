@@ -50,10 +50,10 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
    */
   @Input()
   get name(): string {
-    return this._id;
+    return this._name;
   }
   set name(value: string) {
-    this.id = value;
+    this._name = value;
   }
   private _name: string;
 
