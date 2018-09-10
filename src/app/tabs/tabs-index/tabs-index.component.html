@@ -1,32 +1,20 @@
 <h1>Tabs</h1>
 <h5>Il componente Tabs</h5>
 
-<ul class="nav nav-tabs" id="tabs-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="tabs-description-tab" data-toggle="tab" href="#tabs-description-tab-content" role="tab" aria-controls="tabs-description-tab-content" aria-selected="true">Descrizione</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="tabs-api-tab" data-toggle="tab" href="#tabs-api-tab-content" role="tab" aria-controls="tabs-api-tab-content" aria-selected="false">API</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="tabs-examples-tab" data-toggle="tab" href="#tabs-examples-tab-content" role="tab" aria-controls="tabs-examples-tab-content" aria-selected="false">Esempi</a>
-  </li>
-</ul>
-<div class="tab-content" id="tabs-content-tab">
-  <div class="tab-pane p-3 fade show active" id="tabs-description-tab-content" role="tabpanel" aria-labelledby="tabs-description-tab-content">
+<it-tab-group [dark]="isDarkTheme" [pill]="isPill">
+  <it-tab label="Descrizione">
     <h3>Tab Group</h3>
     <div [innerHTML]="tabGroupComponent.description"></div>
     <h3>Tab</h3>
     <div [innerHTML]="tabComponent.description"></div>
-  </div>
-  <div class="tab-pane p-3 fade" id="tabs-api-tab-content" role="tabpanel" aria-labelledby="tabs-api-tab-content">
+  </it-tab>
+  <it-tab label="API">
     <h2>Tab Group</h2>
-    <it-api-parameters [component]="tabGroupComponent"></it-api-parameters>
-
+    <it-api-parameters [component]="tabGroupComponent"></it-api-parameters>  
     <h2>Tab</h2>
     <it-api-parameters [component]="tabComponent"></it-api-parameters>
-  </div>
-  <div class="tab-pane p-3 fade" id="tabs-examples-tab-content" role="tabpanel" aria-labelledby="tabs-examples-tab-content">
+  </it-tab>
+  <it-tab label="Esempi">
     <it-tabs-examples></it-tabs-examples>
-  </div>
-</div>
+  </it-tab>
+</it-tab-group>

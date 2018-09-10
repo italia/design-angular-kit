@@ -1,14 +1,14 @@
-import { ButtonPage } from './tabs.po';
+import { TabsPage } from './tabs.po';
 
-describe('Button', () => {
-  let page: ButtonPage;
+describe('Tabs', () => {
+  let page: TabsPage;
 
   beforeEach(async() => {
-    page = new ButtonPage();
+    page = new TabsPage();
     await page.go();
   });
 
-  it('dovrebbe essere visualizzato il primo tab', async () => {
+  fit('dovrebbe essere visualizzato il primo tab', async () => {
     const firstTabShown = await page.isNthTabContentShown(1);
     const secondTabShown = await page.isNthTabContentShown(2);
     const thirdTabShown = await page.isNthTabContentShown(3);
