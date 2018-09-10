@@ -4,7 +4,7 @@
   
       <div class="card-text">
         <it-input id="interactive-input-0" name="interactive-input-example" [label]="label" [placeholder]="placeholder" [note]="note"
-          [disabled]="disabled" [readonly]="readOnly" [type]="type" [icon]="icon" [(ngModel)]="value" [note]="note">
+          [disabled]="disabled" [readonly]="readOnly" [type]="type" [icon]="icon" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
         </it-input>
   
         <div class="row">
@@ -23,6 +23,7 @@
               <it-radio-button id="radio-email" name="email" value="email" label="email"></it-radio-button>
               <it-radio-button id="radio-password" name="password" value="password" label="password"></it-radio-button>
               <it-radio-button id="radio-number" name="number" value="number" label="number"></it-radio-button>
+              <it-radio-button id="radio-search" name="search" value="search" label="search"></it-radio-button>
             </it-radio-group>
           </div>
           <div class="form-check col-4">
@@ -33,6 +34,14 @@
                 <it-radio-button id="radio-link" name="it-link" value="it-link" label="it-link"></it-radio-button>
               </it-radio-group>
           </div>
+        </div>
+
+        <div class="form-group" aria-labelledby="autocompleteInputTextHelp" *ngIf="type === 'search'">
+          <input type="text" class="form-control" id="autocompleteInputText"
+            [value]="autoCompleteData.join(', ')"
+            (input)="autoCompleteData = $event.target.value.split(',')">
+          <label class="active" for="autocompleteInputText">Stringhe per l'autocompletamento</label>
+          <small id="autocompleteInputTextHelp" class="form-text text-muted">da separare con una virgola</small>
         </div>
       </div>
     </div>

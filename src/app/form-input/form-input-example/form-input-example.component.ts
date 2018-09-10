@@ -49,4 +49,12 @@ export class FormInputExampleComponent {
   }
   private _hasNote = false;
 
+  get autoCompleteData(): Array<string> {
+    return this._autoCompleteData;
+  }
+  set autoCompleteData(value: Array<string>) {
+    this._autoCompleteData = value.map(string => string.trim());
+  }
+  private _autoCompleteData = ['prova', 'TeSt', 'l\'esempio'];
+
 }
