@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   TemplateDrivenValidationExampleComponent
 } from './template-driven-validation-example/template-driven-validation-example.component';
+import { ModelDrivenValidationExampleComponent } from './model-driven-validation-example/model-driven-validation-example.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import {
   ],
   declarations: [
     FormInputExampleComponent, FormInputExamplesComponent, FormInputIndexComponent,
-    TemplateDrivenValidationExampleComponent
+    TemplateDrivenValidationExampleComponent, ModelDrivenValidationExampleComponent
   ]
 })
 export class FormInputModule { }
