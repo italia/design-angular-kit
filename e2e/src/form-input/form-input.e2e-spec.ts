@@ -1,4 +1,4 @@
-import { browser } from 'protractor';
+import { browser, ElementFinder } from 'protractor';
 import { FormInputPage } from './form-input.po';
 
 describe('Form Input', () => {
@@ -193,6 +193,20 @@ describe('Form Input', () => {
     expect(await page.hasMinlengthModelError()).toBeFalsy();
     expect(await page.hasMaxlengthModelError()).toBeTruthy();
     expect(await page.hasPatternModelError()).toBeTruthy();
+  });
+
+  it('dovrebbe poter sfruttare la modalità autocomplete del tipo search', async () => {
+    await page.clickSearchRadio();
+    await page.typeInsideFormInput('p');
+
+    expect(await page.hasRelatedEntries()).toBeTruthy();
+
+    const relatedEntriesElements: ElementFinder[] = await page.getRelatedEntries();
+    const chosenEntryText = await relatedEntriesElements[0].getText();
+
+    await relatedEntriesElements[0].click();
+
+    expect(await page.getFormInputValue()).toBe(chosenEntryText);
   });
 
 });
