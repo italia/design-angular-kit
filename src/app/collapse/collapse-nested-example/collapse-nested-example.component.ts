@@ -7,19 +7,24 @@ import { Component } from '@angular/core';
 })
 export class CollapseNestedExampleComponent {
 
-  printShow($event) {
-    console.log('Show: ', $event);
+  showComponent = '';
+  shownComponent = '';
+  hideComponent = '';
+  hiddenComponent = '';
+
+  logShow($event) {
+    this.showComponent = $event._header;
   }
 
-  printHide($event) {
-    console.log('Hide: ', $event);
+  logShown($event) {
+    this.shownComponent = $event._header;
   }
 
-  printShown($event) {
-    console.log('Shown: ', $event);
+  logHide($event) {
+    this.hideComponent = $event._header;
   }
 
-  printHidden($event) {
-    console.log('Hidden: ', $event);
+  logHidden($event) {
+    this.hiddenComponent = $event._header;
   }
 }

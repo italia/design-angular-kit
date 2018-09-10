@@ -9,20 +9,24 @@ export class CollapseExampleComponent {
 
   isShown = false;
 
+  showTime = '';
+  shownTime = '';
+  hideTime = '';
+  hiddenTime = '';
+
   logShow() {
-    console.log(`Show: ${(new Date()).toISOString()}`);
+    this.showTime = new Date().toISOString();
   }
 
   logShown() {
-    console.log(`Shown: ${(new Date()).toISOString()}`);
+    this.shownTime = new Date().toISOString();
   }
 
   logHide() {
-    console.log(`Hide: ${(new Date()).toISOString()}`);
+    this.hideTime = new Date().toISOString();
   }
 
   logHidden() {
-    console.log(`Hidden: ${(new Date()).toISOString()}`);
+    this.hiddenTime = new Date().toISOString();
   }
-
 }
