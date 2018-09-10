@@ -79,6 +79,7 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
 
     this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;
     this._isPasswordVisible = false;
+    this._showAutocompletion = false;
   }
   private _type = INPUT_TYPES.TEXT;
 
@@ -145,6 +146,16 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   set value(value: any) { this._inputElement.nativeElement.value = value; }
 
   /**
+   * Opzionale.
+   * Disponibile solo se il type è search.
+   * Indica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input
+   */
+  @Input()
+  get autoCompleteData(): Array<string> { return this._autoCompleteData; }
+  set autoCompleteData(value: Array<string>) { this._autoCompleteData = value; }
+  private _autoCompleteData: Array<string>;
+
+  /**
    * Evento emesso quando il valore dell'input cambia.
    * Gli eventi di change sono emessi soltanto quando il valore cambia a causa dell'interazione dell'utente
    * con il campo d'input.
@@ -178,6 +189,7 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   }
   private _isPasswordVisible = false;
 
+  private _showAutocompletion = false;
   private _isInitialized = false;
   private _controlValueAccessorChangeFn: (value: any) => void = () => { };
   private _onTouched: () => any = () => { };
@@ -220,6 +232,10 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   }
 
   onInput() {
+    if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this._showAutocompletion) {
+      this._showAutocompletion = true;
+    }
+
     this._emitChangeEvent();
     this._controlValueAccessorChangeFn(this.value);
   }
@@ -240,6 +256,40 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
 
   noteId() {
     return `${this.id}-note`;
+  }
+
+  getRelatedEntries() {
+    if (this.value && this._showAutocompletion) {
+      const lowercaseValue = this.value.toLowerCase();
+      const lowercaseData = this._autoCompleteData.map(string => {
+        return { original : string, lowercase : string.toLowerCase() };
+      });
+
+      const relatedEntries = [];
+      lowercaseData.forEach(lowercaseEntry => {
+        if ((lowercaseEntry.lowercase).includes(lowercaseValue)) {
+          relatedEntries.push(lowercaseEntry.original);
+        }
+      });
+
+      return relatedEntries;
+    } else {
+      return [];
+    }
+  }
+
+  isAutocompletable() {
+    if (this._autoCompleteData && this._type === INPUT_TYPES.SEARCH) {
+      return this._autoCompleteData.length > 0;
+    } else {
+      return false;
+    }
+  }
+
+  onEntryClick(entry) {
+    this.value = entry;
+    this._showAutocompletion = false;
+    this.onChange();
   }
 
 }

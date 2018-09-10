@@ -13,7 +13,8 @@
     [placeholder]="placeholder"
     [ngClass]="{
       'form-control' : !readonly,
-      'form-control-plaintext' : readonly
+      'form-control-plaintext' : readonly,
+      'autocomplete' : isAutocompletable()
     }"
     [attr.aria-labelledby]="note ? noteId : undefined"/>
   <span class="btn-eye" 
@@ -24,6 +25,11 @@
       'eye-off' : isPasswordVisible
     }">
   </span>
+  <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">
+    <li *ngFor="let entry of getRelatedEntries()" (click)="onEntryClick(entry)">
+      {{entry}}
+    </li>
+  </ul>
   <label [attr.for]="id" [ngClass]="{ 'active' : isLabelActive }">
     {{label}}
   </label>
