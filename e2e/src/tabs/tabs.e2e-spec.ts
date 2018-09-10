@@ -8,7 +8,7 @@ describe('Tabs', () => {
     await page.go();
   });
 
-  fit('dovrebbe essere visualizzato il primo tab', async () => {
+  it('dovrebbe essere visualizzato il primo tab', async () => {
     const firstTabShown = await page.isNthTabContentShown(1);
     const secondTabShown = await page.isNthTabContentShown(2);
     const thirdTabShown = await page.isNthTabContentShown(3);

@@ -2,22 +2,22 @@ import { browser, by, element } from 'protractor';
 
 export class TabsPage {
   private readonly BUTTON_URL = '/#/componenti/tabs';
-  private readonly ID_EXAMPLE_TAB = 'it-tab-label-1-2';
+  private readonly ID_EXAMPLE_TAB = 'it-tab-label-0-2';
 
   private readonly ID_CHECKBOX_DARKTHEME = this.getLabelForAttribute('checkbox-0');
   private readonly ID_CHECKBOX_DISABLE = this.getLabelForAttribute('checkbox-1');
   private readonly ID_CHECKBOX_PILL = this.getLabelForAttribute('checkbox-2');
   private readonly ID_CHECKBOX_SELECT_AFTER_ADDING = this.getLabelForAttribute('checkbox-3');
 
-  private readonly ID_TAB_CONTENT_1 = 'it-tab-content-2-0';
-  private readonly ID_TAB_CONTENT_2 = 'it-tab-content-2-1';
-  private readonly ID_TAB_CONTENT_3 = 'it-tab-content-2-2';
-  private readonly ID_TAB_CONTENT_4 = 'it-tab-content-2-3';
+  private readonly ID_TAB_CONTENT_1 = 'it-tab-content-1-0';
+  private readonly ID_TAB_CONTENT_2 = 'it-tab-content-1-1';
+  private readonly ID_TAB_CONTENT_3 = 'it-tab-content-1-2';
+  private readonly ID_TAB_CONTENT_4 = 'it-tab-content-1-3';
 
-  private readonly ID_TAB_1 = 'it-tab-label-2-0';
-  private readonly ID_TAB_2 = 'it-tab-label-2-1';
-  private readonly ID_TAB_3 = 'it-tab-label-2-2';
-  private readonly ID_TAB_4 = 'it-tab-label-2-3';
+  private readonly ID_TAB_1 = 'it-tab-label-1-0';
+  private readonly ID_TAB_2 = 'it-tab-label-1-1';
+  private readonly ID_TAB_3 = 'it-tab-label-1-2';
+  private readonly ID_TAB_4 = 'it-tab-label-1-3';
 
   private readonly ID_ADD_BUTTON = 'button-0';
 
