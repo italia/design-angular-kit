@@ -64,6 +64,12 @@ export class FormInputPage {
   private readonly ID_ERROR_TDV_MAXLENGTH = 'tdv-maxlength';
   private readonly ID_ERROR_TDV_PATTERN = 'tdv-pattern';
 
+  private readonly ID_FORM_MDV_ID = 'form-input-2';
+  private readonly ID_ERROR_MDV_REQUIRED = 'mdv-required';
+  private readonly ID_ERROR_MDV_MINLENGTH = 'mdv-minlength';
+  private readonly ID_ERROR_MDV_MAXLENGTH = 'mdv-maxlength';
+  private readonly ID_ERROR_MDV_PATTERN = 'mdv-pattern';
+
   async go() {
     await browser.get(this.FORM_INPUT_URL);
     await browser.executeScript(`document.querySelector('header').remove()`);
@@ -198,16 +204,13 @@ export class FormInputPage {
     return element(by.id(this.ID_ERROR_TDV_REQUIRED)).isPresent();
   }
 
-
   async hasMinlengthError() {
     return element(by.id(this.ID_ERROR_TDV_MINLENGTH)).isPresent();
   }
 
-
   async hasMaxlengthError() {
     return element(by.id(this.ID_ERROR_TDV_MAXLENGTH)).isPresent();
   }
-
 
   async hasPatternError() {
     return element(by.id(this.ID_ERROR_TDV_PATTERN)).isPresent();
@@ -220,5 +223,30 @@ export class FormInputPage {
 
   private getTemplateDrivenValidationFormInput() {
     return this.getFromInputContainer().element(by.xpath(`//input[@name='${this.ID_FORM_TDV_NAME}']`));
+  }
+
+  async typeInsideModelDrivenValidationFormInput(value: string) {
+    await this.getModelDrivenValidationFormInput().clear();
+    await this.getModelDrivenValidationFormInput().sendKeys(value);
+  }
+
+  private getModelDrivenValidationFormInput() {
+    return this.getFromInputContainer().element(by.xpath(`//input[@id='${this.ID_FORM_MDV_ID}']`));
+  }
+
+  async hasRequiredModelError() {
+    return element(by.id(this.ID_ERROR_MDV_REQUIRED)).isPresent();
+  }
+
+  async hasMinlengthModelError() {
+    return element(by.id(this.ID_ERROR_MDV_MINLENGTH)).isPresent();
+  }
+
+  async hasMaxlengthModelError() {
+    return element(by.id(this.ID_ERROR_MDV_MAXLENGTH)).isPresent();
+  }
+
+  async hasPatternModelError() {
+    return element(by.id(this.ID_ERROR_MDV_PATTERN)).isPresent();
   }
 }

@@ -152,4 +152,47 @@ describe('Form Input', () => {
     expect(await page.hasPatternError()).toBeTruthy();
   });
 
+  it('dovrebbe poter sfruttare la validazione model driven', async () => {
+    expect(await page.hasRequiredModelError()).toBeTruthy();
+    expect(await page.hasMinlengthModelError()).toBeFalsy();
+    expect(await page.hasMaxlengthModelError()).toBeFalsy();
+    expect(await page.hasPatternModelError()).toBeFalsy();
+
+    await page.typeInsideModelDrivenValidationFormInput('c');
+    expect(await page.hasRequiredModelError()).toBeFalsy();
+    expect(await page.hasMinlengthModelError()).toBeTruthy();
+    expect(await page.hasMaxlengthModelError()).toBeFalsy();
+    expect(await page.hasPatternModelError()).toBeTruthy();
+
+    await page.typeInsideModelDrivenValidationFormInput('ab');
+    expect(await page.hasRequiredModelError()).toBeFalsy();
+    expect(await page.hasMinlengthModelError()).toBeTruthy();
+    expect(await page.hasMaxlengthModelError()).toBeFalsy();
+    expect(await page.hasPatternModelError()).toBeFalsy();
+
+    await page.typeInsideModelDrivenValidationFormInput('aba');
+    expect(await page.hasRequiredModelError()).toBeFalsy();
+    expect(await page.hasMinlengthModelError()).toBeFalsy();
+    expect(await page.hasMaxlengthModelError()).toBeFalsy();
+    expect(await page.hasPatternModelError()).toBeFalsy();
+
+    await page.typeInsideModelDrivenValidationFormInput('abc');
+    expect(await page.hasRequiredModelError()).toBeFalsy();
+    expect(await page.hasMinlengthModelError()).toBeFalsy();
+    expect(await page.hasMaxlengthModelError()).toBeFalsy();
+    expect(await page.hasPatternModelError()).toBeTruthy();
+
+    await page.typeInsideModelDrivenValidationFormInput('ababababababa');
+    expect(await page.hasRequiredModelError()).toBeFalsy();
+    expect(await page.hasMinlengthModelError()).toBeFalsy();
+    expect(await page.hasMaxlengthModelError()).toBeTruthy();
+    expect(await page.hasPatternModelError()).toBeFalsy();
+
+    await page.typeInsideModelDrivenValidationFormInput('ababacbabababa');
+    expect(await page.hasRequiredModelError()).toBeFalsy();
+    expect(await page.hasMinlengthModelError()).toBeFalsy();
+    expect(await page.hasMaxlengthModelError()).toBeTruthy();
+    expect(await page.hasPatternModelError()).toBeTruthy();
+  });
+
 });
