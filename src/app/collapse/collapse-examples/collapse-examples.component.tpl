@@ -14,11 +14,11 @@
   {% include "../collapse-group-example/collapse-group-example.component.ts" %}
 {% endset %}
 
-{% set groupHtml %}
+{% set groupNestedHtml %}
   {% include "../collapse-nested-example/collapse-nested-example.component.html" %}
 {% endset %}
 
-{% set groupTs %}
+{% set groupNestedTs %}
   {% include "../collapse-nested-example/collapse-nested-example.component.ts" %}
 {% endset %}
 
@@ -39,6 +39,6 @@
 <it-collapse-nested-example></it-collapse-nested-example>
 
 <it-source-display 
-    html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-    typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+    html="{$ groupNestedHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
+    typescript="{$ groupNestedTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
 </it-source-display>
