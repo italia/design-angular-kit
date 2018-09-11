@@ -1,24 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { TableOfContentService } from '../table-of-content.service';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import * as TableOfContent from '../../assets/table-of-content.json';
 
 @Component({
   selector: 'it-table-of-content',
   templateUrl: './table-of-content.component.html',
   styleUrls: ['./table-of-content.component.scss']
 })
-export class TableOfContentComponent implements OnInit {
+export class TableOfContentComponent {
 
-  constructor(private tocService: TableOfContentService) { }
-
-  public tableOfContent;
-
-  ngOnInit() {
-    this.getTableOfContent();
-  }
-
-  getTableOfContent(): void {
-    this.tableOfContent = this.tocService.getTableOfContent();
-  }
+  tableOfContent = (<any>TableOfContent).tableOfContent;
 
   public toggle(event, tocItem) {
     this.tableOfContent = this.tableOfContent.map((item) => {
