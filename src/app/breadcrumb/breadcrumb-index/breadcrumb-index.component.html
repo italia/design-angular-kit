@@ -1,67 +1,17 @@
 <h1>Breadcrumb</h1>
 <h5>Il componente Breadcrumb utilizzabile per la navigazione</h5>
 
-
 <it-tab-group>
   <it-tab label="Descrizione">
     <div [innerHTML]="component.description"></div>
   </it-tab>
   <it-tab label="API">
-
-    <div *ngIf="component.inputsClass.length > 0">
-      <h2>Breadcrumb</h2>
-      <h3>Input</h3>
-      <div *ngFor="let input of component.inputsClass">
-        <table class="table table-bordered table-sm">
-          <tbody>
-            <tr>
-              <td style="width: 20%">
-                <code>{{input.name}}</code>
-              </td>
-              <td style="width: 80%">
-                <p>
-                  <em>Tipo: </em>
-                  <code>{{input.type}}</code>
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div *ngIf="subcomponent.inputsClass.length > 0">
-      <h2>Breadcrumb Item</h2>
-      <h3>Input</h3>
-      <div *ngFor="let input of subcomponent.inputsClass">
-        <table class="table table-bordered table-sm">
-          <tbody>
-            <tr>
-              <td style="width: 20%">
-                <code>{{input.name}}</code>
-              </td>
-              <td style="width: 80%">
-                <p>
-                  <em>Tipo: </em>
-                  <code>{{input.type}}</code>
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div *ngIf="component.outputsClass.length > 0">
-      <h3>Output</h3>
-      <!-- TODO: usare lo stesso componente di input -->
-    </div>
+    <h2>Breadcrumb</h2>
+    <it-api-parameters [component]="component"></it-api-parameters>
+    <h2>Breadcrumb Item</h2>
+    <it-api-parameters [component]="subcomponent"></it-api-parameters>   
   </it-tab>
   <it-tab label="Esempi">
-      <it-breadcrumb-examples></it-breadcrumb-examples>
-    </it-tab>
+    <it-breadcrumb-examples></it-breadcrumb-examples>
+  </it-tab>
 </it-tab-group>
