@@ -18,8 +18,8 @@ jobs:
       - restore_cache:
           key: *cache_key
       - run: yarn install
-      - run: npm run compodoc-compile
-      - run: npm run nunjucks-compile
+      - run: yarn compodoc-compile
+      - run: yarn nunjucks-compile
       - save_cache:
           key: *cache_key
           paths:
@@ -38,7 +38,7 @@ jobs:
           key: *cache_key
       - attach_workspace:
           at: *working_directory
-      - run: npm run build -- --prod --base-href /design-angular-kit/
+      - run: yarn build --prod --base-href /design-angular-kit/
       - persist_to_workspace:
           root: *working_directory
           paths:
@@ -50,7 +50,7 @@ jobs:
       - checkout
       - restore_cache:
           key: *cache_key
-      - run: xvfb-run -a npm run test -- --watch=false --no-progress --browsers=ChromeNoSandbox
+      - run: xvfb-run -a yarn test --watch=false --no-progress --browsers=ChromeNoSandbox
   e2e:
     <<: *job_defaults
     steps:
@@ -59,14 +59,14 @@ jobs:
           key: *cache_key
       - attach_workspace:
           at: *working_directory
-      - run: xvfb-run -a npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+      - run: xvfb-run -a yarn e2e -- --protractor-config=e2e/protractor-ci.conf.js
   lint:
     <<: *job_defaults
     steps:
       - checkout
       - restore_cache:
           key: *cache_key
-      - run: npm run lint
+      - run: yarn lint
 
   package:
     <<: *job_defaults
@@ -76,10 +76,10 @@ jobs:
           key: *cache_key
       - run:
           name: Create release
-          command: npm run build -- design-angular-kit --prod
+          command: yarn build design-angular-kit --prod
       - run:
           name: Semantic release
-          command: npm run semantic-release
+          command: yarn semantic-release
 
   documentation:
     <<: *job_defaults
