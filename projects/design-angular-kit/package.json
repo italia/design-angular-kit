@@ -1,7 +1,16 @@
 {
   "name": "design-angular-kit",
+  "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
   "version": "0.8.0",
   "license": " BSD-3-Clause",
+  "keywords": [
+    "angular",
+    "toolkit",
+    "design",
+    "italia",
+    "frontend",
+    "bootstrap4"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/italia/design-angular-kit.git"
