@@ -1,6 +1,7 @@
 [![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
-[![CircleCI](https://circleci.com/gh/italia/design-angular-kit.svg?style=svg)](https://circleci.com/gh/italia/design-angular-kit)
-[![Maintainability](https://api.codeclimate.com/v1/badges/05006c545bb28be9f300/maintainability)](https://codeclimate.com/github/italia/design-angular-kit/maintainability)
+[![CircleCI](https://img.shields.io/circleci/project/github/italia/design-angular-kit/master.svg)](https://circleci.com/gh/italia/design-angular-kit)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/italia/design-angular-kit.svg)](https://codeclimate.com/github/italia/design-angular-kit/maintainability)
+![NPM](https://img.shields.io/npm/v/design-angular-kit.svg)
 [![License](https://img.shields.io/github/license/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/blob/master/LICENSE)
 
 # Design Angular Kit
@@ -47,6 +48,37 @@ Se non l'hai già fatto, inizia spendendo qualche minuto per approfondire la tua
 [linee guida di design per i servizi web della PA](https://design-italia.readthedocs.io/it/stable/index.html),
 e fai riferimento alle [indicazioni su come contribuire a Design Angular Kit](https://github.com/italia/design-angular-kit/blob/master/CONTRIBUTING.md).
 
-<!-- A questo punto, è necessario impostare il tuo ambiente locale per la compilazione dei file sorgente e la generazione
-della documentazione. Alla [pagina relativa agli strumenti di compilazione](https://italia.github.io/bootstrap-italia/docs/come-iniziare/strumenti-di-compilazione/)
-è possibile avere tutte le informazioni necessarie a questo scopo. -->
+A questo punto, è necessario impostare il tuo ambiente locale per la compilazione dei file sorgente e la generazione
+della documentazione:
+
+1. Clonare il progetto
+
+```
+git clone https://github.com/italia/design-angular-kit.git
+```
+
+2. Installare [Node.js](https://nodejs.org) e [Yarn](https://yarnpkg.com)
+
+3. Nella cartella di progetto installare le dipendenze con il tool Yarn
+
+```
+yarn
+```
+
+4. Lanciare l'applicazione in locale
+
+```
+yarn start
+```
+
+5. Per eseguire i test di unità eseguire il comando
+
+```
+yarn test
+```
+
+6. Per eseguire i test end to end eseguire il comando
+
+```
+yarn run e2e
+```
