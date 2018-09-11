@@ -45,6 +45,20 @@ class PasswordInputComponent {
   value = '';
 }
 
+/**
+ * Componente per testare una input di tipo search.
+ */
+@Component({
+  template: `
+  <div>
+    <it-input type="search" [(ngModel)]="value" [autoCompleteData]="autoCompleteData"></it-input>
+  </div>`
+})
+class SearchInputComponent {
+  value = '';
+  autoCompleteData = ['prova'];
+}
+
 function sendInput(fixture: ComponentFixture<any>, element: HTMLInputElement, text: string) {
   element.value = text;
   element.dispatchEvent(new Event('input'));
@@ -63,7 +77,8 @@ describe('FormInputComponent', () => {
         FormInputComponent,
         TextInputComponent,
         NumberInputComponent,
-        PasswordInputComponent
+        PasswordInputComponent,
+        SearchInputComponent
       ]
     })
     .compileComponents();
@@ -198,6 +213,44 @@ describe('FormInputComponent', () => {
       fixture.detectChanges();
 
       expect(inputElement.type).toBe('password');
+    });
+  });
+
+  describe('comportamenti base con type search', () => {
+    let fixture: ComponentFixture<SearchInputComponent>;
+    let inputDebugElement: DebugElement;
+    let inputNativeElement: HTMLElement;
+    let inputInstance: FormInputComponent;
+    let testComponent: SearchInputComponent;
+    let inputElement: HTMLInputElement;
+    let spanElement: HTMLSpanElement;
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(SearchInputComponent);
+      fixture.detectChanges();
+
+      inputDebugElement = fixture.debugElement.query(By.directive(FormInputComponent));
+      inputNativeElement = inputDebugElement.nativeElement;
+      inputInstance = inputDebugElement.componentInstance;
+      testComponent = fixture.debugElement.componentInstance;
+      inputElement = <HTMLInputElement>inputNativeElement.querySelector('input');
+      spanElement = <HTMLLabelElement>inputNativeElement.querySelector('span');
+    });
+
+    it('dovrebbe poter sfruttare la funzionalità di autocomplete', () => {
+      const newText = 'pr';
+      sendInput(fixture, inputElement, newText);
+      inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      fixture.detectChanges();
+
+      const autocompleteList = <HTMLUListElement>inputNativeElement.querySelector('ul');
+      const autocompleteEntries = Array.from(autocompleteList.querySelectorAll('li'));
+      autocompleteEntries[0].click();
+
+      fixture.detectChanges();
+
+      expect(inputElement.value).toBe('prova');
     });
   });
 });
