@@ -1,7 +1,7 @@
 <div class="bd-toc-item" [routerLinkActive]="'active'">
   <a [routerLink]="tocItem.link" class="bd-toc-link" >{{tocItem.label}}</a>
   <ul class="nav bd-sidenav pl-2" >
-    <li *ngFor="let link of tocItem.links" [routerLinkActive]="['active', 'bd-sidenav-active']">
+    <li *ngFor="let link of tocItem.links | linksort" [routerLinkActive]="['active', 'bd-sidenav-active']">
       <a [routerLink]="link.link" >{{link.label}}</a>
     </li>
   </ul>
