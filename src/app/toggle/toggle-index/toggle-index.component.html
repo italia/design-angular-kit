@@ -1,25 +1,14 @@
 <h1>Toggle</h1>
 <h5>Il componente Toggle utilizzabile in un form</h5>
 
-<ul class="nav nav-tabs" id="toggle-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="toggle-description-tab" data-toggle="tab" href="#toggle-description-tab-content" role="tab" aria-controls="toggle-description-tab-content" aria-selected="true">Descrizione</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="toggle-api-tab" data-toggle="tab" href="#toggle-api-tab-content" role="tab" aria-controls="toggle-api-tab-content" aria-selected="false">API</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="toggle-examples-tab" data-toggle="tab" href="#toggle-examples-tab-content" role="tab" aria-controls="toggle-examples-tab-content" aria-selected="false">Esempi</a>
-  </li>
-</ul>
-<div class="tab-content" id="toggle-content-tab">
-  <div class="tab-pane p-3 fade show active" id="toggle-description-tab-content" role="tabpanel" aria-labelledby="toggle-description-tab-content">
-    <div [innerHTML]="component.description"></div>
-  </div>
-  <div class="tab-pane p-3 fade" id="toggle-api-tab-content" role="tabpanel" aria-labelledby="toggle-api-tab-content">
-    <it-api-parameters [component]="component"></it-api-parameters>
-  </div>
-  <div class="tab-pane p-3 fade" id="toggle-examples-tab-content" role="tabpanel" aria-labelledby="toggle-examples-tab-content">
+<it-tab-group>
+  <it-tab label="Descrizione">
+      <div [innerHTML]="component.description"></div>
+  </it-tab>
+  <it-tab label="API">
+      <it-api-parameters [component]="component"></it-api-parameters>
+  </it-tab>
+  <it-tab label="Esempi">
     <it-toggle-examples></it-toggle-examples>
-  </div>
-</div>
+  </it-tab>
+</it-tab-group>

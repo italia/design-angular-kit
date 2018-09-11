@@ -2,7 +2,7 @@ import { browser, by, element, ExpectedConditions, ElementFinder } from 'protrac
 
 export class TooltipPage {
   private readonly TOOLTIP_URL = '/#/componenti/tooltip';
-  private readonly ID_EXAMPLE_TAB = 'tooltip-examples-tab';
+  private readonly ID_EXAMPLE_TAB = 'it-tab-label-0-2';
 
   private readonly ID_TOOLTIP_PLACEMENT_BUTTON = 'tooltip-placement-button';
   private readonly ID_TOOLTIP_DISPOSE_BUTTON = 'tooltip-dispose-button';

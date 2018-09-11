@@ -2,7 +2,7 @@ import { browser, by, element } from 'protractor';
 
 export class PopoverPage {
   private readonly POPOVER_URL = '/#/componenti/popover';
-  private readonly ID_EXAMPLE_TAB = 'popover-examples-tab';
+  private readonly ID_EXAMPLE_TAB = 'it-tab-label-0-2';
 
   private readonly ID_POPOVER_INTERACTIVE_BUTTON = 'popover-interactive-button';
   private readonly ID_POPOVER_DISPOSE_BUTTON = 'popover-disposing-button';
