@@ -1,3 +1,5 @@
+{% from "../../macro.template.njk" import sanitize as sanitize %}
+
 {% set html %}
   {% include "../form-input-example/form-input-example.component.html" %}
 {% endset %}
@@ -17,13 +19,13 @@
 <it-form-input-example></it-form-input-example>
 
 <it-source-display
-  html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
-  typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+  html="{$ sanitize(html) $}"
+  typescript="{$ sanitize(typescript) $}" >
 </it-source-display>
 
 <it-template-driven-validation-example></it-template-driven-validation-example>
 
 <it-source-display
-  html="{$ tdvHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
-  typescript="{$ tdvTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}">
+  html="{$ sanitize(tdvHtml) $}"
+  typescript="{$ sanitize(tdvTs) $}">
 </it-source-display>
