@@ -1,3 +1,10 @@
+# [0.10.0](https://github.com/italia/design-angular-kit/compare/v0.9.0...v0.10.0) (2018-09-12)
+
+
+### Features
+
+* **Input:** Template Driven Validation per componente Input ([e9473a7](https://github.com/italia/design-angular-kit/commit/e9473a7)), closes [#81](https://github.com/italia/design-angular-kit/issues/81)
+
 # [0.9.0](https://github.com/italia/design-angular-kit/compare/v0.8.0...v0.9.0) (2018-09-12)
 
 
