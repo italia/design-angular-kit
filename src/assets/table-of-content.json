@@ -53,6 +53,10 @@
         {
           "label": "Tabs",
           "link": "/componenti/tabs"
+        },
+        {
+          "label": "Form Input",
+          "link": "/componenti/form-input"
         }
       ]
     }

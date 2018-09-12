@@ -12,6 +12,7 @@ import { TooltipDirective } from './tooltip/tooltip.directive';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
+import { FormInputComponent } from './form-input/form-input.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { DropdownItemComponent } from './dropdown/dropdown-item.component';
 import { DropdownHeaderComponent } from './dropdown/dropdown-header.component';
@@ -38,6 +39,7 @@ import { TabComponent } from './tabs/tab.component';
     ButtonComponent,
     TooltipDirective,
     TooltipComponent,
+    FormInputComponent,
     PopoverDirective,
     PopoverComponent,
     DropdownComponent,
@@ -58,6 +60,7 @@ import { TabComponent } from './tabs/tab.component';
     ProgressBarComponent,
     ButtonComponent,
     TooltipDirective,
+    FormInputComponent,
     PopoverDirective,
     DropdownComponent,
     DropdownItemComponent,

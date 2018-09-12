@@ -1,0 +1,39 @@
+<div class="card w-100 mt-2">
+    <div class="card-body">
+      <h4 class="card-title">Interazione con Form Input</h4>
+  
+      <div class="card-text">
+        <it-input id="interactive-input-0" name="interactive-input-example" [label]="label" [placeholder]="placeholder" [note]="note"
+          [disabled]="disabled" [readonly]="readOnly" [type]="type" [icon]="icon" [(ngModel)]="value" [note]="note">
+        </it-input>
+  
+        <div class="row">
+          <div class="form-check col-4">
+            <h5>Opzioni</h5>
+            <it-checkbox [(ngModel)]="disabled" label="Disabled" id="disabled-checkbox"></it-checkbox>
+            <it-checkbox [(ngModel)]="readOnly" label="Readonly" id="readonly-checkbox"></it-checkbox>
+            <it-checkbox [(ngModel)]="hasLabel" label="Label" id="has-label-checkbox"></it-checkbox>
+            <it-checkbox [(ngModel)]="hasPlaceholder" label="Placeholder" id="has-placeholder-checkbox"></it-checkbox>
+            <it-checkbox [(ngModel)]="hasNote" label="Note" id="has-note-checkbox"></it-checkbox>
+            </div>
+          <div class="form-check col-4">
+            <h5>Tipo Input</h5>
+            <it-radio-group [(ngModel)]="type">
+              <it-radio-button id="radio-text" name="text" value="text" label="text"></it-radio-button>
+              <it-radio-button id="radio-email" name="email" value="email" label="email"></it-radio-button>
+              <it-radio-button id="radio-password" name="password" value="password" label="password"></it-radio-button>
+              <it-radio-button id="radio-number" name="number" value="number" label="number"></it-radio-button>
+            </it-radio-group>
+          </div>
+          <div class="form-check col-4">
+              <h5>Icona</h5>
+              <it-radio-group [(ngModel)]="icon">
+                <it-radio-button id="radio-none" name="none" [value]="undefined" label="Nessuna"></it-radio-button>
+                <it-radio-button id="radio-favorite" name="it-favorite" value="it-favorite" label="it-favorite"></it-radio-button>
+                <it-radio-button id="radio-link" name="it-link" value="it-link" label="it-link"></it-radio-button>
+              </it-radio-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
