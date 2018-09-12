@@ -1,3 +1,5 @@
+{% from "../../macro.template.njk" import sanitize as sanitize %}
+
 {% set html %}
   {% include "../tooltip-example/tooltip-example.component.html" %}
 {% endset %}
@@ -40,30 +42,30 @@
 
 <it-tooltip-example></it-tooltip-example>
 
-<it-source-display html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
-  typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(html) $}"
+  typescript="{$ sanitize(typescript) $}" >
 </it-source-display>
 
 <it-tooltip-placements-example></it-tooltip-placements-example>
 
-<it-source-display html="{$ placementsHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ placementsTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(placementsHtml) $}" 
+  typescript="{$ sanitize(placementsTs) $}" >
 </it-source-display>
 
 <it-tooltip-disabled-example></it-tooltip-disabled-example>
 
-<it-source-display html="{$ disabledHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
-  typescript="{$ disabledTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(disabledHtml) $}"
+  typescript="{$ sanitize(disabledTs) $}" >
 </it-source-display>
 
 <it-tooltip-events-example></it-tooltip-events-example>
 
-<it-source-display html="{$ eventsHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
-  typescript="{$ eventsTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(eventsHtml) $}"
+  typescript="{$ sanitize(eventsTs) $}" >
 </it-source-display>
 
 <it-tooltip-config-example></it-tooltip-config-example>
 
-<it-source-display html="{$ configHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}"
-  typescript="{$ configTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(configHtml) $}"
+  typescript="{$ sanitize(configTs) $}" >
 </it-source-display>

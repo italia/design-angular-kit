@@ -1,3 +1,5 @@
+{% from "../../macro.template.njk" import sanitize as sanitize %}
+
 {% set interactiveHtml %}
   {% include "../popover-interactive-example/popover-interactive-example.component.html" %}
 {% endset %}
@@ -57,48 +59,48 @@
 <it-popover-interactive-example></it-popover-interactive-example>
 
 <it-source-display 
-  html="{$ interactiveHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ interactiveTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+  html="{$ sanitize(interactiveHtml) $}" 
+  typescript="{$ sanitize(interactiveTs) $}" >
 </it-source-display>
 
 <it-popover-example></it-popover-example>
 
 <it-source-display 
-  html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+  html="{$ sanitize(html) $}" 
+  typescript="{$ sanitize(typescript) $}" >
 </it-source-display>
 
 <it-popover-container-example></it-popover-container-example>
 
 <it-source-display 
-  html="{$ containerHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ containerTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+  html="{$ sanitize(containerHtml) $}" 
+  typescript="{$ sanitize(containerTs) $}" >
 </it-source-display>
 
 <it-popover-placements-example></it-popover-placements-example>
 
 <it-source-display 
-  html="{$ placementsHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ placementsTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+  html="{$ sanitize(placementsHtml) $}" 
+  typescript="{$ sanitize(placementsTs) $}" >
 </it-source-display>
 
 <it-popover-focus-example></it-popover-focus-example>
 
 <it-source-display 
-  html="{$ focusHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ focusTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+  html="{$ sanitize(focusHtml) $}" 
+  typescript="{$ sanitize(focusTs) $}" >
 </it-source-display>
 
 <it-popover-disabled-example></it-popover-disabled-example>
 
 <it-source-display 
-  html="{$ disabledHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ disabledTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+  html="{$ sanitize(disabledHtml) $}" 
+  typescript="{$ sanitize(disabledTs) $}" >
 </it-source-display>
 
 <it-popover-config-example></it-popover-config-example>
 
 <it-source-display 
-  html="{$ configHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ configTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+  html="{$ sanitize(configHtml) $}" 
+  typescript="{$ sanitize(configTs) $}" >
 </it-source-display>

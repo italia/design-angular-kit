@@ -1,3 +1,5 @@
+{% from "../../macro.template.njk" import sanitize as sanitize %}
+
 {% set html %}
   {% include "../breadcrumb-example/breadcrumb-example.component.html" %}
 {% endset %}
@@ -8,5 +10,5 @@
 
 <it-breadcrumb-example></it-breadcrumb-example>
 
-<it-source-display html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}" >
 </it-source-display>
