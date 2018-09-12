@@ -20,6 +20,7 @@ const routes: Routes = [
     { path: 'tooltip', loadChildren: 'src/app/tooltip/tooltip.module#TooltipModule' },
     { path: 'button', loadChildren: 'src/app/button/button.module#ButtonModule' },
     { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' },
+    { path: 'form-input', loadChildren: 'src/app/form-input/form-input.module#FormInputModule' },
     { path: 'dropdown', loadChildren: 'src/app/dropdown/dropdown.module#DropdownModule' },
   ]}
 ];

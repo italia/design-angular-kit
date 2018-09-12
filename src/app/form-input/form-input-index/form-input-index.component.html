@@ -1,0 +1,25 @@
+<h1>Form Input</h1>
+<h5>Il componente Form Input utilizzabile in un form</h5>
+
+<ul class="nav nav-tabs" id="form-input-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="form-input-description-tab" data-toggle="tab" href="#form-input-description-tab-content" role="tab" aria-controls="form-input-description-tab-content" aria-selected="true">Descrizione</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="form-input-api-tab" data-toggle="tab" href="#form-input-api-tab-content" role="tab" aria-controls="form-input-api-tab-content" aria-selected="false">API</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="form-input-examples-tab" data-toggle="tab" href="#form-input-examples-tab-content" role="tab" aria-controls="form-input-examples-tab-content" aria-selected="false">Esempi</a>
+  </li>
+</ul>
+<div class="tab-content" id="form-input-content-tab">
+  <div class="tab-pane p-3 fade show active" id="form-input-description-tab-content" role="tabpanel" aria-labelledby="form-input-description-tab-content">
+    <div [innerHTML]="component.description"></div>
+  </div>
+  <div class="tab-pane p-3 fade" id="form-input-api-tab-content" role="tabpanel" aria-labelledby="form-input-api-tab-content">
+      <it-api-parameters [component]="component"></it-api-parameters>
+  </div>
+  <div class="tab-pane p-3 fade" id="form-input-examples-tab-content" role="tabpanel" aria-labelledby="form-input-examples-tab-content">
+    <it-form-input-examples></it-form-input-examples>
+  </div>
+</div>
