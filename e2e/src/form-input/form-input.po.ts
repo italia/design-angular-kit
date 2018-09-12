@@ -57,6 +57,13 @@ export class FormInputPage {
   // [for="radio-8"]
   private readonly CSS_SELECTOR_LABEL_RADIO_ICON_LINK = this.getLabelForAttribute(this.ID_RADIO_ICON_LINK);
 
+  // Template Driven Validation
+  private readonly ID_FORM_TDV_NAME = 'myInput';
+  private readonly ID_ERROR_TDV_REQUIRED = 'tdv-required';
+  private readonly ID_ERROR_TDV_MINLENGTH = 'tdv-minlength';
+  private readonly ID_ERROR_TDV_MAXLENGTH = 'tdv-maxlength';
+  private readonly ID_ERROR_TDV_PATTERN = 'tdv-pattern';
+
   async go() {
     await browser.get(this.FORM_INPUT_URL);
     await browser.executeScript(`document.querySelector('header').remove()`);
@@ -185,5 +192,33 @@ export class FormInputPage {
 
   private getLabelForAttribute(attr: string) {
     return `[for="${attr}"]`;
+  }
+
+  async hasRequiredError() {
+    return element(by.id(this.ID_ERROR_TDV_REQUIRED)).isPresent();
+  }
+
+
+  async hasMinlengthError() {
+    return element(by.id(this.ID_ERROR_TDV_MINLENGTH)).isPresent();
+  }
+
+
+  async hasMaxlengthError() {
+    return element(by.id(this.ID_ERROR_TDV_MAXLENGTH)).isPresent();
+  }
+
+
+  async hasPatternError() {
+    return element(by.id(this.ID_ERROR_TDV_PATTERN)).isPresent();
+  }
+
+  async typeInsideTemplateDrivenValidationFormInput(value: string) {
+    await this.getTemplateDrivenValidationFormInput().clear();
+    await this.getTemplateDrivenValidationFormInput().sendKeys(value);
+  }
+
+  private getTemplateDrivenValidationFormInput() {
+    return this.getFromInputContainer().element(by.xpath(`//input[@name='${this.ID_FORM_TDV_NAME}']`));
   }
 }

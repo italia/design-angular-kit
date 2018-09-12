@@ -1,0 +1,21 @@
+<div class="card w-100 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Interazione con Form Input dotato di validazione Template Driven</h4>
+
+    <div class="card-text">
+      <form #myForm="ngForm">
+        <it-input [(ngModel)]="value" name="myInput" required minlength="3" maxlength="10" pattern="[ab]+"></it-input>
+        <p id="tdv-required" class="error"
+           *ngIf="myForm.controls.myInput?.errors?.required">Il campo è obbligatorio</p>
+        <p id="tdv-minlength" class="error"
+           *ngIf="myForm.controls.myInput?.errors?.minlength">deve essere almeno di lunghezza 3</p>
+        <p id="tdv-maxlength" class="error"
+           *ngIf="myForm.controls.myInput?.errors?.maxlength">deve essere massimo di lunghezza 10</p>
+        <p id="tdv-pattern" class="error"
+           *ngIf="myForm.controls.myInput?.errors?.pattern">non corrisponde al pattern [ab]+</p>
+        <it-button [disabled]="!myForm.valid" (click)="save(myForm)">Salva</it-button>
+        <div *ngIf="savedValue">Salvato `{{savedValue}}`</div>
+      </form>
+    </div>
+  </div>
+</div>

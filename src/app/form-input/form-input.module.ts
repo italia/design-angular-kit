@@ -8,6 +8,9 @@ import { FormInputIndexComponent } from './form-input-index/form-input-index.com
 import { SharedModule } from '../shared/shared.module';
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  TemplateDrivenValidationExampleComponent
+} from './template-driven-validation-example/template-driven-validation-example.component';
 
 @NgModule({
   imports: [
@@ -18,6 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormInputRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [FormInputExampleComponent, FormInputExamplesComponent, FormInputIndexComponent]
+  declarations: [
+    FormInputExampleComponent, FormInputExamplesComponent, FormInputIndexComponent,
+    TemplateDrivenValidationExampleComponent
+  ]
 })
 export class FormInputModule { }

@@ -109,4 +109,47 @@ describe('Form Input', () => {
     expect(toggleButtonClass).toBe(eyeOff);
   });
 
+  it('dovrebbe poter sfruttare la validazione template driven', async () => {
+    expect(await page.hasRequiredError()).toBeTruthy();
+    expect(await page.hasMinlengthError()).toBeFalsy();
+    expect(await page.hasMaxlengthError()).toBeFalsy();
+    expect(await page.hasPatternError()).toBeFalsy();
+
+    await page.typeInsideTemplateDrivenValidationFormInput('c');
+    expect(await page.hasRequiredError()).toBeFalsy();
+    expect(await page.hasMinlengthError()).toBeTruthy();
+    expect(await page.hasMaxlengthError()).toBeFalsy();
+    expect(await page.hasPatternError()).toBeTruthy();
+
+    await page.typeInsideTemplateDrivenValidationFormInput('ab');
+    expect(await page.hasRequiredError()).toBeFalsy();
+    expect(await page.hasMinlengthError()).toBeTruthy();
+    expect(await page.hasMaxlengthError()).toBeFalsy();
+    expect(await page.hasPatternError()).toBeFalsy();
+
+    await page.typeInsideTemplateDrivenValidationFormInput('aba');
+    expect(await page.hasRequiredError()).toBeFalsy();
+    expect(await page.hasMinlengthError()).toBeFalsy();
+    expect(await page.hasMaxlengthError()).toBeFalsy();
+    expect(await page.hasPatternError()).toBeFalsy();
+
+    await page.typeInsideTemplateDrivenValidationFormInput('abc');
+    expect(await page.hasRequiredError()).toBeFalsy();
+    expect(await page.hasMinlengthError()).toBeFalsy();
+    expect(await page.hasMaxlengthError()).toBeFalsy();
+    expect(await page.hasPatternError()).toBeTruthy();
+
+    await page.typeInsideTemplateDrivenValidationFormInput('ababababababa');
+    expect(await page.hasRequiredError()).toBeFalsy();
+    expect(await page.hasMinlengthError()).toBeFalsy();
+    expect(await page.hasMaxlengthError()).toBeTruthy();
+    expect(await page.hasPatternError()).toBeFalsy();
+
+    await page.typeInsideTemplateDrivenValidationFormInput('ababacbabababa');
+    expect(await page.hasRequiredError()).toBeFalsy();
+    expect(await page.hasMinlengthError()).toBeFalsy();
+    expect(await page.hasMaxlengthError()).toBeTruthy();
+    expect(await page.hasPatternError()).toBeTruthy();
+  });
+
 });
