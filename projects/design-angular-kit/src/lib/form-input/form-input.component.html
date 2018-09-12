@@ -1,0 +1,33 @@
+<div class="form-group">
+  <i *ngIf="icon" [class]="icon" [ngClass]="{ 'ico-prefix': true }"></i>
+  <input #inputElement
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (change)="onChange()"
+    (input)="onInput()"
+    [type]="type"
+    [id]="id"
+    [attr.name]="name"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [placeholder]="placeholder"
+    [ngClass]="{
+      'form-control' : !readonly,
+      'form-control-plaintext' : readonly
+    }"
+    [attr.aria-labelledby]="note ? noteId : undefined"/>
+  <span class="btn-eye" 
+    *ngIf="isPasswordMode"
+    (click)="isPasswordVisible = !isPasswordVisible"
+    [ngClass]="{
+      'eye-on' : !isPasswordVisible,
+      'eye-off' : isPasswordVisible
+    }">
+  </span>
+  <label [attr.for]="id" [ngClass]="{ 'active' : isLabelActive }">
+    {{label}}
+  </label>
+  <small [id]="noteId()" class="form-text text-muted" *ngIf="note">
+    {{note}}
+  </small>
+</div>
