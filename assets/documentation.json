@@ -410,6 +410,72 @@
             "duplicateName": "ContentRef-1"
         },
         {
+            "name": "FormInputChange",
+            "id": "class-FormInputChange-103cdc15f54ffee8c783ba44ffb8398a",
+            "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+            "type": "class",
+            "sourceCode": "import {\n  Component, Input, ChangeDetectionStrategy, forwardRef,\n  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { InputType, INPUT_TYPES } from '../models/InputType';\nimport { Util } from '../util/util';\n\nlet identifier = 0;\n\nexport class FormInputChange {\n  constructor(\n    public source: FormInputComponent,\n    public value: any\n  ) { }\n}\n\n/**\n * Elementi e stili per la creazione di input accessibili e responsivi.\n */\n@Component({\n  selector: 'it-input',\n  templateUrl: './form-input.component.html',\n  styleUrls: ['./form-input.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [{\n    provide: NG_VALUE_ACCESSOR,\n    useExisting: forwardRef(() => FormInputComponent),\n    multi: true\n  }]\n})\nexport class FormInputComponent implements AfterContentInit, ControlValueAccessor {\n  @ViewChild('inputElement')\n  private _inputElement: ElementRef;\n\n  /**\n   * Indica l'id dell'elemento HTML\n   */\n  @Input()\n  get id(): string {\n    return this._id;\n  }\n  set id(value: string) {\n    this._id = value;\n  }\n  private _id = `form-input-${identifier++}`;\n\n  /**\n   * Indica l'attributo name del componente HTML\n   */\n  @Input()\n  get name(): string {\n    return this._name;\n  }\n  set name(value: string) {\n    this._name = value;\n  }\n  private _name: string;\n\n  /**\n   * Indica il tipo di campo. Puo' assumere i valori text, email, password e number\n   */\n  @Input()\n  get type(): string {\n    return this._type;\n  }\n  set type(value: string) {\n    if (InputType.is(value)) {\n      if (value === INPUT_TYPES.NUMBER) {\n        if (isNaN(Number(this.value))) {\n          this.value = '';\n          this.onChange();\n        }\n      }\n      this._type = value;\n    } else {\n      this._type = INPUT_TYPES.TEXT;\n    }\n\n    this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;\n    this._isPasswordVisible = false;\n  }\n  private _type = INPUT_TYPES.TEXT;\n\n  /**\n   * Indica il valore della label da visualizzare\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(value: string) { this._label = value; }\n  private _label: string;\n\n  /**\n   * Indica il testo di aiuto sotto la input\n   */\n  @Input()\n  get note(): string { return this._note; }\n  set note(value: string) { this._note = value; }\n  private _note: string;\n\n  /**\n   * Indica il testo presente nel campo vuoto. Nel caso sia già presente la label, il placeholder non verrà mostrato\n   */\n  @Input()\n  get placeholder(): string {\n    if (this.label) {\n      if (this.label.length > 0) {\n        return '';\n      }\n    }\n    return this._placeholder || '';\n  }\n  set placeholder(value: string) { this._placeholder = value; }\n  private _placeholder: string;\n\n  /**\n   * Indica l'icona da visualizzare a sinistra del campo di input\n   */\n  @Input()\n  get icon(): string { return this._icon; }\n  set icon(value: string) { this._icon = value; }\n  private _icon: string;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è disabilitato.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }\n  private _disabled = false;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è di sola lettura.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get readonly(): boolean { return this._readonly; }\n  set readonly(value: boolean) { this._readonly = Util.coerceBooleanProperty(value); }\n  private _readonly = false;\n\n  get value(): any { return this._inputElement.nativeElement.value; }\n  set value(value: any) { this._inputElement.nativeElement.value = value; }\n\n  /**\n   * Evento emesso quando il valore dell'input cambia.\n   * Gli eventi di change sono emessi soltanto quando il valore cambia a causa dell'interazione dell'utente\n   * con il campo d'input.\n   */\n  @Output()\n  readonly change: EventEmitter<FormInputChange> = new EventEmitter<FormInputChange>();\n\n  get isLabelActive() {\n    return this._isLabelActive;\n  }\n  set isLabelActive(value: boolean) {\n    this._isLabelActive = Util.coerceBooleanProperty(value);\n  }\n  private _isLabelActive = false;\n\n\n  get isPasswordMode() {\n    return this._isPasswordMode;\n  }\n  set isPasswordMode(value: boolean) {\n    this._isPasswordMode = Util.coerceBooleanProperty(value);\n  }\n  private _isPasswordMode = false;\n\n  get isPasswordVisible() {\n    return this._isPasswordVisible;\n  }\n  set isPasswordVisible(value: boolean) {\n    this._isPasswordVisible = Util.coerceBooleanProperty(value);\n    this._type = this._isPasswordVisible ? INPUT_TYPES.TEXT : INPUT_TYPES.PASSWORD;\n  }\n  private _isPasswordVisible = false;\n\n  private _isInitialized = false;\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n  private _onTouched: () => any = () => { };\n\n  private _emitChangeEvent(): void {\n    if (this._isInitialized) {\n      this.change.emit(new FormInputChange(this, this.value));\n    }\n  }\n\n  writeValue(value: any): void {\n    this.value = value;\n    if (this.value) {\n      this._isLabelActive = true;\n    }\n\n    this.onChange();\n    if (this._isInitialized) {\n      this._changeDetector.detectChanges();\n    }\n  }\n\n  registerOnChange(fn: (value: any) => void): void {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this._onTouched = fn;\n  }\n\n  constructor(private _changeDetector: ChangeDetectorRef) { }\n\n  ngAfterContentInit(): void {\n    this._isInitialized = true;\n  }\n\n  onChange() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onInput() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onFocus() {\n    this._isLabelActive = true;\n  }\n\n  onBlur() {\n    const inputValue: string = this.value;\n    if (inputValue.length === 0) {\n      this._isLabelActive = false;\n      if (this.type === INPUT_TYPES.NUMBER) {\n        this.value = '';\n      }\n    }\n  }\n\n  noteId() {\n    return `${this.id}-note`;\n  }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "source",
+                        "type": "FormInputComponent"
+                    },
+                    {
+                        "name": "value",
+                        "type": "any"
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "source",
+                        "type": "FormInputComponent",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "source",
+                    "type": "FormInputComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "value",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
             "name": "PopupService",
             "id": "class-PopupService-523bfb791c84a31c65717949ff12889f",
             "file": "projects/design-angular-kit/src/lib/popover/popup.ts",
@@ -5950,6 +6016,780 @@
             "templateData": "<li [id]=\"id\">\n  <a [attr.href]=\"link\"\n    [attr.tabindex]=\"this.disabled ? -1 : 0\"\n    [class]=\"dropdownItemClass\"\n    [ngClass]=\"{\n      'large' : large, \n      'active' : active,\n      'disabled' : disabled,\n      'disabled-item-link' : disabled\n    }\">\n    <i [class]=\"iconClass\" aria-hidden=\"true\" *ngIf=\"icon && iconPosition === 'left'\"></i>\n    <span>\n      <ng-content></ng-content>\n    </span>\n    <i [class]=\"iconClass\" aria-hidden=\"true\" *ngIf=\"icon && iconPosition === 'right'\"></i>\n  </a>\n</li>"
         },
         {
+            "name": "FormInputComponent",
+            "id": "component-FormInputComponent-103cdc15f54ffee8c783ba44ffb8398a",
+            "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => FormInputComponent), multi: true\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "it-input",
+            "styleUrls": [
+                "form-input.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-input.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "description": "<p>Opzionale.\nIndica se il campo in questione è disabilitato.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
+                    "line": 130,
+                    "type": "boolean"
+                },
+                {
+                    "name": "icon",
+                    "description": "<p>Indica l&#39;icona da visualizzare a sinistra del campo di input</p>\n",
+                    "line": 120,
+                    "type": "string"
+                },
+                {
+                    "name": "id",
+                    "description": "<p>Indica l&#39;id dell&#39;elemento HTML</p>\n",
+                    "line": 40,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "description": "<p>Indica il valore della label da visualizzare</p>\n",
+                    "line": 89,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "description": "<p>Indica l&#39;attributo name del componente HTML</p>\n",
+                    "line": 52,
+                    "type": "string"
+                },
+                {
+                    "name": "note",
+                    "description": "<p>Indica il testo di aiuto sotto la input</p>\n",
+                    "line": 97,
+                    "type": "string"
+                },
+                {
+                    "name": "placeholder",
+                    "description": "<p>Indica il testo presente nel campo vuoto. Nel caso sia già presente la label, il placeholder non verrà mostrato</p>\n",
+                    "line": 105,
+                    "type": "string"
+                },
+                {
+                    "name": "readonly",
+                    "description": "<p>Opzionale.\nIndica se il campo in questione è di sola lettura.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
+                    "line": 140,
+                    "type": "boolean"
+                },
+                {
+                    "name": "type",
+                    "description": "<p>Indica il tipo di campo. Puo&#39; assumere i valori text, email, password e number</p>\n",
+                    "line": 64,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "change",
+                    "defaultValue": "new EventEmitter<FormInputChange>()",
+                    "description": "<p>Evento emesso quando il valore dell&#39;input cambia.\nGli eventi di change sono emessi soltanto quando il valore cambia a causa dell&#39;interazione dell&#39;utente\ncon il campo d&#39;input.</p>\n",
+                    "line": 153,
+                    "type": "EventEmitter<FormInputChange>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_controlValueAccessorChangeFn",
+                    "defaultValue": "() => { }",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 182,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_disabled",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 132,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_icon",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 122,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_id",
+                    "defaultValue": "`form-input-${identifier++}`",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_inputElement",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "decorators": [
+                        {
+                            "name": "ViewChild"
+                        }
+                    ],
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_isInitialized",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 181,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_isLabelActive",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 161,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_isPasswordMode",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 170,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_isPasswordVisible",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 179,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_label",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 91,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 58,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_note",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 99,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_onTouched",
+                    "defaultValue": "() => { }",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 183,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_placeholder",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 114,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_readonly",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 142,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_type",
+                    "defaultValue": "INPUT_TYPES.TEXT",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 83,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_emitChangeEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 185,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "ngAfterContentInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 213
+                },
+                {
+                    "name": "noteId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 241
+                },
+                {
+                    "name": "onBlur",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 231
+                },
+                {
+                    "name": "onChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 217
+                },
+                {
+                    "name": "onFocus",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 227
+                },
+                {
+                    "name": "onInput",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 222
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "any"
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 203,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "any"
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 207,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 191,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Elementi e stili per la creazione di input accessibili e responsivi.</p>\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component, Input, ChangeDetectionStrategy, forwardRef,\n  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { InputType, INPUT_TYPES } from '../models/InputType';\nimport { Util } from '../util/util';\n\nlet identifier = 0;\n\nexport class FormInputChange {\n  constructor(\n    public source: FormInputComponent,\n    public value: any\n  ) { }\n}\n\n/**\n * Elementi e stili per la creazione di input accessibili e responsivi.\n */\n@Component({\n  selector: 'it-input',\n  templateUrl: './form-input.component.html',\n  styleUrls: ['./form-input.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [{\n    provide: NG_VALUE_ACCESSOR,\n    useExisting: forwardRef(() => FormInputComponent),\n    multi: true\n  }]\n})\nexport class FormInputComponent implements AfterContentInit, ControlValueAccessor {\n  @ViewChild('inputElement')\n  private _inputElement: ElementRef;\n\n  /**\n   * Indica l'id dell'elemento HTML\n   */\n  @Input()\n  get id(): string {\n    return this._id;\n  }\n  set id(value: string) {\n    this._id = value;\n  }\n  private _id = `form-input-${identifier++}`;\n\n  /**\n   * Indica l'attributo name del componente HTML\n   */\n  @Input()\n  get name(): string {\n    return this._name;\n  }\n  set name(value: string) {\n    this._name = value;\n  }\n  private _name: string;\n\n  /**\n   * Indica il tipo di campo. Puo' assumere i valori text, email, password e number\n   */\n  @Input()\n  get type(): string {\n    return this._type;\n  }\n  set type(value: string) {\n    if (InputType.is(value)) {\n      if (value === INPUT_TYPES.NUMBER) {\n        if (isNaN(Number(this.value))) {\n          this.value = '';\n          this.onChange();\n        }\n      }\n      this._type = value;\n    } else {\n      this._type = INPUT_TYPES.TEXT;\n    }\n\n    this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;\n    this._isPasswordVisible = false;\n  }\n  private _type = INPUT_TYPES.TEXT;\n\n  /**\n   * Indica il valore della label da visualizzare\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(value: string) { this._label = value; }\n  private _label: string;\n\n  /**\n   * Indica il testo di aiuto sotto la input\n   */\n  @Input()\n  get note(): string { return this._note; }\n  set note(value: string) { this._note = value; }\n  private _note: string;\n\n  /**\n   * Indica il testo presente nel campo vuoto. Nel caso sia già presente la label, il placeholder non verrà mostrato\n   */\n  @Input()\n  get placeholder(): string {\n    if (this.label) {\n      if (this.label.length > 0) {\n        return '';\n      }\n    }\n    return this._placeholder || '';\n  }\n  set placeholder(value: string) { this._placeholder = value; }\n  private _placeholder: string;\n\n  /**\n   * Indica l'icona da visualizzare a sinistra del campo di input\n   */\n  @Input()\n  get icon(): string { return this._icon; }\n  set icon(value: string) { this._icon = value; }\n  private _icon: string;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è disabilitato.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }\n  private _disabled = false;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è di sola lettura.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get readonly(): boolean { return this._readonly; }\n  set readonly(value: boolean) { this._readonly = Util.coerceBooleanProperty(value); }\n  private _readonly = false;\n\n  get value(): any { return this._inputElement.nativeElement.value; }\n  set value(value: any) { this._inputElement.nativeElement.value = value; }\n\n  /**\n   * Evento emesso quando il valore dell'input cambia.\n   * Gli eventi di change sono emessi soltanto quando il valore cambia a causa dell'interazione dell'utente\n   * con il campo d'input.\n   */\n  @Output()\n  readonly change: EventEmitter<FormInputChange> = new EventEmitter<FormInputChange>();\n\n  get isLabelActive() {\n    return this._isLabelActive;\n  }\n  set isLabelActive(value: boolean) {\n    this._isLabelActive = Util.coerceBooleanProperty(value);\n  }\n  private _isLabelActive = false;\n\n\n  get isPasswordMode() {\n    return this._isPasswordMode;\n  }\n  set isPasswordMode(value: boolean) {\n    this._isPasswordMode = Util.coerceBooleanProperty(value);\n  }\n  private _isPasswordMode = false;\n\n  get isPasswordVisible() {\n    return this._isPasswordVisible;\n  }\n  set isPasswordVisible(value: boolean) {\n    this._isPasswordVisible = Util.coerceBooleanProperty(value);\n    this._type = this._isPasswordVisible ? INPUT_TYPES.TEXT : INPUT_TYPES.PASSWORD;\n  }\n  private _isPasswordVisible = false;\n\n  private _isInitialized = false;\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n  private _onTouched: () => any = () => { };\n\n  private _emitChangeEvent(): void {\n    if (this._isInitialized) {\n      this.change.emit(new FormInputChange(this, this.value));\n    }\n  }\n\n  writeValue(value: any): void {\n    this.value = value;\n    if (this.value) {\n      this._isLabelActive = true;\n    }\n\n    this.onChange();\n    if (this._isInitialized) {\n      this._changeDetector.detectChanges();\n    }\n  }\n\n  registerOnChange(fn: (value: any) => void): void {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this._onTouched = fn;\n  }\n\n  constructor(private _changeDetector: ChangeDetectorRef) { }\n\n  ngAfterContentInit(): void {\n    this._isInitialized = true;\n  }\n\n  onChange() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onInput() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onFocus() {\n    this._isLabelActive = true;\n  }\n\n  onBlur() {\n    const inputValue: string = this.value;\n    if (inputValue.length === 0) {\n      this._isLabelActive = false;\n      if (this.type === INPUT_TYPES.NUMBER) {\n        this.value = '';\n      }\n    }\n  }\n\n  noteId() {\n    return `${this.id}-note`;\n  }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_changeDetector",
+                        "type": "ChangeDetectorRef"
+                    }
+                ],
+                "line": 209,
+                "jsdoctags": [
+                    {
+                        "name": "_changeDetector",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "AfterContentInit",
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "id": {
+                    "name": "id",
+                    "setSignature": {
+                        "name": "id",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 43,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "name": {
+                    "name": "name",
+                    "setSignature": {
+                        "name": "name",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 55,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "type": {
+                    "name": "type",
+                    "setSignature": {
+                        "name": "type",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 67,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "label": {
+                    "name": "label",
+                    "setSignature": {
+                        "name": "label",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 90,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "note": {
+                    "name": "note",
+                    "setSignature": {
+                        "name": "note",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 98,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "placeholder": {
+                    "name": "placeholder",
+                    "setSignature": {
+                        "name": "placeholder",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 113,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "icon": {
+                    "name": "icon",
+                    "setSignature": {
+                        "name": "icon",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 121,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "disabled": {
+                    "name": "disabled",
+                    "setSignature": {
+                        "name": "disabled",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 131,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "readonly": {
+                    "name": "readonly",
+                    "setSignature": {
+                        "name": "readonly",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 141,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 145,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "value",
+                        "type": "any",
+                        "returnType": "any",
+                        "line": 144
+                    }
+                },
+                "isLabelActive": {
+                    "name": "isLabelActive",
+                    "setSignature": {
+                        "name": "isLabelActive",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 158,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "isLabelActive",
+                        "type": "",
+                        "returnType": "",
+                        "line": 155
+                    }
+                },
+                "isPasswordMode": {
+                    "name": "isPasswordMode",
+                    "setSignature": {
+                        "name": "isPasswordMode",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 167,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "isPasswordMode",
+                        "type": "",
+                        "returnType": "",
+                        "line": 164
+                    }
+                },
+                "isPasswordVisible": {
+                    "name": "isPasswordVisible",
+                    "setSignature": {
+                        "name": "isPasswordVisible",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 175,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "isPasswordVisible",
+                        "type": "",
+                        "returnType": "",
+                        "line": 172
+                    }
+                }
+            },
+            "templateData": "<div class=\"form-group\">\n  <i *ngIf=\"icon\" [class]=\"icon\" [ngClass]=\"{ 'ico-prefix': true }\"></i>\n  <input #inputElement\n    (focus)=\"onFocus()\"\n    (blur)=\"onBlur()\"\n    (change)=\"onChange()\"\n    (input)=\"onInput()\"\n    [type]=\"type\"\n    [id]=\"id\"\n    [attr.name]=\"name\"\n    [disabled]=\"disabled\"\n    [readonly]=\"readonly\"\n    [placeholder]=\"placeholder\"\n    [ngClass]=\"{\n      'form-control' : !readonly,\n      'form-control-plaintext' : readonly\n    }\"\n    [attr.aria-labelledby]=\"note ? noteId : undefined\"/>\n  <span class=\"btn-eye\" \n    *ngIf=\"isPasswordMode\"\n    (click)=\"isPasswordVisible = !isPasswordVisible\"\n    [ngClass]=\"{\n      'eye-on' : !isPasswordVisible,\n      'eye-off' : isPasswordVisible\n    }\">\n  </span>\n  <label [attr.for]=\"id\" [ngClass]=\"{ 'active' : isLabelActive }\">\n    {{label}}\n  </label>\n  <small [id]=\"noteId()\" class=\"form-text text-muted\" *ngIf=\"note\">\n    {{note}}\n  </small>\n</div>\n"
+        },
+        {
             "name": "PopoverComponent",
             "id": "component-PopoverComponent-d576eec209239c43a402486b384c55a8",
             "file": "projects/design-angular-kit/src/lib/popover/popover.component.ts",
@@ -7977,6 +8817,9 @@
                             "name": "DropdownItemComponent"
                         },
                         {
+                            "name": "FormInputComponent"
+                        },
+                        {
                             "name": "PopoverComponent"
                         },
                         {
@@ -8041,6 +8884,9 @@
                         },
                         {
                             "name": "DropdownItemComponent"
+                        },
+                        {
+                            "name": "FormInputComponent"
                         },
                         {
                             "name": "PopoverDirective"
@@ -8125,7 +8971,7 @@
                 "name": "DEFAULT_ALIASES",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
                 "type": "object",
                 "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
             },
@@ -8133,7 +8979,7 @@
                 "name": "DEFAULT_ALIASES",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
+                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
                 "type": "object",
                 "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
             },
@@ -8152,6 +8998,14 @@
                 "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
                 "type": "string",
                 "defaultValue": "'/'"
+            },
+            {
+                "name": "EMAIL",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "string",
+                "defaultValue": "'email'"
             },
             {
                 "name": "FOCUS",
@@ -8189,7 +9043,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -8198,6 +9052,54 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -8221,23 +9123,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -8250,36 +9136,28 @@
                 "defaultValue": "0"
             },
             {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
                 "name": "INFO",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
                 "type": "string",
                 "defaultValue": "'info'"
+            },
+            {
+                "name": "INPUT_TYPES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "object",
+                "defaultValue": "{\n  TEXT: TEXT,\n  EMAIL: EMAIL,\n  PASSWORD: PASSWORD,\n  NUMBER: NUMBER,\n}"
+            },
+            {
+                "name": "InputType",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "",
+                "defaultValue": "t.keyof({\n  text: null,\n  email: null,\n  password: null,\n  number: null,\n})"
             },
             {
                 "name": "INTERACTION_TRIGGERS",
@@ -8347,6 +9225,22 @@
                 "defaultValue": "() => { }"
             },
             {
+                "name": "NUMBER",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "string",
+                "defaultValue": "'number'"
+            },
+            {
+                "name": "PASSWORD",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "string",
+                "defaultValue": "'password'"
+            },
+            {
                 "name": "PLACEMENT_PROPERTY",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -8382,7 +9276,7 @@
                 "name": "positionService",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
+                "file": "projects/design-angular-kit/src/lib/tooltip/positioning.ts",
                 "type": "",
                 "defaultValue": "new Positioning()"
             },
@@ -8390,7 +9284,7 @@
                 "name": "positionService",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/tooltip/positioning.ts",
+                "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
                 "type": "",
                 "defaultValue": "new Positioning()"
             },
@@ -8441,6 +9335,14 @@
                 "file": "projects/design-angular-kit/src/lib/models/ThemeColor.ts",
                 "type": "string",
                 "defaultValue": "'success'"
+            },
+            {
+                "name": "TEXT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "string",
+                "defaultValue": "'text'"
             },
             {
                 "name": "THEME_COLORS",
@@ -9092,24 +9994,6 @@
                     "defaultValue": "'warning'"
                 }
             ],
-            "projects/design-angular-kit/src/lib/popover/triggers.ts": [
-                {
-                    "name": "DEFAULT_ALIASES",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
-                    "type": "object",
-                    "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
-                },
-                {
-                    "name": "noopFn",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
-                    "type": "",
-                    "defaultValue": "() => { }"
-                }
-            ],
             "projects/design-angular-kit/src/lib/tooltip/triggers.ts": [
                 {
                     "name": "DEFAULT_ALIASES",
@@ -9124,6 +10008,24 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
+                    "type": "",
+                    "defaultValue": "() => { }"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/popover/triggers.ts": [
+                {
+                    "name": "DEFAULT_ALIASES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                    "type": "object",
+                    "defaultValue": "{\n    'hover': ['mouseenter', 'mouseleave'],\n    'focus': ['focus', 'blur']\n}"
+                },
+                {
+                    "name": "noopFn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
                     "type": "",
                     "defaultValue": "() => { }"
                 }
@@ -9180,6 +10082,56 @@
                     "defaultValue": "0"
                 }
             ],
+            "projects/design-angular-kit/src/lib/models/InputType.ts": [
+                {
+                    "name": "EMAIL",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                    "type": "string",
+                    "defaultValue": "'email'"
+                },
+                {
+                    "name": "INPUT_TYPES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  TEXT: TEXT,\n  EMAIL: EMAIL,\n  PASSWORD: PASSWORD,\n  NUMBER: NUMBER,\n}"
+                },
+                {
+                    "name": "InputType",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                    "type": "",
+                    "defaultValue": "t.keyof({\n  text: null,\n  email: null,\n  password: null,\n  number: null,\n})"
+                },
+                {
+                    "name": "NUMBER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                    "type": "string",
+                    "defaultValue": "'number'"
+                },
+                {
+                    "name": "PASSWORD",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                    "type": "string",
+                    "defaultValue": "'password'"
+                },
+                {
+                    "name": "TEXT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                    "type": "string",
+                    "defaultValue": "'text'"
+                }
+            ],
             "projects/design-angular-kit/src/lib/models/IconPosition.ts": [
                 {
                     "name": "ICON_POSITIONS",
@@ -9214,12 +10166,70 @@
                     "defaultValue": "'right'"
                 }
             ],
+            "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                },
+                {
+                    "name": "TRIGGER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
+                    "type": "",
+                    "defaultValue": "INTERACTION_TRIGGERS.HOVER"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/form-input/form-input.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -9244,44 +10254,6 @@
                     "defaultValue": "0"
                 }
             ],
-            "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                },
-                {
-                    "name": "TRIGGER",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
-                    "type": "",
-                    "defaultValue": "INTERACTION_TRIGGERS.HOVER"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/toggle/toggle.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
             "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts": [
                 {
                     "name": "identifier",
@@ -9292,22 +10264,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts": [
+            "projects/design-angular-kit/src/lib/toggle/toggle.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                    "file": "projects/design-angular-kit/src/lib/toggle/toggle.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -9323,22 +10285,22 @@
                     "description": "<p>Usato per generare ID univoci per ogni componente tab </p>\n"
                 }
             ],
-            "projects/design-angular-kit/src/lib/popover/positioning.ts": [
-                {
-                    "name": "positionService",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
-                    "type": "",
-                    "defaultValue": "new Positioning()"
-                }
-            ],
             "projects/design-angular-kit/src/lib/tooltip/positioning.ts": [
                 {
                     "name": "positionService",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/tooltip/positioning.ts",
+                    "type": "",
+                    "defaultValue": "new Positioning()"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/popover/positioning.ts": [
+                {
+                    "name": "positionService",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/popover/positioning.ts",
                     "type": "",
                     "defaultValue": "new Positioning()"
                 }
@@ -9799,7 +10761,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 10,
+        "count": 9,
         "status": "low",
         "files": [
             {
@@ -10003,6 +10965,34 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormInputComponent",
+                "coveragePercent": 28,
+                "coverageCount": "11/38",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "FormInputChange",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "identifier",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/design-angular-kit/src/lib/models/ButtonSize.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -10088,6 +11078,66 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "RIGHT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EMAIL",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "INPUT_TYPES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InputType",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NUMBER",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PASSWORD",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TEXT",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
