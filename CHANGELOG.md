@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/italia/design-angular-kit/compare/v0.8.0...v0.9.0) (2018-09-12)
+
+
+### Features
+
+* **Input:** implementa il componente di Input di base ([f9e39b0](https://github.com/italia/design-angular-kit/commit/f9e39b0)), closes [#76](https://github.com/italia/design-angular-kit/issues/76)
+
 # [0.8.0](https://github.com/italia/design-angular-kit/compare/v0.7.0...v0.8.0) (2018-08-31)
 
 
