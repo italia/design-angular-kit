@@ -23,8 +23,11 @@ import { ModelDrivenValidationExampleComponent } from './model-driven-validation
     ReactiveFormsModule
   ],
   declarations: [
-    FormInputExampleComponent, FormInputExamplesComponent, FormInputIndexComponent,
-    TemplateDrivenValidationExampleComponent, ModelDrivenValidationExampleComponent
+    FormInputExampleComponent,
+    FormInputExamplesComponent,
+    FormInputIndexComponent,
+    TemplateDrivenValidationExampleComponent,
+    ModelDrivenValidationExampleComponent
   ]
 })
 export class FormInputModule { }
