@@ -1,7 +1,7 @@
 [![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
 [![CircleCI](https://img.shields.io/circleci/project/github/italia/design-angular-kit/master.svg)](https://circleci.com/gh/italia/design-angular-kit)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/italia/design-angular-kit.svg)](https://codeclimate.com/github/italia/design-angular-kit/maintainability)
-![NPM](https://img.shields.io/npm/v/design-angular-kit.svg)
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/italia/design-angular-kit.svg)](https://codeclimate.com/github/italia/design-angular-kit/maintainability)
+[![NPM](https://img.shields.io/npm/v/design-angular-kit.svg)](https://www.npmjs.com/package/design-angular-kit)
 [![License](https://img.shields.io/github/license/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/blob/master/LICENSE)
 
 # Design Angular Kit

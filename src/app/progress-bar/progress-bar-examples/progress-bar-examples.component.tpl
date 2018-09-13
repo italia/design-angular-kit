@@ -1,3 +1,5 @@
+{% from "../../macro.template.njk" import sanitize as sanitize %}
+
 {% set html %}
   {% include "../progress-bar-example/progress-bar-example.component.html" %}
 {% endset %}
@@ -8,7 +10,7 @@
 
 <it-progress-bar-example></it-progress-bar-example>
 
-<it-source-display html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}" >
 </it-source-display>
 
 {% set labelHtml %}
@@ -21,7 +23,7 @@
 
 <it-progress-bar-label></it-progress-bar-label>
 
-<it-source-display html="{$ labelHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ labelTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(labelHtml) $}" typescript="{$ sanitize(labelTs) $}" >
 </it-source-display>
 
 {% set heightHtml %}
@@ -34,7 +36,7 @@
 
 <it-progress-bar-height></it-progress-bar-height>
 
-<it-source-display html="{$ heightHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ heightTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(heightHtml) $}" typescript="{$ sanitize(heightTs) $}" >
 </it-source-display>
 
 {% set bgHtml %}
@@ -47,5 +49,5 @@
 
 <it-progress-bar-bg></it-progress-bar-bg>
 
-<it-source-display html="{$ bgHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ bgTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(bgHtml) $}" typescript="{$ sanitize(bgTs) $}" >
 </it-source-display>
