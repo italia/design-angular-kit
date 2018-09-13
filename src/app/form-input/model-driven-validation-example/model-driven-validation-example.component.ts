@@ -11,8 +11,14 @@ export class ModelDrivenValidationExampleComponent {
   myForm: FormGroup;
 
   constructor(private _fb: FormBuilder) {
+    const validators = [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(10),
+      Validators.pattern('[ab]+')
+    ];
     this.myForm = this._fb.group({
-      myInput: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('[ab]+')]]
+      myInput: ['', validators]
     });
   }
 
@@ -20,7 +26,6 @@ export class ModelDrivenValidationExampleComponent {
   savedValue = undefined;
 
   save(form: FormGroup) {
-    console.log(form);
     this.savedValue = form.value.myInput;
   }
 
