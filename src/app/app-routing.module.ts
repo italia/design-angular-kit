@@ -21,6 +21,7 @@ const routes: Routes = [
     { path: 'button', loadChildren: 'src/app/button/button.module#ButtonModule' },
     { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' },
     { path: 'collapse', loadChildren: 'src/app/collapse/collapse.module#CollapseModule' },
+    { path: 'form-input', loadChildren: 'src/app/form-input/form-input.module#FormInputModule' },
     { path: 'dropdown', loadChildren: 'src/app/dropdown/dropdown.module#DropdownModule' },
   ]}
 ];

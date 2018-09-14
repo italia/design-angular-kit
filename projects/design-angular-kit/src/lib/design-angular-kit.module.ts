@@ -15,6 +15,7 @@ import { BadgeDirective } from './badge/badge.directive';
 import { CollapseDirective } from './collapse/collapse.directive';
 import { CollapseItemComponent } from './collapse/collapse-item.component';
 import { CollapseGroupComponent } from './collapse/collapse-group.component';
+import { FormInputComponent } from './form-input/form-input.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { DropdownItemComponent } from './dropdown/dropdown-item.component';
 import { DropdownHeaderComponent } from './dropdown/dropdown-header.component';
@@ -44,6 +45,7 @@ import { TabComponent } from './tabs/tab.component';
     CollapseDirective,
     CollapseItemComponent,
     CollapseGroupComponent,
+    FormInputComponent,
     PopoverDirective,
     PopoverComponent,
     DropdownComponent,
@@ -67,6 +69,7 @@ import { TabComponent } from './tabs/tab.component';
     CollapseDirective,
     CollapseItemComponent,
     CollapseGroupComponent,
+    FormInputComponent,
     PopoverDirective,
     DropdownComponent,
     DropdownItemComponent,

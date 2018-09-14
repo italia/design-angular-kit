@@ -57,6 +57,10 @@
         {
           "label": "Collapse",
           "link": "/componenti/collapse"
+        },
+        {
+          "label": "Form Input",
+          "link": "/componenti/form-input"
         }
       ]
     }

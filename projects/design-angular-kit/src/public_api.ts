@@ -15,6 +15,7 @@ export * from './lib/badge/badge.directive';
 export * from './lib/collapse/collapse.directive';
 export * from './lib/collapse/collapse-item.component';
 export * from './lib/collapse/collapse-group.component';
+export * from './lib/form-input/form-input.component';
 export * from './lib/dropdown/dropdown.component';
 export * from './lib/dropdown/dropdown-item.component';
 export * from './lib/dropdown/dropdown-header.component';

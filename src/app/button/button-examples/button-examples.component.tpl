@@ -1,3 +1,5 @@
+{% from "../../macro.template.njk" import sanitize as sanitize %}
+
 {% set interactiveHtml %}
   {% include "../button-example-interactive/button-example-interactive.component.html" %}
 {% endset %}
@@ -8,8 +10,7 @@
 
 <it-button-example-interactive></it-button-example-interactive>
 
-<it-source-display html="{$ interactiveHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-  typescript="{$ interactiveTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(interactiveHtml) $}"  typescript="{$ sanitize(interactiveTs) $}" >
 </it-source-display>
 
 {% set html %}
@@ -22,7 +23,7 @@
 
 <it-button-example></it-button-example>
 
-<it-source-display html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}" >
 </it-source-display>
 
 {% set colorHtml %}
@@ -35,7 +36,7 @@
 
 <it-button-example-color></it-button-example-color>
 
-<it-source-display html="{$ colorHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ colorTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(colorHtml) $}" typescript="{$ sanitize(colorTs) $}" >
 </it-source-display>
 
 {% set sizeHtml %}
@@ -48,5 +49,5 @@
 
 <it-button-example-size></it-button-example-size>
 
-<it-source-display html="{$ sizeHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" typescript="{$ sizeTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display html="{$ sanitize(sizeHtml) $}" typescript="{$ sanitize(sizeTs) $}" >
 </it-source-display>
