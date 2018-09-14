@@ -9043,6 +9043,30 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
                 "type": "number",
                 "defaultValue": "0"
@@ -9067,22 +9091,6 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
                 "type": "number",
                 "defaultValue": "0"
@@ -9091,7 +9099,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9107,7 +9115,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9116,14 +9124,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9212,7 +9212,7 @@
                 "name": "noopFn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
+                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
                 "type": "",
                 "defaultValue": "() => { }"
             },
@@ -9220,7 +9220,7 @@
                 "name": "noopFn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
                 "type": "",
                 "defaultValue": "() => { }"
             },
@@ -10166,6 +10166,36 @@
                     "defaultValue": "'right'"
                 }
             ],
+            "projects/design-angular-kit/src/lib/button/button.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts": [
                 {
                     "name": "identifier",
@@ -10186,32 +10216,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
             "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/button/button.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -10234,12 +10244,12 @@
                     "defaultValue": "INTERACTION_TRIGGERS.HOVER"
                 }
             ],
-            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
+            "projects/design-angular-kit/src/lib/form-input/form-input.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
+                    "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -10250,16 +10260,6 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/form-input/form-input.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
