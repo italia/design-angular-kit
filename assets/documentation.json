@@ -9924,7 +9924,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9932,7 +9932,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-item.component.ts",
+                "file": "projects/design-angular-kit/src/lib/dropdown/dropdown.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9956,7 +9956,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+                "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9964,7 +9964,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
+                "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -11107,16 +11107,6 @@
                     "defaultValue": "0"
                 }
             ],
-            "projects/design-angular-kit/src/lib/form-input/form-input.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
             "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts": [
                 {
                     "name": "identifier",
@@ -11133,6 +11123,16 @@
                     "file": "projects/design-angular-kit/src/lib/tooltip/tooltip.directive.ts",
                     "type": "",
                     "defaultValue": "INTERACTION_TRIGGERS.HOVER"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/form-input/form-input.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
                 }
             ],
             "projects/design-angular-kit/src/lib/collapse/collapse-item.component.ts": [
