@@ -16,10 +16,12 @@ export class FormInputPage {
   private readonly ID_RADIO_TYPE_EMAIL = 'radio-2';
   private readonly ID_RADIO_TYPE_PASSWORD = 'radio-3';
   private readonly ID_RADIO_TYPE_NUMBER = 'radio-4';
+  private readonly ID_RADIO_TYPE_SEARCH = 'radio-5';
 
-  private readonly ID_RADIO_ICON_NONE = 'radio-6';
-  private readonly ID_RADIO_ICON_FAVORITE = 'radio-7';
-  private readonly ID_RADIO_ICON_LINK = 'radio-8';
+
+  private readonly ID_RADIO_ICON_NONE = 'radio-7';
+  private readonly ID_RADIO_ICON_FAVORITE = 'radio-8';
+  private readonly ID_RADIO_ICON_LINK = 'radio-9';
 
   // [for="checkbox-0"]
   private readonly CSS_SELECTOR_LABEL_CHECKBOX_DISABLED = this.getLabelForAttribute(this.ID_CHECKBOX_DISABLED);
@@ -48,13 +50,16 @@ export class FormInputPage {
   // [for="radio-4"]
   private readonly CSS_SELECTOR_LABEL_RADIO_TYPE_NUMBER = this.getLabelForAttribute(this.ID_RADIO_TYPE_NUMBER);
 
-  // [for="radio-6"]
-  private readonly CSS_SELECTOR_LABEL_RADIO_ICON_NONE = this.getLabelForAttribute(this.ID_RADIO_ICON_NONE);
+  // [for="radio-5"]
+  private readonly CSS_SELECTOR_LABEL_RADIO_TYPE_SEARCH = this.getLabelForAttribute(this.ID_RADIO_TYPE_SEARCH);
 
   // [for="radio-7"]
-  private readonly CSS_SELECTOR_LABEL_RADIO_ICON_FAVORITE = this.getLabelForAttribute(this.ID_RADIO_ICON_FAVORITE);
+  private readonly CSS_SELECTOR_LABEL_RADIO_ICON_NONE = this.getLabelForAttribute(this.ID_RADIO_ICON_NONE);
 
   // [for="radio-8"]
+  private readonly CSS_SELECTOR_LABEL_RADIO_ICON_FAVORITE = this.getLabelForAttribute(this.ID_RADIO_ICON_FAVORITE);
+
+  // [for="radio-9"]
   private readonly CSS_SELECTOR_LABEL_RADIO_ICON_LINK = this.getLabelForAttribute(this.ID_RADIO_ICON_LINK);
 
   // Template Driven Validation
@@ -112,6 +117,10 @@ export class FormInputPage {
 
   async clickEmailRadio() {
     await element(by.css(this.CSS_SELECTOR_LABEL_RADIO_TYPE_EMAIL)).click();
+  }
+
+  async clickSearchRadio() {
+    await element(by.css(this.CSS_SELECTOR_LABEL_RADIO_TYPE_SEARCH)).click();
   }
 
   async clickNoIconRadio() {
@@ -249,5 +258,15 @@ export class FormInputPage {
 
   async hasPatternModelError() {
     return element(by.id(this.ID_ERROR_MDV_PATTERN)).isPresent();
+  }
+
+  async hasRelatedEntries() {
+    return await element(by.css('.autocomplete-wrap')).isPresent();
+  }
+
+  async getRelatedEntries() {
+    const list = element(by.css('.autocomplete-wrap'));
+    const entries = await list.all(by.tagName('li'));
+    return entries;
   }
 }
