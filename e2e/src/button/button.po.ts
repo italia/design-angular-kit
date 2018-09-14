@@ -2,7 +2,7 @@ import { browser, by, element, ExpectedConditions } from 'protractor';
 
 export class ButtonPage {
   private readonly BUTTON_URL = '/#/componenti/button';
-  private readonly ID_EXAMPLE_TAB = 'button-examples-tab';
+  private readonly ID_EXAMPLE_TAB = 'it-tab-label-0-2';
 
   private readonly ID_BUTTON = 'button-0';
   private readonly ID_CHECKBOX_DISABLE = this.getLabelForAttribute('checkbox-0');

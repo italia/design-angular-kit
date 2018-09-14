@@ -24,9 +24,8 @@ export class DropdownPage {
   public readonly ICON_RIGHT_PLACEMENT_CLASS = 'right';
 
   private readonly DROPDOWN_URL = '/#/componenti/dropdown';
-  private readonly ID_EXAMPLE_TAB = 'dropdown-examples-tab';
+  private readonly ID_EXAMPLE_TAB = 'it-tab-label-0-2';
 
-  private readonly DROPDOWN_ID = 'dropdown-0';
   private readonly DROPDOWN_MENU_BUTTON_ID = 'dropdownMenuButton';
   private readonly DROPDOWN_MENU_CLASS = 'dropdown-menu';
 
@@ -49,7 +48,6 @@ export class DropdownPage {
   private readonly HELLO_RADIO_LABEL = this.getLabelForAttribute(this.HELLO_RADIO_ID);
 
   private readonly NONE_RADIO_ID = 'radio-5';
-  private readonly NONE_RADIO_LABEL = this.getLabelForAttribute(this.NONE_RADIO_ID);
 
   private readonly PRIMARY_RADIO_ID = 'radio-6';
   private readonly PRIMARY_RADIO_LABEL = this.getLabelForAttribute(this.PRIMARY_RADIO_ID);

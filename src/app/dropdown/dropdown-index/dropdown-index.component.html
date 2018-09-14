@@ -1,82 +1,17 @@
 <h1>Dropdown</h1>
 <h5>Il componente Dropdown per menù a tendina contestuali</h5>
 
-<ul class="nav nav-tabs" id="dropdown-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="dropdown-description-tab" data-toggle="tab" href="#dropdown-description-tab-content" role="tab" aria-controls="dropdown-description-tab-content" aria-selected="true">Descrizione</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="dropdown-api-tab" data-toggle="tab" href="#dropdown-api-tab-content" role="tab" aria-controls="dropdown-api-tab-content" aria-selected="false">API</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="dropdown-examples-tab" data-toggle="tab" href="#dropdown-examples-tab-content" role="tab" aria-controls="dropdown-examples-tab-content" aria-selected="false">Esempi</a>
-  </li>
-</ul>
-<div class="tab-content" id="dropdown-content-tab">
-  <div class="tab-pane p-3 fade show active" id="dropdown-description-tab-content" role="tabpanel" aria-labelledby="dropdown-description-tab-content">
+<it-tab-group>
+  <it-tab label="Descrizione">
     <div [innerHTML]="component.description"></div>
-  </div>
-  <div class="tab-pane p-3 fade" id="dropdown-api-tab-content" role="tabpanel" aria-labelledby="dropdown-api-tab-content">
-    <!-- TODO: da spostare in una componente ad hoc -->
+  </it-tab>
+  <it-tab label="API">
     <h2>Dropdown</h2>
-    <div *ngIf="component.inputsClass.length > 0">
-      <h3>Input</h3>
-      <div *ngFor="let input of component.inputsClass">
-        <table class="table table-bordered table-sm">
-          <tbody>
-            <tr>
-              <td style="width: 20%">
-                <code>{{input.name}}</code>
-              </td>
-              <td style="width: 80%">
-                <p>
-                  <em>Tipo: </em>
-                  <code>{{input.type}}</code>
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div *ngIf="component.outputsClass.length > 0">
-      <h3>Output</h3>
-      <!-- TODO: usare lo stesso componente di input -->
-    </div>
-
-      <h2>Dropdown Item</h2>
-    <div *ngIf="subcomponent.inputsClass.length > 0">
-      <h3>Input</h3>
-      <div *ngFor="let input of subcomponent.inputsClass">
-        <table class="table table-bordered table-sm">
-          <tbody>
-            <tr>
-              <td style="width: 20%">
-                <code>{{input.name}}</code>
-              </td>
-              <td style="width: 80%">
-                <p>
-                  <em>Tipo: </em>
-                  <code>{{input.type}}</code>
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td class="col-md-2" colspan="2" [innerHTML]="input.description"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div *ngIf="subcomponent.outputsClass.length > 0">
-      <h3>Output</h3>
-      <!-- TODO: usare lo stesso componente di input -->
-    </div>
-  </div>
-  <div class="tab-pane p-3 fade" id="dropdown-examples-tab-content" role="tabpanel" aria-labelledby="dropdown-examples-tab-content">
+    <it-api-parameters [component]="component"></it-api-parameters>
+    <h2>Dropdown Item</h2>
+    <it-api-parameters [component]="subcomponent"></it-api-parameters>
+  </it-tab>
+  <it-tab label="Esempi">
     <it-dropdown-examples></it-dropdown-examples>
-  </div>
-</div>
+  </it-tab>
+</it-tab-group>

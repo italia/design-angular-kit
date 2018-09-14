@@ -1,28 +1,14 @@
 <h1>Radio Button</h1>
 <h5>Il componente Radio Button utilizzabile in un form</h5>
 
-<ul class="nav nav-tabs" id="radio-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="radio-description-tab" data-toggle="tab" href="#radio-description-tab-content" role="tab"
-      aria-controls="radio-description-tab-content" aria-selected="true">Descrizione</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="radio-api-tab" data-toggle="tab" href="#radio-api-tab-content" role="tab" aria-controls="radio-api-tab-content"
-      aria-selected="false">API</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="radio-examples-tab" data-toggle="tab" href="#radio-examples-tab-content" role="tab" aria-controls="radio-examples-tab-content"
-      aria-selected="false">Esempi</a>
-  </li>
-</ul>
-<div class="tab-content" id="radio-content-tab">
-  <div class="tab-pane p-3 fade show active" id="radio-description-tab-content" role="tabpanel" aria-labelledby="radio-description-tab-content">
-    <div [innerHTML]="component.description"></div>
-  </div>
-  <div class="tab-pane p-3 fade" id="radio-api-tab-content" role="tabpanel" aria-labelledby="radio-api-tab-content">
+<it-tab-group>
+  <it-tab label="Descrizione">
+    <div [innerHTML]="component.description"></div>    
+  </it-tab>
+  <it-tab label="API">
     <it-api-parameters [component]="component"></it-api-parameters>
-  </div>
-  <div class="tab-pane p-3 fade" id="radio-examples-tab-content" role="tabpanel" aria-labelledby="radio-examples-tab-content">
+  </it-tab>
+  <it-tab label="Esempi">
     <it-radio-examples></it-radio-examples>
-  </div>
-</div>
+  </it-tab>
+</it-tab-group>

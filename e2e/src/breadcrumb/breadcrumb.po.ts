@@ -2,7 +2,7 @@ import { browser, by, element, ElementFinder } from 'protractor';
 
 export class BreadcrumbPage {
   private readonly BREADCRUMB_URL = '/#/componenti/breadcrumb';
-  private readonly ID_EXAMPLE_TAB = 'breadcrumb-examples-tab';
+  private readonly ID_EXAMPLE_TAB = 'it-tab-label-0-2';
 
   private readonly ID_BREADCRUMB = 'it-breadcrumb-0';
 

@@ -1,10 +1,10 @@
-import { ButtonPage } from './tabs.po';
+import { TabsPage } from './tabs.po';
 
-describe('Button', () => {
-  let page: ButtonPage;
+describe('Tabs', () => {
+  let page: TabsPage;
 
   beforeEach(async() => {
-    page = new ButtonPage();
+    page = new TabsPage();
     await page.go();
   });
 
