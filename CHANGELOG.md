@@ -1,3 +1,10 @@
+# [0.13.0](https://github.com/italia/design-angular-kit/compare/v0.12.0...v0.13.0) (2018-09-14)
+
+
+### Features
+
+* **Collapse:** implementa il componente Collapse ([eb63459](https://github.com/italia/design-angular-kit/commit/eb63459)), closes [#19](https://github.com/italia/design-angular-kit/issues/19)
+
 # [0.12.0](https://github.com/italia/design-angular-kit/compare/v0.11.0...v0.12.0) (2018-09-14)
 
 
