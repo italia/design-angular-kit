@@ -1,3 +1,10 @@
+# [0.11.0](https://github.com/italia/design-angular-kit/compare/v0.10.0...v0.11.0) (2018-09-14)
+
+
+### Features
+
+* **Input:** Implementa validazione Model Driven per il componente Input ([db8a39a](https://github.com/italia/design-angular-kit/commit/db8a39a)), closes [#83](https://github.com/italia/design-angular-kit/issues/83)
+
 # [0.10.0](https://github.com/italia/design-angular-kit/compare/v0.9.0...v0.10.0) (2018-09-12)
 
 
