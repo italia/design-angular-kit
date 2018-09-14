@@ -2,7 +2,7 @@ import { browser, by, element } from 'protractor';
 
 export class CollapsePage {
   private readonly COLLAPSE_URL = '/#/componenti/collapse';
-  private readonly ID_EXAMPLE_TAB = 'collapse-examples-tab';
+  private readonly ID_EXAMPLE_TAB = 'it-tab-label-0-2';
 
   private readonly ID_BUTTON = 'button-0';
   private readonly ID_DIV_0 = 'collapseExample';

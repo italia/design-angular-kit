@@ -2,7 +2,7 @@ import { browser, by, element, ExpectedConditions } from 'protractor';
 
 export class FormInputPage {
   private readonly FORM_INPUT_URL = '/#/componenti/form-input';
-  private readonly ID_EXAMPLE_TAB = 'form-input-examples-tab';
+  private readonly ID_EXAMPLE_TAB = 'it-tab-label-0-2';
 
   private readonly ID_FORM_INPUT = 'interactive-input-0';
 

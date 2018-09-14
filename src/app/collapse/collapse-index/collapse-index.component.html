@@ -1,30 +1,19 @@
 <h1>Collapse</h1>
 <h5>Direttiva per l'interazione con elementi richiudibili</h5>
 
-<ul class="nav nav-tabs" id="collapse-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="collapse-description-tab" data-toggle="tab" href="#collapse-description-tab-content" role="tab" aria-controls="collapse-description-tab-content" aria-selected="true">Descrizione</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="collapse-api-tab" data-toggle="tab" href="#collapse-api-tab-content" role="tab" aria-controls="collapse-api-tab-content" aria-selected="false">API</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="collapse-examples-tab" data-toggle="tab" href="#collapse-examples-tab-content" role="tab" aria-controls="collapse-examples-tab-content" aria-selected="false">Esempi</a>
-  </li>
-</ul>
-<div class="tab-content" id="collapse-content-tab">
-  <div class="tab-pane p-3 fade show active" id="collapse-description-tab-content" role="tabpanel" aria-labelledby="collapse-description-tab-content">
+<it-tab-group>
+  <it-tab label="Descrizione">
     <div [innerHTML]="directive.description"></div>
-  </div>
-  <div class="tab-pane p-3 fade" id="collapse-api-tab-content" role="tabpanel" aria-labelledby="collapse-api-tab-content">
+  </it-tab>
+  <it-tab label="API">
     <h2>Direttiva Collapse</h2>
     <it-api-parameters [component]="directive"></it-api-parameters>
     <h2>Collapse Group</h2>
     <it-api-parameters [component]="groupComponent"></it-api-parameters>
     <h2>Collapse Item</h2>
     <it-api-parameters [component]="itemComponent"></it-api-parameters>
-  </div>
-  <div class="tab-pane p-3 fade" id="collapse-examples-tab-content" role="tabpanel" aria-labelledby="collapse-examples-tab-content">
+  </it-tab>
+  <it-tab label="Esempi">
     <it-collapse-examples></it-collapse-examples>
-  </div>
-</div>
+  </it-tab>
+</it-tab-group>
