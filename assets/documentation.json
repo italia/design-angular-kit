@@ -411,10 +411,10 @@
         },
         {
             "name": "FormInputChange",
-            "id": "class-FormInputChange-103cdc15f54ffee8c783ba44ffb8398a",
+            "id": "class-FormInputChange-560d72635bb75b97eeeab077bb9f3080",
             "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
             "type": "class",
-            "sourceCode": "import {\n  Component, Input, ChangeDetectionStrategy, forwardRef,\n  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { InputType, INPUT_TYPES } from '../models/InputType';\nimport { Util } from '../util/util';\n\nlet identifier = 0;\n\nexport class FormInputChange {\n  constructor(\n    public source: FormInputComponent,\n    public value: any\n  ) { }\n}\n\n/**\n * Elementi e stili per la creazione di input accessibili e responsivi.\n */\n@Component({\n  selector: 'it-input',\n  templateUrl: './form-input.component.html',\n  styleUrls: ['./form-input.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [{\n    provide: NG_VALUE_ACCESSOR,\n    useExisting: forwardRef(() => FormInputComponent),\n    multi: true\n  }]\n})\nexport class FormInputComponent implements AfterContentInit, ControlValueAccessor {\n  @ViewChild('inputElement')\n  private _inputElement: ElementRef;\n\n  /**\n   * Indica l'id dell'elemento HTML\n   */\n  @Input()\n  get id(): string {\n    return this._id;\n  }\n  set id(value: string) {\n    this._id = value;\n  }\n  private _id = `form-input-${identifier++}`;\n\n  /**\n   * Indica l'attributo name del componente HTML\n   */\n  @Input()\n  get name(): string {\n    return this._name;\n  }\n  set name(value: string) {\n    this._name = value;\n  }\n  private _name: string;\n\n  /**\n   * Indica il tipo di campo. Puo' assumere i valori text, email, password e number\n   */\n  @Input()\n  get type(): string {\n    return this._type;\n  }\n  set type(value: string) {\n    if (InputType.is(value)) {\n      if (value === INPUT_TYPES.NUMBER) {\n        if (isNaN(Number(this.value))) {\n          this.value = '';\n          this.onChange();\n        }\n      }\n      this._type = value;\n    } else {\n      this._type = INPUT_TYPES.TEXT;\n    }\n\n    this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;\n    this._isPasswordVisible = false;\n  }\n  private _type = INPUT_TYPES.TEXT;\n\n  /**\n   * Indica il valore della label da visualizzare\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(value: string) { this._label = value; }\n  private _label: string;\n\n  /**\n   * Indica il testo di aiuto sotto la input\n   */\n  @Input()\n  get note(): string { return this._note; }\n  set note(value: string) { this._note = value; }\n  private _note: string;\n\n  /**\n   * Indica il testo presente nel campo vuoto. Nel caso sia già presente la label, il placeholder non verrà mostrato\n   */\n  @Input()\n  get placeholder(): string {\n    if (this.label) {\n      if (this.label.length > 0) {\n        return '';\n      }\n    }\n    return this._placeholder || '';\n  }\n  set placeholder(value: string) { this._placeholder = value; }\n  private _placeholder: string;\n\n  /**\n   * Indica l'icona da visualizzare a sinistra del campo di input\n   */\n  @Input()\n  get icon(): string { return this._icon; }\n  set icon(value: string) { this._icon = value; }\n  private _icon: string;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è disabilitato.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }\n  private _disabled = false;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è di sola lettura.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get readonly(): boolean { return this._readonly; }\n  set readonly(value: boolean) { this._readonly = Util.coerceBooleanProperty(value); }\n  private _readonly = false;\n\n  get value(): any { return this._inputElement.nativeElement.value; }\n  set value(value: any) { this._inputElement.nativeElement.value = value; }\n\n  /**\n   * Evento emesso quando il valore dell'input cambia.\n   * Gli eventi di change sono emessi soltanto quando il valore cambia a causa dell'interazione dell'utente\n   * con il campo d'input.\n   */\n  @Output()\n  readonly change: EventEmitter<FormInputChange> = new EventEmitter<FormInputChange>();\n\n  get isLabelActive() {\n    return this._isLabelActive;\n  }\n  set isLabelActive(value: boolean) {\n    this._isLabelActive = Util.coerceBooleanProperty(value);\n  }\n  private _isLabelActive = false;\n\n\n  get isPasswordMode() {\n    return this._isPasswordMode;\n  }\n  set isPasswordMode(value: boolean) {\n    this._isPasswordMode = Util.coerceBooleanProperty(value);\n  }\n  private _isPasswordMode = false;\n\n  get isPasswordVisible() {\n    return this._isPasswordVisible;\n  }\n  set isPasswordVisible(value: boolean) {\n    this._isPasswordVisible = Util.coerceBooleanProperty(value);\n    this._type = this._isPasswordVisible ? INPUT_TYPES.TEXT : INPUT_TYPES.PASSWORD;\n  }\n  private _isPasswordVisible = false;\n\n  private _isInitialized = false;\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n  private _onTouched: () => any = () => { };\n\n  private _emitChangeEvent(): void {\n    if (this._isInitialized) {\n      this.change.emit(new FormInputChange(this, this.value));\n    }\n  }\n\n  writeValue(value: any): void {\n    this.value = value;\n    if (this.value) {\n      this._isLabelActive = true;\n    }\n\n    this.onChange();\n    if (this._isInitialized) {\n      this._changeDetector.detectChanges();\n    }\n  }\n\n  registerOnChange(fn: (value: any) => void): void {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this._onTouched = fn;\n  }\n\n  constructor(private _changeDetector: ChangeDetectorRef) { }\n\n  ngAfterContentInit(): void {\n    this._isInitialized = true;\n  }\n\n  onChange() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onInput() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onFocus() {\n    this._isLabelActive = true;\n  }\n\n  onBlur() {\n    const inputValue: string = this.value;\n    if (inputValue.length === 0) {\n      this._isLabelActive = false;\n      if (this.type === INPUT_TYPES.NUMBER) {\n        this.value = '';\n      }\n    }\n  }\n\n  noteId() {\n    return `${this.id}-note`;\n  }\n\n}\n",
+            "sourceCode": "import {\n  Component, Input, ChangeDetectionStrategy, forwardRef,\n  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { InputType, INPUT_TYPES } from '../models/InputType';\nimport { Util } from '../util/util';\n\nlet identifier = 0;\n\nexport class FormInputChange {\n  constructor(\n    public source: FormInputComponent,\n    public value: any\n  ) { }\n}\n\n/**\n * Elementi e stili per la creazione di input accessibili e responsivi.\n */\n@Component({\n  selector: 'it-input',\n  templateUrl: './form-input.component.html',\n  styleUrls: ['./form-input.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [{\n    provide: NG_VALUE_ACCESSOR,\n    useExisting: forwardRef(() => FormInputComponent),\n    multi: true\n  }]\n})\nexport class FormInputComponent implements AfterContentInit, ControlValueAccessor {\n  @ViewChild('inputElement')\n  private _inputElement: ElementRef;\n\n  /**\n   * Indica l'id dell'elemento HTML\n   */\n  @Input()\n  get id(): string {\n    return this._id;\n  }\n  set id(value: string) {\n    this._id = value;\n  }\n  private _id = `form-input-${identifier++}`;\n\n  /**\n   * Indica l'attributo name del componente HTML\n   */\n  @Input()\n  get name(): string {\n    return this._name;\n  }\n  set name(value: string) {\n    this._name = value;\n  }\n  private _name: string;\n\n  /**\n   * Indica il tipo di campo. Puo' assumere i valori text, email, password e number\n   */\n  @Input()\n  get type(): string {\n    return this._type;\n  }\n  set type(value: string) {\n    if (InputType.is(value)) {\n      if (value === INPUT_TYPES.NUMBER) {\n        if (isNaN(Number(this.value))) {\n          this.value = '';\n          this.onChange();\n        }\n      }\n      this._type = value;\n    } else {\n      this._type = INPUT_TYPES.TEXT;\n    }\n\n    this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;\n    this._isPasswordVisible = false;\n    this._showAutocompletion = false;\n  }\n  private _type = INPUT_TYPES.TEXT;\n\n  /**\n   * Indica il valore della label da visualizzare\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(value: string) { this._label = value; }\n  private _label: string;\n\n  /**\n   * Indica il testo di aiuto sotto la input\n   */\n  @Input()\n  get note(): string { return this._note; }\n  set note(value: string) { this._note = value; }\n  private _note: string;\n\n  /**\n   * Indica il testo presente nel campo vuoto. Nel caso sia già presente la label, il placeholder non verrà mostrato\n   */\n  @Input()\n  get placeholder(): string {\n    if (this.label) {\n      if (this.label.length > 0) {\n        return '';\n      }\n    }\n    return this._placeholder || '';\n  }\n  set placeholder(value: string) { this._placeholder = value; }\n  private _placeholder: string;\n\n  /**\n   * Indica l'icona da visualizzare a sinistra del campo di input\n   */\n  @Input()\n  get icon(): string { return this._icon; }\n  set icon(value: string) { this._icon = value; }\n  private _icon: string;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è disabilitato.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }\n  private _disabled = false;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è di sola lettura.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get readonly(): boolean { return this._readonly; }\n  set readonly(value: boolean) { this._readonly = Util.coerceBooleanProperty(value); }\n  private _readonly = false;\n\n  get value(): any { return this._inputElement.nativeElement.value; }\n  set value(value: any) { this._inputElement.nativeElement.value = value; }\n\n  /**\n   * Opzionale.\n   * Disponibile solo se il type è search.\n   * Indica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input\n   */\n  @Input()\n  get autoCompleteData(): Array<string> { return this._autoCompleteData; }\n  set autoCompleteData(value: Array<string>) { this._autoCompleteData = value; }\n  private _autoCompleteData: Array<string>;\n\n  /**\n   * Evento emesso quando il valore dell'input cambia.\n   * Gli eventi di change sono emessi soltanto quando il valore cambia a causa dell'interazione dell'utente\n   * con il campo d'input.\n   */\n  @Output()\n  readonly change: EventEmitter<FormInputChange> = new EventEmitter<FormInputChange>();\n\n  get isLabelActive() {\n    return this._isLabelActive;\n  }\n  set isLabelActive(value: boolean) {\n    this._isLabelActive = Util.coerceBooleanProperty(value);\n  }\n  private _isLabelActive = false;\n\n\n  get isPasswordMode() {\n    return this._isPasswordMode;\n  }\n  set isPasswordMode(value: boolean) {\n    this._isPasswordMode = Util.coerceBooleanProperty(value);\n  }\n  private _isPasswordMode = false;\n\n  get isPasswordVisible() {\n    return this._isPasswordVisible;\n  }\n  set isPasswordVisible(value: boolean) {\n    this._isPasswordVisible = Util.coerceBooleanProperty(value);\n    this._type = this._isPasswordVisible ? INPUT_TYPES.TEXT : INPUT_TYPES.PASSWORD;\n  }\n  private _isPasswordVisible = false;\n\n  private _showAutocompletion = false;\n  private _isInitialized = false;\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n  private _onTouched: () => any = () => { };\n\n  private _emitChangeEvent(): void {\n    if (this._isInitialized) {\n      this.change.emit(new FormInputChange(this, this.value));\n    }\n  }\n\n  writeValue(value: any): void {\n    this.value = value;\n    if (this.value) {\n      this._isLabelActive = true;\n    }\n\n    this.onChange();\n    if (this._isInitialized) {\n      this._changeDetector.detectChanges();\n    }\n  }\n\n  registerOnChange(fn: (value: any) => void): void {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this._onTouched = fn;\n  }\n\n  constructor(private _changeDetector: ChangeDetectorRef) { }\n\n  ngAfterContentInit(): void {\n    this._isInitialized = true;\n  }\n\n  onChange() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onInput() {\n    if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this._showAutocompletion) {\n      this._showAutocompletion = true;\n    }\n\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onFocus() {\n    this._isLabelActive = true;\n  }\n\n  onBlur() {\n    const inputValue: string = this.value;\n    if (inputValue.length === 0) {\n      this._isLabelActive = false;\n      if (this.type === INPUT_TYPES.NUMBER) {\n        this.value = '';\n      }\n    }\n  }\n\n  noteId() {\n    return `${this.id}-note`;\n  }\n\n  getRelatedEntries() {\n    if (this.value && this._showAutocompletion) {\n      const lowercaseValue = this.value.toLowerCase();\n      const lowercaseData = this._autoCompleteData.map(string => {\n        return { original : string, lowercase : string.toLowerCase() };\n      });\n\n      const relatedEntries = [];\n      lowercaseData.forEach(lowercaseEntry => {\n        if ((lowercaseEntry.lowercase).includes(lowercaseValue)) {\n          relatedEntries.push(lowercaseEntry.original);\n        }\n      });\n\n      return relatedEntries;\n    } else {\n      return [];\n    }\n  }\n\n  isAutocompletable() {\n    if (this._autoCompleteData && this._type === INPUT_TYPES.SEARCH) {\n      return this._autoCompleteData.length > 0;\n    } else {\n      return false;\n    }\n  }\n\n  onEntryClick(entry) {\n    this.value = entry;\n    this._showAutocompletion = false;\n    this.onChange();\n  }\n\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -6017,7 +6017,7 @@
         },
         {
             "name": "FormInputComponent",
-            "id": "component-FormInputComponent-103cdc15f54ffee8c783ba44ffb8398a",
+            "id": "component-FormInputComponent-560d72635bb75b97eeeab077bb9f3080",
             "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -6041,15 +6041,21 @@
             "viewProviders": [],
             "inputsClass": [
                 {
+                    "name": "autoCompleteData",
+                    "description": "<p>Opzionale.\nDisponibile solo se il type è search.\nIndica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input</p>\n",
+                    "line": 154,
+                    "type": "Array<string>"
+                },
+                {
                     "name": "disabled",
                     "description": "<p>Opzionale.\nIndica se il campo in questione è disabilitato.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
-                    "line": 130,
+                    "line": 131,
                     "type": "boolean"
                 },
                 {
                     "name": "icon",
                     "description": "<p>Indica l&#39;icona da visualizzare a sinistra del campo di input</p>\n",
-                    "line": 120,
+                    "line": 121,
                     "type": "string"
                 },
                 {
@@ -6061,7 +6067,7 @@
                 {
                     "name": "label",
                     "description": "<p>Indica il valore della label da visualizzare</p>\n",
-                    "line": 89,
+                    "line": 90,
                     "type": "string"
                 },
                 {
@@ -6073,19 +6079,19 @@
                 {
                     "name": "note",
                     "description": "<p>Indica il testo di aiuto sotto la input</p>\n",
-                    "line": 97,
+                    "line": 98,
                     "type": "string"
                 },
                 {
                     "name": "placeholder",
                     "description": "<p>Indica il testo presente nel campo vuoto. Nel caso sia già presente la label, il placeholder non verrà mostrato</p>\n",
-                    "line": 105,
+                    "line": 106,
                     "type": "string"
                 },
                 {
                     "name": "readonly",
                     "description": "<p>Opzionale.\nIndica se il campo in questione è di sola lettura.\nAccetta una espressione booleana o può essere usato come attributo senza valore</p>\n",
-                    "line": 140,
+                    "line": 141,
                     "type": "boolean"
                 },
                 {
@@ -6100,18 +6106,28 @@
                     "name": "change",
                     "defaultValue": "new EventEmitter<FormInputChange>()",
                     "description": "<p>Evento emesso quando il valore dell&#39;input cambia.\nGli eventi di change sono emessi soltanto quando il valore cambia a causa dell&#39;interazione dell&#39;utente\ncon il campo d&#39;input.</p>\n",
-                    "line": 153,
+                    "line": 164,
                     "type": "EventEmitter<FormInputChange>"
                 }
             ],
             "propertiesClass": [
+                {
+                    "name": "_autoCompleteData",
+                    "type": "Array<string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 156,
+                    "modifierKind": [
+                        112
+                    ]
+                },
                 {
                     "name": "_controlValueAccessorChangeFn",
                     "defaultValue": "() => { }",
                     "type": "function",
                     "optional": false,
                     "description": "",
-                    "line": 182,
+                    "line": 194,
                     "modifierKind": [
                         112
                     ]
@@ -6122,7 +6138,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 132,
+                    "line": 133,
                     "modifierKind": [
                         112
                     ]
@@ -6132,7 +6148,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 122,
+                    "line": 123,
                     "modifierKind": [
                         112
                     ]
@@ -6169,7 +6185,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 181,
+                    "line": 193,
                     "modifierKind": [
                         112
                     ]
@@ -6180,7 +6196,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 161,
+                    "line": 172,
                     "modifierKind": [
                         112
                     ]
@@ -6191,7 +6207,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 170,
+                    "line": 181,
                     "modifierKind": [
                         112
                     ]
@@ -6202,7 +6218,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 179,
+                    "line": 190,
                     "modifierKind": [
                         112
                     ]
@@ -6212,7 +6228,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 91,
+                    "line": 92,
                     "modifierKind": [
                         112
                     ]
@@ -6232,7 +6248,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 99,
+                    "line": 100,
                     "modifierKind": [
                         112
                     ]
@@ -6243,7 +6259,7 @@
                     "type": "function",
                     "optional": false,
                     "description": "",
-                    "line": 183,
+                    "line": 195,
                     "modifierKind": [
                         112
                     ]
@@ -6253,7 +6269,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 114,
+                    "line": 115,
                     "modifierKind": [
                         112
                     ]
@@ -6264,7 +6280,18 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 142,
+                    "line": 143,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_showAutocompletion",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 192,
                     "modifierKind": [
                         112
                     ]
@@ -6275,7 +6302,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 83,
+                    "line": 84,
                     "modifierKind": [
                         112
                     ]
@@ -6288,10 +6315,26 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 185,
+                    "line": 197,
                     "modifierKind": [
                         112
                     ]
+                },
+                {
+                    "name": "getRelatedEntries",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{}",
+                    "typeParameters": [],
+                    "line": 261
+                },
+                {
+                    "name": "isAutocompletable",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 281
                 },
                 {
                     "name": "ngAfterContentInit",
@@ -6299,7 +6342,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 213
+                    "line": 225
                 },
                 {
                     "name": "noteId",
@@ -6307,7 +6350,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 241
+                    "line": 257
                 },
                 {
                     "name": "onBlur",
@@ -6315,7 +6358,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 231
+                    "line": 247
                 },
                 {
                     "name": "onChange",
@@ -6323,7 +6366,29 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 217
+                    "line": 229
+                },
+                {
+                    "name": "onEntryClick",
+                    "args": [
+                        {
+                            "name": "entry",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 289,
+                    "jsdoctags": [
+                        {
+                            "name": "entry",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "onFocus",
@@ -6331,7 +6396,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 227
+                    "line": 243
                 },
                 {
                     "name": "onInput",
@@ -6339,7 +6404,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 222
+                    "line": 234
                 },
                 {
                     "name": "registerOnChange",
@@ -6358,7 +6423,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 203,
+                    "line": 215,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -6386,7 +6451,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 207,
+                    "line": 219,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -6408,7 +6473,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 191,
+                    "line": 203,
                     "jsdoctags": [
                         {
                             "name": "value",
@@ -6424,7 +6489,7 @@
             "hostListeners": [],
             "description": "<p>Elementi e stili per la creazione di input accessibili e responsivi.</p>\n",
             "type": "component",
-            "sourceCode": "import {\n  Component, Input, ChangeDetectionStrategy, forwardRef,\n  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { InputType, INPUT_TYPES } from '../models/InputType';\nimport { Util } from '../util/util';\n\nlet identifier = 0;\n\nexport class FormInputChange {\n  constructor(\n    public source: FormInputComponent,\n    public value: any\n  ) { }\n}\n\n/**\n * Elementi e stili per la creazione di input accessibili e responsivi.\n */\n@Component({\n  selector: 'it-input',\n  templateUrl: './form-input.component.html',\n  styleUrls: ['./form-input.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [{\n    provide: NG_VALUE_ACCESSOR,\n    useExisting: forwardRef(() => FormInputComponent),\n    multi: true\n  }]\n})\nexport class FormInputComponent implements AfterContentInit, ControlValueAccessor {\n  @ViewChild('inputElement')\n  private _inputElement: ElementRef;\n\n  /**\n   * Indica l'id dell'elemento HTML\n   */\n  @Input()\n  get id(): string {\n    return this._id;\n  }\n  set id(value: string) {\n    this._id = value;\n  }\n  private _id = `form-input-${identifier++}`;\n\n  /**\n   * Indica l'attributo name del componente HTML\n   */\n  @Input()\n  get name(): string {\n    return this._name;\n  }\n  set name(value: string) {\n    this._name = value;\n  }\n  private _name: string;\n\n  /**\n   * Indica il tipo di campo. Puo' assumere i valori text, email, password e number\n   */\n  @Input()\n  get type(): string {\n    return this._type;\n  }\n  set type(value: string) {\n    if (InputType.is(value)) {\n      if (value === INPUT_TYPES.NUMBER) {\n        if (isNaN(Number(this.value))) {\n          this.value = '';\n          this.onChange();\n        }\n      }\n      this._type = value;\n    } else {\n      this._type = INPUT_TYPES.TEXT;\n    }\n\n    this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;\n    this._isPasswordVisible = false;\n  }\n  private _type = INPUT_TYPES.TEXT;\n\n  /**\n   * Indica il valore della label da visualizzare\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(value: string) { this._label = value; }\n  private _label: string;\n\n  /**\n   * Indica il testo di aiuto sotto la input\n   */\n  @Input()\n  get note(): string { return this._note; }\n  set note(value: string) { this._note = value; }\n  private _note: string;\n\n  /**\n   * Indica il testo presente nel campo vuoto. Nel caso sia già presente la label, il placeholder non verrà mostrato\n   */\n  @Input()\n  get placeholder(): string {\n    if (this.label) {\n      if (this.label.length > 0) {\n        return '';\n      }\n    }\n    return this._placeholder || '';\n  }\n  set placeholder(value: string) { this._placeholder = value; }\n  private _placeholder: string;\n\n  /**\n   * Indica l'icona da visualizzare a sinistra del campo di input\n   */\n  @Input()\n  get icon(): string { return this._icon; }\n  set icon(value: string) { this._icon = value; }\n  private _icon: string;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è disabilitato.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }\n  private _disabled = false;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è di sola lettura.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get readonly(): boolean { return this._readonly; }\n  set readonly(value: boolean) { this._readonly = Util.coerceBooleanProperty(value); }\n  private _readonly = false;\n\n  get value(): any { return this._inputElement.nativeElement.value; }\n  set value(value: any) { this._inputElement.nativeElement.value = value; }\n\n  /**\n   * Evento emesso quando il valore dell'input cambia.\n   * Gli eventi di change sono emessi soltanto quando il valore cambia a causa dell'interazione dell'utente\n   * con il campo d'input.\n   */\n  @Output()\n  readonly change: EventEmitter<FormInputChange> = new EventEmitter<FormInputChange>();\n\n  get isLabelActive() {\n    return this._isLabelActive;\n  }\n  set isLabelActive(value: boolean) {\n    this._isLabelActive = Util.coerceBooleanProperty(value);\n  }\n  private _isLabelActive = false;\n\n\n  get isPasswordMode() {\n    return this._isPasswordMode;\n  }\n  set isPasswordMode(value: boolean) {\n    this._isPasswordMode = Util.coerceBooleanProperty(value);\n  }\n  private _isPasswordMode = false;\n\n  get isPasswordVisible() {\n    return this._isPasswordVisible;\n  }\n  set isPasswordVisible(value: boolean) {\n    this._isPasswordVisible = Util.coerceBooleanProperty(value);\n    this._type = this._isPasswordVisible ? INPUT_TYPES.TEXT : INPUT_TYPES.PASSWORD;\n  }\n  private _isPasswordVisible = false;\n\n  private _isInitialized = false;\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n  private _onTouched: () => any = () => { };\n\n  private _emitChangeEvent(): void {\n    if (this._isInitialized) {\n      this.change.emit(new FormInputChange(this, this.value));\n    }\n  }\n\n  writeValue(value: any): void {\n    this.value = value;\n    if (this.value) {\n      this._isLabelActive = true;\n    }\n\n    this.onChange();\n    if (this._isInitialized) {\n      this._changeDetector.detectChanges();\n    }\n  }\n\n  registerOnChange(fn: (value: any) => void): void {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this._onTouched = fn;\n  }\n\n  constructor(private _changeDetector: ChangeDetectorRef) { }\n\n  ngAfterContentInit(): void {\n    this._isInitialized = true;\n  }\n\n  onChange() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onInput() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onFocus() {\n    this._isLabelActive = true;\n  }\n\n  onBlur() {\n    const inputValue: string = this.value;\n    if (inputValue.length === 0) {\n      this._isLabelActive = false;\n      if (this.type === INPUT_TYPES.NUMBER) {\n        this.value = '';\n      }\n    }\n  }\n\n  noteId() {\n    return `${this.id}-note`;\n  }\n\n}\n",
+            "sourceCode": "import {\n  Component, Input, ChangeDetectionStrategy, forwardRef,\n  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { InputType, INPUT_TYPES } from '../models/InputType';\nimport { Util } from '../util/util';\n\nlet identifier = 0;\n\nexport class FormInputChange {\n  constructor(\n    public source: FormInputComponent,\n    public value: any\n  ) { }\n}\n\n/**\n * Elementi e stili per la creazione di input accessibili e responsivi.\n */\n@Component({\n  selector: 'it-input',\n  templateUrl: './form-input.component.html',\n  styleUrls: ['./form-input.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [{\n    provide: NG_VALUE_ACCESSOR,\n    useExisting: forwardRef(() => FormInputComponent),\n    multi: true\n  }]\n})\nexport class FormInputComponent implements AfterContentInit, ControlValueAccessor {\n  @ViewChild('inputElement')\n  private _inputElement: ElementRef;\n\n  /**\n   * Indica l'id dell'elemento HTML\n   */\n  @Input()\n  get id(): string {\n    return this._id;\n  }\n  set id(value: string) {\n    this._id = value;\n  }\n  private _id = `form-input-${identifier++}`;\n\n  /**\n   * Indica l'attributo name del componente HTML\n   */\n  @Input()\n  get name(): string {\n    return this._name;\n  }\n  set name(value: string) {\n    this._name = value;\n  }\n  private _name: string;\n\n  /**\n   * Indica il tipo di campo. Puo' assumere i valori text, email, password e number\n   */\n  @Input()\n  get type(): string {\n    return this._type;\n  }\n  set type(value: string) {\n    if (InputType.is(value)) {\n      if (value === INPUT_TYPES.NUMBER) {\n        if (isNaN(Number(this.value))) {\n          this.value = '';\n          this.onChange();\n        }\n      }\n      this._type = value;\n    } else {\n      this._type = INPUT_TYPES.TEXT;\n    }\n\n    this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;\n    this._isPasswordVisible = false;\n    this._showAutocompletion = false;\n  }\n  private _type = INPUT_TYPES.TEXT;\n\n  /**\n   * Indica il valore della label da visualizzare\n   */\n  @Input()\n  get label(): string { return this._label; }\n  set label(value: string) { this._label = value; }\n  private _label: string;\n\n  /**\n   * Indica il testo di aiuto sotto la input\n   */\n  @Input()\n  get note(): string { return this._note; }\n  set note(value: string) { this._note = value; }\n  private _note: string;\n\n  /**\n   * Indica il testo presente nel campo vuoto. Nel caso sia già presente la label, il placeholder non verrà mostrato\n   */\n  @Input()\n  get placeholder(): string {\n    if (this.label) {\n      if (this.label.length > 0) {\n        return '';\n      }\n    }\n    return this._placeholder || '';\n  }\n  set placeholder(value: string) { this._placeholder = value; }\n  private _placeholder: string;\n\n  /**\n   * Indica l'icona da visualizzare a sinistra del campo di input\n   */\n  @Input()\n  get icon(): string { return this._icon; }\n  set icon(value: string) { this._icon = value; }\n  private _icon: string;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è disabilitato.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get disabled(): boolean { return this._disabled; }\n  set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }\n  private _disabled = false;\n\n  /**\n   * Opzionale.\n   * Indica se il campo in questione è di sola lettura.\n   * Accetta una espressione booleana o può essere usato come attributo senza valore\n   */\n  @Input()\n  get readonly(): boolean { return this._readonly; }\n  set readonly(value: boolean) { this._readonly = Util.coerceBooleanProperty(value); }\n  private _readonly = false;\n\n  get value(): any { return this._inputElement.nativeElement.value; }\n  set value(value: any) { this._inputElement.nativeElement.value = value; }\n\n  /**\n   * Opzionale.\n   * Disponibile solo se il type è search.\n   * Indica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input\n   */\n  @Input()\n  get autoCompleteData(): Array<string> { return this._autoCompleteData; }\n  set autoCompleteData(value: Array<string>) { this._autoCompleteData = value; }\n  private _autoCompleteData: Array<string>;\n\n  /**\n   * Evento emesso quando il valore dell'input cambia.\n   * Gli eventi di change sono emessi soltanto quando il valore cambia a causa dell'interazione dell'utente\n   * con il campo d'input.\n   */\n  @Output()\n  readonly change: EventEmitter<FormInputChange> = new EventEmitter<FormInputChange>();\n\n  get isLabelActive() {\n    return this._isLabelActive;\n  }\n  set isLabelActive(value: boolean) {\n    this._isLabelActive = Util.coerceBooleanProperty(value);\n  }\n  private _isLabelActive = false;\n\n\n  get isPasswordMode() {\n    return this._isPasswordMode;\n  }\n  set isPasswordMode(value: boolean) {\n    this._isPasswordMode = Util.coerceBooleanProperty(value);\n  }\n  private _isPasswordMode = false;\n\n  get isPasswordVisible() {\n    return this._isPasswordVisible;\n  }\n  set isPasswordVisible(value: boolean) {\n    this._isPasswordVisible = Util.coerceBooleanProperty(value);\n    this._type = this._isPasswordVisible ? INPUT_TYPES.TEXT : INPUT_TYPES.PASSWORD;\n  }\n  private _isPasswordVisible = false;\n\n  private _showAutocompletion = false;\n  private _isInitialized = false;\n  private _controlValueAccessorChangeFn: (value: any) => void = () => { };\n  private _onTouched: () => any = () => { };\n\n  private _emitChangeEvent(): void {\n    if (this._isInitialized) {\n      this.change.emit(new FormInputChange(this, this.value));\n    }\n  }\n\n  writeValue(value: any): void {\n    this.value = value;\n    if (this.value) {\n      this._isLabelActive = true;\n    }\n\n    this.onChange();\n    if (this._isInitialized) {\n      this._changeDetector.detectChanges();\n    }\n  }\n\n  registerOnChange(fn: (value: any) => void): void {\n    this._controlValueAccessorChangeFn = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this._onTouched = fn;\n  }\n\n  constructor(private _changeDetector: ChangeDetectorRef) { }\n\n  ngAfterContentInit(): void {\n    this._isInitialized = true;\n  }\n\n  onChange() {\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onInput() {\n    if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this._showAutocompletion) {\n      this._showAutocompletion = true;\n    }\n\n    this._emitChangeEvent();\n    this._controlValueAccessorChangeFn(this.value);\n  }\n\n  onFocus() {\n    this._isLabelActive = true;\n  }\n\n  onBlur() {\n    const inputValue: string = this.value;\n    if (inputValue.length === 0) {\n      this._isLabelActive = false;\n      if (this.type === INPUT_TYPES.NUMBER) {\n        this.value = '';\n      }\n    }\n  }\n\n  noteId() {\n    return `${this.id}-note`;\n  }\n\n  getRelatedEntries() {\n    if (this.value && this._showAutocompletion) {\n      const lowercaseValue = this.value.toLowerCase();\n      const lowercaseData = this._autoCompleteData.map(string => {\n        return { original : string, lowercase : string.toLowerCase() };\n      });\n\n      const relatedEntries = [];\n      lowercaseData.forEach(lowercaseEntry => {\n        if ((lowercaseEntry.lowercase).includes(lowercaseValue)) {\n          relatedEntries.push(lowercaseEntry.original);\n        }\n      });\n\n      return relatedEntries;\n    } else {\n      return [];\n    }\n  }\n\n  isAutocompletable() {\n    if (this._autoCompleteData && this._type === INPUT_TYPES.SEARCH) {\n      return this._autoCompleteData.length > 0;\n    } else {\n      return false;\n    }\n  }\n\n  onEntryClick(entry) {\n    this.value = entry;\n    this._showAutocompletion = false;\n    this.onChange();\n  }\n\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -6434,7 +6499,7 @@
                         "type": "ChangeDetectorRef"
                     }
                 ],
-                "line": 209,
+                "line": 221,
                 "jsdoctags": [
                     {
                         "name": "_changeDetector",
@@ -6534,7 +6599,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 90,
+                        "line": 91,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6558,7 +6623,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 98,
+                        "line": 99,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6582,7 +6647,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 113,
+                        "line": 114,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6606,7 +6671,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 121,
+                        "line": 122,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6630,7 +6695,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 131,
+                        "line": 132,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6654,7 +6719,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 141,
+                        "line": 142,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6678,7 +6743,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 145,
+                        "line": 146,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6693,7 +6758,31 @@
                         "name": "value",
                         "type": "any",
                         "returnType": "any",
-                        "line": 144
+                        "line": 145
+                    }
+                },
+                "autoCompleteData": {
+                    "name": "autoCompleteData",
+                    "setSignature": {
+                        "name": "autoCompleteData",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 155,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
                     }
                 },
                 "isLabelActive": {
@@ -6708,7 +6797,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 158,
+                        "line": 169,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6723,7 +6812,7 @@
                         "name": "isLabelActive",
                         "type": "",
                         "returnType": "",
-                        "line": 155
+                        "line": 166
                     }
                 },
                 "isPasswordMode": {
@@ -6738,7 +6827,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 167,
+                        "line": 178,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6753,7 +6842,7 @@
                         "name": "isPasswordMode",
                         "type": "",
                         "returnType": "",
-                        "line": 164
+                        "line": 175
                     }
                 },
                 "isPasswordVisible": {
@@ -6768,7 +6857,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 175,
+                        "line": 186,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -6783,11 +6872,11 @@
                         "name": "isPasswordVisible",
                         "type": "",
                         "returnType": "",
-                        "line": 172
+                        "line": 183
                     }
                 }
             },
-            "templateData": "<div class=\"form-group\">\n  <i *ngIf=\"icon\" [class]=\"icon\" [ngClass]=\"{ 'ico-prefix': true }\"></i>\n  <input #inputElement\n    (focus)=\"onFocus()\"\n    (blur)=\"onBlur()\"\n    (change)=\"onChange()\"\n    (input)=\"onInput()\"\n    [type]=\"type\"\n    [id]=\"id\"\n    [attr.name]=\"name\"\n    [disabled]=\"disabled\"\n    [readonly]=\"readonly\"\n    [placeholder]=\"placeholder\"\n    [ngClass]=\"{\n      'form-control' : !readonly,\n      'form-control-plaintext' : readonly\n    }\"\n    [attr.aria-labelledby]=\"note ? noteId : undefined\"/>\n  <span class=\"btn-eye\" \n    *ngIf=\"isPasswordMode\"\n    (click)=\"isPasswordVisible = !isPasswordVisible\"\n    [ngClass]=\"{\n      'eye-on' : !isPasswordVisible,\n      'eye-off' : isPasswordVisible\n    }\">\n  </span>\n  <label [attr.for]=\"id\" [ngClass]=\"{ 'active' : isLabelActive }\">\n    {{label}}\n  </label>\n  <small [id]=\"noteId()\" class=\"form-text text-muted\" *ngIf=\"note\">\n    {{note}}\n  </small>\n</div>\n"
+            "templateData": "<div class=\"form-group\">\n  <i *ngIf=\"icon\" [class]=\"icon\" [ngClass]=\"{ 'ico-prefix': true }\"></i>\n  <input #inputElement\n    (focus)=\"onFocus()\"\n    (blur)=\"onBlur()\"\n    (change)=\"onChange()\"\n    (input)=\"onInput()\"\n    [type]=\"type\"\n    [id]=\"id\"\n    [attr.name]=\"name\"\n    [disabled]=\"disabled\"\n    [readonly]=\"readonly\"\n    [placeholder]=\"placeholder\"\n    [ngClass]=\"{\n      'form-control' : !readonly,\n      'form-control-plaintext' : readonly,\n      'autocomplete' : isAutocompletable()\n    }\"\n    [attr.aria-labelledby]=\"note ? noteId : undefined\"/>\n  <span class=\"btn-eye\" \n    *ngIf=\"isPasswordMode\"\n    (click)=\"isPasswordVisible = !isPasswordVisible\"\n    [ngClass]=\"{\n      'eye-on' : !isPasswordVisible,\n      'eye-off' : isPasswordVisible\n    }\">\n  </span>\n  <ul class=\"autocomplete-wrap\" *ngIf=\"isAutocompletable()\">\n    <li *ngFor=\"let entry of getRelatedEntries()\" (click)=\"onEntryClick(entry)\">\n      {{entry}}\n    </li>\n  </ul>\n  <label [attr.for]=\"id\" [ngClass]=\"{ 'active' : isLabelActive }\">\n    {{label}}\n  </label>\n  <small [id]=\"noteId()\" class=\"form-text text-muted\" *ngIf=\"note\">\n    {{note}}\n  </small>\n</div>\n"
         },
         {
             "name": "PopoverComponent",
@@ -9043,30 +9132,6 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "identifier",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts",
                 "type": "number",
                 "defaultValue": "0"
@@ -9091,6 +9156,22 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
                 "type": "number",
                 "defaultValue": "0"
@@ -9099,7 +9180,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb.component.ts",
+                "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9115,7 +9196,7 @@
                 "name": "identifier",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+                "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9124,6 +9205,14 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "identifier",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -9149,7 +9238,7 @@
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
                 "type": "object",
-                "defaultValue": "{\n  TEXT: TEXT,\n  EMAIL: EMAIL,\n  PASSWORD: PASSWORD,\n  NUMBER: NUMBER,\n}"
+                "defaultValue": "{\n  TEXT: TEXT,\n  EMAIL: EMAIL,\n  PASSWORD: PASSWORD,\n  NUMBER: NUMBER,\n  SEARCH: SEARCH\n}"
             },
             {
                 "name": "InputType",
@@ -9157,7 +9246,7 @@
                 "subtype": "variable",
                 "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
                 "type": "",
-                "defaultValue": "t.keyof({\n  text: null,\n  email: null,\n  password: null,\n  number: null,\n})"
+                "defaultValue": "t.keyof({\n  text: null,\n  email: null,\n  password: null,\n  number: null,\n  search: null\n})"
             },
             {
                 "name": "INTERACTION_TRIGGERS",
@@ -9212,7 +9301,7 @@
                 "name": "noopFn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
+                "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
                 "type": "",
                 "defaultValue": "() => { }"
             },
@@ -9220,7 +9309,7 @@
                 "name": "noopFn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/design-angular-kit/src/lib/tooltip/triggers.ts",
+                "file": "projects/design-angular-kit/src/lib/popover/triggers.ts",
                 "type": "",
                 "defaultValue": "() => { }"
             },
@@ -9311,6 +9400,14 @@
                 "file": "projects/design-angular-kit/src/lib/models/IconPosition.ts",
                 "type": "string",
                 "defaultValue": "'right'"
+            },
+            {
+                "name": "SEARCH",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "string",
+                "defaultValue": "'search'"
             },
             {
                 "name": "SECONDARY",
@@ -10097,7 +10194,7 @@
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
                     "type": "object",
-                    "defaultValue": "{\n  TEXT: TEXT,\n  EMAIL: EMAIL,\n  PASSWORD: PASSWORD,\n  NUMBER: NUMBER,\n}"
+                    "defaultValue": "{\n  TEXT: TEXT,\n  EMAIL: EMAIL,\n  PASSWORD: PASSWORD,\n  NUMBER: NUMBER,\n  SEARCH: SEARCH\n}"
                 },
                 {
                     "name": "InputType",
@@ -10105,7 +10202,7 @@
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
                     "type": "",
-                    "defaultValue": "t.keyof({\n  text: null,\n  email: null,\n  password: null,\n  number: null,\n})"
+                    "defaultValue": "t.keyof({\n  text: null,\n  email: null,\n  password: null,\n  number: null,\n  search: null\n})"
                 },
                 {
                     "name": "NUMBER",
@@ -10122,6 +10219,14 @@
                     "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
                     "type": "string",
                     "defaultValue": "'password'"
+                },
+                {
+                    "name": "SEARCH",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                    "type": "string",
+                    "defaultValue": "'search'"
                 },
                 {
                     "name": "TEXT",
@@ -10166,36 +10271,6 @@
                     "defaultValue": "'right'"
                 }
             ],
-            "projects/design-angular-kit/src/lib/button/button.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
-            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
-                {
-                    "name": "identifier",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
             "projects/design-angular-kit/src/lib/dropdown/dropdown-header.component.ts": [
                 {
                     "name": "identifier",
@@ -10216,12 +10291,32 @@
                     "defaultValue": "0"
                 }
             ],
+            "projects/design-angular-kit/src/lib/radio/radio.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/radio/radio.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/breadcrumb/breadcrumb-item.component.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/button/button.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/button/button.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -10244,12 +10339,12 @@
                     "defaultValue": "INTERACTION_TRIGGERS.HOVER"
                 }
             ],
-            "projects/design-angular-kit/src/lib/form-input/form-input.component.ts": [
+            "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts": [
                 {
                     "name": "identifier",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
+                    "file": "projects/design-angular-kit/src/lib/checkbox/checkbox.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -10260,6 +10355,16 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/design-angular-kit/src/lib/popover/popover.directive.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/form-input/form-input.component.ts": [
+                {
+                    "name": "identifier",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/form-input/form-input.component.ts",
                     "type": "number",
                     "defaultValue": "0"
                 }
@@ -10969,8 +11074,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "FormInputComponent",
-                "coveragePercent": 28,
-                "coverageCount": "11/38",
+                "coveragePercent": 27,
+                "coverageCount": "12/44",
                 "status": "medium"
             },
             {
@@ -11128,6 +11233,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "PASSWORD",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/models/InputType.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SEARCH",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
