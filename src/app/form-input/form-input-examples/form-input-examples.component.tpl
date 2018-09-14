@@ -16,16 +16,25 @@
   {% include "../template-driven-validation-example/template-driven-validation-example.component.ts" %}
 {% endset %}
 
+{% set mdvHtml %}
+  {% include "../model-driven-validation-example/model-driven-validation-example.component.html" %}
+{% endset %}
+
+{% set mdvTs %}
+  {% include "../model-driven-validation-example/model-driven-validation-example.component.ts" %}
+{% endset %}
+
 <it-form-input-example></it-form-input-example>
 
-<it-source-display
-  html="{$ sanitize(html) $}"
-  typescript="{$ sanitize(typescript) $}" >
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}">
 </it-source-display>
 
 <it-template-driven-validation-example></it-template-driven-validation-example>
 
-<it-source-display
-  html="{$ sanitize(tdvHtml) $}"
-  typescript="{$ sanitize(tdvTs) $}">
+<it-source-display html="{$ sanitize(tdvHtml) $}" typescript="{$ sanitize(tdvTs) $}">
+</it-source-display>
+
+<it-model-driven-validation-example></it-model-driven-validation-example>
+
+<it-source-display html="{$ sanitize(mdvHtml) $}" typescript="{$ sanitize(mdvTs) $}">
 </it-source-display>
