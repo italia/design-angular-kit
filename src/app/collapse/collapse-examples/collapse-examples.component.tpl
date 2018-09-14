@@ -1,3 +1,5 @@
+{% from "../../macro.template.njk" import sanitize as sanitize %}
+
 {% set html %}
   {% include "../collapse-example/collapse-example.component.html" %}
 {% endset %}
@@ -24,21 +26,21 @@
 
 <it-collapse-example></it-collapse-example>
 
-<it-source-display 
-    html="{$ html | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-    typescript="{$ typescript | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display
+    html="{$ sanitize(html) $}"
+    typescript="{$ sanitize(typescript) $}" >
 </it-source-display>
 
 <it-collapse-group-example></it-collapse-group-example>
 
-<it-source-display 
-    html="{$ groupHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-    typescript="{$ groupTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display
+    html="{$ sanitize(groupHtml) $}"
+    typescript="{$ sanitize(groupTs) $}" >
 </it-source-display>
 
 <it-collapse-nested-example></it-collapse-nested-example>
 
-<it-source-display 
-    html="{$ groupNestedHtml | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" 
-    typescript="{$ groupNestedTs | replace("\{\{", "/\{/\{") | replace("\}\}", "/\}/\}") $}" >
+<it-source-display
+    html="{$ sanitize(groupNestedHtml) $}"
+    typescript="{$ sanitize(groupNestedTs) $}" >
 </it-source-display>
