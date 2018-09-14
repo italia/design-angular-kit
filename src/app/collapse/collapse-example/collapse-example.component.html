@@ -1,0 +1,33 @@
+<div class="card w-100 mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Esempio direttiva Collapse</h4>
+
+    <div class="card-text" class="example-section">      
+      <it-button color="primary" (click)="mioCollapse.toggle()"
+        [attr.aria-expanded]="mioCollapse.isShown()" aria-controls="collapseExample">
+        Apri/chiudi contenuto
+      </it-button>
+      <div #mioCollapse="it-collapse" [it-collapse]="isShown" id="collapseExample"
+        (show)="logShow()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()">
+        <div class="card card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+    <div>
+      Ultima emissione dell'evento show = {{showTime}}
+    </div>
+    
+    <div>
+      Ultima emissione dell'evento shown = {{shownTime}}
+    </div>
+    
+    <div>
+      Ultima emissione dell'evento hide = {{hideTime}}
+    </div>
+    
+    <div>
+      Ultima emissione dell'evento hidden = {{hiddenTime}}
+    </div>
+  </div>
+</div>
