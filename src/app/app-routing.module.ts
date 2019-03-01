@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: 'welcome', loadChildren: 'src/app/welcome/welcome.module#WelcomeModule' }
   ]},
   { path: 'componenti', component: RouterDispatcherComponent, children: [
-    { path: '', redirectTo: 'checkbox', pathMatch: 'full' },
+    { path: '', redirectTo: 'badge', pathMatch: 'full' },
     { path: 'checkbox', loadChildren: 'src/app/checkbox/checkbox.module#CheckboxModule' },
     { path: 'progress-bar', loadChildren: 'src/app/progress-bar/progress-bar.module#ProgressBarModule' },
     { path: 'toggle', loadChildren: 'src/app/toggle/toggle.module#ToggleModule' },
