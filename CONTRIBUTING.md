@@ -23,7 +23,7 @@ Per prendere in carico una issue, è necessario effettuare il fork del repositor
 
 Nel caso di contributor con accesso in scrittura al repository, è consigliabile creare un branch nominato in questo modo: `feature/##-descrizione-issue`, dove `##` è il numero di issue lavorata.
 
-Al termine della lavorazione, per proporre il proprio codice per l'approvazione, è sufficiente aprire una Pull Request ([qui](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) le istruzioni nel caso di fork), assicurandosi di rispettare la checklist descritta nel [template preimpostato](https://github.com/italia/bootstrap-italia/blob/master/PULL_REQUEST_TEMPLATE.md).
+Al termine della lavorazione, per proporre il proprio codice per l'approvazione, è sufficiente aprire una Pull Request ([qui](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) le istruzioni nel caso di fork), assicurandosi di rispettare la checklist descritta nel [template preimpostato](https://github.com/italia/bootstrap-italia/blob/master/.github/PULL_REQUEST_TEMPLATE.md).
 
 **design-angular-kit** usa i messaggi di commit per determinare il tipo di cambiamento nella codebase. Seguendo una convenzione per i messaggi di commit è possibile determinare automaticamente il prossimo numero di [versione semantica](https://semver.org/), generare un changelog e pubblicare la release.
 
