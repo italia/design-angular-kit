@@ -16,9 +16,9 @@
     "url": "https://github.com/italia/design-angular-kit.git"
   },
   "peerDependencies": {
-    "@angular/common": "^7.0.0-rc.0 || ^7.0.0",
-    "@angular/core": "^7.0.0-rc.0 || ^7.0.0",
-    "@angular/forms": "^7.0.0-rc.0 || ^7.0.0",
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@angular/forms": "^8.0.0",
     "bootstrap-italia": "^0.9.1",
     "io-ts": "^1.2.1"
   }
