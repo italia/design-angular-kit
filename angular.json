@@ -10,13 +10,14 @@
       "prefix": "it",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/design-angular-kit-bundle",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -36,6 +37,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -144,7 +151,8 @@
           "configurations": {
             "production": {
               "project": "projects/design-angular-kit/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/design-angular-kit/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
