@@ -89,9 +89,12 @@ describe('TooltipDirective', () => {
     expect(windowEl.classList.contains('bs-tooltip-right')).toBeTruthy();
     expect(windowEl.textContent.trim()).toBe('Test del tooltip');
     expect(windowEl.getAttribute('role')).toBe('tooltip');
-    expect(windowEl.getAttribute('id')).toBe('it-tooltip-0');
+ 
+
+    const id = windowEl.getAttribute('id');
+    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe(id);
+
     expect(windowEl.parentNode).toBe(fixture.nativeElement);
-    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe('it-tooltip-0');
 
     directive.triggerEventHandler('mouseleave', {});
     fixture.detectChanges();
@@ -128,9 +131,11 @@ describe('TooltipDirective', () => {
 
     expect(windowEl.textContent.trim()).toBe('Test del tooltip');
     expect(windowEl.getAttribute('role')).toBe('tooltip');
-    expect(windowEl.getAttribute('id')).toBe('it-tooltip-1');
+
     expect(windowEl.parentNode).toBe(fixture.nativeElement);
-    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe('it-tooltip-1');
+
+    const id = windowEl.getAttribute('id');
+    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe(id);
 
     directive.triggerEventHandler('mouseleave', {});
     fixture.detectChanges();
@@ -149,10 +154,10 @@ describe('TooltipDirective', () => {
 
     const windowEl = getWindow(fixture.nativeElement);
 
-    expect(windowEl.getAttribute('id')).toBe('it-tooltip-2');
+   
     expect(windowEl.parentNode).toBe(fixture.nativeElement);
-    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe('it-tooltip-2');
-
+    const id = windowEl.getAttribute('id');
+    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe(id);
     fixture.componentInstance.tooltipDirective.dispose();
     fixture.detectChanges();
 

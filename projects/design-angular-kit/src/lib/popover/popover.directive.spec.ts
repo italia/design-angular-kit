@@ -94,9 +94,9 @@ describe('PopoverDirective', () => {
     expect(windowEl.classList.contains('bs-popover-right')).toBeTruthy();
     expect(windowEl.textContent.trim()).toBe('Popover da testareTest del popover');
     expect(windowEl.getAttribute('role')).toBe('tooltip');
-    expect(windowEl.getAttribute('id')).toBe('it-popover-0');
     expect(windowEl.parentNode).toBe(fixture.nativeElement);
-    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe('it-popover-0');
+    const id = windowEl.getAttribute('id');
+    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe(id);
 
     directive.triggerEventHandler('click', {});
     fixture.detectChanges();
@@ -120,9 +120,9 @@ describe('PopoverDirective', () => {
     expect(windowEl.classList.contains('bs-popover-right')).toBeTruthy();
     expect(windowEl.textContent.trim()).toBe('Popover da testareTest del popover');
     expect(windowEl.getAttribute('role')).toBe('tooltip');
-    expect(windowEl.getAttribute('id')).toBe('it-popover-1');
     expect(windowEl.parentNode).toBe(fixture.nativeElement);
-    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe('it-popover-1');
+    const id = windowEl.getAttribute('id');
+    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe(id);
 
     directive.triggerEventHandler('blur', {});
     fixture.detectChanges();
@@ -160,9 +160,9 @@ describe('PopoverDirective', () => {
 
     expect(windowEl.textContent.trim()).toBe('Popover da testareTest del popover');
     expect(windowEl.getAttribute('role')).toBe('tooltip');
-    expect(windowEl.getAttribute('id')).toBe('it-popover-2');
     expect(windowEl.parentNode).toBe(fixture.nativeElement);
-    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe('it-popover-2');
+    const id = windowEl.getAttribute('id');
+    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe(id);
 
     directive.triggerEventHandler('click', {});
     fixture.detectChanges();
@@ -180,10 +180,9 @@ describe('PopoverDirective', () => {
     fixture.detectChanges();
 
     const windowEl = getWindow(fixture.nativeElement);
-
-    expect(windowEl.getAttribute('id')).toBe('it-popover-3');
     expect(windowEl.parentNode).toBe(fixture.nativeElement);
-    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe('it-popover-3');
+    const id = windowEl.getAttribute('id');
+    expect(directive.nativeElement.getAttribute('aria-describedby')).toBe(id);
 
     fixture.componentInstance.popoverDirective.dispose();
     fixture.detectChanges();

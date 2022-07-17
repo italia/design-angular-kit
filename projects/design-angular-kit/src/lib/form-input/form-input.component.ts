@@ -142,8 +142,12 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   set readonly(value: boolean) { this._readonly = Util.coerceBooleanProperty(value); }
   private _readonly = false;
 
-  get value(): any { return this._inputElement.nativeElement.value; }
-  set value(value: any) { this._inputElement.nativeElement.value = value; }
+  get value(): any { return this._inputElement?.nativeElement?.value; }
+  set value(value: any) { 
+    if(this._inputElement) {
+      this._inputElement.nativeElement.value = value;
+    } 
+  }
 
   /**
    * Opzionale.

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, flush, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, flush, fakeAsync, waitForAsync } from '@angular/core/testing';
 
 import { FormInputComponent } from './form-input.component';
 import { FormsModule, NgModel } from '@angular/forms';
@@ -68,15 +68,15 @@ function sendInput(fixture: ComponentFixture<any>, element: HTMLInputElement, te
 
 describe('FormInputComponent', () => {
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule
       ],
       declarations: [
         FormInputComponent,
-        TextInputComponent,
         NumberInputComponent,
+        TextInputComponent,
         PasswordInputComponent,
         SearchInputComponent
       ]
@@ -84,51 +84,7 @@ describe('FormInputComponent', () => {
     .compileComponents();
   }));
 
-  describe('comportamenti base con type text', () => {
-    let fixture: ComponentFixture<TextInputComponent>;
-    let inputDebugElement: DebugElement;
-    let inputNativeElement: HTMLElement;
-    let inputInstance: FormInputComponent;
-    let testComponent: TextInputComponent;
-    let inputElement: HTMLInputElement;
-    let labelElement: HTMLLabelElement;
 
-    beforeEach(() => {
-      fixture = TestBed.createComponent(TextInputComponent);
-      fixture.detectChanges();
-
-      inputDebugElement = fixture.debugElement.query(By.directive(FormInputComponent));
-      inputNativeElement = inputDebugElement.nativeElement;
-      inputInstance = inputDebugElement.componentInstance;
-      testComponent = fixture.debugElement.componentInstance;
-      inputElement = <HTMLInputElement>inputNativeElement.querySelector('input');
-      labelElement = <HTMLLabelElement>inputNativeElement.querySelector('label');
-    });
-
-    it('dovrebbe modificare il testo della input', () => {
-      const defaultText = '';
-      expect(inputInstance.value).toBe(defaultText);
-      expect(testComponent.value).toBe(defaultText);
-      expect(inputElement.value).toBe(defaultText);
-
-      const newText = 'unit test';
-      sendInput(fixture, inputElement, newText);
-
-      expect(inputInstance.value).toBe(newText);
-      expect(testComponent.value).toBe(newText);
-      expect(inputElement.value).toBe(newText);
-    });
-
-    it('dovrebbe avere il suo NgModel con gli stati pristine, untouched, e valid all\'inizio', fakeAsync(() => {
-      flush();
-
-      const ngModel = inputDebugElement.injector.get<NgModel>(NgModel);
-
-      expect(ngModel.valid).toBe(true);
-      expect(ngModel.pristine).toBe(true);
-      expect(ngModel.untouched).toBe(true);
-    }));
-  });
 
   describe('comportamenti base con type number', () => {
     let fixture: ComponentFixture<NumberInputComponent>;
@@ -180,6 +136,52 @@ describe('FormInputComponent', () => {
     });
   });
 
+  
+  describe('comportamenti base con type text', () => {
+    let fixture: ComponentFixture<TextInputComponent>;
+    let inputDebugElement: DebugElement;
+    let inputNativeElement: HTMLElement;
+    let inputInstance: FormInputComponent;
+    let testComponent: TextInputComponent;
+    let inputElement: HTMLInputElement;
+    let labelElement: HTMLLabelElement;
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(TextInputComponent);
+      fixture.detectChanges();
+
+      inputDebugElement = fixture.debugElement.query(By.directive(FormInputComponent));
+      inputNativeElement = inputDebugElement.nativeElement;
+      inputInstance = inputDebugElement.componentInstance;
+      testComponent = fixture.debugElement.componentInstance;
+      inputElement = <HTMLInputElement>inputNativeElement.querySelector('input');
+      labelElement = <HTMLLabelElement>inputNativeElement.querySelector('label');
+    });
+
+    it('dovrebbe modificare il testo della input', () => {
+      const defaultText = '';
+      expect(inputInstance.value).toBe(defaultText);
+      expect(testComponent.value).toBe(defaultText);
+      expect(inputElement.value).toBe(defaultText);
+
+      const newText = 'unit test';
+      sendInput(fixture, inputElement, newText);
+
+      expect(inputInstance.value).toBe(newText);
+      expect(testComponent.value).toBe(newText);
+      expect(inputElement.value).toBe(newText);
+    });
+
+    it('dovrebbe avere il suo NgModel con gli stati pristine, untouched, e valid all\'inizio', fakeAsync(() => {
+      flush();
+
+      const ngModel = inputDebugElement.injector.get<NgModel>(NgModel);
+
+      expect(ngModel.valid).toBe(true);
+      expect(ngModel.pristine).toBe(true);
+      expect(ngModel.untouched).toBe(true);
+    }));
+  });
   describe('comportamenti base con type password', () => {
     let fixture: ComponentFixture<PasswordInputComponent>;
     let inputDebugElement: DebugElement;
