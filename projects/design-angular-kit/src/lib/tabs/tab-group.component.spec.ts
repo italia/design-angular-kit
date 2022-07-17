@@ -128,7 +128,7 @@ class AsyncTabsComponent implements OnInit {
 class TabGroupWithSimpleApiComponent {
   otherLabel = 'Fruit';
   otherContent = 'Apples, grapes';
-  @ViewChild('legumes') legumes: any;
+  @ViewChild('legumes', /* TODO: add static flag */ {}) legumes: any;
 }
 
 describe('TabGroupComponent', () => {

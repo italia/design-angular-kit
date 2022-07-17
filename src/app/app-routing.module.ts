@@ -6,23 +6,23 @@ const routes: Routes = [
   { path: '', redirectTo: 'info', pathMatch: 'full' },
   { path: 'info', component: RouterDispatcherComponent, children: [
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-    { path: 'welcome', loadChildren: 'src/app/welcome/welcome.module#WelcomeModule' }
+    { path: 'welcome', loadChildren: () => import('src/app/welcome/welcome.module').then(m => m.WelcomeModule) }
   ]},
   { path: 'componenti', component: RouterDispatcherComponent, children: [
     { path: '', redirectTo: 'checkbox', pathMatch: 'full' },
-    { path: 'checkbox', loadChildren: 'src/app/checkbox/checkbox.module#CheckboxModule' },
-    { path: 'progress-bar', loadChildren: 'src/app/progress-bar/progress-bar.module#ProgressBarModule' },
-    { path: 'toggle', loadChildren: 'src/app/toggle/toggle.module#ToggleModule' },
-    { path: 'popover', loadChildren: 'src/app/popover/popover.module#PopoverModule' },
-    { path: 'radio', loadChildren: 'src/app/radio/radio.module#RadioModule' },
-    { path: 'breadcrumb', loadChildren: 'src/app/breadcrumb/breadcrumb.module#BreadcrumbModule' },
-    { path: 'tabs', loadChildren: 'src/app/tabs/tabs.module#TabsModule' },
-    { path: 'tooltip', loadChildren: 'src/app/tooltip/tooltip.module#TooltipModule' },
-    { path: 'button', loadChildren: 'src/app/button/button.module#ButtonModule' },
-    { path: 'badge', loadChildren: 'src/app/badge/badge.module#BadgeModule' },
-    { path: 'collapse', loadChildren: 'src/app/collapse/collapse.module#CollapseModule' },
-    { path: 'form-input', loadChildren: 'src/app/form-input/form-input.module#FormInputModule' },
-    { path: 'dropdown', loadChildren: 'src/app/dropdown/dropdown.module#DropdownModule' },
+    { path: 'checkbox', loadChildren: () => import('src/app/checkbox/checkbox.module').then(m => m.CheckboxModule) },
+    { path: 'progress-bar', loadChildren: () => import('src/app/progress-bar/progress-bar.module').then(m => m.ProgressBarModule) },
+    { path: 'toggle', loadChildren: () => import('src/app/toggle/toggle.module').then(m => m.ToggleModule) },
+    { path: 'popover', loadChildren: () => import('src/app/popover/popover.module').then(m => m.PopoverModule) },
+    { path: 'radio', loadChildren: () => import('src/app/radio/radio.module').then(m => m.RadioModule) },
+    { path: 'breadcrumb', loadChildren: () => import('src/app/breadcrumb/breadcrumb.module').then(m => m.BreadcrumbModule) },
+    { path: 'tabs', loadChildren: () => import('src/app/tabs/tabs.module').then(m => m.TabsModule) },
+    { path: 'tooltip', loadChildren: () => import('src/app/tooltip/tooltip.module').then(m => m.TooltipModule) },
+    { path: 'button', loadChildren: () => import('src/app/button/button.module').then(m => m.ButtonModule) },
+    { path: 'badge', loadChildren: () => import('src/app/badge/badge.module').then(m => m.BadgeModule) },
+    { path: 'collapse', loadChildren: () => import('src/app/collapse/collapse.module').then(m => m.CollapseModule) },
+    { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
+    { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
   ]}
 ];
 

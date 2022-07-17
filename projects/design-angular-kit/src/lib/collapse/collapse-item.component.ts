@@ -9,7 +9,7 @@ let identifier = 0;
   styleUrls: ['./collapse-item.component.css']
 })
 export class CollapseItemComponent {
-  @ViewChild(CollapseDirective) readonly directive: CollapseDirective;
+  @ViewChild(CollapseDirective, { static: true }) readonly directive: CollapseDirective;
 
   id = `collapse-item-${identifier++}`;
   headingId = `${this.id}-heading`;

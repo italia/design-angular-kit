@@ -18,7 +18,7 @@ import { DesignAngularKitModule } from '../design-angular-kit.module';
   </button>`
 })
 class SingleTooltipComponent {
-  @ViewChild('tooltipDirective') tooltipDirective: TooltipDirective;
+  @ViewChild('tooltipDirective', /* TODO: add static flag */ {}) tooltipDirective: TooltipDirective;
   tooltipContent = 'Test del tooltip';
   tooltipPlacement = 'right';
   tooltipDisableFlag = false;

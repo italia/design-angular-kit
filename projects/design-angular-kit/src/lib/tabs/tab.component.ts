@@ -68,7 +68,7 @@ export class TabComponent implements OnChanges, OnDestroy {
    */
   isActive = false;
 
-  @ViewChild(TemplateRef) _implicitContent: TemplateRef<any>;
+  @ViewChild(TemplateRef, { static: true }) _implicitContent: TemplateRef<any>;
 
   ngOnDestroy(): void {
     this._disableChange.complete();

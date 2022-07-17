@@ -30,7 +30,7 @@ export class FormInputChange {
   }]
 })
 export class FormInputComponent implements AfterContentInit, ControlValueAccessor {
-  @ViewChild('inputElement')
+  @ViewChild('inputElement', { static: true })
   private _inputElement: ElementRef;
 
   /**

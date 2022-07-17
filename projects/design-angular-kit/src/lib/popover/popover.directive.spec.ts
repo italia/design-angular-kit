@@ -18,7 +18,7 @@ import { DesignAngularKitModule } from '../design-angular-kit.module';
   </button>`
 })
 class SinglePopoverComponent {
-  @ViewChild('popoverDirective') popoverDirective: PopoverDirective;
+  @ViewChild('popoverDirective', /* TODO: add static flag */ {}) popoverDirective: PopoverDirective;
   popoverContent = 'Test del popover';
   popoverTitle = 'Popover da testare';
   popoverTrigger = 'click';

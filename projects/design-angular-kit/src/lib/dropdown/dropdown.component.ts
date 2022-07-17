@@ -20,10 +20,10 @@ const PLACEMENT_VALUE = 'bottom-start';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent {
-  @ViewChild('dropdownMenu')
+  @ViewChild('dropdownMenu', { static: true })
   private _dropdownMenu: ElementRef;
 
-  @ViewChild('dropdownButton')
+  @ViewChild('dropdownButton', { static: true })
   private _dropdownButton: ElementRef;
 
   id = `dropdown-${identifier++}`;

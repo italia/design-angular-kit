@@ -34,7 +34,7 @@ class ToggleCollapseComponent {
   `
 })
 class EmitterCollapseComponent {
-  @ViewChild(CollapseDirective) readonly directive: CollapseDirective;
+  @ViewChild(CollapseDirective, /* TODO: add static flag */ {}) readonly directive: CollapseDirective;
 
   isShown = false;
 }
