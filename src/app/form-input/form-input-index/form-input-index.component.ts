@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as Documentation from '../../../assets/documentation.json';
+import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-form-input-index',

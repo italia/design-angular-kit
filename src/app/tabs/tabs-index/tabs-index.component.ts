@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import * as Documentation from '../../../assets/documentation.json';
+import { Component } from '@angular/core';
+import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-tabs-index',

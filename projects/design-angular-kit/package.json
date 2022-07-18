@@ -22,7 +22,7 @@
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
     "@angular/forms": "^10.0.0",
-    "bootstrap-italia": "^0.9.1",
+    "bootstrap-italia": "1.6.4",
     "io-ts": "^1.2.1"
   }
 }

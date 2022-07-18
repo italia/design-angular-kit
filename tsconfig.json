@@ -10,6 +10,8 @@
     "declaration": false,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "target": "es2015",
     "typeRoots": [
