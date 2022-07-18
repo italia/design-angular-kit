@@ -28,7 +28,6 @@
             ],
             "styles": [
               "node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css",
-              "node_modules/bootstrap-italia/dist/fonts",
               "src/styles.scss"
             ],
             "scripts": [
