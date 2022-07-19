@@ -32,7 +32,7 @@ export class IconComponent {
    */
   @Input() position: HorizontalAlign = HorizontalAlign.right;
 
-  private _verticalAlign: VerticalAlign;
+  private _verticalAlign: VerticalAlign =  VerticalAlign.middle;
 
   /**
    * Allineamento verticale dell'icona rispetto al contenitore: 'top' | 'middle' | 'bottom'

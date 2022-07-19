@@ -16,6 +16,8 @@ export * from './lib/collapse/collapse.directive';
 export * from './lib/collapse/collapse-item.component';
 export * from './lib/collapse/collapse-group.component';
 export * from './lib/form-input/form-input.component';
+export * from './lib/form-input/it-prefix.directive';
+export * from './lib/form-input/it-suffix.directive';
 export * from './lib/dropdown/dropdown.component';
 export * from './lib/dropdown/dropdown-item.component';
 export * from './lib/dropdown/dropdown-header.component';
@@ -24,4 +26,5 @@ export * from './lib/breadcrumb/breadcrumb.component';
 export * from './lib/breadcrumb/breadcrumb-item.component';
 export * from './lib/tabs/tab-group.component';
 export * from './lib/icon/icon.component';
+
 export * from './lib/design-angular-kit.module';

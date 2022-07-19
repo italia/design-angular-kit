@@ -25,6 +25,8 @@ import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component'
 import { TabGroupComponent } from './tabs/tab-group.component';
 import { TabComponent } from './tabs/tab.component';
 import { IconComponent } from './icon/icon.component';
+import { ItPrefix } from './form-input/it-prefix.directive';
+import { itSuffix } from './form-input/it-suffix.directive';
 
 @NgModule({
   imports: [
@@ -55,7 +57,9 @@ import { IconComponent } from './icon/icon.component';
     DropdownDividerComponent,
     BreadcrumbComponent,
     BreadcrumbItemComponent,
-    IconComponent
+    IconComponent,
+    ItPrefix,
+    itSuffix
   ],
   exports: [
     CheckboxComponent,
@@ -79,7 +83,9 @@ import { IconComponent } from './icon/icon.component';
     DropdownDividerComponent,
     BreadcrumbComponent,
     BreadcrumbItemComponent,
-    IconComponent
+    IconComponent,
+    ItPrefix,
+    itSuffix
   ],
   entryComponents: [TooltipComponent, PopoverComponent]
 })

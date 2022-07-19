@@ -1,22 +1,45 @@
 <div class="form-group">
-  <i *ngIf="icon" [class]="icon" [ngClass]="{ 'ico-prefix': true }"></i>
-  <input #inputElement
-    (focus)="onFocus()"
-    (blur)="onBlur()"
-    (change)="onChange()"
-    (input)="onInput()"
-    [type]="type"
-    [id]="id"
-    [attr.name]="name"
-    [disabled]="disabled"
-    [readonly]="readonly"
-    [placeholder]="placeholder"
-    [ngClass]="{
-      'form-control' : !readonly,
-      'form-control-plaintext' : readonly,
-      'autocomplete' : isAutocompletable()
-    }"
-    [attr.aria-labelledby]="note ? noteId : undefined"/>
+  <div class="input-group">
+    <div class="input-group-prepend" *ngIf="_prefixChildren.length">
+      <div class="input-group-text">
+        <ng-content select = "[itPrefix]"></ng-content>
+      </div>
+    </div>
+
+      <label [attr.for]="id" [class.active] = "isLabelActive">
+        {{label}}
+      </label>
+
+      <input #inputElement
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        (change)="onChange()"
+        (input)="onInput()"
+        [type]="type"
+        [id]="id"
+        [attr.name]="name"
+        [disabled]="disabled"
+        [readonly]="readonly"
+        [placeholder]="placeholder"
+        [ngClass]="{
+          'form-control' : !readonly,
+          'form-control-plaintext' : readonly,
+          'autocomplete' : isAutocompletable()
+        }"
+      [attr.aria-labelledby]="note ? noteId : undefined"/>
+
+      <small [id]="noteId()" class="form-text text-muted" *ngIf="note">
+        {{note}}
+      </small>
+
+      <div  class="input-group-append" *ngIf="_suffixChildren.length">
+        <ng-content select = "[itSuffix]"></ng-content>
+      </div>
+  </div>
+
+
+
+
   <span class="btn-eye" 
     *ngIf="isPasswordMode"
     (click)="isPasswordVisible = !isPasswordVisible"
@@ -25,15 +48,12 @@
       'eye-off' : isPasswordVisible
     }">
   </span>
+
+
   <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">
     <li *ngFor="let entry of getRelatedEntries()" (click)="onEntryClick(entry)">
       {{entry}}
     </li>
   </ul>
-  <label [attr.for]="id" [ngClass]="{ 'active' : isLabelActive }">
-    {{label}}
-  </label>
-  <small [id]="noteId()" class="form-text text-muted" *ngIf="note">
-    {{note}}
-  </small>
+
 </div>
