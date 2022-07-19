@@ -111,13 +111,13 @@ describe('Dropdown', () => {
     let isIconSectionPresent = await page.isIconSectionPresent();
     expect(isIconSectionPresent).toBeFalsy();
 
-    await page.clickFavoriteIconItemRadio();
+    await page.clickStarIconItemRadio();
 
     isIconSectionPresent = await page.isIconSectionPresent();
     let dropdownItemIconClasses = await page.getDropdownItemIconClasses();
-    const hasFavoriteIcon = dropdownItemIconClasses.indexOf(page.FAVORITE_ICON_CLASS) > -1;
+    const hasStarIcon = dropdownItemIconClasses.indexOf(page.STAR_ICON_CLASS) > -1;
     expect(isIconSectionPresent).toBeTruthy();
-    expect(hasFavoriteIcon).toBeTruthy();
+    expect(hasStarIcon).toBeTruthy();
 
     await page.clickLinkIconItemRadio();
 
@@ -129,7 +129,7 @@ describe('Dropdown', () => {
   });
 
   it('dovrebbe impostare la posizione della icona di un item della dropdown', async () => {
-    await page.clickFavoriteIconItemRadio();
+    await page.clickStarIconItemRadio();
 
     await page.clickIconLeftPosition();
     let dropdownItemClasses = await page.getDropdownItemClasses();

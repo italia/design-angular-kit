@@ -13,7 +13,7 @@ export class BreadcrumbExampleComponent {
     this._icon = value;
     this.items.forEach(item => item.icon = this._icon);
   }
-  private _icon = 'it-favorite';
+  private _icon = 'it-star-outline';
 
 
   separator = '/';
@@ -39,7 +39,7 @@ export class BreadcrumbExampleComponent {
   change() {
     this.separator = this.separator === '/' ? '>' : '/';
     this.items.forEach(item => {
-      item.icon = item.icon === 'it-favorite' ? 'it-lock' : 'it-favorite';
+      item.icon = item.icon === 'it-star-outline' ? 'it-lock' : 'it-star-outline';
     });
   }
 

@@ -6,7 +6,7 @@ import { BreadcrumbItemComponent } from './breadcrumb-item.component';
 import { By } from '@angular/platform-browser';
 
 const URL = 'http://www.google.com';
-const ICON = 'it-favorite';
+const ICON = 'it-star-outline';
 const LABEL = 'Label';
 
 

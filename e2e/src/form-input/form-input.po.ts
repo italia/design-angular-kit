@@ -20,7 +20,7 @@ export class FormInputPage {
 
 
   private readonly ID_RADIO_ICON_NONE = 'radio-7';
-  private readonly ID_RADIO_ICON_FAVORITE = 'radio-8';
+  private readonly ID_RADIO_ICON_STAR = 'radio-8';
   private readonly ID_RADIO_ICON_LINK = 'radio-9';
 
   // [for="checkbox-0"]
@@ -57,7 +57,7 @@ export class FormInputPage {
   private readonly CSS_SELECTOR_LABEL_RADIO_ICON_NONE = this.getLabelForAttribute(this.ID_RADIO_ICON_NONE);
 
   // [for="radio-8"]
-  private readonly CSS_SELECTOR_LABEL_RADIO_ICON_FAVORITE = this.getLabelForAttribute(this.ID_RADIO_ICON_FAVORITE);
+  private readonly CSS_SELECTOR_LABEL_RADIO_ICON_STAR = this.getLabelForAttribute(this.ID_RADIO_ICON_STAR);
 
   // [for="radio-9"]
   private readonly CSS_SELECTOR_LABEL_RADIO_ICON_LINK = this.getLabelForAttribute(this.ID_RADIO_ICON_LINK);
@@ -127,8 +127,8 @@ export class FormInputPage {
     await element(by.css(this.CSS_SELECTOR_LABEL_RADIO_ICON_NONE)).click();
   }
 
-  async clickFavoriteIconRadio() {
-    await element(by.css(this.CSS_SELECTOR_LABEL_RADIO_ICON_FAVORITE)).click();
+  async clickStarIconRadio() {
+    await element(by.css(this.CSS_SELECTOR_LABEL_RADIO_ICON_STAR)).click();
   }
 
   async clickLinkIconRadio() {

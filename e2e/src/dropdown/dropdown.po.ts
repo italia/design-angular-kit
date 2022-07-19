@@ -14,7 +14,7 @@ export class DropdownPage {
   public readonly ITEM_DISABLED_CLASS = 'disabled';
   public readonly ITEM_LARGE_CLASS = 'large';
 
-  public readonly FAVORITE_ICON_CLASS = 'it-star-outline';
+  public readonly STAR_ICON_CLASS = 'it-star-outline';
   public readonly LINK_ICON_CLASS = 'it-link';
 
   public readonly DROPDOWN_ITEM_LEFT_ICON_CLASS = 'left-icon';
@@ -69,8 +69,8 @@ export class DropdownPage {
   private readonly NULL_ICON_ITEM_RADIO_ID = 'radio-15';
   private readonly NULL_ICON_ITEM_RADIO_LABEL = this.getLabelForAttribute(this.NULL_ICON_ITEM_RADIO_ID);
 
-  private readonly FAVORITE_ICON_ITEM_RADIO_ID = 'radio-16';
-  private readonly FAVORITE_ICON_ITEM_RADIO_LABEL = this.getLabelForAttribute(this.FAVORITE_ICON_ITEM_RADIO_ID);
+  private readonly STAR_ICON_ITEM_RADIO_ID = 'radio-16';
+  private readonly STAR_ICON_ITEM_RADIO_LABEL = this.getLabelForAttribute(this.STAR_ICON_ITEM_RADIO_ID);
 
   private readonly LINK_ICON_ITEM_RADIO_ID = 'radio-17';
   private readonly LINK_ICON_ITEM_RADIO_LABEL = this.getLabelForAttribute(this.LINK_ICON_ITEM_RADIO_ID);
@@ -168,8 +168,8 @@ export class DropdownPage {
     await this.clickOnElement(this.NULL_ICON_ITEM_RADIO_LABEL);
   }
 
-  async clickFavoriteIconItemRadio() {
-    await this.clickOnElement(this.FAVORITE_ICON_ITEM_RADIO_LABEL);
+  async clickStarIconItemRadio() {
+    await this.clickOnElement(this.STAR_ICON_ITEM_RADIO_LABEL);
   }
 
   async clickLinkIconItemRadio() {

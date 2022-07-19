@@ -41,7 +41,7 @@ class SingleDropdownComponent {
     {
       link: 'https://www.google.com', active: false,
       disabled: false, large: true,
-      icon: 'it-favorite', iconPosition: 'right',
+      icon: 'it-star-outline', iconPosition: 'right',
       text: 'Item 1'
     },
     {
