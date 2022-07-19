@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {IconBackgroundColorEnum, IconColorEnum, IconSizeEnum} from '../enums/icons.enum';
-import { IconPosition, ICON_POSITIONS } from '../models/IconPosition';
+import { HorizontalAlign, VerticalAlign, VERTICAL_ALIGN } from '../models/Alignment';
 
 @Component({
   selector: 'it-icon',
@@ -27,7 +27,27 @@ export class IconComponent {
   @Input() padded = false;
   @Input() expand = false;
 
-  @Input() position = ICON_POSITIONS.RIGHT;
+  /**
+   * Allineamento orizzontale dell'icona rispetto al contenitor: 'left' | 'right'
+   */
+  @Input() position: HorizontalAlign = HorizontalAlign.right;
+
+  private _verticalAlign: VerticalAlign;
+
+  /**
+   * Allineamento verticale dell'icona rispetto al contenitore: 'top' | 'middle' | 'bottom'
+   */
+  get verticalAlign() {
+    return this._verticalAlign;
+  }
+
+  @Input() set verticalAlign(value: any) {
+    if (VERTICAL_ALIGN.is(value)) {
+      this._verticalAlign = value as VerticalAlign;
+    } else {
+      this._verticalAlign = VerticalAlign.middle;
+    }
+  }
 
   svgPath: string = null;
 

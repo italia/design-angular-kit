@@ -1,6 +1,6 @@
 import { Component, Input} from '@angular/core';
+import { HorizontalAlign, HORIZONTAL_ALIGN } from '../models/Alignment';
 import { Util } from '../util/util';
-import { IconPosition, ICON_POSITIONS } from '../models/IconPosition';
 
 let identifier = 0;
 
@@ -65,15 +65,15 @@ export class DropdownItemComponent {
    * Può assumere valori right o left.
    */
   @Input()
-  get iconPosition(): any { return this._iconPosition; }
+  get iconPosition(): HorizontalAlign { return this._iconPosition; }
   set iconPosition(value: any) {
-    if (IconPosition.is(value)) {
-      this._iconPosition = value;
+    if (HORIZONTAL_ALIGN.is(value)) {
+      this._iconPosition = value as HorizontalAlign;
     } else {
-      this._iconPosition = ICON_POSITIONS.RIGHT;
+      this._iconPosition = HorizontalAlign.right;
     }
   }
-  private _iconPosition = ICON_POSITIONS.RIGHT;
+  private _iconPosition = HorizontalAlign.right;
 
   get dropdownItemClass() {
     return `list-item ${this.iconPosition}-icon`;
