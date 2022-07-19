@@ -1,0 +1,8 @@
+<ng-container *ngIf = "svgPath">
+  <svg
+    class="icon {{size}} icon-{{color}} {{ bgColor ? 'bg-' + bgColor : '' }} {{position}}" 
+    [class.icon-expand]="expand" [class.icon-padded]="padded">
+
+    <use [attr.xlink:href]="svgPath" [attr.href]="svgPath"></use>
+  </svg> 
+</ng-container>

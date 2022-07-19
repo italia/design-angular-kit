@@ -6,12 +6,13 @@
       'large' : large, 
       'active' : active,
       'disabled' : disabled,
-      'disabled-item-link' : disabled
+      'disabled-item-link' : disabled,
+      'left-icon': iconPosition === 'left',
+      'right-icon': iconPosition === 'right'
     }">
-    <i [class]="iconClass" aria-hidden="true" *ngIf="icon && iconPosition === 'left'"></i>
     <span>
       <ng-content></ng-content>
     </span>
-    <i [class]="iconClass" aria-hidden="true" *ngIf="icon && iconPosition === 'right'"></i>
+    <it-icon [icon]="icon"></it-icon>
   </a>
 </li>

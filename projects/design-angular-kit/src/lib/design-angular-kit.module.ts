@@ -24,6 +24,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component';
 import { TabGroupComponent } from './tabs/tab-group.component';
 import { TabComponent } from './tabs/tab.component';
+import { IconComponent } from './icon/icon.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { TabComponent } from './tabs/tab.component';
     DropdownHeaderComponent,
     DropdownDividerComponent,
     BreadcrumbComponent,
-    BreadcrumbItemComponent
+    BreadcrumbItemComponent,
+    IconComponent
   ],
   exports: [
     CheckboxComponent,
@@ -76,7 +78,8 @@ import { TabComponent } from './tabs/tab.component';
     DropdownHeaderComponent,
     DropdownDividerComponent,
     BreadcrumbComponent,
-    BreadcrumbItemComponent
+    BreadcrumbItemComponent,
+    IconComponent
   ],
   entryComponents: [TooltipComponent, PopoverComponent]
 })

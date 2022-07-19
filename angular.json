@@ -24,14 +24,16 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*", "input": "node_modules/bootstrap-italia/dist/svg", "output": "bootstrap-italia/dist/svg" },
+              { "glob": "**/*", "input": "node_modules/bootstrap-italia/dist/fonts", "output": "bootstrap-italia/dist/fonts" },
+              { "glob": "**/*", "input": "node_modules/bootstrap-italia/dist/css", "output": "bootstrap-italia/dist/css" }
             ],
             "styles": [
               "node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css",
               "src/styles.scss"
             ],
-            "scripts": [
-            ],
+            "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,

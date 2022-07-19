@@ -1,0 +1,33 @@
+.icon {
+  &.icon-default {
+    fill: var(--default) !important;
+  }
+
+  &.icon-primary {
+    fill: var(--primary) !important;
+  }
+
+  &.icon-secondary {
+    fill: var(--secondary) !important;
+  }
+
+  &.icon-info {
+    fill: var(--info) !important;
+  }
+
+  &.icon-success {
+    fill: var(--success) !important;
+  }
+
+  &.icon-warning {
+    fill: var(--warning) !important;
+  }
+
+  &.icon-danger {
+    fill: var(--danger) !important;
+  }
+
+  &.icon-disable {
+    fill: var(--disable) !important;
+  }
+}

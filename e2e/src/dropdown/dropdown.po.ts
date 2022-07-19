@@ -14,7 +14,7 @@ export class DropdownPage {
   public readonly ITEM_DISABLED_CLASS = 'disabled';
   public readonly ITEM_LARGE_CLASS = 'large';
 
-  public readonly FAVORITE_ICON_CLASS = 'it-favorite';
+  public readonly FAVORITE_ICON_CLASS = 'it-star-outline';
   public readonly LINK_ICON_CLASS = 'it-link';
 
   public readonly DROPDOWN_ITEM_LEFT_ICON_CLASS = 'left-icon';
