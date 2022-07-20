@@ -1,14 +1,16 @@
 <div class="card w-100 mt-2">
     <div class="card-body">
       <h4 class="card-title">Interazione con Form Input</h4>
-  
       <div class="card-text">
-        <it-input id="interactive-input-0" name="interactive-input-example" [label]="label" [placeholder]="placeholder" [note]="note"
-          [disabled]="disabled" [readonly]="readOnly" [type]="type" [icon]="icon" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
-          <it-icon icon="it-link" itPrefix = "action"></it-icon>
-          <button class="btn" type="button" id="button-2" itSuffix>Invio</button>
-
+        <it-input id="interactive-input-0" name="interactive-input-example-1" [label]="label" [placeholder]="placeholder" [note]="note"
+          [disabled]="disabled" [readonly]="readOnly" [icon] = "icon" [type]="type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
         </it-input>
+
+        <it-input id="interactive-input-1" name="interactive-input-example-1" [label]="label" [placeholder]="placeholder" [note]="note"
+        [disabled]="disabled" [readonly]="readOnly" [type] = "type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
+        <it-icon *ngIf = "icon" [icon]="icon" itTextPrefix></it-icon>
+        <button class = "btn btn-primary" itSuffix>Invia</button>
+      </it-input>
   
         <div class="row">
           <div class="form-check col-4">

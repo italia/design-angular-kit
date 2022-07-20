@@ -1,13 +1,15 @@
 import {
   Component, Input, ChangeDetectionStrategy, forwardRef,
-  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, ContentChildren, QueryList
+  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, ContentChildren, QueryList, AfterContentChecked
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { merge } from 'rxjs';
 import { InputType, INPUT_TYPES } from '../models/InputType';
 import { Util } from '../util/util';
-import { ItPrefix } from './it-prefix.directive';
-import { itSuffix } from './it-suffix.directive';
+import { ItPrefixDirective } from './it-prefix.directive';
+import { ItSuffixDirective } from './it-suffix.directive';
+import { ItTextPrefixDirective } from './it-text-prefix.directive';
+import { ItTextSuffixDirective } from './it-text-suffix.directive';
 
 let identifier = 0;
 
@@ -34,13 +36,11 @@ export class FormInputChange {
 })
 export class FormInputComponent implements AfterContentInit, ControlValueAccessor {
 
-  @ContentChildren(ItPrefix) _prefixChildren: QueryList<ItPrefix>;
-  @ContentChildren(ItPrefix) _textPefixChildren: QueryList<ItPrefix>;
+  @ContentChildren(ItPrefixDirective, {descendants: true}) _prefixChildren: QueryList<ItPrefixDirective>;
+  @ContentChildren(ItTextPrefixDirective, {descendants: true}) _textPrefixChildren: QueryList<ItTextPrefixDirective>;
 
-  @ContentChildren(itSuffix) _suffixChildren: QueryList<itSuffix>;
-
-  prefixChildrenType = 'text';
-  suffixChildrenType = 'action';
+  @ContentChildren(ItSuffixDirective, {descendants: true}) _suffixChildren: QueryList<ItSuffixDirective>;
+  @ContentChildren(ItTextSuffixDirective, {descendants: true}) _textSuffixChildren: QueryList<ItTextSuffixDirective>;
 
 
   @ViewChild('inputElement', { static: true })
@@ -239,25 +239,17 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
 
   constructor(private _changeDetector: ChangeDetectorRef) { }
 
+
   ngAfterContentInit(): void {
     this._isInitialized = true;
 
-    this.evaluateInputGroupType();
     // Run change detection if the suffix or prefix changes.
-    merge(this._prefixChildren.changes, this._suffixChildren.changes).subscribe(() => {
-      this.evaluateInputGroupType();
+    merge(this._prefixChildren.changes, this._suffixChildren.changes,
+          this._textPrefixChildren.changes, this._textSuffixChildren.changes
+    ).subscribe(() => {
       this._changeDetector.markForCheck();
     });
     
-  }
-
-  evaluateInputGroupType(): void {
-    if(this._prefixChildren.length) {
-      this.prefixChildrenType = this._prefixChildren.get(0).type;
-    }
-    if(this._suffixChildren.length) {
-      this.suffixChildrenType = this._suffixChildren.get(0).type;
-    }
   }
 
   onChange() {

@@ -1,10 +1,31 @@
 <div class="form-group">
   <div class="input-group">
-    <div class="input-group-prepend" *ngIf="_prefixChildren.length">
-      <div class="input-group-text">
-        <ng-content select = "[itPrefix]"></ng-content>
-      </div>
-    </div>
+      <ng-container *ngIf="_textPrefixChildren.length || _prefixChildren.length || icon">
+        <div class="input-group-prepend">
+
+          <!-- Gli elementi figli di "it-input" con la direttiva "itTextPrefix"  -->
+          <ng-container *ngIf="_textPrefixChildren.length">
+            <div class="input-group-text" >
+              <ng-content select = "[itTextPrefix]"></ng-content>
+            </div>
+          </ng-container>
+         
+          <ng-container *ngIf="_prefixChildren.length">
+            <!-- Gli elementi figli di "it-input" con la direttiva "itPrefix"  -->
+            <ng-content select = "[itPrefix]"></ng-content>
+          </ng-container>
+
+          <ng-container *ngIf="icon">
+            <div class="input-group-text" >
+              <it-icon [icon] = "icon"></it-icon>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
+    
+
+     
 
       <label [attr.for]="id" [class.active] = "isLabelActive">
         {{label}}
@@ -32,9 +53,23 @@
         {{note}}
       </small>
 
-      <div  class="input-group-append" *ngIf="_suffixChildren.length">
-        <ng-content select = "[itSuffix]"></ng-content>
-      </div>
+      <ng-container *ngIf="_suffixChildren.length || _textSuffixChildren.length">
+        <div  class="input-group-append">
+          <!-- Gli elementi figli di "it-input" con la direttiva "itTextSuffix"  -->
+          <ng-container *ngIf="_textSuffixChildren.length">
+            <div class="input-group-text" >
+              <ng-content select = "[itTextSuffix]"></ng-content>
+            </div>
+          </ng-container>
+         
+          <ng-container *ngIf="_suffixChildren.length">
+            <!-- Gli elementi figli di "it-input" con la direttiva "itSuffix"  -->
+            <ng-content select = "[itSuffix]"></ng-content>
+          </ng-container>
+        </div>
+      </ng-container>
+      
+    
   </div>
 
 

@@ -25,8 +25,10 @@ import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component'
 import { TabGroupComponent } from './tabs/tab-group.component';
 import { TabComponent } from './tabs/tab.component';
 import { IconComponent } from './icon/icon.component';
-import { ItPrefix } from './form-input/it-prefix.directive';
-import { itSuffix } from './form-input/it-suffix.directive';
+import { ItPrefixDirective } from './form-input/it-prefix.directive';
+import { ItSuffixDirective } from './form-input/it-suffix.directive';
+import { ItTextPrefixDirective } from './form-input/it-text-prefix.directive';
+import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
 
 @NgModule({
   imports: [
@@ -58,8 +60,10 @@ import { itSuffix } from './form-input/it-suffix.directive';
     BreadcrumbComponent,
     BreadcrumbItemComponent,
     IconComponent,
-    ItPrefix,
-    itSuffix
+    ItPrefixDirective,
+    ItSuffixDirective,
+    ItTextPrefixDirective,
+    ItTextSuffixDirective
   ],
   exports: [
     CheckboxComponent,
@@ -84,8 +88,10 @@ import { itSuffix } from './form-input/it-suffix.directive';
     BreadcrumbComponent,
     BreadcrumbItemComponent,
     IconComponent,
-    ItPrefix,
-    itSuffix
+    ItPrefixDirective,
+    ItSuffixDirective,
+    ItTextPrefixDirective,
+    ItTextSuffixDirective
   ],
   entryComponents: [TooltipComponent, PopoverComponent]
 })
