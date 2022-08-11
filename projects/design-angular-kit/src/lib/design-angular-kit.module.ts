@@ -29,11 +29,14 @@ import { ItPrefixDirective } from './form-input/it-prefix.directive';
 import { ItSuffixDirective } from './form-input/it-suffix.directive';
 import { ItTextPrefixDirective } from './form-input/it-text-prefix.directive';
 import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
+import { NgPopoverComponent } from './ng-popover/ng-popover.component';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgbPopoverModule
   ],
   declarations: [
     CheckboxComponent,
@@ -63,7 +66,8 @@ import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
     ItPrefixDirective,
     ItSuffixDirective,
     ItTextPrefixDirective,
-    ItTextSuffixDirective
+    ItTextSuffixDirective,
+    NgPopoverComponent
   ],
   exports: [
     CheckboxComponent,
@@ -91,7 +95,8 @@ import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
     ItPrefixDirective,
     ItSuffixDirective,
     ItTextPrefixDirective,
-    ItTextSuffixDirective
+    ItTextSuffixDirective,
+    NgPopoverComponent
   ],
   entryComponents: [TooltipComponent, PopoverComponent]
 })

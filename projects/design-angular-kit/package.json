@@ -16,6 +16,10 @@
     "url": "https://github.com/italia/design-angular-kit.git"
   },
   "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^10",
+    "@popperjs/core": "^2.10.2",
+    "bootstrap": "^4.5.0",
+    "@angular/localize": "^12.2.16",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
