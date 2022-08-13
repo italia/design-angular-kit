@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'it-model-driven-validation-example',
@@ -8,9 +8,9 @@ import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 })
 export class ModelDrivenValidationExampleComponent {
 
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: UntypedFormBuilder) {
     const validators = [
       Validators.required,
       Validators.minLength(3),
@@ -25,7 +25,7 @@ export class ModelDrivenValidationExampleComponent {
   value = '';
   savedValue = undefined;
 
-  save(form: FormGroup) {
+  save(form: UntypedFormGroup) {
     this.savedValue = form.value.myInput;
   }
 
