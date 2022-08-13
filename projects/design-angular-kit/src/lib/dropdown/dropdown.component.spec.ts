@@ -8,6 +8,7 @@ import { DropdownItemComponent } from './dropdown-item.component';
 import { DropdownDividerComponent } from './dropdown-divider.component';
 import { DropdownHeaderComponent } from './dropdown-header.component';
 import { THEME_COLORS } from '../models/ThemeColor';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   template: `
@@ -70,6 +71,7 @@ describe('DropdownComponent', () => {
         DropdownDividerComponent,
         DropdownHeaderComponent,
         SingleDropdownComponent,
+        IconComponent
       ]
     });
 
@@ -217,7 +219,7 @@ describe('DropdownComponent', () => {
       secondItem.iconPosition = NEW_POSITION;
       fixture.detectChanges();
 
-      secondDropdownItemIcon = dropdownItemDebugElements[1].query(By.css('i')).nativeElement;
+      secondDropdownItemIcon = dropdownItemDebugElements[1].query(By.css('svg.icon')).nativeElement;
       const hasLeftPosition = secondDropdownItemIcon.classList.contains(NEW_POSITION);
       expect(hasLeftPosition).toBeTruthy();
       expect(secondDropdownItemComponent.iconPosition).toContain(NEW_POSITION);

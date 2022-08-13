@@ -15,8 +15,15 @@ export class IconComponent {
   constructor() { }
 
   @Input() set icon(newIcon: string) {
-    this.svgPath = newIcon ? IconComponent.ICON_BASE_URL + newIcon : null;
+    if(newIcon) {
+      this.svgPath = IconComponent.ICON_BASE_URL + newIcon;
+      this.iconName = newIcon;
+    } else {
+      this.svgPath = null;
+    }
   }
+
+  protected iconName: string = '';
 
   @Input() wai = 'wai';
 
