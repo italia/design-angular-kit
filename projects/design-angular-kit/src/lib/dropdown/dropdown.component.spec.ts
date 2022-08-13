@@ -199,7 +199,7 @@ describe('DropdownComponent', () => {
       const secondItem = testComponent.items[1];
       const secondDropdownItemComponent = dropdownItemDebugElements[1].componentInstance;
 
-      let secondDropdownItemIcon: HTMLElement = dropdownItemDebugElements[1].query(By.css('i')).nativeElement;
+      let secondDropdownItemIcon: HTMLElement = dropdownItemDebugElements[1].query(By.css('svg.icon')).nativeElement;
       const hasLinkIcon = secondDropdownItemIcon.classList.contains('it-link');
       const hasRightPosition = secondDropdownItemIcon.classList.contains('right');
       expect(hasLinkIcon).toBeTruthy();

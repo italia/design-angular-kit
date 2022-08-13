@@ -24,9 +24,9 @@ export class Positioning {
         return offsetParentEl || document.documentElement;
     }
 
-    position(element: HTMLElement, round = true): ClientRect {
-        let elPosition: ClientRect;
-        let parentOffset: ClientRect = { width: 0, height: 0, top: 0, bottom: 0, left: 0, right: 0 };
+    position(element: HTMLElement, round = true) {
+        let elPosition;
+        let parentOffset = { width: 0, height: 0, top: 0, bottom: 0, left: 0, right: 0 };
 
         if (this.getStyle(element, 'position') === 'fixed') {
             elPosition = element.getBoundingClientRect();
@@ -58,7 +58,7 @@ export class Positioning {
         return elPosition;
     }
 
-    offset(element: HTMLElement, round = true): ClientRect {
+    offset(element: HTMLElement, round = true) {
         const elBcr = element.getBoundingClientRect();
         const viewportOffset = {
             top: window.pageYOffset - document.documentElement.clientTop,
@@ -86,15 +86,14 @@ export class Positioning {
         return elOffset;
     }
 
-    positionElements(hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean):
-        ClientRect {
+    positionElements(hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean) {
         const hostElPosition = appendToBody ? this.offset(hostElement, false) : this.position(hostElement, false);
         const targetElStyles = this.getAllStyles(targetElement);
         const targetElBCR = targetElement.getBoundingClientRect();
         const placementPrimary = placement.split('-')[0] || 'top';
         const placementSecondary = placement.split('-')[1] || 'center';
 
-        const targetElPosition: ClientRect = {
+        const targetElPosition = {
             'height': targetElBCR.height || targetElement.offsetHeight,
             'width': targetElBCR.width || targetElement.offsetWidth,
             'top': 0,
