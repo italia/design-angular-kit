@@ -10,7 +10,7 @@ import { HorizontalAlign, VerticalAlign, VERTICAL_ALIGN } from '../models/Alignm
 })
 export class IconComponent {
 
-  private static readonly ICON_BASE_URL = 'bootstrap-italia/dist/svg/sprite.svg#';
+  private static readonly ICON_BASE_URL = 'bootstrap-italia/dist/svg/sprites.svg#';
 
   constructor() { }
 
