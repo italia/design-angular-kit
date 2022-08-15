@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { CheckboxComponent } from './checkbox/checkbox.component';
-import { PopoverDirective } from './popover/popover.directive';
-import { PopoverComponent } from './popover/popover.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
@@ -29,7 +27,7 @@ import { ItPrefixDirective } from './form-input/it-prefix.directive';
 import { ItSuffixDirective } from './form-input/it-suffix.directive';
 import { ItTextPrefixDirective } from './form-input/it-text-prefix.directive';
 import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
-import { ItPopoverModule } from './it-popover/popover.module';
+import { ItPopoverModule } from './popover/popover.module';
 
 @NgModule({
     imports: [
@@ -53,8 +51,6 @@ import { ItPopoverModule } from './it-popover/popover.module';
         CollapseItemComponent,
         CollapseGroupComponent,
         FormInputComponent,
-        PopoverDirective,
-        PopoverComponent,
         DropdownComponent,
         DropdownItemComponent,
         DropdownHeaderComponent,
@@ -82,7 +78,6 @@ import { ItPopoverModule } from './it-popover/popover.module';
         CollapseItemComponent,
         CollapseGroupComponent,
         FormInputComponent,
-        PopoverDirective,
         DropdownComponent,
         DropdownItemComponent,
         DropdownHeaderComponent,
