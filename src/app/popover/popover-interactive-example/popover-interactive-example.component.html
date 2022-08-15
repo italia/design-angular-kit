@@ -2,20 +2,12 @@
   <div class="card-body">
     <h4 class="card-title">Esempio Popover</h4>
     
-    
-    <button type="button" class="btn btn-outline-secondary me-2" placement="top"
-        
-        itPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on top">
-      Popover on top
-    </button>
-
-
 
     <div class="card-text">
-      <button type="button" id="popover-interactive-button" class="btn btn-primary" [it-popover]="myDescription" [title]="myTitle"
-        [container]="container" [placement]="placement" [triggers]="trigger" [disabled]="disabled" [class.disabled]="disabled"
-        (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
-        #interactivePopover="it-popover">
+      <button type="button" id="popover-interactive-button" class="btn btn-primary" [itPopover]="myDescription" [popoverTitle]="myTitle"
+        [container]="container" [placement]="placement" [disabled]="disabled" [class.disabled]="disabled"
+        (shown)="logShown()" (hidden)="logHidden()"
+        #interactivePopover="itPopover">
         Bottone con popover
       </button>
 
@@ -30,13 +22,6 @@
             <it-radio-button id="radio-body" name="body" value="body" label="Nel body"></it-radio-button>
           </it-radio-group>
         </div>
-        <div class="form-check col-3">
-          <h5>Trigger</h5>
-          <it-radio-group [(ngModel)]="trigger">
-            <it-radio-button id="radio-click" name="click" value="click" label="Click"></it-radio-button>
-            <it-radio-button id="radio-focus" name="focus" value="focus" label="Focus"></it-radio-button>
-          </it-radio-group>
-        </div>
         <div class="form-check col-5">
           <h5>Collocamento</h5>
           <it-radio-group [(ngModel)]="placement">
@@ -48,29 +33,20 @@
         </div>
       </div>
 
-      <it-button color="danger" (click)="interactivePopover.dispose()" id="popover-disposing-button">
+      <it-button color="danger" (click)="interactivePopover.close()" id="popover-disposing-button">
         Distruggi il popover
       </it-button>
 
-      <div>
-        Ultima emissione dell'evento show = {{showTime}}
+      <div class="popover-events mt-3">
+        <div *ngIf = "shownTime">
+          Ultima emissione dell'evento shown = {{shownTime | date: 'long'}}
+        </div>
+        
+        <div *ngIf = "hiddenTime">
+          Ultima emissione dell'evento hidden = {{hiddenTime | date: 'long'}}
+        </div>
       </div>
       
-      <div>
-        Ultima emissione dell'evento shown = {{shownTime}}
-      </div>
-      
-      <div>
-        Ultima emissione dell'evento inserted = {{insertedTime}}
-      </div>
-      
-      <div>
-        Ultima emissione dell'evento hide = {{hideTime}}
-      </div>
-      
-      <div>
-        Ultima emissione dell'evento hidden = {{hiddenTime}}
-      </div>
     </div>
   </div>
 </div>

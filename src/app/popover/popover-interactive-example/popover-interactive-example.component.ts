@@ -6,33 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./popover-interactive-example.component.scss']
 })
 export class PopoverInteractiveExampleComponent {
-  trigger = 'click';
   placement = 'right';
   container = '';
   disabled = false;
   removeTitle = false;
 
-  showTime = '';
   shownTime = '';
-  insertedTime = '';
-  hideTime = '';
   hiddenTime = '';
 
-  logShow() {
-    this.showTime = (new Date()).toISOString();
-  }
-
   logShown() {
+    console.log("xsadsa")
     this.shownTime = (new Date()).toISOString();
   }
 
-  logInserted() {
-    this.insertedTime = (new Date()).toISOString();
-  }
-
-  logHide() {
-    this.hideTime = (new Date()).toISOString();
-  }
 
   logHidden() {
     this.hiddenTime = (new Date()).toISOString();
