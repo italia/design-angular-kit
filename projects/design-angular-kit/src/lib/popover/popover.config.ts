@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { NgbConfig, NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * Servizio di configurazione per la direttiva ItPopover.
@@ -8,8 +8,4 @@ import { NgbConfig, NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
  * modo tale da fornire i valori di default per tutti i popover utilizzati in un'applicazione.
  */
 @Injectable({providedIn: 'root'})
-export class ItPopoverConfig extends NgbPopoverConfig {
-  constructor(_ngbConfig: NgbConfig){
-    super(_ngbConfig);
-  }
-}
+export class ItPopoverConfig extends NgbPopoverConfig {}

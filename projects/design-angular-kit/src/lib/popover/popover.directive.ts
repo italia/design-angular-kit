@@ -15,8 +15,8 @@ import {
     ApplicationRef
   } from '@angular/core';
   import {DOCUMENT} from '@angular/common';
-import {NgbPopoverConfig} from '@ng-bootstrap/ng-bootstrap';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { ItPopoverConfig } from './popover.config';
   
 /**
  * A lightweight and extensible directive for fancy popover creation.
@@ -33,7 +33,7 @@ export class ItPopover extends NgbPopover implements OnInit, OnDestroy, OnChange
 
   constructor(
       _elementRef: ElementRef<HTMLElement>, _renderer: Renderer2, injector: Injector,
-      viewContainerRef: ViewContainerRef, config: NgbPopoverConfig, _ngZone: NgZone,
+      viewContainerRef: ViewContainerRef, config: ItPopoverConfig, _ngZone: NgZone,
       @Inject(DOCUMENT) _document: any, _changeDetector: ChangeDetectorRef,
       applicationRef: ApplicationRef) {
         super(_elementRef, _renderer, injector, viewContainerRef, config, _ngZone, _document, _changeDetector, applicationRef);

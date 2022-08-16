@@ -92,4 +92,4 @@ import { ItPopoverModule } from './popover/popover.module';
         ItPopoverModule
     ]
 })
-export class DesignAngularKitModule { }
+export class DesignAngularKitModule {}
