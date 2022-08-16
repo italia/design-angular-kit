@@ -3,35 +3,27 @@
     <h4 class="card-title">Eventi tooltip</h4>
 
     <p class="card-text" class="example-section">
-      <button type="button" class="btn btn-lg btn-danger" it-tooltip="Tooltip di esempio" title="Titolo del Tooltip" 
-        (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
-        #destructibleTooltip="it-tooltip" id="tooltip-example-disposable">
+      <button type="button" class="btn btn-lg btn-danger" itTooltip="Tooltip di esempio" title="Titolo del Tooltip" 
+        (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" [autoClose]="false" (hide)="logHide()" (hidden)="logHidden()"
+        #destructibleTooltip="itTooltip" id="tooltip-example-disposable">
         Clicca per il tooltip distruttibile
       </button>
 
-      <button type="button" class="btn btn-lg btn-primary" (click)="destructibleTooltip.dispose()" id="tooltip-dispose-button">
+      <button type="button" class="btn btn-lg btn-primary" (click)="destructibleTooltip.close()" id="tooltip-dispose-button">
         Distruggi il tooltip
       </button>
     </p>
 
-    <p class="card-text" class="example-section">
-      Ultima emissione dell'evento show = {{showTime}}
-    </p>
     
-    <p class="card-text" class="example-section">
-      Ultima emissione dell'evento shown = {{shownTime}}
-    </p>
+    <div class="tooltip-events mt-3">
+      <div *ngIf = "shownTime">
+        Ultima emissione dell'evento shown = {{shownTime | date: 'long'}}
+      </div>
+      
+      <div *ngIf = "hiddenTime">
+        Ultima emissione dell'evento hidden = {{hiddenTime | date: 'long'}}
+      </div>
+    </div>
     
-    <p class="card-text" class="example-section">
-      Ultima emissione dell'evento inserted = {{insertedTime}}
-    </p>
-    
-    <p class="card-text" class="example-section">
-      Ultima emissione dell'evento hide = {{hideTime}}
-    </p>
-    
-    <p class="card-text" class="example-section">
-      Ultima emissione dell'evento hidden = {{hiddenTime}}
-    </p>
   </div>
 </div>

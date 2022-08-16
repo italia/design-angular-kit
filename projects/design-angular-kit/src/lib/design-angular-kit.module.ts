@@ -6,8 +6,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
-import { TooltipDirective } from './tooltip/tooltip.directive';
-import { TooltipComponent } from './tooltip/tooltip.component';
+
 import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
 import { CollapseDirective } from './collapse/collapse.directive';
@@ -28,12 +27,14 @@ import { ItSuffixDirective } from './form-input/it-suffix.directive';
 import { ItTextPrefixDirective } from './form-input/it-text-prefix.directive';
 import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
 import { ItPopoverModule } from './popover/popover.module';
+import { ItTooltipModule } from './tooltip/tooltip.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        ItPopoverModule
+        ItPopoverModule,
+        ItTooltipModule
     ],
     declarations: [
         CheckboxComponent,
@@ -45,8 +46,6 @@ import { ItPopoverModule } from './popover/popover.module';
         TabComponent,
         ProgressBarComponent,
         ButtonComponent,
-        TooltipDirective,
-        TooltipComponent,
         CollapseDirective,
         CollapseItemComponent,
         CollapseGroupComponent,
@@ -73,7 +72,6 @@ import { ItPopoverModule } from './popover/popover.module';
         TabComponent,
         ProgressBarComponent,
         ButtonComponent,
-        TooltipDirective,
         CollapseDirective,
         CollapseItemComponent,
         CollapseGroupComponent,
@@ -89,7 +87,8 @@ import { ItPopoverModule } from './popover/popover.module';
         ItSuffixDirective,
         ItTextPrefixDirective,
         ItTextSuffixDirective,
-        ItPopoverModule
+        ItPopoverModule,
+        ItTooltipModule
     ]
 })
 export class DesignAngularKitModule {}

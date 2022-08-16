@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Placement } from 'projects/design-angular-kit/src/lib/tooltip/positioning';
+import { Placement } from '@popperjs/core';
 
 @Component({
   selector: 'it-tooltip-placements-example',

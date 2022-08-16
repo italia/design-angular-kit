@@ -15,7 +15,6 @@ export class PopoverInteractiveExampleComponent {
   hiddenTime = '';
 
   logShown() {
-    console.log("xsadsa")
     this.shownTime = (new Date()).toISOString();
   }
 
