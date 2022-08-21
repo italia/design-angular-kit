@@ -27,7 +27,9 @@ export class BreadcrumbComponent implements AfterContentInit, OnChanges, OnDestr
    */
   @Input()
   get dark(): boolean { return this._dark; }
-  set dark(value: boolean) { this._dark = Util.coerceBooleanProperty(value); }
+  set dark(value: boolean) { 
+    this._dark = Util.coerceBooleanProperty(value); 
+  }
   private _dark = false;
 
   /**
@@ -41,8 +43,14 @@ export class BreadcrumbComponent implements AfterContentInit, OnChanges, OnDestr
   @ContentChildren(forwardRef(() => BreadcrumbItemComponent), { descendants: true })
   private _items: QueryList<BreadcrumbItemComponent>;
 
+  @Input() 
+  customClass: string = '';
+
+  @Input() 
+  ariaLabel: string = 'breadcrumb';
+
   get breadcrumbClass() {
-    return 'breadcrumb' + (this._dark ? ' dark' : '');
+    return 'breadcrumb ' + (this.customClass ?? '') + (this._dark ? ' dark' : '');
   }
 
   private _subscription = Subscription.EMPTY;
@@ -56,6 +64,8 @@ export class BreadcrumbComponent implements AfterContentInit, OnChanges, OnDestr
       if (!changes['separator'].firstChange) {
         this._reloadBreadcrumbs(this._items);
       }
+    } else if (changes['dark']) {
+      this._reloadBreadcrumbs(this._items);
     }
   }
 
@@ -69,6 +79,7 @@ export class BreadcrumbComponent implements AfterContentInit, OnChanges, OnDestr
     currentItems.forEach(item => {
       item.separator = this.separator;
       item.isLast = (item === currentItems.last);
+      item.iconColor = item.iconColor || (this._dark ? 'white' : 'primary');
     });
 
     this._subscribeToChanges();

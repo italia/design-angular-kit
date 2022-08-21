@@ -17,7 +17,7 @@ export class BreadcrumbExampleComponent {
 
 
   separator = '/';
-  isDark = true;
+  isDark = false;
   items = [
     { link: 'https://www.aol.com', label: 'Crumb 1', icon: this.icon },
     { link: 'https://www.yahoo.com', label: 'Crumb 2', icon: this.icon },
@@ -32,8 +32,10 @@ export class BreadcrumbExampleComponent {
   }
 
   remove() {
-    this.items.pop();
-    this.i--;
+    if(this.items.length) {
+      this.items.pop();
+      this.i--;
+    }
   }
 
   change() {

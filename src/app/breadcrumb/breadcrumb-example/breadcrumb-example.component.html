@@ -3,9 +3,10 @@
     <h4 class="card-title">Esempio Breadcrumb</h4>
 
     <div class="card-text">
-      <it-breadcrumb [dark]="isDark" [separator]="separator">
+      <it-breadcrumb [dark]="isDark" [customClass]="isDark ? 'px-3' : null" [separator]="separator">
         <it-breadcrumb-item *ngFor="let item of items"
-          [link]="item.link" [icon]="item.icon">
+          customClass = "me-1"
+          [link]="item.link" [icon]="item.icon" [iconColor]="isDark ? 'white' : 'primary'">
           {{item.label}}
         </it-breadcrumb-item>
       </it-breadcrumb>
@@ -14,8 +15,8 @@
         <div class="form-check col-4">
           <h5>Azioni</h5>
           <it-checkbox [(ngModel)]="isDark" label="Sfondo scuro" id="dark-checkbox"></it-checkbox>
-          <button type="button" id="add-button" class="btn btn-primary btn-lg btn-block" (click)="insert()">Aggiungi breadcrumb</button>
-          <button type="button" id="remove-button" class="btn btn-primary btn-lg btn-block" (click)="remove()">Rimuovi breadcrumb</button>
+          <button type="button" id="add-button" class="btn btn-primary btn-lg btn-block mb-3" (click)="insert()">Aggiungi breadcrumb</button>
+          <button type="button" id="remove-button" class="btn btn-primary btn-lg btn-block" (click)="remove()" [disabled] = "!items.length">Rimuovi breadcrumb</button>
         </div>
         <div class="form-check col-3">
           <h5>Separatore</h5>
