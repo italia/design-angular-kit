@@ -9,7 +9,8 @@ const routes: Routes = [
     { path: 'welcome', loadChildren: () => import('src/app/welcome/welcome.module').then(m => m.WelcomeModule) }
   ]},
   { path: 'componenti', component: RouterDispatcherComponent, children: [
-    { path: '', redirectTo: 'checkbox', pathMatch: 'full' },
+    { path: '', redirectTo: 'badge', pathMatch: 'full' },
+    { path: 'badge', loadChildren: () => import('src/app/badge/badge.module').then(m => m.BadgeModule) },
     { path: 'checkbox', loadChildren: () => import('src/app/checkbox/checkbox.module').then(m => m.CheckboxModule) },
     { path: 'progress-bar', loadChildren: () => import('src/app/progress-bar/progress-bar.module').then(m => m.ProgressBarModule) },
     { path: 'toggle', loadChildren: () => import('src/app/toggle/toggle.module').then(m => m.ToggleModule) },
@@ -19,7 +20,6 @@ const routes: Routes = [
     { path: 'tabs', loadChildren: () => import('src/app/tabs/tabs.module').then(m => m.TabsModule) },
     { path: 'tooltip', loadChildren: () => import('src/app/tooltip/tooltip.module').then(m => m.TooltipModule) },
     { path: 'button', loadChildren: () => import('src/app/button/button.module').then(m => m.ButtonModule) },
-    { path: 'badge', loadChildren: () => import('src/app/badge/badge.module').then(m => m.BadgeModule) },
     { path: 'collapse', loadChildren: () => import('src/app/collapse/collapse.module').then(m => m.CollapseModule) },
     { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
     { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },

@@ -11,14 +11,12 @@ export class BadgeExampleComponent {
     'secondary',
     'danger',
     'warning',
-    'info',
     'success',
     'light',
     'dark'
   ];
 
-  selectedColor;
-
+  selectedColor = 'primary';
   badgeText = 'New';
 
   isPill = false;
