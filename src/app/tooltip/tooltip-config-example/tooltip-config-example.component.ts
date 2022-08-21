@@ -12,6 +12,7 @@ export class TooltipConfigExampleComponent {
   constructor(tooltipConfig: ItTooltipConfig) {
     tooltipConfig.container = 'body';
     tooltipConfig.placement = 'left';
+    tooltipConfig.triggers = 'click';
   }
 
 }

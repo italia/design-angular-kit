@@ -11,7 +11,7 @@ export class TooltipIndexComponent {
   directive: any;
 
   constructor() {
-    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'TooltipDirective');
+    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItTooltip');
   }
 
 }
