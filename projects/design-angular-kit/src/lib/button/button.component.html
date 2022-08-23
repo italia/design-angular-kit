@@ -1,7 +1,8 @@
 <div class="it-button-wrapper" (click) = "onClick($event)" >
   <button type="button" data-focus-mouse="false" [id]="id" (focus) = "onFocus()" (blur)="onBlur()" 
           [class]="buttonClass"
-          [attr.aria-disabled]="disabled" >
+          [attr.aria-disabled]="disabled"
+          >
     <ng-content></ng-content>
   </button>  
 </div>

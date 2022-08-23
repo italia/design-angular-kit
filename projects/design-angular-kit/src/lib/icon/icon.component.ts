@@ -14,6 +14,14 @@ export class IconComponent {
 
   constructor() { }
 
+  @Input() rounded: boolean = false;
+  @Input() roundedColor: IconColorEnum = null;
+
+  get roundedColorClass(): string {
+    return this.roundedColor ? ' rounded-' + this.roundedColor : '';
+  }
+
+
   @Input() set icon(newIcon: string) {
     if(newIcon) {
       this.svgPath = IconComponent.ICON_BASE_URL + newIcon;

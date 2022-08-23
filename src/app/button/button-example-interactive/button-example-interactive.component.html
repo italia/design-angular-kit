@@ -5,6 +5,15 @@
     <h4 class="card-title">Interazione con bottone</h4>
 
     <div class="card-text">
+      
+      <it-button id="interactive-button" (click)="increaseCount()"
+      [color]="selectedColor" [size]="selectedSize" [outline]="outline" [disabled]="disabled" [block]="block">
+        <it-icon icon="it-user" class="me-3"></it-icon> Test Icona
+      </it-button>
+
+
+
+
       <it-button id="interactive-button" (click)="increaseCount()"
       [color]="selectedColor" [size]="selectedSize" [outline]="outline" [disabled]="disabled" [block]="block">
         Numero click eseguiti: {{count}}

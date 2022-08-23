@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ButtonExampleColorComponent } from './button-example-color/button-example-color.component';
 import { ButtonExampleSizeComponent } from './button-example-size/button-example-size.component';
 import { ButtonExampleInteractiveComponent } from './button-example-interactive/button-example-interactive.component';
+import { ButtonExampleIconComponent } from './button-example-icon/button-example-icon.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { ButtonExampleInteractiveComponent } from './button-example-interactive/
     ButtonRoutingModule
   ],
   declarations: [
-    ButtonExamplesComponent, ButtonIndexComponent,
+    ButtonExamplesComponent, ButtonIndexComponent, ButtonExampleIconComponent,
     ButtonExampleComponent, ButtonExampleColorComponent, ButtonExampleSizeComponent, ButtonExampleInteractiveComponent
   ]
 })

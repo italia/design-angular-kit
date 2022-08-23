@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, QueryList, ViewEncapsulation } from '@angular/core';
 import { ThemeColor } from '../models/ThemeColor';
 import { ButtonSize } from '../models/ButtonSize';
 import { Util } from '../util/util';
+import { IconComponent } from '../icon/icon.component';
 
 let identifier = 0;
 
@@ -19,6 +20,8 @@ export class ButtonComponent {
   private _onFocus = false;
 
   id = `button-${identifier++}`;
+
+  @ContentChildren(IconComponent) iconComponents: QueryList<IconComponent>;
 
   /**
    * Se presente, il pulsante avrà un effetto di trasparenza e non reagirà al click
@@ -120,6 +123,10 @@ export class ButtonComponent {
 
     if(this._onFocus) {
       cssClass += ' focus--mouse';
+    }
+
+    if(this.iconComponents?.length) {
+      cssClass += ' btn-icon'
     }
 
     return cssClass;
