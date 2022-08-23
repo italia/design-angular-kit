@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { ThemeColor } from '../models/ThemeColor';
 import { ButtonSize } from '../models/ButtonSize';
 import { Util } from '../util/util';
@@ -11,9 +11,12 @@ let identifier = 0;
 @Component({
   selector: 'it-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
+  styleUrls: ['./button.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
+
+  private _onFocus = false;
 
   id = `button-${identifier++}`;
 
@@ -90,6 +93,7 @@ export class ButtonComponent {
     }
   }
   private _size;
+  
 
   get buttonClass() {
     let cssClass = 'btn';
@@ -114,7 +118,26 @@ export class ButtonComponent {
       cssClass += ' disabled';
     }
 
+    if(this._onFocus) {
+      cssClass += ' focus--mouse';
+    }
+
     return cssClass;
+  }
+
+
+  onClick(clickEvent: Event) {
+    if(this.disabled) {
+      clickEvent.stopPropagation();
+    }
+  }
+
+  onFocus() {
+    this._onFocus = true;
+  }
+
+  onBlur() {
+    this._onFocus = false;
   }
 
 }
