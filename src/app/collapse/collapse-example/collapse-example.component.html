@@ -3,10 +3,10 @@
     <h4 class="card-title">Esempio direttiva Collapse</h4>
 
     <div class="card-text" class="example-section">      
-      <it-button color="primary" (click)="mioCollapse.toggle()"
+      <button itButton="primary" (click)="mioCollapse.toggle()"
         [attr.aria-expanded]="mioCollapse.isShown()" aria-controls="collapseExample">
         Apri/chiudi contenuto
-      </it-button>
+      </button>
       <div #mioCollapse="it-collapse" [it-collapse]="isShown" id="collapseExample"
         (show)="logShow()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()">
         <div class="card card-body">

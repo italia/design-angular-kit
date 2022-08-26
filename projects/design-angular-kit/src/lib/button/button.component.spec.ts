@@ -1,18 +1,16 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed, flush, fakeAsync } from '@angular/core/testing';
+import { Component, DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FormsModule, NgModel } from '@angular/forms';
-
-import { ButtonComponent } from './button.component';
+import { FormsModule } from '@angular/forms';
+import { ItButtonDirective } from './button.directive';
 
 /** Componente per testare una singola button. */
 @Component({
   template: `
   <div>
-    <it-button [disabled]="disabled" [color]="color" [outline]="outline"
-      (click)="onClick()">
+    <button [disabled]="disabled" [itButton]="color" [outline]="outline" (click)="onClick()">
       {{label}}
-    </it-button>
+    </button>
   </div>`
 })
 class SingleButtonComponent {
@@ -27,13 +25,13 @@ class SingleButtonComponent {
   }
 }
 
-describe('ButtonComponent', () => {
+describe('ButtonDirective', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [
-        ButtonComponent,
+        ItButtonDirective,
         SingleButtonComponent,
       ]
     });
@@ -46,14 +44,14 @@ describe('ButtonComponent', () => {
     let fixture: ComponentFixture<SingleButtonComponent>;
     let buttonDebugElement: DebugElement;
     let buttonNativeElement: HTMLElement;
-    let buttonInstance: ButtonComponent;
+    let buttonInstance: ItButtonDirective;
     let testComponent: SingleButtonComponent;
 
     beforeEach(() => {
       fixture = TestBed.createComponent(SingleButtonComponent);
       fixture.detectChanges();
 
-      buttonDebugElement = fixture.debugElement.query(By.directive(ButtonComponent));
+      buttonDebugElement = fixture.debugElement.query(By.directive(ItButtonDirective));
       buttonNativeElement = buttonDebugElement.nativeElement;
       buttonInstance = buttonDebugElement.componentInstance;
       testComponent = fixture.debugElement.componentInstance;
@@ -104,10 +102,6 @@ describe('ButtonComponent', () => {
       testComponent.outline = true;
       fixture.detectChanges();
       expect(buttonInstance.outline).toBe(true);
-    });
-
-    it('dovrebbe generare un id univoco per bottone', () => {
-      expect(buttonInstance.id).toMatch(/button-\d+/);
     });
 
     it('dovrebbe generare un id univoco per bottone', () => {

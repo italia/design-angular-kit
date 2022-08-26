@@ -6,8 +6,6 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
-
-import { ButtonComponent } from './button/button.component';
 import { BadgeDirective } from './badge/badge.directive';
 import { CollapseDirective } from './collapse/collapse.directive';
 import { CollapseItemComponent } from './collapse/collapse-item.component';
@@ -28,6 +26,7 @@ import { ItTextPrefixDirective } from './form-input/it-text-prefix.directive';
 import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
 import { ItPopoverModule } from './popover/popover.module';
 import { ItTooltipModule } from './tooltip/tooltip.module';
+import { ItButtonDirective } from './button/button.directive';
 
 @NgModule({
     imports: [
@@ -45,7 +44,6 @@ import { ItTooltipModule } from './tooltip/tooltip.module';
         TabGroupComponent,
         TabComponent,
         ProgressBarComponent,
-        ButtonComponent,
         CollapseDirective,
         CollapseItemComponent,
         CollapseGroupComponent,
@@ -60,7 +58,9 @@ import { ItTooltipModule } from './tooltip/tooltip.module';
         ItPrefixDirective,
         ItSuffixDirective,
         ItTextPrefixDirective,
-        ItTextSuffixDirective
+        ItTextSuffixDirective,
+        ItButtonDirective,
+
     ],
     exports: [
         CheckboxComponent,
@@ -71,7 +71,7 @@ import { ItTooltipModule } from './tooltip/tooltip.module';
         TabGroupComponent,
         TabComponent,
         ProgressBarComponent,
-        ButtonComponent,
+        ItButtonDirective,
         CollapseDirective,
         CollapseItemComponent,
         CollapseGroupComponent,

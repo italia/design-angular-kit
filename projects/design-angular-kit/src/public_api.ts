@@ -10,7 +10,7 @@ export * from './lib/toggle/toggle.component';
 export * from './lib/radio/radio.component';
 export * from './lib/tooltip/tooltip.directive';
 export * from './lib/tooltip/tooltip.config';
-export * from './lib/button/button.component';
+export * from './lib/button/button.directive';
 export * from './lib/badge/badge.directive';
 export * from './lib/collapse/collapse.directive';
 export * from './lib/collapse/collapse-item.component';

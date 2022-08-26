@@ -1,27 +1,49 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, QueryList, ViewEncapsulation } from '@angular/core';
+import { ContentChildren, Directive, HostBinding, HostListener, Input, QueryList } from '@angular/core';
 import { ThemeColor } from '../models/ThemeColor';
 import { ButtonSize } from '../models/ButtonSize';
 import { Util } from '../util/util';
 import { IconComponent } from '../icon/icon.component';
+import { IconColorEnum } from '../enums/icons.enum';
 
-let identifier = 0;
 
 /**
  * Un bottone con design bootstrap italia. Supporta tutte le funzionalità di un bottone HTML5.
  */
-@Component({
-  selector: 'it-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+@Directive({
+  selector: '[itButton]',
+  exportAs: 'itButton'
 })
-export class ButtonComponent {
+export class ItButtonDirective {
+
+  @Input('itButton')
+  set color(value: any) {
+    if (ThemeColor.is(value)) {
+      this._color = value;
+    } else {
+      this._color = IconColorEnum.primary;
+    }
+  }
+  private _color;
+
+  /**
+   * Stabilisce il colore del pulsante a seconda delle classi di bootstrap.
+   * Può avere valori:
+   * <ul>
+   * <li> primary
+   * <li> secondary
+   * <li> danger
+   * <li> warning
+   * <li> info
+   * <li> success
+   * <li> light
+   * <li> dark
+   * </ul>
+   */
+  get color(): any {
+    return this._color;
+  }
 
   private _onFocus = false;
-
-  id = `button-${identifier++}`;
-
-  @ContentChildren(IconComponent) iconComponents: QueryList<IconComponent>;
 
   /**
    * Se presente, il pulsante avrà un effetto di trasparenza e non reagirà al click
@@ -30,6 +52,18 @@ export class ButtonComponent {
   get disabled(): boolean { return this._disabled; }
   set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }
   private _disabled = false;
+
+  @HostListener('focus')
+  onFocus() {
+    this._onFocus = true;
+  }
+
+  @HostListener('blur')
+  onBlur() {
+    this._onFocus = false;
+  }
+
+  @ContentChildren(IconComponent) iconComponents: QueryList<IconComponent>;
 
   /**
    * Stabilisce se lo stile del pulsante avrà un contorno.
@@ -49,32 +83,9 @@ export class ButtonComponent {
   set block(value: boolean) { this._block = Util.coerceBooleanProperty(value); }
   private _block = false;
 
-  /**
-   * Stabilisce il colore del pulsante a seconda delle classi di bootstrap.
-   * Può avere valori:
-   * <ul>
-   * <li> primary
-   * <li> secondary
-   * <li> danger
-   * <li> warning
-   * <li> info
-   * <li> success
-   * <li> light
-   * <li> dark
-   * </ul>
-   */
-  @Input()
-  get color(): any {
-    return this._color;
-  }
-  set color(value: any) {
-    if (ThemeColor.is(value)) {
-      this._color = value;
-    } else {
-      this._color = undefined;
-    }
-  }
-  private _color;
+
+
+  
 
   /**
    * Indica la grandezza del pulsante. Può assumere i valori:
@@ -97,8 +108,8 @@ export class ButtonComponent {
   }
   private _size;
   
-
-  get buttonClass() {
+  @HostBinding('class')
+  get hostClasses(): string {
     let cssClass = 'btn';
 
     if (this.color) {
@@ -132,19 +143,5 @@ export class ButtonComponent {
     return cssClass;
   }
 
-
-  onClick(clickEvent: Event) {
-    if(this.disabled) {
-      clickEvent.stopPropagation();
-    }
-  }
-
-  onFocus() {
-    this._onFocus = true;
-  }
-
-  onBlur() {
-    this._onFocus = false;
-  }
 
 }

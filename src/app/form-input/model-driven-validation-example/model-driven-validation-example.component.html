@@ -13,7 +13,7 @@
            *ngIf="myForm.controls.myInput?.errors?.maxlength">deve essere massimo di lunghezza 10</p>
         <p id="mdv-pattern" class="error"
            *ngIf="myForm.controls.myInput?.errors?.pattern">non corrisponde al pattern [ab]+</p>
-        <it-button [disabled]="!myForm.valid" (click)="save(myForm)">Salva</it-button>
+        <button itButton [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
         <div *ngIf="savedValue">Salvato `{{savedValue}}`</div>
       </form>
     </div>

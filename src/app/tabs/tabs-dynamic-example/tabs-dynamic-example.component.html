@@ -6,9 +6,9 @@
         <input type="number" [formControl]="selected">
       </div>
       <div>
-        <it-button color="primary" (click)="addTab(selectAfterAdding)">
+        <button itButton="primary" (click)="addTab(selectAfterAdding)">
           Aggiungi un nuovo tab
-        </it-button>
+        </button>
         <it-checkbox [(ngModel)]="selectAfterAdding" label="Seleziona il tab dopo averlo aggiunto"></it-checkbox>
       </div>
     </div>
@@ -23,12 +23,12 @@
         <it-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
           contenuto del {{tab}} tab
 
-          <it-button mat-raised-button
-                  color="primary"
+          <button mat-raised-button
+                  itButton="primary"
                   [disabled]="tabs.length === 1"
                   (click)="removeTab(index)">
             Cancella tab
-          </it-button>
+          </button>
         </it-tab>
       </it-tab-group>
     </div>
