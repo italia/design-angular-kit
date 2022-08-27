@@ -1,9 +1,15 @@
-<div class=form-check>
-  <input type=checkbox
-    [id]=inputId
-    [checked]=checked
-    [disabled]=disabled
-    (change)=handleChange($event)>
+<div class="form-check" [class.form-check-group] = "grouped" [class.form-check-inline] = "inline" >
+  <input type="checkbox"
+    [id]="inputId"
+    [class.focus--mouse] = "focus"
+    [checked]="checked"
+    [disabled]="disabled"
+    (change)="handleChange($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    >
   <label
-    [attr.for]=inputId>{{label}}</label>
+    [attr.for]="inputId" *ngIf = "label">{{label}}</label>
+  
+  <ng-content></ng-content>
 </div>

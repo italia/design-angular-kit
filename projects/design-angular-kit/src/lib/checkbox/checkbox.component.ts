@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Util } from '../util/util';
 
 let identifier = 0;
 
@@ -33,6 +34,11 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
   private _checked = false;
 
+  @Input()
+  get grouped(): boolean { return this._grouped; }
+  set grouped(value: boolean) { this._grouped = Util.coerceBooleanProperty(value); }
+  private _grouped = false;
+  
   /**
    * L'etichetta della checkbox.
    */
@@ -52,6 +58,21 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
   private _disabled = false;
 
+  @Input()
+  get inline(): boolean { return this._inline; }
+  set inline(value: boolean) { this._inline = Util.coerceBooleanProperty(value); }
+  private _inline = false;
+
+
+  focus = false;
+  onFocus() {
+    this.focus = true;
+  }
+
+  onBlur() {
+    this.focus = false;
+  }
+  
   /**
    * Evento emesso quando il valore `checked` della checkbox cambia.
    */

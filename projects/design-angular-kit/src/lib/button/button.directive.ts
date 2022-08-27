@@ -43,7 +43,6 @@ export class ItButtonDirective {
     return this._color;
   }
 
-  private _onFocus = false;
 
   /**
    * Se presente, il pulsante avrà un effetto di trasparenza e non reagirà al click
@@ -53,6 +52,7 @@ export class ItButtonDirective {
   set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }
   private _disabled = false;
 
+  private _onFocus = false;
   @HostListener('focus')
   onFocus() {
     this._onFocus = true;
