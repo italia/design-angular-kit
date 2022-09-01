@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, forwardRef, ChangeDetectionStrategy, ElementRef, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Util } from '../util/util';
 
@@ -21,6 +21,10 @@ export class CheckboxChange {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent implements ControlValueAccessor {
+  
+  /** The native `<input type="checkbox">` element */
+  @ViewChild('input') _inputElement: ElementRef<HTMLInputElement>;
+
   /**
    * Se la checkbox è selezionata.
    */
@@ -29,6 +33,9 @@ export class CheckboxComponent implements ControlValueAccessor {
   set checked(value: boolean) {
     if (value !== this.checked) {
       this._checked = value;
+      if(this._checked) {
+        this.indeterminate = false;    
+      }
       this._changeDetectorRef.markForCheck();
     }
   }
@@ -64,6 +71,29 @@ export class CheckboxComponent implements ControlValueAccessor {
   private _inline = false;
 
 
+  @Input()
+  get indeterminate(): boolean { return this._indeterminate; }
+  set indeterminate(value: boolean) { 
+    const newValue = Util.coerceBooleanProperty(value); 
+    const changed = this._indeterminate !== newValue;
+    if(changed) {
+      this._indeterminate = newValue;
+      this.indeterminateChange.emit(this._indeterminate);
+      
+      if(this._indeterminate) {
+        queueMicrotask(() => {
+          this.checked = false;
+          this._emitChangeEvent();
+        });
+    
+      }
+      
+    }
+  }
+  private _indeterminate = false;
+
+  @Output() indeterminateChange = new EventEmitter<boolean>();
+
   focus = false;
   onFocus() {
     this.focus = true;
@@ -79,7 +109,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Output() readonly change: EventEmitter<CheckboxChange> =
     new EventEmitter<CheckboxChange>();
 
-    inputId = `checkbox-${identifier++}`;
+  inputId = `checkbox-${identifier++}`;
 
   private _onTouched: () => any = () => {};
 
@@ -104,7 +134,13 @@ export class CheckboxComponent implements ControlValueAccessor {
   handleChange(event: Event) {
     event.stopPropagation();
     if (!this.disabled) {
-      this._toggle();
+      if(!this.indeterminate) {
+        this._toggle();
+      } else {
+        this.indeterminate = false;
+        // reset proprietà "checked" per prevenire il comportamento di default dell'elemento HTML
+        this._inputElement.nativeElement.checked = this.checked;
+      }
       this._emitChangeEvent();
     }
   }

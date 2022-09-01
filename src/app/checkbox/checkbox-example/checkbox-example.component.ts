@@ -10,5 +10,6 @@ export class CheckboxExampleComponent {
   checked = true;
   label = 'Sono una checkbox';
   disabled = false;
+  indeterminate = false;
 
 }

@@ -5,6 +5,7 @@
     <p class="card-text" class="example-section">
       <it-checkbox [(ngModel)]="checked" label="Spuntato"></it-checkbox>
       <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
+      <it-checkbox [(ngModel)]="indeterminate" label="Indeterminato"></it-checkbox>
     </p>
   </div>
 </div>
@@ -14,11 +15,15 @@
     <h4 class="card-title">Risultato</h4>
 
     <p class="card-text" class="example-section">
-        <it-checkbox [(ngModel)]="checked" [label]="label" [disabled]="disabled"></it-checkbox>
+        <it-checkbox 
+            [(ngModel)]="checked" 
+            [label]="label" 
+            [disabled]="disabled" 
+            [(indeterminate)]= "indeterminate"
+            ></it-checkbox>
     </p>
   </div>
 </div>
-
 
 
 <div class="card w-50 mt-2">

@@ -1,7 +1,8 @@
 <div class="form-check" [class.form-check-group] = "grouped" [class.form-check-inline] = "inline" >
-  <input type="checkbox"
+  <input #input type="checkbox"
     [id]="inputId"
     [class.focus--mouse] = "focus"
+    [class.semi-checked] = "indeterminate"
     [checked]="checked"
     [disabled]="disabled"
     (change)="handleChange($event)"
