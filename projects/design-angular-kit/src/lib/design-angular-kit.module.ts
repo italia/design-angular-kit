@@ -7,9 +7,6 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { BadgeDirective } from './badge/badge.directive';
-import { CollapseDirective } from './collapse/collapse.directive';
-import { CollapseItemComponent } from './collapse/collapse-item.component';
-import { CollapseGroupComponent } from './collapse/collapse-group.component';
 import { FormInputComponent } from './form-input/form-input.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { DropdownItemComponent } from './dropdown/dropdown-item.component';
@@ -27,13 +24,15 @@ import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
 import { ItPopoverModule } from './popover/popover.module';
 import { ItTooltipModule } from './tooltip/tooltip.module';
 import { ItButtonDirective } from './button/button.directive';
+import { ItCollapseModule } from './collapse/collapse.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ItPopoverModule,
-        ItTooltipModule
+        ItTooltipModule,
+        ItCollapseModule
     ],
     declarations: [
         CheckboxComponent,
@@ -44,9 +43,6 @@ import { ItButtonDirective } from './button/button.directive';
         TabGroupComponent,
         TabComponent,
         ProgressBarComponent,
-        CollapseDirective,
-        CollapseItemComponent,
-        CollapseGroupComponent,
         FormInputComponent,
         DropdownComponent,
         DropdownItemComponent,
@@ -72,9 +68,6 @@ import { ItButtonDirective } from './button/button.directive';
         TabComponent,
         ProgressBarComponent,
         ItButtonDirective,
-        CollapseDirective,
-        CollapseItemComponent,
-        CollapseGroupComponent,
         FormInputComponent,
         DropdownComponent,
         DropdownItemComponent,
@@ -88,7 +81,8 @@ import { ItButtonDirective } from './button/button.directive';
         ItTextPrefixDirective,
         ItTextSuffixDirective,
         ItPopoverModule,
-        ItTooltipModule
+        ItTooltipModule,
+        ItCollapseModule
     ]
 })
 export class DesignAngularKitModule {}

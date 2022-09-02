@@ -1,4 +1,6 @@
-import { Directive, Output, EventEmitter, HostBinding, Input} from '@angular/core';
+import { Directive, Input, ElementRef, NgZone, OnInit, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
+import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
+import { ItCollapseConfig } from './collapse.config';
 
 /**
  * Per ottimizzare l’ingombro dei contenuti di una pagina si possono usare degli elementi richiudibili
@@ -6,90 +8,35 @@ import { Directive, Output, EventEmitter, HostBinding, Input} from '@angular/cor
  */
 @Directive({
   // tslint:disable-next-line:directive-selector
-  selector: '[it-collapse]',
-  exportAs: 'it-collapse'
+  selector: '[itCollapse]',
+  exportAs: 'itCollapse'
 })
-export class CollapseDirective {
+export class ItCollapseDirective extends NgbCollapse implements OnInit, OnChanges {
+  
+  constructor(_elementRef: ElementRef<HTMLElement>, _config: ItCollapseConfig, _ngZone: NgZone) {
+      super(_elementRef, _config, _ngZone);
+  }
 
-  private _isDisposed = false;
+  ngOnInit(): void {
+    super.ngOnInit();    
+    super.collapsed = this.itCollapse;
+
+    super.shown?.subscribe(() => this._isShown = true);
+    super.hidden?.subscribe(() => this._isShown = false);
+  }
+
+  ngOnChanges({itCollapse}: SimpleChanges): void {
+      super.ngOnChanges({collapsed: itCollapse});
+  }
 
   /**
    * La direttiva di collapse che opzionalmente contiene il predicato che ne stabilisce
    * che sarà avvalorato a true quando il collapse è espanso, a false altrimenti
    */
-  @Input('it-collapse')
-  get itCollapse(): boolean { return this._isShown; }
-  set itCollapse(value: boolean) { this._isShown = value != null && `${value}` === 'true'; }
-  private _isShown = false;
+  @Input() itCollapse: boolean;
 
-  /**
-   * Evento da emettere quando il collapse sta per essere mostrato
-   */
-  @Output('show')
-  get showEvent(): EventEmitter<CollapseDirective> { return this._showEvent; }
-  set showEvent(value: EventEmitter<CollapseDirective>) { this._showEvent = value; }
-  private _showEvent = new EventEmitter<CollapseDirective>();
-
-  /**
-   * Evento da emettere quando il collapse è mostrato
-   */
-  @Output('shown')
-  get shownEvent(): EventEmitter<CollapseDirective> { return this._shownEvent; }
-  set shownEvent(value: EventEmitter<CollapseDirective>) { this._shownEvent = value; }
-  private _shownEvent = new EventEmitter<CollapseDirective>();
-
-  /**
-   * Evento da emettere quando il collapse sta per essere nascosto
-   */
-  @Output('hide')
-  get hideEvent(): EventEmitter<CollapseDirective> { return this._hideEvent; }
-  set hideEvent(value: EventEmitter<CollapseDirective>) { this._hideEvent = value; }
-  private _hideEvent = new EventEmitter<CollapseDirective>();
-
-  /**
-   * Evento da emettere quando il collapse è nascosto
-   */
-  @Output('hidden')
-  get hiddenEvent(): EventEmitter<CollapseDirective> { return this._hiddenEvent; }
-  set hiddenEvent(value: EventEmitter<CollapseDirective>) { this._hiddenEvent = value; }
-  private _hiddenEvent = new EventEmitter<CollapseDirective>();
-
-  @HostBinding('class')
-  get cssClass() {
-    let cssClass = 'collapse';
-    if (this.isShown()) {
-      cssClass += ' show';
-    }
-    return cssClass;
-  }
-
-  show() {
-    this.showEvent.emit(this);
-    this._isShown = true;
-    this.shownEvent.emit(this);
-  }
-
-  hide() {
-    this.hideEvent.emit(this);
-    if (!this._isDisposed) {
-      this._isShown = false;
-      this.hiddenEvent.emit(this);
-    }
-  }
-
-  toggle() {
-    if (!this.isShown()) {
-      this.show();
-    } else {
-      this.hide();
-    }
-  }
-
-  dispose() {
-    this._isDisposed = true;
-  }
-
-  isShown() {
+  private _isShown: boolean = false;
+  get isShown(): boolean {
     return this._isShown;
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
-import { CollapseDirective } from './collapse.directive';
+import { ItCollapseDirective } from './collapse.directive';
 
 let identifier = 0;
 
@@ -8,8 +8,8 @@ let identifier = 0;
   templateUrl: './collapse-item.component.html',
   styleUrls: ['./collapse-item.component.css']
 })
-export class CollapseItemComponent {
-  @ViewChild(CollapseDirective, { static: true }) readonly directive: CollapseDirective;
+export class ItCollapseItemComponent {
+  @ViewChild(ItCollapseDirective, { static: true }) readonly directive: ItCollapseDirective;
 
   id = `collapse-item-${identifier++}`;
   headingId = `${this.id}-heading`;
@@ -26,33 +26,33 @@ export class CollapseItemComponent {
    * Evento da emettere quando il collapse sta per essere mostrato
    */
   @Output('show')
-  get showEvent(): EventEmitter<CollapseItemComponent> { return this._showEvent; }
-  set showEvent(value: EventEmitter<CollapseItemComponent>) { this._showEvent = value; }
-  private _showEvent = new EventEmitter<CollapseItemComponent>();
+  get showEvent(): EventEmitter<ItCollapseItemComponent> { return this._showEvent; }
+  set showEvent(value: EventEmitter<ItCollapseItemComponent>) { this._showEvent = value; }
+  private _showEvent = new EventEmitter<ItCollapseItemComponent>();
 
   /**
    * Evento da emettere quando il collapse è mostrato
    */
   @Output('shown')
-  get shownEvent(): EventEmitter<CollapseItemComponent> { return this._shownEvent; }
-  set shownEvent(value: EventEmitter<CollapseItemComponent>) { this._shownEvent = value; }
-  private _shownEvent = new EventEmitter<CollapseItemComponent>();
+  get shownEvent(): EventEmitter<ItCollapseItemComponent> { return this._shownEvent; }
+  set shownEvent(value: EventEmitter<ItCollapseItemComponent>) { this._shownEvent = value; }
+  private _shownEvent = new EventEmitter<ItCollapseItemComponent>();
 
   /**
    * Evento da emettere quando il collapse sta per essere nascosto
    */
   @Output('hide')
-  get hideEvent(): EventEmitter<CollapseItemComponent> { return this._hideEvent; }
-  set hideEvent(value: EventEmitter<CollapseItemComponent>) { this._hideEvent = value; }
-  private _hideEvent = new EventEmitter<CollapseItemComponent>();
+  get hideEvent(): EventEmitter<ItCollapseItemComponent> { return this._hideEvent; }
+  set hideEvent(value: EventEmitter<ItCollapseItemComponent>) { this._hideEvent = value; }
+  private _hideEvent = new EventEmitter<ItCollapseItemComponent>();
 
   /**
    * Evento da emettere quando il collapse è nascosto
    */
   @Output('hidden')
-  get hiddenEvent(): EventEmitter<CollapseItemComponent> { return this._hiddenEvent; }
-  set hiddenEvent(value: EventEmitter<CollapseItemComponent>) { this._hiddenEvent = value; }
-  private _hiddenEvent = new EventEmitter<CollapseItemComponent>();
+  get hiddenEvent(): EventEmitter<ItCollapseItemComponent> { return this._hiddenEvent; }
+  set hiddenEvent(value: EventEmitter<ItCollapseItemComponent>) { this._hiddenEvent = value; }
+  private _hiddenEvent = new EventEmitter<ItCollapseItemComponent>();
 
   show() {
     this.showEvent.emit(this);
