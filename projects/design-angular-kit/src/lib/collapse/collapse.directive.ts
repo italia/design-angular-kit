@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, NgZone, OnInit, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
+import { Directive, Input, ElementRef, NgZone, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 import { ItCollapseConfig } from './collapse.config';
 
@@ -19,10 +19,6 @@ export class ItCollapseDirective extends NgbCollapse implements OnInit, OnChange
 
   ngOnInit(): void {
     super.ngOnInit();    
-    super.collapsed = this.itCollapse;
-
-    super.shown?.subscribe(() => this._isShown = true);
-    super.hidden?.subscribe(() => this._isShown = false);
   }
 
   ngOnChanges({itCollapse}: SimpleChanges): void {
@@ -35,8 +31,7 @@ export class ItCollapseDirective extends NgbCollapse implements OnInit, OnChange
    */
   @Input() itCollapse: boolean;
 
-  private _isShown: boolean = false;
   get isShown(): boolean {
-    return this._isShown;
+    return this.collapsed;
   }
 }

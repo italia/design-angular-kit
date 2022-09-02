@@ -31,8 +31,8 @@ export class ItCollapseGroupComponent implements OnChanges {
       items.forEach(currentItem => {
         const isTargetPartOfItem = (currentItem.elementRef.nativeElement as HTMLElement).contains(target);
         if (!isTargetPartOfItem) {
-          if (!currentItem.directive.collapsed) {
-            currentItem.directive.collapsed = true;
+          if (!currentItem.directive.isShown) {
+            currentItem.directive.toggle();
           }
         }
       });
@@ -45,8 +45,8 @@ export class ItCollapseGroupComponent implements OnChanges {
       if (isAccordion) {
         const items = this._items.toArray();
         items.forEach(currentItem => {
-          if (!currentItem.directive.collapsed) {
-            currentItem.directive.collapsed = true;
+          if (!currentItem.directive.isShown) {
+            currentItem.directive.toggle();
           }
         });
       }
