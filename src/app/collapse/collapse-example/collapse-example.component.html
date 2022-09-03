@@ -4,17 +4,18 @@
 
     <div class="card-text" class="example-section">      
       <button itButton="primary" (click)="mioCollapse.toggle()"
-        [attr.aria-expanded]="mioCollapse.isCollapsed" aria-controls="collapseExample">
+        [attr.aria-expanded]="!mioCollapse.isCollapsed" aria-controls="collapseExample">
         Apri/chiudi contenuto
       </button>
-      <div #mioCollapse="itCollapse" [itCollapse]="collapse" id="collapseExample" 
+      <div #mioCollapse="itCollapse" itCollapse id="collapseExample" 
             (shown)="logShown()" (hidden)="logHidden()">
         <div class="card card-body">
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
         </div>
       </div>
     </div>
-    
+
+    {{mioCollapse.isCollapsed}}
     <div>
       Ultima emissione dell'evento shown = {{shownTime}}
     </div>
