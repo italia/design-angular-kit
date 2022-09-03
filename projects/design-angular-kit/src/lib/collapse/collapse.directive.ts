@@ -23,6 +23,11 @@ export class ItCollapseDirective extends NgbCollapse implements OnInit, OnChange
 
   ngOnChanges({itCollapse}: SimpleChanges): void {
       super.ngOnChanges({collapsed: itCollapse});
+      // Solo per il primo cambiamento è necessario aggiornare manualmente la proprietà collapsed in NgbCollapse, 
+      // altrimenti NgbCollapse.collapsed rimarrebbe con il valore di default.
+      if(itCollapse.firstChange) {
+        super.collapsed = this.itCollapse;
+      }
   }
 
   /**
@@ -31,7 +36,19 @@ export class ItCollapseDirective extends NgbCollapse implements OnInit, OnChange
    */
   @Input() itCollapse: boolean;
 
-  get isShown(): boolean {
+  get isCollapsed(): boolean {
     return this.collapsed;
+  }
+
+  show(): void {
+    if(this.isCollapsed) {
+      super.toggle();
+    }
+  }
+
+  hide(): void {
+    if(!this.isCollapsed) {
+      super.toggle();
+    }
   }
 }

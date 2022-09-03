@@ -1,10 +1,9 @@
 <div class="collapse-header" [id]="headingId">
-  <button #toggleButton data-toggle="collapse" [attr.aria-expanded]="collapse.isShown" [attr.aria-controls]="id" (click)="collapse.toggle()" [ngClass]="{'collapsed' : collapse.isShown}">
+  <button #toggleButton data-toggle="collapse" [attr.aria-expanded]="!collapse.isCollapsed" [attr.aria-controls]="id" (click)="collapse.toggle()" [ngClass]="{'collapsed' : collapse.isCollapsed}">
     {{header}}
   </button>
 </div>
-<div [id]="id" #collapse="itCollapse" itCollapse 
-  (show)="show()" (hide)="hide()" (shown)="shown()" (hidden)="hidden()" role="tabpanel" [attr.aria-labelledby]="headingId">
+<div [id]="id" #collapse="itCollapse" itCollapse  (shown)="shown()" (hidden)="hidden()" role="tabpanel" [attr.aria-labelledby]="headingId">
   <div class="collapse-body">
     <ng-content></ng-content>
   </div>

@@ -222,7 +222,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
     it(`i suoi elementi dovrebbero essere inizialmente chiusi`, () => {
       const noOfElements = itemNativeElements.length;
       const noOfHiddenElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (!instance.directive.isShown ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (!instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfElements).toEqual(noOfHiddenElements);
@@ -237,7 +237,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
       });
 
       const noOfShownElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (instance.directive.isShown ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfElements).toEqual(noOfShownElements);
@@ -274,7 +274,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
       });
 
       let noOfShownElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (instance.directive.isShown ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfElements).toEqual(noOfShownElements);
@@ -288,7 +288,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
       });
 
       noOfShownElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (instance.directive.isShown ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfShownElements).toEqual(1);
@@ -304,7 +304,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
       });
 
       const noOfShownElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (instance.directive.isShown ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfShownElements).toEqual(1);

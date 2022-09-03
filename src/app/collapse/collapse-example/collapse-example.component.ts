@@ -7,23 +7,15 @@ import { Component } from '@angular/core';
 })
 export class CollapseExampleComponent {
 
-  isShown = false;
+  collapse = true;
 
   showTime = '';
   shownTime = '';
   hideTime = '';
   hiddenTime = '';
 
-  logShow() {
-    this.showTime = new Date().toISOString();
-  }
-
   logShown() {
     this.shownTime = new Date().toISOString();
-  }
-
-  logHide() {
-    this.hideTime = new Date().toISOString();
   }
 
   logHidden() {
