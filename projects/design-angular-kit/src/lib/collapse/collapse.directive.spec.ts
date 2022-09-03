@@ -1,5 +1,5 @@
 import { Component, DebugElement, ViewChild } from '@angular/core';
-import { TestBed, fakeAsync, ComponentFixture, async, waitForAsync } from '@angular/core/testing';
+import { TestBed, fakeAsync, ComponentFixture, waitForAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ItCollapseItemComponent } from './collapse-item.component';
 import { ItCollapseGroupComponent } from './collapse-group.component';
@@ -8,7 +8,7 @@ import { ItCollapseDirective } from './collapse.directive';
 /** Componente per testare una singola collapse. */
 @Component({
   template: `
-  <div itCollapse>
+  <div itCollapse [animation] = "false">
   </div>`
 })
 class SimpleCollapseComponent {}
@@ -16,27 +16,27 @@ class SimpleCollapseComponent {}
 /** Componente per testare una collapse con toggle. */
 @Component({
   template: `
-  <div [itCollapse]="isShown">
+  <div [itCollapse]="isCollapsed" [animation] = "false">
   </div>`
 })
 class ToggleCollapseComponent {
-  isShown = false;
+  isCollapsed = true;
 }
 
 /** Componente per testare l'EventEmitter. */
 @Component({
   template: `
   <button class="btn btn-primary" (click)="mioCollapse.toggle()"
-    [attr.aria-expanded]="mioCollapse.isShown" aria-controls="collapseExample">
+    [attr.aria-expanded]="!mioCollapse.isCollapsed" aria-controls="collapseExample">
     Apri/chiudi contenuto
   </button>
-  <div [itCollapse]="isShown" #mioCollapse="itCollapse"></div>
+  <div [itCollapse]="isCollapsed" [animation] = "false" #mioCollapse="itCollapse"></div>
   `
 })
 class EmitterCollapseComponent {
   @ViewChild(ItCollapseDirective, /* TODO: add static flag */ {}) readonly directive: ItCollapseDirective;
 
-  isShown = false;
+  isCollapsed = true;
 }
 
 /** Componente per testare il group e gli item di collapse. */
@@ -126,12 +126,13 @@ describe('CollapseDirective', () => {
     }));
 
     it(`dovrebbe effettuare il toggle dell'elemento div`, () => {
-      testComponent.isShown = true;
+      testComponent.isCollapsed = false;
       fixture.detectChanges();
       expect(nativeElement.classList).toContain('show');
-      testComponent.isShown = false;
+      testComponent.isCollapsed = true;
       fixture.detectChanges();
       expect(nativeElement.classList).not.toContain('show');
+     
     });
 
   });
@@ -143,7 +144,7 @@ describe('CollapseDirective', () => {
     let nativeElement: HTMLDivElement;
     let btnElement: HTMLButtonElement;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       fixture = TestBed.createComponent(EmitterCollapseComponent);
       fixture.detectChanges();
 
@@ -152,34 +153,19 @@ describe('CollapseDirective', () => {
       btnElement = <HTMLButtonElement>nativeElement.querySelector('button');
     }));
 
-    it(`dovrebbe emettere l'evento show`, () => {
-      const ecComponent: EmitterCollapseComponent = fixture.debugElement.componentInstance;
-      ecComponent.directive.shown.subscribe(eventHandler => {
-          expect(eventHandler).toEqual(ecComponent.directive);
-      });
-      btnElement.click();
-    });
-
     it(`dovrebbe emettere l'evento shown`, () => {
       const ecComponent: EmitterCollapseComponent = fixture.debugElement.componentInstance;
       ecComponent.directive.shown.subscribe(eventHandler => {
-          expect(eventHandler).toEqual(ecComponent.directive);
+        expect(eventHandler).toEqual(void 0);
       });
       btnElement.click();
     });
 
-    it(`dovrebbe emettere l'evento hide`, () => {
-      const ecComponent: EmitterCollapseComponent = fixture.debugElement.componentInstance;
-      ecComponent.directive.hidden.subscribe(eventHandler => {
-          expect(eventHandler).toEqual(ecComponent.directive);
-      });
-      btnElement.click();
-    });
 
     it(`dovrebbe emettere l'evento hidden`, () => {
       const ecComponent: EmitterCollapseComponent = fixture.debugElement.componentInstance;
       ecComponent.directive.hidden.subscribe(eventHandler => {
-          expect(eventHandler).toEqual(ecComponent.directive);
+        expect(eventHandler).toEqual(void 0);
       });
       btnElement.click();
     });
@@ -209,7 +195,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
     let itemNativeElements: HTMLElement[];
     let itemButtonElements: HTMLButtonElement[];
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       fixture = TestBed.createComponent(GroupItemsCollapseComponent);
       fixture.detectChanges();
 
@@ -222,7 +208,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
     it(`i suoi elementi dovrebbero essere inizialmente chiusi`, () => {
       const noOfElements = itemNativeElements.length;
       const noOfHiddenElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (!instance.directive.isCollapsed ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfElements).toEqual(noOfHiddenElements);
@@ -237,7 +223,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
       });
 
       const noOfShownElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (!instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfElements).toEqual(noOfShownElements);
@@ -253,7 +239,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
     let itemNativeElements: HTMLElement[];
     let itemButtonElements: HTMLButtonElement[];
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       fixture = TestBed.createComponent(GroupItemsCollapseComponent);
       fixture.detectChanges();
 
@@ -274,7 +260,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
       });
 
       let noOfShownElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (!instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfElements).toEqual(noOfShownElements);
@@ -288,7 +274,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
       });
 
       noOfShownElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (!instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfShownElements).toEqual(1);
@@ -304,7 +290,7 @@ describe('CollapseGroupComponent & CollapseItemComponent', () => {
       });
 
       const noOfShownElements = itemComponentInstances.reduce(
-        (currentValue, instance) => currentValue + (instance.directive.isCollapsed ? 1 : 0), 0
+        (currentValue, instance) => currentValue + (!instance.directive.isCollapsed ? 1 : 0), 0
       );
 
       expect(noOfShownElements).toEqual(1);
