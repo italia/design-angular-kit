@@ -26,5 +26,6 @@ export * from './lib/breadcrumb/breadcrumb.component';
 export * from './lib/breadcrumb/breadcrumb-item.component';
 export * from './lib/tabs/tab-group.component';
 export * from './lib/icon/icon.component';
-
+export * from './lib/dropdown-new/dropdown.directive';
+export * from './lib/dropdown-new/dropdown.config';
 export * from './lib/design-angular-kit.module';

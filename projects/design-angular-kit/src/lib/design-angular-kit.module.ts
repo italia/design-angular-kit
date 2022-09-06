@@ -25,6 +25,7 @@ import { ItPopoverModule } from './popover/popover.module';
 import { ItTooltipModule } from './tooltip/tooltip.module';
 import { ItButtonDirective } from './button/button.directive';
 import { ItCollapseModule } from './collapse/collapse.module';
+import { ItDropdownModule } from './dropdown-new/dropdown.module';
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { ItCollapseModule } from './collapse/collapse.module';
         FormsModule,
         ItPopoverModule,
         ItTooltipModule,
-        ItCollapseModule
+        ItCollapseModule,
+        ItDropdownModule
     ],
     declarations: [
         CheckboxComponent,
@@ -82,7 +84,8 @@ import { ItCollapseModule } from './collapse/collapse.module';
         ItTextSuffixDirective,
         ItPopoverModule,
         ItTooltipModule,
-        ItCollapseModule
+        ItCollapseModule,
+        ItDropdownModule
     ]
 })
 export class DesignAngularKitModule {}
