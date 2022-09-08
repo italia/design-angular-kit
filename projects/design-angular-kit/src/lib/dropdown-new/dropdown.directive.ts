@@ -33,8 +33,7 @@ export class ItNavbar extends NgbNavbar {
  * @since 4.1.0
  */
 @Directive({
-  selector: '[itDropdownItem]',
-  host: {'class': 'dropdown-item', '[class.disabled]': 'disabled', '[tabIndex]': 'disabled ? -1 : 0'}
+  selector: '[itDropdownItem]'
 })
 export class ItDropdownItem extends NgbDropdownItem {
   constructor(elementRef: ElementRef<HTMLElement>, _renderer: Renderer2) {
@@ -46,32 +45,19 @@ export class ItDropdownItem extends NgbDropdownItem {
  * A directive that wraps dropdown menu content and dropdown items.
  */
 @Directive({
-  selector: '[itDropdownMenu]',
-  host: {
-    '[class.dropdown-menu]': 'true',
-    '[class.show]': 'dropdown.isOpen()',
-    '(keydown.ArrowUp)': 'dropdown.onKeyDown($event)',
-    '(keydown.ArrowDown)': 'dropdown.onKeyDown($event)',
-    '(keydown.Home)': 'dropdown.onKeyDown($event)',
-    '(keydown.End)': 'dropdown.onKeyDown($event)',
-    '(keydown.Enter)': 'dropdown.onKeyDown($event)',
-    '(keydown.Space)': 'dropdown.onKeyDown($event)',
-    '(keydown.Tab)': 'dropdown.onKeyDown($event)',
-    '(keydown.Shift.Tab)': 'dropdown.onKeyDown($event)'
-  }
+  selector: '[itDropdownMenu]'
 })
 export class ItDropdownMenu extends NgbDropdownMenu implements AfterContentInit {
   @ContentChildren(ItDropdownItem) menuItems: QueryList<ItDropdownItem>;
 
   constructor(
-      @Inject(forwardRef(() => ItDropdown)) dropdown: ItDropdown, _elementRef: ElementRef<HTMLElement>) {
+      @Inject(forwardRef(() => ItDropdown)) public dropdown: ItDropdown, _elementRef: ElementRef<HTMLElement>) {
         super(dropdown, _elementRef);
     }
 
   ngAfterContentInit(): void {
     super.menuItems = this.menuItems;
   }
-
 
 }
 
@@ -85,10 +71,10 @@ export class ItDropdownMenu extends NgbDropdownMenu implements AfterContentInit 
  * @since 1.1.0
  */
 @Directive(
-    {selector: '[itDropdownAnchor]', host: {'class': 'dropdown-toggle', '[attr.aria-expanded]': 'dropdown.isOpen()'}})
+    {selector: '[itDropdownAnchor]'})
 export class ItDropdownAnchor extends NgbDropdownAnchor {
   constructor(
-      @Inject(forwardRef(() => ItDropdown)) dropdown: ItDropdown, _elementRef: ElementRef<HTMLElement>) {
+      @Inject(forwardRef(() => ItDropdown)) public dropdown: ItDropdown, _elementRef: ElementRef<HTMLElement>) {
         super(dropdown, _elementRef)
   }
 }
@@ -100,17 +86,6 @@ export class ItDropdownAnchor extends NgbDropdownAnchor {
  */
 @Directive({
   selector: '[itDropdownToggle]',
-  host: {
-    'class': 'dropdown-toggle',
-    '[attr.aria-expanded]': 'dropdown.isOpen()',
-    '(click)': 'dropdown.toggle()',
-    '(keydown.ArrowUp)': 'dropdown.onKeyDown($event)',
-    '(keydown.ArrowDown)': 'dropdown.onKeyDown($event)',
-    '(keydown.Home)': 'dropdown.onKeyDown($event)',
-    '(keydown.End)': 'dropdown.onKeyDown($event)',
-    '(keydown.Tab)': 'dropdown.onKeyDown($event)',
-    '(keydown.Shift.Tab)': 'dropdown.onKeyDown($event)'
-  },
   providers: [{provide: ItDropdownAnchor, useExisting: forwardRef(() => ItDropdownToggle)}]
 })
 export class ItDropdownToggle extends NgbDropdownToggle {
@@ -122,7 +97,7 @@ export class ItDropdownToggle extends NgbDropdownToggle {
 /**
  * A directive that provides contextual overlays for displaying lists of links and more.
  */
-@Directive({selector: '[itDropdown]', exportAs: 'itDropdown', host: {'[class.show]': 'isOpen()'}})
+@Directive({selector: '[itDropdown]', exportAs: 'itDropdown'})
 export class ItDropdown extends NgbDropdown implements AfterContentInit, OnChanges, OnDestroy {
 
   @ContentChild(ItDropdownMenu, {static: false}) _itMenu: ItDropdownMenu;
@@ -155,11 +130,6 @@ export class ItDropdown extends NgbDropdown implements AfterContentInit, OnChang
     super.ngOnChanges(changes);
   }
 
-  toggle() {
-    super.toggle();
-  }
- 
   ngOnDestroy() { super.ngOnDestroy(); }
 
-  
 }

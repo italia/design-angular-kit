@@ -1,9 +1,10 @@
-import { ContentChildren, Directive, HostBinding, HostListener, Input, QueryList } from '@angular/core';
+import { ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
 import { ThemeColor } from '../models/ThemeColor';
 import { ButtonSize } from '../models/ButtonSize';
 import { Util } from '../util/util';
 import { IconComponent } from '../icon/icon.component';
 import { IconColorEnum } from '../enums/icons.enum';
+import { ItDropdownToggle } from '../dropdown-new/dropdown.directive';
 
 
 /**
@@ -14,6 +15,10 @@ import { IconColorEnum } from '../enums/icons.enum';
   exportAs: 'itButton'
 })
 export class ItButtonDirective {
+  private _isDropdownButton: boolean = false;
+  constructor(@Optional() @Host() dropdownToggle: ItDropdownToggle) {
+    this._isDropdownButton = !!dropdownToggle;
+  }
 
   @Input('itButton')
   set color(value: any) {
@@ -111,9 +116,11 @@ export class ItButtonDirective {
   @HostBinding('class')
   get hostClasses(): string {
     let cssClass = 'btn';
-
+   
     if (this.color) {
-      if (this.outline) {
+      if(this._isDropdownButton) {
+        cssClass += ' btn-dropdown';
+      } else if (this.outline) {
         cssClass += ` btn-outline-${this.color}`;
       } else {
         cssClass += ` btn-${this.color}`;
@@ -137,7 +144,7 @@ export class ItButtonDirective {
     }
 
     if(this.iconComponents?.length) {
-      cssClass += ' btn-icon'
+      cssClass += ' btn-icon';
     }
 
     return cssClass;
