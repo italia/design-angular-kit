@@ -8,15 +8,10 @@ import { RadioButtonComponent, RadioGroupDirective } from './radio/radio.compone
 import { ToggleComponent } from './toggle/toggle.component';
 import { BadgeDirective } from './badge/badge.directive';
 import { FormInputComponent } from './form-input/form-input.component';
-import { DropdownComponent } from './dropdown/dropdown.component';
-import { DropdownItemComponent } from './dropdown/dropdown-item.component';
-import { DropdownHeaderComponent } from './dropdown/dropdown-header.component';
-import { DropdownDividerComponent } from './dropdown/dropdown-divider.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BreadcrumbItemComponent } from './breadcrumb/breadcrumb-item.component';
 import { TabGroupComponent } from './tabs/tab-group.component';
 import { TabComponent } from './tabs/tab.component';
-import { IconComponent } from './icon/icon.component';
 import { ItPrefixDirective } from './form-input/it-prefix.directive';
 import { ItSuffixDirective } from './form-input/it-suffix.directive';
 import { ItTextPrefixDirective } from './form-input/it-text-prefix.directive';
@@ -26,6 +21,7 @@ import { ItTooltipModule } from './tooltip/tooltip.module';
 import { ItButtonDirective } from './button/button.directive';
 import { ItCollapseModule } from './collapse/collapse.module';
 import { ItDropdownModule } from './dropdown-new/dropdown.module';
+import { ItIconModule } from './icon/icon.module';
 
 @NgModule({
     imports: [
@@ -34,7 +30,8 @@ import { ItDropdownModule } from './dropdown-new/dropdown.module';
         ItPopoverModule,
         ItTooltipModule,
         ItCollapseModule,
-        ItDropdownModule
+        ItDropdownModule,
+        ItIconModule
     ],
     declarations: [
         CheckboxComponent,
@@ -46,13 +43,8 @@ import { ItDropdownModule } from './dropdown-new/dropdown.module';
         TabComponent,
         ProgressBarComponent,
         FormInputComponent,
-        DropdownComponent,
-        DropdownItemComponent,
-        DropdownHeaderComponent,
-        DropdownDividerComponent,
         BreadcrumbComponent,
         BreadcrumbItemComponent,
-        IconComponent,
         ItPrefixDirective,
         ItSuffixDirective,
         ItTextPrefixDirective,
@@ -71,13 +63,9 @@ import { ItDropdownModule } from './dropdown-new/dropdown.module';
         ProgressBarComponent,
         ItButtonDirective,
         FormInputComponent,
-        DropdownComponent,
-        DropdownItemComponent,
-        DropdownHeaderComponent,
-        DropdownDividerComponent,
         BreadcrumbComponent,
         BreadcrumbItemComponent,
-        IconComponent,
+        ItIconModule,
         ItPrefixDirective,
         ItSuffixDirective,
         ItTextPrefixDirective,

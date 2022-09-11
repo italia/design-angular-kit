@@ -33,7 +33,6 @@ export class DropdownExampleComponent {
 
   openTime = '';
   closeTime = '';
-  toggleTime = '';
 
   onOpenEvent() {
     this.openTime = (new Date()).toISOString();
@@ -41,10 +40,6 @@ export class DropdownExampleComponent {
 
   onCloseEvent() {
     this.closeTime = (new Date()).toISOString();
-  }
-
-  onToggleEvent() {
-    this.toggleTime = (new Date()).toISOString();
   }
 
 }

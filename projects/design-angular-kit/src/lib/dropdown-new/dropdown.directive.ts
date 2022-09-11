@@ -17,12 +17,10 @@ import {
   SimpleChanges,
   Optional,
   OnChanges,
-  Input
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import { NgbDropdown, NgbDropdownAnchor, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle, NgbNavbar, Placement } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdown, NgbDropdownAnchor, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle, NgbNavbar } from '@ng-bootstrap/ng-bootstrap';
 import { ItDropdownConfig } from './dropdown.config';
-import { Util } from '../util/util';
 
 @Directive({selector: '.navbar'})
 export class ItNavbar extends NgbNavbar {
@@ -49,17 +47,11 @@ export class ItDropdownItem extends NgbDropdownItem {
 @Directive({
   selector: '[itDropdownMenu]',
   host: {
-    '[attr.data-popper-placement]': 'placement',
-    '[class.full-width]':'fullWidth'
+    '[attr.data-popper-placement]': 'placement'
   }
 })
 export class ItDropdownMenu extends NgbDropdownMenu implements AfterContentInit {
   @ContentChildren(ItDropdownItem) menuItems: QueryList<ItDropdownItem>;
-
-  @Input()
-  get fullWidth(): boolean { return this._fullWidth; }
-  set fullWidth(value: boolean) { this._fullWidth = Util.coerceBooleanProperty(value); }
-  private _fullWidth = false;
 
   constructor(
       @Inject(forwardRef(() => ItDropdown)) public dropdown: ItDropdown, _elementRef: ElementRef<HTMLElement>) {

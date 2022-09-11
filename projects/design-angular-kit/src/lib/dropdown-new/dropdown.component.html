@@ -1,0 +1,19 @@
+<div class="dropdown" itDropdown (openChange)="onOpenChange($event)">
+  <button [class]="dropdownButtonClass" itButton itDropdownToggle id="dropdownMenuButton" aria-haspopup="true">
+    <it-icon *ngIf = "expandIcon && expandIconPosition === 'start'" [icon]="expandIcon" [expand]="true"> </it-icon>
+    {{label}}
+    <it-icon *ngIf = "expandIcon && expandIconPosition === 'end'" [icon]="expandIcon" [expand]="true"> </it-icon>
+  </button>
+  <div itDropdownMenu aria-labelledby="dropdownMenuButton" [class.dark]="dark" [class.full-width]="fullWidth">
+    <div class="link-list-wrapper">
+      <ul class="link-list">
+        <ng-content></ng-content>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #dropdownToggleIcon>
+  <it-icon *ngIf = "expandIcon" [icon]="expandIcon" [expand]="true"> </it-icon>
+
+</ng-template>
