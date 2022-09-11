@@ -5,12 +5,19 @@
 
       <div class="row">
         <div class="col">
-          <div itDropdown container="body">
-            <button  type="button" id="dropdownBasic1" itButton itDropdownToggle>Toggle dropdown</button>
+          <div itDropdown>
+            <button type="button" id="dropdownBasic1" itButton itDropdownToggle>
+              Toggle dropdown
+              <it-icon icon="it-expand" [expand]="true"> </it-icon>
+            </button>
             <div itDropdownMenu aria-labelledby="dropdownBasic1">
-              <button itDropdownItem>Action - 1</button>
-              <button itDropdownItem>Another Action</button>
-              <button itDropdownItem>Something else is here</button>
+              <div class="link-list-wrapper">
+                <ul class="link-list">
+                  <li><a href="#" itDropdownItem><span>Azione 1</span></a></li>
+                  <li><a href="#" itDropdownItem><span>Azione 2</span></a></li>
+                  <li><a href="#" itDropdownItem><span>Azione 3</span></a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
