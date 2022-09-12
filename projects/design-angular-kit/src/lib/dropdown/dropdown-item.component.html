@@ -1,7 +1,6 @@
-<!--
-
 <li [id]="id">
-  <a [attr.href]="link"
+  <a itDropdownItem 
+    [attr.href]="link"
     [attr.tabindex]="this.disabled ? -1 : 0"
     [class]="dropdownItemClass"
     [ngClass]="{
@@ -15,9 +14,6 @@
     <span>
       <ng-content></ng-content>
     </span>
-    <it-icon [icon]="icon" [icon]="iconPosition"></it-icon>
+    <it-icon [icon]="icon" [position]="iconPosition"></it-icon>
   </a>
 </li>
-
-
--->

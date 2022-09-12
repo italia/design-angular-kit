@@ -10,6 +10,9 @@ export class DropdownExampleComponent {
   label = 'Click me';
   isDark = false;
   isFullWidth = false;
+  withHeading = true;
+  
+  menuPlacement = 'bottom-start';
   items = [
     {
       link: 'https://www.google.com', active: false,

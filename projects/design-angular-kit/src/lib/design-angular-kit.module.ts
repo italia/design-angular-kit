@@ -20,7 +20,7 @@ import { ItPopoverModule } from './popover/popover.module';
 import { ItTooltipModule } from './tooltip/tooltip.module';
 import { ItButtonDirective } from './button/button.directive';
 import { ItCollapseModule } from './collapse/collapse.module';
-import { ItDropdownModule } from './dropdown-new/dropdown.module';
+import { ItDropdownModule } from './dropdown/dropdown.module';
 import { ItIconModule } from './icon/icon.module';
 
 @NgModule({

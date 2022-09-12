@@ -4,7 +4,7 @@ import { ButtonSize } from '../models/ButtonSize';
 import { Util } from '../util/util';
 import { IconComponent } from '../icon/icon.component';
 import { IconColorEnum } from '../enums/icons.enum';
-import { ItDropdownToggle } from '../dropdown-new/dropdown.directive';
+import { ItDropdownToggle } from '../dropdown/dropdown.directive';
 
 
 /**

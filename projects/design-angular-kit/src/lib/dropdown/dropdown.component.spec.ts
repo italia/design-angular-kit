@@ -6,7 +6,6 @@ import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DropdownItemComponent } from './dropdown-item.component';
 import { DropdownDividerComponent } from './dropdown-divider.component';
-import { DropdownHeaderComponent } from './dropdown-header.component';
 import { THEME_COLORS } from '../models/ThemeColor';
 import { IconComponent } from '../icon/icon.component';
 
@@ -18,7 +17,6 @@ import { IconComponent } from '../icon/icon.component';
       [label]="label"
       [dark]="isDark"
       [fullWidth]="isFullWidth">
-      <it-dropdown-header>Header</it-dropdown-header>
       <it-dropdown-divider></it-dropdown-divider>
       <it-dropdown-item *ngFor="let item of items"
         [link]="item.link"
@@ -69,7 +67,6 @@ describe('DropdownComponent', () => {
         DropdownComponent,
         DropdownItemComponent,
         DropdownDividerComponent,
-        DropdownHeaderComponent,
         SingleDropdownComponent,
         IconComponent
       ]
