@@ -80,10 +80,6 @@ export class DropdownComponent {
   set label(value: string) { this._label = value; }
   private _label = '';
 
-  get dropdownButtonClass() {
-    return `btn btn-${this.color} dropdown-toggle`;
-  }
-
 
   /**
    * Evento che viene lanciato ogni volta che il dropdown viene aperto

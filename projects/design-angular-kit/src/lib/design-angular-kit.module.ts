@@ -18,10 +18,10 @@ import { ItTextPrefixDirective } from './form-input/it-text-prefix.directive';
 import { ItTextSuffixDirective } from './form-input/it-text-suffix.directive';
 import { ItPopoverModule } from './popover/popover.module';
 import { ItTooltipModule } from './tooltip/tooltip.module';
-import { ItButtonDirective } from './button/button.directive';
 import { ItCollapseModule } from './collapse/collapse.module';
 import { ItDropdownModule } from './dropdown/dropdown.module';
 import { ItIconModule } from './icon/icon.module';
+import { ItButtonModule } from './button/button.module';
 
 @NgModule({
     imports: [
@@ -31,7 +31,8 @@ import { ItIconModule } from './icon/icon.module';
         ItTooltipModule,
         ItCollapseModule,
         ItDropdownModule,
-        ItIconModule
+        ItIconModule,
+        ItButtonModule
     ],
     declarations: [
         CheckboxComponent,
@@ -48,9 +49,7 @@ import { ItIconModule } from './icon/icon.module';
         ItPrefixDirective,
         ItSuffixDirective,
         ItTextPrefixDirective,
-        ItTextSuffixDirective,
-        ItButtonDirective,
-
+        ItTextSuffixDirective
     ],
     exports: [
         CheckboxComponent,
@@ -61,7 +60,7 @@ import { ItIconModule } from './icon/icon.module';
         TabGroupComponent,
         TabComponent,
         ProgressBarComponent,
-        ItButtonDirective,
+        ItButtonModule,
         FormInputComponent,
         BreadcrumbComponent,
         BreadcrumbItemComponent,

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input} from '@angular/core';
 import {IconBackgroundColorEnum, IconColorEnum, IconSizeEnum} from '../enums/icons.enum';
 import { HorizontalAlign, VerticalAlign, VERTICAL_ALIGN } from '../models/Alignment';
 
@@ -8,11 +8,18 @@ import { HorizontalAlign, VerticalAlign, VERTICAL_ALIGN } from '../models/Alignm
   styleUrls: ['./icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IconComponent {
+export class IconComponent  {
 
   private static readonly ICON_BASE_URL = 'bootstrap-italia/dist/svg/sprites.svg#';
 
-  constructor() { }
+  constructor(private _cdr: ChangeDetectorRef) { }
+
+  changeColor(color: IconColorEnum) {
+    if(this.color !== color) {
+      this.color = color;
+      this._cdr.markForCheck();
+    }
+  }
 
   @Input() rounded: boolean = false;
   @Input() roundedColor: IconColorEnum = null;

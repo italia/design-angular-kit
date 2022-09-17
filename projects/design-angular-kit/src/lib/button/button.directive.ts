@@ -1,4 +1,4 @@
-import { ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
+import { ChangeDetectorRef, ContentChildren, Directive, DoCheck, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
 import { ThemeColor } from '../models/ThemeColor';
 import { ButtonSize } from '../models/ButtonSize';
 import { Util } from '../util/util';
@@ -16,19 +16,44 @@ import { ItDropdownToggle } from '../dropdown/dropdown.directive';
 })
 export class ItButtonDirective {
   private _isDropdownButton: boolean = false;
-  constructor(@Optional() @Host() dropdownToggle: ItDropdownToggle) {
+  constructor(@Optional() @Host() dropdownToggle: ItDropdownToggle, private _cdr: ChangeDetectorRef) {
     this._isDropdownButton = !!dropdownToggle;
   }
+
+  private isLightColor(color: string): boolean {
+    return  color === IconColorEnum.light || color === IconColorEnum.info || 
+            color === IconColorEnum.white;
+  }
+
+  @Input() autoUpdateIconColor = true;
 
   @Input('itButton')
   set color(value: any) {
     if (ThemeColor.is(value)) {
       this._color = value;
     } else {
-      this._color = IconColorEnum.primary;
+      this._color = this._isDropdownButton ? "dropdown" : IconColorEnum.primary;
+    }
+    if(this.autoUpdateIconColor) {
+      this.updateButtonIconColor();
     }
   }
   private _color;
+
+  private updateButtonIconColor() {
+    this.iconComponents?.forEach(icon => {
+      let newIconColor = IconColorEnum.primary;
+      if(this._color === "dropdown") {
+        newIconColor = IconColorEnum.primary;
+      } else if(this.isLightColor(this._color)) {
+        newIconColor = IconColorEnum.default;
+      } else {
+        newIconColor = IconColorEnum.white;
+      }
+      icon.changeColor(newIconColor);
+    });
+    
+  }
 
   /**
    * Stabilisce il colore del pulsante a seconda delle classi di bootstrap.
@@ -118,9 +143,7 @@ export class ItButtonDirective {
     let cssClass = 'btn';
    
     if (this.color) {
-      if(this._isDropdownButton) {
-        cssClass += ' btn-dropdown';
-      } else if (this.outline) {
+      if (this.outline) {
         cssClass += ` btn-outline-${this.color}`;
       } else {
         cssClass += ` btn-${this.color}`;

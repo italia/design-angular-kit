@@ -91,6 +91,9 @@ export class ItDropdownAnchor extends NgbDropdownAnchor {
  */
 @Directive({
   selector: '[itDropdownToggle]',
+  host: {
+    '[class]': 'placement'
+  },
   providers: [{provide: ItDropdownAnchor, useExisting: forwardRef(() => ItDropdownToggle)}]
 })
 export class ItDropdownToggle extends NgbDropdownToggle {
