@@ -14,6 +14,6 @@
     <span>
       <ng-content></ng-content>
     </span>
-    <it-icon [icon]="icon" [position]="iconPosition"></it-icon>
+    <it-icon *ngIf = "icon" [icon]="icon" [position]="iconPosition" [color] = "iconColor"></it-icon>
   </a>
 </li>

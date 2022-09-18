@@ -1,8 +1,10 @@
 import {
-  Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation
+  Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation, ContentChildren, QueryList
 } from '@angular/core';
 import { Util } from '../util/util';
 import { ThemeColor } from '../models/ThemeColor';
+import { DropdownItemComponent } from './dropdown-item.component';
+import { IconColorEnum } from '../enums/icons.enum';
 
 let identifier = 0;
 
@@ -21,6 +23,9 @@ export type DropdownMenuPlacement = 'bottom-start' | 'top-start' | 'left-start' 
 })
 export class DropdownComponent {
   id = `dropdown-${identifier++}`;
+
+  @ContentChildren(DropdownItemComponent) menuItems: QueryList<DropdownItemComponent>;
+
 
   @Input() menuHeading: string  = "";
   @Input() expandIcon: string | null = "it-expand";
@@ -45,7 +50,12 @@ export class DropdownComponent {
    */
   @Input()
   get dark(): boolean { return this._dark; }
-  set dark(value: boolean) { this._dark = Util.coerceBooleanProperty(value); }
+  set dark(value: boolean) { 
+    this._dark = Util.coerceBooleanProperty(value); 
+    if(this.autoUpdateMenuItemsIconColor) {
+      this.updateMenuItemsIconColor();
+    }
+  }
   private _dark = false;
 
   /**
@@ -106,6 +116,13 @@ export class DropdownComponent {
     } else {
       this.onClose.emit();
     }
+  }
+
+  @Input() autoUpdateMenuItemsIconColor: boolean = true;
+  private updateMenuItemsIconColor() {
+    this.menuItems?.forEach(item => {
+      item.iconColor = this._dark ? IconColorEnum.light : IconColorEnum.primary;
+    });
   }
 
   get isDropend(): boolean {

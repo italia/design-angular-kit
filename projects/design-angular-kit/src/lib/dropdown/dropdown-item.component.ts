@@ -1,4 +1,5 @@
 import { Component, Input} from '@angular/core';
+import { IconColorEnum } from '../enums/icons.enum';
 import { HorizontalAlign, HORIZONTAL_ALIGN } from '../models/Alignment';
 import { Util } from '../util/util';
 
@@ -74,6 +75,12 @@ export class DropdownItemComponent {
     }
   }
   private _iconPosition = HorizontalAlign.right;
+
+
+  @Input()
+  get iconColor(): IconColorEnum { return this._iconColor; }
+  set iconColor(value: IconColorEnum) { this._iconColor = value; }
+  private _iconColor = IconColorEnum.primary;
 
   get dropdownItemClass() {
     return `list-item ${this.iconPosition}-icon`;
