@@ -8,6 +8,9 @@ import { DropdownItemComponent } from './dropdown-item.component';
 import { DropdownDividerComponent } from './dropdown-divider.component';
 import { THEME_COLORS } from '../models/ThemeColor';
 import { IconComponent } from '../icon/icon.component';
+import { ButtonModule } from 'src/app/button/button.module';
+import { ItButtonDirective } from '../button/button.directive';
+import { ItDropdown, ItDropdownAnchor, ItDropdownItem, ItDropdownMenu, ItDropdownToggle } from './dropdown.directive';
 
 @Component({
   template: `
@@ -68,7 +71,13 @@ describe('DropdownComponent', () => {
         DropdownItemComponent,
         DropdownDividerComponent,
         SingleDropdownComponent,
-        IconComponent
+        IconComponent,
+        ItButtonDirective,
+        ItDropdown,
+        ItDropdownToggle,
+        ItDropdownAnchor,
+        ItDropdownItem,
+        ItDropdownMenu
       ]
     });
 
@@ -147,7 +156,6 @@ describe('DropdownComponent', () => {
       expect(dropdownInstance.isOpen).toBeFalsy();
       dropdownButton.click();
       fixture.detectChanges();
-
       expect(dropdownInstance.isOpen).toBeTruthy();
     });
   });
