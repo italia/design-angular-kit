@@ -8,6 +8,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { ThemeColor, THEME_COLORS } from '../models/ThemeColor';
+import { Util } from '../util/util';
 
 let progressbarId = 0;
 
@@ -25,18 +26,9 @@ export class ProgressBarComponent {
   public static readonly PROGRESS_BAR_DEFAULT_MIN = 0;
   public static readonly PROGRESS_BAR_DEFAULT_MAX = 100;
   public static readonly PROGRESS_BAR_DEFAULT_VALUE = 0;
-  public static readonly PROGRESS_BAR_DEFAULT_HEIGHT = 20;
   public static readonly PROGRESS_BAR_DEFAULT_LABEL = '';
 
   progressbarId = `it-progress-bar-${progressbarId++}`;
-
-  /**
-   * L'altezza della barra di avanzamento.
-   */
-  @Input()
-  get height(): number { return this._height; }
-  set height(v: number) { this._height = v; }
-  private _height = ProgressBarComponent.PROGRESS_BAR_DEFAULT_HEIGHT;
 
   /**
    * Il valore minimo della barra di avanzamento.
@@ -70,6 +62,16 @@ export class ProgressBarComponent {
   set label(v: string) { this._label = v; }
   private _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;
 
+  @Input()
+  get indeterminate(): boolean { return this._indeterminate; }
+  set indeterminate(value: boolean) { this._indeterminate = Util.coerceBooleanProperty(value); }
+  private _indeterminate = false;
+
+  @Input()
+  get indeterminateHiddenText(): string { return this._indeterminateHiddenText; }
+  set indeterminateHiddenText(v: string) { this._indeterminateHiddenText = v; }
+  private _indeterminateHiddenText = "In elaborazione...";
+
   /**
    * Il colore della barra di avanzamento.
    */
@@ -91,16 +93,20 @@ export class ProgressBarComponent {
   }
 
   pgStyle() {
-    return { 'width' : this.valuePercentage() + '%' };
+    return this.indeterminate ? null : { 'width' : this.valuePercentage() + '%' };
   }
 
-  pgClass() {
-    const progressbarClass = { 'progress-bar' : true };
+
+  get progressBarClass(): Set<string> {
+    const progressbarClass = new Set<string>();
+    progressbarClass.add('progress-bar');
     if (this.color) {
-      progressbarClass[`bg-${this.color}`] = true;
+      progressbarClass.add(`bg-${this.color}`);
     }
+
     return progressbarClass;
   }
+
 
   constructor() { }
 

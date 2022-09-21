@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProgressBarHeightComponent } from './progress-bar-height.component';
+import { ProgressBarIndeterminateComponent } from './progress-bar-indeterminate.component';
 
 describe('ProgressBarHeightComponent', () => {
-  let component: ProgressBarHeightComponent;
-  let fixture: ComponentFixture<ProgressBarHeightComponent>;
+  let component: ProgressBarIndeterminateComponent;
+  let fixture: ComponentFixture<ProgressBarIndeterminateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProgressBarHeightComponent ]
+      declarations: [ ProgressBarIndeterminateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProgressBarHeightComponent);
+    fixture = TestBed.createComponent(ProgressBarIndeterminateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

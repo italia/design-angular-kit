@@ -83,20 +83,6 @@ describe('ProgressBarComponent', () => {
       expect(progressBarInstance.label).toBe('Yet another simple progress bar');
     });
 
-    it('dovrebbe mostrare una barra di avanzamento con una altezza diversa', () => {
-      expect(progressBarInstance.height).toBe(40);
-
-      testComponent.height = 30;
-      fixture.detectChanges();
-
-      expect(progressBarInstance.height).toBe(30);
-
-      testComponent.height = 10;
-      fixture.detectChanges();
-
-      expect(progressBarInstance.height).toBe(10);
-    });
-
     it('dovrebbe mostrare una barra di avanzamento con diversi sfondi', () => {
       expect(progressBarInstance.color).toBe('primary');
 
