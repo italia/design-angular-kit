@@ -2,7 +2,8 @@ export enum IconSizeEnum {
   sx = 'icon-xs',
   sm = 'icon-sm',
   lg = 'icon-lg',
-  xl = 'icon-xl'
+  xl = 'icon-xl',
+  default = ''
 }
 
 export enum IconColorEnum {

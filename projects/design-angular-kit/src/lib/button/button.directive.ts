@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, ContentChildren, Directive, DoCheck, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
+import { ChangeDetectorRef, ContentChild, ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
 import { ThemeColor } from '../models/ThemeColor';
 import { ButtonSize } from '../models/ButtonSize';
 import { Util } from '../util/util';
 import { IconComponent } from '../icon/icon.component';
 import { IconColorEnum } from '../enums/icons.enum';
 import { ItDropdownToggle } from '../dropdown/dropdown.directive';
+import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 
 
 /**
@@ -94,6 +95,7 @@ export class ItButtonDirective {
   }
 
   @ContentChildren(IconComponent) iconComponents: QueryList<IconComponent>;
+  @ContentChild(ProgressBarComponent) progressBar: ProgressBarComponent;
 
   /**
    * Stabilisce se lo stile del pulsante avrà un contorno.
@@ -166,8 +168,12 @@ export class ItButtonDirective {
       cssClass += ' focus--mouse';
     }
 
-    if(this.iconComponents?.length) {
+    if(this.iconComponents?.length && !this.progressBar) {
       cssClass += ' btn-icon';
+    }
+
+    if(this.progressBar) {
+      cssClass += ' btn-progress';
     }
 
     return cssClass;

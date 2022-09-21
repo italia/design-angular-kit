@@ -42,7 +42,7 @@ export class IconComponent  {
 
   @Input() wai = 'wai';
 
-  @Input() size: IconSizeEnum = IconSizeEnum.sm;
+  @Input() size: IconSizeEnum = IconSizeEnum.default;
   @Input() color: IconColorEnum = IconColorEnum.primary;
   @Input() bgColor: IconBackgroundColorEnum = null;
 
