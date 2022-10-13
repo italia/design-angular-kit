@@ -26,16 +26,6 @@
 <it-source-display html="{$ sanitize(labelHtml) $}" typescript="{$ sanitize(labelTs) $}" >
 </it-source-display>
 
-{% set heightHtml %}
-  {% include "../progress-bar-height/progress-bar-height.component.html" %}
-{% endset %}
-
-{% set heightTs %}
-  {% include "../progress-bar-height/progress-bar-height.component.ts" %}
-{% endset %}
-
-<it-progress-bar-height></it-progress-bar-height>
-
 <it-source-display html="{$ sanitize(heightHtml) $}" typescript="{$ sanitize(heightTs) $}" >
 </it-source-display>
 
