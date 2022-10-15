@@ -4,21 +4,22 @@
         <div class="input-group-prepend">
 
           <!-- Gli elementi figli di "it-input" con la direttiva "itTextPrefix"  -->
-          <ng-container *ngIf="_textPrefixChildren.length">
+          <ng-container *ngIf="_textPrefixChildren.length || icon">
+
             <div class="input-group-text" >
-              <ng-content select = "[itTextPrefix]"></ng-content>
+              <ng-container *ngIf="icon">
+                <it-icon [icon] = "icon" size="icon-sm"></it-icon>
+              </ng-container>
+
+              <ng-container *ngIf="_textPrefixChildren.length">
+                <ng-content select = "[itTextPrefix]"></ng-content>
+              </ng-container>
             </div>
           </ng-container>
          
           <ng-container *ngIf="_prefixChildren.length">
             <!-- Gli elementi figli di "it-input" con la direttiva "itPrefix"  -->
             <ng-content select = "[itPrefix]"></ng-content>
-          </ng-container>
-
-          <ng-container *ngIf="icon">
-            <div class="input-group-text" >
-              <it-icon [icon] = "icon"></it-icon>
-            </div>
           </ng-container>
         </div>
       </ng-container>
@@ -27,7 +28,7 @@
 
      
 
-      <label [attr.for]="id" [class.active] = "isLabelActive">
+      <label [attr.for]="id" [class.active] = "isLabelActive" *ngIf="label">
         {{label}}
       </label>
 
@@ -38,6 +39,7 @@
         (input)="onInput()"
         [type]="type"
         [id]="id"
+        [class.focus--mouse]="focus"
         [attr.name]="name"
         [disabled]="disabled"
         [readonly]="readonly"

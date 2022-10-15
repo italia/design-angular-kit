@@ -211,6 +211,9 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   private _controlValueAccessorChangeFn: (value: any) => void = () => { };
   private _onTouched: () => any = () => { };
 
+  /** Indica se è stato effettuato il focus sul campo di input */
+  focus: boolean = false;
+
   private _emitChangeEvent(): void {
     if (this._isInitialized) {
       this.change.emit(new FormInputChange(this, this.value));
@@ -267,10 +270,12 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
   }
 
   onFocus() {
+    this.focus = true;
     this._isLabelActive = true;
   }
 
   onBlur() {
+    this.focus = false;
     const inputValue: string = this.value;
     if (inputValue.length === 0) {
       this._isLabelActive = false;

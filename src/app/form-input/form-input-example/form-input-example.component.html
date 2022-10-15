@@ -3,14 +3,20 @@
       <h4 class="card-title">Interazione con Form Input</h4>
       <div class="card-text">
         <it-input id="interactive-input-0" name="interactive-input-example-1" [label]="label" [placeholder]="placeholder" [note]="note"
-          [disabled]="disabled" [readonly]="readOnly" [icon] = "icon" [type]="type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
+          [icon] = "icon" [disabled]="disabled" [readonly]="readOnly" [type]="type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
         </it-input>
 
         <it-input id="interactive-input-1" name="interactive-input-example-1" [label]="label" [placeholder]="placeholder" [note]="note"
         [disabled]="disabled" [readonly]="readOnly" [type] = "type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
-        <it-icon *ngIf = "icon" [icon]="icon" itTextPrefix></it-icon>
-        <button class = "btn btn-primary" itSuffix>Invia</button>
-      </it-input>
+          <it-icon *ngIf = "icon" size="icon-sm" [icon]="icon" itTextSuffix></it-icon>
+        </it-input>
+
+
+        <it-input id="interactive-input-1" name="interactive-input-example-1" [label]="label" [placeholder]="placeholder" [note]="note"
+        [disabled]="disabled" [readonly]="readOnly" [type] = "type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
+          <it-icon *ngIf = "icon" size="icon-sm" [icon]="icon" itTextPrefix></it-icon>
+          <button class = "btn btn-primary" itSuffix>Invia</button>
+        </it-input>
   
         <div class="row">
           <div class="form-check col-4">
@@ -35,7 +41,7 @@
               <h5>Icona</h5>
               <it-radio-group [(ngModel)]="icon">
                 <it-radio-button id="radio-none" name="none" [value]="undefined" label="Nessuna"></it-radio-button>
-                <it-radio-button id="radio-star" name="it-star-outline" value="it-star-outline" label="it-star-outline"></it-radio-button>
+                <it-radio-button id="radio-pencil" name="it-pencil" value="it-pencil" label="it-pencil"></it-radio-button>
                 <it-radio-button id="radio-link" name="it-link" value="it-link" label="it-link"></it-radio-button>
               </it-radio-group>
           </div>

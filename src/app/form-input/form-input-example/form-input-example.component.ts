@@ -10,7 +10,7 @@ export class FormInputExampleComponent {
   readOnly = false;
   disabled = false;
   type = 'password';
-  icon = 'it-star-outline';
+  icon = 'it-pencil';
   value = 'myNgModel';
 
   get placeholder() {
