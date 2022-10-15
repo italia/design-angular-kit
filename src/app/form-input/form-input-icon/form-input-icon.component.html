@@ -3,23 +3,25 @@
       <h4 class="card-title">Input con icona o pulsanti</h4>
       <div class="card-text">
         <div class="row">
+          
           <div class="col-5">
-            <it-input id="interactive-input-0" name="interactive-input-example-1" [label]="label" [placeholder]="placeholder" [note]="note"
-            [icon] = "icon" [disabled]="disabled" [readonly]="readOnly" [type]="type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
-          </it-input>
+
+            <!-- Input con icona a sinistra tramite attributo -->
+          <it-input id="interactive-input-icon-0" name="interactive-input-icon-example-0" [label]="label" [icon] = "icon"></it-input>
   
-          <it-input id="interactive-input-1" name="interactive-input-example-1" [label]="label" [placeholder]="placeholder" [note]="note"
-          [disabled]="disabled" [readonly]="readOnly" [type] = "type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
+            <!-- Input con icona a sinistra tramite direttiva itTextSuffix -->
+          <it-input id="interactive-input-icon-1" name="interactive-input-icon-example-1" [label]="label">
             <it-icon *ngIf = "icon" size="icon-sm" [icon]="icon" itTextSuffix></it-icon>
           </it-input>
   
-  
-          <it-input id="interactive-input-1" name="interactive-input-example-1" [label]="label" [placeholder]="placeholder" [note]="note"
-          [disabled]="disabled" [readonly]="readOnly" [type] = "type" [(ngModel)]="value" [note]="note" [autoCompleteData]="autoCompleteData">
+            <!-- Input con icona a sinistra tramite direttiva itTextSuffix e bottone a destra tramite direttiva itSuffix-->
+          <it-input id="interactive-input-icon-2" name="interactive-input-icon-example-2" [label]="label">
             <it-icon *ngIf = "icon" size="icon-sm" [icon]="icon" itTextPrefix></it-icon>
             <button class = "btn btn-primary" itSuffix>Invia</button>
           </it-input>
           </div>
+
+
           <div class="form-check col-auto offset-1">
             <h5>Icona</h5>
             <it-radio-group [(ngModel)]="icon">

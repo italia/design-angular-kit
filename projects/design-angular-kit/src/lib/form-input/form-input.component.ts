@@ -43,7 +43,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   @ContentChildren(ItTextSuffixDirective, {descendants: true}) _textSuffixChildren: QueryList<ItTextSuffixDirective>;
 
 
-  @ViewChild('inputElement', { static: true })
+  @ViewChild('inputElement', { static: false })
   private _inputElement: ElementRef;
 
   /**
@@ -183,7 +183,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
    
     // In alcuni casi la label deve essere sempre posizionata sopra l'input per evitare sovrapposizioni 
     // di testo, come in caso di presenza del placeholder o per l'input di tipo "time"
-    if(newValue || (!this.placeholder && this.type !== INPUT_TYPES.TIME)) {
+    if(newValue || (!this.value && !this.placeholder && this.type !== INPUT_TYPES.TIME)) {
       this._isLabelActive = newValue;
     } else {
       this._isLabelActive = true;
