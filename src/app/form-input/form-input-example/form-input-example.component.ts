@@ -9,12 +9,12 @@ export class FormInputExampleComponent {
   i = 0;
   readOnly = false;
   disabled = false;
-  type = 'password';
+  type = 'text';
   icon = 'it-pencil';
   value = 'myNgModel';
 
   get placeholder() {
-    return this.hasPlaceholder ? this.type : '';
+    return this.hasPlaceholder ? 'Testo di esempio' : '';
   }
 
   get label() {

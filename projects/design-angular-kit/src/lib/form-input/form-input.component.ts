@@ -117,11 +117,6 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
    */
   @Input()
   get placeholder(): string {
-    if (this.label) {
-      if (this.label.length > 0) {
-        return '';
-      }
-    }
     return this._placeholder || '';
   }
   set placeholder(value: string) { this._placeholder = value; }
@@ -278,8 +273,9 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
     this.focus = false;
     const inputValue: string = this.value;
     if (inputValue.length === 0) {
-      // Per l'input di tipo "time" la label deve essere posizionata sempre sopra l'input
-      if(this.type !== INPUT_TYPES.TIME) { 
+      // In alcuni casi la label deve essere sempre posizionata sopra l'input per evitare sovrapposizioni 
+      // di testo, come in caso di presenza del placeholder o per l'input di tipo "time"
+      if(this.type !== INPUT_TYPES.TIME && !this.placeholder) { 
         this._isLabelActive = false;
       }
       if (this.type === INPUT_TYPES.NUMBER) {
