@@ -284,7 +284,7 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
     }
   }
 
-  noteId() {
+  get noteId() {
     return `${this.id}-note`;
   }
 
@@ -320,6 +320,15 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
     this.value = entry;
     this._showAutocompletion = false;
     this.onChange();
+  }
+
+  /**
+   * indica se il campo di input è composto da altri elementi accessori come 
+   * icone o bottoni da posizionare adiacenti al campo di input
+   */
+  get isInputGroup(): boolean {
+    return  this._textPrefixChildren.length > 0 || this._prefixChildren.length > 0 || !!this.icon 
+            || this._suffixChildren.length > 0 || this._textSuffixChildren.length > 0;
   }
 
 }

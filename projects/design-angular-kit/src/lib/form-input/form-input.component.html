@@ -1,5 +1,5 @@
 <div class="form-group">
-  <div class="input-group">
+  <div class="input-group" *ngIf = "isInputGroup; else formInput">
       <ng-container *ngIf="_textPrefixChildren.length || _prefixChildren.length || icon">
         <div class="input-group-prepend">
 
@@ -24,36 +24,7 @@
         </div>
       </ng-container>
 
-    
-
-     
-
-      <label [attr.for]="id" [class.active] = "isLabelActive" *ngIf="label">
-        {{label}}
-      </label>
-
-      <input #inputElement
-        (focus)="onFocus()"
-        (blur)="onBlur()"
-        (change)="onChange()"
-        (input)="onInput()"
-        [type]="type"
-        [id]="id"
-        [class.focus--mouse]="focus"
-        [attr.name]="name"
-        [disabled]="disabled"
-        [readonly]="readonly"
-        [placeholder]="placeholder"
-        [ngClass]="{
-          'form-control' : !readonly,
-          'form-control-plaintext' : readonly,
-          'autocomplete' : isAutocompletable()
-        }"
-      [attr.aria-labelledby]="note ? noteId : undefined"/>
-
-      <small [id]="noteId()" class="form-text text-muted" *ngIf="note">
-        {{note}}
-      </small>
+      <ng-container [ngTemplateOutlet]="formInput"></ng-container>
 
       <ng-container *ngIf="_suffixChildren.length || _textSuffixChildren.length">
         <div  class="input-group-append">
@@ -74,8 +45,36 @@
     
   </div>
 
+  <ng-template #formInput>
+    <label [attr.for]="id" [class.active] = "isLabelActive" *ngIf="label">
+      {{label}}
+    </label>
+  
+    <input #inputElement
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      (change)="onChange()"
+      (input)="onInput()"
+      [type]="type"
+      [id]="id"
+      [class.focus--mouse]="focus"
+      [attr.name]="name"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [placeholder]="placeholder"
+      [ngClass]="{
+        'form-control' : !readonly,
+        'form-control-plaintext' : readonly,
+        'autocomplete' : isAutocompletable()
+      }"
+    [attr.aria-describedby]="note ? noteId : undefined"/>
+  
+    
+  </ng-template>
 
-
+  <small [id]="noteId" class="form-text" *ngIf="note">
+    {{note}}
+  </small>
 
   <span class="btn-eye" 
     *ngIf="isPasswordMode"
