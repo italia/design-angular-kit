@@ -278,7 +278,10 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
     this.focus = false;
     const inputValue: string = this.value;
     if (inputValue.length === 0) {
-      this._isLabelActive = false;
+      // Per l'input di tipo "time" la label deve essere posizionata sempre sopra l'input
+      if(this.type !== INPUT_TYPES.TIME) { 
+        this._isLabelActive = false;
+      }
       if (this.type === INPUT_TYPES.NUMBER) {
         this.value = '';
       }
