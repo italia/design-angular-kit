@@ -8,6 +8,7 @@
   {% include "../form-input-example/form-input-example.component.ts" %}
 {% endset %}
 
+
 {% set tdvHtml %}
   {% include "../template-driven-validation-example/template-driven-validation-example.component.html" %}
 {% endset %}
@@ -28,6 +29,17 @@
 
 <it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}">
 </it-source-display>
+
+
+
+
+
+<it-form-input-icon-example></it-form-input-icon-example>
+
+<it-source-display html="{$ sanitize(tdvHtml) $}" typescript="{$ sanitize(tdvTs) $}">
+</it-source-display>
+
+
 
 <it-template-driven-validation-example></it-template-driven-validation-example>
 

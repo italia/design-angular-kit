@@ -12,6 +12,7 @@ import {
   TemplateDrivenValidationExampleComponent
 } from './template-driven-validation-example/template-driven-validation-example.component';
 import { ModelDrivenValidationExampleComponent } from './model-driven-validation-example/model-driven-validation-example.component';
+import { FormInputIconExampleComponent } from './form-input-icon/form-input-icon.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { ModelDrivenValidationExampleComponent } from './model-driven-validation
   ],
   declarations: [
     FormInputExampleComponent,
+    FormInputIconExampleComponent,
     FormInputExamplesComponent,
     FormInputIndexComponent,
     TemplateDrivenValidationExampleComponent,
