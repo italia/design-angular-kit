@@ -67,9 +67,7 @@
         'form-control-plaintext' : readonly,
         'autocomplete' : isAutocompletable()
       }"
-    [attr.aria-describedby]="note ? noteId : undefined"/>
-  
-    
+    [attr.aria-describedby]="note ? noteId : undefined"/>    
   </ng-template>
 
   <small [id]="noteId" class="form-text" *ngIf="note">

@@ -1,6 +1,6 @@
 import {
   Component, Input, ChangeDetectionStrategy, forwardRef,
-  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, ContentChildren, QueryList, AfterContentChecked
+  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, ContentChildren, QueryList, AfterContentChecked, OnInit
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { merge } from 'rxjs';
@@ -34,7 +34,7 @@ export class FormInputChange {
     multi: true
   }]
 })
-export class FormInputComponent implements AfterContentInit, ControlValueAccessor {
+export class FormInputComponent implements OnInit, AfterContentInit, ControlValueAccessor {
 
   @ContentChildren(ItPrefixDirective, {descendants: true}) _prefixChildren: QueryList<ItPrefixDirective>;
   @ContentChildren(ItTextPrefixDirective, {descendants: true}) _textPrefixChildren: QueryList<ItTextPrefixDirective>;
@@ -179,9 +179,17 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
     return this._isLabelActive;
   }
   set isLabelActive(value: boolean) {
-    this._isLabelActive = Util.coerceBooleanProperty(value);
+    const newValue = Util.coerceBooleanProperty(value);
+   
+    // In alcuni casi la label deve essere sempre posizionata sopra l'input per evitare sovrapposizioni 
+    // di testo, come in caso di presenza del placeholder o per l'input di tipo "time"
+    if(newValue || (!this.placeholder && this.type !== INPUT_TYPES.TIME)) {
+      this._isLabelActive = newValue;
+    } else {
+      this._isLabelActive = true;
+    }
   }
-  private _isLabelActive = false;
+  private _isLabelActive: boolean;
 
 
   get isPasswordMode() {
@@ -215,10 +223,15 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
     }
   }
 
+  ngOnInit(): void {
+    this.isLabelActive = false;
+  }
+
+
   writeValue(value: any): void {
     this.value = value;
     if (this.value) {
-      this._isLabelActive = true;
+      this.isLabelActive = true;
     }
 
     this.onChange();
@@ -266,18 +279,16 @@ export class FormInputComponent implements AfterContentInit, ControlValueAccesso
 
   onFocus() {
     this.focus = true;
-    this._isLabelActive = true;
+    this.isLabelActive = true;
   }
 
   onBlur() {
     this.focus = false;
     const inputValue: string = this.value;
-    if (inputValue.length === 0) {
-      // In alcuni casi la label deve essere sempre posizionata sopra l'input per evitare sovrapposizioni 
-      // di testo, come in caso di presenza del placeholder o per l'input di tipo "time"
-      if(this.type !== INPUT_TYPES.TIME && !this.placeholder) { 
-        this._isLabelActive = false;
-      }
+    if (!inputValue || inputValue.length === 0) {
+     
+      this.isLabelActive = false;
+      
       if (this.type === INPUT_TYPES.NUMBER) {
         this.value = '';
       }
