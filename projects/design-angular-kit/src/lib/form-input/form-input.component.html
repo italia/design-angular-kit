@@ -58,6 +58,7 @@
       [type]="type"
       [id]="id"
       [class.focus--mouse]="focus"
+      [class.input-password]="isPasswordMode"
       [attr.name]="name"
       [disabled]="disabled"
       [readonly]="readonly"
@@ -74,15 +75,14 @@
     {{note}}
   </small>
 
-  <span class="btn-eye" 
-    *ngIf="isPasswordMode"
-    (click)="isPasswordVisible = !isPasswordVisible"
-    [ngClass]="{
-      'eye-on' : !isPasswordVisible,
-      'eye-off' : isPasswordVisible
-    }">
-  </span>
 
+  <span *ngIf="isPasswordMode" 
+        class = "password-icon"
+        aria-hidden="true"
+        (click)="isPasswordVisible = !isPasswordVisible">
+    <it-icon [icon]="'it-password-' + (isPasswordVisible ? 'visible' : 'invisible')" size="icon-sm" color="default"></it-icon>
+  </span>
+ 
 
   <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">
     <li *ngFor="let entry of getRelatedEntries()" (click)="onEntryClick(entry)">
