@@ -76,13 +76,45 @@
   </small>
 
 
-  <span *ngIf="isPasswordMode" 
-        class = "password-icon"
-        aria-hidden="true"
-        (click)="isPasswordVisible = !isPasswordVisible">
+  <ng-container *ngIf="isPasswordMode">
+    <!-- Icona dell'occhio per la vedere/nascondere la password -->
+    <span 
+    class = "password-icon"
+    aria-hidden="true"
+    (click)="isPasswordVisible = !isPasswordVisible">
     <it-icon [icon]="'it-password-' + (isPasswordVisible ? 'visible' : 'invisible')" size="icon-sm" color="default"></it-icon>
-  </span>
- 
+    </span>
+
+
+    <!-- Indicatore di sicurezza della password -->
+    <div class="password-strength-meter" *ngIf="isPasswordMode && enablePasswordStrengthMeter">
+      <small class="form-text" 
+        [class.text-muted]="passwordStrengthLevel === 0"
+        [class.text-danger]="passwordStrengthLevel === 1"
+        [class.text-warning]="passwordStrengthLevel === 2"
+        [class.text-success]="passwordStrengthLevel > 2"
+        *ngIf = "passwordStrengthMeterConfig.showText">{{ passwordStrengthStatusMessage}}
+      </small>
+      <div class="password-meter progress rounded-0 position-absolute">
+        <div class="row position-absolute w-100 m-0">
+          <div class="col-3 border-start border-end border-white"></div>
+          <div class="col-3 border-start border-end border-white"></div>
+          <div class="col-3 border-start border-end border-white"></div>
+          <div class="col-3 border-start border-end border-white"></div>
+        </div>
+
+        <div class="progress-bar" 
+          [class.bg-success]="passwordStrengthLevel > 2" 
+          [class.bg-warning]="passwordStrengthLevel === 2" 
+          [class.bg-danger]="passwordStrengthLevel === 1" 
+          role="progressbar" [attr.aria-valuenow]="passwordStrength" aria-valuemin="0" aria-valuemax="100" [style.width.%]="passwordStrength">
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+  
+
 
   <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">
     <li *ngFor="let entry of getRelatedEntries()" (click)="onEntryClick(entry)">

@@ -20,6 +20,28 @@ export class FormInputChange {
   ) { }
 }
 
+export interface PasswordStrengthMeterConfig {
+  /** Testo per il punteggio di forza della password minimo */
+  shortPass: string,
+  /** Testo per punteggio di forza della password basso	 */
+  badPass: string,
+  /** Testo per punteggio di forza della password buono	 */
+  goodPass: string,
+  /** Testo per il punteggio di forza della password massimo	 */
+  strongPass: string,
+  /** Testo di aiuto */
+  enterPass: string,
+  /** Testo per avvertire che il CAPS LOCK è inserito	 */
+  alertCaps: string,
+  /** Lunghezza minima per il calcolo della forza della password (soglia password molto debole)	 */
+  showText: true,
+  /** Attiva/disattiva la visibilità dei messaggi di errore	 */
+  minimumLength: number,
+}
+
+export type PasswordStrengthLevel = 0 | 1 | 2 | 3 | 4;
+
+
 /**
  * Elementi e stili per la creazione di input accessibili e responsivi.
  */
@@ -45,6 +67,35 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
 
   @ViewChild('inputElement', { static: false })
   private _inputElement: ElementRef;
+
+ 
+  /**
+   * Indica se abilitare il controllo sulla sicurezza della password
+   */
+  @Input()
+  get enablePasswordStrengthMeter(): boolean { return this._enablePasswordStrengthMeter; }
+  set enablePasswordStrengthMeter(value: boolean) { this._enablePasswordStrengthMeter = Util.coerceBooleanProperty(value); }
+  private _enablePasswordStrengthMeter: boolean = false;
+
+
+  private _passwordStrengthMeterConfig: PasswordStrengthMeterConfig = {
+    shortPass: 'Password molto debole',
+    badPass: 'Password debole',
+    goodPass: 'Password sicura',
+    strongPass: 'Password molto sicura',
+    enterPass: 'Inserisci almeno 8 caratteri e una lettera maiuscola',
+    alertCaps: 'CAPS LOCK inserito',
+    showText: true,
+    minimumLength: 4,
+  };
+
+  @Input() set passwordStrengthMeterConfig(newConfig: PasswordStrengthMeterConfig) {
+    this._passwordStrengthMeterConfig = {...this._passwordStrengthMeterConfig, ...newConfig};
+  }
+
+  get passwordStrengthMeterConfig(): PasswordStrengthMeterConfig {
+    return this._passwordStrengthMeterConfig;
+  }
 
   /**
    * Indica l'id dell'elemento HTML
@@ -269,6 +320,9 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   }
 
   onInput() {
+    if(this._type === INPUT_TYPES.PASSWORD) {
+      this.checkPasswordStrength();
+    }
     if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this._showAutocompletion) {
       this._showAutocompletion = true;
     }
@@ -342,4 +396,51 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
             || this._suffixChildren.length > 0 || this._textSuffixChildren.length > 0;
   }
 
+
+  passwordStrength = 0;
+  checkPasswordStrength() {
+    const p = this.value;
+    // 1
+    let force = 0;
+  
+    // 2
+    const regex = /[$-/:-?{-~!"^_@`\[\]]/g;
+    const lowerLetters = /[a-z]+/.test(p);
+    const upperLetters = /[A-Z]+/.test(p);
+    const numbers = /[0-9]+/.test(p);
+    const symbols = regex.test(p);
+  
+    // 3
+    const flags = [lowerLetters, upperLetters, numbers, symbols];
+  
+    // 4
+    let passedMatches = 0;
+    for (const flag of flags) {
+      passedMatches += flag === true ? 1 : 0;
+    }
+  
+    // 5
+    force += 2 * p.length + ((p.length >= 10) ? 1 : 0);
+    force += passedMatches * 10;
+  
+    // 6
+    force = (p.length <= 6) ? Math.min(force, 10) : force;
+
+    this.passwordStrength = Math.min(force, 100);
+  }
+
+  get passwordStrengthLevel(): PasswordStrengthLevel {
+    return this.passwordStrength === 0 ? 0 : this.passwordStrength < 25 ? 1 : this.passwordStrength < 50 ? 2 : this.passwordStrength < 75 ? 3 : 4;
+  }
+
+  get passwordStrengthStatusMessage(): string {
+    switch(this.passwordStrengthLevel) {
+      case 0: return this._passwordStrengthMeterConfig.enterPass;
+      case 1: return this._passwordStrengthMeterConfig.shortPass;
+      case 2: return this._passwordStrengthMeterConfig.badPass;
+      case 3: return this._passwordStrengthMeterConfig.goodPass;
+      case 4: return this._passwordStrengthMeterConfig.strongPass;
+    }
+  }
 }
+
