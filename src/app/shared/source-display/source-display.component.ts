@@ -1,11 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-let tabIdentifier = 0;
-let tabContentIdentifier = 0;
-let tabHtmlIdentifier = 0;
-let tabTypescriptIdentifier = 0;
-let tabCssIdentifier = 0;
-
 @Component({
   selector: 'it-source-display',
   templateUrl: './source-display.component.html',
@@ -13,15 +7,9 @@ let tabCssIdentifier = 0;
 })
 export class SourceDisplayComponent implements OnInit {
 
-  idTab = `source-display-tab-${tabIdentifier++}`;
-  idTabContent = `source-display-tab-content-${tabContentIdentifier++}`;
-  idTabHtml = `tab-html-${tabHtmlIdentifier++}`;
-  idTypescript = `tab-typescript-${tabTypescriptIdentifier++}`;
-  idTabCss = `tab-css-${tabCssIdentifier++}`;
-
   @Input() html: string;
   @Input() typescript: string;
-  @Input() css: string;
+  @Input() scss: string;
 
   constructor() { }
 
@@ -36,9 +24,9 @@ export class SourceDisplayComponent implements OnInit {
       this.typescript = this.typescript.replace(/\/}\/}/g, '}}');
     }
 
-    if (this.css) {
-      this.css = this.css.replace(/\/{\/{/g, '{{');
-      this.css = this.css.replace(/\/}\/}/g, '}}');
+    if (this.scss) {
+      this.scss = this.scss.replace(/\/{\/{/g, '{{');
+      this.scss = this.scss.replace(/\/}\/}/g, '}}');
     }
   }
 }

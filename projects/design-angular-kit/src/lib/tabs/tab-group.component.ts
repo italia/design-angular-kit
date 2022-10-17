@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import { Subscription, merge } from 'rxjs';
 import { Util } from '../util/util';
-import { TabComponent } from './tab.component';
+import { ItTabComponent } from './tab.component';
 
 /** Usato per generare ID univoci per ogni componente tab */
 let nextId = 0;
@@ -24,7 +24,7 @@ export class TabChangeEvent {
   /** Indice del tab selezionato. */
   index: number;
   /** Riferimento al tab selezionato. */
-  tab: TabComponent;
+  tab: ItTabComponent;
 }
 
  /**
@@ -40,9 +40,9 @@ export class TabChangeEvent {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabGroupComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
+export class ItTabGroupComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
 
-  @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
+  @ContentChildren(ItTabComponent) _tabs: QueryList<ItTabComponent>;
 
   /** L'indice del tab che dovrebbe essere selezionato dopo che il contenuto e' stato controllato */
   private _indexToSelect: number | null = 0;
@@ -121,7 +121,7 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
     }
 
     // Setta la posizione per ogni tab.
-    this._tabs.forEach((tab: TabComponent, index: number) => {
+    this._tabs.forEach((tab: ItTabComponent, index: number) => {
       tab.position = index - indexToSelect;
       tab.isActive = index === indexToSelect;
     });
@@ -208,7 +208,7 @@ export class TabGroupComponent implements AfterContentInit, AfterContentChecked,
   }
 
   /** restituisce il tabIndex del tab. */
-  _getTabIndex(tab: TabComponent, idx: number): number | null {
+  _getTabIndex(tab: ItTabComponent, idx: number): number | null {
     if (tab.disabled) {
       return null;
     }

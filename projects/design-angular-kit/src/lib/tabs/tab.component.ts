@@ -24,7 +24,7 @@ import { Util } from '../util/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class TabComponent implements OnChanges, OnDestroy {
+export class ItTabComponent implements OnChanges, OnDestroy {
 
   /** Testo della tab. */
   @Input() label: string = ''; // tslint:disable-line

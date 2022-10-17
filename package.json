@@ -75,7 +75,7 @@
     "core-js": "^2.5.7",
     "fp-ts": "^2.12.1",
     "io-ts": "^2.2.16",
-    "ngx-highlightjs": "^2.0.0",
+    "ngx-highlightjs": "^7.0.1",
     "rxjs": "^7.5.6",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.6"

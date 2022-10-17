@@ -9,6 +9,17 @@
 {% endset %}
 
 
+
+{% set formInputIconHtml %}
+  {% include "../form-input-icon/form-input-icon.component.html" %}
+{% endset %}
+
+{% set formInputIconTs %}
+  {% include "../form-input-icon/form-input-icon.component.ts" %}
+{% endset %}
+
+
+
 {% set tdvHtml %}
   {% include "../template-driven-validation-example/template-driven-validation-example.component.html" %}
 {% endset %}
@@ -36,12 +47,13 @@
 
 <it-form-input-icon-example></it-form-input-icon-example>
 
-<it-source-display html="{$ sanitize(tdvHtml) $}" typescript="{$ sanitize(tdvTs) $}">
+<it-source-display html="{$ sanitize(formInputIconHtml) $}" typescript="{$ sanitize(formInputIconTs) $}">
 </it-source-display>
 
 
 
 <it-template-driven-validation-example></it-template-driven-validation-example>
+
 
 <it-source-display html="{$ sanitize(tdvHtml) $}" typescript="{$ sanitize(tdvTs) $}">
 </it-source-display>

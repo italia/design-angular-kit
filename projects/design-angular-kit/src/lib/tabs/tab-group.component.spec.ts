@@ -3,8 +3,8 @@ import { By } from '@angular/platform-browser';
 
 import { Component, QueryList, ViewChildren, OnInit, ViewChild } from '@angular/core';
 
-import { TabGroupComponent } from './tab-group.component';
-import { TabComponent } from './tab.component';
+import { ItTabGroupComponent } from './tab-group.component';
+import { ItTabComponent } from './tab.component';
 import { Observable } from 'rxjs';
 
 
@@ -26,7 +26,7 @@ import { Observable } from 'rxjs';
   `
 })
 class SimpleTabsComponent {
-  @ViewChildren(TabComponent) tabs: QueryList<TabComponent>;
+  @ViewChildren(ItTabComponent) tabs: QueryList<ItTabComponent>;
   selectedIndex = 1;
   focusEvent: any;
   selectEvent: any;
@@ -63,7 +63,7 @@ class TabGroupWithAriaInputsComponent {
   `,
 })
 class DisabledTabsComponent {
-  @ViewChildren(TabComponent) tabs: QueryList<TabComponent>;
+  @ViewChildren(ItTabComponent) tabs: QueryList<ItTabComponent>;
   isDisabled = false;
 }
 
@@ -142,8 +142,8 @@ describe('TabGroupComponent', () => {
         AsyncTabsComponent,
         // BindedTabsTestApp,
         TabGroupWithSimpleApiComponent,
-        TabGroupComponent,
-        TabComponent
+        ItTabGroupComponent,
+        ItTabComponent
       ],
     });
 
@@ -236,9 +236,9 @@ describe('TabGroupComponent', () => {
 
     it('dovrebbe aggiornare la posizione del tab quando l\'indice selezionato cambia', () => {
       fixture.detectChanges();
-      const component: TabGroupComponent =
+      const component: ItTabGroupComponent =
           fixture.debugElement.query(By.css('it-tab-group')).componentInstance;
-      const tabs: TabComponent[] = component._tabs.toArray();
+      const tabs: ItTabComponent[] = component._tabs.toArray();
 
       expect(tabs[0].position).toBeLessThan(0);
       expect(tabs[1].position).toBe(0);
@@ -261,7 +261,7 @@ describe('TabGroupComponent', () => {
 
     it('dovrebbe bloccare l\'indice selezionato al numero di tab', () => {
       fixture.detectChanges();
-      const component: TabGroupComponent =
+      const component: ItTabGroupComponent =
           fixture.debugElement.query(By.css('it-tab-group')).componentInstance;
 
       // Imposto l'indice ad un valore negativo, mi aspetto il primo tab selezionato
@@ -382,7 +382,7 @@ describe('TabGroupComponent', () => {
     }));
 
     it('dovrebbe aggiornare l\'indice selezionato se l\'ultima tab viene rimossa mentre è selezionata', fakeAsync(() => {
-      const component: TabGroupComponent =
+      const component: ItTabGroupComponent =
           fixture.debugElement.query(By.css('it-tab-group')).componentInstance;
 
       const numberOfTabs = component._tabs.length;
@@ -400,7 +400,7 @@ describe('TabGroupComponent', () => {
 
     it('dovrebbe mantenere il tab selezionato se un uovo tab viene aggiunto', () => {
       fixture.detectChanges();
-      const component: TabGroupComponent =
+      const component: ItTabGroupComponent =
           fixture.debugElement.query(By.css('it-tab-group')).componentInstance;
 
       fixture.componentInstance.selectedIndex = 1;
@@ -419,7 +419,7 @@ describe('TabGroupComponent', () => {
       fixture.componentInstance.selectedIndex = 1;
       fixture.detectChanges();
 
-      const component: TabGroupComponent =
+      const component: ItTabGroupComponent =
           fixture.debugElement.query(By.css('it-tab-group')).componentInstance;
 
       // Rimuovi il primo tab che si trova a destra di quello selezionato.
@@ -434,7 +434,7 @@ describe('TabGroupComponent', () => {
 
     it('dovrebbe poter selezionare un nuovo tab dopo la sua creazione', () => {
       fixture.detectChanges();
-      const component: TabGroupComponent =
+      const component: ItTabGroupComponent =
         fixture.debugElement.query(By.css('it-tab-group')).componentInstance;
 
       fixture.componentInstance.tabs.push({label: 'Ultimo tab', content: 'alla fine'});
@@ -481,7 +481,7 @@ describe('TabGroupComponent', () => {
 
   describe('Tab API', () => {
     let fixture: ComponentFixture<TabGroupWithSimpleApiComponent>;
-    let tabGroup: TabGroupComponent;
+    let tabGroup: ItTabGroupComponent;
 
     beforeEach(fakeAsync(() => {
       fixture = TestBed.createComponent(TabGroupWithSimpleApiComponent);
@@ -489,7 +489,7 @@ describe('TabGroupComponent', () => {
       tick();
 
       tabGroup =
-          fixture.debugElement.query(By.directive(TabGroupComponent)).componentInstance as TabGroupComponent;
+          fixture.debugElement.query(By.directive(ItTabGroupComponent)).componentInstance as ItTabGroupComponent;
     }));
 
     it('i tab dovrebbero avere i giusti contenuti', fakeAsync(() => {
@@ -523,7 +523,7 @@ describe('TabGroupComponent', () => {
   function checkSelectedIndex(expectedIndex: number, fixture: ComponentFixture<any>) {
     fixture.detectChanges();
 
-    const tabComponent: TabGroupComponent = fixture.debugElement
+    const tabComponent: ItTabGroupComponent = fixture.debugElement
         .query(By.css('it-tab-group')).componentInstance;
 
     expect(tabComponent.selectedIndex).toBe(expectedIndex);
