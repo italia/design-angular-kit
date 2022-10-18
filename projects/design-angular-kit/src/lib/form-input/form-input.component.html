@@ -46,29 +46,30 @@
   </div>
 
   <ng-template #formInput>
-    <label [attr.for]="id" [class.active] = "isLabelActive" *ngIf="label">
-      {{label}}
-    </label>
-  
-    <input #inputElement
-      (focus)="onFocus()"
-      (blur)="onBlur()"
-      (change)="onChange()"
-      (input)="onInput()"
-      [type]="type"
-      [id]="id"
-      [class.focus--mouse]="focus"
-      [class.input-password]="isPasswordMode"
-      [attr.name]="name"
-      [disabled]="disabled"
-      [readonly]="readonly"
-      [placeholder]="placeholder"
-      [ngClass]="{
-        'form-control' : !readonly,
-        'form-control-plaintext' : readonly,
-        'autocomplete' : isAutocompletable()
-      }"
-    [attr.aria-describedby]="note ? noteId : undefined"/>    
+      <label [attr.for]="id" [class.active] = "isLabelActive" *ngIf="label">
+        {{label}}
+      </label>
+    
+      <input #inputElement
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        (change)="onChange()"
+        (input)="onInput()"
+        [type]="type"
+        [id]="id"
+        [class.focus--mouse]="focus"
+        [class.input-password]="isPasswordMode"
+        [attr.name]="name"
+        [disabled]="disabled"
+        [readonly]="readonly"
+        [placeholder]="placeholder"
+        [ngClass]="{
+          'form-control' : !readonly,
+          'form-control-plaintext' : readonly,
+          'autocomplete' : isAutocompletable()
+        }"
+      [attr.aria-describedby]="note ? noteId : undefined"/>  
+      
   </ng-template>
 
   <small [id]="noteId" class="form-text" *ngIf="note">
@@ -113,7 +114,8 @@
     </div>
 
   </ng-container>
-  
+
+  <small *ngIf="isCapsLockActive" class="password-caps form-text text-warning position-absolute bg-white w-100">{{capsLockActiveLabel}}</small>
 
 
   <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">

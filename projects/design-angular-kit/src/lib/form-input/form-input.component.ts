@@ -1,6 +1,6 @@
 import {
   Component, Input, ChangeDetectionStrategy, forwardRef,
-  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, ContentChildren, QueryList, AfterContentChecked, OnInit
+  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, ContentChildren, QueryList, AfterContentChecked, OnInit, HostListener
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { merge } from 'rxjs';
@@ -231,6 +231,16 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   @Output()
   readonly change: EventEmitter<FormInputChange> = new EventEmitter<FormInputChange>();
 
+  /**
+   * Indica se è attivo il CAPS LOCK
+   */
+  isCapsLockActive = false;
+
+  /**
+   * La label da mostrare in caso sia attivo il CAPS LOCK
+   */
+  @Input() capsLockActiveLabel = 'CAPS LOCK inserito';
+
   get isLabelActive() {
     return this._isLabelActive;
   }
@@ -457,5 +467,16 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
       case 4: return this._passwordStrengthMeterConfig.strongPass;
     }
   }
+
+
+ 
+
+  @HostListener('window:click', ['$event'])
+  @HostListener('window:keydown', ['$event'])
+  @HostListener('window:keyup', ['$event'])
+  onKeyUp(event: KeyboardEvent): void {
+    this.isCapsLockActive = event.getModifierState && event.getModifierState('CapsLock');
+  }
+
 }
 
