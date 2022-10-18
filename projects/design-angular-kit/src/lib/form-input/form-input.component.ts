@@ -77,6 +77,11 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   set enablePasswordStrengthMeter(value: boolean) { this._enablePasswordStrengthMeter = Util.coerceBooleanProperty(value); }
   private _enablePasswordStrengthMeter: boolean = false;
 
+  /**
+   * Punteggio di sicurezza calcolato in base alla password immessa se enablePasswordStrengthMeter ha valore true
+   */
+  passwordStrength: number = 0;
+
 
   private _passwordStrengthMeterConfig: PasswordStrengthMeterConfig = {
     shortPass: 'Password molto debole',
@@ -86,7 +91,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
     enterPass: 'Inserisci almeno 8 caratteri e una lettera maiuscola',
     alertCaps: 'CAPS LOCK inserito',
     showText: true,
-    minimumLength: 4,
+    minimumLength: 8,
   };
 
   @Input() set passwordStrengthMeterConfig(newConfig: PasswordStrengthMeterConfig) {
@@ -320,8 +325,8 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   }
 
   onInput() {
-    if(this._type === INPUT_TYPES.PASSWORD) {
-      this.checkPasswordStrength();
+    if(this.isPasswordMode && this._enablePasswordStrengthMeter) {
+      this.recalculatePasswordStrength();
     }
     if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this._showAutocompletion) {
       this._showAutocompletion = true;
@@ -397,36 +402,46 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   }
 
 
-  passwordStrength = 0;
-  checkPasswordStrength() {
-    const p = this.value;
-    // 1
-    let force = 0;
-  
-    // 2
-    const regex = /[$-/:-?{-~!"^_@`\[\]]/g;
-    const lowerLetters = /[a-z]+/.test(p);
-    const upperLetters = /[A-Z]+/.test(p);
-    const numbers = /[0-9]+/.test(p);
-    const symbols = regex.test(p);
-  
-    // 3
-    const flags = [lowerLetters, upperLetters, numbers, symbols];
-  
-    // 4
-    let passedMatches = 0;
-    for (const flag of flags) {
-      passedMatches += flag === true ? 1 : 0;
-    }
-  
-    // 5
-    force += 2 * p.length + ((p.length >= 10) ? 1 : 0);
-    force += passedMatches * 10;
-  
-    // 6
-    force = (p.length <= 6) ? Math.min(force, 10) : force;
+  /**
+   * Ricalcola il punteggio di sicurezza in base al valore corrente
+   */
+  recalculatePasswordStrength(): void {
+    if(this.value && typeof this.value === 'string') {
+      // Si crea una nuova stringa rimuovendo le lettere duplicate dalla password immessa
+      const pswWithoutDuplicates = Array.from(new Set(this.value.split(''))).join('');
+      
+      let newPasswordStrength = 0;
+    
+      // si controlla se sono presenti LETTERE MINUSCOLE
+      const hasLowerLetters = /[a-z]+/.test(pswWithoutDuplicates);
+      // si controlla se sono presenti LETTERE MAIUSCOLE
+      const hasUpperLetters = /[A-Z]+/.test(pswWithoutDuplicates);
+      // si controlla se sono presenti NUMERI
+      const hasNumbers = /[0-9]+/.test(pswWithoutDuplicates);
+      // si controlla se sono presenti CARATTERI SPECIALI
+      const symbolsRegex = /[$-/:-?{-~!"^_@`\[\]]/g;
+      const hasSymbols = symbolsRegex.test(pswWithoutDuplicates);
 
-    this.passwordStrength = Math.min(force, 100);
+      // si controlla se la LUNGHEZZA della password supera la minima stabilita
+      const isGreaterThanMinLength = this.passwordStrengthMeterConfig.minimumLength <= pswWithoutDuplicates.length;
+
+      const pswChecks = [hasLowerLetters, hasUpperLetters, hasNumbers, hasSymbols, isGreaterThanMinLength];
+      let passedMatches = 0;
+      for (const flag of pswChecks) {
+        passedMatches += flag === true ? 1 : 0;
+      }
+      // per ogni controllo superato, si aggiunge 12 punti al punteggio
+      newPasswordStrength += passedMatches * 12;
+
+      // si considera anche la variazione tra tutti i caratteri della password
+      newPasswordStrength += 2 * pswWithoutDuplicates.length;
+
+      // ed infine anche la lunghezza della password effettiva, contando anche le lettere duplicate, fino ad un massimo di 12 punti
+      newPasswordStrength += Math.min(12, this.value.length - pswWithoutDuplicates.length);
+
+      // Il punteggio della password non può in ogni caso superare il valore 100  
+      this.passwordStrength = Math.min(newPasswordStrength, 100);
+    }
   }
 
   get passwordStrengthLevel(): PasswordStrengthLevel {
