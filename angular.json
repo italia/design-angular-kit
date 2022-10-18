@@ -135,9 +135,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/design-angular-kit/ng-package.prod.json"
-            ,              "tsConfig": "projects/design-angular-kit/tsconfig.lib.prod.json"
-}
+              "project": "projects/design-angular-kit/ng-package.prod.json",
+              "tsConfig": "projects/design-angular-kit/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
