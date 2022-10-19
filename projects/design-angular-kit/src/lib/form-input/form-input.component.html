@@ -64,8 +64,8 @@
         [readonly]="readonly"
         [placeholder]="placeholder"
         [ngClass]="{
-          'form-control' : !readonly,
-          'form-control-plaintext' : readonly,
+          'form-control' : !readonly || !readonlyPlainText,
+          'form-control-plaintext' : readonly && readonlyPlainText,
           'autocomplete' : isAutocompletable()
         }"
       [attr.aria-describedby]="note ? noteId : undefined"/>  

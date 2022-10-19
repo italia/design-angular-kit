@@ -68,7 +68,15 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   @ViewChild('inputElement', { static: false })
   private _inputElement: ElementRef;
 
- 
+  /**
+   * Indica se mostrare gli input readonly nella forma stilizzata come testo normale
+   */
+  @Input()
+  get readonlyPlainText(): boolean { return this._readonlyPlainText; }
+  set readonlyPlainText(value: boolean) { this._readonlyPlainText = Util.coerceBooleanProperty(value); }
+  private _readonlyPlainText: boolean = false;
+
+
   /**
    * Indica se abilitare il controllo sulla sicurezza della password
    */
