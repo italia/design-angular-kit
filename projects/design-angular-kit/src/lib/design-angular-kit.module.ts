@@ -21,6 +21,7 @@ import { ItDropdownModule } from './dropdown/dropdown.module';
 import { ItIconModule } from './icon/icon.module';
 import { ItButtonModule } from './button/button.module';
 import { ItTabsModule } from './tabs/tabs.module';
+import { MarkMatchingTextPipe } from './form-input/mark-matching-text.pipe';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { ItTabsModule } from './tabs/tabs.module';
         ItPrefixDirective,
         ItSuffixDirective,
         ItTextPrefixDirective,
-        ItTextSuffixDirective
+        ItTextSuffixDirective,
+        MarkMatchingTextPipe
     ],
     exports: [
         CheckboxComponent,

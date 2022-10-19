@@ -76,6 +76,11 @@
     {{note}}
   </small>
 
+  <!-- Icona lente per autocompletamento -->
+  <span class="autocomplete-icon" aria-hidden="true" *ngIf="isAutocompletable()">
+    <it-icon icon = "it-search" size="icon-sm" color="default"></it-icon>
+  </span>
+
 
   <ng-container *ngIf="isPasswordMode">
     <!-- Icona dell'occhio per la vedere/nascondere la password -->
@@ -115,13 +120,29 @@
 
   </ng-container>
 
+
   <small *ngIf="isCapsLockActive" class="password-caps form-text text-warning position-absolute bg-white w-100">{{capsLockActiveLabel}}</small>
 
 
-  <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">
-    <li *ngFor="let entry of getRelatedEntries()" (click)="onEntryClick(entry)">
-      {{entry}}
+  <ul class="autocomplete-list" *ngIf="isAutocompletable()"  [class.autocomplete-list-show]="showAutocompletion">
+    <li *ngFor="let entry of getRelatedEntries(); trackBy: autocompleteItemTrackByValueFn" (click)="onEntryClick(entry, $event)">
+     
+      <a [href]="entry.link" >
+        <ng-container *ngTemplateOutlet="autocompleteItemTemplate"></ng-container>
+      </a>
+      <ng-template #autocompleteItemTemplate>
+        <div class="avatar size-sm" *ngIf="entry.avatarSrcPath">
+          <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText">
+        </div>
+        <it-icon *ngIf="entry.icon" [icon]="entry.icon" size="icon-sm"></it-icon>
+        <span class="autocomplete-list-text">
+          <span [innerHTML] = "value | markMatchingText: entry.original"></span>
+          <em *ngIf="entry.label">{{label}}</em>
+        </span>
+      </ng-template>
     </li>
   </ul>
 
 </div>
+
+

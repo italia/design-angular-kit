@@ -41,6 +41,23 @@ export interface PasswordStrengthMeterConfig {
 
 export type PasswordStrengthLevel = 0 | 1 | 2 | 3 | 4;
 
+/**
+ * Elemento disponibile per l'autocompletamento del it-form-input
+ */
+export interface AutoCompleteItem {
+  /** Valore voce di autocompletamento */
+  value: string;
+  /** Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */
+  avatarSrcPath?: string;
+  /** Testo in alternativa dell'avatar per accessibilità */
+  avatarAltText?: string;
+  /** Icona posizionata a sinistra della voce di autocompletamento */
+  icon?: string;
+  /** Label posizionata a destra della voce di autocompletamento */
+  label?: string;
+  /** Link relativo all'elemento */
+  link?: string
+}
 
 /**
  * Elementi e stili per la creazione di input accessibili e responsivi.
@@ -156,7 +173,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
 
     this._isPasswordMode = this._type === INPUT_TYPES.PASSWORD;
     this._isPasswordVisible = false;
-    this._showAutocompletion = false;
+    this.showAutocompletion = false;
   }
   private _type = INPUT_TYPES.TEXT;
 
@@ -227,9 +244,9 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
    * Indica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input
    */
   @Input()
-  get autoCompleteData(): Array<string> { return this._autoCompleteData; }
-  set autoCompleteData(value: Array<string>) { this._autoCompleteData = value; }
-  private _autoCompleteData: Array<string>;
+  get autoCompleteData(): Array<AutoCompleteItem> { return this._autoCompleteData; }
+  set autoCompleteData(value: Array<AutoCompleteItem>) { this._autoCompleteData = value; }
+  private _autoCompleteData: Array<AutoCompleteItem>;
 
   /**
    * Evento emesso quando il valore dell'input cambia.
@@ -283,7 +300,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   }
   private _isPasswordVisible = false;
 
-  private _showAutocompletion = false;
+  private showAutocompletion = false;
   private _isInitialized = false;
   private _controlValueAccessorChangeFn: (value: any) => void = () => { };
   private _onTouched: () => any = () => { };
@@ -346,8 +363,8 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
     if(this.isPasswordMode && this._enablePasswordStrengthMeter) {
       this.recalculatePasswordStrength();
     }
-    if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this._showAutocompletion) {
-      this._showAutocompletion = true;
+    if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this.showAutocompletion) {
+      this.showAutocompletion = true;
     }
 
     this._emitChangeEvent();
@@ -377,16 +394,17 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   }
 
   getRelatedEntries() {
-    if (this.value && this._showAutocompletion) {
+    if (this.value && this.showAutocompletion) {
       const lowercaseValue = this.value.toLowerCase();
-      const lowercaseData = this._autoCompleteData.map(string => {
-        return { original : string, lowercase : string.toLowerCase() };
+      const lowercaseData = this._autoCompleteData.map(item => {
+        return { ...item, original : item.value, lowercase : item.value.toLowerCase() };
       });
 
       const relatedEntries = [];
       lowercaseData.forEach(lowercaseEntry => {
-        if ((lowercaseEntry.lowercase).includes(lowercaseValue)) {
-          relatedEntries.push(lowercaseEntry.original);
+        const matching = (lowercaseEntry.lowercase).includes(lowercaseValue);
+        if (matching) {
+          relatedEntries.push(lowercaseEntry);
         }
       });
 
@@ -404,9 +422,14 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
     }
   }
 
-  onEntryClick(entry) {
-    this.value = entry;
-    this._showAutocompletion = false;
+  onEntryClick(entry: AutoCompleteItem, event: Event) {
+    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata 
+    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.
+    if(!entry.link) {
+      event.preventDefault();
+    }
+    this.value = entry.value;
+    this.showAutocompletion = false;
     this.onChange();
   }
 
@@ -486,5 +509,9 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
     this.isCapsLockActive = event.getModifierState && event.getModifierState('CapsLock');
   }
 
+
+  autocompleteItemTrackByValueFn(index: number, item: AutoCompleteItem) {
+    return item.value;
+  }
 }
 

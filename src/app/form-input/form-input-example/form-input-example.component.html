@@ -48,13 +48,8 @@
           </div>
         </div>
 
-        <div class="form-group" aria-labelledby="autocompleteInputTextHelp" *ngIf="type === 'search'">
-          <input type="text" class="form-control" id="autocompleteInputText"
-            [value]="autoCompleteData.join(', ')"
-            (input)="autoCompleteData = $event.target.value.split(',')">
-          <label class="active" for="autocompleteInputText">Stringhe per l'autocompletamento</label>
-          <small id="autocompleteInputTextHelp" class="form-text text-muted">da separare con una virgola</small>
-        </div>
+      
+        
       </div>
     </div>
   </div>
