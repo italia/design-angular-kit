@@ -363,10 +363,9 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
     if(this.isPasswordMode && this._enablePasswordStrengthMeter) {
       this.recalculatePasswordStrength();
     }
-    if (this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && !this.showAutocompletion) {
-      this.showAutocompletion = true;
-    }
 
+    this.showAutocompletion = this._type === INPUT_TYPES.SEARCH && this.isAutocompletable() && this.value;
+   
     this._emitChangeEvent();
     this._controlValueAccessorChangeFn(this.value);
   }
@@ -394,7 +393,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   }
 
   getRelatedEntries() {
-    if (this.value && this.showAutocompletion) {
+    if (this.value) {
       const lowercaseValue = this.value.toLowerCase();
       const lowercaseData = this._autoCompleteData.map(item => {
         return { ...item, original : item.value, lowercase : item.value.toLowerCase() };
