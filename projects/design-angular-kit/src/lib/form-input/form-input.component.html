@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group" [class.autocomplete-wrapper-big]="autocompleteWrapperSize === 'big'">
   <div class="input-group" *ngIf = "isInputGroup; else formInput">
       <ng-container *ngIf="_textPrefixChildren.length || _prefixChildren.length || icon">
         <div class="input-group-prepend">
@@ -137,7 +137,7 @@
         <it-icon *ngIf="entry.icon" [icon]="entry.icon" size="icon-sm"></it-icon>
         <span class="autocomplete-list-text">
           <span [innerHTML] = "value | markMatchingText: entry.original"></span>
-          <em *ngIf="entry.label">{{label}}</em>
+          <em *ngIf="entry.label">{{entry.label}}</em>
         </span>
       </ng-template>
     </li>

@@ -61,22 +61,26 @@ export class FormInputExampleComponent {
     {
       value: 'Luisa Neri',
       avatarSrcPath: 'https://randomuser.me/api/portraits/women/44.jpg',
-      avatarAltText: 'Luisa Neri'
+      avatarAltText: 'Luisa Neri',
+      label: 'Profilo'
     }, 
     {
       value: 'Cristian Borelli',
       avatarSrcPath: 'https://randomuser.me/api/portraits/men/1.jpg',
-      avatarAltText: 'Cristian Borelli'
+      avatarAltText: 'Cristian Borelli',
+      label: 'Profilo'
     },
     {
       value: 'Andrea Stagi',
       avatarSrcPath: 'https://randomuser.me/api/portraits/men/2.jpg',
-      avatarAltText: 'Andrea Stagi'
+      avatarAltText: 'Andrea Stagi',
+      label: 'Profilo'
     },
     {
       value: 'Comune di Firenze',
       icon: 'it-pa',
-      link: 'https://www.comune.fi.it/'
+      link: 'https://www.comune.fi.it/',
+      label: 'Comune'
     },
     {
       value: 'Italia',

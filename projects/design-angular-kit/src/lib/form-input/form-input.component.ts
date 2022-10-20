@@ -107,6 +107,10 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
    */
   passwordStrength: number = 0;
 
+  /**
+   * Dimensione dell'input di autocomplete. Di default ha dimensione standard.
+   */
+  @Input() autocompleteWrapperSize: 'big' | 'default' = 'default';
 
   private _passwordStrengthMeterConfig: PasswordStrengthMeterConfig = {
     shortPass: 'Password molto debole',
