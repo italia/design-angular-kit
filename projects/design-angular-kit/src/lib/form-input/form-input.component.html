@@ -46,7 +46,7 @@
   </div>
 
   <ng-template #formInput>
-      <label [attr.for]="id" [class.active] = "isLabelActive" *ngIf="label">
+      <label [attr.for]="id" [class.active] = "isLabelActive && !labelVisuallyHidden" *ngIf="label" [class.visually-hidden]="labelVisuallyHidden">
         {{label}}
       </label>
     
@@ -75,11 +75,6 @@
   <small [id]="noteId" class="form-text" *ngIf="note">
     {{note}}
   </small>
-
-  <!-- Icona lente per autocompletamento -->
-  <span class="autocomplete-icon" aria-hidden="true" *ngIf="isAutocompletable()">
-    <it-icon icon = "it-search" size="icon-sm" color="default"></it-icon>
-  </span>
 
 
   <ng-container *ngIf="isPasswordMode">
@@ -121,9 +116,17 @@
   </ng-container>
 
 
+  <!-- Avviso CAPS LOCK Attivo -->
   <small *ngIf="isCapsLockActive" class="password-caps form-text text-warning position-absolute bg-white w-100">{{capsLockActiveLabel}}</small>
 
 
+  <!-- Icona lente per autocompletamento -->
+  <span class="autocomplete-icon" aria-hidden="true" *ngIf="isAutocompletable()">
+    <it-icon icon = "it-search" size="icon-sm" color="default"></it-icon>
+  </span>
+
+
+  <!-- Lista di autocompletamento -->
   <ul class="autocomplete-list" *ngIf="isAutocompletable()"  [class.autocomplete-list-show]="showAutocompletion">
     <li *ngFor="let entry of getRelatedEntries(); trackBy: autocompleteItemTrackByValueFn" (click)="onEntryClick(entry, $event)">
      

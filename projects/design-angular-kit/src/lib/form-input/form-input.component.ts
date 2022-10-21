@@ -47,15 +47,15 @@ export type PasswordStrengthLevel = 0 | 1 | 2 | 3 | 4;
 export interface AutoCompleteItem {
   /** Valore voce di autocompletamento */
   value: string;
-  /** Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */
+  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */
   avatarSrcPath?: string;
-  /** Testo in alternativa dell'avatar per accessibilità */
+  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */
   avatarAltText?: string;
-  /** Icona posizionata a sinistra della voce di autocompletamento */
+  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */
   icon?: string;
-  /** Label posizionata a destra della voce di autocompletamento */
+  /** Opzionale. Label posizionata a destra della voce di autocompletamento */
   label?: string;
-  /** Link relativo all'elemento */
+  /** Opzionale. Link relativo all'elemento */
   link?: string
 }
 
@@ -86,7 +86,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   private _inputElement: ElementRef;
 
   /**
-   * Indica se mostrare gli input readonly nella forma stilizzata come testo normale
+   * Opzionale. Indica se mostrare gli input readonly nella forma stilizzata come testo normale
    */
   @Input()
   get readonlyPlainText(): boolean { return this._readonlyPlainText; }
@@ -95,7 +95,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
 
 
   /**
-   * Indica se abilitare il controllo sulla sicurezza della password
+   * Opzionale. Indica se abilitare il controllo sulla sicurezza della password
    */
   @Input()
   get enablePasswordStrengthMeter(): boolean { return this._enablePasswordStrengthMeter; }
@@ -188,6 +188,14 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   get label(): string { return this._label; }
   set label(value: string) { this._label = value; }
   private _label: string;
+
+  /**
+   * Indica se la label dell'input deve essere visualizzata dall'utente o solamente visibile per lo screen reader
+   */
+  @Input()
+   get labelVisuallyHidden(): boolean { return this._labelVisuallyHidden; }
+   set labelVisuallyHidden(value: boolean) { this._labelVisuallyHidden = value; }
+   private _labelVisuallyHidden: boolean = false;
 
   /**
    * Indica il testo di aiuto sotto la input
