@@ -1,5 +1,5 @@
 <div class="form-group" [class.autocomplete-wrapper-big]="autocompleteWrapperSize === 'big'">
-  <div class="input-group" *ngIf = "isInputGroup; else formInput">
+  <div class="input-group" *ngIf = "isInputGroup; else formInputWithLabel">
       <ng-container *ngIf="_textPrefixChildren.length || _prefixChildren.length || icon">
         <div class="input-group-prepend">
 
@@ -24,7 +24,7 @@
         </div>
       </ng-container>
 
-      <ng-container [ngTemplateOutlet]="formInput"></ng-container>
+      <ng-container [ngTemplateOutlet]="formInputWithLabel"></ng-container>
 
       <ng-container *ngIf="_suffixChildren.length || _textSuffixChildren.length">
         <div  class="input-group-append">
@@ -45,11 +45,9 @@
     
   </div>
 
+
+
   <ng-template #formInput>
-      <label [attr.for]="id" [class.active] = "isLabelActive && !labelVisuallyHidden" *ngIf="label" [class.visually-hidden]="labelVisuallyHidden">
-        {{label}}
-      </label>
-    
       <input #inputElement
         (focus)="onFocus()"
         (blur)="onBlur()"
@@ -67,12 +65,38 @@
         [readonly]="readonly"
         [placeholder]="placeholder"
         [ngClass]="{
-          'form-control' : !readonly || !readonlyPlainText,
+          'form-control' : (!readonly || !readonlyPlainText) && type !== INPUT_TYPES.NUMBER,
           'form-control-plaintext' : readonly && readonlyPlainText,
           'autocomplete' : isAutocompletable()
         }"
       [attr.aria-describedby]="note ? noteId : undefined"/>  
-      
+  </ng-template>
+
+
+
+
+  <ng-template #formInputWithLabel>
+      <label  [attr.for]="id" *ngIf="label" 
+              [class.visually-hidden]="labelVisuallyHidden"
+              [class.input-number-label]="type === INPUT_TYPES.NUMBER"
+              [class.active] = "isLabelActive && !labelVisuallyHidden" >
+        {{label}}
+      </label>
+    
+      <ng-container *ngIf="type === INPUT_TYPES.NUMBER">
+        <span class="input-number" [class.input-number-currency]="currency">
+          <ng-container [ngTemplateOutlet]="formInput"></ng-container>
+
+          <button class="input-number-add">
+            <span class="visually-hidden">Aumenta valore di {{step}} Euro</span>
+          </button>
+          <button class="input-number-sub">
+            <span class="visually-hidden">Diminuisci valore di {{step}} Euro</span>
+          </button>
+        </span>
+      </ng-container>
+
+
   </ng-template>
 
   <small [id]="noteId" class="form-text" *ngIf="note">
@@ -120,7 +144,7 @@
 
 
   <!-- Avviso CAPS LOCK Attivo -->
-  <small *ngIf="isCapsLockActive" class="password-caps form-text text-warning position-absolute bg-white w-100">{{capsLockActiveLabel}}</small>
+  <small *ngIf="isCapsLockActive && !disableCapsLockAlert && type !== INPUT_TYPES.NUMBER" class="password-caps form-text text-warning position-absolute bg-white w-100">{{capsLockActiveLabel}}</small>
 
 
   <!-- Icona lente per autocompletamento -->

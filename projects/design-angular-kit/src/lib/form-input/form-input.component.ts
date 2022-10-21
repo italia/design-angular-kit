@@ -81,6 +81,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   @ContentChildren(ItSuffixDirective, {descendants: true}) _suffixChildren: QueryList<ItSuffixDirective>;
   @ContentChildren(ItTextSuffixDirective, {descendants: true}) _textSuffixChildren: QueryList<ItTextSuffixDirective>;
 
+  INPUT_TYPES = INPUT_TYPES;
 
   @ViewChild('inputElement', { static: false })
   private _inputElement: ElementRef;
@@ -220,7 +221,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   @Input()
   get step(): number { return this._step; }
   set step(value: number) { this._step = Util.coerceNumberProperty(value); }
-  private _step: number;
+  private _step: number = 1;
 
 
   /**
@@ -259,6 +260,16 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   set disabled(value: boolean) { this._disabled = Util.coerceBooleanProperty(value); }
   private _disabled = false;
 
+   /**
+   * Opzionale.
+   * Nel caso di input numerico, indica se il campo è una valuta.
+   * Accetta una espressione booleana o può essere usato come attributo senza valore
+   */
+    @Input()
+    get currency(): boolean { return this._currency; }
+    set currency(value: boolean) { this._currency = Util.coerceBooleanProperty(value); }
+    private _currency = false;
+
   /**
    * Opzionale.
    * Indica se il campo in questione è di sola lettura.
@@ -295,6 +306,16 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   readonly change: EventEmitter<FormInputChange> = new EventEmitter<FormInputChange>();
 
   /**
+   * Opzionale.
+   * Indica se disabilitare l'avviso di CAPS LOCK attivo
+   * Accetta una espressione booleana o può essere usato come attributo senza valore
+   */
+  @Input()
+  get disableCapsLockAlert(): boolean { return this._disableCapsLockAlert; }
+  set disableCapsLockAlert(value: boolean) { this._disableCapsLockAlert = Util.coerceBooleanProperty(value); }
+  private _disableCapsLockAlert = false;
+
+  /**
    * Indica se è attivo il CAPS LOCK
    */
   isCapsLockActive = false;
@@ -312,7 +333,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
    
     // In alcuni casi la label deve essere sempre posizionata sopra l'input per evitare sovrapposizioni 
     // di testo, come in caso di presenza del placeholder o per l'input di tipo "time"
-    if(newValue || (!this.value && !this.placeholder && this.type !== INPUT_TYPES.TIME)) {
+    if(newValue || (!this.value && !this.placeholder && this.type !== INPUT_TYPES.TIME && this.type !== INPUT_TYPES.NUMBER)) {
       this._isLabelActive = newValue;
     } else {
       this._isLabelActive = true;
