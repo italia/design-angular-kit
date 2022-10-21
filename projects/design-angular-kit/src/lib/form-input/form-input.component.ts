@@ -265,10 +265,20 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
    * Nel caso di input numerico, indica se il campo è una valuta.
    * Accetta una espressione booleana o può essere usato come attributo senza valore
    */
-    @Input()
-    get currency(): boolean { return this._currency; }
-    set currency(value: boolean) { this._currency = Util.coerceBooleanProperty(value); }
-    private _currency = false;
+  @Input()
+  get currency(): boolean { return this._currency; }
+  set currency(value: boolean) { this._currency = Util.coerceBooleanProperty(value); }
+  private _currency = false;
+
+   /**
+   * Opzionale.
+   * Nel caso di input numerico, indica se il campo è una percentuale.
+   * Accetta una espressione booleana o può essere usato come attributo senza valore
+   */
+  @Input()
+  get percentage(): boolean { return this._percentage; }
+  set percentage(value: boolean) { this._percentage = Util.coerceBooleanProperty(value); }
+  private _percentage = false;
 
   /**
    * Opzionale.
