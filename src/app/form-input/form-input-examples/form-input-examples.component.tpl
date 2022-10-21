@@ -1,5 +1,13 @@
 {% from "../../macro.template.njk" import sanitize as sanitize %}
 
+
+
+<it-form-input-number-example></it-form-input-number-example>
+
+<it-source-display html="{$ sanitize(formInputNumberHtml) $}" typescript="{$ sanitize(formInputNumberTs) $}">
+</it-source-display>
+
+
 {% set html %}
   {% include "../form-input-example/form-input-example.component.html" %}
 {% endset %}
@@ -7,6 +15,7 @@
 {% set typescript %}
   {% include "../form-input-example/form-input-example.component.ts" %}
 {% endset %}
+
 
 
 
@@ -49,6 +58,7 @@
 
 <it-source-display html="{$ sanitize(formInputIconHtml) $}" typescript="{$ sanitize(formInputIconTs) $}">
 </it-source-display>
+
 
 
 

@@ -193,9 +193,35 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
    * Indica se la label dell'input deve essere visualizzata dall'utente o solamente visibile per lo screen reader
    */
   @Input()
-   get labelVisuallyHidden(): boolean { return this._labelVisuallyHidden; }
-   set labelVisuallyHidden(value: boolean) { this._labelVisuallyHidden = value; }
-   private _labelVisuallyHidden: boolean = false;
+  get labelVisuallyHidden(): boolean { return this._labelVisuallyHidden; }
+  set labelVisuallyHidden(value: boolean) { this._labelVisuallyHidden = value; }
+  private _labelVisuallyHidden: boolean = false;
+
+
+  /**
+   * Indica il valore che avrà l'attributo HTML "min" per l'input di tipo number
+   */
+  @Input()
+  get min(): number { return this._min; }
+  set min(value: number) { this._min = Util.coerceNumberProperty(value); }
+  private _min: number;
+   
+  /**
+   * Indica il valore che avrà l'attributo HTML "max" per l'input di tipo number
+   */
+  @Input()
+  get max(): number { return this._max; }
+  set max(value: number) { this._max = Util.coerceNumberProperty(value); }
+  private _max: number;
+
+  /**
+   * Indica il valore che avrà l'attributo HTML "step" per l'input di tipo number
+   */
+  @Input()
+  get step(): number { return this._step; }
+  set step(value: number) { this._step = Util.coerceNumberProperty(value); }
+  private _step: number;
+
 
   /**
    * Indica il testo di aiuto sotto la input
