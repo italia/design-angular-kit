@@ -116,15 +116,11 @@
       <it-icon [icon]="'it-password-' + (isPasswordVisible ? 'invisible' : 'visible')" size="icon-sm" color="default"></it-icon>
     </span>
 
-
     <!-- Indicatore di sicurezza della password -->
     <div class="password-strength-meter" *ngIf="isPasswordMode && enablePasswordStrengthMeter">
       <small class="form-text" 
-        [class.text-muted]="passwordStrengthLevel === 0"
-        [class.text-danger]="passwordStrengthLevel === 1"
-        [class.text-warning]="passwordStrengthLevel === 2"
-        [class.text-success]="passwordStrengthLevel > 2"
-        *ngIf = "passwordStrengthMeterConfig.showText">{{ passwordStrengthStatusMessage}}
+        [ngClass] = "['text-' + passwordScoreColor]"
+        *ngIf = "passwordStrengthMeterConfig.showText">{{ passwordScoreText }}
       </small>
       <div class="password-meter progress rounded-0 position-absolute">
         <div class="row position-absolute w-100 m-0">
@@ -135,10 +131,8 @@
         </div>
 
         <div class="progress-bar" 
-          [class.bg-success]="passwordStrengthLevel > 2" 
-          [class.bg-warning]="passwordStrengthLevel === 2" 
-          [class.bg-danger]="passwordStrengthLevel === 1" 
-          role="progressbar" [attr.aria-valuenow]="passwordStrength" aria-valuemin="0" aria-valuemax="100" [style.width.%]="passwordStrength">
+          [class]="['bg-' + passwordScoreColor]"
+          role="progressbar" [attr.aria-valuenow]="passwordScore >= 0 ? passwordScore : 0" aria-valuemin="0" aria-valuemax="100" [style.width.%]="passwordScore >= 0 ? passwordScore : 0">
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { merge } from 'rxjs';
 import { InputType, INPUT_TYPES } from '../models/InputType';
 import { Util } from '../util/util';
+import { FormInputPasswordUtils } from './form-input-password.utils';
 import { ItPrefixDirective } from './it-prefix.directive';
 import { ItSuffixDirective } from './it-suffix.directive';
 import { ItTextPrefixDirective } from './it-text-prefix.directive';
@@ -34,12 +35,11 @@ export interface PasswordStrengthMeterConfig {
   /** Testo per avvertire che il CAPS LOCK è inserito	 */
   alertCaps: string,
   /** Lunghezza minima per il calcolo della forza della password (soglia password molto debole)	 */
-  showText: true,
+  showText: boolean,
   /** Attiva/disattiva la visibilità dei messaggi di errore	 */
   minimumLength: number,
 }
 
-export type PasswordStrengthLevel = 0 | 1 | 2 | 3 | 4;
 
 /**
  * Elemento disponibile per l'autocompletamento del it-form-input
@@ -75,6 +75,8 @@ export interface AutoCompleteItem {
 })
 export class FormInputComponent implements OnInit, AfterContentInit, ControlValueAccessor {
 
+  private _formInputPasswordUtils: FormInputPasswordUtils;
+
   @ContentChildren(ItPrefixDirective, {descendants: true}) _prefixChildren: QueryList<ItPrefixDirective>;
   @ContentChildren(ItTextPrefixDirective, {descendants: true}) _textPrefixChildren: QueryList<ItTextPrefixDirective>;
 
@@ -106,23 +108,14 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   /**
    * Punteggio di sicurezza calcolato in base alla password immessa se enablePasswordStrengthMeter ha valore true
    */
-  passwordStrength: number = 0;
+  passwordScore: number = 0;
 
   /**
    * Dimensione dell'input di autocomplete. Di default ha dimensione standard.
    */
   @Input() autocompleteWrapperSize: 'big' | 'default' = 'default';
 
-  private _passwordStrengthMeterConfig: PasswordStrengthMeterConfig = {
-    shortPass: 'Password molto debole',
-    badPass: 'Password debole',
-    goodPass: 'Password sicura',
-    strongPass: 'Password molto sicura',
-    enterPass: 'Inserisci almeno 8 caratteri e una lettera maiuscola',
-    alertCaps: 'CAPS LOCK inserito',
-    showText: true,
-    minimumLength: 8,
-  };
+  private _passwordStrengthMeterConfig: PasswordStrengthMeterConfig = FormInputPasswordUtils.DEFAULT_CONFIG;
 
   @Input() set passwordStrengthMeterConfig(newConfig: PasswordStrengthMeterConfig) {
     this._passwordStrengthMeterConfig = {...this._passwordStrengthMeterConfig, ...newConfig};
@@ -385,6 +378,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
 
   ngOnInit(): void {
     this.isLabelActive = false;
+    this._formInputPasswordUtils = new FormInputPasswordUtils(this.passwordStrengthMeterConfig);
   }
 
 
@@ -515,58 +509,17 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
    * Ricalcola il punteggio di sicurezza in base al valore corrente
    */
   recalculatePasswordStrength(): void {
-    if(this.value && typeof this.value === 'string') {
-      // Si crea una nuova stringa rimuovendo le lettere duplicate dalla password immessa
-      const pswWithoutDuplicates = Array.from(new Set(this.value.split(''))).join('');
-      
-      let newPasswordStrength = 0;
-    
-      // si controlla se sono presenti LETTERE MINUSCOLE
-      const hasLowerLetters = /[a-z]+/.test(pswWithoutDuplicates);
-      // si controlla se sono presenti LETTERE MAIUSCOLE
-      const hasUpperLetters = /[A-Z]+/.test(pswWithoutDuplicates);
-      // si controlla se sono presenti NUMERI
-      const hasNumbers = /[0-9]+/.test(pswWithoutDuplicates);
-      // si controlla se sono presenti CARATTERI SPECIALI
-      const symbolsRegex = /[$-/:-?{-~!"^_@`\[\]]/g;
-      const hasSymbols = symbolsRegex.test(pswWithoutDuplicates);
+    this.passwordScore = this._formInputPasswordUtils.calculateScore(this.value);
+  }
+  
 
-      // si controlla se la LUNGHEZZA della password supera la minima stabilita
-      const isGreaterThanMinLength = this.passwordStrengthMeterConfig.minimumLength <= pswWithoutDuplicates.length;
-
-      const pswChecks = [hasLowerLetters, hasUpperLetters, hasNumbers, hasSymbols, isGreaterThanMinLength];
-      let passedMatches = 0;
-      for (const flag of pswChecks) {
-        passedMatches += flag === true ? 1 : 0;
-      }
-      // per ogni controllo superato, si aggiunge 12 punti al punteggio
-      newPasswordStrength += passedMatches * 12;
-
-      // si considera anche la variazione tra tutti i caratteri della password
-      newPasswordStrength += 2 * pswWithoutDuplicates.length;
-
-      // ed infine anche la lunghezza della password effettiva, contando anche le lettere duplicate, fino ad un massimo di 12 punti
-      newPasswordStrength += Math.min(12, this.value.length - pswWithoutDuplicates.length);
-
-      // Il punteggio della password non può in ogni caso superare il valore 100  
-      this.passwordStrength = Math.min(newPasswordStrength, 100);
-    }
+  get passwordScoreText(): string {
+    return this._formInputPasswordUtils.scoreText(this.passwordScore);
   }
 
-  get passwordStrengthLevel(): PasswordStrengthLevel {
-    return this.passwordStrength === 0 ? 0 : this.passwordStrength < 25 ? 1 : this.passwordStrength < 50 ? 2 : this.passwordStrength < 75 ? 3 : 4;
+  get passwordScoreColor(): string {
+    return this._formInputPasswordUtils.scoreColor(this.passwordScore);
   }
-
-  get passwordStrengthStatusMessage(): string {
-    switch(this.passwordStrengthLevel) {
-      case 0: return this._passwordStrengthMeterConfig.enterPass;
-      case 1: return this._passwordStrengthMeterConfig.shortPass;
-      case 2: return this._passwordStrengthMeterConfig.badPass;
-      case 3: return this._passwordStrengthMeterConfig.goodPass;
-      case 4: return this._passwordStrengthMeterConfig.strongPass;
-    }
-  }
-
 
  
 
