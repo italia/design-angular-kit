@@ -25,7 +25,17 @@
         <p class = "mb-5">Per anteporre il simbolo della percentuale in Euro, aggiungere la proprietà "percentage"</p>
         
         <!-- Input numerico con percentuale -->
-        <it-input id="interactive-input-number-2" type="number" name="interactive-input-icon-example-2" label="Percentage" percentage
+        <it-input id="interactive-input-number-2" type="number" name="interactive-input-number-example-2" label="Percentage" percentage
+        ></it-input>
+
+
+        <h5>Ridimensionamento</h5>
+        <p class = "mb-5">È possibile far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso.
+                          Basta aggiungere la proprietà "adaptive"</p>
+        
+        <!-- Input numerico con ridimensionamento automatico -->
+        <it-input id="interactive-input-number-3" type="number" name="interactive-input-number-example-3" label="Adattivo" adaptive
+                  [(ngModel)]="adaptiveInputValue" 
         ></it-input>
       </div>
     </div>

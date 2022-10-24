@@ -64,6 +64,7 @@
         [disabled]="disabled"
         [readonly]="readonly"
         [placeholder]="placeholder"
+        [style.width]="adaptive && valueLength ? 'calc(44px + ' + valueLength + 'ch)' : 'inherit'"
         [ngClass]="{
           'form-control' : (!readonly || !readonlyPlainText) && type !== INPUT_TYPES.NUMBER,
           'form-control-plaintext' : readonly && readonlyPlainText,
@@ -71,7 +72,6 @@
         }"
       [attr.aria-describedby]="note ? noteId : undefined"/>  
   </ng-template>
-
 
 
 
@@ -83,8 +83,11 @@
         {{label}}
       </label>
     
+      <!-- INIZIO gestione input di tipo NUMBER -->
+
       <ng-container *ngIf="type === INPUT_TYPES.NUMBER; else formInput">
         <span class="input-number" 
+              [class.input-number-adaptive]="adaptive"
               [class.input-number-currency]="currency" 
               [class.input-number-percentage]="percentage">
 
@@ -99,6 +102,7 @@
         </span>
       </ng-container>
 
+    <!-- FINE gestione input di tipo NUMBER -->
 
   </ng-template>
 
@@ -106,6 +110,8 @@
     {{note}}
   </small>
 
+
+  <!-- INIZIO gestione input di tipo PASSWORD -->
 
   <ng-container *ngIf="isPasswordMode">
     <!-- Icona dell'occhio per la vedere/nascondere la password -->
@@ -139,9 +145,17 @@
 
   </ng-container>
 
+ <!-- FINE gestione input di tipo PASSWORD -->
+
+
+
 
   <!-- Avviso CAPS LOCK Attivo -->
   <small *ngIf="isCapsLockActive && !disableCapsLockAlert && type !== INPUT_TYPES.NUMBER" class="password-caps form-text text-warning position-absolute bg-white w-100">{{capsLockActiveLabel}}</small>
+
+
+
+  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->
 
 
   <!-- Icona lente per autocompletamento -->
@@ -172,3 +186,4 @@
 
 </div>
 
+  <!-- FINE gestione AUTOCOMPLETAMENTO -->

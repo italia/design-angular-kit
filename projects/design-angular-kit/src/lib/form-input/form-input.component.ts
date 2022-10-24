@@ -275,6 +275,16 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
 
   /**
    * Opzionale.
+   * Nel caso di input numerico, indica se il campo si deve ridimensionare automaticamente a seconda del valore contenuto in esso.
+   * Accetta una espressione booleana o può essere usato come attributo senza valore
+   */
+  @Input()
+  get adaptive(): boolean { return this._adaptive; }
+  set adaptive(value: boolean) { this._adaptive = Util.coerceBooleanProperty(value); }
+  private _adaptive = false;
+
+  /**
+   * Opzionale.
    * Indica se il campo in questione è di sola lettura.
    * Accetta una espressione booleana o può essere usato come attributo senza valore
    */
@@ -362,7 +372,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   }
   private _isPasswordVisible = false;
 
-  private showAutocompletion = false;
+  showAutocompletion = false;
   private _isInitialized = false;
   private _controlValueAccessorChangeFn: (value: any) => void = () => { };
   private _onTouched: () => any = () => { };
@@ -521,6 +531,12 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
     return this._formInputPasswordUtils.scoreColor(this.passwordScore);
   }
 
+  get valueLength(): number {
+    if(!this.value) {
+      return 0;
+    }
+    return (this.value as string | number).toString().length;
+  }
  
 
   @HostListener('window:click', ['$event'])
