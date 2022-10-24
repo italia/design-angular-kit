@@ -83,10 +83,11 @@
         {{label}}
       </label>
     
-      <ng-container *ngIf="type === INPUT_TYPES.NUMBER">
+      <ng-container *ngIf="type === INPUT_TYPES.NUMBER; else formInput">
         <span class="input-number" 
               [class.input-number-currency]="currency" 
               [class.input-number-percentage]="percentage">
+
           <ng-container [ngTemplateOutlet]="formInput"></ng-container>
 
           <button class="input-number-add">
