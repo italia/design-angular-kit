@@ -64,7 +64,7 @@
         [disabled]="disabled"
         [readonly]="readonly"
         [placeholder]="placeholder"
-        [style.width]="adaptive && valueLength ? 'calc(44px + ' + valueLength + 'ch)' : '100%'"
+        [style.width]="adaptive && valueLength ? 'calc(44px + ' + valueLength + 'ch)' : null"
         [ngClass]="{
           'form-control' : (!readonly || !readonlyPlainText) && type !== INPUT_TYPES.NUMBER,
           'form-control-plaintext' : readonly && readonlyPlainText,
