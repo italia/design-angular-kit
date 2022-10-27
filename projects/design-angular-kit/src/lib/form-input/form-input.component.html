@@ -64,7 +64,7 @@
         [disabled]="disabled"
         [readonly]="readonly"
         [placeholder]="placeholder"
-        [style.width]="adaptive && valueLength ? 'calc(44px + ' + valueLength + 'ch)' : 'inherit'"
+        [style.width]="adaptive && valueLength ? 'calc(44px + ' + valueLength + 'ch)' : '100%'"
         [ngClass]="{
           'form-control' : (!readonly || !readonlyPlainText) && type !== INPUT_TYPES.NUMBER,
           'form-control-plaintext' : readonly && readonlyPlainText,
@@ -93,10 +93,10 @@
 
           <ng-container [ngTemplateOutlet]="formInput"></ng-container>
 
-          <button class="input-number-add">
+          <button class="input-number-add" (click)="incrementNumberValue()" focusMouse>
             <span class="visually-hidden">Aumenta valore di {{step}} Euro</span>
           </button>
-          <button class="input-number-sub">
+          <button class="input-number-sub" (click)="decrementNumberValue()" focusMouse>
             <span class="visually-hidden">Diminuisci valore di {{step}} Euro</span>
           </button>
         </span>

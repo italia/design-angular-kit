@@ -550,5 +550,30 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   autocompleteItemTrackByValueFn(index: number, item: AutoCompleteItem) {
     return item.value;
   }
+
+
+  /**
+   * Incrementa il valore dell'input numerico di tanto quanto vale lo step
+   */
+  incrementNumberValue(): void {
+    if(this.type === INPUT_TYPES.NUMBER) {
+      const tempValue = +this.value + this.step;
+      if(this.max === undefined || tempValue <= this.max) {
+        this.value = tempValue;
+      }
+    }
+  }
+
+  /**
+   * Decrementa il valore dell'input numerico di tanto quanto vale lo step
+   */
+  decrementNumberValue(): void {
+    if(this.type === INPUT_TYPES.NUMBER ) {
+      const tempValue = +this.value - this.step;
+      if(this.min === undefined || tempValue >= this.min) {
+        this.value = tempValue;
+      }
+    }
+  }
 }
 

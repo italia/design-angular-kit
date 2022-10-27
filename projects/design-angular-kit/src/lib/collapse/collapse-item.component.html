@@ -1,5 +1,5 @@
 <div class="collapse-header" [id]="headingId">
-  <button #toggleButton data-toggle="collapse" [attr.aria-expanded]="!collapse.isCollapsed" [attr.aria-controls]="id" (click)="collapse.toggle()" [ngClass]="{'collapsed' : collapse.isCollapsed}">
+  <button #toggleButton focusMouse data-toggle="collapse" [attr.aria-expanded]="!collapse.isCollapsed" [attr.aria-controls]="id" (click)="collapse.toggle()" [ngClass]="{'collapsed' : collapse.isCollapsed}">
     {{header}}
   </button>
 </div>

@@ -22,10 +22,13 @@ import { ItIconModule } from './icon/icon.module';
 import { ItButtonModule } from './button/button.module';
 import { ItTabsModule } from './tabs/tabs.module';
 import { MarkMatchingTextPipe } from './form-input/mark-matching-text.pipe';
+import { ItUtilsModule } from './util/utils.module';
 
 @NgModule({
     imports: [
+        
         CommonModule,
+        ItUtilsModule,
         FormsModule,
         ItPopoverModule,
         ItTooltipModule,
@@ -33,7 +36,7 @@ import { MarkMatchingTextPipe } from './form-input/mark-matching-text.pipe';
         ItDropdownModule,
         ItIconModule,
         ItButtonModule,
-        ItTabsModule
+        ItTabsModule,
     ],
     declarations: [
         CheckboxComponent,
@@ -70,7 +73,8 @@ import { MarkMatchingTextPipe } from './form-input/mark-matching-text.pipe';
         ItPopoverModule,
         ItTooltipModule,
         ItCollapseModule,
-        ItDropdownModule
+        ItDropdownModule,
+        ItUtilsModule
     ]
 })
 export class DesignAngularKitModule {}
