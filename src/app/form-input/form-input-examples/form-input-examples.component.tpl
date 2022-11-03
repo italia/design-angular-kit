@@ -26,7 +26,13 @@
 {% endset %}
 
 
+{% set formInputNumberHtml %}
+  {% include "../form-input-number/form-input-number.component.html" %}
+{% endset %}
 
+{% set formInputNumberTs %}
+  {% include "../form-input-number/form-input-number.component.ts" %}
+{% endset %}
 
 
 
