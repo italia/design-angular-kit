@@ -6,7 +6,8 @@ export const InputType = t.keyof({
   password: null,
   number: null,
   time: null,
-  search: null
+  search: null,
+  date: null
 });
 
 const TEXT = 'text';
@@ -15,6 +16,7 @@ const PASSWORD = 'password';
 const NUMBER = 'number';
 const TIME = 'time';
 const SEARCH = 'search';
+const DATE = 'date';
 
 export const INPUT_TYPES = {
   TEXT: TEXT,
@@ -22,5 +24,6 @@ export const INPUT_TYPES = {
   PASSWORD: PASSWORD,
   NUMBER: NUMBER,
   SEARCH: SEARCH,
-  TIME: TIME
+  TIME: TIME,
+  DATE: DATE
 };
