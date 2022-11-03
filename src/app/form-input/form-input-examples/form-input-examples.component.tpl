@@ -1,5 +1,23 @@
 {% from "../../macro.template.njk" import sanitize as sanitize %}
 
+{% set formInputCalendarHtml %}
+  {% include "../form-input-calendar/form-input-calendar.component.html" %}
+{% endset %}
+
+{% set formInputCalendarTs %}
+  {% include "../form-input-calendar/form-input-calendar.component.ts" %}
+{% endset %}
+
+
+
+<it-form-input-calendar-example></it-form-input-calendar-example>
+
+<it-source-display html="{$ sanitize(formInputCalendarHtml) $}" typescript="{$ sanitize(formInputCalendarTs) $}">
+</it-source-display>
+
+
+
+
 
 {% set html %}
   {% include "../form-input-example/form-input-example.component.html" %}
