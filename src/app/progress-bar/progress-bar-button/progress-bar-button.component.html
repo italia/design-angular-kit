@@ -1,18 +1,5 @@
 <div class="card w-50 mt-2">
   <div class="card-body">
-    <h4 class="card-title">Progresso indeterminato</h4>
-
-    <p class="card-text" class="example-section">
-      <it-progress-bar indeterminate></it-progress-bar>
-    </p>
-  </div>
-</div>
-
-
-
-
-<div class="card w-50 mt-2">
-  <div class="card-body">
     <h4 class="card-title">Pulsante con Progress Bar</h4>
 
     <div class="card-text" class="example-section">
@@ -22,7 +9,7 @@
           <button itButton disabled>
             Label pulsante 
             <it-icon icon = "it-github" color = "white"></it-icon>
-            <it-progress-bar [value]="valueEx" indeterminate></it-progress-bar>
+            <it-progress-bar indeterminate></it-progress-bar>
           </button>
         </div>
         <div class="col-12 col-sm-6">
@@ -30,7 +17,7 @@
           <button itButton="secondary" disabled>
             Completo al 70%
             <it-icon icon = "it-github" color = "white"></it-icon>
-            <it-progress-bar [value]="valueEx" [value] = "70"></it-progress-bar>
+            <it-progress-bar [value] = "70"></it-progress-bar>
           </button>
         </div>
       </div>

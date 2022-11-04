@@ -12,6 +12,7 @@ import { ProgressBarIndexComponent } from './progress-bar-index/progress-bar-ind
 import { ProgressBarLabelComponent } from './progress-bar-label/progress-bar-label.component';
 import { ProgressBarIndeterminateComponent } from './progress-bar-indeterminate/progress-bar-indeterminate.component';
 import { ProgressBarBgComponent } from './progress-bar-bg/progress-bar-bg.component';
+import { ProgressBarButtonComponent } from './progress-bar-button/progress-bar-button.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { ProgressBarBgComponent } from './progress-bar-bg/progress-bar-bg.compon
   ],
   declarations: [
     ProgressBarExampleComponent, ProgressBarExamplesComponent, ProgressBarIndexComponent,
-    ProgressBarLabelComponent, ProgressBarIndeterminateComponent, ProgressBarBgComponent
+    ProgressBarLabelComponent, ProgressBarIndeterminateComponent, ProgressBarBgComponent,
+    ProgressBarButtonComponent
   ]
 })
 export class ProgressBarModule { }
