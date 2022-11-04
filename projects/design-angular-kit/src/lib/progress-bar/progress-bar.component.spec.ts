@@ -8,8 +8,7 @@ import { By } from '@angular/platform-browser';
 @Component({
   template: `
   <div>
-    <it-progress-bar [min]="min" [max]="max" [value]="value"
-      [label]="label" [height]="height" [color]="bgColor">
+    <it-progress-bar [min]="min" [max]="max" [value]="value" [label]="label" [color]="bgColor">
     </it-progress-bar>
   </div>`
 })
@@ -18,7 +17,6 @@ class SingleProgressBarComponent {
   max = 200;
   value = 150;
   label = 'Simple progress bar';
-  height = 40;
   bgColor = '';
 }
 

@@ -5,6 +5,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { MarkMatchingTextPipe } from './mark-matching-text.pipe';
+import { ItIconModule } from '../icon/icon.module';
 
 /**
  * Componente per testare una input di tipo text.
@@ -72,7 +73,8 @@ describe('FormInputComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        FormsModule
+        FormsModule,
+        ItIconModule
       ],
       declarations: [
         FormInputComponent,

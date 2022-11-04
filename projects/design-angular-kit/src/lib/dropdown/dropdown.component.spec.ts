@@ -11,6 +11,7 @@ import { IconComponent } from '../icon/icon.component';
 import { ButtonModule } from 'src/app/button/button.module';
 import { ItButtonDirective } from '../button/button.directive';
 import { ItDropdown, ItDropdownAnchor, ItDropdownItem, ItDropdownMenu, ItDropdownToggle } from './dropdown.directive';
+import { ItIconModule } from '../icon/icon.module';
 
 @Component({
   template: `
@@ -19,6 +20,7 @@ import { ItDropdown, ItDropdownAnchor, ItDropdownItem, ItDropdownMenu, ItDropdow
       [color]="color"
       [label]="label"
       [dark]="isDark"
+      [menuPlacement]="menuPlacement"
       [fullWidth]="isFullWidth">
       <it-dropdown-divider></it-dropdown-divider>
       <it-dropdown-item *ngFor="let item of items"
@@ -38,6 +40,7 @@ class SingleDropdownComponent {
   color = undefined;
   label = 'Bottone per Dropdown';
   isFullWidth = false;
+  menuPlacement = "bottom-start";
 
   items = [
     {
@@ -55,7 +58,6 @@ class SingleDropdownComponent {
     {
       link: 'https://www.google.com', active: false,
       disabled: false, large: true,
-      icon: '', iconPosition: 'right',
       text: 'Item 3'
     },
   ];
@@ -65,7 +67,7 @@ describe('DropdownComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, ItIconModule],
       declarations: [
         DropdownComponent,
         DropdownItemComponent,

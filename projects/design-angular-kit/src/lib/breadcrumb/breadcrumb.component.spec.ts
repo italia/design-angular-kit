@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 
 import { BreadcrumbComponent } from './breadcrumb.component';
 import { Component, DebugElement } from '@angular/core';
 import { BreadcrumbItemComponent } from './breadcrumb-item.component';
 import { By } from '@angular/platform-browser';
+import { ItIconModule } from '../icon/icon.module';
 
 const URL = 'http://www.google.com';
 const ICON = 'it-star-outline';
@@ -40,8 +41,9 @@ describe('BreadcrumbComponent', () => {
   let breadcrumbItemInstances: BreadcrumbItemComponent[];
   let breadcrumbItemLabelElements: HTMLLabelElement[];
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ItIconModule],
       declarations: [
         BreadcrumbComponent,
         BreadcrumbItemComponent,

@@ -1,4 +1,4 @@
-<ng-container *ngIf = "svgPath">
+<ng-container *ngIf = "iconName && svgPath">
   <ng-container *ngIf = "rounded; else svgIcon">
     <span [class] = "'rounded-icon' + roundedColorClass">
       <ng-container *ngTemplateOutlet="svgIcon"></ng-container>
