@@ -469,7 +469,7 @@ export class FormInputComponent implements OnInit, AfterContentInit, ControlValu
   getRelatedEntries() {
     if (this.value) {
       const lowercaseValue = this.value.toLowerCase();
-      const lowercaseData = this._autoCompleteData.map(item => {
+      const lowercaseData = this._autoCompleteData.filter((item) => item.value).map(item => {
         return { ...item, original : item.value, lowercase : item.value.toLowerCase() };
       });
 

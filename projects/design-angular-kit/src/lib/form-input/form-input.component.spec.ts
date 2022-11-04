@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed, flush, fakeAsync, waitForAsync } from '@angular/core/testing';
 
-import { FormInputComponent } from './form-input.component';
+import { AutoCompleteItem, FormInputComponent } from './form-input.component';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { MarkMatchingTextPipe } from './mark-matching-text.pipe';
 
 /**
  * Componente per testare una input di tipo text.
@@ -56,7 +57,7 @@ class PasswordInputComponent {
 })
 class SearchInputComponent {
   value = '';
-  autoCompleteData = ['prova'];
+  autoCompleteData: AutoCompleteItem[] = [{value: 'prova'}];
 }
 
 function sendInput(fixture: ComponentFixture<any>, element: HTMLInputElement, text: string) {
@@ -78,7 +79,8 @@ describe('FormInputComponent', () => {
         NumberInputComponent,
         TextInputComponent,
         PasswordInputComponent,
-        SearchInputComponent
+        SearchInputComponent,
+        MarkMatchingTextPipe
       ]
     })
     .compileComponents();
