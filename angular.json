@@ -30,7 +30,6 @@
               { "glob": "**/*", "input": "node_modules/bootstrap-italia/dist/css", "output": "bootstrap-italia/dist/css" }
             ],
             "styles": [
-              "node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css",
               "node_modules/highlight.js/styles/github.css",
               "src/styles.scss"
             ],
