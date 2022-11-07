@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { ProgressBarComponent } from './progress-bar.component';
 import { Component, DebugElement } from '@angular/core';
