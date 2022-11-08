@@ -11,8 +11,6 @@ export class SourceDisplayComponent implements OnInit {
   @Input() typescript: string;
   @Input() scss: string;
 
-  constructor() { }
-
   ngOnInit() {
     if (this.html) {
       this.html = this.html.replace(/\/{\/{/g, '{{');

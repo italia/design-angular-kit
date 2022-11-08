@@ -8,8 +8,8 @@
 
 // Importazione libreria scss di bootstrap-italia
 @import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
-
-
+@import 'highlight.js/styles/base16/material-darker.css';
+@import './assets/scss/docs.scss';
 
 
 .bd-navbar {

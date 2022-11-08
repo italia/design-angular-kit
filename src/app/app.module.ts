@@ -35,7 +35,8 @@ import { ItTabsModule } from 'projects/design-angular-kit/src/lib/tabs/tabs.modu
         typescript: () => import('highlight.js/lib/languages/typescript'),
         HTML: () => import('highlight.js/lib/languages/xml'),
         scss: () => import('highlight.js/lib/languages/scss')
-      }
+      },
+      themePath: '../../node_modules/highlight.js/styles/base16/material-darker.css'
     }
   }],
   bootstrap: [AppComponent]

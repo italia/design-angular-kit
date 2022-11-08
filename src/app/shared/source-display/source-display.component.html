@@ -1,11 +1,13 @@
-<it-tab-group >
-  <it-tab *ngIf="html" label="HTML">
-    <pre><code [highlight]="html"></code></pre>
-  </it-tab>
-  <it-tab *ngIf="typescript" label="TypeScript" >
-    <pre><code [highlight]="typescript"></code></pre>
-  </it-tab>
-  <it-tab *ngIf="scss" label="SCSS">
-    <pre><code [highlight]="scss"></code></pre>
-  </it-tab>
-</it-tab-group>
+<div class="source-display-container bd-example">
+  <it-tab-group >
+    <it-tab *ngIf="html" label="HTML">
+      <pre><code [highlight]="html"></code></pre>
+    </it-tab>
+    <it-tab *ngIf="typescript" label="TypeScript" >
+      <pre><code [highlight]="typescript"></code></pre>
+    </it-tab>
+    <it-tab *ngIf="scss" label="SCSS">
+      <pre><code [highlight]="scss"></code></pre>
+    </it-tab>
+  </it-tab-group>  
+</div>
