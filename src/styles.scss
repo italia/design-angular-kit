@@ -73,3 +73,10 @@
 .card-title {
   margin-bottom: 35px;
 }
+
+.source-display-container {
+  padding: 0;
+  div.tab-content div.tab-pane {
+      padding: 0 !important;
+  }
+}
