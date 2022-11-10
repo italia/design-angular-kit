@@ -1,42 +1,54 @@
-<div class="card w-100 mt-2">
-    <div class="card-body">
-      <h4 class="card-title">Input Numerico</h4>
-      <div class="card-text">
-
-        <h5>Limiti e Step</h5>
-        <p class = "mb-5">Aggiungendo le proprietà "min", "max" e "step" all’input è possibile limitare il valore minimo e massimo del campo e decidere di quanto varierà a ogni click sui pulsanti.</p>
-        
-        <!-- Input numerico con min, max e step -->
-        <it-input id="interactive-input-number-0" type="number" name="interactive-input-number-example-0" label="Min, Max & Step"
-                  min="10" max="100" step="5"
-        ></it-input>
+<h3>Input Numerico</h3>
+<div class="bd-example">
+  <h5>Limiti e Step</h5>
+  <p class = "mb-5">Aggiungendo le proprietà "min", "max" e "step" all’input è possibile 
+                    limitare il valore minimo e massimo del campo e decidere di quanto varierà a ogni click sui pulsanti.</p>
   
-        
-
-        <h5>Valuta</h5>
-        <p class = "mb-5">Per anteporre il simbolo della valuta in Euro, aggiungere la proprietà "currency"</p>
-        
-        <!-- Input numerico con valuta -->
-        <it-input id="interactive-input-number-1" type="number" name="interactive-input-number-example-1" label="Currency" currency
-        ></it-input>
+  <!-- Input numerico con min, max e step -->
+  <it-input id="interactive-input-number-0" 
+            type="number" 
+            name="interactive-input-number-example-0" 
+            label="Min, Max & Step"
+            min="10" max="100" step="5"
+  ></it-input>
 
   
-        <h5>Percentuale</h5>
-        <p class = "mb-5">Per anteporre il simbolo della percentuale in Euro, aggiungere la proprietà "percentage"</p>
-        
-        <!-- Input numerico con percentuale -->
-        <it-input id="interactive-input-number-2" type="number" name="interactive-input-number-example-2" label="Percentage" percentage
-        ></it-input>
+
+  <h5>Valuta</h5>
+  <p class = "mb-5">Per anteporre il simbolo della valuta in Euro, aggiungere la proprietà "currency"</p>
+  
+  <!-- Input numerico con valuta -->
+  <it-input id="interactive-input-number-1" 
+            type="number" 
+            name="interactive-input-number-example-1" 
+            label="Currency" 
+            currency
+  ></it-input>
 
 
-        <h5>Ridimensionamento</h5>
-        <p class = "mb-5">È possibile far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso.
-                          Basta aggiungere la proprietà "adaptive"</p>
-        
-        <!-- Input numerico con ridimensionamento automatico -->
-        <it-input id="interactive-input-number-3" type="number" name="interactive-input-number-example-3" label="Adattivo" adaptive
-                  [(ngModel)]="adaptiveInputValue" 
-        ></it-input>
-      </div>
-    </div>
-  </div>
+  <h5>Percentuale</h5>
+  <p class = "mb-5">Per anteporre il simbolo della percentuale in Euro, aggiungere la proprietà "percentage"</p>
+  
+  <!-- Input numerico con percentuale -->
+  <it-input id="interactive-input-number-2" 
+            type="number" 
+            name="interactive-input-number-example-2" 
+            label="Percentage" 
+            percentage
+  ></it-input>
+
+
+  <h5>Ridimensionamento</h5>
+  <p class = "mb-5">È possibile far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso.
+                    Basta aggiungere la proprietà "adaptive"</p>
+  
+  <!-- Input numerico con ridimensionamento automatico -->
+  <it-input id="interactive-input-number-3" 
+            type="number" 
+            name="interactive-input-number-example-3" 
+            label="Adattivo" 
+            adaptive
+            [(ngModel)]="adaptiveInputValue" 
+  ></it-input>
+
+</div>
