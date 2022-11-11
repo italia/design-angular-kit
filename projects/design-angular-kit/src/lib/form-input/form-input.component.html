@@ -167,7 +167,6 @@
   <!-- Lista di autocompletamento -->
   <ul class="autocomplete-list" *ngIf="isAutocompletable()"  [class.autocomplete-list-show]="showAutocompletion">
     <li *ngFor="let entry of getRelatedEntries(); trackBy: autocompleteItemTrackByValueFn" (click)="onEntryClick(entry, $event)">
-     
       <a [href]="entry.link" >
         <ng-container *ngTemplateOutlet="autocompleteItemTemplate"></ng-container>
       </a>
@@ -177,7 +176,7 @@
         </div>
         <it-icon *ngIf="entry.icon" [icon]="entry.icon" size="icon-sm"></it-icon>
         <span class="autocomplete-list-text">
-          <span [innerHTML] = "value | markMatchingText: entry.original"></span>
+          <span [innerHTML] = "entry.original | markMatchingText: value"></span>
           <em *ngIf="entry.label">{{entry.label}}</em>
         </span>
       </ng-template>

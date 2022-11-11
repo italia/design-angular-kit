@@ -7,7 +7,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class MarkMatchingTextPipe implements PipeTransform {
     constructor(private domSanitizer: DomSanitizer) {}
 
-    transform(searchString: string, allString: string): any {
+    transform(allString: string, searchString: string): any {
         if (!searchString) { 
             return allString; 
         } else if(!allString) {
@@ -19,8 +19,8 @@ export class MarkMatchingTextPipe implements PipeTransform {
             // retrieve the exactly substring
             const matchingString = allString.substring(idxOfMatchString, idxOfMatchString + searchString.length);
             // Replace original string marking as <strong> (bold) the matchinng substring
-            const regEx = new RegExp(matchingString, 'gi'); 
-            const res = allString.replace(regEx, "<mark>" + matchingString + "</mark>");
+            const regEx = new RegExp('(' + matchingString + ')', 'gi')
+            const res = allString.replace(regEx, '<mark>$1</mark>');
             return this.domSanitizer.bypassSecurityTrustHtml(res);
         } 
 
