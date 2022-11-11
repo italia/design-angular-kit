@@ -1,38 +1,44 @@
-<div class="card w-70 m-2">
-  <div class="card-body">
-    <h4 class="card-title">Le quattro direzioni</h4>
+<h3>Le quattro direzioni</h3>
+<div class="bd-example">
+  <p  class="example-section mb-5">
+    <button type="button"  id="tooltip-example-1" class="btn btn-outline-secondary me-2" 
+      itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      placement="top">
+      Tooltip in alto
+    </button>
+    
+    <button type="button" class="btn btn-outline-secondary me-2" id="tooltip-example-2"
+      itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." 
+      placement="right">
+      Tooltip a destra
+    </button>
 
-    <p class="card-text" class="example-section mb-5">
-      <button type="button" class="btn btn-outline-secondary me-2" placement="top"
-        itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." id="tooltip-example-1">
-        Tooltip in alto
-      </button>
-      
-      <button type="button" class="btn btn-outline-secondary me-2" placement="right"
-        itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." id="tooltip-example-2">
-        Tooltip a destra
-      </button>
+    <button type="button" class="btn btn-outline-secondary me-2" id="tooltip-example-3"
+      itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      placement="left">
+      Tooltip a sinistra
+    </button>
+    
+    <button type="button" class="btn btn-outline-secondary" id="tooltip-example-4"
+      itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." 
+      placement="bottom" >
+      Tooltip in basso
+    </button>
+  </p>
 
-      <button type="button" class="btn btn-outline-secondary me-2" placement="left"
-        itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." id="tooltip-example-3">
-        Tooltip a sinistra
-      </button>
-      
-      <button type="button" class="btn btn-outline-secondary" placement="bottom"
-        itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." id="tooltip-example-4">
-        Tooltip in basso
-      </button>
-    </p>
+  <p class="example-section">
+    <button type="button" class="btn btn-lg btn-danger me-4" 
+      itTooltip="Tooltip di esempio" 
+      it-title="Titolo del Tooltip" 
+      [placement]="currentPlacement"
+      triggers="click" 
+      id="tooltip-example-5">
+      Clicca per il tooltip ricollocabile
+    </button>
 
-    <p class="card-text" class="example-section">
-      <button type="button" class="btn btn-lg btn-danger me-4" itTooltip="Tooltip di esempio" it-title="Titolo del Tooltip" 
-        [placement]="currentPlacement" triggers="click" id="tooltip-example-5">
-        Clicca per il tooltip ricollocabile
-      </button>
-
-      <button type="button" class="btn btn-lg btn-primary" (click)="changeCurrentPlacement()" id="tooltip-placement-button">
-        Cambia il collocamento della tooltip
-      </button>
-    </p>
-  </div>
+    <button type="button" class="btn btn-lg btn-primary" (click)="changeCurrentPlacement()" id="tooltip-placement-button">
+      Cambia il collocamento della tooltip
+    </button>
+  </p>
 </div>
+   
