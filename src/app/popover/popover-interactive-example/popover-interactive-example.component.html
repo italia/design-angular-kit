@@ -1,52 +1,53 @@
-<div class="card w-100 mt-2">
-  <div class="card-body">
-    <h4 class="card-title">Esempio Popover</h4>
-    
 
-    <div class="card-text">
-      <button type="button" id="popover-interactive-button" class="btn btn-primary" [itPopover]="myDescription" [popoverTitle]="myTitle"
-        [container]="container" [placement]="placement" [disabled]="disabled" [class.disabled]="disabled"
-        (shown)="logShown()" (hidden)="logHidden()"
-        #interactivePopover="itPopover">
-        Bottone con popover
-      </button>
+<h3>Esempio Popover</h3>
+<div class="bd-example">
+  <button type="button" id="popover-interactive-button" class="btn btn-primary" 
+    [itPopover]="myDescription" 
+    [popoverTitle]="myTitle"
+    [container]="container" 
+    [placement]="placement" 
+    [disabled]="disabled" 
+    [class.disabled]="disabled"
+    (shown)="logShown()" 
+    (hidden)="logHidden()"
+    #interactivePopover="itPopover">
+    Bottone con popover
+  </button>
 
-      <it-checkbox [(ngModel)]="disabled" label="Disabilita bottone e popover" id="disable-popover-checkbox"></it-checkbox>
-      <it-checkbox [(ngModel)]="removeTitle" label="Rimuovi titolo" id="remove-title-checkbox"></it-checkbox>
+  <it-checkbox [(ngModel)]="disabled" label="Disabilita bottone e popover" id="disable-popover-checkbox"></it-checkbox>
+  <it-checkbox [(ngModel)]="removeTitle" label="Rimuovi titolo" id="remove-title-checkbox"></it-checkbox>
 
-      <div class="row">
-        <div class="form-check col-4">
-          <h5>Container</h5>
-          <it-radio-group [(ngModel)]="container">
-            <it-radio-button id="radio-self" name="self" value="" label="Apposito"></it-radio-button>
-            <it-radio-button id="radio-body" name="body" value="body" label="Nel body"></it-radio-button>
-          </it-radio-group>
-        </div>
-        <div class="form-check col-5">
-          <h5>Collocamento</h5>
-          <it-radio-group [(ngModel)]="placement">
-            <it-radio-button id="radio-right" name="right" value="right" label="Destra"></it-radio-button>
-            <it-radio-button id="radio-top" name="top" value="top" label="Sopra"></it-radio-button>
-            <it-radio-button id="radio-left" name="left" value="left" label="Sinistra"></it-radio-button>
-            <it-radio-button id="radio-bottom" name="bottom" value="bottom" label="Sotto"></it-radio-button>
-          </it-radio-group>
-        </div>
-      </div>
-
-      <button itButton="danger" (click)="interactivePopover.close()" id="popover-disposing-button">
-        Distruggi il popover
-      </button>
-
-      <div class="popover-events mt-3">
-        <div *ngIf = "shownTime">
-          Ultima emissione dell'evento shown = {{shownTime | date: 'long'}}
-        </div>
-        
-        <div *ngIf = "hiddenTime">
-          Ultima emissione dell'evento hidden = {{hiddenTime | date: 'long'}}
-        </div>
-      </div>
-      
+  <div class="row">
+    <div class="form-check col-4">
+      <h5>Container</h5>
+      <it-radio-group [(ngModel)]="container">
+        <it-radio-button id="radio-self" name="self" value="" label="Apposito"></it-radio-button>
+        <it-radio-button id="radio-body" name="body" value="body" label="Nel body"></it-radio-button>
+      </it-radio-group>
+    </div>
+    <div class="form-check col-5">
+      <h5>Collocamento</h5>
+      <it-radio-group [(ngModel)]="placement">
+        <it-radio-button id="radio-right" name="right" value="right" label="Destra"></it-radio-button>
+        <it-radio-button id="radio-top" name="top" value="top" label="Sopra"></it-radio-button>
+        <it-radio-button id="radio-left" name="left" value="left" label="Sinistra"></it-radio-button>
+        <it-radio-button id="radio-bottom" name="bottom" value="bottom" label="Sotto"></it-radio-button>
+      </it-radio-group>
     </div>
   </div>
+
+  <button itButton="danger" (click)="interactivePopover.close()" id="popover-disposing-button">
+    Distruggi il popover
+  </button>
+
+  <div class="popover-events mt-3">
+    <div *ngIf = "shownTime">
+      Ultima emissione dell'evento shown = {{shownTime | date: 'long'}}
+    </div>
+    
+    <div *ngIf = "hiddenTime">
+      Ultima emissione dell'evento hidden = {{hiddenTime | date: 'long'}}
+    </div>
+  </div>
+  
 </div>
