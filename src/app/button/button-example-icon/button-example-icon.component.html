@@ -1,0 +1,90 @@
+
+<h3>Bottone con icona</h3>
+
+<div class="bd-example">
+
+  <button id="interactive-button" itButton = "primary" class="mb-5">
+    <it-icon *ngIf = "iconPosition === 'start'" 
+            [icon]="icon" 
+            [color] = "iconColor" 
+            [roundedColor] = "iconRoundedColor" 
+            [rounded]="iconRounded" 
+            class="me-3"></it-icon>
+    Login
+    <it-icon *ngIf = "iconPosition === 'end'" 
+            [icon]="icon" 
+            [color] = "iconColor" 
+            [roundedColor] = "iconRoundedColor" 
+            [rounded]="iconRounded" 
+            class="ms-3"></it-icon>
+  </button>
+
+
+
+  <div class="row">
+    <div class="form-check col-2">
+      <h5>Icona</h5>
+      <it-radio-group [(ngModel)]="icon">
+        <it-radio-button id="radio-icon-user" name="it-user" value="it-user" label="it-user"></it-radio-button>
+        <it-radio-button id="radio-icon-check" name="it-check" value="it-check" label="it-check"></it-radio-button>
+      </it-radio-group>
+    </div>
+    <div class="form-check col-2">
+      <h5>Posizione</h5>
+      <it-radio-group [(ngModel)]="iconPosition">
+        <it-radio-button id="radio-icon-start" name="icon-start" value="start" label="Start"></it-radio-button>
+        <it-radio-button id="radio-icon-end" name="icon-end" value="end" label="End"></it-radio-button>
+      </it-radio-group>
+    </div>
+    <div class="form-check col-6">
+      <h5>Colorazione Icona</h5>
+      <it-radio-group [(ngModel)]="iconColor">
+        <div class="row">
+          <div class="form-check col-5">
+            <it-radio-button id="radio-white" name="white" value="white" label="White"></it-radio-button>
+            <it-radio-button id="radio-primary" name="primary" value="primary" label="Primary"></it-radio-button>
+            <it-radio-button id="radio-secondary" name="secondary" value="secondary" label="Secondary"></it-radio-button>
+          </div>
+          <div class="form-check col-4">
+            <it-radio-button id="radio-success" name="success" value="success" label="Success"></it-radio-button>
+            <it-radio-button id="radio-warning" name="warning" value="warning" label="Warning"></it-radio-button>
+            <it-radio-button id="radio-danger" name="danger" value="danger" label="Danger"></it-radio-button>
+          </div>
+          <div class="form-check col-3">
+            <it-radio-button id="radio-info" name="info" value="info" label="Info"></it-radio-button>
+            <it-radio-button id="radio-light" name="light" value="light" label="Light"></it-radio-button>
+            <it-radio-button id="radio-dark" name="dark" value="dark" label="Dark"></it-radio-button>
+          </div>
+        </div>
+      </it-radio-group>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="form-check col-4">
+      <h5>Icona Cerchiata</h5>
+      <it-checkbox [(ngModel)]="iconRounded" label="Rounded" id="icon-rounded-checkbox"></it-checkbox>
+    </div>
+    <div class="form-check col-7" *ngIf = "iconRounded">
+      <h5>Colorazione Sfondo Icona</h5>
+      <it-radio-group [(ngModel)]="iconRoundedColor">
+        <div class="row">
+          <div class="form-check col-5">
+            <it-radio-button id="radio-icon-rounded-white" name="radio-icon-rounded-white" value="white" label="White"></it-radio-button>
+            <it-radio-button id="radio-icon-rounded-primary" name="radio-icon-rounded-primary" value="primary" label="Primary"></it-radio-button>
+            <it-radio-button id="radio-icon-rounded-secondary" name="radio-icon-rounded-secondary" value="secondary" label="Secondary"></it-radio-button>
+          </div>
+          <div class="form-check col-4">
+            <it-radio-button id="radio-icon-rounded-success" name="radio-icon-rounded-success" value="success" label="Success"></it-radio-button>
+            <it-radio-button id="radio-icon-rounded-warning" name="radio-icon-rounded-warning" value="warning" label="Warning"></it-radio-button>
+            <it-radio-button id="radio-icon-rounded-danger" name="radio-icon-rounded-danger" value="danger" label="Danger"></it-radio-button>
+          </div>
+          <div class="form-check col-3">
+            <it-radio-button id="radio-icon-rounded-info" name="radio-icon-rounded-info" value="info" label="Info"></it-radio-button>
+            <it-radio-button id="radio-icon-rounded-light" name="radio-icon-rounded-light" value="light" label="Light"></it-radio-button>
+            <it-radio-button id="radio-icon-rounded-dark" name="radio-icon-rounded-dark" value="dark" label="Dark"></it-radio-button>
+          </div>
+        </div>
+      </it-radio-group>
+    </div>
+  </div>
+</div>

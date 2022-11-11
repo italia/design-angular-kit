@@ -13,6 +13,24 @@
 <it-source-display html="{$ sanitize(interactiveHtml) $}"  typescript="{$ sanitize(interactiveTs) $}" >
 </it-source-display>
 
+
+
+{% set iconButtonHtml %}
+  {% include "../button-example-icon/button-example-icon.component.html" %}
+{% endset %}
+
+{% set iconTs %}
+  {% include "../button-example-icon/button-example-icon.component.ts" %}
+{% endset %}
+
+<it-button-example-icon></it-button-example-icon>
+
+<it-source-display html="{$ sanitize(iconButtonHtml) $}"  typescript="{$ sanitize(iconTs) $}" >
+</it-source-display>
+
+
+
+
 {% set html %}
   {% include "../button-example/button-example.component.html" %}
 {% endset %}
@@ -38,6 +56,26 @@
 
 <it-source-display html="{$ sanitize(colorHtml) $}" typescript="{$ sanitize(colorTs) $}" >
 </it-source-display>
+
+
+
+
+{% set colorDarkHtml %}
+  {% include "../button-example-color-dark/button-example-color-dark.component.html" %}
+{% endset %}
+
+{% set colorDarkTs %}
+  {% include "../button-example-color-dark/button-example-color-dark.component.ts" %}
+{% endset %}
+
+<it-button-example-color-dark></it-button-example-color-dark>
+
+<it-source-display html="{$ sanitize(colorDarkHtml) $}" typescript="{$ sanitize(colorDarkTs) $}" >
+</it-source-display>
+
+
+
+
 
 {% set sizeHtml %}
   {% include "../button-example-size/button-example-size.component.html" %}
