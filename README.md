@@ -22,15 +22,51 @@ Design Angular Kit è disponibile su NPM, se hai una applicazione esistente eseg
 npm install design-angular-kit --save
 ```
 
-#### Integrazione con Angular CLI
-Configura gli stili richiesti nella sezione `styles`, come mostrato nell'esempio qui sotto.
+#### Importazione stili bootstrap-italia
+Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS come mostrato nell'esempio qui sotto.
+
+```scss
+// Importazione libreria SCSS di bootstrap-italia
+@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
+
 ```
-"styles": [
-  "node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css",
-  "node_modules/bootstrap-italia/dist/css/italia-icon-font.css"
-  //...
-],
+
+#### Come personalizzare e sovrascrivere le variabili di default della libreria (es. colori, font-family, misure, ecc.)
+
+Bootstrap Italia eredita ed estende tutte le variabili di default di Bootstrap, sovrascrivendo 
+alcuni valori in fase di compilazione e impostandone di nuovi all’occorenza. Un esempio fra tutti è 
+il valore del colore $primary che in Bootstrap Italia è rappresentato dal colore blu #0066CC,
+tipico della libreria.
+
+L’utilizzo del blu #0066CC dovrebbe però essere riservato alle amministrazioni centrali dello
+Stato, e quindi ci si può trovare nella condizione di dover personalizzare i valori delle variabili
+colore di Bootstrap Italia, impostando nuovi valori per le proprie necessità.
+
+
+Questo colore e le altre tonalità vengono generate a partire dalla terna HSB, pertanto occorre modificare le variabili primary-h, primary-s e primary-b.
+Per avere la corrispondenza tra valore esadecimale del colore e HSB si può utilizzare il portale rgb.to, ad esempio https://rgb.to/0066CC.
+
+Di seguito un esempio di file `styles.scss` con la personalizzazione dei colori.
+Le personalizzazioni delle variabili devono sempre essere effettuate prima dell'importazione del file `bootstrap-italia.scss`
+
+```scss
+// modifica completa del template: è possibile ricompilare la libreria modificando alcune variabili SCSS
+
+// Per l'override del colore $primary della palette in formato HSB (colore #FF3333 https://rgb.to/ff3333):
+$primary-h: 0;
+$primary-s: 80;
+$primary-b: 100;
+
+// Per l'override della famiglia di caratteri
+$font-family-serif: 'Custom Font', Georgia, serif;
+$font-family-sans-serif: 'Custom Font', Arial, Helvetica, sans-serif;
+$font-family-monospace: 'Custom Font', 'Courier New', Courier, monospace;
+
+// Importazione libreria SCSS di bootstrap-italia
+@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
 ```
+
+
 
 ## Segnalazione bug e richieste di aiuto
 
