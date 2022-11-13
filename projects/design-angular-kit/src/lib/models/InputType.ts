@@ -7,7 +7,24 @@ export const InputType = t.keyof({
   number: null,
   time: null,
   search: null,
-  date: null
+  date: null,
+  radio: null,
+  checkbox: null,
+  textarea: null,
+  button: null,
+  reset: null,  
+  submit: null,
+  'datetime-local': null,
+  hidden: null,
+  image: null,
+  month: null,
+  range: null,
+  tel: null,
+  url: null,
+  week: null,
+  datetime: null,
+  color: null,
+  file: null
 });
 
 const TEXT = 'text';
