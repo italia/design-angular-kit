@@ -18,7 +18,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
-    "build": "ng build",
+    "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build",
     "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
     "lint": "ng lint",
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
