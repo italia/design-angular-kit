@@ -1,14 +1,15 @@
-[![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
-[![CircleCI](https://img.shields.io/circleci/project/github/italia/design-angular-kit/main.svg)](https://circleci.com/gh/italia/design-angular-kit)
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/italia/design-angular-kit.svg)](https://codeclimate.com/github/italia/design-angular-kit/maintainability)
 [![NPM](https://img.shields.io/npm/v/design-angular-kit.svg)](https://www.npmjs.com/package/design-angular-kit)
+[![Build](https://github.com/italia/design-angular-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/italia/design-angular-kit/actions)
 [![License](https://img.shields.io/github/license/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/issues)
+[![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
+[![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
 
 # Design Angular Kit
 
 Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di applicazioni web sviluppate con Angular.
 
-_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato!_
+_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Se si necessita della vecchia versione il codice può essere reperito [qua](https://github.com/italia/design-angular-kit/tree/0.x) e la documentazione a [questo link](https://italia.github.io/design-angular-kit)_
 
 #### Link veloci
 [Preview di Vercel](https://design-angular-kit.vercel.app/) |

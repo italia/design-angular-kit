@@ -5,9 +5,9 @@ on:
   pull_request:
     branches:
       - main
-name: Test project
+name: CI
 jobs:
-  run build and tests:
+  run-build-and-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
