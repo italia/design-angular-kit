@@ -10,7 +10,7 @@
       "prefix": "it",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
@@ -27,15 +27,25 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css",
-              "node_modules/bootstrap-italia/dist/css/italia-icon-font.css",
+              "node_modules/highlight.js/styles/github.css",
               "src/styles.scss"
             ],
-            "scripts": [
-            ]
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -45,14 +55,13 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -87,18 +96,6 @@
               "src/assets"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -117,15 +114,6 @@
               "devServerTarget": "design-angular-kit-bundle:serve:production"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -136,14 +124,15 @@
       "prefix": "it",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/design-angular-kit/tsconfig.lib.json",
             "project": "projects/design-angular-kit/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/design-angular-kit/ng-package.prod.json"
+              "project": "projects/design-angular-kit/ng-package.prod.json",
+              "tsConfig": "projects/design-angular-kit/tsconfig.lib.prod.json"
             }
           }
         },
@@ -154,21 +143,8 @@
             "tsConfig": "projects/design-angular-kit/tsconfig.spec.json",
             "karmaConfig": "projects/design-angular-kit/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/design-angular-kit/tsconfig.lib.json",
-              "projects/design-angular-kit/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }
-  },
-  "defaultProject": "design-angular-kit-bundle"
+  }
 }

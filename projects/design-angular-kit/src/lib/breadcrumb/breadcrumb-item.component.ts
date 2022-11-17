@@ -29,6 +29,16 @@ export class BreadcrumbItemComponent {
   set icon(value: string) { this._icon = value; }
   private _icon: string;
 
+  @Input()
+  get iconColor(): string { return this._iconColor; }
+  set iconColor(value: string) { 
+    if(this._iconColor !== value) {
+      this._iconColor = value;
+      this._cdRef.detectChanges();
+    }
+  }
+  private _iconColor: string;
+
   get separator(): string { return this._separator; }
   set separator(value: string) { this._separator = value; }
   private _separator: string;
@@ -48,8 +58,10 @@ export class BreadcrumbItemComponent {
   }
   private _isLast = false;
 
+  @Input() customClass: string = '';
+
   get breadcrumbClass() {
-    return 'breadcrumb-item' + (this.isLast ? ' active' : '');
+    return 'breadcrumb-item ' + (this.customClass ?? '') + (this.isLast ? ' active' : '');
   }
 
 }

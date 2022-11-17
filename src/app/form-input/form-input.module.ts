@@ -12,6 +12,9 @@ import {
   TemplateDrivenValidationExampleComponent
 } from './template-driven-validation-example/template-driven-validation-example.component';
 import { ModelDrivenValidationExampleComponent } from './model-driven-validation-example/model-driven-validation-example.component';
+import { FormInputIconExampleComponent } from './form-input-icon/form-input-icon.component';
+import { FormInputNumberExampleComponent } from './form-input-number/form-input-number.component';
+import { FormInputCalendarExampleComponent } from './form-input-calendar/form-input-calendar.component';
 
 @NgModule({
   imports: [
@@ -24,10 +27,13 @@ import { ModelDrivenValidationExampleComponent } from './model-driven-validation
   ],
   declarations: [
     FormInputExampleComponent,
+    FormInputIconExampleComponent,
     FormInputExamplesComponent,
     FormInputIndexComponent,
     TemplateDrivenValidationExampleComponent,
-    ModelDrivenValidationExampleComponent
+    ModelDrivenValidationExampleComponent,
+    FormInputNumberExampleComponent,
+    FormInputCalendarExampleComponent
   ]
 })
 export class FormInputModule { }

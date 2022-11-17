@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as Documentation from '../../../assets/documentation.json';
+import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-collapse-index',
@@ -13,8 +13,8 @@ export class CollapseIndexComponent {
   itemComponent: any;
 
   constructor() {
-    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'CollapseDirective');
-    this.groupComponent = (<any>Documentation).components.find(component => component.name === 'CollapseGroupComponent');
-    this.itemComponent = (<any>Documentation).components.find(component => component.name === 'CollapseItemComponent');
+    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItCollapseDirective');
+    this.groupComponent = (<any>Documentation).components.find(component => component.name === 'ItCollapseGroupComponent');
+    this.itemComponent = (<any>Documentation).components.find(component => component.name === 'ItCollapseItemComponent');
   }
 }

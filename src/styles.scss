@@ -1,3 +1,19 @@
+// Modifica completa del template: è possibile ricompilare la libreria modificando alcune variabili SCSS
+
+// Per l'override del colore $primary della palette in formato HSB (colore #FF3333 https://rgb.to/ff3333):
+
+// $primary-h: 0;
+// $primary-s: 80;
+// $primary-b: 100;
+
+// Importazione libreria SCSS di bootstrap-italia
+@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
+
+
+@import 'highlight.js/styles/base16/material-darker.css';
+@import './assets/scss/docs.scss';
+
+
 .bd-navbar {
   min-height: 5rem;
   z-index: 1070;
@@ -53,5 +69,16 @@
 @media (min-width: 992px) {
   .nav-item-w-divider .nav-link {
       border-right: 1px solid rgba(255,255,255,.5);
+  }
+}
+
+.card-title {
+  margin-bottom: 35px;
+}
+
+.source-display-container {
+  padding: 0;
+  div.tab-content div.tab-pane {
+      padding: 0 !important;
   }
 }

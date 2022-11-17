@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IconColorEnum } from 'projects/design-angular-kit/src/lib/enums/icons.enum';
 
 @Component({
   selector: 'it-button-example-interactive',
@@ -13,6 +14,13 @@ export class ButtonExampleInteractiveComponent {
   selectedColor = '';
   selectedSize = '';
   count = 0;
+
+
+  icon: string = 'it-user';
+  iconColor: IconColorEnum = IconColorEnum.primary;
+  iconPosition: 'start' | 'end' = 'start';
+  iconRounded: boolean = true;
+  iconRoundedColor: IconColorEnum = IconColorEnum.white;
 
   increaseCount() {
     this.count++;

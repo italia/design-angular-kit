@@ -1,6 +1,8 @@
 <li [class]="breadcrumbClass" [id]="id">
-  <i [class]="icon" *ngIf="icon"></i>
-  <a [href]="link">
+  <it-icon [icon] = "icon" [color] = "iconColor"></it-icon>
+
+  <a [href]="link" focusMouse>
     <ng-content></ng-content>
-  </a> <span class="separator" *ngIf="!isLast">{{separator}}</span>
+  </a> 
+  <span class="separator" *ngIf="!isLast">{{separator}}</span>
 </li>

@@ -1,67 +1,53 @@
-<div class="card w-100 mt-2">
-  <div class="card-body">
-    <h4 class="card-title">Esempio Popover</h4>
 
-    <div class="card-text">
-      <button type="button" id="popover-interactive-button" class="btn btn-primary" [it-popover]="myDescription" [title]="myTitle"
-        [container]="container" [placement]="placement" [triggers]="trigger" [disabled]="disabled" [class.disabled]="disabled"
-        (show)="logShow()" (inserted)="logInserted()" (shown)="logShown()" (hide)="logHide()" (hidden)="logHidden()"
-        #interactivePopover="it-popover">
-        Bottone con popover
-      </button>
+<h3>Esempio Popover</h3>
+<div class="bd-example">
+  <button type="button" id="popover-interactive-button" class="btn btn-primary" 
+    [itPopover]="myDescription" 
+    [popoverTitle]="myTitle"
+    [container]="container" 
+    [placement]="placement" 
+    [disabled]="disabled" 
+    [class.disabled]="disabled"
+    (shown)="logShown()" 
+    (hidden)="logHidden()"
+    #interactivePopover="itPopover">
+    Bottone con popover
+  </button>
 
-      <it-checkbox [(ngModel)]="disabled" label="Disabilita bottone e popover" id="disable-popover-checkbox"></it-checkbox>
-      <it-checkbox [(ngModel)]="removeTitle" label="Rimuovi titolo" id="remove-title-checkbox"></it-checkbox>
+  <it-checkbox [(ngModel)]="disabled" label="Disabilita bottone e popover" id="disable-popover-checkbox"></it-checkbox>
+  <it-checkbox [(ngModel)]="removeTitle" label="Rimuovi titolo" id="remove-title-checkbox"></it-checkbox>
 
-      <div class="row">
-        <div class="form-check col-4">
-          <h5>Container</h5>
-          <it-radio-group [(ngModel)]="container">
-            <it-radio-button id="radio-self" name="self" value="" label="Apposito"></it-radio-button>
-            <it-radio-button id="radio-body" name="body" value="body" label="Nel body"></it-radio-button>
-          </it-radio-group>
-        </div>
-        <div class="form-check col-3">
-          <h5>Trigger</h5>
-          <it-radio-group [(ngModel)]="trigger">
-            <it-radio-button id="radio-click" name="click" value="click" label="Click"></it-radio-button>
-            <it-radio-button id="radio-focus" name="focus" value="focus" label="Focus"></it-radio-button>
-          </it-radio-group>
-        </div>
-        <div class="form-check col-5">
-          <h5>Collocamento</h5>
-          <it-radio-group [(ngModel)]="placement">
-            <it-radio-button id="radio-right" name="right" value="right" label="Destra"></it-radio-button>
-            <it-radio-button id="radio-top" name="top" value="top" label="Sopra"></it-radio-button>
-            <it-radio-button id="radio-left" name="left" value="left" label="Sinistra"></it-radio-button>
-            <it-radio-button id="radio-bottom" name="bottom" value="bottom" label="Sotto"></it-radio-button>
-          </it-radio-group>
-        </div>
-      </div>
-
-      <it-button color="danger" (click)="interactivePopover.dispose()" id="popover-disposing-button">
-        Distruggi il popover
-      </it-button>
-
-      <div>
-        Ultima emissione dell'evento show = {{showTime}}
-      </div>
-      
-      <div>
-        Ultima emissione dell'evento shown = {{shownTime}}
-      </div>
-      
-      <div>
-        Ultima emissione dell'evento inserted = {{insertedTime}}
-      </div>
-      
-      <div>
-        Ultima emissione dell'evento hide = {{hideTime}}
-      </div>
-      
-      <div>
-        Ultima emissione dell'evento hidden = {{hiddenTime}}
-      </div>
+  <div class="row">
+    <div class="form-check col-4">
+      <h5>Container</h5>
+      <it-radio-group [(ngModel)]="container">
+        <it-radio-button id="radio-self" name="self" value="" label="Apposito"></it-radio-button>
+        <it-radio-button id="radio-body" name="body" value="body" label="Nel body"></it-radio-button>
+      </it-radio-group>
+    </div>
+    <div class="form-check col-5">
+      <h5>Collocamento</h5>
+      <it-radio-group [(ngModel)]="placement">
+        <it-radio-button id="radio-right" name="right" value="right" label="Destra"></it-radio-button>
+        <it-radio-button id="radio-top" name="top" value="top" label="Sopra"></it-radio-button>
+        <it-radio-button id="radio-left" name="left" value="left" label="Sinistra"></it-radio-button>
+        <it-radio-button id="radio-bottom" name="bottom" value="bottom" label="Sotto"></it-radio-button>
+      </it-radio-group>
     </div>
   </div>
+
+  <button itButton="danger" (click)="interactivePopover.close()" id="popover-disposing-button">
+    Distruggi il popover
+  </button>
+
+  <div class="popover-events mt-3">
+    <div *ngIf = "shownTime">
+      Ultima emissione dell'evento shown = {{shownTime | date: 'long'}}
+    </div>
+    
+    <div *ngIf = "hiddenTime">
+      Ultima emissione dell'evento hidden = {{hiddenTime | date: 'long'}}
+    </div>
+  </div>
+  
 </div>

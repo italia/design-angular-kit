@@ -1,20 +1,22 @@
-<div class="card w-50 mt-2">
-  <div class="card-body">
-    <h4 class="card-title">Configurazione checkbox</h4>
 
-    <p class="card-text" class="example-section">
-      <it-checkbox [(ngModel)]="checked" label="Spuntato"></it-checkbox>
-      <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
-    </p>
-  </div>
-</div>
+<h3>Configurazione checkbox</h3>
 
-<div class="card w-50 mt-2">
-  <div class="card-body">
-    <h4 class="card-title">Risultato</h4>
-
-    <p class="card-text" class="example-section">
-        <it-checkbox [(ngModel)]="checked" [label]="label" [disabled]="disabled"></it-checkbox>
-    </p>
-  </div>
+<div class="bd-example">
+  <p class="example-section">
+    <it-checkbox [(ngModel)]="checked" label="Spuntato"></it-checkbox>
+    <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
+    <it-checkbox [(ngModel)]="indeterminate" label="Indeterminato"></it-checkbox>
+  </p>
+  
+  <h4>Risultato</h4>
+  
+  <p class="example-section">
+      <it-checkbox 
+          [(ngModel)]="checked" 
+          [label]="label" 
+          [disabled]="disabled" 
+          [(indeterminate)]= "indeterminate"
+          ></it-checkbox>
+  </p>
+  
 </div>

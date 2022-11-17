@@ -56,7 +56,7 @@ class RadioGroupWithNgModelComponent {
   template: `<it-radio-button>One</it-radio-button>`
 })
 class DisableableRadioButtonComponent {
-  @ViewChild(RadioButtonComponent) itRadioButton;
+  @ViewChild(RadioButtonComponent, /* TODO: add static flag */ {}) itRadioButton;
 
   set disabled(value: boolean) {
     this.itRadioButton.disabled = value;

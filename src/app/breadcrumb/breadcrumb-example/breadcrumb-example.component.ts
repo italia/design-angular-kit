@@ -13,11 +13,11 @@ export class BreadcrumbExampleComponent {
     this._icon = value;
     this.items.forEach(item => item.icon = this._icon);
   }
-  private _icon = 'it-favorite';
+  private _icon = 'it-star-outline';
 
 
   separator = '/';
-  isDark = true;
+  isDark = false;
   items = [
     { link: 'https://www.aol.com', label: 'Crumb 1', icon: this.icon },
     { link: 'https://www.yahoo.com', label: 'Crumb 2', icon: this.icon },
@@ -32,14 +32,16 @@ export class BreadcrumbExampleComponent {
   }
 
   remove() {
-    this.items.pop();
-    this.i--;
+    if(this.items.length) {
+      this.items.pop();
+      this.i--;
+    }
   }
 
   change() {
     this.separator = this.separator === '/' ? '>' : '/';
     this.items.forEach(item => {
-      item.icon = item.icon === 'it-favorite' ? 'it-lock' : 'it-favorite';
+      item.icon = item.icon === 'it-star-outline' ? 'it-lock' : 'it-star-outline';
     });
   }
 

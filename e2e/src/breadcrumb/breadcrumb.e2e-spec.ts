@@ -76,9 +76,9 @@ describe('Breadcrumb', () => {
   it('dovrebbe poter cambiare l\'icona o disattivarla per tutti i suoi elementi', async () => {
     const breadcrumbItemsIcons: ElementFinder[] = await page.getBreadcrumbItemsIcon();
 
-    const FAVORITE_ICON = 'it-favorite';
+    const STAR_ICON = 'it-star-outline';
     breadcrumbItemsIcons.forEach(item => {
-      expect(item.getAttribute('class')).toBe(FAVORITE_ICON);
+      expect(item.getAttribute('class')).toBe(STAR_ICON);
     });
 
     page.clickFacebookIcon();

@@ -1,12 +1,12 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed, flush, fakeAsync, tick } from '@angular/core/testing';
+import { Component, DebugElement } from '@angular/core';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { BadgeDirective } from './badge.directive';
 
 @Component({
   template: `
-  <span [it-badge]="badgeText" [badgeColor]="color" [isPill]="isPill"></span>
+  <span [itBadge]="badgeText" [badgeColor]="color" [isPill]="isPill"></span>
   `
 })
 class BadgeComponent {
@@ -17,7 +17,7 @@ class BadgeComponent {
 
 @Component({
   template: `
-  <span it-badge="testo"></span>
+  <span itBadge="testo"></span>
   `
 })
 class BadgeWithoutColorComponent { }
@@ -63,26 +63,26 @@ describe('BadgeDirective', () => {
     });
 
     it(`dovrebbe cambiare la classe del colore dell'elemento host se cambia la proprietà badgeColor`, () => {
-      expect(nativeElement.classList).toContain('badge-primary');
+      expect(nativeElement.classList).toContain('bg-primary');
       testComponent.color = 'danger';
       fixture.detectChanges();
-      expect(nativeElement.classList).not.toContain('badge-primary');
-      expect(nativeElement.classList).toContain('badge-danger');
+      expect(nativeElement.classList).not.toContain('bg-primary');
+      expect(nativeElement.classList).toContain('bg-danger');
     });
 
     it(`dovrebbe impostare la classe di default all'elemento se la proprietà badgeColor assume un valore non valido`, () => {
-      expect(nativeElement.classList).toContain('badge-primary');
+      expect(nativeElement.classList).toContain('bg-primary');
       testComponent.color = 'nonvalido';
       fixture.detectChanges();
-      expect(nativeElement.classList).not.toContain('badge-primary');
-      expect(nativeElement.classList).toContain('badge-light');
+      expect(nativeElement.classList).not.toContain('bg-primary');
+      expect(nativeElement.classList).toContain('bg-light');
     });
 
-    it(`dovrebbe impostare la classe badge-pill all'elemento se la proprietà isPill è true`, () => {
-      expect(nativeElement.classList).not.toContain('badge-pill');
+    it(`dovrebbe impostare la classe rounded-pill all'elemento se la proprietà isPill è true`, () => {
+      expect(nativeElement.classList).not.toContain('rounded-pill');
       testComponent.isPill = true;
       fixture.detectChanges();
-      expect(nativeElement.classList).toContain('badge-pill');
+      expect(nativeElement.classList).toContain('rounded-pill');
     });
   });
 
@@ -100,7 +100,7 @@ describe('BadgeDirective', () => {
     }));
 
     it(`dovrebbe settare la classe di badge-light come default sull'elemento host se la proprietà badgeColor non è presente`, () => {
-      expect(nativeElement.classList).toContain('badge-light');
+      expect(nativeElement.classList).toContain('bg-light');
     });
   });
 });

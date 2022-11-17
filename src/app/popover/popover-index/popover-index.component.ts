@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as Documentation from '../../../assets/documentation.json';
+import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-popover-index',
@@ -11,7 +11,7 @@ export class PopoverIndexComponent {
   directive: any;
 
   constructor() {
-    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'PopoverDirective');
+    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItPopover');
   }
 
 }

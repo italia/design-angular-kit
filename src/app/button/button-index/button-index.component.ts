@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as Documentation from '../../../assets/documentation.json';
+import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-button-index',
@@ -11,7 +11,7 @@ export class ButtonIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'ButtonComponent');
+    this.component = (<any>Documentation).directives.find(directive => directive.name === 'ItButtonDirective');
   }
 
 }

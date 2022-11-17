@@ -24,7 +24,7 @@ import { Util } from '../util/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class TabComponent implements OnChanges, OnDestroy {
+export class ItTabComponent implements OnChanges, OnDestroy {
 
   /** Testo della tab. */
   @Input() label: string = ''; // tslint:disable-line
@@ -68,7 +68,7 @@ export class TabComponent implements OnChanges, OnDestroy {
    */
   isActive = false;
 
-  @ViewChild(TemplateRef) _implicitContent: TemplateRef<any>;
+  @ViewChild(TemplateRef, { static: true }) _implicitContent: TemplateRef<any>;
 
   ngOnDestroy(): void {
     this._disableChange.complete();

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { ProgressBarComponent } from './progress-bar.component';
 import { Component, DebugElement } from '@angular/core';
@@ -8,8 +8,7 @@ import { By } from '@angular/platform-browser';
 @Component({
   template: `
   <div>
-    <it-progress-bar [min]="min" [max]="max" [value]="value"
-      [label]="label" [height]="height" [color]="bgColor">
+    <it-progress-bar [min]="min" [max]="max" [value]="value" [label]="label" [color]="bgColor">
     </it-progress-bar>
   </div>`
 })
@@ -18,7 +17,6 @@ class SingleProgressBarComponent {
   max = 200;
   value = 150;
   label = 'Simple progress bar';
-  height = 40;
   bgColor = '';
 }
 
@@ -81,20 +79,6 @@ describe('ProgressBarComponent', () => {
       fixture.detectChanges();
 
       expect(progressBarInstance.label).toBe('Yet another simple progress bar');
-    });
-
-    it('dovrebbe mostrare una barra di avanzamento con una altezza diversa', () => {
-      expect(progressBarInstance.height).toBe(40);
-
-      testComponent.height = 30;
-      fixture.detectChanges();
-
-      expect(progressBarInstance.height).toBe(30);
-
-      testComponent.height = 10;
-      fixture.detectChanges();
-
-      expect(progressBarInstance.height).toBe(10);
     });
 
     it('dovrebbe mostrare una barra di avanzamento con diversi sfondi', () => {

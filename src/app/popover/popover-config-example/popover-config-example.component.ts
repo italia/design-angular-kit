@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { PopoverConfig } from 'projects/design-angular-kit/src/public_api';
+import { ItPopoverConfig } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-popover-config-example',
   templateUrl: './popover-config-example.component.html',
-  styleUrls: ['./popover-config-example.component.scss'],
-  providers: [PopoverConfig]
+  styleUrls: ['./popover-config-example.component.scss']
 })
 export class PopoverConfigExampleComponent {
 
-  constructor(popoverConfig: PopoverConfig) {
+  constructor(popoverConfig: ItPopoverConfig) {
     popoverConfig.triggers = 'focus';
     popoverConfig.container = 'body';
     popoverConfig.placement = 'left';

@@ -10,11 +10,14 @@ export class DropdownExampleComponent {
   label = 'Click me';
   isDark = false;
   isFullWidth = false;
+  withHeading = true;
+  
+  menuPlacement = 'bottom-start';
   items = [
     {
       link: 'https://www.google.com', active: false,
       disabled: false, large: true,
-      icon: 'it-favorite', iconPosition: 'right',
+      icon: 'it-star-outline', iconPosition: 'right',
       text: 'Item 1'
     },
     {
@@ -33,7 +36,6 @@ export class DropdownExampleComponent {
 
   openTime = '';
   closeTime = '';
-  toggleTime = '';
 
   onOpenEvent() {
     this.openTime = (new Date()).toISOString();
@@ -41,10 +43,6 @@ export class DropdownExampleComponent {
 
   onCloseEvent() {
     this.closeTime = (new Date()).toISOString();
-  }
-
-  onToggleEvent() {
-    this.toggleTime = (new Date()).toISOString();
   }
 
 }

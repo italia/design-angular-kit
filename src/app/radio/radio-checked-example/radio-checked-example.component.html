@@ -1,13 +1,15 @@
-<div class="card w-50 mt-2">
-  <div class="card-body">
-    <h4 class="card-title">Radio checked</h4>
+<h3>Radio checked</h3>
+<div class="bd-example">
+  <div class="example-section">
+    <it-radio-button  name="nation" value="USA" label="USA" 
+                      (change)="changeCurrentlySelected($event)"></it-radio-button>
 
-    <div class="card-text" class="example-section">
-      <it-radio-button name="nation" value="USA" label="USA" (change)="changeCurrentlySelected($event)"></it-radio-button>
-      <it-radio-button name="nation" value="Italia" label="Italia" [checked]="italiaChecked" (change)="changeCurrentlySelected($event)"></it-radio-button>
-      <it-radio-button name="nation" value="Spagna" label="Spagna" (change)="changeCurrentlySelected($event)"></it-radio-button>
-    </div>
+    <it-radio-button  name="nation" value="Italia" label="Italia" 
+                      [checked]="italiaChecked" (change)="changeCurrentlySelected($event)"></it-radio-button>
 
-    <div class="example-selected-value">Nazione selezionata: {{selectedNation}}</div>
+    <it-radio-button  name="nation" value="Spagna" label="Spagna" 
+                      (change)="changeCurrentlySelected($event)"></it-radio-button>
   </div>
+
+  <div class="example-selected-value">Nazione selezionata: {{selectedNation}}</div>
 </div>

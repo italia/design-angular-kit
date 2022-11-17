@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import * as TableOfContent from '../../assets/table-of-content.json';
+import TableOfContent from '../../assets/table-of-content.json';
 
 @Component({
   selector: 'it-table-of-content',

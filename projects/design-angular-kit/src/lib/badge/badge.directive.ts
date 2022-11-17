@@ -6,7 +6,7 @@ import { Util } from '../util/util';
  * Una badge con design bootstrap italia.
  */
 @Directive({
-  selector: '[it-badge]', // tslint:disable-line
+  selector: '[itBadge]', // tslint:disable-line
   exportAs: 'itBadge'
 })
 export class BadgeDirective {
@@ -32,7 +32,7 @@ export class BadgeDirective {
    * La direttiva che abilita l'elemento come badge. Mostra il testo come contenuto del badge.
    * Se valutato ad `undefined`, `null` o stringa vuota il badge non viene mostrato.
    */
-  @Input('it-badge')
+  @Input('itBadge')
   @HostBinding('innerText')
   get badgeText(): string { return this._badgeText; }
   set badgeText(value: string) {
@@ -55,7 +55,7 @@ export class BadgeDirective {
   }
 
   private getBadgeColorClassName(): string {
-    return `badge-${this._badgeColor}`;
+    return `bg-${this._badgeColor}`;
   }
 
   @HostBinding('class')
@@ -63,7 +63,7 @@ export class BadgeDirective {
     return [
       'badge',
       this.getBadgeColorClassName(),
-      this.isPill ? 'badge-pill' : '',
+      this.isPill ? 'rounded-pill' : '',
     ].join(' ');
   }
 

@@ -2,6 +2,7 @@
 
   <li class="nav-item" *ngFor="let tab of _tabs; let i = index">
     <a
+    focusMouse
       href="#"
       role="tab"
       [attr.aria-controls]="_getTabContentId(i)"
@@ -10,7 +11,8 @@
       [attr.aria-labelledby]="(!tab.ariaLabel && tab.ariaLabelledby) ? tab.ariaLabelledby : null"
       [ngClass]="{ 'nav-link': true, 'active': selectedIndex == i, 'disabled': tab.disabled }"
       [id]="_getTabLabelId(i)"
-      (click)="_handleClick($event, i)">
+      (click)="_handleClick($event, i)"
+      >
       <i *ngIf="tab.icon" class="it-ico-lg d-block text-center" [ngClass]="tab.icon"></i>
       {{tab.label}}
     </a>

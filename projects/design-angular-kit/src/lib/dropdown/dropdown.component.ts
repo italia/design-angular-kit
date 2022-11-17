@@ -1,14 +1,15 @@
 import {
-  Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener, ChangeDetectionStrategy
+  Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation, ContentChildren, QueryList
 } from '@angular/core';
 import { Util } from '../util/util';
 import { ThemeColor } from '../models/ThemeColor';
+import { DropdownItemComponent } from './dropdown-item.component';
+import { IconColorEnum } from '../enums/icons.enum';
 
 let identifier = 0;
 
 const DEFAULT_COLOR = 'dropdown';
-const PLACEMENT_PROPERTY = 'x-placement';
-const PLACEMENT_VALUE = 'bottom-start';
+export type DropdownMenuPlacement = 'bottom-start' | 'top-start' | 'left-start' | 'right-start';
 
 /**
  * Componente usata per attivare o disattivare overlay contestuali per visualizzare elenchi di link e altro ancora con questi menù a tendina
@@ -17,19 +18,31 @@ const PLACEMENT_VALUE = 'bottom-start';
   selector: 'it-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class DropdownComponent {
-  @ViewChild('dropdownMenu')
-  private _dropdownMenu: ElementRef;
-
-  @ViewChild('dropdownButton')
-  private _dropdownButton: ElementRef;
-
   id = `dropdown-${identifier++}`;
 
-  get isOpen(): boolean { return this._isOpen; }
-  private _isOpen = false;
+  @ContentChildren(DropdownItemComponent) menuItems: QueryList<DropdownItemComponent>;
+
+
+  @Input() menuHeading: string  = "";
+  @Input() expandIcon: string | null = "it-expand";
+  @Input() expandIconPosition: 'start' | 'end' = 'end';
+
+  private _menuPlacement: DropdownMenuPlacement;
+  get menuPlacement() {
+    return this._menuPlacement;
+  }
+  @Input() set menuPlacement(value : DropdownMenuPlacement) {
+    if(value === 'left-start') {
+      this.expandIconPosition = 'start';
+    } else if (value === 'right-start') {
+      this.expandIconPosition = 'end';
+    }
+    this._menuPlacement = value;
+  }
 
   /**
    * Se presente indica che il dropdown utilizza il tema di colorazione scura.
@@ -37,7 +50,12 @@ export class DropdownComponent {
    */
   @Input()
   get dark(): boolean { return this._dark; }
-  set dark(value: boolean) { this._dark = Util.coerceBooleanProperty(value); }
+  set dark(value: boolean) { 
+    this._dark = Util.coerceBooleanProperty(value); 
+    if(this.autoUpdateMenuItemsIconColor) {
+      this.updateMenuItemsIconColor();
+    }
+  }
   private _dark = false;
 
   /**
@@ -72,6 +90,7 @@ export class DropdownComponent {
   set label(value: string) { this._label = value; }
   private _label = '';
 
+
   /**
    * Evento che viene lanciato ogni volta che il dropdown viene aperto
    */
@@ -81,69 +100,43 @@ export class DropdownComponent {
   private _onOpen = new EventEmitter<DropdownComponent>();
 
   /**
-   * Evento che viene lanciato ogni volta che il dropdown viene chiuso
-   */
+  * Evento che viene lanciato ogni volta che il dropdown viene chiuso
+  */
   @Output()
   get onClose(): EventEmitter<DropdownComponent> { return this._onClose; }
   set onClose(value: EventEmitter<DropdownComponent>) { this._onClose = value; }
   private _onClose = new EventEmitter<DropdownComponent>();
 
-  /**
-   * Evento che viene lanciato ogni volta che il dropdown viene aperto oppure chiuso
-   */
-  @Output()
-  get onToggle(): EventEmitter<DropdownComponent> { return this._onToggle; }
-  set onToggle(value: EventEmitter<DropdownComponent>) { this._onToggle = value; }
-  private _onToggle = new EventEmitter<DropdownComponent>();
+  public isOpen: boolean = false;
 
-  @HostListener('document:click', ['$event.target'])
-  onClick(target) {
-    if (target === this._dropdownButton.nativeElement) {
-      this._toggle();
-    } else if (this.isOpen) {
-      this._close();
-    }
-  }
-
-  @HostListener('document:focusin', ['$event.target'])
-  onFocus(target) {
-    const isPartOfDropdown = (this._eleRef.nativeElement as HTMLElement).contains(target);
-    if (!isPartOfDropdown && this.isOpen) {
-      this._close();
-    }
-  }
-
-  get dropdownButtonClass() {
-    return `btn btn-${this.color} dropdown-toggle`;
-  }
-
-  constructor(private _eleRef: ElementRef) {
-
-  }
-
-  private _toggle() {
-    if (this._isOpen) {
-      this._close();
+  onOpenChange(isOpen: boolean) {
+    this.isOpen = isOpen;
+    if(this.isOpen) {
+      this.onOpen.emit();
     } else {
-      this._open();
-    }
-    this.onToggle.emit(this);
-  }
-
-  private _open() {
-    if (!this._isOpen) {
-      this._isOpen = true;
-      this._dropdownMenu.nativeElement.setAttribute(PLACEMENT_PROPERTY, PLACEMENT_VALUE);
-      this.onOpen.emit(this);
+      this.onClose.emit();
     }
   }
 
-  private _close() {
-    if (this._isOpen) {
-      this._isOpen = false;
-      this._dropdownMenu.nativeElement.removeAttribute(PLACEMENT_PROPERTY);
-      this.onClose.emit(this);
-    }
+  @Input() autoUpdateMenuItemsIconColor: boolean = true;
+  private updateMenuItemsIconColor() {
+    this.menuItems?.forEach(item => {
+      item.iconColor = this._dark ? IconColorEnum.light : IconColorEnum.primary;
+    });
   }
+
+  get isDropend(): boolean {
+    return this._menuPlacement === 'right-start';
+  }
+
+  get isDropstart(): boolean {
+    return this._menuPlacement === 'left-start';
+  }
+
+  get isDropup(): boolean {
+    return this._menuPlacement === 'top-start';
+  }
+
+
 
 }

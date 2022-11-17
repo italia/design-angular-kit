@@ -6,8 +6,12 @@ import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DropdownItemComponent } from './dropdown-item.component';
 import { DropdownDividerComponent } from './dropdown-divider.component';
-import { DropdownHeaderComponent } from './dropdown-header.component';
 import { THEME_COLORS } from '../models/ThemeColor';
+import { IconComponent } from '../icon/icon.component';
+import { ButtonModule } from 'src/app/button/button.module';
+import { ItButtonDirective } from '../button/button.directive';
+import { ItDropdown, ItDropdownAnchor, ItDropdownItem, ItDropdownMenu, ItDropdownToggle } from './dropdown.directive';
+import { ItIconModule } from '../icon/icon.module';
 
 @Component({
   template: `
@@ -16,8 +20,8 @@ import { THEME_COLORS } from '../models/ThemeColor';
       [color]="color"
       [label]="label"
       [dark]="isDark"
+      [menuPlacement]="menuPlacement"
       [fullWidth]="isFullWidth">
-      <it-dropdown-header>Header</it-dropdown-header>
       <it-dropdown-divider></it-dropdown-divider>
       <it-dropdown-item *ngFor="let item of items"
         [link]="item.link"
@@ -36,12 +40,13 @@ class SingleDropdownComponent {
   color = undefined;
   label = 'Bottone per Dropdown';
   isFullWidth = false;
+  menuPlacement = "bottom-start";
 
   items = [
     {
       link: 'https://www.google.com', active: false,
       disabled: false, large: true,
-      icon: 'it-favorite', iconPosition: 'right',
+      icon: 'it-star-outline', iconPosition: 'right',
       text: 'Item 1'
     },
     {
@@ -53,7 +58,6 @@ class SingleDropdownComponent {
     {
       link: 'https://www.google.com', active: false,
       disabled: false, large: true,
-      icon: '', iconPosition: 'right',
       text: 'Item 3'
     },
   ];
@@ -63,13 +67,19 @@ describe('DropdownComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, ItIconModule],
       declarations: [
         DropdownComponent,
         DropdownItemComponent,
         DropdownDividerComponent,
-        DropdownHeaderComponent,
         SingleDropdownComponent,
+        IconComponent,
+        ItButtonDirective,
+        ItDropdown,
+        ItDropdownToggle,
+        ItDropdownAnchor,
+        ItDropdownItem,
+        ItDropdownMenu
       ]
     });
 
@@ -148,7 +158,6 @@ describe('DropdownComponent', () => {
       expect(dropdownInstance.isOpen).toBeFalsy();
       dropdownButton.click();
       fixture.detectChanges();
-
       expect(dropdownInstance.isOpen).toBeTruthy();
     });
   });
@@ -199,7 +208,7 @@ describe('DropdownComponent', () => {
       const secondItem = testComponent.items[1];
       const secondDropdownItemComponent = dropdownItemDebugElements[1].componentInstance;
 
-      let secondDropdownItemIcon: HTMLElement = dropdownItemDebugElements[1].query(By.css('i')).nativeElement;
+      let secondDropdownItemIcon: HTMLElement = dropdownItemDebugElements[1].query(By.css('svg.icon')).nativeElement;
       const hasLinkIcon = secondDropdownItemIcon.classList.contains('it-link');
       const hasRightPosition = secondDropdownItemIcon.classList.contains('right');
       expect(hasLinkIcon).toBeTruthy();
@@ -217,7 +226,7 @@ describe('DropdownComponent', () => {
       secondItem.iconPosition = NEW_POSITION;
       fixture.detectChanges();
 
-      secondDropdownItemIcon = dropdownItemDebugElements[1].query(By.css('i')).nativeElement;
+      secondDropdownItemIcon = dropdownItemDebugElements[1].query(By.css('svg.icon')).nativeElement;
       const hasLeftPosition = secondDropdownItemIcon.classList.contains(NEW_POSITION);
       expect(hasLeftPosition).toBeTruthy();
       expect(secondDropdownItemComponent.iconPosition).toContain(NEW_POSITION);

@@ -1,39 +1,188 @@
-<div class="form-group">
-  <i *ngIf="icon" [class]="icon" [ngClass]="{ 'ico-prefix': true }"></i>
-  <input #inputElement
-    (focus)="onFocus()"
-    (blur)="onBlur()"
-    (change)="onChange()"
-    (input)="onInput()"
-    [type]="type"
-    [id]="id"
-    [attr.name]="name"
-    [disabled]="disabled"
-    [readonly]="readonly"
-    [placeholder]="placeholder"
-    [ngClass]="{
-      'form-control' : !readonly,
-      'form-control-plaintext' : readonly,
-      'autocomplete' : isAutocompletable()
-    }"
-    [attr.aria-labelledby]="note ? noteId : undefined"/>
-  <span class="btn-eye" 
-    *ngIf="isPasswordMode"
-    (click)="isPasswordVisible = !isPasswordVisible"
-    [ngClass]="{
-      'eye-on' : !isPasswordVisible,
-      'eye-off' : isPasswordVisible
-    }">
-  </span>
-  <ul class="autocomplete-wrap" *ngIf="isAutocompletable()">
-    <li *ngFor="let entry of getRelatedEntries()" (click)="onEntryClick(entry)">
-      {{entry}}
-    </li>
-  </ul>
-  <label [attr.for]="id" [ngClass]="{ 'active' : isLabelActive }">
-    {{label}}
-  </label>
-  <small [id]="noteId()" class="form-text text-muted" *ngIf="note">
+<div class="form-group" [class.autocomplete-wrapper-big]="autocompleteWrapperSize === 'big'">
+  <div class="input-group" *ngIf = "isInputGroup; else formInputWithLabel">
+      <ng-container *ngIf="_textPrefixChildren.length || _prefixChildren.length || icon">
+        <div class="input-group-prepend">
+
+          <!-- Gli elementi figli di "it-input" con la direttiva "itTextPrefix"  -->
+          <ng-container *ngIf="_textPrefixChildren.length || icon">
+
+            <div class="input-group-text" >
+              <ng-container *ngIf="icon">
+                <it-icon [icon] = "icon" size="icon-sm"></it-icon>
+              </ng-container>
+
+              <ng-container *ngIf="_textPrefixChildren.length">
+                <ng-content select = "[itTextPrefix]"></ng-content>
+              </ng-container>
+            </div>
+          </ng-container>
+         
+          <ng-container *ngIf="_prefixChildren.length">
+            <!-- Gli elementi figli di "it-input" con la direttiva "itPrefix"  -->
+            <ng-content select = "[itPrefix]"></ng-content>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <ng-container [ngTemplateOutlet]="formInputWithLabel"></ng-container>
+
+      <ng-container *ngIf="_suffixChildren.length || _textSuffixChildren.length">
+        <div  class="input-group-append">
+          <!-- Gli elementi figli di "it-input" con la direttiva "itTextSuffix"  -->
+          <ng-container *ngIf="_textSuffixChildren.length">
+            <div class="input-group-text" >
+              <ng-content select = "[itTextSuffix]"></ng-content>
+            </div>
+          </ng-container>
+         
+          <ng-container *ngIf="_suffixChildren.length">
+            <!-- Gli elementi figli di "it-input" con la direttiva "itSuffix"  -->
+            <ng-content select = "[itSuffix]"></ng-content>
+          </ng-container>
+        </div>
+      </ng-container>
+      
+    
+  </div>
+
+
+
+  <ng-template #formInput>
+      <input #inputElement
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        (change)="onChange()"
+        (input)="onInput()"
+        [type]="type"
+        [id]="id"
+        [min]="min"
+        [max]="max"
+        [step]="step"
+        [class.focus--mouse]="focus"
+        [class.input-password]="isPasswordMode"
+        [attr.name]="name"
+        [disabled]="disabled"
+        [readonly]="readonly"
+        [placeholder]="placeholder"
+        [style.width]="adaptive && valueLength ? 'calc(44px + ' + valueLength + 'ch)' : null"
+        [ngClass]="{
+          'form-control' : (!readonly || !readonlyPlainText) && type !== INPUT_TYPES.NUMBER,
+          'form-control-plaintext' : readonly && readonlyPlainText,
+          'autocomplete' : isAutocompletable()
+        }"
+      [attr.aria-describedby]="note ? noteId : undefined"/>  
+  </ng-template>
+
+
+
+  <ng-template #formInputWithLabel>
+      <label  [attr.for]="id" *ngIf="label" 
+              [class.visually-hidden]="labelVisuallyHidden"
+              [class.input-number-label]="type === INPUT_TYPES.NUMBER"
+              [class.active] = "isLabelActive && !labelVisuallyHidden" >
+        {{label}}
+      </label>
+    
+      <!-- INIZIO gestione input di tipo NUMBER -->
+
+      <ng-container *ngIf="type === INPUT_TYPES.NUMBER; else formInput">
+        <span class="input-number" 
+              [class.input-number-adaptive]="adaptive"
+              [class.input-number-currency]="currency" 
+              [class.input-number-percentage]="percentage">
+
+          <ng-container [ngTemplateOutlet]="formInput"></ng-container>
+
+          <button class="input-number-add" (click)="incrementNumberValue()" focusMouse>
+            <span class="visually-hidden">Aumenta valore di {{step}} Euro</span>
+          </button>
+          <button class="input-number-sub" (click)="decrementNumberValue()" focusMouse>
+            <span class="visually-hidden">Diminuisci valore di {{step}} Euro</span>
+          </button>
+        </span>
+      </ng-container>
+
+    <!-- FINE gestione input di tipo NUMBER -->
+
+  </ng-template>
+
+  <small [id]="noteId" class="form-text" *ngIf="note">
     {{note}}
   </small>
+
+
+  <!-- INIZIO gestione input di tipo PASSWORD -->
+
+  <ng-container *ngIf="isPasswordMode">
+    <!-- Icona dell'occhio per la vedere/nascondere la password -->
+    <span 
+      class = "password-icon"
+      aria-hidden="true"
+      (click)="isPasswordVisible = !isPasswordVisible">
+      <it-icon [icon]="'it-password-' + (isPasswordVisible ? 'invisible' : 'visible')" size="icon-sm" color="default"></it-icon>
+    </span>
+
+    <!-- Indicatore di sicurezza della password -->
+    <div class="password-strength-meter" *ngIf="isPasswordMode && enablePasswordStrengthMeter">
+      <small class="form-text" 
+        [ngClass] = "['text-' + passwordScoreColor]"
+        *ngIf = "passwordStrengthMeterConfig.showText">{{ passwordScoreText }}
+      </small>
+      <div class="password-meter progress rounded-0 position-absolute">
+        <div class="row position-absolute w-100 m-0">
+          <div class="col-3 border-start border-end border-white"></div>
+          <div class="col-3 border-start border-end border-white"></div>
+          <div class="col-3 border-start border-end border-white"></div>
+          <div class="col-3 border-start border-end border-white"></div>
+        </div>
+
+        <div class="progress-bar" 
+          [class]="['bg-' + passwordScoreColor]"
+          role="progressbar" [attr.aria-valuenow]="passwordScore >= 0 ? passwordScore : 0" aria-valuemin="0" aria-valuemax="100" [style.width.%]="passwordScore >= 0 ? passwordScore : 0">
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+ <!-- FINE gestione input di tipo PASSWORD -->
+
+
+
+
+  <!-- Avviso CAPS LOCK Attivo -->
+  <small *ngIf="isCapsLockActive && !disableCapsLockAlert && type !== INPUT_TYPES.NUMBER" class="password-caps form-text text-warning position-absolute bg-white w-100">{{capsLockActiveLabel}}</small>
+
+
+
+  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->
+
+
+  <!-- Icona lente per autocompletamento -->
+  <span class="autocomplete-icon" aria-hidden="true" *ngIf="isAutocompletable()">
+    <it-icon icon = "it-search" size="icon-sm" color="default"></it-icon>
+  </span>
+
+
+  <!-- Lista di autocompletamento -->
+  <ul class="autocomplete-list" *ngIf="isAutocompletable()"  [class.autocomplete-list-show]="showAutocompletion">
+    <li *ngFor="let entry of getRelatedEntries(); trackBy: autocompleteItemTrackByValueFn" (click)="onEntryClick(entry, $event)">
+      <a [href]="entry.link" >
+        <ng-container *ngTemplateOutlet="autocompleteItemTemplate"></ng-container>
+      </a>
+      <ng-template #autocompleteItemTemplate>
+        <div class="avatar size-sm" *ngIf="entry.avatarSrcPath">
+          <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText">
+        </div>
+        <it-icon *ngIf="entry.icon" [icon]="entry.icon" size="icon-sm"></it-icon>
+        <span class="autocomplete-list-text">
+          <span [innerHTML] = "entry.original | markMatchingText: value"></span>
+          <em *ngIf="entry.label">{{entry.label}}</em>
+        </span>
+      </ng-template>
+    </li>
+  </ul>
+
 </div>
+
+  <!-- FINE gestione AUTOCOMPLETAMENTO -->

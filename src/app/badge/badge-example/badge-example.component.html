@@ -1,28 +1,44 @@
-<div class="card w-50 mt-2">
-  <div class="card-body">
-    <h4 class="card-title">Configurazione badge</h4>
+<h3>Configurazione badge</h3>
+<div class="bd-example">
+  
+  <div class="row">
+    <div class="col-4">
+      <div class="example-section">
+        
+        <label for="exampleInputText"><strong>Testo badge</strong></label>
+        <input type="text" class="form-control" id="exampleInputText" [(ngModel)]="badgeText">
+        <hr>
+        <div class="row">
+          <div class="col-6">
+            <label for="color"><strong>Colore Badge</strong></label>
+            <it-radio-group id="color" [(ngModel)]="selectedColor">
+              <it-radio-button *ngFor="let color of colors" [value]="color" [label]="color"></it-radio-button>
+            </it-radio-group>
+          </div>
+          <div class = "col-6">
+            <label for="isPill"><strong>Badge arrotondato</strong></label>
 
-    <div class="card-text" class="example-section">
+            <it-checkbox id="isPill" [(ngModel)]="isPill" label="Pill"></it-checkbox>
 
-      <label for="exampleInputText"><strong>Testo badge</strong></label>
-      <input type="text" class="form-control" id="exampleInputText" [(ngModel)]="badgeText">
-      <hr>
-      <label for="color"><strong>Colore Badge</strong></label>
-      <it-radio-group id="color" [(ngModel)]="selectedColor">
-        <it-radio-button *ngFor="let color of colors" [value]="color" [label]="color"></it-radio-button>
-      </it-radio-group>
-      <hr>
-      <it-checkbox [(ngModel)]="isPill" label="Pill"></it-checkbox>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+
+    <div class="col-6 offset-2">
+      <h4 class="card-title">Risultato badge</h4>
+  
+      <h5>Testo di esempio <span [itBadge]="badgeText" [badgeColor]="selectedColor" [isPill]="isPill"></span></h5>
+  
+      <h5>Link di esempio <a href="#" itBadge="link" [badgeColor]="selectedColor"></a></h5>
     </div>
   </div>
+      
 </div>
+  
 
-<div class="card w-50 mt-2">
-  <div class="card-body">
-    <h4 class="card-title">Risultato badge</h4>
 
-    <h5>Testo di esempio <span [it-badge]="badgeText" [badgeColor]="selectedColor" [isPill]="isPill"></span></h5>
+    
+      
 
-    <h5>Link di esempio <a href="#" it-badge="link" [badgeColor]="selectedColor"></a></h5>
-  </div>
-</div>

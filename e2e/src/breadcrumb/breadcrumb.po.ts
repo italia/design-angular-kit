@@ -15,7 +15,7 @@ export class BreadcrumbPage {
   private readonly ID_RADIO_SEPARATOR_GTHAN = 'radio-2';
   private readonly ID_RADIO_SEPARATOR_TILDE = 'radio-3';
 
-  private readonly ID_RADIO_ICON_IT_FAVORITE = 'radio-4';
+  private readonly ID_RADIO_ICON_IT_STAR = 'radio-4';
   private readonly ID_RADIO_ICON_IT_FACEBOOK = 'radio-5';
   private readonly ID_RADIO_ICON_IT_FLICKR = 'radio-6';
 
@@ -27,7 +27,7 @@ export class BreadcrumbPage {
 
   private readonly CSS_SELECTOR_LABEL_TILDE = this.getLabelForAttribute(this.ID_RADIO_SEPARATOR_TILDE);
 
-  private readonly CSS_SELECTOR_LABEL_FAVORITE = this.getLabelForAttribute(this.ID_RADIO_ICON_IT_FAVORITE);
+  private readonly CSS_SELECTOR_LABEL_STAR = this.getLabelForAttribute(this.ID_RADIO_ICON_IT_STAR);
 
   private readonly CSS_SELECTOR_LABEL_FACEBOOK = this.getLabelForAttribute(this.ID_RADIO_ICON_IT_FACEBOOK);
 
@@ -90,8 +90,8 @@ export class BreadcrumbPage {
     await element(by.css(this.CSS_SELECTOR_LABEL_TILDE)).click();
   }
 
-  async clickFavoriteIcon() {
-    await element(by.css(this.CSS_SELECTOR_LABEL_FAVORITE)).click();
+  async clickStarIcon() {
+    await element(by.css(this.CSS_SELECTOR_LABEL_STAR)).click();
   }
 
   async clickFacebookIcon() {

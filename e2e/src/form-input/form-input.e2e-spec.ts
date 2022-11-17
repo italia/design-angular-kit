@@ -72,13 +72,13 @@ describe('Form Input', () => {
 
     expect(await page.hasFormInputIcon()).toBeFalsy();
 
-    await page.clickFavoriteIconRadio();
+    await page.clickStarIconRadio();
 
     expect(await page.hasFormInputIcon()).toBeTruthy();
 
     let iconClass = await page.getFormInputIconClass();
-    const hasFavoriteIcon = iconClass.indexOf('it-favorite') > -1;
-    expect(hasFavoriteIcon).toBeTruthy();
+    const hasStarIcon = iconClass.indexOf('it-star-outline') > -1;
+    expect(hasStarIcon).toBeTruthy();
 
     await page.clickLinkIconRadio();
 

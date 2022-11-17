@@ -1,6 +1,6 @@
 import { Component, ContentChildren, forwardRef, QueryList,
   Input, HostListener, SimpleChanges, OnChanges } from '@angular/core';
-import { CollapseItemComponent } from './collapse-item.component';
+import { ItCollapseItemComponent } from './collapse-item.component';
 import { Util } from '../util/util';
 
 let identifier = 0;
@@ -10,7 +10,7 @@ let identifier = 0;
   templateUrl: './collapse-group.component.html',
   styleUrls: ['./collapse-group.component.css']
 })
-export class CollapseGroupComponent implements OnChanges {
+export class ItCollapseGroupComponent implements OnChanges {
   id = `collapse-group-${identifier++}`;
 
   /**
@@ -21,8 +21,8 @@ export class CollapseGroupComponent implements OnChanges {
   set accordion(value: boolean) { this._accordion = Util.coerceBooleanProperty(value); }
   private _accordion = false;
 
-  @ContentChildren(forwardRef(() => CollapseItemComponent), { descendants: true })
-  private _items: QueryList<CollapseItemComponent>; // tslint:disable-line
+  @ContentChildren(forwardRef(() => ItCollapseItemComponent), { descendants: true })
+  private _items: QueryList<ItCollapseItemComponent>; // tslint:disable-line
 
   @HostListener('click', ['$event.target'])
   onClick(target) {
@@ -31,8 +31,8 @@ export class CollapseGroupComponent implements OnChanges {
       items.forEach(currentItem => {
         const isTargetPartOfItem = (currentItem.elementRef.nativeElement as HTMLElement).contains(target);
         if (!isTargetPartOfItem) {
-          if (currentItem.directive.isShown()) {
-            currentItem.directive.hide();
+          if (!currentItem.directive.isCollapsed) {
+            currentItem.directive.toggle();
           }
         }
       });
@@ -45,8 +45,8 @@ export class CollapseGroupComponent implements OnChanges {
       if (isAccordion) {
         const items = this._items.toArray();
         items.forEach(currentItem => {
-          if (currentItem.directive.isShown()) {
-            currentItem.directive.hide();
+          if (!currentItem.directive.isCollapsed) {
+            currentItem.directive.toggle();
           }
         });
       }

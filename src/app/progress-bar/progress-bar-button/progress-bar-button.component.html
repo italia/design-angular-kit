@@ -1,0 +1,24 @@
+
+<h3>Pulsante con Progress Bar</h3>
+
+<div class="bd-example">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <p><strong>Pulsante primario</strong></p>
+      <button itButton disabled>
+        Label pulsante 
+        <it-icon icon = "it-github" color = "white"></it-icon>
+        <it-progress-bar indeterminate></it-progress-bar>
+      </button>
+    </div>
+    <div class="col-12 col-sm-6">
+      <p><strong>Pulsante secondario</strong></p>
+      <button itButton="secondary" disabled>
+        Completo al 70%
+        <it-icon icon = "it-github" color = "white"></it-icon>
+        <it-progress-bar [value] = "70"></it-progress-bar>
+      </button>
+    </div>
+  </div>
+</div>
+

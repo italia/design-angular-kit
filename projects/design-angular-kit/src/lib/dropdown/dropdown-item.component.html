@@ -1,17 +1,19 @@
 <li [id]="id">
-  <a [attr.href]="link"
+  <a itDropdownItem focusMouse
+    [attr.href]="link"
     [attr.tabindex]="this.disabled ? -1 : 0"
     [class]="dropdownItemClass"
     [ngClass]="{
       'large' : large, 
       'active' : active,
       'disabled' : disabled,
-      'disabled-item-link' : disabled
+      'disabled-item-link' : disabled,
+      'left-icon': iconPosition === 'left',
+      'right-icon': iconPosition === 'right'
     }">
-    <i [class]="iconClass" aria-hidden="true" *ngIf="icon && iconPosition === 'left'"></i>
     <span>
       <ng-content></ng-content>
     </span>
-    <i [class]="iconClass" aria-hidden="true" *ngIf="icon && iconPosition === 'right'"></i>
+    <it-icon *ngIf = "icon" [icon]="icon" [position]="iconPosition" [color] = "iconColor"></it-icon>
   </a>
 </li>
