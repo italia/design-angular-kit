@@ -11,6 +11,7 @@ Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di 
 _⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato!_
 
 #### Link veloci
+[Preview di Vercel](https://design-angular-kit.vercel.app/) |
 [Documentazione, demo e guide](https://italia.github.io/design-angular-kit/) |
 [Contributi](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md) |
 [Template StackBlitz](https://stackblitz.com/edit/design-angular-kit-issue)
