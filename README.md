@@ -8,7 +8,7 @@
 
 Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di applicazioni web sviluppate con Angular.
 
-_Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato!_
+_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato!_
 
 #### Link veloci
 [Documentazione, demo e guide](https://italia.github.io/design-angular-kit/) |
