@@ -7,7 +7,7 @@ on:
       - main
 name: Test project
 jobs:
-  lint-commits:
+  run build and tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
