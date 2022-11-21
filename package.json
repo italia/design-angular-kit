@@ -19,7 +19,7 @@
     "ng": "ng",
     "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
     "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build --configuration production --base-href design-angular-kit",
-    "build:lib": "npm run build design-angular-kit --configuration production && cp README.md dist/design-angular-kit/",
+    "build:lib": "ng build --configuration production design-angular-kit && cp README.md dist/design-angular-kit/",
     "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
     "lint": "ng lint",
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",

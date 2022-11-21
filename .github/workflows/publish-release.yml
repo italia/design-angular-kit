@@ -1,0 +1,41 @@
+name: Generate new release
+on:
+  push:
+    tags:
+      - 'v1*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+      - run: mv .npmrc-dist .npmrc
+      - run: npm ci
+      - run: npm run build:lib
+      - name: Publish package to NPM
+        run: cd dist/design-angular-kit && npm publish --tag unstable
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm i extract-changelog-release
+      - name: Generate Release Body
+        run: npx extract-changelog-release > RELEASE_BODY.md
+      - uses: ncipollo/release-action@v1
+        with:
+          bodyFile: 'RELEASE_BODY.md'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish on gh-pages
+        run: |
+          npm run build
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run documentation-deploy-to-gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
