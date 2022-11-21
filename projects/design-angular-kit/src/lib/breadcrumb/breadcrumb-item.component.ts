@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 let identifier = 0;
 
@@ -22,13 +22,16 @@ export class BreadcrumbItemComponent {
   private _link: string;
 
   /**
-   * La classe dell'icona da usare prima del testo dell'elemento del breadcrumb
+   * (Opzionale) Icona da usare prima del testo dell'elemento del breadcrumb
    */
   @Input()
   get icon(): string { return this._icon; }
   set icon(value: string) { this._icon = value; }
   private _icon: string;
 
+  /**
+   * (Opzionale) Colore da applicare all'icona, se presente.
+   */
   @Input()
   get iconColor(): string { return this._iconColor; }
   set iconColor(value: string) { 
@@ -38,6 +41,15 @@ export class BreadcrumbItemComponent {
     }
   }
   private _iconColor: string;
+
+  /**
+   * (Opzionanle) Classe CSS da applicare al `breadcrumb-item`
+   */
+  @Input() customClass: string = '';
+
+  get breadcrumbClass() {
+    return 'breadcrumb-item ' + (this.customClass ?? '') + (this.isLast ? ' active' : '');
+  }
 
   get separator(): string { return this._separator; }
   set separator(value: string) { this._separator = value; }
@@ -58,10 +70,7 @@ export class BreadcrumbItemComponent {
   }
   private _isLast = false;
 
-  @Input() customClass: string = '';
 
-  get breadcrumbClass() {
-    return 'breadcrumb-item ' + (this.customClass ?? '') + (this.isLast ? ' active' : '');
-  }
+ 
 
 }
