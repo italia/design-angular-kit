@@ -1,0 +1,125 @@
+//mobile
+.section {
+  padding: #{map-get($grid-gutter-widths, sm) * 4} #{map-get($grid-gutter-widths, sm) * 2};
+
+  //section content
+  .section-content {
+    margin: 0 auto;
+    position: relative;
+  }
+
+  // color and image variants
+  &.section-muted {
+    background: $lightgrey-a3;
+  }
+  &.section-primary {
+    background: $primary;
+  }
+  &.section-neutral {
+    background: $neutral-1;
+  }
+  &.section-image {
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &.section-inset-shadow {
+    box-shadow: inset 0 1rem 1rem -1rem rgba(0, 0, 0, 0.3);
+  }
+
+  &.section-background-header {
+    position: relative;
+    background-size: cover;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      z-index: -1;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-color: $section-header-background-color;
+    }
+
+    &.section-user-header {
+      &::before {
+        content: '';
+        min-height: 450px;
+        background-color: $section-user-header-background-color;
+      }
+
+      .user-settings {
+        font-size: 12px;
+
+        a {
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+
+          span {
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//Tablet vertical
+@include media-breakpoint-up(md) {
+  .section {
+    padding: #{map-get($grid-gutter-widths, md) * 4} #{map-get($grid-gutter-widths, md) * 2};
+  }
+}
+
+//Tablet horizontal / small desktop
+@include media-breakpoint-up(lg) {
+  .section {
+    padding: #{map-get($grid-gutter-widths, lg) * 4};
+
+    &.section-background-header {
+      &.section-user-header {
+        &::before {
+          content: '';
+          min-height: 550px;
+        }
+        .user-settings {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+//Desktop
+@include media-breakpoint-up(xl) {
+  .section {
+    padding: #{map-get($grid-gutter-widths, xl) * 4};
+
+    &.section-background-header {
+      &.section-user-header {
+        .user-settings {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
