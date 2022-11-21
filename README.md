@@ -9,12 +9,12 @@
 
 Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di applicazioni web sviluppate con Angular.
 
-_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Se si necessita della vecchia versione il codice può essere reperito [qua](https://github.com/italia/design-angular-kit/tree/0.x) e la documentazione a [questo link](https://italia.github.io/design-angular-kit)_
+_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
 
 #### Link veloci
-[Preview di Vercel](https://design-angular-kit.vercel.app/) |
+[Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/) |
 [Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127) |
-[Contribuire](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md) |
+[Contribuire](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md)
 
 ## Come iniziare
 
@@ -110,10 +110,4 @@ npm run start
 
 ```
 npm run test
-```
-
-5. Per eseguire i test end to end eseguire il comando
-
-```
-npm run e2e
 ```

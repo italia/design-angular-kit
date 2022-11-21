@@ -18,13 +18,15 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
-    "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build",
+    "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build --configuration production --base-href design-angular-kit",
+    "build:lib": "npm run build design-angular-kit --configuration production && cp README.md dist/design-angular-kit/",
     "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
     "lint": "ng lint",
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'"
   },
   "release": {
     "pkgRoot": "dist/design-angular-kit",
@@ -95,6 +97,7 @@
     "conventional-changelog": "^3.1.25",
     "conventional-changelog-cli": "^2.2.2",
     "cz-conventional-changelog": "2.1.0",
+    "gh-pages": "^4.0.0",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.0",
