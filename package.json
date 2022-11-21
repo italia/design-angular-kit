@@ -25,39 +25,7 @@
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
-    "semantic-release": "semantic-release",
     "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'"
-  },
-  "release": {
-    "pkgRoot": "dist/design-angular-kit",
-    "verifyConditions": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/github",
-      "@semantic-release/git"
-    ],
-    "prepare": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "./update-assets.sh"
-      },
-      {
-        "path": "@semantic-release/git",
-        "assets": [
-          "CHANGELOG.md",
-          "package.json",
-          "package-lock.json",
-          "projects/design-angular-kit/package.json"
-        ]
-      }
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "dependencies": {
     "@angular-devkit/schematics": "^14.2.9",
@@ -87,9 +55,6 @@
     "@angular/compiler-cli": "^14.2.10",
     "@angular/language-service": "^14.2.10",
     "@compodoc/compodoc": "^1.1.3",
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/exec": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
