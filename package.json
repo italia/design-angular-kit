@@ -25,8 +25,9 @@
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
-    "semantic-release": "semantic-release",
-    "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'"
+    "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/wait-confirm && git add CHANGELOG.md",
+    "postversion": "echo \"You can now publish your version using 'git push --follow-tags'\""
   },
   "dependencies": {
     "@angular-devkit/schematics": "^14.2.9",
