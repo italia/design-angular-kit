@@ -47,10 +47,16 @@
         </div>
       </div>
     </a>
-    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-      <li class="nav-item pr-2">
-        <a title="Vedi il codice sorgente su GitHub" class="nav-link d-flex align-items-center" href="https://github.com/italia/design-angular-kit" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="it-github"></i><span class="sr-only">Vedi il codice sorgente su GitHub</span>
+    <ul class="navbar-nav flex-row ms-md-auto d-none d-md-flex">
+      <li class="nav-item pe-2">
+        <a title="Changelog Design Angular Kit" data-toggle="tooltip" class="nav-link d-flex align-items-center" href="https://github.com/italia/design-angular-kit/releases/tag/v{{version}}" aria-label="Changelog" data-focus-mouse="false">
+          <small class="pe-2 m-0">v{{version}} (Non stabile)</small>
+          <svg class="icon icon-sm icon-light"><use href="bootstrap-italia/dist/svg/sprites.svg#it-files" xlink:href="/dist/svg/sprites.svg#it-files"></use></svg><span class="visually-hidden">Changelog</span>
+        </a>
+      </li>
+      <li class="nav-item pe-2">
+        <a title="Repository GitHub di Design Angular Kit" data-toggle="tooltip" class="nav-link d-flex align-items-center" href="https://github.com/italia/design-angular-kit/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg class="icon icon-sm icon-light"><use href="bootstrap-italia/dist/svg/sprites.svg#it-github" xlink:href="/dist/svg/sprites.svg#it-github"></use></svg><span class="visually-hidden">GitHub</span>
         </a>
       </li>
     </ul>
