@@ -133,10 +133,10 @@ export class ItButtonDirective {
    * ```
    */
   @Input()
-  get size(): any {
+  get size(): 'lg' | 'sm' | 'xs' {
     return this._size;
   }
-  set size(value: any) {
+  set size(value: 'lg' | 'sm' | 'xs') {
     if (ButtonSize.is(value)) {
       this._size = value;
     } else {
