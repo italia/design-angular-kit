@@ -1,16 +1,16 @@
-<nav class="navbar-institutional navbar navbar-expand-lg navbar-dark">
+<nav class="navbar-institutional navbar navbar-expand-lg navbar-dark py-1 px-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsTop" aria-controls="navbarsTop"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
   </button>
   <div>
-      <a class="navbar-brand" href="http://www.agid.gov.it/">AgID</a>
+      <a class="navbar-brand" href="https://innovazione.gov.it/">Dipartimento
+        <span class="d-none d-lg-inline">per la Trasformazione </span>Digitale</a>
       <span class="navbar-brand text-white"> + </span>
-      <a class="navbar-brand" href="https://teamdigitale.governo.it/">Team
-          <span class="d-none d-lg-inline">per la Trasformazione </span>Digitale</a>
+      <a class="navbar-brand" href="http://www.agid.gov.it/">AgID</a>
   </div>
   <div class="collapse navbar-collapse" id="navbarsTop">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ms-auto">
           <li class="nav-item nav-item-w-divider">
               <a class="nav-link" href="https://pianotriennale-ict.italia.it/">Piano Triennale</a>
           </li>
@@ -42,7 +42,7 @@
           </g>
         </svg>
         <div class="d-flex flex-column ps-3 ps-sm-4">
-          <h1 class="bd-logo-title">Angular Kit</h1>
+          <h1 class="bd-logo-title">Design Angular Kit</h1>
           <h2 class="bd-logo-subtitle">Il kit Angular per <span class="d-none d-sm-inline">lo sviluppo di applicazioni web per </span>la PA</h2>
         </div>
       </div>
@@ -57,16 +57,54 @@
   </div>
 </header>
 <div class="container-fluid">
-  
   <div class="row flex-xl-nowrap">
     <it-table-of-content class="col-12 col-md-3 col-xl-2"></it-table-of-content>
     <main class="col-12 col-md-9 col-xl-10 py-md-3 px-md-3 bd-content">
       <router-outlet></router-outlet>
     </main>
   </div>
-
 </div>
-
+<footer class="bd-footer text-muted">
+  <div class="container">
+    <div class="py-4">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="px-2 py-3">
+            <a href="https://innovazione.gov.it" target="_blank">
+              <img src="https://italia.github.io/bootstrap-italia/docs/assets/img/icons/dtd-logo.svg" alt="Dipartimento per la trasformazione digitale" height="48" style="max-width: 100%">
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 d-flex">
+          <div class="px-2 py-3">
+            <a href="https://www.agid.gov.it/" target="_blank">
+              <img src="https://italia.github.io/bootstrap-italia/docs/assets/img/icons/agid-logo.svg" alt="Agenzia per l'Italia Digitale" height="36" style="max-width: 100%">
+            </a>
+          </div>
+        </div>
+        <div class="footer-social col-12 col-md-4 text-white text-end pt-2">
+          <span class="d-none d-sm-inline">Seguici su Designers Italia: <br></span>
+          <a class="p-2 text-white" href="https://designers.italia.it/" title="Sito di Designers Italia" target="_blank"><svg class="icon icon-sm icon-light align-top">
+              <use href="bootstrap-italia/dist/svg/sprites.svg#it-designers-italia" xlink:href="/dist/svg/sprites.svg#it-designers-italia"></use></svg><span class="visually-hidden">Sito di Designers Italia</span></a>
+          <a class="p-2 text-white" href="https://twitter.com/DesignersITA" title="Designers Italia - Twitter" target="_blank"><svg class="icon icon-sm icon-light align-top">
+              <use href="bootstrap-italia/dist/svg/sprites.svg#it-twitter" xlink:href="/dist/svg/sprites.svg#it-twitter"></use></svg><span class="visually-hidden">Designers Italia - Twitter</span></a>
+          <a class="p-2 text-white" href="https://medium.com/designers-italia" title="Designers Italia - Medium" target="_blank"><svg class="icon icon-sm icon-light align-top">
+              <use href="bootstrap-italia/dist/svg/sprites.svg#it-medium" xlink:href="/dist/svg/sprites.svg#it-medium"></use></svg><span class="visually-hidden">Designers Italia - Medium</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="row py-4 border-white border-top">
+      <ul class="col list-inline small">
+        <li class="list-inline-item px-1">
+          <a href="https://designers.italia.it/privacy-policy/" class="small-prints fw-bold text-decoration-none">Privacy Policy</a>
+        </li>
+        <li class="list-inline-item px-1">
+          <a href="https://designers.italia.it/note-legali/" class="small-prints fw-bold text-decoration-none" data-focus-mouse="false">Note Legali</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
 
 
