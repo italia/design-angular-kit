@@ -1,19 +1,11 @@
 [![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
-[![CircleCI](https://img.shields.io/circleci/project/github/italia/design-angular-kit/master.svg)](https://circleci.com/gh/italia/design-angular-kit)
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/italia/design-angular-kit.svg)](https://codeclimate.com/github/italia/design-angular-kit/maintainability)
-[![NPM](https://img.shields.io/npm/v/design-angular-kit.svg)](https://www.npmjs.com/package/design-angular-kit)
 [![License](https://img.shields.io/github/license/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/blob/master/LICENSE)
 
-# Design Angular Kit
+# Design Angular Kit (versione 0.x)
 
 Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di applicazioni web sviluppate con Angular.
 
-_Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato!_
-
-#### Link veloci
-[Documentazione, demo e guide](https://italia.github.io/design-angular-kit/) |
-[Contributi](https://github.com/italia/design-angular-kit/blob/master/CONTRIBUTING.md) |
-[Template StackBlitz](https://stackblitz.com/edit/design-angular-kit-issue)
+_⚠️ Attenzione: questo codice presente nel branch 0.x è deprecato e contiene il vecchio codice di Design Angular kit e la relativa documentazione_
 
 ## Come iniziare
 
@@ -55,6 +47,7 @@ della documentazione:
 
 ```
 git clone https://github.com/italia/design-angular-kit.git
+git checkout 0.x
 ```
 
 2. Installare [Node.js](https://nodejs.org) e [Yarn](https://yarnpkg.com)
