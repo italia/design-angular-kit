@@ -1,7 +1,7 @@
 {
   "name": "design-angular-kit-bundle",
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
-  "version": "0.13.0",
+  "version": "1.0.0-0",
   "license": " BSD-3-Clause",
   "keywords": [
     "angular",
@@ -18,44 +18,16 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
-    "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build",
+    "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build --configuration production --base-href design-angular-kit",
+    "build:lib": "ng build --configuration production design-angular-kit && cp README.md dist/design-angular-kit/",
     "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
     "lint": "ng lint",
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
-    "semantic-release": "semantic-release"
-  },
-  "release": {
-    "pkgRoot": "dist/design-angular-kit",
-    "verifyConditions": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/github",
-      "@semantic-release/git"
-    ],
-    "prepare": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "./update-assets.sh"
-      },
-      {
-        "path": "@semantic-release/git",
-        "assets": [
-          "CHANGELOG.md",
-          "package.json",
-          "package-lock.json",
-          "projects/design-angular-kit/package.json"
-        ]
-      }
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'",
+    "version": "node ./scripts/sync-versions.js && git add ./projects/design-angular-kit/package.json && git add projects/design-angular-kit/package-lock.json && conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/wait-confirm && git add CHANGELOG.md",
+    "postversion": "echo \"You can now publish your version using 'git push --follow-tags'\""
   },
   "dependencies": {
     "@angular-devkit/schematics": "^14.2.9",
@@ -84,9 +56,6 @@
     "@angular/compiler-cli": "^14.2.10",
     "@angular/language-service": "^14.2.10",
     "@compodoc/compodoc": "^1.1.3",
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/exec": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
@@ -94,6 +63,7 @@
     "conventional-changelog": "^3.1.25",
     "conventional-changelog-cli": "^2.2.2",
     "cz-conventional-changelog": "2.1.0",
+    "gh-pages": "^4.0.0",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.0",

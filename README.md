@@ -1,5 +1,6 @@
-[![NPM](https://img.shields.io/npm/v/design-angular-kit.svg)](https://www.npmjs.com/package/design-angular-kit)
+[![NPM](https://img.shields.io/npm/v/design-angular-kit/unstable.svg)](https://www.npmjs.com/package/design-angular-kit)
 [![Build](https://github.com/italia/design-angular-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/italia/design-angular-kit/actions)
+[![codecov](https://codecov.io/gh/italia/design-angular-kit/branch/main/graph/badge.svg?token=0Ud6YSFi0r)](https://codecov.io/gh/italia/design-angular-kit)
 [![License](https://img.shields.io/github/license/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/issues)
 [![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
@@ -9,12 +10,12 @@
 
 Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di applicazioni web sviluppate con Angular.
 
-_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Se si necessita della vecchia versione il codice può essere reperito [qua](https://github.com/italia/design-angular-kit/tree/0.x) e la documentazione a [questo link](https://italia.github.io/design-angular-kit)_
+_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
 
 #### Link veloci
-[Preview di Vercel](https://design-angular-kit.vercel.app/) |
+[Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/) |
 [Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127) |
-[Contribuire](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md) |
+[Contribuire](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md)
 
 ## Come iniziare
 
@@ -110,10 +111,4 @@ npm run start
 
 ```
 npm run test
-```
-
-5. Per eseguire i test end to end eseguire il comando
-
-```
-npm run e2e
 ```
