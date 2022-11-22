@@ -20,13 +20,14 @@
     "@ng-bootstrap/ng-bootstrap": "13.0.0",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.2.0",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "io-ts": "^2.2.16",
+    "fp-ts": "^2.13.1"
   },
   "peerDependencies": {
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
     "@angular/forms": "^10.0.0",
-    "bootstrap-italia": "2.0.2",
-    "io-ts": "^1.2.1"
+    "bootstrap-italia": "2.0.2"
   }
 }
