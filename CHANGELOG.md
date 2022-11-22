@@ -1,3 +1,17 @@
+# [1.0.0-0](https://github.com/italia/design-angular-kit/compare/v0.13.0...v1.0.0-0) (2022-11-22)
+
+
+### Bug Fixes
+
+* visualizzazione icone bootstrap-italia in app demo ([7961380](https://github.com/italia/design-angular-kit/commit/7961380e6947ae98fcd686a8321202d669ef2309))
+
+
+### Features
+
+* new version for angular 14 ([5ef7323](https://github.com/italia/design-angular-kit/commit/5ef73237759e2b3142df5dea6bd1afddbad0c912))
+
+
+
 # [0.13.0](https://github.com/italia/design-angular-kit/compare/v0.12.0...v0.13.0) (2018-09-14)
 
 
