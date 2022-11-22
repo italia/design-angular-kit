@@ -1,4 +1,4 @@
-[![NPM](https://img.shields.io/npm/v/design-angular-kit.svg)](https://www.npmjs.com/package/design-angular-kit)
+[![NPM](https://img.shields.io/npm/v/design-angular-kit/unstable.svg)](https://www.npmjs.com/package/design-angular-kit)
 [![Build](https://github.com/italia/design-angular-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/italia/design-angular-kit/actions)
 [![codecov](https://codecov.io/gh/italia/design-angular-kit/branch/main/graph/badge.svg?token=0Ud6YSFi0r)](https://codecov.io/gh/italia/design-angular-kit)
 [![License](https://img.shields.io/github/license/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/blob/main/LICENSE)
