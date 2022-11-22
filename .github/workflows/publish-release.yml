@@ -22,7 +22,6 @@ jobs:
       - run: npm run build:lib
       - name: Publish package to NPM
         run: cp .npmrc dist/design-angular-kit/.npmrc && cd dist/design-angular-kit && npm publish --tag unstable
-        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm i extract-changelog-release
