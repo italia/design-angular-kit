@@ -9,6 +9,8 @@
     "@ng-bootstrap/ng-bootstrap",
     "@popperjs/core",
     "bootstrap",
-    "tslib"
+    "tslib",
+    "fp-ts",
+    "io-ts"
   ]
 }
