@@ -10,18 +10,25 @@
 
 Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di applicazioni web sviluppate con Angular.
 
-_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
+_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Stiamo lavorando all'aggiornamento per portare il kit alla versione 1.0.0, commenti e contributi di tutta la community sono più che benvenuti! Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
+
+## Verso la versione 1.0.0 📣 
+
+Sono partite le lavorazioni per l'aggiornamento del kit Angular a Bootstrap Italia 2 (basato su Bootstrap 5). 
+Sul branch `main` potete trovare il codice dei lavori in corso e nella [issue di riferimento](https://github.com/italia/design-angular-kit/issues/126) un piano preliminare delle attività, consolidato nella [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3). La vecchia versione è da considerarsi deprecata.
+**Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
 #### Link veloci
 [Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/) |
 [Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127) |
-[Contribuire](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md)
+[Milestone 1.0.0](https://github.com/italia/design-angular-kit/milestone/3)
 
 ## Come iniziare
 
-Design Angular Kit è disponibile su NPM, se hai una applicazione esistente esegui il comando seguente per scaricarlo nel tuo progetto.
+Design Angular Kit è disponibile su NPM, per installarlo su una applicazione esistente sulla quale provare la libreria (attualmente non stabile) esegui il comando
+
 ```
-npm install design-angular-kit --save
+npm install design-angular-kit@unstable --save
 ```
 
 #### Importazione stili bootstrap-italia
@@ -67,8 +74,6 @@ $font-family-monospace: 'Custom Font', 'Courier New', Courier, monospace;
 // Importazione libreria SCSS di bootstrap-italia
 @import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
 ```
-
-
 
 ## Segnalazione bug e richieste di aiuto
 
