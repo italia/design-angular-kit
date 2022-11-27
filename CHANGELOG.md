@@ -1,6 +1,11 @@
-# [1.0.0-1](https://github.com/italia/design-angular-kit/compare/v1.0.0-0...v1.0.0-1) (2022-11-22)
+# [1.0.0-1](https://github.com/italia/design-angular-kit/compare/v1.0.0-0...v1.0.0-1) (2022-11-23)
 
-* Aggiornate dipendenze della libreria 
+
+### Bug Fixes
+
+* update dependencies for package
+
+
 
 # [1.0.0-0](https://github.com/italia/design-angular-kit/compare/v0.13.0...v1.0.0-0) (2022-11-22)
 

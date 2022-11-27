@@ -16,3 +16,22 @@
   </div>
 </div>
 
+
+
+
+<div class="bd-example">
+  <h4>Radio in Reactive Form</h4>
+  <p>Qual è il tuo sesso?</p>
+  <form [formGroup] ="genderFormGroup">
+    <it-radio-group formControlName="gender">
+      <it-radio-button value="MALE" label="Maschio"></it-radio-button>
+      <it-radio-button value="FEMALE" label="Femmina"></it-radio-button>
+      <it-radio-button value="OTHERS" label="Altro"></it-radio-button>
+      <it-radio-button value="UNDEFINED" label="Preferisco non dirlo"></it-radio-button>
+    </it-radio-group>
+  </form>
+
+  <div class="example-selected-value">Sesso selezionato: <strong>{{genderFormGroup.value.gender}}</strong></div>
+
+
+</div>
