@@ -15,7 +15,7 @@ _⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto 
 ## Verso la versione 1.0.0 📣 
 
 Sono partite le lavorazioni per l'aggiornamento del kit Angular a Bootstrap Italia 2 (basato su Bootstrap 5). 
-Sul branch `main` potete trovare il codice dei lavori in corso e nella [issue di riferimento](https://github.com/italia/design-angular-kit/issues/126) un piano preliminare delle attività, consolidato nella [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3). La vecchia versione è da considerarsi deprecata.
+Sul branch `main` potete trovare il codice dei lavori in corso e nella [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3)  un piano preliminare delle attività. La vecchia versione è da considerarsi deprecata.
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
 #### Link veloci
