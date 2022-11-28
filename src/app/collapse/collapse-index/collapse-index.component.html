@@ -1,9 +1,9 @@
 <h1 class="bd-title">Collapse</h1>
 <p class="bd-lead">Direttiva per l'interazione con elementi richiudibili</p>
-
+<div [innerHTML]="directive.description"></div>
 <it-tab-group>
-  <it-tab label="Descrizione">
-    <div [innerHTML]="directive.description"></div>
+  <it-tab label="Esempi">
+    <it-collapse-examples></it-collapse-examples>
   </it-tab>
   <it-tab label="API">
     <h2>Direttiva Collapse</h2>
@@ -12,8 +12,5 @@
     <it-api-parameters [component]="groupComponent"></it-api-parameters>
     <h2>Collapse Item</h2>
     <it-api-parameters [component]="itemComponent"></it-api-parameters>
-  </it-tab>
-  <it-tab label="Esempi">
-    <it-collapse-examples></it-collapse-examples>
   </it-tab>
 </it-tab-group>

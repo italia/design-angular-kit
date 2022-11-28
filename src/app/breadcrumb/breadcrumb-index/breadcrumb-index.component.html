@@ -1,17 +1,14 @@
 <h1 class = "bd-title">Breadcrumb</h1>
 <p class="bd-lead">Il componente Breadcrumb utilizzabile per la navigazione</p>
-
+<div [innerHTML]="component.description"></div>
 <it-tab-group>
-  <it-tab label="Descrizione">
-    <div [innerHTML]="component.description"></div>
+  <it-tab label="Esempi">
+    <it-breadcrumb-examples></it-breadcrumb-examples>
   </it-tab>
   <it-tab label="API">
     <h2>Breadcrumb</h2>
     <it-api-parameters [component]="component"></it-api-parameters>
     <h2>Breadcrumb Item</h2>
     <it-api-parameters [component]="subcomponent"></it-api-parameters>   
-  </it-tab>
-  <it-tab label="Esempi">
-    <it-breadcrumb-examples></it-breadcrumb-examples>
   </it-tab>
 </it-tab-group>
