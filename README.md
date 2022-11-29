@@ -24,10 +24,10 @@
 <p align="center">
   <a href="https://developersitalia.slack.com/messages/C7VPAUVB3/">
     <img src="https://img.shields.io/badge/Slack%20channel-%23design-blue.svg" alt="Join the #design channel" />
-  </a>&nbsp;
+  </a>
   <a href="https://slack.developers.italia.it/">
     <img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" />
-  </a>&nbsp;
+  </a>
 </p>
 
 _⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Stiamo lavorando all'aggiornamento per portare il kit alla versione 1.0.0, commenti e contributi di tutta la community sono più che benvenuti! Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
