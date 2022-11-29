@@ -1,20 +1,19 @@
 <h1 class="bd-title">Tabs</h1>
 <p class="bd-lead">Il componente Tabs</p>
-
+<div label="Descrizione">
+  <h3>Tab Group</h3>
+  <div [innerHTML]="tabGroupComponent.description"></div>
+  <h3>Tab</h3>
+  <div [innerHTML]="tabComponent.description"></div>
+</div>
 <it-tab-group>
-  <it-tab label="Descrizione">
-    <h3>Tab Group</h3>
-    <div [innerHTML]="tabGroupComponent.description"></div>
-    <h3>Tab</h3>
-    <div [innerHTML]="tabComponent.description"></div>
+  <it-tab label="Esempi">
+    <it-tabs-examples></it-tabs-examples>
   </it-tab>
   <it-tab label="API">
     <h2>Tab Group</h2>
     <it-api-parameters [component]="tabGroupComponent"></it-api-parameters>  
     <h2>Tab</h2>
     <it-api-parameters [component]="tabComponent"></it-api-parameters>
-  </it-tab>
-  <it-tab label="Esempi">
-    <it-tabs-examples></it-tabs-examples>
   </it-tab>
 </it-tab-group>

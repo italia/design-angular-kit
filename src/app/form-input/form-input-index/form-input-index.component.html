@@ -1,14 +1,11 @@
 <h1 class="bd-title">Form Input</h1>
 <p class="bd-lead">Il componente Form Input utilizzabile in un form</p>
-
+<div [innerHTML]="component.description"></div>
 <it-tab-group>
-  <it-tab label="Descrizione">
-    <div [innerHTML]="component.description"></div>
+  <it-tab label="Esempi">
+    <it-form-input-examples></it-form-input-examples>
   </it-tab>
   <it-tab label="API">
     <it-api-parameters [component]="component"></it-api-parameters>
-  </it-tab>
-  <it-tab label="Esempi">
-    <it-form-input-examples></it-form-input-examples>
   </it-tab>
 </it-tab-group>

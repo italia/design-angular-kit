@@ -1,21 +1,48 @@
-[![NPM](https://img.shields.io/npm/v/design-angular-kit/unstable.svg)](https://www.npmjs.com/package/design-angular-kit)
-[![Build](https://github.com/italia/design-angular-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/italia/design-angular-kit/actions)
-[![codecov](https://codecov.io/gh/italia/design-angular-kit/branch/main/graph/badge.svg?token=0Ud6YSFi0r)](https://codecov.io/gh/italia/design-angular-kit)
-[![License](https://img.shields.io/github/license/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/blob/main/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/italia/design-angular-kit.svg)](https://github.com/italia/design-angular-kit/issues)
-[![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
-[![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
+<h1 align="center">Design Angular Kit</h1>
 
-# Design Angular Kit
+<p align="center">
+  <img src=".github/angular_design_kit.png" alt="angular-logo" width="120px" height="120px"/>
+  <br>
+  <i>Design Angular Kit è un toolkit basato su Bootstrap Italia 
+    <br> per la creazione di applicazioni web sviluppate con Angular.</i>
+  <br>
+</p>
 
-Design Angular Kit è un toolkit basato su Bootstrap Italia per la creazione di applicazioni web sviluppate con Angular.
+<p align="center">
+  <a href="https://italia.github.io/design-angular-kit"><strong>italia.github.io/design-angular-kit</strong></a>
+  <br>
+</p>
+
+<p align="center">
+    <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit/unstable.svg" alt="NPM"></a>
+    <a href="https://github.com/italia/design-angular-kit/actions"><img src="https://github.com/italia/design-angular-kit/actions/workflows/ci.yml/badge.svg" alt="Build"></a>
+    <a href="https://codecov.io/gh/italia/design-angular-kit"><img src="https://codecov.io/gh/italia/design-angular-kit/branch/main/graph/badge.svg?token=0Ud6YSFi0r" alt="codecov"></a>
+    <a href="https://github.com/italia/design-angular-kit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/italia/design-angular-kit.svg" alt="License"></a>
+    <a href="https://github.com/italia/design-angular-kit/issues"><img src="https://img.shields.io/github/issues/italia/design-angular-kit.svg" alt="GitHub issues"></a>
+</p>
+
+<p align="center">
+  <a href="https://developersitalia.slack.com/messages/C7VPAUVB3/">
+    <img src="https://img.shields.io/badge/Slack%20channel-%23design-blue.svg" alt="Join the #design channel" />
+  </a>&nbsp;
+  <a href="https://slack.developers.italia.it/">
+    <img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" />
+  </a>&nbsp;
+</p>
 
 _⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Stiamo lavorando all'aggiornamento per portare il kit alla versione 1.0.0, commenti e contributi di tutta la community sono più che benvenuti! Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
 
 ## Verso la versione 1.0.0 📣 
 
 Sono partite le lavorazioni per l'aggiornamento del kit Angular a Bootstrap Italia 2 (basato su Bootstrap 5). 
-Sul branch `main` potete trovare il codice dei lavori in corso e nella [issue di riferimento](https://github.com/italia/design-angular-kit/issues/126) un piano preliminare delle attività, consolidato nella [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3). La vecchia versione è da considerarsi deprecata.
+Sul branch `main` potete trovare il codice dei lavori in corso e nella [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3) un piano preliminare delle attività. La vecchia versione è da considerarsi deprecata.
+
+👉🏻 È possibile contribuire a questa nuova versione in vari modi:
+
+*   Con il proprio codice, prendendo in carico una issue tra quelle aperte e non già assegnate tra [le issue](https://github.com/italia/design-angular-kit/issues) di Angular Kit (è sufficiente anche un commento sulla issue per notificare la volontà di presa in carico).
+*   Attraverso la segnalazione di bug o miglioramenti al [repository ufficiale](https://github.com/italia/design-angular-kit/) di Angular Kit.
+*   Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C7VPAUVB3/) di Slack.
+
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
 #### Link veloci
