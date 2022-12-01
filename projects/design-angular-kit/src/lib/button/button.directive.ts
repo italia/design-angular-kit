@@ -34,20 +34,9 @@ export class ItButtonDirective {
   /**
    * La direttiva che abilita l'elemento come button.
    * Il valore stabilisce il colore del pulsante a seconda delle classi di bootstrap.
-   *  Può assumere i valori:
-   * ```
-   * primary
-   * secondary
-   * danger
-   * warning
-   * info
-   * success
-   * light
-   * dark
-   * ```
    */
   @Input('itButton')
-  set color(value: any) {
+  set color(value: 'primary' | 'secondary' | 'danger' | 'warning' | 'info' | 'success' | 'light' | 'dark') {
     if (ThemeColor.is(value)) {
       this._color = value;
     } else {
@@ -125,17 +114,8 @@ export class ItButtonDirective {
 
   /**
    * Indica la grandezza del pulsante.
-   * Può assumere i valori:
-   * ```
-   * lg
-   * sm
-   * xs
-   * ```
    */
   @Input()
-  get size(): 'lg' | 'sm' | 'xs' {
-    return this._size;
-  }
   set size(value: 'lg' | 'sm' | 'xs') {
     if (ButtonSize.is(value)) {
       this._size = value;
@@ -143,7 +123,10 @@ export class ItButtonDirective {
       this._size = undefined;
     }
   }
-  private _size;
+  get size(): 'lg' | 'sm' | 'xs' {
+    return this._size;
+  }
+  private _size: 'lg' | 'sm' | 'xs';
   
   @HostBinding('class')
   get hostClasses(): string {

@@ -26,7 +26,6 @@ export class DropdownComponent {
 
   @ContentChildren(DropdownItemComponent) menuItems: QueryList<DropdownItemComponent>;
 
-
   @Input() menuHeading: string  = "";
   @Input() expandIcon: string | null = "it-expand";
   @Input() expandIconPosition: 'start' | 'end' = 'end';

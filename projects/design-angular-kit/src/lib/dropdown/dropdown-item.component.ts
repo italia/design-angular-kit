@@ -17,7 +17,7 @@ export class DropdownItemComponent {
   id = `dropdown-item-${identifier++}`;
 
   /**
-   * Il link alla pagina verso cui andare al click sull'elemento del dropdown
+   * (Opzionale) Il link alla pagina verso cui andare al click sull'elemento del dropdown
    */
   @Input()
   get link(): string { return !this.disabled ? this._link : ''; }
@@ -27,6 +27,7 @@ export class DropdownItemComponent {
   /**
    * Se presente indica che l'elemento viene renderizzato come elemento attivo.
    * Accetta una espressione booleana o può essere usato come attributo senza valore
+   * @default false
    */
   @Input()
   get active(): boolean { return this._active; }
@@ -36,6 +37,7 @@ export class DropdownItemComponent {
   /**
    * Se presente indica che l'elemento è disabilitato.
    * Accetta una espressione booleana o può essere usato come attributo senza valore
+   * @default false
    */
   @Input()
   get disabled(): boolean { return this._disabled; }
@@ -47,6 +49,7 @@ export class DropdownItemComponent {
   /**
    * Se presente indica che il testo dell'elemento viene renderizzato più grande.
    * Accetta una espressione booleana o può essere usato come attributo senza valore
+   * @default false
    */
   @Input()
   get large(): boolean { return this._large; }
@@ -54,7 +57,7 @@ export class DropdownItemComponent {
   private _large = false;
 
   /**
-   * La classe dell'icona da usare prima o dopo del testo dell'elemento del dropdown
+   * (Opzionale) La classe dell'icona da usare prima o dopo del testo dell'elemento del dropdown
    */
   @Input()
   get icon(): string { return this._icon; }
@@ -63,7 +66,8 @@ export class DropdownItemComponent {
 
   /**
    * La posizione dell'icona rispetto al testo dell'elemento del dropdown.
-   * Può assumere valori right o left.
+   * Può assumere valori "right" o "left".
+   * @default "right"
    */
   @Input()
   get iconPosition(): HorizontalAlign { return this._iconPosition; }
@@ -76,7 +80,10 @@ export class DropdownItemComponent {
   }
   private _iconPosition = HorizontalAlign.right;
 
-
+  /**
+   * Colore dell'icona presente accanto al testo dell'elemento del dropdown
+   * @default "primary"
+   */
   @Input()
   get iconColor(): IconColorEnum { return this._iconColor; }
   set iconColor(value: IconColorEnum) { this._iconColor = value; }

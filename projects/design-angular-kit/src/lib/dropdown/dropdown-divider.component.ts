@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './dropdown-divider.component.html',
   styleUrls: ['./dropdown-divider.component.css']
 })
-export class DropdownDividerComponent {
-
-}
+export class DropdownDividerComponent {}

@@ -26,7 +26,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @ViewChild('input') _inputElement: ElementRef<HTMLInputElement>;
 
   /**
-   * Se la checkbox è selezionata.
+   * Indica se la checkbox è selezionata.
    */
   @Input()
   get checked(): boolean { return this._checked; }
@@ -41,6 +41,9 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
   private _checked = false;
 
+  /**
+   * Indica se la checkbox fa parte di un gruppo, in tal caso L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
+   */
   @Input()
   get grouped(): boolean { return this._grouped; }
   set grouped(value: boolean) { this._grouped = Util.coerceBooleanProperty(value); }
@@ -65,12 +68,21 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
   private _disabled = false;
 
+  /**
+   * Indica se la checkbox deve essere allineata orizzontalmente. 
+   * L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
+   * @default false
+   */
   @Input()
   get inline(): boolean { return this._inline; }
   set inline(value: boolean) { this._inline = Util.coerceBooleanProperty(value); }
   private _inline = false;
 
 
+  /**
+   * Indica se la checkbox si trova in uno stato indeterminato, di tipo Mixed
+   * @default false
+   */
   @Input()
   get indeterminate(): boolean { return this._indeterminate; }
   set indeterminate(value: boolean) { 
@@ -90,9 +102,21 @@ export class CheckboxComponent implements ControlValueAccessor {
       
     }
   }
+
   private _indeterminate = false;
 
+  /**
+   * Evento emesso quando il valore `indeterminate` della checkbox cambia.
+   */
   @Output() indeterminateChange = new EventEmitter<boolean>();
+
+  
+  
+  /**
+   * Evento emesso quando il valore `checked` della checkbox cambia.
+   */
+  @Output() readonly change = new EventEmitter<CheckboxChange>();
+
 
   focus = false;
   onFocus() {
@@ -102,12 +126,6 @@ export class CheckboxComponent implements ControlValueAccessor {
   onBlur() {
     this.focus = false;
   }
-  
-  /**
-   * Evento emesso quando il valore `checked` della checkbox cambia.
-   */
-  @Output() readonly change: EventEmitter<CheckboxChange> =
-    new EventEmitter<CheckboxChange>();
 
   inputId = `checkbox-${identifier++}`;
 
