@@ -1,15 +1,12 @@
 <h1 class="bd-title">Barra di avanzamento</h1>
 <p class="bd-lead">Il componente Barra di avanzamento utilizzabile per mostrare dei progressi</p>
-
+<div [innerHTML]="component.description"></div>
 <it-tab-group>
-  <it-tab label="Descrizione">
-    <div [innerHTML]="component.description"></div>
-    </it-tab>
-  <it-tab label="API">
-    <it-api-parameters [component]="component"></it-api-parameters>
-    </it-tab>
   <it-tab label="Esempi">
     <it-progress-bar-examples></it-progress-bar-examples>
   </it-tab>
+  <it-tab label="API">
+    <it-api-parameters [component]="component"></it-api-parameters>
+    </it-tab>
 </it-tab-group>
 

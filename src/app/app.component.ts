@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+const { version: appVersion } = require('../../package.json')
 
 @Component({
   selector: 'it-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'design-angular-kit-doc';
+  version = appVersion;
 }

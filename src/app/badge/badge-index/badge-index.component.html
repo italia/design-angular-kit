@@ -1,14 +1,12 @@
 <h1 class="bd-title">Badge</h1>
 <p class="bd-lead">Documentazione ed esempi del componente badge, utile per piccoli contatori ed etichette.</p>
+<div [innerHTML]="directive.description"></div>
 <it-tab-group>
-  <it-tab label="Descrizione">
-    <div [innerHTML]="directive.description"></div>
+  <it-tab label="Esempi">
+    <it-badge-examples></it-badge-examples>
   </it-tab>
   <it-tab label="API">
     <it-api-parameters [component]="directive"></it-api-parameters>
-  </it-tab>
-  <it-tab label="Esempi">
-    <it-badge-examples></it-badge-examples>
   </it-tab>
 </it-tab-group>
 

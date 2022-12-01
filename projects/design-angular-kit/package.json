@@ -1,7 +1,7 @@
 {
   "name": "design-angular-kit",
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
-  "version": "0.13.0",
+  "version": "1.0.0-1",
   "license": " BSD-3-Clause",
   "keywords": [
     "angular",
@@ -9,7 +9,7 @@
     "design",
     "italia",
     "frontend",
-    "bootstrap4"
+    "bootstrap5"
   ],
   "repository": {
     "type": "git",
@@ -20,13 +20,14 @@
     "@ng-bootstrap/ng-bootstrap": "13.0.0",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.2.0",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "io-ts": "^2.2.16",
+    "fp-ts": "^2.13.1"
   },
   "peerDependencies": {
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
     "@angular/forms": "^10.0.0",
-    "bootstrap-italia": "2.0.2",
-    "io-ts": "^1.2.1"
+    "bootstrap-italia": "2.0.2"
   }
 }

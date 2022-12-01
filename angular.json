@@ -147,7 +147,8 @@
           "options": {
             "main": "projects/design-angular-kit/src/test.ts",
             "tsConfig": "projects/design-angular-kit/tsconfig.spec.json",
-            "karmaConfig": "projects/design-angular-kit/karma.conf.js"
+            "karmaConfig": "projects/design-angular-kit/karma.conf.js",
+            "codeCoverage": true
           }
         }
       }

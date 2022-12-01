@@ -153,7 +153,7 @@ export class RadioGroupDirective implements AfterContentInit, ControlValueAccess
   /** Aggiorna il radio button `selected` a seconda del suo _value. */
   private _updateSelectedRadioFromValue(): void {
     this._selected = null;
-    this._radios.forEach(radio => {
+    this._radios?.forEach(radio => {
       radio.checked = this.value === radio.value;
       if (radio.checked) {
         this._selected = radio;

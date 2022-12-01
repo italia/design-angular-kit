@@ -1,14 +1,11 @@
 <h1 class="bd-title">Button</h1>
 <p class="bd-lead">Il componente per l'uso di bottoni</p>
-
+<div [innerHTML]="component.description"></div>  
 <it-tab-group>
-  <it-tab label="Descrizione">
-    <div [innerHTML]="component.description"></div>  
+  <it-tab label="Esempi">
+    <it-button-examples></it-button-examples>
   </it-tab>
   <it-tab label="API">
     <it-api-parameters [component]="component"></it-api-parameters>
-  </it-tab>
-  <it-tab label="Esempi">
-    <it-button-examples></it-button-examples>
   </it-tab>
 </it-tab-group>
