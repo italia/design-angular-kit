@@ -10,6 +10,8 @@ const routes: Routes = [
   ]},
   { path: 'componenti', component: RouterDispatcherComponent, children: [
     { path: '', redirectTo: 'badge', pathMatch: 'full' },
+    { path: 'avatar', loadChildren: () => import('src/app/avatar/avatar.module').then(m => m.AvatarModule) },
+
     { path: 'badge', loadChildren: () => import('src/app/badge/badge.module').then(m => m.BadgeModule) },
     { path: 'checkbox', loadChildren: () => import('src/app/checkbox/checkbox.module').then(m => m.CheckboxModule) },
     { path: 'progress-bar', loadChildren: () => import('src/app/progress-bar/progress-bar.module').then(m => m.ProgressBarModule) },

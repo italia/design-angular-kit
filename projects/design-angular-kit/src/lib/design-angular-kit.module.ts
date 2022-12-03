@@ -1,3 +1,4 @@
+import { ItAvatarModule } from './avatar/avatar.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -30,6 +31,7 @@ import { ItUtilsModule } from './util/utils.module';
         CommonModule,
         ItUtilsModule,
         FormsModule,
+        ItAvatarModule,
         ItPopoverModule,
         ItTooltipModule,
         ItCollapseModule,
@@ -65,6 +67,7 @@ import { ItUtilsModule } from './util/utils.module';
         FormInputComponent,
         BreadcrumbComponent,
         BreadcrumbItemComponent,
+        ItAvatarModule,
         ItIconModule,
         ItPrefixDirective,
         ItSuffixDirective,

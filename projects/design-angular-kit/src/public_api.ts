@@ -1,7 +1,8 @@
 /*
  * Public API Surface of design-angular-kit
  */
-
+export * from './lib/avatar/avatar.directive'
+export * from './lib/avatar/avatar.module'
 export * from './lib/progress-bar/progress-bar.component';
 export * from './lib/checkbox/checkbox.component';
 export * from './lib/popover/popover.directive';
@@ -34,7 +35,7 @@ export * from './lib/icon/icon.component';
 export * from './lib/icon/icon.module';
 export * from './lib/dropdown/dropdown.directive';
 export * from './lib/dropdown/dropdown.config';
-export * from './lib/dropdown/dropdown.module'
+export * from './lib/dropdown/dropdown.module';
 export * from './lib/util/utils.module';
 export * from './lib/util/focus-mouse.directive';
 
