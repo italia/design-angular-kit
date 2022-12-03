@@ -12,7 +12,7 @@ export class AvatarIndexComponent {
     component: any;
 
     constructor() {
-        this.component = (<any>Documentation).directives.find(directive => directive.name === 'ItButtonDirective');
+        this.component = (<any>Documentation).directives.find(directive => directive.name === 'ItAvatarDirective');
     }
 
 }
