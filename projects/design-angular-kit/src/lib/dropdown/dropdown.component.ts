@@ -26,14 +26,22 @@ export class DropdownComponent {
 
   @ContentChildren(DropdownItemComponent) menuItems: QueryList<DropdownItemComponent>;
 
+  /** (Opzionale) Il testo di intestazione del menu */
   @Input() menuHeading: string  = "";
-  @Input() expandIcon: string | null = "it-expand";
+
+  /** 
+   * Icona presente sul bottone che attiva/disattiva il menu del dropdown
+   * @default "it-expand"
+   */
+  @Input() expandIcon: string = "it-expand";
+
+  /** 
+   * Posizione dell'icona presente sul bottone che attiva/disattiva il menu del dropdown 
+   * @default "end"
+   * */
   @Input() expandIconPosition: 'start' | 'end' = 'end';
 
-  private _menuPlacement: DropdownMenuPlacement;
-  get menuPlacement() {
-    return this._menuPlacement;
-  }
+  /** Posizione in cui mostrare il menu del dropdown */
   @Input() set menuPlacement(value : DropdownMenuPlacement) {
     if(value === 'left-start') {
       this.expandIconPosition = 'start';
@@ -41,6 +49,11 @@ export class DropdownComponent {
       this.expandIconPosition = 'end';
     }
     this._menuPlacement = value;
+  }
+
+  private _menuPlacement: DropdownMenuPlacement;
+  get menuPlacement() {
+    return this._menuPlacement;
   }
 
   /**
@@ -89,6 +102,19 @@ export class DropdownComponent {
   set label(value: string) { this._label = value; }
   private _label = '';
 
+  /** 
+   * Indica se aggiornare le icone degli elementi del menu in base al tema. 
+   * 
+   * Se il tema impostato è quello scuro, le icone saranno di colore `light`, altrimenti `primary`
+   * @default true
+   */
+  @Input() autoUpdateMenuItemsIconColor: boolean = true;
+
+  private updateMenuItemsIconColor() {
+    this.menuItems?.forEach(item => {
+      item.iconColor = this._dark ? IconColorEnum.light : IconColorEnum.primary;
+    });
+  }
 
   /**
    * Evento che viene lanciato ogni volta che il dropdown viene aperto
@@ -115,13 +141,6 @@ export class DropdownComponent {
     } else {
       this.onClose.emit();
     }
-  }
-
-  @Input() autoUpdateMenuItemsIconColor: boolean = true;
-  private updateMenuItemsIconColor() {
-    this.menuItems?.forEach(item => {
-      item.iconColor = this._dark ? IconColorEnum.light : IconColorEnum.primary;
-    });
   }
 
   get isDropend(): boolean {
