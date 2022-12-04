@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core";
 import { AvatarIndexComponent } from './avatar-index/avatar-index.component';
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/lib/design-angular-kit.module';
 import { AvatarExamplesComponent } from './avatar-examples/avatar-examples.component';
+import { AvatarExampleSizeComponent } from './avatar-example-size/avatar-example-size.component';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import { AvatarExamplesComponent } from './avatar-examples/avatar-examples.compo
     ],
     declarations: [
         AvatarIndexComponent,
-        AvatarExamplesComponent
+        AvatarExamplesComponent,
+        AvatarExampleSizeComponent
     ]
 })
 export class AvatarModule { }
