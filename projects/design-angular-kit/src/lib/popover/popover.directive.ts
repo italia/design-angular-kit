@@ -19,15 +19,15 @@ import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { ItPopoverConfig } from './popover.config';
   
 /**
- * A lightweight and extensible directive for fancy popover creation.
+ * La direttiva si basa ed estende le funzionalità di `NgbPopover` della libreria ng-bootstrap: https://ng-bootstrap.github.io/#/components/popover/api#NgbPopover
  */
 @Directive({selector: '[itPopover]', exportAs: 'itPopover'})
 export class ItPopover extends NgbPopover implements OnInit, OnDestroy, OnChanges {
  
-  /**
-   * The string content or a `TemplateRef` for the content to be displayed in the popover.
+   /**
+   * Il valore stringa o un `TemplateRef` per il contenuto da mostrare nel popover.
    *
-   * If the title and the content are falsy, the popover won't open.
+   * Se il titolo ed il contenuto sono falsy, il popover non verrà mostrato.
    */
   @Input() itPopover:  string | TemplateRef<any>| null | undefined;
 

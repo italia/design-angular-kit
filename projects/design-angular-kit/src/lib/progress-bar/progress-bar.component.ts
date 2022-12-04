@@ -1,11 +1,7 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ElementRef,
-  Inject,
   Input,
-  Optional,
-  ViewEncapsulation
 } from '@angular/core';
 import { ThemeColor, THEME_COLORS } from '../models/ThemeColor';
 import { Util } from '../util/util';
@@ -62,15 +58,24 @@ export class ProgressBarComponent {
   set label(v: string) { this._label = v; }
   private _label = ProgressBarComponent.PROGRESS_BAR_DEFAULT_LABEL;
 
+  /**
+   * Indica se la barra ha un avanzamento di tipo indeterminato. 
+   * 
+   * Da usare quando non è possibile stabilire una percentuale di progressione.
+   * @default false 
+  */
   @Input()
   get indeterminate(): boolean { return this._indeterminate; }
   set indeterminate(value: boolean) { this._indeterminate = Util.coerceBooleanProperty(value); }
   private _indeterminate = false;
 
+  /**
+   * (Opzionale) Testo visibile solo agli screen reader quando il tipo di avanzamento delle barra è `indeterminate`
+   */
   @Input()
   get indeterminateHiddenText(): string { return this._indeterminateHiddenText; }
   set indeterminateHiddenText(v: string) { this._indeterminateHiddenText = v; }
-  private _indeterminateHiddenText = "In elaborazione...";
+  private _indeterminateHiddenText = "";
 
   /**
    * Il colore della barra di avanzamento.
