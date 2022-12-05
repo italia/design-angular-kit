@@ -8,7 +8,6 @@ import { ItCollapseConfig } from './collapse.config';
  * (in gergo definiti collassabili o collapse), che possono essere attivati indipendentemente l’uno dall’altro
  */
 @Directive({
-  // tslint:disable-next-line:directive-selector
   selector: '[itCollapse]',
   exportAs: 'itCollapse'
 })
@@ -34,9 +33,13 @@ export class ItCollapseDirective extends NgbCollapse implements OnInit, OnChange
 
   /**
    * La direttiva di collapse che opzionalmente contiene il predicato che ne stabilisce
-   * che sarà avvalorato a true quando il collapse è espanso, a false altrimenti
+   * che sarà avvalorato a `true` quando il collapse è espanso, a `false` altrimenti
    */
   @Input() itCollapse:boolean;
+
+  /**
+   * Evento emesso quando avviene un cambiamento nel valore della proprietà `itCollapse`
+   */
   @Output() itCollapseChange = new EventEmitter<boolean>();
 
 

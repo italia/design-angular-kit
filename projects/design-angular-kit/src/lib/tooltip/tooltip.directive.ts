@@ -29,7 +29,7 @@ import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { DOCUMENT } from '@angular/common';
 
 /**
- * Una direttiva per la creazione di un tooltip.
+ * La direttiva si basa ed estende le funzionalità di `NgbTooltip` della libreria ng-bootstrap: https://ng-bootstrap.github.io/#/components/popover/api#NgbPopover
  */
 @Directive({
   selector: '[itTooltip]', // tslint:disable-line
@@ -37,9 +37,9 @@ import { DOCUMENT } from '@angular/common';
 })
 export class ItTooltip extends NgbTooltip implements OnInit, OnDestroy, OnChanges {
   /**
-   * The string content or a `TemplateRef` for the content to be displayed in the popover.
+   * Il valore stringa o un `TemplateRef` per il contenuto da mostrare nel tooltip.
    *
-   * If the title and the content are falsy, the popover won't open.
+   * Se il titolo ed il contenuto sono falsy, il tooltip non verrà mostrato.
    */
    @Input() itTooltip:  string | TemplateRef<any>| null | undefined;
 

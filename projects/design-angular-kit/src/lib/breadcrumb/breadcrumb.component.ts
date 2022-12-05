@@ -43,9 +43,15 @@ export class BreadcrumbComponent implements AfterContentInit, OnChanges, OnDestr
   @ContentChildren(forwardRef(() => BreadcrumbItemComponent), { descendants: true })
   private _items: QueryList<BreadcrumbItemComponent>;
 
+  /**
+   * (Opzionale) Classe CSS da applicare al breadcrumb
+   */
   @Input() 
   customClass: string = '';
 
+  /**
+   * (Opzionale) Valore dell'attributo `aria-label` applicato all'elemento `nav` contenitore del breadcrumb 
+   */
   @Input() 
   ariaLabel: string = 'breadcrumb';
 

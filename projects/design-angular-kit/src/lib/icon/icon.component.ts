@@ -21,14 +21,23 @@ export class IconComponent  {
     }
   }
 
+  /** 
+   * Indica se l'icona debba essere cerchiata
+   * @default false
+   */
   @Input() rounded: boolean = false;
+
+  /**
+   * (Opzionale) Se l'icona è `rounded`, indica il colore di sfondo
+   */
   @Input() roundedColor: IconColorEnum = null;
 
   get roundedColorClass(): string {
     return this.roundedColor ? ' rounded-' + this.roundedColor : '';
   }
 
-
+  /** Codice dell'icona. 
+   * Per un elenco delle icone disponibili guardare qui: https://italia.github.io/bootstrap-italia/docs/utilities/icone/ */
   @Input() set icon(newIcon: string) {
     if(newIcon) {
       this.svgPath = IconComponent.ICON_BASE_URL + newIcon;
@@ -40,13 +49,29 @@ export class IconComponent  {
 
   protected iconName: string = '';
 
-  @Input() wai = 'wai';
-
+  /**
+   * (Opzionale) Dimensioni dell'icona.
+   */
   @Input() size: IconSizeEnum = IconSizeEnum.default;
+
+  /**
+   * Colore dell'icona
+   * @default primary
+   */
   @Input() color: IconColorEnum = IconColorEnum.primary;
+
+  /**
+   * (Opzionale) Colore di sfondo dell'icona
+   */
   @Input() bgColor: IconBackgroundColorEnum = null;
 
+  /**
+   * Indica se applicare un padding proporzionale alla dimensione dell’icona attorno ad essa.
+   * @default false
+   */
   @Input() padded = false;
+
+  
   @Input() expand = false;
 
   /**

@@ -26,10 +26,17 @@ export class ItButtonDirective {
             color === IconColorEnum.white;
   }
 
+  /**
+   * (Opzionale) Se presente un'icona associata al bottone, aggiorna automaticamente il suo colore in base al colore del bottone.
+   */
   @Input() autoUpdateIconColor = true;
 
+  /**
+   * La direttiva che abilita l'elemento come button.
+   * Il valore stabilisce il colore del pulsante a seconda delle classi di bootstrap.
+   */
   @Input('itButton')
-  set color(value: any) {
+  set color(value: 'primary' | 'secondary' | 'danger' | 'warning' | 'info' | 'success' | 'light' | 'dark') {
     if (ThemeColor.is(value)) {
       this._color = value;
     } else {
@@ -56,20 +63,6 @@ export class ItButtonDirective {
     
   }
 
-  /**
-   * Stabilisce il colore del pulsante a seconda delle classi di bootstrap.
-   * Può avere valori:
-   * <ul>
-   * <li> primary
-   * <li> secondary
-   * <li> danger
-   * <li> warning
-   * <li> info
-   * <li> success
-   * <li> light
-   * <li> dark
-   * </ul>
-   */
   get color(): any {
     return this._color;
   }
@@ -120,25 +113,20 @@ export class ItButtonDirective {
   
 
   /**
-   * Indica la grandezza del pulsante. Può assumere i valori:
-   * <ul>
-   * <li> lg
-   * <li> sm
-   * <li> xs
-   * </ul>
+   * Indica la grandezza del pulsante.
    */
   @Input()
-  get size(): any {
-    return this._size;
-  }
-  set size(value: any) {
+  set size(value: 'lg' | 'sm' | 'xs') {
     if (ButtonSize.is(value)) {
       this._size = value;
     } else {
       this._size = undefined;
     }
   }
-  private _size;
+  get size(): 'lg' | 'sm' | 'xs' {
+    return this._size;
+  }
+  private _size: 'lg' | 'sm' | 'xs';
   
   @HostBinding('class')
   get hostClasses(): string {

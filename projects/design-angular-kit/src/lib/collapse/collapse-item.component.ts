@@ -23,14 +23,6 @@ export class ItCollapseItemComponent {
   private _header;
 
   /**
-   * Evento da emettere quando il collapse sta per essere mostrato
-   */
-  @Output('show')
-  get showEvent(): EventEmitter<ItCollapseItemComponent> { return this._showEvent; }
-  set showEvent(value: EventEmitter<ItCollapseItemComponent>) { this._showEvent = value; }
-  private _showEvent = new EventEmitter<ItCollapseItemComponent>();
-
-  /**
    * Evento da emettere quando il collapse è mostrato
    */
   @Output('shown')
@@ -39,28 +31,12 @@ export class ItCollapseItemComponent {
   private _shownEvent = new EventEmitter<ItCollapseItemComponent>();
 
   /**
-   * Evento da emettere quando il collapse sta per essere nascosto
-   */
-  @Output('hide')
-  get hideEvent(): EventEmitter<ItCollapseItemComponent> { return this._hideEvent; }
-  set hideEvent(value: EventEmitter<ItCollapseItemComponent>) { this._hideEvent = value; }
-  private _hideEvent = new EventEmitter<ItCollapseItemComponent>();
-
-  /**
    * Evento da emettere quando il collapse è nascosto
    */
   @Output('hidden')
   get hiddenEvent(): EventEmitter<ItCollapseItemComponent> { return this._hiddenEvent; }
   set hiddenEvent(value: EventEmitter<ItCollapseItemComponent>) { this._hiddenEvent = value; }
   private _hiddenEvent = new EventEmitter<ItCollapseItemComponent>();
-
-  show() {
-    this.showEvent.emit(this);
-  }
-
-  hide() {
-    this.hideEvent.emit(this);
-  }
 
   shown() {
     this.shownEvent.emit(this);
