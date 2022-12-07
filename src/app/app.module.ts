@@ -20,6 +20,7 @@ import { ItTabsModule } from 'projects/design-angular-kit/src/lib/tabs/tabs.modu
     TableOfContentItemComponent,
     RouterDispatcherComponent,
     LinkSortPipe,
+
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { DesignAngularKitModule } from 'projects/design-angular-kit/src/lib/desi
 import { AvatarExamplesComponent } from './avatar-examples/avatar-examples.component';
 import { AvatarExampleSizeComponent } from './avatar-example-size/avatar-example-size.component';
 import { AvatarExampleColorsComponent } from './avatar-example-colors/avatar-example-colors.component';
+import { AvatarExampleGroupComponent } from './avatar-example-group/avatar-example-group.component';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { AvatarExampleColorsComponent } from './avatar-example-colors/avatar-exa
         AvatarIndexComponent,
         AvatarExamplesComponent,
         AvatarExampleSizeComponent,
-        AvatarExampleColorsComponent
+        AvatarExampleColorsComponent,
+        AvatarExampleGroupComponent
     ]
 })
 export class AvatarModule { }

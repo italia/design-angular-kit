@@ -5,7 +5,7 @@ import { Directive, HostBinding, Input } from "@angular/core";
 @Directive({
   selector: '[itAvatar]',
   exportAs: 'itAvatar'
-})
+}) 
 export class ItAvatarDirective {
   /**
    * Indica il colore dell'avatar. Può assumere i valori:
@@ -64,7 +64,7 @@ export class ItAvatarDirective {
     if (this.color) {
       cssClass += ` avatar-${this.color}`
     }
-    
+
     return cssClass
   }
 
