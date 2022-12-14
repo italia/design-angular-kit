@@ -22,6 +22,7 @@ const routes: Routes = [
     { path: 'button', loadChildren: () => import('src/app/button/button.module').then(m => m.ButtonModule) },
     { path: 'collapse', loadChildren: () => import('src/app/collapse/collapse.module').then(m => m.CollapseModule) },
     { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
+    { path: 'select', loadChildren: () => import('src/app/select/select.module').then(m => m.SelectModule) },
     { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
   ]}
 ];

@@ -61,6 +61,10 @@
         {
           "label": "Form Input",
           "link": "/componenti/form-input"
+        },
+        {
+          "label": "Select",
+          "link": "/componenti/select"
         }
       ]
     }

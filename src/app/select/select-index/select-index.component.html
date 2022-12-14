@@ -1,0 +1,11 @@
+<h1 class="bd-title">Select</h1>
+<p class="bd-lead">Il classico “menu a tendina”.</p>
+<div [innerHTML]="component.description"></div>
+<it-tab-group>
+  <it-tab label="Esempi">
+    <it-select-examples></it-select-examples>
+  </it-tab>
+  <it-tab label="API">
+    <it-api-parameters [component]="component"></it-api-parameters>
+  </it-tab>
+</it-tab-group>

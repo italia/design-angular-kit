@@ -24,6 +24,9 @@ export * from './lib/form-input/it-prefix.directive';
 export * from './lib/form-input/it-suffix.directive';
 export * from './lib/form-input/it-text-suffix.directive';
 export * from './lib/form-input/it-text-prefix.directive';
+export * from './lib/select/option.directive';
+export * from './lib/select/select.component';
+export * from './lib/select/select.module'
 export * from './lib/dropdown/dropdown.component';
 export * from './lib/dropdown/dropdown-item.component';
 export * from './lib/dropdown/dropdown-divider.component';
@@ -37,5 +40,6 @@ export * from './lib/dropdown/dropdown.config';
 export * from './lib/dropdown/dropdown.module'
 export * from './lib/util/utils.module';
 export * from './lib/util/focus-mouse.directive';
+
 
 export * from './lib/design-angular-kit.module';
