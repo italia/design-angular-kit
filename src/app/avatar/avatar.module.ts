@@ -8,6 +8,7 @@ import { AvatarExamplesComponent } from './avatar-examples/avatar-examples.compo
 import { AvatarExampleSizeComponent } from './avatar-example-size/avatar-example-size.component';
 import { AvatarExampleColorsComponent } from './avatar-example-colors/avatar-example-colors.component';
 import { AvatarExampleGroupComponent } from './avatar-example-group/avatar-example-group.component';
+import { AvatarExampleDropdownComponent } from './avatar-example-dropdown/avatar-example-dropdown.component';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { AvatarExampleGroupComponent } from './avatar-example-group/avatar-examp
         AvatarExamplesComponent,
         AvatarExampleSizeComponent,
         AvatarExampleColorsComponent,
-        AvatarExampleGroupComponent
+        AvatarExampleGroupComponent,
+        AvatarExampleDropdownComponent
     ]
 })
 export class AvatarModule { }

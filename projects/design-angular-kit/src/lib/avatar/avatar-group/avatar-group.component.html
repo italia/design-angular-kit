@@ -1,5 +1,13 @@
-<ul class="avatar-group-stacked">
-  <li  *ngFor="let avatar of avatars">
-    <ng-container *ngTemplateOutlet="avatar._implicitContent"></ng-container>
+<ul [class]="wrapperClasses">
+  <li *ngFor="let avatar of avatars">
+    <div *ngIf="linkList && !link" class="list-item"> 
+      <ng-container *ngTemplateOutlet="avatar._implicitContent"></ng-container> 
+    </div>
+    <a *ngIf="linkList && link" [href]="link" class="list-item"> 
+      <ng-container *ngTemplateOutlet="avatar._implicitContent"></ng-container> 
+    </a>
+    <div *ngIf="!linkList">
+      <ng-container *ngTemplateOutlet="avatar._implicitContent"></ng-container>
+    </div>
   </li>
 </ul>
