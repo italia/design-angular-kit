@@ -9,10 +9,12 @@ import Documentation from '../../../assets/documentation.json';
 })
 export class AvatarIndexComponent {
 
-    component: any;
+    directive: any;
+    dropdownItem: any;
 
     constructor() {
-        this.component = (<any>Documentation).directives.find(directive => directive.name === 'ItAvatarDirective');
+        this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItAvatarDirective');
+        this.dropdownItem = (<any>Documentation).components.find(component => component.name === 'ItAvatarDropDownItemComponent')
     }
 
 }

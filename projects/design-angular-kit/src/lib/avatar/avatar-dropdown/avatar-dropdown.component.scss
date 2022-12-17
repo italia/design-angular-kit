@@ -1,0 +1,9 @@
+// made because of bug with before triangle that goes up 
+.link-list-wrapper{
+  z-index: 2;
+  position: relative;
+}
+
+a{
+  cursor: pointer;
+}

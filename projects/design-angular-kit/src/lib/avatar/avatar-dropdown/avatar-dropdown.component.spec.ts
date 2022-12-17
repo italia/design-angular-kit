@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvatarDropdownComponent } from './avatar-dropdown.component';
+import { ItAvatarDropdownComponent } from './avatar-dropdown.component';
 
 describe('AvatarDropdownComponent', () => {
-  let component: AvatarDropdownComponent;
-  let fixture: ComponentFixture<AvatarDropdownComponent>;
+  let component: ItAvatarDropdownComponent;
+  let fixture: ComponentFixture<ItAvatarDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AvatarDropdownComponent ]
+      declarations: [ ItAvatarDropdownComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AvatarDropdownComponent);
+    fixture = TestBed.createComponent(ItAvatarDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

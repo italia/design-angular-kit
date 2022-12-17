@@ -1,6 +1,6 @@
 <h1 class="bd-title">Avatar</h1>
 <p class="bd-lead">Il componente per l'uso di avatar</p>
-<div [innerHTML]="component.description"></div>
+<div [innerHTML]="directive.description"></div>
 
 
 <it-tab-group>
@@ -8,6 +8,9 @@
     <it-avatar-examples></it-avatar-examples>
   </it-tab>
   <it-tab label="API">
-    <it-api-parameters [component]="component"></it-api-parameters>
+    <h2>Avatar</h2>
+    <it-api-parameters [component]="directive"></it-api-parameters>
+    <h2>Avatar dropdown item</h2>
+    <it-api-parameters [component]="dropdownItem"></it-api-parameters>
   </it-tab>
 </it-tab-group>
