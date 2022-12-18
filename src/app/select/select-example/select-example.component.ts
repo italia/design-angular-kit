@@ -8,6 +8,6 @@ import { AutoCompleteItem } from 'projects/design-angular-kit/src/public_api';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectExampleComponent {
-  selectValue = 'Value 1';
+  selectValue = 'Value 2';
 
 }

@@ -1,14 +1,14 @@
 <div class="select-wrapper">
   <label [for]="id" *ngIf="label">{{label}}</label>
   <select #selectElement
-  (focus)="onFocus()"
-  (blur)="onBlur()"
-  (change)="onChange()"
-  [id]="id"
-  [class.focus--mouse]="focus"
-  [attr.name]="name"
-  [disabled]="disabled"
-> 
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (change)="onChange()"
+    [id]="id"
+    [class.focus--mouse]="focus"
+    [attr.name]="name"
+    [disabled]="disabled"
+  >
 
   <ng-content></ng-content>
 

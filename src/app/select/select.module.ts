@@ -9,12 +9,14 @@ import { SharedModule } from '../shared/shared.module';
 import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItSelectModule } from "projects/design-angular-kit/src/lib/select/select.module";
+import { SelectDisabledExampleComponent } from './select-disabled-example/select-disabled-example.component';
 
 @NgModule({
     declarations: [
         SelectExampleComponent,
         SelectExamplesComponent,
-        SelectIndexComponent
+        SelectIndexComponent,
+        SelectDisabledExampleComponent
     ],
     imports: [
         CommonModule,

@@ -1,12 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 
 import { SelectExampleComponent } from './select-example.component';
 
-describe('FormInputExampleComponent', () => {
+describe('SelectExampleComponent', () => {
   let component: SelectExampleComponent;
   let fixture: ComponentFixture<SelectExampleComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SelectExampleComponent ]
     })
