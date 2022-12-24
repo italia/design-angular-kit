@@ -1,6 +1,6 @@
 import {
   Component, Input, ChangeDetectionStrategy, forwardRef,
-  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, ContentChildren, QueryList, AfterContentChecked, OnInit, HostListener
+  AfterContentInit, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, ContentChildren, QueryList, AfterContentChecked, OnInit, HostListener, AfterViewInit
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Util } from '../util/util';
@@ -28,7 +28,7 @@ export class SelectChange {
     multi: true
   }]
 })
-export class SelectComponent implements OnInit, AfterContentInit, ControlValueAccessor {
+export class SelectComponent implements OnInit, AfterContentInit, AfterViewInit, ControlValueAccessor {
 
   @ViewChild('selectElement', { static: false })
   private _selectElement: ElementRef;
@@ -143,6 +143,9 @@ export class SelectComponent implements OnInit, AfterContentInit, ControlValueAc
 
 
   private _isInitialized = false;
+  /** Valore con cui viene inizializzata la select. */
+  private _initialValue: any;
+
   private _controlValueAccessorChangeFn: (value: any) => void = () => { };
   private _onTouched: () => any = () => { };
 
@@ -155,16 +158,19 @@ export class SelectComponent implements OnInit, AfterContentInit, ControlValueAc
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 
   writeValue(value: any): void {
     this.value = value;
-  
+    
     this.onChange();
     if (this._isInitialized) {
       this._changeDetector.detectChanges();
+    } else {
+      // L'elmento HTML select non è ancora disponibile e quindi la view non riuscirebbe ad effettuare il primo aggiornamento correttamente.
+      // Pertanto si memorizza il valore iniziale che dovrà avere e si assegna quando è disponibile nel DOM (ngAfterViewInit)
+      this._initialValue = value;
     }
   }
 
@@ -181,6 +187,15 @@ export class SelectComponent implements OnInit, AfterContentInit, ControlValueAc
 
   ngAfterContentInit(): void {
     this._isInitialized = true;
+
+  }
+
+  ngAfterViewInit(): void {
+    this._isInitialized = true;
+
+    if(this._selectElement && this._initialValue) {
+      this._selectElement.nativeElement.value = this._initialValue;
+    }
   }
 
   onChange() {

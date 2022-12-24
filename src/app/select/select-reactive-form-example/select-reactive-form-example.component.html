@@ -1,0 +1,20 @@
+
+<h3>Select con Reactive Form</h3>
+<p>Puoi utilizzare il componente <code class="language-plaintext highlighter-rouge">it-select</code> nelle tue Reactive Forms.</p>
+
+<div class="bd-example">
+  <form [formGroup]="selectFormGroup">
+    <it-select label="Etichetta" formControlName="selectFormControl">
+      <option value="">Scegli un'opzione</option>
+      <option value="1">Opzione 1</option>
+      <option value="2">Opzione 2</option>
+      <option value="3">Opzione 3</option>
+      <option value="4">Opzione 4</option>
+      <option value="5">Opzione 5</option>
+    </it-select>
+  </form>
+ 
+  <div class="mt-4">
+    Opzione selezionata: {{ selectFormGroup.get('selectFormControl').value }}
+  </div>
+</div>

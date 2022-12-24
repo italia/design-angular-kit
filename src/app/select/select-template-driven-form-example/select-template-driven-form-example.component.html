@@ -1,0 +1,16 @@
+
+<h3>Select con Template Driven Form</h3>
+<p>Puoi utilizzare il componente <code class="language-plaintext highlighter-rouge">it-select</code> sfruttando il two-way data binding.</p>
+
+<div class="bd-example">
+    <it-select label="Etichetta" [(ngModel)]="selectValue">
+      <option alue="">Scegli un'opzione</option>
+      <option value="1">Opzione 1</option>
+      <option value="2">Opzione 2</option>
+      <option value="3">Opzione 3</option>
+      <option value="4">Opzione 4</option>
+      <option value="5">Opzione 5</option>
+    </it-select> 
+
+    <div class = "mt-4">Opzione selezionata: {{ selectValue }} </div>
+</div>

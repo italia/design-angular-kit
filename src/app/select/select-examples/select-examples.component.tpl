@@ -1,18 +1,39 @@
 {% from "../../macro.template.njk" import sanitize as sanitize %}
 
-{% set html %}
-  {% include "../select-example/select-example.component.html" %}
+{% set reactiveFormHtml %}
+  {% include "../select-reactive-form-example/select-reactive-form-example.component.html" %}
 {% endset %}
 
-{% set typescript %}
-  {% include "../select-example/select-example.component.ts" %}
+{% set reactiveFormTypescript %}
+  {% include "../select-reactive-form-example/select-reactive-form-example.component.ts" %}
 {% endset %}
 
 
-<it-select-example></it-select-example>
+<it-select-reactive-form-example></it-select-reactive-form-example>
 
-<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}">
+<it-source-display html="{$ sanitize(reactiveFormHtml) $}" typescript="{$ sanitize(reactiveFormTypescript) $}">
 </it-source-display>
+
+
+
+
+
+
+{% set templateDrivenFormHtml %}
+  {% include "../select-template-driven-form-example/select-template-driven-form-example.component.html" %}
+{% endset %}
+
+{% set templateDrivenFormTypescript %}
+  {% include "../select-template-driven-form-example/select-template-driven-form-example.component.ts" %}
+{% endset %}
+
+
+<it-select-template-driven-form-example></it-select-template-driven-form-example>
+
+<it-source-display html="{$ sanitize(templateDrivenFormHtml) $}" typescript="{$ sanitize(templateDrivenFormTypescript) $}">
+</it-source-display>
+
+
 
 
 
