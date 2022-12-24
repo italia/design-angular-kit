@@ -1,10 +1,17 @@
 <div class="select-wrapper">
-  <label [for]="id" *ngIf="label">{{label}}</label>
+  <label [for]="id" *ngIf="label"              
+          [class.visually-hidden]="labelVisuallyHidden">
+          {{label}}
+  </label>
+
   <select #selectElement
+    class = "form-select"
+    [class]="customSelectClass"
     (focus)="onFocus()"
     (blur)="onBlur()"
     (change)="onChange()"
     [id]="id"
+    [ngClass]="selectClassBySize" 
     [class.focus--mouse]="focus"
     [attr.name]="name"
     [disabled]="disabled"
@@ -12,5 +19,9 @@
 
   <ng-content></ng-content>
 
-</select>
+  </select>
+
+  <small [id]="noteId" class="form-text" *ngIf="note">
+    {{note}}
+  </small>
 </div>

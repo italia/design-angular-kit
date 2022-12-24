@@ -1,6 +1,5 @@
 {% from "../../macro.template.njk" import sanitize as sanitize %}
 
-
 {% set html %}
   {% include "../select-example/select-example.component.html" %}
 {% endset %}
@@ -50,3 +49,21 @@
 
 <it-source-display html="{$ sanitize(groupHtml) $}" typescript="{$ sanitize(groupTypescript) $}">
 </it-source-display>
+
+
+
+
+{% set sizeHtml %}
+  {% include "../select-size-example/select-size-example.component.html" %}
+{% endset %}
+
+{% set sizeTypescript %}
+  {% include "../select-size-example/select-size-example.component.ts" %}
+{% endset %}
+
+
+<it-select-size-example></it-select-size-example>
+
+<it-source-display html="{$ sanitize(sizeHtml) $}" typescript="{$ sanitize(sizeTypescript) $}">
+</it-source-display>
+

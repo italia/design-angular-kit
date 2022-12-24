@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItSelectModule } from "projects/design-angular-kit/src/lib/select/select.module";
 import { SelectDisabledExampleComponent } from './select-disabled-example/select-disabled-example.component';
 import { SelectGroupExampleComponent } from './select-group-example/select-group-example.component';
+import { SelectSizeExampleComponent } from './select-size-example/select-size-example.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { SelectGroupExampleComponent } from './select-group-example/select-group
         SelectExamplesComponent,
         SelectIndexComponent,
         SelectDisabledExampleComponent,
-        SelectGroupExampleComponent
+        SelectGroupExampleComponent,
+        SelectSizeExampleComponent
     ],
     imports: [
         CommonModule,

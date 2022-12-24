@@ -24,7 +24,6 @@ export * from './lib/form-input/it-prefix.directive';
 export * from './lib/form-input/it-suffix.directive';
 export * from './lib/form-input/it-text-suffix.directive';
 export * from './lib/form-input/it-text-prefix.directive';
-export * from './lib/select/option.directive';
 export * from './lib/select/select.component';
 export * from './lib/select/select.module'
 export * from './lib/dropdown/dropdown.component';

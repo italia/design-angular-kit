@@ -4,7 +4,6 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Util } from '../util/util';
-import { ItOption } from './option.directive';
 
 let identifier = 0;
 
@@ -14,7 +13,6 @@ export class SelectChange {
     public value: any
   ) { }
 }
-
 
 /**
  * Elementi e stili per la creazione di select accessibili e responsive.
@@ -34,9 +32,6 @@ export class SelectComponent implements OnInit, AfterContentInit, ControlValueAc
 
   @ViewChild('selectElement', { static: false })
   private _selectElement: ElementRef;
-
-
-  @ContentChildren(ItOption) options: QueryList<HTMLOptionsCollection>;
 
 
   /**
@@ -72,11 +67,12 @@ export class SelectComponent implements OnInit, AfterContentInit, ControlValueAc
   private _label: string;
 
   /**
-   * Indica se la label dell'input deve essere visualizzata dall'utente o solamente visibile per lo screen reader
+   * Indica se la label della select deve essere visualizzata dall'utente o solamente visibile per lo screen reader
+   * @default false
    */
   @Input()
   get labelVisuallyHidden(): boolean { return this._labelVisuallyHidden; }
-  set labelVisuallyHidden(value: boolean) { this._labelVisuallyHidden = value; }
+  set labelVisuallyHidden(value: boolean) { this._labelVisuallyHidden = Util.coerceBooleanProperty(value); }
   private _labelVisuallyHidden: boolean = false;
 
 
@@ -89,14 +85,25 @@ export class SelectComponent implements OnInit, AfterContentInit, ControlValueAc
   set note(value: string) { this._note = value; }
   private _note: string;
 
-
   /**
-   * Indica l'icona da visualizzare a sinistra della select
+   * (Opzionale) Classe CSS che verrà applicata all'elemento `select`
    */
   @Input()
-  get icon(): string { return this._icon; }
-  set icon(value: string) { this._icon = value; }
-  private _icon: string;
+  get customSelectClass(): string { return this._customSelectClass; }
+  set customSelectClass(value: string) { this._customSelectClass = value; }
+  private _customSelectClass: string;
+   
+
+  /**
+   * (Opzionale) Indica la grandezza della select.
+   * @default 'default'
+   */
+  @Input()
+  get size(): 'lg' | 'sm' | 'default' { return this._size; }
+  set size(value: 'lg' | 'sm' | 'default') { this._size = value; }
+  private _size: 'lg' | 'sm' | 'default' = 'default';
+
+
 
   /**
    * Opzionale.
@@ -191,6 +198,10 @@ export class SelectComponent implements OnInit, AfterContentInit, ControlValueAc
 
   get noteId() {
     return `${this.id}-select-note`;
+  }
+
+  get selectClassBySize() {
+    return this.size !== 'default' ? 'form-select-' + this.size : '';
   }
 
 }
