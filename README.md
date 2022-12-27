@@ -58,16 +58,26 @@ Design Angular Kit è disponibile su NPM, per installarlo su una applicazione es
 npm install design-angular-kit@unstable --save
 ```
 
-#### Importazione stili bootstrap-italia
+Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
+
+```typescript
+imports: [
+    ...
+    TranslateModule.forRoot(),
+    DesignAngularKitModule
+]
+```
+
+### Importazione stili bootstrap-italia
 Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS come mostrato nell'esempio qui sotto.
 
 ```scss
 // Importazione libreria SCSS di bootstrap-italia
-@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
-
+@import "bootstrap-italia/src/scss/bootstrap-italia";
 ```
 
-#### Come personalizzare e sovrascrivere le variabili di default della libreria (es. colori, font-family, misure, ecc.)
+<details>
+  <summary>Come personalizzare e sovrascrivere le variabili di default della libreria (es. colori, font-family, misure, ecc.)</summary>
 
 Bootstrap Italia eredita ed estende tutte le variabili di default di Bootstrap, sovrascrivendo 
 alcuni valori in fase di compilazione e impostandone di nuovi all’occorenza. Un esempio fra tutti è 
@@ -99,8 +109,82 @@ $font-family-sans-serif: 'Custom Font', Arial, Helvetica, sans-serif;
 $font-family-monospace: 'Custom Font', 'Courier New', Courier, monospace;
 
 // Importazione libreria SCSS di bootstrap-italia
-@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
+@import 'bootstrap-italia/src/scss/bootstrap-italia';
 ```
+</details>
+
+### Importazione javascript bootstrap-italia
+
+Configura il file javascript nel file `angular.json`:
+
+```
+ "scripts": [
+    ...
+    "./node_modules/bootstrap-italia/dist/js/bootstrap-italia.bundle.min.js"
+  ]
+ ```
+
+### Supporto icone e assets
+
+Per aggiungere il supporto icone/assets, modifica il tuo `angular.json` aggiungendo:
+
+```
+ "assets": [
+    ...
+    {
+      "glob": "**/*",
+      "input": "./node_modules/bootstrap-italia/",
+      "output": "/bootstrap-italia/"
+    }
+  ]
+ ```
+
+### Supporto i18n (localizzazione)
+
+La libreria usa [ngx-translate](https://github.com/ngx-translate/core) per aggiungere le localizazioni i18n.
+
+Modifica il tuo `angular.json` aggiungendo:
+
+```
+ "assets": [
+    ...
+    {
+      "glob": "**/*",
+      "input": "./node_modules/design-angular-kit/assets/i18n",
+      "output": "/bootstrap-italia/i18n/"
+    }
+  ]
+ ```
+
+Se utilizzi già i file di localizzazione nella tua app, puoi utilizzare la libreria [ngx-translate-multi-http-loader](https://www.npmjs.com/package/ngx-translate-multi-http-loader)
+per caricare i file di localizzazione dell'app e di `design-angular-kit`
+
+Modifica nel tuo `app.module.ts`:
+
+```typescript
+imports: [
+  ...
+  HttpClientModule,
+  TranslateModule.forRoot({
+    loader: {
+      provide: TranslateLoader,
+      useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
+        './assets/i18n/', // Your i18n location
+        './bootstrap-italia/i18n/'
+      ]),
+      deps: [HttpBackend],
+      defaultLanguage: 'it'
+    }
+  }),
+  DesignAngularKitModule
+]
+```
+
+#### Usa la localizzazione personalizzata
+
+Aggiungi la localizzazione personalizzata nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
+
+Se utilizzi già i file di localizzazione nella tua app, puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le chiavi del json della libreria.
 
 ## Segnalazione bug e richieste di aiuto
 
@@ -109,6 +193,16 @@ Vuoi segnalare un bug o fare una richiesta?
 Prima di tutto assicurati che sia un problema relativo al tema Design Angular Kit e non alla libreria Bootstrap Italia da cui deriva 
 (in tal caso puoi fare riferimento al [repository di Bootstrap Italia](https://github.com/italia/bootstrap-italia)), poi
 dai un'occhiata a come [creare una issue](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md#creare-una-issue).
+
+### TODO
+
+- [ ] Rimuovere l'[importazione javascript](#importazione-javascript-bootstrap-italia), risolvere errore durante l'importazione di bootstrap-italia tramite es6 
+- [ ] Completare [header component](https://italia.github.io/bootstrap-italia/docs/menu-di-navigazione/header/)
+- [ ] Aggiungere [Menù list](https://italia.github.io/bootstrap-italia/docs/organizzare-i-contenuti/liste/#liste-per-men%C3%B9-di-navigazione)
+- [ ] Aggiungere altri file di localizzazione (en)
+- [ ] Aggiungere documentazione ed esempi per i componenti
+- [ ] Aggiungere altri [componenti](https://italia.github.io/bootstrap-italia/docs/componenti/introduzione/)
+- [ ] Aggiungere test
 
 ## Come contribuire
 

@@ -1,0 +1,34 @@
+<ng-container>
+  <div class="form-check"
+       [class.form-check-group]="isGroup"
+       [class.form-check-inline]="isInline">
+
+    <input
+      [id]="id"
+      type="radio"
+      [value]="value"
+      class="form-check-input"
+      [name]="name"
+      [class.is-invalid]="isInvalid"
+      [class.is-valid]="isValid"
+      [formControl]="control"
+      [attr.aria-describedby]="id + '-help'">
+
+    <label class="form-check-label" [for]="id">{{label}}</label>
+
+    <small *ngIf="isGroup && groupDescription" [id]="id + '-help'" class="form-text">
+      {{groupDescription}}
+    </small>
+
+    <div *ngIf="isInvalid && isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+      <div #customError><ng-content select="[error]"></ng-content></div>
+      <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
+    </div>
+
+  </div>
+
+  <div *ngIf="isInvalid && !isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+    <div #customError><ng-content select="[error]"></ng-content></div>
+    <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
+  </div>
+</ng-container>

@@ -1,0 +1,20 @@
+<div [id]="id" class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+     [attr.aria-labelledby]="id+'-label'" #modalElement>
+  <div class="modal-dialog {{size}}">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5 no_toc" id="{{id}}-label">{{title}}</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" [attr.aria-label]="'it.core.close-modal'|translate"></button>
+      </div>
+      <div class="modal-body mb-3">
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-footer modal-footer-shadow">
+        <ng-content select="[footer]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

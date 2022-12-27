@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconColorEnum } from 'projects/design-angular-kit/src/lib/enums/icons.enum';
+import { IconColorEnum } from 'projects/design-angular-kit/src/lib/old_components/enums/icons.enum';
 
 @Component({
   selector: 'it-button-example-icon',

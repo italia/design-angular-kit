@@ -15,11 +15,19 @@
     "type": "git",
     "url": "https://github.com/italia/design-angular-kit.git"
   },
+  "contributors": [
+    {
+      "name": "Antonino Bonanno",
+      "email": "bonanno@net-serv.it",
+      "url": "https://github.com/AntoninoBonanno"
+    }
+  ],
   "scripts": {
     "ng": "ng",
     "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
     "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build --configuration production --base-href design-angular-kit",
     "build:lib": "ng build --configuration production design-angular-kit && cp README.md dist/design-angular-kit/",
+    "watch:lib": "ng build --watch design-angular-kit",
     "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
     "lint": "ng lint",
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
@@ -41,6 +49,8 @@
     "@angular/platform-browser-dynamic": "^14.2.10",
     "@angular/router": "^14.2.10",
     "@ng-bootstrap/ng-bootstrap": "13.0.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@popperjs/core": "^2.10.2",
     "bootstrap-italia": "^2.0.9",
     "core-js": "^2.6.10",

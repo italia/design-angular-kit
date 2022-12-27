@@ -1,0 +1,13 @@
+singleQuote: true
+printWidth: 140
+trailingComma: none
+arrowParens: avoid
+overrides:
+  - files: "*.component.html"
+    options:
+      singleQuote: false
+      parser: angular
+  - files: "*.html"
+    options:
+      singleQuote: false
+      parser: html

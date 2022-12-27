@@ -1,0 +1,17 @@
+<div class="select-wrapper">
+  <label [for]="id">{{label}}</label>
+  <select [id]="id" [formControl]="control" [attr.aria-describedby]="id + '-description'">
+    <option *ngFor="let option of options" [disabled]="optionIsDisabled(option)" [value]="option.value">
+      {{option.text ?? option.value}}
+    </option>
+
+    <ng-container *ngIf="groups">
+      <optgroup *ngFor="let group of groups" [label]="group.label">
+        <option *ngFor="let option of group.options" [disabled]="optionIsDisabled(option)" [value]="option.value">
+          {{option.text ?? option.value}}
+        </option>
+      </optgroup>
+    </ng-container>
+  </select>
+  <small *ngIf="description" [id]="id + '-description'" class="form-text">{{description}}</small>
+</div>

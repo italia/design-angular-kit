@@ -1,0 +1,3 @@
+.nav-mobile:has(.link-list-wrapper:empty) {
+  display: none;
+}

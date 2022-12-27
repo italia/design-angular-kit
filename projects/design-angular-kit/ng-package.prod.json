@@ -4,13 +4,7 @@
   "lib": {
     "entryFile": "src/public_api.ts"
   },
-  "allowedNonPeerDependencies": [
-    "@angular/localize",
-    "@ng-bootstrap/ng-bootstrap",
-    "@popperjs/core",
-    "bootstrap",
-    "tslib",
-    "fp-ts",
-    "io-ts"
+  "assets": [
+    "assets/**/*.json"
   ]
 }

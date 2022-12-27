@@ -1,0 +1,29 @@
+<div class="accordion">
+  <div class="accordion-item">
+
+    <h2 class="accordion-header" id="collapse-{{id}}-heading">
+      <button
+        class="accordion-button px-0"
+        type="button"
+        data-bs-toggle="collapse"
+        [class.collapsed]="!opened"
+        [attr.data-bs-target]="'#collapse-' + id"
+        [attr.aria-controls]="'collapse-' + id"
+        [attr.aria-expanded]="opened ? 'true' : 'false'">
+        {{title}}
+      </button>
+    </h2>
+
+    <div id="collapse-{{id}}"
+         class="accordion-collapse collapse"
+         role="region"
+         [class.show]="opened"
+         [attr.aria-labelledby]="'collapse-' + id + '-heading'">
+
+      <div class="accordion-body p-0">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+

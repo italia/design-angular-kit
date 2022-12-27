@@ -10,8 +10,6 @@ import { TableOfContentItemComponent } from './table-of-content-item/table-of-co
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 import { LinkSortPipe } from './link-sort.pipe';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { TabsModule } from './tabs/tabs.module';
-import { ItTabsModule } from 'projects/design-angular-kit/src/lib/tabs/tabs.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +22,6 @@ import { ItTabsModule } from 'projects/design-angular-kit/src/lib/tabs/tabs.modu
   imports: [
     BrowserModule,
     DesignAngularKitModule,
-    ItTabsModule,
     AppRoutingModule
   ],
   providers: [{

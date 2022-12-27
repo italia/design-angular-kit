@@ -1,0 +1,22 @@
+<div class="dropdown {{direction}}">
+  <button [id]="id"
+          [class]="buttonClass"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false">
+    <ng-content select="[button]"></ng-content>
+    <it-icon class="icon-expand" name="expand" size="sm" [color]="this.color ? 'light' : 'primary'"></it-icon>
+  </button>
+
+  <div class="dropdown-menu" [class.full-width]="isFullWidth" [class.dark]="isDark" [attr.aria-labelledby]="id">
+    <div class="link-list-wrapper">
+      <div class="link-list-heading">
+        <ng-content select="[listHeading]"></ng-content>
+      </div>
+      <ul class="link-list">
+        <ng-content select="[list]"></ng-content>
+      </ul>
+    </div>
+  </div>
+</div>
