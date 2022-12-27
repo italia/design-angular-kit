@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
+import { IconName } from '../../../../projects/design-angular-kit/src/lib/interfaces/icon';
 
 @Component({
   selector: 'it-breadcrumb-example',
@@ -6,14 +7,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./breadcrumb-example.component.scss']
 })
 export class BreadcrumbExampleComponent {
-  get icon() {
+  get icon(): IconName {
     return this._icon;
   }
-  set icon(value: string) {
+  set icon(value: IconName) {
     this._icon = value;
     this.items.forEach(item => item.icon = this._icon);
   }
-  private _icon = 'it-star-outline';
+  private _icon: IconName = 'star-outline';
 
 
   separator = '/';
@@ -41,7 +42,7 @@ export class BreadcrumbExampleComponent {
   change() {
     this.separator = this.separator === '/' ? '>' : '/';
     this.items.forEach(item => {
-      item.icon = item.icon === 'it-star-outline' ? 'it-lock' : 'it-star-outline';
+      item.icon = item.icon === 'star-outline' ? 'locked' : 'star-outline';
     });
   }
 

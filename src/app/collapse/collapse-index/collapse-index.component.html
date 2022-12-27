@@ -1,16 +1,14 @@
 <h1 class="bd-title">Collapse</h1>
 <p class="bd-lead">Direttiva per l'interazione con elementi richiudibili</p>
-<div [innerHTML]="directive.description"></div>
-<it-tab-group>
-  <it-tab label="Esempi">
+<div [innerHTML]="collapseComponent.description"></div>
+<it-tab-container>
+  <it-tab-item id="example" label="Esempi" active="true" class="pt-3">
     <it-collapse-examples></it-collapse-examples>
-  </it-tab>
-  <it-tab label="API">
-    <h2>Direttiva Collapse</h2>
-    <it-api-parameters [component]="directive"></it-api-parameters>
-    <h2>Collapse Group</h2>
-    <it-api-parameters [component]="groupComponent"></it-api-parameters>
-    <h2>Collapse Item</h2>
-    <it-api-parameters [component]="itemComponent"></it-api-parameters>
-  </it-tab>
-</it-tab-group>
+  </it-tab-item>
+  <it-tab-item id="api" label="API" class="pt-3">
+    <h2>Collapse</h2>
+    <it-api-parameters [component]="collapseComponent"></it-api-parameters>
+    <h2>Accordion</h2>
+    <it-api-parameters [component]="accordionComponent"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>

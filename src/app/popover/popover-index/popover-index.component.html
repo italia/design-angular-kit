@@ -1,11 +1,11 @@
 <h1 class="bd-title">Popover</h1>
 <p class="bd-lead">La direttiva popover utilizzabile per aggiungere dei tooltip informativi a qualsiasi elemento del tuo sito</p>
-<div [innerHTML]="directive.description"></div>    
-<it-tab-group>
-  <it-tab label="Esempi">
+<div [innerHTML]="directive.description"></div>
+<it-tab-container>
+  <it-tab-item id="example" label="Esempi" active="true" class="pt-3">
     <it-popover-examples></it-popover-examples>
-  </it-tab>
-  <it-tab label="API">
+  </it-tab-item>
+  <it-tab-item id="api" label="API" class="pt-3">
     <it-api-parameters [component]="directive"></it-api-parameters>
-  </it-tab>
-</it-tab-group>
+  </it-tab-item>
+</it-tab-container>

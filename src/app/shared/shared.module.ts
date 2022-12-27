@@ -4,14 +4,13 @@ import { HighlightModule  } from 'ngx-highlightjs';
 
 import { SourceDisplayComponent } from './source-display/source-display.component';
 import { ApiParametersComponent } from './api-parameters/api-parameters.component';
-import { TabsModule } from '../tabs/tabs.module';
-import { ItTabsModule } from 'projects/design-angular-kit/src/lib/old_components/tabs/tabs.module';
+import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 
 @NgModule({
   imports: [
     CommonModule,
     HighlightModule,
-    ItTabsModule
+    DesignAngularKitModule
   ],
   declarations: [
     SourceDisplayComponent,
@@ -20,7 +19,7 @@ import { ItTabsModule } from 'projects/design-angular-kit/src/lib/old_components
   exports: [
     SourceDisplayComponent,
     ApiParametersComponent,
-    ItTabsModule
+    DesignAngularKitModule
   ]
 })
 export class SharedModule { }

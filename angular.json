@@ -27,15 +27,22 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "./node_modules/bootstrap-italia",
-                "output": "bootstrap-italia"
+                "input": "./node_modules/bootstrap-italia/",
+                "output": "/bootstrap-italia/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./projects/design-angular-kit/assets/i18n",
+                "output": "/bootstrap-italia/i18n/"
               }
             ],
             "styles": [
               "node_modules/highlight.js/styles/github.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/bootstrap-italia/dist/js/bootstrap-italia.bundle.min.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,

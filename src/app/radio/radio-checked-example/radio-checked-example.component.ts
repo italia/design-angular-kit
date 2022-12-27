@@ -9,10 +9,5 @@ export class RadioCheckedExampleComponent {
 
   selectedNation = 'Italia';
 
-  italiaChecked = true;
-
-  changeCurrentlySelected($event) {
-    this.selectedNation = $event.value;
-  }
 
 }

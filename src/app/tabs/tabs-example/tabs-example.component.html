@@ -1,28 +1,30 @@
+<h3>Configurazione tabs</h3>
+<div class="bd-example">
+  <p class="example-section">
+    <it-checkbox id="dark-checkbox" [(ngModel)]="isDarkTheme" label="Tema scuro"></it-checkbox>
+  </p>
+  <p class="example-section">
+    <it-checkbox id="disabled-checkbox" [(ngModel)]="isDisabled" label="Disabilita tab custom"></it-checkbox>
+  </p>
+  <p class="example-section">
+    <it-checkbox id="pill-checkbox" [(ngModel)]="isPill" label="Navigazione con pill"></it-checkbox>
+  </p>
 
-    <h3>Configurazione tabs</h3>
-    <div class="bd-example">
-      <p  class="example-section">
-        <it-checkbox [(ngModel)]="isDarkTheme" label="Tema scuro"></it-checkbox>
-      </p>
-      <p  class="example-section">
-        <it-checkbox [(ngModel)]="isDisabled" label="Disabilita tab custom"></it-checkbox>
-      </p>
-      <p  class="example-section">
-        <it-checkbox [(ngModel)]="isPill" label="Navigazione con pill"></it-checkbox>
-      </p>
-      
-  
-      
-      <h4 class="mt-5 mb-4">Risultato tabs</h4>
-      <it-tab-group [dark]="isDarkTheme" [pill]="isPill">
-        <it-tab *ngFor="let tab of tabs" [label]="tab.label" [icon]="tab.icon">
-          {{tab.content}}
-        </it-tab>
-        <it-tab label="custom" [disabled]="isDisabled" icon="it-settings">
-          <h4>Titolo</h4>
-          <p>Contenuto complesso <span it-badge="badge"></span></p>
-        </it-tab>
-      </it-tab-group>
-      
-    </div>
+
+  <h4 class="mt-5 mb-4">Risultato tabs</h4>
+  <!--    TODO  [pill]="isPill"-->
+  <it-tab-container [dark]="isDarkTheme">
+    <it-tab-item id="example" *ngFor="let tab of tabs; let i = index"
+                 [label]="tab.label"
+                 [icon]="tab.icon"
+                 [active]="i === 0">
+      {{tab.content}}
+    </it-tab-item>
+    <it-tab-item id="settings-example" label="custom" [disabled]="isDisabled" icon="settings">
+      <h4>Titolo</h4>
+      <p>Contenuto complesso <span itBadge="secondary">badge</span></p>
+    </it-tab-item>
+  </it-tab-container>
+
+</div>
 

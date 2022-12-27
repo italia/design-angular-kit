@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableOfContentComponent } from './table-of-content/table-of-content.component';
@@ -10,6 +8,7 @@ import { TableOfContentItemComponent } from './table-of-content-item/table-of-co
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 import { LinkSortPipe } from './link-sort.pipe';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,8 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
   ],
   imports: [
     BrowserModule,
-    DesignAngularKitModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TranslateModule.forRoot()
   ],
   providers: [{
     provide: HIGHLIGHT_OPTIONS,

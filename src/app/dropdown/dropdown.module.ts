@@ -5,7 +5,6 @@ import { DropdownRoutingModule } from './dropdown-routing.module';
 import { DropdownExampleComponent } from './dropdown-example/dropdown-example.component';
 import { DropdownExamplesComponent } from './dropdown-examples/dropdown-examples.component';
 import { DropdownIndexComponent } from './dropdown-index/dropdown-index.component';
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 
@@ -13,7 +12,6 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DropdownRoutingModule,
-    DesignAngularKitModule,
     SharedModule,
     FormsModule
   ],

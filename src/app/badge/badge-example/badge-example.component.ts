@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BadgeColor } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
 
 @Component({
   selector: 'it-badge-example',
@@ -6,18 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./badge-example.component.scss']
 })
 export class BadgeExampleComponent {
-  colors = [
+  colors: Array<BadgeColor> = [
     'primary',
     'secondary',
     'danger',
     'warning',
-    'success',
-    'light',
-    'dark'
+    'success'
   ];
 
-  selectedColor = 'primary';
+  selectedColor: BadgeColor = 'primary';
   badgeText = 'New';
 
-  isPill = false;
+  isRounded = false;
 }

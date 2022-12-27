@@ -1,24 +1,28 @@
-
 <h3>Interazione con Form Input</h3>
 <p>Elementi e stili per la creazione di input accessibili e responsivi.</p>
 
 <div class="bd-example">
   <div class="row">
     <div class="col-4">
-      <it-input id="interactive-input-0" name="interactive-input-example-1" 
-        [label]="label" 
-        [placeholder]="placeholder" 
-        [disabled]="disabled" 
-        [readonly]="readOnly" 
-        [type]="type" 
-        [(ngModel)]="value"
-        [note]="note" 
-        [autoCompleteData]="autoCompleteData" 
-        [enablePasswordStrengthMeter]="true">
+      <it-input *ngIf="type !== 'password'" id="interactive-input-0"
+                [label]="label"
+                [placeholder]="placeholder"
+                [disabled]="disabled"
+                [readonly]="readOnly"
+                [type]="type !== 'password' ? type : 'text'"
+                [(ngModel)]="value"
+                [description]="note">
+        <!--        [autoCompleteData]="autoCompleteData"-->
       </it-input>
+      <it-password-input *ngIf="type === 'password'" id="password-input-0"
+                         [label]="label"
+                         [placeholder]="placeholder"
+                         [disabled]="disabled"
+                         [(ngModel)]="value"
+                         showStrengthMeter="true"
+                         validationMode="false"></it-password-input>
     </div>
   </div>
-  
 
   <div class="row">
     <div class="form-check col-6">
@@ -33,27 +37,27 @@
           <it-checkbox [(ngModel)]="hasPlaceholder" label="Placeholder" id="has-placeholder-checkbox"></it-checkbox>
           <it-checkbox [(ngModel)]="hasNote" label="Note" id="has-note-checkbox"></it-checkbox>
         </div>
-
       </div>
+    </div>
 
-    
-      </div>
     <div class="form-check col-6">
       <h5>Tipo Input</h5>
-      <it-radio-group [(ngModel)]="type">
       <div class="row">
         <div class="col-4">
-          <it-radio-button id="radio-text" name="text" value="text" label="text"></it-radio-button>
-          <it-radio-button id="radio-email" name="email" value="email" label="email"></it-radio-button>
-          <it-radio-button id="radio-password" name="password" value="password" label="password"></it-radio-button>
+          <it-radio-button id="radio-text" name="text" [(ngModel)]="type" value="text" label="text"></it-radio-button>
+          <it-radio-button id="radio-email" name="email" [(ngModel)]="type" value="email"
+                           label="email"></it-radio-button>
+          <it-radio-button id="radio-password" name="password" [(ngModel)]="type" value="password"
+                           label="password"></it-radio-button>
         </div>
         <div class="col-auto">
-          <it-radio-button id="radio-number" name="number" value="number" label="number"></it-radio-button>
-          <it-radio-button id="radio-time" name="time" value="time" label="time"></it-radio-button>
-          <it-radio-button id="radio-search" name="search" value="search" label="search"></it-radio-button>
+          <it-radio-button id="radio-number" name="number" [(ngModel)]="type" value="number"
+                           label="number"></it-radio-button>
+          <it-radio-button id="radio-time" name="time" [(ngModel)]="type" value="time" label="time"></it-radio-button>
+          <!--          <it-radio-button id="radio-search" name="search" [(ngModel)]="type" value="search"-->
+          <!--                           label="search"></it-radio-button>-->
         </div>
       </div>
-      </it-radio-group>
     </div>
   </div>
 

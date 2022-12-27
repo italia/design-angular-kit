@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconColorEnum } from 'projects/design-angular-kit/src/lib/old_components/enums/icons.enum';
+import { IconColor, IconName } from '../../../../projects/design-angular-kit/src/lib/interfaces/icon';
 
 @Component({
   selector: 'it-button-example-icon',
@@ -16,11 +16,11 @@ export class ButtonExampleIconComponent {
   count = 0;
 
 
-  icon: string = 'it-user';
-  iconColor: IconColorEnum = IconColorEnum.primary;
+  icon: IconName = 'user';
+  iconColor: IconColor = 'white';
   iconPosition: 'start' | 'end' = 'start';
   iconRounded: boolean = true;
-  iconRoundedColor: IconColorEnum = IconColorEnum.white;
+  iconRoundedColor: IconColor = 'white';
 
   increaseCount() {
     this.count++;

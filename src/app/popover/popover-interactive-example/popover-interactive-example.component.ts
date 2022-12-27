@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ElementPlacement } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
 
 @Component({
   selector: 'it-popover-interactive-example',
@@ -6,8 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./popover-interactive-example.component.scss']
 })
 export class PopoverInteractiveExampleComponent {
-  placement = 'right';
-  container = '';
+  placement: ElementPlacement = 'right';
+  container?: 'body';
   disabled = false;
   removeTitle = false;
 
@@ -17,7 +18,6 @@ export class PopoverInteractiveExampleComponent {
   logShown() {
     this.shownTime = (new Date()).toISOString();
   }
-
 
   logHidden() {
     this.hiddenTime = (new Date()).toISOString();
