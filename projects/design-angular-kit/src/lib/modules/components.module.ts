@@ -7,7 +7,7 @@ import { AbstractFormComponent } from '../abstracts/abstract-form-component';
 import { AbstractComponent } from '../abstracts/abstract.component';
 import { AccordionComponent } from '../components/core/accordion/accordion.component';
 import { AlertComponent } from '../components/core/alert/alert.component'
-import { BadgeComponent } from '../components/core/badge/badge.component';
+import { BadgeDirective } from '../components/core/badge/badge.directive';
 import { ButtonComponent } from '../components/core/button/button.component';
 import { CalloutComponent } from '../components/core/callout/callout.component';
 import { CardComponent } from '../components/core/card/card.component';
@@ -56,7 +56,7 @@ import { NotFoundPageComponent } from '../components/utils/not-found-page/not-fo
 const core = [
   AccordionComponent,
   AlertComponent,
-  BadgeComponent,
+  BadgeDirective,
   ButtonComponent,
   CalloutComponent,
   CardComponent,

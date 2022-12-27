@@ -9,7 +9,7 @@ export * from './lib/modules/components.module';
 // Core
 export * from './lib/components/core/accordion/accordion.component';
 export * from './lib/components/core/alert/alert.component';
-export * from './lib/components/core/badge/badge.component';
+export * from './lib/components/core/badge/badge.directive';
 export * from './lib/components/core/button/button.component';
 export * from './lib/components/core/callout/callout.component';
 export * from './lib/components/core/card/card.component';
