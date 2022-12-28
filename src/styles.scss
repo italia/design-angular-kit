@@ -6,12 +6,15 @@
 // $primary-s: 80;
 // $primary-b: 100;
 
+
+
 // Importazione libreria SCSS di bootstrap-italia
 @import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
 
 
 @import 'highlight.js/styles/base16/material-darker.css';
 @import './assets/scss/docs.scss';
+@import './assets/scss/fonts.scss';
 
 
 .bd-navbar {
