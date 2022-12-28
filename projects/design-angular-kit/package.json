@@ -15,6 +15,16 @@
     "type": "git",
     "url": "https://github.com/italia/design-angular-kit.git"
   },
+  "author": {
+    "name": "Antonino Bonanno",
+    "email": "bonanno@net-serv.it",
+    "url": "https://github.com/AntoninoBonanno"
+  },
+  "contributors": [{
+    "name": "Net Service Srl",
+    "email": "areatecnica@net-serv.it",
+    "url": "https://www.net-serv.it/"
+  }],
   "dependencies": {
     "tslib": "^2.4.1"
   },

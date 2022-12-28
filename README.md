@@ -238,3 +238,11 @@ npm run start
 ```
 npm run test
 ```
+
+
+
+# Credits
+
+<a href="https://www.net-serv.it/">
+  <img src="https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg" alt="net-service-logo" width="150px" height="46px"/>
+</a>
