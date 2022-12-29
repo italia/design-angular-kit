@@ -117,6 +117,8 @@ $font-family-monospace: 'Custom Font', 'Courier New', Courier, monospace;
 
 Configura il file javascript nel file `angular.json`:
 
+NOTE: non necessaria se viene risolto il primo [TODO](#todo)
+
 ```
  "scripts": [
     ...

@@ -5,7 +5,13 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
+    "strict": true,
     "allowSyntheticDefaultImports": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "noPropertyAccessFromIndexSignature": true,
     "types": []
   },
   "angularCompilerOptions": {

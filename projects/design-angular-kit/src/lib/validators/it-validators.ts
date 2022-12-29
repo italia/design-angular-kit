@@ -83,7 +83,7 @@ export class ItValidators {
    * @param hasSpecialCharacters check whether the entered password has a special character - default true
    */
   public static password(minLength = 10, hasNumber = true, hasCapitalCase = true, hasSmallCase = true, hasSpecialCharacters = true): ValidatorFn {
-    return Validators.compose([
+    return <ValidatorFn>Validators.compose([
       Validators.required,
       ItValidators.customPattern(/\d/, {hasNumber: hasNumber}),
       ItValidators.customPattern(/[A-Z]/, {hasCapitalCase: hasCapitalCase}),

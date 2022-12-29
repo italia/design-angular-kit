@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {AbstractFormComponent} from "../../../abstracts/abstract-form-component";
-import {BooleanInput, isFalseBooleanInput, isTrueBooleanInput} from "../../../utils/boolean-input";
+import { Component, Input } from '@angular/core';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-radio-button[id][label][value]',
@@ -44,8 +44,8 @@ export class RadioButtonComponent extends AbstractFormComponent<string | number>
     return isTrueBooleanInput(this.group);
   }
 
-  get name(): string|undefined {
-    return this._ngControl?.name?.toString();
+  get name(): string {
+    return this._ngControl?.name?.toString() || '';
   }
 
   override ngOnInit() {
