@@ -16,8 +16,8 @@
 
     <label class="form-check-label" [for]="id">{{label}}</label>
 
-    <small *ngIf="isGroup && groupDescription" [id]="id + '-help'" class="form-text">
-      {{groupDescription}}
+    <small *ngIf="isGroup" [id]="id + '-help'" class="form-text">
+      <ng-content></ng-content>
     </small>
 
     <div *ngIf="isInvalid && isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">

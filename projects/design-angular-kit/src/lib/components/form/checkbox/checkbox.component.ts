@@ -38,6 +38,10 @@ export class CheckboxComponent extends AbstractFormComponent<boolean> {
     return isTrueBooleanInput(this.indeterminate);
   }
 
+  get isGroup(): boolean {
+    return isTrueBooleanInput(this.group);
+  }
+
   override ngOnInit() {
     super.ngOnInit();
 

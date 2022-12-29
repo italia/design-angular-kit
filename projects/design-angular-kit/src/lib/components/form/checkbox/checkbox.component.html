@@ -1,6 +1,6 @@
 <ng-container>
   <div class="form-check"
-       [class.form-check-group]="group"
+       [class.form-check-group]="isGroup"
        [class.form-check-inline]="inline">
 
     <div *ngIf="toggle; else defaultStyle" class="toggles">
@@ -26,16 +26,16 @@
       <label class="form-check-label" [for]="id">{{label}}</label>
     </ng-template>
 
-    <small *ngIf="group" [id]="id + '-help'" class="form-text">
+    <small *ngIf="isGroup" [id]="id + '-help'" class="form-text">
       <ng-content></ng-content>
     </small>
 
-    <div *ngIf="isInvalid && group" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+    <div *ngIf="isInvalid && isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
       <ng-container *ngTemplateOutlet="error"></ng-container>
     </div>
   </div>
 
-  <div *ngIf="isInvalid && !group" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+  <div *ngIf="isInvalid && !isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
     <ng-container *ngTemplateOutlet="error"></ng-container>
   </div>
 </ng-container>
