@@ -27,11 +27,6 @@ export class RadioButtonComponent extends AbstractFormComponent<string | number>
   @Input() group: BooleanInput = false;
 
   /**
-   * The radio group description
-   */
-  @Input() groupDescription?: string;
-
-  /**
    * If is radio is checked
    */
   @Input() checked?: BooleanInput;
