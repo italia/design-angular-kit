@@ -13,4 +13,4 @@
 - [ ] Sono stati effettuati test di accessibilità in ottemperanza a quanto descritto nell'[area "Accessibilità" delle linee guida di design](https://design-italia.readthedocs.io/it/stable/doc/service-design/accessibilita.html).
 - [ ] La documentazione è stata aggiornata.
 
-<!-- Se qualcosa non è chiaro, contattaci sullo Slack di Developers Italia (https://developersitalia.slack.com/messages/C7VPAUVB3)! -->
+<!-- Se qualcosa non è chiaro, contattaci sullo Slack di Developers Italia (https://developersitalia.slack.com/messages/C04H3C19D52)! -->
