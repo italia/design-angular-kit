@@ -1,5 +1,5 @@
 <nav class="navbar-institutional navbar navbar-expand-lg navbar-dark py-1 px-3">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsTop" aria-controls="navbarsTop"
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#tableOfContent" aria-controls="tableOfContent"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,7 +9,7 @@
       <span class="navbar-brand text-white"> + </span>
       <a class="navbar-brand" href="http://www.agid.gov.it/">AgID</a>
   </div>
-  <div class="collapse navbar-collapse" id="navbarsTop">
+  <div class="navbar-collapse">
       <ul class="navbar-nav ms-auto">
           <li class="nav-item nav-item-w-divider">
               <a class="nav-link" href="https://pianotriennale-ict.italia.it/">Piano Triennale</a>
@@ -64,7 +64,7 @@
 </header>
 <div class="container-fluid">
   <div class="row flex-xl-nowrap">
-    <it-table-of-content class="col-12 col-md-3 col-xl-2"></it-table-of-content>
+    <it-table-of-content class="collapse col-12 col-md-3 col-xl-2" id="tableOfContent"></it-table-of-content>
     <main class="col-12 col-md-9 col-xl-10 py-md-3 px-md-3 bd-content">
       <router-outlet></router-outlet>
     </main>
