@@ -1,5 +1,5 @@
 <nav class="navbar-institutional navbar navbar-expand-lg navbar-dark py-1 px-3">
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#tableOfContent" aria-controls="tableOfContent"
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsTop" aria-controls="navbarsTop"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,7 +9,7 @@
       <span class="navbar-brand text-white"> + </span>
       <a class="navbar-brand" href="http://www.agid.gov.it/">AgID</a>
   </div>
-  <div class="navbar-collapse">
+  <div class="collapse navbar-collapse" id="navbarsTop">
       <ul class="navbar-nav ms-auto">
           <li class="nav-item nav-item-w-divider">
               <a class="nav-link" href="https://pianotriennale-ict.italia.it/">Piano Triennale</a>
@@ -47,6 +47,9 @@
         </div>
       </div>
     </a>
+    <button class="btn btn-xs btn-primary d-md-none px-2 text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="docsNav" aria-controls="docsNav" aria-expanded="false" aria-label="Toggle docs navigation" data-focus-mouse="false">
+      menu
+    </button>
     <ul class="navbar-nav flex-row ms-md-auto d-none d-md-flex">
       <li class="nav-item pe-2">
         <a title="Changelog Design Angular Kit" data-toggle="tooltip" class="nav-link d-flex align-items-center" href="https://github.com/italia/design-angular-kit/releases/tag/v{{version}}" aria-label="Changelog" data-focus-mouse="false">
@@ -64,7 +67,7 @@
 </header>
 <div class="container-fluid">
   <div class="row flex-xl-nowrap">
-    <it-table-of-content class="collapse col-12 col-md-3 col-xl-2" id="tableOfContent"></it-table-of-content>
+    <it-table-of-content class="collapse col-12 col-md-3 col-xl-2" id="docsNav"></it-table-of-content>
     <main class="col-12 col-md-9 col-xl-10 py-md-3 px-md-3 bd-content">
       <router-outlet></router-outlet>
     </main>
