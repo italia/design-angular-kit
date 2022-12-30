@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
-
 import { SharedModule } from '../shared/shared.module';
 
 import { ProgressBarRoutingModule } from './progress-bar-routing.module';
@@ -17,7 +15,6 @@ import { ProgressBarButtonComponent } from './progress-bar-button/progress-bar-b
 @NgModule({
   imports: [
     CommonModule,
-    DesignAngularKitModule,
     SharedModule,
     ProgressBarRoutingModule
   ],

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Placement } from '@popperjs/core';
+import { ElementPlacement } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
 
 @Component({
   selector: 'it-tooltip-placements-example',
@@ -8,7 +8,7 @@ import { Placement } from '@popperjs/core';
 })
 export class TooltipPlacementsExampleComponent {
 
-  currentPlacement: Placement = 'right';
+  currentPlacement: ElementPlacement = 'right';
 
   changeCurrentPlacement() {
     switch (this.currentPlacement) {

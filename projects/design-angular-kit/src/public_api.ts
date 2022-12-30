@@ -2,40 +2,68 @@
  * Public API Surface of design-angular-kit
  */
 
-export * from './lib/progress-bar/progress-bar.component';
-export * from './lib/checkbox/checkbox.component';
-export * from './lib/popover/popover.directive';
-export * from './lib/popover/popover.config';
-export * from './lib/popover/popover.module';
-export * from './lib/toggle/toggle.component';
-export * from './lib/radio/radio.component';
-export * from './lib/tooltip/tooltip.directive';
-export * from './lib/tooltip/tooltip.module';
-export * from './lib/tooltip/tooltip.config';
-export * from './lib/button/button.directive';
-export * from './lib/button/button.module';
-export * from './lib/badge/badge.directive';
-export * from './lib/collapse/collapse.directive';
-export * from './lib/collapse/collapse-item.component';
-export * from './lib/collapse/collapse-group.component';
-export * from './lib/collapse/collapse.module';
-export * from './lib/form-input/form-input.component';
-export * from './lib/form-input/it-prefix.directive';
-export * from './lib/form-input/it-suffix.directive';
-export * from './lib/form-input/it-text-suffix.directive';
-export * from './lib/form-input/it-text-prefix.directive';
-export * from './lib/dropdown/dropdown.component';
-export * from './lib/dropdown/dropdown-item.component';
-export * from './lib/dropdown/dropdown-divider.component';
-export * from './lib/breadcrumb/breadcrumb.component';
-export * from './lib/breadcrumb/breadcrumb-item.component';
-export * from './lib/tabs/tab-group.component';
-export * from './lib/icon/icon.component';
-export * from './lib/icon/icon.module';
-export * from './lib/dropdown/dropdown.directive';
-export * from './lib/dropdown/dropdown.config';
-export * from './lib/dropdown/dropdown.module'
-export * from './lib/util/utils.module';
-export * from './lib/util/focus-mouse.directive';
-
 export * from './lib/design-angular-kit.module';
+export * from './lib/modules/components.module';
+
+
+// Core
+export * from './lib/components/core/accordion/accordion.component';
+export * from './lib/components/core/alert/alert.component';
+export * from './lib/components/core/badge/badge.directive';
+export * from './lib/components/core/button/button.component';
+export * from './lib/components/core/callout/callout.component';
+export * from './lib/components/core/card/card.component';
+export * from './lib/components/core/carousel/carousel/carousel.component';
+export * from './lib/components/core/carousel/carousel-item/carousel-item.component';
+export * from './lib/components/core/collapse/collapse.component';
+export * from './lib/components/core/dropdown/dropdown/dropdown.component';
+export * from './lib/components/core/dropdown/dropdown-item/dropdown-item.component';
+export * from './lib/components/core/link/link.component';
+export * from './lib/components/core/list/list/list.component';
+export * from './lib/components/core/list/list-item/list-item.component';
+export * from './lib/components/core/loading-button/loading-button.component';
+export * from './lib/components/core/modal/modal.component';
+export * from './lib/components/core/notifications/notifications.component';
+export * from './lib/components/core/pagination/pagination.component';
+export * from './lib/components/core/popover/popover.directive';
+export * from './lib/components/core/progress-bar/progress-bar.component';
+export * from './lib/components/core/progress-button/progress-button.component';
+export * from './lib/components/core/spinner/spinner.component';
+export * from './lib/components/core/tab/tab-container/tab-container.component';
+export * from './lib/components/core/tab/tab-item/tab-item.component';
+export * from './lib/components/core/table/table.component';
+export * from './lib/components/core/tooltip/tooltip.directive';
+
+// Forms
+export * from './lib/components/form/checkbox/checkbox.component';
+export * from './lib/components/form/input/input.component';
+export * from './lib/components/form/password-input/password-input.component';
+export * from './lib/components/form/radio-button/radio-button.component';
+export * from './lib/components/form/select/select.component';
+export * from './lib/components/form/textarea/textarea.component';
+export * from './lib/components/form/upload-drag-drop/upload-drag-drop.component';
+export * from './lib/components/form/upload-file-list/upload-file-list.component';
+
+// Navigation
+export * from './lib/components/navigation/back-button/back-button.component';
+export * from './lib/components/navigation/back-to-top/back-to-top.component';
+export * from './lib/components/navigation/breadcrumbs/breadcrumb/breadcrumb.component';
+export * from './lib/components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';
+export * from './lib/components/navigation/header/header.component';
+
+
+// Utils
+export * from './lib/components/utils/icon/icon.component';
+export * from './lib/components/utils/not-found-page/not-found-page.component';
+
+// Services
+export * from './lib/services/notifications/notifications.service';
+
+// Interfaces
+export * from './lib/interfaces/core';
+export * from './lib/interfaces/form';
+export * from './lib/interfaces/icon';
+
+export * from './lib/utils/regex';
+export * from './lib/utils/file-utils';
+export * from './lib/validators/it-validators';

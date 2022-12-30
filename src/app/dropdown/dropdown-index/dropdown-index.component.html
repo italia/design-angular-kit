@@ -1,14 +1,14 @@
 <h1 class="bd-title">Dropdown</h1>
 <p class="bd-lead">Il componente Dropdown per menù a tendina contestuali</p>
 <div [innerHTML]="component.description"></div>
-<it-tab-group>
-  <it-tab label="Esempi">
+<it-tab-container>
+  <it-tab-item id="example" label="Esempi" active="true" class="pt-3">
     <it-dropdown-examples></it-dropdown-examples>
-  </it-tab>
-  <it-tab label="API">
+  </it-tab-item>
+  <it-tab-item id="api" label="API" class="pt-3">
     <h2>Dropdown</h2>
     <it-api-parameters [component]="component"></it-api-parameters>
     <h2>Dropdown Item</h2>
     <it-api-parameters [component]="subcomponent"></it-api-parameters>
-  </it-tab>
-</it-tab-group>
+  </it-tab-item>
+</it-tab-container>

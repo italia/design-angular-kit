@@ -1,0 +1,8 @@
+<div class="progress-spinner"
+     [class.progress-spinner-double]="isDouble"
+     [class.progress-spinner-active]="isActive"
+     [class.size-sm]="isSmall">
+  <div *ngIf="isDouble" class="progress-spinner-inner"></div>
+  <div *ngIf="isDouble" class="progress-spinner-inner"></div>
+  <span class="visually-hidden">{{'it.core.loading'|translate}}...</span>
+</div>

@@ -1,0 +1,15 @@
+<div class="card-wrapper" [class.card-space]="isSpace">
+  <div class="card {{cardClass}}"
+       [class.card-teaser]="isTeaser"
+       [class.card-img.no-after]="isHasImage"
+       [class.shadow]="isShadow"
+       [class.rounded]="isRounded">
+
+    <ng-content select="[beforeBody]"></ng-content>
+
+    <div class="card-body {{bodyClass}}">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+</div>

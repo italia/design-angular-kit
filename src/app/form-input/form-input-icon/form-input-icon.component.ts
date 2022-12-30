@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IconName } from '../../../../projects/design-angular-kit/src/lib/interfaces/icon';
 
 @Component({
   selector: 'it-form-input-icon-example',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class FormInputIconExampleComponent {
   i = 0;
   type = 'text';
-  icon = 'it-pencil';
+  icon: IconName = 'pencil';
   value = '';
   label = "Etichetta di esempio";
 }

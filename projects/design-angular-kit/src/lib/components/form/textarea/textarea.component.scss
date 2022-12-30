@@ -1,0 +1,12 @@
+@import 'bootstrap-italia/src/scss/functions';
+@import 'bootstrap-italia/src/scss/utilities/colors_vars';
+
+textarea {
+  &.is-invalid {
+    border-color: $danger;
+  }
+
+  //&.is-valid {
+  //  border-color: $success;
+  //}
+}

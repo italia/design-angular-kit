@@ -1,34 +1,31 @@
-
 <h3>Configurazione Radio button</h3>
 <div class="bd-example">
   <p class="example-section">
-    <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
+    <it-checkbox id="disabled-checkbox" [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
   </p>
-  
 
-  <h4 >Risultato</h4>
+
+  <h4>Risultato</h4>
 
   <div class="example-section">
-    <it-radio-group [(ngModel)]="selectedColor" [disabled]="disabled">
-      <it-radio-button *ngFor="let color of colors" [value]="color" [label]="color"></it-radio-button>
-    </it-radio-group>
+    <it-radio-button *ngFor="let color of colors; let i = index"
+                     [id]="'color-'+i"
+                     [(ngModel)]="selectedColor" [disabled]="disabled" [value]="color"
+                     [label]="color"></it-radio-button>
     <div class="example-selected-value">Colore selezionato: {{selectedColor}}</div>
   </div>
 </div>
 
 
-
-
 <div class="bd-example">
   <h4>Radio in Reactive Form</h4>
   <p>Qual è il tuo sesso?</p>
-  <form [formGroup] ="genderFormGroup">
-    <it-radio-group formControlName="gender">
-      <it-radio-button value="MALE" label="Maschio"></it-radio-button>
-      <it-radio-button value="FEMALE" label="Femmina"></it-radio-button>
-      <it-radio-button value="OTHERS" label="Altro"></it-radio-button>
-      <it-radio-button value="UNDEFINED" label="Preferisco non dirlo"></it-radio-button>
-    </it-radio-group>
+  <form [formGroup]="genderFormGroup">
+    <it-radio-button id="radio-male" formControlName="gender" value="MALE" label="Maschio"></it-radio-button>
+    <it-radio-button id="radio-demale" formControlName="gender" value="FEMALE" label="Femmina"></it-radio-button>
+    <it-radio-button id="radio-others" formControlName="gender" value="OTHERS" label="Altro"></it-radio-button>
+    <it-radio-button id="radio-undefined" formControlName="gender" value="UNDEFINED"
+                     label="Preferisco non dirlo"></it-radio-button>
   </form>
 
   <div class="example-selected-value">Sesso selezionato: <strong>{{genderFormGroup.value.gender}}</strong></div>

@@ -1,0 +1,79 @@
+{
+  "it": {
+    "general": {
+      "save": "Salva",
+      "send": "Invia",
+      "abort": "Annulla",
+      "continue": "Continua",
+      "edit": "Modifica",
+      "show-all": "Mostra tutto",
+      "details": "Dettagli"
+    },
+    "errors": {
+      "generic": "Si è verificato un errore",
+      "generic-support-message": "Si è verificato un errore imprevisto. Riprova più tardi o contatta il supporto.",
+      "invalid-field": "Questo campo non è valido",
+      "required-field": "Questo campo è obbligatorio",
+      "check-all-fields": "Verifica di aver compilato correttamente tutti i campi",
+      "min-invalid": "Il valore minimo per questo campo è: {{min}}",
+      "max-invalid": "Il valore massimo per questo campo è: {{max}}",
+      "min-length-invalid": "La lunghezza minima per questo campo è: {{min}}",
+      "max-length-invalid": "La lunghezza minima per questo campo è: {{max}}",
+      "email-invalid": "Inserisci un email valida",
+      "tel-invalid": "Inserisci un formato telefonico valido",
+      "url-invalid": "Inserisci un url valido",
+      "tax-code-invalid": "Inserisci un codice fiscale valido",
+      "vat-number-invalid": "Inserisci una partita iva valida",
+      "cap-invalid": "Inserisci un CAP valido",
+      "regex-invalid": "Inserisci un espressione REGEX valida",
+      "pattern-invalid": "Il campo deve avere il pattern {{pattern}}",
+      "password-no-match": "Le password devono essere identiche",
+      "password-min-length": "La password deve contenere almeno {{minLength}} caratteri!",
+      "password-number": "La password deve avere almeno 1 numero!",
+      "password-capital-case": "La password deve contenere almeno 1 carattere maiuscolo!",
+      "password-small-case": "La password deve contenere almeno 1 carattere minuscolo!",
+      "password-special-character": "La password deve contenere almeno 1 carattere speciale!"
+    },
+    "core": {
+      "close-modal": "Chiudi finestra modale",
+      "close-notification": "Chiudi notifica: {{title}}",
+      "close-alert": "Chiudi avviso",
+      "page": "Pagina",
+      "previous-page": "Pagina precedente",
+      "next-page": "Pagina successiva",
+      "progress": "Progresso",
+      "loading": "Caricamento",
+      "active": "Attivo"
+    },
+    "form": {
+      "increase-value": "Aumenta valore",
+      "decrease-value": "Diminuisci valore",
+      "upload": "Upload",
+      "upload-drag-file": "Trascina il file per caricarlo",
+      "upload-loading": "Caricamento in corso...",
+      "upload-complete": "Caricamento completato",
+      "upload-or": "oppure",
+      "upload-select-device": "selezionalo dal dispositivo",
+      "uploaded-file": "File caricato: {{name}}",
+      "delete-file": "Elimina file {{name}}"
+    },
+    "navigation": {
+      "home": "Home",
+      "go-back": "Torna indietro",
+      "secondary-navigation": "Navigazione secondaria",
+      "login": "Accedi",
+      "full-login": "Accedi all'area personale",
+      "search": "Cerca",
+      "website-search": "Cerca nel sito",
+      "navigation-path": "Percorso di navigazione"
+    },
+    "utils": {
+      "404": {
+        "title": "Risorsa non trovata",
+        "description": "Oops! La risorsa che cerchi non è stata trovata, torna alla homepage e utilizza il menu per continuare la navigazione.",
+        "go-back": "Torna indietro",
+        "go-to-homepage": "Torna alla homepage"
+      }
+    }
+  }
+}

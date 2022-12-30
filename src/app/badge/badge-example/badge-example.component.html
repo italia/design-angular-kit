@@ -1,38 +1,41 @@
 <h3>Configurazione badge</h3>
 <div class="bd-example">
-  
+
   <div class="row">
     <div class="col-4">
       <div class="example-section">
-        
-        <label for="exampleInputText"><strong>Testo badge</strong></label>
-        <input type="text" class="form-control" id="exampleInputText" [(ngModel)]="badgeText">
-        <hr>
+
+        <div class="mt-4">
+          <it-input id="exampleInputText" label="Testo badge" [(ngModel)]="badgeText"></it-input>
+          <hr>
+        </div>
         <div class="row">
           <div class="col-6">
-            <label for="color"><strong>Colore Badge</strong></label>
-            <it-radio-group id="color" [(ngModel)]="selectedColor">
-              <it-radio-button *ngFor="let color of colors" [value]="color" [label]="color"></it-radio-button>
-            </it-radio-group>
+            <label><strong>Colore Badge</strong></label>
+            <ng-container *ngFor="let color of colors; let i = index">
+              <it-radio-button [id]="'color-'+i" name="color"
+                               [label]="color" [value]="color"
+                               [(ngModel)]="selectedColor"></it-radio-button>
+            </ng-container>
           </div>
-          <div class = "col-6">
-            <label for="isPill"><strong>Badge arrotondato</strong></label>
+          <div class="col-6">
+            <label for="isRounded"><strong>Badge arrotondato</strong></label>
 
-            <it-checkbox id="isPill" [(ngModel)]="isPill" label="Pill"></it-checkbox>
+            <it-checkbox id="isRounded" [(ngModel)]="isRounded" label="Rounded"></it-checkbox>
 
           </div>
         </div>
-       
+
       </div>
     </div>
 
     <div class="col-6 offset-2">
       <h4 class="card-title">Risultato badge</h4>
-  
-      <h5>Testo di esempio <span [itBadge]="badgeText" [badgeColor]="selectedColor" [isPill]="isPill"></span></h5>
-  
-      <h5>Link di esempio <a href="#" itBadge="link" [badgeColor]="selectedColor"></a></h5>
+
+      <h5>Testo di esempio <span [itBadge]="selectedColor" [rounded]="isRounded">{{badgeText}}</span></h5>
+
+      <h5>Link di esempio <a href="#" [itBadge]="selectedColor" [rounded]="isRounded">link</a></h5>
     </div>
   </div>
-      
+
 </div>

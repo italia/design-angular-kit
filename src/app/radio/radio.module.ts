@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
-
 import { SharedModule } from '../shared/shared.module';
 
 import { RadioRoutingModule } from './radio-routing.module';
@@ -17,7 +15,6 @@ import { RadioCheckedExampleComponent } from './radio-checked-example/radio-chec
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    DesignAngularKitModule,
     SharedModule,
     RadioRoutingModule
   ],

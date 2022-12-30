@@ -1,0 +1,30 @@
+.form-group {
+  label {
+    z-index: 1000;
+  }
+
+  input:focus:not(.focus--mouse) {
+    box-shadow: inherit !important;
+    border-color: inherit !important;
+  }
+
+  .input-number {
+    button.input-number-add {
+      top: 0;
+    }
+
+    button.input-number-sub {
+      bottom: 0;
+    }
+  }
+
+  .input-group-text:empty {
+    display: none;
+  }
+
+  label.empty-prepend-label {
+    left: auto !important;
+    max-width: 100% !important;
+  }
+}
+
