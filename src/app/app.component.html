@@ -68,7 +68,8 @@
 </header>
 <div class="container-fluid">
   <div class="row flex-xl-nowrap">
-    <it-table-of-content class="collapse col-12 col-md-3 col-xl-2" id="docsNav"></it-table-of-content>
+    <it-table-of-content class="collapse show col-12 d-md-none" id="docsNav"></it-table-of-content>
+    <it-table-of-content class="d-none d-md-flex col-md-3 col-xl-2"></it-table-of-content>
     <main class="col-12 col-md-9 col-xl-10 py-md-3 px-md-3 bd-content">
       <router-outlet></router-outlet>
     </main>
@@ -115,8 +116,4 @@
     </div>
   </div>
 </footer>
-
-
-
-
 
