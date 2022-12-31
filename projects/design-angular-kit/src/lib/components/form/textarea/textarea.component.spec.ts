@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TranslateModule } from '@ngx-translate/core'
 
-import { TextareaComponent } from './textarea.component';
+import { TextareaComponent } from './textarea.component'
 
 describe('TextareaComponent', () => {
   let component: TextareaComponent;
@@ -8,7 +9,7 @@ describe('TextareaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextareaComponent ]
+      declarations: [ TextareaComponent ], imports:[TranslateModule.forRoot()]
     })
     .compileComponents();
 

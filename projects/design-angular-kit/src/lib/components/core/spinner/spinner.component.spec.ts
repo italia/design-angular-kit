@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TranslateModule } from '@ngx-translate/core'
 
-import { SpinnerComponent } from './spinner.component';
+import { SpinnerComponent } from './spinner.component'
 
 describe('SpinnerComponent', () => {
   let component: SpinnerComponent;
@@ -8,7 +9,7 @@ describe('SpinnerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SpinnerComponent ]
+      declarations: [ SpinnerComponent ], imports:[TranslateModule.forRoot()]
     })
     .compileComponents();
 

@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TranslateModule } from '@ngx-translate/core'
 
-import { RadioButtonComponent } from './radio-button.component';
+import { RadioButtonComponent } from './radio-button.component'
 
 describe('RadioButtonComponent', () => {
   let component: RadioButtonComponent;
@@ -8,7 +9,7 @@ describe('RadioButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RadioButtonComponent ]
+      declarations: [ RadioButtonComponent ],imports:[TranslateModule.forRoot()]
     })
     .compileComponents();
 

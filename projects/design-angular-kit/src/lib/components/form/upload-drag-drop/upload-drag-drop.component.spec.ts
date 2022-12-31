@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TranslateModule } from '@ngx-translate/core'
 
-import { UploadDragDropComponent } from './upload-drag-drop.component';
+import { UploadDragDropComponent } from './upload-drag-drop.component'
 
 describe('UploadDragDropComponent', () => {
   let component: UploadDragDropComponent;
@@ -8,7 +9,7 @@ describe('UploadDragDropComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UploadDragDropComponent ]
+      declarations: [ UploadDragDropComponent ], imports:[TranslateModule.forRoot()]
     })
     .compileComponents();
 

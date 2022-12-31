@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TranslateModule } from '@ngx-translate/core'
 
-import { UploadFileListComponent } from './upload-file-list.component';
+import { UploadFileListComponent } from './upload-file-list.component'
 
 describe('UploadFileListComponent', () => {
   let component: UploadFileListComponent;
@@ -8,7 +9,7 @@ describe('UploadFileListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UploadFileListComponent ]
+      declarations: [ UploadFileListComponent ], imports:[TranslateModule.forRoot()]
     })
     .compileComponents();
 

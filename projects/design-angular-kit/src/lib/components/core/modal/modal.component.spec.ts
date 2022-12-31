@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TranslateModule } from '@ngx-translate/core'
 
-import { ModalComponent } from './modal.component';
+import { ModalComponent } from './modal.component'
 
 describe('ModalComponent', () => {
   let component: ModalComponent;
@@ -8,7 +9,7 @@ describe('ModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalComponent ]
+      declarations: [ ModalComponent ], imports:[TranslateModule.forRoot()]
     })
     .compileComponents();
 

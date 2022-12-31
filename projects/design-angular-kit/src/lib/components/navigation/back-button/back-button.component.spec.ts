@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TranslateModule } from '@ngx-translate/core'
 
-import { BackButtonComponent } from './back-button.component';
+import { BackButtonComponent } from './back-button.component'
 
 describe('BackButtonComponent', () => {
   let component: BackButtonComponent;
@@ -8,7 +9,7 @@ describe('BackButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BackButtonComponent ]
+      declarations: [ BackButtonComponent ], imports:[TranslateModule.forRoot()]
     })
     .compileComponents();
 

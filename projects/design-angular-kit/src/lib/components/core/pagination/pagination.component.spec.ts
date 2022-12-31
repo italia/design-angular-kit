@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TranslateModule } from '@ngx-translate/core'
 
-import { PaginationComponent } from './pagination.component';
+import { PaginationComponent } from './pagination.component'
 
 describe('PaginationComponent', () => {
   let component: PaginationComponent;
@@ -8,7 +9,7 @@ describe('PaginationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaginationComponent ]
+      declarations: [ PaginationComponent ], imports:[TranslateModule.forRoot()]
     })
     .compileComponents();
 

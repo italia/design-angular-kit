@@ -1,10 +1,14 @@
-import { ElementFinder } from 'protractor';
-import { BreadcrumbPage } from './breadcrumb.po';
+import { ElementFinder } from 'protractor'
+
+import { TranslateModule } from '@ngx-translate/core'
+
+import { BreadcrumbPage } from './breadcrumb.po'
 
 describe('Breadcrumb', () => {
   let page: BreadcrumbPage;
 
   beforeEach(async() => {
+
     page = new BreadcrumbPage();
     await page.go();
   });
