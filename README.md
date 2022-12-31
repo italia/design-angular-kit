@@ -22,8 +22,8 @@
 </p>
 
 <p align="center">
-  <a href="https://developersitalia.slack.com/messages/C7VPAUVB3/">
-    <img src="https://img.shields.io/badge/Slack%20channel-%23design-blue.svg" alt="Join the #design channel" />
+  <a href="https://developersitalia.slack.com/messages/C04H3C19D52/">
+    <img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" />
   </a>
   <a href="https://slack.developers.italia.it/">
     <img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" />
@@ -41,7 +41,7 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 
 *   Con il proprio codice, prendendo in carico una issue tra quelle aperte e non già assegnate tra [le issue](https://github.com/italia/design-angular-kit/issues) di Angular Kit (è sufficiente anche un commento sulla issue per notificare la volontà di presa in carico).
 *   Attraverso la segnalazione di bug o miglioramenti al [repository ufficiale](https://github.com/italia/design-angular-kit/) di Angular Kit.
-*   Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C7VPAUVB3/) di Slack.
+*   Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C04H3C19D52/) di Slack.
 
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
