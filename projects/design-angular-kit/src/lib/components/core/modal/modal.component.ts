@@ -1,9 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import {AbstractComponent} from "../../../abstracts/abstract.component";
 
-// Note: not use import from 'bootstrap-italia' to prevent duplicate import (js loaded from angular.json)
-// TODO: bootstrap-italia npm es6 import error -> import { Modal } from 'bootstrap-italia';
-declare let bootstrap: any;
+import { Modal } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-modal[id][title]',
@@ -61,7 +59,7 @@ export class ModalComponent extends AbstractComponent {
 
     if (this.modalElement) {
       const element = this.modalElement.nativeElement;
-      this.modal = bootstrap.Modal.getOrCreateInstance(element);
+      this.modal = Modal.getOrCreateInstance(element);
 
       element.addEventListener('show.bs.modal', event => this.onShow.emit(event));
       element.addEventListener('shown.bs.modal', event => this.onShown.emit(event));

@@ -2,9 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChil
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
-// Note: not use import from 'bootstrap-italia' to prevent duplicate import (js loaded from angular.json)
-// TODO: bootstrap-italia npm es6 import error -> import { Collapse } from 'bootstrap-italia';
-declare let bootstrap: any;
+import { Collapse } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-collapse[id]',
@@ -65,7 +63,7 @@ export class CollapseComponent extends AbstractComponent {
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');
-    this.collapse = bootstrap.Collapse.getOrCreateInstance(this.collapseDiv.nativeElement, {
+    this.collapse = Collapse.getOrCreateInstance(this.collapseDiv.nativeElement, {
       toggle: false
     });
 

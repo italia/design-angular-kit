@@ -2,9 +2,7 @@ import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output } fro
 import { ElementPlacement } from '../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
-// Note: not use import from 'bootstrap-italia' to prevent duplicate import (js loaded from angular.json)
-// TODO: bootstrap-italia npm es6 import error -> import { Popover } from 'bootstrap-italia';
-declare let bootstrap: any;
+import { Popover } from 'bootstrap-italia';
 
 @Directive({
   selector: '[itPopover]',
@@ -106,7 +104,7 @@ export class PopoverDirective implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.element.setAttribute('data-bs-toggle', 'popover');
-    this.popover = bootstrap.Popover.getOrCreateInstance(this.element);
+    this.popover = Popover.getOrCreateInstance(this.element);
 
     this.element.addEventListener('show.bs.popover', event => this.onShow.emit(event));
     this.element.addEventListener('shown.bs.popover', event => this.onShown.emit(event));

@@ -4,9 +4,7 @@ import { ItValidators } from '../../../validators/it-validators';
 import { Observable } from 'rxjs';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
-// Note: not use import from 'bootstrap-italia' to prevent duplicate import (js loaded from angular.json)
-// TODO: bootstrap-italia npm es6 import error -> import { InputPassword } from 'bootstrap-italia';
-declare let bootstrap: any;
+import { InputPassword } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-password-input[id]',
@@ -81,7 +79,7 @@ export class PasswordInputComponent extends AbstractFormComponent<string> {
     super.ngAfterViewInit();
 
     if (this.inputElement) {
-      this.inputPasswordBs = new bootstrap.InputPassword(this.inputElement.nativeElement, {
+      this.inputPasswordBs = new InputPassword(this.inputElement.nativeElement, {
         ...this.description && { enterPass: this.description },
         showText: this.isStrengthMeter,
         minimumLength: this.minLength

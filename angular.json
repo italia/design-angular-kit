@@ -24,24 +24,21 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*",
-                "input": "./node_modules/bootstrap-italia/",
-                "output": "/bootstrap-italia/"
-              },
-              {
-                "glob": "**/*",
-                "input": "./projects/design-angular-kit/assets/i18n",
-                "output": "/bootstrap-italia/i18n/"
-              }
+              "src/assets"
             ],
             "styles": [
+              {
+                "input": "node_modules/@splidejs/splide/dist/css/splide-core.min.css",
+                "inject" : false,
+                "bundleName": "theme-dark"
+              },
+              {
+                "input": "node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.css",
+                "inject" : false,
+                "bundleName": "theme-dark"
+              },
               "node_modules/highlight.js/styles/github.css",
               "src/styles.scss"
-            ],
-            "scripts": [
-              "./node_modules/bootstrap-italia/dist/js/bootstrap-italia.bundle.min.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,

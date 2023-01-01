@@ -2,9 +2,7 @@ import {Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewCh
 import {AbstractComponent} from "../../../abstracts/abstract.component";
 import {FileUtils} from "../../../utils/file-utils";
 
-// Note: not use import from 'bootstrap-italia' to prevent duplicate import (js loaded from angular.json)
-// TODO: bootstrap-italia npm es6 import error -> import { ProgressDonut } from 'bootstrap-italia';
-declare let bootstrap: any;
+import { ProgressDonut } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-upload-drag-drop[id]',
@@ -41,7 +39,7 @@ export class UploadDragDropComponent extends AbstractComponent {
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
     if (this.donutElement) {
-      this.donut = bootstrap.ProgressDonut.getOrCreateInstance(this.donutElement.nativeElement);
+      this.donut = ProgressDonut.getOrCreateInstance(this.donutElement.nativeElement);
     }
   }
 

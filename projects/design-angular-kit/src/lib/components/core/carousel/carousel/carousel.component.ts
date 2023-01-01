@@ -3,9 +3,7 @@ import { CarouselType } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
 
-// Note: not use import from 'bootstrap-italia' to prevent duplicate import (js loaded from angular.json)
-// TODO: bootstrap-italia npm es6 import error -> import { CarouselBI } from 'bootstrap-italia';
-declare let bootstrap: any;
+import { CarouselBI } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-carousel',
@@ -70,7 +68,7 @@ export class CarouselComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.carousel = bootstrap.CarouselBI.getOrCreateInstance(this.carouselDiv.nativeElement);
+    this.carousel = CarouselBI.getOrCreateInstance(this.carouselDiv.nativeElement);
   }
 
   /**

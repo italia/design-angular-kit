@@ -3,9 +3,7 @@ import { Subscription } from 'rxjs';
 import { NotificationsService } from '../../../services/notifications/notifications.service';
 import { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';
 
-// Note: not use import from 'bootstrap-italia' to prevent duplicate import (js loaded from angular.json)
-// TODO: bootstrap-italia npm es6 import error -> import { Notification } from 'bootstrap-italia';
-declare let bootstrap: any;
+import { Notification as BSNotification } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-notifications',
@@ -47,7 +45,7 @@ export class NotificationsComponent implements OnDestroy {
 
       setTimeout(() => {
         // Show the notification
-        new bootstrap.Notification(document.getElementById(newNotification.id), {
+        new BSNotification(document.getElementById(newNotification.id), {
           timeout: notification.duration
         }).show();
 
@@ -72,6 +70,6 @@ export class NotificationsComponent implements OnDestroy {
    * @param id
    */
   hideNotification(id: string): void {
-    bootstrap.Notification.getInstance(document.getElementById(id))?.hide();
+    BSNotification.getInstance(document.getElementById(id))?.hide();
   }
 }
