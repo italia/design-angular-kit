@@ -183,16 +183,6 @@ Prima di tutto assicurati che sia un problema relativo al tema Design Angular Ki
 (in tal caso puoi fare riferimento al [repository di Bootstrap Italia](https://github.com/italia/bootstrap-italia)), poi
 dai un'occhiata a come [creare una issue](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md#creare-una-issue).
 
-### TODO
-
-- [X] Rimuovere l'[importazione javascript](#importazione-javascript-bootstrap-italia), risolvere errore durante l'importazione di bootstrap-italia tramite es6 
-- [ ] Completare [header component](https://italia.github.io/bootstrap-italia/docs/menu-di-navigazione/header/)
-- [ ] Aggiungere [Menù list](https://italia.github.io/bootstrap-italia/docs/organizzare-i-contenuti/liste/#liste-per-men%C3%B9-di-navigazione)
-- [ ] Aggiungere altri file di localizzazione (en)
-- [ ] Aggiungere documentazione ed esempi per i componenti
-- [ ] Aggiungere altri [componenti](https://italia.github.io/bootstrap-italia/docs/componenti/introduzione/)
-- [ ] Aggiungere test
-
 ## Come contribuire
 
 Vorresti dare una mano su Design Angular Kit? **Sei nel posto giusto!**
@@ -228,10 +218,20 @@ npm run start
 npm run test
 ```
 
+# Contributor della libreria
 
+Un grazie speciale a chi ha reso possibile lo sviluppo di questa nuova versione!
 
-# Credits
+[![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![NetService](https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg)](https://www.net-serv.it/) |
+--- | --- | --- |
+Cristian Borelli | Antonino Bonanno | NetService |
 
-<a href="https://www.net-serv.it/">
-  <img src="https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg" alt="net-service-logo" width="150px" height="46px"/>
+---
+
+Tutti i contributor
+
+<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=italia/design-angular-kit"/>
 </a>
+
+*Made with [contributors-img](https://contrib.rocks).*
