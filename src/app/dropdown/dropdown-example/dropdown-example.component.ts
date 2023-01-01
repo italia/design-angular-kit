@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ButtonColor, DropdownDirection } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
 
 @Component({
   selector: 'it-dropdown-example',
@@ -6,13 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./dropdown-example.component.scss']
 })
 export class DropdownExampleComponent {
-  color = '';
+  color?: ButtonColor;
   label = 'Click me';
   isDark = false;
   isFullWidth = false;
   withHeading = true;
-  
-  menuPlacement = 'bottom-start';
+
+  menuPlacement?: DropdownDirection;
+
   items = [
     {
       link: 'https://www.google.com', active: false,

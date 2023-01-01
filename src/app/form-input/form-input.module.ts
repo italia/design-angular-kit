@@ -6,7 +6,6 @@ import { FormInputExampleComponent } from './form-input-example/form-input-examp
 import { FormInputExamplesComponent } from './form-input-examples/form-input-examples.component';
 import { FormInputIndexComponent } from './form-input-index/form-input-index.component';
 import { SharedModule } from '../shared/shared.module';
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   TemplateDrivenValidationExampleComponent
@@ -20,7 +19,6 @@ import { FormInputCalendarExampleComponent } from './form-input-calendar/form-in
   imports: [
     CommonModule,
     FormsModule,
-    DesignAngularKitModule,
     SharedModule,
     FormInputRoutingModule,
     ReactiveFormsModule

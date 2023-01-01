@@ -7,6 +7,5 @@ import { Component } from '@angular/core';
 })
 export class ProgressBarExampleComponent {
 
-  valueEx = 50;
 
 }

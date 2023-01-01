@@ -8,13 +8,11 @@ import Documentation from '../../../assets/documentation.json';
 })
 export class CollapseIndexComponent {
 
-  directive: any;
-  groupComponent: any;
-  itemComponent: any;
+  collapseComponent: any;
+  accordionComponent: any;
 
   constructor() {
-    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItCollapseDirective');
-    this.groupComponent = (<any>Documentation).components.find(component => component.name === 'ItCollapseGroupComponent');
-    this.itemComponent = (<any>Documentation).components.find(component => component.name === 'ItCollapseItemComponent');
+    this.collapseComponent = (<any>Documentation).components.find(component => component.name === 'CollapseComponent');
+    this.accordionComponent = (<any>Documentation).components.find(component => component.name === 'AccordionComponent');
   }
 }

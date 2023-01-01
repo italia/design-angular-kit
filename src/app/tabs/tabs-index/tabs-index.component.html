@@ -6,14 +6,14 @@
   <h3>Tab</h3>
   <div [innerHTML]="tabComponent.description"></div>
 </div>
-<it-tab-group>
-  <it-tab label="Esempi">
+<it-tab-container>
+  <it-tab-item id="example" label="Esempi" active="true" class="pt-3">
     <it-tabs-examples></it-tabs-examples>
-  </it-tab>
-  <it-tab label="API">
+  </it-tab-item>
+  <it-tab-item id="api" label="API" class="pt-3">
     <h2>Tab Group</h2>
-    <it-api-parameters [component]="tabGroupComponent"></it-api-parameters>  
+    <it-api-parameters [component]="tabGroupComponent"></it-api-parameters>
     <h2>Tab</h2>
     <it-api-parameters [component]="tabComponent"></it-api-parameters>
-  </it-tab>
-</it-tab-group>
+  </it-tab-item>
+</it-tab-container>

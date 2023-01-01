@@ -1,0 +1,26 @@
+<nav class="breadcrumb-container" [attr.aria-label]="'it.navigation.navigation-path'|translate">
+  <ol class="breadcrumb" [class.dark]="isDark" [class.px-3]="isDark">
+    <li *ngFor="let item of items; let i = index"
+        class="breadcrumb-item"
+        [class.active]="item.isActive"
+        [attr.aria-current]="item.isActive ? 'page' : null">
+
+      <it-icon *ngIf="item.iconName"
+                [name]="item.iconName"
+                [color]="isDark ? 'white' : 'secondary'"
+                size="sm"
+                class="align-top me-1"></it-icon>
+
+      <it-link *ngIf="!item.isActive && !isLastItem(i); else activeContent"
+                [href]="item.href" [class]="item.class" [externalLink]="item.externalLink" [disabled]="item.disabled">
+        <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
+      </it-link>
+
+      <ng-template #activeContent>
+        <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
+      </ng-template>
+
+      <span *ngIf="!isLastItem(i)" class="separator">{{separator}}</span>
+    </li>
+  </ol>
+</nav>

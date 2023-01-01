@@ -1,0 +1,21 @@
+<div class="it-carousel-wrapper splide {{typeClass}}"
+     [class.it-full-carousel]="isFullCarousel"
+     [class.it-big-img]="isBigImg"
+     data-bs-carousel-splide #carousel>
+
+  <div class="it-header-block" *ngIf="title">
+    <div class="it-header-block-title">
+      <h2>{{title}}</h2>
+    </div>
+  </div>
+
+  <div class="splide__track {{trackClass}}">
+    <ul class="splide__list">
+      <li *ngFor="let item of items" class="splide__slide" [class.lined_slide]="isLined">
+        <div class="it-single-slide-wrapper">
+          <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

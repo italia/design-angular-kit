@@ -8,7 +8,6 @@ import { PopoverExamplesComponent } from './popover-examples/popover-examples.co
 import { PopoverIndexComponent } from './popover-index/popover-index.component';
 
 import { SharedModule } from '../shared/shared.module';
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
 import { PopoverPlacementsExampleComponent } from './popover-placements-example/popover-placements-example.component';
 import { PopoverFocusExampleComponent } from './popover-focus-example/popover-focus-example.component';
 import { PopoverDisabledExampleComponent } from './popover-disabled-example/popover-disabled-example.component';
@@ -20,7 +19,6 @@ import { PopoverInteractiveExampleComponent } from './popover-interactive-exampl
   imports: [
     CommonModule,
     PopoverRoutingModule,
-    DesignAngularKitModule,
     SharedModule,
     FormsModule
   ],
