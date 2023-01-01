@@ -113,19 +113,6 @@ $font-family-monospace: 'Custom Font', 'Courier New', Courier, monospace;
 ```
 </details>
 
-### Importazione javascript bootstrap-italia
-
-Configura il file javascript nel file `angular.json`:
-
-NOTE: non necessaria se viene risolto il primo [TODO](#todo)
-
-```
- "scripts": [
-    ...
-    "./node_modules/bootstrap-italia/dist/js/bootstrap-italia.bundle.min.js"
-  ]
- ```
-
 ### Supporto icone e assets
 
 Per aggiungere il supporto icone/assets, modifica il tuo `angular.json` aggiungendo:
@@ -198,7 +185,7 @@ dai un'occhiata a come [creare una issue](https://github.com/italia/design-angul
 
 ### TODO
 
-- [ ] Rimuovere l'[importazione javascript](#importazione-javascript-bootstrap-italia), risolvere errore durante l'importazione di bootstrap-italia tramite es6 
+- [X] Rimuovere l'[importazione javascript](#importazione-javascript-bootstrap-italia), risolvere errore durante l'importazione di bootstrap-italia tramite es6 
 - [ ] Completare [header component](https://italia.github.io/bootstrap-italia/docs/menu-di-navigazione/header/)
 - [ ] Aggiungere [Menù list](https://italia.github.io/bootstrap-italia/docs/organizzare-i-contenuti/liste/#liste-per-men%C3%B9-di-navigazione)
 - [ ] Aggiungere altri file di localizzazione (en)
