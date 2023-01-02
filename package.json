@@ -1,6 +1,7 @@
 {
   "name": "design-angular-kit-bundle",
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
+  "author": "Presidenza del Consiglio dei Ministri",
   "version": "1.0.0-1",
   "license": " BSD-3-Clause",
   "keywords": [
@@ -17,6 +18,10 @@
   },
   "contributors": [
     {
+      "name": "Cristian Borelli",
+      "url": "https://github.com/cri99"
+    },
+    {
       "name": "Antonino Bonanno",
       "email": "bonanno@net-serv.it",
       "url": "https://github.com/AntoninoBonanno"
@@ -25,6 +30,10 @@
       "name": "Net Service Srl",
       "email": "areatecnica@net-serv.it",
       "url": "https://www.net-serv.it/"
+    },
+    {
+      "name": "Design Angular Kit community",
+      "url": "https://github.com/italia/design-angular-kit/graphs/contributors"
     }
   ],
   "scripts": {
@@ -32,7 +41,6 @@
     "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
     "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build --configuration production --base-href design-angular-kit",
     "build:lib": "ng build --configuration production design-angular-kit && cp README.md dist/design-angular-kit/",
-    "watch:lib": "ng build --watch design-angular-kit",
     "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
     "lint": "ng lint",
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
