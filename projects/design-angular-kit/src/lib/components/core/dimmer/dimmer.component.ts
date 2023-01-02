@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 export type DimmerColor = '' | 'dimmer-primary';
@@ -6,7 +7,18 @@ export type DimmerColor = '' | 'dimmer-primary';
   selector: 'it-dimmer',
   templateUrl: './dimmer.component.html',
   styleUrls: ['./dimmer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fade', [
+        transition(':enter', [
+            style({ opacity: 0 }),
+            animate('150ms', style({ opacity: 0.92 })),
+        ]),
+        transition(':leave', [
+            animate('150ms', style({ opacity: 0 })),
+        ]),
+    ])
+]
 })
 export class DimmerComponent {
 

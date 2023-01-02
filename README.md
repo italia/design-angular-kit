@@ -168,6 +168,18 @@ imports: [
   DesignAngularKitModule
 ]
 ```
+### Supporto animazione
+
+La libreria usa BrowserAnimationsModule per gestire alcune animazioni.
+
+Per abilitarle, bisogna aggiungere al tuo `app.module.ts` il modulo :
+
+```typescript
+imports: [
+  ...
+  BrowserAnimationsModule
+]
+```
 
 #### Usa la localizzazione personalizzata
 
