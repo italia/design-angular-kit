@@ -24,7 +24,17 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/bootstrap-italia/",
+                "output": "/bootstrap-italia/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./projects/design-angular-kit/assets/i18n",
+                "output": "/bootstrap-italia/i18n/"
+              }
             ],
             "styles": [
               {
