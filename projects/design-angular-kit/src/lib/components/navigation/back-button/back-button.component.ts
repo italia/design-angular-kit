@@ -1,78 +1,73 @@
 import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import { IconColor, IconSize } from '../../../interfaces/icon';
-import { ButtonColor } from '../../../interfaces/core';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-back-button',
-  templateUrl: './back-button.component.html'
+  templateUrl: './back-button.component.html',
+  styleUrls: ['./back-button.component.scss'],
+  exportAs: 'itBackButton'
 })
 export class BackButtonComponent {
 
   /**
-   * Indica se va mostrato un link invece che un bottone.
-  */
-  @Input()
-  get isLink(): boolean { return this._isLink; }
-  set isLink(value: boolean) {
-    this._isLink = value;
-    if (value) {
-      this.iconColor = 'primary';
-    } else {
-      this.iconColor = 'white';
-    }
-  }
-  private _isLink = false;
-  iconColor: IconColor = 'white';
+   * Back button style
+   * - <b>link</b>: use a link with icon and text
+   * - <b>button</b>: use a button with icon and text
+   * @default link
+   */
+  @Input() buttonStyle: 'link' | 'button' = 'button';
 
   /**
-   * Indica se l'icona va mostrata o meno.
-  */
-  @Input()
-  get showIcon(): boolean { return this._showIcon; }
-  set showIcon(value: boolean) { this._showIcon = value; }
-  private _showIcon = true;
+   * Button direction
+   * - <b>left</b>: Back direction
+   * - <b>up</b>: Upper direction
+   * @default left
+   */
+  @Input() direction: 'left' | 'up' = 'left';
 
   /**
-   * Indica se il testo va mostrato o meno.
-  */
-  @Input()
-  get showText(): boolean { return this._showText; }
-  set showText(value: boolean) { this._showText = value; }
-  private _showText = true;
+   * Show/Hide icon
+   * @default true
+   */
+  @Input() showIcon: BooleanInput = true;
 
   /**
-   * Indica se il tipo di BackButton è livello superiore o torna indietro.
-  */
-  @Input()
-  get type(): 'tornaIndietro' | 'livelloSuperiore' { return this._type; }
-  set type(value: 'tornaIndietro' | 'livelloSuperiore') {
-    this._type = value;
-    if (value === 'tornaIndietro') {
-      this.icon = 'arrow-left';
-      this.text = ' Torna indietro';
-    } else if (value === 'livelloSuperiore') {
-      this.icon = 'arrow-up';
-      this.text = ' Livello superiore';
-    }
-  }
-  private _type: 'tornaIndietro' | 'livelloSuperiore' = 'tornaIndietro';
-  icon = 'it-arrow-left';
-  text = 'Torna indietro';
+   * Show/Hide text
+   * @default true
+   */
+  @Input() showText: BooleanInput = true;
 
-  iconSize: IconSize = 'sm';
-  buttonColor: ButtonColor = 'primary';
+  /**
+   * Custom back logic <br/>
+   *
+   * NOTE: to use 'this' need bind function  <br/>
+   * @example backCbFn = this.errorCallback.bind(this);
+   * (errorCallback is your function, pass backCbFn to the component)
+   */
+  @Input() backFn?: (location: Location) => void;
 
-  get iconClass(): string {
-    return this.showText ? 'me-2' : '';
+  get isShowIcon(): boolean {
+    return isTrueBooleanInput(this.showIcon);
   }
 
+  get isShowText(): boolean {
+    return isTrueBooleanInput(this.showText);
+  }
 
   constructor(
-    public location: Location
-  ) { }
+    public readonly _location: Location
+  ) {
+  }
 
-  goBack(): void {
-    this.location.back();
+  /**
+   * Go back function
+   */
+  public goBack(): void {
+    if (this.backFn) {
+      return this.backFn(this._location);
+    }
+
+    this._location.back();
   }
 }

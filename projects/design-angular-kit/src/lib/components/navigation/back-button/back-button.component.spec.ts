@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { ButtonComponent } from '../../core/button/button.component';
 import { IconComponent } from '../../utils/icon/icon.component';
 import { BackButtonComponent } from './back-button.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('BackButtonComponent', () => {
   let component: BackButtonComponent;
@@ -11,7 +12,8 @@ describe('BackButtonComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BackButtonComponent, IconComponent, ButtonComponent]
+      declarations: [ BackButtonComponent, IconComponent, ButtonComponent],
+      imports: [ TranslateModule.forRoot() ]
     })
     .overrideComponent(BackButtonComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }
@@ -28,7 +30,7 @@ describe('BackButtonComponent', () => {
   });
 
   it('deve essere di default un bottone', () => {
-    expect(component.isLink).toBe(false);
+    expect(component.buttonStyle).toBe('button');
     const buttonElement = fixture.debugElement.query(By.css('button'));
     expect(buttonElement).toBeTruthy();
     const aElement = fixture.debugElement.query(By.css('a'));
@@ -36,10 +38,10 @@ describe('BackButtonComponent', () => {
   });
 
   it('deve poter essere un link', () => {
-    expect(component.isLink).toBe(false);
-    component.isLink = true;
+    expect(component.buttonStyle).toBe('button');
+    component.buttonStyle = 'link';
     fixture.detectChanges();
-    expect(component.isLink).toBe(true);
+    expect(component.buttonStyle).toBe('link');
     const aElement = fixture.debugElement.query(By.css('a'));
     expect(aElement).toBeTruthy();
   });
@@ -62,21 +64,21 @@ describe('BackButtonComponent', () => {
   });
 
   it('il click deve triggerare il location.back() se bottone', () => {
-    spyOn(component.location, 'back').and.returnValue();
+    spyOn(component._location, 'back').and.returnValue();
     fixture.detectChanges();
     const buttonElement = fixture.debugElement.query(By.css('button'));
     buttonElement.nativeElement.click();
-    expect(component.location.back).toHaveBeenCalled();
+    expect(component._location.back).toHaveBeenCalled();
   });
 
   it('il click deve triggerare il location.back() se link', () => {
-    spyOn(component.location, 'back').and.returnValue();
-    component.isLink = true;
+    spyOn(component._location, 'back').and.returnValue();
+    component.buttonStyle = 'link';
     fixture.detectChanges();
     const aElement = fixture.debugElement.query(By.css('a'));
     aElement.nativeElement.removeAttribute("href");
     fixture.detectChanges();
     aElement.nativeElement.click();
-    expect(component.location.back).toHaveBeenCalled();
+    expect(component._location.back).toHaveBeenCalled();
   });
 });
