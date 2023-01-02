@@ -15,6 +15,7 @@ describe('SelectComponent', () => {
 
     fixture = TestBed.createComponent(SelectComponent);
     component = fixture.componentInstance;
+    component.options = [];
     fixture.detectChanges();
   });
 
