@@ -17,6 +17,7 @@ export * from './lib/components/core/carousel/carousel/carousel.component';
 export * from './lib/components/core/carousel/carousel-item/carousel-item.component';
 export * from './lib/components/core/chip/chip.component';
 export * from './lib/components/core/collapse/collapse.component';
+export * from './lib/components/core/dimmer/dimmer.component';
 export * from './lib/components/core/dropdown/dropdown/dropdown.component';
 export * from './lib/components/core/dropdown/dropdown-item/dropdown-item.component';
 export * from './lib/components/core/forward/forward.directive';
