@@ -1,0 +1,17 @@
+<div class="row dimmable">
+    <div class="dimmer fade" [ngClass]="[color, active ? 'show': '']" [attr.aria-hidden]="!active">
+      <div class="dimmer-inner">
+        <div #dimmerIcon class="dimmer-icon" [attr.aria-hidden]="!dimmerIcon.hasChildNodes()">
+          <ng-content select="[icon]"></ng-content>
+        </div>
+        <h4 *ngIf="title && title !== ''">{{ title }}</h4>
+        <p *ngIf="text && text !== ''">{{ text }}</p>
+        <div #dimmerButtons class="dimmer-buttons bg-dark" [ngClass]="{'single-button': hasOneButton}" [attr.aria-hidden]="!dimmerButtons.hasChildNodes()">
+          <ng-content select="[buttons]"></ng-content>
+        </div>
+      </div>
+    </div>
+    <div class="col" [attr.aria-hidden]="active">
+        <ng-content select="[body]"></ng-content>
+    </div>
+  </div>

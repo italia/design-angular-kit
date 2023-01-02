@@ -49,6 +49,7 @@ import { IconComponent } from '../components/utils/icon/icon.component';
 import { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';
 import { ChipComponent } from '../components/core/chip/chip.component';
 import { ForwardDirective } from '../components/core/forward/forward.directive';
+import { DimmerComponent } from '../components/core/dimmer/dimmer.component';
 
 
 /**
@@ -65,6 +66,7 @@ const core = [
   CarouselItemComponent,
   ChipComponent,
   CollapseComponent,
+  DimmerComponent,
   DropdownComponent,
   DropdownItemComponent,
   ForwardDirective,

@@ -26,6 +26,7 @@ const routes: Routes = [
     { path: 'back-button', loadChildren: () => import('src/app/back-button/back-button.module').then(m => m.BackButtonModule) },
     { path: 'chip', loadChildren: () => import('src/app/chip/chip.module').then(m => m.ChipModule) },
     { path: 'forward', loadChildren: () => import('src/app/forward/forward.module').then(m => m.ForwardModule) },
+    { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
   ]}
 ];
 
