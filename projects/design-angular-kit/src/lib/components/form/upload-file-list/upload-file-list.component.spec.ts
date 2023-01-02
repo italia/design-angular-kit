@@ -15,6 +15,7 @@ describe('UploadFileListComponent', () => {
 
     fixture = TestBed.createComponent(UploadFileListComponent);
     component = fixture.componentInstance;
+   component.fileList = []
     fixture.detectChanges();
   });
 
