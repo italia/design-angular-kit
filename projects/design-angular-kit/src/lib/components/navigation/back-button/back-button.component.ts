@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import { IconColor, IconSize } from '../../../interfaces/icon';
+import { IconColor, IconName, IconSize } from '../../../interfaces/icon';
 import { ButtonColor } from '../../../interfaces/core';
 
 @Component({
@@ -57,7 +57,7 @@ export class BackButtonComponent {
     }
   }
   private _type: 'tornaIndietro' | 'livelloSuperiore' = 'tornaIndietro';
-  icon = 'it-arrow-left';
+  icon: IconName = 'arrow-left';
   text = 'Torna indietro';
 
   iconSize: IconSize = 'sm';
