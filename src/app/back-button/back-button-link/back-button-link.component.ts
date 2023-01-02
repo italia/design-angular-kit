@@ -6,7 +6,4 @@ import { Component } from '@angular/core';
 })
 export class BackButtonLinkComponent {
 
-  typeTornaIndietro: 'tornaIndietro' | 'livelloSuperiore' = 'tornaIndietro';
-  typeLivelloSuperiore: 'tornaIndietro' | 'livelloSuperiore' = 'livelloSuperiore';
-
 }
