@@ -14,7 +14,7 @@ export class BackButtonComponent {
    * Back button style
    * - <b>link</b>: use a link with icon and text
    * - <b>button</b>: use a button with icon and text
-   * @default link
+   * @default button
    */
   @Input() buttonStyle: 'link' | 'button' = 'button';
 
