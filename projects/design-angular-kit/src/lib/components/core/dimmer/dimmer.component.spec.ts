@@ -44,25 +44,4 @@ describe('DimmerComponent', () => {
     const dimmerPrimaryElement = fixture.debugElement.query(By.css('.dimmer.dimmer-primary'));
     expect(dimmerPrimaryElement).toBeTruthy();
   });
-
-  it('Can have a title', () => {
-    component.title = 'title';
-    fixture.detectChanges();
-    const h4Element = fixture.debugElement.query(By.css('.dimmer-inner h4'));
-    expect(h4Element.nativeElement.textContent.trim()).toBe('title');
-  });
-
-  it('Can have a text', () => {
-    component.text = 'text';
-    fixture.detectChanges();
-    const pElement = fixture.debugElement.query(By.css('.dimmer-inner p'));
-    expect(pElement.nativeElement.textContent.trim()).toBe('text');
-  });
-
-  it('add class single-button to buttons div if hasOneButton is true', () => {
-    component.hasOneButton = true;
-    fixture.detectChanges();
-    const divElement = fixture.debugElement.query(By.css('.single-button'));
-    expect(divElement).toBeTruthy();
-  });
 });

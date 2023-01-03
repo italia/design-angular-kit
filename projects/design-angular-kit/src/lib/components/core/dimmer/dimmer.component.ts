@@ -1,12 +1,11 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
 
 export type DimmerColor = '' | 'dimmer-primary';
 
 @Component({
   selector: 'it-dimmer',
   templateUrl: './dimmer.component.html',
-  styleUrls: ['./dimmer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('fade', [
@@ -20,7 +19,7 @@ export type DimmerColor = '' | 'dimmer-primary';
     ])
 ]
 })
-export class DimmerComponent {
+export class DimmerComponent implements OnInit {
 
   /**
    * Dimmer status
@@ -38,27 +37,12 @@ export class DimmerComponent {
   get color() {return this._color; }
   private _color: DimmerColor = '';
 
-  /**
-   * Testo da visualizzare (se vuoto non verrà mostrato alcun testo)
-   * @default ''
-  */
-  @Input() set text (value: string) {this._text = value};
-  get text() {return this._text; }
-  private _text = '';
+  constructor(
+    private elementRef: ElementRef
+  ) {}
 
-  /**
-   * Titolo da visualizzare (se vuoto non verrà mostrato alcun titolo)
-   * @default ''
-  */
-  @Input() set title (value: string) {this._title = value};
-  get title() {return this._title; }
-  private _title = '';
-
-  /**
-   * Indica se abbiamo 1 solo bottone
-   * @default false
-  */
-  @Input() set hasOneButton (value: boolean) {this._hasOneButton = value};
-  get hasOneButton() {return this._hasOneButton; }
-  private _hasOneButton = false;
+  ngOnInit(): void {
+    this.elementRef?.nativeElement?.parentElement?.classList?.add('row');
+    this.elementRef?.nativeElement?.parentElement?.classList?.add('dimmable');
+  }
 }
