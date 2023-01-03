@@ -48,6 +48,7 @@ import { HeaderComponent } from '../components/navigation/header/header.componen
 import { IconComponent } from '../components/utils/icon/icon.component';
 import { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';
 import { ChipComponent } from '../components/core/chip/chip.component';
+import { ForwardDirective } from '../components/core/forward/forward.directive';
 
 
 /**
@@ -66,6 +67,7 @@ const core = [
   CollapseComponent,
   DropdownComponent,
   DropdownItemComponent,
+  ForwardDirective,
   LinkComponent,
   ListComponent,
   ListItemComponent,
