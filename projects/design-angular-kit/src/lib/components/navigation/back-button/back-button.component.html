@@ -1,27 +1,24 @@
 <a *ngIf="buttonStyle === 'link'" class="go-back" data-bs-toggle="historyback" (click)="goBack()" [routerLink]="null">
-  <it-icon
-    size="sm"
-    [name]="iconDirection === 'left' ? 'arrow-left' : 'arrow-up'"
-    color="primary"
-    class="me-2"></it-icon>
-  {{'it.navigation.go-back' | translate}}
+  <ng-container *ngTemplateOutlet="content"></ng-container>
 </a>
 
-<button *ngIf="buttonStyle !== 'link'"
-        type="button"
-        class="btn btn-primary go-back"
-        data-bs-toggle="historyback"
-        (click)="goBack()">
-  <it-icon
-    size="sm"
-    [name]="iconDirection === 'left' ? 'arrow-left' : 'arrow-up'"
-    color="white"
-    class="me-2"></it-icon>
+<it-button *ngIf="buttonStyle === 'button'"
+           color="primary"
+           class="go-back"
+           data-bs-toggle="historyback"
+           (click)="goBack()">
 
-  <span class="visually-hidden" *ngIf="buttonStyle === 'icon'; else showText">
-    {{'it.navigation.go-back' | translate}}
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</it-button>
+
+<ng-template #content>
+  <it-icon *ngIf="isShowIcon"
+           size="sm"
+           [name]="direction === 'left' ? 'arrow-left' : 'arrow-up'"
+           [color]="buttonStyle === 'link' ? 'primary' : 'white'"
+           [class.me-2]="isShowText"></it-icon>
+
+  <span [class.visually-hidden]="!isShowText">
+    {{(direction === 'left' ? 'it.navigation.go-back' : 'it.navigation.upper-level') | translate}}
   </span>
-  <ng-template #showText>
-    {{'it.navigation.go-back' | translate}}
-  </ng-template>
-</button>
+</ng-template>
