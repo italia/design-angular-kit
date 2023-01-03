@@ -1,7 +1,6 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild} from '@angular/core';
-import {AbstractComponent} from "../../../abstracts/abstract.component";
-import {FileUtils} from "../../../utils/file-utils";
-
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { FileUtils } from '../../../utils/file-utils';
 import { ProgressDonut } from 'bootstrap-italia';
 
 @Component({
@@ -13,10 +12,12 @@ import { ProgressDonut } from 'bootstrap-italia';
 export class UploadDragDropComponent extends AbstractComponent {
 
   /**
-   * The accepted file type to upload
+   * The accepted file type to upload <br>
+   * Possible values: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME Types</a> separated by comma
+   * @example application/pdf,image/png
    * @default *
    */
-  @Input() accept: string = "*";
+  @Input() accept: string = '*';
 
   /**
    * Fired when file start to upload
@@ -91,14 +92,14 @@ export class UploadDragDropComponent extends AbstractComponent {
    * @param file
    */
   public start(file: File): void {
-    if (this.accept !== '*' && file.type !== this.accept) {
+    if (this.accept !== '*' && !this.accept.includes(file.type)) {
       return;
     }
 
     this.donut?.set(0);
     this.isLoading = true;
 
-    const splitName = file.name.split(".");
+    const splitName = file.name.split('.');
     this.filename = splitName[0];
     this.extension = splitName[1]?.toUpperCase();
     this.fileSize = FileUtils.getFileSizeString(file);
