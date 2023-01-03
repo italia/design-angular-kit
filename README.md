@@ -228,10 +228,8 @@ Cristian Borelli | Antonino Bonanno | NetService |
 
 ---
 
-Tutti i contributor
+Tutti i contributor (*made with [contributors-img](https://contrib.rocks)*)
 
-<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
+<a href = "https://github.com/italia/design-angular-kit/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=italia/design-angular-kit"/>
 </a>
-
-*Made with [contributors-img](https://contrib.rocks).*
