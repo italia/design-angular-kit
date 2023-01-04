@@ -42,7 +42,6 @@ export class DimmerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.elementRef?.nativeElement?.parentElement?.classList?.add('row');
     this.elementRef?.nativeElement?.parentElement?.classList?.add('dimmable');
   }
 }
