@@ -13,15 +13,15 @@
 
       <div class="row mt-4">
         <div class="col-6">
-          <it-button id="add-button" color="primary" size="lg" class="mb-3" (click)="insert()">
+          <button id="add-button" itButton="primary" size="lg" class="mb-3" (click)="insert()">
             Aggiungi breadcrumb
-          </it-button>
+          </button>
         </div>
         <div class="col-6">
-          <it-button id="remove-button" color="primary" size="lg" class="mb-3" (click)="remove()"
+          <button id="remove-button" itButton="primary" size="lg" class="mb-3" (click)="remove()"
                      [disabled]="!items.length">
             Rimuovi breadcrumb
-          </it-button>
+          </button>
         </div>
       </div>
     </div>

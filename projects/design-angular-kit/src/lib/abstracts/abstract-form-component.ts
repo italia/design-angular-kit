@@ -48,7 +48,7 @@ export class AbstractFormComponent<T = any> extends AbstractComponent implements
     }
 
     if (this._ngControl) {
-      return this._ngControl.invalid === true && (!this._ngControl.pristine || this.control.touched);
+      return this._ngControl.invalid === true && (!this._ngControl.pristine || this._ngControl.touched === true);
     }
     return this.control.invalid && (!this.control.pristine || this.control.touched);
   }
@@ -62,7 +62,7 @@ export class AbstractFormComponent<T = any> extends AbstractComponent implements
     }
 
     if (this._ngControl) {
-      return this._ngControl.valid === true && (!this._ngControl.pristine || this.control.touched);
+      return this._ngControl.valid === true && (!this._ngControl.pristine || this._ngControl.touched === true);
     }
     return this.control.valid && (!this.control.pristine || this.control.touched);
   }

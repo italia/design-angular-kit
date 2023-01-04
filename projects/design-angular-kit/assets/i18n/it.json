@@ -60,6 +60,7 @@
     "navigation": {
       "home": "Home",
       "go-back": "Torna indietro",
+      "upper-level": "Livello superiore",
       "secondary-navigation": "Navigazione secondaria",
       "login": "Accedi",
       "full-login": "Accedi all'area personale",

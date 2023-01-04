@@ -1,18 +1,18 @@
 <h3>Eventi tooltip</h3>
 <div class="bd-example">
   <p class="example-section">
-    <it-button color="danger" size="lg" class="me-4"
+    <button itButton="danger" size="lg" class="me-4"
                itTooltip="Tooltip di esempio"
                (onShown)="logShown()"
                (onHidden)="logHidden()"
                #destructibleTooltip="itTooltip"
                id="tooltip-example-disposable">
       Clicca per il tooltip distruttibile
-    </it-button>
+    </button>
 
-    <it-button color="primary" size="lg" (click)="destructibleTooltip.dispose()" id="tooltip-dispose-button">
+    <button itButton="primary" size="lg" (click)="destructibleTooltip.dispose()" id="tooltip-dispose-button">
       Distruggi il tooltip
-    </it-button>
+    </button>
   </p>
 
 

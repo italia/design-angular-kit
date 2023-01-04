@@ -1,14 +1,14 @@
 <h3>Interazione con bottone</h3>
 
 <div class="bd-example" [class.d-grid]="block">
-  <it-button id="interactive-button"
+  <button id="interactive-button"
              class="mb-5"
-             [color]="buttonColor"
+             [itButton]="buttonColor"
              [size]="selectedSize"
              [disabled]="disabled"
              (click)="increaseCount()">
     Numero click eseguiti: {{count}}
-  </it-button>
+  </button>
 
   <div class="row">
     <div class="form-check col-2">

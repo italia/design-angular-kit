@@ -1,15 +1,6 @@
-<it-button
-  [color]="color"
-  [size]="size"
-  [type]="type"
-  [class]="(class ?? '') + (isProgress ? ' btn-progress' : '')"
-  [btnIcon]="btnIcon"
-  [disabled]="isDisabled">
+<ng-content></ng-content>
 
-  <ng-content></ng-content>
-
-  <it-progress-bar *ngIf="isProgress"
-                    [value]="isProgressIndeterminate ? 1 : progress!"
-                    [indeterminate]="progressIndeterminate"
-                    [color]="progressColor"></it-progress-bar>
-</it-button>
+<it-progress-bar *ngIf="isProgress"
+                 [value]="progress||0"
+                 [indeterminate]="indeterminate"
+                 [color]="progressColor"></it-progress-bar>

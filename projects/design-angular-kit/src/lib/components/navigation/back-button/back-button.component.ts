@@ -1,28 +1,42 @@
 import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-back-button',
   templateUrl: './back-button.component.html',
   styleUrls: ['./back-button.component.scss'],
-  exportAs: 'itUploadDragDrop'
+  exportAs: 'itBackButton'
 })
 export class BackButtonComponent {
 
   /**
    * Back button style
-   * - <strong>link</strong>: use a link with icon and text
-   * - <strong>button</strong>: use a button with icon and text
-   * - <strong>icon</strong>: use a button with icon
-   * @default link
+   * - <b>link</b>: use a link with icon and text
+   * - <b>button</b>: use a button with icon and text
+   * @default button
    */
-  @Input() buttonStyle: 'link' | 'button' | 'icon' = 'link';
+  @Input() buttonStyle: 'link' | 'button' = 'button';
 
   /**
-   * Icon direction
+   * Button direction
+   * - <b>left</b>: Back direction
+   * - <b>up</b>: Upper direction
    * @default left
    */
-  @Input() iconDirection: 'left' | 'up' = 'left';
+  @Input() direction: 'left' | 'up' = 'left';
+
+  /**
+   * Show/Hide icon
+   * @default true
+   */
+  @Input() showIcon: BooleanInput = true;
+
+  /**
+   * Show/Hide text
+   * @default true
+   */
+  @Input() showText: BooleanInput = true;
 
   /**
    * Custom back logic <br/>
@@ -33,8 +47,16 @@ export class BackButtonComponent {
    */
   @Input() backFn?: (location: Location) => void;
 
+  get isShowIcon(): boolean {
+    return isTrueBooleanInput(this.showIcon);
+  }
+
+  get isShowText(): boolean {
+    return isTrueBooleanInput(this.showText);
+  }
+
   constructor(
-    private readonly _location: Location
+    public readonly _location: Location
   ) {
   }
 

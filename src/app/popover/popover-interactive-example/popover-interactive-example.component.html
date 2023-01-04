@@ -1,6 +1,6 @@
 <h3>Esempio Popover</h3>
 <div class="bd-example">
-  <it-button color="primary" id="popover-interactive-button"
+  <button itButton="primary" id="popover-interactive-button"
              [itPopover]="myDescription"
              [popoverTitle]="myTitle"
              [popoverContainer]="container"
@@ -10,7 +10,7 @@
              (onHidden)="logHidden()"
              #interactivePopover="itPopover">
     Bottone con popover
-  </it-button>
+  </button>
 
   <it-checkbox [(ngModel)]="disabled" label="Disabilita bottone e popover" id="disable-popover-checkbox"></it-checkbox>
   <it-checkbox [(ngModel)]="removeTitle" label="Rimuovi titolo" id="remove-title-checkbox"></it-checkbox>
@@ -36,9 +36,9 @@
     </div>
   </div>
 
-  <it-button color="danger" (click)="interactivePopover.dispose()" id="popover-disposing-button">
+  <button itButton="danger" (click)="interactivePopover.dispose()" id="popover-disposing-button">
     Distruggi il popover
-  </it-button>
+  </button>
 
   <div class="popover-events mt-3">
     <div *ngIf="shownTime">
