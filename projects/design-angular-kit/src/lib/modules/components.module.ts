@@ -8,7 +8,7 @@ import { AbstractComponent } from '../abstracts/abstract.component';
 import { AccordionComponent } from '../components/core/accordion/accordion.component';
 import { AlertComponent } from '../components/core/alert/alert.component'
 import { BadgeDirective } from '../components/core/badge/badge.directive';
-import { ButtonComponent } from '../components/core/button/button.component';
+import { ButtonDirective } from '../components/core/button/button.directive';
 import { CalloutComponent } from '../components/core/callout/callout.component';
 import { CardComponent } from '../components/core/card/card.component';
 import { CarouselComponent } from '../components/core/carousel/carousel/carousel.component';
@@ -19,7 +19,6 @@ import { DropdownItemComponent } from '../components/core/dropdown/dropdown-item
 import { LinkComponent } from '../components/core/link/link.component';
 import { ListComponent } from '../components/core/list/list/list.component';
 import { ListItemComponent } from '../components/core/list/list-item/list-item.component';
-import { LoadingButtonComponent } from '../components/core/loading-button/loading-button.component';
 import { ModalComponent } from '../components/core/modal/modal.component';
 import { NotificationsComponent } from '../components/core/notifications/notifications.component';
 import { PaginationComponent } from '../components/core/pagination/pagination.component';
@@ -57,7 +56,7 @@ const core = [
   AccordionComponent,
   AlertComponent,
   BadgeDirective,
-  ButtonComponent,
+  ButtonDirective,
   CalloutComponent,
   CardComponent,
   CarouselComponent,
@@ -68,7 +67,6 @@ const core = [
   LinkComponent,
   ListComponent,
   ListItemComponent,
-  LoadingButtonComponent,
   ModalComponent,
   NotificationsComponent,
   PaginationComponent,

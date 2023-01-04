@@ -4,17 +4,17 @@
   <div class="row">
     <div class="col-12 col-sm-6">
       <p><strong>Pulsante primario</strong></p>
-      <it-progress-button color="primary" btnIcon="true" progressIndeterminate="true" disabled="true">
+      <button itButton="primary" [progress]="null" indeterminate="true" disabled="true">
         Label pulsante
         <it-icon name="github" color="white" class="ms-2"></it-icon>
-      </it-progress-button>
+      </button>
     </div>
     <div class="col-12 col-sm-6">
       <p><strong>Pulsante secondario</strong></p>
-      <it-progress-button color="secondary" btnIcon="true" [progress]="70" disabled="true">
+      <button itButton="secondary" [progress]="70" disabled="true">
         Completo al 70%
         <it-icon name="github" color="white" class="ms-2"></it-icon>
-      </it-progress-button>
+      </button>
     </div>
   </div>
 </div>

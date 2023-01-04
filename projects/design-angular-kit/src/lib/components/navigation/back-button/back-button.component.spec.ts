@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ButtonComponent } from '../../core/button/button.component';
+import { ButtonDirective } from '../../core/button/button.directive';
 import { IconComponent } from '../../utils/icon/icon.component';
 import { BackButtonComponent } from './back-button.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -12,7 +12,7 @@ describe('BackButtonComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BackButtonComponent, IconComponent, ButtonComponent],
+      declarations: [ BackButtonComponent, IconComponent, ButtonDirective ],
       imports: [ TranslateModule.forRoot() ]
     })
     .overrideComponent(BackButtonComponent, {

@@ -1,24 +1,24 @@
-import {Component, Input} from '@angular/core';
-import {ButtonComponent} from "../button/button.component";
+import { Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import {ProgressBarColor} from "../../../interfaces/core";
+import { ProgressBarColor } from '../../../interfaces/core';
 
 @Component({
-  selector: 'it-progress-button',
+  selector: 'button[itButton][progress]',
   templateUrl: './progress-button.component.html',
   styleUrls: ['./progress-button.component.scss']
 })
-export class ProgressButtonComponent extends ButtonComponent {
+export class ProgressButtonComponent {
 
   /**
    * The progress bar value [0, 100]
+   * @default null
    */
-  @Input() progress?: number;
+  @Input() progress?: number | null = null;
 
   /**
    * Show the progress as indeterminate
    */
-  @Input() progressIndeterminate?: BooleanInput;
+  @Input() indeterminate?: BooleanInput;
 
   /**
    * The progress bar color
@@ -26,14 +26,11 @@ export class ProgressButtonComponent extends ButtonComponent {
   @Input() progressColor?: ProgressBarColor;
 
   get isProgress(): boolean {
-    return this.progress !== undefined || this.isProgressIndeterminate;
+    return (this.progress !== null && this.progress !== undefined) || this.isIndeterminate;
   }
 
-  get isProgressIndeterminate(): boolean {
-    return isTrueBooleanInput(this.progressIndeterminate);
+  get isIndeterminate(): boolean {
+    return isTrueBooleanInput(this.indeterminate);
   }
 
-  override get isDisabled(): boolean {
-    return super.isDisabled || (this.isProgress && this.progress! > 0 && this.progress! < 100);
-  }
 }

@@ -3,9 +3,9 @@
 
   <it-input id="number-input" type="number" [(ngModel)]="selectedIndex" label="indice del tab selezionato:"></it-input>
 
-  <it-button color="primary" (click)="addTab()">
+  <button itButton="primary" (click)="addTab()">
     Aggiungi un nuovo tab
-  </it-button>
+  </button>
   <it-checkbox id="checkbox-tab" [(ngModel)]="selectAfterAdding"
                label="Seleziona il tab dopo averlo aggiunto"></it-checkbox>
 
@@ -18,11 +18,11 @@
         contenuto del {{tab}} tab
 
         <div class="container-fluid mt-3">
-          <it-button color="primary"
-                     [disabled]="tabs.length === 1"
-                     (click)="removeTab(index)">
+          <button itButton="primary"
+                  [disabled]="tabs.length === 1"
+                  (click)="removeTab(index)">
             Cancella tab
-          </it-button>
+          </button>
         </div>
       </it-tab-item>
     </it-tab-container>

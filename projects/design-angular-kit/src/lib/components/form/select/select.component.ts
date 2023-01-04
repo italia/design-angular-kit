@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {AbstractFormComponent} from "../../../abstracts/abstract-form-component";
-import {SelectControlGroup, SelectControlOption} from "../../../interfaces/form";
+import { Component, Input } from '@angular/core';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { SelectControlGroup, SelectControlOption } from '../../../interfaces/form';
 
 @Component({
   selector: 'it-select[id][options]',
@@ -12,12 +12,12 @@ export class SelectComponent extends AbstractFormComponent {
   /**
    * The select options
    */
-  @Input() options!: Array<SelectControlOption>
+  @Input() options!: Array<SelectControlOption>;
 
   /**
    * The select group options
    */
-  @Input() groups?: Array<SelectControlGroup>
+  @Input() groups?: Array<SelectControlGroup>;
 
   /**
    * The select description
@@ -48,7 +48,7 @@ export class SelectComponent extends AbstractFormComponent {
    * @param option the option
    */
   optionIsSelected(option: SelectControlOption): boolean {
-    if(option.selected === true) {
+    if (option.selected === true) {
       return true;
     }
 
@@ -64,7 +64,7 @@ export class SelectComponent extends AbstractFormComponent {
    * @param option the option
    */
   optionIsDisabled(option: SelectControlOption): boolean {
-    if(option.disabled === true) {
+    if (option.disabled === true) {
       return true;
     }
 
