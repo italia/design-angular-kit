@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {ProgressBarColor} from "../../../interfaces/core";
-import {BooleanInput} from "../../../utils/boolean-input";
+import { Component, Input } from '@angular/core';
+import { ProgressBarColor } from '../../../interfaces/core';
+import { BooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-progress-bar[value]',
@@ -8,6 +8,7 @@ import {BooleanInput} from "../../../utils/boolean-input";
   styleUrls: ['./progress-bar.component.scss']
 })
 export class ProgressBarComponent {
+
   /**
    * The progress bar value [0, 100]
    */
@@ -36,6 +37,6 @@ export class ProgressBarComponent {
       return '';
     }
 
-    return ` bg-${this.color}`
+    return ` bg-${this.color}`;
   }
 }

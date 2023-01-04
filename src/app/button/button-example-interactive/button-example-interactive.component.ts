@@ -19,8 +19,10 @@ export class ButtonExampleInteractiveComponent {
     | 'secondary'
     | 'success'
     | 'danger'
+    | 'warning'
     | 'info'
-    | 'warning' = 'primary';
+    | 'light'
+    | 'dark' = 'primary';
   selectedSize?: ButtonSize;
   count = 0;
 

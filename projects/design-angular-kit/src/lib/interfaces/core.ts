@@ -9,10 +9,15 @@ export type ButtonColor =
   | 'outline-success'
   | 'danger'
   | 'outline-danger'
+  | 'warning'
+  | 'outline-warning'
   | 'info'
   | 'outline-info'
-  | 'warning'
-  | 'outline-warning';
+  | 'light'
+  | 'outline-light'
+  | 'dark'
+  | 'outline-dark'
+  | 'link';
 
 export type ButtonSize = 'lg' | 'sm' | 'xs';
 export type ButtonType = 'submit' | 'button';

@@ -1,7 +1,6 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { ElementPlacement } from '../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-
 import { Tooltip } from 'bootstrap-italia';
 
 @Directive({
@@ -14,7 +13,7 @@ export class TooltipDirective implements AfterViewInit {
    * Define the tooltip title
    * @param title the tooltip title
    */
-  @Input('itTooltip') set title(title: string|undefined) {
+  @Input('itTooltip') set title(title: string | undefined) {
     if (title) {
       // this.element.setAttribute("title", title);
       this.element.setAttribute('data-bs-original-title', title);

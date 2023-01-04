@@ -10,7 +10,7 @@ export * from './lib/modules/components.module';
 export * from './lib/components/core/accordion/accordion.component';
 export * from './lib/components/core/alert/alert.component';
 export * from './lib/components/core/badge/badge.directive';
-export * from './lib/components/core/button/button.component';
+export * from './lib/components/core/button/button.directive';
 export * from './lib/components/core/callout/callout.component';
 export * from './lib/components/core/card/card.component';
 export * from './lib/components/core/carousel/carousel/carousel.component';
@@ -21,7 +21,6 @@ export * from './lib/components/core/dropdown/dropdown-item/dropdown-item.compon
 export * from './lib/components/core/link/link.component';
 export * from './lib/components/core/list/list/list.component';
 export * from './lib/components/core/list/list-item/list-item.component';
-export * from './lib/components/core/loading-button/loading-button.component';
 export * from './lib/components/core/modal/modal.component';
 export * from './lib/components/core/notifications/notifications.component';
 export * from './lib/components/core/pagination/pagination.component';

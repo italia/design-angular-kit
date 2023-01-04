@@ -13,7 +13,7 @@
       </ng-container>
     </it-input>
 
-    <it-button color="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</it-button>
+    <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
 
     <div *ngIf="savedValue">Salvato `{{savedValue}}`</div>
   </form>

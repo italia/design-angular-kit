@@ -2,14 +2,14 @@
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </a>
 
-<it-button *ngIf="buttonStyle === 'button'"
-           color="primary"
-           class="go-back"
-           data-bs-toggle="historyback"
-           (click)="goBack()">
+<button *ngIf="buttonStyle === 'button'"
+        itButton="primary"
+        class="go-back"
+        data-bs-toggle="historyback"
+        (click)="goBack()">
 
   <ng-container *ngTemplateOutlet="content"></ng-container>
-</it-button>
+</button>
 
 <ng-template #content>
   <it-icon *ngIf="isShowIcon"

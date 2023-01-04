@@ -19,13 +19,13 @@ export class DropdownExampleComponent {
     {
       link: 'https://www.google.com', active: false,
       disabled: false, large: true,
-      icon: 'it-star-outline', iconPosition: 'right',
+      icon: 'star-outline', iconPosition: 'right',
       text: 'Item 1'
     },
     {
       link: 'https://www.google.com', active: false,
       disabled: true, large: false,
-      icon: 'it-link', iconPosition: 'right',
+      icon: 'link', iconPosition: 'right',
       text: 'Item 2'
     },
     {

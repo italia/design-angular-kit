@@ -26,13 +26,12 @@
                 </a>
               </div>
             </div>
-            <it-button *ngIf="loginStyle === 'full'" color="primary" class="btn-full" btnIcon="true"
-                       (click)="loginClick.emit($event)">
+            <button *ngIf="loginStyle === 'full'" itButton="primary" class="btn-full" (click)="loginClick.emit($event)">
               <span class="rounded-icon">
                 <it-icon name="user" color="primary"></it-icon>
                 <span class="d-none d-lg-block">{{'it.navigation.full-login'|translate}}</span>
               </span>
-            </it-button>
+            </button>
           </div>
         </div>
       </div>
