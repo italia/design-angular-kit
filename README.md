@@ -168,6 +168,13 @@ imports: [
   DesignAngularKitModule
 ]
 ```
+
+#### Usa la localizzazione personalizzata
+
+Aggiungi la localizzazione personalizzata nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
+
+Se utilizzi già i file di localizzazione nella tua app, puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le chiavi del json della libreria.
+
 ### Supporto animazione
 
 La libreria usa BrowserAnimationsModule per gestire alcune animazioni.
@@ -180,12 +187,6 @@ imports: [
   BrowserAnimationsModule
 ]
 ```
-
-#### Usa la localizzazione personalizzata
-
-Aggiungi la localizzazione personalizzata nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
-
-Se utilizzi già i file di localizzazione nella tua app, puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le chiavi del json della libreria.
 
 ## Segnalazione bug e richieste di aiuto
 
