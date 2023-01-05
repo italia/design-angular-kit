@@ -5,7 +5,6 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 @Component({
   selector: 'it-back-button',
   templateUrl: './back-button.component.html',
-  styleUrls: ['./back-button.component.scss'],
   exportAs: 'itBackButton'
 })
 export class BackButtonComponent {
