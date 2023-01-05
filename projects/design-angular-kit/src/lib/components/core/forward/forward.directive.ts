@@ -7,6 +7,9 @@ import { Directive, HostListener, Inject, Input } from '@angular/core';
 })
 export class ForwardDirective {
 
+  /**
+   * Indica, se HTMLElement, l'elemento a cui navigare, o se stringa, il selettore che selezionerà l'elemento a cui navigare.
+  */
   @Input() set itForward(value: HTMLElement | string | undefined) { this._itForward = value; }
   get itForward(): HTMLElement | string | undefined { return this._itForward; }
   private _itForward: HTMLElement | string | undefined = undefined;
