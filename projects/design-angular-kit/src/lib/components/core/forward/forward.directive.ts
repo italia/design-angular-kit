@@ -2,7 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { Directive, HostListener, Inject, Input } from '@angular/core';
 
 @Directive({
-  selector: '[itForward]'
+  selector: '[itForward]',
+  host: {'class': 'forward'}
 })
 export class ForwardDirective {
 
