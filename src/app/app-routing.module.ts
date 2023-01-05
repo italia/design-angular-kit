@@ -24,6 +24,7 @@ const routes: Routes = [
     { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
     { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
     { path: 'back-button', loadChildren: () => import('src/app/back-button/back-button.module').then(m => m.BackButtonModule) },
+    { path: 'chip', loadChildren: () => import('src/app/chip/chip.module').then(m => m.ChipModule) },
   ]}
 ];
 

@@ -1,0 +1,8 @@
+<div class="chip" [ngClass]="[!showCloseButton ? 'chip-simple' : 'alert', size === 'lg' ? 'chip-lg': '', color ? 'chip-' + color : '', disabled ? 'chip-disabled' : '']">
+    <ng-content select="[icon]"></ng-content>
+    <span class="chip-label">{{ label }}</span>
+    <button *ngIf="showCloseButton" [disabled]="disabled">
+        <it-icon [name]="iconClose"></it-icon>
+        <span class="visually-hidden">Elimina {{ label }}</span>
+    </button>
+</div>

@@ -47,6 +47,7 @@ import {
 import { HeaderComponent } from '../components/navigation/header/header.component';
 import { IconComponent } from '../components/utils/icon/icon.component';
 import { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';
+import { ChipComponent } from '../components/core/chip/chip.component';
 
 
 /**
@@ -61,6 +62,7 @@ const core = [
   CardComponent,
   CarouselComponent,
   CarouselItemComponent,
+  ChipComponent,
   CollapseComponent,
   DropdownComponent,
   DropdownItemComponent,
