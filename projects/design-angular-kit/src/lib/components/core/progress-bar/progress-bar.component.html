@@ -4,9 +4,9 @@
   </div>
   <div class="progress"
        [class.progress-color]="!!color"
-       [class.progress-indeterminate]="indeterminate === true || indeterminate === 'true'">
+       [class.progress-indeterminate]="isIndeterminate">
 
-    <div *ngIf="indeterminate === true || indeterminate === 'true'; else determinate" class="progress-bar{{bgColor}}" role="progressbar"></div>
+    <div *ngIf="isIndeterminate; else determinate" class="progress-bar{{bgColor}}" role="progressbar"></div>
     <ng-template #determinate>
       <div class="progress-bar{{bgColor}}" role="progressbar" [style.width.%]="value"
            [attr.aria-valuenow]="value" aria-valuemin="0" aria-valuemax="100"></div>

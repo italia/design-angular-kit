@@ -27,7 +27,7 @@ export type CalloutAppearance = 'default' | 'highlight' | 'more';
 
 export type ElementPlacement = 'top' | 'bottom' | 'left' | 'right';
 
-export type ProgressBarColor = 'success' | 'warning' | 'danger' | 'info';
+export type ProgressBarColor = 'primary' | 'success' | 'warning' | 'danger' | 'info';
 
 export type BadgeColor = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
 

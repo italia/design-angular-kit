@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ProgressBarColor } from '../../../interfaces/core';
-import { BooleanInput } from '../../../utils/boolean-input';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-progress-bar[value]',
   templateUrl: './progress-bar.component.html',
-  styleUrls: ['./progress-bar.component.scss']
+  styleUrls: ['./progress-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgressBarComponent {
 
@@ -38,5 +39,9 @@ export class ProgressBarComponent {
     }
 
     return ` bg-${this.color}`;
+  }
+
+  get isIndeterminate(): boolean {
+    return isTrueBooleanInput(this.indeterminate);
   }
 }
