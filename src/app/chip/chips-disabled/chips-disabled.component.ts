@@ -7,7 +7,15 @@ import { IconName } from 'projects/design-angular-kit/src/public_api';
 })
 export class ChipsDisabledComponent {
 
+  el = {
+    first: true
+  }
+
   iconGithub: IconName = 'github';
   size: '' | 'lg' = 'lg';
+
+  close (value: string): void {
+    this.el[value] = false;
+  }
 
 }

@@ -4,7 +4,7 @@
         <img [src]="avatar" [alt]="altAvatar">
     </div>
     <span class="chip-label">{{ label }}</span>
-    <button *ngIf="showCloseButton" [disabled]="disabled">
+    <button *ngIf="showCloseButton" (click)="clickToClose()" [disabled]="disabled">
         <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-close" xlink:href="/bootstrap-italia/dist/svg/sprites.svg#it-close"></use></svg>
         <span class="visually-hidden">Elimina {{ label }}</span>
     </button>

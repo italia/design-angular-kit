@@ -72,4 +72,8 @@ export class ChipComponent {
   @Output() close = new EventEmitter();
 
   iconClose: IconName = 'close';
+
+  clickToClose(): void {
+    this.close.emit();
+  }
 }
