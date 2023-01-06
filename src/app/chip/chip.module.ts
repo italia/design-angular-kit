@@ -7,6 +7,9 @@ import { ChipIndexComponent } from './chip-index/chip-index.component';
 import { ChipRoutingModule } from './chip-routing.module';
 import { ChipsExamplesComponent } from './chips-examples/chips-examples.component';
 import { ChipsColorsComponent } from './chips-colors/chips-colors.component';
+import { ChipsDisabledComponent } from './chips-disabled/chips-disabled.component';
+import { ChipsGroupComponent } from './chips-group/chips-group.component';
+import { ChipsExampleComponent } from './chips-example/chips-example.component';
 
 @NgModule({
   imports: [
@@ -18,7 +21,10 @@ import { ChipsColorsComponent } from './chips-colors/chips-colors.component';
   declarations: [
     ChipIndexComponent,
     ChipsExamplesComponent,
-    ChipsColorsComponent
+    ChipsColorsComponent,
+    ChipsDisabledComponent,
+    ChipsGroupComponent,
+    ChipsExampleComponent
   ]
 })
 export class ChipModule { }

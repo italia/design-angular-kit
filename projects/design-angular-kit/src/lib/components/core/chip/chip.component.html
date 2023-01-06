@@ -1,8 +1,11 @@
-<div class="chip" [ngClass]="[!showCloseButton ? 'chip-simple' : 'alert', size === 'lg' ? 'chip-lg': '', color ? 'chip-' + color : '', disabled ? 'chip-disabled' : '']">
-    <ng-content select="[icon]"></ng-content>
+<div class="chip" [ngClass]="[!showCloseButton ? 'chip-simple': 'alert', size === 'lg' ? 'chip-lg': '', color ? 'chip-' + color : '', disabled ? 'chip-disabled' : '']">
+    <svg *ngIf="icon" class="icon icon-xs"><use [attr.href]="'/bootstrap-italia/dist/svg/sprites.svg#it-' + icon" [attr.xlink:href]="'/bootstrap-italia/dist/svg/sprites.svg#it-' + icon"></use></svg>
+    <div *ngIf="avatar" class="avatar size-xs">
+        <img [src]="avatar" [alt]="altAvatar">
+    </div>
     <span class="chip-label">{{ label }}</span>
     <button *ngIf="showCloseButton" [disabled]="disabled">
-        <it-icon [name]="iconClose"></it-icon>
+        <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-close" xlink:href="/bootstrap-italia/dist/svg/sprites.svg#it-close"></use></svg>
         <span class="visually-hidden">Elimina {{ label }}</span>
     </button>
 </div>

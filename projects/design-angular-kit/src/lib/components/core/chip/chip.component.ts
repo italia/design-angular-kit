@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconName } from '../../../interfaces/icon';
 
 export type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
@@ -44,6 +44,32 @@ export class ChipComponent {
   @Input() set disabled (value: boolean) { this._disabled = value; }
   get disabled (): boolean { return this._disabled; }
   private _disabled: boolean  = undefined;
+
+  /**
+   * Indica il nome dell'icona, se valorizzata viene mostrata
+  */
+  @Input() set icon (value: IconName | undefined) { this._icon = value; }
+  get icon (): IconName | undefined { return this._icon; }
+  private _icon: IconName | undefined  = undefined;
+
+  /**
+   * Indica l'url dell'avatar, se valorizzata viene mostrata
+  */
+  @Input() set avatar (value: string | undefined) { this._avatar = value; }
+  get avatar (): string | undefined { return this._avatar; }
+  private _avatar: string | undefined  = undefined;
+
+  /**
+   * Indica il valore da aggiungere al parametro alt, di default ''
+  */
+  @Input() set altAvatar (value: string) { this._altAvatar = value; }
+  get altAvatar (): string { return this._altAvatar; }
+  private _altAvatar: string  = '';
+
+  /**
+   * Evento emesso al click sul bottone di chiusura
+  */
+  @Output() close = new EventEmitter();
 
   iconClose: IconName = 'close';
 }
