@@ -1,8 +1,8 @@
-<a href="#" *ngIf="buttonStyle === 'link'" (click)="goBack()">
+<a href="#" class="go-back" *ngIf="buttonStyle === 'link'" (click)="goBack()">
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </a>
 
-<button *ngIf="buttonStyle === 'button'"
+<button class="go-back" *ngIf="buttonStyle === 'button'"
         itButton="primary"
         (click)="goBack()">
 
