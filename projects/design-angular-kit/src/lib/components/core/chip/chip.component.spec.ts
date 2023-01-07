@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ChipComponent } from './chip.component';
 
@@ -10,7 +11,8 @@ describe('ChipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChipComponent ]
+      declarations: [ ChipComponent ],
+      imports: [TranslateModule.forRoot()]
     })
     .overrideComponent(ChipComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }
