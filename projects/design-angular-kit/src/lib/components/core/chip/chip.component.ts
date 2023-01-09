@@ -43,7 +43,7 @@ export class ChipComponent {
   */
   @Input() set disabled (value: boolean) { this._disabled = value; }
   get disabled (): boolean { return this._disabled; }
-  private _disabled: boolean  = undefined;
+  private _disabled: boolean  = false;
 
   /**
    * Indica il nome dell'icona, se valorizzata viene mostrata
