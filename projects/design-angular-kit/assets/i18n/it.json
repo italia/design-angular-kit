@@ -43,7 +43,8 @@
       "next-page": "Pagina successiva",
       "progress": "Progresso",
       "loading": "Caricamento",
-      "active": "Attivo"
+      "active": "Attivo",
+      "remove": "Elimina"
     },
     "form": {
       "increase-value": "Aumenta valore",
