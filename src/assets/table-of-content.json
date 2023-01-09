@@ -69,6 +69,10 @@
         {
           "label": "Chip",
           "link": "/componenti/chip"
+        },
+        {
+          "label": "Forward",
+          "link": "/componenti/forward"
         }
       ]
     }

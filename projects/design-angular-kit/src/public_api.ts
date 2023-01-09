@@ -19,6 +19,7 @@ export * from './lib/components/core/chip/chip.component';
 export * from './lib/components/core/collapse/collapse.component';
 export * from './lib/components/core/dropdown/dropdown/dropdown.component';
 export * from './lib/components/core/dropdown/dropdown-item/dropdown-item.component';
+export * from './lib/components/core/forward/forward.directive';
 export * from './lib/components/core/link/link.component';
 export * from './lib/components/core/list/list/list.component';
 export * from './lib/components/core/list/list-item/list-item.component';
