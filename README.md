@@ -235,9 +235,9 @@ npm run test
 
 Un grazie speciale a chi ha reso possibile lo sviluppo di questa nuova versione!
 
-[![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![NetService](https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg)](https://www.net-serv.it/) |
---- | --- | --- |
-Cristian Borelli | Antonino Bonanno | NetService |
+[![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![NetService](https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg)](https://www.net-serv.it/) | [![Alessio Napolitano](https://github.com/alenap93.png?size=100)](https://github.com/alenap93) |
+--- | --- | --- | --- |
+Cristian Borelli | Antonino Bonanno | NetService | Alessio Napolitano |
 
 ---
 
