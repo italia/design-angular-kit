@@ -23,7 +23,7 @@ export class ForwardDirective {
     event.preventDefault();
     if (this.itForward) {
       if (typeof this.itForward === 'string') {
-        this.document.querySelector(this.itForward)?.scrollIntoView({
+        this.document?.querySelector(this.itForward)?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: "nearest"
