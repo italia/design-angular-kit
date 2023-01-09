@@ -175,6 +175,19 @@ Aggiungi la localizzazione personalizzata nella tua cartella `assets/bootstrap-i
 
 Se utilizzi già i file di localizzazione nella tua app, puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le chiavi del json della libreria.
 
+### Supporto animazione
+
+La libreria usa BrowserAnimationsModule per gestire alcune animazioni.
+
+Per abilitarle, bisogna aggiungere al tuo `app.module.ts` il modulo :
+
+```typescript
+imports: [
+  ...
+  BrowserAnimationsModule
+]
+```
+
 ## Segnalazione bug e richieste di aiuto
 
 Vuoi segnalare un bug o fare una richiesta?

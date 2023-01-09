@@ -73,6 +73,10 @@
         {
           "label": "Forward",
           "link": "/componenti/forward"
+        },
+        {
+          "label": "Dimmer",
+          "link": "/componenti/dimmer"
         }
       ]
     }

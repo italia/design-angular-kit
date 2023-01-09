@@ -49,6 +49,9 @@ import { IconComponent } from '../components/utils/icon/icon.component';
 import { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';
 import { ChipComponent } from '../components/core/chip/chip.component';
 import { ForwardDirective } from '../components/core/forward/forward.directive';
+import { DimmerComponent } from '../components/core/dimmer/dimmer.component';
+import { DimmerButtonsComponent } from '../components/core/dimmer/dimmer-buttons/dimmer-buttons.component';
+import { DimmerIconComponent } from '../components/core/dimmer/dimmer-icon/dimmer-icon.component';
 
 
 /**
@@ -65,6 +68,9 @@ const core = [
   CarouselItemComponent,
   ChipComponent,
   CollapseComponent,
+  DimmerButtonsComponent,
+  DimmerComponent,
+  DimmerIconComponent,
   DropdownComponent,
   DropdownItemComponent,
   ForwardDirective,
