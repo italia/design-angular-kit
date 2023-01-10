@@ -27,6 +27,7 @@ const routes: Routes = [
     { path: 'chip', loadChildren: () => import('src/app/chip/chip.module').then(m => m.ChipModule) },
     { path: 'forward', loadChildren: () => import('src/app/forward/forward.module').then(m => m.ForwardModule) },
     { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
+    { path: 'callout', loadChildren: () => import('src/app/callout/callout.module').then(m => m.CalloutModule) },
   ]}
 ];
 

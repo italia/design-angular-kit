@@ -12,6 +12,8 @@ export * from './lib/components/core/alert/alert.component';
 export * from './lib/components/core/badge/badge.directive';
 export * from './lib/components/core/button/button.directive';
 export * from './lib/components/core/callout/callout.component';
+export * from './lib/components/core/callout/callout-header/callout-header.component';
+export * from './lib/components/core/callout/callout-big-text/callout-big-text.component';
 export * from './lib/components/core/card/card.component';
 export * from './lib/components/core/carousel/carousel/carousel.component';
 export * from './lib/components/core/carousel/carousel-item/carousel-item.component';
