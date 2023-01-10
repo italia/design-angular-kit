@@ -7,9 +7,11 @@ import Documentation from '../../../assets/documentation.json';
 })
 export class DimmerIndexComponent {
 
-  component: any;
+  component?: any;
+  componentButtons?: any;
 
   constructor() {
     this.component = (<any>Documentation).components.find(component => component.name === 'DimmerComponent');
+    this.componentButtons = (<any>Documentation).components.find(component => component.name === 'DimmerButtonsComponent');
   }
 }
