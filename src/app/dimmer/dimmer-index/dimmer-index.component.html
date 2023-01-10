@@ -7,6 +7,17 @@
     <it-dimmer-examples></it-dimmer-examples>
   </it-tab-item>
   <it-tab-item id="api" label="API" class="pt-3">
-    <it-api-parameters [component]="component"></it-api-parameters>
+    <div class="row">
+      <div class="col">
+        <h2>{{ component?.name }}</h2>
+        <it-api-parameters [component]="component"></it-api-parameters>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>{{ componentButtons?.name }}</h2>
+        <it-api-parameters [component]="componentButtons"></it-api-parameters>
+      </div>
+    </div>
   </it-tab-item>
 </it-tab-container>
