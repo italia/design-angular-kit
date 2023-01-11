@@ -1,30 +1,17 @@
-
 <h3>Interazione con Form Input dotato di validazione Template Driven</h3>
 
 <div class="bd-example">
   <form #myForm="ngForm">
-    <it-input [(ngModel)]="value" 
-              name="myInput" 
-              required 
-              minlength="3" 
-              maxlength="10" 
-              pattern="[ab]+">
+    <it-input id="myInput-ng-validation" [(ngModel)]="value" name="myInput"
+              minlength="3"
+              maxlength="10"
+              pattern="[ab]+"
+              required>
+      <!-- Default errors-->
     </it-input>
 
-    <p id="tdv-required" class="error"
-        *ngIf="myForm.controls.myInput?.errors?.required">Il campo è obbligatorio</p>
+    <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
 
-    <p id="tdv-minlength" class="error"
-        *ngIf="myForm.controls.myInput?.errors?.minlength">deve essere almeno di lunghezza 3</p>
-
-    <p id="tdv-maxlength" class="error"
-        *ngIf="myForm.controls.myInput?.errors?.maxlength">deve essere massimo di lunghezza 10</p>
-
-    <p id="tdv-pattern" class="error"
-        *ngIf="myForm.controls.myInput?.errors?.pattern">non corrisponde al pattern [ab]+</p>
-
-    <button itButton [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
-    
     <div *ngIf="savedValue">Salvato `{{savedValue}}`</div>
   </form>
 </div>

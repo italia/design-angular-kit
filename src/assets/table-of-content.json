@@ -62,6 +62,22 @@
         {
           "label": "Form Input",
           "link": "/componenti/form-input"
+        },
+        {
+          "label": "Back Button",
+          "link": "/componenti/back-button"
+        },
+        {
+          "label": "Chip",
+          "link": "/componenti/chip"
+        },
+        {
+          "label": "Forward",
+          "link": "/componenti/forward"
+        },
+        {
+          "label": "Dimmer",
+          "link": "/componenti/dimmer"
         }
       ]
     }

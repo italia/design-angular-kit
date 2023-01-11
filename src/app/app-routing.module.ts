@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: 'componenti', component: RouterDispatcherComponent, children: [
     { path: '', redirectTo: 'badge', pathMatch: 'full' },
     { path: 'avatar', loadChildren: () => import('src/app/avatar/avatar.module').then(m => m.AvatarModule) },
-
     { path: 'badge', loadChildren: () => import('src/app/badge/badge.module').then(m => m.BadgeModule) },
     { path: 'checkbox', loadChildren: () => import('src/app/checkbox/checkbox.module').then(m => m.CheckboxModule) },
     { path: 'progress-bar', loadChildren: () => import('src/app/progress-bar/progress-bar.module').then(m => m.ProgressBarModule) },
@@ -25,6 +24,10 @@ const routes: Routes = [
     { path: 'collapse', loadChildren: () => import('src/app/collapse/collapse.module').then(m => m.CollapseModule) },
     { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
     { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
+    { path: 'back-button', loadChildren: () => import('src/app/back-button/back-button.module').then(m => m.BackButtonModule) },
+    { path: 'chip', loadChildren: () => import('src/app/chip/chip.module').then(m => m.ChipModule) },
+    { path: 'forward', loadChildren: () => import('src/app/forward/forward.module').then(m => m.ForwardModule) },
+    { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
   ]}
 ];
 

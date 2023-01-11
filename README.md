@@ -22,8 +22,8 @@
 </p>
 
 <p align="center">
-  <a href="https://developersitalia.slack.com/messages/C7VPAUVB3/">
-    <img src="https://img.shields.io/badge/Slack%20channel-%23design-blue.svg" alt="Join the #design channel" />
+  <a href="https://developersitalia.slack.com/messages/C04H3C19D52/">
+    <img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" />
   </a>
   <a href="https://slack.developers.italia.it/">
     <img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" />
@@ -41,7 +41,7 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 
 *   Con il proprio codice, prendendo in carico una issue tra quelle aperte e non già assegnate tra [le issue](https://github.com/italia/design-angular-kit/issues) di Angular Kit (è sufficiente anche un commento sulla issue per notificare la volontà di presa in carico).
 *   Attraverso la segnalazione di bug o miglioramenti al [repository ufficiale](https://github.com/italia/design-angular-kit/) di Angular Kit.
-*   Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C7VPAUVB3/) di Slack.
+*   Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C04H3C19D52/) di Slack.
 
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
@@ -58,16 +58,26 @@ Design Angular Kit è disponibile su NPM, per installarlo su una applicazione es
 npm install design-angular-kit@unstable --save
 ```
 
-#### Importazione stili bootstrap-italia
+Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
+
+```typescript
+imports: [
+    ...
+    TranslateModule.forRoot(),
+    DesignAngularKitModule
+]
+```
+
+### Importazione stili bootstrap-italia
 Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS come mostrato nell'esempio qui sotto.
 
 ```scss
 // Importazione libreria SCSS di bootstrap-italia
-@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
-
+@import "bootstrap-italia/src/scss/bootstrap-italia";
 ```
 
-#### Come personalizzare e sovrascrivere le variabili di default della libreria (es. colori, font-family, misure, ecc.)
+<details>
+  <summary>Come personalizzare e sovrascrivere le variabili di default della libreria (es. colori, font-family, misure, ecc.)</summary>
 
 Bootstrap Italia eredita ed estende tutte le variabili di default di Bootstrap, sovrascrivendo 
 alcuni valori in fase di compilazione e impostandone di nuovi all’occorenza. Un esempio fra tutti è 
@@ -99,7 +109,83 @@ $font-family-sans-serif: 'Custom Font', Arial, Helvetica, sans-serif;
 $font-family-monospace: 'Custom Font', 'Courier New', Courier, monospace;
 
 // Importazione libreria SCSS di bootstrap-italia
-@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
+@import 'bootstrap-italia/src/scss/bootstrap-italia';
+```
+</details>
+
+### Supporto icone e assets
+
+Per aggiungere il supporto icone/assets, modifica il tuo `angular.json` aggiungendo:
+
+```
+ "assets": [
+    ...
+    {
+      "glob": "**/*",
+      "input": "./node_modules/bootstrap-italia/",
+      "output": "/bootstrap-italia/"
+    }
+  ]
+ ```
+
+### Supporto i18n (localizzazione)
+
+La libreria usa [ngx-translate](https://github.com/ngx-translate/core) per aggiungere le localizazioni i18n.
+
+Modifica il tuo `angular.json` aggiungendo:
+
+```
+ "assets": [
+    ...
+    {
+      "glob": "**/*",
+      "input": "./node_modules/design-angular-kit/assets/i18n",
+      "output": "/bootstrap-italia/i18n/"
+    }
+  ]
+ ```
+
+Se utilizzi già i file di localizzazione nella tua app, puoi utilizzare la libreria [ngx-translate-multi-http-loader](https://www.npmjs.com/package/ngx-translate-multi-http-loader)
+per caricare i file di localizzazione dell'app e di `design-angular-kit`
+
+Modifica nel tuo `app.module.ts`:
+
+```typescript
+imports: [
+  ...
+  HttpClientModule,
+  TranslateModule.forRoot({
+    loader: {
+      provide: TranslateLoader,
+      useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
+        './assets/i18n/', // Your i18n location
+        './bootstrap-italia/i18n/'
+      ]),
+      deps: [HttpBackend],
+      defaultLanguage: 'it'
+    }
+  }),
+  DesignAngularKitModule
+]
+```
+
+#### Usa la localizzazione personalizzata
+
+Aggiungi la localizzazione personalizzata nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
+
+Se utilizzi già i file di localizzazione nella tua app, puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le chiavi del json della libreria.
+
+### Supporto animazione
+
+La libreria usa BrowserAnimationsModule per gestire alcune animazioni.
+
+Per abilitarle, bisogna aggiungere al tuo `app.module.ts` il modulo :
+
+```typescript
+imports: [
+  ...
+  BrowserAnimationsModule
+]
 ```
 
 ## Segnalazione bug e richieste di aiuto
@@ -144,3 +230,19 @@ npm run start
 ```
 npm run test
 ```
+
+# Contributor della libreria
+
+Un grazie speciale a chi ha reso possibile lo sviluppo di questa nuova versione!
+
+[![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![NetService](https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg)](https://www.net-serv.it/) | [![Alessio Napolitano](https://github.com/alenap93.png?size=100)](https://github.com/alenap93) |
+--- | --- | --- | --- |
+Cristian Borelli | Antonino Bonanno | NetService | Alessio Napolitano |
+
+---
+
+Tutti i contributor (*made with [contributors-img](https://contrib.rocks)*)
+
+<a href = "https://github.com/italia/design-angular-kit/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=italia/design-angular-kit"/>
+</a>

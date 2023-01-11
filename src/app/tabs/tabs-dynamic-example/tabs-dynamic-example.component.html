@@ -1,34 +1,32 @@
-
 <h3>Tabs Dinamiche</h3>
 <div class="bd-example">
-  <div class="form-group">
-    <span> indice del tab selezionato: </span>
-    <input type="number" [formControl]="selected">
-  </div>
-  <button itButton="primary" (click)="addTab(selectAfterAdding)">
+
+  <it-input id="number-input" type="number" [(ngModel)]="selectedIndex" label="indice del tab selezionato:"></it-input>
+
+  <button itButton="primary" (click)="addTab()">
     Aggiungi un nuovo tab
   </button>
-  <it-checkbox [(ngModel)]="selectAfterAdding" label="Seleziona il tab dopo averlo aggiunto"></it-checkbox>
+  <it-checkbox id="checkbox-tab" [(ngModel)]="selectAfterAdding"
+               label="Seleziona il tab dopo averlo aggiunto"></it-checkbox>
 
 
-<div class="mt-5">
-  <h4>Risultato tabs</h4>
-  <it-tab-group [selectedIndex]="selected.value"
-                (selectedIndexChange)="selected.setValue($event)"
-                class="dynamic-tab-group">
-    <it-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
-      contenuto del {{tab}} tab
+  <div class="mt-5">
+    <h4>Risultato tabs</h4>
+    <it-tab-container>
+      <it-tab-item [id]="'tab-'+index" *ngFor="let tab of tabs; let index = index" [label]="tab"
+                   [active]="selectedIndex === index">
+        contenuto del {{tab}} tab
 
-      <button mat-raised-button
-              itButton="primary"
-              [disabled]="tabs.length === 1"
-              (click)="removeTab(index)">
-        Cancella tab
-      </button>
-    </it-tab>
-  </it-tab-group>
-</div>
-
+        <div class="container-fluid mt-3">
+          <button itButton="primary"
+                  [disabled]="tabs.length === 1"
+                  (click)="removeTab(index)">
+            Cancella tab
+          </button>
+        </div>
+      </it-tab-item>
+    </it-tab-container>
+  </div>
 
 
 </div>

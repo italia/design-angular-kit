@@ -1,41 +1,38 @@
-
 <h3>Input con icona o pulsanti</h3>
 <div class="bd-example">
   <div class="row">
-    
-    <div class="col-5">
 
+    <div class="col-5">
       <!-- Input con icona a sinistra tramite attributo -->
-    <it-input id="interactive-input-icon-0" 
-              name="interactive-input-icon-example-0" 
-              [label]="label" 
-              [icon] = "icon">
-    </it-input>
+      <it-input id="interactive-input-icon-0" [label]="label">
+        <it-icon *ngIf="icon" [name]="icon" size="sm" color="primary" prependText></it-icon>
+      </it-input>
 
       <!-- Input con icona a sinistra tramite direttiva itTextSuffix -->
-    <it-input id="interactive-input-icon-1" name="interactive-input-icon-example-1" [label]="label">
-      <it-icon *ngIf = "icon" size="icon-sm" [icon]="icon" itTextSuffix></it-icon>
-    </it-input>
+      <it-input id="interactive-input-icon-1" [label]="label">
+        <it-icon *ngIf="icon" [name]="icon" size="sm" color="primary" appendText></it-icon>
+      </it-input>
 
       <!-- Input con icona a sinistra tramite direttiva itTextSuffix e bottone a destra tramite direttiva itSuffix-->
-    <it-input id="interactive-input-icon-2" name="interactive-input-icon-example-2" [label]="label">
-      <it-icon *ngIf = "icon" size="icon-sm" [icon]="icon" itTextPrefix></it-icon>
-      <button class = "btn btn-primary" itSuffix>Invia</button>
-    </it-input>
+      <it-input id="interactive-input-icon-2" [label]="label">
+        <it-icon *ngIf="icon" [name]="icon" size="sm" color="primary" prependText></it-icon>
+        <button itButton="primary" append>Invia</button>
+      </it-input>
     </div>
 
 
     <div class="form-check col-auto offset-1">
       <h5>Icona</h5>
-      <it-radio-group [(ngModel)]="icon">
-        <it-radio-button id="radio-none" name="none" [value]="undefined" label="Nessuna"></it-radio-button>
-        <it-radio-button id="radio-pencil" name="it-pencil" value="it-pencil" label="it-pencil"></it-radio-button>
-        <it-radio-button id="radio-link" name="it-link" value="it-link" label="it-link"></it-radio-button>
-        <it-radio-button id="radio-star" name="it-star-outline" value="it-star-outline" label="it-star-outline"></it-radio-button>
-      </it-radio-group>
-  </div>
+      <it-radio-button id="radio-none" name="none" [(ngModel)]="icon" [value]="undefined"
+                       label="Nessuna"></it-radio-button>
+      <it-radio-button id="radio-pencil" name="it-pencil" [(ngModel)]="icon" value="pencil"
+                       label="it-pencil"></it-radio-button>
+      <it-radio-button id="radio-link" name="it-link" [(ngModel)]="icon" value="link"
+                       label="it-link"></it-radio-button>
+      <it-radio-button id="radio-star" name="it-star-outline" [(ngModel)]="icon" value="star-outline"
+                       label="it-star-outline"></it-radio-button>
+    </div>
   </div>
 
 
 </div>
-    

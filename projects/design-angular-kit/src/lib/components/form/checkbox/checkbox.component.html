@@ -1,0 +1,48 @@
+<ng-container>
+  <div class="form-check"
+       [class.form-check-group]="isGroup"
+       [class.form-check-inline]="inline">
+
+    <div *ngIf="toggle; else defaultStyle" class="toggles">
+      <label [for]="id">
+        {{label}}
+        <input [id]="id"
+               type="checkbox"
+               [formControl]="control"
+               [attr.aria-describedby]="id + '-help'">
+        <span class="lever"></span>
+      </label>
+    </div>
+
+    <ng-template #defaultStyle>
+      <input [id]="id"
+             type="checkbox"
+             class="form-check-input"
+             [class.is-invalid]="isInvalid"
+             [class.is-valid]="isValid"
+             [class.semi-checked]="isIndeterminate"
+             [formControl]="control"
+             [attr.aria-describedby]="id + '-help'">
+      <label class="form-check-label" [for]="id">{{label}}</label>
+    </ng-template>
+
+    <small *ngIf="isGroup" [id]="id + '-help'" class="form-text">
+      <ng-content></ng-content>
+    </small>
+
+    <div *ngIf="isInvalid && isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+      <ng-container *ngTemplateOutlet="error"></ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="isInvalid && !isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+    <ng-container *ngTemplateOutlet="error"></ng-container>
+  </div>
+</ng-container>
+
+<ng-template #error>
+  <div #customError>
+    <ng-content select="[error]"></ng-content>
+  </div>
+  <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
+</ng-template>

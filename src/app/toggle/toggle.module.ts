@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
-
 import { SharedModule } from '../shared/shared.module';
 
 import { ToggleRoutingModule } from './toggle-routing.module';
@@ -15,7 +13,6 @@ import { ToggleIndexComponent } from './toggle-index/toggle-index.component';
   imports: [
     CommonModule,
     FormsModule,
-    DesignAngularKitModule,
     SharedModule,
     ToggleRoutingModule
   ],

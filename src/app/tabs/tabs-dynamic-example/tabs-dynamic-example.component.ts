@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'it-tabs-dynamic-example',
@@ -9,14 +8,14 @@ import { UntypedFormControl } from '@angular/forms';
 export class TabsDynamicExampleComponent {
 
   tabs = ['Primo', 'Secondo', 'Terzo'];
-  selected = new UntypedFormControl(0);
+  selectedIndex = 0;
   selectAfterAdding = false;
 
-  addTab(selectAfterAdding: boolean) {
+  addTab() {
     this.tabs.push('Nuovo');
 
-    if (selectAfterAdding) {
-      this.selected.setValue(this.tabs.length - 1);
+    if (this.selectAfterAdding) {
+      this.selectedIndex = this.tabs.length - 1;
     }
   }
 

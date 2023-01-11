@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
-
 import { SharedModule } from '../shared/shared.module';
 
 import { CheckboxRoutingModule } from './checkbox-routing.module';
@@ -17,11 +15,10 @@ import { CheckboxExampleGroupComponent } from './checkbox-example-group/checkbox
   imports: [
     CommonModule,
     FormsModule,
-    DesignAngularKitModule,
     SharedModule,
     CheckboxRoutingModule
   ],
-  declarations: [ CheckboxExampleComponent, CheckboxExamplesComponent, CheckboxIndexComponent, 
+  declarations: [ CheckboxExampleComponent, CheckboxExamplesComponent, CheckboxIndexComponent,
                   CheckboxExampleInlineComponent, CheckboxExampleGroupComponent]
 })
 export class CheckboxModule { }

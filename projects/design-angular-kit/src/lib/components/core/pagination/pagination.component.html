@@ -1,0 +1,42 @@
+<nav class="pagination-wrapper"
+     [class.justify-content-center]="alignment==='center'"
+     [class.justify-content-end]="alignment==='end'">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage < 1">
+      <a class="page-link" (click)="pageChange(currentPage)">
+        <it-icon name="chevron-left" color="primary"></it-icon>
+        <span class="visually-hidden">{{'it.core.previous-page'|translate}}</span>
+      </a>
+    </li>
+
+    <ng-container *ngIf="pageNumbers > 5 && currentPage > 2">
+      <li class="page-item"><a class="page-link" (click)="pageChange(1)">1</a></li>
+      <li class="page-item" *ngIf="currentPage > 3">
+        <span class="page-link">...</span>
+      </li>
+    </ng-container>
+
+    <li class="page-item" *ngFor="let page of pages">
+      <a class="page-link" aria-current="page" *ngIf="page === (currentPage + 1); else inactivePage">
+        <span class="d-inline-block d-sm-none">{{'it.core.page'|translate}}</span> {{page}}
+      </a>
+      <ng-template #inactivePage>
+        <a class="page-link" (click)="pageChange(page)">{{page}}</a>
+      </ng-template>
+    </li>
+
+    <ng-container *ngIf="pageNumbers > 5 && pageNumbers - currentPage > 3">
+      <li class="page-item">
+        <span class="page-link">...</span>
+      </li>
+      <li class="page-item"><a class="page-link" (click)="pageChange(pageNumbers)">{{pageNumbers}}</a></li>
+    </ng-container>
+
+    <li class="page-item" [class.disabled]="currentPage >= pageNumbers - 1">
+      <a class="page-link" (click)="pageChange(currentPage + 2)">
+        <span class="visually-hidden">{{'it.core.next-page'|translate}}</span>
+        <it-icon name="chevron-right" color="primary"></it-icon>
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -1,31 +1,25 @@
 <h3>Esempio direttiva Collapse</h3>
 <div class="bd-example">
-  <div class="example-section">      
-    <button itButton="primary" 
-            (click)="mioCollapse.toggle()"
-            [attr.aria-expanded]="!mioCollapse.isCollapsed" 
-            aria-controls="collapseExample">
+  <div class="example-section">
+
+    <button itButton="primary" (click)="itCollapse.toggle()">
       Apri/chiudi contenuto
     </button>
-    <div  #mioCollapse="itCollapse" 
-          itCollapse 
-          id="collapseExample" 
-          (shown)="logShown()" (hidden)="logHidden()">
-      <div class="card card-body mt-3">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 
-        Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
+
+    <it-collapse id="it-collapse" (onShow)="logShown()" (onHidden)="logHidden()" #itCollapse="itCollapse">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+      Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    </it-collapse>
   </div>
 
   <div class="mt-4">
     <div>
       Ultima emissione dell'evento shown = {{shownTime}}
     </div>
-  
+
     <div>
       Ultima emissione dell'evento hidden = {{hiddenTime}}
     </div>
   </div>
-  
+
 </div>

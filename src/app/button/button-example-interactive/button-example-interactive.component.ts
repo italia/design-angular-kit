@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IconColorEnum } from 'projects/design-angular-kit/src/lib/enums/icons.enum';
+import { ButtonColor, ButtonSize } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
+
 
 @Component({
   selector: 'it-button-example-interactive',
@@ -8,19 +9,29 @@ import { IconColorEnum } from 'projects/design-angular-kit/src/lib/enums/icons.e
 })
 export class ButtonExampleInteractiveComponent {
 
-  block = false;
-  outline = false;
   disabled = false;
-  selectedColor = '';
-  selectedSize = '';
+
+  outline = false;
+
+  block = false;
+
+  selectedColor?: 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'light'
+    | 'dark' = 'primary';
+  selectedSize?: ButtonSize;
   count = 0;
 
-
-  icon: string = 'it-user';
-  iconColor: IconColorEnum = IconColorEnum.primary;
-  iconPosition: 'start' | 'end' = 'start';
-  iconRounded: boolean = true;
-  iconRoundedColor: IconColorEnum = IconColorEnum.white;
+  get buttonColor(): ButtonColor | undefined {
+    if (!this.selectedColor) {
+      return undefined;
+    }
+    return this.outline ? `outline-${this.selectedColor}` : this.selectedColor;
+  }
 
   increaseCount() {
     this.count++;

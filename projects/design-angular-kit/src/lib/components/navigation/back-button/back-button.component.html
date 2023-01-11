@@ -1,0 +1,24 @@
+<a *ngIf="buttonStyle === 'link'" class="go-back" data-bs-toggle="historyback" (click)="goBack()" [routerLink]="null">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</a>
+
+<button *ngIf="buttonStyle === 'button'"
+        itButton="primary"
+        class="go-back"
+        data-bs-toggle="historyback"
+        (click)="goBack()">
+
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
+
+<ng-template #content>
+  <it-icon *ngIf="isShowIcon"
+           size="sm"
+           [name]="direction === 'left' ? 'arrow-left' : 'arrow-up'"
+           [color]="buttonStyle === 'link' ? 'primary' : 'white'"
+           [class.me-2]="isShowText"></it-icon>
+
+  <span [class.visually-hidden]="!isShowText">
+    {{(direction === 'left' ? 'it.navigation.go-back' : 'it.navigation.upper-level') | translate}}
+  </span>
+</ng-template>

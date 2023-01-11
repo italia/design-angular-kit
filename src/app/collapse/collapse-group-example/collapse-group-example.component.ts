@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./collapse-group-example.component.scss']
 })
 export class CollapseGroupExampleComponent {
-  accordion = false;
+
 }

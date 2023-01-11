@@ -27,15 +27,29 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "./node_modules/bootstrap-italia",
-                "output": "bootstrap-italia"
+                "input": "./node_modules/bootstrap-italia/",
+                "output": "/bootstrap-italia/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./projects/design-angular-kit/assets/i18n",
+                "output": "/bootstrap-italia/i18n/"
               }
             ],
             "styles": [
+              {
+                "input": "node_modules/@splidejs/splide/dist/css/splide-core.min.css",
+                "inject" : false,
+                "bundleName": "theme-dark"
+              },
+              {
+                "input": "node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.css",
+                "inject" : false,
+                "bundleName": "theme-dark"
+              },
               "node_modules/highlight.js/styles/github.css",
               "src/styles.scss"
             ],
-            "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -153,5 +167,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

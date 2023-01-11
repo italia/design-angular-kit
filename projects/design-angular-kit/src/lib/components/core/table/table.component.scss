@@ -1,0 +1,7 @@
+caption:empty {
+  display: none;
+}
+
+caption:empty ~ thead {
+  border-top: none !important;
+}

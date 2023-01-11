@@ -1,14 +1,13 @@
 <h3>Configurazione toggle</h3>
 <div class="bd-example">
   <p class="example-section">
-    <it-toggle [(ngModel)]="checked" label="Spuntato"></it-toggle>
-    <it-toggle [(ngModel)]="disabled" label="Disabilitato"></it-toggle>
+    <it-checkbox id="toggle-spuntato" [(ngModel)]="checked" label="Spuntato" toggle="true"></it-checkbox>
+    <it-checkbox id="toggle-disabilitato" [(ngModel)]="disabled" label="Disabilitato" toggle="true"></it-checkbox>
   </p>
 
-
   <h4>Risultato</h4>
-
   <p class="example-section">
-      <it-toggle [(ngModel)]="checked" [label]="label" [disabled]="disabled"></it-toggle>
+    <it-checkbox id="toggle-example" [(ngModel)]="checked" [label]="label" [disabled]="disabled"
+                 toggle="true"></it-checkbox>
   </p>
 </div>

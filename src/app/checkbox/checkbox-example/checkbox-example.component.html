@@ -1,22 +1,21 @@
-
 <h3>Configurazione checkbox</h3>
 
 <div class="bd-example">
   <p class="example-section">
-    <it-checkbox [(ngModel)]="checked" label="Spuntato"></it-checkbox>
-    <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
-    <it-checkbox [(ngModel)]="indeterminate" label="Indeterminato"></it-checkbox>
+    <it-checkbox id="spuntato" [(ngModel)]="checked" label="Spuntato"></it-checkbox>
+    <it-checkbox id="disabilitato" [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
+    <it-checkbox id="indeterminato" [(ngModel)]="indeterminate" label="Indeterminato"></it-checkbox>
   </p>
-  
+
   <h4>Risultato</h4>
-  
+
   <p class="example-section">
-      <it-checkbox 
-          [(ngModel)]="checked" 
-          [label]="label" 
-          [disabled]="disabled" 
-          [(indeterminate)]= "indeterminate"
-          ></it-checkbox>
+      <it-checkbox
+          id="example"
+          [(ngModel)]="checked"
+          [label]="label"
+          [indeterminate]="indeterminate"
+          [disabled]="disabled"></it-checkbox>
   </p>
-  
+
 </div>
