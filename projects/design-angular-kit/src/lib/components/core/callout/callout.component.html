@@ -1,4 +1,12 @@
-<div class="callout" [ngClass]="color ?? ''" [class.callout-highlight]="appearance === 'highlight'"
+<div class="callout {{color}}" [class.callout-highlight]="appearance === 'highlight'"
   [class.callout-more]="appearance === 'more'">
+  <div class="callout-title" *ngIf="label">
+    <it-icon [name]="iconName"></it-icon>
+    <span *ngIf="hiddenLabel" class="visually-hidden">{{ hiddenLabel }}</span>
+    <span>{{ label }}</span>
+  </div>
+  <p class="callout-big-text">
+    <ng-content select="[bigText]"></ng-content>
+  </p>
   <ng-content></ng-content>
 </div>

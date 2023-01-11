@@ -8,7 +8,6 @@ import { CalloutColor, IconName } from 'projects/design-angular-kit/src/public_a
 export class CalloutNoteComponent {
 
   text = 'Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius.';
-  icon: IconName = 'info-circle';
   label = 'Note a riguardo';
   color: CalloutColor = 'note';
 

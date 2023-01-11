@@ -8,10 +8,8 @@ import Documentation from '../../../assets/documentation.json';
 export class CalloutIndexComponent {
 
   component?: any;
-  componentHeader?: any;
 
   constructor() {
     this.component = (<any>Documentation).components.find(component => component.name === 'CalloutComponent');
-    this.componentHeader = (<any>Documentation).components.find(component => component.name === 'CalloutHeaderComponent');
   }
 }

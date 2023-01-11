@@ -52,8 +52,6 @@ import { ForwardDirective } from '../components/core/forward/forward.directive';
 import { DimmerComponent } from '../components/core/dimmer/dimmer.component';
 import { DimmerButtonsComponent } from '../components/core/dimmer/dimmer-buttons/dimmer-buttons.component';
 import { DimmerIconComponent } from '../components/core/dimmer/dimmer-icon/dimmer-icon.component';
-import { CalloutBigTextComponent } from '../components/core/callout/callout-big-text/callout-big-text.component';
-import { CalloutHeaderComponent } from '../components/core/callout/callout-header/callout-header.component';
 
 
 /**
@@ -64,9 +62,7 @@ const core = [
   AlertComponent,
   BadgeDirective,
   ButtonDirective,
-  CalloutBigTextComponent,
   CalloutComponent,
-  CalloutHeaderComponent,
   CardComponent,
   CarouselComponent,
   CarouselItemComponent,
