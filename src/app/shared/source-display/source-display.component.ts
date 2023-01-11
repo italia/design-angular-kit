@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+let nextUniqueId = 0;
 @Component({
   selector: 'it-source-display',
   templateUrl: './source-display.component.html',
@@ -10,6 +11,8 @@ export class SourceDisplayComponent implements OnInit {
   @Input() html: string;
   @Input() typescript: string;
   @Input() scss: string;
+
+  uid = `id-${nextUniqueId++}-`;
 
   ngOnInit() {
     if (this.html) {
