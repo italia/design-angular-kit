@@ -77,7 +77,7 @@ fdescribe('CalloutComponent', () => {
 
   it('if i set a icon (zoom-in), that will be on DOM', () => {
     component.label = 'label';
-    component.iconName = 'zoom-in';
+    component.icon = 'zoom-in';
     fixture.detectChanges();
     const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
     expect(useElement).toBeTruthy();
