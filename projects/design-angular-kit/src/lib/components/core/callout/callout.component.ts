@@ -54,10 +54,13 @@ export class CalloutComponent {
   /**
    * Custom icon
    */
-  @Input() set iconName (value: IconName | undefined) { this._iconName = value; }
-  get iconName (): IconName | undefined {
-    if (this._iconName) {
-      return this._iconName;
+  @Input() set icon (value: IconName | undefined) { this._icon = value; }
+  get icon(): IconName | undefined { return this._icon;}
+  private _icon: IconName | undefined = undefined;
+
+  get iconName (): IconName {
+    if (this._icon) {
+      return this._icon;
     }
 
     if (this.appearance === 'more') {
@@ -77,6 +80,5 @@ export class CalloutComponent {
         return 'info-circle';
     }
   }
-  private _iconName: IconName | undefined = undefined;
 
 }
