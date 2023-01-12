@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-avatar-examples',
-  templateUrl: './avatar-examples.component.html',
-  styleUrls: ['./avatar-examples.component.scss']
+  templateUrl: './avatar-examples.component.html'
 })
-export class AvatarExamplesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class AvatarExamplesComponent {
 
 }
