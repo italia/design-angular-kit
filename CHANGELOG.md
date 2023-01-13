@@ -1,3 +1,28 @@
+# [1.0.0-2](https://github.com/italia/design-angular-kit/compare/v1.0.0-1...v1.0.0-2) (2023-01-13)
+
+
+### Bug Fixes
+
+* examples code indentation ([aab8dcf](https://github.com/italia/design-angular-kit/commit/aab8dcf198d886cc0f8f5f0f1f956b31b196ec54))
+* optimized progress button and bar components ([b9f1454](https://github.com/italia/design-angular-kit/commit/b9f1454f61a1898a6634fd4ff33eacc3cf45e914))
+* peerDependencies on package.json library ([1be5517](https://github.com/italia/design-angular-kit/commit/1be5517cfcc597c976c39b28e03d0e081cfccc32))
+* progress state in progress button component ([a83d30f](https://github.com/italia/design-angular-kit/commit/a83d30fd024cab4a3dba71681de1f316e2d1c666))
+* restored angular.json for icons and i18n translations to work ([58a579f](https://github.com/italia/design-angular-kit/commit/58a579f094f917026cbc61ca0e5c87c2fcdf0b65))
+* validation methods in abstract form and upload dragdrop components ([d0b5ea6](https://github.com/italia/design-angular-kit/commit/d0b5ea694d8bb1c2808890f711edcfcb7171c4fc))
+* various fix on back button ([2718c5c](https://github.com/italia/design-angular-kit/commit/2718c5cd0ff302631207a708786c84fe4d54ef16))
+
+
+### Features
+
+* add chip component ([7cb2778](https://github.com/italia/design-angular-kit/commit/7cb27789ab8dac9a81353d1bd59010b86624cde5))
+* add dimmer component ([54cd067](https://github.com/italia/design-angular-kit/commit/54cd067ff9c63fe56f876895024edaa8e200a222))
+* add forward directive ([9f7da5e](https://github.com/italia/design-angular-kit/commit/9f7da5e764c5053ec6a95bd0f23a5bf55a89c88c))
+* Aggiunto supporto ed esempio in documentazione per radio button in Reactive Form ([6196909](https://github.com/italia/design-angular-kit/commit/6196909b14e3a8e5f0d723692eccf643b1937ef9))
+* convert button component in button directive and remove loading button ([cd1fdfd](https://github.com/italia/design-angular-kit/commit/cd1fdfde331e016854acf21f2de27c65de21fc56))
+* new components ([7f3cec0](https://github.com/italia/design-angular-kit/commit/7f3cec0f2527a30e9a70e387abaf80c9c902e20f))
+
+
+
 # [1.0.0-1](https://github.com/italia/design-angular-kit/compare/v1.0.0-0...v1.0.0-1) (2022-11-23)
 
 
