@@ -5,7 +5,7 @@ import { IconComponent } from '../../utils/icon/icon.component';
 
 import { CalloutComponent } from './callout.component';
 
-fdescribe('CalloutComponent', () => {
+describe('CalloutComponent', () => {
   let component: CalloutComponent;
   let fixture: ComponentFixture<CalloutComponent>;
 
