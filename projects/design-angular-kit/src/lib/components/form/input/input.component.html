@@ -49,6 +49,7 @@
            [formControl]="control"
            [placeholder]="placeholder"
            [readonly]="isReadonly"
+           (keydown)="onKeyDown()"
            [attr.aria-describedby]="id + '-description'"
            (blur)="markAsTouched()">
 
@@ -62,6 +63,45 @@
   </div>
 
   <small *ngIf="description" [id]="id + '-description'" class="form-text">{{description}}</small>
+
+
+
+
+  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->
+
+
+  <!-- Icona lente per autocompletamento -->
+  <span class="autocomplete-icon" aria-hidden="true" *ngIf="isAutocompletable()">
+    <it-icon name = "search" size="icon-sm" color="default"></it-icon>
+  </span>
+
+  <ng-container *ngIf="{ autocompleteSuggestedEntriesValue: (autocompleteSuggestedEntries$ | async) } as obs">
+    <!-- Lista di autocompletamento -->
+    <ul class="autocomplete-list" *ngIf="isAutocompletable()"  [class.autocomplete-list-show]="obs.autocompleteSuggestedEntriesValue?.length && showAutocompletion">
+      <li *ngFor="let entry of obs.autocompleteSuggestedEntriesValue; trackBy: autocompleteItemTrackByValueFn" (click)="onEntryClick(entry, $event)">
+        <a [href]="entry.link" >
+          <ng-container *ngTemplateOutlet="autocompleteItemTemplate"></ng-container>
+        </a>
+        <ng-template #autocompleteItemTemplate>
+          <div class="avatar size-sm" *ngIf="entry.avatarSrcPath">
+            <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText">
+          </div>
+          <it-icon *ngIf="entry.icon" [name]="entry.icon" size="icon-sm"></it-icon>
+          <span class="autocomplete-list-text">
+            <span [innerHTML] = "entry.original | markMatchingText: value"></span>
+            <em *ngIf="entry.label">{{entry.label}}</em>
+          </span>
+        </ng-template>
+      </li>
+    </ul>
+  </ng-container>
+  
+
+  <!-- FINE gestione AUTOCOMPLETAMENTO -->
+
+
+
+
   <div *ngIf="isInvalid" class="form-feedback just-validate-error-label" [id]="id + '-error'">
     <div #customError>
       <ng-content select="[error]"></ng-content>

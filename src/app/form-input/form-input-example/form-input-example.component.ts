@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { InputControlType } from 'projects/design-angular-kit/src/public_api';
+import { AutoCompleteItem, InputControlType } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-form-input-example',
@@ -11,8 +11,8 @@ export class FormInputExampleComponent {
   i = 0;
   readOnly = false;
   disabled = false;
-  type: InputControlType | 'password' = 'text';
-  icon = 'it-pencil';
+  type: InputControlType | 'password' = 'search';
+  icon = 'pencil';
   value = 'myNgModel';
 
   get placeholder() {
@@ -33,42 +33,42 @@ export class FormInputExampleComponent {
 
   hasNote = false;
 
-  // get autoCompleteData(): AutoCompleteItem[] {
-  //   return this._autoCompleteData;
-  // }
-  // set autoCompleteData(value: AutoCompleteItem[]) {
-  //   this._autoCompleteData = value;
-  // }
-  // private _autoCompleteData: AutoCompleteItem[] = [
-  //   {
-  //     value: 'Luisa Neri',
-  //     avatarSrcPath: 'https://randomuser.me/api/portraits/women/44.jpg',
-  //     avatarAltText: 'Luisa Neri',
-  //     label: 'Profilo'
-  //   },
-  //   {
-  //     value: 'Cristian Borelli',
-  //     avatarSrcPath: 'https://randomuser.me/api/portraits/men/1.jpg',
-  //     avatarAltText: 'Cristian Borelli',
-  //     label: 'Profilo'
-  //   },
-  //   {
-  //     value: 'Andrea Stagi',
-  //     avatarSrcPath: 'https://randomuser.me/api/portraits/men/2.jpg',
-  //     avatarAltText: 'Andrea Stagi',
-  //     label: 'Profilo'
-  //   },
-  //   {
-  //     value: 'Comune di Firenze',
-  //     icon: 'it-pa',
-  //     link: 'https://www.comune.fi.it/',
-  //     label: 'Comune'
-  //   },
-  //   {
-  //     value: 'Italia',
-  //     avatarSrcPath: 'https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/it.svg',
-  //     avatarAltText: 'Italia'
-  //   }
-  // ];
+   get autoCompleteData(): AutoCompleteItem[] {
+     return this._autoCompleteData;
+  }
+  set autoCompleteData(value: AutoCompleteItem[]) {
+     this._autoCompleteData = value;
+  }
+   private _autoCompleteData: AutoCompleteItem[] = [
+     {
+       value: 'Luisa Neri',
+       avatarSrcPath: 'https://randomuser.me/api/portraits/women/44.jpg',
+       avatarAltText: 'Luisa Neri',
+       label: 'Profilo'
+     },
+     {
+       value: 'Cristian Borelli',
+       avatarSrcPath: 'https://randomuser.me/api/portraits/men/1.jpg',
+       avatarAltText: 'Cristian Borelli',
+       label: 'Profilo'
+     },
+     {
+       value: 'Andrea Stagi',
+       avatarSrcPath: 'https://randomuser.me/api/portraits/men/2.jpg',
+       avatarAltText: 'Andrea Stagi',
+       label: 'Profilo'
+     },
+     {
+       value: 'Comune di Firenze',
+       icon: 'pa',
+       link: 'https:www.comune.fi.it/',
+       label: 'Comune'
+     },
+     {
+       value: 'Italia',
+       avatarSrcPath: 'https:raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/it.svg',
+       avatarAltText: 'Italia'
+     }
+   ];
 
 }
