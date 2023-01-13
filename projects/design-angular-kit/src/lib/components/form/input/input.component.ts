@@ -4,7 +4,7 @@ import { AutoCompleteItem, InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { from, map, Observable } from 'rxjs';
+import { from, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'it-input[id]',
@@ -176,7 +176,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
     }
 
     this.addValidators(validators);
-    this.autocompleteSuggestedEntries$ = this.getRelatedEntries();
+    this.autocompleteResults$ = this.getAutocompleteResults$();
   }
 
   /**
@@ -202,15 +202,15 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   }
 
 
-  autocompleteSuggestedEntries$: Observable<Array<AutoCompleteItem>>;
-
-  getRelatedEntries() {
+  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem>}>;
+  
+  getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem>}> {
 
     if(this.type === 'search') {
       return this.control.valueChanges.pipe(map((value) => {
-
-        if (value) {
-          const lowercaseValue = value.toLowerCase();
+        const searchedValue = value;
+        if (searchedValue) {
+          const lowercaseValue = searchedValue.toLowerCase();
           const lowercaseData = this._autoCompleteData.filter((item) => item.value).map(item => {
             return { ...item, original : item.value, lowercase : item.value.toLowerCase() };
           });
@@ -223,13 +223,13 @@ export class InputComponent extends AbstractFormComponent<string | number> {
             }
           });
   
-          return relatedEntries;
+          return { searchedValue, relatedEntries };
         } else {
-          return [];
+          return { searchedValue, relatedEntries: []};
         }
       }));
     } else {
-      return from([]);
+      return of({searchedValue: '', relatedEntries: []});
     }
     
   }
