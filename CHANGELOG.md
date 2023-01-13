@@ -17,7 +17,6 @@
 * add chip component ([7cb2778](https://github.com/italia/design-angular-kit/commit/7cb27789ab8dac9a81353d1bd59010b86624cde5))
 * add dimmer component ([54cd067](https://github.com/italia/design-angular-kit/commit/54cd067ff9c63fe56f876895024edaa8e200a222))
 * add forward directive ([9f7da5e](https://github.com/italia/design-angular-kit/commit/9f7da5e764c5053ec6a95bd0f23a5bf55a89c88c))
-* Aggiunto supporto ed esempio in documentazione per radio button in Reactive Form ([6196909](https://github.com/italia/design-angular-kit/commit/6196909b14e3a8e5f0d723692eccf643b1937ef9))
 * convert button component in button directive and remove loading button ([cd1fdfd](https://github.com/italia/design-angular-kit/commit/cd1fdfde331e016854acf21f2de27c65de21fc56))
 * new components ([7f3cec0](https://github.com/italia/design-angular-kit/commit/7f3cec0f2527a30e9a70e387abaf80c9c902e20f))
 
