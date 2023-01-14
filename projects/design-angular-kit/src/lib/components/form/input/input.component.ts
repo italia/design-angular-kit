@@ -73,7 +73,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   @Input()
   set autoCompleteData(value: Array<AutoCompleteItem>) { this._autoCompleteData = value; }
   get autoCompleteData(): Array<AutoCompleteItem> { return this._autoCompleteData; }
-  private _autoCompleteData: Array<AutoCompleteItem>;
+  private _autoCompleteData: Array<AutoCompleteItem> = [];
 
   showAutocompletion = false;
 
@@ -149,6 +149,10 @@ export class InputComponent extends AbstractFormComponent<string | number> {
     return super.invalidMessage;
   }
 
+  /** Observable da cui vengono emessi i risultati dell'auto completamento */
+  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }>}> = new Observable();
+
+
   override ngOnInit() {
     super.ngOnInit();
 
@@ -202,9 +206,8 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   }
 
 
-  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem>}>;
   
-  getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem>}> {
+  getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }>}> {
 
     if(this.type === 'search') {
       return this.control.valueChanges.pipe(map((value) => {
@@ -215,7 +218,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
             return { ...item, original : item.value, lowercase : item.value.toLowerCase() };
           });
     
-          const relatedEntries = [];
+          const relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }> = [];
           lowercaseData.forEach(lowercaseEntry => {
             const matching = (lowercaseEntry.lowercase).includes(lowercaseValue);
             if (matching) {

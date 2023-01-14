@@ -1,3 +1,5 @@
+import { IconName } from "./icon";
+
 export type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';
 
 export interface SelectControlOption {
@@ -62,7 +64,7 @@ export interface AutoCompleteItem {
   /** Opzionale. Testo in alternativa dell'avatar per accessibilità */
   avatarAltText?: string;
   /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */
-  icon?: string;
+  icon?: IconName;
   /** Opzionale. Label posizionata a destra della voce di autocompletamento */
   label?: string;
   /** Opzionale. Link relativo all'elemento */

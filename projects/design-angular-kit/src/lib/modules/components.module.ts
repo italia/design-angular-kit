@@ -52,7 +52,7 @@ import { ForwardDirective } from '../components/core/forward/forward.directive';
 import { DimmerComponent } from '../components/core/dimmer/dimmer.component';
 import { DimmerButtonsComponent } from '../components/core/dimmer/dimmer-buttons/dimmer-buttons.component';
 import { DimmerIconComponent } from '../components/core/dimmer/dimmer-icon/dimmer-icon.component';
-import { MarkMatchingTextPipe } from '../utils/mark-matching-text.pipe';
+import { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';
 
 
 /**
