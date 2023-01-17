@@ -1,7 +1,7 @@
 {
   "name": "design-angular-kit",
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
-  "version": "1.0.0-1",
+  "version": "1.0.0-2",
   "license": "BSD-3-Clause",
   "keywords": [
     "angular",
@@ -20,11 +20,13 @@
     "email": "bonanno@net-serv.it",
     "url": "https://github.com/AntoninoBonanno"
   },
-  "contributors": [{
-    "name": "Net Service Srl",
-    "email": "areatecnica@net-serv.it",
-    "url": "https://www.net-serv.it/"
-  }],
+  "contributors": [
+    {
+      "name": "Net Service Srl",
+      "email": "areatecnica@net-serv.it",
+      "url": "https://www.net-serv.it/"
+    }
+  ],
   "dependencies": {
     "tslib": "^2.4.1"
   },

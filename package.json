@@ -2,7 +2,7 @@
   "name": "design-angular-kit-bundle",
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
   "author": "Presidenza del Consiglio dei Ministri",
-  "version": "1.0.0-1",
+  "version": "1.0.0-2",
   "license": " BSD-3-Clause",
   "keywords": [
     "angular",
@@ -48,7 +48,7 @@
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
     "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'",
-    "version": "node ./scripts/sync-versions.js && git add ./projects/design-angular-kit/package.json && git add projects/design-angular-kit/package-lock.json && conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/wait-confirm && git add CHANGELOG.md",
+    "version": "node ./scripts/sync-versions.js && git add ./projects/design-angular-kit/package.json && conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/wait-confirm && git add CHANGELOG.md",
     "postversion": "echo \"You can now publish your version using 'git push --follow-tags'\""
   },
   "dependencies": {
