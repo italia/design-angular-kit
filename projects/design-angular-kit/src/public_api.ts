@@ -63,6 +63,9 @@ export * from './lib/components/utils/not-found-page/not-found-page.component';
 // Services
 export * from './lib/services/notifications/notifications.service';
 
+// Pipes
+export * from './lib/pipes/mark-matching-text.pipe';
+
 // Interfaces
 export * from './lib/interfaces/core';
 export * from './lib/interfaces/form';

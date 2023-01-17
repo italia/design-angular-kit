@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
-import { InputControlType } from '../../../interfaces/form';
+import { AutoCompleteItem, InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { Observable } from 'rxjs';
+import { from, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'it-input[id]',
@@ -64,6 +64,19 @@ export class InputComponent extends AbstractFormComponent<string | number> {
    * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']
    */
   @Input() adaptive?: BooleanInput;
+
+  /**
+   * Opzionale.
+   * Disponibile solo se il type è search.
+   * Indica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input
+   */
+  @Input()
+  set autoCompleteData(value: Array<AutoCompleteItem>) { this._autoCompleteData = value; }
+  get autoCompleteData(): Array<AutoCompleteItem> { return this._autoCompleteData; }
+  private _autoCompleteData: Array<AutoCompleteItem> = [];
+
+  showAutocompletion = false;
+
 
   get isActiveLabel(): boolean {
     const value = this.control.value;
@@ -136,6 +149,10 @@ export class InputComponent extends AbstractFormComponent<string | number> {
     return super.invalidMessage;
   }
 
+  /** Observable da cui vengono emessi i risultati dell'auto completamento */
+  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }>}> = new Observable();
+
+
   override ngOnInit() {
     super.ngOnInit();
 
@@ -163,6 +180,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
     }
 
     this.addValidators(validators);
+    this.autocompleteResults$ = this.getAutocompleteResults$();
   }
 
   /**
@@ -187,4 +205,61 @@ export class InputComponent extends AbstractFormComponent<string | number> {
     this.control.setValue(value);
   }
 
+
+  
+  getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }>}> {
+
+    if(this.type === 'search') {
+      return this.control.valueChanges.pipe(map((value) => {
+        const searchedValue = value;
+        if (searchedValue) {
+          const lowercaseValue = searchedValue.toLowerCase();
+          const lowercaseData = this._autoCompleteData.filter((item) => item.value).map(item => {
+            return { ...item, original : item.value, lowercase : item.value.toLowerCase() };
+          });
+    
+          const relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }> = [];
+          lowercaseData.forEach(lowercaseEntry => {
+            const matching = (lowercaseEntry.lowercase).includes(lowercaseValue);
+            if (matching) {
+              relatedEntries.push(lowercaseEntry);
+            }
+          });
+  
+          return { searchedValue, relatedEntries };
+        } else {
+          return { searchedValue, relatedEntries: []};
+        }
+      }));
+    } else {
+      return of({searchedValue: '', relatedEntries: []});
+    }
+    
+  }
+
+  isAutocompletable() {
+    if (this._autoCompleteData && this.type === 'search') {
+      return this._autoCompleteData.length > 0;
+    } else {
+      return false;
+    }
+  }
+
+  onEntryClick(entry: AutoCompleteItem, event: Event) {
+    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata 
+    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.
+    if(!entry.link) {
+      event.preventDefault();
+    }
+    this.control.setValue(entry.value);
+    this.showAutocompletion = false;
+  }
+
+  autocompleteItemTrackByValueFn(index: number, item: AutoCompleteItem) {
+    return item.value;
+  }
+
+  onKeyDown() {
+    this.showAutocompletion = this.type === 'search';
+  }
 }

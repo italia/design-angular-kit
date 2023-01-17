@@ -10,7 +10,7 @@ import {BooleanInput} from "../../../utils/boolean-input";
 export class IconComponent implements AfterViewInit {
 
   /**
-   * The icon size
+   * The icon name
    */
   @Input() name!: IconName;
 

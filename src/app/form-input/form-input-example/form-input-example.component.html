@@ -11,8 +11,8 @@
                 [readonly]="readOnly"
                 [type]="type !== 'password' ? type : 'text'"
                 [(ngModel)]="value"
-                [description]="note">
-        <!--        [autoCompleteData]="autoCompleteData"-->
+                [description]="note"
+                [autoCompleteData]="autoCompleteData">
       </it-input>
       <it-password-input *ngIf="type === 'password'" id="password-input-0"
                          [label]="label"
@@ -54,8 +54,8 @@
           <it-radio-button id="radio-number" name="number" [(ngModel)]="type" value="number"
                            label="number"></it-radio-button>
           <it-radio-button id="radio-time" name="time" [(ngModel)]="type" value="time" label="time"></it-radio-button>
-          <!--          <it-radio-button id="radio-search" name="search" [(ngModel)]="type" value="search"-->
-          <!--                           label="search"></it-radio-button>-->
+                    <it-radio-button id="radio-search" name="search" [(ngModel)]="type" value="search"
+                                     label="search"></it-radio-button>
         </div>
       </div>
     </div>
