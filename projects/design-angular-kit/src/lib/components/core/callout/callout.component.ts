@@ -1,28 +1,44 @@
-import {AfterViewInit, Component, ElementRef, Input, Renderer2} from '@angular/core';
-import {IconName} from "../../../interfaces/icon";
+import {ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import {CalloutAppearance, CalloutColor} from "../../../interfaces/core";
+import { IconName } from '../../../interfaces/icon';
 
 @Component({
   selector: 'it-callout',
   templateUrl: './callout.component.html',
-  styleUrls: ['./callout.component.scss']
+  styles: [`
+    .callout-big-text:empty {
+      display: none;
+    }
+  `],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CalloutComponent implements AfterViewInit {
+export class CalloutComponent {
 
   /**
-   * Callout title
+   * Callout label
    */
-  @Input() title?: string;
+  @Input() set label (value: string | undefined) { this._label = value; }
+  get label (): string | undefined { return this._label; }
+  private _label: string | undefined = undefined;
 
   /**
-   * Custom icon
+   * Callout hiddenLabel
    */
-  @Input() icon?: IconName;
+  @Input() set hiddenLabel (value: string | undefined) { this._hiddenLabel = value; }
+  get hiddenLabel (): string | undefined { return this._hiddenLabel; }
+  private _hiddenLabel: string | undefined = undefined;
 
   /**
    * Callout color
+   * - <b>success</b>
+   * - <b>danger</b>
+   * - <b>warning</b>
+   * - <b>important</b>
+   * - <b>note</b>
    */
-  @Input() color?: CalloutColor;
+  @Input() set color (value: CalloutColor | undefined) { this._color = value; }
+  get color (): CalloutColor | undefined { return this._color; }
+  private _color: CalloutColor | undefined = undefined;
 
   /**
    * Callout appearance
@@ -31,15 +47,20 @@ export class CalloutComponent implements AfterViewInit {
    * - <b>more</b>: It looks radically different from the other styles available and is suitable for more extensive texts
    * @default default
    */
-  @Input() appearance: CalloutAppearance = 'default';
-
+  @Input() set appearance (value: CalloutAppearance) { this._appearance = value; }
+  get appearance (): CalloutAppearance { return this._appearance; }
+  private _appearance: CalloutAppearance = 'default';
 
   /**
-   * Retrieve the current icon to show
+   * Custom icon
    */
-  get iconName(): IconName {
-    if (this.icon) {
-      return this.icon;
+  @Input() set icon (value: IconName | undefined) { this._icon = value; }
+  get icon(): IconName | undefined { return this._icon;}
+  private _icon: IconName | undefined = undefined;
+
+  get iconName (): IconName {
+    if (this._icon) {
+      return this._icon;
     }
 
     if (this.appearance === 'more') {
@@ -58,16 +79,6 @@ export class CalloutComponent implements AfterViewInit {
       default:
         return 'info-circle';
     }
-  }
-
-  constructor(
-    private readonly _renderer: Renderer2,
-    private readonly _elementRef: ElementRef
-  ) {
-  }
-
-  ngAfterViewInit(): void {
-    this._renderer.removeAttribute(this._elementRef.nativeElement, 'title');
   }
 
 }
