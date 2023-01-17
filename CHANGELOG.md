@@ -1,3 +1,17 @@
+# [1.0.0-3](https://github.com/italia/design-angular-kit/compare/v1.0.0-2...v1.0.0-3) (2023-01-17)
+
+
+### Bug Fixes
+
+* add further tests and docs ([0c2646a](https://github.com/italia/design-angular-kit/commit/0c2646accc66f4ca186f728773cf04e2bf2a627c))
+
+
+### Features
+
+* search auto complete ([f608d1a](https://github.com/italia/design-angular-kit/commit/f608d1a8c88573cff991290cf2b63cb248a2dd8c))
+
+
+
 # [1.0.0-2](https://github.com/italia/design-angular-kit/compare/v1.0.0-1...v1.0.0-2) (2023-01-13)
 
 
