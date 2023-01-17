@@ -77,6 +77,10 @@
         {
           "label": "Dimmer",
           "link": "/componenti/dimmer"
+        },
+        {
+          "label": "Callout",
+          "link": "/componenti/callout"
         }
       ]
     }

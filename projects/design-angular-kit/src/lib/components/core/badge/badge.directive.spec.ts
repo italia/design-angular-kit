@@ -22,7 +22,7 @@ class UnitTestComponent {
   private _isRounded: boolean = undefined;
 }
 
-fdescribe('BadgeDirective', () => {
+describe('BadgeDirective', () => {
 
   let component: UnitTestComponent;
   let fixture: ComponentFixture<UnitTestComponent>;
