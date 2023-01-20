@@ -6,7 +6,6 @@ import { ProgressDonut } from 'bootstrap-italia';
 @Component({
   selector: 'it-upload-drag-drop[id]',
   templateUrl: './upload-drag-drop.component.html',
-  styleUrls: ['./upload-drag-drop.component.scss'],
   exportAs: 'itUploadDragDrop'
 })
 export class UploadDragDropComponent extends AbstractComponent {
@@ -96,7 +95,7 @@ export class UploadDragDropComponent extends AbstractComponent {
       return;
     }
 
-    this.donut?.set(0);
+    this.reset();
     this.isLoading = true;
 
     const splitName = file.name.split('.');
@@ -109,9 +108,13 @@ export class UploadDragDropComponent extends AbstractComponent {
 
   /**
    * Percentage of upload
-   * @param value the percentage
+   * @param value the percentage [0 - 100]
    */
   public progress(value: number) {
+    if (!this.isLoading) {
+      return;
+    }
+
     if (value >= 100) {
       this.success();
     } else {
