@@ -81,6 +81,10 @@
         {
           "label": "Callout",
           "link": "/componenti/callout"
+        },
+        {
+          "label": "Upload",
+          "link": "/componenti/upload"
         }
       ]
     }

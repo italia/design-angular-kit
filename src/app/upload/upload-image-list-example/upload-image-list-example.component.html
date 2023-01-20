@@ -1,0 +1,11 @@
+<h3>Con anteprima delle immagini</h3>
+<div class="bd-example">
+  <div class="row my-2">
+    <div class="col">
+      <it-upload-file-list id="image-upload" [fileList]="uploadedImageList"
+                           images="true"
+                           (uploadFiles)="onUpdateImageList($event)"
+                           (deleteItem)="onDeleteImageList($event)"></it-upload-file-list>
+    </div>
+  </div>
+</div>

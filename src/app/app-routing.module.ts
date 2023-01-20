@@ -28,6 +28,7 @@ const routes: Routes = [
     { path: 'forward', loadChildren: () => import('src/app/forward/forward.module').then(m => m.ForwardModule) },
     { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
     { path: 'callout', loadChildren: () => import('src/app/callout/callout.module').then(m => m.CalloutModule) },
+    { path: 'upload', loadChildren: () => import('src/app/upload/upload.module').then(m => m.UploadModule) },
   ]}
 ];
 
