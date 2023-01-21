@@ -16,7 +16,8 @@ import { ComponentsModule } from './modules/components.module';
         deps: [HttpClient]
       },
       defaultLanguage: 'it'
-    })],
+    })
+  ],
   exports: [ComponentsModule]
 })
 export class DesignAngularKitModule {
