@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 import { AbstractFormComponent } from '../abstracts/abstract-form-component';
 import { AbstractComponent } from '../abstracts/abstract.component';
 import { AccordionComponent } from '../components/core/accordion/accordion.component';
-import { AlertComponent } from '../components/core/alert/alert.component'
+import { AlertComponent } from '../components/core/alert/alert.component';
 import { BadgeDirective } from '../components/core/badge/badge.directive';
 import { ButtonDirective } from '../components/core/button/button.directive';
 import { CalloutComponent } from '../components/core/callout/callout.component';

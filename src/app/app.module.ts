@@ -9,7 +9,6 @@ import { TableOfContentItemComponent } from './table-of-content-item/table-of-co
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 import { LinkSortPipe } from './link-sort.pipe';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
-    TranslateModule.forRoot()
+    AppRoutingModule
   ],
   providers: [{
     provide: HIGHLIGHT_OPTIONS,
