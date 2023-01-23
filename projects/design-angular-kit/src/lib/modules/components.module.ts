@@ -46,6 +46,7 @@ import {
 } from '../components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';
 import { HeaderComponent } from '../components/navigation/header/header.component';
 import { IconComponent } from '../components/utils/icon/icon.component';
+import { LanguageSwitcherComponent } from '../components/utils/language-switcher/language-switcher.component';
 import { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';
 import { ChipComponent } from '../components/core/chip/chip.component';
 import { ForwardDirective } from '../components/core/forward/forward.directive';
@@ -122,6 +123,7 @@ const navigation = [
 const utils = [
   IconComponent,
   NotFoundPageComponent,
+  LanguageSwitcherComponent,
   MarkMatchingTextPipe
 ];
 

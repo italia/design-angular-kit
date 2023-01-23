@@ -58,6 +58,7 @@ export * from './lib/components/navigation/header/header.component';
 
 // Utils
 export * from './lib/components/utils/icon/icon.component';
+export * from './lib/components/utils/language-switcher/language-switcher.component';
 export * from './lib/components/utils/not-found-page/not-found-page.component';
 
 // Services
@@ -70,6 +71,7 @@ export * from './lib/pipes/mark-matching-text.pipe';
 export * from './lib/interfaces/core';
 export * from './lib/interfaces/form';
 export * from './lib/interfaces/icon';
+export * from './lib/interfaces/utils';
 
 export * from './lib/utils/regex';
 export * from './lib/utils/file-utils';

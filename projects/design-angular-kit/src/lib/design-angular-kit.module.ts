@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ComponentsModule } from './modules/components.module';
@@ -27,4 +27,12 @@ import { ComponentsModule } from './modules/components.module';
   providers: [TranslateStore]
 })
 export class DesignAngularKitModule {
+
+  constructor(
+    private readonly translateService: TranslateService
+  ) {
+    translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.
+    translateService.use('it');
+  }
+
 }
