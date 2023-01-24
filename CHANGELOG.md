@@ -1,3 +1,18 @@
+# [1.0.0-4](https://github.com/italia/design-angular-kit/compare/v1.0.0-3...v1.0.0-4) (2023-01-24)
+
+
+### Bug Fixes
+
+* email input bad validation ([e28cd06](https://github.com/italia/design-angular-kit/commit/e28cd06d27544eeaa36e4d7a2ae37caf9642dd09))
+* minor fixes on upload file list and upload drag drop components ([f9f9f72](https://github.com/italia/design-angular-kit/commit/f9f9f72123f1a8017f4fe0611e2c3084622a7b01))
+
+
+### Features
+
+* **i18n:** improve localization ([46fa9af](https://github.com/italia/design-angular-kit/commit/46fa9af3a72094893e81229e83a50f7cc91499a2))
+
+
+
 # [1.0.0-3](https://github.com/italia/design-angular-kit/compare/v1.0.0-2...v1.0.0-3) (2023-01-17)
 
 
