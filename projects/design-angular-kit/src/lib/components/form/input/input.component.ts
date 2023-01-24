@@ -4,7 +4,7 @@ import { AutoCompleteItem, InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { from, map, Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'it-input[id]',

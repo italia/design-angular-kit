@@ -1,4 +1,4 @@
-import {AbstractControl, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import {
   CAP_REGEX,
   EMAIL_REGEX,
@@ -6,7 +6,7 @@ import {
   PHONE_NUMBER_REGEX,
   URL_REGEX,
   VAT_NUMBER_REGEX
-} from "../utils/regex";
+} from '../utils/regex';
 
 export class ItValidators {
   public static SpecialCharacterPattern = '!@#$%&*_+=;:|,.';
@@ -63,7 +63,7 @@ export class ItValidators {
     // compare is the password match
     if ((password && !confirmControl.value) || (confirmControl.value && password !== confirmControl.value)) {
       // if they don't match, set an error in our confirmPassword form control
-      confirmControl?.setErrors({noPasswordMatch: true});
+      confirmControl?.setErrors({ noPasswordMatch: true });
       confirmControl?.markAsTouched();
       return control;
     }
@@ -85,10 +85,10 @@ export class ItValidators {
   public static password(minLength = 10, hasNumber = true, hasCapitalCase = true, hasSmallCase = true, hasSpecialCharacters = true): ValidatorFn {
     return <ValidatorFn>Validators.compose([
       Validators.required,
-      ItValidators.customPattern(/\d/, {hasNumber: hasNumber}),
-      ItValidators.customPattern(/[A-Z]/, {hasCapitalCase: hasCapitalCase}),
-      ItValidators.customPattern(/[a-z]/, {hasSmallCase: hasSmallCase}),
-      ItValidators.customPattern(new RegExp(`[${ItValidators.SpecialCharacterPattern}]`), {hasSpecialCharacters: hasSpecialCharacters}),
+      ItValidators.customPattern(/\d/, { hasNumber: hasNumber }),
+      ItValidators.customPattern(/[A-Z]/, { hasCapitalCase: hasCapitalCase }),
+      ItValidators.customPattern(/[a-z]/, { hasSmallCase: hasSmallCase }),
+      ItValidators.customPattern(new RegExp(`[${ItValidators.SpecialCharacterPattern}]`), { hasSpecialCharacters: hasSpecialCharacters }),
       Validators.minLength(minLength)
     ]);
   }
@@ -96,58 +96,61 @@ export class ItValidators {
   /**
    * Email validator
    */
-  public static email(): Array<ValidatorFn> {
-    return [Validators.email, ItValidators.customPattern(EMAIL_REGEX, {invalidEmail: true})]
+  public static get email(): ValidatorFn {
+    return <ValidatorFn>Validators.compose([
+      Validators.email,
+      ItValidators.customPattern(EMAIL_REGEX, { invalidEmail: true })
+    ]);
   }
 
   /**
    * Phone number validator
    */
-  public static tel(): ValidatorFn {
-    return ItValidators.customPattern(PHONE_NUMBER_REGEX, {invalidTel: true})
+  public static get tel(): ValidatorFn {
+    return ItValidators.customPattern(PHONE_NUMBER_REGEX, { invalidTel: true });
   }
 
   /**
    * URL validator
    */
-  public static url(): ValidatorFn {
-    return ItValidators.customPattern(URL_REGEX, {invalidUrl: true})
+  public static get url(): ValidatorFn {
+    return ItValidators.customPattern(URL_REGEX, { invalidUrl: true });
   }
 
   /**
    * Italian Tax Code validator
    */
-  public static taxCode(): ValidatorFn {
-    return ItValidators.customPattern(ITALIAN_TAX_CODE_REGEX, {invalidTaxCode: true})
+  public static get taxCode(): ValidatorFn {
+    return ItValidators.customPattern(ITALIAN_TAX_CODE_REGEX, { invalidTaxCode: true });
   }
 
   /**
    * VAT Number validator
    */
-  public static vatNumber(): ValidatorFn {
-    return ItValidators.customPattern(VAT_NUMBER_REGEX, {invalidVatNumber: true})
+  public static get vatNumber(): ValidatorFn {
+    return ItValidators.customPattern(VAT_NUMBER_REGEX, { invalidVatNumber: true });
   }
 
   /**
    * Italian Postal Code validator (CAP)
    */
-  public static cap(): ValidatorFn {
-    return ItValidators.customPattern(CAP_REGEX, {invalidCap: true})
+  public static get cap(): ValidatorFn {
+    return ItValidators.customPattern(CAP_REGEX, { invalidCap: true });
   }
 
   /**
    * Check if value is a valid RegExp
    */
-  public static regExp(): ValidatorFn {
+  public static get regExp(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       try {
         if (control?.value) {
-          new RegExp(control.value)
+          new RegExp(control.value);
         }
       } catch (e) {
-        return {invalidRegex: true};
+        return { invalidRegex: true };
       }
       return null;
-    }
+    };
   }
 }
