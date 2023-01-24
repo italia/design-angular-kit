@@ -9,7 +9,7 @@
 
 <ul class="upload-file-list" [class.upload-file-list-image]="isImageList" *ngIf="fileList.length">
   <li *ngFor="let item of fileList" class="upload-file"
-      [class.error]="!!item.error"
+      [class.error]="item.error"
       [class.uploading]="!item.error && item.progress !== undefined && item.progress > 0 && item.progress < 100"
       [class.success]="!item.error && (!item.progress || item.progress >= 100)">
 
@@ -17,7 +17,7 @@
       <img [attr.src]="previewImages.get(item.id)" [alt]="item.file.name" />
     </div>
     <ng-template #icon>
-      <it-icon name="file" size="sm" [color]="!item.error ? 'primary' : 'danger'"></it-icon>
+      <it-icon name="file" size="sm" [color]="!item.error ? (item.progress ? 'secondary' : 'primary') : 'danger'"></it-icon>
     </ng-template>
 
     <p [itTooltip]="item.tooltip">
@@ -25,11 +25,11 @@
       {{item.file.name}} <span class="upload-file-weight">{{getFileSize(item.file)}}</span>
     </p>
 
-    <button *ngIf="item.removable && (!item.progress || item.progress < 100)" (click)="deleteItem.emit(item)">
+    <button *ngIf="item.removable && (!item.progress || item.progress < 100)" type="button" (click)="deleteItem.emit(item)">
       <span class="visually-hidden">{{'it.form.delete-file'|translate : { name: item.file.name } }}</span>
       <it-icon name="close"></it-icon>
     </button>
-    <button disabled *ngIf="(!item.removable && !item.progress) || (item.progress !== undefined && item.progress >= 100)">
+    <button *ngIf="(!item.removable && !item.progress) || (item.progress !== undefined && item.progress >= 100)" type="button" disabled>
       <span class="visually-hidden">{{'it.form.upload-complete'|translate}}</span>
       <it-icon name="check"></it-icon>
     </button>

@@ -7,8 +7,7 @@ import {take} from "rxjs";
 
 @Component({
   selector: 'it-upload-file-list[id][fileList]',
-  templateUrl: './upload-file-list.component.html',
-  styleUrls: ['./upload-file-list.component.scss']
+  templateUrl: './upload-file-list.component.html'
 })
 export class UploadFileListComponent extends AbstractComponent implements OnInit, OnChanges {
 
@@ -18,7 +17,9 @@ export class UploadFileListComponent extends AbstractComponent implements OnInit
   @Input() fileList!: Array<UploadFileListItem>;
 
   /**
-   * The accepted file type to upload
+   * The accepted file type to upload <br>
+   * Possible values: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME Types</a> separated by comma
+   * @example application/pdf,image/png
    * @default *
    */
   @Input() accept: string = "*";

@@ -1,0 +1,14 @@
+<h1 class="bd-title">Upload</h1>
+<p class="bd-lead">Elementi dei form dedicati al caricamento file.</p>
+<div [innerHTML]="fileListComponent.description"></div>
+<it-tab-container>
+  <it-tab-item id="example" label="Esempi" active="true" class="mt-3">
+    <it-upload-examples></it-upload-examples>
+  </it-tab-item>
+  <it-tab-item id="api" label="API" class="mt-3">
+    <h2>Upload con lista di file</h2>
+    <it-api-parameters [component]="fileListComponent"></it-api-parameters>
+    <h2>Upload Drag&drop</h2>
+    <it-api-parameters [component]="dragDropComponent"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>

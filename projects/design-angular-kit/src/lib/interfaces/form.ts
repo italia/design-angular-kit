@@ -44,10 +44,11 @@ export interface UploadFileListItem {
   /**
    * Set the status of the item as 'error'
    */
-  error?: string,
+  error?: boolean,
 
   /**
    * Add tooltip on file item name
+   * @example It can be used to show the error message or additional information about the file
    */
   tooltip?: string
 }
