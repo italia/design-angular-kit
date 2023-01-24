@@ -63,7 +63,6 @@ Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
 ```typescript
 imports: [
     ...
-    TranslateModule.forRoot(),
     DesignAngularKitModule
 ]
 ```
@@ -145,6 +144,12 @@ Modifica il tuo `angular.json` aggiungendo:
   ]
  ```
 
+Puoi anche utilizzare le label localizzate di `design-angular-kit` nella tua applicazione. [Vedi le nostre label](projects/design-angular-kit/assets/i18n/it.json)
+
+Es: `{{'it.errors.required-field' | translate}}`
+
+#### Caricamento file localizzazione app 
+
 Se utilizzi già i file di localizzazione nella tua app, puoi utilizzare la libreria [ngx-translate-multi-http-loader](https://www.npmjs.com/package/ngx-translate-multi-http-loader)
 per caricare i file di localizzazione dell'app e di `design-angular-kit`
 
@@ -171,7 +176,7 @@ imports: [
 
 #### Usa la localizzazione personalizzata
 
-Aggiungi la localizzazione personalizzata nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
+Non includere il supporto i18n nel tuo `angular.json` ma crea i tuoi file di localizzazione personalizzata nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
 
 Se utilizzi già i file di localizzazione nella tua app, puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le chiavi del json della libreria.
 
