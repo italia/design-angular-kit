@@ -70,6 +70,9 @@
       "navigation-path": "Percorso di navigazione"
     },
     "utils": {
+      "selected": "Selezionata",
+      "language-selection": "Selezione lingua: {{lang}}",
+      "select-language": "Seleziona una lingua",
       "404": {
         "title": "Risorsa non trovata",
         "description": "Oops! La risorsa che cerchi non è stata trovata, torna alla homepage e utilizza il menu per continuare la navigazione.",
