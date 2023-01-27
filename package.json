@@ -66,7 +66,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@popperjs/core": "^2.11.6",
-    "bootstrap-italia": "^2.2.0",
+    "bootstrap-italia": "^2.3.0",
     "core-js": "^3.27.0",
     "fp-ts": "^2.13.1",
     "io-ts": "^2.2.20",
