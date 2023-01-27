@@ -1,3 +1,12 @@
+# [1.0.0-5](https://github.com/italia/design-angular-kit/compare/v1.0.0-4...v1.0.0-5) (2023-01-27)
+
+
+### Bug Fixes
+
+* assert non null elements on notification component ([9950d98](https://github.com/italia/design-angular-kit/commit/9950d98a2ec1c315e5f0d586d4f97dc964940679))
+
+
+
 # [1.0.0-4](https://github.com/italia/design-angular-kit/compare/v1.0.0-3...v1.0.0-4) (2023-01-24)
 
 
