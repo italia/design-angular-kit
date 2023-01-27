@@ -45,7 +45,7 @@ export class NotificationsComponent implements OnDestroy {
 
       setTimeout(() => {
         // Show the notification
-        new BSNotification(document.getElementById(newNotification.id), {
+        new BSNotification(document.getElementById(newNotification.id)!, {
           timeout: notification.duration
         }).show();
 
@@ -70,6 +70,6 @@ export class NotificationsComponent implements OnDestroy {
    * @param id
    */
   hideNotification(id: string): void {
-    BSNotification.getInstance(document.getElementById(id))?.hide();
+    BSNotification.getInstance(document.getElementById(id)!)?.hide();
   }
 }
