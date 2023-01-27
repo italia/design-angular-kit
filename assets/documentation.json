@@ -11198,7 +11198,7 @@
         },
         {
             "name": "NotificationsComponent",
-            "id": "component-NotificationsComponent-5466f757561c58745f6df9ad82c23210efb27eb84767597a9d6bc4441c544a7340952a38e6c1067d4e2f1e801f29bb1213c9255511f4f0182290c1a23f0e499c",
+            "id": "component-NotificationsComponent-7a705f8d9ff30793da230cdaf9c8e4b157dd5f5b5f40b689fc8d407e601ee33b176ea0d3028d89c26a216e1f99e58d156bcf5c915fc734685ffa8bb9a6c4b4d9",
             "file": "projects/design-angular-kit/src/lib/components/core/notifications/notifications.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -11305,8 +11305,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2102,
-                                "end": 2104,
+                                "pos": 2103,
+                                "end": 2105,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11317,8 +11317,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 2096,
-                                "end": 2101,
+                                "pos": 2097,
+                                "end": 2102,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11347,7 +11347,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnDestroy } from '@angular/core';\nimport { Subscription } from 'rxjs';\nimport { NotificationsService } from '../../../services/notifications/notifications.service';\nimport { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';\n\nimport { Notification as BSNotification } from 'bootstrap-italia';\n\n@Component({\n  selector: 'it-notifications',\n  templateUrl: './notifications.component.html',\n  styleUrls: ['./notifications.component.scss']\n})\nexport class NotificationsComponent implements OnDestroy {\n\n  /**\n   * Default notifications duration\n   * @default 8000\n   */\n  @Input() duration: number = 8000;\n\n  /**\n   * Default notifications position\n   */\n  @Input() position?: NotificationPosition;\n\n  private subscription: Subscription;\n  notifications: Array<Notification & { id: string }> = [];\n\n  constructor(\n    private readonly _notificationService: NotificationsService\n  ) {\n    this.subscription = this._notificationService.onNotification().subscribe(notification => {\n      if (!notification.duration) {\n        notification.duration = this.duration; // Add duration if not is set\n      }\n      if (!notification.position && this.position) {\n        notification.position = this.position; // Add position if not is set\n      }\n\n      const newNotification = {\n        ...notification,\n        id: `${notification.type}-${this.notifications.length}-notification`\n      };\n      const index = this.notifications.push(newNotification);\n\n      setTimeout(() => {\n        // Show the notification\n        new BSNotification(document.getElementById(newNotification.id), {\n          timeout: notification.duration\n        }).show();\n\n        // Clear notification after the duration\n        setTimeout(() => {\n          this.notifications = this.notifications.splice(index, 1);\n        }, notification.duration);\n      }, 200);\n    });\n  }\n\n  ngOnDestroy(): void {\n    this.subscription.unsubscribe();\n  }\n\n  get NotificationType(): typeof NotificationType {\n    return NotificationType;\n  }\n\n  /**\n   * Hide the notification\n   * @param id\n   */\n  hideNotification(id: string): void {\n    BSNotification.getInstance(document.getElementById(id))?.hide();\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnDestroy } from '@angular/core';\nimport { Subscription } from 'rxjs';\nimport { NotificationsService } from '../../../services/notifications/notifications.service';\nimport { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';\n\nimport { Notification as BSNotification } from 'bootstrap-italia';\n\n@Component({\n  selector: 'it-notifications',\n  templateUrl: './notifications.component.html',\n  styleUrls: ['./notifications.component.scss']\n})\nexport class NotificationsComponent implements OnDestroy {\n\n  /**\n   * Default notifications duration\n   * @default 8000\n   */\n  @Input() duration: number = 8000;\n\n  /**\n   * Default notifications position\n   */\n  @Input() position?: NotificationPosition;\n\n  private subscription: Subscription;\n  notifications: Array<Notification & { id: string }> = [];\n\n  constructor(\n    private readonly _notificationService: NotificationsService\n  ) {\n    this.subscription = this._notificationService.onNotification().subscribe(notification => {\n      if (!notification.duration) {\n        notification.duration = this.duration; // Add duration if not is set\n      }\n      if (!notification.position && this.position) {\n        notification.position = this.position; // Add position if not is set\n      }\n\n      const newNotification = {\n        ...notification,\n        id: `${notification.type}-${this.notifications.length}-notification`\n      };\n      const index = this.notifications.push(newNotification);\n\n      setTimeout(() => {\n        // Show the notification\n        new BSNotification(document.getElementById(newNotification.id)!, {\n          timeout: notification.duration\n        }).show();\n\n        // Clear notification after the duration\n        setTimeout(() => {\n          this.notifications = this.notifications.splice(index, 1);\n        }, notification.duration);\n      }, 200);\n    });\n  }\n\n  ngOnDestroy(): void {\n    this.subscription.unsubscribe();\n  }\n\n  get NotificationType(): typeof NotificationType {\n    return NotificationType;\n  }\n\n  /**\n   * Hide the notification\n   * @param id\n   */\n  hideNotification(id: string): void {\n    BSNotification.getInstance(document.getElementById(id)!)?.hide();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
