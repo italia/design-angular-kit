@@ -81,4 +81,16 @@ describe('BackButtonComponent', () => {
     aElement.nativeElement.click();
     expect(component._location.back).toHaveBeenCalled();
   });
+
+  it('se passo una callback backFn, al click deve essere lanciata lei', () => {
+    component.backFn = () => {};
+    component.buttonStyle = 'link';
+    fixture.detectChanges();
+    spyOn(component, 'backFn');
+    const aElement = fixture.debugElement.query(By.css('a'));
+    aElement.nativeElement.removeAttribute("href");
+    fixture.detectChanges();
+    aElement.nativeElement.click();
+    expect(component.backFn).toHaveBeenCalled();
+  });
 });
