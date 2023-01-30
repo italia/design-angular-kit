@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,7 @@ import { TableOfContentItemComponent } from './table-of-content-item/table-of-co
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 import { LinkSortPipe } from './link-sort.pipe';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { TranslateStore } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -16,24 +17,28 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     TableOfContentComponent,
     TableOfContentItemComponent,
     RouterDispatcherComponent,
-    LinkSortPipe,
+    LinkSortPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [{
-    provide: HIGHLIGHT_OPTIONS,
-    useValue: {
-      coreLibraryLoader: () => import('highlight.js/lib/core'),
-      languages: {
-        typescript: () => import('highlight.js/lib/languages/typescript'),
-        HTML: () => import('highlight.js/lib/languages/xml'),
-        scss: () => import('highlight.js/lib/languages/scss')
+  providers: [
+    TranslateStore,
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        languages: {
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+          HTML: () => import('highlight.js/lib/languages/xml'),
+          scss: () => import('highlight.js/lib/languages/scss')
+        }
       }
     }
-  }],
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
