@@ -163,11 +163,11 @@ Modifica nel tuo `app.module.ts`:
         provide: TranslateLoader,
         useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
           './bootstrap-italia/i18n/', // Load library translations first, so you can edit the keys in your localization file
-          './assets/i18n/', // Your i18n location
+          './assets/i18n/' // Your i18n location
         ]),
-        deps: [HttpBackend],
-        defaultLanguage: 'it'
-      }
+        deps: [HttpBackend]
+      },      
+      defaultLanguage: 'it'
     }),
     DesignAngularKitModule
   ]
