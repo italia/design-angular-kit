@@ -1,4 +1,4 @@
-import { IconName } from "./icon";
+import { IconName } from './icon';
 
 export type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';
 
@@ -57,7 +57,7 @@ export interface UploadFileListItem {
 /**
  * Elemento disponibile per l'autocompletamento del it-form-input
  */
-export interface AutoCompleteItem {
+export interface AutocompleteItem {
   /** Valore voce di autocompletamento */
   value: string;
   /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */
@@ -69,5 +69,11 @@ export interface AutoCompleteItem {
   /** Opzionale. Label posizionata a destra della voce di autocompletamento */
   label?: string;
   /** Opzionale. Link relativo all'elemento */
-  link?: string
+  link?: string;
+
+  /**
+   * Attribute not used for autocomplete rendering.
+   * It can be useful to retrieve some extra information when selecting the autocomplete item
+   */
+  additionalData?: any;
 }

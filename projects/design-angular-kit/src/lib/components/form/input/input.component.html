@@ -64,43 +64,36 @@
 
   <small *ngIf="description" [id]="id + '-description'" class="form-text">{{description}}</small>
 
-
-
-
   <!-- INIZIO gestione AUTOCOMPLETAMENTO -->
+  <ng-container *ngIf="type === 'search'">
+    <!-- Icona lente per autocompletamento -->
+    <span class="autocomplete-icon" aria-hidden="true">
+      <it-icon name="search" size="sm"></it-icon>
+    </span>
 
-
-  <!-- Icona lente per autocompletamento -->
-  <span class="autocomplete-icon" aria-hidden="true" *ngIf="isAutocompletable()">
-    <it-icon name = "search" size="sm"></it-icon>
-  </span>
-
-  <ng-container *ngIf="autocompleteResults$ | async as autocomplete">
-    <!-- Lista di autocompletamento -->
-    <ul class="autocomplete-list" *ngIf="isAutocompletable()"  [class.autocomplete-list-show]="autocomplete.relatedEntries?.length && showAutocompletion">
-      <li *ngFor="let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn" (click)="onEntryClick(entry, $event)">
-        <a [href]="entry.link" >
-          <ng-container *ngTemplateOutlet="autocompleteItemTemplate"></ng-container>
-        </a>
-        <ng-template #autocompleteItemTemplate>
-          <div class="avatar size-sm" *ngIf="entry.avatarSrcPath">
-            <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText">
-          </div>
-          <it-icon *ngIf="entry.icon" [name]="entry.icon" size="sm"></it-icon>
-          <span class="autocomplete-list-text">
-            <span [innerHTML] = "entry.original | markMatchingText: autocomplete.searchedValue"></span>
+    <ng-container *ngIf="autocompleteResults$ | async as autocomplete">
+      <!-- Lista di autocompletamento -->
+      <ul class="autocomplete-list" [class.autocomplete-list-show]="autocomplete.relatedEntries?.length && showAutocompletion">
+        <li *ngFor="let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn"
+            (click)="onEntryClick(entry, $event)">
+          <a [href]="entry.link">
+            <ng-container *ngTemplateOutlet="autocompleteItemTemplate"></ng-container>
+          </a>
+          <ng-template #autocompleteItemTemplate>
+            <div class="avatar size-sm" *ngIf="entry.avatarSrcPath">
+              <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText">
+            </div>
+            <it-icon *ngIf="entry.icon" [name]="entry.icon" size="sm"></it-icon>
+            <span class="autocomplete-list-text">
+            <span [innerHTML]="entry.original | markMatchingText: autocomplete.searchedValue"></span>
             <em *ngIf="entry.label">{{entry.label}}</em>
           </span>
-        </ng-template>
-      </li>
-    </ul>
+          </ng-template>
+        </li>
+      </ul>
+    </ng-container>
   </ng-container>
-  
-
   <!-- FINE gestione AUTOCOMPLETAMENTO -->
-
-
-
 
   <div *ngIf="isInvalid" class="form-feedback just-validate-error-label" [id]="id + '-error'">
     <div #customError>

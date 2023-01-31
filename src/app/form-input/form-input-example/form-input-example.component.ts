@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { AutoCompleteItem, InputControlType } from 'projects/design-angular-kit/src/public_api';
+import { AutocompleteItem, InputControlType } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-form-input-example',
@@ -33,13 +33,13 @@ export class FormInputExampleComponent {
 
   hasNote = false;
 
-   get autoCompleteData(): AutoCompleteItem[] {
+   get autoCompleteData(): AutocompleteItem[] {
      return this._autoCompleteData;
   }
-  set autoCompleteData(value: AutoCompleteItem[]) {
+  set autoCompleteData(value: AutocompleteItem[]) {
      this._autoCompleteData = value;
   }
-   private _autoCompleteData: AutoCompleteItem[] = [
+   private _autoCompleteData: AutocompleteItem[] = [
      {
        value: 'Luisa Neri',
        avatarSrcPath: 'https://randomuser.me/api/portraits/women/44.jpg',

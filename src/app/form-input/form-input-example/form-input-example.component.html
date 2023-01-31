@@ -12,7 +12,7 @@
                 [type]="type !== 'password' ? type : 'text'"
                 [(ngModel)]="value"
                 [description]="note"
-                [autoCompleteData]="autoCompleteData">
+                [autocompleteData]="autoCompleteData">
       </it-input>
       <it-password-input *ngIf="type === 'password'" id="password-input-0"
                          [label]="label"
