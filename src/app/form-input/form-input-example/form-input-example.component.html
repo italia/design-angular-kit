@@ -12,7 +12,8 @@
                 [type]="type !== 'password' ? type : 'text'"
                 [(ngModel)]="value"
                 [description]="note"
-                [autocompleteData]="autoCompleteData">
+                [autocompleteData]="autocompleteUsers$"
+                (onAutocompleteSelected)="onAutocompleteSelected($event)">
       </it-input>
       <it-password-input *ngIf="type === 'password'" id="password-input-0"
                          [label]="label"
