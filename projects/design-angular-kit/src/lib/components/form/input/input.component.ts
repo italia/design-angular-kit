@@ -73,6 +73,13 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string) => Observable<Array<AutocompleteItem>>);
 
   /**
+   * Time span [ms] has passed without another source emission, to delay data filtering.
+   * Useful when the user is typing multiple letters
+   * @default 300 [ms]
+   */
+  @Input() autocompleteDebounceTime: number = 300;
+
+  /**
    * Fired when the Autocomplete Item has been selected
    */
   @Output() onAutocompleteSelected: EventEmitter<AutocompleteItem> = new EventEmitter();
@@ -216,7 +223,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
       return of({ searchedValue: '', relatedEntries: [] });
     }
     return this.control.valueChanges.pipe(
-      debounceTime(300), // After 300ms span has passed without another source emission, useful when the user is typing multiple letters
+      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters
       distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value
       switchMap(searchedValue => {
         if (!this.autocompleteData) {
