@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
-import { AutoCompleteItem, InputControlType } from '../../../interfaces/form';
+import { AutocompleteItem, InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { map, Observable, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'it-input[id]',
@@ -66,14 +66,23 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   @Input() adaptive?: BooleanInput;
 
   /**
-   * Opzionale.
-   * Disponibile solo se il type è search.
-   * Indica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input
+   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']
+   * If you need to retrieve items via API, can pass a function of Observable
+   * @default undefined
    */
-  @Input()
-  set autoCompleteData(value: Array<AutoCompleteItem>) { this._autoCompleteData = value; }
-  get autoCompleteData(): Array<AutoCompleteItem> { return this._autoCompleteData; }
-  private _autoCompleteData: Array<AutoCompleteItem> = [];
+  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string) => Observable<Array<AutocompleteItem>>);
+
+  /**
+   * Time span [ms] has passed without another source emission, to delay data filtering.
+   * Useful when the user is typing multiple letters
+   * @default 300 [ms]
+   */
+  @Input() autocompleteDebounceTime: number = 300;
+
+  /**
+   * Fired when the Autocomplete Item has been selected
+   */
+  @Output() onAutocompleteSelected: EventEmitter<AutocompleteItem> = new EventEmitter();
 
   showAutocompletion = false;
 
@@ -150,7 +159,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   }
 
   /** Observable da cui vengono emessi i risultati dell'auto completamento */
-  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }>}> = new Observable();
+  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> = new Observable();
 
 
   override ngOnInit() {
@@ -206,56 +215,51 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   }
 
 
-  
-  getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }>}> {
-
-    if(this.type === 'search') {
-      return this.control.valueChanges.pipe(map((value) => {
-        const searchedValue = value;
-        if (searchedValue) {
-          const lowercaseValue = searchedValue.toLowerCase();
-          const lowercaseData = this._autoCompleteData.filter((item) => item.value).map(item => {
-            return { ...item, original : item.value, lowercase : item.value.toLowerCase() };
-          });
-    
-          const relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }> = [];
-          lowercaseData.forEach(lowercaseEntry => {
-            const matching = (lowercaseEntry.lowercase).includes(lowercaseValue);
-            if (matching) {
-              relatedEntries.push(lowercaseEntry);
-            }
-          });
-  
-          return { searchedValue, relatedEntries };
-        } else {
-          return { searchedValue, relatedEntries: []};
+  /**
+   * Create the autocomplete list
+   */
+  private getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> {
+    if (this.type !== 'search') {
+      return of({ searchedValue: '', relatedEntries: [] });
+    }
+    return this.control.valueChanges.pipe(
+      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters
+      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value
+      switchMap(searchedValue => {
+        if (!this.autocompleteData) {
+          return of({ searchedValue, relatedEntries: [] });
         }
-      }));
-    } else {
-      return of({searchedValue: '', relatedEntries: []});
-    }
-    
+
+        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);
+        return autoCompleteData$.pipe(
+          map(autocompleteData => {
+            if (!searchedValue) {
+              return { searchedValue, relatedEntries: [] };
+            }
+
+            const lowercaseValue = searchedValue.toLowerCase();
+            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));
+
+            return { searchedValue, relatedEntries };
+          })
+        );
+      })
+    );
   }
 
-  isAutocompletable() {
-    if (this._autoCompleteData && this.type === 'search') {
-      return this._autoCompleteData.length > 0;
-    } else {
-      return false;
-    }
-  }
-
-  onEntryClick(entry: AutoCompleteItem, event: Event) {
-    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata 
+  onEntryClick(entry: AutocompleteItem, event: Event) {
+    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata
     // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.
-    if(!entry.link) {
+    if (!entry.link) {
       event.preventDefault();
     }
+
+    this.onAutocompleteSelected.next(entry);
     this.control.setValue(entry.value);
     this.showAutocompletion = false;
   }
 
-  autocompleteItemTrackByValueFn(index: number, item: AutoCompleteItem) {
+  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {
     return item.value;
   }
 

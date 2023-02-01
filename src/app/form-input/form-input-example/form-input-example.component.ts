@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { AutoCompleteItem, InputControlType } from 'projects/design-angular-kit/src/public_api';
+import { AutocompleteItem, InputControlType } from 'projects/design-angular-kit/src/public_api';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'it-form-input-example',
@@ -33,13 +34,16 @@ export class FormInputExampleComponent {
 
   hasNote = false;
 
-   get autoCompleteData(): AutoCompleteItem[] {
+  /**
+   * Static AutocompleteData accepted by it-input
+   */
+   get autoCompleteData(): AutocompleteItem[] {
      return this._autoCompleteData;
   }
-  set autoCompleteData(value: AutoCompleteItem[]) {
+  set autoCompleteData(value: AutocompleteItem[]) {
      this._autoCompleteData = value;
   }
-   private _autoCompleteData: AutoCompleteItem[] = [
+   private _autoCompleteData: AutocompleteItem[] = [
      {
        value: 'Luisa Neri',
        avatarSrcPath: 'https://randomuser.me/api/portraits/women/44.jpg',
@@ -71,4 +75,20 @@ export class FormInputExampleComponent {
      }
    ];
 
+  /**
+   * Dynamic AutocompleteData (API) accepted by it-input
+   * @param search the autocomplete input string
+   */
+  autocompleteUsers$ = (search?: string): Observable<Array<AutocompleteItem>> => {
+    if (!search) {
+      return of([]);
+    }
+
+    // API request for retrieve data, use `search` to filter data
+    return of(this._autoCompleteData);
+  }
+
+  onAutocompleteSelected(item: AutocompleteItem): void {
+    console.log(item);
+  }
 }
