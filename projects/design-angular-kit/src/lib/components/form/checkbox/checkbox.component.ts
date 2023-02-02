@@ -1,11 +1,10 @@
-import {Component, Input} from '@angular/core';
-import {AbstractFormComponent} from "../../../abstracts/abstract-form-component";
-import {BooleanInput, isTrueBooleanInput} from "../../../utils/boolean-input";
+import { Component, Input } from '@angular/core';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
-  selector: 'it-checkbox[id][label]',
-  templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  selector: 'it-checkbox[id]',
+  templateUrl: './checkbox.component.html'
 })
 export class CheckboxComponent extends AbstractFormComponent<boolean> {
 

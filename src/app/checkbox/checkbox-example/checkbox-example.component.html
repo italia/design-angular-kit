@@ -5,17 +5,27 @@
     <it-checkbox id="spuntato" [(ngModel)]="checked" label="Spuntato"></it-checkbox>
     <it-checkbox id="disabilitato" [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
     <it-checkbox id="indeterminato" [(ngModel)]="indeterminate" label="Indeterminato"></it-checkbox>
+    <it-checkbox id="link" [(ngModel)]="link" label="Testo con link"></it-checkbox>
   </p>
 
   <h4>Risultato</h4>
 
   <p class="example-section">
-      <it-checkbox
-          id="example"
-          [(ngModel)]="checked"
-          [label]="label"
-          [indeterminate]="indeterminate"
-          [disabled]="disabled"></it-checkbox>
+    <it-checkbox
+      id="example"
+      [(ngModel)]="checked"
+      [indeterminate]="indeterminate"
+      [disabled]="disabled">
+
+      <ng-container label>
+        <ng-container *ngIf="link; else simpleLabel">
+          Accetto i <a href="https://italia.github.io/bootstrap-italia/">termini di servizio</a>
+        </ng-container>
+        <ng-template #simpleLabel>
+          Sono una checkbox
+        </ng-template>
+      </ng-container>
+    </it-checkbox>
   </p>
 
 </div>
