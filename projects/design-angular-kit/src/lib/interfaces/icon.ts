@@ -114,6 +114,8 @@ export type IconName =
   'instagram' |
   'linkedin' |
   'linkedin-square' |
+  'mastodon' |
+  'mastodon-square' |
   'medium' |
   'medium-square' |
   'pinterest' |
