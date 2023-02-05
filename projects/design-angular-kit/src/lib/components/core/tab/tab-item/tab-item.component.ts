@@ -1,12 +1,11 @@
-import {Component, Input, TemplateRef, ViewChild} from '@angular/core';
-import {AbstractComponent} from "../../../../abstracts/abstract.component";
-import {BooleanInput} from "../../../../utils/boolean-input";
-import {IconName} from "../../../../interfaces/icon";
+import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { AbstractComponent } from '../../../../abstracts/abstract.component';
+import { BooleanInput } from '../../../../utils/boolean-input';
+import { IconName } from '../../../../interfaces/icon';
 
 @Component({
   selector: 'it-tab-item[id]',
-  templateUrl: './tab-item.component.html',
-  styleUrls: ['./tab-item.component.scss']
+  templateUrl: './tab-item.component.html'
 })
 export class TabItemComponent extends AbstractComponent {
 
@@ -33,13 +32,12 @@ export class TabItemComponent extends AbstractComponent {
   /**
    * Custom class
    */
-  @Input() class: string = ''
+  @Input() class: string = '';
 
   /**
    * The content of tab
    */
-  @ViewChild(TemplateRef)
-  public htmlContent!: TemplateRef<any>;
+  @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();

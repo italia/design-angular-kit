@@ -1,11 +1,10 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, QueryList} from '@angular/core';
-import {BooleanInput, isTrueBooleanInput} from "../../../../utils/boolean-input";
-import {TabItemComponent} from "../tab-item/tab-item.component";
+import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
+import { TabItemComponent } from '../tab-item/tab-item.component';
 
 @Component({
   selector: 'it-tab-container',
-  templateUrl: './tab-container.component.html',
-  styleUrls: ['./tab-container.component.scss']
+  templateUrl: './tab-container.component.html'
 })
 export class TabContainerComponent implements AfterViewInit {
 
@@ -35,7 +34,7 @@ export class TabContainerComponent implements AfterViewInit {
   }
 
   isTrueBooleanInput(booleanInput?: BooleanInput): boolean {
-    return isTrueBooleanInput(booleanInput)
+    return isTrueBooleanInput(booleanInput);
   }
 
   ngAfterViewInit(): void {
