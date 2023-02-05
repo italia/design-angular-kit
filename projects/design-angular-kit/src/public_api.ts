@@ -33,6 +33,8 @@ export * from './lib/components/core/popover/popover.directive';
 export * from './lib/components/core/progress-bar/progress-bar.component';
 export * from './lib/components/core/progress-button/progress-button.component';
 export * from './lib/components/core/spinner/spinner.component';
+export * from './lib/components/core/steppers/steppers-container/steppers-container.component';
+export * from './lib/components/core/steppers/steppers-item/steppers-item.component';
 export * from './lib/components/core/tab/tab-container/tab-container.component';
 export * from './lib/components/core/tab/tab-item/tab-item.component';
 export * from './lib/components/core/table/table.component';
