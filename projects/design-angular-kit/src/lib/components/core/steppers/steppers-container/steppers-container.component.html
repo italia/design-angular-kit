@@ -25,7 +25,8 @@
       </li>
     </ul>
     <span class="steppers-index" aria-hidden="true">
-      <ng-container *ngIf="!isSteppersNumber; else showNumbers">{{(activeStep + 1) + '/' + steps?.length}}</ng-container>
+      <ng-container
+        *ngIf="!isSteppersNumber; else showNumbers">{{(activeStep + 1) + '/' + steps?.length}}</ng-container>
       <ng-template #showNumbers>
         <span *ngFor="let step of steps; let i = index" [class.active]="i === activeStep">{{i + 1}}</span>
       </ng-template>
@@ -62,7 +63,7 @@
     </ng-container>
 
     <button *ngIf="isShowSaveButton" type="button" itButton="primary" size="sm" class="steppers-btn-save"
-            (click)="saveClick.emit(activeStep)">
+            [progress]="isSaveLoading" [disabled]="isSaveLoading" (click)="saveClick.emit(activeStep)">
       {{'it.general.save' | translate}}
     </button>
 
@@ -74,6 +75,7 @@
 
     <button *ngIf="isShowConfirmButton" type="button" itButton="primary" size="sm"
             class="steppers-btn-confirm d-lg-block"
+            [progress]="isConfirmLoading" [disabled]="isConfirmLoading"
             (click)="confirmClick.emit(activeStep)">
       {{'it.core.confirm' | translate}}
     </button>

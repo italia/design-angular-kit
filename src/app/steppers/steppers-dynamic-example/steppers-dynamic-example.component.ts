@@ -14,23 +14,30 @@ export class SteppersDynamicExampleComponent {
 
   isDark = false;
 
+  isConfirmLoading = false;
+  isSaveLoading = false;
+
   onForwardClick(activeStep: number): void {
     if (activeStep < this.steps.length - 1) {
       this.activeStep++;
     }
+    this.isConfirmLoading = false;
+    this.isSaveLoading = false;
   }
   onBackClick(activeStep: number): void {
     if (activeStep > 0) {
       this.activeStep--;
     }
+    this.isConfirmLoading = false;
+    this.isSaveLoading = false;
   }
 
   onConfirmClick(activeStep: number): void {
-    console.log('Stepper is completed');
+    this.isConfirmLoading = true;
   }
 
   onSaveClick(activeStep: number): void {
-    console.log('Stepper is saved');
+    this.isSaveLoading = true;
   }
 
 }

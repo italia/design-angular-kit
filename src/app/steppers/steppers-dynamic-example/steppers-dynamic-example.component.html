@@ -13,7 +13,9 @@
                          (backClick)="onBackClick($event)"
                          (forwardClick)="onForwardClick($event)"
                          (confirmClick)="onConfirmClick($event)"
-                         (saveClick)="onSaveClick($event)">
+                         [confirmLoading]="isConfirmLoading"
+                         (saveClick)="onSaveClick($event)"
+                         [saveLoading]="isSaveLoading">
 
     <it-steppers-item *ngFor="let step of steps" [label]="step">
       <div class="container" [class.text-white]="isDark">

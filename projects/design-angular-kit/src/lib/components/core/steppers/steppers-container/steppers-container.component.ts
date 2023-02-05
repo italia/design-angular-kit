@@ -74,10 +74,20 @@ export class SteppersContainerComponent implements AfterViewInit {
   @Input() showConfirmButton: BooleanInput = false;
 
   /**
+   * Show the confirm button as indeterminate progress button
+   */
+  @Input() confirmLoading?: BooleanInput;
+
+  /**
    * Show the save button
    * @default false
    */
   @Input() showSaveButton: BooleanInput = false;
+
+  /**
+   * Show the save button as indeterminate progress button
+   */
+  @Input() saveLoading?: BooleanInput;
 
   /**
    * The stepper items
@@ -132,8 +142,16 @@ export class SteppersContainerComponent implements AfterViewInit {
     return isTrueBooleanInput(this.showConfirmButton);
   }
 
+  get isConfirmLoading(): boolean {
+    return isTrueBooleanInput(this.confirmLoading);
+  }
+
   get isShowSaveButton(): boolean {
     return isTrueBooleanInput(this.showSaveButton);
+  }
+
+  get isSaveLoading(): boolean {
+    return isTrueBooleanInput(this.saveLoading);
   }
 
   constructor(
