@@ -85,6 +85,10 @@
         {
           "label": "Upload",
           "link": "/componenti/upload"
+        },
+        {
+          "label": "Steppers",
+          "link": "/componenti/steppers"
         }
       ]
     }

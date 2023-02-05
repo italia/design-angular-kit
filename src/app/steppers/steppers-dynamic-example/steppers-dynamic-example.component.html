@@ -1,0 +1,26 @@
+<h3>Stepper</h3>
+<div class="bd-example">
+
+  <div class="mb-3">
+    <it-checkbox id="stepper-dark" label="Modalità dark" [(ngModel)]="isDark"></it-checkbox>
+  </div>
+
+  <it-steppers-container [activeStep]="activeStep"
+                         [dark]="isDark"
+                         [showForwardButton]="activeStep < steps.length-1"
+                         [showSaveButton]="activeStep === 0"
+                         [showConfirmButton]="activeStep === steps.length-1"
+                         (backClick)="onBackClick($event)"
+                         (forwardClick)="onForwardClick($event)"
+                         (confirmClick)="onConfirmClick($event)"
+                         (saveClick)="onSaveClick($event)">
+
+    <it-steppers-item *ngFor="let step of steps" [label]="step">
+      <div class="container" [class.text-white]="isDark">
+        {{step}}
+      </div>
+    </it-steppers-item>
+
+  </it-steppers-container>
+
+</div>

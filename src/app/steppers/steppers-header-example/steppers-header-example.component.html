@@ -1,0 +1,27 @@
+<h3>Varianti intestazione</h3>
+<h4>Solo testo</h4>
+<div class="bd-example">
+  <it-steppers-container [activeStep]="1" showBackButton="false" showForwardButton="false">
+    <it-steppers-item label="Primo contenuto"></it-steppers-item>
+    <it-steppers-item label="Secondo contenuto"></it-steppers-item>
+    <it-steppers-item label="Terzo contenuto"></it-steppers-item>
+  </it-steppers-container>
+</div>
+
+<h4>Testo e icone</h4>
+<div class="bd-example">
+  <it-steppers-container [activeStep]="1" showBackButton="false" showForwardButton="false">
+    <it-steppers-item label="Primo contenuto" icon="calendar"></it-steppers-item>
+    <it-steppers-item label="Secondo contenuto" icon="locked"></it-steppers-item>
+    <it-steppers-item label="Terzo contenuto" icon="settings"></it-steppers-item>
+  </it-steppers-container>
+</div>
+
+<h4>Ordine degli step</h4>
+<div class="bd-example">
+  <it-steppers-container [activeStep]="1" steppersNumber="true" showBackButton="false" showForwardButton="false">
+    <it-steppers-item label="Primo contenuto"></it-steppers-item>
+    <it-steppers-item label="Secondo contenuto"></it-steppers-item>
+    <it-steppers-item label="Terzo contenuto"></it-steppers-item>
+  </it-steppers-container>
+</div>
