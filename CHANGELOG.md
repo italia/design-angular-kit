@@ -1,3 +1,20 @@
+# [1.0.0-6](https://github.com/italia/design-angular-kit/compare/v1.0.0-5...v1.0.0-6) (2023-02-06)
+
+
+### Bug Fixes
+
+* **i18n:** translations with lazy loading modules ([09315c4](https://github.com/italia/design-angular-kit/commit/09315c462a3619c1db9bf96ca2243cd06298b9e8))
+* improve a11y and margins on back button ([57b1c45](https://github.com/italia/design-angular-kit/commit/57b1c450fbcd1cbcd09f5d04d364c7ec793aaa4f))
+
+
+### Features
+
+* ability to filter autocomplete data on backend ([1398307](https://github.com/italia/design-angular-kit/commit/1398307d191dcd9e9c542cb12d41bd43582b207d))
+* add ability to insert html label to checkbox and radiobutton ([a7545e0](https://github.com/italia/design-angular-kit/commit/a7545e084a59fca665156028f9949aaac7b837bb))
+* added steppers component ([1bfa3fe](https://github.com/italia/design-angular-kit/commit/1bfa3fec520a6feeeb91707f246fd567f15b21b8))
+
+
+
 # [1.0.0-5](https://github.com/italia/design-angular-kit/compare/v1.0.0-4...v1.0.0-5) (2023-01-27)
 
 
