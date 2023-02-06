@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TranslateLoader, TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ComponentsModule } from './modules/components.module';
@@ -23,8 +23,7 @@ import { ComponentsModule } from './modules/components.module';
   exports: [
     ComponentsModule,
     TranslateModule
-  ],
-  providers: [TranslateStore]
+  ]
 })
 export class DesignAngularKitModule {
 
