@@ -61,14 +61,24 @@
     ],
     "interfaces": [
         {
-            "name": "AutoCompleteItem",
-            "id": "interface-AutoCompleteItem-214321e62988c2eb3eabc451492f5c8cf9cee2941cb234e38d8479c93925afe4ae43428e83e55cae361d73a51bc6c28b482dfeda94fff4e99da5c578cb4cd08d",
+            "name": "AutocompleteItem",
+            "id": "interface-AutocompleteItem-23512aa428ca2ff3a3bb79962f3063690268864f562ee55666f9ddd4dd90c6d69a5b21521cc6f2c87bdacd3416ffc43adf49b177ddedda69f1c44d774efe0e80",
             "file": "projects/design-angular-kit/src/lib/interfaces/form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from \"./icon\";\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutoCompleteItem {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: any;\n}\n",
             "properties": [
+                {
+                    "name": "additionalData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": true,
+                    "description": "<p>Attribute not used for autocomplete rendering.\nIt can be useful to retrieve some extra information when selecting the autocomplete item</p>\n",
+                    "line": 78,
+                    "rawdescription": "\n\nAttribute not used for autocomplete rendering.\nIt can be useful to retrieve some extra information when selecting the autocomplete item\n"
+                },
                 {
                     "name": "avatarAltText",
                     "deprecated": false,
@@ -240,12 +250,12 @@
         },
         {
             "name": "SelectControlGroup",
-            "id": "interface-SelectControlGroup-214321e62988c2eb3eabc451492f5c8cf9cee2941cb234e38d8479c93925afe4ae43428e83e55cae361d73a51bc6c28b482dfeda94fff4e99da5c578cb4cd08d",
+            "id": "interface-SelectControlGroup-23512aa428ca2ff3a3bb79962f3063690268864f562ee55666f9ddd4dd90c6d69a5b21521cc6f2c87bdacd3416ffc43adf49b177ddedda69f1c44d774efe0e80",
             "file": "projects/design-angular-kit/src/lib/interfaces/form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from \"./icon\";\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutoCompleteItem {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: any;\n}\n",
             "properties": [
                 {
                     "name": "dragdrop",
@@ -281,12 +291,12 @@
         },
         {
             "name": "SelectControlOption",
-            "id": "interface-SelectControlOption-214321e62988c2eb3eabc451492f5c8cf9cee2941cb234e38d8479c93925afe4ae43428e83e55cae361d73a51bc6c28b482dfeda94fff4e99da5c578cb4cd08d",
+            "id": "interface-SelectControlOption-23512aa428ca2ff3a3bb79962f3063690268864f562ee55666f9ddd4dd90c6d69a5b21521cc6f2c87bdacd3416ffc43adf49b177ddedda69f1c44d774efe0e80",
             "file": "projects/design-angular-kit/src/lib/interfaces/form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from \"./icon\";\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutoCompleteItem {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: any;\n}\n",
             "properties": [
                 {
                     "name": "disabled",
@@ -331,12 +341,12 @@
         },
         {
             "name": "UploadFileListItem",
-            "id": "interface-UploadFileListItem-214321e62988c2eb3eabc451492f5c8cf9cee2941cb234e38d8479c93925afe4ae43428e83e55cae361d73a51bc6c28b482dfeda94fff4e99da5c578cb4cd08d",
+            "id": "interface-UploadFileListItem-23512aa428ca2ff3a3bb79962f3063690268864f562ee55666f9ddd4dd90c6d69a5b21521cc6f2c87bdacd3416ffc43adf49b177ddedda69f1c44d774efe0e80",
             "file": "projects/design-angular-kit/src/lib/interfaces/form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from \"./icon\";\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutoCompleteItem {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: any;\n}\n",
             "properties": [
                 {
                     "name": "error",
@@ -4894,7 +4904,7 @@
         },
         {
             "name": "BackButtonComponent",
-            "id": "component-BackButtonComponent-3dc6f2448f1101205d6a1567531c46356d8bd01dc4b876f9713ab2055943de09950438ca98083a1381aa27955ffe4648004e8363e022cd6d19ad35601369da46",
+            "id": "component-BackButtonComponent-378eaac19378635deda9ac3e36d93912f15e4e659a6aa2373839046fe31054d152e50ef48d8613291ac31c0ce62ddda16e3f80bb5d9808a5c0bcede4f0c75ccd",
             "file": "projects/design-angular-kit/src/lib/components/navigation/back-button/back-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4903,9 +4913,7 @@
             "outputs": [],
             "providers": [],
             "selector": "it-back-button",
-            "styleUrls": [
-                "./back-button.component.scss"
-            ],
+            "styleUrls": [],
             "styles": [],
             "templateUrl": [
                 "./back-button.component.html"
@@ -4918,15 +4926,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1047,
-                            "end": 1171,
+                            "pos": 1000,
+                            "end": 1124,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 1048,
-                                "end": 1055,
+                                "pos": 1001,
+                                "end": 1008,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4938,7 +4946,7 @@
                     ],
                     "rawdescription": "\n\nCustom back logic <br/>\n\nNOTE: to use 'this' need bind function  <br/>\n```html\n(errorCallback is your function, pass backCbFn to the component)\n```",
                     "description": "<p>Custom back logic <br/></p>\n<p>NOTE: to use &#39;this&#39; need bind function  <br/></p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">(errorCallback is your function, pass backCbFn to the component)</code></pre></div>",
-                    "line": 48,
+                    "line": 47,
                     "type": "function",
                     "decorators": []
                 },
@@ -4949,15 +4957,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 517,
-                            "end": 536,
+                            "pos": 470,
+                            "end": 489,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 518,
-                                "end": 525,
+                                "pos": 471,
+                                "end": 478,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4970,7 +4978,7 @@
                     ],
                     "rawdescription": "\n\nBack button style\n- <b>link</b>: use a link with icon and text\n- <b>button</b>: use a button with icon and text\n",
                     "description": "<p>Back button style</p>\n<ul>\n<li><b>link</b>: use a link with icon and text</li>\n<li><b>button</b>: use a button with icon and text</li>\n</ul>\n",
-                    "line": 19,
+                    "line": 18,
                     "type": "\"link\" | \"button\"",
                     "decorators": []
                 },
@@ -4981,15 +4989,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 696,
-                            "end": 713,
+                            "pos": 649,
+                            "end": 666,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 697,
-                                "end": 704,
+                                "pos": 650,
+                                "end": 657,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5002,7 +5010,7 @@
                     ],
                     "rawdescription": "\n\nButton direction\n- <b>left</b>: Back direction\n- <b>up</b>: Upper direction\n",
                     "description": "<p>Button direction</p>\n<ul>\n<li><b>left</b>: Back direction</li>\n<li><b>up</b>: Upper direction</li>\n</ul>\n",
-                    "line": 27,
+                    "line": 26,
                     "type": "\"left\" | \"up\"",
                     "decorators": []
                 },
@@ -5013,15 +5021,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 794,
-                            "end": 811,
+                            "pos": 747,
+                            "end": 764,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 795,
-                                "end": 802,
+                                "pos": 748,
+                                "end": 755,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5034,7 +5042,7 @@
                     ],
                     "rawdescription": "\n\nShow/Hide icon\n",
                     "description": "<p>Show/Hide icon</p>\n",
-                    "line": 33,
+                    "line": 32,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -5045,15 +5053,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 888,
-                            "end": 905,
+                            "pos": 841,
+                            "end": 858,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 889,
-                                "end": 896,
+                                "pos": 842,
+                                "end": 849,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5066,7 +5074,7 @@
                     ],
                     "rawdescription": "\n\nShow/Hide text\n",
                     "description": "<p>Show/Hide text</p>\n",
-                    "line": 39,
+                    "line": 38,
                     "type": "BooleanInput",
                     "decorators": []
                 }
@@ -5080,7 +5088,7 @@
                     "type": "Location",
                     "optional": false,
                     "description": "",
-                    "line": 59,
+                    "line": 58,
                     "modifierKind": [
                         123,
                         144
@@ -5090,17 +5098,35 @@
             "methodsClass": [
                 {
                     "name": "goBack",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 66,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGo back function\n",
                     "description": "<p>Go back function</p>\n",
                     "modifierKind": [
                         123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
                     ]
                 }
             ],
@@ -5111,14 +5137,9 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { Location } from '@angular/common';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-back-button',\n  templateUrl: './back-button.component.html',\n  styleUrls: ['./back-button.component.scss'],\n  exportAs: 'itBackButton'\n})\nexport class BackButtonComponent {\n\n  /**\n   * Back button style\n   * - <b>link</b>: use a link with icon and text\n   * - <b>button</b>: use a button with icon and text\n   * @default button\n   */\n  @Input() buttonStyle: 'link' | 'button' = 'button';\n\n  /**\n   * Button direction\n   * - <b>left</b>: Back direction\n   * - <b>up</b>: Upper direction\n   * @default left\n   */\n  @Input() direction: 'left' | 'up' = 'left';\n\n  /**\n   * Show/Hide icon\n   * @default true\n   */\n  @Input() showIcon: BooleanInput = true;\n\n  /**\n   * Show/Hide text\n   * @default true\n   */\n  @Input() showText: BooleanInput = true;\n\n  /**\n   * Custom back logic <br/>\n   *\n   * NOTE: to use 'this' need bind function  <br/>\n   * @example backCbFn = this.errorCallback.bind(this);\n   * (errorCallback is your function, pass backCbFn to the component)\n   */\n  @Input() backFn?: (location: Location) => void;\n\n  get isShowIcon(): boolean {\n    return isTrueBooleanInput(this.showIcon);\n  }\n\n  get isShowText(): boolean {\n    return isTrueBooleanInput(this.showText);\n  }\n\n  constructor(\n    public readonly _location: Location\n  ) {\n  }\n\n  /**\n   * Go back function\n   */\n  public goBack(): void {\n    if (this.backFn) {\n      return this.backFn(this._location);\n    }\n\n    this._location.back();\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { Location } from '@angular/common';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-back-button',\n  templateUrl: './back-button.component.html',\n  exportAs: 'itBackButton'\n})\nexport class BackButtonComponent {\n\n  /**\n   * Back button style\n   * - <b>link</b>: use a link with icon and text\n   * - <b>button</b>: use a button with icon and text\n   * @default button\n   */\n  @Input() buttonStyle: 'link' | 'button' = 'button';\n\n  /**\n   * Button direction\n   * - <b>left</b>: Back direction\n   * - <b>up</b>: Upper direction\n   * @default left\n   */\n  @Input() direction: 'left' | 'up' = 'left';\n\n  /**\n   * Show/Hide icon\n   * @default true\n   */\n  @Input() showIcon: BooleanInput = true;\n\n  /**\n   * Show/Hide text\n   * @default true\n   */\n  @Input() showText: BooleanInput = true;\n\n  /**\n   * Custom back logic <br/>\n   *\n   * NOTE: to use 'this' need bind function  <br/>\n   * @example backCbFn = this.errorCallback.bind(this);\n   * (errorCallback is your function, pass backCbFn to the component)\n   */\n  @Input() backFn?: (location: Location) => void;\n\n  get isShowIcon(): boolean {\n    return isTrueBooleanInput(this.showIcon);\n  }\n\n  get isShowText(): boolean {\n    return isTrueBooleanInput(this.showText);\n  }\n\n  constructor(\n    public readonly _location: Location\n  ) {\n  }\n\n  /**\n   * Go back function\n   */\n  public goBack(event: Event): void {\n    event.preventDefault();\n    if (this.backFn) {\n      return this.backFn(this._location);\n    }\n\n    this._location.back();\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "a.go-back {\n  cursor: pointer;\n}\n",
-                    "styleUrl": "./back-button.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
             "constructorObj": {
                 "name": "constructor",
@@ -5133,7 +5154,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 56,
+                "line": 55,
                 "jsdoctags": [
                     {
                         "name": "_location",
@@ -5153,7 +5174,7 @@
                         "name": "isShowIcon",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 50
+                        "line": 49
                     }
                 },
                 "isShowText": {
@@ -5162,11 +5183,11 @@
                         "name": "isShowText",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 54
+                        "line": 53
                     }
                 }
             },
-            "templateData": "<a *ngIf=\"buttonStyle === 'link'\" class=\"go-back\" data-bs-toggle=\"historyback\" (click)=\"goBack()\" [routerLink]=\"null\">\n  <ng-container *ngTemplateOutlet=\"content\"></ng-container>\n</a>\n\n<button *ngIf=\"buttonStyle === 'button'\"\n        itButton=\"primary\"\n        class=\"go-back\"\n        data-bs-toggle=\"historyback\"\n        (click)=\"goBack()\">\n\n  <ng-container *ngTemplateOutlet=\"content\"></ng-container>\n</button>\n\n<ng-template #content>\n  <it-icon *ngIf=\"isShowIcon\"\n           size=\"sm\"\n           [name]=\"direction === 'left' ? 'arrow-left' : 'arrow-up'\"\n           [color]=\"buttonStyle === 'link' ? 'primary' : 'white'\"\n           [class.me-2]=\"isShowText\"></it-icon>\n\n  <span [class.visually-hidden]=\"!isShowText\">\n    {{(direction === 'left' ? 'it.navigation.go-back' : 'it.navigation.upper-level') | translate}}\n  </span>\n</ng-template>\n"
+            "templateData": "<a *ngIf=\"buttonStyle === 'link'\" href=\"#\" class=\"go-back\" (click)=\"goBack($event)\">\n  <ng-container *ngTemplateOutlet=\"content\"></ng-container>\n</a>\n\n<button *ngIf=\"buttonStyle === 'button'\" itButton=\"primary\" class=\"go-back\" (click)=\"goBack($event)\">\n  <ng-container *ngTemplateOutlet=\"content\"></ng-container>\n</button>\n\n<ng-template #content>\n  <it-icon *ngIf=\"isShowIcon\"\n           size=\"sm\"\n           [name]=\"direction === 'left' ? 'arrow-left' : 'arrow-up'\"\n           [color]=\"buttonStyle === 'link' ? 'primary' : 'white'\"\n           [class.me-2]=\"isShowText\"></it-icon>\n\n  <span [class.visually-hidden]=\"!isShowText\">\n    {{(direction === 'left' ? 'it.navigation.go-back' : 'it.navigation.upper-level') | translate}}\n  </span>\n</ng-template>\n"
         },
         {
             "name": "BackToTopComponent",
@@ -6556,17 +6577,15 @@
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-31efd2f2ee49c3e443ba1f2183daf969f28c5e498a17726634aad18d39ff7c214001c3f6f016837eca2553e3c31f940a9fe55942de4a3bbfe851e81935dbb324",
+            "id": "component-CheckboxComponent-38acb1b05d9a2c0ff74941217016fc874d4ac507c87d05b0c45d71a7bcc45b9d51b7d4a03b72d6c1bb3945d89f902ef0fe9bf238bc0db4ad29dc1e4879a7db5a",
             "file": "projects/design-angular-kit/src/lib/components/form/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "it-checkbox[id][label]",
-            "styleUrls": [
-                "./checkbox.component.scss"
-            ],
+            "selector": "it-checkbox[id]",
+            "styleUrls": [],
             "styles": [],
             "templateUrl": [
                 "./checkbox.component.html"
@@ -6579,7 +6598,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIf checkbox is checked\n",
                     "description": "<p>If checkbox is checked</p>\n",
-                    "line": 30,
+                    "line": 29,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -6589,7 +6608,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIf is checkbox group\n",
                     "description": "<p>If is checkbox group</p>\n",
-                    "line": 25,
+                    "line": 24,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -6599,7 +6618,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIf checkbox is indeterminate\n",
                     "description": "<p>If checkbox is indeterminate</p>\n",
-                    "line": 35,
+                    "line": 34,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -6609,7 +6628,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIf show checkbox inline\n",
                     "description": "<p>If show checkbox inline</p>\n",
-                    "line": 20,
+                    "line": 19,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -6619,7 +6638,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIf show checkbox as toggle\n",
                     "description": "<p>If show checkbox as toggle</p>\n",
-                    "line": 15,
+                    "line": 14,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -6734,7 +6753,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -7160,14 +7179,9 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, Input} from '@angular/core';\nimport {AbstractFormComponent} from \"../../../abstracts/abstract-form-component\";\nimport {BooleanInput, isTrueBooleanInput} from \"../../../utils/boolean-input\";\n\n@Component({\n  selector: 'it-checkbox[id][label]',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.scss']\n})\nexport class CheckboxComponent extends AbstractFormComponent<boolean> {\n\n  /**\n   * If show checkbox as toggle\n   */\n  @Input() toggle?: BooleanInput;\n\n  /**\n   * If show checkbox inline\n   */\n  @Input() inline?: BooleanInput;\n\n  /**\n   * If is checkbox group\n   */\n  @Input() group?: BooleanInput;\n\n  /**\n   * If checkbox is checked\n   */\n  @Input() checked?: BooleanInput;\n\n  /**\n   * If checkbox is indeterminate\n   */\n  @Input() indeterminate?: BooleanInput;\n\n  get isIndeterminate(): boolean {\n    return isTrueBooleanInput(this.indeterminate);\n  }\n\n  get isGroup(): boolean {\n    return isTrueBooleanInput(this.group);\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    if (this.control.value || this.checked === undefined) {\n      return;\n    }\n\n    const value = isTrueBooleanInput(this.checked);\n    this.writeValue(value);\n    return this.onChange(value);\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { AbstractFormComponent } from '../../../abstracts/abstract-form-component';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-checkbox[id]',\n  templateUrl: './checkbox.component.html'\n})\nexport class CheckboxComponent extends AbstractFormComponent<boolean> {\n\n  /**\n   * If show checkbox as toggle\n   */\n  @Input() toggle?: BooleanInput;\n\n  /**\n   * If show checkbox inline\n   */\n  @Input() inline?: BooleanInput;\n\n  /**\n   * If is checkbox group\n   */\n  @Input() group?: BooleanInput;\n\n  /**\n   * If checkbox is checked\n   */\n  @Input() checked?: BooleanInput;\n\n  /**\n   * If checkbox is indeterminate\n   */\n  @Input() indeterminate?: BooleanInput;\n\n  get isIndeterminate(): boolean {\n    return isTrueBooleanInput(this.indeterminate);\n  }\n\n  get isGroup(): boolean {\n    return isTrueBooleanInput(this.group);\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    if (this.control.value || this.checked === undefined) {\n      return;\n    }\n\n    const value = isTrueBooleanInput(this.checked);\n    this.writeValue(value);\n    return this.onChange(value);\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./checkbox.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
             "extends": "AbstractFormComponent",
             "accessors": {
@@ -7177,7 +7191,7 @@
                         "name": "isIndeterminate",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 37
+                        "line": 36
                     }
                 },
                 "isGroup": {
@@ -7186,11 +7200,11 @@
                         "name": "isGroup",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 41
+                        "line": 40
                     }
                 }
             },
-            "templateData": "<ng-container>\n  <div class=\"form-check\"\n       [class.form-check-group]=\"isGroup\"\n       [class.form-check-inline]=\"inline\">\n\n    <div *ngIf=\"toggle; else defaultStyle\" class=\"toggles\">\n      <label [for]=\"id\">\n        {{label}}\n        <input [id]=\"id\"\n               type=\"checkbox\"\n               [formControl]=\"control\"\n               [attr.aria-describedby]=\"id + '-help'\">\n        <span class=\"lever\"></span>\n      </label>\n    </div>\n\n    <ng-template #defaultStyle>\n      <input [id]=\"id\"\n             type=\"checkbox\"\n             class=\"form-check-input\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [class.semi-checked]=\"isIndeterminate\"\n             [formControl]=\"control\"\n             [attr.aria-describedby]=\"id + '-help'\">\n      <label class=\"form-check-label\" [for]=\"id\">{{label}}</label>\n    </ng-template>\n\n    <small *ngIf=\"isGroup\" [id]=\"id + '-help'\" class=\"form-text\">\n      <ng-content></ng-content>\n    </small>\n\n    <div *ngIf=\"isInvalid && isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <ng-container *ngTemplateOutlet=\"error\"></ng-container>\n    </div>\n  </div>\n\n  <div *ngIf=\"isInvalid && !isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <ng-container *ngTemplateOutlet=\"error\"></ng-container>\n  </div>\n</ng-container>\n\n<ng-template #error>\n  <div #customError>\n    <ng-content select=\"[error]\"></ng-content>\n  </div>\n  <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n</ng-template>\n"
+            "templateData": "<ng-container>\n  <div class=\"form-check\"\n       [class.form-check-group]=\"isGroup\"\n       [class.form-check-inline]=\"inline\">\n\n    <div *ngIf=\"toggle; else defaultStyle\" class=\"toggles\">\n      <label [for]=\"id\">\n        <ng-container *ngTemplateOutlet=\"htmlLabel\"></ng-container>\n        <input [id]=\"id\"\n               type=\"checkbox\"\n               [formControl]=\"control\"\n               [attr.aria-describedby]=\"id + '-help'\">\n        <span class=\"lever\"></span>\n      </label>\n    </div>\n\n    <ng-template #defaultStyle>\n      <input [id]=\"id\"\n             type=\"checkbox\"\n             class=\"form-check-input\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [class.semi-checked]=\"isIndeterminate\"\n             [formControl]=\"control\"\n             [attr.aria-describedby]=\"id + '-help'\">\n      <label class=\"form-check-label\" [for]=\"id\">\n        <ng-container *ngTemplateOutlet=\"htmlLabel\"></ng-container>\n      </label>\n    </ng-template>\n\n    <small *ngIf=\"isGroup\" [id]=\"id + '-help'\" class=\"form-text\">\n      <ng-content></ng-content>\n    </small>\n\n    <div *ngIf=\"isInvalid && isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <ng-container *ngTemplateOutlet=\"error\"></ng-container>\n    </div>\n  </div>\n\n  <div *ngIf=\"isInvalid && !isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <ng-container *ngTemplateOutlet=\"error\"></ng-container>\n  </div>\n</ng-container>\n\n<ng-template #error>\n  <div #customError>\n    <ng-content select=\"[error]\"></ng-content>\n  </div>\n  <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n</ng-template>\n\n<ng-template #htmlLabel>\n  <div #customLabel>\n    <ng-content select=\"[label]\"></ng-content>\n  </div>\n  <ng-container *ngIf=\"!customLabel.hasChildNodes()\">{{label}}</ng-container>\n</ng-template>\n"
         },
         {
             "name": "ChipComponent",
@@ -9411,7 +9425,7 @@
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-08bfd574e8be7eb5c2688684d0b55979dbe84f551854801a5a26db6e54d0090dea47517664bb00e59dfdb0bc81f43e6e4ad36da9abc8c7b4484a551391ac7d9a",
+            "id": "component-InputComponent-01e1d74b143af453f7c26b193fbd8bd99ed978576f0bf177bb88d753b37c51c9498c12d6aa9563ec0e5035068eefd62032755d6eda8f137c2402d16de87efdd3",
             "file": "projects/design-angular-kit/src/lib/components/form/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9439,13 +9453,66 @@
                     "decorators": []
                 },
                 {
-                    "name": "autoCompleteData",
+                    "name": "autocompleteData",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nOpzionale.\nDisponibile solo se il type è search.\nIndica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input\n",
-                    "description": "<p>Opzionale.\nDisponibile solo se il type è search.\nIndica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input</p>\n",
-                    "line": 74,
-                    "type": "Array<AutoCompleteItem>",
+                    "jsdoctags": [
+                        {
+                            "pos": 2081,
+                            "end": 2103,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 2082,
+                                "end": 2089,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>undefined</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nIndicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\nIf you need to retrieve items via API, can pass a function of Observable\n",
+                    "description": "<p>Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = &#39;search&#39;]\nIf you need to retrieve items via API, can pass a function of Observable</p>\n",
+                    "line": 73,
+                    "type": "Array<AutocompleteItem> | ",
+                    "decorators": []
+                },
+                {
+                    "name": "autocompleteDebounceTime",
+                    "defaultValue": "300",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 2376,
+                            "end": 2397,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 2377,
+                                "end": 2384,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>300 [ms]</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nTime span [ms] has passed without another source emission, to delay data filtering.\nUseful when the user is typing multiple letters\n",
+                    "description": "<p>Time span [ms] has passed without another source emission, to delay data filtering.\nUseful when the user is typing multiple letters</p>\n",
+                    "line": 80,
+                    "type": "number",
                     "decorators": []
                 },
                 {
@@ -9536,15 +9603,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 714,
-                            "end": 731,
+                            "pos": 783,
+                            "end": 800,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 715,
-                                "end": 722,
+                                "pos": 784,
+                                "end": 791,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9623,21 +9690,19 @@
                     }
                 }
             ],
-            "outputsClass": [],
-            "propertiesClass": [
+            "outputsClass": [
                 {
-                    "name": "_autoCompleteData",
-                    "defaultValue": "[]",
+                    "name": "onAutocompleteSelected",
+                    "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Array<AutoCompleteItem>",
-                    "optional": false,
-                    "description": "",
-                    "line": 76,
-                    "modifierKind": [
-                        121
-                    ]
-                },
+                    "rawdescription": "\n\nFired when the Autocomplete Item has been selected\n",
+                    "description": "<p>Fired when the Autocomplete Item has been selected</p>\n",
+                    "line": 85,
+                    "type": "EventEmitter<AutocompleteItem>"
+                }
+            ],
+            "propertiesClass": [
                 {
                     "name": "autocompleteResults$",
                     "defaultValue": "new Observable()",
@@ -9646,7 +9711,7 @@
                     "type": "Observable<literal type>",
                     "optional": false,
                     "description": "<p>Observable da cui vengono emessi i risultati dell&#39;auto completamento</p>\n",
-                    "line": 153,
+                    "line": 162,
                     "rawdescription": "\nObservable da cui vengono emessi i risultati dell'auto completamento"
                 },
                 {
@@ -9657,7 +9722,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 78
+                    "line": 87
                 },
                 {
                     "name": "control",
@@ -9711,7 +9776,7 @@
                         },
                         {
                             "name": "item",
-                            "type": "AutoCompleteItem",
+                            "type": "AutocompleteItem",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -9719,7 +9784,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 258,
+                    "line": 262,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9734,7 +9799,7 @@
                         },
                         {
                             "name": "item",
-                            "type": "AutoCompleteItem",
+                            "type": "AutocompleteItem",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -9749,9 +9814,14 @@
                     "optional": false,
                     "returnType": "Observable<literal type>",
                     "typeParameters": [],
-                    "line": 210,
+                    "line": 221,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCreate the autocomplete list\n",
+                    "description": "<p>Create the autocomplete list</p>\n",
+                    "modifierKind": [
+                        121
+                    ]
                 },
                 {
                     "name": "incrementNumber",
@@ -9767,7 +9837,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 190,
+                    "line": 199,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIncrement or decrease the input number value of step\n",
@@ -9775,8 +9845,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5858,
-                                "end": 5866,
+                                "pos": 6218,
+                                "end": 6226,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9788,8 +9858,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "false",
                             "tagName": {
-                                "pos": 5852,
-                                "end": 5857,
+                                "pos": 6212,
+                                "end": 6217,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9801,22 +9871,12 @@
                     ]
                 },
                 {
-                    "name": "isAutocompletable",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 240,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 156,
+                    "line": 165,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -9831,7 +9891,7 @@
                     "args": [
                         {
                             "name": "entry",
-                            "type": "AutoCompleteItem",
+                            "type": "AutocompleteItem",
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
@@ -9845,13 +9905,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 248,
+                    "line": 250,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "entry",
-                            "type": "AutoCompleteItem",
+                            "type": "AutocompleteItem",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -9875,7 +9935,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 262,
+                    "line": 266,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10295,7 +10355,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { AbstractFormComponent } from '../../../abstracts/abstract-form-component';\nimport { AutoCompleteItem, InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { map, Observable, of } from 'rxjs';\n\n@Component({\n  selector: 'it-input[id]',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss']\n})\nexport class InputComponent extends AbstractFormComponent<string | number> {\n\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder: string = '';\n\n  /**\n   * The input description\n   */\n  @Input() description?: string;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   */\n  @Input() readonly?: BooleanInput | 'plaintext';\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max?: number;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min?: number;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step?: number | 'any';\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   */\n  @Input() currency?: BooleanInput;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   */\n  @Input() percentage?: BooleanInput;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   */\n  @Input() adaptive?: BooleanInput;\n\n  /**\n   * Opzionale.\n   * Disponibile solo se il type è search.\n   * Indica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input\n   */\n  @Input()\n  set autoCompleteData(value: Array<AutoCompleteItem>) { this._autoCompleteData = value; }\n  get autoCompleteData(): Array<AutoCompleteItem> { return this._autoCompleteData; }\n  private _autoCompleteData: Array<AutoCompleteItem> = [];\n\n  showAutocompletion = false;\n\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });\n    }\n\n    return super.invalidMessage;\n  }\n\n  /** Observable da cui vengono emessi i risultati dell'auto completamento */\n  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }>}> = new Observable();\n\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (isTrueBooleanInput(this.percentage)) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);\n        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n    this.autocompleteResults$ = this.getAutocompleteResults$();\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  incrementNumber(decrease: boolean = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = (this.step === 'any' ? 1 : (this.step ?? 1));\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n\n\n  \n  getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }>}> {\n\n    if(this.type === 'search') {\n      return this.control.valueChanges.pipe(map((value) => {\n        const searchedValue = value;\n        if (searchedValue) {\n          const lowercaseValue = searchedValue.toLowerCase();\n          const lowercaseData = this._autoCompleteData.filter((item) => item.value).map(item => {\n            return { ...item, original : item.value, lowercase : item.value.toLowerCase() };\n          });\n    \n          const relatedEntries: Array<AutoCompleteItem & { original: string, lowercase: string }> = [];\n          lowercaseData.forEach(lowercaseEntry => {\n            const matching = (lowercaseEntry.lowercase).includes(lowercaseValue);\n            if (matching) {\n              relatedEntries.push(lowercaseEntry);\n            }\n          });\n  \n          return { searchedValue, relatedEntries };\n        } else {\n          return { searchedValue, relatedEntries: []};\n        }\n      }));\n    } else {\n      return of({searchedValue: '', relatedEntries: []});\n    }\n    \n  }\n\n  isAutocompletable() {\n    if (this._autoCompleteData && this.type === 'search') {\n      return this._autoCompleteData.length > 0;\n    } else {\n      return false;\n    }\n  }\n\n  onEntryClick(entry: AutoCompleteItem, event: Event) {\n    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata \n    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.\n    if(!entry.link) {\n      event.preventDefault();\n    }\n    this.control.setValue(entry.value);\n    this.showAutocompletion = false;\n  }\n\n  autocompleteItemTrackByValueFn(index: number, item: AutoCompleteItem) {\n    return item.value;\n  }\n\n  onKeyDown() {\n    this.showAutocompletion = this.type === 'search';\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { AbstractFormComponent } from '../../../abstracts/abstract-form-component';\nimport { AutocompleteItem, InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';\n\n@Component({\n  selector: 'it-input[id]',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss']\n})\nexport class InputComponent extends AbstractFormComponent<string | number> {\n\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder: string = '';\n\n  /**\n   * The input description\n   */\n  @Input() description?: string;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   */\n  @Input() readonly?: BooleanInput | 'plaintext';\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max?: number;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min?: number;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step?: number | 'any';\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   */\n  @Input() currency?: BooleanInput;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   */\n  @Input() percentage?: BooleanInput;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   */\n  @Input() adaptive?: BooleanInput;\n\n  /**\n   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\n   * If you need to retrieve items via API, can pass a function of Observable\n   * @default undefined\n   */\n  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string) => Observable<Array<AutocompleteItem>>);\n\n  /**\n   * Time span [ms] has passed without another source emission, to delay data filtering.\n   * Useful when the user is typing multiple letters\n   * @default 300 [ms]\n   */\n  @Input() autocompleteDebounceTime: number = 300;\n\n  /**\n   * Fired when the Autocomplete Item has been selected\n   */\n  @Output() onAutocompleteSelected: EventEmitter<AutocompleteItem> = new EventEmitter();\n\n  showAutocompletion = false;\n\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });\n    }\n\n    return super.invalidMessage;\n  }\n\n  /** Observable da cui vengono emessi i risultati dell'auto completamento */\n  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> = new Observable();\n\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (isTrueBooleanInput(this.percentage)) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);\n        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n    this.autocompleteResults$ = this.getAutocompleteResults$();\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  incrementNumber(decrease: boolean = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = (this.step === 'any' ? 1 : (this.step ?? 1));\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n\n\n  /**\n   * Create the autocomplete list\n   */\n  private getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> {\n    if (this.type !== 'search') {\n      return of({ searchedValue: '', relatedEntries: [] });\n    }\n    return this.control.valueChanges.pipe(\n      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters\n      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value\n      switchMap(searchedValue => {\n        if (!this.autocompleteData) {\n          return of({ searchedValue, relatedEntries: [] });\n        }\n\n        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);\n        return autoCompleteData$.pipe(\n          map(autocompleteData => {\n            if (!searchedValue) {\n              return { searchedValue, relatedEntries: [] };\n            }\n\n            const lowercaseValue = searchedValue.toLowerCase();\n            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));\n\n            return { searchedValue, relatedEntries };\n          })\n        );\n      })\n    );\n  }\n\n  onEntryClick(entry: AutocompleteItem, event: Event) {\n    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata\n    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.\n    if (!entry.link) {\n      event.preventDefault();\n    }\n\n    this.onAutocompleteSelected.next(entry);\n    this.control.setValue(entry.value);\n    this.showAutocompletion = false;\n  }\n\n  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {\n    return item.value;\n  }\n\n  onKeyDown() {\n    this.showAutocompletion = this.type === 'search';\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -10306,51 +10366,13 @@
             "stylesData": "",
             "extends": "AbstractFormComponent",
             "accessors": {
-                "autoCompleteData": {
-                    "name": "autoCompleteData",
-                    "setSignature": {
-                        "name": "autoCompleteData",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "value",
-                                "type": "Array<AutoCompleteItem>",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 74,
-                        "rawdescription": "\n\nOpzionale.\nDisponibile solo se il type è search.\nIndica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input\n",
-                        "description": "<p>Opzionale.\nDisponibile solo se il type è search.\nIndica la lista di elementi ricercabili su cui basare il sistema di autocompletamento della input</p>\n",
-                        "jsdoctags": [
-                            {
-                                "name": "value",
-                                "type": "Array<AutoCompleteItem>",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    },
-                    "getSignature": {
-                        "name": "autoCompleteData",
-                        "type": "",
-                        "returnType": "Array<AutoCompleteItem>",
-                        "line": 75
-                    }
-                },
                 "isActiveLabel": {
                     "name": "isActiveLabel",
                     "getSignature": {
                         "name": "isActiveLabel",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 81
+                        "line": 90
                     }
                 },
                 "isReadonly": {
@@ -10359,7 +10381,7 @@
                         "name": "isReadonly",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 97,
+                        "line": 106,
                         "rawdescription": "\n\nCheck is readonly field\n",
                         "description": "<p>Check is readonly field</p>\n"
                     }
@@ -10370,13 +10392,13 @@
                         "name": "invalidMessage",
                         "type": "",
                         "returnType": "Observable<string>",
-                        "line": 104,
+                        "line": 113,
                         "rawdescription": "\n\nReturn the invalid message string from TranslateService\n",
                         "description": "<p>Return the invalid message string from TranslateService</p>\n"
                     }
                 }
             },
-            "templateData": "<div class=\"form-group\">\n  <div class=\"input-group\">\n    <div class=\"input-group-prepend\" [class.d-none]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      <div #prepend>\n        <ng-content select=\"[prepend]\"></ng-content>\n      </div>\n      <div class=\"input-group-text\" #prependText>\n        <ng-content select=\"[prependText]\"></ng-content>\n      </div>\n    </div>\n\n    <label *ngIf=\"label\" [for]=\"id\" [class.active]=\"isActiveLabel\"\n           [class.empty-prepend-label]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      {{label}}\n    </label>\n\n    <span *ngIf=\"type === 'number'\"\n          class=\"input-number\"\n          [class.input-number-currency]=\"currency\"\n          [class.input-number-percentage]=\"percentage\"\n          [class.input-number-adaptive]=\"adaptive\">\n\n      <input type=\"number\"\n             [id]=\"id\"\n             [step]=\"step ?? null\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [formControl]=\"control\"\n             [placeholder]=\"placeholder\"\n             [readonly]=\"isReadonly\"\n             [attr.aria-describedby]=\"id + '-description'\"\n             (blur)=\"markAsTouched()\" />\n\n      <button type=\"button\" class=\"input-number-add\" (click)=\"incrementNumber()\">\n        <span class=\"visually-hidden\">{{'it.form.increase-value'}}</span>\n      </button>\n      <button type=\"button\" class=\"input-number-sub\" (click)=\"incrementNumber(true)\">\n        <span class=\"visually-hidden\">{{'it.form.decrease-value'}}</span>\n      </button>\n    </span>\n\n    <input *ngIf=\"type !== 'number'\"\n           [id]=\"id\"\n           [type]=\"type\"\n           [class.form-control]=\"readonly !== 'plaintext'\"\n           [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n           [class.is-invalid]=\"isInvalid\"\n           [class.is-valid]=\"isValid\"\n           [formControl]=\"control\"\n           [placeholder]=\"placeholder\"\n           [readonly]=\"isReadonly\"\n           (keydown)=\"onKeyDown()\"\n           [attr.aria-describedby]=\"id + '-description'\"\n           (blur)=\"markAsTouched()\">\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  <small *ngIf=\"description\" [id]=\"id + '-description'\" class=\"form-text\">{{description}}</small>\n\n\n\n\n  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->\n\n\n  <!-- Icona lente per autocompletamento -->\n  <span class=\"autocomplete-icon\" aria-hidden=\"true\" *ngIf=\"isAutocompletable()\">\n    <it-icon name = \"search\" size=\"sm\"></it-icon>\n  </span>\n\n  <ng-container *ngIf=\"autocompleteResults$ | async as autocomplete\">\n    <!-- Lista di autocompletamento -->\n    <ul class=\"autocomplete-list\" *ngIf=\"isAutocompletable()\"  [class.autocomplete-list-show]=\"autocomplete.relatedEntries?.length && showAutocompletion\">\n      <li *ngFor=\"let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn\" (click)=\"onEntryClick(entry, $event)\">\n        <a [href]=\"entry.link\" >\n          <ng-container *ngTemplateOutlet=\"autocompleteItemTemplate\"></ng-container>\n        </a>\n        <ng-template #autocompleteItemTemplate>\n          <div class=\"avatar size-sm\" *ngIf=\"entry.avatarSrcPath\">\n            <img [src]=\"entry.avatarSrcPath\" [alt]=\"entry.avatarAltText\">\n          </div>\n          <it-icon *ngIf=\"entry.icon\" [name]=\"entry.icon\" size=\"sm\"></it-icon>\n          <span class=\"autocomplete-list-text\">\n            <span [innerHTML] = \"entry.original | markMatchingText: autocomplete.searchedValue\"></span>\n            <em *ngIf=\"entry.label\">{{entry.label}}</em>\n          </span>\n        </ng-template>\n      </li>\n    </ul>\n  </ng-container>\n  \n\n  <!-- FINE gestione AUTOCOMPLETAMENTO -->\n\n\n\n\n  <div *ngIf=\"isInvalid\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"form-group\">\n  <div class=\"input-group\">\n    <div class=\"input-group-prepend\" [class.d-none]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      <div #prepend>\n        <ng-content select=\"[prepend]\"></ng-content>\n      </div>\n      <div class=\"input-group-text\" #prependText>\n        <ng-content select=\"[prependText]\"></ng-content>\n      </div>\n    </div>\n\n    <label *ngIf=\"label\" [for]=\"id\" [class.active]=\"isActiveLabel\"\n           [class.empty-prepend-label]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      {{label}}\n    </label>\n\n    <span *ngIf=\"type === 'number'\"\n          class=\"input-number\"\n          [class.input-number-currency]=\"currency\"\n          [class.input-number-percentage]=\"percentage\"\n          [class.input-number-adaptive]=\"adaptive\">\n\n      <input type=\"number\"\n             [id]=\"id\"\n             [step]=\"step ?? null\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [formControl]=\"control\"\n             [placeholder]=\"placeholder\"\n             [readonly]=\"isReadonly\"\n             [attr.aria-describedby]=\"id + '-description'\"\n             (blur)=\"markAsTouched()\" />\n\n      <button type=\"button\" class=\"input-number-add\" (click)=\"incrementNumber()\">\n        <span class=\"visually-hidden\">{{'it.form.increase-value'}}</span>\n      </button>\n      <button type=\"button\" class=\"input-number-sub\" (click)=\"incrementNumber(true)\">\n        <span class=\"visually-hidden\">{{'it.form.decrease-value'}}</span>\n      </button>\n    </span>\n\n    <input *ngIf=\"type !== 'number'\"\n           [id]=\"id\"\n           [type]=\"type\"\n           [class.form-control]=\"readonly !== 'plaintext'\"\n           [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n           [class.is-invalid]=\"isInvalid\"\n           [class.is-valid]=\"isValid\"\n           [formControl]=\"control\"\n           [placeholder]=\"placeholder\"\n           [readonly]=\"isReadonly\"\n           (keydown)=\"onKeyDown()\"\n           [attr.aria-describedby]=\"id + '-description'\"\n           (blur)=\"markAsTouched()\">\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  <small *ngIf=\"description\" [id]=\"id + '-description'\" class=\"form-text\">{{description}}</small>\n\n  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->\n  <ng-container *ngIf=\"type === 'search'\">\n    <!-- Icona lente per autocompletamento -->\n    <span class=\"autocomplete-icon\" aria-hidden=\"true\">\n      <it-icon name=\"search\" size=\"sm\"></it-icon>\n    </span>\n\n    <ng-container *ngIf=\"autocompleteResults$ | async as autocomplete\">\n      <!-- Lista di autocompletamento -->\n      <ul class=\"autocomplete-list\" [class.autocomplete-list-show]=\"autocomplete.relatedEntries?.length && showAutocompletion\">\n        <li *ngFor=\"let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn\"\n            (click)=\"onEntryClick(entry, $event)\">\n          <a [href]=\"entry.link\">\n            <ng-container *ngTemplateOutlet=\"autocompleteItemTemplate\"></ng-container>\n          </a>\n          <ng-template #autocompleteItemTemplate>\n            <div class=\"avatar size-sm\" *ngIf=\"entry.avatarSrcPath\">\n              <img [src]=\"entry.avatarSrcPath\" [alt]=\"entry.avatarAltText\">\n            </div>\n            <it-icon *ngIf=\"entry.icon\" [name]=\"entry.icon\" size=\"sm\"></it-icon>\n            <span class=\"autocomplete-list-text\">\n            <span [innerHTML]=\"entry.value | markMatchingText: autocomplete.searchedValue\"></span>\n            <em *ngIf=\"entry.label\">{{entry.label}}</em>\n          </span>\n          </ng-template>\n        </li>\n      </ul>\n    </ng-container>\n  </ng-container>\n  <!-- FINE gestione AUTOCOMPLETAMENTO -->\n\n  <div *ngIf=\"isInvalid\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</div>\n"
         },
         {
             "name": "LanguageSwitcherComponent",
@@ -12568,14 +12590,14 @@
         },
         {
             "name": "RadioButtonComponent",
-            "id": "component-RadioButtonComponent-c78719e8adf15c03f758cc6085bcddccc6f2daa12b47be929e5ccf4e516c952ebd85567ec0b4dbb187ecebcc1c9962d66b685a8897283e6644bdc59e7715a627",
+            "id": "component-RadioButtonComponent-7d0bdd1ac4733983bcb51f54588474505a622dad5c7a9ec430898fbc9aecdd647dd3e52f48f29224e464fbea82507a1a33dfa94815476c9524d77b5f6cf2ec00",
             "file": "projects/design-angular-kit/src/lib/components/form/radio-button/radio-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "it-radio-button[id][label][value]",
+            "selector": "it-radio-button[id][value]",
             "styleUrls": [
                 "./radio-button.component.scss"
             ],
@@ -12602,15 +12624,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 685,
-                            "end": 703,
+                            "pos": 678,
+                            "end": 696,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 686,
-                                "end": 693,
+                                "pos": 679,
+                                "end": 686,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12634,15 +12656,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 588,
-                            "end": 606,
+                            "pos": 581,
+                            "end": 599,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 589,
-                                "end": 596,
+                                "pos": 582,
+                                "end": 589,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13206,7 +13228,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { AbstractFormComponent } from '../../../abstracts/abstract-form-component';\nimport { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-radio-button[id][label][value]',\n  templateUrl: './radio-button.component.html',\n  styleUrls: ['./radio-button.component.scss']\n})\nexport class RadioButtonComponent extends AbstractFormComponent<string | number> {\n\n  /**\n   * The radio value\n   */\n  @Input() value?: string | number;\n\n  /**\n   * If show radio inline\n   * @default false\n   */\n  @Input() inline: BooleanInput = false;\n\n  /**\n   * If is radio group\n   * @default false\n   */\n  @Input() group: BooleanInput = false;\n\n  /**\n   * If is radio is checked\n   */\n  @Input() checked?: BooleanInput;\n\n  get isInline(): boolean {\n    return isTrueBooleanInput(this.inline);\n  }\n\n  get isGroup(): boolean {\n    return isTrueBooleanInput(this.group);\n  }\n\n  get name(): string {\n    return this._ngControl?.name?.toString() || '';\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    if (this.control.value || !this.value || isFalseBooleanInput(this.checked)) {\n      return;\n    }\n\n    this.writeValue(this.value);\n    return this.onChange(this.value);\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { AbstractFormComponent } from '../../../abstracts/abstract-form-component';\nimport { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-radio-button[id][value]',\n  templateUrl: './radio-button.component.html',\n  styleUrls: ['./radio-button.component.scss']\n})\nexport class RadioButtonComponent extends AbstractFormComponent<string | number> {\n\n  /**\n   * The radio value\n   */\n  @Input() value?: string | number;\n\n  /**\n   * If show radio inline\n   * @default false\n   */\n  @Input() inline: BooleanInput = false;\n\n  /**\n   * If is radio group\n   * @default false\n   */\n  @Input() group: BooleanInput = false;\n\n  /**\n   * If is radio is checked\n   */\n  @Input() checked?: BooleanInput;\n\n  get isInline(): boolean {\n    return isTrueBooleanInput(this.inline);\n  }\n\n  get isGroup(): boolean {\n    return isTrueBooleanInput(this.group);\n  }\n\n  get name(): string {\n    return this._ngControl?.name?.toString() || '';\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    if (this.control.value || !this.value || isFalseBooleanInput(this.checked)) {\n      return;\n    }\n\n    this.writeValue(this.value);\n    return this.onChange(this.value);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -13245,7 +13267,7 @@
                     }
                 }
             },
-            "templateData": "<ng-container>\n  <div class=\"form-check\"\n       [class.form-check-group]=\"isGroup\"\n       [class.form-check-inline]=\"isInline\">\n\n    <input\n      [id]=\"id\"\n      type=\"radio\"\n      [value]=\"value\"\n      class=\"form-check-input\"\n      [name]=\"name\"\n      [class.is-invalid]=\"isInvalid\"\n      [class.is-valid]=\"isValid\"\n      [formControl]=\"control\"\n      [attr.aria-describedby]=\"id + '-help'\">\n\n    <label class=\"form-check-label\" [for]=\"id\">{{label}}</label>\n\n    <small *ngIf=\"isGroup\" [id]=\"id + '-help'\" class=\"form-text\">\n      <ng-content></ng-content>\n    </small>\n\n    <div *ngIf=\"isInvalid && isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError><ng-content select=\"[error]\"></ng-content></div>\n      <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n    </div>\n\n  </div>\n\n  <div *ngIf=\"isInvalid && !isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError><ng-content select=\"[error]\"></ng-content></div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</ng-container>\n"
+            "templateData": "<ng-container>\n  <div class=\"form-check\"\n       [class.form-check-group]=\"isGroup\"\n       [class.form-check-inline]=\"isInline\">\n\n    <input\n      [id]=\"id\"\n      type=\"radio\"\n      [value]=\"value\"\n      class=\"form-check-input\"\n      [name]=\"name\"\n      [class.is-invalid]=\"isInvalid\"\n      [class.is-valid]=\"isValid\"\n      [formControl]=\"control\"\n      [attr.aria-describedby]=\"id + '-help'\">\n\n    <label class=\"form-check-label\" [for]=\"id\">\n      <div #customLabel>\n        <ng-content select=\"[label]\"></ng-content>\n      </div>\n      <ng-container *ngIf=\"!customLabel.hasChildNodes()\">{{label}}</ng-container>\n    </label>\n\n    <small *ngIf=\"isGroup\" [id]=\"id + '-help'\" class=\"form-text\">\n      <ng-content></ng-content>\n    </small>\n\n    <div *ngIf=\"isInvalid && isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n    </div>\n\n  </div>\n\n  <div *ngIf=\"isInvalid && !isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</ng-container>\n"
         },
         {
             "name": "SelectComponent",
@@ -14037,8 +14059,657 @@
             "templateData": "<div class=\"progress-spinner\"\n     [class.progress-spinner-double]=\"isDouble\"\n     [class.progress-spinner-active]=\"isActive\"\n     [class.size-sm]=\"isSmall\">\n  <div *ngIf=\"isDouble\" class=\"progress-spinner-inner\"></div>\n  <div *ngIf=\"isDouble\" class=\"progress-spinner-inner\"></div>\n  <span class=\"visually-hidden\">{{'it.core.loading'|translate}}...</span>\n</div>\n"
         },
         {
+            "name": "SteppersContainerComponent",
+            "id": "component-SteppersContainerComponent-6a3884274738c18307db5434ef6b208026d69ed5f84af7e25f66bf3281a59969fcb4b31945a54f5949f41eef87254678a7a1c909c4749baa7208f41657ccfc6d",
+            "file": "projects/design-angular-kit/src/lib/components/core/steppers/steppers-container/steppers-container.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-steppers-container[activeStep]",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./steppers-container.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "activeStep",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 683,
+                            "end": 714,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 338,
+                            "tagName": {
+                                "pos": 684,
+                                "end": 689,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>the step index</p>\n",
+                            "name": {
+                                "pos": 690,
+                                "end": 695,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "index"
+                            },
+                            "isNameFirst": true,
+                            "isBracketed": false
+                        }
+                    ],
+                    "rawdescription": "\n\nThe active step index\n",
+                    "description": "<p>The active step index</p>\n",
+                    "line": 27,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "confirmLoading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nShow the confirm button as indeterminate progress button\n",
+                    "description": "<p>Show the confirm button as indeterminate progress button</p>\n",
+                    "line": 79,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "dark",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nDark style\n",
+                    "description": "<p>Dark style</p>\n",
+                    "line": 38,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "progressColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCustomize progress color\n",
+                    "description": "<p>Customize progress color</p>\n",
+                    "line": 56,
+                    "type": "ProgressBarColor",
+                    "decorators": []
+                },
+                {
+                    "name": "progressStyle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1242,
+                            "end": 1286,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1243,
+                                "end": 1250,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>undefined - don&#39;t show progress</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nThe progress style\n-<b>progress</b>: Show progress bar - You can change the color with the `progressColor` attribute\n-<b>dots</b>: Show progress dots\n",
+                    "description": "<p>The progress style\n-<b>progress</b>: Show progress bar - You can change the color with the <code>progressColor</code> attribute\n-<b>dots</b>: Show progress dots</p>\n",
+                    "line": 51,
+                    "type": "\"progress\" | \"dots\"",
+                    "decorators": []
+                },
+                {
+                    "name": "saveLoading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nShow the save button as indeterminate progress button\n",
+                    "description": "<p>Show the save button as indeterminate progress button</p>\n",
+                    "line": 90,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "showBackButton",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1463,
+                            "end": 1480,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1464,
+                                "end": 1471,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nShow the back button\n",
+                    "description": "<p>Show the back button</p>\n",
+                    "line": 62,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "showConfirmButton",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1684,
+                            "end": 1702,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1685,
+                                "end": 1692,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>false</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nShow the confirm button\n",
+                    "description": "<p>Show the confirm button</p>\n",
+                    "line": 74,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "showForwardButton",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1572,
+                            "end": 1589,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1573,
+                                "end": 1580,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nShow the forward button\n",
+                    "description": "<p>Show the forward button</p>\n",
+                    "line": 68,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "showHeader",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 790,
+                            "end": 807,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 791,
+                                "end": 798,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nShow the stepper header\n",
+                    "description": "<p>Show the stepper header</p>\n",
+                    "line": 33,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "showSaveButton",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1912,
+                            "end": 1930,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1913,
+                                "end": 1920,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>false</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nShow the save button\n",
+                    "description": "<p>Show the save button</p>\n",
+                    "line": 85,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "steppersNumber",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe labels present in the header steps can be anticipated by the relative ordinal number.\n",
+                    "description": "<p>The labels present in the header steps can be anticipated by the relative ordinal number.</p>\n",
+                    "line": 43,
+                    "type": "BooleanInput",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "backClick",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nOn back button click\n",
+                    "description": "<p>On back button click</p>\n",
+                    "jsdoctags": [
+                        {
+                            "pos": 2251,
+                            "end": 2295,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 2252,
+                                "end": 2257,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "event"
+                            },
+                            "comment": "<p>activeStep the current step index</p>\n"
+                        }
+                    ],
+                    "line": 101,
+                    "type": "EventEmitter<number>"
+                },
+                {
+                    "name": "confirmClick",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nOn confirm button click\n",
+                    "description": "<p>On confirm button click</p>\n",
+                    "jsdoctags": [
+                        {
+                            "pos": 2520,
+                            "end": 2564,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 2521,
+                                "end": 2526,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "event"
+                            },
+                            "comment": "<p>activeStep the current step index</p>\n"
+                        }
+                    ],
+                    "line": 113,
+                    "type": "EventEmitter<number>"
+                },
+                {
+                    "name": "forwardClick",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nOn forward button click\n",
+                    "description": "<p>On forward button click</p>\n",
+                    "jsdoctags": [
+                        {
+                            "pos": 2384,
+                            "end": 2428,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 2385,
+                                "end": 2390,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "event"
+                            },
+                            "comment": "<p>activeStep the current step index</p>\n"
+                        }
+                    ],
+                    "line": 107,
+                    "type": "EventEmitter<number>"
+                },
+                {
+                    "name": "saveClick",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nOn save button click\n",
+                    "description": "<p>On save button click</p>\n",
+                    "jsdoctags": [
+                        {
+                            "pos": 2653,
+                            "end": 2697,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 2654,
+                                "end": 2659,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "event"
+                            },
+                            "comment": "<p>activeStep the current step index</p>\n"
+                        }
+                    ],
+                    "line": 119,
+                    "type": "EventEmitter<number>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "steps",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<SteppersItemComponent>",
+                    "optional": true,
+                    "description": "<p>The stepper items</p>\n",
+                    "line": 95,
+                    "rawdescription": "\n\nThe stepper items\n",
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "SteppersItemComponent"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 166,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList\n} from '@angular/core';\nimport { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';\nimport { SteppersItemComponent } from '../steppers-item/steppers-item.component';\nimport { ProgressBarColor } from '../../../../interfaces/core';\n\n@Component({\n  selector: 'it-steppers-container[activeStep]',\n  templateUrl: './steppers-container.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SteppersContainerComponent implements AfterViewInit {\n\n  /**\n   * The active step index\n   * @param index the step index\n   */\n  @Input() activeStep!: number;\n\n  /**\n   * Show the stepper header\n   * @default true\n   */\n  @Input() showHeader: BooleanInput = true;\n\n  /**\n   * Dark style\n   */\n  @Input() dark?: BooleanInput;\n\n  /**\n   * The labels present in the header steps can be anticipated by the relative ordinal number.\n   */\n  @Input() steppersNumber?: BooleanInput;\n\n  /**\n   * The progress style\n   * -<b>progress</b>: Show progress bar - You can change the color with the `progressColor` attribute\n   * -<b>dots</b>: Show progress dots\n   * @default undefined - don't show progress\n   */\n  @Input() progressStyle?: 'progress' | 'dots';\n\n  /**\n   * Customize progress color\n   */\n  @Input() progressColor?: ProgressBarColor;\n\n  /**\n   * Show the back button\n   * @default true\n   */\n  @Input() showBackButton: BooleanInput = true;\n\n  /**\n   * Show the forward button\n   * @default true\n   */\n  @Input() showForwardButton: BooleanInput = true;\n\n  /**\n   * Show the confirm button\n   * @default false\n   */\n  @Input() showConfirmButton: BooleanInput = false;\n\n  /**\n   * Show the confirm button as indeterminate progress button\n   */\n  @Input() confirmLoading?: BooleanInput;\n\n  /**\n   * Show the save button\n   * @default false\n   */\n  @Input() showSaveButton: BooleanInput = false;\n\n  /**\n   * Show the save button as indeterminate progress button\n   */\n  @Input() saveLoading?: BooleanInput;\n\n  /**\n   * The stepper items\n   */\n  @ContentChildren(SteppersItemComponent) steps?: QueryList<SteppersItemComponent>;\n\n  /**\n   * On back button click\n   * @event activeStep the current step index\n   */\n  @Output() backClick: EventEmitter<number>;\n\n  /**\n   * On forward button click\n   * @event activeStep the current step index\n   */\n  @Output() forwardClick: EventEmitter<number>;\n\n  /**\n   * On confirm button click\n   * @event activeStep the current step index\n   */\n  @Output() confirmClick: EventEmitter<number>;\n\n  /**\n   * On save button click\n   * @event activeStep the current step index\n   */\n  @Output() saveClick: EventEmitter<number>;\n\n  get isShowHeader(): boolean {\n    return isTrueBooleanInput(this.showHeader);\n  }\n\n  get isSteppersNumber(): boolean {\n    return isTrueBooleanInput(this.steppersNumber);\n  }\n\n  get isDark(): boolean {\n    return isTrueBooleanInput(this.dark);\n  }\n\n  get isShowBackButton(): boolean {\n    return isTrueBooleanInput(this.showBackButton);\n  }\n\n  get isShowForwardButton(): boolean {\n    return isTrueBooleanInput(this.showForwardButton);\n  }\n\n  get isShowConfirmButton(): boolean {\n    return isTrueBooleanInput(this.showConfirmButton);\n  }\n\n  get isConfirmLoading(): boolean {\n    return isTrueBooleanInput(this.confirmLoading);\n  }\n\n  get isShowSaveButton(): boolean {\n    return isTrueBooleanInput(this.showSaveButton);\n  }\n\n  get isSaveLoading(): boolean {\n    return isTrueBooleanInput(this.saveLoading);\n  }\n\n  constructor(\n    private readonly _changeDetectorRef: ChangeDetectorRef\n  ) {\n    this.backClick = new EventEmitter<number>();\n    this.forwardClick = new EventEmitter<number>();\n    this.confirmClick = new EventEmitter<number>();\n    this.saveClick = new EventEmitter<number>();\n  }\n\n  ngAfterViewInit(): void {\n    this._changeDetectorRef.detectChanges();\n\n    this.steps?.changes.subscribe(() => {\n      this._changeDetectorRef.detectChanges();\n    });\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 155,
+                "jsdoctags": [
+                    {
+                        "name": "_changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "AfterViewInit"
+            ],
+            "accessors": {
+                "isShowHeader": {
+                    "name": "isShowHeader",
+                    "getSignature": {
+                        "name": "isShowHeader",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 121
+                    }
+                },
+                "isSteppersNumber": {
+                    "name": "isSteppersNumber",
+                    "getSignature": {
+                        "name": "isSteppersNumber",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 125
+                    }
+                },
+                "isDark": {
+                    "name": "isDark",
+                    "getSignature": {
+                        "name": "isDark",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 129
+                    }
+                },
+                "isShowBackButton": {
+                    "name": "isShowBackButton",
+                    "getSignature": {
+                        "name": "isShowBackButton",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 133
+                    }
+                },
+                "isShowForwardButton": {
+                    "name": "isShowForwardButton",
+                    "getSignature": {
+                        "name": "isShowForwardButton",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 137
+                    }
+                },
+                "isShowConfirmButton": {
+                    "name": "isShowConfirmButton",
+                    "getSignature": {
+                        "name": "isShowConfirmButton",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 141
+                    }
+                },
+                "isConfirmLoading": {
+                    "name": "isConfirmLoading",
+                    "getSignature": {
+                        "name": "isConfirmLoading",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 145
+                    }
+                },
+                "isShowSaveButton": {
+                    "name": "isShowSaveButton",
+                    "getSignature": {
+                        "name": "isShowSaveButton",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 149
+                    }
+                },
+                "isSaveLoading": {
+                    "name": "isSaveLoading",
+                    "getSignature": {
+                        "name": "isSaveLoading",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 153
+                    }
+                }
+            },
+            "templateData": "<div class=\"steppers\" [class.bg-dark]=\"isDark\">\n  <div *ngIf=\"isShowHeader\" class=\"steppers-header\">\n    <ul>\n      <li *ngFor=\"let step of steps; let i = index\"\n          [class.confirmed]=\"i < activeStep\"\n          [class.active]=\"i === activeStep\"\n          [class.no-line]=\"i === activeStep && isSteppersNumber\">\n\n        <it-icon *ngIf=\"step.icon && !isSteppersNumber\" [name]=\"step.icon\"></it-icon>\n        <span *ngIf=\"isSteppersNumber\" class=\"steppers-number\">\n          <ng-container *ngIf=\"i < activeStep; else showNumber\">\n            <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n          </ng-container>\n          <ng-template #showNumber>\n            <span class=\"visually-hidden\">{{'it.core.step' | translate}} </span>{{i + 1}}\n          </ng-template>\n        </span>\n\n        {{step.label}}\n\n        <span *ngIf=\"i < activeStep && !isSteppersNumber\" class=\"ms-auto\">\n          <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n        </span>\n        <span *ngIf=\"i === activeStep\" class=\"visually-hidden\">{{'it.core.active' | translate}}</span>\n      </li>\n    </ul>\n    <span class=\"steppers-index\" aria-hidden=\"true\">\n      <ng-container\n        *ngIf=\"!isSteppersNumber; else showNumbers\">{{(activeStep + 1) + '/' + steps?.length}}</ng-container>\n      <ng-template #showNumbers>\n        <span *ngFor=\"let step of steps; let i = index\" [class.active]=\"i === activeStep\">{{i + 1}}</span>\n      </ng-template>\n    </span>\n  </div>\n\n  <div *ngIf=\"steps?.get(activeStep) as step\" class=\"steppers-content\" aria-live=\"polite\">\n    <ng-container *ngTemplateOutlet=\"step.htmlContent\"></ng-container>\n  </div>\n\n  <nav *ngIf=\"isShowBackButton || isShowSaveButton || isShowForwardButton || isShowConfirmButton || !!progressStyle\"\n       class=\"steppers-nav\">\n    <button *ngIf=\"isShowBackButton\" type=\"button\" itButton=\"outline-primary\" size=\"sm\" class=\"steppers-btn-prev\"\n            (click)=\"backClick.emit(activeStep)\">\n      <it-icon name=\"chevron-left\" color=\"primary\"></it-icon>\n      {{'it.core.back' | translate}}\n    </button>\n\n    <ng-container *ngIf=\"!!progressStyle\">\n      <ul *ngIf=\"progressStyle === 'dots'; else progressBar\" class=\"steppers-dots\">\n        <li *ngFor=\"let step of steps; let i = index\" [class.done]=\"i < activeStep\">\n          <span class=\"visually-hidden\">\n            {{'it.core.step-of' | translate: { current: activeStep + 1, available: steps?.length } }}\n            {{i < activeStep ? ('- ' + ('it.core.confirmed' | translate)) : ''}}\n          </span>\n        </li>\n      </ul>\n\n      <ng-template #progressBar>\n        <div class=\"steppers-progress\">\n          <it-progress-bar [color]=\"progressColor\" [value]=\"(activeStep/(steps?.length||1)) * 100\"></it-progress-bar>\n        </div>\n      </ng-template>\n    </ng-container>\n\n    <button *ngIf=\"isShowSaveButton\" type=\"button\" itButton=\"primary\" size=\"sm\" class=\"steppers-btn-save\"\n            [progress]=\"isSaveLoading\" [disabled]=\"isSaveLoading\" (click)=\"saveClick.emit(activeStep)\">\n      {{'it.general.save' | translate}}\n    </button>\n\n    <button *ngIf=\"isShowForwardButton\" type=\"button\" itButton=\"outline-primary\" size=\"sm\" class=\"steppers-btn-next\"\n            (click)=\"forwardClick.emit(activeStep)\">\n      {{'it.core.forward' | translate}}\n      <it-icon name=\"chevron-right\" color=\"primary\"></it-icon>\n    </button>\n\n    <button *ngIf=\"isShowConfirmButton\" type=\"button\" itButton=\"primary\" size=\"sm\"\n            class=\"steppers-btn-confirm d-lg-block\"\n            [progress]=\"isConfirmLoading\" [disabled]=\"isConfirmLoading\"\n            (click)=\"confirmClick.emit(activeStep)\">\n      {{'it.core.confirm' | translate}}\n    </button>\n  </nav>\n</div>\n\n<ng-template #checkIcon>\n  <it-icon name=\"check\" class=\"steppers-success\"></it-icon>\n  <span class=\"visually-hidden\">{{'it.core.confirmed' | translate}}</span>\n</ng-template>\n"
+        },
+        {
+            "name": "SteppersItemComponent",
+            "id": "component-SteppersItemComponent-dd8c5082c8fad97941dbdcc86ec912abbf59885b0100bfd029143499ebf5186065bd5d852ed348f2ce0681a4c1d7a26c9ad128306fcb63b2ae6b141ac4a28be3",
+            "file": "projects/design-angular-kit/src/lib/components/core/steppers/steppers-item/steppers-item.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-steppers-item[label]",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./steppers-item.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "icon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe labels present in the header steps can be preceded by an icon.\n",
+                    "description": "<p>The labels present in the header steps can be preceded by an icon.</p>\n",
+                    "line": 19,
+                    "type": "IconName",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe labels present in the header steps\n",
+                    "description": "<p>The labels present in the header steps</p>\n",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "htmlContent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "<p>The content of step</p>\n",
+                    "line": 24,
+                    "rawdescription": "\n\nThe content of step\n",
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "TemplateRef"
+                        }
+                    ],
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';\nimport { IconName } from '../../../../interfaces/icon';\n\n@Component({\n  selector: 'it-steppers-item[label]',\n  templateUrl: './steppers-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SteppersItemComponent {\n\n  /**\n   * The labels present in the header steps\n   */\n  @Input() label!: string;\n\n  /**\n   * The labels present in the header steps can be preceded by an icon.\n   */\n  @Input() icon?: IconName;\n\n  /**\n   * The content of step\n   */\n  @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<ng-template>\n  <ng-content></ng-content>\n</ng-template>\n"
+        },
+        {
             "name": "TabContainerComponent",
-            "id": "component-TabContainerComponent-1c9680d3fab879e29c00cb56c98a198df7537fe22dc3295d092fec5ef31946496cab9704a1ced6df25a45345c18d0b73d9bdc8aa4f5b95c4aa1d9affdfc5d3aa",
+            "id": "component-TabContainerComponent-419170eac98a584b4468bfa941aea201e4a18e0d08daeed70d3c5a884bad7727c47df40b8cdaea0cbdfb065cca7f6a2d815b8f7f3b1eb8e909265ee75e37d2c6",
             "file": "projects/design-angular-kit/src/lib/components/core/tab/tab-container/tab-container.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -14046,9 +14717,7 @@
             "outputs": [],
             "providers": [],
             "selector": "it-tab-container",
-            "styleUrls": [
-                "./tab-container.component.scss"
-            ],
+            "styleUrls": [],
             "styles": [],
             "templateUrl": [
                 "./tab-container.component.html"
@@ -14061,7 +14730,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTabs automatically occupy the entire available width\n",
                     "description": "<p>Tabs automatically occupy the entire available width</p>\n",
-                    "line": 15,
+                    "line": 14,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -14071,7 +14740,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nDark style\n",
                     "description": "<p>Dark style</p>\n",
-                    "line": 25,
+                    "line": 24,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -14081,7 +14750,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTo obtain the correct margin between text and icon in the horizontally developed tab\n",
                     "description": "<p>To obtain the correct margin between text and icon in the horizontally developed tab</p>\n",
-                    "line": 20,
+                    "line": 19,
                     "type": "BooleanInput",
                     "decorators": []
                 }
@@ -14095,7 +14764,7 @@
                     "type": "QueryList<TabItemComponent>",
                     "optional": true,
                     "description": "<p>The tab items</p>\n",
-                    "line": 30,
+                    "line": 29,
                     "rawdescription": "\n\nThe tab items\n",
                     "decorators": [
                         {
@@ -14120,7 +14789,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -14142,7 +14811,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -14154,14 +14823,9 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, QueryList} from '@angular/core';\nimport {BooleanInput, isTrueBooleanInput} from \"../../../../utils/boolean-input\";\nimport {TabItemComponent} from \"../tab-item/tab-item.component\";\n\n@Component({\n  selector: 'it-tab-container',\n  templateUrl: './tab-container.component.html',\n  styleUrls: ['./tab-container.component.scss']\n})\nexport class TabContainerComponent implements AfterViewInit {\n\n  /**\n   * Tabs automatically occupy the entire available width\n   */\n  @Input() auto?: BooleanInput;\n\n  /**\n   * To obtain the correct margin between text and icon in the horizontally developed tab\n   */\n  @Input() iconText?: BooleanInput;\n\n  /**\n   * Dark style\n   */\n  @Input() dark?: BooleanInput;\n\n  /**\n   * The tab items\n   */\n  @ContentChildren(TabItemComponent) tabs?: QueryList<TabItemComponent>;\n\n  constructor(\n    private readonly _changeDetectorRef: ChangeDetectorRef\n  ) {\n  }\n\n  isTrueBooleanInput(booleanInput?: BooleanInput): boolean {\n    return isTrueBooleanInput(booleanInput)\n  }\n\n  ngAfterViewInit(): void {\n    this._changeDetectorRef.detectChanges();\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, QueryList } from '@angular/core';\nimport { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';\nimport { TabItemComponent } from '../tab-item/tab-item.component';\n\n@Component({\n  selector: 'it-tab-container',\n  templateUrl: './tab-container.component.html'\n})\nexport class TabContainerComponent implements AfterViewInit {\n\n  /**\n   * Tabs automatically occupy the entire available width\n   */\n  @Input() auto?: BooleanInput;\n\n  /**\n   * To obtain the correct margin between text and icon in the horizontally developed tab\n   */\n  @Input() iconText?: BooleanInput;\n\n  /**\n   * Dark style\n   */\n  @Input() dark?: BooleanInput;\n\n  /**\n   * The tab items\n   */\n  @ContentChildren(TabItemComponent) tabs?: QueryList<TabItemComponent>;\n\n  constructor(\n    private readonly _changeDetectorRef: ChangeDetectorRef\n  ) {\n  }\n\n  isTrueBooleanInput(booleanInput?: BooleanInput): boolean {\n    return isTrueBooleanInput(booleanInput);\n  }\n\n  ngAfterViewInit(): void {\n    this._changeDetectorRef.detectChanges();\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./tab-container.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
             "constructorObj": {
                 "name": "constructor",
@@ -14176,7 +14840,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 30,
+                "line": 29,
                 "jsdoctags": [
                     {
                         "name": "_changeDetectorRef",
@@ -14196,7 +14860,7 @@
         },
         {
             "name": "TabItemComponent",
-            "id": "component-TabItemComponent-1eeeaa584583d69b54ce3c4a3ab47b3fa9a3dfef6a30dc6639b42112613834384fcfc37445072693a922ae22c21e14420358b6b47ae95756dbc69f32028afdeb",
+            "id": "component-TabItemComponent-d351d853fb48eeda9ec70bbb14915846ea4720f36780bf6d1e461cc943d43cd7e504d5a67a0a73eaed87aa77be4eb4e06df6635bcfb7203234afccb73aded479",
             "file": "projects/design-angular-kit/src/lib/components/core/tab/tab-item/tab-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -14204,9 +14868,7 @@
             "outputs": [],
             "providers": [],
             "selector": "it-tab-item[id]",
-            "styleUrls": [
-                "./tab-item.component.scss"
-            ],
+            "styleUrls": [],
             "styles": [],
             "templateUrl": [
                 "./tab-item.component.html"
@@ -14219,7 +14881,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nDefault active tab\n",
                     "description": "<p>Default active tab</p>\n",
-                    "line": 26,
+                    "line": 25,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -14230,7 +14892,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCustom class\n",
                     "description": "<p>Custom class</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "type": "string",
                     "decorators": []
                 },
@@ -14240,7 +14902,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nDefault disabled tab\n",
                     "description": "<p>Default disabled tab</p>\n",
-                    "line": 31,
+                    "line": 30,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -14250,7 +14912,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe icon name\n",
                     "description": "<p>The icon name</p>\n",
-                    "line": 21,
+                    "line": 20,
                     "type": "IconName",
                     "decorators": []
                 },
@@ -14260,7 +14922,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe tab label\n",
                     "description": "<p>The tab label</p>\n",
-                    "line": 16,
+                    "line": 15,
                     "type": "string",
                     "decorators": []
                 },
@@ -14287,7 +14949,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "<p>The content of tab</p>\n",
-                    "line": 42,
+                    "line": 40,
                     "rawdescription": "\n\nThe content of tab\n",
                     "decorators": [
                         {
@@ -14307,7 +14969,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -14325,14 +14987,9 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, Input, TemplateRef, ViewChild} from '@angular/core';\nimport {AbstractComponent} from \"../../../../abstracts/abstract.component\";\nimport {BooleanInput} from \"../../../../utils/boolean-input\";\nimport {IconName} from \"../../../../interfaces/icon\";\n\n@Component({\n  selector: 'it-tab-item[id]',\n  templateUrl: './tab-item.component.html',\n  styleUrls: ['./tab-item.component.scss']\n})\nexport class TabItemComponent extends AbstractComponent {\n\n  /**\n   * The tab label\n   */\n  @Input() label?: string;\n\n  /**\n   * The icon name\n   */\n  @Input() icon?: IconName;\n\n  /**\n   * Default active tab\n   */\n  @Input() active?: BooleanInput;\n\n  /**\n   * Default disabled tab\n   */\n  @Input() disabled?: BooleanInput;\n\n  /**\n   * Custom class\n   */\n  @Input() class: string = ''\n\n  /**\n   * The content of tab\n   */\n  @ViewChild(TemplateRef)\n  public htmlContent!: TemplateRef<any>;\n\n  override ngAfterViewInit() {\n    super.ngAfterViewInit();\n    this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, TemplateRef, ViewChild } from '@angular/core';\nimport { AbstractComponent } from '../../../../abstracts/abstract.component';\nimport { BooleanInput } from '../../../../utils/boolean-input';\nimport { IconName } from '../../../../interfaces/icon';\n\n@Component({\n  selector: 'it-tab-item[id]',\n  templateUrl: './tab-item.component.html'\n})\nexport class TabItemComponent extends AbstractComponent {\n\n  /**\n   * The tab label\n   */\n  @Input() label?: string;\n\n  /**\n   * The icon name\n   */\n  @Input() icon?: IconName;\n\n  /**\n   * Default active tab\n   */\n  @Input() active?: BooleanInput;\n\n  /**\n   * Default disabled tab\n   */\n  @Input() disabled?: BooleanInput;\n\n  /**\n   * Custom class\n   */\n  @Input() class: string = '';\n\n  /**\n   * The content of tab\n   */\n  @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;\n\n  override ngAfterViewInit() {\n    super.ngAfterViewInit();\n    this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./tab-item.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
             "extends": "AbstractComponent",
             "templateData": "<ng-template>\n  <ng-content></ng-content>\n</ng-template>\n"
@@ -16084,13 +16741,13 @@
     "modules": [
         {
             "name": "ComponentsModule",
-            "id": "module-ComponentsModule-f7310ddf2ec9161f1f3cfcfbf0d7ad2896d3a2eaa71302b94b57c76120096f61b5c2a08221294babc866d9d03cadec42c956348651398a4aedd4223c014d091e",
+            "id": "module-ComponentsModule-3173729fbdb2442b9c455aaa0939ac9e6dde4e20e283876cf6bf450326a20d468c36577de93e424446f867570a8461a2227e46ce57b2f8e3683599863d416289",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/design-angular-kit/src/lib/modules/components.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgForOf, NgIf } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { RouterLink } from '@angular/router';\nimport { AbstractFormComponent } from '../abstracts/abstract-form-component';\nimport { AbstractComponent } from '../abstracts/abstract.component';\nimport { AccordionComponent } from '../components/core/accordion/accordion.component';\nimport { AlertComponent } from '../components/core/alert/alert.component';\nimport { BadgeDirective } from '../components/core/badge/badge.directive';\nimport { ButtonDirective } from '../components/core/button/button.directive';\nimport { CalloutComponent } from '../components/core/callout/callout.component';\nimport { CardComponent } from '../components/core/card/card.component';\nimport { CarouselComponent } from '../components/core/carousel/carousel/carousel.component';\nimport { CarouselItemComponent } from '../components/core/carousel/carousel-item/carousel-item.component';\nimport { CollapseComponent } from '../components/core/collapse/collapse.component';\nimport { DropdownComponent } from '../components/core/dropdown/dropdown/dropdown.component';\nimport { DropdownItemComponent } from '../components/core/dropdown/dropdown-item/dropdown-item.component';\nimport { LinkComponent } from '../components/core/link/link.component';\nimport { ListComponent } from '../components/core/list/list/list.component';\nimport { ListItemComponent } from '../components/core/list/list-item/list-item.component';\nimport { ModalComponent } from '../components/core/modal/modal.component';\nimport { NotificationsComponent } from '../components/core/notifications/notifications.component';\nimport { PaginationComponent } from '../components/core/pagination/pagination.component';\nimport { PopoverDirective } from '../components/core/popover/popover.directive';\nimport { ProgressBarComponent } from '../components/core/progress-bar/progress-bar.component';\nimport { ProgressButtonComponent } from '../components/core/progress-button/progress-button.component';\nimport { SpinnerComponent } from '../components/core/spinner/spinner.component';\nimport { TabContainerComponent } from '../components/core/tab/tab-container/tab-container.component';\nimport { TabItemComponent } from '../components/core/tab/tab-item/tab-item.component';\nimport { TableComponent } from '../components/core/table/table.component';\nimport { TooltipDirective } from '../components/core/tooltip/tooltip.directive';\nimport { CheckboxComponent } from '../components/form/checkbox/checkbox.component';\nimport { InputComponent } from '../components/form/input/input.component';\nimport { PasswordInputComponent } from '../components/form/password-input/password-input.component';\nimport { RadioButtonComponent } from '../components/form/radio-button/radio-button.component';\nimport { SelectComponent } from '../components/form/select/select.component';\nimport { TextareaComponent } from '../components/form/textarea/textarea.component';\nimport { UploadDragDropComponent } from '../components/form/upload-drag-drop/upload-drag-drop.component';\nimport { UploadFileListComponent } from '../components/form/upload-file-list/upload-file-list.component';\nimport { BackButtonComponent } from '../components/navigation/back-button/back-button.component';\nimport { BackToTopComponent } from '../components/navigation/back-to-top/back-to-top.component';\nimport { BreadcrumbComponent } from '../components/navigation/breadcrumbs/breadcrumb/breadcrumb.component';\nimport {\n  BreadcrumbItemComponent\n} from '../components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';\nimport { HeaderComponent } from '../components/navigation/header/header.component';\nimport { IconComponent } from '../components/utils/icon/icon.component';\nimport { LanguageSwitcherComponent } from '../components/utils/language-switcher/language-switcher.component';\nimport { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';\nimport { ChipComponent } from '../components/core/chip/chip.component';\nimport { ForwardDirective } from '../components/core/forward/forward.directive';\nimport { DimmerComponent } from '../components/core/dimmer/dimmer.component';\nimport { DimmerButtonsComponent } from '../components/core/dimmer/dimmer-buttons/dimmer-buttons.component';\nimport { DimmerIconComponent } from '../components/core/dimmer/dimmer-icon/dimmer-icon.component';\nimport { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';\n\n\n/**\n * Core components\n */\nconst core = [\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n];\n\n/**\n * Form components\n */\nconst form = [\n  CheckboxComponent,\n  InputComponent,\n  PasswordInputComponent,\n  RadioButtonComponent,\n  SelectComponent,\n  TextareaComponent,\n  UploadDragDropComponent,\n  UploadFileListComponent\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  BackButtonComponent,\n  BackToTopComponent,\n  BreadcrumbComponent,\n  BreadcrumbItemComponent,\n  HeaderComponent\n];\n\n/**\n * Utils components\n */\nconst utils = [\n  IconComponent,\n  NotFoundPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n];\n\n@NgModule({\n  declarations: [\n    AbstractComponent,\n    AbstractFormComponent,\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ],\n  imports: [\n    CommonModule,\n    TranslateModule,\n    ReactiveFormsModule,\n    NgIf,\n    NgForOf,\n    RouterLink\n  ],\n  exports: [\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ]\n})\nexport class ComponentsModule {\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgForOf, NgIf } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { RouterLink } from '@angular/router';\nimport { AbstractFormComponent } from '../abstracts/abstract-form-component';\nimport { AbstractComponent } from '../abstracts/abstract.component';\nimport { AccordionComponent } from '../components/core/accordion/accordion.component';\nimport { AlertComponent } from '../components/core/alert/alert.component';\nimport { BadgeDirective } from '../components/core/badge/badge.directive';\nimport { ButtonDirective } from '../components/core/button/button.directive';\nimport { CalloutComponent } from '../components/core/callout/callout.component';\nimport { CardComponent } from '../components/core/card/card.component';\nimport { CarouselComponent } from '../components/core/carousel/carousel/carousel.component';\nimport { CarouselItemComponent } from '../components/core/carousel/carousel-item/carousel-item.component';\nimport { CollapseComponent } from '../components/core/collapse/collapse.component';\nimport { DropdownComponent } from '../components/core/dropdown/dropdown/dropdown.component';\nimport { DropdownItemComponent } from '../components/core/dropdown/dropdown-item/dropdown-item.component';\nimport { LinkComponent } from '../components/core/link/link.component';\nimport { ListComponent } from '../components/core/list/list/list.component';\nimport { ListItemComponent } from '../components/core/list/list-item/list-item.component';\nimport { ModalComponent } from '../components/core/modal/modal.component';\nimport { NotificationsComponent } from '../components/core/notifications/notifications.component';\nimport { PaginationComponent } from '../components/core/pagination/pagination.component';\nimport { PopoverDirective } from '../components/core/popover/popover.directive';\nimport { ProgressBarComponent } from '../components/core/progress-bar/progress-bar.component';\nimport { ProgressButtonComponent } from '../components/core/progress-button/progress-button.component';\nimport { SpinnerComponent } from '../components/core/spinner/spinner.component';\nimport {\n  SteppersContainerComponent\n} from '../components/core/steppers/steppers-container/steppers-container.component';\nimport { SteppersItemComponent } from '../components/core/steppers/steppers-item/steppers-item.component';\nimport { TabContainerComponent } from '../components/core/tab/tab-container/tab-container.component';\nimport { TabItemComponent } from '../components/core/tab/tab-item/tab-item.component';\nimport { TableComponent } from '../components/core/table/table.component';\nimport { TooltipDirective } from '../components/core/tooltip/tooltip.directive';\nimport { CheckboxComponent } from '../components/form/checkbox/checkbox.component';\nimport { InputComponent } from '../components/form/input/input.component';\nimport { PasswordInputComponent } from '../components/form/password-input/password-input.component';\nimport { RadioButtonComponent } from '../components/form/radio-button/radio-button.component';\nimport { SelectComponent } from '../components/form/select/select.component';\nimport { TextareaComponent } from '../components/form/textarea/textarea.component';\nimport { UploadDragDropComponent } from '../components/form/upload-drag-drop/upload-drag-drop.component';\nimport { UploadFileListComponent } from '../components/form/upload-file-list/upload-file-list.component';\nimport { BackButtonComponent } from '../components/navigation/back-button/back-button.component';\nimport { BackToTopComponent } from '../components/navigation/back-to-top/back-to-top.component';\nimport { BreadcrumbComponent } from '../components/navigation/breadcrumbs/breadcrumb/breadcrumb.component';\nimport {\n  BreadcrumbItemComponent\n} from '../components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';\nimport { HeaderComponent } from '../components/navigation/header/header.component';\nimport { IconComponent } from '../components/utils/icon/icon.component';\nimport { LanguageSwitcherComponent } from '../components/utils/language-switcher/language-switcher.component';\nimport { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';\nimport { ChipComponent } from '../components/core/chip/chip.component';\nimport { ForwardDirective } from '../components/core/forward/forward.directive';\nimport { DimmerComponent } from '../components/core/dimmer/dimmer.component';\nimport { DimmerButtonsComponent } from '../components/core/dimmer/dimmer-buttons/dimmer-buttons.component';\nimport { DimmerIconComponent } from '../components/core/dimmer/dimmer-icon/dimmer-icon.component';\nimport { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';\n\n\n/**\n * Core components\n */\nconst core = [\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n];\n\n/**\n * Form components\n */\nconst form = [\n  CheckboxComponent,\n  InputComponent,\n  PasswordInputComponent,\n  RadioButtonComponent,\n  SelectComponent,\n  TextareaComponent,\n  UploadDragDropComponent,\n  UploadFileListComponent\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  BackButtonComponent,\n  BackToTopComponent,\n  BreadcrumbComponent,\n  BreadcrumbItemComponent,\n  HeaderComponent\n];\n\n/**\n * Utils components\n */\nconst utils = [\n  IconComponent,\n  NotFoundPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n];\n\n@NgModule({\n  declarations: [\n    AbstractComponent,\n    AbstractFormComponent,\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ],\n  imports: [\n    CommonModule,\n    TranslateModule,\n    ReactiveFormsModule,\n    NgIf,\n    NgForOf,\n    RouterLink\n  ],\n  exports: [\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ]\n})\nexport class ComponentsModule {\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -16224,6 +16881,12 @@
                         },
                         {
                             "name": "SpinnerComponent"
+                        },
+                        {
+                            "name": "SteppersContainerComponent"
+                        },
+                        {
+                            "name": "SteppersItemComponent"
                         },
                         {
                             "name": "TabContainerComponent"
@@ -16386,6 +17049,12 @@
                             "name": "SpinnerComponent"
                         },
                         {
+                            "name": "SteppersContainerComponent"
+                        },
+                        {
+                            "name": "SteppersItemComponent"
+                        },
+                        {
                             "name": "TabContainerComponent"
                         },
                         {
@@ -16420,13 +17089,13 @@
         },
         {
             "name": "DesignAngularKitModule",
-            "id": "module-DesignAngularKitModule-95e94ed6ff7b525e066fe29a79ffb38de1ad41affb6b27540cb157eec66e70cd6cee9c589ba15610884c6d17035fea509ad5f3c468ea45ad0f9886b214083b68",
+            "id": "module-DesignAngularKitModule-67f64058ac0ab0101848d0f95eccdbdf277e39be3bfb043145cfc3fa52b74dfbb852fb8940fdfd322a870a875b8377da42ae8db25ae9cd7520e25660d7e0c53c",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/design-angular-kit/src/lib/design-angular-kit.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { TranslateLoader, TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';\nimport { HttpClient, HttpClientModule } from '@angular/common/http';\nimport { TranslateHttpLoader } from '@ngx-translate/http-loader';\nimport { ComponentsModule } from './modules/components.module';\n\n@NgModule({\n  declarations: [],\n  imports: [\n    ComponentsModule,\n    HttpClientModule,\n    TranslateModule.forChild({\n      loader: {\n        provide: TranslateLoader,\n        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, '/bootstrap-italia/i18n/'),\n        deps: [HttpClient]\n      },\n      extend: true,\n      isolate: false,\n      defaultLanguage: 'it'\n    })\n  ],\n  exports: [\n    ComponentsModule,\n    TranslateModule\n  ],\n  providers: [TranslateStore]\n})\nexport class DesignAngularKitModule {\n\n  constructor(\n    private readonly translateService: TranslateService\n  ) {\n    translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.\n    translateService.use('it');\n  }\n\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';\nimport { HttpClient, HttpClientModule } from '@angular/common/http';\nimport { TranslateHttpLoader } from '@ngx-translate/http-loader';\nimport { ComponentsModule } from './modules/components.module';\n\n@NgModule({\n  declarations: [],\n  imports: [\n    ComponentsModule,\n    HttpClientModule,\n    TranslateModule.forChild({\n      loader: {\n        provide: TranslateLoader,\n        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, '/bootstrap-italia/i18n/'),\n        deps: [HttpClient]\n      },\n      extend: true,\n      isolate: false,\n      defaultLanguage: 'it'\n    })\n  ],\n  exports: [\n    ComponentsModule,\n    TranslateModule\n  ]\n})\nexport class DesignAngularKitModule {\n\n  constructor(\n    private readonly translateService: TranslateService\n  ) {\n    translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.\n    translateService.use('it');\n  }\n\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -16477,7 +17146,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
+                "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
                 "rawdescription": "Core components",
                 "description": "<p>Core components</p>\n"
             },
@@ -16831,7 +17500,7 @@
                 "name": "IconName",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-triangle\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-left-triangle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-right-triangle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-triangle\" | \"ban\" | \"bookmark\" | \"box\" | \"burger\" | \"calendar\" | \"camera\" | \"card\" | \"chart-line\" | \"check\" | \"check-circle\" | \"chevron-left\" | \"chevron-right\" | \"clip\" | \"clock\" | \"close\" | \"close-big\" | \"close-circle\" | \"comment\" | \"copy\" | \"delete\" | \"download\" | \"error\" | \"exchange-circle\" | \"expand\" | \"external-link\" | \"flag\" | \"folder\" | \"fullscreen\" | \"funnel\" | \"hearing\" | \"help\" | \"help-circle\" | \"horn\" | \"inbox\" | \"info-circle\" | \"key\" | \"link\" | \"list\" | \"locked\" | \"logout\" | \"mail\" | \"mail-open\" | \"map-marker\" | \"map-marker-circle\" | \"map-marker-minus\" | \"map-marker-plus\" | \"maximize\" | \"maximize-alt\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"more-actions\" | \"more-items\" | \"note\" | \"pa\" | \"password-invisible\" | \"password-visible\" | \"pencil\" | \"piattaforme\" | \"pin\" | \"plug\" | \"plus\" | \"plus-circle\" | \"presentation\" | \"print\" | \"refresh\" | \"restore\" | \"rss\" | \"rss-square\" | \"search\" | \"settings\" | \"share\" | \"software\" | \"star-full\" | \"star-outline\" | \"telephone\" | \"tool\" | \"unlocked\" | \"upload\" | \"user\" | \"video\" | \"warning\" | \"warning-circle\" | \"wifi\" | \"zoom-in\" | \"zoom-out\" | \"behance\" | \"facebook\" | \"facebook-square\" | \"figma\" | \"figma-square\" | \"flickr\" | \"flickr-square\" | \"github\" | \"instagram\" | \"linkedin\" | \"linkedin-square\" | \"medium\" | \"medium-square\" | \"pinterest\" | \"pinterest-square\" | \"quora\" | \"quora-square\" | \"reddit\" | \"reddit-square\" | \"slack\" | \"slack-square\" | \"snapchat\" | \"snapchat-square\" | \"stackexchange\" | \"stackexchange-square\" | \"stackoverflow\" | \"stackoverflow-square\" | \"telegram\" | \"tiktok\" | \"tiktok-square\" | \"twitter\" | \"twitter-square\" | \"vimeo\" | \"vimeo-square\" | \"whatsapp\" | \"whatsapp-square\" | \"youtube\" | \"google\" | \"designers-italia\" | \"team-digitale\" | \"file\" | \"files\" | \"file-audio\" | \"file-compressed\" | \"file-csv\" | \"file-json\" | \"file-odp\" | \"file-ods\" | \"file-odt\" | \"file-pdf\" | \"file-pdf-ext\" | \"file-sheet\" | \"file-slides\" | \"file-txt\" | \"file-video\" | \"file-xml\"",
+                "rawtype": "\"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-triangle\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-left-triangle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-right-triangle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-triangle\" | \"ban\" | \"bookmark\" | \"box\" | \"burger\" | \"calendar\" | \"camera\" | \"card\" | \"chart-line\" | \"check\" | \"check-circle\" | \"chevron-left\" | \"chevron-right\" | \"clip\" | \"clock\" | \"close\" | \"close-big\" | \"close-circle\" | \"comment\" | \"copy\" | \"delete\" | \"download\" | \"error\" | \"exchange-circle\" | \"expand\" | \"external-link\" | \"flag\" | \"folder\" | \"fullscreen\" | \"funnel\" | \"hearing\" | \"help\" | \"help-circle\" | \"horn\" | \"inbox\" | \"info-circle\" | \"key\" | \"link\" | \"list\" | \"locked\" | \"logout\" | \"mail\" | \"mail-open\" | \"map-marker\" | \"map-marker-circle\" | \"map-marker-minus\" | \"map-marker-plus\" | \"maximize\" | \"maximize-alt\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"more-actions\" | \"more-items\" | \"note\" | \"pa\" | \"password-invisible\" | \"password-visible\" | \"pencil\" | \"piattaforme\" | \"pin\" | \"plug\" | \"plus\" | \"plus-circle\" | \"presentation\" | \"print\" | \"refresh\" | \"restore\" | \"rss\" | \"rss-square\" | \"search\" | \"settings\" | \"share\" | \"software\" | \"star-full\" | \"star-outline\" | \"telephone\" | \"tool\" | \"unlocked\" | \"upload\" | \"user\" | \"video\" | \"warning\" | \"warning-circle\" | \"wifi\" | \"zoom-in\" | \"zoom-out\" | \"behance\" | \"facebook\" | \"facebook-square\" | \"figma\" | \"figma-square\" | \"flickr\" | \"flickr-square\" | \"github\" | \"instagram\" | \"linkedin\" | \"linkedin-square\" | \"mastodon\" | \"mastodon-square\" | \"medium\" | \"medium-square\" | \"pinterest\" | \"pinterest-square\" | \"quora\" | \"quora-square\" | \"reddit\" | \"reddit-square\" | \"slack\" | \"slack-square\" | \"snapchat\" | \"snapchat-square\" | \"stackexchange\" | \"stackexchange-square\" | \"stackoverflow\" | \"stackoverflow-square\" | \"telegram\" | \"tiktok\" | \"tiktok-square\" | \"twitter\" | \"twitter-square\" | \"vimeo\" | \"vimeo-square\" | \"whatsapp\" | \"whatsapp-square\" | \"youtube\" | \"google\" | \"designers-italia\" | \"team-digitale\" | \"file\" | \"files\" | \"file-audio\" | \"file-compressed\" | \"file-csv\" | \"file-json\" | \"file-odp\" | \"file-ods\" | \"file-odt\" | \"file-pdf\" | \"file-pdf-ext\" | \"file-sheet\" | \"file-slides\" | \"file-txt\" | \"file-video\" | \"file-xml\"",
                 "file": "projects/design-angular-kit/src/lib/interfaces/icon.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -17078,7 +17747,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
+                    "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
                     "rawdescription": "Core components",
                     "description": "<p>Core components</p>\n"
                 },
@@ -17519,7 +18188,7 @@
                     "name": "IconName",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "\"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-triangle\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-left-triangle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-right-triangle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-triangle\" | \"ban\" | \"bookmark\" | \"box\" | \"burger\" | \"calendar\" | \"camera\" | \"card\" | \"chart-line\" | \"check\" | \"check-circle\" | \"chevron-left\" | \"chevron-right\" | \"clip\" | \"clock\" | \"close\" | \"close-big\" | \"close-circle\" | \"comment\" | \"copy\" | \"delete\" | \"download\" | \"error\" | \"exchange-circle\" | \"expand\" | \"external-link\" | \"flag\" | \"folder\" | \"fullscreen\" | \"funnel\" | \"hearing\" | \"help\" | \"help-circle\" | \"horn\" | \"inbox\" | \"info-circle\" | \"key\" | \"link\" | \"list\" | \"locked\" | \"logout\" | \"mail\" | \"mail-open\" | \"map-marker\" | \"map-marker-circle\" | \"map-marker-minus\" | \"map-marker-plus\" | \"maximize\" | \"maximize-alt\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"more-actions\" | \"more-items\" | \"note\" | \"pa\" | \"password-invisible\" | \"password-visible\" | \"pencil\" | \"piattaforme\" | \"pin\" | \"plug\" | \"plus\" | \"plus-circle\" | \"presentation\" | \"print\" | \"refresh\" | \"restore\" | \"rss\" | \"rss-square\" | \"search\" | \"settings\" | \"share\" | \"software\" | \"star-full\" | \"star-outline\" | \"telephone\" | \"tool\" | \"unlocked\" | \"upload\" | \"user\" | \"video\" | \"warning\" | \"warning-circle\" | \"wifi\" | \"zoom-in\" | \"zoom-out\" | \"behance\" | \"facebook\" | \"facebook-square\" | \"figma\" | \"figma-square\" | \"flickr\" | \"flickr-square\" | \"github\" | \"instagram\" | \"linkedin\" | \"linkedin-square\" | \"medium\" | \"medium-square\" | \"pinterest\" | \"pinterest-square\" | \"quora\" | \"quora-square\" | \"reddit\" | \"reddit-square\" | \"slack\" | \"slack-square\" | \"snapchat\" | \"snapchat-square\" | \"stackexchange\" | \"stackexchange-square\" | \"stackoverflow\" | \"stackoverflow-square\" | \"telegram\" | \"tiktok\" | \"tiktok-square\" | \"twitter\" | \"twitter-square\" | \"vimeo\" | \"vimeo-square\" | \"whatsapp\" | \"whatsapp-square\" | \"youtube\" | \"google\" | \"designers-italia\" | \"team-digitale\" | \"file\" | \"files\" | \"file-audio\" | \"file-compressed\" | \"file-csv\" | \"file-json\" | \"file-odp\" | \"file-ods\" | \"file-odt\" | \"file-pdf\" | \"file-pdf-ext\" | \"file-sheet\" | \"file-slides\" | \"file-txt\" | \"file-video\" | \"file-xml\"",
+                    "rawtype": "\"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-triangle\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-left-triangle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-right-triangle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-triangle\" | \"ban\" | \"bookmark\" | \"box\" | \"burger\" | \"calendar\" | \"camera\" | \"card\" | \"chart-line\" | \"check\" | \"check-circle\" | \"chevron-left\" | \"chevron-right\" | \"clip\" | \"clock\" | \"close\" | \"close-big\" | \"close-circle\" | \"comment\" | \"copy\" | \"delete\" | \"download\" | \"error\" | \"exchange-circle\" | \"expand\" | \"external-link\" | \"flag\" | \"folder\" | \"fullscreen\" | \"funnel\" | \"hearing\" | \"help\" | \"help-circle\" | \"horn\" | \"inbox\" | \"info-circle\" | \"key\" | \"link\" | \"list\" | \"locked\" | \"logout\" | \"mail\" | \"mail-open\" | \"map-marker\" | \"map-marker-circle\" | \"map-marker-minus\" | \"map-marker-plus\" | \"maximize\" | \"maximize-alt\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"more-actions\" | \"more-items\" | \"note\" | \"pa\" | \"password-invisible\" | \"password-visible\" | \"pencil\" | \"piattaforme\" | \"pin\" | \"plug\" | \"plus\" | \"plus-circle\" | \"presentation\" | \"print\" | \"refresh\" | \"restore\" | \"rss\" | \"rss-square\" | \"search\" | \"settings\" | \"share\" | \"software\" | \"star-full\" | \"star-outline\" | \"telephone\" | \"tool\" | \"unlocked\" | \"upload\" | \"user\" | \"video\" | \"warning\" | \"warning-circle\" | \"wifi\" | \"zoom-in\" | \"zoom-out\" | \"behance\" | \"facebook\" | \"facebook-square\" | \"figma\" | \"figma-square\" | \"flickr\" | \"flickr-square\" | \"github\" | \"instagram\" | \"linkedin\" | \"linkedin-square\" | \"mastodon\" | \"mastodon-square\" | \"medium\" | \"medium-square\" | \"pinterest\" | \"pinterest-square\" | \"quora\" | \"quora-square\" | \"reddit\" | \"reddit-square\" | \"slack\" | \"slack-square\" | \"snapchat\" | \"snapchat-square\" | \"stackexchange\" | \"stackexchange-square\" | \"stackoverflow\" | \"stackoverflow-square\" | \"telegram\" | \"tiktok\" | \"tiktok-square\" | \"twitter\" | \"twitter-square\" | \"vimeo\" | \"vimeo-square\" | \"whatsapp\" | \"whatsapp-square\" | \"youtube\" | \"google\" | \"designers-italia\" | \"team-digitale\" | \"file\" | \"files\" | \"file-audio\" | \"file-compressed\" | \"file-csv\" | \"file-json\" | \"file-odp\" | \"file-ods\" | \"file-odt\" | \"file-pdf\" | \"file-pdf-ext\" | \"file-sheet\" | \"file-slides\" | \"file-txt\" | \"file-video\" | \"file-xml\"",
                     "file": "projects/design-angular-kit/src/lib/interfaces/icon.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -17811,6 +18480,24 @@
                 "status": "good"
             },
             {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/steppers/steppers-container/steppers-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SteppersContainerComponent",
+                "coveragePercent": 85,
+                "coverageCount": "17/20",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/steppers/steppers-item/steppers-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SteppersItemComponent",
+                "coveragePercent": 75,
+                "coverageCount": "3/4",
+                "status": "good"
+            },
+            {
                 "filePath": "projects/design-angular-kit/src/lib/components/core/tab/tab-container/tab-container.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -17860,8 +18547,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputComponent",
-                "coveragePercent": 57,
-                "coverageCount": "22/38",
+                "coveragePercent": 65,
+                "coverageCount": "25/38",
                 "status": "good"
             },
             {
@@ -18003,9 +18690,9 @@
                 "filePath": "projects/design-angular-kit/src/lib/interfaces/form.ts",
                 "type": "interface",
                 "linktype": "interface",
-                "name": "AutoCompleteItem",
+                "name": "AutocompleteItem",
                 "coveragePercent": 100,
-                "coverageCount": "7/7",
+                "coverageCount": "8/8",
                 "status": "very-good"
             },
             {
