@@ -1,13 +1,8 @@
-<a *ngIf="buttonStyle === 'link'" class="go-back" data-bs-toggle="historyback" (click)="goBack()" [routerLink]="null">
+<a *ngIf="buttonStyle === 'link'" href="#" class="go-back" (click)="goBack($event)">
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </a>
 
-<button *ngIf="buttonStyle === 'button'"
-        itButton="primary"
-        class="go-back"
-        data-bs-toggle="historyback"
-        (click)="goBack()">
-
+<button *ngIf="buttonStyle === 'button'" itButton="primary" class="go-back" (click)="goBack($event)">
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </button>
 
