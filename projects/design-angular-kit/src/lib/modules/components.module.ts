@@ -26,6 +26,10 @@ import { PopoverDirective } from '../components/core/popover/popover.directive';
 import { ProgressBarComponent } from '../components/core/progress-bar/progress-bar.component';
 import { ProgressButtonComponent } from '../components/core/progress-button/progress-button.component';
 import { SpinnerComponent } from '../components/core/spinner/spinner.component';
+import {
+  SteppersContainerComponent
+} from '../components/core/steppers/steppers-container/steppers-container.component';
+import { SteppersItemComponent } from '../components/core/steppers/steppers-item/steppers-item.component';
 import { TabContainerComponent } from '../components/core/tab/tab-container/tab-container.component';
 import { TabItemComponent } from '../components/core/tab/tab-item/tab-item.component';
 import { TableComponent } from '../components/core/table/table.component';
@@ -86,6 +90,8 @@ const core = [
   ProgressBarComponent,
   ProgressButtonComponent,
   SpinnerComponent,
+  SteppersContainerComponent,
+  SteppersItemComponent,
   TabContainerComponent,
   TabItemComponent,
   TableComponent,

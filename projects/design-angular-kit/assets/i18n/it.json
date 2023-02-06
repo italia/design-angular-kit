@@ -4,6 +4,7 @@
       "save": "Salva",
       "send": "Invia",
       "abort": "Annulla",
+      "close": "Chiudi",
       "continue": "Continua",
       "edit": "Modifica",
       "show-all": "Mostra tutto",
@@ -44,7 +45,13 @@
       "progress": "Progresso",
       "loading": "Caricamento",
       "active": "Attivo",
-      "remove": "Elimina"
+      "remove": "Elimina",
+      "confirm": "Conferma",
+      "confirmed": "Confermato",
+      "step": "Step",
+      "step-of": "Step {{current}} di {{available}}",
+      "back": "Indietro",
+      "forward": "Avanti"
     },
     "form": {
       "increase-value": "Aumenta valore",

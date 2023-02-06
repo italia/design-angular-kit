@@ -29,6 +29,7 @@ const routes: Routes = [
     { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
     { path: 'callout', loadChildren: () => import('src/app/callout/callout.module').then(m => m.CalloutModule) },
     { path: 'upload', loadChildren: () => import('src/app/upload/upload.module').then(m => m.UploadModule) },
+    { path: 'steppers', loadChildren: () => import('src/app/steppers/steppers.module').then(m => m.SteppersModule) },
   ]}
 ];
 
