@@ -3,7 +3,7 @@ import { AbstractFormComponent } from '../../../abstracts/abstract-form-componen
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
-  selector: 'it-radio-button[id][label][value]',
+  selector: 'it-radio-button[id][value]',
   templateUrl: './radio-button.component.html',
   styleUrls: ['./radio-button.component.scss']
 })

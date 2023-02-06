@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class CheckboxExampleComponent {
 
   checked = true;
-  label = 'Sono una checkbox';
   disabled = false;
   indeterminate = false;
+  link = false;
 
 }
