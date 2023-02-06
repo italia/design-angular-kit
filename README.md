@@ -61,10 +61,12 @@ npm install design-angular-kit@unstable --save
 Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
 
 ```typescript
-imports: [
+@NgModule({
+  imports: [
     ...
     DesignAngularKitModule
-]
+  ]
+})
 ```
 
 ### Importazione stili bootstrap-italia
@@ -144,11 +146,7 @@ Modifica il tuo `angular.json` aggiungendo:
   ]
  ```
 
-Puoi anche utilizzare le label localizzate di `design-angular-kit` nella tua applicazione. [Vedi le nostre label](projects/design-angular-kit/assets/i18n/it.json)
-
-Es: `{{'it.errors.required-field' | translate}}`
-
-#### Caricamento file localizzazione app 
+#### Localizzazione esistente
 
 Se utilizzi già i file di localizzazione nella tua app, puoi utilizzare la libreria [ngx-translate-multi-http-loader](https://www.npmjs.com/package/ngx-translate-multi-http-loader)
 per caricare i file di localizzazione dell'app e di `design-angular-kit`
@@ -156,29 +154,49 @@ per caricare i file di localizzazione dell'app e di `design-angular-kit`
 Modifica nel tuo `app.module.ts`:
 
 ```typescript
-imports: [
-  ...
-  HttpClientModule,
-  TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
-        './assets/i18n/', // Your i18n location
-        './bootstrap-italia/i18n/'
-      ]),
-      deps: [HttpBackend],
+@NgModule({
+  imports: [
+    ...
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
+          './bootstrap-italia/i18n/', // Load library translations first, so you can edit the keys in your localization file
+          './assets/i18n/' // Your i18n location
+        ]),
+        deps: [HttpBackend]
+      },      
       defaultLanguage: 'it'
-    }
-  }),
-  DesignAngularKitModule
-]
+    }),
+    DesignAngularKitModule
+  ]
+})
 ```
 
-#### Usa la localizzazione personalizzata
+Se vuoi personalizzare le nostre label puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le [chiavi del json della libreria](projects/design-angular-kit/assets/i18n/it.json).
 
-Non includere il supporto i18n nel tuo `angular.json` ma crea i tuoi file di localizzazione personalizzata nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
+Puoi utilizzare le label localizzate di `design-angular-kit` nella tua applicazione, ad esempio `{{'it.errors.required-field' | translate}}`. [Vedi le nostre label](projects/design-angular-kit/assets/i18n/it.json)
 
-Se utilizzi già i file di localizzazione nella tua app, puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le chiavi del json della libreria.
+#### Localizzazione non esistente
+
+Se non utilizzi i file di localizzazione nella tua app, devi aggiungere il provider `TranslateStore` nel tuo `app.module.ts`:
+
+```typescript
+@NgModule({
+  imports: [
+    ...
+    DesignAngularKitModule,
+  ],
+  providers: [
+    TranslateStore
+  ],
+})
+```
+
+Se vuoi personalizzare le nostre label:  
+- Non includere il supporto i18n nel tuo `angular.json` ma crea i tuoi file di localizzazione personalizzati nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). 
+- Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
 
 ### Supporto animazione
 
