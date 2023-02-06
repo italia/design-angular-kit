@@ -18,6 +18,7 @@ export class RadioExampleComponent implements OnInit {
 
   disabled = false;
 
+  link?: string;
 
   genderFormGroup: FormGroup;
 

@@ -5,7 +5,7 @@
 
     <div *ngIf="toggle; else defaultStyle" class="toggles">
       <label [for]="id">
-        {{label}}
+        <ng-container *ngTemplateOutlet="htmlLabel"></ng-container>
         <input [id]="id"
                type="checkbox"
                [formControl]="control"
@@ -23,7 +23,9 @@
              [class.semi-checked]="isIndeterminate"
              [formControl]="control"
              [attr.aria-describedby]="id + '-help'">
-      <label class="form-check-label" [for]="id">{{label}}</label>
+      <label class="form-check-label" [for]="id">
+        <ng-container *ngTemplateOutlet="htmlLabel"></ng-container>
+      </label>
     </ng-template>
 
     <small *ngIf="isGroup" [id]="id + '-help'" class="form-text">
@@ -45,4 +47,11 @@
     <ng-content select="[error]"></ng-content>
   </div>
   <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
+</ng-template>
+
+<ng-template #htmlLabel>
+  <div #customLabel>
+    <ng-content select="[label]"></ng-content>
+  </div>
+  <ng-container *ngIf="!customLabel.hasChildNodes()">{{label}}</ng-container>
 </ng-template>

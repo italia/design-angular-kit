@@ -14,21 +14,30 @@
       [formControl]="control"
       [attr.aria-describedby]="id + '-help'">
 
-    <label class="form-check-label" [for]="id">{{label}}</label>
+    <label class="form-check-label" [for]="id">
+      <div #customLabel>
+        <ng-content select="[label]"></ng-content>
+      </div>
+      <ng-container *ngIf="!customLabel.hasChildNodes()">{{label}}</ng-container>
+    </label>
 
     <small *ngIf="isGroup" [id]="id + '-help'" class="form-text">
       <ng-content></ng-content>
     </small>
 
     <div *ngIf="isInvalid && isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
-      <div #customError><ng-content select="[error]"></ng-content></div>
+      <div #customError>
+        <ng-content select="[error]"></ng-content>
+      </div>
       <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
     </div>
 
   </div>
 
   <div *ngIf="isInvalid && !isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
-    <div #customError><ng-content select="[error]"></ng-content></div>
+    <div #customError>
+      <ng-content select="[error]"></ng-content>
+    </div>
     <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
   </div>
 </ng-container>

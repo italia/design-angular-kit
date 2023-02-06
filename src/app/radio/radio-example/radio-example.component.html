@@ -16,6 +16,17 @@
   </div>
 </div>
 
+<div class="bd-example">
+  <h4>Radio con link</h4>
+  <it-radio-button id="radio-link-it" [(ngModel)]="link" name="radio-link" value="bootstrap-italia">
+    <ng-container label>Label con <a href="https://italia.github.io/bootstrap-italia/">link</a></ng-container>
+  </it-radio-button>
+  <it-radio-button id="radio-link-rb" [(ngModel)]="link" name="radio-link" value="radio-button">
+    <ng-container label>Altra label con <a href="https://italia.github.io/bootstrap-italia/docs/form/radio-button/">link</a></ng-container>
+  </it-radio-button>
+
+  <div class="example-selected-value">Link selezionato: <strong>{{link}}</strong></div>
+</div>
 
 <div class="bd-example">
   <h4>Radio in Reactive Form</h4>
