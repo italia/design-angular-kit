@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
+import { ItValidators } from '../../../../projects/design-angular-kit/src/lib/validators/it-validators';
 
 @Component({
   selector: 'it-model-driven-validation-example',
@@ -18,7 +19,13 @@ export class ModelDrivenValidationExampleComponent {
       Validators.pattern('[ab]+')
     ];
     this.myForm = this._fb.group({
-      myInput: ['', validators]
+      taxCode: [null, ItValidators.taxCode],
+      vat: [null, ItValidators.vatNumber],
+      cap: [null, ItValidators.cap],
+      email: [null],
+      url: [null],
+      phone: [null],
+      myInput: ['', validators],
     });
   }
 
