@@ -1,3 +1,12 @@
+# [1.0.0-7](https://github.com/italia/design-angular-kit/compare/v1.0.0-6...v1.0.0-7) (2023-02-07)
+
+
+### Bug Fixes
+
+* italian tax code regex ([081f2f1](https://github.com/italia/design-angular-kit/commit/081f2f1353e0b0c5dc790bd0d75fc73fdd2f09a0))
+
+
+
 # [1.0.0-6](https://github.com/italia/design-angular-kit/compare/v1.0.0-5...v1.0.0-6) (2023-02-06)
 
 
