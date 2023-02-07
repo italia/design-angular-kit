@@ -1,3 +1,6 @@
+import { AvatarDropdownComponent, AvatarDropDownItemComponent } from './../components/core/avatar/avatar-dropdown/avatar-dropdown.component';
+import { AvatarGroupComponent, AvatarGroupItemComponent } from './../components/core/avatar/avatar-group/avatar-group.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule, NgForOf, NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -58,6 +61,7 @@ import { DimmerComponent } from '../components/core/dimmer/dimmer.component';
 import { DimmerButtonsComponent } from '../components/core/dimmer/dimmer-buttons/dimmer-buttons.component';
 import { DimmerIconComponent } from '../components/core/dimmer/dimmer-icon/dimmer-icon.component';
 import { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';
+import { AvatarDirective } from '../components/core/avatar/avatar.directive';
 
 
 /**
@@ -95,7 +99,12 @@ const core = [
   TabContainerComponent,
   TabItemComponent,
   TableComponent,
-  TooltipDirective
+  TooltipDirective,
+  AvatarDirective,
+  AvatarGroupComponent,
+  AvatarGroupItemComponent,
+  AvatarDropdownComponent,
+  AvatarDropDownItemComponent
 ];
 
 /**

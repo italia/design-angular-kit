@@ -1,0 +1,28 @@
+<div class="dropdown" ngbDropdown>
+  <a role="button" class="btn btn-dropdown" aria-pressed="false" ngbDropdownToggle>
+    <ng-content select="[it-avatar-dropdown-toggle]"></ng-content>
+  </a>
+  <div class="dropdown-menu" ngbDropdownMenu>
+    <div class="link-list-wrapper">
+      <ul class="link-list">
+        <li *ngFor="let item of items">
+          <a *ngIf="item.link; else nolink" 
+          [routerLink]="item.link" 
+          class="dropdown-item list-item"
+          title="item.title"
+          accesskey="item.accesskey"
+          tabindex="item.tabindex"
+          >
+            <ng-template *ngTemplateOutlet="item._implicitContent"></ng-template>
+          </a>
+          <ng-template #nolink>
+            <div class="dropdown-item list-item">
+              <ng-template *ngTemplateOutlet="item._implicitContent"></ng-template>
+            </div>
+          </ng-template>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
