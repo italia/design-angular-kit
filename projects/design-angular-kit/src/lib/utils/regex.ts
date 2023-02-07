@@ -17,7 +17,7 @@ export const URL_REGEX = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[
 /**
  * The italian tax code Regex (Codice Fiscale)
  */
-export const ITALIAN_TAX_CODE_REGEX = /^[a-z]{6}[0-9]{2}[a-z][0-9]{2}[a-z][0-9]{3}[a-z]$/
+export const ITALIAN_TAX_CODE_REGEX = /^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/i
 
 /**
  * The VAT number Regex (Partita iva)

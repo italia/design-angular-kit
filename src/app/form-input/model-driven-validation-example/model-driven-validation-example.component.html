@@ -1,9 +1,8 @@
-
 <h3>Interazione con Form Input dotato di validazione Model Driven</h3>
 
 <div class="bd-example">
   <form [formGroup]="myForm">
-    <it-input id="myInput-validation" formControlName="myInput" #myInput>
+    <it-input id="myInput-validation" label="Custom" formControlName="myInput" #myInput>
       <ng-container error>
         <!-- Custom errors-->
         <div *ngIf="myInput.hasError('required')">Il campo è obbligatorio</div>
@@ -12,6 +11,32 @@
         <div *ngIf="myInput.hasError('pattern')">Non corrisponde al pattern [ab]+</div>
       </ng-container>
     </it-input>
+
+    <div class="row">
+      <div class="col-4">
+        <it-input id="tax-code-validation" label="Codice fiscale" formControlName="taxCode" required>
+          <!-- Default errors-->
+        </it-input>
+      </div>
+      <div class="col-4">
+        <it-input id="vat-validation" label="Partita IVA" formControlName="vat" required></it-input>
+      </div>
+      <div class="col-4">
+        <it-input id="cap-validation" label="Cap" formControlName="cap" required></it-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <it-input id="email-validation" type="email" label="Email" formControlName="email" required></it-input>
+      </div>
+      <div class="col-4">
+        <it-input id="url-validation" type="url" label="Url" formControlName="url" required></it-input>
+      </div>
+      <div class="col-4">
+        <it-input id="phone-validation" type="tel" label="Telefono" formControlName="phone" required></it-input>
+      </div>
+    </div>
 
     <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
 
