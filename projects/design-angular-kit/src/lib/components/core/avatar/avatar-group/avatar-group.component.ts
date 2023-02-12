@@ -1,4 +1,3 @@
-import { DomSanitizer } from '@angular/platform-browser';
 import { Component, ContentChildren, QueryList, TemplateRef, ViewChild} from '@angular/core';
 
 
@@ -8,7 +7,7 @@ import { Component, ContentChildren, QueryList, TemplateRef, ViewChild} from '@a
 })
 export class AvatarGroupItemComponent {
   constructor(){}
-  @ViewChild(TemplateRef, { static: true }) _implicitContent: TemplateRef<any>;
+  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;
 
 }
 

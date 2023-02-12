@@ -8,27 +8,26 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./avatar-dropdown.component.scss'],
 })
 export class AvatarDropDownItemComponent{
-  @ViewChild(TemplateRef, {static: true}) _implicitContent: TemplateRef<any>
+  @ViewChild(TemplateRef, {static: true}) _implicitContent!: TemplateRef<any>
   /**
    * Indica il link che possiamo passare all'elemento
-   * è di tipo Routerlink
    */
-  @Input() link: RouterLink
+  @Input() link?: string | any[] | null | undefined;
   /**
    * Permette di utilizzare l'attributo html title
    * è di tipo string
    */
-  @Input() title: string
+  @Input() title?: string
   /**
    * Permette di utilizzare l'attributo html accesskey
    * è di tipo string
    */
-  @Input() accesskey: string
+  @Input() accesskey?: string
     /**
    * Permette di utilizzare l'attributo html tabindex
    * è di tipo number
    */
-  @Input() tabindex: number
+  @Input() tabindex?: number
 }
 
 @Component({

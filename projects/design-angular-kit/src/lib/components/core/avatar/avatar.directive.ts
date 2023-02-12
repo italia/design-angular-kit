@@ -18,17 +18,18 @@ export class AvatarDirective {
    * </ul>
    */
   @Input()
-  get color(): string {
+  get color(): string | undefined {
     return this._color
   }
-  set color(value: string) {
-    if (ColorsEnum[value]){
-      this._color = ColorsEnum[value]
+  set color(value: string | undefined) {
+    const colorsKey = value as keyof typeof ColorsEnum;
+    if (ColorsEnum[colorsKey]){
+      this._color = ColorsEnum[colorsKey] 
     }else{
-      this._color = false
+      this._color = undefined;
     }
   }
-  private _color
+  private _color?: ColorsEnum;
   /**
    * Indica la grandezza dell'avatar. Può assumere i valori:
    * <ul>
@@ -40,18 +41,20 @@ export class AvatarDirective {
    * </ul>
    */
   @Input()
-  get size(): string {
+  get size(): SizesEnum | undefined {
     return this._size
   }
-  set size(value: string) {
-    if (SizesEnum[value]) {
-      this._size = SizesEnum[value]
-    } else {
+  set size(value: string | undefined) {
+    const sizesKey = value as keyof typeof SizesEnum;
+    if (SizesEnum[sizesKey]) {
+      this._size = SizesEnum[sizesKey];
+    } 
+    else {
       this._size = undefined
     }
   }
 
-  private _size
+  private _size?: SizesEnum;
 
   @HostBinding('class')
   get hostClasses(): string {
