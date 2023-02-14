@@ -3,6 +3,7 @@ import { AbstractComponent } from '../../../../abstracts/abstract.component';
 import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
+import { Dropdown } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-dropdown[id]',
@@ -67,6 +68,9 @@ export class DropdownComponent extends AbstractComponent implements OnChanges {
   override ngAfterViewInit() {
     super.ngAfterViewInit();
     this.setDarkItems();
+    const toggleBtn = this._elementRef.nativeElement.querySelector(".dropdown-toggle")
+    toggleBtn.setAttribute('data-bs-toggle', 'dropdown')
+    Dropdown.getOrCreateInstance(toggleBtn);
   }
 
   /**
