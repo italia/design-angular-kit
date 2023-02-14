@@ -1,4 +1,4 @@
-import { Component, ContentChildren, QueryList, TemplateRef, ViewChild} from '@angular/core';
+import { Component, ContentChildren, QueryList, TemplateRef, ViewChild } from '@angular/core';
 
 
 @Component(

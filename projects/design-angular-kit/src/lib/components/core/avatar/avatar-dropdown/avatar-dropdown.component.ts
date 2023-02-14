@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef, ContentChildren, QueryList, Input, AfterViewInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, ViewChild, TemplateRef, ContentChildren, QueryList, Input, ViewEncapsulation } from '@angular/core';
 
 
 @Component({
@@ -15,17 +14,14 @@ export class AvatarDropDownItemComponent{
   @Input() link?: string | any[] | null | undefined;
   /**
    * Permette di utilizzare l'attributo html title
-   * è di tipo string
    */
   @Input() title?: string
   /**
    * Permette di utilizzare l'attributo html accesskey
-   * è di tipo string
    */
   @Input() accesskey?: string
     /**
    * Permette di utilizzare l'attributo html tabindex
-   * è di tipo number
    */
   @Input() tabindex?: number
 }

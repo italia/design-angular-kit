@@ -4,6 +4,14 @@
   position: relative;
 }
 
-a{
+a {
   cursor: pointer;
+}
+
+:host ::ng-deep .dropdown-toggle {
+  width: 100%;
+  height: 100%;
+  .icon {
+    display: none;
+  }
 }
