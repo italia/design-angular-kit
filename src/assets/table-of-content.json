@@ -89,6 +89,10 @@
         {
           "label": "Steppers",
           "link": "/componenti/steppers"
+        },
+        {
+          "label": "Select",
+          "link": "/componenti/select"
         }
       ]
     }
