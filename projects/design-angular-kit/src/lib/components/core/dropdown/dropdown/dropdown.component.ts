@@ -1,4 +1,15 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  QueryList,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { AbstractComponent } from '../../../../abstracts/abstract.component';
 import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
@@ -9,6 +20,7 @@ import { Dropdown } from 'bootstrap-italia';
   selector: 'it-dropdown[id]',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
+  exportAs: 'itDropdown',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent extends AbstractComponent {
@@ -41,6 +53,31 @@ export class DropdownComponent extends AbstractComponent {
    */
   @ContentChildren(DropdownItemComponent) items?: QueryList<DropdownItemComponent>;
 
+  /**
+   * Fires immediately when the show instance method is called.
+   */
+  @Output() onShow: EventEmitter<Event> = new EventEmitter();
+
+  /**
+   * Fired when the dropdown has been made visible to the user and CSS transitions have completed.
+   */
+  @Output() onShown: EventEmitter<Event> = new EventEmitter();
+
+  /**
+   * Fires immediately when the hide instance method has been called.
+   */
+  @Output() onHide: EventEmitter<Event> = new EventEmitter();
+
+  /**
+   * Fired when the dropdown has finished being hidden from the user and CSS transitions have completed.
+   */
+  @Output() onHidden: EventEmitter<Event> = new EventEmitter();
+
+
+  private dropdown?: Dropdown;
+
+  @ViewChild('dropdownButton') private dropdownButton?: ElementRef<HTMLButtonElement>;
+
   get buttonClass(): string {
     let btnClass = 'btn dropdown-toggle';
     if (this.color) {
@@ -71,9 +108,15 @@ export class DropdownComponent extends AbstractComponent {
     super.ngAfterViewInit();
     this.setDarkItems();
 
-    const toggleBtn = this._elementRef.nativeElement.querySelector('.dropdown-toggle');
-    toggleBtn.setAttribute('data-bs-toggle', 'dropdown');
-    Dropdown.getOrCreateInstance(toggleBtn);
+    if (this.dropdownButton) {
+      const element = this.dropdownButton.nativeElement;
+      this.dropdown = Dropdown.getOrCreateInstance(element);
+
+      element.addEventListener('show.bs.dropdown', event => this.onShow.emit(event));
+      element.addEventListener('shown.bs.dropdown', event => this.onShown.emit(event));
+      element.addEventListener('hide.bs.dropdown', event => this.onHide.emit(event));
+      element.addEventListener('hidden.bs.dropdown', event => this.onHidden.emit(event));
+    }
   }
 
   /**
@@ -86,4 +129,38 @@ export class DropdownComponent extends AbstractComponent {
     });
   }
 
+  /**
+   * Toggles the dropdown menu of a given navbar or tabbed navigation.
+   */
+  public toggle(): void {
+    this.dropdown?.toggle();
+  }
+
+  /**
+   * Shows the dropdown menu of a given navbar or tabbed navigation.
+   */
+  public show(): void {
+    this.dropdown?.show();
+  }
+
+  /**
+   * Hides the dropdown menu of a given navbar or tabbed navigation.
+   */
+  public hide(): void {
+    this.dropdown?.hide();
+  }
+
+  /**
+   * Updates the position of an element's dropdown.
+   */
+  public update(): void {
+    this.dropdown?.update();
+  }
+
+  /**
+   * Destroys an element's dropdown. (Removes stored data on the DOM element)
+   */
+  public dispose(): void {
+    this.dropdown?.dispose();
+  }
 }

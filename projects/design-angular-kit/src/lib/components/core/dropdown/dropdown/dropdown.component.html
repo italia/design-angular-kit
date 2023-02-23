@@ -1,7 +1,8 @@
 <div class="dropdown {{direction}}">
-  <button [id]="id"
+  <button #dropdownButton [id]="id"
           [class]="buttonClass"
           type="button"
+          data-bs-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false">
     <ng-content select="[button]"></ng-content>
