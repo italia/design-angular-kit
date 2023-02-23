@@ -1,4 +1,13 @@
-import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
@@ -53,10 +62,11 @@ export class CollapseComponent extends AbstractComponent {
   }
 
   constructor(
-    override readonly _renderer: Renderer2,
-    override readonly _elementRef: ElementRef
+    protected override readonly _renderer: Renderer2,
+    protected override readonly _elementRef: ElementRef,
+    protected override readonly _changeDetectorRef: ChangeDetectorRef
   ) {
-    super(_renderer, _elementRef);
+    super(_renderer, _elementRef, _changeDetectorRef);
     this.element = this._elementRef.nativeElement;
   }
 

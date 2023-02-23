@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, OnChanges, QueryList, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList, SimpleChanges } from '@angular/core';
 import { AbstractComponent } from '../../../../abstracts/abstract.component';
 import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
@@ -8,9 +8,10 @@ import { Dropdown } from 'bootstrap-italia';
 @Component({
   selector: 'it-dropdown[id]',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownComponent extends AbstractComponent implements OnChanges {
+export class DropdownComponent extends AbstractComponent {
 
   /**
    * Button color
@@ -59,17 +60,19 @@ export class DropdownComponent extends AbstractComponent implements OnChanges {
     return isTrueBooleanInput(this.dark);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  override ngOnChanges(changes: SimpleChanges): void {
     if (changes['dark'] && !changes['dark'].firstChange) {
       this.setDarkItems();
     }
+    super.ngOnChanges(changes);
   }
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();
     this.setDarkItems();
-    const toggleBtn = this._elementRef.nativeElement.querySelector(".dropdown-toggle")
-    toggleBtn.setAttribute('data-bs-toggle', 'dropdown')
+
+    const toggleBtn = this._elementRef.nativeElement.querySelector('.dropdown-toggle');
+    toggleBtn.setAttribute('data-bs-toggle', 'dropdown');
     Dropdown.getOrCreateInstance(toggleBtn);
   }
 
