@@ -69,4 +69,13 @@ export class FileUtils {
     const fileBlob = FileUtils.base64ToBlob(base64, mimeType);
     return new File([fileBlob], filename, { type: mimeType });
   }
+
+  /**
+   * Extract the MIME type from base64 string
+   * @param base64 the base64 string
+   */
+  public static getMimeTypeFromBase64(base64: string): string|undefined {
+    const mime = base64.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+    return (mime && mime.length) ? mime[1] : undefined;
+  }
 }
