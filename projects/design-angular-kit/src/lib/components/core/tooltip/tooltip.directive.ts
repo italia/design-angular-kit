@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { ElementPlacement } from '../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Tooltip } from 'bootstrap-italia';
@@ -7,7 +7,7 @@ import { Tooltip } from 'bootstrap-italia';
   selector: '[itTooltip]',
   exportAs: 'itTooltip'
 })
-export class TooltipDirective implements AfterViewInit {
+export class TooltipDirective implements AfterViewInit, OnDestroy {
 
   /**
    * Define the tooltip title
@@ -62,7 +62,7 @@ export class TooltipDirective implements AfterViewInit {
   @Output() onInserted: EventEmitter<Event> = new EventEmitter();
 
   private readonly element: HTMLElement;
-  private tooltip?: any;
+  private tooltip?: Tooltip;
 
   constructor(
     private readonly _elementRef: ElementRef
@@ -79,6 +79,10 @@ export class TooltipDirective implements AfterViewInit {
     this.element.addEventListener('hide.bs.tooltip', event => this.onHide.emit(event));
     this.element.addEventListener('hidden.bs.tooltip', event => this.onHidden.emit(event));
     this.element.addEventListener('inserted.bs.tooltip', event => this.onInserted.emit(event));
+  }
+
+  ngOnDestroy(): void {
+    this.dispose();
   }
 
   /**

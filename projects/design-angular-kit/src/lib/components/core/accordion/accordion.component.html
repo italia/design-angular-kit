@@ -3,24 +3,22 @@
 
     <h2 class="accordion-header" id="collapse-{{id}}-heading">
       <button
-        class="accordion-button px-0"
+        class="accordion-button"
         type="button"
         data-bs-toggle="collapse"
-        [class.collapsed]="!opened"
+        [class.collapsed]="isCollapsed"
         [attr.data-bs-target]="'#collapse-' + id"
         [attr.aria-controls]="'collapse-' + id"
-        [attr.aria-expanded]="opened ? 'true' : 'false'">
+        [attr.aria-expanded]="isOpenedOnStart ? 'true' : 'false'">
         {{title}}
       </button>
     </h2>
 
-    <div id="collapse-{{id}}"
-         class="accordion-collapse collapse"
-         role="region"
-         [class.show]="opened"
+    <div #collapse id="collapse-{{id}}" role="region"
+         class="accordion-collapse collapse {{class}}"
          [attr.aria-labelledby]="'collapse-' + id + '-heading'">
 
-      <div class="accordion-body p-0">
+      <div class="accordion-body">
         <ng-content></ng-content>
       </div>
     </div>

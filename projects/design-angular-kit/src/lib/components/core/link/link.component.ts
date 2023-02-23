@@ -1,12 +1,13 @@
-import { AfterViewInit, Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { AbstractComponent } from '../../../abstracts/abstract.component';
 
 @Component({
   selector: 'it-link',
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss']
 })
-export class LinkComponent implements AfterViewInit {
+export class LinkComponent extends AbstractComponent {
 
   /**
    * The router link action
@@ -41,13 +42,8 @@ export class LinkComponent implements AfterViewInit {
     return isTrueBooleanInput(this.disabled);
   }
 
-  constructor(
-    protected readonly _renderer: Renderer2,
-    protected readonly _elementRef: ElementRef
-  ) {
-  }
-
-  ngAfterViewInit(): void {
+  override ngAfterViewInit(): void {
+    super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');
   }
 }

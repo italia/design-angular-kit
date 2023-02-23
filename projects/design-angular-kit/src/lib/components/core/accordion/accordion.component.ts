@@ -1,27 +1,34 @@
-import {Component, Input} from '@angular/core';
-import {AbstractComponent} from "../../../abstracts/abstract.component";
-import {BooleanInput} from "../../../utils/boolean-input";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CollapseComponent } from '../collapse/collapse.component';
 
 @Component({
   selector: 'it-accordion[id][title]',
   templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss']
+  exportAs: 'itAccordion',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccordionComponent extends AbstractComponent {
+export class AccordionComponent extends CollapseComponent {
 
   /**
    * Accordion Title
    */
   @Input() title!: string;
 
-  /**
-   * True to set accordion opened by default
-   */
-  @Input() opened?: BooleanInput;
+  isCollapsed: boolean = true;
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'title');
+
+    this.isCollapsed = !this.isOpenedOnStart;
+    this.onHide.subscribe(() => {
+      this.isCollapsed = true;
+      this._changeDetectorRef.detectChanges();
+    });
+    this.onShow.subscribe(() => {
+      this.isCollapsed = false;
+      this._changeDetectorRef.detectChanges();
+    });
   }
 
 }

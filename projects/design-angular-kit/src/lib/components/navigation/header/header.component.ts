@@ -1,6 +1,6 @@
-import {Component, ElementRef, EventEmitter, Input, Output, Renderer2} from '@angular/core';
-import {BooleanInput, isTrueBooleanInput} from "../../../utils/boolean-input";
-import {AbstractComponent} from "../../../abstracts/abstract.component";
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { AbstractComponent } from '../../../abstracts/abstract.component';
 
 @Component({
   selector: 'it-header',
@@ -29,14 +29,16 @@ export class HeaderComponent extends AbstractComponent {
    * TODO: complete header
    * @param _renderer
    * @param _elementRef
+   * @param _changeDetectorRef
    */
   constructor(
     protected override readonly _renderer: Renderer2,
-    protected override readonly _elementRef: ElementRef
+    protected override readonly _elementRef: ElementRef,
+    protected override readonly _changeDetectorRef: ChangeDetectorRef
   ) {
-    super(_renderer, _elementRef);
-    this.loginClick = new EventEmitter<Event>()
-    this.searchClick = new EventEmitter<Event>()
+    super(_renderer, _elementRef, _changeDetectorRef);
+    this.loginClick = new EventEmitter<Event>();
+    this.searchClick = new EventEmitter<Event>();
   }
 
   get isLight(): boolean {

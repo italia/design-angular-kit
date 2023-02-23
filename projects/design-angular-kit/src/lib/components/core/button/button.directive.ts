@@ -1,8 +1,8 @@
-import { ContentChildren, Directive, HostBinding, HostListener, Input, QueryList } from '@angular/core';
+import { ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
 import { ButtonColor, ButtonSize } from '../../../interfaces/core';
 import { IconComponent } from '../../utils/icon/icon.component';
-import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { ProgressButtonComponent } from '../progress-button/progress-button.component';
 
 @Directive({
   selector: '[itButton]',
@@ -35,12 +35,12 @@ export class ButtonDirective {
    */
   @ContentChildren(IconComponent) icons?: QueryList<IconComponent>;
 
-  /**
-   * The progress bar children
-   */
-  @ContentChildren(ProgressBarComponent) progressBar?: ProgressBarComponent;
-
   private isFocus = false;
+
+  constructor(
+    @Optional() @Host() private progressButtonComponent: ProgressButtonComponent
+  ) {
+  }
 
   @HostListener('focus')
   onFocus() {
@@ -76,11 +76,11 @@ export class ButtonDirective {
       cssClass += ' focus--mouse';
     }
 
-    if (this.icons?.length && !this.progressBar) {
+    if (this.icons?.length && !this.progressButtonComponent) {
       cssClass += ' btn-icon';
     }
 
-    if (this.progressBar) {
+    if (!!this.progressButtonComponent) {
       cssClass += ' btn-progress';
     }
 

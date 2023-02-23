@@ -1,14 +1,13 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { ElementPlacement } from '../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-
 import { Popover } from 'bootstrap-italia';
 
 @Directive({
   selector: '[itPopover]',
   exportAs: 'itPopover'
 })
-export class PopoverDirective implements AfterViewInit {
+export class PopoverDirective implements AfterViewInit, OnDestroy {
 
   /**
    * Define the popover content
@@ -24,7 +23,7 @@ export class PopoverDirective implements AfterViewInit {
    */
   @Input('popoverTitle') set title(title: string | undefined) {
     if (title) {
-      // this.element.setAttribute("title", title);
+      this.element.setAttribute('title', title);
       this.element.setAttribute('data-bs-original-title', title);
     }
   }
@@ -94,7 +93,7 @@ export class PopoverDirective implements AfterViewInit {
   @Output() onInserted: EventEmitter<Event> = new EventEmitter();
 
   private readonly element: HTMLElement;
-  private popover?: any;
+  private popover?: Popover;
 
   constructor(
     private readonly _elementRef: ElementRef
@@ -111,6 +110,10 @@ export class PopoverDirective implements AfterViewInit {
     this.element.addEventListener('hide.bs.popover', event => this.onHide.emit(event));
     this.element.addEventListener('hidden.bs.popover', event => this.onHidden.emit(event));
     this.element.addEventListener('inserted.bs.popover', event => this.onInserted.emit(event));
+  }
+
+  ngOnDestroy(): void {
+    this.dispose();
   }
 
   /**

@@ -27,10 +27,9 @@ export class UploadDragDropComponent extends AbstractComponent {
   isLoading: boolean = false;
   isSuccess: boolean = false;
 
-  donut?: any;
+  donut?: ProgressDonut;
 
-  @ViewChild('donutElement')
-  private donutElement?: ElementRef<HTMLDivElement>;
+  @ViewChild('donutElement') private donutElement?: ElementRef<HTMLDivElement>;
 
   filename?: string;
   extension?: string;

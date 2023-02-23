@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ContentChildren, ElementRef, Input, QueryList
 import { CarouselType } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
-
 import { CarouselBI } from 'bootstrap-italia';
 
 @Component({
@@ -46,9 +45,10 @@ export class CarouselComponent implements AfterViewInit {
 
   @ContentChildren(CarouselItemComponent) items?: QueryList<CarouselItemComponent>;
 
-  @ViewChild('carousel')
-  private carouselDiv!: ElementRef<HTMLDivElement>;
-  private carousel?: any;
+
+  private carousel?: CarouselBI;
+
+  @ViewChild('carousel') private carouselDiv!: ElementRef<HTMLDivElement>;
 
   get typeClass(): string {
     const typeClass = 'it-carousel-landscape-abstract';

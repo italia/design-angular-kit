@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
 import { LinkComponent } from '../../link/link.component';
@@ -6,7 +6,8 @@ import { LinkComponent } from '../../link/link.component';
 @Component({
   selector: 'it-dropdown-item',
   templateUrl: './dropdown-item.component.html',
-  styleUrls: ['./dropdown-item.component.scss']
+  styleUrls: ['./dropdown-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownItemComponent extends LinkComponent {
 
@@ -67,14 +68,6 @@ export class DropdownItemComponent extends LinkComponent {
     }
 
     return linkClass;
-  }
-
-  constructor(
-    protected override readonly _renderer: Renderer2,
-    protected override readonly _elementRef: ElementRef,
-    private readonly _changeDetectorRef: ChangeDetectorRef
-  ) {
-    super(_renderer, _elementRef);
   }
 
   setDark(dark: boolean): void {
