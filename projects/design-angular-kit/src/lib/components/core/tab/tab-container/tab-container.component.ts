@@ -1,7 +1,16 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, Input, OnDestroy, QueryList } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  ElementRef,
+  Input,
+  OnDestroy,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { TabItemComponent } from '../tab-item/tab-item.component';
-import { delay, startWith, Subscription, tap } from 'rxjs';
+import { of, startWith, Subscription, switchMap, tap } from 'rxjs';
 import { Tab } from 'bootstrap-italia';
 import { AbstractComponent } from '../../../../abstracts/abstract.component';
 
@@ -32,6 +41,8 @@ export class TabContainerComponent extends AbstractComponent implements OnDestro
    */
   @ContentChildren(TabItemComponent) tabs?: QueryList<TabItemComponent>;
 
+  @ViewChildren('tabNavLinks') private tabNavLinks?: QueryList<ElementRef<HTMLAnchorElement>>;
+
   private tabSubscriptions?: Array<Subscription>;
 
   isTrueBooleanInput(booleanInput?: BooleanInput): boolean {
@@ -50,19 +61,19 @@ export class TabContainerComponent extends AbstractComponent implements OnDestro
         }));
         this._changeDetectorRef.detectChanges(); // Force update html render
       }),
-      delay(100)
+      switchMap(() => this.tabNavLinks?.changes.pipe(startWith(undefined)) || of(undefined))
     ).subscribe(() => {
       // Init tabs from bootstrap-italia
-      const triggerTabList: Array<HTMLAnchorElement> = this._elementRef.nativeElement.querySelectorAll('.nav-item a');
-      triggerTabList?.forEach(triggerEl => {
-        const tabTrigger = Tab.getOrCreateInstance(triggerEl);
+      this.tabNavLinks?.forEach(tabNavLink => {
+        const triggerEl = tabNavLink.nativeElement,
+          tabTrigger = Tab.getOrCreateInstance(triggerEl);
 
         if (triggerEl.getAttribute('tab-listener') !== 'true') {
           triggerEl.addEventListener('click', event => {
             event.preventDefault();
-            triggerEl.setAttribute('tab-listener', 'true'); // Prevents multiple insertion of the listener
             tabTrigger.show();
           });
+          triggerEl.setAttribute('tab-listener', 'true'); // Prevents multiple insertion of the listener
         }
       });
     });
