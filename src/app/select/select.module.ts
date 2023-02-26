@@ -7,6 +7,8 @@ import { SelectRoutingModule } from './select-routing.module';
 import { SelectIndexComponent } from './select-index/select-index.component';
 import { SelectExamplesComponent } from './select-examples/select-examples.component';
 import { SelectExampleComponent } from './select-example/select-example.component';
+import { SelectGroupExampleComponent } from './select-group-example/select-group-example.component';
+import { SelectDisabledExampleComponent } from './select-disabled-example/select-disabled-example.component';
 
 
 @NgModule({
@@ -17,6 +19,12 @@ import { SelectExampleComponent } from './select-example/select-example.componen
     SharedModule,
     SelectRoutingModule
   ],
-  declarations: [SelectIndexComponent, SelectExamplesComponent, SelectExampleComponent]
+  declarations: [
+    SelectIndexComponent, 
+    SelectDisabledExampleComponent, 
+    SelectGroupExampleComponent, 
+    SelectExamplesComponent, 
+    SelectExampleComponent
+  ]
 })
 export class SelectModule { }
