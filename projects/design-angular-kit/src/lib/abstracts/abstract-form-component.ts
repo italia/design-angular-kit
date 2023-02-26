@@ -1,12 +1,20 @@
 import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';
 import { Component, DoCheck, ElementRef, Input, OnInit, Optional, Renderer2, Self } from '@angular/core';
 import { AbstractComponent } from './abstract.component';
-import { BooleanInput, isFalseBooleanInput } from '../utils/boolean-input';
+import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({ template: '' })
 export class AbstractFormComponent<T = any> extends AbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
+
+  /**
+   * Set the disabled state 
+   */
+  @Input() set disabled(isDisabled: boolean) {
+    isDisabled = isTrueBooleanInput(isDisabled);
+    this.setDisabledState(isDisabled);
+  } 
 
   /**
    * The label of form control
