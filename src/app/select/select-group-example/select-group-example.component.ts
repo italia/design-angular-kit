@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SelectControlGroup, SelectControlOption } from 'design-angular-kit';
+import { Component } from '@angular/core';
+import { SelectControlGroup, SelectControlOption } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-select-group-example',
