@@ -1,10 +1,8 @@
-import {Injectable} from '@angular/core';
-import {filter, Observable, Subject} from "rxjs";
-import {Notification, NotificationPosition, NotificationType} from "../../interfaces/core";
+import { Injectable } from '@angular/core';
+import { filter, Observable, Subject } from 'rxjs';
+import { Notification, NotificationPosition, NotificationType } from '../../interfaces/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class NotificationsService {
   private subject = new Subject<Notification>();
 
@@ -12,7 +10,7 @@ export class NotificationsService {
    * Listen on notification arrived
    * @param filterType filter type of notification
    */
-  onNotification(filterType?: NotificationType): Observable<Notification> {
+  public onNotification(filterType?: NotificationType): Observable<Notification> {
     return this.subject.asObservable().pipe(
       filter(n => n && (!filterType || (n.type === filterType)))
     );
@@ -22,7 +20,7 @@ export class NotificationsService {
    * Show new notification
    * @param notification notification
    */
-  addNotification(notification: Notification): void {
+  public addNotification(notification: Notification): void {
     this.subject.next(notification);
   }
 
@@ -30,17 +28,17 @@ export class NotificationsService {
    * Create new Standard notification
    * @param title notification title
    * @param message notification message
-   * @param dismissable notification dismissable
-   * @param duration notification duration (millis)
+   * @param dismissible notification dismissible
+   * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  standard(title: string, message?: string, dismissable = true, duration?: number, position?: NotificationPosition): void {
+  public standard(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Standard,
       message,
       title,
       duration,
-      dismissable,
+      dismissible,
       position
     });
   }
@@ -49,17 +47,17 @@ export class NotificationsService {
    * Create new Success notification
    * @param title notification title
    * @param message notification message
-   * @param dismissable notification dismissable
-   * @param duration notification duration (millis)
+   * @param dismissible notification dismissible
+   * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  success(title: string, message?: string, dismissable = true, duration?: number, position?: NotificationPosition): void {
+  public success(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Success,
       message,
       title,
       duration,
-      dismissable,
+      dismissible,
       position
     });
   }
@@ -68,17 +66,17 @@ export class NotificationsService {
    * Create new Error notification
    * @param title notification title
    * @param message notification message
-   * @param dismissable notification dismissable
-   * @param duration notification duration (millis)
+   * @param dismissible notification dismissible
+   * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  error(title: string, message?: string, dismissable = true, duration?: number, position?: NotificationPosition): void {
+  public error(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Error,
       message,
       title,
       duration,
-      dismissable,
+      dismissible,
       position
     });
   }
@@ -87,17 +85,17 @@ export class NotificationsService {
    * Create new Warning notification
    * @param title notification title
    * @param message notification message
-   * @param dismissable notification dismissable
-   * @param duration notification duration (millis)
+   * @param dismissible notification dismissible
+   * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  warning(title: string, message?: string, dismissable = true, duration?: number, position?: NotificationPosition): void {
+  public warning(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Warning,
       message,
       title,
       duration,
-      dismissable,
+      dismissible,
       position
     });
   }
@@ -106,17 +104,17 @@ export class NotificationsService {
    * Create new Info notification
    * @param title notification title
    * @param message notification message
-   * @param dismissable notification dismissable
-   * @param duration notification duration (millis)
+   * @param dismissible notification dismissible
+   * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  info(title: string, message?: string, dismissable = true, duration?: number, position?: NotificationPosition): void {
+  public info(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Info,
       message,
       title,
       duration,
-      dismissable,
+      dismissible,
       position
     });
   }
