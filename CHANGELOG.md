@@ -1,3 +1,12 @@
+# [1.0.0-9](https://github.com/italia/design-angular-kit/compare/v1.0.0-8...v1.0.0-9) (2023-02-27)
+
+
+### Performance Improvements
+
+* **fix:** optimized notification component, fix notification icon and multiple dismiss bug ([627b106](https://github.com/italia/design-angular-kit/commit/627b106232403d9a4d49b3599692c053eb7df26c))
+
+
+
 # [1.0.0-8](https://github.com/italia/design-angular-kit/compare/v1.0.0-7...v1.0.0-8) (2023-02-23)
 
 
