@@ -1,3 +1,32 @@
+# [1.0.0-8](https://github.com/italia/design-angular-kit/compare/v1.0.0-7...v1.0.0-8) (2023-02-23)
+
+
+### Bug Fixes
+
+* class button with icon or progress ([794f8c2](https://github.com/italia/design-angular-kit/commit/794f8c290aac182ab7c7cca949edce4f0b430f85))
+* dropdown init using bootstrap ([56350ac](https://github.com/italia/design-angular-kit/commit/56350acbf5803756e945409e9b4c89c5a50abc49))
+* optimization tab-component and docs ([ed17bba](https://github.com/italia/design-angular-kit/commit/ed17bba40bb579747fb4c241208cfc132763c12d))
+* use active label when input type is color ([c39f896](https://github.com/italia/design-angular-kit/commit/c39f89691a72a704cd7e29150894c2acd41f0888))
+
+
+### Features
+
+* added utils method to retrieve mime type from base64 string ([16b6002](https://github.com/italia/design-angular-kit/commit/16b60023d137f11ccf85fe52f7f18432684bcaf8))
+* dropdown-component add methods and events ([8eb2976](https://github.com/italia/design-angular-kit/commit/8eb2976eb7aabc76ea6443c1a19f2d82d9b123df))
+* **fix:** fix alert-component init using bootstrap, add methods and events ([d728f4f](https://github.com/italia/design-angular-kit/commit/d728f4fbfd01326fb762e40acca34c562b59d50c))
+* update bootstrap-italia version and remove bootstrap-italia.min.js from index.html ([3cd3125](https://github.com/italia/design-angular-kit/commit/3cd3125434a3346cd753ca6bdb4be39b24783a92))
+
+
+### Performance Improvements
+
+* **fix:** fix back-to-top-component init using bootstrap, add methods and events, fix popover ([78db693](https://github.com/italia/design-angular-kit/commit/78db693cccec63439675ee92e273c2742216d9d5))
+* **fix:** optimize and fix tab-component init using bootstrap ([5ba6339](https://github.com/italia/design-angular-kit/commit/5ba633991cfd2e2715c2ff4d922f546284aa3b97))
+* optimize collapse-component and accordion-component ([2d458a9](https://github.com/italia/design-angular-kit/commit/2d458a97fd2c39d19e590e767afb4b11a25c3c2a))
+* optimize dropdown-component, included changedectorref to abstract-component ([d54a8aa](https://github.com/italia/design-angular-kit/commit/d54a8aa7748b0adc13dc0ffb3143b3d14e66e3a0))
+* optimize modal-component ([ec18be1](https://github.com/italia/design-angular-kit/commit/ec18be1995ffd8b2d1bc09a4de9035deb127940a))
+
+
+
 # [1.0.0-7](https://github.com/italia/design-angular-kit/compare/v1.0.0-6...v1.0.0-7) (2023-02-07)
 
 

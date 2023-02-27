@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {AbstractComponent} from "../../../abstracts/abstract.component";
-import {BooleanInput, isTrueBooleanInput} from "../../../utils/boolean-input";
-import {UploadFileListItem} from "../../../interfaces/form";
-import {FileUtils} from "../../../utils/file-utils";
-import {take} from "rxjs";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { UploadFileListItem } from '../../../interfaces/form';
+import { FileUtils } from '../../../utils/file-utils';
+import { forkJoin, take, tap } from 'rxjs';
 
 @Component({
   selector: 'it-upload-file-list[id][fileList]',
@@ -22,7 +22,7 @@ export class UploadFileListComponent extends AbstractComponent implements OnInit
    * @example application/pdf,image/png
    * @default *
    */
-  @Input() accept: string = "*";
+  @Input() accept: string = '*';
 
   /**
    * If upload multiple files
@@ -56,17 +56,22 @@ export class UploadFileListComponent extends AbstractComponent implements OnInit
 
   ngOnInit(): void {
     if (this.isImageList && this.accept === '*') {
-      this.accept = 'image/*'
+      this.accept = 'image/*';
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  override ngOnChanges(changes: SimpleChanges): void {
     if (changes['fileList'] && this.isImageList) {
-      this.fileList.forEach(item => {
-        FileUtils.fileToBase64(item.file).pipe(take(1)).subscribe(base64 => {
-          this.previewImages.set(item.id, base64);
-        })
-      })
+      const images$ = this.fileList.map(item => FileUtils.fileToBase64(item.file).pipe(
+        take(1),
+        tap(base64 => this.previewImages.set(item.id, base64))
+      ));
+      forkJoin(images$).subscribe(() => {
+        this._changeDetectorRef.detectChanges();
+        super.ngOnChanges(changes);
+      });
+    } else {
+      super.ngOnChanges(changes);
     }
   }
 

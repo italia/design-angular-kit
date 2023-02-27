@@ -93,6 +93,10 @@
         {
           "label": "Select",
           "link": "/componenti/select"
+        },
+        {
+          "label": "Notifications",
+          "link": "/componenti/notifications"
         }
       ]
     }

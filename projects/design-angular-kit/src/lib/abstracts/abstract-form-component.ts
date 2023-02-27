@@ -1,5 +1,15 @@
 import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';
-import { Component, DoCheck, ElementRef, Input, OnInit, Optional, Renderer2, Self } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+  ElementRef,
+  Input,
+  OnInit,
+  Optional,
+  Renderer2,
+  Self
+} from '@angular/core';
 import { AbstractComponent } from './abstract.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';
 import { Observable } from 'rxjs';
@@ -39,9 +49,10 @@ export class AbstractFormComponent<T = any> extends AbstractComponent implements
     @Self() @Optional() protected readonly _ngControl: NgControl,
     protected readonly _translateService: TranslateService,
     protected override readonly _renderer: Renderer2,
-    protected override readonly _elementRef: ElementRef
+    protected override readonly _elementRef: ElementRef,
+    protected override readonly _changeDetectorRef: ChangeDetectorRef
   ) {
-    super(_renderer, _elementRef);
+    super(_renderer, _elementRef, _changeDetectorRef);
     this.control = new FormControl();
     this._ngControl && (this._ngControl.valueAccessor = this);
   }
@@ -171,7 +182,7 @@ export class AbstractFormComponent<T = any> extends AbstractComponent implements
     if (this._ngControl) {
       return this._ngControl.hasError(errorCode, path);
     }
-    return this.control.hasError(errorCode, path)
+    return this.control.hasError(errorCode, path);
   }
 
   /**

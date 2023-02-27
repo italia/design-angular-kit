@@ -3,7 +3,6 @@ import { AbstractFormComponent } from '../../../abstracts/abstract-form-componen
 import { ItValidators } from '../../../validators/it-validators';
 import { Observable } from 'rxjs';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-
 import { InputPassword } from 'bootstrap-italia';
 
 @Component({
@@ -58,10 +57,10 @@ export class PasswordInputComponent extends AbstractFormComponent<string> {
    */
   @Input() showStrengthMeter?: BooleanInput;
 
-  inputPasswordBs?: any;
 
-  @ViewChild('input')
-  private inputElement?: ElementRef<HTMLInputElement>;
+  inputPasswordBs?: InputPassword;
+
+  @ViewChild('input') private inputElement?: ElementRef<HTMLInputElement>;
 
   override ngOnInit() {
     super.ngOnInit();

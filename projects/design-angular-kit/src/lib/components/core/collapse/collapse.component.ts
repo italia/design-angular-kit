@@ -1,14 +1,13 @@
-import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-
 import { Collapse } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-collapse[id]',
   templateUrl: './collapse.component.html',
-  styleUrls: ['./collapse.component.scss'],
-  exportAs: 'itCollapse'
+  exportAs: 'itCollapse',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CollapseComponent extends AbstractComponent {
 
@@ -16,6 +15,11 @@ export class CollapseComponent extends AbstractComponent {
    * Enable multiple collapse
    */
   @Input() multi?: BooleanInput;
+
+  /**
+   * Toggles the collapsible element on invocation
+   */
+  @Input() opened?: BooleanInput;
 
   /**
    * Custom class
@@ -42,35 +46,34 @@ export class CollapseComponent extends AbstractComponent {
    */
   @Output() onHidden: EventEmitter<Event> = new EventEmitter();
 
-  private readonly element: HTMLElement;
-  private collapse?: any;
 
-  @ViewChild('collapse')
-  private collapseDiv!: ElementRef<HTMLDivElement>;
+  private collapse?: Collapse;
+
+  @ViewChild('collapse') private collapseDiv?: ElementRef<HTMLDivElement>;
 
   get isMulti(): boolean {
     return isTrueBooleanInput(this.multi);
   }
 
-  constructor(
-    override readonly _renderer: Renderer2,
-    override readonly _elementRef: ElementRef
-  ) {
-    super(_renderer, _elementRef);
-    this.element = this._elementRef.nativeElement;
+  get isOpenedOnStart(): boolean {
+    return isTrueBooleanInput(this.opened);
   }
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');
-    this.collapse = Collapse.getOrCreateInstance(this.collapseDiv.nativeElement, {
-      toggle: false
-    });
 
-    this.element.addEventListener('show.bs.collapse', event => this.onShow.emit(event));
-    this.element.addEventListener('shown.bs.collapse', event => this.onShown.emit(event));
-    this.element.addEventListener('hide.bs.collapse', event => this.onHide.emit(event));
-    this.element.addEventListener('hidden.bs.collapse', event => this.onHidden.emit(event));
+    if (this.collapseDiv) {
+      const element = this.collapseDiv.nativeElement;
+      this.collapse = Collapse.getOrCreateInstance(element, {
+        toggle: this.isOpenedOnStart
+      });
+
+      element.addEventListener('show.bs.collapse', event => this.onShow.emit(event));
+      element.addEventListener('shown.bs.collapse', event => this.onShown.emit(event));
+      element.addEventListener('hide.bs.collapse', event => this.onHide.emit(event));
+      element.addEventListener('hidden.bs.collapse', event => this.onHidden.emit(event));
+    }
   }
 
   /**

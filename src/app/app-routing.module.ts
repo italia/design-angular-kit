@@ -31,6 +31,7 @@ const routes: Routes = [
     { path: 'upload', loadChildren: () => import('src/app/upload/upload.module').then(m => m.UploadModule) },
     { path: 'steppers', loadChildren: () => import('src/app/steppers/steppers.module').then(m => m.SteppersModule) },
     { path: 'select', loadChildren: () => import('src/app/select/select.module').then(m => m.SelectModule) },
+    { path: 'notifications', loadChildren: () => import('src/app/notifications/notifications.module').then(m => m.NotificationsModule) },
   ]}
 ];
 

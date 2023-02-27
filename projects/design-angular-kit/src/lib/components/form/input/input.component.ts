@@ -97,7 +97,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
       return true;
     }
 
-    return this.type === 'date' || this.type === 'time';
+    return this.type === 'date' || this.type === 'time' || this.type === 'color';
   }
 
   /**

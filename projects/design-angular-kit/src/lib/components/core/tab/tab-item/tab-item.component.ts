@@ -1,11 +1,12 @@
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractComponent } from '../../../../abstracts/abstract.component';
 import { BooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
 
 @Component({
   selector: 'it-tab-item[id]',
-  templateUrl: './tab-item.component.html'
+  templateUrl: './tab-item.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabItemComponent extends AbstractComponent {
 

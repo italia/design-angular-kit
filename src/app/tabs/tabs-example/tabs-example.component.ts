@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IconName } from '../../../../projects/design-angular-kit/src/lib/interfaces/icon';
 
 @Component({
   selector: 'it-tabs-example',
@@ -13,21 +14,25 @@ export class TabsExampleComponent {
 
   isPill = false;
 
-  tabs = [
+  tabs: Array<{
+    label: string,
+    content: string,
+    icon: IconName
+  }> = [
     {
       label: 'tab1',
       content: 'content1',
-      icon: 'it-file'
+      icon: 'file'
     },
     {
       label: 'tab2',
       content: 'content2',
-      icon: 'it-calendar'
+      icon: 'calendar'
     },
     {
       label: 'tab3',
       content: 'content3',
-      icon: 'it-comment'
+      icon: 'comment'
     }
   ];
 }

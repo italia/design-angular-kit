@@ -1,13 +1,13 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import {AbstractComponent} from "../../../abstracts/abstract.component";
-
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
 
 @Component({
   selector: 'it-modal[id][title]',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
-  exportAs: 'itModal'
+  exportAs: 'itModal',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent extends AbstractComponent {
 
@@ -48,10 +48,9 @@ export class ModalComponent extends AbstractComponent {
   @Output() onHidePrevented: EventEmitter<Event> = new EventEmitter();
 
 
-  private modal: any;
+  private modal?: Modal;
 
-  @ViewChild('modalElement', {static: false})
-  private modalElement?: ElementRef<HTMLDivElement>;
+  @ViewChild('modalElement', { static: false }) private modalElement?: ElementRef<HTMLDivElement>;
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
@@ -73,35 +72,35 @@ export class ModalComponent extends AbstractComponent {
    * Manually activate/deactivate a modal. Returns to the caller before the modal has actually been shown or hidden
    */
   public toggle(): void {
-    this.modal?.toggle()
+    this.modal?.toggle();
   }
 
   /**
    * Manually open a modal. Returns to the caller before the modal has actually been displayed
    */
   public show(): void {
-    this.modal?.show()
+    this.modal?.show();
   }
 
   /**
    * Manually hide a modal. Returns to the caller before the modal has actually been hidden
    */
   public hide(): void {
-    this.modal?.hide()
+    this.modal?.hide();
   }
 
   /**
    * Manually reposition the modal if the height of the modal changes when it is opened (in case a scroll bar appears).
    */
   public handleUpdate(): void {
-    this.modal?.handleUpdate()
+    this.modal?.handleUpdate();
   }
 
   /**
    * Destroys the modal of an element.
    */
   public dispose(): void {
-    this.modal?.dispose()
+    this.modal?.dispose();
   }
 
 }
