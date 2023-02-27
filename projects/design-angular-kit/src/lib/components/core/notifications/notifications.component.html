@@ -1,18 +1,19 @@
-<div *ngFor="let notification of notifications; let i = index"
+<div *ngFor="let notification of notifications"
      [id]="notification.id"
      class="notification {{notification.position}} {{notification.type}}"
-     [class.with-icon]="notification.type !== NotificationType.Standard"
-     [class.dismissable]="notification.dismissable"
+     [class.with-icon]="!!notification.icon"
+     [class.dismissable]="notification.dismissible"
      role="alert" [attr.aria-labelledby]="notification.id+'-title'">
 
   <h2 [id]="notification.id+'-title'" class="h5">
+    <it-icon *ngIf="!!notification.icon" [name]="notification.icon"></it-icon>
     <ng-container>{{notification.title}}</ng-container>
   </h2>
   <p *ngIf="notification.message">{{notification.message}}</p>
 
-  <button *ngIf="notification.dismissable" type="button" class="btn notification-close"
+  <button *ngIf="notification.dismissible" type="button" class="btn notification-close"
           (click)="hideNotification(notification.id)">
     <it-icon name="close"></it-icon>
-    <span class="visually-hidden">{{'it.core.close-notification'|translate:{title: notification.title} }}</span>
+    <span class="visually-hidden">{{'it.core.close-notification'|translate:{ title: notification.title } }}</span>
   </button>
 </div>

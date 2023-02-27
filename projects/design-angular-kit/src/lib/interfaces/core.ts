@@ -1,3 +1,5 @@
+import { IconName } from './icon';
+
 export type AlertColor = 'info' | 'success' | 'warning' | 'danger';
 
 export type ButtonColor =
@@ -56,12 +58,41 @@ export type DropdownDirection = 'dropup' | 'dropend' | 'dropstart';
 export type CarouselType = 'default' | 'three-cols' | 'three-cols-arrow-visible';
 
 export interface Notification {
+
+  /**
+   * Notification type
+   */
   type: NotificationType;
+
+  /**
+   * Notification title
+   */
   title: string;
+
+  /**
+   * Notification message / text
+   */
   message?: string;
+
+  /**
+   * Custom duration of notification
+   */
   duration?: number;
-  dismissable?: boolean;
+
+  /**
+   * The close notification button appears
+   */
+  dismissible?: boolean;
+
+  /**
+   * Custom position of notification
+   */
   position?: NotificationPosition;
+
+  /**
+   * Custom icon of notification
+   */
+  icon?: IconName;
 }
 
 export enum NotificationType {
