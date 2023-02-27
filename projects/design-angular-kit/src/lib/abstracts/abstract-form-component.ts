@@ -11,7 +11,7 @@ import {
   Self
 } from '@angular/core';
 import { AbstractComponent } from './abstract.component';
-import { BooleanInput, isFalseBooleanInput } from '../utils/boolean-input';
+import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -32,6 +32,13 @@ export class AbstractFormComponent<T = any> extends AbstractComponent implements
    * @default <b>only-invalid</b>: Show only invalid validation color
    */
   @Input() validationMode: BooleanInput | 'only-valid' | 'only-invalid' = 'only-invalid';
+
+  /**
+   * Set the disabled state
+   */
+  @Input() set disabled(isDisabled: BooleanInput) {
+    this.setDisabledState(isTrueBooleanInput(isDisabled));
+  }
 
   /**
    * Internal form control

@@ -1,0 +1,20 @@
+<h3>Select con gruppi</h3>
+<div class="bd-example">
+  <p class="example-section">
+    <it-select 
+      id = "group-select"
+      label="Etichetta"
+      [(ngModel)]="selectedValue"
+      [groups]="selectGroups"
+      [options]="selectOptions">
+    </it-select>
+  </p>
+
+
+  <h4>Risultato</h4>
+
+  <div class="example-section">
+    <div class="example-selected-value">Valore selezionato: {{selectedValue}}</div>
+  </div>
+</div>
+
