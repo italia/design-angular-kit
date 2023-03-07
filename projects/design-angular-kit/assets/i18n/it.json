@@ -51,7 +51,9 @@
       "step": "Step",
       "step-of": "Step {{current}} di {{available}}",
       "back": "Indietro",
-      "forward": "Avanti"
+      "forward": "Avanti",
+      "rate-star": "Valuta {{current}} stelle su {{total}}",
+      "rating-star": "Valutazione {{current}} stelle su {{total}}"
     },
     "form": {
       "increase-value": "Aumenta valore",

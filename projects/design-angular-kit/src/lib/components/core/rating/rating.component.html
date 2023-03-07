@@ -1,0 +1,27 @@
+<fieldset class="rating"
+          [class.rating-label]="!!label"
+          [class.rating-read-only]="control.disabled">
+  <legend>
+    <span>{{label}}</span>
+    <span class="visually-hidden">
+        {{'it.core.rating-star'|translate : { current: control.value || 0, total: stars.length } }}
+    </span>
+  </legend>
+
+  <ng-container *ngFor="let starValue of stars">
+    <input [id]="id + '-' + starValue"
+           type="radio"
+           [name]="name"
+           [value]="starValue"
+           [attr.aria-hidden]="control.disabled"
+           [formControl]="control" />
+
+    <label class="full" [for]="id + '-' + starValue">
+      <it-icon name="star-full" size="sm"></it-icon>
+      <span class="visually-hidden">
+        {{'it.core.rate-star'|translate : { current: starValue, total: stars.length } }}
+      </span>
+    </label>
+  </ng-container>
+
+</fieldset>

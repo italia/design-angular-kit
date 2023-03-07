@@ -25,6 +25,7 @@ import { PaginationComponent } from '../components/core/pagination/pagination.co
 import { PopoverDirective } from '../components/core/popover/popover.directive';
 import { ProgressBarComponent } from '../components/core/progress-bar/progress-bar.component';
 import { ProgressButtonComponent } from '../components/core/progress-button/progress-button.component';
+import { RatingComponent } from '../components/core/rating/rating.component';
 import { SpinnerComponent } from '../components/core/spinner/spinner.component';
 import {
   SteppersContainerComponent
@@ -89,6 +90,7 @@ const core = [
   PopoverDirective,
   ProgressBarComponent,
   ProgressButtonComponent,
+  RatingComponent,
   SpinnerComponent,
   SteppersContainerComponent,
   SteppersItemComponent,
