@@ -45,10 +45,12 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
-#### Link veloci
-[Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/) |
-[Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127) |
-[Milestone 1.0.0](https://github.com/italia/design-angular-kit/milestone/3)
+## Link utili
+- [Video Meetup Angular Roma: Angular, Bootstrap Italia e non solo..](https://www.youtube.com/live/asGk-mYU-zM?feature=share)
+- [Demo Design Angular Kit](https://github.com/cri99/demo-design-angular-kit)
+- [Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/)
+- [Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127)
+- [Milestone 1.0.0](https://github.com/italia/design-angular-kit/milestone/3)
 
 ## Come iniziare
 
