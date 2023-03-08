@@ -1,3 +1,12 @@
+# [1.0.0-10](https://github.com/italia/design-angular-kit/compare/v1.0.0-9...v1.0.0-10) (2023-03-08)
+
+
+### Features
+
+* rating component ([5a27146](https://github.com/italia/design-angular-kit/commit/5a27146635a884dcce1a0012c973e743f2c44ab1))
+
+
+
 # [1.0.0-9](https://github.com/italia/design-angular-kit/compare/v1.0.0-8...v1.0.0-9) (2023-02-27)
 
 
