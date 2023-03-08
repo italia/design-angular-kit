@@ -14886,6 +14886,694 @@
             "templateData": "<ng-container>\n  <div class=\"form-check\"\n       [class.form-check-group]=\"isGroup\"\n       [class.form-check-inline]=\"isInline\">\n\n    <input\n      [id]=\"id\"\n      type=\"radio\"\n      [value]=\"value\"\n      class=\"form-check-input\"\n      [name]=\"name\"\n      [class.is-invalid]=\"isInvalid\"\n      [class.is-valid]=\"isValid\"\n      [formControl]=\"control\"\n      [attr.aria-describedby]=\"id + '-help'\">\n\n    <label class=\"form-check-label\" [for]=\"id\">\n      <div #customLabel>\n        <ng-content select=\"[label]\"></ng-content>\n      </div>\n      <ng-container *ngIf=\"!customLabel.hasChildNodes()\">{{label}}</ng-container>\n    </label>\n\n    <small *ngIf=\"isGroup\" [id]=\"id + '-help'\" class=\"form-text\">\n      <ng-content></ng-content>\n    </small>\n\n    <div *ngIf=\"isInvalid && isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n    </div>\n\n  </div>\n\n  <div *ngIf=\"isInvalid && !isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</ng-container>\n"
         },
         {
+            "name": "RatingComponent",
+            "id": "component-RatingComponent-8a9f6561282cf652bde3221267fc2824ba6fd6f0d46e0b1f9e44fe0e0e7552812c3d7811e6075bf71bb6f3aafbd4e1974a99369589f01f08333b70b46e29c93a",
+            "file": "projects/design-angular-kit/src/lib/components/core/rating/rating.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-rating[id]",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./rating.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "starCount",
+                    "defaultValue": "5",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 484,
+                            "end": 498,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 485,
+                                "end": 492,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>5</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nNumber of stars to show\n",
+                    "description": "<p>Number of stars to show</p>\n",
+                    "line": 20,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe rating value\n",
+                    "description": "<p>The rating value</p>\n",
+                    "line": 14,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSet the disabled state\n",
+                    "description": "<p>Set the disabled state</p>\n",
+                    "line": 39,
+                    "type": "BooleanInput",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe label of form control\n",
+                    "description": "<p>The label of form control</p>\n",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "validationMode",
+                    "defaultValue": "'only-invalid'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1032,
+                            "end": 1100,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1033,
+                                "end": 1040,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p><b>only-invalid</b>: Show only invalid validation color</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
+                    "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
+                    "line": 34,
+                    "type": "BooleanInput | \"only-valid\" | \"only-invalid\"",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe element ID\n",
+                    "description": "<p>The element ID</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "AbstractComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChanges",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFired when component input attributes was changed\n",
+                    "description": "<p>Fired when component input attributes was changed</p>\n",
+                    "line": 25,
+                    "type": "EventEmitter<void>",
+                    "inheritance": {
+                        "file": "AbstractComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "stars",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Array<number>",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "control",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl",
+                    "optional": false,
+                    "description": "<p>Internal form control</p>\n",
+                    "line": 46,
+                    "rawdescription": "\n\nInternal form control\n",
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 105,
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 108,
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        158
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "AbstractComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        158
+                    ],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "addValidators",
+                    "args": [
+                        {
+                            "name": "validators",
+                            "type": "ValidatorFn | ValidatorFn[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 157,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nAdd the validators in control and parent control\n",
+                    "description": "<p>Add the validators in control and parent control</p>\n",
+                    "modifierKind": [
+                        122
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 4273,
+                                "end": 4283,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "validators"
+                            },
+                            "type": "ValidatorFn | ValidatorFn[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 4267,
+                                "end": 4272,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>the validators</p>\n"
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "getError",
+                    "args": [
+                        {
+                            "name": "errorCode",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "path",
+                            "type": "Array<string | number> | string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 196,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
+                    "description": "<p>Reports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.</p>\n",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 5536,
+                                "end": 5545,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "errorCode"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 5530,
+                                "end": 5535,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>The code of the error to check</p>\n"
+                        },
+                        {
+                            "name": {
+                                "pos": 5589,
+                                "end": 5593,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "path"
+                            },
+                            "type": "Array<string | number> | string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "pos": 5583,
+                                "end": 5588,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>A list of control names that designates how to move from the current control\nto the control that should be queried for errors.</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 5732,
+                                "end": 5739,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>error data for that particular error. If the control or error is not present,\nnull is returned.</p>\n"
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "hasError",
+                    "args": [
+                        {
+                            "name": "errorCode",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "path",
+                            "type": "Array<string | number> | string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 181,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
+                    "description": "<p>Reports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.</p>\n",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 4945,
+                                "end": 4954,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "errorCode"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 4939,
+                                "end": 4944,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>The code of the error to check</p>\n"
+                        },
+                        {
+                            "name": {
+                                "pos": 4998,
+                                "end": 5002,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "path"
+                            },
+                            "type": "Array<string | number> | string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "pos": 4992,
+                                "end": 4997,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>A list of control names that designates how to move from the current control\nto the control that should be queried for errors.</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 5141,
+                                "end": 5148,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>whether the given error is present in the control at the given path.</p>\n"
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "markAsTouched",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 134,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nMark the control as touched\n",
+                    "description": "<p>Mark the control as touched</p>\n",
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "ngDoCheck",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 143,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFired to check if form control is touched\n",
+                    "description": "<p>Fired to check if form control is touched</p>\n",
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 111,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 116,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 120,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 127,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "AbstractFormComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "AbstractComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, SimpleChanges } from '@angular/core';\nimport { AbstractFormComponent } from '../../../abstracts/abstract-form-component';\n\n@Component({\n  selector: 'it-rating[id]',\n  templateUrl: './rating.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class RatingComponent extends AbstractFormComponent<number> {\n\n  /**\n   * The rating value\n   */\n  @Input() value?: number;\n\n  /**\n   * Number of stars to show\n   * @default 5\n   */\n  @Input() starCount: number = 5;\n\n  protected stars: Array<number> = [];\n\n  get name(): string {\n    return this._ngControl?.name?.toString() || (this.id!);\n  }\n\n  override ngOnChanges(changes: SimpleChanges): void {\n    super.ngOnChanges(changes);\n\n    if (changes['starCount'] || !this.stars.length) {\n      this.stars = Array.from({ length: this.starCount }, (_, i) => i + 1).reverse();\n    }\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    if (!this.control.value && !!this.value) {\n      this.writeValue(this.value);\n      this.onChange(this.value);\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": "AbstractFormComponent",
+            "accessors": {
+                "name": {
+                    "name": "name",
+                    "getSignature": {
+                        "name": "name",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 24
+                    }
+                }
+            },
+            "templateData": "<fieldset class=\"rating\"\n          [class.rating-label]=\"!!label\"\n          [class.rating-read-only]=\"control.disabled\">\n  <legend>\n    <span>{{label}}</span>\n    <span class=\"visually-hidden\">\n        {{'it.core.rating-star'|translate : { current: control.value || 0, total: stars.length } }}\n    </span>\n  </legend>\n\n  <ng-container *ngFor=\"let starValue of stars\">\n    <input [id]=\"id + '-' + starValue\"\n           type=\"radio\"\n           [name]=\"name\"\n           [value]=\"starValue\"\n           [attr.aria-hidden]=\"control.disabled\"\n           [formControl]=\"control\" />\n\n    <label class=\"full\" [for]=\"id + '-' + starValue\">\n      <it-icon name=\"star-full\" size=\"sm\"></it-icon>\n      <span class=\"visually-hidden\">\n        {{'it.core.rate-star'|translate : { current: starValue, total: stars.length } }}\n      </span>\n    </label>\n  </ng-container>\n\n</fieldset>\n"
+        },
+        {
             "name": "SelectComponent",
             "id": "component-SelectComponent-7b5a30fdde4bb26286ba28d7464f2e81ec0b508a8b900881ee4d97970d0da910f040e36fd814e7069a71342458db8b3ed5147ff18d421680914a9102e46a478a",
             "file": "projects/design-angular-kit/src/lib/components/form/select/select.component.ts",
@@ -18656,13 +19344,13 @@
     "modules": [
         {
             "name": "ComponentsModule",
-            "id": "module-ComponentsModule-3173729fbdb2442b9c455aaa0939ac9e6dde4e20e283876cf6bf450326a20d468c36577de93e424446f867570a8461a2227e46ce57b2f8e3683599863d416289",
+            "id": "module-ComponentsModule-57f9c2ecd47f954ff96186a293d1777acaefda40e5807f8d2d6fa74c41cf4f30a60c9826efbe91a835174409bf55faffe2b18d1cd3d1a01e91918fc14f8ac057",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/design-angular-kit/src/lib/modules/components.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgForOf, NgIf } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { RouterLink } from '@angular/router';\nimport { AbstractFormComponent } from '../abstracts/abstract-form-component';\nimport { AbstractComponent } from '../abstracts/abstract.component';\nimport { AccordionComponent } from '../components/core/accordion/accordion.component';\nimport { AlertComponent } from '../components/core/alert/alert.component';\nimport { BadgeDirective } from '../components/core/badge/badge.directive';\nimport { ButtonDirective } from '../components/core/button/button.directive';\nimport { CalloutComponent } from '../components/core/callout/callout.component';\nimport { CardComponent } from '../components/core/card/card.component';\nimport { CarouselComponent } from '../components/core/carousel/carousel/carousel.component';\nimport { CarouselItemComponent } from '../components/core/carousel/carousel-item/carousel-item.component';\nimport { CollapseComponent } from '../components/core/collapse/collapse.component';\nimport { DropdownComponent } from '../components/core/dropdown/dropdown/dropdown.component';\nimport { DropdownItemComponent } from '../components/core/dropdown/dropdown-item/dropdown-item.component';\nimport { LinkComponent } from '../components/core/link/link.component';\nimport { ListComponent } from '../components/core/list/list/list.component';\nimport { ListItemComponent } from '../components/core/list/list-item/list-item.component';\nimport { ModalComponent } from '../components/core/modal/modal.component';\nimport { NotificationsComponent } from '../components/core/notifications/notifications.component';\nimport { PaginationComponent } from '../components/core/pagination/pagination.component';\nimport { PopoverDirective } from '../components/core/popover/popover.directive';\nimport { ProgressBarComponent } from '../components/core/progress-bar/progress-bar.component';\nimport { ProgressButtonComponent } from '../components/core/progress-button/progress-button.component';\nimport { SpinnerComponent } from '../components/core/spinner/spinner.component';\nimport {\n  SteppersContainerComponent\n} from '../components/core/steppers/steppers-container/steppers-container.component';\nimport { SteppersItemComponent } from '../components/core/steppers/steppers-item/steppers-item.component';\nimport { TabContainerComponent } from '../components/core/tab/tab-container/tab-container.component';\nimport { TabItemComponent } from '../components/core/tab/tab-item/tab-item.component';\nimport { TableComponent } from '../components/core/table/table.component';\nimport { TooltipDirective } from '../components/core/tooltip/tooltip.directive';\nimport { CheckboxComponent } from '../components/form/checkbox/checkbox.component';\nimport { InputComponent } from '../components/form/input/input.component';\nimport { PasswordInputComponent } from '../components/form/password-input/password-input.component';\nimport { RadioButtonComponent } from '../components/form/radio-button/radio-button.component';\nimport { SelectComponent } from '../components/form/select/select.component';\nimport { TextareaComponent } from '../components/form/textarea/textarea.component';\nimport { UploadDragDropComponent } from '../components/form/upload-drag-drop/upload-drag-drop.component';\nimport { UploadFileListComponent } from '../components/form/upload-file-list/upload-file-list.component';\nimport { BackButtonComponent } from '../components/navigation/back-button/back-button.component';\nimport { BackToTopComponent } from '../components/navigation/back-to-top/back-to-top.component';\nimport { BreadcrumbComponent } from '../components/navigation/breadcrumbs/breadcrumb/breadcrumb.component';\nimport {\n  BreadcrumbItemComponent\n} from '../components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';\nimport { HeaderComponent } from '../components/navigation/header/header.component';\nimport { IconComponent } from '../components/utils/icon/icon.component';\nimport { LanguageSwitcherComponent } from '../components/utils/language-switcher/language-switcher.component';\nimport { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';\nimport { ChipComponent } from '../components/core/chip/chip.component';\nimport { ForwardDirective } from '../components/core/forward/forward.directive';\nimport { DimmerComponent } from '../components/core/dimmer/dimmer.component';\nimport { DimmerButtonsComponent } from '../components/core/dimmer/dimmer-buttons/dimmer-buttons.component';\nimport { DimmerIconComponent } from '../components/core/dimmer/dimmer-icon/dimmer-icon.component';\nimport { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';\n\n\n/**\n * Core components\n */\nconst core = [\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n];\n\n/**\n * Form components\n */\nconst form = [\n  CheckboxComponent,\n  InputComponent,\n  PasswordInputComponent,\n  RadioButtonComponent,\n  SelectComponent,\n  TextareaComponent,\n  UploadDragDropComponent,\n  UploadFileListComponent\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  BackButtonComponent,\n  BackToTopComponent,\n  BreadcrumbComponent,\n  BreadcrumbItemComponent,\n  HeaderComponent\n];\n\n/**\n * Utils components\n */\nconst utils = [\n  IconComponent,\n  NotFoundPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n];\n\n@NgModule({\n  declarations: [\n    AbstractComponent,\n    AbstractFormComponent,\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ],\n  imports: [\n    CommonModule,\n    TranslateModule,\n    ReactiveFormsModule,\n    NgIf,\n    NgForOf,\n    RouterLink\n  ],\n  exports: [\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ]\n})\nexport class ComponentsModule {\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgForOf, NgIf } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { RouterLink } from '@angular/router';\nimport { AbstractFormComponent } from '../abstracts/abstract-form-component';\nimport { AbstractComponent } from '../abstracts/abstract.component';\nimport { AccordionComponent } from '../components/core/accordion/accordion.component';\nimport { AlertComponent } from '../components/core/alert/alert.component';\nimport { BadgeDirective } from '../components/core/badge/badge.directive';\nimport { ButtonDirective } from '../components/core/button/button.directive';\nimport { CalloutComponent } from '../components/core/callout/callout.component';\nimport { CardComponent } from '../components/core/card/card.component';\nimport { CarouselComponent } from '../components/core/carousel/carousel/carousel.component';\nimport { CarouselItemComponent } from '../components/core/carousel/carousel-item/carousel-item.component';\nimport { CollapseComponent } from '../components/core/collapse/collapse.component';\nimport { DropdownComponent } from '../components/core/dropdown/dropdown/dropdown.component';\nimport { DropdownItemComponent } from '../components/core/dropdown/dropdown-item/dropdown-item.component';\nimport { LinkComponent } from '../components/core/link/link.component';\nimport { ListComponent } from '../components/core/list/list/list.component';\nimport { ListItemComponent } from '../components/core/list/list-item/list-item.component';\nimport { ModalComponent } from '../components/core/modal/modal.component';\nimport { NotificationsComponent } from '../components/core/notifications/notifications.component';\nimport { PaginationComponent } from '../components/core/pagination/pagination.component';\nimport { PopoverDirective } from '../components/core/popover/popover.directive';\nimport { ProgressBarComponent } from '../components/core/progress-bar/progress-bar.component';\nimport { ProgressButtonComponent } from '../components/core/progress-button/progress-button.component';\nimport { RatingComponent } from '../components/core/rating/rating.component';\nimport { SpinnerComponent } from '../components/core/spinner/spinner.component';\nimport {\n  SteppersContainerComponent\n} from '../components/core/steppers/steppers-container/steppers-container.component';\nimport { SteppersItemComponent } from '../components/core/steppers/steppers-item/steppers-item.component';\nimport { TabContainerComponent } from '../components/core/tab/tab-container/tab-container.component';\nimport { TabItemComponent } from '../components/core/tab/tab-item/tab-item.component';\nimport { TableComponent } from '../components/core/table/table.component';\nimport { TooltipDirective } from '../components/core/tooltip/tooltip.directive';\nimport { CheckboxComponent } from '../components/form/checkbox/checkbox.component';\nimport { InputComponent } from '../components/form/input/input.component';\nimport { PasswordInputComponent } from '../components/form/password-input/password-input.component';\nimport { RadioButtonComponent } from '../components/form/radio-button/radio-button.component';\nimport { SelectComponent } from '../components/form/select/select.component';\nimport { TextareaComponent } from '../components/form/textarea/textarea.component';\nimport { UploadDragDropComponent } from '../components/form/upload-drag-drop/upload-drag-drop.component';\nimport { UploadFileListComponent } from '../components/form/upload-file-list/upload-file-list.component';\nimport { BackButtonComponent } from '../components/navigation/back-button/back-button.component';\nimport { BackToTopComponent } from '../components/navigation/back-to-top/back-to-top.component';\nimport { BreadcrumbComponent } from '../components/navigation/breadcrumbs/breadcrumb/breadcrumb.component';\nimport {\n  BreadcrumbItemComponent\n} from '../components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';\nimport { HeaderComponent } from '../components/navigation/header/header.component';\nimport { IconComponent } from '../components/utils/icon/icon.component';\nimport { LanguageSwitcherComponent } from '../components/utils/language-switcher/language-switcher.component';\nimport { NotFoundPageComponent } from '../components/utils/not-found-page/not-found-page.component';\nimport { ChipComponent } from '../components/core/chip/chip.component';\nimport { ForwardDirective } from '../components/core/forward/forward.directive';\nimport { DimmerComponent } from '../components/core/dimmer/dimmer.component';\nimport { DimmerButtonsComponent } from '../components/core/dimmer/dimmer-buttons/dimmer-buttons.component';\nimport { DimmerIconComponent } from '../components/core/dimmer/dimmer-icon/dimmer-icon.component';\nimport { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';\n\n\n/**\n * Core components\n */\nconst core = [\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  RatingComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n];\n\n/**\n * Form components\n */\nconst form = [\n  CheckboxComponent,\n  InputComponent,\n  PasswordInputComponent,\n  RadioButtonComponent,\n  SelectComponent,\n  TextareaComponent,\n  UploadDragDropComponent,\n  UploadFileListComponent\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  BackButtonComponent,\n  BackToTopComponent,\n  BreadcrumbComponent,\n  BreadcrumbItemComponent,\n  HeaderComponent\n];\n\n/**\n * Utils components\n */\nconst utils = [\n  IconComponent,\n  NotFoundPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n];\n\n@NgModule({\n  declarations: [\n    AbstractComponent,\n    AbstractFormComponent,\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ],\n  imports: [\n    CommonModule,\n    TranslateModule,\n    ReactiveFormsModule,\n    NgIf,\n    NgForOf,\n    RouterLink\n  ],\n  exports: [\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ]\n})\nexport class ComponentsModule {\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -18790,6 +19478,9 @@
                         },
                         {
                             "name": "RadioButtonComponent"
+                        },
+                        {
+                            "name": "RatingComponent"
                         },
                         {
                             "name": "SelectComponent"
@@ -18958,6 +19649,9 @@
                             "name": "RadioButtonComponent"
                         },
                         {
+                            "name": "RatingComponent"
+                        },
+                        {
                             "name": "SelectComponent"
                         },
                         {
@@ -19061,7 +19755,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
+                "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  RatingComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
                 "rawdescription": "Core components",
                 "description": "<p>Core components</p>\n"
             },
@@ -19662,7 +20356,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
+                    "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  RatingComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
                     "rawdescription": "Core components",
                     "description": "<p>Core components</p>\n"
                 },
@@ -20383,6 +21077,15 @@
                 "name": "ProgressButtonComponent",
                 "coveragePercent": 66,
                 "coverageCount": "2/3",
+                "status": "good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/rating/rating.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RatingComponent",
+                "coveragePercent": 54,
+                "coverageCount": "13/24",
                 "status": "good"
             },
             {

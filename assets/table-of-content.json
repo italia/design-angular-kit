@@ -97,6 +97,10 @@
         {
           "label": "Notifications",
           "link": "/componenti/notifications"
+        },
+        {
+          "label": "Rating",
+          "link": "/componenti/rating"
         }
       ]
     }
