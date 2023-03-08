@@ -51,7 +51,9 @@
       "step": "Step",
       "step-of": "Step {{current}} of {{available}}",
       "back": "Back",
-      "forward": "Forward"
+      "forward": "Forward",
+      "rate-star": "Rate {{current}} out of {{total}} stars",
+      "rating-star": "Rating {{current}} out of {{total}} stars"
     },
     "form": {
       "increase-value": "Increase value",
