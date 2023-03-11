@@ -1,0 +1,31 @@
+<h3>Chiusura</h3>
+
+<div class="bd-example">
+  <div class="example-section">
+
+    <it-alert color="warning" dismissible="true" (onClose)="onClose($event)" (onClosed)="onClosed($event)">
+      <strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.
+    </it-alert>
+
+
+    <div class="my-4">
+      <div>
+        Emissione dell'evento close = {{closeTime}}
+      </div>
+
+      <div>
+        Emissione dell'evento closed = {{closedTime}}
+      </div>
+    </div>
+
+    <h3>Chiusura manuale</h3>
+
+    <it-alert color="warning" #alert="itAlert">
+      <strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.
+    </it-alert>
+
+    <button itButton="primary" type="button" (click)="alert.close()">
+      Chiudi alert
+    </button>
+  </div>
+</div>
