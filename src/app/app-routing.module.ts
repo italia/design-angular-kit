@@ -34,6 +34,7 @@ const routes: Routes = [
     { path: 'notifications', loadChildren: () => import('src/app/notifications/notifications.module').then(m => m.NotificationsModule) },
     { path: 'rating', loadChildren: () => import('src/app/rating/rating.module').then(m => m.RatingModule) },
     { path: 'alert', loadChildren: () => import('src/app/alert/alert.module').then(m => m.AlertModule) },
+    { path: 'spinner', loadChildren: () => import('src/app/spinner/spinner.module').then(m => m.SpinnerModule) },
   ]}
 ];
 

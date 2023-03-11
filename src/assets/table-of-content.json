@@ -105,6 +105,10 @@
         {
           "label": "Alert",
           "link": "/componenti/alert"
+        },
+        {
+          "label": "Spinner",
+          "link": "/componenti/spinner"
         }
       ]
     }
