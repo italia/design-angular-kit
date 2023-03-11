@@ -101,6 +101,10 @@
         {
           "label": "Rating",
           "link": "/componenti/rating"
+        },
+        {
+          "label": "Textarea",
+          "link": "/componenti/textarea"
         }
       ]
     }
