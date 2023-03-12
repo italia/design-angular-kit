@@ -2,7 +2,7 @@
 
 <div class="bd-example">
   <form [formGroup]="myForm">
-    <it-input id="myInput-validation" label="Custom" formControlName="myInput" #myInput>
+    <it-input label="Custom" formControlName="myInput" #myInput>
       <ng-container error>
         <!-- Custom errors-->
         <div *ngIf="myInput.hasError('required')">Il campo è obbligatorio</div>
@@ -14,27 +14,27 @@
 
     <div class="row">
       <div class="col-4">
-        <it-input id="tax-code-validation" label="Codice fiscale" formControlName="taxCode" required>
+        <it-input label="Codice fiscale" formControlName="taxCode" required>
           <!-- Default errors-->
         </it-input>
       </div>
       <div class="col-4">
-        <it-input id="vat-validation" label="Partita IVA" formControlName="vat" required></it-input>
+        <it-input label="Partita IVA" formControlName="vat" required></it-input>
       </div>
       <div class="col-4">
-        <it-input id="cap-validation" label="Cap" formControlName="cap" required></it-input>
+        <it-input label="Cap" formControlName="cap" required></it-input>
       </div>
     </div>
 
     <div class="row">
       <div class="col-4">
-        <it-input id="email-validation" type="email" label="Email" formControlName="email" required></it-input>
+        <it-input type="email" label="Email" formControlName="email" required></it-input>
       </div>
       <div class="col-4">
-        <it-input id="url-validation" type="url" label="Url" formControlName="url" required></it-input>
+        <it-input type="url" label="Url" formControlName="url" required></it-input>
       </div>
       <div class="col-4">
-        <it-input id="phone-validation" type="tel" label="Telefono" formControlName="phone" required></it-input>
+        <it-input type="tel" label="Telefono" formControlName="phone" required></it-input>
       </div>
     </div>
 
