@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
-  selector: 'it-checkbox[id]',
+  selector: 'it-checkbox',
   templateUrl: './checkbox.component.html'
 })
 export class CheckboxComponent extends AbstractFormComponent<boolean> {

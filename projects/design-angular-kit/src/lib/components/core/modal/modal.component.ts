@@ -3,7 +3,7 @@ import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
 
 @Component({
-  selector: 'it-modal[id][title]',
+  selector: 'it-modal[title]',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
   exportAs: 'itModal',

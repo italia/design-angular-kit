@@ -11,7 +11,7 @@
   <ng-container *ngFor="let starValue of stars">
     <input [id]="id + '-' + starValue"
            type="radio"
-           [name]="name"
+           [name]="id"
            [value]="starValue"
            [attr.aria-hidden]="control.disabled"
            [formControl]="control" />

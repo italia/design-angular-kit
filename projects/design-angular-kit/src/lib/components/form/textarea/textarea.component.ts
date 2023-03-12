@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'it-textarea[id]',
+  selector: 'it-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss']
 })
