@@ -1,4 +1,13 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { FileUtils } from '../../../utils/file-utils';
 import { ProgressDonut } from 'bootstrap-italia';
@@ -6,7 +15,8 @@ import { ProgressDonut } from 'bootstrap-italia';
 @Component({
   selector: 'it-upload-drag-drop',
   templateUrl: './upload-drag-drop.component.html',
-  exportAs: 'itUploadDragDrop'
+  exportAs: 'itUploadDragDrop',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UploadDragDropComponent extends AbstractComponent {
 
@@ -127,6 +137,7 @@ export class UploadDragDropComponent extends AbstractComponent {
   public success(): void {
     this.isLoading = false;
     this.isSuccess = true;
+    this._changeDetectorRef.detectChanges();
   }
 
   /**
@@ -137,6 +148,7 @@ export class UploadDragDropComponent extends AbstractComponent {
     this.isSuccess = false;
     this.filename = this.extension = this.fileSize = undefined;
     this.donut?.set(0);
+    this._changeDetectorRef.detectChanges();
   }
 
 }

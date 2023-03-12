@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { ItValidators } from '../../../validators/it-validators';
 import { Observable } from 'rxjs';
@@ -8,7 +8,8 @@ import { InputPassword } from 'bootstrap-italia';
 @Component({
   selector: 'it-password-input',
   templateUrl: './password-input.component.html',
-  styleUrls: ['./password-input.component.scss']
+  styleUrls: ['./password-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PasswordInputComponent extends AbstractFormComponent<string> {
 
