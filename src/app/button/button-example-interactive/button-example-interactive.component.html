@@ -1,60 +1,53 @@
 <h3>Interazione con bottone</h3>
 
 <div class="bd-example" [class.d-grid]="block">
-  <button id="interactive-button"
-             class="mb-5"
-             [itButton]="buttonColor"
-             [size]="selectedSize"
-             [disabled]="disabled"
-             (click)="increaseCount()">
+  <button class="mb-5"
+          [itButton]="buttonColor"
+          [size]="selectedSize"
+          [disabled]="disabled"
+          (click)="increaseCount()">
     Numero click eseguiti: {{count}}
   </button>
 
   <div class="row">
     <div class="form-check col-2">
       <h5>Opzioni</h5>
-      <it-checkbox [(ngModel)]="disabled" label="Disabled" id="disabled-checkbox"></it-checkbox>
-      <it-checkbox [(ngModel)]="block" label="Block" id="block-checkbox"></it-checkbox>
-      <it-checkbox [(ngModel)]="outline" label="Outline" id="outline-checkbox"></it-checkbox>
+      <it-checkbox [(ngModel)]="disabled" label="Disabled"></it-checkbox>
+      <it-checkbox [(ngModel)]="block" label="Block"></it-checkbox>
+      <it-checkbox [(ngModel)]="outline" label="Outline"></it-checkbox>
     </div>
     <div class="form-check col-2">
       <h5>Dimensione</h5>
-      <it-radio-button id="radio-standard-interactive-example" [value]="undefined" name="size" label="None"
-                       [(ngModel)]="selectedSize"></it-radio-button>
-      <it-radio-button id="radio-lg-interactive-example" value="lg" name="size" label="lg"
-                       [(ngModel)]="selectedSize"></it-radio-button>
-      <it-radio-button id="radio-sm-interactive-example" value="sm" name="size" label="sm"
-                       [(ngModel)]="selectedSize"></it-radio-button>
-      <it-radio-button id="radio-xs-interactive-example" value="xs" name="size" label="xs"
-                       [(ngModel)]="selectedSize"></it-radio-button>
+      <it-radio-button [value]="undefined" name="size" label="None" [(ngModel)]="selectedSize"></it-radio-button>
+      <it-radio-button value="lg" name="size" label="lg" [(ngModel)]="selectedSize"></it-radio-button>
+      <it-radio-button value="sm" name="size" label="sm" [(ngModel)]="selectedSize"></it-radio-button>
+      <it-radio-button value="xs" name="size" label="xs" [(ngModel)]="selectedSize"></it-radio-button>
     </div>
 
     <div class="form-check col-6">
       <h5>Colorazione</h5>
       <div class="row">
         <div class="form-check col-5">
-          <it-radio-button id="radio-none-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" [value]="undefined" label="None"></it-radio-button>
-          <it-radio-button id="radio-primary-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" value="primary" label="Primary"></it-radio-button>
-          <it-radio-button id="radio-secondary-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" value="secondary" label="Secondary"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" [value]="undefined"
+                           label="None"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" value="primary"
+                           label="Primary"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" value="secondary"
+                           label="Secondary"></it-radio-button>
         </div>
         <div class="form-check col-4">
-          <it-radio-button id="radio-success-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" value="success" label="Success"></it-radio-button>
-          <it-radio-button id="radio-warning-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" value="warning" label="Warning"></it-radio-button>
-          <it-radio-button id="radio-danger-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" value="danger" label="Danger"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" value="success"
+                           label="Success"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" value="warning"
+                           label="Warning"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" value="danger"
+                           label="Danger"></it-radio-button>
         </div>
         <div class="form-check col-3">
-          <it-radio-button id="radio-info-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" value="info" label="Info"></it-radio-button>
-          <it-radio-button id="radio-light-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" value="light" label="Light"></it-radio-button>
-          <it-radio-button id="radio-dark-interactive-example" [(ngModel)]="selectedColor"
-                           name="selectedColor" value="dark" label="Dark"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" value="info" label="Info"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" value="light"
+                           label="Light"></it-radio-button>
+          <it-radio-button [(ngModel)]="selectedColor" name="selectedColor" value="dark" label="Dark"></it-radio-button>
         </div>
       </div>
     </div>

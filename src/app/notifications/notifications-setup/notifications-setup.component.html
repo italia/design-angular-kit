@@ -14,30 +14,29 @@
   <div class="row">
     <div class="form-check col-4">
       <h5>Opzioni</h5>
-      <it-checkbox [(ngModel)]="dismissible" label="Eliminabile" id="dismissible-setup-checkbox"></it-checkbox>
+      <it-checkbox [(ngModel)]="dismissible" label="Eliminabile"></it-checkbox>
     </div>
     <div class="form-check col-4">
       <h5>Posizione</h5>
-      <it-radio-button id="radio-setup-default" name="notification-setup-position"
+      <it-radio-button name="notification-setup-position"
                        [value]="undefined" label="Default"
                        [(ngModel)]="position"></it-radio-button>
-      <it-radio-button id="radio-setup-top" name="notification-setup-position"
+      <it-radio-button name="notification-setup-position"
                        [value]="NotificationPosition.Top" label="Top"
                        [(ngModel)]="position"></it-radio-button>
-      <it-radio-button id="radio-setup-bottom" name="notification-setup-position"
+      <it-radio-button name="notification-setup-position"
                        [value]="NotificationPosition.Bottom" label="Bottom"
                        [(ngModel)]="position"></it-radio-button>
-      <it-radio-button id="radio-setup-left" name="notification-setup-position"
+      <it-radio-button name="notification-setup-position"
                        [value]="NotificationPosition.Left" label="Left"
                        [(ngModel)]="position"></it-radio-button>
-      <it-radio-button id="radio-setup-right" name="notification-setup-position"
+      <it-radio-button name="notification-setup-position"
                        [value]="NotificationPosition.Right" label="Right"
                        [(ngModel)]="position"></it-radio-button>
     </div>
     <div class="form-check col-4">
       <h5>Durata <small>(ms)</small></h5>
-      <it-input id="notification-setup-duration" type="number"
-                [min]="1000" placeholder="Default" [(ngModel)]="duration"></it-input>
+      <it-input type="number" [min]="1000" placeholder="Default" [(ngModel)]="duration"></it-input>
     </div>
   </div>
 </div>

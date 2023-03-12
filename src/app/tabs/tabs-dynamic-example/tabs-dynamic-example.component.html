@@ -1,13 +1,12 @@
 <h3>Tabs Dinamiche</h3>
 <div class="bd-example">
 
-  <it-input id="number-input" type="number" [(ngModel)]="selectedIndex" label="indice del tab selezionato:"></it-input>
+  <it-input type="number" [(ngModel)]="selectedIndex" label="indice del tab selezionato:"></it-input>
 
   <button itButton="primary" (click)="addTab()">
     Aggiungi un nuovo tab
   </button>
-  <it-checkbox id="checkbox-tab" [(ngModel)]="selectAfterAdding"
-               label="Seleziona il tab dopo averlo aggiunto"></it-checkbox>
+  <it-checkbox [(ngModel)]="selectAfterAdding" label="Seleziona il tab dopo averlo aggiunto"></it-checkbox>
 
 
   <div class="mt-5">
