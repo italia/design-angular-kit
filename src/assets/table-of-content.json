@@ -101,6 +101,10 @@
         {
           "label": "Rating",
           "link": "/componenti/rating"
+        },
+        {
+          "label": "Table",
+          "link": "/componenti/table"
         }
       ]
     }

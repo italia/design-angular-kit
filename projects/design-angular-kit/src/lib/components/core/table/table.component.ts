@@ -1,11 +1,12 @@
-import {Component, Input} from '@angular/core';
-import {TableColor, TableHeadColor, TableResponsive, VerticalAlignment} from "../../../interfaces/core";
-import {BooleanInput, isTrueBooleanInput} from "../../../utils/boolean-input";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { TableColor, TableHeadColor, TableResponsive, VerticalAlignment } from '../../../interfaces/core';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableComponent {
 
