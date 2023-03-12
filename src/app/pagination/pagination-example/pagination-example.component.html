@@ -1,0 +1,13 @@
+<div class="bd-example">
+  <h3 class="mb-4">Navigazione allineata a sinistra</h3>
+  <it-pagination [currentPage]="leftCurrentPage" [pageNumbers]="3"
+                 (pageEvent)="leftPageChange($event)"></it-pagination>
+
+  <h3 class="my-4">Navigazione centrata</h3>
+  <it-pagination [currentPage]="centerCurrentPage" [pageNumbers]="50" alignment="center"
+                 (pageEvent)="centerPageChange($event)"></it-pagination>
+
+  <h3 class="my-4">Navigazione allineata a destra</h3>
+  <it-pagination [currentPage]="rightCurrentPage" [visiblePages]="3" [pageNumbers]="50" alignment="end"
+                 (pageEvent)="rightPageChange($event)"></it-pagination>
+</div>
