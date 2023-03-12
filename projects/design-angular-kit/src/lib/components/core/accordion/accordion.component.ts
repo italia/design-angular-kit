@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CollapseComponent } from '../collapse/collapse.component';
 
 @Component({
-  selector: 'it-accordion[id][title]',
+  selector: 'it-accordion[title]',
   templateUrl: './accordion.component.html',
   exportAs: 'itAccordion',
   changeDetection: ChangeDetectionStrategy.OnPush

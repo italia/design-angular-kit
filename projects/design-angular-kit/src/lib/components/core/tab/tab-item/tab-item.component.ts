@@ -4,7 +4,7 @@ import { BooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
 
 @Component({
-  selector: 'it-tab-item[id]',
+  selector: 'it-tab-item',
   templateUrl: './tab-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

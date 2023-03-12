@@ -4,7 +4,7 @@ import { FileUtils } from '../../../utils/file-utils';
 import { ProgressDonut } from 'bootstrap-italia';
 
 @Component({
-  selector: 'it-upload-drag-drop[id]',
+  selector: 'it-upload-drag-drop',
   templateUrl: './upload-drag-drop.component.html',
   exportAs: 'itUploadDragDrop'
 })

@@ -4,8 +4,7 @@ import { AbstractComponent } from '../../../abstracts/abstract.component';
 
 @Component({
   selector: 'it-link',
-  templateUrl: './link.component.html',
-  styleUrls: ['./link.component.scss']
+  templateUrl: './link.component.html'
 })
 export class LinkComponent extends AbstractComponent {
 

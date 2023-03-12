@@ -12,12 +12,6 @@ import { BackToTop } from 'bootstrap-italia';
 export class BackToTopComponent extends AbstractComponent {
 
   /**
-   * The back to top ID
-   * @default 'back-to-top-button'
-   */
-  @Input() override id: string = 'back-to-top-button';
-
-  /**
    * Show small button
    */
   @Input() small?: BooleanInput;

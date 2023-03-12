@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
-  selector: 'it-radio-button[id][value]',
+  selector: 'it-radio-button[value]',
   templateUrl: './radio-button.component.html',
   styleUrls: ['./radio-button.component.scss']
 })
-export class RadioButtonComponent extends AbstractFormComponent<string | number> {
+export class RadioButtonComponent extends AbstractFormComponent<string | number | undefined> {
 
   /**
    * The radio value

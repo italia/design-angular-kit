@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { AutocompleteItem, InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
@@ -7,7 +7,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
 
 @Component({
-  selector: 'it-input[id]',
+  selector: 'it-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })

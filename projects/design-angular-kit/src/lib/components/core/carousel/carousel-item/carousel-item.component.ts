@@ -2,8 +2,7 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'it-carousel-item',
-  templateUrl: './carousel-item.component.html',
-  styleUrls: ['./carousel-item.component.scss']
+  templateUrl: './carousel-item.component.html'
 })
 export class CarouselItemComponent {
 

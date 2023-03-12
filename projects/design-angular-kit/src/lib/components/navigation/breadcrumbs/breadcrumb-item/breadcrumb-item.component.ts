@@ -5,8 +5,7 @@ import { LinkComponent } from '../../../core/link/link.component';
 
 @Component({
   selector: 'it-breadcrumb-item',
-  templateUrl: './breadcrumb-item.component.html',
-  styleUrls: ['./breadcrumb-item.component.scss']
+  templateUrl: './breadcrumb-item.component.html'
 })
 export class BreadcrumbItemComponent extends LinkComponent {
 

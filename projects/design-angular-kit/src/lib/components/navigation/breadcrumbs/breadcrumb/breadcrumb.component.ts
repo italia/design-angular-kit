@@ -4,8 +4,7 @@ import {BooleanInput, isTrueBooleanInput} from "../../../../utils/boolean-input"
 
 @Component({
   selector: 'it-breadcrumb',
-  templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss']
+  templateUrl: './breadcrumb.component.html'
 })
 export class BreadcrumbComponent {
 

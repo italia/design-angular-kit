@@ -1,12 +1,12 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { ItValidators } from '../../../validators/it-validators';
 import { Observable } from 'rxjs';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { InputPassword } from 'bootstrap-italia';
 
 @Component({
-  selector: 'it-password-input[id]',
+  selector: 'it-password-input',
   templateUrl: './password-input.component.html',
   styleUrls: ['./password-input.component.scss']
 })
