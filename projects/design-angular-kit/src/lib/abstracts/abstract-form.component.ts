@@ -84,7 +84,7 @@ export abstract class AbstractFormComponent<T = any> extends AbstractComponent i
   }
 
   ngOnInit(): void {
-    if (this._ngControl) {
+    if (this._ngControl?.control) {
       this.control.setValidators((this._ngControl.control as FormControl).validator);
     }
   }

@@ -41,7 +41,24 @@ export class RadioButtonComponent extends AbstractFormComponent<string | number 
   }
 
   get name(): string {
-    return this._ngControl?.name?.toString() || '';
+    let name = '';
+    if (this._ngControl) {
+      name = this._ngControl.name?.toString() || '';
+
+      // Retrieve parent name, prevent duplicate name inside FormArray or nested FormGroup
+      let control = this._ngControl.control?.parent;
+      while (control?.parent) {
+        const controls: { [key: string]: any } = control?.parent?.controls || {};
+        const parentName = Object.keys(controls).find(name => control === controls[name]) || null;
+        if (!parentName) {
+          break;
+        }
+        name = `${parentName}.${name}`; // parent.0.radioName
+        control = control.parent;
+      }
+    }
+
+    return name;
   }
 
   override ngOnInit() {
