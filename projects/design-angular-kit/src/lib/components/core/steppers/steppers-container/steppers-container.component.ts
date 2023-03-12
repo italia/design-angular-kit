@@ -6,19 +6,21 @@ import {
   ContentChildren,
   EventEmitter,
   Input,
+  OnDestroy,
   Output,
   QueryList
 } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { SteppersItemComponent } from '../steppers-item/steppers-item.component';
 import { ProgressBarColor } from '../../../../interfaces/core';
+import { startWith, Subscription } from 'rxjs';
 
 @Component({
   selector: 'it-steppers-container[activeStep]',
   templateUrl: './steppers-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SteppersContainerComponent implements AfterViewInit {
+export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
 
   /**
    * The active step index
@@ -154,6 +156,8 @@ export class SteppersContainerComponent implements AfterViewInit {
     return isTrueBooleanInput(this.saveLoading);
   }
 
+  private stepsSubscriptions?: Array<Subscription>;
+
   constructor(
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) {
@@ -164,10 +168,18 @@ export class SteppersContainerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this._changeDetectorRef.detectChanges();
-
-    this.steps?.changes.subscribe(() => {
-      this._changeDetectorRef.detectChanges();
+    this.steps?.changes.pipe( // When steps changes (dynamic add/remove)
+      startWith(undefined)
+    ).subscribe(() => {
+      this.stepsSubscriptions?.forEach(sub => sub.unsubscribe()); // Remove old subscriptions
+      this.stepsSubscriptions = this.steps?.map(step => step.valueChanges.subscribe(() => {
+        this._changeDetectorRef.detectChanges(); // DetectChanges when step attributes changes
+      }));
+      this._changeDetectorRef.detectChanges(); // Force update html render
     });
+  }
+
+  ngOnDestroy(): void {
+    this.stepsSubscriptions?.forEach(step => step.unsubscribe());
   }
 }

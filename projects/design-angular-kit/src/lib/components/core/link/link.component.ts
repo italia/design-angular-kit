@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 
 @Component({
   selector: 'it-link',
-  templateUrl: './link.component.html'
+  templateUrl: './link.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LinkComponent extends AbstractComponent {
 

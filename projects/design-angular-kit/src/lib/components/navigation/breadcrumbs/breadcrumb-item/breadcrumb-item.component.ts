@@ -1,11 +1,12 @@
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
 import { LinkComponent } from '../../../core/link/link.component';
 
 @Component({
   selector: 'it-breadcrumb-item',
-  templateUrl: './breadcrumb-item.component.html'
+  templateUrl: './breadcrumb-item.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbItemComponent extends LinkComponent {
 
@@ -22,10 +23,9 @@ export class BreadcrumbItemComponent extends LinkComponent {
   /**
    * The content of item
    */
-  @ViewChild(TemplateRef)
-  public htmlContent!: TemplateRef<any>;
+  @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;
 
-  get isActive(): boolean {
+  public get isActive(): boolean {
     return isTrueBooleanInput(this.active);
   }
 

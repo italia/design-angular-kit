@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-checkbox',
-  templateUrl: './checkbox.component.html'
+  templateUrl: './checkbox.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent extends AbstractFormComponent<boolean> {
 
