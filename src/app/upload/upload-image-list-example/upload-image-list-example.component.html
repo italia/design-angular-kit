@@ -2,7 +2,7 @@
 <div class="bd-example">
   <div class="row my-2">
     <div class="col">
-      <it-upload-file-list id="image-upload" [fileList]="uploadedImageList"
+      <it-upload-file-list [fileList]="uploadedImageList"
                            images="true"
                            (uploadFiles)="onUpdateImageList($event)"
                            (deleteItem)="onDeleteImageList($event)"></it-upload-file-list>

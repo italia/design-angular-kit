@@ -105,6 +105,18 @@
         {
           "label": "Table",
           "link": "/componenti/table"
+        },
+        {
+          "label": "Textarea",
+          "link": "/componenti/textarea"
+        },
+        {
+          "label": "Alert",
+          "link": "/componenti/alert"
+        },
+        {
+          "label": "Spinner",
+          "link": "/componenti/spinner"
         }
       ]
     }

@@ -6,7 +6,7 @@ import { FileUtils } from '../../../utils/file-utils';
 import { forkJoin, take, tap } from 'rxjs';
 
 @Component({
-  selector: 'it-upload-file-list[id][fileList]',
+  selector: 'it-upload-file-list[fileList]',
   templateUrl: './upload-file-list.component.html'
 })
 export class UploadFileListComponent extends AbstractComponent implements OnInit, OnChanges {

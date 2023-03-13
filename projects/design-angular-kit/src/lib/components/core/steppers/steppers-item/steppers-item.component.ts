@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { IconName } from '../../../../interfaces/icon';
+import { AbstractComponent } from '../../../../abstracts/abstract.component';
 
 @Component({
   selector: 'it-steppers-item[label]',
   templateUrl: './steppers-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SteppersItemComponent {
+export class SteppersItemComponent extends AbstractComponent {
 
   /**
    * The labels present in the header steps

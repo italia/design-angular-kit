@@ -5,7 +5,6 @@ import { ProgressBarColor } from '../../../interfaces/core';
 @Component({
   selector: 'button[itButton][progress]',
   templateUrl: './progress-button.component.html',
-  styleUrls: ['./progress-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgressButtonComponent {

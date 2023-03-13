@@ -9,16 +9,16 @@
   <div class="row">
     <div class="form-check col-6">
       <h4>Azioni</h4>
-      <it-checkbox [(ngModel)]="isDark" label="Sfondo scuro" id="dark-checkbox"></it-checkbox>
+      <it-checkbox [(ngModel)]="isDark" label="Sfondo scuro"></it-checkbox>
 
       <div class="row mt-4">
         <div class="col-6">
-          <button id="add-button" itButton="primary" size="lg" class="mb-3" (click)="insert()">
+          <button itButton="primary" size="lg" class="mb-3" (click)="insert()">
             Aggiungi breadcrumb
           </button>
         </div>
         <div class="col-6">
-          <button id="remove-button" itButton="primary" size="lg" class="mb-3" (click)="remove()"
+          <button itButton="primary" size="lg" class="mb-3" (click)="remove()"
                      [disabled]="!items.length">
             Rimuovi breadcrumb
           </button>
@@ -28,17 +28,17 @@
 
     <div class="form-check col-3">
       <h5>Separatore</h5>
-      <it-radio-button id="radio-sl" value="/" label="/" [(ngModel)]="separator" name="separator"></it-radio-button>
-      <it-radio-button id="radio-gt" value=">" label=">" [(ngModel)]="separator" name="separator"></it-radio-button>
-      <it-radio-button id="radio-tl" value="~" label="~" [(ngModel)]="separator" name="separator"></it-radio-button>
+      <it-radio-button value="/" label="/" [(ngModel)]="separator" name="separator"></it-radio-button>
+      <it-radio-button value=">" label=">" [(ngModel)]="separator" name="separator"></it-radio-button>
+      <it-radio-button value="~" label="~" [(ngModel)]="separator" name="separator"></it-radio-button>
     </div>
     <div class="form-check col-3">
       <h5>Icona</h5>
-      <it-radio-button id="radio-none" [value]="undefined" label="Nessuna" [(ngModel)]="icon"
+      <it-radio-button [value]="undefined" label="Nessuna" [(ngModel)]="icon"
                        name="icon"></it-radio-button>
-      <it-radio-button id="radio-star" value="star-outline" label="it-star-outline" [(ngModel)]="icon"
+      <it-radio-button value="star-outline" label="it-star-outline" [(ngModel)]="icon"
                        name="icon"></it-radio-button>
-      <it-radio-button id="radio-link" value="link" label="it-link" [(ngModel)]="icon" name="icon"></it-radio-button>
+      <it-radio-button value="link" label="it-link" [(ngModel)]="icon" name="icon"></it-radio-button>
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <span *ngIf="isDivider; else item" class="divider"></span>
 
   <ng-template #item>
-    <it-link [class]="linkClass" [href]="href" [externalLink]="externalLink" [disabled]="disabled">
+    <it-link [class]="linkClass" [id]="id" [href]="href" [externalLink]="externalLink" [disabled]="disabled">
       <it-icon *ngIf="iconName && iconPosition === 'left'"
                 size="sm"
                 [name]="iconName"

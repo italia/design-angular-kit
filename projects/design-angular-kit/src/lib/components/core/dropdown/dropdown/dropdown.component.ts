@@ -17,7 +17,7 @@ import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component'
 import { Dropdown } from 'bootstrap-italia';
 
 @Component({
-  selector: 'it-dropdown[id]',
+  selector: 'it-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   exportAs: 'itDropdown',

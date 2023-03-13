@@ -3,12 +3,12 @@
   <div class="row">
     <div class="col">
       <h5>NgModel</h5>
-      <it-rating id="label-rating" [label]="rating + ' stelle'" [(ngModel)]="rating"></it-rating>
+      <it-rating [label]="rating + ' stelle'" [(ngModel)]="rating"></it-rating>
     </div>
     <div class="col">
       <h5>FormGroup</h5>
       <form [formGroup]="formGroup">
-        <it-rating id="label-rating-form-group" formControlName="rating"></it-rating>
+        <it-rating formControlName="rating"></it-rating>
 
         <div class="pt-5">
           <h4>Risultato</h4>

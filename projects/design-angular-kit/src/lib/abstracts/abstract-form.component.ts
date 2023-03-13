@@ -1,22 +1,12 @@
 import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';
-import {
-  ChangeDetectorRef,
-  Component,
-  DoCheck,
-  ElementRef,
-  Input,
-  OnInit,
-  Optional,
-  Renderer2,
-  Self
-} from '@angular/core';
+import { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';
 import { AbstractComponent } from './abstract.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({ template: '' })
-export class AbstractFormComponent<T = any> extends AbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
+export abstract class AbstractFormComponent<T = any> extends AbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
 
   /**
    * The label of form control
@@ -46,13 +36,10 @@ export class AbstractFormComponent<T = any> extends AbstractComponent implements
   control: FormControl;
 
   constructor(
-    @Self() @Optional() protected readonly _ngControl: NgControl,
     protected readonly _translateService: TranslateService,
-    protected override readonly _renderer: Renderer2,
-    protected override readonly _elementRef: ElementRef,
-    protected override readonly _changeDetectorRef: ChangeDetectorRef
+    @Self() @Optional() protected readonly _ngControl: NgControl
   ) {
-    super(_renderer, _elementRef, _changeDetectorRef);
+    super();
     this.control = new FormControl();
     this._ngControl && (this._ngControl.valueAccessor = this);
   }
@@ -97,7 +84,7 @@ export class AbstractFormComponent<T = any> extends AbstractComponent implements
   }
 
   ngOnInit(): void {
-    if (this._ngControl) {
+    if (this._ngControl?.control) {
       this.control.setValidators((this._ngControl.control as FormControl).validator);
     }
   }

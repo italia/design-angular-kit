@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { SelectControlGroup, SelectControlOption } from '../../../interfaces/form';
 
 @Component({
-  selector: 'it-select[id][options]',
+  selector: 'it-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
@@ -12,7 +12,7 @@ export class SelectComponent extends AbstractFormComponent {
   /**
    * The select options
    */
-  @Input() options!: Array<SelectControlOption>;
+  @Input() options?: Array<SelectControlOption>;
 
   /**
    * The select group options
@@ -30,7 +30,7 @@ export class SelectComponent extends AbstractFormComponent {
     if (this.control.value) {
       return;
     }
-    const selectedOption = this.options.find(this.optionIsSelected);
+    const selectedOption = this.options?.find(this.optionIsSelected);
     if (selectedOption) {
       this.writeValue(selectedOption.value);
       return this.onChange(selectedOption.value);
