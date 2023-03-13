@@ -33,6 +33,7 @@ const routes: Routes = [
     { path: 'select', loadChildren: () => import('src/app/select/select.module').then(m => m.SelectModule) },
     { path: 'notifications', loadChildren: () => import('src/app/notifications/notifications.module').then(m => m.NotificationsModule) },
     { path: 'rating', loadChildren: () => import('src/app/rating/rating.module').then(m => m.RatingModule) },
+    { path: 'alert', loadChildren: () => import('src/app/alert/alert.module').then(m => m.AlertModule) },
   ]}
 ];
 
