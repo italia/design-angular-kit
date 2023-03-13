@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-back-button',
   templateUrl: './back-button.component.html',
-  exportAs: 'itBackButton'
+  exportAs: 'itBackButton',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BackButtonComponent {
 

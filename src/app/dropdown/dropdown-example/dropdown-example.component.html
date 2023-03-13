@@ -2,7 +2,6 @@
 <div class="bd-example">
   <p class="example-section">
     <it-dropdown
-      id="dropdown"
       [color]="color"
       [dark]="isDark"
       [direction]="menuPlacement"
@@ -42,29 +41,29 @@
   <div class="row">
     <div class="form-check col-3">
       <h5>Opzioni</h5>
-      <it-checkbox [(ngModel)]="isFullWidth" label="Disposizione orizzontale" id="fullwidth-checkbox"></it-checkbox>
-      <it-checkbox [(ngModel)]="isDark" label="Sfondo scuro" id="darktheme-checkbox"></it-checkbox>
-      <it-checkbox [(ngModel)]="withHeading" label="Con intestazione" id="heading-checkbox"></it-checkbox>
+      <it-checkbox [(ngModel)]="isFullWidth" label="Disposizione orizzontale"></it-checkbox>
+      <it-checkbox [(ngModel)]="isDark" label="Sfondo scuro"></it-checkbox>
+      <it-checkbox [(ngModel)]="withHeading" label="Con intestazione"></it-checkbox>
     </div>
     <div class="form-check col-2">
       <h5>Posizione menu</h5>
-      <it-radio-button id="radio-default" name="default" [(ngModel)]="menuPlacement" [value]="undefined"
+      <it-radio-button name="default" [(ngModel)]="menuPlacement" [value]="undefined"
                        label="Default"></it-radio-button>
-      <it-radio-button id="radio-dropup" name="dropup" [(ngModel)]="menuPlacement" value="dropup"
+      <it-radio-button name="dropup" [(ngModel)]="menuPlacement" value="dropup"
                        label="Dropup"></it-radio-button>
-      <it-radio-button id="radio-dropstart" name="dropstart" [(ngModel)]="menuPlacement" value="dropstart"
+      <it-radio-button name="dropstart" [(ngModel)]="menuPlacement" value="dropstart"
                        label="Dropstart"></it-radio-button>
-      <it-radio-button id="radio-dropend" name="dropend" [(ngModel)]="menuPlacement" value="dropend"
+      <it-radio-button name="dropend" [(ngModel)]="menuPlacement" value="dropend"
                        label="Dropend"></it-radio-button>
     </div>
 
 
     <div class="form-check col-2">
       <h5>Testo</h5>
-      <it-radio-button id="radio-click" name="clickMe" [(ngModel)]="label" value="Click me"
+      <it-radio-button name="clickMe" [(ngModel)]="label" value="Click me"
                        label="Click me"></it-radio-button>
-      <it-radio-button id="radio-check" name="check" [(ngModel)]="label" value="Check" label="Check"></it-radio-button>
-      <it-radio-button id="radio-hello" name="hello" [(ngModel)]="label" value="Hello world!"
+      <it-radio-button name="check" [(ngModel)]="label" value="Check" label="Check"></it-radio-button>
+      <it-radio-button name="hello" [(ngModel)]="label" value="Hello world!"
                        label="Hello world!"></it-radio-button>
     </div>
 
@@ -72,24 +71,24 @@
       <h5>Colorazione</h5>
       <div class="row">
         <div class="form-check col-4">
-          <it-radio-button id="radio-none" name="none" [(ngModel)]="color" [value]="undefined"
+          <it-radio-button name="none" [(ngModel)]="color" [value]="undefined"
                            label="None"></it-radio-button>
-          <it-radio-button id="radio-primary" name="primary" [(ngModel)]="color" value="primary"
+          <it-radio-button name="primary" [(ngModel)]="color" value="primary"
                            label="Primary"></it-radio-button>
-          <it-radio-button id="radio-secondary" name="secondary" [(ngModel)]="color" value="secondary"
+          <it-radio-button name="secondary" [(ngModel)]="color" value="secondary"
                            label="Secondary"></it-radio-button>
-          <it-radio-button id="radio-success" name="success" [(ngModel)]="color" value="success"
+          <it-radio-button name="success" [(ngModel)]="color" value="success"
                            label="Success"></it-radio-button>
-          <it-radio-button id="radio-warning" name="warning" [(ngModel)]="color" value="warning"
+          <it-radio-button name="warning" [(ngModel)]="color" value="warning"
                            label="Warning"></it-radio-button>
         </div>
         <div class="form-check col-5">
-          <it-radio-button id="radio-danger" name="danger" [(ngModel)]="color" value="danger"
+          <it-radio-button name="danger" [(ngModel)]="color" value="danger"
                            label="Danger"></it-radio-button>
-          <it-radio-button id="radio-info" name="info" [(ngModel)]="color" value="info" label="Info"></it-radio-button>
-          <it-radio-button id="radio-light" name="light" [(ngModel)]="color" value="light"
+          <it-radio-button name="info" [(ngModel)]="color" value="info" label="Info"></it-radio-button>
+          <it-radio-button name="light" [(ngModel)]="color" value="light"
                            label="Light"></it-radio-button>
-          <it-radio-button id="radio-dark" name="dark" [(ngModel)]="color" value="dark" label="Dark"></it-radio-button>
+          <it-radio-button name="dark" [(ngModel)]="color" value="dark" label="Dark"></it-radio-button>
         </div>
       </div>
     </div>

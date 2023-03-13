@@ -19,7 +19,7 @@
       "min-invalid": "Il valore minimo per questo campo è: {{min}}",
       "max-invalid": "Il valore massimo per questo campo è: {{max}}",
       "min-length-invalid": "La lunghezza minima per questo campo è: {{min}}",
-      "max-length-invalid": "La lunghezza minima per questo campo è: {{max}}",
+      "max-length-invalid": "La lunghezza massima per questo campo è: {{max}}",
       "email-invalid": "Inserisci un email valida",
       "tel-invalid": "Inserisci un formato telefonico valido",
       "url-invalid": "Inserisci un url valido",

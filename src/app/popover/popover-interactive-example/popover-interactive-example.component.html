@@ -1,6 +1,6 @@
 <h3>Esempio Popover</h3>
 <div class="bd-example">
-  <button itButton="primary" id="popover-interactive-button"
+  <button itButton="primary"
              [itPopover]="myDescription"
              [popoverTitle]="myTitle"
              [popoverContainer]="container"
@@ -12,31 +12,31 @@
     Bottone con popover
   </button>
 
-  <it-checkbox [(ngModel)]="disabled" label="Disabilita bottone e popover" id="disable-popover-checkbox"></it-checkbox>
-  <it-checkbox [(ngModel)]="removeTitle" label="Rimuovi titolo" id="remove-title-checkbox"></it-checkbox>
+  <it-checkbox [(ngModel)]="disabled" label="Disabilita bottone e popover"></it-checkbox>
+  <it-checkbox [(ngModel)]="removeTitle" label="Rimuovi titolo"></it-checkbox>
 
   <div class="row">
     <div class="form-check col-4">
       <h5>Container</h5>
-      <it-radio-button id="radio-self" name="self" [(ngModel)]="container" [value]="undefined"
+      <it-radio-button name="self" [(ngModel)]="container" [value]="undefined"
                        label="Apposito"></it-radio-button>
-      <it-radio-button id="radio-body" name="body" [(ngModel)]="container" value="body"
+      <it-radio-button name="body" [(ngModel)]="container" value="body"
                        label="Nel body"></it-radio-button>
 
     </div>
     <div class="form-check col-5">
       <h5>Collocamento</h5>
-      <it-radio-button id="radio-right" name="right" [(ngModel)]="placement" value="right"
+      <it-radio-button name="right" [(ngModel)]="placement" value="right"
                        label="Destra"></it-radio-button>
-      <it-radio-button id="radio-top" name="top" [(ngModel)]="placement" value="top" label="Sopra"></it-radio-button>
-      <it-radio-button id="radio-left" name="left" [(ngModel)]="placement" value="left"
+      <it-radio-button name="top" [(ngModel)]="placement" value="top" label="Sopra"></it-radio-button>
+      <it-radio-button name="left" [(ngModel)]="placement" value="left"
                        label="Sinistra"></it-radio-button>
-      <it-radio-button id="radio-bottom" name="bottom" [(ngModel)]="placement" value="bottom"
+      <it-radio-button name="bottom" [(ngModel)]="placement" value="bottom"
                        label="Sotto"></it-radio-button>
     </div>
   </div>
 
-  <button itButton="danger" (click)="interactivePopover.dispose()" id="popover-disposing-button">
+  <button itButton="danger" (click)="interactivePopover.dispose()">
     Distruggi il popover
   </button>
 

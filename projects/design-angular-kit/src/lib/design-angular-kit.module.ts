@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ComponentsModule } from './modules/components.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [],

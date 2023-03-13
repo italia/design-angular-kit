@@ -1,11 +1,12 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 
 @Component({
   selector: 'it-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent extends AbstractComponent {
 
@@ -27,16 +28,10 @@ export class HeaderComponent extends AbstractComponent {
 
   /**
    * TODO: complete header
-   * @param _renderer
-   * @param _elementRef
-   * @param _changeDetectorRef
    */
-  constructor(
-    protected override readonly _renderer: Renderer2,
-    protected override readonly _elementRef: ElementRef,
-    protected override readonly _changeDetectorRef: ChangeDetectorRef
-  ) {
-    super(_renderer, _elementRef, _changeDetectorRef);
+  constructor() {
+    super();
+
     this.loginClick = new EventEmitter<Event>();
     this.searchClick = new EventEmitter<Event>();
   }

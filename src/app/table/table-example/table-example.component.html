@@ -1,0 +1,68 @@
+<div class="bd-example">
+  <it-table [color]="color">
+    <ng-container thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cognome</th>
+        <th scope="col">Username</th>
+      </tr>
+    </ng-container>
+
+    <ng-container tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mario</td>
+        <td>Verdi</td>
+        <td>mario.verdi</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Francesco</td>
+        <td>Bianchi</td>
+        <td>francesco.bianchi</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Alessandro</td>
+        <td>Rossi</td>
+        <td>alessandro.rossi</td>
+      </tr>
+    </ng-container>
+  </it-table>
+
+  <div class="form-check">
+    <h5>Colorazione</h5>
+    <div class="row">
+      <div class="form-check col-5">
+        <it-radio-button id="table-color-none" [(ngModel)]="color"
+                         name="selectedColor" [value]="undefined" label="None"></it-radio-button>
+        <it-radio-button id="table-color-primary" [(ngModel)]="color"
+                         name="selectedColor" value="primary" label="Primary"></it-radio-button>
+        <it-radio-button id="table-color-secondary" [(ngModel)]="color"
+                         name="selectedColor" value="secondary" label="Secondary"></it-radio-button>
+      </div>
+      <div class="form-check col-4">
+        <it-radio-button id="table-color-success" [(ngModel)]="color"
+                         name="selectedColor" value="success" label="Success"></it-radio-button>
+        <it-radio-button id="table-color-warning" [(ngModel)]="color"
+                         name="selectedColor" value="warning" label="Warning"></it-radio-button>
+        <it-radio-button id="table-color-danger" [(ngModel)]="color"
+                         name="selectedColor" value="danger" label="Danger"></it-radio-button>
+      </div>
+      <div class="form-check col-3">
+        <it-radio-button id="table-color-info" [(ngModel)]="color"
+                         name="selectedColor" value="info" label="Info"></it-radio-button>
+        <it-radio-button id="table-color-light" [(ngModel)]="color"
+                         name="selectedColor" value="light" label="Light"></it-radio-button>
+        <it-radio-button id="table-color-dark" [(ngModel)]="color"
+                         name="selectedColor" value="dark" label="Dark"></it-radio-button>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    Per la colorazione su singole righe o celle, fare riferimento alla documentazione <a href="https://italia.github.io/bootstrap-italia/docs/organizzare-i-contenuti/tabelle/#varianti">Bootstrap Italia</a>
+  </p>
+</div>
+

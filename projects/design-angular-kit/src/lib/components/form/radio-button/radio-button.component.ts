@@ -1,13 +1,14 @@
-import { Component, Input } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
-  selector: 'it-radio-button[id][value]',
+  selector: 'it-radio-button[value]',
   templateUrl: './radio-button.component.html',
-  styleUrls: ['./radio-button.component.scss']
+  styleUrls: ['./radio-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RadioButtonComponent extends AbstractFormComponent<string | number> {
+export class RadioButtonComponent extends AbstractFormComponent<string | number | undefined> {
 
   /**
    * The radio value
@@ -40,7 +41,24 @@ export class RadioButtonComponent extends AbstractFormComponent<string | number>
   }
 
   get name(): string {
-    return this._ngControl?.name?.toString() || '';
+    let name = '';
+    if (this._ngControl) {
+      name = this._ngControl.name?.toString() || '';
+
+      // Retrieve parent name, prevent duplicate name inside FormArray or nested FormGroup
+      let control = this._ngControl.control?.parent;
+      while (control?.parent) {
+        const controls: { [key: string]: any } = control?.parent?.controls || {};
+        const parentName = Object.keys(controls).find(name => control === controls[name]) || null;
+        if (!parentName) {
+          break;
+        }
+        name = `${parentName}.${name}`; // parent.0.radioName
+        control = control.parent;
+      }
+    }
+
+    return name;
   }
 
   override ngOnInit() {

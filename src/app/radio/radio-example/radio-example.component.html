@@ -1,7 +1,7 @@
 <h3>Configurazione Radio button</h3>
 <div class="bd-example">
   <p class="example-section">
-    <it-checkbox id="disabled-checkbox" [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
+    <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
   </p>
 
 
@@ -18,10 +18,10 @@
 
 <div class="bd-example">
   <h4>Radio con link</h4>
-  <it-radio-button id="radio-link-it" [(ngModel)]="link" name="radio-link" value="bootstrap-italia">
+  <it-radio-button [(ngModel)]="link" name="radio-link" value="bootstrap-italia">
     <ng-container label>Label con <a href="https://italia.github.io/bootstrap-italia/">link</a></ng-container>
   </it-radio-button>
-  <it-radio-button id="radio-link-rb" [(ngModel)]="link" name="radio-link" value="radio-button">
+  <it-radio-button [(ngModel)]="link" name="radio-link" value="radio-button">
     <ng-container label>Altra label con <a href="https://italia.github.io/bootstrap-italia/docs/form/radio-button/">link</a></ng-container>
   </it-radio-button>
 
@@ -32,11 +32,10 @@
   <h4>Radio in Reactive Form</h4>
   <p>Qual è il tuo sesso?</p>
   <form [formGroup]="genderFormGroup">
-    <it-radio-button id="radio-male" formControlName="gender" value="MALE" label="Maschio"></it-radio-button>
-    <it-radio-button id="radio-demale" formControlName="gender" value="FEMALE" label="Femmina"></it-radio-button>
-    <it-radio-button id="radio-others" formControlName="gender" value="OTHERS" label="Altro"></it-radio-button>
-    <it-radio-button id="radio-undefined" formControlName="gender" value="UNDEFINED"
-                     label="Preferisco non dirlo"></it-radio-button>
+    <it-radio-button formControlName="gender" value="MALE" label="Maschio"></it-radio-button>
+    <it-radio-button formControlName="gender" value="FEMALE" label="Femmina"></it-radio-button>
+    <it-radio-button formControlName="gender" value="OTHERS" label="Altro"></it-radio-button>
+    <it-radio-button formControlName="gender" value="UNDEFINED" label="Preferisco non dirlo"></it-radio-button>
   </form>
 
   <div class="example-selected-value">Sesso selezionato: <strong>{{genderFormGroup.value.gender}}</strong></div>

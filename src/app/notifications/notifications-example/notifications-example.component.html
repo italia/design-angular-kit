@@ -8,57 +8,56 @@
   <div class="row mt-4">
     <div class="form-check col-3">
       <h5>Opzioni</h5>
-      <it-checkbox [(ngModel)]="withText" label="Con testo" id="text-checkbox"></it-checkbox>
-      <it-radio-button id="radio-dismissible-default" name="notification-dismissible"
+      <it-checkbox [(ngModel)]="withText" label="Con testo"></it-checkbox>
+      <it-radio-button name="notification-dismissible"
                        [value]="undefined" label="Eliminabile default"
                        [(ngModel)]="dismissible"></it-radio-button>
-      <it-radio-button id="radio-dismissible-yes" name="notification-dismissible"
+      <it-radio-button name="notification-dismissible"
                        value="true" label="Eliminabile"
                        [(ngModel)]="dismissible"></it-radio-button>
-      <it-radio-button id="radio-dismissible-no" name="notification-dismissible"
+      <it-radio-button name="notification-dismissible"
                        value="false" label="Non eliminabile"
                        [(ngModel)]="dismissible"></it-radio-button>
     </div>
     <div class="form-check col-3">
       <h5>Tipo</h5>
-      <it-radio-button id="radio-type-standard" name="notification-type"
+      <it-radio-button name="notification-type"
                        [value]="NotificationType.Standard" label="Standard"
                        [(ngModel)]="type"></it-radio-button>
-      <it-radio-button id="radio-type-success" name="notification-type"
+      <it-radio-button name="notification-type"
                        [value]="NotificationType.Success" label="Successo"
                        [(ngModel)]="type"></it-radio-button>
-      <it-radio-button id="radio-type-error" name="notification-type"
+      <it-radio-button name="notification-type"
                        [value]="NotificationType.Error" label="Errore"
                        [(ngModel)]="type"></it-radio-button>
-      <it-radio-button id="radio-type-warning" name="notification-type"
+      <it-radio-button name="notification-type"
                        [value]="NotificationType.Warning" label="Precauzione"
                        [(ngModel)]="type"></it-radio-button>
-      <it-radio-button id="radio-type-info" name="notification-type"
+      <it-radio-button name="notification-type"
                        [value]="NotificationType.Info" label="Info"
                        [(ngModel)]="type"></it-radio-button>
     </div>
     <div class="form-check col-3">
       <h5>Posizione</h5>
-      <it-radio-button id="radio-default" name="notification-position"
+      <it-radio-button name="notification-position"
                        [value]="undefined" label="Default"
                        [(ngModel)]="position"></it-radio-button>
-      <it-radio-button id="radio-top" name="notification-position"
+      <it-radio-button name="notification-position"
                        [value]="NotificationPosition.Top" label="Top"
                        [(ngModel)]="position"></it-radio-button>
-      <it-radio-button id="radio-bottom" name="notification-position"
+      <it-radio-button name="notification-position"
                        [value]="NotificationPosition.Bottom" label="Bottom"
                        [(ngModel)]="position"></it-radio-button>
-      <it-radio-button id="radio-left" name="notification-position"
+      <it-radio-button name="notification-position"
                        [value]="NotificationPosition.Left" label="Left"
                        [(ngModel)]="position"></it-radio-button>
-      <it-radio-button id="radio-right" name="notification-position"
+      <it-radio-button name="notification-position"
                        [value]="NotificationPosition.Right" label="Right"
                        [(ngModel)]="position"></it-radio-button>
     </div>
     <div class="form-check col-3">
       <h5>Durata <small>(ms)</small></h5>
-      <it-input id="duration-input" type="number"
-                [min]="1000" placeholder="Default" [(ngModel)]="duration"></it-input>
+      <it-input type="number" [min]="1000" placeholder="Default" [(ngModel)]="duration"></it-input>
     </div>
   </div>
 </div>
