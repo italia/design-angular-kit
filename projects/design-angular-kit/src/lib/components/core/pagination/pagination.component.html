@@ -64,7 +64,7 @@
     </li>
   </ul>
 
-  <it-dropdown *ngIf="currentChanger !== undefined" id="pager-changer">
+  <it-dropdown *ngIf="currentChanger !== undefined">
     <span button>{{currentChanger}} / {{'it.core.page' | translate | lowercase}}</span>
     <ng-container list>
       <it-dropdown-item *ngFor="let value of changerValues" href="#" externalLink="true"
@@ -74,7 +74,7 @@
     </ng-container>
   </it-dropdown>
 
-  <it-input *ngIf="isShowJumpToPage" id="jump-to-page" type="number" [min]="1" [max]="pageNumbers"
+  <it-input *ngIf="isShowJumpToPage" type="number" [min]="1" [max]="pageNumbers"
             [label]="('it.core.go-to' | translate) + '...'" [formControl]="jumpToPage"></it-input>
 
   <p [class.d-none]="!totalNumberText.hasChildNodes()" #totalNumberText>
