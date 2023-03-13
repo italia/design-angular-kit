@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IconColor, IconName, IconSize } from '../../../interfaces/icon';
-import { BooleanInput } from '../../../utils/boolean-input';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-icon[name]',
@@ -51,6 +51,9 @@ export class IconComponent {
     }
     if (this.color) {
       iconClass += ` icon-${this.color}`;
+    }
+    if (isTrueBooleanInput(this.padded)) {
+      iconClass += ` icon-padded`;
     }
     if (this.svgClass) {
       iconClass += ` ${this.svgClass}`;
