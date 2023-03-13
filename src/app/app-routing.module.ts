@@ -38,6 +38,7 @@ const routes: Routes = [
     { path: 'textarea', loadChildren: () => import('src/app/textarea/textarea.module').then(m => m.TextareaModule) },
     { path: 'alert', loadChildren: () => import('src/app/alert/alert.module').then(m => m.AlertModule) },
     { path: 'spinner', loadChildren: () => import('src/app/spinner/spinner.module').then(m => m.SpinnerModule) },
+    { path: 'icon', loadChildren: () => import('src/app/icon/icon.module').then(m => m.IconModule) },
   ]}
 ];
 
