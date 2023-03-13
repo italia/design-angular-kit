@@ -1,5 +1,5 @@
 <div [class]="responsive ? 'table-' + responsive : undefined">
-  <table class="table{{color ? ' table-' + color : '' }}"
+  <table class="table{{color ? ' table-' + color : '' }}{{alignment ? ' ' + alignment : '' }}"
          [class.table-striped]="isStriped"
          [class.table-hover]="isHover"
          [class.table-bordered]="isBordered"
