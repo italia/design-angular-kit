@@ -3,7 +3,7 @@
  */
 
 export * from './lib/design-angular-kit.module';
-export * from './lib/modules/components.module';
+export * from './lib/components/components.module';
 
 
 // Core

@@ -5,12 +5,11 @@
                itTooltip="Tooltip di esempio"
                (onShown)="logShown()"
                (onHidden)="logHidden()"
-               #destructibleTooltip="itTooltip"
-               id="tooltip-example-disposable">
+               #destructibleTooltip="itTooltip">
       Clicca per il tooltip distruttibile
     </button>
 
-    <button itButton="primary" size="lg" (click)="destructibleTooltip.dispose()" id="tooltip-dispose-button">
+    <button itButton="primary" size="lg" (click)="destructibleTooltip.dispose()">
       Distruggi il tooltip
     </button>
   </p>

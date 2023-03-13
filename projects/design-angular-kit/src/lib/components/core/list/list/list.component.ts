@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput } from '../../../../utils/boolean-input';
 
 @Component({
   selector: 'it-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
 

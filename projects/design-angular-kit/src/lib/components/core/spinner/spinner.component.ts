@@ -1,10 +1,10 @@
-import {Component, Input} from '@angular/core';
-import {BooleanInput, isTrueBooleanInput} from "../../../utils/boolean-input";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpinnerComponent {
 

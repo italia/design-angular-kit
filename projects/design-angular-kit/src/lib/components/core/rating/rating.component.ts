@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, SimpleChanges } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 
 @Component({
-  selector: 'it-rating[id]',
+  selector: 'it-rating',
   templateUrl: './rating.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -19,17 +19,13 @@ export class RatingComponent extends AbstractFormComponent<number> {
    */
   @Input() starCount: number = 5;
 
-  protected stars: Array<number> = [];
-
-  get name(): string {
-    return this._ngControl?.name?.toString() || (this.id!);
-  }
+  protected stars: Array<number> = this.generateStars();
 
   override ngOnChanges(changes: SimpleChanges): void {
     super.ngOnChanges(changes);
 
     if (changes['starCount'] || !this.stars.length) {
-      this.stars = Array.from({ length: this.starCount }, (_, i) => i + 1).reverse();
+      this.stars = this.generateStars();
     }
   }
 
@@ -40,5 +36,13 @@ export class RatingComponent extends AbstractFormComponent<number> {
       this.writeValue(this.value);
       this.onChange(this.value);
     }
+  }
+
+  /**
+   * Generate the array of stars
+   * @private
+   */
+  private generateStars(): Array<number> {
+    return Array.from({ length: this.starCount }, (_, i) => i + 1).reverse();
   }
 }

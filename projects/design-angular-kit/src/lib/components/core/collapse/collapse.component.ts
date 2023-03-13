@@ -4,7 +4,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Collapse } from 'bootstrap-italia';
 
 @Component({
-  selector: 'it-collapse[id]',
+  selector: 'it-collapse',
   templateUrl: './collapse.component.html',
   exportAs: 'itCollapse',
   changeDetection: ChangeDetectionStrategy.OnPush
