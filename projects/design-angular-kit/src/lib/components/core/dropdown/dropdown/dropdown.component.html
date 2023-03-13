@@ -6,7 +6,7 @@
           aria-haspopup="true"
           aria-expanded="false">
     <ng-content select="[button]"></ng-content>
-    <it-icon class="icon-expand" name="expand" size="sm" [color]="this.color ? 'light' : 'primary'"></it-icon>
+    <it-icon svgClass="icon-expand" name="expand" size="sm" [color]="this.color ? 'light' : 'primary'"></it-icon>
   </button>
 
   <div class="dropdown-menu" [class.full-width]="isFullWidth" [class.dark]="isDark" [attr.aria-labelledby]="id">

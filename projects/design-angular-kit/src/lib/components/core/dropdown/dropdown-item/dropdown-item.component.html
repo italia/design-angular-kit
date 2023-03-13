@@ -7,7 +7,7 @@
                 size="sm"
                 [name]="iconName"
                 [color]="isDark ? 'light' : 'primary'"
-                [class]="iconPosition"></it-icon>
+                [svgClass]="iconPosition"></it-icon>
 
       <span><ng-content></ng-content></span>
 
@@ -15,7 +15,7 @@
                 size="sm"
                 [name]="iconName"
                 [color]="isDark ? 'light' : 'primary'"
-                [class]="iconPosition"></it-icon>
+                [svgClass]="iconPosition"></it-icon>
 
       <span *ngIf="isActive" class="visually-hidden">{{'it.core.active'|translate}}</span>
     </it-link>

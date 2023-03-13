@@ -9,7 +9,7 @@
                 [name]="item.iconName"
                 [color]="isDark ? 'white' : 'secondary'"
                 size="sm"
-                class="align-top me-1"></it-icon>
+                svgClass="align-top me-1"></it-icon>
 
       <it-link *ngIf="!item.isActive && !isLastItem(i); else activeContent"
                 [href]="item.href" [class]="item.class" [externalLink]="item.externalLink" [disabled]="item.disabled">

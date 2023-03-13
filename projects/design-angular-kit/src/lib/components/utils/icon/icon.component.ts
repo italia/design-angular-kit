@@ -1,13 +1,13 @@
-import {AfterViewInit, Component, ElementRef, Input, Renderer2} from '@angular/core';
-import {IconColor, IconName, IconSize} from "../../../interfaces/icon";
-import {BooleanInput} from "../../../utils/boolean-input";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { IconColor, IconName, IconSize } from '../../../interfaces/icon';
+import { BooleanInput } from '../../../utils/boolean-input';
 
 @Component({
   selector: 'it-icon[name]',
   templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IconComponent implements AfterViewInit {
+export class IconComponent {
 
   /**
    * The icon name
@@ -30,9 +30,9 @@ export class IconComponent implements AfterViewInit {
   @Input() padded?: BooleanInput;
 
   /**
-   * Custom class
+   * Custom class of svg
    */
-  @Input() class: string = ''
+  @Input() svgClass?: string;
 
   /**
    * Return the icon href
@@ -47,24 +47,15 @@ export class IconComponent implements AfterViewInit {
   get iconClass(): string {
     let iconClass = 'icon';
     if (this.size) {
-      iconClass += ` icon-${this.size}`
+      iconClass += ` icon-${this.size}`;
     }
     if (this.color) {
-      iconClass += ` icon-${this.color}`
+      iconClass += ` icon-${this.color}`;
     }
-    if (this.class) {
-      iconClass += ` ${this.class}`
+    if (this.svgClass) {
+      iconClass += ` ${this.svgClass}`;
     }
     return iconClass;
   }
 
-  constructor(
-    protected readonly _renderer: Renderer2,
-    protected readonly _elementRef: ElementRef
-  ) {
-  }
-
-  ngAfterViewInit() {
-    this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');
-  }
 }
