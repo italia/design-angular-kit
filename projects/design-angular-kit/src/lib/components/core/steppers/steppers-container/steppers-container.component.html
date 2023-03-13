@@ -18,9 +18,9 @@
 
         {{step.label}}
 
-        <span *ngIf="i < activeStep && !isSteppersNumber" class="ms-auto">
+        <ng-container *ngIf="i < activeStep && !isSteppersNumber">
           <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-        </span>
+        </ng-container>
         <span *ngIf="i === activeStep" class="visually-hidden">{{'it.core.active' | translate}}</span>
       </li>
     </ul>
