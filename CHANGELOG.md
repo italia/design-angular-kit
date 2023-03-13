@@ -1,3 +1,24 @@
+# [1.0.0-11](https://github.com/italia/design-angular-kit/compare/v1.0.0-10...v1.0.0-11) (2023-03-13)
+
+
+### Bug Fixes
+
+* radio button name in form array or nested form group ([91e7681](https://github.com/italia/design-angular-kit/commit/91e7681c1d0b89a6284356e8e0864eb4ef1fefaa))
+
+
+### Features
+
+* dynamic id for components with mandatory id ([fcff309](https://github.com/italia/design-angular-kit/commit/fcff3093091ebd5a3c0596a37beb1b557aa1999e))
+* pagination with changer, jump to, text links, total number text and simple mode ([95f9767](https://github.com/italia/design-angular-kit/commit/95f9767e49c4c195cf2a0f97d4fbe3b35bb8f947))
+* update bootstrap-italia version ([e5b58ad](https://github.com/italia/design-angular-kit/commit/e5b58adc22455284b5936aa333be75d1ef4a16ba))
+
+
+### Performance Improvements
+
+* breadcrumb, carousel, card, back button, checkbox, list, password input, radio, steppers, upload drag drop components ([8576da5](https://github.com/italia/design-angular-kit/commit/8576da5656bb5483c72ec4a19d81af1cf9a371aa))
+
+
+
 # [1.0.0-10](https://github.com/italia/design-angular-kit/compare/v1.0.0-9...v1.0.0-10) (2023-03-08)
 
 
