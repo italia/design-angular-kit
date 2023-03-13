@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'it-textarea',
   templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.scss']
+  styleUrls: ['./textarea.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TextareaComponent extends AbstractFormComponent<string> {
 

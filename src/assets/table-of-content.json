@@ -103,6 +103,10 @@
           "link": "/componenti/rating"
         },
         {
+          "label": "Textarea",
+          "link": "/componenti/textarea"
+        },
+        {
           "label": "Alert",
           "link": "/componenti/alert"
         },

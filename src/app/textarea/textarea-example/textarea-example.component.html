@@ -1,0 +1,21 @@
+<div class="bd-example">
+  <div class="row">
+    <div class="col">
+      <h5 class="mb-5">NgModel</h5>
+      <it-textarea id="textarea-ng-model"
+                   label="Esempio di area di testo"
+                   description="Esempio descrizione"
+                   [(ngModel)]="ngModelValue"></it-textarea>
+    </div>
+    <div class="col">
+      <h5 class="mb-5">FormGroup</h5>
+      <form [formGroup]="formGroup">
+        <it-textarea id="textarea-form-group"
+                     label="Esempio max 50 caratteri"
+                     placeholder="Esempio placeholder"
+                     [rows]="5"
+                     formControlName="textarea"></it-textarea>
+      </form>
+    </div>
+  </div>
+</div>
