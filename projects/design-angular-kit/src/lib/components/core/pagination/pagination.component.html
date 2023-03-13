@@ -1,42 +1,83 @@
 <nav class="pagination-wrapper"
      [class.justify-content-center]="alignment==='center'"
-     [class.justify-content-end]="alignment==='end'">
-  <ul class="pagination">
+     [class.justify-content-end]="alignment==='end'"
+     [class.pagination-total]="totalNumberText.hasChildNodes()">
+
+  <ul *ngIf="pages.length" class="pagination">
     <li class="page-item" [class.disabled]="currentPage < 1">
-      <a class="page-link" (click)="pageChange(currentPage)">
-        <it-icon name="chevron-left" color="primary"></it-icon>
-        <span class="visually-hidden">{{'it.core.previous-page'|translate}}</span>
+      <a class="page-link" [class.text]="isTextLinks" href="#" (click)="pageChange($event, currentPage)">
+        <it-icon *ngIf="!isTextLinks" name="chevron-left" color="primary"></it-icon>
+        <span class="visually-hidden">
+          {{(isTextLinks ? 'it.core.page' : 'it.core.previous-page') | translate}}
+        </span>
+        <ng-container *ngIf="isTextLinks">{{'it.core.previous' | translate}}</ng-container>
       </a>
     </li>
 
-    <ng-container *ngIf="pageNumbers > 5 && currentPage > 2">
-      <li class="page-item"><a class="page-link" (click)="pageChange(1)">1</a></li>
-      <li class="page-item" *ngIf="currentPage > 3">
-        <span class="page-link">...</span>
+    <ng-container *ngIf="isSimpleMode; else defaultView">
+      <li class="page-item"><span class="page-link" aria-current="page">{{currentPage + 1}}</span></li>
+      <li class="page-item"><span class="page-link">/</span></li>
+      <li class="page-item"><span class="page-link">{{pageNumbers}}</span></li>
+      <li class="page-item visually-hidden">
+        <a class="page-link" href="#" aria-current="page">
+          {{'it.core.page-of-total'|translate : {page: (currentPage + 1), total: pageNumbers} }}
+        </a>
       </li>
     </ng-container>
+    <ng-template #defaultView>
+      <ng-container *ngIf="pageNumbers > visiblePages && pages[0] >= 2">
+        <li class="page-item">
+          <a class="page-link" href="#" (click)="pageChange($event, 1)">1</a>
+        </li>
+        <li class="page-item" *ngIf="pages[0] >= 3">
+          <span class="page-link">...</span>
+        </li>
+      </ng-container>
 
-    <li class="page-item" *ngFor="let page of pages">
-      <a class="page-link" aria-current="page" *ngIf="page === (currentPage + 1); else inactivePage">
-        <span class="d-inline-block d-sm-none">{{'it.core.page'|translate}}</span> {{page}}
-      </a>
-      <ng-template #inactivePage>
-        <a class="page-link" (click)="pageChange(page)">{{page}}</a>
-      </ng-template>
-    </li>
-
-    <ng-container *ngIf="pageNumbers > 5 && pageNumbers - currentPage > 3">
-      <li class="page-item">
-        <span class="page-link">...</span>
+      <li class="page-item" *ngFor="let page of pages">
+        <a class="page-link" aria-current="page" *ngIf="page === (currentPage + 1); else inactivePage">
+          <span class="d-inline-block d-sm-none">{{'it.core.page'|translate}}</span> {{page}}
+        </a>
+        <ng-template #inactivePage>
+          <a class="page-link" href="#" (click)="pageChange($event, page)">{{page}}</a>
+        </ng-template>
       </li>
-      <li class="page-item"><a class="page-link" (click)="pageChange(pageNumbers)">{{pageNumbers}}</a></li>
-    </ng-container>
+
+      <ng-container *ngIf="pageNumbers > visiblePages && pages[pages.length - 1] < pageNumbers">
+        <li class="page-item" *ngIf="pages[pages.length - 1] < (pageNumbers - 1)">
+          <span class="page-link">...</span>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" (click)="pageChange($event, pageNumbers)">{{pageNumbers}}</a>
+        </li>
+      </ng-container>
+    </ng-template>
 
     <li class="page-item" [class.disabled]="currentPage >= pageNumbers - 1">
-      <a class="page-link" (click)="pageChange(currentPage + 2)">
-        <span class="visually-hidden">{{'it.core.next-page'|translate}}</span>
-        <it-icon name="chevron-right" color="primary"></it-icon>
+      <a class="page-link" [class.text]="isTextLinks" href="#" (click)="pageChange($event, currentPage + 2)">
+        <span class="visually-hidden">
+          {{(isTextLinks ? 'it.core.page' : 'it.core.next-page') | translate}}
+        </span>
+        <ng-container *ngIf="isTextLinks">{{'it.core.next' | translate}}</ng-container>
+        <it-icon *ngIf="!isTextLinks" name="chevron-right" color="primary"></it-icon>
       </a>
     </li>
   </ul>
+
+  <it-dropdown *ngIf="currentChanger !== undefined" id="pager-changer">
+    <span button>{{currentChanger}} / {{'it.core.page' | translate | lowercase}}</span>
+    <ng-container list>
+      <it-dropdown-item *ngFor="let value of changerValues" href="#" externalLink="true"
+                        (click)="changerChange($event, value)">
+        {{value}} / {{'it.core.page' | translate | lowercase}}
+      </it-dropdown-item>
+    </ng-container>
+  </it-dropdown>
+
+  <it-input *ngIf="isShowJumpToPage" id="jump-to-page" type="number" [min]="1" [max]="pageNumbers"
+            [label]="('it.core.go-to' | translate) + '...'" [formControl]="jumpToPage"></it-input>
+
+  <p [class.d-none]="!totalNumberText.hasChildNodes()" #totalNumberText>
+    <ng-content></ng-content>
+  </p>
 </nav>

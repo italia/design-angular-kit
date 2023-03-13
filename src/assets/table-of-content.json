@@ -103,6 +103,10 @@
           "link": "/componenti/rating"
         },
         {
+          "label": "Pagination",
+          "link": "/componenti/pagination"
+        },
+        {
           "label": "Table",
           "link": "/componenti/table"
         },
