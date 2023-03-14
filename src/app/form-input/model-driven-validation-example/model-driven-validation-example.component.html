@@ -38,7 +38,10 @@
       </div>
     </div>
 
-    <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
+    <div class="d-flex justify-content-between">
+      <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
+      <button itButton="secondary" type="button" (click)="markAllAsTouched()">Valida</button>
+    </div>
 
     <div *ngIf="savedValue">Salvato `{{savedValue}}`</div>
   </form>

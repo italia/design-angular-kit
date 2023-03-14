@@ -128,11 +128,26 @@ export abstract class AbstractFormComponent<T = any> extends AbstractComponent i
    * Fired to check if form control is touched
    */
   ngDoCheck() {
-    if (this.control.touched) {
+    if (!this._ngControl?.control) {
       return;
     }
-    if (this._ngControl?.control?.touched) {
-      this.control.markAsTouched();
+
+    const ngControl = this._ngControl.control;
+    if (this.control.touched !== ngControl.touched) {
+      if (ngControl.touched) {
+        this.control.markAsTouched();
+      } else {
+        this.control.markAsUntouched();
+      }
+      this._changeDetectorRef.detectChanges();
+    }
+    if (this.control.pristine !== ngControl.pristine) {
+      if (ngControl.pristine) {
+        this.control.markAsPristine();
+      } else {
+        this.control.markAsDirty();
+      }
+      this._changeDetectorRef.detectChanges();
     }
   }
 
