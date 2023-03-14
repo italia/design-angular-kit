@@ -46,7 +46,7 @@ import { BreadcrumbItemComponent } from './navigation/breadcrumbs/breadcrumb-ite
 import { HeaderComponent } from './navigation/header/header.component';
 import { IconComponent } from './utils/icon/icon.component';
 import { LanguageSwitcherComponent } from './utils/language-switcher/language-switcher.component';
-import { NotFoundPageComponent } from './utils/not-found-page/not-found-page.component';
+import { ErrorPageComponent } from './utils/error-page/error-page.component';
 import { ChipComponent } from './core/chip/chip.component';
 import { ForwardDirective } from './core/forward/forward.directive';
 import { DimmerComponent } from './core/dimmer/dimmer.component';
@@ -124,7 +124,7 @@ const navigation = [
  */
 const utils = [
   IconComponent,
-  NotFoundPageComponent,
+  ErrorPageComponent,
   LanguageSwitcherComponent,
   MarkMatchingTextPipe
 ];

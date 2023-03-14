@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
+import {
+  ErrorPageComponent
+} from '../../projects/design-angular-kit/src/lib/components/utils/error-page/error-page.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'info', pathMatch: 'full' },
@@ -39,7 +43,11 @@ const routes: Routes = [
     { path: 'alert', loadChildren: () => import('src/app/alert/alert.module').then(m => m.AlertModule) },
     { path: 'spinner', loadChildren: () => import('src/app/spinner/spinner.module').then(m => m.SpinnerModule) },
     { path: 'icon', loadChildren: () => import('src/app/icon/icon.module').then(m => m.IconModule) },
-  ]}
+  ]},
+  { path: 'error/not-found', component: ErrorPageComponent, data: { errorCode: 404 } },
+  { path: 'error/forbidden', component: ErrorPageComponent, data: { errorCode: 403 } },
+  { path: 'error/server-error', component: ErrorPageComponent, data: { errorCode: 500 } },
+  { path: '**', redirectTo: 'error/not-found'  }
 ];
 
 @NgModule({

@@ -86,10 +86,19 @@
       "selected": "Selezionata",
       "language-selection": "Selezione lingua: {{lang}}",
       "select-language": "Seleziona una lingua",
-      "404": {
-        "title": "Risorsa non trovata",
-        "description": "Oops! La risorsa che cerchi non è stata trovata, torna alla homepage e utilizza il menu per continuare la navigazione.",
-        "go-back": "Torna indietro",
+      "error-page": {
+        "404": {
+          "title": "Risorsa non trovata",
+          "description": "Oops! La risorsa che cerchi non è stata trovata, torna alla homepage e utilizza il menu per continuare la navigazione."
+        },
+        "403": {
+          "title": "Non autorizzato",
+          "description": "Non sei autorizzato ad accedere a questa risorsa!"
+        },
+        "500": {
+          "title": "Si è verificato un errore",
+          "description": "Si è verificato un errore imprevisto. Riprova più tardi o contatta il supporto."
+        },
         "go-to-homepage": "Torna alla homepage"
       }
     }
