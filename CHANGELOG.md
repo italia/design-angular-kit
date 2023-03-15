@@ -1,3 +1,14 @@
+# [1.0.0-12](https://github.com/italia/design-angular-kit/compare/v1.0.0-11...v1.0.0-12) (2023-03-15)
+
+
+### Bug Fixes
+
+* icon component class attribute ([7a80eee](https://github.com/italia/design-angular-kit/commit/7a80eee328b4ddcb9b9f4c5b1588f13224cbecb1))
+* mark all as touched on form components ([05f2d72](https://github.com/italia/design-angular-kit/commit/05f2d72cd9651d5977c34594cdc7d6e9ce6f2b9e))
+* remove static id inside pagination component ([0d67dcc](https://github.com/italia/design-angular-kit/commit/0d67dcc333ee29a18ce8abd3c41eaab785d490d9))
+
+
+
 # [1.0.0-11](https://github.com/italia/design-angular-kit/compare/v1.0.0-10...v1.0.0-11) (2023-03-13)
 
 

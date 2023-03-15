@@ -36,4 +36,7 @@ export class ModelDrivenValidationExampleComponent {
     this.savedValue = form.value.myInput;
   }
 
+  markAllAsTouched() {
+    this.myForm.markAllAsTouched();
+  }
 }
