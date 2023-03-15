@@ -62,7 +62,7 @@ export * from './lib/components/navigation/header/header.component';
 // Utils
 export * from './lib/components/utils/icon/icon.component';
 export * from './lib/components/utils/language-switcher/language-switcher.component';
-export * from './lib/components/utils/not-found-page/not-found-page.component';
+export * from './lib/components/utils/error-page/error-page.component';
 
 // Services
 export * from './lib/services/notifications/notifications.service';
