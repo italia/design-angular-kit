@@ -1,3 +1,12 @@
+# [1.0.0-13](https://github.com/italia/design-angular-kit/compare/v1.0.0-12...v1.0.0-13) (2023-03-15)
+
+
+### Features
+
+* error page component ([ed39a34](https://github.com/italia/design-angular-kit/commit/ed39a34033c7f2704d20fe26a58c13ac71457c9e))
+
+
+
 # [1.0.0-12](https://github.com/italia/design-angular-kit/compare/v1.0.0-11...v1.0.0-12) (2023-03-15)
 
 
