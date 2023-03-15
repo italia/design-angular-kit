@@ -4327,7 +4327,7 @@
         },
         {
             "name": "AbstractFormComponent",
-            "id": "component-AbstractFormComponent-67a503c9e294d4af501a2fcfa80ba40ddc23c3375634ccb615d9303cce15f7563054ef6ad8d309ce0ec744ff0c0c32880aef6ed16c387a7e7681c1bcc3cf94b1",
+            "id": "component-AbstractFormComponent-b375fd3837ef15052ebaf1fb8a030bd2de70a3070f30c67e667bfa5e6ab3ed977c2363d32e02369214f2c116b9dcc4cae64b97a54c4e801b32a169f392e06bb6",
             "file": "projects/design-angular-kit/src/lib/abstracts/abstract-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4554,7 +4554,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -4565,8 +4565,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4007,
-                                "end": 4017,
+                                "pos": 4451,
+                                "end": 4461,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4577,8 +4577,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4001,
-                                "end": 4006,
+                                "pos": 4445,
+                                "end": 4450,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4609,7 +4609,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -4620,8 +4620,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5270,
-                                "end": 5279,
+                                "pos": 5714,
+                                "end": 5723,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4632,8 +4632,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5264,
-                                "end": 5269,
+                                "pos": 5708,
+                                "end": 5713,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4644,8 +4644,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5323,
-                                "end": 5327,
+                                "pos": 5767,
+                                "end": 5771,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4657,8 +4657,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5317,
-                                "end": 5322,
+                                "pos": 5761,
+                                "end": 5766,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4669,8 +4669,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5466,
-                                "end": 5473,
+                                "pos": 5910,
+                                "end": 5917,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4701,7 +4701,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -4712,8 +4712,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4679,
-                                "end": 4688,
+                                "pos": 5123,
+                                "end": 5132,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4724,8 +4724,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4673,
-                                "end": 4678,
+                                "pos": 5117,
+                                "end": 5122,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4736,8 +4736,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4732,
-                                "end": 4736,
+                                "pos": 5176,
+                                "end": 5180,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4749,8 +4749,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 4726,
-                                "end": 4731,
+                                "pos": 5170,
+                                "end": 5175,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4761,8 +4761,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 4875,
-                                "end": 4882,
+                                "pos": 5319,
+                                "end": 5326,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5004,7 +5004,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';\nimport { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';\nimport { AbstractComponent } from './abstract.component';\nimport { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';\nimport { Observable } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\n\n@Component({ template: '' })\nexport abstract class AbstractFormComponent<T = any> extends AbstractComponent implements OnInit, ControlValueAccessor, DoCheck {\n\n  /**\n   * The label of form control\n   */\n  @Input() label?: string;\n\n  /**\n   * Validation color display mode (validation triggered if field is touched or not pristine)\n   * - <b>true</b>: Always show the validation color\n   * - <b>false</b>: Never show validation color\n   * - <b>only-valid</b>: Show only valid validation color\n   * - <b>only-invalid</b>: Show only invalid validation color\n   * @default <b>only-invalid</b>: Show only invalid validation color\n   */\n  @Input() validationMode: BooleanInput | 'only-valid' | 'only-invalid' = 'only-invalid';\n\n  /**\n   * Set the disabled state\n   */\n  @Input() set disabled(isDisabled: BooleanInput) {\n    this.setDisabledState(isTrueBooleanInput(isDisabled));\n  }\n\n  /**\n   * Internal form control\n   */\n  control: FormControl;\n\n  constructor(\n    protected readonly _translateService: TranslateService,\n    @Self() @Optional() protected readonly _ngControl: NgControl\n  ) {\n    super();\n    this.control = new FormControl();\n    this._ngControl && (this._ngControl.valueAccessor = this);\n  }\n\n  /**\n   * Check if field is invalid (Validation failed)\n   */\n  get isInvalid(): boolean | undefined {\n    if (this.validationMode === 'only-valid' || (this.validationMode !== 'only-invalid' && isFalseBooleanInput(this.validationMode))) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.invalid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.invalid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Check if field is valid (Validation successful)\n   */\n  get isValid(): boolean | undefined {\n    if (this.validationMode === 'only-invalid' || (this.validationMode !== 'only-valid' && isFalseBooleanInput(this.validationMode))) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.valid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.valid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  get invalidMessage(): Observable<string> {\n    if (this.control.hasError('required')) {\n      return this._translateService.get('it.errors.required-field');\n    }\n\n    return this._translateService.get('it.errors.invalid-field');\n  }\n\n  ngOnInit(): void {\n    if (this._ngControl?.control) {\n      this.control.setValidators((this._ngControl.control as FormControl).validator);\n    }\n  }\n\n  onChange = (_: T) => {\n  };\n\n  onTouched = () => {\n  };\n\n  registerOnChange(fn: any): void {\n    this.control.valueChanges.subscribe(fn);\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (isDisabled) {\n      return this.control.disable();\n    }\n    this.control.enable();\n  }\n\n  writeValue(value: T): void {\n    this.control.setValue(value, { emitEvent: false });\n  }\n\n  /**\n   * Mark the control as touched\n   */\n  markAsTouched(): void {\n    if (!this.control.touched) {\n      this.onTouched();\n    }\n  }\n\n  /**\n   * Fired to check if form control is touched\n   */\n  ngDoCheck() {\n    if (this.control.touched) {\n      return;\n    }\n    if (this._ngControl?.control?.touched) {\n      this.control.markAsTouched();\n    }\n  }\n\n  /**\n   * Add the validators in control and parent control\n   * @param validators the validators\n   * @protected\n   */\n  protected addValidators(validators: ValidatorFn | ValidatorFn[]): void {\n    if (!Array.isArray(validators)) {\n      validators = [validators];\n    }\n\n    validators.forEach(validator => {\n      if (!this.control.hasValidator(validator)) {\n        this.control.addValidators(validator);\n      }\n\n      if (this._ngControl?.control && !this._ngControl.control.hasValidator(validator)) {\n        this._ngControl.control.addValidators(validator);\n      }\n    });\n  }\n\n  /**\n   * Reports whether the control with the given path has the error specified. <br/>\n   * If the control is not present, false is returned.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns whether the given error is present in the control at the given path.\n   */\n  public hasError(errorCode: string, path?: Array<string | number> | string): boolean {\n    if (this._ngControl) {\n      return this._ngControl.hasError(errorCode, path);\n    }\n    return this.control.hasError(errorCode, path);\n  }\n\n  /**\n   * Reports error data for the control with the given path.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns error data for that particular error. If the control or error is not present,\n   * null is returned.\n   */\n  public getError(errorCode: string, path?: Array<string | number> | string): any {\n    if (this._ngControl) {\n      return this._ngControl.getError(errorCode, path);\n    }\n    return this.control.getError(errorCode, path);\n  }\n}\n",
+            "sourceCode": "import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';\nimport { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';\nimport { AbstractComponent } from './abstract.component';\nimport { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';\nimport { Observable } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\n\n@Component({ template: '' })\nexport abstract class AbstractFormComponent<T = any> extends AbstractComponent implements OnInit, ControlValueAccessor, DoCheck {\n\n  /**\n   * The label of form control\n   */\n  @Input() label?: string;\n\n  /**\n   * Validation color display mode (validation triggered if field is touched or not pristine)\n   * - <b>true</b>: Always show the validation color\n   * - <b>false</b>: Never show validation color\n   * - <b>only-valid</b>: Show only valid validation color\n   * - <b>only-invalid</b>: Show only invalid validation color\n   * @default <b>only-invalid</b>: Show only invalid validation color\n   */\n  @Input() validationMode: BooleanInput | 'only-valid' | 'only-invalid' = 'only-invalid';\n\n  /**\n   * Set the disabled state\n   */\n  @Input() set disabled(isDisabled: BooleanInput) {\n    this.setDisabledState(isTrueBooleanInput(isDisabled));\n  }\n\n  /**\n   * Internal form control\n   */\n  control: FormControl;\n\n  constructor(\n    protected readonly _translateService: TranslateService,\n    @Self() @Optional() protected readonly _ngControl: NgControl\n  ) {\n    super();\n    this.control = new FormControl();\n    this._ngControl && (this._ngControl.valueAccessor = this);\n  }\n\n  /**\n   * Check if field is invalid (Validation failed)\n   */\n  get isInvalid(): boolean | undefined {\n    if (this.validationMode === 'only-valid' || (this.validationMode !== 'only-invalid' && isFalseBooleanInput(this.validationMode))) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.invalid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.invalid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Check if field is valid (Validation successful)\n   */\n  get isValid(): boolean | undefined {\n    if (this.validationMode === 'only-invalid' || (this.validationMode !== 'only-valid' && isFalseBooleanInput(this.validationMode))) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.valid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.valid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  get invalidMessage(): Observable<string> {\n    if (this.control.hasError('required')) {\n      return this._translateService.get('it.errors.required-field');\n    }\n\n    return this._translateService.get('it.errors.invalid-field');\n  }\n\n  ngOnInit(): void {\n    if (this._ngControl?.control) {\n      this.control.setValidators((this._ngControl.control as FormControl).validator);\n    }\n  }\n\n  onChange = (_: T) => {\n  };\n\n  onTouched = () => {\n  };\n\n  registerOnChange(fn: any): void {\n    this.control.valueChanges.subscribe(fn);\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (isDisabled) {\n      return this.control.disable();\n    }\n    this.control.enable();\n  }\n\n  writeValue(value: T): void {\n    this.control.setValue(value, { emitEvent: false });\n  }\n\n  /**\n   * Mark the control as touched\n   */\n  markAsTouched(): void {\n    if (!this.control.touched) {\n      this.onTouched();\n    }\n  }\n\n  /**\n   * Fired to check if form control is touched\n   */\n  ngDoCheck() {\n    if (!this._ngControl?.control) {\n      return;\n    }\n\n    const ngControl = this._ngControl.control;\n    if (this.control.touched !== ngControl.touched) {\n      if (ngControl.touched) {\n        this.control.markAsTouched();\n      } else {\n        this.control.markAsUntouched();\n      }\n      this._changeDetectorRef.detectChanges();\n    }\n    if (this.control.pristine !== ngControl.pristine) {\n      if (ngControl.pristine) {\n        this.control.markAsPristine();\n      } else {\n        this.control.markAsDirty();\n      }\n      this._changeDetectorRef.detectChanges();\n    }\n  }\n\n  /**\n   * Add the validators in control and parent control\n   * @param validators the validators\n   * @protected\n   */\n  protected addValidators(validators: ValidatorFn | ValidatorFn[]): void {\n    if (!Array.isArray(validators)) {\n      validators = [validators];\n    }\n\n    validators.forEach(validator => {\n      if (!this.control.hasValidator(validator)) {\n        this.control.addValidators(validator);\n      }\n\n      if (this._ngControl?.control && !this._ngControl.control.hasValidator(validator)) {\n        this._ngControl.control.addValidators(validator);\n      }\n    });\n  }\n\n  /**\n   * Reports whether the control with the given path has the error specified. <br/>\n   * If the control is not present, false is returned.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns whether the given error is present in the control at the given path.\n   */\n  public hasError(errorCode: string, path?: Array<string | number> | string): boolean {\n    if (this._ngControl) {\n      return this._ngControl.hasError(errorCode, path);\n    }\n    return this.control.hasError(errorCode, path);\n  }\n\n  /**\n   * Reports error data for the control with the given path.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns error data for that particular error. If the control or error is not present,\n   * null is returned.\n   */\n  public getError(errorCode: string, path?: Array<string | number> | string): any {\n    if (this._ngControl) {\n      return this._ngControl.getError(errorCode, path);\n    }\n    return this.control.getError(errorCode, path);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -6833,7 +6833,7 @@
                     }
                 }
             },
-            "templateData": "<nav class=\"breadcrumb-container\" [attr.aria-label]=\"'it.navigation.navigation-path'|translate\">\n  <ol class=\"breadcrumb\" [class.dark]=\"isDark\" [class.px-3]=\"isDark\">\n    <li *ngFor=\"let item of items; let i = index\"\n        class=\"breadcrumb-item\"\n        [class.active]=\"item.isActive\"\n        [attr.aria-current]=\"item.isActive ? 'page' : null\">\n\n      <it-icon *ngIf=\"item.iconName\"\n                [name]=\"item.iconName\"\n                [color]=\"isDark ? 'white' : 'secondary'\"\n                size=\"sm\"\n                class=\"align-top me-1\"></it-icon>\n\n      <it-link *ngIf=\"!item.isActive && !isLastItem(i); else activeContent\"\n                [href]=\"item.href\" [class]=\"item.class\" [externalLink]=\"item.externalLink\" [disabled]=\"item.disabled\">\n        <ng-container *ngTemplateOutlet=\"item.htmlContent\"></ng-container>\n      </it-link>\n\n      <ng-template #activeContent>\n        <ng-container *ngTemplateOutlet=\"item.htmlContent\"></ng-container>\n      </ng-template>\n\n      <span *ngIf=\"!isLastItem(i)\" class=\"separator\">{{separator}}</span>\n    </li>\n  </ol>\n</nav>\n"
+            "templateData": "<nav class=\"breadcrumb-container\" [attr.aria-label]=\"'it.navigation.navigation-path'|translate\">\n  <ol class=\"breadcrumb\" [class.dark]=\"isDark\" [class.px-3]=\"isDark\">\n    <li *ngFor=\"let item of items; let i = index\"\n        class=\"breadcrumb-item\"\n        [class.active]=\"item.isActive\"\n        [attr.aria-current]=\"item.isActive ? 'page' : null\">\n\n      <it-icon *ngIf=\"item.iconName\"\n                [name]=\"item.iconName\"\n                [color]=\"isDark ? 'white' : 'secondary'\"\n                size=\"sm\"\n                svgClass=\"align-top me-1\"></it-icon>\n\n      <it-link *ngIf=\"!item.isActive && !isLastItem(i); else activeContent\"\n                [href]=\"item.href\" [class]=\"item.class\" [externalLink]=\"item.externalLink\" [disabled]=\"item.disabled\">\n        <ng-container *ngTemplateOutlet=\"item.htmlContent\"></ng-container>\n      </it-link>\n\n      <ng-template #activeContent>\n        <ng-container *ngTemplateOutlet=\"item.htmlContent\"></ng-container>\n      </ng-template>\n\n      <span *ngIf=\"!isLastItem(i)\" class=\"separator\">{{separator}}</span>\n    </li>\n  </ol>\n</nav>\n"
         },
         {
             "name": "BreadcrumbItemComponent",
@@ -8774,7 +8774,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -8785,8 +8785,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4007,
-                                "end": 4017,
+                                "pos": 4451,
+                                "end": 4461,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8797,8 +8797,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4001,
-                                "end": 4006,
+                                "pos": 4445,
+                                "end": 4450,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8832,7 +8832,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -8843,8 +8843,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5270,
-                                "end": 5279,
+                                "pos": 5714,
+                                "end": 5723,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8855,8 +8855,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5264,
-                                "end": 5269,
+                                "pos": 5708,
+                                "end": 5713,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8867,8 +8867,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5323,
-                                "end": 5327,
+                                "pos": 5767,
+                                "end": 5771,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8880,8 +8880,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5317,
-                                "end": 5322,
+                                "pos": 5761,
+                                "end": 5766,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8892,8 +8892,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5466,
-                                "end": 5473,
+                                "pos": 5910,
+                                "end": 5917,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8927,7 +8927,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -8938,8 +8938,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4679,
-                                "end": 4688,
+                                "pos": 5123,
+                                "end": 5132,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8950,8 +8950,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4673,
-                                "end": 4678,
+                                "pos": 5117,
+                                "end": 5122,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8962,8 +8962,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4732,
-                                "end": 4736,
+                                "pos": 5176,
+                                "end": 5180,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8975,8 +8975,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 4726,
-                                "end": 4731,
+                                "pos": 5170,
+                                "end": 5175,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8987,8 +8987,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 4875,
-                                "end": 4882,
+                                "pos": 5319,
+                                "end": 5326,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11137,7 +11137,7 @@
                     }
                 }
             },
-            "templateData": "<div class=\"dropdown {{direction}}\">\n  <button #dropdownButton [id]=\"id\"\n          [class]=\"buttonClass\"\n          type=\"button\"\n          data-bs-toggle=\"dropdown\"\n          aria-haspopup=\"true\"\n          aria-expanded=\"false\">\n    <ng-content select=\"[button]\"></ng-content>\n    <it-icon class=\"icon-expand\" name=\"expand\" size=\"sm\" [color]=\"this.color ? 'light' : 'primary'\"></it-icon>\n  </button>\n\n  <div class=\"dropdown-menu\" [class.full-width]=\"isFullWidth\" [class.dark]=\"isDark\" [attr.aria-labelledby]=\"id\">\n    <div class=\"link-list-wrapper\">\n      <div class=\"link-list-heading\">\n        <ng-content select=\"[listHeading]\"></ng-content>\n      </div>\n      <ul class=\"link-list\">\n        <ng-content select=\"[list]\"></ng-content>\n      </ul>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"dropdown {{direction}}\">\n  <button #dropdownButton [id]=\"id\"\n          [class]=\"buttonClass\"\n          type=\"button\"\n          data-bs-toggle=\"dropdown\"\n          aria-haspopup=\"true\"\n          aria-expanded=\"false\">\n    <ng-content select=\"[button]\"></ng-content>\n    <it-icon svgClass=\"icon-expand\" name=\"expand\" size=\"sm\" [color]=\"this.color ? 'light' : 'primary'\"></it-icon>\n  </button>\n\n  <div class=\"dropdown-menu\" [class.full-width]=\"isFullWidth\" [class.dark]=\"isDark\" [attr.aria-labelledby]=\"id\">\n    <div class=\"link-list-wrapper\">\n      <div class=\"link-list-heading\">\n        <ng-content select=\"[listHeading]\"></ng-content>\n      </div>\n      <ul class=\"link-list\">\n        <ng-content select=\"[list]\"></ng-content>\n      </ul>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "DropdownItemComponent",
@@ -11599,7 +11599,7 @@
                     }
                 }
             },
-            "templateData": "<li>\n  <span *ngIf=\"isDivider; else item\" class=\"divider\"></span>\n\n  <ng-template #item>\n    <it-link [class]=\"linkClass\" [id]=\"id\" [href]=\"href\" [externalLink]=\"externalLink\" [disabled]=\"disabled\">\n      <it-icon *ngIf=\"iconName && iconPosition === 'left'\"\n                size=\"sm\"\n                [name]=\"iconName\"\n                [color]=\"isDark ? 'light' : 'primary'\"\n                [class]=\"iconPosition\"></it-icon>\n\n      <span><ng-content></ng-content></span>\n\n      <it-icon *ngIf=\"iconName && iconPosition === 'right'\"\n                size=\"sm\"\n                [name]=\"iconName\"\n                [color]=\"isDark ? 'light' : 'primary'\"\n                [class]=\"iconPosition\"></it-icon>\n\n      <span *ngIf=\"isActive\" class=\"visually-hidden\">{{'it.core.active'|translate}}</span>\n    </it-link>\n  </ng-template>\n</li>\n"
+            "templateData": "<li>\n  <span *ngIf=\"isDivider; else item\" class=\"divider\"></span>\n\n  <ng-template #item>\n    <it-link [class]=\"linkClass\" [id]=\"id\" [href]=\"href\" [externalLink]=\"externalLink\" [disabled]=\"disabled\">\n      <it-icon *ngIf=\"iconName && iconPosition === 'left'\"\n                size=\"sm\"\n                [name]=\"iconName\"\n                [color]=\"isDark ? 'light' : 'primary'\"\n                [svgClass]=\"iconPosition\"></it-icon>\n\n      <span><ng-content></ng-content></span>\n\n      <it-icon *ngIf=\"iconName && iconPosition === 'right'\"\n                size=\"sm\"\n                [name]=\"iconName\"\n                [color]=\"isDark ? 'light' : 'primary'\"\n                [svgClass]=\"iconPosition\"></it-icon>\n\n      <span *ngIf=\"isActive\" class=\"visually-hidden\">{{'it.core.active'|translate}}</span>\n    </it-link>\n  </ng-template>\n</li>\n"
         },
         {
             "name": "HeaderComponent",
@@ -11952,34 +11952,22 @@
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-15d34f16ef777d93cb72a9ffe923fc38cd2e713d8b15957aabe475f3f71dc76dbaea1e395ab9a1da52efd57d6524faee792e4ece09e269f96bfbd168e3b8f4d2",
+            "id": "component-IconComponent-8725e2db3ad695bf0b3bd797bb1544e6afc751eb6fa49d9071d01879007d541d4e30ba5f10a00dd9e56f8f67780dc4835a3cb65a00b7f5f89eb50cbc8c0aa5c3",
             "file": "projects/design-angular-kit/src/lib/components/utils/icon/icon.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
             "selector": "it-icon[name]",
-            "styleUrls": [
-                "./icon.component.scss"
-            ],
+            "styleUrls": [],
             "styles": [],
             "templateUrl": [
                 "./icon.component.html"
             ],
             "viewProviders": [],
             "inputsClass": [
-                {
-                    "name": "class",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nCustom class\n",
-                    "description": "<p>Custom class</p>\n",
-                    "line": 35,
-                    "type": "string",
-                    "decorators": []
-                },
                 {
                     "name": "color",
                     "deprecated": false,
@@ -12019,22 +12007,21 @@
                     "line": 20,
                     "type": "IconSize",
                     "decorators": []
+                },
+                {
+                    "name": "svgClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCustom class of svg\n",
+                    "description": "<p>Custom class of svg</p>\n",
+                    "line": 35,
+                    "type": "string",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [
-                {
-                    "name": "ngAfterViewInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 67,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -12042,59 +12029,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {AfterViewInit, Component, ElementRef, Input, Renderer2} from '@angular/core';\nimport {IconColor, IconName, IconSize} from \"../../../interfaces/icon\";\nimport {BooleanInput} from \"../../../utils/boolean-input\";\n\n@Component({\n  selector: 'it-icon[name]',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss']\n})\nexport class IconComponent implements AfterViewInit {\n\n  /**\n   * The icon name\n   */\n  @Input() name!: IconName;\n\n  /**\n   * The icon size\n   */\n  @Input() size?: IconSize;\n\n  /**\n   * The icon color\n   */\n  @Input() color?: IconColor;\n\n  /**\n   * Create a padding proportional to the size of the surrounding icon.\n   */\n  @Input() padded?: BooleanInput;\n\n  /**\n   * Custom class\n   */\n  @Input() class: string = ''\n\n  /**\n   * Return the icon href\n   */\n  get iconHref(): string {\n    return `/bootstrap-italia/dist/svg/sprites.svg#it-${this.name}`;\n  }\n\n  /**\n   * Return the icon class\n   */\n  get iconClass(): string {\n    let iconClass = 'icon';\n    if (this.size) {\n      iconClass += ` icon-${this.size}`\n    }\n    if (this.color) {\n      iconClass += ` icon-${this.color}`\n    }\n    if (this.class) {\n      iconClass += ` ${this.class}`\n    }\n    return iconClass;\n  }\n\n  constructor(\n    protected readonly _renderer: Renderer2,\n    protected readonly _elementRef: ElementRef\n  ) {\n  }\n\n  ngAfterViewInit() {\n    this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { IconColor, IconName, IconSize } from '../../../interfaces/icon';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-icon[name]',\n  templateUrl: './icon.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class IconComponent {\n\n  /**\n   * The icon name\n   */\n  @Input() name!: IconName;\n\n  /**\n   * The icon size\n   */\n  @Input() size?: IconSize;\n\n  /**\n   * The icon color\n   */\n  @Input() color?: IconColor;\n\n  /**\n   * Create a padding proportional to the size of the surrounding icon.\n   */\n  @Input() padded?: BooleanInput;\n\n  /**\n   * Custom class of svg\n   */\n  @Input() svgClass?: string;\n\n  /**\n   * Return the icon href\n   */\n  get iconHref(): string {\n    return `/bootstrap-italia/dist/svg/sprites.svg#it-${this.name}`;\n  }\n\n  /**\n   * Return the icon class\n   */\n  get iconClass(): string {\n    let iconClass = 'icon';\n    if (this.size) {\n      iconClass += ` icon-${this.size}`;\n    }\n    if (this.color) {\n      iconClass += ` icon-${this.color}`;\n    }\n    if (isTrueBooleanInput(this.padded)) {\n      iconClass += ` icon-padded`;\n    }\n    if (this.svgClass) {\n      iconClass += ` ${this.svgClass}`;\n    }\n    return iconClass;\n  }\n\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./icon.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "_renderer",
-                        "type": "Renderer2",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "_elementRef",
-                        "type": "ElementRef",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 59,
-                "jsdoctags": [
-                    {
-                        "name": "_renderer",
-                        "type": "Renderer2",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "_elementRef",
-                        "type": "ElementRef",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "implements": [
-                "AfterViewInit"
-            ],
             "accessors": {
                 "iconHref": {
                     "name": "iconHref",
@@ -12119,7 +12057,7 @@
                     }
                 }
             },
-            "templateData": "<svg [class]=\"iconClass\" [class.icon-padded]=\"padded\">\n  <use [attr.href]=\"iconHref\" [attr.xlink:href]=\"iconHref\"></use>\n</svg>\n"
+            "templateData": "<svg [class]=\"iconClass\">\n  <use [attr.href]=\"iconHref\" [attr.xlink:href]=\"iconHref\"></use>\n</svg>\n"
         },
         {
             "name": "InputComponent",
@@ -12764,7 +12702,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -12775,8 +12713,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4007,
-                                "end": 4017,
+                                "pos": 4451,
+                                "end": 4461,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12787,8 +12725,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4001,
-                                "end": 4006,
+                                "pos": 4445,
+                                "end": 4450,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12822,7 +12760,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -12833,8 +12771,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5270,
-                                "end": 5279,
+                                "pos": 5714,
+                                "end": 5723,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12845,8 +12783,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5264,
-                                "end": 5269,
+                                "pos": 5708,
+                                "end": 5713,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12857,8 +12795,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5323,
-                                "end": 5327,
+                                "pos": 5767,
+                                "end": 5771,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12870,8 +12808,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5317,
-                                "end": 5322,
+                                "pos": 5761,
+                                "end": 5766,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12882,8 +12820,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5466,
-                                "end": 5473,
+                                "pos": 5910,
+                                "end": 5917,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12917,7 +12855,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -12928,8 +12866,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4679,
-                                "end": 4688,
+                                "pos": 5123,
+                                "end": 5132,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12940,8 +12878,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4673,
-                                "end": 4678,
+                                "pos": 5117,
+                                "end": 5122,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12952,8 +12890,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4732,
-                                "end": 4736,
+                                "pos": 5176,
+                                "end": 5180,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12965,8 +12903,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 4726,
-                                "end": 4731,
+                                "pos": 5170,
+                                "end": 5175,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12977,8 +12915,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 4875,
-                                "end": 4882,
+                                "pos": 5319,
+                                "end": 5326,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15472,7 +15410,7 @@
                     }
                 }
             },
-            "templateData": "<nav class=\"pagination-wrapper\"\n     [class.justify-content-center]=\"alignment==='center'\"\n     [class.justify-content-end]=\"alignment==='end'\"\n     [class.pagination-total]=\"totalNumberText.hasChildNodes()\">\n\n  <ul *ngIf=\"pages.length\" class=\"pagination\">\n    <li class=\"page-item\" [class.disabled]=\"currentPage < 1\">\n      <a class=\"page-link\" [class.text]=\"isTextLinks\" href=\"#\" (click)=\"pageChange($event, currentPage)\">\n        <it-icon *ngIf=\"!isTextLinks\" name=\"chevron-left\" color=\"primary\"></it-icon>\n        <span class=\"visually-hidden\">\n          {{(isTextLinks ? 'it.core.page' : 'it.core.previous-page') | translate}}\n        </span>\n        <ng-container *ngIf=\"isTextLinks\">{{'it.core.previous' | translate}}</ng-container>\n      </a>\n    </li>\n\n    <ng-container *ngIf=\"isSimpleMode; else defaultView\">\n      <li class=\"page-item\"><span class=\"page-link\" aria-current=\"page\">{{currentPage + 1}}</span></li>\n      <li class=\"page-item\"><span class=\"page-link\">/</span></li>\n      <li class=\"page-item\"><span class=\"page-link\">{{pageNumbers}}</span></li>\n      <li class=\"page-item visually-hidden\">\n        <a class=\"page-link\" href=\"#\" aria-current=\"page\">\n          {{'it.core.page-of-total'|translate : {page: (currentPage + 1), total: pageNumbers} }}\n        </a>\n      </li>\n    </ng-container>\n    <ng-template #defaultView>\n      <ng-container *ngIf=\"pageNumbers > visiblePages && pages[0] >= 2\">\n        <li class=\"page-item\">\n          <a class=\"page-link\" href=\"#\" (click)=\"pageChange($event, 1)\">1</a>\n        </li>\n        <li class=\"page-item\" *ngIf=\"pages[0] >= 3\">\n          <span class=\"page-link\">...</span>\n        </li>\n      </ng-container>\n\n      <li class=\"page-item\" *ngFor=\"let page of pages\">\n        <a class=\"page-link\" aria-current=\"page\" *ngIf=\"page === (currentPage + 1); else inactivePage\">\n          <span class=\"d-inline-block d-sm-none\">{{'it.core.page'|translate}}</span> {{page}}\n        </a>\n        <ng-template #inactivePage>\n          <a class=\"page-link\" href=\"#\" (click)=\"pageChange($event, page)\">{{page}}</a>\n        </ng-template>\n      </li>\n\n      <ng-container *ngIf=\"pageNumbers > visiblePages && pages[pages.length - 1] < pageNumbers\">\n        <li class=\"page-item\" *ngIf=\"pages[pages.length - 1] < (pageNumbers - 1)\">\n          <span class=\"page-link\">...</span>\n        </li>\n        <li class=\"page-item\">\n          <a class=\"page-link\" href=\"#\" (click)=\"pageChange($event, pageNumbers)\">{{pageNumbers}}</a>\n        </li>\n      </ng-container>\n    </ng-template>\n\n    <li class=\"page-item\" [class.disabled]=\"currentPage >= pageNumbers - 1\">\n      <a class=\"page-link\" [class.text]=\"isTextLinks\" href=\"#\" (click)=\"pageChange($event, currentPage + 2)\">\n        <span class=\"visually-hidden\">\n          {{(isTextLinks ? 'it.core.page' : 'it.core.next-page') | translate}}\n        </span>\n        <ng-container *ngIf=\"isTextLinks\">{{'it.core.next' | translate}}</ng-container>\n        <it-icon *ngIf=\"!isTextLinks\" name=\"chevron-right\" color=\"primary\"></it-icon>\n      </a>\n    </li>\n  </ul>\n\n  <it-dropdown *ngIf=\"currentChanger !== undefined\" id=\"pager-changer\">\n    <span button>{{currentChanger}} / {{'it.core.page' | translate | lowercase}}</span>\n    <ng-container list>\n      <it-dropdown-item *ngFor=\"let value of changerValues\" href=\"#\" externalLink=\"true\"\n                        (click)=\"changerChange($event, value)\">\n        {{value}} / {{'it.core.page' | translate | lowercase}}\n      </it-dropdown-item>\n    </ng-container>\n  </it-dropdown>\n\n  <it-input *ngIf=\"isShowJumpToPage\" id=\"jump-to-page\" type=\"number\" [min]=\"1\" [max]=\"pageNumbers\"\n            [label]=\"('it.core.go-to' | translate) + '...'\" [formControl]=\"jumpToPage\"></it-input>\n\n  <p [class.d-none]=\"!totalNumberText.hasChildNodes()\" #totalNumberText>\n    <ng-content></ng-content>\n  </p>\n</nav>\n"
+            "templateData": "<nav class=\"pagination-wrapper\"\n     [class.justify-content-center]=\"alignment==='center'\"\n     [class.justify-content-end]=\"alignment==='end'\"\n     [class.pagination-total]=\"totalNumberText.hasChildNodes()\">\n\n  <ul *ngIf=\"pages.length\" class=\"pagination\">\n    <li class=\"page-item\" [class.disabled]=\"currentPage < 1\">\n      <a class=\"page-link\" [class.text]=\"isTextLinks\" href=\"#\" (click)=\"pageChange($event, currentPage)\">\n        <it-icon *ngIf=\"!isTextLinks\" name=\"chevron-left\" color=\"primary\"></it-icon>\n        <span class=\"visually-hidden\">\n          {{(isTextLinks ? 'it.core.page' : 'it.core.previous-page') | translate}}\n        </span>\n        <ng-container *ngIf=\"isTextLinks\">{{'it.core.previous' | translate}}</ng-container>\n      </a>\n    </li>\n\n    <ng-container *ngIf=\"isSimpleMode; else defaultView\">\n      <li class=\"page-item\"><span class=\"page-link\" aria-current=\"page\">{{currentPage + 1}}</span></li>\n      <li class=\"page-item\"><span class=\"page-link\">/</span></li>\n      <li class=\"page-item\"><span class=\"page-link\">{{pageNumbers}}</span></li>\n      <li class=\"page-item visually-hidden\">\n        <a class=\"page-link\" href=\"#\" aria-current=\"page\">\n          {{'it.core.page-of-total'|translate : {page: (currentPage + 1), total: pageNumbers} }}\n        </a>\n      </li>\n    </ng-container>\n    <ng-template #defaultView>\n      <ng-container *ngIf=\"pageNumbers > visiblePages && pages[0] >= 2\">\n        <li class=\"page-item\">\n          <a class=\"page-link\" href=\"#\" (click)=\"pageChange($event, 1)\">1</a>\n        </li>\n        <li class=\"page-item\" *ngIf=\"pages[0] >= 3\">\n          <span class=\"page-link\">...</span>\n        </li>\n      </ng-container>\n\n      <li class=\"page-item\" *ngFor=\"let page of pages\">\n        <a class=\"page-link\" aria-current=\"page\" *ngIf=\"page === (currentPage + 1); else inactivePage\">\n          <span class=\"d-inline-block d-sm-none\">{{'it.core.page'|translate}}</span> {{page}}\n        </a>\n        <ng-template #inactivePage>\n          <a class=\"page-link\" href=\"#\" (click)=\"pageChange($event, page)\">{{page}}</a>\n        </ng-template>\n      </li>\n\n      <ng-container *ngIf=\"pageNumbers > visiblePages && pages[pages.length - 1] < pageNumbers\">\n        <li class=\"page-item\" *ngIf=\"pages[pages.length - 1] < (pageNumbers - 1)\">\n          <span class=\"page-link\">...</span>\n        </li>\n        <li class=\"page-item\">\n          <a class=\"page-link\" href=\"#\" (click)=\"pageChange($event, pageNumbers)\">{{pageNumbers}}</a>\n        </li>\n      </ng-container>\n    </ng-template>\n\n    <li class=\"page-item\" [class.disabled]=\"currentPage >= pageNumbers - 1\">\n      <a class=\"page-link\" [class.text]=\"isTextLinks\" href=\"#\" (click)=\"pageChange($event, currentPage + 2)\">\n        <span class=\"visually-hidden\">\n          {{(isTextLinks ? 'it.core.page' : 'it.core.next-page') | translate}}\n        </span>\n        <ng-container *ngIf=\"isTextLinks\">{{'it.core.next' | translate}}</ng-container>\n        <it-icon *ngIf=\"!isTextLinks\" name=\"chevron-right\" color=\"primary\"></it-icon>\n      </a>\n    </li>\n  </ul>\n\n  <it-dropdown *ngIf=\"currentChanger !== undefined\">\n    <span button>{{currentChanger}} / {{'it.core.page' | translate | lowercase}}</span>\n    <ng-container list>\n      <it-dropdown-item *ngFor=\"let value of changerValues\" href=\"#\" externalLink=\"true\"\n                        (click)=\"changerChange($event, value)\">\n        {{value}} / {{'it.core.page' | translate | lowercase}}\n      </it-dropdown-item>\n    </ng-container>\n  </it-dropdown>\n\n  <it-input *ngIf=\"isShowJumpToPage\" type=\"number\" [min]=\"1\" [max]=\"pageNumbers\"\n            [label]=\"('it.core.go-to' | translate) + '...'\" [formControl]=\"jumpToPage\"></it-input>\n\n  <p [class.d-none]=\"!totalNumberText.hasChildNodes()\" #totalNumberText>\n    <ng-content></ng-content>\n  </p>\n</nav>\n"
         },
         {
             "name": "PasswordInputComponent",
@@ -15976,7 +15914,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -15987,8 +15925,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4007,
-                                "end": 4017,
+                                "pos": 4451,
+                                "end": 4461,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15999,8 +15937,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4001,
-                                "end": 4006,
+                                "pos": 4445,
+                                "end": 4450,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16034,7 +15972,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -16045,8 +15983,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5270,
-                                "end": 5279,
+                                "pos": 5714,
+                                "end": 5723,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16057,8 +15995,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5264,
-                                "end": 5269,
+                                "pos": 5708,
+                                "end": 5713,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16069,8 +16007,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5323,
-                                "end": 5327,
+                                "pos": 5767,
+                                "end": 5771,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16082,8 +16020,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5317,
-                                "end": 5322,
+                                "pos": 5761,
+                                "end": 5766,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16094,8 +16032,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5466,
-                                "end": 5473,
+                                "pos": 5910,
+                                "end": 5917,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16129,7 +16067,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -16140,8 +16078,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4679,
-                                "end": 4688,
+                                "pos": 5123,
+                                "end": 5132,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16152,8 +16090,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4673,
-                                "end": 4678,
+                                "pos": 5117,
+                                "end": 5122,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16164,8 +16102,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4732,
-                                "end": 4736,
+                                "pos": 5176,
+                                "end": 5180,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16177,8 +16115,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 4726,
-                                "end": 4731,
+                                "pos": 5170,
+                                "end": 5175,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -16189,8 +16127,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 4875,
-                                "end": 4882,
+                                "pos": 5319,
+                                "end": 5326,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17018,7 +16956,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -17029,8 +16967,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4007,
-                                "end": 4017,
+                                "pos": 4451,
+                                "end": 4461,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17041,8 +16979,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4001,
-                                "end": 4006,
+                                "pos": 4445,
+                                "end": 4450,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17076,7 +17014,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -17087,8 +17025,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5270,
-                                "end": 5279,
+                                "pos": 5714,
+                                "end": 5723,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17099,8 +17037,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5264,
-                                "end": 5269,
+                                "pos": 5708,
+                                "end": 5713,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17111,8 +17049,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5323,
-                                "end": 5327,
+                                "pos": 5767,
+                                "end": 5771,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17124,8 +17062,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5317,
-                                "end": 5322,
+                                "pos": 5761,
+                                "end": 5766,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17136,8 +17074,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5466,
-                                "end": 5473,
+                                "pos": 5910,
+                                "end": 5917,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17171,7 +17109,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -17182,8 +17120,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4679,
-                                "end": 4688,
+                                "pos": 5123,
+                                "end": 5132,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17194,8 +17132,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4673,
-                                "end": 4678,
+                                "pos": 5117,
+                                "end": 5122,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17206,8 +17144,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4732,
-                                "end": 4736,
+                                "pos": 5176,
+                                "end": 5180,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17219,8 +17157,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 4726,
-                                "end": 4731,
+                                "pos": 5170,
+                                "end": 5175,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17231,8 +17169,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 4875,
-                                "end": 4882,
+                                "pos": 5319,
+                                "end": 5326,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17911,7 +17849,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -17922,8 +17860,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4007,
-                                "end": 4017,
+                                "pos": 4451,
+                                "end": 4461,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17934,8 +17872,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4001,
-                                "end": 4006,
+                                "pos": 4445,
+                                "end": 4450,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17969,7 +17907,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -17980,8 +17918,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5270,
-                                "end": 5279,
+                                "pos": 5714,
+                                "end": 5723,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17992,8 +17930,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5264,
-                                "end": 5269,
+                                "pos": 5708,
+                                "end": 5713,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18004,8 +17942,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5323,
-                                "end": 5327,
+                                "pos": 5767,
+                                "end": 5771,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18017,8 +17955,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5317,
-                                "end": 5322,
+                                "pos": 5761,
+                                "end": 5766,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18029,8 +17967,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5466,
-                                "end": 5473,
+                                "pos": 5910,
+                                "end": 5917,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18064,7 +18002,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -18075,8 +18013,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4679,
-                                "end": 4688,
+                                "pos": 5123,
+                                "end": 5132,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18087,8 +18025,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4673,
-                                "end": 4678,
+                                "pos": 5117,
+                                "end": 5122,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18099,8 +18037,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4732,
-                                "end": 4736,
+                                "pos": 5176,
+                                "end": 5180,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18112,8 +18050,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 4726,
-                                "end": 4731,
+                                "pos": 5170,
+                                "end": 5175,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18124,8 +18062,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 4875,
-                                "end": 4882,
+                                "pos": 5319,
+                                "end": 5326,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18741,7 +18679,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -18752,8 +18690,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4007,
-                                "end": 4017,
+                                "pos": 4451,
+                                "end": 4461,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18764,8 +18702,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4001,
-                                "end": 4006,
+                                "pos": 4445,
+                                "end": 4450,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18799,7 +18737,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -18810,8 +18748,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5270,
-                                "end": 5279,
+                                "pos": 5714,
+                                "end": 5723,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18822,8 +18760,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5264,
-                                "end": 5269,
+                                "pos": 5708,
+                                "end": 5713,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18834,8 +18772,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5323,
-                                "end": 5327,
+                                "pos": 5767,
+                                "end": 5771,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18847,8 +18785,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5317,
-                                "end": 5322,
+                                "pos": 5761,
+                                "end": 5766,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18859,8 +18797,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5466,
-                                "end": 5473,
+                                "pos": 5910,
+                                "end": 5917,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18894,7 +18832,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -18905,8 +18843,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4679,
-                                "end": 4688,
+                                "pos": 5123,
+                                "end": 5132,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18917,8 +18855,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4673,
-                                "end": 4678,
+                                "pos": 5117,
+                                "end": 5122,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18929,8 +18867,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4732,
-                                "end": 4736,
+                                "pos": 5176,
+                                "end": 5180,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18942,8 +18880,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 4726,
-                                "end": 4731,
+                                "pos": 5170,
+                                "end": 5175,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18954,8 +18892,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 4875,
-                                "end": 4882,
+                                "pos": 5319,
+                                "end": 5326,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19910,7 +19848,7 @@
                     }
                 }
             },
-            "templateData": "<div class=\"steppers\" [class.bg-dark]=\"isDark\">\n  <div *ngIf=\"isShowHeader\" class=\"steppers-header\">\n    <ul>\n      <li *ngFor=\"let step of steps; let i = index\"\n          [class.confirmed]=\"i < activeStep\"\n          [class.active]=\"i === activeStep\"\n          [class.no-line]=\"i === activeStep && isSteppersNumber\">\n\n        <it-icon *ngIf=\"step.icon && !isSteppersNumber\" [name]=\"step.icon\"></it-icon>\n        <span *ngIf=\"isSteppersNumber\" class=\"steppers-number\">\n          <ng-container *ngIf=\"i < activeStep; else showNumber\">\n            <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n          </ng-container>\n          <ng-template #showNumber>\n            <span class=\"visually-hidden\">{{'it.core.step' | translate}} </span>{{i + 1}}\n          </ng-template>\n        </span>\n\n        {{step.label}}\n\n        <span *ngIf=\"i < activeStep && !isSteppersNumber\" class=\"ms-auto\">\n          <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n        </span>\n        <span *ngIf=\"i === activeStep\" class=\"visually-hidden\">{{'it.core.active' | translate}}</span>\n      </li>\n    </ul>\n    <span class=\"steppers-index\" aria-hidden=\"true\">\n      <ng-container\n        *ngIf=\"!isSteppersNumber; else showNumbers\">{{(activeStep + 1) + '/' + steps?.length}}</ng-container>\n      <ng-template #showNumbers>\n        <span *ngFor=\"let step of steps; let i = index\" [class.active]=\"i === activeStep\">{{i + 1}}</span>\n      </ng-template>\n    </span>\n  </div>\n\n  <div *ngIf=\"steps?.get(activeStep) as step\" class=\"steppers-content\" aria-live=\"polite\">\n    <ng-container *ngTemplateOutlet=\"step.htmlContent\"></ng-container>\n  </div>\n\n  <nav *ngIf=\"isShowBackButton || isShowSaveButton || isShowForwardButton || isShowConfirmButton || !!progressStyle\"\n       class=\"steppers-nav\">\n    <button *ngIf=\"isShowBackButton\" type=\"button\" itButton=\"outline-primary\" size=\"sm\" class=\"steppers-btn-prev\"\n            (click)=\"backClick.emit(activeStep)\">\n      <it-icon name=\"chevron-left\" color=\"primary\"></it-icon>\n      {{'it.core.back' | translate}}\n    </button>\n\n    <ng-container *ngIf=\"!!progressStyle\">\n      <ul *ngIf=\"progressStyle === 'dots'; else progressBar\" class=\"steppers-dots\">\n        <li *ngFor=\"let step of steps; let i = index\" [class.done]=\"i < activeStep\">\n          <span class=\"visually-hidden\">\n            {{'it.core.step-of' | translate: { current: activeStep + 1, available: steps?.length } }}\n            {{i < activeStep ? ('- ' + ('it.core.confirmed' | translate)) : ''}}\n          </span>\n        </li>\n      </ul>\n\n      <ng-template #progressBar>\n        <div class=\"steppers-progress\">\n          <it-progress-bar [color]=\"progressColor\" [value]=\"(activeStep/(steps?.length||1)) * 100\"></it-progress-bar>\n        </div>\n      </ng-template>\n    </ng-container>\n\n    <button *ngIf=\"isShowSaveButton\" type=\"button\" itButton=\"primary\" size=\"sm\" class=\"steppers-btn-save\"\n            [progress]=\"isSaveLoading\" [disabled]=\"isSaveLoading\" (click)=\"saveClick.emit(activeStep)\">\n      {{'it.general.save' | translate}}\n    </button>\n\n    <button *ngIf=\"isShowForwardButton\" type=\"button\" itButton=\"outline-primary\" size=\"sm\" class=\"steppers-btn-next\"\n            (click)=\"forwardClick.emit(activeStep)\">\n      {{'it.core.forward' | translate}}\n      <it-icon name=\"chevron-right\" color=\"primary\"></it-icon>\n    </button>\n\n    <button *ngIf=\"isShowConfirmButton\" type=\"button\" itButton=\"primary\" size=\"sm\"\n            class=\"steppers-btn-confirm d-lg-block\"\n            [progress]=\"isConfirmLoading\" [disabled]=\"isConfirmLoading\"\n            (click)=\"confirmClick.emit(activeStep)\">\n      {{'it.core.confirm' | translate}}\n    </button>\n  </nav>\n</div>\n\n<ng-template #checkIcon>\n  <it-icon name=\"check\" class=\"steppers-success\"></it-icon>\n  <span class=\"visually-hidden\">{{'it.core.confirmed' | translate}}</span>\n</ng-template>\n"
+            "templateData": "<div class=\"steppers\" [class.bg-dark]=\"isDark\">\n  <div *ngIf=\"isShowHeader\" class=\"steppers-header\">\n    <ul>\n      <li *ngFor=\"let step of steps; let i = index\"\n          [class.confirmed]=\"i < activeStep\"\n          [class.active]=\"i === activeStep\"\n          [class.no-line]=\"i === activeStep && isSteppersNumber\">\n\n        <it-icon *ngIf=\"step.icon && !isSteppersNumber\" [name]=\"step.icon\"></it-icon>\n        <span *ngIf=\"isSteppersNumber\" class=\"steppers-number\">\n          <ng-container *ngIf=\"i < activeStep; else showNumber\">\n            <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n          </ng-container>\n          <ng-template #showNumber>\n            <span class=\"visually-hidden\">{{'it.core.step' | translate}} </span>{{i + 1}}\n          </ng-template>\n        </span>\n\n        {{step.label}}\n\n        <ng-container *ngIf=\"i < activeStep && !isSteppersNumber\">\n          <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n        </ng-container>\n        <span *ngIf=\"i === activeStep\" class=\"visually-hidden\">{{'it.core.active' | translate}}</span>\n      </li>\n    </ul>\n    <span class=\"steppers-index\" aria-hidden=\"true\">\n      <ng-container\n        *ngIf=\"!isSteppersNumber; else showNumbers\">{{(activeStep + 1) + '/' + steps?.length}}</ng-container>\n      <ng-template #showNumbers>\n        <span *ngFor=\"let step of steps; let i = index\" [class.active]=\"i === activeStep\">{{i + 1}}</span>\n      </ng-template>\n    </span>\n  </div>\n\n  <div *ngIf=\"steps?.get(activeStep) as step\" class=\"steppers-content\" aria-live=\"polite\">\n    <ng-container *ngTemplateOutlet=\"step.htmlContent\"></ng-container>\n  </div>\n\n  <nav *ngIf=\"isShowBackButton || isShowSaveButton || isShowForwardButton || isShowConfirmButton || !!progressStyle\"\n       class=\"steppers-nav\">\n    <button *ngIf=\"isShowBackButton\" type=\"button\" itButton=\"outline-primary\" size=\"sm\" class=\"steppers-btn-prev\"\n            (click)=\"backClick.emit(activeStep)\">\n      <it-icon name=\"chevron-left\" color=\"primary\"></it-icon>\n      {{'it.core.back' | translate}}\n    </button>\n\n    <ng-container *ngIf=\"!!progressStyle\">\n      <ul *ngIf=\"progressStyle === 'dots'; else progressBar\" class=\"steppers-dots\">\n        <li *ngFor=\"let step of steps; let i = index\" [class.done]=\"i < activeStep\">\n          <span class=\"visually-hidden\">\n            {{'it.core.step-of' | translate: { current: activeStep + 1, available: steps?.length } }}\n            {{i < activeStep ? ('- ' + ('it.core.confirmed' | translate)) : ''}}\n          </span>\n        </li>\n      </ul>\n\n      <ng-template #progressBar>\n        <div class=\"steppers-progress\">\n          <it-progress-bar [color]=\"progressColor\" [value]=\"(activeStep/(steps?.length||1)) * 100\"></it-progress-bar>\n        </div>\n      </ng-template>\n    </ng-container>\n\n    <button *ngIf=\"isShowSaveButton\" type=\"button\" itButton=\"primary\" size=\"sm\" class=\"steppers-btn-save\"\n            [progress]=\"isSaveLoading\" [disabled]=\"isSaveLoading\" (click)=\"saveClick.emit(activeStep)\">\n      {{'it.general.save' | translate}}\n    </button>\n\n    <button *ngIf=\"isShowForwardButton\" type=\"button\" itButton=\"outline-primary\" size=\"sm\" class=\"steppers-btn-next\"\n            (click)=\"forwardClick.emit(activeStep)\">\n      {{'it.core.forward' | translate}}\n      <it-icon name=\"chevron-right\" color=\"primary\"></it-icon>\n    </button>\n\n    <button *ngIf=\"isShowConfirmButton\" type=\"button\" itButton=\"primary\" size=\"sm\"\n            class=\"steppers-btn-confirm d-lg-block\"\n            [progress]=\"isConfirmLoading\" [disabled]=\"isConfirmLoading\"\n            (click)=\"confirmClick.emit(activeStep)\">\n      {{'it.core.confirm' | translate}}\n    </button>\n  </nav>\n</div>\n\n<ng-template #checkIcon>\n  <it-icon name=\"check\" class=\"steppers-success\"></it-icon>\n  <span class=\"visually-hidden\">{{'it.core.confirmed' | translate}}</span>\n</ng-template>\n"
         },
         {
             "name": "SteppersItemComponent",
@@ -21358,7 +21296,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -21369,8 +21307,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4007,
-                                "end": 4017,
+                                "pos": 4451,
+                                "end": 4461,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21381,8 +21319,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4001,
-                                "end": 4006,
+                                "pos": 4445,
+                                "end": 4450,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21416,7 +21354,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -21427,8 +21365,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5270,
-                                "end": 5279,
+                                "pos": 5714,
+                                "end": 5723,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21439,8 +21377,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5264,
-                                "end": 5269,
+                                "pos": 5708,
+                                "end": 5713,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21451,8 +21389,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5323,
-                                "end": 5327,
+                                "pos": 5767,
+                                "end": 5771,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21464,8 +21402,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5317,
-                                "end": 5322,
+                                "pos": 5761,
+                                "end": 5766,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21476,8 +21414,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5466,
-                                "end": 5473,
+                                "pos": 5910,
+                                "end": 5917,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21511,7 +21449,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -21522,8 +21460,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4679,
-                                "end": 4688,
+                                "pos": 5123,
+                                "end": 5132,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21534,8 +21472,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4673,
-                                "end": 4678,
+                                "pos": 5117,
+                                "end": 5122,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21546,8 +21484,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4732,
-                                "end": 4736,
+                                "pos": 5176,
+                                "end": 5180,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21559,8 +21497,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 4726,
-                                "end": 4731,
+                                "pos": 5170,
+                                "end": 5175,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21571,8 +21509,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 4875,
-                                "end": 4882,
+                                "pos": 5319,
+                                "end": 5326,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23498,6 +23436,16 @@
                 "description": "<p>Form components</p>\n"
             },
             {
+                "name": "IconNameArray",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/interfaces/icon.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "[\n  'arrow-down',\n  'arrow-down-circle',\n  'arrow-down-triangle',\n  'arrow-left',\n  'arrow-left-circle',\n  'arrow-left-triangle',\n  'arrow-right',\n  'arrow-right-circle',\n  'arrow-right-triangle',\n  'arrow-up',\n  'arrow-up-circle',\n  'arrow-up-triangle',\n  'ban',\n  'bookmark',\n  'box',\n  'burger',\n  'calendar',\n  'camera',\n  'card',\n  'chart-line',\n  'check',\n  'check-circle',\n  'chevron-left',\n  'chevron-right',\n  'clip',\n  'clock',\n  'close',\n  'close-big',\n  'close-circle',\n  'comment',\n  'copy',\n  'delete',\n  'download',\n  'error',\n  'exchange-circle',\n  'expand',\n  'external-link',\n  'flag',\n  'folder',\n  'fullscreen',\n  'funnel',\n  'hearing',\n  'help',\n  'help-circle',\n  'horn',\n  'inbox',\n  'info-circle',\n  'key',\n  'link',\n  'list',\n  'locked',\n  'logout',\n  'mail',\n  'mail-open',\n  'map-marker',\n  'map-marker-circle',\n  'map-marker-minus',\n  'map-marker-plus',\n  'maximize',\n  'maximize-alt',\n  'minimize',\n  'minus',\n  'minus-circle',\n  'more-actions',\n  'more-items',\n  'note',\n  'pa',\n  'password-invisible',\n  'password-visible',\n  'pencil',\n  'piattaforme',\n  'pin',\n  'plug',\n  'plus',\n  'plus-circle',\n  'presentation',\n  'print',\n  'refresh',\n  'restore',\n  'rss',\n  'rss-square',\n  'search',\n  'settings',\n  'share',\n  'software',\n  'star-full',\n  'star-outline',\n  'telephone',\n  'tool',\n  'unlocked',\n  'upload',\n  'user',\n  'video',\n  'warning',\n  'warning-circle',\n  'wifi',\n  'zoom-in',\n  'zoom-out',\n\n  // Files\n  'file',\n  'files',\n  'file-audio',\n  'file-compressed',\n  'file-csv',\n  'file-json',\n  'file-odp',\n  'file-ods',\n  'file-odt',\n  'file-pdf',\n  'file-pdf-ext',\n  'file-sheet',\n  'file-slides',\n  'file-txt',\n  'file-video',\n  'file-xml',\n\n  // Platforms\n  'behance',\n  'facebook',\n  'facebook-square',\n  'figma',\n  'figma-square',\n  'flickr',\n  'flickr-square',\n  'github',\n  'instagram',\n  'linkedin',\n  'linkedin-square',\n  'mastodon',\n  'mastodon-square',\n  'medium',\n  'medium-square',\n  'pinterest',\n  'pinterest-square',\n  'quora',\n  'quora-square',\n  'reddit',\n  'reddit-square',\n  'slack',\n  'slack-square',\n  'snapchat',\n  'snapchat-square',\n  'stackexchange',\n  'stackexchange-square',\n  'stackoverflow',\n  'stackoverflow-square',\n  'telegram',\n  'tiktok',\n  'tiktok-square',\n  'twitter',\n  'twitter-square',\n  'vimeo',\n  'vimeo-square',\n  'whatsapp',\n  'whatsapp-square',\n  'youtube',\n  'google',\n\n  // Extra\n  'designers-italia',\n  'team-digitale'\n] as const"
+            },
+            {
                 "name": "ITALIAN_TAX_CODE_REGEX",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -23823,12 +23771,12 @@
                 "name": "IconName",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-triangle\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-left-triangle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-right-triangle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-triangle\" | \"ban\" | \"bookmark\" | \"box\" | \"burger\" | \"calendar\" | \"camera\" | \"card\" | \"chart-line\" | \"check\" | \"check-circle\" | \"chevron-left\" | \"chevron-right\" | \"clip\" | \"clock\" | \"close\" | \"close-big\" | \"close-circle\" | \"comment\" | \"copy\" | \"delete\" | \"download\" | \"error\" | \"exchange-circle\" | \"expand\" | \"external-link\" | \"flag\" | \"folder\" | \"fullscreen\" | \"funnel\" | \"hearing\" | \"help\" | \"help-circle\" | \"horn\" | \"inbox\" | \"info-circle\" | \"key\" | \"link\" | \"list\" | \"locked\" | \"logout\" | \"mail\" | \"mail-open\" | \"map-marker\" | \"map-marker-circle\" | \"map-marker-minus\" | \"map-marker-plus\" | \"maximize\" | \"maximize-alt\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"more-actions\" | \"more-items\" | \"note\" | \"pa\" | \"password-invisible\" | \"password-visible\" | \"pencil\" | \"piattaforme\" | \"pin\" | \"plug\" | \"plus\" | \"plus-circle\" | \"presentation\" | \"print\" | \"refresh\" | \"restore\" | \"rss\" | \"rss-square\" | \"search\" | \"settings\" | \"share\" | \"software\" | \"star-full\" | \"star-outline\" | \"telephone\" | \"tool\" | \"unlocked\" | \"upload\" | \"user\" | \"video\" | \"warning\" | \"warning-circle\" | \"wifi\" | \"zoom-in\" | \"zoom-out\" | \"behance\" | \"facebook\" | \"facebook-square\" | \"figma\" | \"figma-square\" | \"flickr\" | \"flickr-square\" | \"github\" | \"instagram\" | \"linkedin\" | \"linkedin-square\" | \"mastodon\" | \"mastodon-square\" | \"medium\" | \"medium-square\" | \"pinterest\" | \"pinterest-square\" | \"quora\" | \"quora-square\" | \"reddit\" | \"reddit-square\" | \"slack\" | \"slack-square\" | \"snapchat\" | \"snapchat-square\" | \"stackexchange\" | \"stackexchange-square\" | \"stackoverflow\" | \"stackoverflow-square\" | \"telegram\" | \"tiktok\" | \"tiktok-square\" | \"twitter\" | \"twitter-square\" | \"vimeo\" | \"vimeo-square\" | \"whatsapp\" | \"whatsapp-square\" | \"youtube\" | \"google\" | \"designers-italia\" | \"team-digitale\" | \"file\" | \"files\" | \"file-audio\" | \"file-compressed\" | \"file-csv\" | \"file-json\" | \"file-odp\" | \"file-ods\" | \"file-odt\" | \"file-pdf\" | \"file-pdf-ext\" | \"file-sheet\" | \"file-slides\" | \"file-txt\" | \"file-video\" | \"file-xml\"",
+                "rawtype": "",
                 "file": "projects/design-angular-kit/src/lib/interfaces/icon.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 186
+                "kind": 193
             },
             {
                 "name": "IconSize",
@@ -24109,6 +24057,18 @@
                     "defaultValue": "[\n  IconComponent,\n  NotFoundPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n]",
                     "rawdescription": "Utils components",
                     "description": "<p>Utils components</p>\n"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/interfaces/icon.ts": [
+                {
+                    "name": "IconNameArray",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/interfaces/icon.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "[\n  'arrow-down',\n  'arrow-down-circle',\n  'arrow-down-triangle',\n  'arrow-left',\n  'arrow-left-circle',\n  'arrow-left-triangle',\n  'arrow-right',\n  'arrow-right-circle',\n  'arrow-right-triangle',\n  'arrow-up',\n  'arrow-up-circle',\n  'arrow-up-triangle',\n  'ban',\n  'bookmark',\n  'box',\n  'burger',\n  'calendar',\n  'camera',\n  'card',\n  'chart-line',\n  'check',\n  'check-circle',\n  'chevron-left',\n  'chevron-right',\n  'clip',\n  'clock',\n  'close',\n  'close-big',\n  'close-circle',\n  'comment',\n  'copy',\n  'delete',\n  'download',\n  'error',\n  'exchange-circle',\n  'expand',\n  'external-link',\n  'flag',\n  'folder',\n  'fullscreen',\n  'funnel',\n  'hearing',\n  'help',\n  'help-circle',\n  'horn',\n  'inbox',\n  'info-circle',\n  'key',\n  'link',\n  'list',\n  'locked',\n  'logout',\n  'mail',\n  'mail-open',\n  'map-marker',\n  'map-marker-circle',\n  'map-marker-minus',\n  'map-marker-plus',\n  'maximize',\n  'maximize-alt',\n  'minimize',\n  'minus',\n  'minus-circle',\n  'more-actions',\n  'more-items',\n  'note',\n  'pa',\n  'password-invisible',\n  'password-visible',\n  'pencil',\n  'piattaforme',\n  'pin',\n  'plug',\n  'plus',\n  'plus-circle',\n  'presentation',\n  'print',\n  'refresh',\n  'restore',\n  'rss',\n  'rss-square',\n  'search',\n  'settings',\n  'share',\n  'software',\n  'star-full',\n  'star-outline',\n  'telephone',\n  'tool',\n  'unlocked',\n  'upload',\n  'user',\n  'video',\n  'warning',\n  'warning-circle',\n  'wifi',\n  'zoom-in',\n  'zoom-out',\n\n  // Files\n  'file',\n  'files',\n  'file-audio',\n  'file-compressed',\n  'file-csv',\n  'file-json',\n  'file-odp',\n  'file-ods',\n  'file-odt',\n  'file-pdf',\n  'file-pdf-ext',\n  'file-sheet',\n  'file-slides',\n  'file-txt',\n  'file-video',\n  'file-xml',\n\n  // Platforms\n  'behance',\n  'facebook',\n  'facebook-square',\n  'figma',\n  'figma-square',\n  'flickr',\n  'flickr-square',\n  'github',\n  'instagram',\n  'linkedin',\n  'linkedin-square',\n  'mastodon',\n  'mastodon-square',\n  'medium',\n  'medium-square',\n  'pinterest',\n  'pinterest-square',\n  'quora',\n  'quora-square',\n  'reddit',\n  'reddit-square',\n  'slack',\n  'slack-square',\n  'snapchat',\n  'snapchat-square',\n  'stackexchange',\n  'stackexchange-square',\n  'stackoverflow',\n  'stackoverflow-square',\n  'telegram',\n  'tiktok',\n  'tiktok-square',\n  'twitter',\n  'twitter-square',\n  'vimeo',\n  'vimeo-square',\n  'whatsapp',\n  'whatsapp-square',\n  'youtube',\n  'google',\n\n  // Extra\n  'designers-italia',\n  'team-digitale'\n] as const"
                 }
             ]
         },
@@ -24511,12 +24471,12 @@
                     "name": "IconName",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "\"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-triangle\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-left-triangle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-right-triangle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-triangle\" | \"ban\" | \"bookmark\" | \"box\" | \"burger\" | \"calendar\" | \"camera\" | \"card\" | \"chart-line\" | \"check\" | \"check-circle\" | \"chevron-left\" | \"chevron-right\" | \"clip\" | \"clock\" | \"close\" | \"close-big\" | \"close-circle\" | \"comment\" | \"copy\" | \"delete\" | \"download\" | \"error\" | \"exchange-circle\" | \"expand\" | \"external-link\" | \"flag\" | \"folder\" | \"fullscreen\" | \"funnel\" | \"hearing\" | \"help\" | \"help-circle\" | \"horn\" | \"inbox\" | \"info-circle\" | \"key\" | \"link\" | \"list\" | \"locked\" | \"logout\" | \"mail\" | \"mail-open\" | \"map-marker\" | \"map-marker-circle\" | \"map-marker-minus\" | \"map-marker-plus\" | \"maximize\" | \"maximize-alt\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"more-actions\" | \"more-items\" | \"note\" | \"pa\" | \"password-invisible\" | \"password-visible\" | \"pencil\" | \"piattaforme\" | \"pin\" | \"plug\" | \"plus\" | \"plus-circle\" | \"presentation\" | \"print\" | \"refresh\" | \"restore\" | \"rss\" | \"rss-square\" | \"search\" | \"settings\" | \"share\" | \"software\" | \"star-full\" | \"star-outline\" | \"telephone\" | \"tool\" | \"unlocked\" | \"upload\" | \"user\" | \"video\" | \"warning\" | \"warning-circle\" | \"wifi\" | \"zoom-in\" | \"zoom-out\" | \"behance\" | \"facebook\" | \"facebook-square\" | \"figma\" | \"figma-square\" | \"flickr\" | \"flickr-square\" | \"github\" | \"instagram\" | \"linkedin\" | \"linkedin-square\" | \"mastodon\" | \"mastodon-square\" | \"medium\" | \"medium-square\" | \"pinterest\" | \"pinterest-square\" | \"quora\" | \"quora-square\" | \"reddit\" | \"reddit-square\" | \"slack\" | \"slack-square\" | \"snapchat\" | \"snapchat-square\" | \"stackexchange\" | \"stackexchange-square\" | \"stackoverflow\" | \"stackoverflow-square\" | \"telegram\" | \"tiktok\" | \"tiktok-square\" | \"twitter\" | \"twitter-square\" | \"vimeo\" | \"vimeo-square\" | \"whatsapp\" | \"whatsapp-square\" | \"youtube\" | \"google\" | \"designers-italia\" | \"team-digitale\" | \"file\" | \"files\" | \"file-audio\" | \"file-compressed\" | \"file-csv\" | \"file-json\" | \"file-odp\" | \"file-ods\" | \"file-odt\" | \"file-pdf\" | \"file-pdf-ext\" | \"file-sheet\" | \"file-slides\" | \"file-txt\" | \"file-video\" | \"file-xml\"",
+                    "rawtype": "",
                     "file": "projects/design-angular-kit/src/lib/interfaces/icon.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 186
+                    "kind": 193
                 },
                 {
                     "name": "IconSize",
@@ -25027,9 +24987,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "IconComponent",
-                "coveragePercent": 62,
-                "coverageCount": "5/8",
-                "status": "good"
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/components/utils/language-switcher/language-switcher.component.ts",
@@ -25093,6 +25053,16 @@
                 "coveragePercent": 85,
                 "coverageCount": "6/7",
                 "status": "very-good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/interfaces/icon.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "IconNameArray",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/interfaces/utils.ts",

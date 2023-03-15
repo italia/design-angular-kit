@@ -121,6 +121,10 @@
         {
           "label": "Spinner",
           "link": "/componenti/spinner"
+        },
+        {
+          "label": "Icons",
+          "link": "/componenti/icon"
         }
       ]
     }
