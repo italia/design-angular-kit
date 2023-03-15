@@ -125,6 +125,10 @@
         {
           "label": "Icons",
           "link": "/componenti/icon"
+        },
+        {
+          "label": "Error Page",
+          "link": "/componenti/error-page"
         }
       ]
     }

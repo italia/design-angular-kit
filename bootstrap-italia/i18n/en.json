@@ -86,10 +86,19 @@
       "selected": "Selected",
       "language-selection": "Language selection: {{lang}}",
       "select-language": "Select a language",
-      "404": {
-        "title": "Resource not found",
-        "description": "Oops! The resource you are looking for was not found, go back to the homepage and use the menu to continue browsing.",
-        "go-back": "Go back",
+      "error-page": {
+        "404": {
+          "title": "Resource not found",
+          "description": "Oops! The resource you are looking for was not found, go back to the homepage and use the menu to continue browsing."
+        },
+        "403": {
+          "title": "Forbidden",
+          "description": "You are not authorized to access this resource!"
+        },
+        "500": {
+          "title": "An error has occurred",
+          "description": "There was an unexpected error. Please try again later or contact support."
+        },
         "go-to-homepage": "Return to homepage"
       }
     }

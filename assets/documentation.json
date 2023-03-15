@@ -11602,6 +11602,231 @@
             "templateData": "<li>\n  <span *ngIf=\"isDivider; else item\" class=\"divider\"></span>\n\n  <ng-template #item>\n    <it-link [class]=\"linkClass\" [id]=\"id\" [href]=\"href\" [externalLink]=\"externalLink\" [disabled]=\"disabled\">\n      <it-icon *ngIf=\"iconName && iconPosition === 'left'\"\n                size=\"sm\"\n                [name]=\"iconName\"\n                [color]=\"isDark ? 'light' : 'primary'\"\n                [svgClass]=\"iconPosition\"></it-icon>\n\n      <span><ng-content></ng-content></span>\n\n      <it-icon *ngIf=\"iconName && iconPosition === 'right'\"\n                size=\"sm\"\n                [name]=\"iconName\"\n                [color]=\"isDark ? 'light' : 'primary'\"\n                [svgClass]=\"iconPosition\"></it-icon>\n\n      <span *ngIf=\"isActive\" class=\"visually-hidden\">{{'it.core.active'|translate}}</span>\n    </it-link>\n  </ng-template>\n</li>\n"
         },
         {
+            "name": "ErrorPageComponent",
+            "id": "component-ErrorPageComponent-ae4ad290c051971b67b1baa1b5c6ea84758ed69dfe3d66a8ab21e00c9792e0763818d5ed9bdc262e29e23aa9df3bfc419e4a73d13df6bfdd1cd2b53600fc4d5f",
+            "file": "projects/design-angular-kit/src/lib/components/utils/error-page/error-page.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-error-page",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./error-page.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "errorCode",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe error code to show\n",
+                    "description": "<p>The error code to show</p>\n",
+                    "line": 15,
+                    "type": "number | \"404\" | \"403\" | \"500\"",
+                    "decorators": []
+                },
+                {
+                    "name": "errorDescription",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCustom error description\n- If set it will be displayed instead of the default description.\n- It is possible to use i18n keys\n",
+                    "description": "<p>Custom error description</p>\n<ul>\n<li>If set it will be displayed instead of the default description.</li>\n<li>It is possible to use i18n keys</li>\n</ul>\n",
+                    "line": 35,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "errorTitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCustom error title\n- If set it will be displayed instead of the default title.\n- It is possible to use i18n keys\n",
+                    "description": "<p>Custom error title</p>\n<ul>\n<li>If set it will be displayed instead of the default title.</li>\n<li>It is possible to use i18n keys</li>\n</ul>\n",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "showBackButton",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 988,
+                            "end": 1012,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 989,
+                                "end": 996,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true - show</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nShow/Hide back button\n",
+                    "description": "<p>Show/Hide back button</p>\n",
+                    "line": 41,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "showErrorCode",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 510,
+                            "end": 534,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 511,
+                                "end": 518,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true - show</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nShow/Hide error code\n",
+                    "description": "<p>Show/Hide error code</p>\n",
+                    "line": 21,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "showHomeButton",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1103,
+                            "end": 1127,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1104,
+                                "end": 1111,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true - show</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nShow/Hide home button\n",
+                    "description": "<p>Show/Hide home button</p>\n",
+                    "line": 47,
+                    "type": "BooleanInput",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { ActivatedRoute } from '@angular/router';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-error-page',\n  templateUrl: './error-page.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ErrorPageComponent {\n\n  /**\n   * The error code to show\n   */\n  @Input() errorCode?: number | 404 | 403 | 500;\n\n  /**\n   * Show/Hide error code\n   * @default true - show\n   */\n  @Input() showErrorCode?: BooleanInput = true;\n\n  /**\n   * Custom error title\n   * - If set it will be displayed instead of the default title.\n   * - It is possible to use i18n keys\n   */\n  @Input() errorTitle?: string;\n\n  /**\n   * Custom error description\n   * - If set it will be displayed instead of the default description.\n   * - It is possible to use i18n keys\n   */\n  @Input() errorDescription?: string;\n\n  /**\n   * Show/Hide back button\n   * @default true - show\n   */\n  @Input() showBackButton?: BooleanInput = true;\n\n  /**\n   * Show/Hide home button\n   * @default true - show\n   */\n  @Input() showHomeButton?: BooleanInput = true;\n\n  constructor(\n    private readonly route: ActivatedRoute\n  ) {\n    this.route.data.subscribe(data => {\n      if (!this.errorCode && data['errorCode']) {\n        this.errorCode = data['errorCode']; // Get errorCode from route data\n      }\n      if (data['showErrorCode'] !== undefined) {\n        this.showBackButton = data['showErrorCode'];  // Get showErrorCode from route data\n      }\n      if (!this.errorTitle && data['errorTitle']) {\n        this.errorTitle = data['errorTitle'];  // Get errorTitle from route data\n      }\n      if (!this.errorDescription && data['errorDescription']) {\n        this.errorDescription = data['errorDescription'];  // Get errorDescription from route data\n      }\n      if (data['showBackButton'] !== undefined) {\n        this.showBackButton = data['showBackButton'];  // Get showBackButton from route data\n      }\n      if (data['showHomeButton'] !== undefined) {\n        this.showHomeButton = data['showHomeButton'];  // Get showHomeButton from route data\n      }\n    });\n  }\n\n  get isDefaultErrorCode(): boolean {\n    return this.errorCode === 404 || this.errorCode === 403 || this.errorCode === 500;\n  }\n\n  get isShowErrorCode(): boolean {\n    return isTrueBooleanInput(this.showErrorCode);\n  }\n\n  get isShowBackButton(): boolean {\n    return isTrueBooleanInput(this.showBackButton);\n  }\n\n  get isShowHomeButton(): boolean {\n    return isTrueBooleanInput(this.showHomeButton);\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 47,
+                "jsdoctags": [
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "isDefaultErrorCode": {
+                    "name": "isDefaultErrorCode",
+                    "getSignature": {
+                        "name": "isDefaultErrorCode",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 74
+                    }
+                },
+                "isShowErrorCode": {
+                    "name": "isShowErrorCode",
+                    "getSignature": {
+                        "name": "isShowErrorCode",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 78
+                    }
+                },
+                "isShowBackButton": {
+                    "name": "isShowBackButton",
+                    "getSignature": {
+                        "name": "isShowBackButton",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 82
+                    }
+                },
+                "isShowHomeButton": {
+                    "name": "isShowHomeButton",
+                    "getSignature": {
+                        "name": "isShowHomeButton",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 86
+                    }
+                }
+            },
+            "templateData": "<div class=\"container text-center mt-5\">\n  <h1 *ngIf=\"errorCode && isShowErrorCode\">{{errorCode}}</h1>\n  <h2>\n    <ng-container *ngIf=\"!errorTitle && isDefaultErrorCode; else customTitle\">\n      {{'it.utils.error-page.' + errorCode + '.title' | translate}}\n    </ng-container>\n    <ng-template #customTitle>{{(errorTitle || 'it.errors.generic') | translate}}</ng-template>\n  </h2>\n\n  <p class=\"mt-3 w-75 mx-auto\">\n    <ng-container\n      *ngIf=\"!errorDescription && isDefaultErrorCode; else customDescription\">\n      {{'it.utils.error-page.' + errorCode + '.description' | translate}}\n    </ng-container>\n    <ng-template #customDescription>\n      {{(errorDescription || 'it.errors.generic-support-message') | translate}}\n    </ng-template>\n  </p>\n\n  <div class=\"mt-5\" *ngIf=\"isShowBackButton || isShowHomeButton\">\n    <it-back-button *ngIf=\"isShowBackButton\"></it-back-button>\n    <a *ngIf=\"isShowHomeButton\" itButton=\"outline-primary\" class=\"ms-3\" routerLink=\"/\"\n       title=\"{{'it.utils.error-page.go-to-homepage' | translate}}\">\n      {{'it.utils.error-page.go-to-homepage' | translate}}\n    </a>\n  </div>\n</div>\n"
+        },
+        {
             "name": "HeaderComponent",
             "id": "component-HeaderComponent-91e5bb9382d20a8cf7d237755a93e9c20dd99358d7fc4425c7e028cf112651cc8055270c6dac740923568a795b9e29c9e94d2e0453508b33f92b33234db18643",
             "file": "projects/design-angular-kit/src/lib/components/navigation/header/header.component.ts",
@@ -14469,46 +14694,6 @@
             "stylesData": "",
             "extends": "AbstractComponent",
             "templateData": "<div #modalElement [id]=\"id\" class=\"modal fade\"\n     tabindex=\"-1\"\n     role=\"dialog\"\n     aria-hidden=\"true\"\n     [attr.aria-labelledby]=\"id+'-label'\">\n  <div class=\"modal-dialog {{size}}\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h2 class=\"modal-title h5 no_toc\" id=\"{{id}}-label\">{{title}}</h2>\n        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"\n                [attr.aria-label]=\"'it.core.close-modal'|translate\"></button>\n      </div>\n      <div class=\"modal-body mb-3\">\n        <ng-content></ng-content>\n      </div>\n      <div class=\"modal-footer modal-footer-shadow\">\n        <ng-content select=\"[footer]\"></ng-content>\n      </div>\n    </div>\n  </div>\n</div>\n"
-        },
-        {
-            "name": "NotFoundPageComponent",
-            "id": "component-NotFoundPageComponent-bbd27031d3cc193d5351387f24e35ae23348e43c324c1c2777b9b18e0c8625377c75f12ab1c6233b79f19a43f8d8aed8eb73df8f69458216e8bf7ffac581c1a5",
-            "file": "projects/design-angular-kit/src/lib/components/utils/not-found-page/not-found-page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "it-not-found-page",
-            "styleUrls": [
-                "./not-found-page.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./not-found-page.component.html"
-            ],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import {Component} from '@angular/core';\n\n@Component({\n  selector: 'it-not-found-page',\n  templateUrl: './not-found-page.component.html',\n  styleUrls: ['./not-found-page.component.scss']\n})\nexport class NotFoundPageComponent {\n\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./not-found-page.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "templateData": "<div class=\"error-template text-center mt-5\">\n  <h1>404</h1>\n  <h2>{{'it.utils.404.title' | translate}}</h2>\n  <p>{{'it.utils.404.description' | translate}}</p>\n\n  <div class=\"mt-3\">\n    <it-back-button></it-back-button>\n    <a class=\"btn btn-primary ms-3\" href=\"/\" title=\"{{'it.utils.404.go-to-homepage' | translate}}\">\n      {{'it.utils.404.go-to-homepage' | translate}}\n    </a>\n  </div>\n\n</div>\n"
         },
         {
             "name": "NotificationsComponent",
@@ -23002,13 +23187,13 @@
     "modules": [
         {
             "name": "ComponentsModule",
-            "id": "module-ComponentsModule-e832156e661400ee17f1a5b31ad450944f6b93582dbe475717f9979364d3d584dfe0a794070e7e0ac1b5316c579b934dd972459175b38c634dbe986a151fe388",
+            "id": "module-ComponentsModule-4ef71262c3cd07ed2823f13281c62c579e15bea62e10b6f6b6fd4201d8dc946531ad87584bf92d1d74cf9f1a4b2f5c67689e3539791e42b48a4f3f13ce7ad2ed",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/design-angular-kit/src/lib/components/components.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgForOf, NgIf } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { RouterLink } from '@angular/router';\nimport { AccordionComponent } from './core/accordion/accordion.component';\nimport { AlertComponent } from './core/alert/alert.component';\nimport { BadgeDirective } from './core/badge/badge.directive';\nimport { ButtonDirective } from './core/button/button.directive';\nimport { CalloutComponent } from './core/callout/callout.component';\nimport { CardComponent } from './core/card/card.component';\nimport { CarouselComponent } from './core/carousel/carousel/carousel.component';\nimport { CarouselItemComponent } from './core/carousel/carousel-item/carousel-item.component';\nimport { CollapseComponent } from './core/collapse/collapse.component';\nimport { DropdownComponent } from './core/dropdown/dropdown/dropdown.component';\nimport { DropdownItemComponent } from './core/dropdown/dropdown-item/dropdown-item.component';\nimport { LinkComponent } from './core/link/link.component';\nimport { ListComponent } from './core/list/list/list.component';\nimport { ListItemComponent } from './core/list/list-item/list-item.component';\nimport { ModalComponent } from './core/modal/modal.component';\nimport { NotificationsComponent } from './core/notifications/notifications.component';\nimport { PaginationComponent } from './core/pagination/pagination.component';\nimport { PopoverDirective } from './core/popover/popover.directive';\nimport { ProgressBarComponent } from './core/progress-bar/progress-bar.component';\nimport { ProgressButtonComponent } from './core/progress-button/progress-button.component';\nimport { RatingComponent } from './core/rating/rating.component';\nimport { SpinnerComponent } from './core/spinner/spinner.component';\nimport { SteppersContainerComponent } from './core/steppers/steppers-container/steppers-container.component';\nimport { SteppersItemComponent } from './core/steppers/steppers-item/steppers-item.component';\nimport { TabContainerComponent } from './core/tab/tab-container/tab-container.component';\nimport { TabItemComponent } from './core/tab/tab-item/tab-item.component';\nimport { TableComponent } from './core/table/table.component';\nimport { TooltipDirective } from './core/tooltip/tooltip.directive';\nimport { CheckboxComponent } from './form/checkbox/checkbox.component';\nimport { InputComponent } from './form/input/input.component';\nimport { PasswordInputComponent } from './form/password-input/password-input.component';\nimport { RadioButtonComponent } from './form/radio-button/radio-button.component';\nimport { SelectComponent } from './form/select/select.component';\nimport { TextareaComponent } from './form/textarea/textarea.component';\nimport { UploadDragDropComponent } from './form/upload-drag-drop/upload-drag-drop.component';\nimport { UploadFileListComponent } from './form/upload-file-list/upload-file-list.component';\nimport { BackButtonComponent } from './navigation/back-button/back-button.component';\nimport { BackToTopComponent } from './navigation/back-to-top/back-to-top.component';\nimport { BreadcrumbComponent } from './navigation/breadcrumbs/breadcrumb/breadcrumb.component';\nimport { BreadcrumbItemComponent } from './navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';\nimport { HeaderComponent } from './navigation/header/header.component';\nimport { IconComponent } from './utils/icon/icon.component';\nimport { LanguageSwitcherComponent } from './utils/language-switcher/language-switcher.component';\nimport { NotFoundPageComponent } from './utils/not-found-page/not-found-page.component';\nimport { ChipComponent } from './core/chip/chip.component';\nimport { ForwardDirective } from './core/forward/forward.directive';\nimport { DimmerComponent } from './core/dimmer/dimmer.component';\nimport { DimmerButtonsComponent } from './core/dimmer/dimmer-buttons/dimmer-buttons.component';\nimport { DimmerIconComponent } from './core/dimmer/dimmer-icon/dimmer-icon.component';\nimport { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';\n\n\n/**\n * Core components\n */\nconst core = [\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  RatingComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n];\n\n/**\n * Form components\n */\nconst form = [\n  CheckboxComponent,\n  InputComponent,\n  PasswordInputComponent,\n  RadioButtonComponent,\n  SelectComponent,\n  TextareaComponent,\n  UploadDragDropComponent,\n  UploadFileListComponent\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  BackButtonComponent,\n  BackToTopComponent,\n  BreadcrumbComponent,\n  BreadcrumbItemComponent,\n  HeaderComponent\n];\n\n/**\n * Utils components\n */\nconst utils = [\n  IconComponent,\n  NotFoundPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n];\n\n@NgModule({\n  declarations: [\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ],\n  imports: [\n    CommonModule,\n    TranslateModule,\n    ReactiveFormsModule,\n    NgIf,\n    NgForOf,\n    RouterLink\n  ],\n  exports: [\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ]\n})\nexport class ComponentsModule {\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgForOf, NgIf } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { RouterLink } from '@angular/router';\nimport { AccordionComponent } from './core/accordion/accordion.component';\nimport { AlertComponent } from './core/alert/alert.component';\nimport { BadgeDirective } from './core/badge/badge.directive';\nimport { ButtonDirective } from './core/button/button.directive';\nimport { CalloutComponent } from './core/callout/callout.component';\nimport { CardComponent } from './core/card/card.component';\nimport { CarouselComponent } from './core/carousel/carousel/carousel.component';\nimport { CarouselItemComponent } from './core/carousel/carousel-item/carousel-item.component';\nimport { CollapseComponent } from './core/collapse/collapse.component';\nimport { DropdownComponent } from './core/dropdown/dropdown/dropdown.component';\nimport { DropdownItemComponent } from './core/dropdown/dropdown-item/dropdown-item.component';\nimport { LinkComponent } from './core/link/link.component';\nimport { ListComponent } from './core/list/list/list.component';\nimport { ListItemComponent } from './core/list/list-item/list-item.component';\nimport { ModalComponent } from './core/modal/modal.component';\nimport { NotificationsComponent } from './core/notifications/notifications.component';\nimport { PaginationComponent } from './core/pagination/pagination.component';\nimport { PopoverDirective } from './core/popover/popover.directive';\nimport { ProgressBarComponent } from './core/progress-bar/progress-bar.component';\nimport { ProgressButtonComponent } from './core/progress-button/progress-button.component';\nimport { RatingComponent } from './core/rating/rating.component';\nimport { SpinnerComponent } from './core/spinner/spinner.component';\nimport { SteppersContainerComponent } from './core/steppers/steppers-container/steppers-container.component';\nimport { SteppersItemComponent } from './core/steppers/steppers-item/steppers-item.component';\nimport { TabContainerComponent } from './core/tab/tab-container/tab-container.component';\nimport { TabItemComponent } from './core/tab/tab-item/tab-item.component';\nimport { TableComponent } from './core/table/table.component';\nimport { TooltipDirective } from './core/tooltip/tooltip.directive';\nimport { CheckboxComponent } from './form/checkbox/checkbox.component';\nimport { InputComponent } from './form/input/input.component';\nimport { PasswordInputComponent } from './form/password-input/password-input.component';\nimport { RadioButtonComponent } from './form/radio-button/radio-button.component';\nimport { SelectComponent } from './form/select/select.component';\nimport { TextareaComponent } from './form/textarea/textarea.component';\nimport { UploadDragDropComponent } from './form/upload-drag-drop/upload-drag-drop.component';\nimport { UploadFileListComponent } from './form/upload-file-list/upload-file-list.component';\nimport { BackButtonComponent } from './navigation/back-button/back-button.component';\nimport { BackToTopComponent } from './navigation/back-to-top/back-to-top.component';\nimport { BreadcrumbComponent } from './navigation/breadcrumbs/breadcrumb/breadcrumb.component';\nimport { BreadcrumbItemComponent } from './navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';\nimport { HeaderComponent } from './navigation/header/header.component';\nimport { IconComponent } from './utils/icon/icon.component';\nimport { LanguageSwitcherComponent } from './utils/language-switcher/language-switcher.component';\nimport { ErrorPageComponent } from './utils/error-page/error-page.component';\nimport { ChipComponent } from './core/chip/chip.component';\nimport { ForwardDirective } from './core/forward/forward.directive';\nimport { DimmerComponent } from './core/dimmer/dimmer.component';\nimport { DimmerButtonsComponent } from './core/dimmer/dimmer-buttons/dimmer-buttons.component';\nimport { DimmerIconComponent } from './core/dimmer/dimmer-icon/dimmer-icon.component';\nimport { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';\n\n\n/**\n * Core components\n */\nconst core = [\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  RatingComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n];\n\n/**\n * Form components\n */\nconst form = [\n  CheckboxComponent,\n  InputComponent,\n  PasswordInputComponent,\n  RadioButtonComponent,\n  SelectComponent,\n  TextareaComponent,\n  UploadDragDropComponent,\n  UploadFileListComponent\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  BackButtonComponent,\n  BackToTopComponent,\n  BreadcrumbComponent,\n  BreadcrumbItemComponent,\n  HeaderComponent\n];\n\n/**\n * Utils components\n */\nconst utils = [\n  IconComponent,\n  ErrorPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n];\n\n@NgModule({\n  declarations: [\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ],\n  imports: [\n    CommonModule,\n    TranslateModule,\n    ReactiveFormsModule,\n    NgIf,\n    NgForOf,\n    RouterLink\n  ],\n  exports: [\n    ...core,\n    ...form,\n    ...navigation,\n    ...utils\n  ]\n})\nexport class ComponentsModule {\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -23078,6 +23263,9 @@
                             "name": "DropdownItemComponent"
                         },
                         {
+                            "name": "ErrorPageComponent"
+                        },
+                        {
                             "name": "ForwardDirective"
                         },
                         {
@@ -23106,9 +23294,6 @@
                         },
                         {
                             "name": "ModalComponent"
-                        },
-                        {
-                            "name": "NotFoundPageComponent"
                         },
                         {
                             "name": "NotificationsComponent"
@@ -23247,6 +23432,9 @@
                             "name": "DropdownItemComponent"
                         },
                         {
+                            "name": "ErrorPageComponent"
+                        },
+                        {
                             "name": "ForwardDirective"
                         },
                         {
@@ -23275,9 +23463,6 @@
                         },
                         {
                             "name": "ModalComponent"
-                        },
-                        {
-                            "name": "NotFoundPageComponent"
                         },
                         {
                             "name": "NotificationsComponent"
@@ -23501,7 +23686,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  IconComponent,\n  NotFoundPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n]",
+                "defaultValue": "[\n  IconComponent,\n  ErrorPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n]",
                 "rawdescription": "Utils components",
                 "description": "<p>Utils components</p>\n"
             },
@@ -24054,7 +24239,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  IconComponent,\n  NotFoundPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n]",
+                    "defaultValue": "[\n  IconComponent,\n  ErrorPageComponent,\n  LanguageSwitcherComponent,\n  MarkMatchingTextPipe\n]",
                     "rawdescription": "Utils components",
                     "description": "<p>Utils components</p>\n"
                 }
@@ -24507,7 +24692,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 61,
+        "count": 62,
         "status": "good",
         "files": [
             {
@@ -24983,6 +25168,15 @@
                 "status": "medium"
             },
             {
+                "filePath": "projects/design-angular-kit/src/lib/components/utils/error-page/error-page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ErrorPageComponent",
+                "coveragePercent": 75,
+                "coverageCount": "6/8",
+                "status": "good"
+            },
+            {
                 "filePath": "projects/design-angular-kit/src/lib/components/utils/icon/icon.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -24999,15 +25193,6 @@
                 "coveragePercent": 33,
                 "coverageCount": "2/6",
                 "status": "medium"
-            },
-            {
-                "filePath": "projects/design-angular-kit/src/lib/components/utils/not-found-page/not-found-page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "NotFoundPageComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/interfaces/core.ts",
