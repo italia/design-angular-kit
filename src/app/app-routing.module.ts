@@ -43,6 +43,7 @@ const routes: Routes = [
     { path: 'alert', loadChildren: () => import('src/app/alert/alert.module').then(m => m.AlertModule) },
     { path: 'spinner', loadChildren: () => import('src/app/spinner/spinner.module').then(m => m.SpinnerModule) },
     { path: 'icon', loadChildren: () => import('src/app/icon/icon.module').then(m => m.IconModule) },
+    { path: 'error-page', loadChildren: () => import('src/app/error-page/error-page.module').then(m => m.ErrorPageModule) },
   ]},
   { path: 'error/not-found', component: ErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ErrorPageComponent, data: { errorCode: 403 } },
@@ -51,7 +52,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, {useHash: true, scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
