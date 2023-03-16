@@ -127,6 +127,10 @@
           "link": "/componenti/icon"
         },
         {
+          "label": "Accordion",
+          "link": "/componenti/accordion"
+        },
+        {
           "label": "Error Page",
           "link": "/componenti/error-page"
         },

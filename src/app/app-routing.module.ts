@@ -43,6 +43,7 @@ const routes: Routes = [
     { path: 'alert', loadChildren: () => import('src/app/alert/alert.module').then(m => m.AlertModule) },
     { path: 'spinner', loadChildren: () => import('src/app/spinner/spinner.module').then(m => m.SpinnerModule) },
     { path: 'icon', loadChildren: () => import('src/app/icon/icon.module').then(m => m.IconModule) },
+    { path: 'accordion', loadChildren: () => import('src/app/accordion/accordion.module').then(m => m.AccordionModule) },
     { path: 'error-page', loadChildren: () => import('src/app/error-page/error-page.module').then(m => m.ErrorPageModule) },
     { path: 'modal', loadChildren: () => import('src/app/modal/modal.module').then(m => m.ModalModule) },
     { path: 'language-switcher', loadChildren: () => import('src/app/language-switcher/language-switcher.module').then(m => m.LanguageSwitcherModule) },
