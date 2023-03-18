@@ -13,22 +13,27 @@ export class ListItemComponent extends LinkComponent {
   /**
    * Add active class
    */
-  @Input() active?: BooleanInput;
+  @Input() protected active?: BooleanInput;
 
   /**
    * Add large class
    */
-  @Input() large?: BooleanInput;
+  @Input() protected large?: BooleanInput;
+
+  /**
+   * Add icon-left class
+   */
+  @Input() protected iconLeft?: BooleanInput;
 
   /**
    * The avatar url
    */
-  @Input() avatar?: URL;
+  @Input() protected avatar?: URL;
 
   /**
    * The thumb image url
    */
-  @Input() image?: URL;
+  @Input() protected image?: URL;
 
 
   get itemClass(): string {
@@ -38,6 +43,9 @@ export class ListItemComponent extends LinkComponent {
     }
     if (isTrueBooleanInput(this.large)) {
       itemClass += ` large`;
+    }
+    if (isTrueBooleanInput(this.iconLeft)) {
+      itemClass += ` icon-left`;
     }
     if (this.class) {
       itemClass += ` ${this.class}`;
