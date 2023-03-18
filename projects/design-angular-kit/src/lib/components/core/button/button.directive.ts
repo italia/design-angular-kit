@@ -4,6 +4,10 @@ import { IconComponent } from '../../utils/icon/icon.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ProgressButtonComponent } from '../progress-button/progress-button.component';
 
+/**
+ * Button
+ * @description Bootstrap italia custom button styles
+ */
 @Directive({
   selector: '[itButton]',
   exportAs: 'itButton'
@@ -12,28 +16,33 @@ export class ButtonDirective {
 
   /**
    * Button color
+   * @default undefined
    */
   @Input('itButton') color?: ButtonColor;
 
   /**
    * Button size
+   * @default undefined
    */
   @Input() size?: ButtonSize;
 
   /**
    * Indicates whether the button occupies all the width available to it.
+   * @default undefined
    */
   @Input() block?: ButtonSize;
 
   /**
    * If button is disabled
+   * @default false
    */
   @Input() @HostBinding('disabled') disabled?: BooleanInput;
 
   /**
    * The icon children
+   * @default undefined
    */
-  @ContentChildren(IconComponent) icons?: QueryList<IconComponent>;
+  @ContentChildren(IconComponent) protected icons?: QueryList<IconComponent>;
 
   private isFocus = false;
 
@@ -43,17 +52,17 @@ export class ButtonDirective {
   }
 
   @HostListener('focus')
-  onFocus() {
+  protected onFocus() {
     this.isFocus = true;
   }
 
   @HostListener('blur')
-  onBlur() {
+  protected onBlur() {
     this.isFocus = false;
   }
 
   @HostBinding('class')
-  get hostClasses(): string {
+  protected get hostClasses(): string {
     let cssClass = 'btn';
 
     if (this.color) {

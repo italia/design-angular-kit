@@ -1,0 +1,41 @@
+<h3>Modale semplice</h3>
+<p>Attiva o disattiva la demo di una modale facendo clic sul pulsante qui sotto.</p>
+
+<div class="bd-example">
+
+  <div class="d-flex gap-2">
+    <!-- Button con azione click -->
+    <button type="button" itButton="primary" class="me-2" (click)="exampleModal.toggle()">
+      Lancia la demo della modale
+    </button>
+
+    <!-- Button con data-bs-toggle -->
+    <button type="button" itButton="outline-primary" data-bs-toggle="modal" data-bs-target="#close-modal">
+      Modale con pulsante di chiusura
+    </button>
+  </div>
+
+  <!-- Modale senza pulsante di chiusura -->
+  <it-modal #exampleModal="itModal" closeButton="false">
+    <ng-container modalTitle>Intestazione modale</ng-container>
+    <ng-container description>Descrizione scopo della modale.</ng-container>
+
+    <p>Font Titillium 16px. Leading 24px. omnis iste natus error.</p>
+
+    <ng-container footer>
+      <button itButton="outline-primary" size="sm" type="button" data-bs-dismiss="modal">Azione 2</button>
+      <button itButton="primary" size="sm" type="button">Azione 1</button>
+    </ng-container>
+  </it-modal>
+
+  <!-- Modale con pulsante di chiusura -->
+  <it-modal id="close-modal">
+    <ng-container modalTitle>Intestazione modale</ng-container>
+
+    <p>Font Titillium 16px. Leading 24px. omnis iste natus error.</p>
+
+    <ng-container footer>
+      <button itButton="primary" size="sm" type="button" data-bs-dismiss="modal">Chiudi</button>
+    </ng-container>
+  </it-modal>
+</div>

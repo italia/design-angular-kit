@@ -129,6 +129,10 @@
         {
           "label": "Error Page",
           "link": "/componenti/error-page"
+        },
+        {
+          "label": "Modal",
+          "link": "/componenti/modal"
         }
       ]
     }

@@ -44,6 +44,7 @@ const routes: Routes = [
     { path: 'spinner', loadChildren: () => import('src/app/spinner/spinner.module').then(m => m.SpinnerModule) },
     { path: 'icon', loadChildren: () => import('src/app/icon/icon.module').then(m => m.IconModule) },
     { path: 'error-page', loadChildren: () => import('src/app/error-page/error-page.module').then(m => m.ErrorPageModule) },
+    { path: 'modal', loadChildren: () => import('src/app/modal/modal.module').then(m => m.ModalModule) },
   ]},
   { path: 'error/not-found', component: ErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ErrorPageComponent, data: { errorCode: 403 } },

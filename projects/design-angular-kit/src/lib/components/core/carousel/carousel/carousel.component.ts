@@ -16,6 +16,10 @@ import { CarouselItemComponent } from '../carousel-item/carousel-item.component'
 import { CarouselBI } from 'bootstrap-italia';
 import { startWith, Subscription } from 'rxjs';
 
+/**
+ * Carousel
+ * @description A presentation component for scrolling through elements, images or text slides.
+ */
 @Component({
   selector: 'it-carousel',
   templateUrl: './carousel.component.html',
@@ -27,6 +31,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
   /**
    * The callout title
+   * @default undefined
    */
   @Input() title?: string;
 
@@ -38,26 +43,29 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Custom class in splide__track element
+   * @default ''
    */
   @Input() trackClass: string = '';
 
   /**
    * True for full screen (landscape) viewing
+   * @default undefined
    */
   @Input() fullCarousel?: BooleanInput;
 
   /**
    * To indicate that the contained image is of a large type
+   * @default undefined
    */
   @Input() bigImg?: BooleanInput;
 
   /**
    * Card line style
+   * @default undefined
    */
   @Input() lined?: BooleanInput;
 
-  @ContentChildren(CarouselItemComponent) items?: QueryList<CarouselItemComponent>;
-
+  @ContentChildren(CarouselItemComponent) protected items?: QueryList<CarouselItemComponent>;
 
   private carousel?: CarouselBI;
 
@@ -65,20 +73,20 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
   private itemSubscriptions?: Array<Subscription>;
 
-  get typeClass(): string {
+  protected get typeClass(): string {
     const typeClass = 'it-carousel-landscape-abstract';
     return this.type === 'default' ? typeClass : typeClass + `-${this.type}`;
   }
 
-  get isFullCarousel(): boolean {
+  protected get isFullCarousel(): boolean {
     return isTrueBooleanInput(this.fullCarousel);
   }
 
-  get isBigImg(): boolean {
+  protected get isBigImg(): boolean {
     return isTrueBooleanInput(this.bigImg);
   }
 
-  get isLined(): boolean {
+  protected get isLined(): boolean {
     return isTrueBooleanInput(this.lined);
   }
 

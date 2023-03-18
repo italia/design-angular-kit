@@ -1,0 +1,21 @@
+<h3>Modale con icona</h3>
+<p>È possibile inserire un icona di alert (o altro tipo) affiancandola all’intestazione.</p>
+
+<div class="bd-example">
+
+  <button type="button" itButton="primary" class="me-2" (click)="iconModal.toggle()">
+    Lancia modale con icona
+  </button>
+
+  <it-modal #iconModal="itModal" closeButton="false" alertModal="true">
+    <it-icon name="info-circle" beforeTitle></it-icon>
+    <ng-container modalTitle>Questo è un messaggio di notifica più esteso del solito</ng-container>
+
+    <p>In questo caso viene fornito solo un pulsante di conferma della modale.</p>
+
+    <ng-container footer>
+      <button itButton="primary" size="sm" type="button" data-bs-dismiss="modal">Ok</button>
+    </ng-container>
+  </it-modal>
+
+</div>
