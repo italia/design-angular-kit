@@ -1,9 +1,14 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
+/**
+ * Modal windows
+ * @description To show featured content, notifications to users, or personalized content.
+ */
 @Component({
-  selector: 'it-modal[title]',
+  selector: 'it-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
   exportAs: 'itModal',
@@ -12,41 +17,87 @@ import { Modal } from 'bootstrap-italia';
 export class ModalComponent extends AbstractComponent {
 
   /**
-   * The modal Title
+   * Show/Hide close button on header
+   * @default true
    */
-  @Input() title!: string;
+  @Input() protected closeButton: BooleanInput = true;
+
+  /**
+   * To correctly format the contents of the modal with icon
+   * @default false
+   */
+  @Input() protected alertModal?: BooleanInput;
+
+  /**
+   * To correctly format the contents of the modal with Link List
+   * @default false
+   */
+  @Input() protected dialogLinkList?: BooleanInput;
+
+  /**
+   * Modal type Popconfirm can be used for short confirmation messages.
+   * @default false
+   */
+  @Input() protected popconfirm?: BooleanInput;
+
+  /**
+   * You can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible
+   * @default false
+   */
+  @Input() protected scrollable?: BooleanInput;
+
+  /**
+   * To have modals that appear with fades
+   * @default true
+   */
+  @Input() protected fade?: BooleanInput = true;
+
+  /**
+   * Modal alignment
+   * - <b>centered</b>: to vertically center the modal
+   * - <b>left</b>: to left-align the modal
+   * - <b>right</b>: to right-align the modal
+   * @default undefined
+   */
+  @Input() protected alignment?: 'centered' | 'left' | 'right';
 
   /**
    * The modal size
+   * @default undefined
    */
-  @Input() size?: 'modal-sm' | 'modal-lg' | 'modal-xl';
+  @Input() protected size?: 'sm' | 'lg' | 'xl';
+
+  /**
+   * To better distinguish the footer element with a shadow
+   * @default false
+   */
+  @Input() protected footerShadow?: BooleanInput;
 
   /**
    * This event fires immediately when the instance method show is called.
    */
-  @Output() onShow: EventEmitter<Event> = new EventEmitter();
+  @Output() public onShow: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires when the modal has been made visible to the user (it will wait for CSS transitions to complete).
    */
-  @Output() onShown: EventEmitter<Event> = new EventEmitter();
+  @Output() public onShown: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is raised immediately when the instance method hide has been called.
    */
-  @Output() onHide: EventEmitter<Event> = new EventEmitter();
+  @Output() public onHide: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires when the modal has finished hiding from the user (it will wait for CSS transitions to complete).
    */
-  @Output() onHidden: EventEmitter<Event> = new EventEmitter();
+  @Output() public onHidden: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is fired when the modal is displayed, its background is static and a click outside the modal or a press
    * of the esc key occurs and data-bs-keyboard is set to false.
    */
-  @Output() onHidePrevented: EventEmitter<Event> = new EventEmitter();
-
+  @Output() public onHidePrevented: EventEmitter<Event> = new EventEmitter();
 
   private modal?: Modal;
 
@@ -66,6 +117,45 @@ export class ModalComponent extends AbstractComponent {
       element.addEventListener('hidden.bs.modal', event => this.onHidden.emit(event));
       element.addEventListener('hidePrevented.bs.modal', event => this.onHidePrevented.emit(event));
     }
+  }
+
+  protected get isCloseButton(): boolean {
+    return isTrueBooleanInput(this.closeButton);
+  }
+
+  protected get isFooterShadow(): boolean {
+    return isTrueBooleanInput(this.footerShadow);
+  }
+
+  protected get modalClass(): string {
+    let modalClass = 'modal';
+    if (isTrueBooleanInput(this.fade)) {
+      modalClass += ` fade`;
+    }
+    if (isTrueBooleanInput(this.alertModal)) {
+      modalClass += ` alert-modal`;
+    }
+    if (isTrueBooleanInput(this.dialogLinkList)) {
+      modalClass += ` it-dialog-link-list`;
+    }
+    if (isTrueBooleanInput(this.popconfirm)) {
+      modalClass += ` popconfirm-modal`;
+    }
+    if (isTrueBooleanInput(this.scrollable)) {
+      modalClass += ` it-dialog-scrollable`;
+    }
+    return modalClass;
+  }
+
+  protected get dialogClass(): string {
+    let dialogClass = 'modal-dialog';
+    if (this.alignment) {
+      dialogClass += ` modal-dialog-${this.alignment}`;
+    }
+    if (this.size) {
+      dialogClass += ` modal-${this.size}`;
+    }
+    return dialogClass;
   }
 
   /**
