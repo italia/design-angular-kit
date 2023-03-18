@@ -1,0 +1,37 @@
+<h3>Modale Popconfirm</h3>
+<p>La Modale di tipo Popconfirm può essere utilizzata per brevi messaggi di conferma.</p>
+
+<div class="bd-example">
+
+  <div class="d-flex gap-2">
+    <button type="button" itButton="primary" class="me-2" (click)="basicPopconfirmModal.toggle()">
+      Lancia Popconfirm basico
+    </button>
+
+    <button type="button" itButton="primary" class="me-2" (click)="headerPopconfirmModal.toggle()">
+      Lancia Popconfirm con header
+    </button>
+  </div>
+
+  <!-- Basico -->
+  <it-modal #basicPopconfirmModal="itModal" closeButton="false" popconfirm="true">
+    <p>Font Titillium 14px. Leading 21px.</p>
+
+    <ng-container footer>
+      <button itButton="primary" size="sm" type="button">Azione 1</button>
+      <button itButton="outline-secondary" size="sm" type="button" data-bs-dismiss="modal">Azione 2</button>
+    </ng-container>
+  </it-modal>
+
+  <!-- Con header -->
+  <it-modal #headerPopconfirmModal="itModal" closeButton="false" popconfirm="true">
+    <ng-container modalTitle>Intestazione Popconfirm</ng-container>
+
+    <p>Font Titillium 14px. Leading 21px.</p>
+
+    <ng-container footer>
+      <button itButton="primary" size="sm" type="button">Azione 1</button>
+      <button itButton="outline-secondary" size="sm" type="button" data-bs-dismiss="modal">Azione 2</button>
+    </ng-container>
+  </it-modal>
+</div>

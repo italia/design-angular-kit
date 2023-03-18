@@ -1,0 +1,34 @@
+<h3>Modale con Link List</h3>
+<p>All’interno della modale è possibile inserire delle Liste di link.</p>
+
+<div class="bd-example">
+
+  <button type="button" itButton="primary" class="me-2" (click)="listModal.toggle()">
+    Lancia modale con list
+  </button>
+
+  <it-modal #listModal="itModal" closeButton="false" dialogLinkList="true">
+    <ng-container modalTitle>
+      <span>1.</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+    </ng-container>
+
+    <it-list linkList="true">
+      <it-list-item iconLeft="true" href="#" externalLink="true" (click)="listModal.hide()">
+        <it-icon name="chevron-right" color="primary"></it-icon>
+        <span>Link lista 1</span>
+      </it-list-item>
+      <it-list-item iconLeft="true" href="#" externalLink="true" (click)="listModal.hide()">
+        <it-icon name="chevron-right" color="primary"></it-icon>
+        <span>Link lista 2</span>
+      </it-list-item>
+      <it-list-item iconLeft="true" href="#" externalLink="true" (click)="listModal.hide()">
+        <it-icon name="chevron-right" color="primary"></it-icon>
+        <span>Link lista 3</span>
+      </it-list-item>
+    </it-list>
+
+    <ng-container footer>
+      <button itButton="primary" size="sm" type="button" data-bs-dismiss="modal">Chiudi</button>
+    </ng-container>
+  </it-modal>
+</div>

@@ -1,0 +1,45 @@
+<h3>Dimensioni opzionali</h3>
+
+<div class="bd-example">
+
+  <div class="d-flex gap-2">
+      <button type="button" itButton="primary" class="me-2" (click)="smModal.toggle()">
+        Modale piccola
+      </button>
+    <button type="button" itButton="primary" class="me-2" (click)="lgModal.toggle()">
+      Modale grande
+    </button>
+
+    <button type="button" itButton="primary" class="me-2" (click)="xlModal.toggle()">
+      Modale molto grande
+    </button>
+  </div>
+
+  <!-- Modale piccola -->
+  <it-modal #smModal="itModal" size="sm">
+    <ng-container modalTitle>Modale piccola</ng-container>
+
+    <ng-container footer>
+      <button itButton="outline-primary" size="sm" type="button" data-bs-dismiss="modal">Chiudi</button>
+    </ng-container>
+  </it-modal>
+
+  <!-- Modale grande -->
+  <it-modal #lgModal="itModal" size="lg">
+    <ng-container modalTitle>Modale grande</ng-container>
+
+    <ng-container footer>
+      <button itButton="outline-primary" size="sm" type="button" data-bs-dismiss="modal">Chiudi</button>
+    </ng-container>
+  </it-modal>
+
+  <!-- Modale molto grande -->
+  <it-modal #xlModal="itModal" size="xl">
+    <ng-container modalTitle>Modale molto grande</ng-container>
+
+    <ng-container footer>
+      <button itButton="outline-primary" size="sm" type="button" data-bs-dismiss="modal">Chiudi</button>
+    </ng-container>
+  </it-modal>
+
+</div>

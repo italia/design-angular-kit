@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractComponent } from '../../../../abstracts/abstract.component';
 
+/**
+ * Carousel Item
+ * @description element, image or text slide of carousel
+ */
 @Component({
   selector: 'it-carousel-item',
   templateUrl: './carousel-item.component.html',

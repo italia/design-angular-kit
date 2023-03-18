@@ -4,6 +4,10 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { Alert } from 'bootstrap-italia';
 
+/**
+ * Alert
+ * @description You can provide feedback to the user via alert messages.
+ */
 @Component({
   selector: 'it-alert',
   templateUrl: './alert.component.html',
@@ -21,25 +25,26 @@ export class AlertComponent extends AbstractComponent {
 
   /**
    * Inserts the close button
+   * @default false
    */
   @Input() dismissible?: BooleanInput;
 
   /**
    * This event fires immediately when the instance's close method is called.
    */
-  @Output() onClose: EventEmitter<Event> = new EventEmitter();
+  @Output() public onClose: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires when the alert has been closed (it will wait for CSS transitions to complete).
    */
-  @Output() onClosed: EventEmitter<Event> = new EventEmitter();
+  @Output() public onClosed: EventEmitter<Event> = new EventEmitter();
 
   private alert?: Alert;
 
   @ViewChild('alertElement') private alertElement?: ElementRef<HTMLDivElement>;
 
 
-  get isDismissible(): boolean {
+  protected get isDismissible(): boolean {
     return isTrueBooleanInput(this.dismissible);
   }
 
