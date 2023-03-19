@@ -1,0 +1,9 @@
+<h3>Personalizzazione</h3>
+<p>Puoi personalizzare le label delle lingue, passando un <code [innerText]="'Array<AvailableLanguage>'"></code></p>
+
+<div class="bd-example">
+  <it-language-switcher [availableLanguages]="availableLanguages"></it-language-switcher>
+
+  <p class="mt-5">Risultato: {{'it.utils.select-language' | translate}}</p>
+
+</div>
