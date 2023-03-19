@@ -4,7 +4,7 @@ import { HighlightModule  } from 'ngx-highlightjs';
 
 import { SourceDisplayComponent } from './source-display/source-display.component';
 import { ApiParametersComponent } from './api-parameters/api-parameters.component';
-import { DesignAngularKitModule } from 'projects/design-angular-kit/src/public_api';
+import { DesignAngularKitModule } from '../../../projects/design-angular-kit/src/lib/design-angular-kit.module';
 
 @NgModule({
   imports: [
