@@ -33,7 +33,7 @@ export abstract class AbstractFormComponent<T = any> extends AbstractComponent i
   /**
    * Internal form control
    */
-  control: FormControl;
+  protected control: FormControl;
 
   constructor(
     protected readonly _translateService: TranslateService,

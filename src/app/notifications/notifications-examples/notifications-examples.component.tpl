@@ -1,17 +1,6 @@
 {% from "../../macro.template.njk" import sanitize as sanitize %}
 
-{% set htmlSetup %}
-  {% include "../notifications-setup/notifications-setup.component.html" %}
-{% endset %}
-
-{% set typescriptSetup %}
-  {% include "../notifications-setup/notifications-setup.component.ts" %}
-{% endset %}
-
 <it-notifications-setup></it-notifications-setup>
-
-<it-source-display html="{$ sanitize(htmlSetup) $}" typescript="{$ sanitize(typescriptSetup) $}"></it-source-display>
-
 
 {% set htmlExampleType %}
   {% include "../notifications-example-type/notifications-example-type.component.html" %}
