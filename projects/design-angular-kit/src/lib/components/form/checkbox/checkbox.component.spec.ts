@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { TranslateModule } from '@ngx-translate/core'
 
 import { CheckboxComponent } from './checkbox.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('CheckboxComponent', () => {
   let component: CheckboxComponent;
@@ -9,7 +10,7 @@ describe('CheckboxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckboxComponent ],imports:[TranslateModule.forRoot()]
+      declarations: [ CheckboxComponent ],imports:[FormsModule,ReactiveFormsModule, TranslateModule.forRoot()]
     })
     .compileComponents();
 

@@ -79,14 +79,14 @@ describe('CalloutComponent', () => {
     component.label = 'label';
     component.icon = 'zoom-in';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
     expect(useElement).toBeTruthy();
   });
 
   it('if i don\'t set a icon (with a label), that will be on DOM (default is info-circle)', () => {
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -94,7 +94,7 @@ describe('CalloutComponent', () => {
     component.appearance = 'more';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
     expect(useElement).toBeTruthy();
   });
 
@@ -102,7 +102,7 @@ describe('CalloutComponent', () => {
     component.color = 'success';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-check-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-check-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -110,7 +110,7 @@ describe('CalloutComponent', () => {
     component.color = 'warning';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-help-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-help-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -118,7 +118,7 @@ describe('CalloutComponent', () => {
     component.color = 'danger';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-close-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-close-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -126,7 +126,7 @@ describe('CalloutComponent', () => {
     component.color = 'important';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -134,7 +134,7 @@ describe('CalloutComponent', () => {
     component.color = 'note';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
     expect(useElement).toBeTruthy();
   });
 });
