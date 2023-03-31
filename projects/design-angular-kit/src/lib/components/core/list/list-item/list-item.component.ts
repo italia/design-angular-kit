@@ -13,27 +13,27 @@ export class ListItemComponent extends LinkComponent {
   /**
    * Add active class
    */
-  @Input() protected active?: BooleanInput;
+  @Input() active?: BooleanInput;
 
   /**
    * Add large class
    */
-  @Input() protected large?: BooleanInput;
+  @Input() large?: BooleanInput;
 
   /**
    * Add icon-left class
    */
-  @Input() protected iconLeft?: BooleanInput;
+  @Input() iconLeft?: BooleanInput;
 
   /**
    * The avatar url
    */
-  @Input() protected avatar?: URL;
+  @Input() avatar?: URL;
 
   /**
    * The thumb image url
    */
-  @Input() protected image?: URL;
+  @Input() image?: URL;
 
 
   get itemClass(): string {

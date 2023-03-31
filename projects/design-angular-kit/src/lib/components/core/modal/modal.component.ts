@@ -20,37 +20,37 @@ export class ModalComponent extends AbstractComponent {
    * Show/Hide close button on header
    * @default true
    */
-  @Input() protected closeButton: BooleanInput = true;
+  @Input() closeButton: BooleanInput = true;
 
   /**
    * To correctly format the contents of the modal with icon
    * @default false
    */
-  @Input() protected alertModal?: BooleanInput;
+  @Input() alertModal?: BooleanInput;
 
   /**
    * To correctly format the contents of the modal with Link List
    * @default false
    */
-  @Input() protected dialogLinkList?: BooleanInput;
+  @Input() dialogLinkList?: BooleanInput;
 
   /**
    * Modal type Popconfirm can be used for short confirmation messages.
    * @default false
    */
-  @Input() protected popconfirm?: BooleanInput;
+  @Input() popconfirm?: BooleanInput;
 
   /**
    * You can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible
    * @default false
    */
-  @Input() protected scrollable?: BooleanInput;
+  @Input() scrollable?: BooleanInput;
 
   /**
    * To have modals that appear with fades
    * @default true
    */
-  @Input() protected fade?: BooleanInput = true;
+  @Input() fade?: BooleanInput = true;
 
   /**
    * Modal alignment
@@ -59,19 +59,19 @@ export class ModalComponent extends AbstractComponent {
    * - <b>right</b>: to right-align the modal
    * @default undefined
    */
-  @Input() protected alignment?: 'centered' | 'left' | 'right';
+  @Input() alignment?: 'centered' | 'left' | 'right';
 
   /**
    * The modal size
    * @default undefined
    */
-  @Input() protected size?: 'sm' | 'lg' | 'xl';
+  @Input() size?: 'sm' | 'lg' | 'xl';
 
   /**
    * To better distinguish the footer element with a shadow
    * @default false
    */
-  @Input() protected footerShadow?: BooleanInput;
+  @Input() footerShadow?: BooleanInput;
 
   /**
    * This event fires immediately when the instance method show is called.

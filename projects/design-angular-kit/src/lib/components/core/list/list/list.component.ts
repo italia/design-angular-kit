@@ -11,7 +11,7 @@ export class ListComponent {
   /**
    * Add 'link-list' class for navigation menu
    */
-  @Input() protected linkList?: BooleanInput;
+  @Input() linkList?: BooleanInput;
 
 
   protected get isLinkList(): boolean {
