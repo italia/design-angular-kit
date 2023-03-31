@@ -113,6 +113,7 @@ export abstract class AbstractFormComponent<T = any> extends AbstractComponent i
 
   writeValue(value: T): void {
     this.control.setValue(value, { emitEvent: false });
+    this._changeDetectorRef.detectChanges();
   }
 
   /**
