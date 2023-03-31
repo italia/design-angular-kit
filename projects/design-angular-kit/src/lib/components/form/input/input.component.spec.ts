@@ -1,14 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-import {
-  TranslateCompiler,
-  TranslateLoader,
-  TranslateModule,
-  TranslateParser,
-  TranslateService,
-  TranslateStore,
-} from '@ngx-translate/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
-import { InputComponent } from './input.component'
+import { InputComponent } from './input.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('InputComponent', () => {
   let component: InputComponent;
@@ -16,9 +10,9 @@ describe('InputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputComponent ],imports:[TranslateModule.forRoot()]
+      declarations: [InputComponent], imports: [FormsModule,ReactiveFormsModule, TranslateModule.forRoot()]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(InputComponent);
     component = fixture.componentInstance;
