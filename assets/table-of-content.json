@@ -129,6 +129,14 @@
         {
           "label": "Error Page",
           "link": "/componenti/error-page"
+        },
+        {
+          "label": "Modal",
+          "link": "/componenti/modal"
+        },
+        {
+          "label": "Language switcher",
+          "link": "/componenti/language-switcher"
         }
       ]
     }
