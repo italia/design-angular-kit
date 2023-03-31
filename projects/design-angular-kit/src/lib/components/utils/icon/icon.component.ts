@@ -38,7 +38,7 @@ export class IconComponent {
    * Return the icon href
    */
   get iconHref(): string {
-    return `/bootstrap-italia/dist/svg/sprites.svg#it-${this.name}`;
+    return `./bootstrap-italia/dist/svg/sprites.svg#it-${this.name}`;
   }
 
   /**
