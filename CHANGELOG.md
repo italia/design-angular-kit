@@ -1,3 +1,20 @@
+# [1.0.0-14](https://github.com/italia/design-angular-kit/compare/v1.0.0-13...v1.0.0-14) (2023-03-31)
+
+
+### Bug Fixes
+
+* active label in input with browser autofill ([af8e01d](https://github.com/italia/design-angular-kit/commit/af8e01dc9c79bee8b33648333e8e574db1ff4073))
+* language switcher component ([1fc893a](https://github.com/italia/design-angular-kit/commit/1fc893a18867c6ca8360d3ab3cf172e1efd17875))
+* removed access specifier in input attributes ([5944025](https://github.com/italia/design-angular-kit/commit/5944025f5205c69972666972b02aaba7624f9898))
+
+
+### Features
+
+* enhance icon href with relative path ([4196b0d](https://github.com/italia/design-angular-kit/commit/4196b0dbe163bc7d35e00ffa7d2d67a75d72b4b1))
+* update bootstrap italia version ([f2eb397](https://github.com/italia/design-angular-kit/commit/f2eb397b07a99b13eff5a648c59b8c81ae8cd580))
+
+
+
 # [1.0.0-13](https://github.com/italia/design-angular-kit/compare/v1.0.0-12...v1.0.0-13) (2023-03-15)
 
 
