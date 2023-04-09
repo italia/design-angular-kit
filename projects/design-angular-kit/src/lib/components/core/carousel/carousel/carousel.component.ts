@@ -60,6 +60,12 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @Input() bigImg?: BooleanInput;
 
   /**
+   * To indicate that the contained image is of a standard type
+   * @default undefined
+   */
+  @Input() standardImage?: BooleanInput;
+
+  /**
    * Card line style
    * @default undefined
    */
@@ -84,6 +90,10 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
   protected get isBigImg(): boolean {
     return isTrueBooleanInput(this.bigImg);
+  }
+
+  protected get isStandardImage(): boolean {
+    return isTrueBooleanInput(this.standardImage);
   }
 
   protected get isLined(): boolean {
