@@ -61,7 +61,7 @@ export class ItValidators {
     }
 
     const passwordControl = control.get(passwordControlName); // password form control
-    const password = passwordControl?.get(passwordControlName)?.value; // get password from our password form control
+    const password = passwordControl?.value; // get password from our password form control
 
     // compare is the password match
     if ((password && !confirmControl.value) || (confirmControl.value && password !== confirmControl.value)) {
