@@ -29,11 +29,11 @@
       "regex-invalid": "Please enter a valid REGEX expression",
       "pattern-invalid": "The field must have the pattern {{pattern}}",
       "password-no-match": "Passwords must match",
-      "password-min-length": "Password must contain at least {{minLength}} characters!",
-      "password-number": "The password must have at least 1 number!",
-      "password-capital-case": "The password should contain at least 1 uppercase character!",
-      "password-small-case": "Password must contain at least 1 lowercase character!",
-      "password-special-character": "Password must contain at least 1 special character!"
+      "password-min-length": "The password must contain at least {{minLength}} characters!",
+      "password-number": "The password must have at least a number!",
+      "password-capital-case": "The password should contain at least an uppercase character!",
+      "password-small-case": "The password must contain at least a lowercase character!",
+      "password-special-character": "The password must contain at least a special character!"
     },
     "core": {
       "close-modal": "Close modal window",
@@ -60,6 +60,19 @@
       "rating-star": "Rating {{current}} out of {{total}} stars"
     },
     "form": {
+      "caps-inserted": "CAPS LOCK entered",
+      "password-strength-meter": {
+        "description": {
+          "default": "Enter at least {{minLength}} characters",
+          "number": "a number",
+          "capital-case": "an uppercase character",
+          "special-character": "a special character"
+        },
+        "password-short": "Very weak password",
+        "password-bad": "Weak password",
+        "password-good": "Secure password",
+        "password-strong": "Very secure password"
+      },
       "increase-value": "Increase value",
       "decrease-value": "Decrease value",
       "upload": "Upload",

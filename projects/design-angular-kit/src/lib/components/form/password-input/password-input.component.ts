@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { ItValidators } from '../../../validators/it-validators';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { InputPassword } from 'bootstrap-italia';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'it-password-input',
@@ -12,6 +13,12 @@ import { InputPassword } from 'bootstrap-italia';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PasswordInputComponent extends AbstractFormComponent<string> {
+
+  /**
+   * The field is required
+   * @default true
+   */
+  @Input() required: boolean = true;
 
   /**
    * The password minimum length
@@ -50,45 +57,62 @@ export class PasswordInputComponent extends AbstractFormComponent<string> {
 
   /**
    * The input description
+   * - <b>true</b>: show the StrengthMeter description message
+   * - <b>string</b>: show custom description
+   * @default true for StrengthMeter mode else is undefined
    */
-  @Input() description?: string;
+  @Input() description?: string | true;
 
   /**
    * Enable to show the strength meter
+   * @default false
    */
   @Input() showStrengthMeter?: BooleanInput;
 
+  /**
+   * Is the confirmation password field
+   * @default false
+   */
+  @Input() confirmPasswordField: BooleanInput = false;
 
-  inputPasswordBs?: InputPassword;
+  private inputPasswordBs?: InputPassword;
 
   @ViewChild('input') private inputElement?: ElementRef<HTMLInputElement>;
 
   override ngOnInit() {
     super.ngOnInit();
 
-    this.addValidators(ItValidators.password(
-      this.minLength,
-      this.useNumber,
-      this.useCapitalCase,
-      this.useSmallCase,
-      this.useSpecialCharacters
-    ));
+    if (!this.isConfirmPasswordField) {
+      this.addValidators(ItValidators.password(
+        this.minLength,
+        this.useNumber,
+        this.useCapitalCase,
+        this.useSmallCase,
+        this.useSpecialCharacters,
+        this.required
+      ));
+    } else if (this.required) {
+      this.addValidators(Validators.required);
+    }
   }
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();
 
     if (this.inputElement) {
-      this.inputPasswordBs = new InputPassword(this.inputElement.nativeElement, {
-        ...this.description && { enterPass: this.description },
+      this.inputPasswordBs = InputPassword.getOrCreateInstance(this.inputElement.nativeElement, {
         showText: this.isStrengthMeter,
         minimumLength: this.minLength
       });
     }
   }
 
-  get isStrengthMeter(): boolean {
-    return isTrueBooleanInput(this.showStrengthMeter);
+  protected get isStrengthMeter(): boolean {
+    return !this.isConfirmPasswordField && isTrueBooleanInput(this.showStrengthMeter);
+  }
+
+  protected get isConfirmPasswordField(): boolean {
+    return isTrueBooleanInput(this.confirmPasswordField);
   }
 
   /**
@@ -117,5 +141,25 @@ export class PasswordInputComponent extends AbstractFormComponent<string> {
     }
 
     return super.invalidMessage;
+  }
+
+  /**
+   * Retrieve the default StrengthMeter description message from TranslateService
+   */
+  protected get strengthMeterDescription(): Observable<string> {
+    const keys = ['it.form.password-strength-meter.description.default'];
+    if (this.useNumber) {
+      keys.push('it.form.password-strength-meter.description.number');
+    }
+    if (this.useCapitalCase) {
+      keys.push('it.form.password-strength-meter.description.capital-case');
+    }
+    if (this.useSpecialCharacters) {
+      keys.push('it.form.password-strength-meter.description.special-character');
+    }
+
+    return this._translateService.get(keys, { minLength: this.minLength }).pipe(
+      map(labels => Object.values(labels).join(', '))
+    );
   }
 }
