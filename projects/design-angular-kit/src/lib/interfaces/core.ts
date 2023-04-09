@@ -27,6 +27,8 @@ export type ButtonType = 'submit' | 'button';
 export type CalloutColor = 'success' | 'warning' | 'danger' | 'important' | 'note';
 export type CalloutAppearance = 'default' | 'highlight' | 'more';
 
+export type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
+
 export type ElementPlacement = 'top' | 'bottom' | 'left' | 'right';
 
 export type ProgressBarColor = 'primary' | 'success' | 'warning' | 'danger' | 'info';

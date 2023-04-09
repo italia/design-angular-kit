@@ -6,7 +6,7 @@ import Documentation from '../../../assets/documentation.json';
   templateUrl: './dropdown-index.component.html',
   styleUrls: ['./dropdown-index.component.scss']
 })
-export class DropdownIndexComponent implements OnInit {
+export class DropdownIndexComponent {
 
   component: any;
   subcomponent: any;
@@ -16,7 +16,5 @@ export class DropdownIndexComponent implements OnInit {
     this.subcomponent = (<any>Documentation).components.find(component => component.name === 'DropdownItemComponent');
   }
 
-  ngOnInit() {
-  }
 
 }

@@ -6,7 +6,7 @@
       Apri/chiudi contenuto
     </button>
 
-    <it-collapse (onShow)="logShown()" (onHidden)="logHidden()" #itCollapse="itCollapse">
+    <it-collapse (showEvent)="logShown()" (hiddenEvent)="logHidden()" #itCollapse="itCollapse">
       <div class="py-3">
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
         Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.

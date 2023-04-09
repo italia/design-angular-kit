@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './radio-examples.component.html',
   styleUrls: ['./radio-examples.component.scss']
 })
-export class RadioExamplesComponent implements OnInit {
+export class RadioExamplesComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

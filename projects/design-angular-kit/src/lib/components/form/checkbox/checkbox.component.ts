@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
@@ -7,7 +7,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
   templateUrl: './checkbox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CheckboxComponent extends AbstractFormComponent<boolean> {
+export class CheckboxComponent extends AbstractFormComponent<boolean> implements OnInit {
 
   /**
    * If show checkbox as toggle

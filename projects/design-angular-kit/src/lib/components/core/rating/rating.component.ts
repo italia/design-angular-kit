@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { AbstractFormComponent } from '../../../abstracts/abstract-form.componen
   templateUrl: './rating.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RatingComponent extends AbstractFormComponent<number> {
+export class RatingComponent extends AbstractFormComponent<number> implements OnInit, OnChanges {
 
   /**
    * The rating value

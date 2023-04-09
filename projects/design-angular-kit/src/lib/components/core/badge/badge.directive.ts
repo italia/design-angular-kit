@@ -22,7 +22,7 @@ export class BadgeDirective {
    * Show rounded badge
    * @default false
    */
-  @Input('rounded') rounded?: BooleanInput;
+  @Input() rounded?: BooleanInput;
 
   @HostBinding('class')
   protected get badgeClass(): string {

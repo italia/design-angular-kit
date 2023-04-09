@@ -3,6 +3,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ProgressBarColor } from '../../../interfaces/core';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[itButton][progress]',
   templateUrl: './progress-button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush

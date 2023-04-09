@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { ItValidators } from '../../../validators/it-validators';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { InputPassword } from 'bootstrap-italia';
   styleUrls: ['./password-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PasswordInputComponent extends AbstractFormComponent<string> {
+export class PasswordInputComponent extends AbstractFormComponent<string> implements OnInit, AfterViewInit {
 
   /**
    * The password minimum length
