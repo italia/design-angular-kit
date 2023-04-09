@@ -137,6 +137,10 @@
         {
           "label": "Language switcher",
           "link": "/componenti/language-switcher"
+        },
+        {
+          "label": "Carousel",
+          "link": "/componenti/carousel"
         }
       ]
     }
