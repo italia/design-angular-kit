@@ -46,6 +46,7 @@ const routes: Routes = [
     { path: 'error-page', loadChildren: () => import('src/app/error-page/error-page.module').then(m => m.ErrorPageModule) },
     { path: 'modal', loadChildren: () => import('src/app/modal/modal.module').then(m => m.ModalModule) },
     { path: 'language-switcher', loadChildren: () => import('src/app/language-switcher/language-switcher.module').then(m => m.LanguageSwitcherModule) },
+    { path: 'password-input', loadChildren: () => import('src/app/password-input/password-input.module').then(m => m.PasswordInputModule) },
   ]},
   { path: 'error/not-found', component: ErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ErrorPageComponent, data: { errorCode: 403 } },

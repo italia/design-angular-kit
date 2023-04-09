@@ -137,6 +137,10 @@
         {
           "label": "Language switcher",
           "link": "/componenti/language-switcher"
+        },
+        {
+          "label": "Password Input",
+          "link": "/componenti/password-input"
         }
       ]
     }
