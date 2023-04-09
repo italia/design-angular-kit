@@ -6,8 +6,8 @@
       [dark]="isDark"
       [direction]="menuPlacement"
       [fullWidth]="isFullWidth"
-      (onShow)="onOpenEvent()"
-      (onHide)="onCloseEvent()">
+      (showEvent)="onOpenEvent()"
+      (hideEvent)="onCloseEvent()">
 
       <span button>{{label}}</span>
       <span *ngIf="withHeading" listHeading>Intestazione Menu</span>

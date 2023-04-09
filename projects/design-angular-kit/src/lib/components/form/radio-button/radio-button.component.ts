@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
@@ -8,7 +8,7 @@ import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../
   styleUrls: ['./radio-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RadioButtonComponent extends AbstractFormComponent<string | number | undefined> {
+export class RadioButtonComponent extends AbstractFormComponent<string | number | undefined> implements OnInit {
 
   /**
    * The radio value

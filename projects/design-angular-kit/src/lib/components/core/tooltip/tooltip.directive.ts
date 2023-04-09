@@ -24,7 +24,7 @@ export class TooltipDirective implements AfterViewInit, OnDestroy {
    * Define the tooltip placement
    * @param placement
    */
-  @Input('tooltipPlacement') set placement(placement: ElementPlacement) {
+  @Input() set tooltipPlacement(placement: ElementPlacement) {
     this.element.setAttribute('data-bs-placement', placement);
   }
 
@@ -32,34 +32,34 @@ export class TooltipDirective implements AfterViewInit, OnDestroy {
    * Indicates whether the title contains html
    * @param html true if contain html
    */
-  @Input('tooltipHtml') set html(html: BooleanInput) {
+  @Input() set tooltipHtml(html: BooleanInput) {
     this.element.setAttribute('data-bs-html', isTrueBooleanInput(html) ? 'true' : 'false');
   }
 
   /**
    * This event fires immediately when the show method is called.
    */
-  @Output() onShow: EventEmitter<Event> = new EventEmitter();
+  @Output() showEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is triggered when the tooltip has been made visible to the user (it will wait for the CSS transitions to complete).
    */
-  @Output() onShown: EventEmitter<Event> = new EventEmitter();
+  @Output() shownEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires immediately when the hide method is called.
    */
-  @Output() onHide: EventEmitter<Event> = new EventEmitter();
+  @Output() hideEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is raised when the tooltip has finished being hidden from the user (it will wait for the CSS transitions to complete).
    */
-  @Output() onHidden: EventEmitter<Event> = new EventEmitter();
+  @Output() hiddenEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires after the show event when the tooltip template has been added to the DOM.
    */
-  @Output() onInserted: EventEmitter<Event> = new EventEmitter();
+  @Output() insertedEvent: EventEmitter<Event> = new EventEmitter();
 
   private readonly element: HTMLElement;
   private tooltip?: Tooltip;
@@ -74,11 +74,11 @@ export class TooltipDirective implements AfterViewInit, OnDestroy {
     this.element.setAttribute('data-bs-toggle', 'tooltip');
     this.tooltip = Tooltip.getOrCreateInstance(this.element);
 
-    this.element.addEventListener('show.bs.tooltip', event => this.onShow.emit(event));
-    this.element.addEventListener('shown.bs.tooltip', event => this.onShown.emit(event));
-    this.element.addEventListener('hide.bs.tooltip', event => this.onHide.emit(event));
-    this.element.addEventListener('hidden.bs.tooltip', event => this.onHidden.emit(event));
-    this.element.addEventListener('inserted.bs.tooltip', event => this.onInserted.emit(event));
+    this.element.addEventListener('show.bs.tooltip', event => this.showEvent.emit(event));
+    this.element.addEventListener('shown.bs.tooltip', event => this.shownEvent.emit(event));
+    this.element.addEventListener('hide.bs.tooltip', event => this.hideEvent.emit(event));
+    this.element.addEventListener('hidden.bs.tooltip', event => this.hiddenEvent.emit(event));
+    this.element.addEventListener('inserted.bs.tooltip', event => this.insertedEvent.emit(event));
   }
 
   ngOnDestroy(): void {

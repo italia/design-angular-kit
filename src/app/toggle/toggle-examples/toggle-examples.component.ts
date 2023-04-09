@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './toggle-examples.component.html',
   styleUrls: ['./toggle-examples.component.scss']
 })
-export class ToggleExamplesComponent implements OnInit {
+export class ToggleExamplesComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

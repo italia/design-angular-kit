@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -18,7 +19,7 @@ import { ProgressDonut } from 'bootstrap-italia';
   exportAs: 'itUploadDragDrop',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UploadDragDropComponent extends AbstractComponent {
+export class UploadDragDropComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * The accepted file type to upload <br>

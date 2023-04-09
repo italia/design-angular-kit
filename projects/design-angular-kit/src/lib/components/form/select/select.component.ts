@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { SelectControlGroup, SelectControlOption } from '../../../interfaces/form';
 
@@ -7,7 +7,7 @@ import { SelectControlGroup, SelectControlOption } from '../../../interfaces/for
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent extends AbstractFormComponent {
+export class SelectComponent extends AbstractFormComponent implements OnInit {
 
   /**
    * The select options

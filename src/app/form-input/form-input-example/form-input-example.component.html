@@ -13,7 +13,7 @@
                 [(ngModel)]="value"
                 [description]="note"
                 [autocompleteData]="autocompleteUsers$"
-                (onAutocompleteSelected)="onAutocompleteSelected($event)">
+                (autocompleteSelectedEvent)="onAutocompleteSelected($event)">
       </it-input>
       <it-password-input *ngIf="type === 'password'"
                          [label]="label"

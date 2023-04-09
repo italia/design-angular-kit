@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './router-dispatcher.component.html',
   styleUrls: ['./router-dispatcher.component.scss']
 })
-export class RouterDispatcherComponent implements OnInit {
+export class RouterDispatcherComponent {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

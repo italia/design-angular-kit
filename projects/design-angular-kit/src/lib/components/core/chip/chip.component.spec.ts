@@ -29,22 +29,22 @@ describe('ChipComponent', () => {
   });
 
   it('click on close button should trigger close.emit()', () => {
-    spyOn(component.close, 'emit').and.returnValue();
+    spyOn(component.closeEvent, 'emit').and.returnValue();
     component.showCloseButton = true;
     fixture.detectChanges();
     const buttonElement = fixture.debugElement.query(By.css('button'));
     buttonElement.nativeElement.click();
-    expect(component.close.emit).toHaveBeenCalled();
+    expect(component.closeEvent.emit).toHaveBeenCalled();
   });
 
   it('click on close button DISABLED should NOT trigger close.emit()', () => {
-    spyOn(component.close, 'emit').and.returnValue();
+    spyOn(component.closeEvent, 'emit').and.returnValue();
     component.showCloseButton = true;
     component.disabled = true;
     fixture.detectChanges();
     const buttonElement = fixture.debugElement.query(By.css('button'));
     buttonElement.nativeElement.click();
-    expect(component.close.emit).not.toHaveBeenCalled();
+    expect(component.closeEvent.emit).not.toHaveBeenCalled();
   });
 
   it('can set label', () => {

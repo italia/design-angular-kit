@@ -5,13 +5,10 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './table-of-content-item.component.html',
   styleUrls: ['./table-of-content-item.component.scss']
 })
-export class TableOfContentItemComponent implements OnInit {
+export class TableOfContentItemComponent {
 
   @Input() tocItem: any;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

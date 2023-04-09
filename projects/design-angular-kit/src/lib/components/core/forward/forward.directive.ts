@@ -3,6 +3,7 @@ import { Directive, HostListener, Inject, Input } from '@angular/core';
 
 @Directive({
   selector: '[itForward]',
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {'class': 'forward'}
 })
 export class ForwardDirective {

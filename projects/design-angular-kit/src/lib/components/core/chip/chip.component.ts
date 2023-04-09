@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconName } from '../../../interfaces/icon';
-
-export type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
+import { ChipColor } from '../../../interfaces/core';
 
 @Component({
   selector: 'it-chip',
@@ -69,11 +68,11 @@ export class ChipComponent {
   /**
    * Evento emesso al click sul bottone di chiusura
   */
-  @Output() close = new EventEmitter();
+  @Output() closeEvent = new EventEmitter();
 
   iconClose: IconName = 'close';
 
   clickToClose(): void {
-    this.close.emit();
+    this.closeEvent.emit();
   }
 }

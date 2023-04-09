@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Collapse } from 'bootstrap-italia';
@@ -9,7 +18,7 @@ import { Collapse } from 'bootstrap-italia';
   exportAs: 'itCollapse',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CollapseComponent extends AbstractComponent {
+export class CollapseComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * Enable multiple collapse
@@ -29,22 +38,22 @@ export class CollapseComponent extends AbstractComponent {
   /**
    * This event fires immediately when the show method is called.
    */
-  @Output() onShow: EventEmitter<Event> = new EventEmitter();
+  @Output() showEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is triggered when the tooltip has been made visible to the user (it will wait for the CSS transitions to complete).
    */
-  @Output() onShown: EventEmitter<Event> = new EventEmitter();
+  @Output() shownEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires immediately when the hide method is called.
    */
-  @Output() onHide: EventEmitter<Event> = new EventEmitter();
+  @Output() hideEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is raised when the tooltip has finished being hidden from the user (it will wait for the CSS transitions to complete).
    */
-  @Output() onHidden: EventEmitter<Event> = new EventEmitter();
+  @Output() hiddenEvent: EventEmitter<Event> = new EventEmitter();
 
 
   private collapse?: Collapse;
@@ -69,10 +78,10 @@ export class CollapseComponent extends AbstractComponent {
         toggle: this.isOpenedOnStart
       });
 
-      element.addEventListener('show.bs.collapse', event => this.onShow.emit(event));
-      element.addEventListener('shown.bs.collapse', event => this.onShown.emit(event));
-      element.addEventListener('hide.bs.collapse', event => this.onHide.emit(event));
-      element.addEventListener('hidden.bs.collapse', event => this.onHidden.emit(event));
+      element.addEventListener('show.bs.collapse', event => this.showEvent.emit(event));
+      element.addEventListener('shown.bs.collapse', event => this.shownEvent.emit(event));
+      element.addEventListener('hide.bs.collapse', event => this.hideEvent.emit(event));
+      element.addEventListener('hidden.bs.collapse', event => this.hiddenEvent.emit(event));
     }
   }
 

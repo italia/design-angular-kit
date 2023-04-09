@@ -6,15 +6,12 @@ import Documentation from '../../../assets/documentation.json';
   templateUrl: './checkbox-index.component.html',
   styleUrls: ['./checkbox-index.component.scss']
 })
-export class CheckboxIndexComponent implements OnInit {
+export class CheckboxIndexComponent {
 
   component: any;
 
   constructor() {
     this.component = (<any>Documentation).components.find(component => component.name === 'CheckboxComponent');
-  }
-
-  ngOnInit() {
   }
 
 }

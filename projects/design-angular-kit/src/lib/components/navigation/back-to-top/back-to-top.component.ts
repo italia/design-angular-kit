@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { BackToTop } from 'bootstrap-italia';
@@ -9,7 +9,7 @@ import { BackToTop } from 'bootstrap-italia';
   exportAs: 'itBackToTop',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BackToTopComponent extends AbstractComponent {
+export class BackToTopComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * Show small button

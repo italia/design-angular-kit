@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractComponent } from '../../../../abstracts/abstract.component';
 import { BooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
@@ -8,7 +8,7 @@ import { IconName } from '../../../../interfaces/icon';
   templateUrl: './tab-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabItemComponent extends AbstractComponent {
+export class TabItemComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * The tab label

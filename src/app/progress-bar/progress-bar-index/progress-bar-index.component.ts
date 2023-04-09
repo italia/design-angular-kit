@@ -6,7 +6,7 @@ import Documentation from '../../../assets/documentation.json';
   templateUrl: './progress-bar-index.component.html',
   styleUrls: ['./progress-bar-index.component.scss']
 })
-export class ProgressBarIndexComponent implements OnInit {
+export class ProgressBarIndexComponent {
 
   component: any;
 
@@ -14,7 +14,5 @@ export class ProgressBarIndexComponent implements OnInit {
     this.component = (<any>Documentation).components.find(component => component.name === 'ProgressBarComponent');
   }
 
-  ngOnInit() {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 
@@ -7,7 +7,7 @@ import { AbstractComponent } from '../../../abstracts/abstract.component';
   templateUrl: './link.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LinkComponent extends AbstractComponent {
+export class LinkComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * The router link action
