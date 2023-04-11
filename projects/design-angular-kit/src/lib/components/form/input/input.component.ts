@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { AutocompleteItem, InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
@@ -12,7 +12,7 @@ import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } fr
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class InputComponent extends AbstractFormComponent<string | number> {
+export class InputComponent extends AbstractFormComponent<string | number> implements OnInit {
 
   /**
    * The input type
@@ -83,9 +83,9 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   /**
    * Fired when the Autocomplete Item has been selected
    */
-  @Output() onAutocompleteSelected: EventEmitter<AutocompleteItem> = new EventEmitter();
+  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();
 
-  showAutocompletion = false;
+  protected showAutocompletion = false;
 
 
   get isActiveLabel(): boolean {
@@ -160,7 +160,10 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   }
 
   /** Observable da cui vengono emessi i risultati dell'auto completamento */
-  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> = new Observable();
+  autocompleteResults$: Observable<{
+    searchedValue: string,
+    relatedEntries: Array<AutocompleteItem>
+  }> = new Observable();
 
 
   override ngOnInit() {
@@ -255,7 +258,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
       event.preventDefault();
     }
 
-    this.onAutocompleteSelected.next(entry);
+    this.autocompleteSelectedEvent.next(entry);
     this.control.setValue(entry.value);
     this.showAutocompletion = false;
   }

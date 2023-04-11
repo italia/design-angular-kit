@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
@@ -19,7 +20,7 @@ import { AbstractComponent } from '../../../../abstracts/abstract.component';
   templateUrl: './tab-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabContainerComponent extends AbstractComponent implements OnDestroy {
+export class TabContainerComponent extends AbstractComponent implements OnDestroy, AfterViewInit {
 
   /**
    * Tabs automatically occupy the entire available width

@@ -3,7 +3,7 @@
 <div class="bd-example">
   <div class="example-section">
 
-    <it-alert color="warning" dismissible="true" (onClose)="onClose($event)" (onClosed)="onClosed($event)">
+    <it-alert color="warning" dismissible="true" (closeEvent)="onClose($event)" (closedEvent)="onClosed($event)">
       <strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.
     </it-alert>
 

@@ -1,10 +1,12 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
   QueryList,
   SimpleChanges,
@@ -23,7 +25,7 @@ import { Dropdown } from 'bootstrap-italia';
   exportAs: 'itDropdown',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownComponent extends AbstractComponent {
+export class DropdownComponent extends AbstractComponent implements AfterViewInit, OnChanges {
 
   /**
    * Button color
@@ -56,22 +58,22 @@ export class DropdownComponent extends AbstractComponent {
   /**
    * Fires immediately when the show instance method is called.
    */
-  @Output() onShow: EventEmitter<Event> = new EventEmitter();
+  @Output() showEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * Fired when the dropdown has been made visible to the user and CSS transitions have completed.
    */
-  @Output() onShown: EventEmitter<Event> = new EventEmitter();
+  @Output() shownEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * Fires immediately when the hide instance method has been called.
    */
-  @Output() onHide: EventEmitter<Event> = new EventEmitter();
+  @Output() hideEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * Fired when the dropdown has finished being hidden from the user and CSS transitions have completed.
    */
-  @Output() onHidden: EventEmitter<Event> = new EventEmitter();
+  @Output() hiddenEvent: EventEmitter<Event> = new EventEmitter();
 
 
   private dropdown?: Dropdown;
@@ -112,10 +114,10 @@ export class DropdownComponent extends AbstractComponent {
       const element = this.dropdownButton.nativeElement;
       this.dropdown = Dropdown.getOrCreateInstance(element);
 
-      element.addEventListener('show.bs.dropdown', event => this.onShow.emit(event));
-      element.addEventListener('shown.bs.dropdown', event => this.onShown.emit(event));
-      element.addEventListener('hide.bs.dropdown', event => this.onHide.emit(event));
-      element.addEventListener('hidden.bs.dropdown', event => this.onHidden.emit(event));
+      element.addEventListener('show.bs.dropdown', event => this.showEvent.emit(event));
+      element.addEventListener('shown.bs.dropdown', event => this.shownEvent.emit(event));
+      element.addEventListener('hide.bs.dropdown', event => this.hideEvent.emit(event));
+      element.addEventListener('hidden.bs.dropdown', event => this.hiddenEvent.emit(event));
     }
   }
 

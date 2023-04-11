@@ -6,8 +6,8 @@
              [popoverContainer]="container"
              [popoverPlacement]="placement"
              [disabled]="disabled"
-             (onShown)="logShown()"
-             (onHidden)="logHidden()"
+             (shownEvent)="logShown()"
+             (hiddenEvent)="logHidden()"
              #interactivePopover="itPopover">
     Bottone con popover
   </button>

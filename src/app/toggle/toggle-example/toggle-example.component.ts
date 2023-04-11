@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './toggle-example.component.html',
   styleUrls: ['./toggle-example.component.scss']
 })
-export class ToggleExampleComponent implements OnInit {
+export class ToggleExampleComponent {
 
   checked = true;
   label = 'Sono una toggle';
@@ -13,7 +13,5 @@ export class ToggleExampleComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

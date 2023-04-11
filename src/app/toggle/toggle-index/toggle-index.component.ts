@@ -6,15 +6,12 @@ import Documentation from '../../../assets/documentation.json';
   templateUrl: './toggle-index.component.html',
   styleUrls: ['./toggle-index.component.scss']
 })
-export class ToggleIndexComponent implements OnInit {
+export class ToggleIndexComponent {
 
   component: any;
 
   constructor() {
     this.component = (<any>Documentation).components.find(component => component.name === 'CheckboxComponent');
-  }
-
-  ngOnInit() {
   }
 
 }

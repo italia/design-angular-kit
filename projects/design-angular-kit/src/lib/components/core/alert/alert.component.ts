@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { AlertColor } from '../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
@@ -15,7 +24,7 @@ import { Alert } from 'bootstrap-italia';
   exportAs: 'itAlert',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AlertComponent extends AbstractComponent {
+export class AlertComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * The alert color
@@ -32,12 +41,12 @@ export class AlertComponent extends AbstractComponent {
   /**
    * This event fires immediately when the instance's close method is called.
    */
-  @Output() public onClose: EventEmitter<Event> = new EventEmitter();
+  @Output() public closeEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires when the alert has been closed (it will wait for CSS transitions to complete).
    */
-  @Output() public onClosed: EventEmitter<Event> = new EventEmitter();
+  @Output() public closedEvent: EventEmitter<Event> = new EventEmitter();
 
   private alert?: Alert;
 
@@ -55,8 +64,8 @@ export class AlertComponent extends AbstractComponent {
       const element = this.alertElement.nativeElement;
       this.alert = Alert.getOrCreateInstance(element);
 
-      element.addEventListener('close.bs.alert', event => this.onClose.emit(event));
-      element.addEventListener('closed.bs.alert', event => this.onClosed.emit(event));
+      element.addEventListener('close.bs.alert', event => this.closeEvent.emit(event));
+      element.addEventListener('closed.bs.alert', event => this.closedEvent.emit(event));
     }
   }
 

@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './progress-bar-examples.component.html',
   styleUrls: ['./progress-bar-examples.component.scss']
 })
-export class ProgressBarExamplesComponent implements OnInit {
+export class ProgressBarExamplesComponent {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

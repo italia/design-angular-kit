@@ -3,8 +3,8 @@
   <p class="example-section">
     <button itButton="danger" size="lg" class="me-4"
                itTooltip="Tooltip di esempio"
-               (onShown)="logShown()"
-               (onHidden)="logHidden()"
+               (shownEvent)="logShown()"
+               (hiddenEvent)="logHidden()"
                #destructibleTooltip="itTooltip">
       Clicca per il tooltip distruttibile
     </button>

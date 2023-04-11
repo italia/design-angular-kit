@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
@@ -14,7 +23,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
   exportAs: 'itModal',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ModalComponent extends AbstractComponent {
+export class ModalComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * Show/Hide close button on header
@@ -76,28 +85,28 @@ export class ModalComponent extends AbstractComponent {
   /**
    * This event fires immediately when the instance method show is called.
    */
-  @Output() public onShow: EventEmitter<Event> = new EventEmitter();
+  @Output() public showEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires when the modal has been made visible to the user (it will wait for CSS transitions to complete).
    */
-  @Output() public onShown: EventEmitter<Event> = new EventEmitter();
+  @Output() public shownEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is raised immediately when the instance method hide has been called.
    */
-  @Output() public onHide: EventEmitter<Event> = new EventEmitter();
+  @Output() public hideEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires when the modal has finished hiding from the user (it will wait for CSS transitions to complete).
    */
-  @Output() public onHidden: EventEmitter<Event> = new EventEmitter();
+  @Output() public hiddenEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is fired when the modal is displayed, its background is static and a click outside the modal or a press
    * of the esc key occurs and data-bs-keyboard is set to false.
    */
-  @Output() public onHidePrevented: EventEmitter<Event> = new EventEmitter();
+  @Output() public hidePreventedEvent: EventEmitter<Event> = new EventEmitter();
 
   private modal?: Modal;
 
@@ -111,11 +120,11 @@ export class ModalComponent extends AbstractComponent {
       const element = this.modalElement.nativeElement;
       this.modal = Modal.getOrCreateInstance(element);
 
-      element.addEventListener('show.bs.modal', event => this.onShow.emit(event));
-      element.addEventListener('shown.bs.modal', event => this.onShown.emit(event));
-      element.addEventListener('hide.bs.modal', event => this.onHide.emit(event));
-      element.addEventListener('hidden.bs.modal', event => this.onHidden.emit(event));
-      element.addEventListener('hidePrevented.bs.modal', event => this.onHidePrevented.emit(event));
+      element.addEventListener('show.bs.modal', event => this.showEvent.emit(event));
+      element.addEventListener('shown.bs.modal', event => this.shownEvent.emit(event));
+      element.addEventListener('hide.bs.modal', event => this.hideEvent.emit(event));
+      element.addEventListener('hidden.bs.modal', event => this.hiddenEvent.emit(event));
+      element.addEventListener('hidePrevented.bs.modal', event => this.hidePreventedEvent.emit(event));
     }
   }
 

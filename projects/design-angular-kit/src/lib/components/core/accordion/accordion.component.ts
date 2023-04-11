@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CollapseComponent } from '../collapse/collapse.component';
 
 /**
@@ -11,7 +11,7 @@ import { CollapseComponent } from '../collapse/collapse.component';
   exportAs: 'itAccordion',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccordionComponent extends CollapseComponent {
+export class AccordionComponent extends CollapseComponent implements AfterViewInit {
 
   /**
    * Accordion Title
@@ -25,11 +25,11 @@ export class AccordionComponent extends CollapseComponent {
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'title');
 
     this.isCollapsed = !this.isOpenedOnStart;
-    this.onHide.subscribe(() => {
+    this.hideEvent.subscribe(() => {
       this.isCollapsed = true;
       this._changeDetectorRef.detectChanges();
     });
-    this.onShow.subscribe(() => {
+    this.showEvent.subscribe(() => {
       this.isCollapsed = false;
       this._changeDetectorRef.detectChanges();
     });

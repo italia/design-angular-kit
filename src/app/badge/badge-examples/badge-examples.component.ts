@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './badge-examples.component.html',
   styleUrls: ['./badge-examples.component.scss']
 })
-export class BadgeExamplesComponent implements OnInit {
+export class BadgeExamplesComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

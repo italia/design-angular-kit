@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './collapse-examples.component.html',
   styleUrls: ['./collapse-examples.component.scss']
 })
-export class CollapseExamplesComponent implements OnInit {
+export class CollapseExamplesComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
