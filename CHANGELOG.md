@@ -1,3 +1,12 @@
+# [1.0.0-15](https://github.com/italia/design-angular-kit/compare/v1.0.0-14...v1.0.0-15) (2023-04-11)
+
+
+### Features
+
+* improved password input component and validator ([046a096](https://github.com/italia/design-angular-kit/commit/046a09646c7410c67e1472ca98a328f52295b473))
+
+
+
 # [1.0.0-14](https://github.com/italia/design-angular-kit/compare/v1.0.0-13...v1.0.0-14) (2023-03-31)
 
 
