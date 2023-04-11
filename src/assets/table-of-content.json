@@ -139,6 +139,10 @@
           "link": "/componenti/language-switcher"
         },
         {
+          "label": "Password Input",
+          "link": "/componenti/password-input"
+        },
+        {
           "label": "Carousel",
           "link": "/componenti/carousel"
         }
