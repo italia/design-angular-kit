@@ -68,7 +68,7 @@ import {DesignAngularKitModule} from 'design-angular-kit';
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule.forRoot() // .forRoot obligatorio
+    DesignAngularKitModule.forRoot() // .forRoot obbligatorio
   ]
 })
 ```
@@ -90,7 +90,7 @@ import {DesignAngularKitModule} from 'design-angular-kit';
   @NgModule({
     imports: [
       ...
-      DesignAngularKitModule.forRoot(initConfig) // .forRoot obligatorio
+      DesignAngularKitModule.forRoot(initConfig) // .forRoot obbligatorio
     ]
   })
   ```
