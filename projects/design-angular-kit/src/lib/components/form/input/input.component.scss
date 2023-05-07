@@ -26,5 +26,9 @@
     left: auto !important;
     max-width: 100% !important;
   }
+
+  label:not(.active):has(+ input:-webkit-autofill) {
+    transform: translateY(-75%);
+  }
 }
 
