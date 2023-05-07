@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
 import { IconColor, IconName, IconSize } from '../../../interfaces/icon';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from '../../../design-angular-kit-config';
 
 @Component({
   selector: 'it-icon[name]',
@@ -38,7 +39,7 @@ export class IconComponent {
    * Return the icon href
    */
   get iconHref(): string {
-    return `./bootstrap-italia/dist/svg/sprites.svg#it-${this.name}`;
+    return `${this.config.iconHref}#it-${this.name}`;
   }
 
   /**
@@ -61,4 +62,8 @@ export class IconComponent {
     return iconClass;
   }
 
+  constructor(
+    @Inject(DESIGN_ANGULAR_KIT_CONFIG) private readonly config: DesignAngularKitConfig
+  ) {
+  }
 }
