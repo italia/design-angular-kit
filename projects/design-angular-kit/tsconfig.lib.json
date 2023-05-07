@@ -12,6 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "noPropertyAccessFromIndexSignature": true,
+    "skipLibCheck": true,
     "types": []
   },
   "angularCompilerOptions": {
