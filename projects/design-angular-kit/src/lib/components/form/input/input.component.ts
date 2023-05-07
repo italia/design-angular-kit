@@ -41,7 +41,7 @@ export class InputComponent extends AbstractFormComponent<string | number> imple
    * @default '9999-12-31'
    * @example 'yyyy-mm-dd'
    */
-  @Input() maxDate?: string;
+  @Input() maxDate?: string = '9999-12-31';
 
   /**
    * The min date value [Used only in type = 'date']
