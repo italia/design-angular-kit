@@ -54,7 +54,7 @@ export class ErrorPageComponent {
         this.errorCode = data['errorCode']; // Get errorCode from route data
       }
       if (data['showErrorCode'] !== undefined) {
-        this.showBackButton = data['showErrorCode'];  // Get showErrorCode from route data
+        this.showErrorCode = data['showErrorCode'];  // Get showErrorCode from route data
       }
       if (!this.errorTitle && data['errorTitle']) {
         this.errorTitle = data['errorTitle'];  // Get errorTitle from route data
