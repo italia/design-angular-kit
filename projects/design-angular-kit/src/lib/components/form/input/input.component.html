@@ -42,6 +42,8 @@
     <input *ngIf="type !== 'number'"
            [id]="id"
            [type]="type"
+           [max]="type === 'date' ? maxDate : undefined"
+           [min]="type === 'date' ? minDate : undefined"
            [class.form-control]="readonly !== 'plaintext'"
            [class.form-control-plaintext]="readonly === 'plaintext'"
            [class.is-invalid]="isInvalid"
