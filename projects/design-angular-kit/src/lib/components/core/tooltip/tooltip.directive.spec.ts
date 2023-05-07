@@ -11,7 +11,7 @@ export class MockElementRef extends ElementRef {
 describe('TooltipDirective', () => {
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       providers: [
         { provide: ElementRef, useClass: MockElementRef }
       ]

@@ -11,7 +11,7 @@ describe('PopoverDirective', () => {
 
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       providers: [
         { provide: ElementRef, useClass: MockElementRef }
       ]

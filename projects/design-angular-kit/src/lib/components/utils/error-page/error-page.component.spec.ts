@@ -1,17 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorPageComponent } from './error-page.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { RouterTestingModule } from '@angular/router/testing';
+import { tb_base } from '../../../../test';
 
 describe('ErrorPageComponent', () => {
   let component: ErrorPageComponent;
   let fixture: ComponentFixture<ErrorPageComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ErrorPageComponent], imports: [TranslateModule.forRoot(), RouterTestingModule]
-    }).compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ErrorPageComponent);
     component = fixture.componentInstance;

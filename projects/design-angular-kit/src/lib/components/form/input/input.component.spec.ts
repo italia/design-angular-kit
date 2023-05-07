@@ -1,17 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { InputComponent } from './input.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { tb_base } from '../../../../test';
 
 describe('InputComponent', () => {
   let component: InputComponent;
   let fixture: ComponentFixture<InputComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [InputComponent], imports: [FormsModule,ReactiveFormsModule, TranslateModule.forRoot()]
-    })
+    await TestBed.configureTestingModule(tb_base)
       .compileComponents();
 
     fixture = TestBed.createComponent(InputComponent);

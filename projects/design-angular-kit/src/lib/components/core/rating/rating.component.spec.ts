@@ -1,19 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RatingComponent } from './rating.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ComponentsModule } from '../../components.module';
+import { tb_base } from '../../../../test';
 
 describe('RatingComponent', () => {
   let component: RatingComponent;
   let fixture: ComponentFixture<RatingComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [RatingComponent],
-      imports: [FormsModule, ReactiveFormsModule, TranslateModule.forRoot(), ComponentsModule]
-    }).compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(RatingComponent);
     component = fixture.componentInstance;

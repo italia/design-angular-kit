@@ -1,24 +1,19 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ButtonDirective } from '../../core/button/button.directive';
-import { IconComponent } from '../../utils/icon/icon.component';
 import { BackButtonComponent } from './back-button.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { tb_base } from '../../../../test';
 
 describe('BackButtonComponent', () => {
   let component: BackButtonComponent;
   let fixture: ComponentFixture<BackButtonComponent>;
 
   beforeEach(fakeAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BackButtonComponent, IconComponent, ButtonDirective ],
-      imports: [ TranslateModule.forRoot() ]
-    })
-    .overrideComponent(BackButtonComponent, {
-      set: { changeDetection: ChangeDetectionStrategy.Default }
-    })
-    .compileComponents();
+    TestBed.configureTestingModule(tb_base)
+      .overrideComponent(BackButtonComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(BackButtonComponent);
     component = fixture.componentInstance;
@@ -76,19 +71,20 @@ describe('BackButtonComponent', () => {
     component.buttonStyle = 'link';
     fixture.detectChanges();
     const aElement = fixture.debugElement.query(By.css('a'));
-    aElement.nativeElement.removeAttribute("href");
+    aElement.nativeElement.removeAttribute('href');
     fixture.detectChanges();
     aElement.nativeElement.click();
     expect(component._location.back).toHaveBeenCalled();
   });
 
   it('se passo una callback backFn, al click deve essere lanciata lei', () => {
-    component.backFn = () => {};
+    component.backFn = () => {
+    };
     component.buttonStyle = 'link';
     fixture.detectChanges();
     spyOn(component, 'backFn');
     const aElement = fixture.debugElement.query(By.css('a'));
-    aElement.nativeElement.removeAttribute("href");
+    aElement.nativeElement.removeAttribute('href');
     fixture.detectChanges();
     aElement.nativeElement.click();
     expect(component.backFn).toHaveBeenCalled();
