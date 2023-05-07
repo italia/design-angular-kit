@@ -63,13 +63,39 @@ npm install design-angular-kit@unstable --save
 Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
 
 ```typescript
+import {DesignAngularKitModule} from 'design-angular-kit';
+
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule
+    DesignAngularKitModule.forRoot() // .forRoot obligatorio
   ]
 })
 ```
+<details>
+  <summary>Configurazione della libreria</summary>
+
+  ```typescript
+  import {DesignAngularKitModule, DesignAngularKitInit} from 'design-angular-kit';
+  
+  // Puoi aggiungere alla libreria una configurazione iniziale
+  const initConfig: DesignAngularKitInit | undefined = {
+    /**
+     * The initial path in the `href` attribute in the `IconComponent` component
+     * @default './bootstrap-italia/dist/svg/sprites.svg'
+     */
+    iconHref: string | undefined,
+  };
+  
+  @NgModule({
+    imports: [
+      ...
+      DesignAngularKitModule.forRoot(initConfig) // .forRoot obligatorio
+    ]
+  })
+  ```
+</details>
+
 
 ### Importazione stili bootstrap-italia
 Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS come mostrato nell'esempio qui sotto.
@@ -171,7 +197,7 @@ Modifica nel tuo `app.module.ts`:
       },      
       defaultLanguage: 'it'
     }),
-    DesignAngularKitModule
+    DesignAngularKitModule.forRoot()
   ]
 })
 ```
@@ -188,7 +214,7 @@ Se non utilizzi i file di localizzazione nella tua app, devi aggiungere il provi
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule,
+    DesignAngularKitModule.forRoot(),
   ],
   providers: [
     TranslateStore

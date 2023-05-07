@@ -24,7 +24,7 @@ import { DesignAngularKitModule } from '../../projects/design-angular-kit/src/li
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    DesignAngularKitModule
+    DesignAngularKitModule.forRoot()
   ],
   providers: [
     TranslateStore,
