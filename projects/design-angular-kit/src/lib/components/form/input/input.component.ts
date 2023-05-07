@@ -37,6 +37,19 @@ export class InputComponent extends AbstractFormComponent<string | number> imple
   @Input() readonly?: BooleanInput | 'plaintext';
 
   /**
+   * The max date value [Used only in type = 'date']
+   * @default '9999-12-31'
+   * @example 'yyyy-mm-dd'
+   */
+  @Input() maxDate?: string;
+
+  /**
+   * The min date value [Used only in type = 'date']
+   * @example 'yyyy-mm-dd'
+   */
+  @Input() minDate?: string;
+
+  /**
    * The max value [Used only in type = 'number']
    */
   @Input() max?: number;
