@@ -5,6 +5,8 @@
 export * from './lib/design-angular-kit.module';
 export * from './lib/components/components.module';
 
+// Config
+export * from './lib/design-angular-kit-config';
 
 // Core
 export * from './lib/components/core/accordion/accordion.component';
@@ -71,6 +73,8 @@ export * from './lib/services/notifications/notifications.service';
 export * from './lib/pipes/mark-matching-text.pipe';
 
 // Interfaces
+export * from './lib/interfaces/design-angular-kit-init';
+
 export * from './lib/interfaces/core';
 export * from './lib/interfaces/form';
 export * from './lib/interfaces/icon';
