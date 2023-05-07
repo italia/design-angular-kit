@@ -1,27 +1,26 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { IconComponent } from '../../utils/icon/icon.component';
 
 import { CalloutComponent } from './callout.component';
+import { tb_base } from '../../../../test';
 
 describe('CalloutComponent', () => {
   let component: CalloutComponent;
   let fixture: ComponentFixture<CalloutComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CalloutComponent, IconComponent ]
-    })
-    .overrideComponent(CalloutComponent, {
-      set: { changeDetection: ChangeDetectionStrategy.Default }
-    })
-    .compileComponents();
+    await TestBed.configureTestingModule(tb_base)
+      .overrideComponent(CalloutComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(CalloutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
