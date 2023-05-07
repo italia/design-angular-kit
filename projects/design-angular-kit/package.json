@@ -37,6 +37,6 @@
     "@angular/platform-browser": "^15.2.6",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
-    "bootstrap-italia": "^2.3.6"
+    "bootstrap-italia": "^2.4.1"
   }
 }

@@ -64,7 +64,7 @@
     "@angular/router": "^15.2.6",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
-    "bootstrap-italia": "^2.3.6",
+    "bootstrap-italia": "^2.4.1",
     "core-js": "^3.30.0",
     "fp-ts": "^2.13.1",
     "io-ts": "^2.2.20",
