@@ -1,26 +1,35 @@
 import BaseComponent from 'bootstrap/js/src/base-component.js';
-import { getElementFromSelector, reflow } from 'bootstrap/js/src/util';
-import EventHandler from 'bootstrap/js/src/dom/event-handler';
+import { reflow } from 'bootstrap/js/src/util';
+import { cookies } from './util/cookies.js';
+import SelectorEngine from 'bootstrap/js/src/dom/selector-engine';
 
-const NAME = 'dimmer';
-const DATA_KEY = 'bs.dimmer';
-const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = '.data-api';
-
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
+const NAME = 'acceptoverlay';
 
 const CLASS_NAME_FADE = 'fade';
 const CLASS_NAME_SHOW = 'show';
 
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dimmer"]';
-const SELECTOR_DATA_ARIAHIDDEN = '[aria-hidden=true]';
+const SELECTOR_DATA_TOGGLE = '[data-bs-accept-from]';
+const SELECTOR_DATA_REMEMBER = '[data-bs-accept-remember]';
 
-class Dimmer extends BaseComponent {
-  constructor(element) {
-    super(element);
-
-    this._isShown = !element.matches(SELECTOR_DATA_ARIAHIDDEN);
-    this._isTransitioning = false;
+class AcceptOverlay extends BaseComponent {
+  constructor(element, config) {
+    const parentElement = element.closest('.acceptoverlay');
+    super(parentElement);
+    const remember = cookies.isChoiceRemembered(config.service);
+    this._isShown = true;
+    this._toggleElement = element;
+    if (remember) {
+      this.hide();
+      setTimeout(() => {
+        this._toggleElement.dispatchEvent(new Event('click'));
+      }, 100);
+      return
+    }
+    this._toggleElement.addEventListener('click', () => {
+      this.hide();
+      this._remember = this._toggleElement.parentElement.querySelector(SELECTOR_DATA_REMEMBER).checked;
+      cookies.rememberChoice(config.service, this._remember);
+    });
   }
 
   // Getters
@@ -71,10 +80,7 @@ class Dimmer extends BaseComponent {
   _showElement() {
     const isAnimated = this._isAnimated();
 
-    //this._element.style.display = 'flex'
     this._element.removeAttribute('aria-hidden');
-    //this._element.setAttribute('aria-modal', true)
-    //this._element.setAttribute('role', 'dialog')
 
     if (isAnimated) {
       reflow(this._element);
@@ -90,10 +96,7 @@ class Dimmer extends BaseComponent {
   }
 
   _hideElement() {
-    //this._element.style.display = 'none'
     this._element.setAttribute('aria-hidden', true);
-    //this._element.removeAttribute('aria-modal')
-    //this._element.removeAttribute('role')
     this._isTransitioning = false;
   }
 }
@@ -104,12 +107,12 @@ class Dimmer extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function () {
-  const dimmerElement = getElementFromSelector(this);
-  const dimmer = Dimmer.getOrCreateInstance(dimmerElement);
+const acceptOverlays = SelectorEngine.find(SELECTOR_DATA_TOGGLE);
+if (acceptOverlays.length > 0) {
+  acceptOverlays.forEach((element) => {
+    AcceptOverlay.getOrCreateInstance(element, { service: element.dataset.bsAcceptFrom });
+  });
+}
 
-  this.checked ? dimmer.show() : dimmer.hide();
-});
-
-export { Dimmer as default };
-//# sourceMappingURL=dimmer.js.map
+export { AcceptOverlay as default };
+//# sourceMappingURL=accept-overlay.js.map

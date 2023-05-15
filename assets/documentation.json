@@ -181,6 +181,51 @@
             "methods": []
         },
         {
+            "name": "DesignAngularKitInit",
+            "id": "interface-DesignAngularKitInit-4f0832d15a8bd0420b16c1f7e32d316e397a493e33583316cbbfc621287dfa346a5383b22e4ce0c0a81dabcad7117b2994802327b44f81d8c2fa94822797a8e8",
+            "file": "projects/design-angular-kit/src/lib/interfaces/design-angular-kit-init.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface DesignAngularKitInit {\n\n  /**\n   * The initial path in the `href` attribute in the `IconComponent` component\n   * @default './bootstrap-italia/dist/svg/sprites.svg'\n   */\n  iconHref?: string;\n\n}\n",
+            "properties": [
+                {
+                    "name": "iconHref",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "<p>The initial path in the <code>href</code> attribute in the <code>IconComponent</code> component</p>\n",
+                    "line": 7,
+                    "rawdescription": "\n\nThe initial path in the `href` attribute in the `IconComponent` component\n",
+                    "jsdoctags": [
+                        {
+                            "pos": 131,
+                            "end": 185,
+                            "flags": 4194304,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 132,
+                                "end": 139,
+                                "flags": 4194304,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>&#39;./bootstrap-italia/dist/svg/sprites.svg&#39;</p>\n"
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "Notification",
             "id": "interface-Notification-a803452049c748269521398c6f4f976005e394b58bc68bff5971ea78779b9ca9863022845ed2c09e7151e3f360906c053468ce84c2a1b319bbf2726e74c1039e",
             "file": "projects/design-angular-kit/src/lib/interfaces/core.ts",
@@ -1482,6 +1527,120 @@
     "guards": [],
     "interceptors": [],
     "classes": [
+        {
+            "name": "DesignAngularKitConfig",
+            "id": "class-DesignAngularKitConfig-175c788aca6b39489a5e4bd42918d915dfce402ee3e89cf7c78c670982b7e63cd03632e2dc582c9607a64a9ce79ea04254e5da0c4f6d4089ba9211c52086037c",
+            "file": "projects/design-angular-kit/src/lib/design-angular-kit-config.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { InjectionToken } from '@angular/core';\nimport { DesignAngularKitInit } from './interfaces/design-angular-kit-init';\n\nexport const DESIGN_ANGULAR_KIT_CONFIG = new InjectionToken<DesignAngularKitConfig>('DesignAngularKitConfig');\n\nexport class DesignAngularKitConfig {\n\n  /**\n   * The init config\n   * @private\n   */\n  private readonly initConfig?: DesignAngularKitInit;\n\n  constructor(nextInit?: DesignAngularKitInit) {\n    this.initConfig = nextInit;\n  }\n\n  /**\n   * The initial path in the `href` attribute in the `IconComponent` component\n   * @default './bootstrap-italia/dist/svg/sprites.svg'\n   */\n  get iconHref(): string {\n    return this.initConfig?.iconHref || './bootstrap-italia/dist/svg/sprites.svg';\n  }\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "nextInit",
+                        "type": "DesignAngularKitInit",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "nextInit",
+                        "type": "DesignAngularKitInit",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "initConfig",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DesignAngularKitInit",
+                    "optional": true,
+                    "description": "<p>The init config</p>\n",
+                    "line": 12,
+                    "rawdescription": "\n\nThe init config\n",
+                    "modifierKind": [
+                        121,
+                        144
+                    ],
+                    "jsdoctags": [
+                        {
+                            "pos": 309,
+                            "end": 321,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 332,
+                            "tagName": {
+                                "pos": 310,
+                                "end": 317,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 121,
+                                "escapedText": "private"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "accessors": {
+                "iconHref": {
+                    "name": "iconHref",
+                    "getSignature": {
+                        "name": "iconHref",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 22,
+                        "rawdescription": "\n\nThe initial path in the `href` attribute in the `IconComponent` component\n",
+                        "description": "<p>The initial path in the <code>href</code> attribute in the <code>IconComponent</code> component</p>\n",
+                        "jsdoctags": [
+                            {
+                                "pos": 555,
+                                "end": 609,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 325,
+                                "tagName": {
+                                    "pos": 556,
+                                    "end": 563,
+                                    "flags": 4227072,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 79,
+                                    "originalKeywordKind": 88,
+                                    "escapedText": "default"
+                                },
+                                "comment": "<p>&#39;./bootstrap-italia/dist/svg/sprites.svg&#39;</p>\n"
+                            }
+                        ]
+                    }
+                }
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
         {
             "name": "FileUtils",
             "id": "class-FileUtils-8c4847b6837e2ef3fd39e0d87f3e5657bba500617f8ccf958b6fff0eba1be70991392743a8998098e870befc20d27c277f7e77f4c3d14fcc406590ed0bb78bf0",
@@ -7660,7 +7819,7 @@
                     }
                 }
             },
-            "templateData": "<div class=\"callout {{color}}\" [class.callout-highlight]=\"appearance === 'highlight'\"\n  [class.callout-more]=\"appearance === 'more'\">\n  <div class=\"callout-title\" *ngIf=\"label\">\n    <it-icon [name]=\"iconName\"></it-icon>\n    <span *ngIf=\"hiddenLabel\" class=\"visually-hidden\">{{ hiddenLabel }}</span>\n    <span>{{ label }}</span>\n  </div>\n  <p class=\"callout-big-text\">\n    <ng-content select=\"[bigText]\"></ng-content>\n  </p>\n  <ng-content></ng-content>\n</div>\n"
+            "templateData": "<div class=\"callout {{color}}\" [class.callout-highlight]=\"appearance === 'highlight'\"\n  [class.callout-more]=\"appearance === 'more'\">\n\n  <div *ngIf=\"appearance === 'default'; else inner\" class=\"callout-inner\">\n    <ng-container *ngTemplateOutlet=\"inner\"></ng-container>\n  </div>\n</div>\n\n<ng-template #inner>\n  <div class=\"callout-title\" *ngIf=\"label\">\n    <it-icon [name]=\"iconName\"></it-icon>\n    <span *ngIf=\"hiddenLabel\" class=\"visually-hidden\">{{ hiddenLabel }}</span>\n    <span class=\"text\">{{ label }}</span>\n  </div>\n  <p class=\"callout-big-text\">\n    <ng-content select=\"[bigText]\"></ng-content>\n  </p>\n  <ng-content></ng-content>\n</ng-template>\n"
         },
         {
             "name": "CardComponent",
@@ -12007,7 +12166,7 @@
         },
         {
             "name": "ErrorPageComponent",
-            "id": "component-ErrorPageComponent-ae4ad290c051971b67b1baa1b5c6ea84758ed69dfe3d66a8ab21e00c9792e0763818d5ed9bdc262e29e23aa9df3bfc419e4a73d13df6bfdd1cd2b53600fc4d5f",
+            "id": "component-ErrorPageComponent-7ad302648768397186f31f7945f63c3bd5c5514033153b2729d4e76b7a88b6df0daa643934ee2c3819f7c8885addaa89bdcaaf3ca458fc42c3f0665c9c4e589f",
             "file": "projects/design-angular-kit/src/lib/components/utils/error-page/error-page.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -12160,7 +12319,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { ActivatedRoute } from '@angular/router';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-error-page',\n  templateUrl: './error-page.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ErrorPageComponent {\n\n  /**\n   * The error code to show\n   */\n  @Input() errorCode?: number | 404 | 403 | 500;\n\n  /**\n   * Show/Hide error code\n   * @default true - show\n   */\n  @Input() showErrorCode?: BooleanInput = true;\n\n  /**\n   * Custom error title\n   * - If set it will be displayed instead of the default title.\n   * - It is possible to use i18n keys\n   */\n  @Input() errorTitle?: string;\n\n  /**\n   * Custom error description\n   * - If set it will be displayed instead of the default description.\n   * - It is possible to use i18n keys\n   */\n  @Input() errorDescription?: string;\n\n  /**\n   * Show/Hide back button\n   * @default true - show\n   */\n  @Input() showBackButton?: BooleanInput = true;\n\n  /**\n   * Show/Hide home button\n   * @default true - show\n   */\n  @Input() showHomeButton?: BooleanInput = true;\n\n  constructor(\n    private readonly route: ActivatedRoute\n  ) {\n    this.route.data.subscribe(data => {\n      if (!this.errorCode && data['errorCode']) {\n        this.errorCode = data['errorCode']; // Get errorCode from route data\n      }\n      if (data['showErrorCode'] !== undefined) {\n        this.showBackButton = data['showErrorCode'];  // Get showErrorCode from route data\n      }\n      if (!this.errorTitle && data['errorTitle']) {\n        this.errorTitle = data['errorTitle'];  // Get errorTitle from route data\n      }\n      if (!this.errorDescription && data['errorDescription']) {\n        this.errorDescription = data['errorDescription'];  // Get errorDescription from route data\n      }\n      if (data['showBackButton'] !== undefined) {\n        this.showBackButton = data['showBackButton'];  // Get showBackButton from route data\n      }\n      if (data['showHomeButton'] !== undefined) {\n        this.showHomeButton = data['showHomeButton'];  // Get showHomeButton from route data\n      }\n    });\n  }\n\n  get isDefaultErrorCode(): boolean {\n    return this.errorCode === 404 || this.errorCode === 403 || this.errorCode === 500;\n  }\n\n  get isShowErrorCode(): boolean {\n    return isTrueBooleanInput(this.showErrorCode);\n  }\n\n  get isShowBackButton(): boolean {\n    return isTrueBooleanInput(this.showBackButton);\n  }\n\n  get isShowHomeButton(): boolean {\n    return isTrueBooleanInput(this.showHomeButton);\n  }\n\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { ActivatedRoute } from '@angular/router';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-error-page',\n  templateUrl: './error-page.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ErrorPageComponent {\n\n  /**\n   * The error code to show\n   */\n  @Input() errorCode?: number | 404 | 403 | 500;\n\n  /**\n   * Show/Hide error code\n   * @default true - show\n   */\n  @Input() showErrorCode?: BooleanInput = true;\n\n  /**\n   * Custom error title\n   * - If set it will be displayed instead of the default title.\n   * - It is possible to use i18n keys\n   */\n  @Input() errorTitle?: string;\n\n  /**\n   * Custom error description\n   * - If set it will be displayed instead of the default description.\n   * - It is possible to use i18n keys\n   */\n  @Input() errorDescription?: string;\n\n  /**\n   * Show/Hide back button\n   * @default true - show\n   */\n  @Input() showBackButton?: BooleanInput = true;\n\n  /**\n   * Show/Hide home button\n   * @default true - show\n   */\n  @Input() showHomeButton?: BooleanInput = true;\n\n  constructor(\n    private readonly route: ActivatedRoute\n  ) {\n    this.route.data.subscribe(data => {\n      if (!this.errorCode && data['errorCode']) {\n        this.errorCode = data['errorCode']; // Get errorCode from route data\n      }\n      if (data['showErrorCode'] !== undefined) {\n        this.showErrorCode = data['showErrorCode'];  // Get showErrorCode from route data\n      }\n      if (!this.errorTitle && data['errorTitle']) {\n        this.errorTitle = data['errorTitle'];  // Get errorTitle from route data\n      }\n      if (!this.errorDescription && data['errorDescription']) {\n        this.errorDescription = data['errorDescription'];  // Get errorDescription from route data\n      }\n      if (data['showBackButton'] !== undefined) {\n        this.showBackButton = data['showBackButton'];  // Get showBackButton from route data\n      }\n      if (data['showHomeButton'] !== undefined) {\n        this.showHomeButton = data['showHomeButton'];  // Get showHomeButton from route data\n      }\n    });\n  }\n\n  get isDefaultErrorCode(): boolean {\n    return this.errorCode === 404 || this.errorCode === 403 || this.errorCode === 500;\n  }\n\n  get isShowErrorCode(): boolean {\n    return isTrueBooleanInput(this.showErrorCode);\n  }\n\n  get isShowBackButton(): boolean {\n    return isTrueBooleanInput(this.showBackButton);\n  }\n\n  get isShowHomeButton(): boolean {\n    return isTrueBooleanInput(this.showHomeButton);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -12581,7 +12740,7 @@
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-c9ce7088cf916c2f32c557420069b32788b1a3af49cfb78974fdf59690e31ac0cc09619726d9bcc86a5fe329fc0c668708a6c9845fecb94fa85b06b3795281d1",
+            "id": "component-IconComponent-234e85de3c11eda4867aa4b5f062d22b974e59a8b4366a94c55e46e1dd2e8231074c58cae7e3203f94e90a25519b563e9e230952c57ae5f7afd432d7861acdb7",
             "file": "projects/design-angular-kit/src/lib/components/utils/icon/icon.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -12603,7 +12762,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe icon color\n",
                     "description": "<p>The icon color</p>\n",
-                    "line": 25,
+                    "line": 26,
                     "type": "IconColor",
                     "decorators": []
                 },
@@ -12613,7 +12772,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe icon name\n",
                     "description": "<p>The icon name</p>\n",
-                    "line": 15,
+                    "line": 16,
                     "type": "IconName",
                     "decorators": []
                 },
@@ -12623,7 +12782,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCreate a padding proportional to the size of the surrounding icon.\n",
                     "description": "<p>Create a padding proportional to the size of the surrounding icon.</p>\n",
-                    "line": 30,
+                    "line": 31,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -12633,7 +12792,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe icon size\n",
                     "description": "<p>The icon size</p>\n",
-                    "line": 20,
+                    "line": 21,
                     "type": "IconSize",
                     "decorators": []
                 },
@@ -12643,7 +12802,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCustom class of svg\n",
                     "description": "<p>Custom class of svg</p>\n",
-                    "line": 35,
+                    "line": 36,
                     "type": "string",
                     "decorators": []
                 }
@@ -12658,10 +12817,36 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { IconColor, IconName, IconSize } from '../../../interfaces/icon';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n@Component({\n  selector: 'it-icon[name]',\n  templateUrl: './icon.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class IconComponent {\n\n  /**\n   * The icon name\n   */\n  @Input() name!: IconName;\n\n  /**\n   * The icon size\n   */\n  @Input() size?: IconSize;\n\n  /**\n   * The icon color\n   */\n  @Input() color?: IconColor;\n\n  /**\n   * Create a padding proportional to the size of the surrounding icon.\n   */\n  @Input() padded?: BooleanInput;\n\n  /**\n   * Custom class of svg\n   */\n  @Input() svgClass?: string;\n\n  /**\n   * Return the icon href\n   */\n  get iconHref(): string {\n    return `./bootstrap-italia/dist/svg/sprites.svg#it-${this.name}`;\n  }\n\n  /**\n   * Return the icon class\n   */\n  get iconClass(): string {\n    let iconClass = 'icon';\n    if (this.size) {\n      iconClass += ` icon-${this.size}`;\n    }\n    if (this.color) {\n      iconClass += ` icon-${this.color}`;\n    }\n    if (isTrueBooleanInput(this.padded)) {\n      iconClass += ` icon-padded`;\n    }\n    if (this.svgClass) {\n      iconClass += ` ${this.svgClass}`;\n    }\n    return iconClass;\n  }\n\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';\nimport { IconColor, IconName, IconSize } from '../../../interfaces/icon';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from '../../../design-angular-kit-config';\n\n@Component({\n  selector: 'it-icon[name]',\n  templateUrl: './icon.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class IconComponent {\n\n  /**\n   * The icon name\n   */\n  @Input() name!: IconName;\n\n  /**\n   * The icon size\n   */\n  @Input() size?: IconSize;\n\n  /**\n   * The icon color\n   */\n  @Input() color?: IconColor;\n\n  /**\n   * Create a padding proportional to the size of the surrounding icon.\n   */\n  @Input() padded?: BooleanInput;\n\n  /**\n   * Custom class of svg\n   */\n  @Input() svgClass?: string;\n\n  /**\n   * Return the icon href\n   */\n  get iconHref(): string {\n    return `${this.config.iconHref}#it-${this.name}`;\n  }\n\n  /**\n   * Return the icon class\n   */\n  get iconClass(): string {\n    let iconClass = 'icon';\n    if (this.size) {\n      iconClass += ` icon-${this.size}`;\n    }\n    if (this.color) {\n      iconClass += ` icon-${this.color}`;\n    }\n    if (isTrueBooleanInput(this.padded)) {\n      iconClass += ` icon-padded`;\n    }\n    if (this.svgClass) {\n      iconClass += ` ${this.svgClass}`;\n    }\n    return iconClass;\n  }\n\n  constructor(\n    @Inject(DESIGN_ANGULAR_KIT_CONFIG) private readonly config: DesignAngularKitConfig\n  ) {\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "config",
+                        "type": "DesignAngularKitConfig",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 63,
+                "jsdoctags": [
+                    {
+                        "name": "config",
+                        "type": "DesignAngularKitConfig",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "accessors": {
                 "iconHref": {
                     "name": "iconHref",
@@ -12669,7 +12854,7 @@
                         "name": "iconHref",
                         "type": "string",
                         "returnType": "string",
-                        "line": 40,
+                        "line": 41,
                         "rawdescription": "\n\nReturn the icon href\n",
                         "description": "<p>Return the icon href</p>\n"
                     }
@@ -12680,7 +12865,7 @@
                         "name": "iconClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 47,
+                        "line": 48,
                         "rawdescription": "\n\nReturn the icon class\n",
                         "description": "<p>Return the icon class</p>\n"
                     }
@@ -12690,7 +12875,7 @@
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-7648d68c996e311a65a577a2c3d110efa64fe5b8667aa458ea929739db142d6d3bf6adac4b1546541515eda404fb9e303bd1f1f69891e560687fb4253b1c1360",
+            "id": "component-InputComponent-24085f3165ffaf8238ae4508ed53fc6de91fa3c4c01f7f6cd0efc4d254440a434f59d599be4070c3850a6b3b1889343f3c4420fa8431bf8dc928a65c97d54e70",
             "file": "projects/design-angular-kit/src/lib/components/form/input/input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -12714,7 +12899,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTo make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n",
                     "description": "<p>To make the numeric field automatically resize according to the value contained in it. [Used only in type = &#39;number&#39;]</p>\n",
-                    "line": 67,
+                    "line": 80,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -12724,15 +12909,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 2179,
-                            "end": 2201,
+                            "pos": 2465,
+                            "end": 2487,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 2180,
-                                "end": 2187,
+                                "pos": 2466,
+                                "end": 2473,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12745,7 +12930,7 @@
                     ],
                     "rawdescription": "\n\nIndicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\nIf you need to retrieve items via API, can pass a function of Observable\n",
                     "description": "<p>Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = &#39;search&#39;]\nIf you need to retrieve items via API, can pass a function of Observable</p>\n",
-                    "line": 74,
+                    "line": 87,
                     "type": "Array<AutocompleteItem> | ",
                     "decorators": []
                 },
@@ -12756,15 +12941,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 2474,
-                            "end": 2495,
+                            "pos": 2760,
+                            "end": 2781,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 2475,
-                                "end": 2482,
+                                "pos": 2761,
+                                "end": 2768,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12777,7 +12962,7 @@
                     ],
                     "rawdescription": "\n\nTime span [ms] has passed without another source emission, to delay data filtering.\nUseful when the user is typing multiple letters\n",
                     "description": "<p>Time span [ms] has passed without another source emission, to delay data filtering.\nUseful when the user is typing multiple letters</p>\n",
-                    "line": 81,
+                    "line": 94,
                     "type": "number",
                     "decorators": []
                 },
@@ -12787,7 +12972,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIf is a currency number [Used only in type = 'number']\n",
                     "description": "<p>If is a currency number [Used only in type = &#39;number&#39;]</p>\n",
-                    "line": 57,
+                    "line": 70,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -12807,8 +12992,58 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe max value [Used only in type = 'number']\n",
                     "description": "<p>The max value [Used only in type = &#39;number&#39;]</p>\n",
-                    "line": 42,
+                    "line": 55,
                     "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "maxDate",
+                    "defaultValue": "'9999-12-31'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1351,
+                            "end": 1378,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1352,
+                                "end": 1359,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 88,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>&#39;9999-12-31&#39;</p>\n"
+                        },
+                        {
+                            "pos": 1378,
+                            "end": 1403,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1379,
+                                "end": 1386,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<p>&#39;yyyy-mm-dd&#39;</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nThe max date value [Used only in type = 'date']\n```html\n```",
+                    "description": "<p>The max date value [Used only in type = &#39;date&#39;]</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\"></code></pre></div>",
+                    "line": 44,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -12817,8 +13052,38 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe min value [Used only in type = 'number']\n",
                     "description": "<p>The min value [Used only in type = &#39;number&#39;]</p>\n",
-                    "line": 47,
+                    "line": 60,
                     "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "minDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1515,
+                            "end": 1540,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 1516,
+                                "end": 1523,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<p>&#39;yyyy-mm-dd&#39;</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nThe min date value [Used only in type = 'date']\n```html\n```",
+                    "description": "<p>The min date value [Used only in type = &#39;date&#39;]</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\"></code></pre></div>",
+                    "line": 50,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -12827,7 +13092,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIf is a percentage number [Used only in type = 'number']\n",
                     "description": "<p>If is a percentage number [Used only in type = &#39;number&#39;]</p>\n",
-                    "line": 62,
+                    "line": 75,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -12858,7 +13123,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe step value [Used only in type = 'number']\n",
                     "description": "<p>The step value [Used only in type = &#39;number&#39;]</p>\n",
-                    "line": 52,
+                    "line": 65,
                     "type": "number | \"any\"",
                     "decorators": []
                 },
@@ -12978,7 +13243,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired when the Autocomplete Item has been selected\n",
                     "description": "<p>Fired when the Autocomplete Item has been selected</p>\n",
-                    "line": 86,
+                    "line": 99,
                     "type": "EventEmitter<AutocompleteItem>"
                 },
                 {
@@ -13003,7 +13268,7 @@
                     "type": "Observable<literal type>",
                     "optional": false,
                     "description": "<p>Observable da cui vengono emessi i risultati dell&#39;auto completamento</p>\n",
-                    "line": 163,
+                    "line": 176,
                     "rawdescription": "\nObservable da cui vengono emessi i risultati dell'auto completamento"
                 },
                 {
@@ -13014,7 +13279,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 88,
+                    "line": 101,
                     "modifierKind": [
                         122
                     ]
@@ -13169,7 +13434,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 266,
+                    "line": 279,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13199,7 +13464,7 @@
                     "optional": false,
                     "returnType": "Observable<literal type>",
                     "typeParameters": [],
-                    "line": 225,
+                    "line": 238,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCreate the autocomplete list\n",
@@ -13222,7 +13487,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 203,
+                    "line": 216,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIncrement or decrease the input number value of step\n",
@@ -13230,8 +13495,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6364,
-                                "end": 6372,
+                                "pos": 6650,
+                                "end": 6658,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13243,8 +13508,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "false",
                             "tagName": {
-                                "pos": 6358,
-                                "end": 6363,
+                                "pos": 6644,
+                                "end": 6649,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13261,7 +13526,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 182,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -13290,7 +13555,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 254,
+                    "line": 267,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13320,7 +13585,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 270,
+                    "line": 283,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -13804,11 +14069,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { AbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { AutocompleteItem, InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';\n\n@Component({\n  selector: 'it-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class InputComponent extends AbstractFormComponent<string | number> implements OnInit {\n\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder: string = '';\n\n  /**\n   * The input description\n   */\n  @Input() description?: string;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   */\n  @Input() readonly?: BooleanInput | 'plaintext';\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max?: number;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min?: number;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step?: number | 'any';\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   */\n  @Input() currency?: BooleanInput;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   */\n  @Input() percentage?: BooleanInput;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   */\n  @Input() adaptive?: BooleanInput;\n\n  /**\n   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\n   * If you need to retrieve items via API, can pass a function of Observable\n   * @default undefined\n   */\n  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string) => Observable<Array<AutocompleteItem>>);\n\n  /**\n   * Time span [ms] has passed without another source emission, to delay data filtering.\n   * Useful when the user is typing multiple letters\n   * @default 300 [ms]\n   */\n  @Input() autocompleteDebounceTime: number = 300;\n\n  /**\n   * Fired when the Autocomplete Item has been selected\n   */\n  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();\n\n  protected showAutocompletion = false;\n\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time' || this.type === 'color';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });\n    }\n\n    return super.invalidMessage;\n  }\n\n  /** Observable da cui vengono emessi i risultati dell'auto completamento */\n  autocompleteResults$: Observable<{\n    searchedValue: string,\n    relatedEntries: Array<AutocompleteItem>\n  }> = new Observable();\n\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (isTrueBooleanInput(this.percentage)) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);\n        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n    this.autocompleteResults$ = this.getAutocompleteResults$();\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  incrementNumber(decrease: boolean = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = (this.step === 'any' ? 1 : (this.step ?? 1));\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n\n\n  /**\n   * Create the autocomplete list\n   */\n  private getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> {\n    if (this.type !== 'search') {\n      return of({ searchedValue: '', relatedEntries: [] });\n    }\n    return this.control.valueChanges.pipe(\n      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters\n      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value\n      switchMap(searchedValue => {\n        if (!this.autocompleteData) {\n          return of({ searchedValue, relatedEntries: [] });\n        }\n\n        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);\n        return autoCompleteData$.pipe(\n          map(autocompleteData => {\n            if (!searchedValue) {\n              return { searchedValue, relatedEntries: [] };\n            }\n\n            const lowercaseValue = searchedValue.toLowerCase();\n            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));\n\n            return { searchedValue, relatedEntries };\n          })\n        );\n      })\n    );\n  }\n\n  onEntryClick(entry: AutocompleteItem, event: Event) {\n    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata\n    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.\n    if (!entry.link) {\n      event.preventDefault();\n    }\n\n    this.autocompleteSelectedEvent.next(entry);\n    this.control.setValue(entry.value);\n    this.showAutocompletion = false;\n  }\n\n  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {\n    return item.value;\n  }\n\n  onKeyDown() {\n    this.showAutocompletion = this.type === 'search';\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { AbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { AutocompleteItem, InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';\n\n@Component({\n  selector: 'it-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class InputComponent extends AbstractFormComponent<string | number> implements OnInit {\n\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder: string = '';\n\n  /**\n   * The input description\n   */\n  @Input() description?: string;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   */\n  @Input() readonly?: BooleanInput | 'plaintext';\n\n  /**\n   * The max date value [Used only in type = 'date']\n   * @default '9999-12-31'\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() maxDate?: string = '9999-12-31';\n\n  /**\n   * The min date value [Used only in type = 'date']\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() minDate?: string;\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max?: number;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min?: number;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step?: number | 'any';\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   */\n  @Input() currency?: BooleanInput;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   */\n  @Input() percentage?: BooleanInput;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   */\n  @Input() adaptive?: BooleanInput;\n\n  /**\n   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\n   * If you need to retrieve items via API, can pass a function of Observable\n   * @default undefined\n   */\n  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string) => Observable<Array<AutocompleteItem>>);\n\n  /**\n   * Time span [ms] has passed without another source emission, to delay data filtering.\n   * Useful when the user is typing multiple letters\n   * @default 300 [ms]\n   */\n  @Input() autocompleteDebounceTime: number = 300;\n\n  /**\n   * Fired when the Autocomplete Item has been selected\n   */\n  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();\n\n  protected showAutocompletion = false;\n\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time' || this.type === 'color';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });\n    }\n\n    return super.invalidMessage;\n  }\n\n  /** Observable da cui vengono emessi i risultati dell'auto completamento */\n  autocompleteResults$: Observable<{\n    searchedValue: string,\n    relatedEntries: Array<AutocompleteItem>\n  }> = new Observable();\n\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (isTrueBooleanInput(this.percentage)) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);\n        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n    this.autocompleteResults$ = this.getAutocompleteResults$();\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  incrementNumber(decrease: boolean = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = (this.step === 'any' ? 1 : (this.step ?? 1));\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n\n\n  /**\n   * Create the autocomplete list\n   */\n  private getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> {\n    if (this.type !== 'search') {\n      return of({ searchedValue: '', relatedEntries: [] });\n    }\n    return this.control.valueChanges.pipe(\n      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters\n      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value\n      switchMap(searchedValue => {\n        if (!this.autocompleteData) {\n          return of({ searchedValue, relatedEntries: [] });\n        }\n\n        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);\n        return autoCompleteData$.pipe(\n          map(autocompleteData => {\n            if (!searchedValue) {\n              return { searchedValue, relatedEntries: [] };\n            }\n\n            const lowercaseValue = searchedValue.toLowerCase();\n            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));\n\n            return { searchedValue, relatedEntries };\n          })\n        );\n      })\n    );\n  }\n\n  onEntryClick(entry: AutocompleteItem, event: Event) {\n    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata\n    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.\n    if (!entry.link) {\n      event.preventDefault();\n    }\n\n    this.autocompleteSelectedEvent.next(entry);\n    this.control.setValue(entry.value);\n    this.showAutocompletion = false;\n  }\n\n  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {\n    return item.value;\n  }\n\n  onKeyDown() {\n    this.showAutocompletion = this.type === 'search';\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".form-group {\n  label {\n    z-index: 1000;\n  }\n\n  input:focus:not(.focus--mouse) {\n    box-shadow: inherit !important;\n    border-color: inherit !important;\n  }\n\n  .input-number {\n    button.input-number-add {\n      top: 0;\n    }\n\n    button.input-number-sub {\n      bottom: 0;\n    }\n  }\n\n  .input-group-text:empty {\n    display: none;\n  }\n\n  label.empty-prepend-label {\n    left: auto !important;\n    max-width: 100% !important;\n  }\n}\n\n",
+                    "data": ".form-group {\n  label {\n    z-index: 1000;\n  }\n\n  input:focus:not(.focus--mouse) {\n    box-shadow: inherit !important;\n    border-color: inherit !important;\n  }\n\n  .input-number {\n    button.input-number-add {\n      top: 0;\n    }\n\n    button.input-number-sub {\n      bottom: 0;\n    }\n  }\n\n  .input-group-text:empty {\n    display: none;\n  }\n\n  label.empty-prepend-label {\n    left: auto !important;\n    max-width: 100% !important;\n  }\n\n  label:not(.active):has(+ input:-webkit-autofill) {\n    transform: translateY(-75%);\n  }\n}\n\n",
                     "styleUrl": "./input.component.scss"
                 }
             ],
@@ -13824,7 +14089,7 @@
                         "name": "isActiveLabel",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 91
+                        "line": 104
                     }
                 },
                 "isReadonly": {
@@ -13833,7 +14098,7 @@
                         "name": "isReadonly",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 107,
+                        "line": 120,
                         "rawdescription": "\n\nCheck is readonly field\n",
                         "description": "<p>Check is readonly field</p>\n"
                     }
@@ -13844,13 +14109,13 @@
                         "name": "invalidMessage",
                         "type": "",
                         "returnType": "Observable<string>",
-                        "line": 114,
+                        "line": 127,
                         "rawdescription": "\n\nReturn the invalid message string from TranslateService\n",
                         "description": "<p>Return the invalid message string from TranslateService</p>\n"
                     }
                 }
             },
-            "templateData": "<div class=\"form-group\">\n  <div class=\"input-group\">\n    <div class=\"input-group-prepend\" [class.d-none]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      <div #prepend>\n        <ng-content select=\"[prepend]\"></ng-content>\n      </div>\n      <div class=\"input-group-text\" #prependText>\n        <ng-content select=\"[prependText]\"></ng-content>\n      </div>\n    </div>\n\n    <label *ngIf=\"label\" [for]=\"id\" [class.active]=\"isActiveLabel\"\n           [class.empty-prepend-label]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      {{label}}\n    </label>\n\n    <span *ngIf=\"type === 'number'\"\n          class=\"input-number\"\n          [class.input-number-currency]=\"currency\"\n          [class.input-number-percentage]=\"percentage\"\n          [class.input-number-adaptive]=\"adaptive\">\n\n      <input type=\"number\"\n             [id]=\"id\"\n             [step]=\"step ?? null\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [formControl]=\"control\"\n             [placeholder]=\"placeholder\"\n             [readonly]=\"isReadonly\"\n             [attr.aria-describedby]=\"id + '-description'\"\n             (blur)=\"markAsTouched()\" />\n\n      <button type=\"button\" class=\"input-number-add\" (click)=\"incrementNumber()\">\n        <span class=\"visually-hidden\">{{'it.form.increase-value'}}</span>\n      </button>\n      <button type=\"button\" class=\"input-number-sub\" (click)=\"incrementNumber(true)\">\n        <span class=\"visually-hidden\">{{'it.form.decrease-value'}}</span>\n      </button>\n    </span>\n\n    <input *ngIf=\"type !== 'number'\"\n           [id]=\"id\"\n           [type]=\"type\"\n           [class.form-control]=\"readonly !== 'plaintext'\"\n           [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n           [class.is-invalid]=\"isInvalid\"\n           [class.is-valid]=\"isValid\"\n           [formControl]=\"control\"\n           [placeholder]=\"placeholder\"\n           [readonly]=\"isReadonly\"\n           (keydown)=\"onKeyDown()\"\n           [attr.aria-describedby]=\"id + '-description'\"\n           (blur)=\"markAsTouched()\">\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  <small *ngIf=\"description\" [id]=\"id + '-description'\" class=\"form-text\">{{description}}</small>\n\n  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->\n  <ng-container *ngIf=\"type === 'search'\">\n    <!-- Icona lente per autocompletamento -->\n    <span class=\"autocomplete-icon\" aria-hidden=\"true\">\n      <it-icon name=\"search\" size=\"sm\"></it-icon>\n    </span>\n\n    <ng-container *ngIf=\"autocompleteResults$ | async as autocomplete\">\n      <!-- Lista di autocompletamento -->\n      <ul class=\"autocomplete-list\" [class.autocomplete-list-show]=\"autocomplete.relatedEntries?.length && showAutocompletion\">\n        <li *ngFor=\"let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn\"\n            (click)=\"onEntryClick(entry, $event)\">\n          <a [href]=\"entry.link\">\n            <ng-container *ngTemplateOutlet=\"autocompleteItemTemplate\"></ng-container>\n          </a>\n          <ng-template #autocompleteItemTemplate>\n            <div class=\"avatar size-sm\" *ngIf=\"entry.avatarSrcPath\">\n              <img [src]=\"entry.avatarSrcPath\" [alt]=\"entry.avatarAltText\">\n            </div>\n            <it-icon *ngIf=\"entry.icon\" [name]=\"entry.icon\" size=\"sm\"></it-icon>\n            <span class=\"autocomplete-list-text\">\n            <span [innerHTML]=\"entry.value | markMatchingText: autocomplete.searchedValue\"></span>\n            <em *ngIf=\"entry.label\">{{entry.label}}</em>\n          </span>\n          </ng-template>\n        </li>\n      </ul>\n    </ng-container>\n  </ng-container>\n  <!-- FINE gestione AUTOCOMPLETAMENTO -->\n\n  <div *ngIf=\"isInvalid\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"form-group\">\n  <div class=\"input-group\">\n    <div class=\"input-group-prepend\" [class.d-none]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      <div #prepend>\n        <ng-content select=\"[prepend]\"></ng-content>\n      </div>\n      <div class=\"input-group-text\" #prependText>\n        <ng-content select=\"[prependText]\"></ng-content>\n      </div>\n    </div>\n\n    <label *ngIf=\"label\" [for]=\"id\" [class.active]=\"isActiveLabel\"\n           [class.empty-prepend-label]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      {{label}}\n    </label>\n\n    <span *ngIf=\"type === 'number'\"\n          class=\"input-number\"\n          [class.input-number-currency]=\"currency\"\n          [class.input-number-percentage]=\"percentage\"\n          [class.input-number-adaptive]=\"adaptive\">\n\n      <input type=\"number\"\n             [id]=\"id\"\n             [step]=\"step ?? null\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [formControl]=\"control\"\n             [placeholder]=\"placeholder\"\n             [readonly]=\"isReadonly\"\n             [attr.aria-describedby]=\"id + '-description'\"\n             (blur)=\"markAsTouched()\" />\n\n      <button type=\"button\" class=\"input-number-add\" (click)=\"incrementNumber()\">\n        <span class=\"visually-hidden\">{{'it.form.increase-value'}}</span>\n      </button>\n      <button type=\"button\" class=\"input-number-sub\" (click)=\"incrementNumber(true)\">\n        <span class=\"visually-hidden\">{{'it.form.decrease-value'}}</span>\n      </button>\n    </span>\n\n    <input *ngIf=\"type !== 'number'\"\n           [id]=\"id\"\n           [type]=\"type\"\n           [max]=\"type === 'date' ? maxDate : undefined\"\n           [min]=\"type === 'date' ? minDate : undefined\"\n           [class.form-control]=\"readonly !== 'plaintext'\"\n           [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n           [class.is-invalid]=\"isInvalid\"\n           [class.is-valid]=\"isValid\"\n           [formControl]=\"control\"\n           [placeholder]=\"placeholder\"\n           [readonly]=\"isReadonly\"\n           (keydown)=\"onKeyDown()\"\n           [attr.aria-describedby]=\"id + '-description'\"\n           (blur)=\"markAsTouched()\">\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  <small *ngIf=\"description\" [id]=\"id + '-description'\" class=\"form-text\">{{description}}</small>\n\n  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->\n  <ng-container *ngIf=\"type === 'search'\">\n    <!-- Icona lente per autocompletamento -->\n    <span class=\"autocomplete-icon\" aria-hidden=\"true\">\n      <it-icon name=\"search\" size=\"sm\"></it-icon>\n    </span>\n\n    <ng-container *ngIf=\"autocompleteResults$ | async as autocomplete\">\n      <!-- Lista di autocompletamento -->\n      <ul class=\"autocomplete-list\" [class.autocomplete-list-show]=\"autocomplete.relatedEntries?.length && showAutocompletion\">\n        <li *ngFor=\"let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn\"\n            (click)=\"onEntryClick(entry, $event)\">\n          <a [href]=\"entry.link\">\n            <ng-container *ngTemplateOutlet=\"autocompleteItemTemplate\"></ng-container>\n          </a>\n          <ng-template #autocompleteItemTemplate>\n            <div class=\"avatar size-sm\" *ngIf=\"entry.avatarSrcPath\">\n              <img [src]=\"entry.avatarSrcPath\" [alt]=\"entry.avatarAltText\">\n            </div>\n            <it-icon *ngIf=\"entry.icon\" [name]=\"entry.icon\" size=\"sm\"></it-icon>\n            <span class=\"autocomplete-list-text\">\n            <span [innerHTML]=\"entry.value | markMatchingText: autocomplete.searchedValue\"></span>\n            <em *ngIf=\"entry.label\">{{entry.label}}</em>\n          </span>\n          </ng-template>\n        </li>\n      </ul>\n    </ng-container>\n  </ng-container>\n  <!-- FINE gestione AUTOCOMPLETAMENTO -->\n\n  <div *ngIf=\"isInvalid\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</div>\n"
         },
         {
             "name": "LanguageSwitcherComponent",
@@ -17415,7 +17680,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".form-group {\n  input:focus:not(.focus--mouse) {\n    box-shadow: inherit !important;\n    border-color: inherit !important;\n  }\n}\n",
+                    "data": ".form-group {\n  input:focus:not(.focus--mouse) {\n    box-shadow: inherit !important;\n    border-color: inherit !important;\n  }\n  label:not(.active):has(+ input:-webkit-autofill) {\n    transform: translateY(-75%);\n  }\n}\n",
                     "styleUrl": "./password-input.component.scss"
                 }
             ],
@@ -24446,13 +24711,47 @@
         },
         {
             "name": "DesignAngularKitModule",
-            "id": "module-DesignAngularKitModule-b0495e62944de5f05667af8433f43ee92ba19a2ec85a42d37fbd470970db8cb14618e304b1ebfb4218fe62956a085a2bfcc4049e2b02783e7ab3eb873dbe93cc",
+            "id": "module-DesignAngularKitModule-2a1fa5ec89b8c48c833b9f74c535e450f5256617cf9999972ed65a360cc3f8308430be3f0f941bb5b980f328e51a98f14ce84a4c444a83f59dda24acd3a018fc",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/design-angular-kit/src/lib/design-angular-kit.module.ts",
-            "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';\nimport { HttpClient, HttpClientModule } from '@angular/common/http';\nimport { TranslateHttpLoader } from '@ngx-translate/http-loader';\nimport { ComponentsModule } from './components/components.module';\n\n@NgModule({\n  declarations: [],\n  imports: [\n    ComponentsModule,\n    HttpClientModule,\n    TranslateModule.forChild({\n      loader: {\n        provide: TranslateLoader,\n        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, '/bootstrap-italia/i18n/'),\n        deps: [HttpClient]\n      },\n      extend: true,\n      isolate: false,\n      defaultLanguage: 'it'\n    })\n  ],\n  exports: [\n    ComponentsModule,\n    TranslateModule\n  ]\n})\nexport class DesignAngularKitModule {\n\n  constructor(\n    private readonly translateService: TranslateService\n  ) {\n    translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.\n    translateService.use('it');\n  }\n\n}\n",
+            "methods": [
+                {
+                    "name": "forRoot",
+                    "args": [
+                        {
+                            "name": "initConfig",
+                            "type": "DesignAngularKitInit",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ModuleWithProviders<DesignAngularKitModule>",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "initConfig",
+                            "type": "DesignAngularKitInit",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sourceCode": "import { ModuleWithProviders, NgModule } from '@angular/core';\nimport { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';\nimport { HttpClient, HttpClientModule } from '@angular/common/http';\nimport { TranslateHttpLoader } from '@ngx-translate/http-loader';\nimport { ComponentsModule } from './components/components.module';\nimport { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from './design-angular-kit-config';\nimport { DesignAngularKitInit } from './interfaces/design-angular-kit-init';\n\n@NgModule({\n  declarations: [],\n  imports: [\n    ComponentsModule,\n    HttpClientModule,\n    TranslateModule.forChild({\n      loader: {\n        provide: TranslateLoader,\n        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, '/bootstrap-italia/i18n/'),\n        deps: [HttpClient]\n      },\n      extend: true,\n      isolate: false,\n      defaultLanguage: 'it'\n    })\n  ],\n  exports: [\n    ComponentsModule,\n    TranslateModule\n  ]\n})\nexport class DesignAngularKitModule {\n\n  static forRoot(initConfig?: DesignAngularKitInit): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n      providers: [\n        {\n          provide: DESIGN_ANGULAR_KIT_CONFIG,\n          useValue: new DesignAngularKitConfig(initConfig)\n        }\n      ]\n    };\n  }\n\n  constructor(\n    private readonly translateService: TranslateService\n  ) {\n    translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.\n    translateService.use('it');\n  }\n\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -24506,6 +24805,16 @@
                 "defaultValue": "[\n  AccordionComponent,\n  AlertComponent,\n  BadgeDirective,\n  ButtonDirective,\n  CalloutComponent,\n  CardComponent,\n  CarouselComponent,\n  CarouselItemComponent,\n  ChipComponent,\n  CollapseComponent,\n  DimmerButtonsComponent,\n  DimmerComponent,\n  DimmerIconComponent,\n  DropdownComponent,\n  DropdownItemComponent,\n  ForwardDirective,\n  LinkComponent,\n  ListComponent,\n  ListItemComponent,\n  ModalComponent,\n  NotificationsComponent,\n  PaginationComponent,\n  PopoverDirective,\n  ProgressBarComponent,\n  ProgressButtonComponent,\n  RatingComponent,\n  SpinnerComponent,\n  SteppersContainerComponent,\n  SteppersItemComponent,\n  TabContainerComponent,\n  TabItemComponent,\n  TableComponent,\n  TooltipDirective\n]",
                 "rawdescription": "Core components",
                 "description": "<p>Core components</p>\n"
+            },
+            {
+                "name": "DESIGN_ANGULAR_KIT_CONFIG",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/design-angular-kit-config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new InjectionToken<DesignAngularKitConfig>('DesignAngularKitConfig')"
             },
             {
                 "name": "EMAIL_REGEX",
@@ -25155,6 +25464,18 @@
                     "description": "<p>Utils components</p>\n"
                 }
             ],
+            "projects/design-angular-kit/src/lib/design-angular-kit-config.ts": [
+                {
+                    "name": "DESIGN_ANGULAR_KIT_CONFIG",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/design-angular-kit-config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new InjectionToken<DesignAngularKitConfig>('DesignAngularKitConfig')"
+                }
+            ],
             "projects/design-angular-kit/src/lib/interfaces/icon.ts": [
                 {
                     "name": "IconNameArray",
@@ -25601,7 +25922,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 63,
+        "count": 62,
         "status": "good",
         "files": [
             {
@@ -25973,8 +26294,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputComponent",
-                "coveragePercent": 63,
-                "coverageCount": "29/46",
+                "coveragePercent": 64,
+                "coverageCount": "31/48",
                 "status": "good"
             },
             {
@@ -26090,9 +26411,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "IconComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
+                "coveragePercent": 71,
+                "coverageCount": "5/7",
+                "status": "good"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/components/utils/language-switcher/language-switcher.component.ts",
@@ -26104,6 +26425,25 @@
                 "status": "medium"
             },
             {
+                "filePath": "projects/design-angular-kit/src/lib/design-angular-kit-config.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "DesignAngularKitConfig",
+                "coveragePercent": 33,
+                "coverageCount": "1/3",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/design-angular-kit-config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DESIGN_ANGULAR_KIT_CONFIG",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/design-angular-kit/src/lib/interfaces/core.ts",
                 "type": "interface",
                 "linktype": "interface",
@@ -26111,6 +26451,15 @@
                 "coveragePercent": 87,
                 "coverageCount": "7/8",
                 "status": "very-good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/interfaces/design-angular-kit-init.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DesignAngularKitInit",
+                "coveragePercent": 50,
+                "coverageCount": "1/2",
+                "status": "medium"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/interfaces/form.ts",
