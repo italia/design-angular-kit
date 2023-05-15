@@ -1,3 +1,25 @@
+# [1.0.0-16](https://github.com/italia/design-angular-kit/compare/v1.0.0-15...v1.0.0-16) (2023-05-15)
+
+
+### Bug Fixes
+
+* build compiler options for dependencies ([249ea32](https://github.com/italia/design-angular-kit/commit/249ea32f580fa617a8348622528188c1ab48c4ef))
+* error page component impossibile nascondere codice errore ([bf3448b](https://github.com/italia/design-angular-kit/commit/bf3448bb7f1f10407c62113f9b7aeb0226a12f62))
+* hardcoded iconhref in icon component ([dff8a25](https://github.com/italia/design-angular-kit/commit/dff8a25ad2256cd09c717e3f8cfa2966c83316f2))
+* input component type date max value ([4363f2e](https://github.com/italia/design-angular-kit/commit/4363f2ec324c89c65d2feadc769c54f210633bf3))
+* input label with browser autofill ([43f49cc](https://github.com/italia/design-angular-kit/commit/43f49cc60a729c01945a377f99b1490748c6682e))
+* README.md ([2034537](https://github.com/italia/design-angular-kit/commit/203453731d92756cde1965d0f1933a95f0db08a7))
+* run test ([39cc058](https://github.com/italia/design-angular-kit/commit/39cc0581cebca436fed40143bc37ef0243c47026))
+
+
+### Features
+
+* added ability to set max and min date value inside input component ([c2ec250](https://github.com/italia/design-angular-kit/commit/c2ec2504d6af2b6d434580ae19af6949064b550c))
+* added the ability to enter an initial configuration ([bb3f03b](https://github.com/italia/design-angular-kit/commit/bb3f03bf0a7ee0f5b3f63096786e58be59f53bdd))
+* upgrade bootstrap italia version ([91f5259](https://github.com/italia/design-angular-kit/commit/91f5259a7a8b76a8405955a2ccf5a236b514b5b6))
+
+
+
 # [1.0.0-15](https://github.com/italia/design-angular-kit/compare/v1.0.0-14...v1.0.0-15) (2023-04-11)
 
 
