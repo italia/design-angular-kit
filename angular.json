@@ -50,6 +50,19 @@
               "node_modules/highlight.js/styles/github.css",
               "src/styles.scss"
             ],
+            "allowedCommonJsDependencies": [
+              "progressbar.js",
+              "accessible-autocomplete",
+              "ev-emitter/ev-emitter",
+              "@videojs/xhr",
+              "global/document",
+              "global/window",
+              "keycode",
+              "mux.js/lib/tools/parse-sidx",
+              "mux.js/lib/utils/clock",
+              "safe-json-parse/tuple",
+              "videojs-vtt.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
