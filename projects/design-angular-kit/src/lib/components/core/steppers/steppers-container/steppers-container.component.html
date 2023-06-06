@@ -41,6 +41,7 @@
   <nav *ngIf="isShowBackButton || isShowSaveButton || isShowForwardButton || isShowConfirmButton || !!progressStyle"
        class="steppers-nav">
     <button *ngIf="isShowBackButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-prev"
+            [disabled]="isDisableBackButton"
             (click)="backClick.emit(activeStep)">
       <it-icon name="chevron-left" color="primary"></it-icon>
       {{'it.core.back' | translate}}
@@ -64,11 +65,13 @@
     </ng-container>
 
     <button *ngIf="isShowSaveButton" type="button" itButton="primary" size="sm" class="steppers-btn-save"
-            [progress]="isSaveLoading" [disabled]="isSaveLoading" (click)="saveClick.emit(activeStep)">
+            [progress]="isSaveLoading" [disabled]="isSaveLoading || isDisableSaveButton"
+            (click)="saveClick.emit(activeStep)">
       {{'it.general.save' | translate}}
     </button>
 
     <button *ngIf="isShowForwardButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-next"
+            [disabled]="isDisableForwardButton"
             (click)="forwardClick.emit(activeStep)">
       {{'it.core.forward' | translate}}
       <it-icon name="chevron-right" color="primary"></it-icon>
@@ -76,7 +79,7 @@
 
     <button *ngIf="isShowConfirmButton" type="button" itButton="primary" size="sm"
             class="steppers-btn-confirm d-lg-block"
-            [progress]="isConfirmLoading" [disabled]="isConfirmLoading"
+            [progress]="isConfirmLoading" [disabled]="isConfirmLoading || isDisableConfirmButton"
             (click)="confirmClick.emit(activeStep)">
       {{'it.core.confirm' | translate}}
     </button>

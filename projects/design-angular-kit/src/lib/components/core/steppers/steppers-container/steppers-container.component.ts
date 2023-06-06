@@ -72,16 +72,34 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
   @Input() showBackButton: BooleanInput = true;
 
   /**
+   * Disable the back button
+   * @default false
+   */
+  @Input() disableBackButton: BooleanInput | undefined;
+
+  /**
    * Show the forward button
    * @default true
    */
   @Input() showForwardButton: BooleanInput = true;
 
   /**
+   * Disable the forward button
+   * @default false
+   */
+  @Input() disableForwardButton: BooleanInput | undefined;
+
+  /**
    * Show the confirm button
    * @default false
    */
-  @Input() showConfirmButton: BooleanInput = false;
+  @Input() showConfirmButton: BooleanInput | undefined;
+
+  /**
+   * Disable the confirm button
+   * @default false
+   */
+  @Input() disableConfirmButton: BooleanInput | undefined;
 
   /**
    * Show the confirm button as indeterminate progress button
@@ -92,7 +110,13 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
    * Show the save button
    * @default false
    */
-  @Input() showSaveButton: BooleanInput = false;
+  @Input() showSaveButton: BooleanInput | undefined;
+
+  /**
+   * Disable the save button
+   * @default false
+   */
+  @Input() disableSaveButton: BooleanInput | undefined;
 
   /**
    * Show the save button as indeterminate progress button
@@ -144,12 +168,24 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
     return isTrueBooleanInput(this.showBackButton);
   }
 
+  get isDisableBackButton(): boolean {
+    return isTrueBooleanInput(this.disableBackButton);
+  }
+
   get isShowForwardButton(): boolean {
     return isTrueBooleanInput(this.showForwardButton);
   }
 
+  get isDisableForwardButton(): boolean {
+    return isTrueBooleanInput(this.disableForwardButton);
+  }
+
   get isShowConfirmButton(): boolean {
     return isTrueBooleanInput(this.showConfirmButton);
+  }
+
+  get isDisableConfirmButton(): boolean {
+    return isTrueBooleanInput(this.disableConfirmButton);
   }
 
   get isConfirmLoading(): boolean {
@@ -158,6 +194,10 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
 
   get isShowSaveButton(): boolean {
     return isTrueBooleanInput(this.showSaveButton);
+  }
+
+  get isDisableSaveButton(): boolean {
+    return isTrueBooleanInput(this.disableSaveButton);
   }
 
   get isSaveLoading(): boolean {
