@@ -1,4 +1,5 @@
-<ul class="nav nav-tabs"
+<ul *ngIf="tabs"
+    class="nav nav-tabs"
     [class.auto]="isTrueBooleanInput(auto)"
     [class.nav-tabs-icon-text]="isTrueBooleanInput(iconText)"
     [class.nav-dark]="isTrueBooleanInput(dark)"
@@ -18,7 +19,7 @@
   </li>
 </ul>
 
-<div class="tab-content">
+<div *ngIf="tabs" class="tab-content">
   <div *ngFor="let tab of tabs"
        [id]="tab.id+'-tab'"
        class="tab-pane p-4 fade {{tab.class ?? ''}}"

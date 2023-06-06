@@ -14,11 +14,19 @@ import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-inpu
 import { SteppersItemComponent } from '../steppers-item/steppers-item.component';
 import { ProgressBarColor } from '../../../../interfaces/core';
 import { startWith, Subscription } from 'rxjs';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { IconComponent } from '../../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonDirective } from '../../button/button.directive';
+import { ProgressBarComponent } from '../../progress-bar/progress-bar.component';
+import { ProgressButtonComponent } from '../../progress-button/progress-button.component';
 
 @Component({
+  standalone: true,
   selector: 'it-steppers-container[activeStep]',
   templateUrl: './steppers-container.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgForOf, IconComponent, NgTemplateOutlet, TranslateModule, ButtonDirective, ProgressBarComponent, ProgressButtonComponent]
 })
 export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
 
@@ -37,12 +45,12 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
   /**
    * Dark style
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
 
   /**
    * The labels present in the header steps can be anticipated by the relative ordinal number.
    */
-  @Input() steppersNumber?: BooleanInput;
+  @Input() steppersNumber: BooleanInput | undefined;
 
   /**
    * The progress style
@@ -50,12 +58,12 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
    * -<b>dots</b>: Show progress dots
    * @default undefined - don't show progress
    */
-  @Input() progressStyle?: 'progress' | 'dots';
+  @Input() progressStyle: 'progress' | 'dots' | undefined;
 
   /**
    * Customize progress color
    */
-  @Input() progressColor?: ProgressBarColor;
+  @Input() progressColor: ProgressBarColor | undefined;
 
   /**
    * Show the back button
@@ -78,7 +86,7 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
   /**
    * Show the confirm button as indeterminate progress button
    */
-  @Input() confirmLoading?: BooleanInput;
+  @Input() confirmLoading: BooleanInput | undefined;
 
   /**
    * Show the save button
@@ -89,7 +97,7 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
   /**
    * Show the save button as indeterminate progress button
    */
-  @Input() saveLoading?: BooleanInput;
+  @Input() saveLoading: BooleanInput | undefined;
 
   /**
    * The stepper items

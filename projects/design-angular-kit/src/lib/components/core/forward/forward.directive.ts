@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Directive, HostListener, Inject, Input } from '@angular/core';
 
 @Directive({
+  standalone: true,
   selector: '[itForward]',
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {'class': 'forward'}

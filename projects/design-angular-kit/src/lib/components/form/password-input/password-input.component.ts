@@ -4,13 +4,18 @@ import { ItValidators } from '../../../validators/it-validators';
 import { map, Observable } from 'rxjs';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { InputPassword } from 'bootstrap-italia';
-import { Validators } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { IconComponent } from '../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+  standalone: true,
   selector: 'it-password-input',
   templateUrl: './password-input.component.html',
   styleUrls: ['./password-input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, ReactiveFormsModule, IconComponent, AsyncPipe, TranslateModule]
 })
 export class PasswordInputComponent extends AbstractFormComponent<string> implements OnInit, AfterViewInit {
 
@@ -61,13 +66,13 @@ export class PasswordInputComponent extends AbstractFormComponent<string> implem
    * - <b>string</b>: show custom description
    * @default true for StrengthMeter mode else is undefined
    */
-  @Input() description?: string | true;
+  @Input() description: string | true | undefined;
 
   /**
    * Enable to show the strength meter
    * @default false
    */
-  @Input() showStrengthMeter?: BooleanInput;
+  @Input() showStrengthMeter: BooleanInput | undefined;
 
   /**
    * Is the confirmation password field

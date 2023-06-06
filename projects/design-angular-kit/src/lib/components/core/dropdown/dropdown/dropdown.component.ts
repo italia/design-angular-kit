@@ -17,13 +17,16 @@ import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { Dropdown } from 'bootstrap-italia';
+import { IconComponent } from '../../../utils/icon/icon.component';
 
 @Component({
+  standalone: true,
   selector: 'it-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   exportAs: 'itDropdown',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [IconComponent]
 })
 export class DropdownComponent extends AbstractComponent implements AfterViewInit, OnChanges {
 
@@ -38,17 +41,17 @@ export class DropdownComponent extends AbstractComponent implements AfterViewIni
    * - <strong>dropend</strong>: right
    * - <strong>dropstart</strong>: left
    */
-  @Input() direction?: DropdownDirection;
+  @Input() direction: DropdownDirection | undefined;
 
   /**
    * To get a dropdown menu as wide as the element containing the dropdown button
    */
-  @Input() fullWidth?: BooleanInput;
+  @Input() fullWidth: BooleanInput | undefined;
 
   /**
    * Dark menu style
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
 
   /**
    * The dropdown items

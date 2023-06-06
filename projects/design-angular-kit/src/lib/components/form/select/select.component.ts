@@ -1,23 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { SelectControlGroup, SelectControlOption } from '../../../interfaces/form';
+import { NgForOf, NgIf } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
   selector: 'it-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+  styleUrls: ['./select.component.scss'],
+  imports: [NgIf, NgForOf, ReactiveFormsModule]
 })
 export class SelectComponent extends AbstractFormComponent implements OnInit {
 
   /**
    * The select options
    */
-  @Input() options?: Array<SelectControlOption>;
+  @Input() options: Array<SelectControlOption> | undefined;
 
   /**
    * The select group options
    */
-  @Input() groups?: Array<SelectControlGroup>;
+  @Input() groups: Array<SelectControlGroup> | undefined;
 
   /**
    * The select description

@@ -9,6 +9,7 @@ import { ProgressButtonComponent } from '../progress-button/progress-button.comp
  * @description Bootstrap italia custom button styles
  */
 @Directive({
+  standalone: true,
   selector: '[itButton]',
   exportAs: 'itButton'
 })
@@ -18,25 +19,25 @@ export class ButtonDirective {
    * Button color
    * @default undefined
    */
-  @Input('itButton') color?: ButtonColor;
+  @Input('itButton') color: ButtonColor | undefined;
 
   /**
    * Button size
    * @default undefined
    */
-  @Input() size?: ButtonSize;
+  @Input() size: ButtonSize | undefined;
 
   /**
    * Indicates whether the button occupies all the width available to it.
    * @default undefined
    */
-  @Input() block?: ButtonSize;
+  @Input() block: ButtonSize | undefined;
 
   /**
    * If button is disabled
    * @default false
    */
-  @Input() @HostBinding('disabled') disabled?: BooleanInput;
+  @Input() @HostBinding('disabled') disabled: BooleanInput | undefined;
 
   /**
    * The icon children
@@ -89,7 +90,7 @@ export class ButtonDirective {
       cssClass += ' btn-icon';
     }
 
-    if (!!this.progressButtonComponent) {
+    if (this.progressButtonComponent) {
       cssClass += ' btn-progress';
     }
 

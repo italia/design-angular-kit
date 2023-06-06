@@ -12,12 +12,17 @@ import {
 import { AbstractComponent } from '../../../abstracts/abstract.component';
 import { FileUtils } from '../../../utils/file-utils';
 import { ProgressDonut } from 'bootstrap-italia';
+import { IconComponent } from '../../utils/icon/icon.component';
+import { NgIf, NgOptimizedImage } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+  standalone: true,
   selector: 'it-upload-drag-drop',
   templateUrl: './upload-drag-drop.component.html',
   exportAs: 'itUploadDragDrop',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [IconComponent, NgIf, TranslateModule, NgOptimizedImage]
 })
 export class UploadDragDropComponent extends AbstractComponent implements AfterViewInit {
 

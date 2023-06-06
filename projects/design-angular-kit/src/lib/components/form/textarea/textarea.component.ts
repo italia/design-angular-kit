@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { Observable } from 'rxjs';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
   selector: 'it-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, ReactiveFormsModule, AsyncPipe]
 })
 export class TextareaComponent extends AbstractFormComponent<string> {
 
@@ -24,7 +28,7 @@ export class TextareaComponent extends AbstractFormComponent<string> {
   /**
    * The input description
    */
-  @Input() description?: string;
+  @Input() description: string | undefined;
 
   /**
    * Return the invalid message string from TranslateService

@@ -1,6 +1,6 @@
 <div class="steppers" [class.bg-dark]="isDark">
   <div *ngIf="isShowHeader" class="steppers-header">
-    <ul>
+    <ul *ngIf="steps">
       <li *ngFor="let step of steps; let i = index"
           [class.confirmed]="i < activeStep"
           [class.active]="i === activeStep"
@@ -24,9 +24,10 @@
         <span *ngIf="i === activeStep" class="visually-hidden">{{'it.core.active' | translate}}</span>
       </li>
     </ul>
-    <span class="steppers-index" aria-hidden="true">
-      <ng-container
-        *ngIf="!isSteppersNumber; else showNumbers">{{(activeStep + 1) + '/' + steps?.length}}</ng-container>
+    <span *ngIf="steps" class="steppers-index" aria-hidden="true">
+      <ng-container *ngIf="!isSteppersNumber; else showNumbers">
+        {{(activeStep + 1) + '/' + steps.length}}
+      </ng-container>
       <ng-template #showNumbers>
         <span *ngFor="let step of steps; let i = index" [class.active]="i === activeStep">{{i + 1}}</span>
       </ng-template>
@@ -45,7 +46,7 @@
       {{'it.core.back' | translate}}
     </button>
 
-    <ng-container *ngIf="!!progressStyle">
+    <ng-container *ngIf="!!progressStyle && steps">
       <ul *ngIf="progressStyle === 'dots'; else progressBar" class="steppers-dots">
         <li *ngFor="let step of steps; let i = index" [class.done]="i < activeStep">
           <span class="visually-hidden">

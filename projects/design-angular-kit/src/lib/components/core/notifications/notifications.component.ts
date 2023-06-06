@@ -5,12 +5,17 @@ import { Notification, NotificationPosition, NotificationType } from '../../../i
 import { Notification as BSNotification } from 'bootstrap-italia';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { IconName } from '../../../interfaces/icon';
+import { NgForOf, NgIf } from '@angular/common';
+import { IconComponent } from '../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+  standalone: true,
   selector: 'it-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgForOf, NgIf, IconComponent, TranslateModule]
 })
 export class NotificationsComponent implements OnDestroy {
 
@@ -23,7 +28,7 @@ export class NotificationsComponent implements OnDestroy {
   /**
    * Default notifications position
    */
-  @Input() position?: NotificationPosition;
+  @Input() position: NotificationPosition | undefined;
 
   /**
    * Default notifications is dismissible

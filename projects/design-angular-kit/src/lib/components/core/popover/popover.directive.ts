@@ -4,6 +4,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Popover } from 'bootstrap-italia';
 
 @Directive({
+  standalone: true,
   selector: '[itPopover]',
   exportAs: 'itPopover'
 })

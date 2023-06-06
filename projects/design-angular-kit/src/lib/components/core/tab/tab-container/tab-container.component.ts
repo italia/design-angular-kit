@@ -14,28 +14,32 @@ import { TabItemComponent } from '../tab-item/tab-item.component';
 import { of, startWith, Subscription, switchMap, tap } from 'rxjs';
 import { Tab } from 'bootstrap-italia';
 import { AbstractComponent } from '../../../../abstracts/abstract.component';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { IconComponent } from '../../../utils/icon/icon.component';
 
 @Component({
+  standalone: true,
   selector: 'it-tab-container',
   templateUrl: './tab-container.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgForOf, NgIf, IconComponent, NgTemplateOutlet]
 })
 export class TabContainerComponent extends AbstractComponent implements OnDestroy, AfterViewInit {
 
   /**
    * Tabs automatically occupy the entire available width
    */
-  @Input() auto?: BooleanInput;
+  @Input() auto: BooleanInput | undefined;
 
   /**
    * To obtain the correct margin between text and icon in the horizontally developed tab
    */
-  @Input() iconText?: BooleanInput;
+  @Input() iconText: BooleanInput | undefined;
 
   /**
    * Dark style
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
 
   /**
    * The tab items

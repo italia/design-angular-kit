@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { map, Observable, startWith } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AvailableLanguage } from '../../../interfaces/utils';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { DropdownModule } from '../../core/dropdown/dropdown.module';
 
 @Component({
+  standalone: true,
   selector: 'it-language-switcher',
   templateUrl: './language-switcher.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgFor, NgIf, AsyncPipe, TranslateModule, DropdownModule]
 })
 export class LanguageSwitcherComponent implements OnInit {
 
@@ -14,7 +18,7 @@ export class LanguageSwitcherComponent implements OnInit {
    * The available languages
    * @default The languages available through TranslateService (ngx-translate)
    */
-  @Input() availableLanguages?: Array<AvailableLanguage>;
+  @Input() availableLanguages: Array<AvailableLanguage> | undefined;
 
   protected currentLang$: Observable<AvailableLanguage | undefined>;
 

@@ -7,7 +7,6 @@ import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from './design-angu
 import { DesignAngularKitInit } from './interfaces/design-angular-kit-init';
 
 @NgModule({
-  declarations: [],
   imports: [
     ComponentsModule,
     HttpClientModule,

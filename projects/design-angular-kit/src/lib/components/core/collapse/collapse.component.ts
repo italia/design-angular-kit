@@ -13,22 +13,24 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Collapse } from 'bootstrap-italia';
 
 @Component({
+  standalone: true,
   selector: 'it-collapse',
   templateUrl: './collapse.component.html',
   exportAs: 'itCollapse',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
 export class CollapseComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * Enable multiple collapse
    */
-  @Input() multi?: BooleanInput;
+  @Input() multi: BooleanInput | undefined;
 
   /**
    * Toggles the collapsible element on invocation
    */
-  @Input() opened?: BooleanInput;
+  @Input() opened: BooleanInput | undefined;
 
   /**
    * Custom class
@@ -58,7 +60,7 @@ export class CollapseComponent extends AbstractComponent implements AfterViewIni
 
   private collapse?: Collapse;
 
-  @ViewChild('collapse') private collapseDiv?: ElementRef<HTMLDivElement>;
+  @ViewChild('collapse') protected collapseDiv?: ElementRef<HTMLDivElement>;
 
   get isMulti(): boolean {
     return isTrueBooleanInput(this.multi);

@@ -11,11 +11,17 @@ import {
 import { BreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { startWith, Subscription } from 'rxjs';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { IconComponent } from '../../../utils/icon/icon.component';
+import { LinkComponent } from '../../../core/link/link.component';
 
 @Component({
+  standalone: true,
   selector: 'it-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgForOf, NgIf, TranslateModule, IconComponent, LinkComponent, NgTemplateOutlet]
 })
 export class BreadcrumbComponent implements AfterViewInit, OnDestroy {
 
@@ -28,7 +34,7 @@ export class BreadcrumbComponent implements AfterViewInit, OnDestroy {
   /**
    * Dark style
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
 
   /**
    * The tab items

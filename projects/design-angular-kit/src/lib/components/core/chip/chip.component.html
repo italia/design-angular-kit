@@ -1,11 +1,11 @@
 <div class="chip" [ngClass]="[!showCloseButton ? 'chip-simple': 'alert', size === 'lg' ? 'chip-lg': '', color ? 'chip-' + color : '', disabled ? 'chip-disabled' : '']">
-    <svg *ngIf="icon" class="icon icon-xs"><use [attr.href]="'./bootstrap-italia/dist/svg/sprites.svg#it-' + icon" [attr.xlink:href]="'./bootstrap-italia/dist/svg/sprites.svg#it-' + icon"></use></svg>
-    <div *ngIf="avatar" class="avatar size-xs">
-        <img [src]="avatar" [alt]="altAvatar">
-    </div>
+    <svg *ngIf="icon" class="icon icon-xs">
+      <use [attr.href]="this.config.iconHref + '#it-' + icon" [attr.xlink:href]="this.config.iconHref + '#it-' + icon"></use>
+    </svg>
+    <div *ngIf="avatar" class="avatar size-xs"><img [src]="avatar" [alt]="altAvatar"></div>
     <span class="chip-label">{{ label }}</span>
     <button *ngIf="showCloseButton" (click)="clickToClose()" [disabled]="disabled">
-        <svg class="icon"><use href="./bootstrap-italia/dist/svg/sprites.svg#it-close" xlink:href="./bootstrap-italia/dist/svg/sprites.svg#it-close"></use></svg>
+        <svg class="icon"><use [attr.href]="this.config.iconHref + '#it-close'" [attr.xlink:href]="this.config.iconHref + '#it-close'"></use></svg>
         <span class="visually-hidden">{{ 'it.core.remove' | translate }} {{ label }}</span>
     </button>
 </div>

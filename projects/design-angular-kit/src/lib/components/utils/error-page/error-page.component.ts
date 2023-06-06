@@ -1,18 +1,24 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { NgIf } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { BackButtonComponent } from '../../navigation/back-button/back-button.component';
+import { ButtonDirective } from '../../core/button/button.directive';
 
 @Component({
+  standalone: true,
   selector: 'it-error-page',
   templateUrl: './error-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, TranslateModule, RouterLink, BackButtonComponent, ButtonDirective]
 })
 export class ErrorPageComponent {
 
   /**
    * The error code to show
    */
-  @Input() errorCode?: number | 404 | 403 | 500;
+  @Input() errorCode: number | 404 | 403 | 500 | undefined;
 
   /**
    * Show/Hide error code
@@ -25,14 +31,14 @@ export class ErrorPageComponent {
    * - If set it will be displayed instead of the default title.
    * - It is possible to use i18n keys
    */
-  @Input() errorTitle?: string;
+  @Input() errorTitle: string | undefined;
 
   /**
    * Custom error description
    * - If set it will be displayed instead of the default description.
    * - It is possible to use i18n keys
    */
-  @Input() errorDescription?: string;
+  @Input() errorDescription: string | undefined;
 
   /**
    * Show/Hide back button

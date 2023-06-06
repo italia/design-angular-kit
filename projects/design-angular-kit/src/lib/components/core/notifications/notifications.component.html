@@ -6,7 +6,7 @@
      role="alert" [attr.aria-labelledby]="notification.id+'-title'">
 
   <h2 [id]="notification.id+'-title'" class="h5">
-    <it-icon *ngIf="!!notification.icon" [name]="notification.icon"></it-icon>
+    <it-icon *ngIf="notification.icon" [name]="notification.icon"></it-icon>
     <ng-container>{{notification.title}}</ng-container>
   </h2>
   <p *ngIf="notification.message">{{notification.message}}</p>

@@ -2,16 +2,18 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 
 @Component({
+  standalone: true,
   selector: 'it-list',
   templateUrl: './list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
 export class ListComponent {
 
   /**
    * Add 'link-list' class for navigation menu
    */
-  @Input() linkList?: BooleanInput;
+  @Input() linkList: BooleanInput | undefined;
 
 
   protected get isLinkList(): boolean {

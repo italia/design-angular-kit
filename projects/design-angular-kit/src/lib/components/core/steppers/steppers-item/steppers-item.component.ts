@@ -3,9 +3,11 @@ import { IconName } from '../../../../interfaces/icon';
 import { AbstractComponent } from '../../../../abstracts/abstract.component';
 
 @Component({
+  standalone: true,
   selector: 'it-steppers-item[label]',
   templateUrl: './steppers-item.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
 export class SteppersItemComponent extends AbstractComponent {
 
@@ -17,7 +19,7 @@ export class SteppersItemComponent extends AbstractComponent {
   /**
    * The labels present in the header steps can be preceded by an icon.
    */
-  @Input() icon?: IconName;
+  @Input() icon: IconName | undefined;
 
   /**
    * The content of step

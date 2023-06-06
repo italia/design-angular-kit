@@ -4,31 +4,33 @@ import { BooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
 
 @Component({
+  standalone: true,
   selector: 'it-tab-item',
   templateUrl: './tab-item.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
 export class TabItemComponent extends AbstractComponent implements AfterViewInit {
 
   /**
    * The tab label
    */
-  @Input() label?: string;
+  @Input() label: string | undefined;
 
   /**
    * The icon name
    */
-  @Input() icon?: IconName;
+  @Input() icon: IconName | undefined;
 
   /**
    * Default active tab
    */
-  @Input() active?: BooleanInput;
+  @Input() active: BooleanInput | undefined;
 
   /**
    * Default disabled tab
    */
-  @Input() disabled?: BooleanInput;
+  @Input() disabled: BooleanInput | undefined;
 
   /**
    * Custom class
