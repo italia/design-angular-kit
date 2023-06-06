@@ -18,6 +18,12 @@ import { DesignAngularKitInit } from './interfaces/design-angular-kit-init';
       isolate: false,
       defaultLanguage: 'it'
     })
+  ],
+  providers: [
+    {
+      provide: DESIGN_ANGULAR_KIT_CONFIG,
+      useValue: new DesignAngularKitConfig()
+    }
   ]
 })
 export class DesignAngularKitModule {

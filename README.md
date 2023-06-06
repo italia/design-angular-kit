@@ -68,13 +68,13 @@ import {DesignAngularKitModule, ItComponentsModule} from 'design-angular-kit';
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule.forRoot(), // .forRoot obbligatorio
+    DesignAngularKitModule,
     ItComponentsModule // importa tutti i componenti della libreria
   ]
 })
 ```
 <details>
-  <summary>Configurazione della libreria</summary>
+  <summary>Configurazione custom della libreria</summary>
 
   ```typescript
   import {DesignAngularKitModule, DesignAngularKitInit} from 'design-angular-kit';
@@ -91,7 +91,7 @@ import {DesignAngularKitModule, ItComponentsModule} from 'design-angular-kit';
   @NgModule({
     imports: [
       ...
-      DesignAngularKitModule.forRoot(initConfig) // .forRoot obbligatorio
+      DesignAngularKitModule.forRoot(initConfig)
     ]
   })
   ```
