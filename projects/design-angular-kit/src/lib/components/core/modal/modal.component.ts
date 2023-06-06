@@ -8,7 +8,7 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { NgIf } from '@angular/common';
@@ -27,7 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, TranslateModule]
 })
-export class ModalComponent extends AbstractComponent implements AfterViewInit {
+export class ItModalComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * Show/Hide close button on header

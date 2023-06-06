@@ -10,10 +10,10 @@ import {
 } from '@angular/core';
 import { AlertColor } from '../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Alert } from 'bootstrap-italia';
 import { TranslateModule } from '@ngx-translate/core';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 import { NgIf } from '@angular/common';
 
 /**
@@ -27,9 +27,9 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./alert.component.scss'],
   exportAs: 'itAlert',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule, IconComponent]
+  imports: [NgIf, TranslateModule, ItIconComponent]
 })
-export class AlertComponent extends AbstractComponent implements AfterViewInit {
+export class ItAlertComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * The alert color

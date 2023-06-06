@@ -12,8 +12,8 @@ export class TabsIndexComponent {
   tabComponent: any;
 
   constructor() {
-    this.tabGroupComponent = (<any>Documentation).components.find(component => component.name === 'TabContainerComponent');
-    this.tabComponent = (<any>Documentation).components.find(component => component.name === 'TabItemComponent');
+    this.tabGroupComponent = (<any>Documentation).components.find(component => component.name === 'ItTabContainerComponent');
+    this.tabComponent = (<any>Documentation).components.find(component => component.name === 'ItTabItemComponent');
   }
 
 }

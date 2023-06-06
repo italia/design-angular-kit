@@ -12,8 +12,8 @@ export class DropdownIndexComponent {
   subcomponent: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'DropdownComponent');
-    this.subcomponent = (<any>Documentation).components.find(component => component.name === 'DropdownItemComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItDropdownComponent');
+    this.subcomponent = (<any>Documentation).components.find(component => component.name === 'ItDropdownItemComponent');
   }
 
 

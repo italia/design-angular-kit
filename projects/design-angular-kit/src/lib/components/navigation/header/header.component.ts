@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { IconComponent } from '../../utils/icon/icon.component';
-import { ButtonDirective } from '../../core/button/button.directive';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { ItButtonDirective } from '../../core/button/button.directive';
 
 @Component({
   standalone: true,
@@ -12,9 +12,9 @@ import { ButtonDirective } from '../../core/button/button.directive';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule, IconComponent, ButtonDirective]
+  imports: [NgIf, TranslateModule, ItIconComponent, ItButtonDirective]
 })
-export class HeaderComponent extends AbstractComponent {
+export class ItHeaderComponent extends ItAbstractComponent {
 
   @Input() light: BooleanInput | undefined;
 

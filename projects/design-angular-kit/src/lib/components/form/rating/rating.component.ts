@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgForOf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 
 @Component({
   standalone: true,
   selector: 'it-rating',
   templateUrl: './rating.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslateModule, NgForOf, ReactiveFormsModule, IconComponent]
+  imports: [TranslateModule, NgForOf, ReactiveFormsModule, ItIconComponent]
 })
-export class RatingComponent extends AbstractFormComponent<number> implements OnInit, OnChanges {
+export class ItRatingComponent extends ItAbstractFormComponent<number> implements OnInit, OnChanges {
 
   /**
    * The rating value

@@ -9,10 +9,10 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { FileUtils } from '../../../utils/file-utils';
 import { ProgressDonut } from 'bootstrap-italia';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 import { NgIf, NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -22,9 +22,9 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './upload-drag-drop.component.html',
   exportAs: 'itUploadDragDrop',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [IconComponent, NgIf, TranslateModule, NgOptimizedImage]
+  imports: [ItIconComponent, NgIf, TranslateModule, NgOptimizedImage]
 })
-export class UploadDragDropComponent extends AbstractComponent implements AfterViewInit {
+export class ItUploadDragDropComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * The accepted file type to upload <br>

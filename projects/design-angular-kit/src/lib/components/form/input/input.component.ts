@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { AutocompleteItem, InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
@@ -7,7 +7,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 
 @Component({
@@ -16,9 +16,9 @@ import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, IconComponent, MarkMatchingTextPipe]
+  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe]
 })
-export class InputComponent extends AbstractFormComponent<string | number> implements OnInit {
+export class ItInputComponent extends ItAbstractFormComponent<string | number> implements OnInit {
 
   /**
    * The input type

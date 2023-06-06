@@ -2,13 +2,13 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ComponentsModule } from './components/components.module';
+import { ItComponentsModule } from './components/components.module';
 import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from './design-angular-kit-config';
 import { DesignAngularKitInit } from './interfaces/design-angular-kit-init';
 
 @NgModule({
   imports: [
-    ComponentsModule,
+    ItComponentsModule,
     HttpClientModule,
     TranslateModule.forChild({
       loader: {
@@ -22,7 +22,7 @@ import { DesignAngularKitInit } from './interfaces/design-angular-kit-init';
     })
   ],
   exports: [
-    ComponentsModule,
+    ItComponentsModule,
     TranslateModule
   ]
 })

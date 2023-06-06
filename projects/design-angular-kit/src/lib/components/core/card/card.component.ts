@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 /**
@@ -14,7 +14,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class CardComponent extends AbstractComponent {
+export class ItCardComponent extends ItAbstractComponent {
 
   /**
    * It serves to space the cards in their mobile version.

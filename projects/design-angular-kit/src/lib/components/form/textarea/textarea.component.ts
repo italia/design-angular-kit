@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, ReactiveFormsModule, AsyncPipe]
 })
-export class TextareaComponent extends AbstractFormComponent<string> {
+export class ItTextareaComponent extends ItAbstractFormComponent<string> {
 
   /**
    * Textarea Rows

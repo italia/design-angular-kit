@@ -11,7 +11,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
   selector: '[itBadge]',
   exportAs: 'itBadge'
 })
-export class BadgeDirective {
+export class ItBadgeDirective {
 
   /**
    * Define the badge color

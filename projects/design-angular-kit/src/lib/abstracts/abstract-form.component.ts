@@ -1,12 +1,12 @@
 import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';
 import { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';
-import { AbstractComponent } from './abstract.component';
+import { ItAbstractComponent } from './abstract.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({ template: '' })
-export abstract class AbstractFormComponent<T = any> extends AbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
+export abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
 
   /**
    * The label of form control

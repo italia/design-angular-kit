@@ -2,22 +2,22 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { DimmerButtonsComponent } from './dimmer-buttons.component';
+import { ItDimmerButtonsComponent } from './dimmer-buttons.component';
 
-describe('DimmerButtonsComponent', () => {
-  let component: DimmerButtonsComponent;
-  let fixture: ComponentFixture<DimmerButtonsComponent>;
+describe('ItDimmerButtonsComponent', () => {
+  let component: ItDimmerButtonsComponent;
+  let fixture: ComponentFixture<ItDimmerButtonsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DimmerButtonsComponent ]
+      declarations: [ ItDimmerButtonsComponent ]
     })
-    .overrideComponent(DimmerButtonsComponent, {
+    .overrideComponent(ItDimmerButtonsComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DimmerButtonsComponent);
+    fixture = TestBed.createComponent(ItDimmerButtonsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

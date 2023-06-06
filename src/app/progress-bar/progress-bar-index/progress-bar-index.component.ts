@@ -11,7 +11,7 @@ export class ProgressBarIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'ProgressBarComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItProgressBarComponent');
   }
 
 

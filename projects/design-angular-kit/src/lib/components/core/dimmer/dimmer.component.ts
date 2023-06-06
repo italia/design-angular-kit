@@ -22,7 +22,7 @@ export type DimmerColor = '' | 'dimmer-primary';
   ],
   imports: [NgIf, NgClass]
 })
-export class DimmerComponent implements OnInit {
+export class ItDimmerComponent implements OnInit {
 
   /**
    * Dimmer status

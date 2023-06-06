@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CarouselComponent } from './carousel/carousel.component';
-import { CarouselItemComponent } from './carousel-item/carousel-item.component';
+import { ItCarouselComponent } from './carousel/carousel.component';
+import { ItCarouselItemComponent } from './carousel-item/carousel-item.component';
 
 const carouselComponents = [
-  CarouselComponent,
-  CarouselItemComponent
+  ItCarouselComponent,
+  ItCarouselItemComponent
 ];
 
 @NgModule({
   imports: carouselComponents,
   exports: carouselComponents
 })
-export class CarouselModule {
+export class ItCarouselModule {
 }

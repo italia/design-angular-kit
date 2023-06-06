@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BadgeColor } from '../../../interfaces/core';
-import { BadgeDirective } from './badge.directive';
+import { ItBadgeDirective } from './badge.directive';
 
 @Component(
   {
@@ -22,13 +22,13 @@ class UnitTestComponent {
   private _isRounded: boolean = undefined;
 }
 
-describe('BadgeDirective', () => {
+describe('ItBadgeDirective', () => {
 
   let component: UnitTestComponent;
   let fixture: ComponentFixture<UnitTestComponent>;
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent, BadgeDirective]
+      declarations: [UnitTestComponent, ItBadgeDirective]
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);
@@ -37,7 +37,7 @@ describe('BadgeDirective', () => {
   }));
 
   it('should create an instance', () => {
-    const directive = new BadgeDirective();
+    const directive = new ItBadgeDirective();
     expect(directive).toBeTruthy();
   });
 

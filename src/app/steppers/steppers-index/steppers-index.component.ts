@@ -10,7 +10,7 @@ export class SteppersIndexComponent {
   steppersItem: any;
 
   constructor() {
-    this.steppersContainer = (<any>Documentation).components.find(component => component.name === 'SteppersContainerComponent');
-    this.steppersItem = (<any>Documentation).components.find(component => component.name === 'SteppersItemComponent');
+    this.steppersContainer = (<any>Documentation).components.find(component => component.name === 'ItSteppersContainerComponent');
+    this.steppersItem = (<any>Documentation).components.find(component => component.name === 'ItSteppersItemComponent');
   }
 }

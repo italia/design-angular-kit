@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { SelectControlGroup, SelectControlOption } from '../../../interfaces/form';
 import { NgForOf, NgIf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./select.component.scss'],
   imports: [NgIf, NgForOf, ReactiveFormsModule]
 })
-export class SelectComponent extends AbstractFormComponent implements OnInit {
+export class ItSelectComponent extends ItAbstractFormComponent implements OnInit {
 
   /**
    * The select options

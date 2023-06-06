@@ -12,7 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, NgIf, TranslateModule]
 })
-export class ChipComponent {
+export class ItChipComponent {
 
   /**
    * Indica la label

@@ -8,7 +8,7 @@ import { Tooltip } from 'bootstrap-italia';
   selector: '[itTooltip]',
   exportAs: 'itTooltip'
 })
-export class TooltipDirective implements AfterViewInit, OnDestroy {
+export class ItTooltipDirective implements AfterViewInit, OnDestroy {
 
   /**
    * Define the tooltip title

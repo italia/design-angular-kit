@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { CollapseComponent } from '../collapse/collapse.component';
+import { ItCollapseComponent } from '../collapse/collapse.component';
 
 /**
  * Accordion
@@ -13,7 +13,7 @@ import { CollapseComponent } from '../collapse/collapse.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class AccordionComponent extends CollapseComponent implements AfterViewInit {
+export class ItAccordionComponent extends ItCollapseComponent implements AfterViewInit {
 
   /**
    * Accordion Title

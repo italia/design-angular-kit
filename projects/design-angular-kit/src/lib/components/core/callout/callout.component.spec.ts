@@ -2,21 +2,21 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { CalloutComponent } from './callout.component';
+import { ItCalloutComponent } from './callout.component';
 import { tb_base } from '../../../../test';
 
-describe('CalloutComponent', () => {
-  let component: CalloutComponent;
-  let fixture: ComponentFixture<CalloutComponent>;
+describe('ItCalloutComponent', () => {
+  let component: ItCalloutComponent;
+  let fixture: ComponentFixture<ItCalloutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule(tb_base)
-      .overrideComponent(CalloutComponent, {
+      .overrideComponent(ItCalloutComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default }
       })
       .compileComponents();
 
-    fixture = TestBed.createComponent(CalloutComponent);
+    fixture = TestBed.createComponent(ItCalloutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

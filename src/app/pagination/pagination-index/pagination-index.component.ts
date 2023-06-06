@@ -9,6 +9,6 @@ export class PaginationIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'PaginationComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItPaginationComponent');
   }
 }

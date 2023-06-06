@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CalloutAppearance, CalloutColor } from '../../../interfaces/core';
 import { IconName } from '../../../interfaces/icon';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 
 /**
  * Callout
@@ -18,9 +18,9 @@ import { IconComponent } from '../../utils/icon/icon.component';
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, IconComponent]
+  imports: [NgIf, NgTemplateOutlet, ItIconComponent]
 })
-export class CalloutComponent {
+export class ItCalloutComponent {
 
   /**
    * Callout label

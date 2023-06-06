@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 import {
-  ErrorPageComponent
+  ItErrorPageComponent
 } from '../../projects/design-angular-kit/src/lib/components/utils/error-page/error-page.component';
 
 
@@ -49,9 +49,9 @@ const routes: Routes = [
     { path: 'password-input', loadChildren: () => import('src/app/password-input/password-input.module').then(m => m.PasswordInputModule) },
     { path: 'carousel', loadChildren: () => import('src/app/carousel/carousel.module').then(m => m.CarouselModule) }
   ]},
-  { path: 'error/not-found', component: ErrorPageComponent, data: { errorCode: 404 } },
-  { path: 'error/forbidden', component: ErrorPageComponent, data: { errorCode: 403 } },
-  { path: 'error/server-error', component: ErrorPageComponent, data: { errorCode: 500 } },
+  { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
+  { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },
+  { path: 'error/server-error', component: ItErrorPageComponent, data: { errorCode: 500 } },
   { path: '**', redirectTo: 'error/not-found'  }
 ];
 

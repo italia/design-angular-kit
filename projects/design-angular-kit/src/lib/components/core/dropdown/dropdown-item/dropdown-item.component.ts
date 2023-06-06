@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
-import { LinkComponent } from '../../link/link.component';
-import { IconComponent } from '../../../utils/icon/icon.component';
+import { ItLinkComponent } from '../../link/link.component';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgIf } from '@angular/common';
 
@@ -12,9 +12,9 @@ import { NgIf } from '@angular/common';
   templateUrl: './dropdown-item.component.html',
   styleUrls: ['./dropdown-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, IconComponent, TranslateModule, LinkComponent]
+  imports: [NgIf, ItIconComponent, TranslateModule, ItLinkComponent]
 })
-export class DropdownItemComponent extends LinkComponent {
+export class ItDropdownItemComponent extends ItLinkComponent {
 
   /**
    * Show divider

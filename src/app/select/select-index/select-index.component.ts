@@ -11,6 +11,6 @@ export class SelectIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'SelectComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItSelectComponent');
   }
 }

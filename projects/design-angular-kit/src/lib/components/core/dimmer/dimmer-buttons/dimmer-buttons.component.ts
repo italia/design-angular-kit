@@ -8,7 +8,7 @@ import { NgClass } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass]
 })
-export class DimmerButtonsComponent {
+export class ItDimmerButtonsComponent {
 
   /**
    * Indica se abbiamo 1 solo bottone

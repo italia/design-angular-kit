@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { BreadcrumbItemComponent } from './breadcrumb-item/breadcrumb-item.component';
+import { ItBreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { ItBreadcrumbItemComponent } from './breadcrumb-item/breadcrumb-item.component';
 
 
-const breadcrumb = [BreadcrumbComponent, BreadcrumbItemComponent];
+const breadcrumb = [ItBreadcrumbComponent, ItBreadcrumbItemComponent];
 
 @NgModule({
   imports: breadcrumb,
   exports: breadcrumb
 })
-export class BreadcrumbsModule {
+export class ItBreadcrumbsModule {
 }

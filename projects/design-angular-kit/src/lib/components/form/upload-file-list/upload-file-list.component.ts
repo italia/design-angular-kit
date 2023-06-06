@@ -1,22 +1,22 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { UploadFileListItem } from '../../../interfaces/form';
 import { FileUtils } from '../../../utils/file-utils';
 import { forkJoin, take, tap } from 'rxjs';
 import { NgForOf, NgIf } from '@angular/common';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { TooltipDirective } from '../../core/tooltip/tooltip.directive';
-import { ProgressBarComponent } from '../../core/progress-bar/progress-bar.component';
+import { ItTooltipDirective } from '../../core/tooltip/tooltip.directive';
+import { ItProgressBarComponent } from '../../core/progress-bar/progress-bar.component';
 
 @Component({
   standalone: true,
   selector: 'it-upload-file-list[fileList]',
   templateUrl: './upload-file-list.component.html',
-  imports: [NgIf, NgForOf, IconComponent, TranslateModule, TooltipDirective, ProgressBarComponent]
+  imports: [NgIf, NgForOf, ItIconComponent, TranslateModule, ItTooltipDirective, ItProgressBarComponent]
 })
-export class UploadFileListComponent extends AbstractComponent implements OnInit, OnChanges {
+export class ItUploadFileListComponent extends ItAbstractComponent implements OnInit, OnChanges {
 
   /**
    * The list of files to show in list

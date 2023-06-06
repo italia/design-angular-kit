@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
-import { LinkComponent } from '../../../core/link/link.component';
+import { ItLinkComponent } from '../../../core/link/link.component';
 
 @Component({
   standalone: true,
@@ -10,7 +10,7 @@ import { LinkComponent } from '../../../core/link/link.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class BreadcrumbItemComponent extends LinkComponent {
+export class ItBreadcrumbItemComponent extends ItLinkComponent {
 
   /**
    * Is active breadcrumb item

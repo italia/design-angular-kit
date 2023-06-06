@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
-  NotificationsService
-} from '../../../../projects/design-angular-kit/src/lib/services/notifications/notifications.service';
+  ItNotificationService
+} from '../../../../projects/design-angular-kit/src/lib/services/notification/notification.service';
 import {
   NotificationPosition,
   NotificationType
@@ -30,7 +30,7 @@ export class NotificationsExampleComponent {
   private text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...';
 
   constructor(
-    private readonly notificationService: NotificationsService
+    private readonly notificationService: ItNotificationService
   ) {
   }
 

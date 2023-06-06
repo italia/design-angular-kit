@@ -1,29 +1,29 @@
 import { NgModule } from '@angular/core';
-import { CheckboxComponent } from './checkbox/checkbox.component';
-import { InputComponent } from './input/input.component';
-import { PasswordInputComponent } from './password-input/password-input.component';
-import { RadioButtonComponent } from './radio-button/radio-button.component';
-import { RatingComponent } from './rating/rating.component';
-import { SelectComponent } from './select/select.component';
-import { TextareaComponent } from './textarea/textarea.component';
-import { UploadDragDropComponent } from './upload-drag-drop/upload-drag-drop.component';
-import { UploadFileListComponent } from './upload-file-list/upload-file-list.component';
+import { ItCheckboxComponent } from './checkbox/checkbox.component';
+import { ItInputComponent } from './input/input.component';
+import { ItPasswordInputComponent } from './password-input/password-input.component';
+import { ItRadioButtonComponent } from './radio-button/radio-button.component';
+import { ItRatingComponent } from './rating/rating.component';
+import { ItSelectComponent } from './select/select.component';
+import { ItTextareaComponent } from './textarea/textarea.component';
+import { ItUploadDragDropComponent } from './upload-drag-drop/upload-drag-drop.component';
+import { ItUploadFileListComponent } from './upload-file-list/upload-file-list.component';
 
 
 const formComponents = [
-  CheckboxComponent,
-  InputComponent,
-  PasswordInputComponent,
-  RadioButtonComponent,
-  RatingComponent,
-  SelectComponent,
-  TextareaComponent,
-  UploadDragDropComponent,
-  UploadFileListComponent
+  ItCheckboxComponent,
+  ItInputComponent,
+  ItPasswordInputComponent,
+  ItRadioButtonComponent,
+  ItRatingComponent,
+  ItSelectComponent,
+  ItTextareaComponent,
+  ItUploadDragDropComponent,
+  ItUploadFileListComponent
 ];
 
 @NgModule({
   imports: formComponents,
   exports: formComponents
 })
-export class FormModule { }
+export class ItFormModule { }

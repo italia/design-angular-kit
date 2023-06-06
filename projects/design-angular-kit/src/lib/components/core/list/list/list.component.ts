@@ -8,7 +8,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-inpu
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class ListComponent {
+export class ItListComponent {
 
   /**
    * Add 'link-list' class for navigation menu

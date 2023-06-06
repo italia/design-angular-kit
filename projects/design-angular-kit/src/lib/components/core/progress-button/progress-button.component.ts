@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ProgressBarColor } from '../../../interfaces/core';
-import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
+import { ItProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -10,9 +10,9 @@ import { NgIf } from '@angular/common';
   selector: 'button[itButton][progress]',
   templateUrl: './progress-button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ProgressBarComponent]
+  imports: [NgIf, ItProgressBarComponent]
 })
-export class ProgressButtonComponent {
+export class ItProgressButtonComponent {
 
   /**
    * Behavior of the progress bar

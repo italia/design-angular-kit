@@ -9,6 +9,6 @@ export class ErrorPageIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'ErrorPageComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItErrorPageComponent');
   }
 }

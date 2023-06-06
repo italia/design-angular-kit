@@ -12,8 +12,8 @@ export class BreadcrumbIndexComponent {
   subcomponent: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'BreadcrumbComponent');
-    this.subcomponent = (<any>Documentation).components.find(component => component.name === 'BreadcrumbItemComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItBreadcrumbComponent');
+    this.subcomponent = (<any>Documentation).components.find(component => component.name === 'ItBreadcrumbItemComponent');
   }
 
 }

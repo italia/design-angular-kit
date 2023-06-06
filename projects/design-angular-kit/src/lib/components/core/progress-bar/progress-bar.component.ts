@@ -11,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, TranslateModule]
 })
-export class ProgressBarComponent {
+export class ItProgressBarComponent {
 
   /**
    * The progress bar value [0, 100]

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { ListComponent } from './list/list.component';
-import { ListItemComponent } from './list-item/list-item.component';
+import { ItListComponent } from './list/list.component';
+import { ItListItemComponent } from './list-item/list-item.component';
 
 const listComponents = [
-  ListComponent,
-  ListItemComponent
+  ItListComponent,
+  ItListItemComponent
 ];
 
 @NgModule({
   imports: listComponents,
   exports: listComponents
 })
-export class ListModule {
+export class ItListModule {
 }

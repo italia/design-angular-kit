@@ -11,7 +11,7 @@ export class PopoverIndexComponent {
   directive: any;
 
   constructor() {
-    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'PopoverDirective');
+    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItPopoverDirective');
   }
 
 }

@@ -10,21 +10,21 @@ import {
   ViewChildren
 } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { TabItemComponent } from '../tab-item/tab-item.component';
+import { ItTabItemComponent } from '../tab-item/tab-item.component';
 import { of, startWith, Subscription, switchMap, tap } from 'rxjs';
 import { Tab } from 'bootstrap-italia';
-import { AbstractComponent } from '../../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
-import { IconComponent } from '../../../utils/icon/icon.component';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
 
 @Component({
   standalone: true,
   selector: 'it-tab-container',
   templateUrl: './tab-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgForOf, NgIf, IconComponent, NgTemplateOutlet]
+  imports: [NgForOf, NgIf, ItIconComponent, NgTemplateOutlet]
 })
-export class TabContainerComponent extends AbstractComponent implements OnDestroy, AfterViewInit {
+export class ItTabContainerComponent extends ItAbstractComponent implements OnDestroy, AfterViewInit {
 
   /**
    * Tabs automatically occupy the entire available width
@@ -44,7 +44,7 @@ export class TabContainerComponent extends AbstractComponent implements OnDestro
   /**
    * The tab items
    */
-  @ContentChildren(TabItemComponent) tabs?: QueryList<TabItemComponent>;
+  @ContentChildren(ItTabItemComponent) tabs?: QueryList<ItTabItemComponent>;
 
   @ViewChildren('tabNavLinks') private tabNavLinks?: QueryList<ElementRef<HTMLAnchorElement>>;
 

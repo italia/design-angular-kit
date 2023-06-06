@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe, NgIf } from '@angular/common';
@@ -12,7 +12,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, NgIf, AsyncPipe]
 })
-export class RadioButtonComponent extends AbstractFormComponent<string | number | undefined> implements OnInit {
+export class ItRadioButtonComponent extends ItAbstractFormComponent<string | number | undefined> implements OnInit {
 
   /**
    * The radio value

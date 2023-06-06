@@ -86,7 +86,7 @@ export * from './lib/components/utils/icon/icon.component';
 export * from './lib/components/utils/language-switcher/language-switcher.component';
 
 // Services
-export * from './lib/services/notifications/notifications.service';
+export * from './lib/services/notification/notification.service';
 
 // Pipes
 export * from './lib/pipes/mark-matching-text.pipe';

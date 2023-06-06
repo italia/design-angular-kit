@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
-import { AbstractComponent } from '../../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { BooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
 
@@ -10,7 +10,7 @@ import { IconName } from '../../../../interfaces/icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class TabItemComponent extends AbstractComponent implements AfterViewInit {
+export class ItTabItemComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * The tab label

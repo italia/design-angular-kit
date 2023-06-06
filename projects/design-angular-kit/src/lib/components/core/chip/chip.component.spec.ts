@@ -3,23 +3,23 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ChipComponent } from './chip.component';
+import { ItChipComponent } from './chip.component';
 
-describe('ChipComponent', () => {
-  let component: ChipComponent;
-  let fixture: ComponentFixture<ChipComponent>;
+describe('ItChipComponent', () => {
+  let component: ItChipComponent;
+  let fixture: ComponentFixture<ItChipComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChipComponent ],
+      declarations: [ ItChipComponent ],
       imports: [TranslateModule.forRoot()]
     })
-    .overrideComponent(ChipComponent, {
+    .overrideComponent(ItChipComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ChipComponent);
+    fixture = TestBed.createComponent(ItChipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

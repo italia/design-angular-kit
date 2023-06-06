@@ -9,6 +9,6 @@ export class ModalIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'ModalComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItModalComponent');
   }
 }

@@ -11,7 +11,7 @@ export class BadgeIndexComponent {
   directive: any;
 
   constructor() {
-    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'BadgeDirective');
+    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItBadgeDirective');
   }
 
 }

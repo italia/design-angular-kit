@@ -3,16 +3,16 @@ import { map, Observable, startWith } from 'rxjs';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AvailableLanguage } from '../../../interfaces/utils';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
-import { DropdownModule } from '../../core/dropdown/dropdown.module';
+import { ItDropdownModule } from '../../core/dropdown/dropdown.module';
 
 @Component({
   standalone: true,
   selector: 'it-language-switcher',
   templateUrl: './language-switcher.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgFor, NgIf, AsyncPipe, TranslateModule, DropdownModule]
+  imports: [NgFor, NgIf, AsyncPipe, TranslateModule, ItDropdownModule]
 })
-export class LanguageSwitcherComponent implements OnInit {
+export class ItLanguageSwitcherComponent implements OnInit {
 
   /**
    * The available languages

@@ -10,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, TranslateModule]
 })
-export class SpinnerComponent {
+export class ItSpinnerComponent {
 
   /**
    * The spinner is active

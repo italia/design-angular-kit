@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, TemplateRef, ViewChild } from '@angular/core';
-import { AbstractComponent } from '../../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 
 /**
  * Carousel Item
@@ -12,7 +12,7 @@ import { AbstractComponent } from '../../../../abstracts/abstract.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class CarouselItemComponent extends AbstractComponent {
+export class ItCarouselItemComponent extends ItAbstractComponent {
 
   /**
    * The content of item

@@ -11,19 +11,19 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { LowerCasePipe, NgForOf, NgIf } from '@angular/common';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { DropdownModule } from '../dropdown/dropdown.module';
-import { InputComponent } from '../../form/input/input.component';
+import { ItDropdownModule } from '../dropdown/dropdown.module';
+import { ItInputComponent } from '../../form/input/input.component';
 
 @Component({
   standalone: true,
   selector: 'it-pagination[currentPage][pageNumbers]',
   templateUrl: './pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgForOf, IconComponent, TranslateModule, LowerCasePipe, DropdownModule, InputComponent, ReactiveFormsModule]
+  imports: [NgIf, NgForOf, ItIconComponent, TranslateModule, LowerCasePipe, ItDropdownModule, ItInputComponent, ReactiveFormsModule]
 })
-export class PaginationComponent implements OnChanges {
+export class ItPaginationComponent implements OnChanges {
 
   /**
    * Index of page (start 0)

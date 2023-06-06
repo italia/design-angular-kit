@@ -12,12 +12,12 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { AbstractComponent } from '../../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
+import { ItDropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { Dropdown } from 'bootstrap-italia';
-import { IconComponent } from '../../../utils/icon/icon.component';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
 
 @Component({
   standalone: true,
@@ -26,9 +26,9 @@ import { IconComponent } from '../../../utils/icon/icon.component';
   styleUrls: ['./dropdown.component.scss'],
   exportAs: 'itDropdown',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [IconComponent]
+  imports: [ItIconComponent]
 })
-export class DropdownComponent extends AbstractComponent implements AfterViewInit, OnChanges {
+export class ItDropdownComponent extends ItAbstractComponent implements AfterViewInit, OnChanges {
 
   /**
    * Button color
@@ -56,7 +56,7 @@ export class DropdownComponent extends AbstractComponent implements AfterViewIni
   /**
    * The dropdown items
    */
-  @ContentChildren(DropdownItemComponent) items?: QueryList<DropdownItemComponent>;
+  @ContentChildren(ItDropdownItemComponent) items?: QueryList<ItDropdownItemComponent>;
 
   /**
    * Fires immediately when the show instance method is called.

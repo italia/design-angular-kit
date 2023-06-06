@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { CarouselType } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
+import { ItCarouselItemComponent } from '../carousel-item/carousel-item.component';
 import { CarouselBI } from 'bootstrap-italia';
 import { startWith, Subscription } from 'rxjs';
 import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
@@ -30,7 +30,7 @@ import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgForOf, NgTemplateOutlet, NgIf]
 })
-export class CarouselComponent implements AfterViewInit, OnDestroy {
+export class ItCarouselComponent implements AfterViewInit, OnDestroy {
 
   /**
    * The callout title
@@ -74,7 +74,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
    */
   @Input() lined: BooleanInput | undefined;
 
-  @ContentChildren(CarouselItemComponent) protected items?: QueryList<CarouselItemComponent>;
+  @ContentChildren(ItCarouselItemComponent) protected items?: QueryList<ItCarouselItemComponent>;
 
   private carousel?: CarouselBI;
 

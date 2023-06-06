@@ -11,24 +11,24 @@ import {
   QueryList
 } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { SteppersItemComponent } from '../steppers-item/steppers-item.component';
+import { ItSteppersItemComponent } from '../steppers-item/steppers-item.component';
 import { ProgressBarColor } from '../../../../interfaces/core';
 import { startWith, Subscription } from 'rxjs';
 import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
-import { IconComponent } from '../../../utils/icon/icon.component';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '../../button/button.directive';
-import { ProgressBarComponent } from '../../progress-bar/progress-bar.component';
-import { ProgressButtonComponent } from '../../progress-button/progress-button.component';
+import { ItButtonDirective } from '../../button/button.directive';
+import { ItProgressBarComponent } from '../../progress-bar/progress-bar.component';
+import { ItProgressButtonComponent } from '../../progress-button/progress-button.component';
 
 @Component({
   standalone: true,
   selector: 'it-steppers-container[activeStep]',
   templateUrl: './steppers-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgForOf, IconComponent, NgTemplateOutlet, TranslateModule, ButtonDirective, ProgressBarComponent, ProgressButtonComponent]
+  imports: [NgIf, NgForOf, ItIconComponent, NgTemplateOutlet, TranslateModule, ItButtonDirective, ItProgressBarComponent, ItProgressButtonComponent]
 })
-export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
+export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
 
   /**
    * The active step index
@@ -102,7 +102,7 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
   /**
    * The stepper items
    */
-  @ContentChildren(SteppersItemComponent) steps?: QueryList<SteppersItemComponent>;
+  @ContentChildren(ItSteppersItemComponent) steps?: QueryList<ItSteppersItemComponent>;
 
   /**
    * On back button click

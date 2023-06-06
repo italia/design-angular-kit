@@ -10,7 +10,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class TableComponent {
+export class ItTableComponent {
 
   /**
    * Table color

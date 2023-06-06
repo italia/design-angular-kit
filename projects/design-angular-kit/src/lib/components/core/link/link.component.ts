@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, RouterLink, NgTemplateOutlet]
 })
-export class LinkComponent extends AbstractComponent implements AfterViewInit {
+export class ItLinkComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * The router link action

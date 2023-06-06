@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { LinkComponent } from '../../link/link.component';
+import { ItLinkComponent } from '../../link/link.component';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 @Component({
@@ -9,9 +9,9 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, LinkComponent]
+  imports: [NgIf, NgTemplateOutlet, ItLinkComponent]
 })
-export class ListItemComponent extends LinkComponent {
+export class ItListItemComponent extends ItLinkComponent {
 
   /**
    * Add active class

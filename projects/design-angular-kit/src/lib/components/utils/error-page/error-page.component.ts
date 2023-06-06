@@ -3,17 +3,17 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { BackButtonComponent } from '../../navigation/back-button/back-button.component';
-import { ButtonDirective } from '../../core/button/button.directive';
+import { ItBackButtonComponent } from '../../navigation/back-button/back-button.component';
+import { ItButtonDirective } from '../../core/button/button.directive';
 
 @Component({
   standalone: true,
   selector: 'it-error-page',
   templateUrl: './error-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule, RouterLink, BackButtonComponent, ButtonDirective]
+  imports: [NgIf, TranslateModule, RouterLink, ItBackButtonComponent, ItButtonDirective]
 })
-export class ErrorPageComponent {
+export class ItErrorPageComponent {
 
   /**
    * The error code to show

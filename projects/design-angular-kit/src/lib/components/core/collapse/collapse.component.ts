@@ -8,7 +8,7 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Collapse } from 'bootstrap-italia';
 
@@ -20,7 +20,7 @@ import { Collapse } from 'bootstrap-italia';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class CollapseComponent extends AbstractComponent implements AfterViewInit {
+export class ItCollapseComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * Enable multiple collapse

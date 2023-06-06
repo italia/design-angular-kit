@@ -1,8 +1,8 @@
 import { ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
 import { ButtonColor, ButtonSize } from '../../../interfaces/core';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { ProgressButtonComponent } from '../progress-button/progress-button.component';
+import { ItProgressButtonComponent } from '../progress-button/progress-button.component';
 
 /**
  * Button
@@ -13,7 +13,7 @@ import { ProgressButtonComponent } from '../progress-button/progress-button.comp
   selector: '[itButton]',
   exportAs: 'itButton'
 })
-export class ButtonDirective {
+export class ItButtonDirective {
 
   /**
    * Button color
@@ -43,12 +43,12 @@ export class ButtonDirective {
    * The icon children
    * @default undefined
    */
-  @ContentChildren(IconComponent) protected icons?: QueryList<IconComponent>;
+  @ContentChildren(ItIconComponent) protected icons?: QueryList<ItIconComponent>;
 
   private isFocus = false;
 
   constructor(
-    @Optional() @Host() private progressButtonComponent: ProgressButtonComponent
+    @Optional() @Host() private progressButtonComponent: ItProgressButtonComponent
   ) {
   }
 

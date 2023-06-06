@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 
 @Component({ template: '' })
-export abstract class AbstractComponent implements AfterViewInit, OnChanges {
+export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {
 
   /**
    * The element ID
@@ -59,6 +59,6 @@ export abstract class AbstractComponent implements AfterViewInit, OnChanges {
   private getDefaultId(): string {
     const name = this.constructor.name.replace('Component', '');
     const kebabName = name.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase());
-    return `it-${kebabName}-${AbstractComponent.instances++}`;
+    return `${kebabName}-${ItAbstractComponent.instances++}`;
   }
 }

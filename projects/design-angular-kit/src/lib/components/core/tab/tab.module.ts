@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { TabContainerComponent } from './tab-container/tab-container.component';
-import { TabItemComponent } from './tab-item/tab-item.component';
+import { ItTabContainerComponent } from './tab-container/tab-container.component';
+import { ItTabItemComponent } from './tab-item/tab-item.component';
 
 const tabComponents = [
-  TabContainerComponent,
-  TabItemComponent
+  ItTabContainerComponent,
+  ItTabItemComponent
 ];
 
 @NgModule({
   imports: tabComponents,
   exports: tabComponents
 })
-export class TabModule {
+export class ItTabModule {
 }

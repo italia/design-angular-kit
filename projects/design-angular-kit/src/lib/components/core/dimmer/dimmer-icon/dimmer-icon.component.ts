@@ -7,6 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class DimmerIconComponent {
+export class ItDimmerIconComponent {
 
 }

@@ -10,7 +10,7 @@ import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from '../../../desi
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class IconComponent {
+export class ItIconComponent {
 
   /**
    * The icon name

@@ -8,7 +8,7 @@ import { Popover } from 'bootstrap-italia';
   selector: '[itPopover]',
   exportAs: 'itPopover'
 })
-export class PopoverDirective implements AfterViewInit, OnDestroy {
+export class ItPopoverDirective implements AfterViewInit, OnDestroy {
 
   /**
    * Define the popover content

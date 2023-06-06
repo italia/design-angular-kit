@@ -10,7 +10,7 @@ export class ForwardIndexComponent {
   directive: any;
 
   constructor() {
-    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ForwardDirective');
+    this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItForwardDirective');
   }
 
 }
