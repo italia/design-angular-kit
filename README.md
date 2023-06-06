@@ -63,12 +63,13 @@ npm install design-angular-kit@unstable --save
 Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
 
 ```typescript
-import {DesignAngularKitModule} from 'design-angular-kit';
+import {DesignAngularKitModule, ItComponentsModule} from 'design-angular-kit';
 
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule.forRoot() // .forRoot obbligatorio
+    DesignAngularKitModule.forRoot(), // .forRoot obbligatorio
+    ItComponentsModule // importa tutti i componenti della libreria
   ]
 })
 ```
@@ -96,6 +97,30 @@ import {DesignAngularKitModule} from 'design-angular-kit';
   ```
 </details>
 
+Usa `ItComponentsModule` per importare tutti i componenti della libreria, in alternativa puoi importare solo i componenti/moduli di cui hai bisogno, ad es. Alert, Paginazione e Breadcrumb.
+
+```typescript
+import {ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule} from 'design-angular-kit';
+
+@NgModule({
+  imports: [
+    ItAlertComponent, 
+    ItPaginationComponent, 
+    ItBreadcrumbsModule // Include ItBreadcrumbComponent e ItBreadcrumbItemComponent 
+  ],
+})
+export class YourAppModule {
+}
+
+@Component({
+  selector: 'app-product',
+  standalone: true,
+  imports: [ItAlertComponent],
+  templateUrl: './product.component.html'
+})
+export class ProductComponent {
+}
+```
 
 ### Importazione stili bootstrap-italia
 Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS come mostrato nell'esempio qui sotto.
