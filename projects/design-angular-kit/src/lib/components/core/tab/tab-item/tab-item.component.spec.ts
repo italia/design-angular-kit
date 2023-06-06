@@ -8,7 +8,7 @@ describe('ItTabItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItTabItemComponent ]
+      imports: [ ItTabItemComponent ]
     })
     .compileComponents();
 

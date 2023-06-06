@@ -8,7 +8,7 @@ describe('ItSteppersItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItSteppersItemComponent ]
+      imports: [ ItSteppersItemComponent ]
     })
     .compileComponents();
 

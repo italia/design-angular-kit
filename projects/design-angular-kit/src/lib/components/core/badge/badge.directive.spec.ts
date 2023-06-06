@@ -28,7 +28,8 @@ describe('ItBadgeDirective', () => {
   let fixture: ComponentFixture<UnitTestComponent>;
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent, ItBadgeDirective]
+      declarations: [UnitTestComponent],
+      imports: [ItBadgeDirective]
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);

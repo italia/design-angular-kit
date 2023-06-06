@@ -8,7 +8,7 @@ describe('ItDimmerIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItDimmerIconComponent ]
+      imports: [ ItDimmerIconComponent ]
     })
     .compileComponents();
 

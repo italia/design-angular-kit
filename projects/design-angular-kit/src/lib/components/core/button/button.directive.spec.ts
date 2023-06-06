@@ -28,11 +28,8 @@ class SingleButtonComponent {
 describe('ItButtonDirective', () => {
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
-      declarations: [
-        ItButtonDirective,
-        SingleButtonComponent,
-      ]
+      imports: [FormsModule, ItButtonDirective],
+      declarations: [SingleButtonComponent]
     });
 
     TestBed.compileComponents();

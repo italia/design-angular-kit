@@ -8,7 +8,7 @@ describe('ItCarouselItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItCarouselItemComponent ]
+      imports: [ ItCarouselItemComponent ]
     })
     .compileComponents();
 

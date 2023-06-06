@@ -10,7 +10,7 @@ describe('ItDimmerButtonsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItDimmerButtonsComponent ]
+      imports: [ ItDimmerButtonsComponent ]
     })
     .overrideComponent(ItDimmerButtonsComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }

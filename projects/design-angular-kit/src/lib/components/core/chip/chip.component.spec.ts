@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ItChipComponent } from './chip.component';
+import { tb_base } from '../../../../test';
 
 describe('ItChipComponent', () => {
   let component: ItChipComponent;
@@ -11,8 +12,8 @@ describe('ItChipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItChipComponent ],
-      imports: [TranslateModule.forRoot()]
+      imports: [ItChipComponent, TranslateModule.forRoot()],
+      providers: tb_base.providers
     })
     .overrideComponent(ItChipComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }

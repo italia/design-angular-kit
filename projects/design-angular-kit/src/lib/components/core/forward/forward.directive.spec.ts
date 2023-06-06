@@ -23,7 +23,8 @@ describe('ItForwardDirective', () => {
   let fixture: ComponentFixture<UnitTestComponent>;
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent, ItForwardDirective]
+      declarations: [UnitTestComponent],
+      imports: [ItForwardDirective]
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);
