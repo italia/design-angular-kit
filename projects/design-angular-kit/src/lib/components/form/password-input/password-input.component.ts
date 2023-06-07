@@ -80,6 +80,12 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string> im
    */
   @Input() confirmPasswordField: BooleanInput = false;
 
+  /**
+   * Input autocomplete attribute (Browser autocomplete)
+   * @default undefined
+   */
+  @Input() autocomplete: string | undefined;
+
   private inputPasswordBs?: InputPassword;
 
   @ViewChild('input') private inputElement?: ElementRef<HTMLInputElement>;

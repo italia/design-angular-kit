@@ -86,6 +86,12 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number> i
   @Input() adaptive: BooleanInput | undefined;
 
   /**
+   * Input autocomplete attribute (Browser autocomplete)
+   * @default undefined
+   */
+  @Input() autocomplete: string | undefined;
+
+  /**
    * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']
    * If you need to retrieve items via API, can pass a function of Observable
    * @default undefined

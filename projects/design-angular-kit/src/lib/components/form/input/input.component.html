@@ -28,6 +28,7 @@
              [formControl]="control"
              [placeholder]="placeholder"
              [readonly]="isReadonly"
+             [autocomplete]="autocomplete"
              [attr.aria-describedby]="id + '-description'"
              (blur)="markAsTouched()" />
 
@@ -52,6 +53,7 @@
            [placeholder]="placeholder"
            [readonly]="isReadonly"
            (keydown)="onKeyDown()"
+           [autocomplete]="autocomplete"
            [attr.aria-describedby]="id + '-description'"
            (blur)="markAsTouched()">
 
