@@ -76,7 +76,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * Return the invalid message string from TranslateService
    */
   get invalidMessage(): Observable<string> {
-    if (this.control.hasError('required')) {
+    if (this.hasError('required')) {
       return this._translateService.get('it.errors.required-field');
     }
 

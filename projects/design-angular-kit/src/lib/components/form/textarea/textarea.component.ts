@@ -34,11 +34,11 @@ export class ItTextareaComponent extends ItAbstractFormComponent<string> {
    * Return the invalid message string from TranslateService
    */
   override get invalidMessage(): Observable<string> {
-    if (this.control.hasError('maxlength')) {
+    if (this.hasError('maxlength')) {
       const error = this.getError('maxlength');
       return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });
     }
-    if (this.control.hasError('pattern')) {
+    if (this.hasError('pattern')) {
       const error = this.getError('pattern');
       return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });
     }
