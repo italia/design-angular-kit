@@ -37,13 +37,18 @@ export class ItSelectComponent extends ItAbstractFormComponent implements OnInit
     const selectedOption = this.options?.find(this.optionIsSelected);
     if (selectedOption) {
       this.writeValue(selectedOption.value);
-      return this.onChange(selectedOption.value);
+      if (this._ngControl?.control && selectedOption.value !== this._ngControl.control.value) {
+        this.onChange(selectedOption.value);
+      }
+      return;
     }
 
     const selectedGroupOption = this.groups?.flatMap(g => g.options).find(this.optionIsSelected);
     if (selectedGroupOption) {
       this.writeValue(selectedGroupOption.value);
-      this.onChange(selectedGroupOption.value);
+      if (this._ngControl?.control && selectedGroupOption.value !== this._ngControl.control.value) {
+        this.onChange(selectedGroupOption.value);
+      }
     }
   }
 

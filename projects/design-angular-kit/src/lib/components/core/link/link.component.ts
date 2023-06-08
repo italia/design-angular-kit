@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, RouterLink, NgTemplateOutlet]
 })
-export class ItLinkComponent extends ItAbstractComponent implements AfterViewInit {
+export class ItLinkComponent extends ItAbstractComponent implements AfterViewInit, OnChanges {
 
   /**
    * The router link action
@@ -49,5 +49,12 @@ export class ItLinkComponent extends ItAbstractComponent implements AfterViewIni
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');
+  }
+
+  override ngOnChanges(changes: SimpleChanges): void {
+    super.ngOnChanges(changes);
+    if (changes['class']) {
+      this._changeDetectorRef.markForCheck();
+    }
   }
 }

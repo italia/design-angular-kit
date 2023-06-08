@@ -7,8 +7,9 @@ import { SelectControlOption } from 'projects/design-angular-kit/src/public_api'
   styleUrls: ['./select-example.component.scss']
 })
 export class SelectExampleComponent {
-  selectedValue: number = 1;
+  selectedValue: number = null;
   selectOptions: Array<SelectControlOption> = [
+    { value: null, text: 'Seleziona un elemento', selected: true, disabled: true },
     {
       value: 1,
       text: 'Opzione 1'
@@ -16,12 +17,11 @@ export class SelectExampleComponent {
     {
       value: 2,
       text: 'Opzione 2'
-    },    
+    },
     {
       value: 3,
       text: 'Opzione 3'
     }
   ];
-  
-  constructor(){}
+
 }

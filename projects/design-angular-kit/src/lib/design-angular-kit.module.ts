@@ -44,7 +44,7 @@ export class DesignAngularKitModule {
     private readonly translateService: TranslateService
   ) {
     translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.
-    translateService.use('it');
+    translateService.use(translateService.defaultLang);
   }
 
 }

@@ -1,6 +1,11 @@
 <div class="select-wrapper">
   <label [for]="id">{{label}}</label>
-  <select [id]="id" [formControl]="control" [attr.aria-describedby]="id + '-description'">
+  <select [id]="id" [formControl]="control"
+          [class.is-invalid]="isInvalid"
+          [class.is-valid]="isValid"
+          (blur)="markAsTouched()"
+          [attr.aria-describedby]="id + '-description'">
+
     <ng-container *ngIf="options">
       <option *ngFor="let option of options" [disabled]="optionIsDisabled(option)" [value]="option.value">
         {{option.text ?? option.value}}
@@ -16,4 +21,11 @@
     </ng-container>
   </select>
   <small *ngIf="description" [id]="id + '-description'" class="form-text">{{description}}</small>
+
+  <div *ngIf="isInvalid" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+    <div #customError>
+      <ng-content select="[error]"></ng-content>
+    </div>
+    <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
+  </div>
 </div>

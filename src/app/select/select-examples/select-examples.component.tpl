@@ -46,3 +46,16 @@
 
 <it-source-display html="{$ sanitize(groupHtml) $}" typescript="{$ sanitize(groupTypescript) $}" >
 </it-source-display>
+
+{% set formgroupHtml %}
+  {% include "../select-formgroup-example/select-formgroup-example.component.html" %}
+{% endset %}
+
+{% set formgroupTypescript %}
+  {% include "../select-formgroup-example/select-formgroup-example.component.ts" %}
+{% endset %}
+
+<it-select-formgroup-example></it-select-formgroup-example>
+
+<it-source-display html="{$ sanitize(formgroupHtml) $}" typescript="{$ sanitize(formgroupTypescript) $}" >
+</it-source-display>
