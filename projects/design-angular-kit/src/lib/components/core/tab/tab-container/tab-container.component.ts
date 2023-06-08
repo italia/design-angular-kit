@@ -77,6 +77,7 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
           triggerEl.addEventListener('click', event => {
             event.preventDefault();
             tabTrigger.show();
+            this._changeDetectorRef.detectChanges();
           });
           triggerEl.setAttribute('tab-listener', 'true'); // Prevents multiple insertion of the listener
         }

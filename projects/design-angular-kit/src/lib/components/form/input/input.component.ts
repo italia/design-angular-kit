@@ -5,7 +5,7 @@ import { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@
 import { ItValidators } from '../../../validators/it-validators';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
@@ -16,7 +16,7 @@ import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe]
+  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]
 })
 export class ItInputComponent extends ItAbstractFormComponent<string | number> implements OnInit {
 

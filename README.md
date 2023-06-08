@@ -222,7 +222,7 @@ Modifica nel tuo `app.module.ts`:
       },      
       defaultLanguage: 'it'
     }),
-    DesignAngularKitModule.forRoot()
+    DesignAngularKitModule
   ]
 })
 ```
@@ -239,7 +239,7 @@ Se non utilizzi i file di localizzazione nella tua app, devi aggiungere il provi
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule.forRoot(),
+    DesignAngularKitModule,
   ],
   providers: [
     TranslateStore
