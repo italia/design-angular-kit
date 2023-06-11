@@ -7,6 +7,7 @@ import { DropdownExamplesComponent } from './dropdown-examples/dropdown-examples
 import { DropdownIndexComponent } from './dropdown-index/dropdown-index.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { DropdownLinkExampleComponent } from './dropdown-link-example/dropdown-link-example.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     FormsModule
   ],
-  declarations: [DropdownExampleComponent, DropdownExamplesComponent, DropdownIndexComponent]
+  declarations: [DropdownExampleComponent, DropdownExamplesComponent, DropdownIndexComponent, DropdownLinkExampleComponent]
 })
 export class DropdownModule { }

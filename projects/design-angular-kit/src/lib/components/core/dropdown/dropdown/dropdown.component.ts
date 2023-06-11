@@ -18,6 +18,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-inpu
 import { ItDropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { Dropdown } from 'bootstrap-italia';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -26,9 +27,14 @@ import { ItIconComponent } from '../../../utils/icon/icon.component';
   styleUrls: ['./dropdown.component.scss'],
   exportAs: 'itDropdown',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItIconComponent]
+  imports: [ItIconComponent, NgTemplateOutlet, NgIf]
 })
 export class ItDropdownComponent extends ItAbstractComponent implements AfterViewInit, OnChanges {
+
+  /**
+   * Dropdown mode
+   */
+  @Input() mode: 'button' | 'link' = 'button';
 
   /**
    * Button color
@@ -106,22 +112,16 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
     if (changes['dark'] && !changes['dark'].firstChange) {
       this.setDarkItems();
     }
+    if (changes['mode'] && !changes['mode'].firstChange) {
+      this.updateListeners();
+    }
     super.ngOnChanges(changes);
   }
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();
     this.setDarkItems();
-
-    if (this.dropdownButton) {
-      const element = this.dropdownButton.nativeElement;
-      this.dropdown = Dropdown.getOrCreateInstance(element);
-
-      element.addEventListener('show.bs.dropdown', event => this.showEvent.emit(event));
-      element.addEventListener('shown.bs.dropdown', event => this.shownEvent.emit(event));
-      element.addEventListener('hide.bs.dropdown', event => this.hideEvent.emit(event));
-      element.addEventListener('hidden.bs.dropdown', event => this.hiddenEvent.emit(event));
-    }
+    this.updateListeners();
   }
 
   /**
@@ -132,6 +132,18 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
     this.items?.forEach(item => {
       item.setDark(this.isDark);
     });
+  }
+
+  private updateListeners(): void {
+    if (this.dropdownButton) {
+      const element = this.dropdownButton.nativeElement;
+      this.dropdown = Dropdown.getOrCreateInstance(element);
+
+      element.addEventListener('show.bs.dropdown', event => this.showEvent.emit(event));
+      element.addEventListener('shown.bs.dropdown', event => this.shownEvent.emit(event));
+      element.addEventListener('hide.bs.dropdown', event => this.hideEvent.emit(event));
+      element.addEventListener('hidden.bs.dropdown', event => this.hiddenEvent.emit(event));
+    }
   }
 
   /**
