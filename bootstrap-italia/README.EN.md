@@ -1,6 +1,6 @@
 # Bootstrap Italia
 
-[![Version](https://img.shields.io/npm/v/bootstrap-italia.svg?logo=npm)](https://github.com/italia/bootstrap-italia/releases)
+[![Version](https://img.shields.io/npm/v/bootstrap-italia.svg?logo=npm)](https://www.npmjs.com/package/bootstrap-italia)
 [![Build](https://github.com/italia/bootstrap-italia/actions/workflows/build.yml/badge.svg)](https://github.com/italia/bootstrap-italia/actions)
 [![GitHub issues](https://img.shields.io/github/issues/italia/bootstrap-italia.svg)](https://github.com/italia/bootstrap-italia/issues)
 [![Join the #design channel](https://img.shields.io/badge/Slack%20channel-%23design-blue.svg)](https://developersitalia.slack.com/messages/C7VPAUVB3/)
@@ -10,7 +10,7 @@ _🇮🇹 [Versione in italiano](README.md)_
 
 _⚠️ [Bootstrap Italia 1.x version (based on Bootstrap 4) has been marked as deprecated](https://github.com/italia/bootstrap-italia/tree/1.x)_
 
-New Bootstrap Italia version is a [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/) theme to create responsive web apps to make Italian public digital services consistent, accessible and simple to use.
+New Bootstrap Italia version is a [Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/) theme to create responsive web apps to make Italian public digital services consistent, accessible and simple to use.
 
 Bootstrap Italia inherits components, mixins, grid system, and anything else from Bootstrap 5, customising them accordingly to the [Italian guidelines for designing public digital services](https://designers.italia.it/linee-guida/) (in italian).
 
