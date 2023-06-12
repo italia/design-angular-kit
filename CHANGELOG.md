@@ -1,3 +1,29 @@
+# [1.0.0-17](https://github.com/italia/design-angular-kit/compare/v1.0.0-16...v1.0.0-17) (2023-06-12)
+
+
+### Bug Fixes
+
+* dependencies vulnerability ([9a8f791](https://github.com/italia/design-angular-kit/commit/9a8f791973ec6679fbd40d4fe3ec6fa9bcb7c0bc))
+* invalid message for abstract form components ([34054f5](https://github.com/italia/design-angular-kit/commit/34054f5131ad124e0840ce2203dc94d03ca52b3e))
+* link class changes ([e284f6b](https://github.com/italia/design-angular-kit/commit/e284f6bd19d67fba13cca8a1984938e620a86f01))
+* merge and form component change detection update ([dca43b9](https://github.com/italia/design-angular-kit/commit/dca43b92be9a2b8954587748d7142d6aa6484072))
+* test for standalone components ([7d438ec](https://github.com/italia/design-angular-kit/commit/7d438ec3d62aca238aab0c2dd5d2e32b7ec2ed19))
+* use default lang for translate service ([d55262b](https://github.com/italia/design-angular-kit/commit/d55262bee6330b022ed8d7d0f297f828fea64509))
+
+
+### Features
+
+* added autocomplete attribute on input and password input ([56a8427](https://github.com/italia/design-angular-kit/commit/56a8427c7bd62c8a0bc557d223ea67c8eea7ac2e))
+* added invalid form feedback on select component ([64eaf85](https://github.com/italia/design-angular-kit/commit/64eaf85c5b06743161d981ce62911afdb2d2d058))
+* convert components to standalone ([af3fdf1](https://github.com/italia/design-angular-kit/commit/af3fdf17deb088a51ff4988e6dbc85e616c45b05))
+* disable the buttons in the steppers component ([aa3f3ab](https://github.com/italia/design-angular-kit/commit/aa3f3abb96bea30e1c754c31c729dadd9e591c0d))
+* removed required forroot importation to use default configuration ([e1a5a02](https://github.com/italia/design-angular-kit/commit/e1a5a023d820b12279143c1de05d454d7bf6f884))
+* render dropdown as link ([2d50b57](https://github.com/italia/design-angular-kit/commit/2d50b576677fd6524bacf9d057d724db5843d52e))
+* standalone components import separation ([cbba4c0](https://github.com/italia/design-angular-kit/commit/cbba4c0f864c97c12ace89d983977fc505d5a0f7))
+* upgrade angular and bootstrap italia version ([2c9feae](https://github.com/italia/design-angular-kit/commit/2c9feae67ac516d39143ccc6b377f04c5b95c7a2))
+
+
+
 # [1.0.0-16](https://github.com/italia/design-angular-kit/compare/v1.0.0-15...v1.0.0-16) (2023-05-15)
 
 
