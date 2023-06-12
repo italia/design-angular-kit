@@ -7,22 +7,23 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
  * @description Useful for small counters and labels
  */
 @Directive({
+  standalone: true,
   selector: '[itBadge]',
   exportAs: 'itBadge'
 })
-export class BadgeDirective {
+export class ItBadgeDirective {
 
   /**
    * Define the badge color
    * @default undefined
    */
-  @Input('itBadge') color?: BadgeColor;
+  @Input('itBadge') color: BadgeColor | undefined;
 
   /**
    * Show rounded badge
    * @default false
    */
-  @Input() rounded?: BooleanInput;
+  @Input() rounded: BooleanInput | undefined;
 
   @HostBinding('class')
   protected get badgeClass(): string {

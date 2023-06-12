@@ -7,6 +7,7 @@
 
   <it-steppers-container [activeStep]="activeStep"
                          [dark]="isDark"
+                         [disableBackButton]="activeStep === 0"
                          [showForwardButton]="activeStep < steps.length-1"
                          [showSaveButton]="activeStep === 0"
                          [showConfirmButton]="activeStep === steps.length-1"

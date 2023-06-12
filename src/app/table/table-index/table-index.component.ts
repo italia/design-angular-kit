@@ -9,6 +9,6 @@ export class TableIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'TableComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItTableComponent');
   }
 }

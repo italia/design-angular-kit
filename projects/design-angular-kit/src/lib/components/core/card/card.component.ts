@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
 /**
@@ -7,12 +7,14 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
  * @description A container of texts and images with many options and variations.
  */
 @Component({
+  standalone: true,
   selector: 'it-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
-export class CardComponent extends AbstractComponent {
+export class ItCardComponent extends ItAbstractComponent {
 
   /**
    * It serves to space the cards in their mobile version.
@@ -24,25 +26,25 @@ export class CardComponent extends AbstractComponent {
    * To create cards with short or "preview" content
    * @default false
    */
-  @Input() teaser?: BooleanInput;
+  @Input() teaser: BooleanInput | undefined;
 
   /**
    * Card with image
    * @default false
    */
-  @Input() hasImage?: BooleanInput;
+  @Input() hasImage: BooleanInput | undefined;
 
   /**
    * To add rounding effects
    * @default false
    */
-  @Input() rounded?: BooleanInput;
+  @Input() rounded: BooleanInput | undefined;
 
   /**
    * To add shadow effects
    * @default false
    */
-  @Input() shadow?: BooleanInput;
+  @Input() shadow: BooleanInput | undefined;
 
   /**
    * Custom card class

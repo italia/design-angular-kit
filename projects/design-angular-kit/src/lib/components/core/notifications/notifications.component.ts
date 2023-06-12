@@ -1,18 +1,23 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NotificationsService } from '../../../services/notifications/notifications.service';
+import { ItNotificationService } from '../../../services/notification/notification.service';
 import { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';
 import { Notification as BSNotification } from 'bootstrap-italia';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { IconName } from '../../../interfaces/icon';
+import { NgForOf, NgIf } from '@angular/common';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+  standalone: true,
   selector: 'it-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgForOf, NgIf, ItIconComponent, TranslateModule]
 })
-export class NotificationsComponent implements OnDestroy {
+export class ItNotificationsComponent implements OnDestroy {
 
   /**
    * Default notifications duration (milliseconds)
@@ -23,7 +28,7 @@ export class NotificationsComponent implements OnDestroy {
   /**
    * Default notifications position
    */
-  @Input() position?: NotificationPosition;
+  @Input() position: NotificationPosition | undefined;
 
   /**
    * Default notifications is dismissible
@@ -37,7 +42,7 @@ export class NotificationsComponent implements OnDestroy {
 
   constructor(
     private readonly _changeDetectorRef: ChangeDetectorRef,
-    private readonly _notificationService: NotificationsService
+    private readonly _notificationService: ItNotificationService
   ) {
     this.subscription = this._notificationService.onNotification().subscribe(notification => {
       if (!notification.duration) {

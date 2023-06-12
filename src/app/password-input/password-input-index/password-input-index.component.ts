@@ -10,6 +10,6 @@ export class PasswordInputIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'PasswordInputComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItPasswordInputComponent');
   }
 }

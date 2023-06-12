@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BackButtonComponent } from './back-button.component';
+import { ItBackButtonComponent } from './back-button.component';
 import { tb_base } from '../../../../test';
 
-describe('BackButtonComponent', () => {
-  let component: BackButtonComponent;
-  let fixture: ComponentFixture<BackButtonComponent>;
+describe('ItBackButtonComponent', () => {
+  let component: ItBackButtonComponent;
+  let fixture: ComponentFixture<ItBackButtonComponent>;
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule(tb_base)
-      .overrideComponent(BackButtonComponent, {
+      .overrideComponent(ItBackButtonComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default }
       })
       .compileComponents();
 
-    fixture = TestBed.createComponent(BackButtonComponent);
+    fixture = TestBed.createComponent(ItBackButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

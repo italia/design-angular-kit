@@ -9,6 +9,6 @@ export class AlertIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'AlertComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItAlertComponent');
   }
 }

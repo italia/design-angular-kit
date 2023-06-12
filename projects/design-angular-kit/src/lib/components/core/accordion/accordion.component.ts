@@ -1,22 +1,26 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CollapseComponent } from '../collapse/collapse.component';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ItCollapseComponent } from '../collapse/collapse.component';
 
 /**
  * Accordion
  * @description Build vertically collapsible accordions based on Collapse.
  */
 @Component({
+  standalone: true,
   selector: 'it-accordion[title]',
   templateUrl: './accordion.component.html',
   exportAs: 'itAccordion',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
-export class AccordionComponent extends CollapseComponent implements AfterViewInit {
+export class ItAccordionComponent extends ItCollapseComponent implements AfterViewInit {
 
   /**
    * Accordion Title
    */
   @Input() title!: string;
+
+  @ViewChild('collapse') protected override collapseDiv?: ElementRef<HTMLDivElement>;
 
   protected isCollapsed: boolean = true;
 

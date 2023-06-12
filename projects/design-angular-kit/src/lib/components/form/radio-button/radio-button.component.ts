@@ -1,19 +1,23 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'it-radio-button[value]',
   templateUrl: './radio-button.component.html',
   styleUrls: ['./radio-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ReactiveFormsModule, NgIf, AsyncPipe]
 })
-export class RadioButtonComponent extends AbstractFormComponent<string | number | undefined> implements OnInit {
+export class ItRadioButtonComponent extends ItAbstractFormComponent<string | number | undefined> implements OnInit {
 
   /**
    * The radio value
    */
-  @Input() value?: string | number;
+  @Input() value: string | number | undefined;
 
   /**
    * If show radio inline
@@ -30,7 +34,7 @@ export class RadioButtonComponent extends AbstractFormComponent<string | number 
   /**
    * If is radio is checked
    */
-  @Input() checked?: BooleanInput;
+  @Input() checked: BooleanInput | undefined;
 
   get isInline(): boolean {
     return isTrueBooleanInput(this.inline);

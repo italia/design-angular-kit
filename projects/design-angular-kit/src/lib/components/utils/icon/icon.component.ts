@@ -4,11 +4,13 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from '../../../design-angular-kit-config';
 
 @Component({
+  standalone: true,
   selector: 'it-icon[name]',
   templateUrl: './icon.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
-export class IconComponent {
+export class ItIconComponent {
 
   /**
    * The icon name
@@ -18,22 +20,22 @@ export class IconComponent {
   /**
    * The icon size
    */
-  @Input() size?: IconSize;
+  @Input() size: IconSize | undefined;
 
   /**
    * The icon color
    */
-  @Input() color?: IconColor;
+  @Input() color: IconColor | undefined;
 
   /**
    * Create a padding proportional to the size of the surrounding icon.
    */
-  @Input() padded?: BooleanInput;
+  @Input() padded: BooleanInput | undefined;
 
   /**
    * Custom class of svg
    */
-  @Input() svgClass?: string;
+  @Input() svgClass: string | undefined;
 
   /**
    * Return the icon href

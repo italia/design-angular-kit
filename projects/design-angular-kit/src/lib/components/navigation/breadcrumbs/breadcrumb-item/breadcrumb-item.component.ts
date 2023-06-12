@@ -1,24 +1,26 @@
 import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
-import { LinkComponent } from '../../../core/link/link.component';
+import { ItLinkComponent } from '../../../core/link/link.component';
 
 @Component({
+  standalone: true,
   selector: 'it-breadcrumb-item',
   templateUrl: './breadcrumb-item.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
-export class BreadcrumbItemComponent extends LinkComponent {
+export class ItBreadcrumbItemComponent extends ItLinkComponent {
 
   /**
    * Is active breadcrumb item
    */
-  @Input() active?: BooleanInput;
+  @Input() active: BooleanInput | undefined;
 
   /**
    * The name of icon to show
    */
-  @Input() iconName?: IconName;
+  @Input() iconName: IconName | undefined;
 
   /**
    * The content of item

@@ -1,53 +1,54 @@
 import { ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
 import { ButtonColor, ButtonSize } from '../../../interfaces/core';
-import { IconComponent } from '../../utils/icon/icon.component';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { ProgressButtonComponent } from '../progress-button/progress-button.component';
+import { ItProgressButtonComponent } from '../progress-button/progress-button.component';
 
 /**
  * Button
  * @description Bootstrap italia custom button styles
  */
 @Directive({
+  standalone: true,
   selector: '[itButton]',
   exportAs: 'itButton'
 })
-export class ButtonDirective {
+export class ItButtonDirective {
 
   /**
    * Button color
    * @default undefined
    */
-  @Input('itButton') color?: ButtonColor;
+  @Input('itButton') color: ButtonColor | undefined;
 
   /**
    * Button size
    * @default undefined
    */
-  @Input() size?: ButtonSize;
+  @Input() size: ButtonSize | undefined;
 
   /**
    * Indicates whether the button occupies all the width available to it.
    * @default undefined
    */
-  @Input() block?: ButtonSize;
+  @Input() block: ButtonSize | undefined;
 
   /**
    * If button is disabled
    * @default false
    */
-  @Input() @HostBinding('disabled') disabled?: BooleanInput;
+  @Input() @HostBinding('disabled') disabled: BooleanInput | undefined;
 
   /**
    * The icon children
    * @default undefined
    */
-  @ContentChildren(IconComponent) protected icons?: QueryList<IconComponent>;
+  @ContentChildren(ItIconComponent) protected icons?: QueryList<ItIconComponent>;
 
   private isFocus = false;
 
   constructor(
-    @Optional() @Host() private progressButtonComponent: ProgressButtonComponent
+    @Optional() @Host() private progressButtonComponent: ItProgressButtonComponent
   ) {
   }
 
@@ -89,7 +90,7 @@ export class ButtonDirective {
       cssClass += ' btn-icon';
     }
 
-    if (!!this.progressButtonComponent) {
+    if (this.progressButtonComponent) {
       cssClass += ' btn-progress';
     }
 

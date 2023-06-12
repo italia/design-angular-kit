@@ -1,23 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { SelectControlGroup, SelectControlOption } from '../../../interfaces/form';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
   selector: 'it-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+  styleUrls: ['./select.component.scss'],
+  imports: [NgIf, NgForOf, ReactiveFormsModule, AsyncPipe]
 })
-export class SelectComponent extends AbstractFormComponent implements OnInit {
+export class ItSelectComponent extends ItAbstractFormComponent implements OnInit {
 
   /**
    * The select options
    */
-  @Input() options?: Array<SelectControlOption>;
+  @Input() options: Array<SelectControlOption> | undefined;
 
   /**
    * The select group options
    */
-  @Input() groups?: Array<SelectControlGroup>;
+  @Input() groups: Array<SelectControlGroup> | undefined;
 
   /**
    * The select description
@@ -33,13 +37,18 @@ export class SelectComponent extends AbstractFormComponent implements OnInit {
     const selectedOption = this.options?.find(this.optionIsSelected);
     if (selectedOption) {
       this.writeValue(selectedOption.value);
-      return this.onChange(selectedOption.value);
+      if (this._ngControl?.control && selectedOption.value !== this._ngControl.control.value) {
+        this.onChange(selectedOption.value);
+      }
+      return;
     }
 
     const selectedGroupOption = this.groups?.flatMap(g => g.options).find(this.optionIsSelected);
     if (selectedGroupOption) {
       this.writeValue(selectedGroupOption.value);
-      this.onChange(selectedGroupOption.value);
+      if (this._ngControl?.control && selectedGroupOption.value !== this._ngControl.control.value) {
+        this.onChange(selectedGroupOption.value);
+      }
     }
   }
 

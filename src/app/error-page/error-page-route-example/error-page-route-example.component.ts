@@ -6,27 +6,27 @@ import { Component } from '@angular/core';
 })
 export class ErrorPageRouteExampleComponent {
 
-   readonly notFound = "import {ErrorPageComponent} from 'design-angular-kit';\n\n" +
+   readonly notFound = "import {ItErrorPageComponent} from 'design-angular-kit';\n\n" +
     "const routes: Routes = [\n" +
-    "   { path: 'error/not-found', component: ErrorPageComponent, data: { errorCode: 404 } },\n" +
+    "   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },\n" +
     "   { path: '**', redirectTo: 'error/not-found'  }\n" +
     "]"
 
-   readonly forbidden = "import {ErrorPageComponent} from 'design-angular-kit';\n\n" +
+   readonly forbidden = "import {ItErrorPageComponent} from 'design-angular-kit';\n\n" +
     "const routes: Routes = [\n" +
-    "   { path: 'error/forbidden', component: ErrorPageComponent, data: { errorCode: 403 } },\n" +
+    "   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },\n" +
     "]"
 
-   readonly internalServerError = "import {ErrorPageComponent} from 'design-angular-kit';\n\n" +
+   readonly internalServerError = "import {ItErrorPageComponent} from 'design-angular-kit';\n\n" +
     "const routes: Routes = [\n" +
-    "   { path: 'error/server-error', component: ErrorPageComponent, data: { errorCode: 500 } },\n" +
+    "   { path: 'error/server-error', component: ItErrorPageComponent, data: { errorCode: 500 } },\n" +
     "]"
 
-   readonly custom = "import {ErrorPageComponent} from 'design-angular-kit';\n\n" +
+   readonly custom = "import {ItErrorPageComponent} from 'design-angular-kit';\n\n" +
     "const routes: Routes = [\n" +
      "   { \n" +
      "     path: 'error/custom', \n" +
-     "     component: ErrorPageComponent,\n" +
+     "     component: ItErrorPageComponent,\n" +
      "     data: {\n" +
      "       errorCode: 503, // Opzionale \n" +
      "       showErrorCode: true, // Opzionale (utile per gli errori 404, 403, 500) \n" +

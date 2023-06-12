@@ -11,7 +11,7 @@
   </div>
 
   <div class="splide__track {{trackClass}}">
-    <ul class="splide__list">
+    <ul *ngIf="items" class="splide__list">
       <li *ngFor="let item of items" class="splide__slide" [class.lined_slide]="isLined">
         <div class="it-single-slide-wrapper">
           <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>

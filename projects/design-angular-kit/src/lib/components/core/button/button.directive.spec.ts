@@ -1,4 +1,4 @@
-import { ButtonDirective } from './button.directive';
+import { ItButtonDirective } from './button.directive';
 import { Component, DebugElement } from '@angular/core';
 import { ButtonColor } from '../../../interfaces/core';
 import { FormsModule } from '@angular/forms';
@@ -25,14 +25,11 @@ class SingleButtonComponent {
   }
 }
 
-describe('ButtonDirective', () => {
+describe('ItButtonDirective', () => {
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
-      declarations: [
-        ButtonDirective,
-        SingleButtonComponent,
-      ]
+      imports: [FormsModule, ItButtonDirective],
+      declarations: [SingleButtonComponent]
     });
 
     TestBed.compileComponents();
@@ -42,14 +39,14 @@ describe('ButtonDirective', () => {
     let fixture: ComponentFixture<SingleButtonComponent>;
     let buttonDebugElement: DebugElement;
     let buttonNativeElement: HTMLElement;
-    let buttonInstance: ButtonDirective;
+    let buttonInstance: ItButtonDirective;
     let testComponent: SingleButtonComponent;
 
     beforeEach(() => {
       fixture = TestBed.createComponent(SingleButtonComponent);
       fixture.detectChanges();
 
-      buttonDebugElement = fixture.debugElement.query(By.directive(ButtonDirective));
+      buttonDebugElement = fixture.debugElement.query(By.directive(ItButtonDirective));
       buttonNativeElement = buttonDebugElement.nativeElement;
       buttonInstance = buttonDebugElement.componentInstance;
       testComponent = fixture.debugElement.componentInstance;

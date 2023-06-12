@@ -12,28 +12,31 @@ import {
 } from '@angular/core';
 import { CarouselType } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
+import { ItCarouselItemComponent } from '../carousel-item/carousel-item.component';
 import { CarouselBI } from 'bootstrap-italia';
 import { startWith, Subscription } from 'rxjs';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 
 /**
  * Carousel
  * @description A presentation component for scrolling through elements, images or text slides.
  */
 @Component({
+  standalone: true,
   selector: 'it-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
   exportAs: 'itCarousel',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgForOf, NgTemplateOutlet, NgIf]
 })
-export class CarouselComponent implements AfterViewInit, OnDestroy {
+export class ItCarouselComponent implements AfterViewInit, OnDestroy {
 
   /**
    * The callout title
    * @default undefined
    */
-  @Input() title?: string;
+  @Input() title: string | undefined;
 
   /**
    * The carousel type
@@ -51,27 +54,27 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
    * True for full screen (landscape) viewing
    * @default undefined
    */
-  @Input() fullCarousel?: BooleanInput;
+  @Input() fullCarousel: BooleanInput | undefined;
 
   /**
    * To indicate that the contained image is of a large type
    * @default undefined
    */
-  @Input() bigImg?: BooleanInput;
+  @Input() bigImg: BooleanInput | undefined;
 
   /**
    * To indicate that the contained image is of a standard type
    * @default undefined
    */
-  @Input() standardImage?: BooleanInput;
+  @Input() standardImage: BooleanInput | undefined;
 
   /**
    * Card line style
    * @default undefined
    */
-  @Input() lined?: BooleanInput;
+  @Input() lined: BooleanInput | undefined;
 
-  @ContentChildren(CarouselItemComponent) protected items?: QueryList<CarouselItemComponent>;
+  @ContentChildren(ItCarouselItemComponent) protected items?: QueryList<ItCarouselItemComponent>;
 
   private carousel?: CarouselBI;
 

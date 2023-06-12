@@ -8,22 +8,26 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { NgIf } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 /**
  * Modal windows
  * @description To show featured content, notifications to users, or personalized content.
  */
 @Component({
+  standalone: true,
   selector: 'it-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
   exportAs: 'itModal',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, TranslateModule]
 })
-export class ModalComponent extends AbstractComponent implements AfterViewInit {
+export class ItModalComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * Show/Hide close button on header
@@ -35,25 +39,25 @@ export class ModalComponent extends AbstractComponent implements AfterViewInit {
    * To correctly format the contents of the modal with icon
    * @default false
    */
-  @Input() alertModal?: BooleanInput;
+  @Input() alertModal: BooleanInput | undefined;
 
   /**
    * To correctly format the contents of the modal with Link List
    * @default false
    */
-  @Input() dialogLinkList?: BooleanInput;
+  @Input() dialogLinkList: BooleanInput | undefined;
 
   /**
    * Modal type Popconfirm can be used for short confirmation messages.
    * @default false
    */
-  @Input() popconfirm?: BooleanInput;
+  @Input() popconfirm: BooleanInput | undefined;
 
   /**
    * You can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible
    * @default false
    */
-  @Input() scrollable?: BooleanInput;
+  @Input() scrollable: BooleanInput | undefined;
 
   /**
    * To have modals that appear with fades
@@ -68,19 +72,19 @@ export class ModalComponent extends AbstractComponent implements AfterViewInit {
    * - <b>right</b>: to right-align the modal
    * @default undefined
    */
-  @Input() alignment?: 'centered' | 'left' | 'right';
+  @Input() alignment: 'centered' | 'left' | 'right' | undefined;
 
   /**
    * The modal size
    * @default undefined
    */
-  @Input() size?: 'sm' | 'lg' | 'xl';
+  @Input() size: 'sm' | 'lg' | 'xl' | undefined;
 
   /**
    * To better distinguish the footer element with a shadow
    * @default false
    */
-  @Input() footerShadow?: BooleanInput;
+  @Input() footerShadow: BooleanInput | undefined;
 
   /**
    * This event fires immediately when the instance method show is called.

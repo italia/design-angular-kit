@@ -6,6 +6,7 @@ import { LanguageSwitcherExampleComponent } from './language-switcher-example/la
 import { SharedModule } from '../shared/shared.module';
 import { LanguageSwitcherRoutingModule } from './language-switcher-routing.module';
 import { LanguageSwitcherCustomExampleComponent } from './language-switcher-custom-example/language-switcher-custom-example.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -19,6 +20,7 @@ import { LanguageSwitcherCustomExampleComponent } from './language-switcher-cust
   imports: [
     CommonModule,
     SharedModule,
+    TranslateModule,
     LanguageSwitcherRoutingModule
   ]
 })

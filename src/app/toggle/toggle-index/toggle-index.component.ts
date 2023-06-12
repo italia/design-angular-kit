@@ -11,7 +11,7 @@ export class ToggleIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'CheckboxComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItCheckboxComponent');
   }
 
 }

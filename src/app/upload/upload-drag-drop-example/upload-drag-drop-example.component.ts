@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {interval, map, take} from "rxjs";
 import {
-  UploadDragDropComponent
+  ItUploadDragDropComponent
 } from "../../../../projects/design-angular-kit/src/lib/components/form/upload-drag-drop/upload-drag-drop.component";
 
 @Component({
@@ -10,7 +10,7 @@ import {
 })
 export class UploadDragDropExampleComponent {
 
-  @ViewChild('uploadDragDropComponent') uploadDragDropComponent!: UploadDragDropComponent;
+  @ViewChild('uploadDragDropComponent') uploadDragDropComponent!: ItUploadDragDropComponent;
 
   onDragUploadStart(file: File): void {
     interval(1000).pipe( // Simulate upload of single file

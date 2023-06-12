@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CalloutAppearance, CalloutColor } from '../../../interfaces/core';
 import { IconName } from '../../../interfaces/icon';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 
 /**
  * Callout
  * @description Callouts can be used to highlight certain parts of the text that require particular attention. They may contain error messages, warnings, hints, etc.
  */
 @Component({
+  standalone: true,
   selector: 'it-callout',
   templateUrl: './callout.component.html',
   styles: [`
@@ -14,21 +17,22 @@ import { IconName } from '../../../interfaces/icon';
       display: none;
     }
   `],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgTemplateOutlet, ItIconComponent]
 })
-export class CalloutComponent {
+export class ItCalloutComponent {
 
   /**
    * Callout label
    * @default undefined
    */
-  @Input() label?: string;
+  @Input() label: string | undefined;
 
   /**
    * Callout hiddenLabel
    * @default undefined
    */
-  @Input() hiddenLabel?: string;
+  @Input() hiddenLabel: string | undefined;
 
   /**
    * Callout color
@@ -39,7 +43,7 @@ export class CalloutComponent {
    * - <b>note</b>
    * @default undefined
    */
-  @Input() color?: CalloutColor;
+  @Input() color: CalloutColor | undefined;
 
   /**
    * Callout appearance
@@ -54,7 +58,7 @@ export class CalloutComponent {
    * Custom icon
    * @default undefined
    */
-  @Input() icon?: IconName;
+  @Input() icon: IconName | undefined;
 
   protected get iconName(): IconName {
     if (this.icon) {

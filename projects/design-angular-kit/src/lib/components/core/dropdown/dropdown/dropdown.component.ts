@@ -12,20 +12,29 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { AbstractComponent } from '../../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
+import { ItDropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { Dropdown } from 'bootstrap-italia';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'it-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   exportAs: 'itDropdown',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ItIconComponent, NgTemplateOutlet, NgIf]
 })
-export class DropdownComponent extends AbstractComponent implements AfterViewInit, OnChanges {
+export class ItDropdownComponent extends ItAbstractComponent implements AfterViewInit, OnChanges {
+
+  /**
+   * Dropdown mode
+   */
+  @Input() mode: 'button' | 'link' = 'button';
 
   /**
    * Button color
@@ -38,22 +47,22 @@ export class DropdownComponent extends AbstractComponent implements AfterViewIni
    * - <strong>dropend</strong>: right
    * - <strong>dropstart</strong>: left
    */
-  @Input() direction?: DropdownDirection;
+  @Input() direction: DropdownDirection | undefined;
 
   /**
    * To get a dropdown menu as wide as the element containing the dropdown button
    */
-  @Input() fullWidth?: BooleanInput;
+  @Input() fullWidth: BooleanInput | undefined;
 
   /**
    * Dark menu style
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
 
   /**
    * The dropdown items
    */
-  @ContentChildren(DropdownItemComponent) items?: QueryList<DropdownItemComponent>;
+  @ContentChildren(ItDropdownItemComponent) items?: QueryList<ItDropdownItemComponent>;
 
   /**
    * Fires immediately when the show instance method is called.
@@ -103,22 +112,16 @@ export class DropdownComponent extends AbstractComponent implements AfterViewIni
     if (changes['dark'] && !changes['dark'].firstChange) {
       this.setDarkItems();
     }
+    if (changes['mode'] && !changes['mode'].firstChange) {
+      this.updateListeners();
+    }
     super.ngOnChanges(changes);
   }
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();
     this.setDarkItems();
-
-    if (this.dropdownButton) {
-      const element = this.dropdownButton.nativeElement;
-      this.dropdown = Dropdown.getOrCreateInstance(element);
-
-      element.addEventListener('show.bs.dropdown', event => this.showEvent.emit(event));
-      element.addEventListener('shown.bs.dropdown', event => this.shownEvent.emit(event));
-      element.addEventListener('hide.bs.dropdown', event => this.hideEvent.emit(event));
-      element.addEventListener('hidden.bs.dropdown', event => this.hiddenEvent.emit(event));
-    }
+    this.updateListeners();
   }
 
   /**
@@ -129,6 +132,18 @@ export class DropdownComponent extends AbstractComponent implements AfterViewIni
     this.items?.forEach(item => {
       item.setDark(this.isDark);
     });
+  }
+
+  private updateListeners(): void {
+    if (this.dropdownButton) {
+      const element = this.dropdownButton.nativeElement;
+      this.dropdown = Dropdown.getOrCreateInstance(element);
+
+      element.addEventListener('show.bs.dropdown', event => this.showEvent.emit(event));
+      element.addEventListener('shown.bs.dropdown', event => this.shownEvent.emit(event));
+      element.addEventListener('hide.bs.dropdown', event => this.hideEvent.emit(event));
+      element.addEventListener('hidden.bs.dropdown', event => this.hiddenEvent.emit(event));
+    }
   }
 
   /**

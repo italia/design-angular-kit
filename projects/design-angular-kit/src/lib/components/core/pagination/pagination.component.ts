@@ -8,15 +8,22 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
+import { LowerCasePipe, NgForOf, NgIf } from '@angular/common';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ItDropdownModule } from '../dropdown/dropdown.module';
+import { ItInputComponent } from '../../form/input/input.component';
 
 @Component({
+  standalone: true,
   selector: 'it-pagination[currentPage][pageNumbers]',
   templateUrl: './pagination.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgForOf, ItIconComponent, TranslateModule, LowerCasePipe, ItDropdownModule, ItInputComponent, ReactiveFormsModule]
 })
-export class PaginationComponent implements OnChanges {
+export class ItPaginationComponent implements OnChanges {
 
   /**
    * Index of page (start 0)
@@ -37,28 +44,28 @@ export class PaginationComponent implements OnChanges {
   /**
    * Pagination alignment (justify-content)
    */
-  @Input() alignment?: 'center' | 'end';
+  @Input() alignment: 'center' | 'end' | undefined;
 
   /**
    * Enable/Disable simple mode
    * Pagination in the "Simple mode" version is optimized for mobile devices.
    * @default undefined - disabled
    */
-  @Input() simpleMode?: BooleanInput;
+  @Input() simpleMode: BooleanInput | undefined;
 
   /**
    * Enable/Disable text links
    * Chevron icons used as navigation links are replaced by text links such as “previous” and “next”.
    * @default undefined - disabled
    */
-  @Input() textLinks?: BooleanInput;
+  @Input() textLinks: BooleanInput | undefined;
 
   /**
    * Current value of Changer
    * If is set show the Changer
    * @default undefined - hide the Changer
    */
-  @Input() currentChanger?: number;
+  @Input() currentChanger: number | undefined;
 
   /**
    * Available Changer values
@@ -70,7 +77,7 @@ export class PaginationComponent implements OnChanges {
    * Hide/Show "Jump to page" input
    * @default undefined - hidden
    */
-  @Input() showJumpToPage?: BooleanInput;
+  @Input() showJumpToPage: BooleanInput | undefined;
 
   /**
    * Fired when page is changed. Emit the new index of page

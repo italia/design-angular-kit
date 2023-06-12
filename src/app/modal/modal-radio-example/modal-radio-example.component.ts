@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalComponent } from '../../../../projects/design-angular-kit/src/lib/components/core/modal/modal.component';
+import { ItModalComponent } from '../../../../projects/design-angular-kit/src/lib/components/core/modal/modal.component';
 
 @Component({
   selector: 'it-modal-radio-example',
@@ -10,7 +10,7 @@ export class ModalRadioExampleComponent {
 
   formGroup: FormGroup;
 
-  @ViewChild('radioModal') radioModal: ModalComponent;
+  @ViewChild('radioModal') radioModal: ItModalComponent;
 
   constructor(
     private readonly formBuilder: FormBuilder

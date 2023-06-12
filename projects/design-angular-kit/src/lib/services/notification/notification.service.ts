@@ -3,7 +3,7 @@ import { filter, Observable, Subject } from 'rxjs';
 import { Notification, NotificationPosition, NotificationType } from '../../interfaces/core';
 
 @Injectable({ providedIn: 'root' })
-export class NotificationsService {
+export class ItNotificationService {
   private subject = new Subject<Notification>();
 
   /**

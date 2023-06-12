@@ -8,16 +8,22 @@ import {
   OnDestroy,
   QueryList
 } from '@angular/core';
-import { BreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
+import { ItBreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { startWith, Subscription } from 'rxjs';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
+import { ItLinkComponent } from '../../../core/link/link.component';
 
 @Component({
+  standalone: true,
   selector: 'it-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgForOf, NgIf, TranslateModule, ItIconComponent, ItLinkComponent, NgTemplateOutlet]
 })
-export class BreadcrumbComponent implements AfterViewInit, OnDestroy {
+export class ItBreadcrumbComponent implements AfterViewInit, OnDestroy {
 
   /**
    * The character to use as separator
@@ -28,12 +34,12 @@ export class BreadcrumbComponent implements AfterViewInit, OnDestroy {
   /**
    * Dark style
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
 
   /**
    * The tab items
    */
-  @ContentChildren(BreadcrumbItemComponent) items?: QueryList<BreadcrumbItemComponent>;
+  @ContentChildren(ItBreadcrumbItemComponent) items?: QueryList<ItBreadcrumbItemComponent>;
 
   get isDark(): boolean {
     return isTrueBooleanInput(this.dark);

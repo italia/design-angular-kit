@@ -10,7 +10,7 @@ export class CarouselIndexComponent {
   componentItem: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'CarouselComponent');
-    this.componentItem = (<any>Documentation).components.find(component => component.name === 'CarouselItemComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItCarouselComponent');
+    this.componentItem = (<any>Documentation).components.find(component => component.name === 'ItCarouselItemComponent');
   }
 }

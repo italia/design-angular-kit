@@ -9,6 +9,6 @@ export class LanguageSwitcherIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'LanguageSwitcherComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItLanguageSwitcherComponent');
   }
 }

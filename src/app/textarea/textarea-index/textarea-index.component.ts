@@ -9,6 +9,6 @@ export class TextareaIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'TextareaComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItTextareaComponent');
   }
 }

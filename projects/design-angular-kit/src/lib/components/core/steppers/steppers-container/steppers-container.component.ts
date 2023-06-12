@@ -11,16 +11,24 @@ import {
   QueryList
 } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { SteppersItemComponent } from '../steppers-item/steppers-item.component';
+import { ItSteppersItemComponent } from '../steppers-item/steppers-item.component';
 import { ProgressBarColor } from '../../../../interfaces/core';
 import { startWith, Subscription } from 'rxjs';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ItButtonDirective } from '../../button/button.directive';
+import { ItProgressBarComponent } from '../../progress-bar/progress-bar.component';
+import { ItProgressButtonComponent } from '../../progress-button/progress-button.component';
 
 @Component({
+  standalone: true,
   selector: 'it-steppers-container[activeStep]',
   templateUrl: './steppers-container.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgForOf, ItIconComponent, NgTemplateOutlet, TranslateModule, ItButtonDirective, ItProgressBarComponent, ItProgressButtonComponent]
 })
-export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
+export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
 
   /**
    * The active step index
@@ -37,12 +45,12 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
   /**
    * Dark style
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
 
   /**
    * The labels present in the header steps can be anticipated by the relative ordinal number.
    */
-  @Input() steppersNumber?: BooleanInput;
+  @Input() steppersNumber: BooleanInput | undefined;
 
   /**
    * The progress style
@@ -50,12 +58,12 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
    * -<b>dots</b>: Show progress dots
    * @default undefined - don't show progress
    */
-  @Input() progressStyle?: 'progress' | 'dots';
+  @Input() progressStyle: 'progress' | 'dots' | undefined;
 
   /**
    * Customize progress color
    */
-  @Input() progressColor?: ProgressBarColor;
+  @Input() progressColor: ProgressBarColor | undefined;
 
   /**
    * Show the back button
@@ -64,37 +72,61 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
   @Input() showBackButton: BooleanInput = true;
 
   /**
+   * Disable the back button
+   * @default false
+   */
+  @Input() disableBackButton: BooleanInput | undefined;
+
+  /**
    * Show the forward button
    * @default true
    */
   @Input() showForwardButton: BooleanInput = true;
 
   /**
+   * Disable the forward button
+   * @default false
+   */
+  @Input() disableForwardButton: BooleanInput | undefined;
+
+  /**
    * Show the confirm button
    * @default false
    */
-  @Input() showConfirmButton: BooleanInput = false;
+  @Input() showConfirmButton: BooleanInput | undefined;
+
+  /**
+   * Disable the confirm button
+   * @default false
+   */
+  @Input() disableConfirmButton: BooleanInput | undefined;
 
   /**
    * Show the confirm button as indeterminate progress button
    */
-  @Input() confirmLoading?: BooleanInput;
+  @Input() confirmLoading: BooleanInput | undefined;
 
   /**
    * Show the save button
    * @default false
    */
-  @Input() showSaveButton: BooleanInput = false;
+  @Input() showSaveButton: BooleanInput | undefined;
+
+  /**
+   * Disable the save button
+   * @default false
+   */
+  @Input() disableSaveButton: BooleanInput | undefined;
 
   /**
    * Show the save button as indeterminate progress button
    */
-  @Input() saveLoading?: BooleanInput;
+  @Input() saveLoading: BooleanInput | undefined;
 
   /**
    * The stepper items
    */
-  @ContentChildren(SteppersItemComponent) steps?: QueryList<SteppersItemComponent>;
+  @ContentChildren(ItSteppersItemComponent) steps?: QueryList<ItSteppersItemComponent>;
 
   /**
    * On back button click
@@ -136,12 +168,24 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
     return isTrueBooleanInput(this.showBackButton);
   }
 
+  get isDisableBackButton(): boolean {
+    return isTrueBooleanInput(this.disableBackButton);
+  }
+
   get isShowForwardButton(): boolean {
     return isTrueBooleanInput(this.showForwardButton);
   }
 
+  get isDisableForwardButton(): boolean {
+    return isTrueBooleanInput(this.disableForwardButton);
+  }
+
   get isShowConfirmButton(): boolean {
     return isTrueBooleanInput(this.showConfirmButton);
+  }
+
+  get isDisableConfirmButton(): boolean {
+    return isTrueBooleanInput(this.disableConfirmButton);
   }
 
   get isConfirmLoading(): boolean {
@@ -150,6 +194,10 @@ export class SteppersContainerComponent implements AfterViewInit, OnDestroy {
 
   get isShowSaveButton(): boolean {
     return isTrueBooleanInput(this.showSaveButton);
+  }
+
+  get isDisableSaveButton(): boolean {
+    return isTrueBooleanInput(this.disableSaveButton);
   }
 
   get isSaveLoading(): boolean {

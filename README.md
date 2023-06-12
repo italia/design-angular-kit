@@ -63,17 +63,18 @@ npm install design-angular-kit@unstable --save
 Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
 
 ```typescript
-import {DesignAngularKitModule} from 'design-angular-kit';
+import {DesignAngularKitModule, ItComponentsModule} from 'design-angular-kit';
 
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule.forRoot() // .forRoot obbligatorio
+    DesignAngularKitModule,
+    ItComponentsModule // importa tutti i componenti della libreria
   ]
 })
 ```
 <details>
-  <summary>Configurazione della libreria</summary>
+  <summary>Configurazione custom della libreria</summary>
 
   ```typescript
   import {DesignAngularKitModule, DesignAngularKitInit} from 'design-angular-kit';
@@ -90,12 +91,36 @@ import {DesignAngularKitModule} from 'design-angular-kit';
   @NgModule({
     imports: [
       ...
-      DesignAngularKitModule.forRoot(initConfig) // .forRoot obbligatorio
+      DesignAngularKitModule.forRoot(initConfig)
     ]
   })
   ```
 </details>
 
+Usa `ItComponentsModule` per importare tutti i componenti della libreria, in alternativa puoi importare solo i componenti/moduli di cui hai bisogno, ad es. Alert, Paginazione e Breadcrumb.
+
+```typescript
+import {ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule} from 'design-angular-kit';
+
+@NgModule({
+  imports: [
+    ItAlertComponent, 
+    ItPaginationComponent, 
+    ItBreadcrumbsModule // Include ItBreadcrumbComponent e ItBreadcrumbItemComponent 
+  ],
+})
+export class YourAppModule {
+}
+
+@Component({
+  selector: 'app-product',
+  standalone: true,
+  imports: [ItAlertComponent],
+  templateUrl: './product.component.html'
+})
+export class ProductComponent {
+}
+```
 
 ### Importazione stili bootstrap-italia
 Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS come mostrato nell'esempio qui sotto.
@@ -197,7 +222,7 @@ Modifica nel tuo `app.module.ts`:
       },      
       defaultLanguage: 'it'
     }),
-    DesignAngularKitModule.forRoot()
+    DesignAngularKitModule
   ]
 })
 ```
@@ -214,7 +239,7 @@ Se non utilizzi i file di localizzazione nella tua app, devi aggiungere il provi
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule.forRoot(),
+    DesignAngularKitModule,
   ],
   providers: [
     TranslateStore

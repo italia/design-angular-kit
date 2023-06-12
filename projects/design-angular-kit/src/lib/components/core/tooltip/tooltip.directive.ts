@@ -4,10 +4,11 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Tooltip } from 'bootstrap-italia';
 
 @Directive({
+  standalone: true,
   selector: '[itTooltip]',
   exportAs: 'itTooltip'
 })
-export class TooltipDirective implements AfterViewInit, OnDestroy {
+export class ItTooltipDirective implements AfterViewInit, OnDestroy {
 
   /**
    * Define the tooltip title

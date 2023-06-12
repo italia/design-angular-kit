@@ -12,7 +12,7 @@ export class CollapseIndexComponent {
   accordionComponent: any;
 
   constructor() {
-    this.collapseComponent = (<any>Documentation).components.find(component => component.name === 'CollapseComponent');
-    this.accordionComponent = (<any>Documentation).components.find(component => component.name === 'AccordionComponent');
+    this.collapseComponent = (<any>Documentation).components.find(component => component.name === 'ItCollapseComponent');
+    this.accordionComponent = (<any>Documentation).components.find(component => component.name === 'ItAccordionComponent');
   }
 }

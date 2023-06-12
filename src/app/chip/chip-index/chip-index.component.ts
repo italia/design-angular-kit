@@ -10,6 +10,6 @@ export class ChipIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'ChipComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItChipComponent');
   }
 }

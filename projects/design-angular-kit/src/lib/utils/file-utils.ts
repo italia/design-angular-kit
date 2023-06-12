@@ -32,7 +32,7 @@ export class FileUtils {
     return new Observable<string>(observer => {
       reader.onload = (e) => {
         const target = e.target;
-        if (!target || !target.result || target.result instanceof ArrayBuffer) {
+        if (!target?.result || target.result instanceof ArrayBuffer) {
           return observer.error('Error on parse');
         }
         observer.next(target.result);
@@ -76,6 +76,6 @@ export class FileUtils {
    */
   public static getMimeTypeFromBase64(base64: string): string|undefined {
     const mime = base64.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
-    return (mime && mime.length) ? mime[1] : undefined;
+    return mime?.length ? mime[1] : undefined;
   }
 }

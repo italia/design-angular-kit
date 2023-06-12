@@ -10,21 +10,26 @@ import {
 } from '@angular/core';
 import { AlertColor } from '../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Alert } from 'bootstrap-italia';
+import { TranslateModule } from '@ngx-translate/core';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { NgIf } from '@angular/common';
 
 /**
  * Alert
  * @description You can provide feedback to the user via alert messages.
  */
 @Component({
+  standalone: true,
   selector: 'it-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
   exportAs: 'itAlert',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, TranslateModule, ItIconComponent]
 })
-export class AlertComponent extends AbstractComponent implements AfterViewInit {
+export class ItAlertComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * The alert color
@@ -36,7 +41,7 @@ export class AlertComponent extends AbstractComponent implements AfterViewInit {
    * Inserts the close button
    * @default false
    */
-  @Input() dismissible?: BooleanInput;
+  @Input() dismissible: BooleanInput | undefined;
 
   /**
    * This event fires immediately when the instance's close method is called.

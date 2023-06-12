@@ -9,6 +9,6 @@ export class SpinnerIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'SpinnerComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItSpinnerComponent');
   }
 }

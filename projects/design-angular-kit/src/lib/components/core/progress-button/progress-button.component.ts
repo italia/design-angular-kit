@@ -1,14 +1,18 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ProgressBarColor } from '../../../interfaces/core';
+import { ItProgressBarComponent } from '../progress-bar/progress-bar.component';
+import { NgIf } from '@angular/common';
 
 @Component({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[itButton][progress]',
   templateUrl: './progress-button.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, ItProgressBarComponent]
 })
-export class ProgressButtonComponent {
+export class ItProgressButtonComponent {
 
   /**
    * Behavior of the progress bar
@@ -17,12 +21,12 @@ export class ProgressButtonComponent {
    * - <b>number</b> [0, 100]: Assign a specific value to the progress bar
    * @default undefined
    */
-  @Input() progress?: number | BooleanInput;
+  @Input() progress: number | BooleanInput | undefined;
 
   /**
    * The progress bar color
    */
-  @Input() progressColor?: ProgressBarColor;
+  @Input() progressColor: ProgressBarColor | undefined;
 
   get isProgress(): boolean {
     return typeof this.progress === 'number' || isTrueBooleanInput(this.progress);

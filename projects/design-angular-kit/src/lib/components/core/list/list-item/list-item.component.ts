@@ -1,39 +1,42 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { LinkComponent } from '../../link/link.component';
+import { ItLinkComponent } from '../../link/link.component';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'it-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgTemplateOutlet, ItLinkComponent]
 })
-export class ListItemComponent extends LinkComponent {
+export class ItListItemComponent extends ItLinkComponent {
 
   /**
    * Add active class
    */
-  @Input() active?: BooleanInput;
+  @Input() active: BooleanInput | undefined;
 
   /**
    * Add large class
    */
-  @Input() large?: BooleanInput;
+  @Input() large: BooleanInput | undefined;
 
   /**
    * Add icon-left class
    */
-  @Input() iconLeft?: BooleanInput;
+  @Input() iconLeft: BooleanInput | undefined;
 
   /**
    * The avatar url
    */
-  @Input() avatar?: URL;
+  @Input() avatar: URL | undefined;
 
   /**
    * The thumb image url
    */
-  @Input() image?: URL;
+  @Input() image: URL | undefined;
 
 
   get itemClass(): string {

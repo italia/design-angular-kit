@@ -9,6 +9,7 @@ import { SelectExamplesComponent } from './select-examples/select-examples.compo
 import { SelectExampleComponent } from './select-example/select-example.component';
 import { SelectGroupExampleComponent } from './select-group-example/select-group-example.component';
 import { SelectDisabledExampleComponent } from './select-disabled-example/select-disabled-example.component';
+import { SelectFormgroupExampleComponent } from './select-formgroup-example/select-formgroup-example.component';
 
 
 @NgModule({
@@ -20,11 +21,13 @@ import { SelectDisabledExampleComponent } from './select-disabled-example/select
     SelectRoutingModule
   ],
   declarations: [
-    SelectIndexComponent, 
-    SelectDisabledExampleComponent, 
-    SelectGroupExampleComponent, 
-    SelectExamplesComponent, 
-    SelectExampleComponent
+    SelectIndexComponent,
+    SelectDisabledExampleComponent,
+    SelectGroupExampleComponent,
+    SelectExamplesComponent,
+    SelectExampleComponent,
+    SelectFormgroupExampleComponent
   ]
 })
-export class SelectModule { }
+export class SelectModule {
+}

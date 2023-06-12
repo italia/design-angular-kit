@@ -9,7 +9,7 @@ export class NotificationsIndexComponent {
   service: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'NotificationsComponent');
-    this.service = (<any>Documentation).injectables.find(injectable => injectable.name === 'NotificationsService');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItNotificationsComponent');
+    this.service = (<any>Documentation).injectables.find(injectable => injectable.name === 'ItNotificationService');
   }
 }

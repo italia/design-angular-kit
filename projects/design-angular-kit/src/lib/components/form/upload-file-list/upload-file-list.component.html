@@ -35,6 +35,6 @@
     </button>
 
     <it-progress-bar *ngIf="!item.error && item.progress !== undefined && item.progress > 0 && item.progress < 100"
-                      [value]="item.progress"></it-progress-bar>
+                      [value]="item.progress!"></it-progress-bar>
   </li>
 </ul>

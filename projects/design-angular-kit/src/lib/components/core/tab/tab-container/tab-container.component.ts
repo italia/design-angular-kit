@@ -10,37 +10,41 @@ import {
   ViewChildren
 } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
-import { TabItemComponent } from '../tab-item/tab-item.component';
+import { ItTabItemComponent } from '../tab-item/tab-item.component';
 import { of, startWith, Subscription, switchMap, tap } from 'rxjs';
 import { Tab } from 'bootstrap-italia';
-import { AbstractComponent } from '../../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
 
 @Component({
+  standalone: true,
   selector: 'it-tab-container',
   templateUrl: './tab-container.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgForOf, NgIf, ItIconComponent, NgTemplateOutlet]
 })
-export class TabContainerComponent extends AbstractComponent implements OnDestroy, AfterViewInit {
+export class ItTabContainerComponent extends ItAbstractComponent implements OnDestroy, AfterViewInit {
 
   /**
    * Tabs automatically occupy the entire available width
    */
-  @Input() auto?: BooleanInput;
+  @Input() auto: BooleanInput | undefined;
 
   /**
    * To obtain the correct margin between text and icon in the horizontally developed tab
    */
-  @Input() iconText?: BooleanInput;
+  @Input() iconText: BooleanInput | undefined;
 
   /**
    * Dark style
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
 
   /**
    * The tab items
    */
-  @ContentChildren(TabItemComponent) tabs?: QueryList<TabItemComponent>;
+  @ContentChildren(ItTabItemComponent) tabs?: QueryList<ItTabItemComponent>;
 
   @ViewChildren('tabNavLinks') private tabNavLinks?: QueryList<ElementRef<HTMLAnchorElement>>;
 
@@ -73,6 +77,7 @@ export class TabContainerComponent extends AbstractComponent implements OnDestro
           triggerEl.addEventListener('click', event => {
             event.preventDefault();
             tabTrigger.show();
+            this._changeDetectorRef.detectChanges();
           });
           triggerEl.setAttribute('tab-listener', 'true'); // Prevents multiple insertion of the listener
         }

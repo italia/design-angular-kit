@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NotificationPosition } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
 import {
-  NotificationsService
-} from '../../../../projects/design-angular-kit/src/lib/services/notifications/notifications.service';
+  ItNotificationService
+} from '../../../../projects/design-angular-kit/src/lib/services/notification/notification.service';
 
 @Component({
   selector: 'it-notifications-setup',
@@ -15,7 +15,7 @@ export class NotificationsSetupComponent {
   position?: NotificationPosition;
 
   readonly notificationServiceExample = "constructor(\n" +
-    "  private readonly notificationService: NotificationsService\n" +
+    "  private readonly notificationService: ItNotificationService\n" +
     ") {}\n\n" +
     "standardNotification(): void {\n" +
     "  this.notificationService.standard(\n" +
@@ -37,7 +37,7 @@ export class NotificationsSetupComponent {
   }
 
   constructor(
-    private readonly notificationService: NotificationsService
+    private readonly notificationService: ItNotificationService
   ) {
   }
 

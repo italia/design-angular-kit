@@ -1,15 +1,22 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { UploadFileListItem } from '../../../interfaces/form';
 import { FileUtils } from '../../../utils/file-utils';
 import { forkJoin, take, tap } from 'rxjs';
+import { NgForOf, NgIf } from '@angular/common';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ItTooltipDirective } from '../../core/tooltip/tooltip.directive';
+import { ItProgressBarComponent } from '../../core/progress-bar/progress-bar.component';
 
 @Component({
+  standalone: true,
   selector: 'it-upload-file-list[fileList]',
-  templateUrl: './upload-file-list.component.html'
+  templateUrl: './upload-file-list.component.html',
+  imports: [NgIf, NgForOf, ItIconComponent, TranslateModule, ItTooltipDirective, ItProgressBarComponent]
 })
-export class UploadFileListComponent extends AbstractComponent implements OnInit, OnChanges {
+export class ItUploadFileListComponent extends ItAbstractComponent implements OnInit, OnChanges {
 
   /**
    * The list of files to show in list
@@ -32,12 +39,12 @@ export class UploadFileListComponent extends AbstractComponent implements OnInit
   /**
    * If is file list image
    */
-  @Input() images?: BooleanInput;
+  @Input() images: BooleanInput | undefined;
 
   /**
    * Hide the load button
    */
-  @Input() hideLoadButton?: BooleanInput;
+  @Input() hideLoadButton: BooleanInput | undefined;
 
   /**
    * Fired when upload new files
@@ -93,7 +100,7 @@ export class UploadFileListComponent extends AbstractComponent implements OnInit
    */
   onLoadFiles(event: Event): void {
     const files = (event.target as HTMLInputElement)?.files;
-    if (!files || !files.length) {
+    if (!files?.length) {
       return;
     }
     this.uploadFiles.emit(files);

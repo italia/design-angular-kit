@@ -1,12 +1,12 @@
 import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';
 import { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';
-import { AbstractComponent } from './abstract.component';
+import { ItAbstractComponent } from './abstract.component';
 import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({ template: '' })
-export abstract class AbstractFormComponent<T = any> extends AbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
+export abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
 
   /**
    * The label of form control
@@ -76,7 +76,7 @@ export abstract class AbstractFormComponent<T = any> extends AbstractComponent i
    * Return the invalid message string from TranslateService
    */
   get invalidMessage(): Observable<string> {
-    if (this.control.hasError('required')) {
+    if (this.hasError('required')) {
       return this._translateService.get('it.errors.required-field');
     }
 
@@ -129,27 +129,24 @@ export abstract class AbstractFormComponent<T = any> extends AbstractComponent i
    * Fired to check if form control is touched
    */
   ngDoCheck() {
-    if (!this._ngControl?.control) {
-      return;
-    }
-
-    const ngControl = this._ngControl.control;
-    if (this.control.touched !== ngControl.touched) {
-      if (ngControl.touched) {
-        this.control.markAsTouched();
-      } else {
-        this.control.markAsUntouched();
+    if (this._ngControl?.control) {
+      const ngControl = this._ngControl.control;
+      if (this.control.touched !== ngControl.touched) {
+        if (ngControl.touched) {
+          this.control.markAsTouched();
+        } else {
+          this.control.markAsUntouched();
+        }
       }
-      this._changeDetectorRef.detectChanges();
-    }
-    if (this.control.pristine !== ngControl.pristine) {
-      if (ngControl.pristine) {
-        this.control.markAsPristine();
-      } else {
-        this.control.markAsDirty();
+      if (this.control.pristine !== ngControl.pristine) {
+        if (ngControl.pristine) {
+          this.control.markAsPristine();
+        } else {
+          this.control.markAsDirty();
+        }
       }
-      this._changeDetectorRef.detectChanges();
     }
+    this._changeDetectorRef.detectChanges();
   }
 
   /**

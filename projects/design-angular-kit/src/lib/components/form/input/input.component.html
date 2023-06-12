@@ -28,14 +28,15 @@
              [formControl]="control"
              [placeholder]="placeholder"
              [readonly]="isReadonly"
+             [autocomplete]="autocomplete"
              [attr.aria-describedby]="id + '-description'"
              (blur)="markAsTouched()" />
 
       <button type="button" class="input-number-add" (click)="incrementNumber()">
-        <span class="visually-hidden">{{'it.form.increase-value'}}</span>
+        <span class="visually-hidden">{{'it.form.increase-value' | translate}}</span>
       </button>
       <button type="button" class="input-number-sub" (click)="incrementNumber(true)">
-        <span class="visually-hidden">{{'it.form.decrease-value'}}</span>
+        <span class="visually-hidden">{{'it.form.decrease-value' | translate}}</span>
       </button>
     </span>
 
@@ -52,6 +53,7 @@
            [placeholder]="placeholder"
            [readonly]="isReadonly"
            (keydown)="onKeyDown()"
+           [autocomplete]="autocomplete"
            [attr.aria-describedby]="id + '-description'"
            (blur)="markAsTouched()">
 

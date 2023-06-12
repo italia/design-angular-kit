@@ -1,18 +1,24 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { AutocompleteItem, InputControlType } from '../../../interfaces/form';
-import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
+import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 
 @Component({
+  standalone: true,
   selector: 'it-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]
 })
-export class InputComponent extends AbstractFormComponent<string | number> implements OnInit {
+export class ItInputComponent extends ItAbstractFormComponent<string | number> implements OnInit {
 
   /**
    * The input type
@@ -28,13 +34,13 @@ export class InputComponent extends AbstractFormComponent<string | number> imple
   /**
    * The input description
    */
-  @Input() description?: string;
+  @Input() description: string | undefined;
 
   /**
    * To prevent modification of the contained value.
    * - <b>plaintext</b>: Readonly field in the form stylized as plain text
    */
-  @Input() readonly?: BooleanInput | 'plaintext';
+  @Input() readonly: BooleanInput | 'plaintext' | undefined;
 
   /**
    * The max date value [Used only in type = 'date']
@@ -47,37 +53,43 @@ export class InputComponent extends AbstractFormComponent<string | number> imple
    * The min date value [Used only in type = 'date']
    * @example 'yyyy-mm-dd'
    */
-  @Input() minDate?: string;
+  @Input() minDate: string | undefined;
 
   /**
    * The max value [Used only in type = 'number']
    */
-  @Input() max?: number;
+  @Input() max: number | undefined;
 
   /**
    * The min value [Used only in type = 'number']
    */
-  @Input() min?: number;
+  @Input() min: number | undefined;
 
   /**
    * The step value [Used only in type = 'number']
    */
-  @Input() step?: number | 'any';
+  @Input() step: number | 'any' | undefined;
 
   /**
    * If is a currency number [Used only in type = 'number']
    */
-  @Input() currency?: BooleanInput;
+  @Input() currency: BooleanInput | undefined;
 
   /**
    * If is a percentage number [Used only in type = 'number']
    */
-  @Input() percentage?: BooleanInput;
+  @Input() percentage: BooleanInput | undefined;
 
   /**
    * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']
    */
-  @Input() adaptive?: BooleanInput;
+  @Input() adaptive: BooleanInput | undefined;
+
+  /**
+   * Input autocomplete attribute (Browser autocomplete)
+   * @default undefined
+   */
+  @Input() autocomplete: string | undefined;
 
   /**
    * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']
