@@ -47,7 +47,8 @@ const routes: Routes = [
     { path: 'modal', loadChildren: () => import('src/app/modal/modal.module').then(m => m.ModalModule) },
     { path: 'language-switcher', loadChildren: () => import('src/app/language-switcher/language-switcher.module').then(m => m.LanguageSwitcherModule) },
     { path: 'password-input', loadChildren: () => import('src/app/password-input/password-input.module').then(m => m.PasswordInputModule) },
-    { path: 'carousel', loadChildren: () => import('src/app/carousel/carousel.module').then(m => m.CarouselModule) }
+    { path: 'carousel', loadChildren: () => import('src/app/carousel/carousel.module').then(m => m.CarouselModule) },
+    { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) }
   ]},
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },

@@ -64,6 +64,7 @@ export * from './lib/components/form/checkbox/checkbox.component';
 export * from './lib/components/form/input/input.component';
 export * from './lib/components/form/password-input/password-input.component';
 export * from './lib/components/form/radio-button/radio-button.component';
+export * from './lib/components/form/range/range.component';
 export * from './lib/components/form/rating/rating.component';
 export * from './lib/components/form/select/select.component';
 export * from './lib/components/form/textarea/textarea.component';
