@@ -99,11 +99,21 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
    * @param event
    */
   onLoadFiles(event: Event): void {
-    const files = (event.target as HTMLInputElement)?.files;
+    const input = event.target as HTMLInputElement;
+    const files = input?.files;
     if (!files?.length) {
       return;
     }
-    this.uploadFiles.emit(files);
+
+    const newFiles = Array.from(files).filter(file => !this.fileList.some(item => {
+      return item.file.name === file.name && item.file.size === file.size && item.file.type === file.type
+    }));
+
+    const fileList = new DataTransfer();
+    newFiles.forEach(file => fileList.items.add(file));
+
+    this.uploadFiles.emit(fileList.files);
+    input.value = '';
   }
 
   /**
