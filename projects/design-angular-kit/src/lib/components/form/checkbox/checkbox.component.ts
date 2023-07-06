@@ -51,7 +51,7 @@ export class ItCheckboxComponent extends ItAbstractFormComponent<boolean | null 
     this.markAsChecked();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  override ngOnChanges(changes: SimpleChanges) {
     if (changes['checked']) {
       this.markAsChecked();
     }
