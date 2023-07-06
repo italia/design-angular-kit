@@ -23,6 +23,8 @@
       <input type="number"
              [id]="id"
              [step]="step ?? null"
+             [min]="min ?? null"
+             [max]="max ?? null"
              [class.is-invalid]="isInvalid"
              [class.is-valid]="isValid"
              [formControl]="control"

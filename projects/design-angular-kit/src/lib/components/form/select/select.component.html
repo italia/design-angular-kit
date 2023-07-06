@@ -1,5 +1,5 @@
 <div class="select-wrapper">
-  <label [for]="id">{{label}}</label>
+  <label *ngIf="label" [for]="id">{{label}}</label>
   <select [id]="id" [formControl]="control"
           [class.is-invalid]="isInvalid"
           [class.is-valid]="isValid"
