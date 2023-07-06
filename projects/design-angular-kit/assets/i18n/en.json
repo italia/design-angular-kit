@@ -7,8 +7,10 @@
       "close": "Close",
       "continue": "Continue",
       "edit": "Edit",
+      "show": "Show",
       "show-all": "Show all",
-      "details": "Details"
+      "details": "Details",
+      "download": "Download"
     },
     "errors": {
       "generic": "An error has occurred",
@@ -26,6 +28,7 @@
       "tax-code-invalid": "Enter a valid tax code",
       "vat-number-invalid": "Enter a valid VAT number",
       "cap-invalid": "Enter a valid zip code",
+      "iban-invalid": "Enter a valid IBAN",
       "regex-invalid": "Please enter a valid REGEX expression",
       "pattern-invalid": "The field must have the pattern {{pattern}}",
       "password-no-match": "Passwords must match",

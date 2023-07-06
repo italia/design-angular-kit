@@ -2,21 +2,29 @@
 
 <div class="bd-example">
   <form [formGroup]="myForm">
-    <it-input label="Custom" formControlName="myInput" #myInput>
-      <ng-container error>
-        <!-- Custom errors-->
-        <div *ngIf="myInput.hasError('required')">Il campo è obbligatorio</div>
-        <div *ngIf="myInput.hasError('minlength')">Deve essere almeno di lunghezza 3</div>
-        <div *ngIf="myInput.hasError('maxlength')">Deve essere massimo di lunghezza 10</div>
-        <div *ngIf="myInput.hasError('pattern')">Non corrisponde al pattern [ab]+</div>
-      </ng-container>
-    </it-input>
 
     <div class="row">
-      <div class="col-4">
+      <div class="col-6">
+        <it-input label="Custom" formControlName="myInput" #myInput>
+          <ng-container error>
+            <!-- Custom errors-->
+            <div *ngIf="myInput.hasError('required')">Il campo è obbligatorio</div>
+            <div *ngIf="myInput.hasError('minlength')">Deve essere almeno di lunghezza 3</div>
+            <div *ngIf="myInput.hasError('maxlength')">Deve essere massimo di lunghezza 10</div>
+            <div *ngIf="myInput.hasError('pattern')">Non corrisponde al pattern [ab]+</div>
+          </ng-container>
+        </it-input>
+      </div>
+      <div class="col-6">
         <it-input label="Codice fiscale" formControlName="taxCode" required>
           <!-- Default errors-->
         </it-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <it-input label="IBAN" formControlName="iban"></it-input>
       </div>
       <div class="col-4">
         <it-input label="Partita IVA" formControlName="vat" required></it-input>
