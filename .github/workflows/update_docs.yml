@@ -17,6 +17,7 @@ jobs:
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: npm ci
       - run: npm run build
+      - run: cp dist/design-angular-kit-bundle/index.html dist/design-angular-kit-bundle/404.html
       - name: Publish on gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
