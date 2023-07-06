@@ -1,0 +1,3 @@
+.form-range.double-color::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, var(--range-left-color) var(--range-percentage), var(--range-right-color) var(--range-percentage));
+}

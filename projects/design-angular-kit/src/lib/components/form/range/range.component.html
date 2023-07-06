@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between align-items-center">
+  <label *ngIf="label" [for]="id" class="form-label">{{label}}</label>
+  <ng-content></ng-content>
+</div>
+
+<input #slider
+       [id]="id"
+       type="range"
+       [min]="min"
+       [max]="max"
+       [step]="step"
+       class="form-range"
+       [class.double-color]="!!leftColor && !!rightColor"
+       [formControl]="control">
