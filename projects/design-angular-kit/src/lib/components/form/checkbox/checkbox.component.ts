@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, NgTemplateOutlet, ReactiveFormsModule, AsyncPipe]
 })
-export class ItCheckboxComponent extends ItAbstractFormComponent<boolean> implements OnInit {
+export class ItCheckboxComponent extends ItAbstractFormComponent<boolean | null | undefined> implements OnInit, OnChanges {
 
   /**
    * If show checkbox as toggle
@@ -48,7 +48,16 @@ export class ItCheckboxComponent extends ItAbstractFormComponent<boolean> implem
 
   override ngOnInit() {
     super.ngOnInit();
+    this.markAsChecked();
+  }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['checked']) {
+      this.markAsChecked();
+    }
+  }
+
+  private markAsChecked(): void {
     if (this.control.value || this.checked === undefined) {
       return;
     }

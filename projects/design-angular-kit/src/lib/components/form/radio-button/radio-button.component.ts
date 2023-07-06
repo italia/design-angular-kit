@@ -12,12 +12,12 @@ import { AsyncPipe, NgIf } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, NgIf, AsyncPipe]
 })
-export class ItRadioButtonComponent extends ItAbstractFormComponent<string | number | undefined> implements OnInit {
+export class ItRadioButtonComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {
 
   /**
    * The radio value
    */
-  @Input() value: string | number | undefined;
+  @Input() value: string | number | undefined | null;
 
   /**
    * If show radio inline

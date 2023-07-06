@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, ReactiveFormsModule, AsyncPipe]
 })
-export class ItTextareaComponent extends ItAbstractFormComponent<string> {
+export class ItTextareaComponent extends ItAbstractFormComponent<string | null | undefined> {
 
   /**
    * Textarea Rows
