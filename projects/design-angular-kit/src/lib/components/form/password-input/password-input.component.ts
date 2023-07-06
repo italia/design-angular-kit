@@ -17,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, ReactiveFormsModule, ItIconComponent, AsyncPipe, TranslateModule]
 })
-export class ItPasswordInputComponent extends ItAbstractFormComponent<string> implements OnInit, AfterViewInit {
+export class ItPasswordInputComponent extends ItAbstractFormComponent<string | null | undefined> implements OnInit, AfterViewInit {
 
   /**
    * The field is required

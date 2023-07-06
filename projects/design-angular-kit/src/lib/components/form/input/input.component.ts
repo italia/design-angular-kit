@@ -18,7 +18,7 @@ import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]
 })
-export class ItInputComponent extends ItAbstractFormComponent<string | number> implements OnInit {
+export class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {
 
   /**
    * The input type

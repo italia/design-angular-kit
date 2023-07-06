@@ -12,7 +12,7 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslateModule, NgForOf, ReactiveFormsModule, ItIconComponent]
 })
-export class ItRatingComponent extends ItAbstractFormComponent<number> implements OnInit, OnChanges {
+export class ItRatingComponent extends ItAbstractFormComponent<number | null | undefined> implements OnInit, OnChanges {
 
   /**
    * The rating value
