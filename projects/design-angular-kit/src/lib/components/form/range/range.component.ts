@@ -65,7 +65,7 @@ export class ItRangeComponent extends ItAbstractFormComponent<number | null | un
     ).subscribe(() => this.updateSliderColor());
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  override ngOnChanges(changes: SimpleChanges) {
     if (changes['leftColor']) {
       this.slider.nativeElement.style.setProperty('--range-left-color', this.leftColor ?? null);
     }
