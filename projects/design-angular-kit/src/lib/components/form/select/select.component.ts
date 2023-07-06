@@ -28,6 +28,12 @@ export class ItSelectComponent extends ItAbstractFormComponent implements OnInit
    */
   @Input() description?: string;
 
+  /**
+   * If set, add a `disabled selected` option with value `null` and as text the value of the attribute
+   * @example 'Select an option'
+   */
+  @Input() defaultOption?: string;
+
   override ngOnInit() {
     super.ngOnInit();
 
