@@ -9,11 +9,6 @@ import { SelectControlOption } from 'projects/design-angular-kit/src/public_api'
 export class SelectExampleComponent {
   selectedValue: number = null;
   selectOptions: Array<SelectControlOption> = [
-    { value: null, text: 'Seleziona un elemento', selected: true, disabled: true },
-    {
-      value: 1,
-      text: 'Opzione 1'
-    },
     {
       value: 2,
       text: 'Opzione 2'
