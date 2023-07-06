@@ -7,8 +7,10 @@
       "close": "Chiudi",
       "continue": "Continua",
       "edit": "Modifica",
+      "show": "Visualizza",
       "show-all": "Mostra tutto",
-      "details": "Dettagli"
+      "details": "Dettagli",
+      "download": "Scarica"
     },
     "errors": {
       "generic": "Si è verificato un errore",
@@ -26,6 +28,7 @@
       "tax-code-invalid": "Inserisci un codice fiscale valido",
       "vat-number-invalid": "Inserisci una partita iva valida",
       "cap-invalid": "Inserisci un CAP valido",
+      "iban-invalid": "Inserisci un IBAN valido",
       "regex-invalid": "Inserisci un espressione REGEX valida",
       "pattern-invalid": "Il campo deve avere il pattern {{pattern}}",
       "password-no-match": "Le password devono essere identiche",

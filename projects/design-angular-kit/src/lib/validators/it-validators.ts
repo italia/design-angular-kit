@@ -2,6 +2,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@ang
 import {
   CAP_REGEX,
   EMAIL_REGEX,
+  IBAN_REGEX,
   ITALIAN_TAX_CODE_REGEX,
   PHONE_NUMBER_REGEX,
   URL_REGEX,
@@ -149,6 +150,13 @@ export class ItValidators {
    */
   public static get cap(): ValidatorFn {
     return ItValidators.customPattern(CAP_REGEX, { invalidCap: true });
+  }
+
+  /**
+   * IBAN validator
+   */
+  public static get iban(): ValidatorFn {
+    return ItValidators.customPattern(IBAN_REGEX, { invalidIban: true });
   }
 
   /**

@@ -25,6 +25,7 @@ export class ModelDrivenValidationExampleComponent {
       email: [null],
       url: [null],
       phone: [null],
+      iban: [null, ItValidators.iban],
       myInput: ['', validators],
     });
   }
