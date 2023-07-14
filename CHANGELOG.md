@@ -1,3 +1,25 @@
+# [1.0.0-18](https://github.com/italia/design-angular-kit/compare/v1.0.0-17...v1.0.0-18) (2023-07-14)
+
+
+### Bug Fixes
+
+* build ([7604e36](https://github.com/italia/design-angular-kit/commit/7604e3691cb342004d714139c7ddd8eb12a6f215))
+* build and range on firefox ([50cb1e1](https://github.com/italia/design-angular-kit/commit/50cb1e1cd55ac6ee02865e2229b83e1bc96da756))
+* duplicate image upload on upload file list component ([41a12f2](https://github.com/italia/design-angular-kit/commit/41a12f2d4de0e8a9127b758f3fac8ab24ea30fdb))
+* input max min controls ([698adfd](https://github.com/italia/design-angular-kit/commit/698adfd2d0c3a6d5590df112887b01ef01d6cd9e))
+* set value on checkbox and forms generic types ([571f9b7](https://github.com/italia/design-angular-kit/commit/571f9b7247cea0b28c145a384f293d0596e6232b))
+* website docs not found ([de5c8c7](https://github.com/italia/design-angular-kit/commit/de5c8c780de95654efd9f6b20490badc0d18d363))
+
+
+### Features
+
+* add range component ([ee0170c](https://github.com/italia/design-angular-kit/commit/ee0170c0a8353fc226364e972150c7ef9d6bda99))
+* added iban validator ([24e58ad](https://github.com/italia/design-angular-kit/commit/24e58adc027e197eeba6bd978b45cc49312a1dbc))
+* added the possibility to insert a default option and to insert the options directly from html in the select component ([7c77572](https://github.com/italia/design-angular-kit/commit/7c7757250569c0acd932d9a8c689e7dc4bdb0472))
+* update dependencies ([8b40b0d](https://github.com/italia/design-angular-kit/commit/8b40b0de4341b5dbdfc5313e5d4f97cda5f59a2f))
+
+
+
 # [1.0.0-17](https://github.com/italia/design-angular-kit/compare/v1.0.0-16...v1.0.0-17) (2023-06-12)
 
 
