@@ -14,13 +14,13 @@
   <ng-template #linkButton>
     <a #dropdownButton
        [id]="id"
-       class="btn btn-dropdown dropdown-toggle"
+       class="dropdown-toggle nav-link"
        role="button"
        data-bs-toggle="dropdown"
        aria-haspopup="true"
        aria-expanded="false">
       <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-      <it-icon svgClass="icon-expand" name="expand" size="sm" color="primary"></it-icon>
+      <it-icon svgClass="icon-expand" name="expand" size="sm"></it-icon>
     </a>
   </ng-template>
 
