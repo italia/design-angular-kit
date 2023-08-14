@@ -20,6 +20,11 @@ export class ItLanguageSwitcherComponent implements OnInit {
    */
   @Input() availableLanguages: Array<AvailableLanguage> | undefined;
 
+  /**
+   * Dropdown mode
+   */
+  @Input() mode: 'button' | 'link' = 'link';
+
   protected currentLang$: Observable<AvailableLanguage | undefined>;
 
   constructor(
