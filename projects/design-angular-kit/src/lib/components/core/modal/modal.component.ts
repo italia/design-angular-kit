@@ -13,6 +13,7 @@ import { Modal } from 'bootstrap-italia';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { Modal as BSModal } from 'bootstrap'
 
 /**
  * Modal windows
@@ -81,10 +82,33 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
   @Input() size: 'sm' | 'lg' | 'xl' | undefined;
 
   /**
+   * Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn’t close the modal when clicked.
+   * @default true
+   */
+  @Input() backdrop: 'static' | BooleanInput = true;
+
+  /**
+   * Puts the focus on the modal when initialized.
+   * @default true
+   */
+  @Input() focus: BooleanInput = true;
+
+  /**
+   * Closes the modal when escape key is pressed.
+   * @default true
+   */
+  @Input() keyboard: BooleanInput = true;
+
+  /**
    * To better distinguish the footer element with a shadow
    * @default false
    */
   @Input() footerShadow: BooleanInput | undefined;
+
+  /**
+   * Modal options
+   */
+  @Input() options?: Partial<BSModal.Options>
 
   /**
    * This event fires immediately when the instance method show is called.
@@ -122,7 +146,12 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
 
     if (this.modalElement) {
       const element = this.modalElement.nativeElement;
-      this.modal = Modal.getOrCreateInstance(element);
+      this.modal = Modal.getOrCreateInstance(element, {
+        ...this.options,
+        backdrop: this.backdrop === 'static' ? 'static' : isTrueBooleanInput(this.backdrop),
+        focus: isTrueBooleanInput(this.focus),
+        keyboard: isTrueBooleanInput(this.keyboard)
+      });
 
       element.addEventListener('show.bs.modal', event => this.showEvent.emit(event));
       element.addEventListener('shown.bs.modal', event => this.shownEvent.emit(event));
