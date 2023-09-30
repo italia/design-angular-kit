@@ -1,6 +1,6 @@
 import { IconName } from './icon';
 
-export type AlertColor = 'info' | 'success' | 'warning' | 'danger';
+export type AlertColor = 'primary' | 'info' | 'success' | 'warning' | 'danger';
 
 export type ButtonColor =
   'primary'
