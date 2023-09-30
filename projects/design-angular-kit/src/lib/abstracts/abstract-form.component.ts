@@ -33,7 +33,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
   /**
    * Internal form control
    */
-  protected control: FormControl;
+  protected control: FormControl<T>;
 
   constructor(
     protected readonly _translateService: TranslateService,

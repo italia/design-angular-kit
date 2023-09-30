@@ -6,21 +6,21 @@
           (blur)="markAsTouched()"
           [attr.aria-describedby]="id + '-description'">
 
-    <option *ngIf="defaultOption" [value]="null" disabled selected>
+    <option *ngIf="defaultOption" [ngValue]="null" disabled selected>
       {{defaultOption}}
     </option>
 
     <ng-content></ng-content>
 
     <ng-container *ngIf="options">
-      <option *ngFor="let option of options" [disabled]="optionIsDisabled(option)" [value]="option.value">
+      <option *ngFor="let option of options" [disabled]="optionIsDisabled(option)" [ngValue]="option.value">
         {{option.text ?? option.value}}
       </option>
     </ng-container>
 
     <ng-container *ngIf="groups">
       <optgroup *ngFor="let group of groups" [label]="group.label">
-        <option *ngFor="let option of group.options" [disabled]="optionIsDisabled(option)" [value]="option.value">
+        <option *ngFor="let option of group.options" [disabled]="optionIsDisabled(option)" [ngValue]="option.value">
           {{option.text ?? option.value}}
         </option>
       </optgroup>

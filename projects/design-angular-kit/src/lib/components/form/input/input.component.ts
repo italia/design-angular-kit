@@ -96,7 +96,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
    * If you need to retrieve items via API, can pass a function of Observable
    * @default undefined
    */
-  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string) => Observable<Array<AutocompleteItem>>);
+  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string | number | null) => Observable<Array<AutocompleteItem>>);
 
   /**
    * Time span [ms] has passed without another source emission, to delay data filtering.
@@ -189,7 +189,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
 
   /** Observable da cui vengono emessi i risultati dell'auto completamento */
   autocompleteResults$: Observable<{
-    searchedValue: string,
+    searchedValue: string | number | null | undefined,
     relatedEntries: Array<AutocompleteItem>
   }> = new Observable();
 
@@ -250,7 +250,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
   /**
    * Create the autocomplete list
    */
-  private getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> {
+  private getAutocompleteResults$(): Observable<{ searchedValue: string | number | null | undefined, relatedEntries: Array<AutocompleteItem> }> {
     if (this.type !== 'search') {
       return of({ searchedValue: '', relatedEntries: [] });
     }
@@ -259,13 +259,13 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
       distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value
       switchMap(searchedValue => {
         if (!this.autocompleteData) {
-          return of({ searchedValue, relatedEntries: [] });
+          return of({ searchedValue, relatedEntries: <Array<AutocompleteItem>>[] });
         }
 
         const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);
         return autoCompleteData$.pipe(
           map(autocompleteData => {
-            if (!searchedValue) {
+            if (!searchedValue || typeof searchedValue === 'number') {
               return { searchedValue, relatedEntries: [] };
             }
 

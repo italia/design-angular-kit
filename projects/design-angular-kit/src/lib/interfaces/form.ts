@@ -2,16 +2,16 @@ import { IconName } from './icon';
 
 export type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';
 
-export interface SelectControlOption {
-  value: any,
+export interface SelectControlOption<T = any> {
+  value: T,
   text?: string,
-  selected?: boolean | ((value: any) => boolean),
-  disabled?: boolean | ((value: any) => boolean)
+  selected?: boolean | ((value: T) => boolean),
+  disabled?: boolean | ((value: T) => boolean)
 }
 
-export interface SelectControlGroup {
+export interface SelectControlGroup<T = any> {
   label: string,
-  options: Array<SelectControlOption>,
+  options: Array<SelectControlOption<T>>,
   dragdrop?: boolean
 }
 
