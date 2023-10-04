@@ -1,4 +1,4 @@
-<it-dropdown>
+<it-dropdown [mode]="mode">
   <ng-container button>
     <span class="visually-hidden">{{'it.utils.selected' | translate: { lang: (currentLang$ | async)?.label } }}</span>
     <span>{{(currentLang$ | async)?.label || ('it.utils.select-language' | translate)}}</span>
