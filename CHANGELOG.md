@@ -1,3 +1,19 @@
+# [1.0.0-19](https://github.com/italia/design-angular-kit/compare/v1.0.0-18...v1.0.0-19) (2023-10-04)
+
+
+### Bug Fixes
+
+* add input param to LanguageSwitcherComponent ([bdb24e2](https://github.com/italia/design-angular-kit/commit/bdb24e2183f65a8d2f40ae30cf9d68bc9331bc89))
+
+
+### Features
+
+* added modal options ([804498d](https://github.com/italia/design-angular-kit/commit/804498df68aceb7674918d74316fb388865c2be8)), closes [#268](https://github.com/italia/design-angular-kit/issues/268)
+* select can assign object as a value ([ba1c65d](https://github.com/italia/design-angular-kit/commit/ba1c65d14e0d646a9971aacf117cad8ad971fc7b)), closes [#270](https://github.com/italia/design-angular-kit/issues/270)
+* update bootstrap italia version ([2991fda](https://github.com/italia/design-angular-kit/commit/2991fdadf2447fc8b880f5e4678470f698811fc5)), closes [#271](https://github.com/italia/design-angular-kit/issues/271)
+
+
+
 # [1.0.0-18](https://github.com/italia/design-angular-kit/compare/v1.0.0-17...v1.0.0-18) (2023-07-14)
 
 
