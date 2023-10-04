@@ -63,12 +63,12 @@
     "interfaces": [
         {
             "name": "AutocompleteItem",
-            "id": "interface-AutocompleteItem-4a83d16d8eecf0ab4721f3148df709130b7689f23d0564c78f224a816746bc9b7442db73a8541784217693bf2d1a497e13313eee791516543ecba4acb7a6f4f1",
+            "id": "interface-AutocompleteItem-7d152cb71350c68af4c570c6f3424c0d1dcc0ba915eb99b70469b99ae5f8b2e4b112156bd299c4d4095364b158c4b363634bc638312bfeba59e62e8d2c4b44d9",
             "file": "projects/design-angular-kit/src/lib/interfaces/form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem<T = any> {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: T;\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption<T = any> {\n  value: T,\n  text?: string,\n  selected?: boolean | ((value: T) => boolean),\n  disabled?: boolean | ((value: T) => boolean)\n}\n\nexport interface SelectControlGroup<T = any> {\n  label: string,\n  options: Array<SelectControlOption<T>>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem<T = any> {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: T;\n}\n",
             "properties": [
                 {
                     "name": "additionalData",
@@ -227,12 +227,12 @@
         },
         {
             "name": "Notification",
-            "id": "interface-Notification-a803452049c748269521398c6f4f976005e394b58bc68bff5971ea78779b9ca9863022845ed2c09e7151e3f360906c053468ce84c2a1b319bbf2726e74c1039e",
+            "id": "interface-Notification-bf32146f1c004f1582638a3432d2a84c8059750f0eb2ac3df46cd96f84df74ab60b8d5f31cd37e52b74a47b86992d559ad2d837f72725866cbbfa64cab34137c",
             "file": "projects/design-angular-kit/src/lib/interfaces/core.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from './icon';\n\nexport type AlertColor = 'info' | 'success' | 'warning' | 'danger';\n\nexport type ButtonColor =\n  'primary'\n  | 'outline-primary'\n  | 'secondary'\n  | 'outline-secondary'\n  | 'success'\n  | 'outline-success'\n  | 'danger'\n  | 'outline-danger'\n  | 'warning'\n  | 'outline-warning'\n  | 'info'\n  | 'outline-info'\n  | 'light'\n  | 'outline-light'\n  | 'dark'\n  | 'outline-dark'\n  | 'link';\n\nexport type ButtonSize = 'lg' | 'sm' | 'xs';\nexport type ButtonType = 'submit' | 'button';\n\nexport type CalloutColor = 'success' | 'warning' | 'danger' | 'important' | 'note';\nexport type CalloutAppearance = 'default' | 'highlight' | 'more';\n\nexport type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';\n\nexport type ElementPlacement = 'top' | 'bottom' | 'left' | 'right';\n\nexport type ProgressBarColor = 'primary' | 'success' | 'warning' | 'danger' | 'info';\n\nexport type BadgeColor = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';\n\nexport type TableColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';\n\nexport type TableHeadColor = 'light' | 'dark';\n\nexport type TableResponsive =\n  'responsive'\n  | 'responsive-sm'\n  | 'responsive-md'\n  | 'responsive-lg'\n  | 'responsive-xl'\n  | 'responsive-xxl';\n\nexport type VerticalAlignment =\n  'align-baseline'\n  | 'align-top'\n  | 'align-middle'\n  | 'align-bottom'\n  | 'align-text-bottom'\n  | 'align-text-top';\n\nexport type DropdownDirection = 'dropup' | 'dropend' | 'dropstart';\n\nexport type CarouselType = 'default' | 'three-cols' | 'three-cols-arrow-visible';\n\nexport interface Notification {\n\n  /**\n   * Notification type\n   */\n  type: NotificationType;\n\n  /**\n   * Notification title\n   */\n  title: string;\n\n  /**\n   * Notification message / text\n   */\n  message?: string;\n\n  /**\n   * Custom duration of notification\n   */\n  duration?: number;\n\n  /**\n   * The close notification button appears\n   */\n  dismissible?: boolean;\n\n  /**\n   * Custom position of notification\n   */\n  position?: NotificationPosition;\n\n  /**\n   * Custom icon of notification\n   */\n  icon?: IconName;\n}\n\nexport enum NotificationType {\n  Standard = 'standard',\n  Success = 'success',\n  Error = 'error',\n  Info = 'info',\n  Warning = 'warning'\n}\n\nexport enum NotificationPosition {\n  Top = 'top-fix mt-3',\n  Bottom = 'bottom-fix mb-3',\n  Left = 'left-fix ms-3',\n  Right = 'right-fix me-3'\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type AlertColor = 'primary' | 'info' | 'success' | 'warning' | 'danger';\n\nexport type ButtonColor =\n  'primary'\n  | 'outline-primary'\n  | 'secondary'\n  | 'outline-secondary'\n  | 'success'\n  | 'outline-success'\n  | 'danger'\n  | 'outline-danger'\n  | 'warning'\n  | 'outline-warning'\n  | 'info'\n  | 'outline-info'\n  | 'light'\n  | 'outline-light'\n  | 'dark'\n  | 'outline-dark'\n  | 'link';\n\nexport type ButtonSize = 'lg' | 'sm' | 'xs';\nexport type ButtonType = 'submit' | 'button';\n\nexport type CalloutColor = 'success' | 'warning' | 'danger' | 'important' | 'note';\nexport type CalloutAppearance = 'default' | 'highlight' | 'more';\n\nexport type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';\n\nexport type ElementPlacement = 'top' | 'bottom' | 'left' | 'right';\n\nexport type ProgressBarColor = 'primary' | 'success' | 'warning' | 'danger' | 'info';\n\nexport type BadgeColor = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';\n\nexport type TableColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';\n\nexport type TableHeadColor = 'light' | 'dark';\n\nexport type TableResponsive =\n  'responsive'\n  | 'responsive-sm'\n  | 'responsive-md'\n  | 'responsive-lg'\n  | 'responsive-xl'\n  | 'responsive-xxl';\n\nexport type VerticalAlignment =\n  'align-baseline'\n  | 'align-top'\n  | 'align-middle'\n  | 'align-bottom'\n  | 'align-text-bottom'\n  | 'align-text-top';\n\nexport type DropdownDirection = 'dropup' | 'dropend' | 'dropstart';\n\nexport type CarouselType = 'default' | 'three-cols' | 'three-cols-arrow-visible';\n\nexport interface Notification {\n\n  /**\n   * Notification type\n   */\n  type: NotificationType;\n\n  /**\n   * Notification title\n   */\n  title: string;\n\n  /**\n   * Notification message / text\n   */\n  message?: string;\n\n  /**\n   * Custom duration of notification\n   */\n  duration?: number;\n\n  /**\n   * The close notification button appears\n   */\n  dismissible?: boolean;\n\n  /**\n   * Custom position of notification\n   */\n  position?: NotificationPosition;\n\n  /**\n   * Custom icon of notification\n   */\n  icon?: IconName;\n}\n\nexport enum NotificationType {\n  Standard = 'standard',\n  Success = 'success',\n  Error = 'error',\n  Info = 'info',\n  Warning = 'warning'\n}\n\nexport enum NotificationPosition {\n  Top = 'top-fix mt-3',\n  Bottom = 'bottom-fix mb-3',\n  Left = 'left-fix ms-3',\n  Right = 'right-fix me-3'\n}\n",
             "properties": [
                 {
                     "name": "dismissible",
@@ -311,12 +311,12 @@
         },
         {
             "name": "SelectControlGroup",
-            "id": "interface-SelectControlGroup-4a83d16d8eecf0ab4721f3148df709130b7689f23d0564c78f224a816746bc9b7442db73a8541784217693bf2d1a497e13313eee791516543ecba4acb7a6f4f1",
+            "id": "interface-SelectControlGroup-7d152cb71350c68af4c570c6f3424c0d1dcc0ba915eb99b70469b99ae5f8b2e4b112156bd299c4d4095364b158c4b363634bc638312bfeba59e62e8d2c4b44d9",
             "file": "projects/design-angular-kit/src/lib/interfaces/form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem<T = any> {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: T;\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption<T = any> {\n  value: T,\n  text?: string,\n  selected?: boolean | ((value: T) => boolean),\n  disabled?: boolean | ((value: T) => boolean)\n}\n\nexport interface SelectControlGroup<T = any> {\n  label: string,\n  options: Array<SelectControlOption<T>>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem<T = any> {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: T;\n}\n",
             "properties": [
                 {
                     "name": "dragdrop",
@@ -340,7 +340,7 @@
                     "name": "options",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Array<SelectControlOption>",
+                    "type": "Array<SelectControlOption<T>>",
                     "optional": false,
                     "description": "",
                     "line": 14
@@ -352,12 +352,12 @@
         },
         {
             "name": "SelectControlOption",
-            "id": "interface-SelectControlOption-4a83d16d8eecf0ab4721f3148df709130b7689f23d0564c78f224a816746bc9b7442db73a8541784217693bf2d1a497e13313eee791516543ecba4acb7a6f4f1",
+            "id": "interface-SelectControlOption-7d152cb71350c68af4c570c6f3424c0d1dcc0ba915eb99b70469b99ae5f8b2e4b112156bd299c4d4095364b158c4b363634bc638312bfeba59e62e8d2c4b44d9",
             "file": "projects/design-angular-kit/src/lib/interfaces/form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem<T = any> {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: T;\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption<T = any> {\n  value: T,\n  text?: string,\n  selected?: boolean | ((value: T) => boolean),\n  disabled?: boolean | ((value: T) => boolean)\n}\n\nexport interface SelectControlGroup<T = any> {\n  label: string,\n  options: Array<SelectControlOption<T>>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem<T = any> {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: T;\n}\n",
             "properties": [
                 {
                     "name": "disabled",
@@ -390,7 +390,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
+                    "type": "T",
                     "optional": false,
                     "description": "",
                     "line": 6
@@ -402,12 +402,12 @@
         },
         {
             "name": "UploadFileListItem",
-            "id": "interface-UploadFileListItem-4a83d16d8eecf0ab4721f3148df709130b7689f23d0564c78f224a816746bc9b7442db73a8541784217693bf2d1a497e13313eee791516543ecba4acb7a6f4f1",
+            "id": "interface-UploadFileListItem-7d152cb71350c68af4c570c6f3424c0d1dcc0ba915eb99b70469b99ae5f8b2e4b112156bd299c4d4095364b158c4b363634bc638312bfeba59e62e8d2c4b44d9",
             "file": "projects/design-angular-kit/src/lib/interfaces/form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption {\n  value: any,\n  text?: string,\n  selected?: boolean | ((value: any) => boolean),\n  disabled?: boolean | ((value: any) => boolean)\n}\n\nexport interface SelectControlGroup {\n  label: string,\n  options: Array<SelectControlOption>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem<T = any> {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: T;\n}\n",
+            "sourceCode": "import { IconName } from './icon';\n\nexport type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';\n\nexport interface SelectControlOption<T = any> {\n  value: T,\n  text?: string,\n  selected?: boolean | ((value: T) => boolean),\n  disabled?: boolean | ((value: T) => boolean)\n}\n\nexport interface SelectControlGroup<T = any> {\n  label: string,\n  options: Array<SelectControlOption<T>>,\n  dragdrop?: boolean\n}\n\nexport interface UploadFileListItem {\n  /**\n   * The item id\n   */\n  id: number,\n\n  /**\n   * The uploaded file\n   */\n  file: File,\n\n  /**\n   * Show progress bar\n   *\n   * The status of the item changes based on the value:\n   * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)\n   * - <b>success</b>: if value is greater than 100\n   */\n  progress?: number,\n\n  /**\n   * Show the ability to delete item\n   * @default false\n   */\n  removable?: boolean,\n\n  /**\n   * Set the status of the item as 'error'\n   */\n  error?: boolean,\n\n  /**\n   * Add tooltip on file item name\n   * @example It can be used to show the error message or additional information about the file\n   */\n  tooltip?: string\n}\n\n\n/**\n * Elemento disponibile per l'autocompletamento del it-form-input\n */\nexport interface AutocompleteItem<T = any> {\n  /** Valore voce di autocompletamento */\n  value: string;\n  /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */\n  avatarSrcPath?: string;\n  /** Opzionale. Testo in alternativa dell'avatar per accessibilità */\n  avatarAltText?: string;\n  /** Opzionale. Icona posizionata a sinistra della voce di autocompletamento */\n  icon?: IconName;\n  /** Opzionale. Label posizionata a destra della voce di autocompletamento */\n  label?: string;\n  /** Opzionale. Link relativo all'elemento */\n  link?: string;\n\n  /**\n   * Attribute not used for autocomplete rendering.\n   * It can be useful to retrieve some extra information when selecting the autocomplete item\n   */\n  additionalData?: T;\n}\n",
             "properties": [
                 {
                     "name": "error",
@@ -460,15 +460,15 @@
                     "rawdescription": "\n\nShow the ability to delete item\n",
                     "jsdoctags": [
                         {
-                            "pos": 875,
-                            "end": 893,
+                            "pos": 890,
+                            "end": 908,
                             "flags": 8388608,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 876,
-                                "end": 883,
+                                "pos": 891,
+                                "end": 898,
                                 "flags": 8388608,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -490,15 +490,15 @@
                     "rawdescription": "\n\nAdd tooltip on file item name\n```html\n```",
                     "jsdoctags": [
                         {
-                            "pos": 1041,
-                            "end": 1135,
+                            "pos": 1056,
+                            "end": 1150,
                             "flags": 8388608,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1042,
-                                "end": 1049,
+                                "pos": 1057,
+                                "end": 1064,
                                 "flags": 8388608,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -4760,7 +4760,7 @@
         },
         {
             "name": "ItAbstractFormComponent",
-            "id": "component-ItAbstractFormComponent-08ff5537d60215bfca8e5977d0576c1fcc4251fa1bdb7abc940717db053ef004d98a0e16e22a35677c47df2b4917755aafc9d22f511b00dfc659593de575d8c4",
+            "id": "component-ItAbstractFormComponent-c78cd1b418aa60cf51da613e0ec91f1e3ab7d309d4eead732780e1a82c81c9ef465f15ac7c8e35d5d43440e83ff89630d3a4b176619b6eb4bca2d05631866406",
             "file": "projects/design-angular-kit/src/lib/abstracts/abstract-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4859,7 +4859,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -5000,8 +5000,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5012,8 +5012,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5055,8 +5055,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5067,8 +5067,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5079,8 +5079,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5092,8 +5092,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5104,8 +5104,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5147,8 +5147,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5159,8 +5159,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5171,8 +5171,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5184,8 +5184,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5196,8 +5196,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5440,7 +5440,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';\nimport { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';\nimport { ItAbstractComponent } from './abstract.component';\nimport { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';\nimport { Observable } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\n\n@Component({ template: '' })\nexport abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {\n\n  /**\n   * The label of form control\n   */\n  @Input() label?: string;\n\n  /**\n   * Validation color display mode (validation triggered if field is touched or not pristine)\n   * - <b>true</b>: Always show the validation color\n   * - <b>false</b>: Never show validation color\n   * - <b>only-valid</b>: Show only valid validation color\n   * - <b>only-invalid</b>: Show only invalid validation color\n   * @default <b>only-invalid</b>: Show only invalid validation color\n   */\n  @Input() validationMode: BooleanInput | 'only-valid' | 'only-invalid' = 'only-invalid';\n\n  /**\n   * Set the disabled state\n   */\n  @Input() set disabled(isDisabled: BooleanInput) {\n    this.setDisabledState(isTrueBooleanInput(isDisabled));\n  }\n\n  /**\n   * Internal form control\n   */\n  protected control: FormControl;\n\n  constructor(\n    protected readonly _translateService: TranslateService,\n    @Self() @Optional() protected readonly _ngControl: NgControl\n  ) {\n    super();\n    this.control = new FormControl();\n    this._ngControl && (this._ngControl.valueAccessor = this);\n  }\n\n  /**\n   * Check if field is invalid (Validation failed)\n   */\n  get isInvalid(): boolean | undefined {\n    if (this.validationMode === 'only-valid' || (this.validationMode !== 'only-invalid' && isFalseBooleanInput(this.validationMode))) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.invalid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.invalid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Check if field is valid (Validation successful)\n   */\n  get isValid(): boolean | undefined {\n    if (this.validationMode === 'only-invalid' || (this.validationMode !== 'only-valid' && isFalseBooleanInput(this.validationMode))) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.valid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.valid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  get invalidMessage(): Observable<string> {\n    if (this.hasError('required')) {\n      return this._translateService.get('it.errors.required-field');\n    }\n\n    return this._translateService.get('it.errors.invalid-field');\n  }\n\n  ngOnInit(): void {\n    if (this._ngControl?.control) {\n      this.control.setValidators((this._ngControl.control as FormControl).validator);\n    }\n  }\n\n  onChange = (_: T) => {\n  };\n\n  onTouched = () => {\n  };\n\n  registerOnChange(fn: any): void {\n    this.control.valueChanges.subscribe(fn);\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (isDisabled) {\n      return this.control.disable();\n    }\n    this.control.enable();\n  }\n\n  writeValue(value: T): void {\n    this.control.setValue(value, { emitEvent: false });\n    this._changeDetectorRef.detectChanges();\n  }\n\n  /**\n   * Mark the control as touched\n   */\n  markAsTouched(): void {\n    if (!this.control.touched) {\n      this.onTouched();\n    }\n  }\n\n  /**\n   * Fired to check if form control is touched\n   */\n  ngDoCheck() {\n    if (this._ngControl?.control) {\n      const ngControl = this._ngControl.control;\n      if (this.control.touched !== ngControl.touched) {\n        if (ngControl.touched) {\n          this.control.markAsTouched();\n        } else {\n          this.control.markAsUntouched();\n        }\n      }\n      if (this.control.pristine !== ngControl.pristine) {\n        if (ngControl.pristine) {\n          this.control.markAsPristine();\n        } else {\n          this.control.markAsDirty();\n        }\n      }\n    }\n    this._changeDetectorRef.detectChanges();\n  }\n\n  /**\n   * Add the validators in control and parent control\n   * @param validators the validators\n   * @protected\n   */\n  protected addValidators(validators: ValidatorFn | ValidatorFn[]): void {\n    if (!Array.isArray(validators)) {\n      validators = [validators];\n    }\n\n    validators.forEach(validator => {\n      if (!this.control.hasValidator(validator)) {\n        this.control.addValidators(validator);\n      }\n\n      if (this._ngControl?.control && !this._ngControl.control.hasValidator(validator)) {\n        this._ngControl.control.addValidators(validator);\n      }\n    });\n  }\n\n  /**\n   * Reports whether the control with the given path has the error specified. <br/>\n   * If the control is not present, false is returned.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns whether the given error is present in the control at the given path.\n   */\n  public hasError(errorCode: string, path?: Array<string | number> | string): boolean {\n    if (this._ngControl) {\n      return this._ngControl.hasError(errorCode, path);\n    }\n    return this.control.hasError(errorCode, path);\n  }\n\n  /**\n   * Reports error data for the control with the given path.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns error data for that particular error. If the control or error is not present,\n   * null is returned.\n   */\n  public getError(errorCode: string, path?: Array<string | number> | string): any {\n    if (this._ngControl) {\n      return this._ngControl.getError(errorCode, path);\n    }\n    return this.control.getError(errorCode, path);\n  }\n}\n",
+            "sourceCode": "import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';\nimport { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';\nimport { ItAbstractComponent } from './abstract.component';\nimport { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';\nimport { Observable } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\n\n@Component({ template: '' })\nexport abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {\n\n  /**\n   * The label of form control\n   */\n  @Input() label?: string;\n\n  /**\n   * Validation color display mode (validation triggered if field is touched or not pristine)\n   * - <b>true</b>: Always show the validation color\n   * - <b>false</b>: Never show validation color\n   * - <b>only-valid</b>: Show only valid validation color\n   * - <b>only-invalid</b>: Show only invalid validation color\n   * @default <b>only-invalid</b>: Show only invalid validation color\n   */\n  @Input() validationMode: BooleanInput | 'only-valid' | 'only-invalid' = 'only-invalid';\n\n  /**\n   * Set the disabled state\n   */\n  @Input() set disabled(isDisabled: BooleanInput) {\n    this.setDisabledState(isTrueBooleanInput(isDisabled));\n  }\n\n  /**\n   * Internal form control\n   */\n  protected control: FormControl<T>;\n\n  constructor(\n    protected readonly _translateService: TranslateService,\n    @Self() @Optional() protected readonly _ngControl: NgControl\n  ) {\n    super();\n    this.control = new FormControl();\n    this._ngControl && (this._ngControl.valueAccessor = this);\n  }\n\n  /**\n   * Check if field is invalid (Validation failed)\n   */\n  get isInvalid(): boolean | undefined {\n    if (this.validationMode === 'only-valid' || (this.validationMode !== 'only-invalid' && isFalseBooleanInput(this.validationMode))) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.invalid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.invalid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Check if field is valid (Validation successful)\n   */\n  get isValid(): boolean | undefined {\n    if (this.validationMode === 'only-invalid' || (this.validationMode !== 'only-valid' && isFalseBooleanInput(this.validationMode))) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.valid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.valid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  get invalidMessage(): Observable<string> {\n    if (this.hasError('required')) {\n      return this._translateService.get('it.errors.required-field');\n    }\n\n    return this._translateService.get('it.errors.invalid-field');\n  }\n\n  ngOnInit(): void {\n    if (this._ngControl?.control) {\n      this.control.setValidators((this._ngControl.control as FormControl).validator);\n    }\n  }\n\n  onChange = (_: T) => {\n  };\n\n  onTouched = () => {\n  };\n\n  registerOnChange(fn: any): void {\n    this.control.valueChanges.subscribe(fn);\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (isDisabled) {\n      return this.control.disable();\n    }\n    this.control.enable();\n  }\n\n  writeValue(value: T): void {\n    this.control.setValue(value, { emitEvent: false });\n    this._changeDetectorRef.detectChanges();\n  }\n\n  /**\n   * Mark the control as touched\n   */\n  markAsTouched(): void {\n    if (!this.control.touched) {\n      this.onTouched();\n    }\n  }\n\n  /**\n   * Fired to check if form control is touched\n   */\n  ngDoCheck() {\n    if (this._ngControl?.control) {\n      const ngControl = this._ngControl.control;\n      if (this.control.touched !== ngControl.touched) {\n        if (ngControl.touched) {\n          this.control.markAsTouched();\n        } else {\n          this.control.markAsUntouched();\n        }\n      }\n      if (this.control.pristine !== ngControl.pristine) {\n        if (ngControl.pristine) {\n          this.control.markAsPristine();\n        } else {\n          this.control.markAsDirty();\n        }\n      }\n    }\n    this._changeDetectorRef.detectChanges();\n  }\n\n  /**\n   * Add the validators in control and parent control\n   * @param validators the validators\n   * @protected\n   */\n  protected addValidators(validators: ValidatorFn | ValidatorFn[]): void {\n    if (!Array.isArray(validators)) {\n      validators = [validators];\n    }\n\n    validators.forEach(validator => {\n      if (!this.control.hasValidator(validator)) {\n        this.control.addValidators(validator);\n      }\n\n      if (this._ngControl?.control && !this._ngControl.control.hasValidator(validator)) {\n        this._ngControl.control.addValidators(validator);\n      }\n    });\n  }\n\n  /**\n   * Reports whether the control with the given path has the error specified. <br/>\n   * If the control is not present, false is returned.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns whether the given error is present in the control at the given path.\n   */\n  public hasError(errorCode: string, path?: Array<string | number> | string): boolean {\n    if (this._ngControl) {\n      return this._ngControl.hasError(errorCode, path);\n    }\n    return this.control.hasError(errorCode, path);\n  }\n\n  /**\n   * Reports error data for the control with the given path.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns error data for that particular error. If the control or error is not present,\n   * null is returned.\n   */\n  public getError(errorCode: string, path?: Array<string | number> | string): any {\n    if (this._ngControl) {\n      return this._ngControl.getError(errorCode, path);\n    }\n    return this.control.getError(errorCode, path);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -9278,7 +9278,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -9491,8 +9491,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9503,8 +9503,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9549,8 +9549,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9561,8 +9561,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9573,8 +9573,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9586,8 +9586,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9598,8 +9598,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9644,8 +9644,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9656,8 +9656,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9668,8 +9668,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9681,8 +9681,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9693,8 +9693,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13169,7 +13169,7 @@
         },
         {
             "name": "ItInputComponent",
-            "id": "component-ItInputComponent-24f3e82062e87561947ecf740f4209cdcfd507ae49bc31f79a7a87b711905a6d66a2d1ea4749c78c1d7423f978c30abdfdeedcb477e6cc33655b8b83a565fa56",
+            "id": "component-ItInputComponent-10ff9e7b72affb88356efb746613b50c9372632322935de6e22d106bbba8061a32f82c3705be365c26556d882f56231a571ca1f83b5ef63b5822da58392919e1",
             "file": "projects/design-angular-kit/src/lib/components/form/input/input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -13265,15 +13265,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 3477,
-                            "end": 3498,
+                            "pos": 3493,
+                            "end": 3514,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 3478,
-                                "end": 3485,
+                                "pos": 3494,
+                                "end": 3501,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13608,7 +13608,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -13814,8 +13814,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 7480,
-                                "end": 7488,
+                                "pos": 7524,
+                                "end": 7532,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13827,8 +13827,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "false",
                             "tagName": {
-                                "pos": 7474,
-                                "end": 7479,
+                                "pos": 7518,
+                                "end": 7523,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13932,8 +13932,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13944,8 +13944,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13990,8 +13990,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14002,8 +14002,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14014,8 +14014,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14027,8 +14027,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14039,8 +14039,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14085,8 +14085,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14097,8 +14097,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14109,8 +14109,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14122,8 +14122,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14134,8 +14134,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14419,7 +14419,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { AutocompleteItem, InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';\nimport { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';\n\n@Component({\n  standalone: true,\n  selector: 'it-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]\n})\nexport class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {\n\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder: string = '';\n\n  /**\n   * The input description\n   */\n  @Input() description: string | undefined;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   */\n  @Input() readonly: BooleanInput | 'plaintext' | undefined;\n\n  /**\n   * The max date value [Used only in type = 'date']\n   * @default '9999-12-31'\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() maxDate?: string = '9999-12-31';\n\n  /**\n   * The min date value [Used only in type = 'date']\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() minDate: string | undefined;\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max: number | undefined;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min: number | undefined;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step: number | 'any' | undefined;\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   */\n  @Input() currency: BooleanInput | undefined;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   */\n  @Input() percentage: BooleanInput | undefined;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   */\n  @Input() adaptive: BooleanInput | undefined;\n\n  /**\n   * Input autocomplete attribute (Browser autocomplete)\n   * @default undefined\n   */\n  @Input() autocomplete: string | undefined;\n\n  /**\n   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\n   * If you need to retrieve items via API, can pass a function of Observable\n   * @default undefined\n   */\n  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string) => Observable<Array<AutocompleteItem>>);\n\n  /**\n   * Time span [ms] has passed without another source emission, to delay data filtering.\n   * Useful when the user is typing multiple letters\n   * @default 300 [ms]\n   */\n  @Input() autocompleteDebounceTime: number = 300;\n\n  /**\n   * Fired when the Autocomplete Item has been selected\n   */\n  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();\n\n  protected showAutocompletion = false;\n\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time' || this.type === 'color';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidIban')) {\n      return this._translateService.get('it.errors.iban-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });\n    }\n\n    return super.invalidMessage;\n  }\n\n  /** Observable da cui vengono emessi i risultati dell'auto completamento */\n  autocompleteResults$: Observable<{\n    searchedValue: string,\n    relatedEntries: Array<AutocompleteItem>\n  }> = new Observable();\n\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (isTrueBooleanInput(this.percentage)) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);\n        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n    this.autocompleteResults$ = this.getAutocompleteResults$();\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  incrementNumber(decrease: boolean = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = (this.step === 'any' ? 1 : (this.step ?? 1));\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n\n\n  /**\n   * Create the autocomplete list\n   */\n  private getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> {\n    if (this.type !== 'search') {\n      return of({ searchedValue: '', relatedEntries: [] });\n    }\n    return this.control.valueChanges.pipe(\n      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters\n      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value\n      switchMap(searchedValue => {\n        if (!this.autocompleteData) {\n          return of({ searchedValue, relatedEntries: [] });\n        }\n\n        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);\n        return autoCompleteData$.pipe(\n          map(autocompleteData => {\n            if (!searchedValue) {\n              return { searchedValue, relatedEntries: [] };\n            }\n\n            const lowercaseValue = searchedValue.toLowerCase();\n            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));\n\n            return { searchedValue, relatedEntries };\n          })\n        );\n      })\n    );\n  }\n\n  onEntryClick(entry: AutocompleteItem, event: Event) {\n    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata\n    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.\n    if (!entry.link) {\n      event.preventDefault();\n    }\n\n    this.autocompleteSelectedEvent.next(entry);\n    this.control.setValue(entry.value);\n    this.showAutocompletion = false;\n  }\n\n  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {\n    return item.value;\n  }\n\n  onKeyDown() {\n    this.showAutocompletion = this.type === 'search';\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { AutocompleteItem, InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';\nimport { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';\n\n@Component({\n  standalone: true,\n  selector: 'it-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]\n})\nexport class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {\n\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder: string = '';\n\n  /**\n   * The input description\n   */\n  @Input() description: string | undefined;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   */\n  @Input() readonly: BooleanInput | 'plaintext' | undefined;\n\n  /**\n   * The max date value [Used only in type = 'date']\n   * @default '9999-12-31'\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() maxDate?: string = '9999-12-31';\n\n  /**\n   * The min date value [Used only in type = 'date']\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() minDate: string | undefined;\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max: number | undefined;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min: number | undefined;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step: number | 'any' | undefined;\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   */\n  @Input() currency: BooleanInput | undefined;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   */\n  @Input() percentage: BooleanInput | undefined;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   */\n  @Input() adaptive: BooleanInput | undefined;\n\n  /**\n   * Input autocomplete attribute (Browser autocomplete)\n   * @default undefined\n   */\n  @Input() autocomplete: string | undefined;\n\n  /**\n   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\n   * If you need to retrieve items via API, can pass a function of Observable\n   * @default undefined\n   */\n  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string | number | null) => Observable<Array<AutocompleteItem>>);\n\n  /**\n   * Time span [ms] has passed without another source emission, to delay data filtering.\n   * Useful when the user is typing multiple letters\n   * @default 300 [ms]\n   */\n  @Input() autocompleteDebounceTime: number = 300;\n\n  /**\n   * Fired when the Autocomplete Item has been selected\n   */\n  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();\n\n  protected showAutocompletion = false;\n\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time' || this.type === 'color';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidIban')) {\n      return this._translateService.get('it.errors.iban-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });\n    }\n\n    return super.invalidMessage;\n  }\n\n  /** Observable da cui vengono emessi i risultati dell'auto completamento */\n  autocompleteResults$: Observable<{\n    searchedValue: string | number | null | undefined,\n    relatedEntries: Array<AutocompleteItem>\n  }> = new Observable();\n\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (isTrueBooleanInput(this.percentage)) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);\n        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n    this.autocompleteResults$ = this.getAutocompleteResults$();\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  incrementNumber(decrease: boolean = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = (this.step === 'any' ? 1 : (this.step ?? 1));\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n\n\n  /**\n   * Create the autocomplete list\n   */\n  private getAutocompleteResults$(): Observable<{ searchedValue: string | number | null | undefined, relatedEntries: Array<AutocompleteItem> }> {\n    if (this.type !== 'search') {\n      return of({ searchedValue: '', relatedEntries: [] });\n    }\n    return this.control.valueChanges.pipe(\n      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters\n      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value\n      switchMap(searchedValue => {\n        if (!this.autocompleteData) {\n          return of({ searchedValue, relatedEntries: <Array<AutocompleteItem>>[] });\n        }\n\n        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);\n        return autoCompleteData$.pipe(\n          map(autocompleteData => {\n            if (!searchedValue || typeof searchedValue === 'number') {\n              return { searchedValue, relatedEntries: [] };\n            }\n\n            const lowercaseValue = searchedValue.toLowerCase();\n            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));\n\n            return { searchedValue, relatedEntries };\n          })\n        );\n      })\n    );\n  }\n\n  onEntryClick(entry: AutocompleteItem, event: Event) {\n    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata\n    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.\n    if (!entry.link) {\n      event.preventDefault();\n    }\n\n    this.autocompleteSelectedEvent.next(entry);\n    this.control.setValue(entry.value);\n    this.showAutocompletion = false;\n  }\n\n  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {\n    return item.value;\n  }\n\n  onKeyDown() {\n    this.showAutocompletion = this.type === 'search';\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -14469,7 +14469,7 @@
         },
         {
             "name": "ItLanguageSwitcherComponent",
-            "id": "component-ItLanguageSwitcherComponent-01b16f5174c5407f534d3d69e5922a97805b4a58b6c7ffc36166405714ff52286a4a8db75a083a7a484a338d1dd5377080ebdc80c61e18ae3208a675fb2b8968",
+            "id": "component-ItLanguageSwitcherComponent-abdd6f4a792f70cec9cb50e02b9bfac7019cf39ef32f72a2164c94c07ea0af684341d629527bdc5b4ff2e300054cb6700b9c336d19d2ae12034815d05c44d600",
             "file": "projects/design-angular-kit/src/lib/components/utils/language-switcher/language-switcher.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -14515,6 +14515,17 @@
                     "line": 21,
                     "type": "Array<AvailableLanguage> | undefined",
                     "decorators": []
+                },
+                {
+                    "name": "mode",
+                    "defaultValue": "'link'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nDropdown mode\n",
+                    "description": "<p>Dropdown mode</p>\n",
+                    "line": 26,
+                    "type": "\"button\" | \"link\"",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -14526,7 +14537,7 @@
                     "type": "Observable<AvailableLanguage | undefined>",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 28,
                     "modifierKind": [
                         122
                     ]
@@ -14546,7 +14557,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nChange the current language\n",
@@ -14557,8 +14568,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1600,
-                                "end": 1604,
+                                "pos": 1677,
+                                "end": 1681,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14569,8 +14580,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 1594,
-                                "end": 1599,
+                                "pos": 1671,
+                                "end": 1676,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -14587,7 +14598,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -14620,7 +14631,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';\nimport { map, Observable, startWith } from 'rxjs';\nimport { TranslateModule, TranslateService } from '@ngx-translate/core';\nimport { AvailableLanguage } from '../../../interfaces/utils';\nimport { AsyncPipe, NgFor, NgIf } from '@angular/common';\nimport { ItDropdownModule } from '../../core/dropdown/dropdown.module';\n\n@Component({\n  standalone: true,\n  selector: 'it-language-switcher',\n  templateUrl: './language-switcher.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgFor, NgIf, AsyncPipe, TranslateModule, ItDropdownModule]\n})\nexport class ItLanguageSwitcherComponent implements OnInit {\n\n  /**\n   * The available languages\n   * @default The languages available through TranslateService (ngx-translate)\n   */\n  @Input() availableLanguages: Array<AvailableLanguage> | undefined;\n\n  protected currentLang$: Observable<AvailableLanguage | undefined>;\n\n  constructor(\n    private readonly translateService: TranslateService\n  ) {\n    this.currentLang$ = translateService.onLangChange.pipe(\n      startWith({ lang: translateService.currentLang }),\n      map(event => this.availableLanguages?.find(l => l.code === event.lang))\n    );\n  }\n\n  ngOnInit(): void {\n    if (!this.availableLanguages) {\n      this.availableLanguages = this.translateService.getLangs().map(lang => ({\n        code: lang,\n        label: lang,\n        ...(lang === 'it' && { label: 'ITA' }),\n        ...(lang === 'en' && { label: 'ENG' })\n      }));\n    }\n  }\n\n  /**\n   * Change the current language\n   * @param lang the language code\n   */\n  public changeLanguage(lang: string): void {\n    this.translateService.use(lang);\n  }\n\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';\nimport { map, Observable, startWith } from 'rxjs';\nimport { TranslateModule, TranslateService } from '@ngx-translate/core';\nimport { AvailableLanguage } from '../../../interfaces/utils';\nimport { AsyncPipe, NgFor, NgIf } from '@angular/common';\nimport { ItDropdownModule } from '../../core/dropdown/dropdown.module';\n\n@Component({\n  standalone: true,\n  selector: 'it-language-switcher',\n  templateUrl: './language-switcher.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgFor, NgIf, AsyncPipe, TranslateModule, ItDropdownModule]\n})\nexport class ItLanguageSwitcherComponent implements OnInit {\n\n  /**\n   * The available languages\n   * @default The languages available through TranslateService (ngx-translate)\n   */\n  @Input() availableLanguages: Array<AvailableLanguage> | undefined;\n\n  /**\n   * Dropdown mode\n   */\n  @Input() mode: 'button' | 'link' = 'link';\n\n  protected currentLang$: Observable<AvailableLanguage | undefined>;\n\n  constructor(\n    private readonly translateService: TranslateService\n  ) {\n    this.currentLang$ = translateService.onLangChange.pipe(\n      startWith({ lang: translateService.currentLang }),\n      map(event => this.availableLanguages?.find(l => l.code === event.lang))\n    );\n  }\n\n  ngOnInit(): void {\n    if (!this.availableLanguages) {\n      this.availableLanguages = this.translateService.getLangs().map(lang => ({\n        code: lang,\n        label: lang,\n        ...(lang === 'it' && { label: 'ITA' }),\n        ...(lang === 'en' && { label: 'ENG' })\n      }));\n    }\n  }\n\n  /**\n   * Change the current language\n   * @param lang the language code\n   */\n  public changeLanguage(lang: string): void {\n    this.translateService.use(lang);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -14637,7 +14648,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 23,
+                "line": 28,
                 "jsdoctags": [
                     {
                         "name": "translateService",
@@ -14653,7 +14664,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<it-dropdown>\n  <ng-container button>\n    <span class=\"visually-hidden\">{{'it.utils.selected' | translate: { lang: (currentLang$ | async)?.label } }}</span>\n    <span>{{(currentLang$ | async)?.label || ('it.utils.select-language' | translate)}}</span>\n  </ng-container>\n\n  <ng-container *ngIf=\"availableLanguages\" list>\n    <it-dropdown-item *ngFor=\"let lang of availableLanguages\" (click)=\"changeLanguage(lang.code)\"\n                      [active]=\"lang.code === (currentLang$ | async)?.code\">\n      {{lang.label}}\n      <span class=\"visually-hidden\" *ngIf=\"lang.code === (currentLang$ | async)?.code\">\n        {{'it.utils.selected' | translate}}\n      </span>\n    </it-dropdown-item>\n  </ng-container>\n</it-dropdown>\n"
+            "templateData": "<it-dropdown [mode]=\"mode\">\n  <ng-container button>\n    <span class=\"visually-hidden\">{{'it.utils.selected' | translate: { lang: (currentLang$ | async)?.label } }}</span>\n    <span>{{(currentLang$ | async)?.label || ('it.utils.select-language' | translate)}}</span>\n  </ng-container>\n\n  <ng-container *ngIf=\"availableLanguages\" list>\n    <it-dropdown-item *ngFor=\"let lang of availableLanguages\" (click)=\"changeLanguage(lang.code)\"\n                      [active]=\"lang.code === (currentLang$ | async)?.code\">\n      {{lang.label}}\n      <span class=\"visually-hidden\" *ngIf=\"lang.code === (currentLang$ | async)?.code\">\n        {{'it.utils.selected' | translate}}\n      </span>\n    </it-dropdown-item>\n  </ng-container>\n</it-dropdown>\n"
         },
         {
             "name": "ItLinkComponent",
@@ -15395,7 +15406,7 @@
         },
         {
             "name": "ItModalComponent",
-            "id": "component-ItModalComponent-17f1696eba612845a7bf9a7597f2f6e71ddededf3f47651e920d2f748c685593159c61af10026725c634bfb4cb106abfbe6af3661d042904bf63c5324741daf1",
+            "id": "component-ItModalComponent-178e5a196de14ce07e3ee70321e0df9df09987069bfd793b958509edac69ec8315dbe05ac9325922eb1d3ff415b49dedcf7f5cc156ad161f2fab5027ba69dee4",
             "file": "projects/design-angular-kit/src/lib/components/core/modal/modal.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -15421,15 +15432,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1087,
-                            "end": 1105,
+                            "pos": 1132,
+                            "end": 1150,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1088,
-                                "end": 1095,
+                                "pos": 1133,
+                                "end": 1140,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15441,7 +15452,7 @@
                     ],
                     "rawdescription": "\n\nTo correctly format the contents of the modal with icon\n",
                     "description": "<p>To correctly format the contents of the modal with icon</p>\n",
-                    "line": 42,
+                    "line": 43,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
@@ -15451,15 +15462,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1949,
-                            "end": 1971,
+                            "pos": 1994,
+                            "end": 2016,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1950,
-                                "end": 1957,
+                                "pos": 1995,
+                                "end": 2002,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15471,8 +15482,39 @@
                     ],
                     "rawdescription": "\n\nModal alignment\n- <b>centered</b>: to vertically center the modal\n- <b>left</b>: to left-align the modal\n- <b>right</b>: to right-align the modal\n",
                     "description": "<p>Modal alignment</p>\n<ul>\n<li><b>centered</b>: to vertically center the modal</li>\n<li><b>left</b>: to left-align the modal</li>\n<li><b>right</b>: to right-align the modal</li>\n</ul>\n",
-                    "line": 75,
+                    "line": 76,
                     "type": "\"centered\" | \"left\" | \"right\" | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "backdrop",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 2331,
+                            "end": 2348,
+                            "flags": 8421376,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 330,
+                            "tagName": {
+                                "pos": 2332,
+                                "end": 2339,
+                                "flags": 8421376,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nIncludes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn’t close the modal when clicked.\n",
+                    "description": "<p>Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn’t close the modal when clicked.</p>\n",
+                    "line": 88,
+                    "type": "\"static\" | BooleanInput",
                     "decorators": []
                 },
                 {
@@ -15482,15 +15524,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 949,
-                            "end": 966,
+                            "pos": 994,
+                            "end": 1011,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 950,
-                                "end": 957,
+                                "pos": 995,
+                                "end": 1002,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15502,7 +15544,7 @@
                     ],
                     "rawdescription": "\n\nShow/Hide close button on header\n",
                     "description": "<p>Show/Hide close button on header</p>\n",
-                    "line": 36,
+                    "line": 37,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -15512,15 +15554,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1235,
-                            "end": 1253,
+                            "pos": 1280,
+                            "end": 1298,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1236,
-                                "end": 1243,
+                                "pos": 1281,
+                                "end": 1288,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15532,7 +15574,7 @@
                     ],
                     "rawdescription": "\n\nTo correctly format the contents of the modal with Link List\n",
                     "description": "<p>To correctly format the contents of the modal with Link List</p>\n",
-                    "line": 48,
+                    "line": 49,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
@@ -15543,15 +15585,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1712,
-                            "end": 1729,
+                            "pos": 1757,
+                            "end": 1774,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1713,
-                                "end": 1720,
+                                "pos": 1758,
+                                "end": 1765,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15563,7 +15605,38 @@
                     ],
                     "rawdescription": "\n\nTo have modals that appear with fades\n",
                     "description": "<p>To have modals that appear with fades</p>\n",
-                    "line": 66,
+                    "line": 67,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "focus",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 2467,
+                            "end": 2484,
+                            "flags": 8421376,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 330,
+                            "tagName": {
+                                "pos": 2468,
+                                "end": 2475,
+                                "flags": 8421376,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nPuts the focus on the modal when initialized.\n",
+                    "description": "<p>Puts the focus on the modal when initialized.</p>\n",
+                    "line": 94,
                     "type": "BooleanInput",
                     "decorators": []
                 },
@@ -15573,15 +15646,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 2217,
-                            "end": 2235,
+                            "pos": 2722,
+                            "end": 2740,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 2218,
-                                "end": 2225,
+                                "pos": 2723,
+                                "end": 2730,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15593,8 +15666,49 @@
                     ],
                     "rawdescription": "\n\nTo better distinguish the footer element with a shadow\n",
                     "description": "<p>To better distinguish the footer element with a shadow</p>\n",
-                    "line": 87,
+                    "line": 106,
                     "type": "BooleanInput | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "keyboard",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 2588,
+                            "end": 2605,
+                            "flags": 8421376,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 330,
+                            "tagName": {
+                                "pos": 2589,
+                                "end": 2596,
+                                "flags": 8421376,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>true</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nCloses the modal when escape key is pressed.\n",
+                    "description": "<p>Closes the modal when escape key is pressed.</p>\n",
+                    "line": 100,
+                    "type": "BooleanInput",
+                    "decorators": []
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nModal options\n",
+                    "description": "<p>Modal options</p>\n",
+                    "line": 111,
+                    "type": "Partial<BSModal.Options>",
                     "decorators": []
                 },
                 {
@@ -15603,15 +15717,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1393,
-                            "end": 1411,
+                            "pos": 1438,
+                            "end": 1456,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1394,
-                                "end": 1401,
+                                "pos": 1439,
+                                "end": 1446,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15623,7 +15737,7 @@
                     ],
                     "rawdescription": "\n\nModal type Popconfirm can be used for short confirmation messages.\n",
                     "description": "<p>Modal type Popconfirm can be used for short confirmation messages.</p>\n",
-                    "line": 54,
+                    "line": 55,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
@@ -15633,15 +15747,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1587,
-                            "end": 1605,
+                            "pos": 1632,
+                            "end": 1650,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1588,
-                                "end": 1595,
+                                "pos": 1633,
+                                "end": 1640,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15653,7 +15767,7 @@
                     ],
                     "rawdescription": "\n\nYou can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible\n",
                     "description": "<p>You can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible</p>\n",
-                    "line": 60,
+                    "line": 61,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
@@ -15663,15 +15777,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 2071,
-                            "end": 2093,
+                            "pos": 2116,
+                            "end": 2138,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 2072,
-                                "end": 2079,
+                                "pos": 2117,
+                                "end": 2124,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -15683,7 +15797,7 @@
                     ],
                     "rawdescription": "\n\nThe modal size\n",
                     "description": "<p>The modal size</p>\n",
-                    "line": 81,
+                    "line": 82,
                     "type": "\"sm\" | \"lg\" | \"xl\" | undefined",
                     "decorators": []
                 },
@@ -15710,7 +15824,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThis event fires when the modal has finished hiding from the user (it will wait for CSS transitions to complete).\n",
                     "description": "<p>This event fires when the modal has finished hiding from the user (it will wait for CSS transitions to complete).</p>\n",
-                    "line": 107,
+                    "line": 131,
                     "type": "EventEmitter<Event>"
                 },
                 {
@@ -15720,7 +15834,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThis event is raised immediately when the instance method hide has been called.\n",
                     "description": "<p>This event is raised immediately when the instance method hide has been called.</p>\n",
-                    "line": 102,
+                    "line": 126,
                     "type": "EventEmitter<Event>"
                 },
                 {
@@ -15730,7 +15844,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThis event is fired when the modal is displayed, its background is static and a click outside the modal or a press\nof the esc key occurs and data-bs-keyboard is set to false.\n",
                     "description": "<p>This event is fired when the modal is displayed, its background is static and a click outside the modal or a press\nof the esc key occurs and data-bs-keyboard is set to false.</p>\n",
-                    "line": 113,
+                    "line": 137,
                     "type": "EventEmitter<Event>"
                 },
                 {
@@ -15740,7 +15854,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThis event fires immediately when the instance method show is called.\n",
                     "description": "<p>This event fires immediately when the instance method show is called.</p>\n",
-                    "line": 92,
+                    "line": 116,
                     "type": "EventEmitter<Event>"
                 },
                 {
@@ -15750,7 +15864,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThis event fires when the modal has been made visible to the user (it will wait for CSS transitions to complete).\n",
                     "description": "<p>This event fires when the modal has been made visible to the user (it will wait for CSS transitions to complete).</p>\n",
-                    "line": 97,
+                    "line": 121,
                     "type": "EventEmitter<Event>"
                 },
                 {
@@ -15774,7 +15888,7 @@
                     "type": "Modal",
                     "optional": true,
                     "description": "",
-                    "line": 115,
+                    "line": 139,
                     "modifierKind": [
                         121
                     ]
@@ -15786,7 +15900,7 @@
                     "type": "ElementRef<HTMLDivElement>",
                     "optional": true,
                     "description": "",
-                    "line": 117,
+                    "line": 141,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -15892,7 +16006,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 205,
+                    "line": 234,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nDestroys the modal of an element.\n",
@@ -15907,7 +16021,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 198,
+                    "line": 227,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nManually reposition the modal if the height of the modal changes when it is opened (in case a scroll bar appears).\n",
@@ -15922,7 +16036,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 191,
+                    "line": 220,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nManually hide a modal. Returns to the caller before the modal has actually been hidden\n",
@@ -15937,7 +16051,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 119,
+                    "line": 143,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -15953,7 +16067,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 184,
+                    "line": 213,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nManually open a modal. Returns to the caller before the modal has actually been displayed\n",
@@ -15968,7 +16082,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 177,
+                    "line": 206,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nManually activate/deactivate a modal. Returns to the caller before the modal has actually been shown or hidden\n",
@@ -16058,7 +16172,7 @@
             "description": "<p>Modal windows</p>\n",
             "rawdescription": "\n\nModal windows\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild\n} from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { Modal } from 'bootstrap-italia';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { NgIf } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\n\n/**\n * Modal windows\n * @description To show featured content, notifications to users, or personalized content.\n */\n@Component({\n  standalone: true,\n  selector: 'it-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss'],\n  exportAs: 'itModal',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, TranslateModule]\n})\nexport class ItModalComponent extends ItAbstractComponent implements AfterViewInit {\n\n  /**\n   * Show/Hide close button on header\n   * @default true\n   */\n  @Input() closeButton: BooleanInput = true;\n\n  /**\n   * To correctly format the contents of the modal with icon\n   * @default false\n   */\n  @Input() alertModal: BooleanInput | undefined;\n\n  /**\n   * To correctly format the contents of the modal with Link List\n   * @default false\n   */\n  @Input() dialogLinkList: BooleanInput | undefined;\n\n  /**\n   * Modal type Popconfirm can be used for short confirmation messages.\n   * @default false\n   */\n  @Input() popconfirm: BooleanInput | undefined;\n\n  /**\n   * You can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible\n   * @default false\n   */\n  @Input() scrollable: BooleanInput | undefined;\n\n  /**\n   * To have modals that appear with fades\n   * @default true\n   */\n  @Input() fade?: BooleanInput = true;\n\n  /**\n   * Modal alignment\n   * - <b>centered</b>: to vertically center the modal\n   * - <b>left</b>: to left-align the modal\n   * - <b>right</b>: to right-align the modal\n   * @default undefined\n   */\n  @Input() alignment: 'centered' | 'left' | 'right' | undefined;\n\n  /**\n   * The modal size\n   * @default undefined\n   */\n  @Input() size: 'sm' | 'lg' | 'xl' | undefined;\n\n  /**\n   * To better distinguish the footer element with a shadow\n   * @default false\n   */\n  @Input() footerShadow: BooleanInput | undefined;\n\n  /**\n   * This event fires immediately when the instance method show is called.\n   */\n  @Output() public showEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event fires when the modal has been made visible to the user (it will wait for CSS transitions to complete).\n   */\n  @Output() public shownEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event is raised immediately when the instance method hide has been called.\n   */\n  @Output() public hideEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event fires when the modal has finished hiding from the user (it will wait for CSS transitions to complete).\n   */\n  @Output() public hiddenEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event is fired when the modal is displayed, its background is static and a click outside the modal or a press\n   * of the esc key occurs and data-bs-keyboard is set to false.\n   */\n  @Output() public hidePreventedEvent: EventEmitter<Event> = new EventEmitter();\n\n  private modal?: Modal;\n\n  @ViewChild('modalElement', { static: false }) private modalElement?: ElementRef<HTMLDivElement>;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    this._renderer.removeAttribute(this._elementRef.nativeElement, 'title');\n\n    if (this.modalElement) {\n      const element = this.modalElement.nativeElement;\n      this.modal = Modal.getOrCreateInstance(element);\n\n      element.addEventListener('show.bs.modal', event => this.showEvent.emit(event));\n      element.addEventListener('shown.bs.modal', event => this.shownEvent.emit(event));\n      element.addEventListener('hide.bs.modal', event => this.hideEvent.emit(event));\n      element.addEventListener('hidden.bs.modal', event => this.hiddenEvent.emit(event));\n      element.addEventListener('hidePrevented.bs.modal', event => this.hidePreventedEvent.emit(event));\n    }\n  }\n\n  protected get isCloseButton(): boolean {\n    return isTrueBooleanInput(this.closeButton);\n  }\n\n  protected get isFooterShadow(): boolean {\n    return isTrueBooleanInput(this.footerShadow);\n  }\n\n  protected get modalClass(): string {\n    let modalClass = 'modal';\n    if (isTrueBooleanInput(this.fade)) {\n      modalClass += ` fade`;\n    }\n    if (isTrueBooleanInput(this.alertModal)) {\n      modalClass += ` alert-modal`;\n    }\n    if (isTrueBooleanInput(this.dialogLinkList)) {\n      modalClass += ` it-dialog-link-list`;\n    }\n    if (isTrueBooleanInput(this.popconfirm)) {\n      modalClass += ` popconfirm-modal`;\n    }\n    if (isTrueBooleanInput(this.scrollable)) {\n      modalClass += ` it-dialog-scrollable`;\n    }\n    return modalClass;\n  }\n\n  protected get dialogClass(): string {\n    let dialogClass = 'modal-dialog';\n    if (this.alignment) {\n      dialogClass += ` modal-dialog-${this.alignment}`;\n    }\n    if (this.size) {\n      dialogClass += ` modal-${this.size}`;\n    }\n    return dialogClass;\n  }\n\n  /**\n   * Manually activate/deactivate a modal. Returns to the caller before the modal has actually been shown or hidden\n   */\n  public toggle(): void {\n    this.modal?.toggle();\n  }\n\n  /**\n   * Manually open a modal. Returns to the caller before the modal has actually been displayed\n   */\n  public show(): void {\n    this.modal?.show();\n  }\n\n  /**\n   * Manually hide a modal. Returns to the caller before the modal has actually been hidden\n   */\n  public hide(): void {\n    this.modal?.hide();\n  }\n\n  /**\n   * Manually reposition the modal if the height of the modal changes when it is opened (in case a scroll bar appears).\n   */\n  public handleUpdate(): void {\n    this.modal?.handleUpdate();\n  }\n\n  /**\n   * Destroys the modal of an element.\n   */\n  public dispose(): void {\n    this.modal?.dispose();\n  }\n\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild\n} from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { Modal } from 'bootstrap-italia';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { NgIf } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { Modal as BSModal } from 'bootstrap'\n\n/**\n * Modal windows\n * @description To show featured content, notifications to users, or personalized content.\n */\n@Component({\n  standalone: true,\n  selector: 'it-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss'],\n  exportAs: 'itModal',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, TranslateModule]\n})\nexport class ItModalComponent extends ItAbstractComponent implements AfterViewInit {\n\n  /**\n   * Show/Hide close button on header\n   * @default true\n   */\n  @Input() closeButton: BooleanInput = true;\n\n  /**\n   * To correctly format the contents of the modal with icon\n   * @default false\n   */\n  @Input() alertModal: BooleanInput | undefined;\n\n  /**\n   * To correctly format the contents of the modal with Link List\n   * @default false\n   */\n  @Input() dialogLinkList: BooleanInput | undefined;\n\n  /**\n   * Modal type Popconfirm can be used for short confirmation messages.\n   * @default false\n   */\n  @Input() popconfirm: BooleanInput | undefined;\n\n  /**\n   * You can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible\n   * @default false\n   */\n  @Input() scrollable: BooleanInput | undefined;\n\n  /**\n   * To have modals that appear with fades\n   * @default true\n   */\n  @Input() fade?: BooleanInput = true;\n\n  /**\n   * Modal alignment\n   * - <b>centered</b>: to vertically center the modal\n   * - <b>left</b>: to left-align the modal\n   * - <b>right</b>: to right-align the modal\n   * @default undefined\n   */\n  @Input() alignment: 'centered' | 'left' | 'right' | undefined;\n\n  /**\n   * The modal size\n   * @default undefined\n   */\n  @Input() size: 'sm' | 'lg' | 'xl' | undefined;\n\n  /**\n   * Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn’t close the modal when clicked.\n   * @default true\n   */\n  @Input() backdrop: 'static' | BooleanInput = true;\n\n  /**\n   * Puts the focus on the modal when initialized.\n   * @default true\n   */\n  @Input() focus: BooleanInput = true;\n\n  /**\n   * Closes the modal when escape key is pressed.\n   * @default true\n   */\n  @Input() keyboard: BooleanInput = true;\n\n  /**\n   * To better distinguish the footer element with a shadow\n   * @default false\n   */\n  @Input() footerShadow: BooleanInput | undefined;\n\n  /**\n   * Modal options\n   */\n  @Input() options?: Partial<BSModal.Options>\n\n  /**\n   * This event fires immediately when the instance method show is called.\n   */\n  @Output() public showEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event fires when the modal has been made visible to the user (it will wait for CSS transitions to complete).\n   */\n  @Output() public shownEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event is raised immediately when the instance method hide has been called.\n   */\n  @Output() public hideEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event fires when the modal has finished hiding from the user (it will wait for CSS transitions to complete).\n   */\n  @Output() public hiddenEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event is fired when the modal is displayed, its background is static and a click outside the modal or a press\n   * of the esc key occurs and data-bs-keyboard is set to false.\n   */\n  @Output() public hidePreventedEvent: EventEmitter<Event> = new EventEmitter();\n\n  private modal?: Modal;\n\n  @ViewChild('modalElement', { static: false }) private modalElement?: ElementRef<HTMLDivElement>;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    this._renderer.removeAttribute(this._elementRef.nativeElement, 'title');\n\n    if (this.modalElement) {\n      const element = this.modalElement.nativeElement;\n      this.modal = Modal.getOrCreateInstance(element, {\n        ...this.options,\n        backdrop: this.backdrop === 'static' ? 'static' : isTrueBooleanInput(this.backdrop),\n        focus: isTrueBooleanInput(this.focus),\n        keyboard: isTrueBooleanInput(this.keyboard)\n      });\n\n      element.addEventListener('show.bs.modal', event => this.showEvent.emit(event));\n      element.addEventListener('shown.bs.modal', event => this.shownEvent.emit(event));\n      element.addEventListener('hide.bs.modal', event => this.hideEvent.emit(event));\n      element.addEventListener('hidden.bs.modal', event => this.hiddenEvent.emit(event));\n      element.addEventListener('hidePrevented.bs.modal', event => this.hidePreventedEvent.emit(event));\n    }\n  }\n\n  protected get isCloseButton(): boolean {\n    return isTrueBooleanInput(this.closeButton);\n  }\n\n  protected get isFooterShadow(): boolean {\n    return isTrueBooleanInput(this.footerShadow);\n  }\n\n  protected get modalClass(): string {\n    let modalClass = 'modal';\n    if (isTrueBooleanInput(this.fade)) {\n      modalClass += ` fade`;\n    }\n    if (isTrueBooleanInput(this.alertModal)) {\n      modalClass += ` alert-modal`;\n    }\n    if (isTrueBooleanInput(this.dialogLinkList)) {\n      modalClass += ` it-dialog-link-list`;\n    }\n    if (isTrueBooleanInput(this.popconfirm)) {\n      modalClass += ` popconfirm-modal`;\n    }\n    if (isTrueBooleanInput(this.scrollable)) {\n      modalClass += ` it-dialog-scrollable`;\n    }\n    return modalClass;\n  }\n\n  protected get dialogClass(): string {\n    let dialogClass = 'modal-dialog';\n    if (this.alignment) {\n      dialogClass += ` modal-dialog-${this.alignment}`;\n    }\n    if (this.size) {\n      dialogClass += ` modal-${this.size}`;\n    }\n    return dialogClass;\n  }\n\n  /**\n   * Manually activate/deactivate a modal. Returns to the caller before the modal has actually been shown or hidden\n   */\n  public toggle(): void {\n    this.modal?.toggle();\n  }\n\n  /**\n   * Manually open a modal. Returns to the caller before the modal has actually been displayed\n   */\n  public show(): void {\n    this.modal?.show();\n  }\n\n  /**\n   * Manually hide a modal. Returns to the caller before the modal has actually been hidden\n   */\n  public hide(): void {\n    this.modal?.hide();\n  }\n\n  /**\n   * Manually reposition the modal if the height of the modal changes when it is opened (in case a scroll bar appears).\n   */\n  public handleUpdate(): void {\n    this.modal?.handleUpdate();\n  }\n\n  /**\n   * Destroys the modal of an element.\n   */\n  public dispose(): void {\n    this.modal?.dispose();\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -16078,7 +16192,7 @@
                         "name": "isCloseButton",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 135
+                        "line": 164
                     }
                 },
                 "isFooterShadow": {
@@ -16087,7 +16201,7 @@
                         "name": "isFooterShadow",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 139
+                        "line": 168
                     }
                 },
                 "modalClass": {
@@ -16096,7 +16210,7 @@
                         "name": "modalClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 143
+                        "line": 172
                     }
                 },
                 "dialogClass": {
@@ -16105,7 +16219,7 @@
                         "name": "dialogClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 163
+                        "line": 192
                     }
                 }
             },
@@ -17519,7 +17633,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -17701,8 +17815,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17713,8 +17827,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17759,8 +17873,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17771,8 +17885,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17783,8 +17897,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17796,8 +17910,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17808,8 +17922,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17854,8 +17968,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17866,8 +17980,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17878,8 +17992,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17891,8 +18005,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17903,8 +18017,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18643,7 +18757,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -18809,8 +18923,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18821,8 +18935,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18867,8 +18981,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18879,8 +18993,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18891,8 +19005,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18904,8 +19018,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18916,8 +19030,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18962,8 +19076,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18974,8 +19088,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18986,8 +19100,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18999,8 +19113,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19011,8 +19125,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19593,7 +19707,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -19866,8 +19980,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19878,8 +19992,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19924,8 +20038,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19936,8 +20050,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19948,8 +20062,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19961,8 +20075,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19973,8 +20087,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20019,8 +20133,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20031,8 +20145,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20043,8 +20157,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20056,8 +20170,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20068,8 +20182,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20454,7 +20568,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -20683,8 +20797,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20695,8 +20809,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20741,8 +20855,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20753,8 +20867,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20765,8 +20879,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20778,8 +20892,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20790,8 +20904,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20836,8 +20950,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20848,8 +20962,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20860,8 +20974,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20873,8 +20987,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -20885,8 +20999,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21310,7 +21424,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -21566,8 +21680,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21578,8 +21692,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21624,8 +21738,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21636,8 +21750,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21648,8 +21762,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21661,8 +21775,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21673,8 +21787,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21719,8 +21833,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21731,8 +21845,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21743,8 +21857,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21756,8 +21870,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21768,8 +21882,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -22051,7 +22165,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"select-wrapper\">\n  <label *ngIf=\"label\" [for]=\"id\">{{label}}</label>\n  <select [id]=\"id\" [formControl]=\"control\"\n          [class.is-invalid]=\"isInvalid\"\n          [class.is-valid]=\"isValid\"\n          (blur)=\"markAsTouched()\"\n          [attr.aria-describedby]=\"id + '-description'\">\n\n    <option *ngIf=\"defaultOption\" [value]=\"null\" disabled selected>\n      {{defaultOption}}\n    </option>\n\n    <ng-content></ng-content>\n\n    <ng-container *ngIf=\"options\">\n      <option *ngFor=\"let option of options\" [disabled]=\"optionIsDisabled(option)\" [value]=\"option.value\">\n        {{option.text ?? option.value}}\n      </option>\n    </ng-container>\n\n    <ng-container *ngIf=\"groups\">\n      <optgroup *ngFor=\"let group of groups\" [label]=\"group.label\">\n        <option *ngFor=\"let option of group.options\" [disabled]=\"optionIsDisabled(option)\" [value]=\"option.value\">\n          {{option.text ?? option.value}}\n        </option>\n      </optgroup>\n    </ng-container>\n  </select>\n  <small *ngIf=\"description\" [id]=\"id + '-description'\" class=\"form-text\">{{description}}</small>\n\n  <div *ngIf=\"isInvalid\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"select-wrapper\">\n  <label *ngIf=\"label\" [for]=\"id\">{{label}}</label>\n  <select [id]=\"id\" [formControl]=\"control\"\n          [class.is-invalid]=\"isInvalid\"\n          [class.is-valid]=\"isValid\"\n          (blur)=\"markAsTouched()\"\n          [attr.aria-describedby]=\"id + '-description'\">\n\n    <option *ngIf=\"defaultOption\" [ngValue]=\"null\" disabled selected>\n      {{defaultOption}}\n    </option>\n\n    <ng-content></ng-content>\n\n    <ng-container *ngIf=\"options\">\n      <option *ngFor=\"let option of options\" [disabled]=\"optionIsDisabled(option)\" [ngValue]=\"option.value\">\n        {{option.text ?? option.value}}\n      </option>\n    </ng-container>\n\n    <ng-container *ngIf=\"groups\">\n      <optgroup *ngFor=\"let group of groups\" [label]=\"group.label\">\n        <option *ngFor=\"let option of group.options\" [disabled]=\"optionIsDisabled(option)\" [ngValue]=\"option.value\">\n          {{option.text ?? option.value}}\n        </option>\n      </optgroup>\n    </ng-container>\n  </select>\n  <small *ngIf=\"description\" [id]=\"id + '-description'\" class=\"form-text\">{{description}}</small>\n\n  <div *ngIf=\"isInvalid\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</div>\n"
         },
         {
             "name": "ItSpinnerComponent",
@@ -24277,7 +24391,7 @@
                     "name": "control",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "FormControl",
+                    "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
                     "line": 36,
@@ -24427,8 +24541,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4469,
-                                "end": 4479,
+                                "pos": 4472,
+                                "end": 4482,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24439,8 +24553,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4463,
-                                "end": 4468,
+                                "pos": 4466,
+                                "end": 4471,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24485,8 +24599,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5732,
-                                "end": 5741,
+                                "pos": 5735,
+                                "end": 5744,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24497,8 +24611,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5726,
-                                "end": 5731,
+                                "pos": 5729,
+                                "end": 5734,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24509,8 +24623,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5785,
-                                "end": 5789,
+                                "pos": 5788,
+                                "end": 5792,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24522,8 +24636,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5779,
-                                "end": 5784,
+                                "pos": 5782,
+                                "end": 5787,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24534,8 +24648,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5928,
-                                "end": 5935,
+                                "pos": 5931,
+                                "end": 5938,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24580,8 +24694,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5141,
-                                "end": 5150,
+                                "pos": 5144,
+                                "end": 5153,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24592,8 +24706,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5135,
-                                "end": 5140,
+                                "pos": 5138,
+                                "end": 5143,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24604,8 +24718,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5194,
-                                "end": 5198,
+                                "pos": 5197,
+                                "end": 5201,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24617,8 +24731,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5188,
-                                "end": 5193,
+                                "pos": 5191,
+                                "end": 5196,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24629,8 +24743,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5337,
-                                "end": 5344,
+                                "pos": 5340,
+                                "end": 5347,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -27267,7 +27381,7 @@
                 "name": "AlertColor",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"info\" | \"success\" | \"warning\" | \"danger\"",
+                "rawtype": "\"primary\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
                 "file": "projects/design-angular-kit/src/lib/interfaces/core.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -28012,7 +28126,7 @@
                     "name": "AlertColor",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "\"info\" | \"success\" | \"warning\" | \"danger\"",
+                    "rawtype": "\"primary\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
                     "file": "projects/design-angular-kit/src/lib/interfaces/core.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -28530,8 +28644,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItModalComponent",
-                "coveragePercent": 77,
-                "coverageCount": "24/31",
+                "coveragePercent": 80,
+                "coverageCount": "28/35",
                 "status": "very-good"
             },
             {
@@ -28840,8 +28954,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItLanguageSwitcherComponent",
-                "coveragePercent": 33,
-                "coverageCount": "2/6",
+                "coveragePercent": 42,
+                "coverageCount": "3/7",
                 "status": "medium"
             },
             {
