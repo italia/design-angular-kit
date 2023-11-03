@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ItAlertComponent } from './alert.component';
-import { tb_base } from '../../../../test';
 import { By } from '@angular/platform-browser';
 import { Component, Input } from '@angular/core';
 import { AlertColor } from '../../../interfaces/core';
@@ -17,12 +16,14 @@ import { AlertColor } from '../../../interfaces/core';
   }
 )
 class UnitTestComponent {
+
   @Input() set selectedColor(value: AlertColor | undefined) { this._selectedColor = value; }
   get selectedColor(): AlertColor | undefined { return this._selectedColor; }
   private _selectedColor: AlertColor | undefined = undefined;
 
   @Input() set isDismissible(value: boolean) { this._dismissible = value; }
   get isDismissible(): boolean { return this._dismissible; }
+
   private _dismissible: boolean = false;
 }
 
