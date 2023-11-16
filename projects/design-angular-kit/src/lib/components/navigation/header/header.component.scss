@@ -1,3 +1,9 @@
 .nav-mobile:has(.link-list-wrapper:empty) {
   display: none;
 }
+
+.it-header-wrapper .disabled-link {
+    pointer-events: none;
+    cursor: default;
+    color: #999;
+}

@@ -92,6 +92,7 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
   get buttonClass(): string {
     let btnClass = 'btn dropdown-toggle';
     if (this.color) {
+      console.log('this.color', this.color)
       btnClass += ` btn-${this.color}`;
     } else {
       btnClass += ` btn-dropdown`;

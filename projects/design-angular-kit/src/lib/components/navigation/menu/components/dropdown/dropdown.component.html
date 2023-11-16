@@ -1,0 +1,11 @@
+<div class="link-list-wrapper">
+	<div class="link-list-heading">{{ dropdown.title| translate}}</div>
+	<ul class="link-list">
+		<li *ngFor="let i of dropdown.items">
+			<a *ngIf="i.type == 'link'" class="dropdown-item list-item" [class.active]="false" href="{{i.link}}">
+				<span>{{ i.label| translate}}</span>
+			</a>
+			<span *ngIf="i.type == 'divider'" class="divider"></span>
+		</li>
+	</ul>
+</div>

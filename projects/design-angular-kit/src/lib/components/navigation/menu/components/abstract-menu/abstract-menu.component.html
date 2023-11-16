@@ -1,0 +1,73 @@
+<ul *ngIf="menuConfig.type == 'icon-list'">
+  <li *ngFor="let i of menuConfig.items">
+    <a *ngIf="isIcon(i)" [href]="i.link" target="_blank">
+      <it-icon [name]="i.icon"></it-icon>
+    </a>
+    <span *ngIf="isText(i)">{{ i.label |translate}}</span>
+  </li>
+</ul>
+
+<nav *ngIf="menuConfig.type == 'link-list'" aria-label="{{menuConfig.label| translate}}">
+  <a class="it-opener d-lg-none" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false"
+     aria-controls="menu4">
+    <span>{{slimTitle}}</span>
+    <it-icon name="expand"></it-icon>
+  </a>
+  <div class="link-list-wrapper collapse">
+    <ul class="link-list">
+      <li *ngFor="let i of menuConfig.items">
+        <a class="list-item"
+           [attr.href]="isLinkDisabled(i.disabled) ? null : i.link"
+           [attr.aria-disabled]="isLinkDisabled(i.disabled) ? true : null"
+           [class.disabled-link]="isLinkDisabled(i.disabled)"
+           [class.active]="isLinkActive(i.link)"
+        >{{ i.label }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav *ngIf="menuConfig.type == 'navbar'" aria-label="{{menuConfig.label| translate}}"
+     class="navbar navbar-expand-lg has-megamenu">
+  <button class="custom-navbar-toggler" type="button" aria-controls="nav1" aria-expanded="false"
+          aria-label="{{('it.navigation.show'| translate)+'/'+('it.navigation.hide-navigation'| translate)}}"
+          data-bs-toggle="navbarcollapsible" data-bs-target="#nav1">
+    <it-icon name="burger"></it-icon>
+  </button>
+  <div class="navbar-collapsable" id="nav1" style="display: none;">
+    <div class="overlay" style="display: none;"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button">
+        <span class="visually-hidden">{{'it.navigation.hide-navigation'| translate}}</span>
+        <it-icon name="close-big"></it-icon>
+      </button>
+    </div>
+    <div class="menu-wrapper">
+      <ul class="navbar-nav">
+        <li *ngFor="let i of menuConfig.items" class="nav-item"
+            [class.dropdown]="isMegamenu(i) || isDropdown(i)" [class.megamenu]="isMegamenu(i)">
+          <a *ngIf="isLink(i)" class="nav-link" href="{{i.link}}" aria-disabled="{{ i.disabled }}"
+             [class.active]="false" [class.disabled]="i.disabled">
+            <span>{{ i.label| translate}}</span>
+          </a>
+          <a *ngIf="isMegamenu(i) || isDropdown(i)" class="nav-link dropdown-toggle" href="#"
+             aria-disabled="{{ i.disabled }}" [class.active]="false" [class.disabled]="i.disabled"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            <span>{{ i.label| translate}}</span>
+            <it-icon name="expand" size="xs"></it-icon>
+          </a>
+          <div *ngIf="isDropdown(i)" class="dropdown-menu" role="region">
+            <it-menu-dropdown [dropdown]="i"></it-menu-dropdown>
+          </div>
+          <div *ngIf="isMegamenu(i)" class="dropdown-menu" role="region" aria-labelledby="mainNavMegamenu1">
+            <div class="row">
+              <div class="col-12 col-lg-4" *ngFor="let s of i.items">
+                <it-menu-dropdown [dropdown]="s"></it-menu-dropdown>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

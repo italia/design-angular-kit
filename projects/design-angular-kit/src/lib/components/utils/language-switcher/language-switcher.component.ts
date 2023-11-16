@@ -25,6 +25,8 @@ export class ItLanguageSwitcherComponent implements OnInit {
    */
   @Input() mode: 'button' | 'link' = 'link';
 
+  @Input() theme: 'default' | 'light' = 'default'; // TODO: fix light theme too global scss classes
+
   protected currentLang$: Observable<AvailableLanguage | undefined>;
 
   constructor(
