@@ -1,16 +1,17 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { map, Observable, startWith } from 'rxjs';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { AvailableLanguage } from '../../../interfaces/utils';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
-import { ItDropdownModule } from '../../core/dropdown/dropdown.module';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {map, Observable, startWith} from 'rxjs';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {AvailableLanguage} from '../../../interfaces/utils';
+import {AsyncPipe, NgFor, NgIf} from '@angular/common';
+import {ItDropdownModule} from '../../core/dropdown/dropdown.module';
 
 @Component({
   standalone: true,
   selector: 'it-language-switcher',
   templateUrl: './language-switcher.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgFor, NgIf, AsyncPipe, TranslateModule, ItDropdownModule]
+  imports: [NgFor, NgIf, AsyncPipe, TranslateModule, ItDropdownModule],
+  styleUrls: ['./language-switcher.component.scss']
 })
 export class ItLanguageSwitcherComponent implements OnInit {
 
@@ -24,8 +25,6 @@ export class ItLanguageSwitcherComponent implements OnInit {
    * Dropdown mode
    */
   @Input() mode: 'button' | 'link' = 'link';
-
-  @Input() theme: 'default' | 'light' = 'default'; // TODO: fix light theme too global scss classes
 
   protected currentLang$: Observable<AvailableLanguage | undefined>;
 
@@ -43,8 +42,8 @@ export class ItLanguageSwitcherComponent implements OnInit {
       this.availableLanguages = this.translateService.getLangs().map(lang => ({
         code: lang,
         label: lang,
-        ...(lang === 'it' && { label: 'ITA' }),
-        ...(lang === 'en' && { label: 'ENG' })
+        ...(lang === 'it' && {label: 'ITA'}),
+        ...(lang === 'en' && {label: 'ENG'})
       }));
     }
   }
