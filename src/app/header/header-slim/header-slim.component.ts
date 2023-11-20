@@ -8,6 +8,7 @@ import {ItMenuConfig} from "../../../../projects/design-angular-kit/src/lib/comp
 export class HeaderSlimComponent {
 
   light = true;
+  loginStyle: 'full' | 'default' = 'full'
 
   navigation: ItMenuConfig = {
     type: 'link-list',
