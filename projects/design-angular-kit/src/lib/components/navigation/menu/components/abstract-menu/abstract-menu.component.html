@@ -8,12 +8,11 @@
 </ul>
 
 <nav *ngIf="menuConfig.type == 'link-list'" aria-label="{{menuConfig.label| translate}}">
-  <a class="it-opener d-lg-none" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false"
-     aria-controls="menu4">
+  <a id="it-opener" class="it-opener d-lg-none" data-bs-toggle="collapse" href="#menu1a" role="button" aria-expanded="false" aria-controls="menu4">
     <span>{{slimTitle}}</span>
-    <it-icon name="expand"></it-icon>
+    <it-icon aria-hidden="true" name="expand"></it-icon>
   </a>
-  <div class="link-list-wrapper collapse">
+  <div id="menu1a" class="link-list-wrapper collapse">
     <ul class="link-list">
       <li *ngFor="let i of menuConfig.items">
         <a class="list-item"

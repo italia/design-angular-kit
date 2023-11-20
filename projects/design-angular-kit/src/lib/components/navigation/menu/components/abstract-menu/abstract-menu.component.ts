@@ -51,7 +51,7 @@ export class ItAbstractMenuComponent extends ItAbstractComponent {
     return menuItem.type == 'text';
   }
 
-  isLinkDisabled(disabled: boolean){
+  isLinkDisabled(disabled: boolean) {
     return disabled;
   }
 

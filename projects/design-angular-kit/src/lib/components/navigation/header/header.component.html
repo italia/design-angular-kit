@@ -4,9 +4,11 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="it-header-slim-wrapper-content">
-						<a class="d-lg-block navbar-brand" href="#">{{title}}</a>
-						<it-menu *ngIf="secondaryNavigation" [menuConfig]="secondaryNavigation" class="nav-mobile"
-							[slimTitle]="slimTitle"></it-menu>
+						<a [class.d-none]="secondaryNavigation" class="d-lg-block navbar-brand" href="#">{{title}}</a>
+            <div class="nav-mobile">
+              <it-menu *ngIf="secondaryNavigation" [menuConfig]="secondaryNavigation" class="nav-mobile"
+							[slimTitle]="title"></it-menu>
+            </div>
 						<div class="it-header-slim-right-zone">
 							<it-language-switcher></it-language-switcher>
 							<div *ngIf="loginStyle === 'default'" class="it-access-top-wrapper"
