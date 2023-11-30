@@ -1,3 +1,13 @@
+# [1.0.0-20](https://github.com/italia/design-angular-kit/compare/v1.0.0-19...v1.0.0-20) (2023-11-30)
+
+
+### Bug Fixes
+
+* form input label ([2180ab5](https://github.com/italia/design-angular-kit/commit/2180ab5554f077250ff7b5f7f64b3cde852b618e))
+* input number editable when disabled ([364fac6](https://github.com/italia/design-angular-kit/commit/364fac68d541a4cfd05f8a32bd2ade507a565e53))
+
+
+
 # [1.0.0-19](https://github.com/italia/design-angular-kit/compare/v1.0.0-18...v1.0.0-19) (2023-10-04)
 
 
