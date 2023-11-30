@@ -417,9 +417,6 @@ Apache-2.0
  
 
 
-shifty
-MIT
-
 tslib
 0BSD
 Copyright (c) Microsoft Corporation.
