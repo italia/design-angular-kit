@@ -1,3 +1,12 @@
+# [1.0.0-21](https://github.com/italia/design-angular-kit/compare/v1.0.0-20...v1.0.0-21) (2023-12-07)
+
+
+### Bug Fixes
+
+* included in Bootstrap Italia
+
+
+
 # [1.0.0-20](https://github.com/italia/design-angular-kit/compare/v1.0.0-19...v1.0.0-20) (2023-11-30)
 
 
