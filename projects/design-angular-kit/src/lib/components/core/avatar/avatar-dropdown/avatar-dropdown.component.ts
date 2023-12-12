@@ -1,12 +1,16 @@
 import { Component, ViewChild, TemplateRef, ContentChildren, QueryList, Input, ViewEncapsulation } from '@angular/core';
+import { ItDropdownModule } from '../../dropdown/dropdown.module';
+import { NgForOf, NgIf } from '@angular/common';
 
 
 @Component({
+  standalone: true,
   selector: 'it-avatar-dropdown-item',
   templateUrl: './avatar-dropdown-item.component.html',
   styleUrls: ['./avatar-dropdown.component.scss'],
+  imports: [NgForOf, NgIf]
 })
-export class AvatarDropDownItemComponent{
+export class ItAvatarDropDownItemComponent{
   @ViewChild(TemplateRef, {static: true}) _implicitContent!: TemplateRef<any>
   /**
    * Indica il link che possiamo passare all'elemento
@@ -27,12 +31,14 @@ export class AvatarDropDownItemComponent{
 }
 
 @Component({
+  standalone: true,
   selector: 'it-avatar-dropdown',
   templateUrl: './avatar-dropdown.component.html',
   styleUrls: ['./avatar-dropdown.component.scss'],
-  host: { 'class': 'avatar avatar-dropdown' }
+  host: { 'class': 'avatar avatar-dropdown' },
+  imports: [ItDropdownModule]
 })
-export class AvatarDropdownComponent{
+export class ItAvatarDropdownComponent{
   constructor() { }
-  @ContentChildren(AvatarDropDownItemComponent) items! : QueryList<AvatarDropDownItemComponent>
+  @ContentChildren(ItAvatarDropDownItemComponent) items! : QueryList<ItAvatarDropDownItemComponent>
 }

@@ -3,10 +3,11 @@ import { SizesEnum } from '../../../enums/sizes.enum';
 import { Directive, HostBinding, Input } from "@angular/core";
 
 @Directive({
+  standalone: true,
   selector: '[itAvatar]',
   exportAs: 'itAvatar'
 })
-export class AvatarDirective {
+export class ItAvatarDirective {
   /**
    * Indica il colore dell'avatar. Può assumere i valori:
    * <ul>

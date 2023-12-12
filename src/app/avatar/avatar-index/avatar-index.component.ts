@@ -13,8 +13,8 @@ export class AvatarIndexComponent {
     dropdownItem: any;
 
     constructor() {
-        this.directive = (<any>Documentation).directives.find(directive => directive.name === 'AvatarDirective');
-        this.dropdownItem = (<any>Documentation).components.find(component => component.name === 'AvatarDropDownItemComponent')
+        this.directive = (<any>Documentation).directives.find(directive => directive.name === 'ItAvatarDirective');
+        this.dropdownItem = (<any>Documentation).components.find(component => component.name === 'ItAvatarDropDownItemComponent')
     }
 
 }

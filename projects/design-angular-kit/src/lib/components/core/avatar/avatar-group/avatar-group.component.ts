@@ -1,24 +1,28 @@
 import { Component, ContentChildren, QueryList, TemplateRef, ViewChild } from '@angular/core';
+import { NgForOf, NgTemplateOutlet } from '@angular/common';
 
 
-@Component(
-  {selector: 'it-avatar-item',
+@Component({
+  standalone: true,
+  selector: 'it-avatar-item',
   templateUrl: './avatar-group-item.component.html',
 })
-export class AvatarGroupItemComponent {
+export class ItAvatarGroupItemComponent {
   constructor(){}
   @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;
 
 }
 
 @Component({
+  standalone: true,
   selector: 'it-avatar-group',
   templateUrl: './avatar-group.component.html',
   host:{
     '[class.link-list-wrapper]': 'linkList'
-  }
+  },
+  imports: [NgForOf, NgTemplateOutlet]
 })
-export class AvatarGroupComponent {
+export class ItAvatarGroupComponent {
   constructor() {}
-  @ContentChildren(AvatarGroupItemComponent) avatars!: QueryList<AvatarGroupItemComponent>;
+  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;
 }
