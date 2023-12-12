@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ItAccordionComponent } from './core/accordion/accordion.component';
 import { ItAlertComponent } from './core/alert/alert.component';
-import { ItAvatarDropDownItemComponent } from './core/avatar/avatar-dropdown/avatar-dropdown.component';
+import { ItAvatarDropdownComponent, ItAvatarDropdownItemComponent } from './core/avatar/avatar-dropdown/avatar-dropdown.component';
 import { ItAvatarGroupItemComponent, ItAvatarGroupComponent } from './core/avatar/avatar-group/avatar-group.component';
 import { ItAvatarDirective } from './core/avatar/avatar.directive'
 import { ItBadgeDirective } from './core/badge/badge.directive';
@@ -46,7 +46,8 @@ const core = [
   ItAlertComponent,
   ItAvatarGroupItemComponent, 
   ItAvatarGroupComponent,
-  ItAvatarDropDownItemComponent,
+  ItAvatarDropdownComponent,
+  ItAvatarDropdownItemComponent,
   ItAvatarDirective,
   ItBadgeDirective,
   ItButtonDirective,

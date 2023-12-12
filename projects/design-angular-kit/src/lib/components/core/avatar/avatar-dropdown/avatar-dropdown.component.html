@@ -3,7 +3,7 @@
     <ng-content select="[it-avatar-dropdown-toggle]"></ng-content>
   </a>
   <ng-container list class="dropdown-menu">
-    <li *ngFor="let item of items">
+    <it-dropdown-item *ngFor="let item of items">
       <a *ngIf="item.link; else nolink" 
       [routerLink]="item.link" 
       class="dropdown-item list-item"
@@ -18,6 +18,6 @@
           <ng-template *ngTemplateOutlet="item._implicitContent"></ng-template>
         </div>
       </ng-template>
-    </li>
+    </it-dropdown-item>
   </ng-container>
 </it-dropdown>
