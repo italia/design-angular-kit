@@ -7,8 +7,10 @@
       "close": "Close",
       "continue": "Continue",
       "edit": "Edit",
+      "show": "Show",
       "show-all": "Show all",
-      "details": "Details"
+      "details": "Details",
+      "download": "Download"
     },
     "errors": {
       "generic": "An error has occurred",
@@ -19,29 +21,34 @@
       "min-invalid": "The minimum value for this field is: {{min}}",
       "max-invalid": "The maximum value for this field is: {{max}}",
       "min-length-invalid": "The minimum length for this field is: {{min}}",
-      "max-length-invalid": "The minimum length for this field is: {{max}}",
+      "max-length-invalid": "The maximum length for this field is: {{max}}",
       "email-invalid": "Enter a valid email",
       "tel-invalid": "Please enter a valid phone number format",
       "url-invalid": "Please enter a valid URL",
       "tax-code-invalid": "Enter a valid tax code",
       "vat-number-invalid": "Enter a valid VAT number",
       "cap-invalid": "Enter a valid zip code",
+      "iban-invalid": "Enter a valid IBAN",
       "regex-invalid": "Please enter a valid REGEX expression",
       "pattern-invalid": "The field must have the pattern {{pattern}}",
       "password-no-match": "Passwords must match",
-      "password-min-length": "Password must contain at least {{minLength}} characters!",
-      "password-number": "The password must have at least 1 number!",
-      "password-capital-case": "The password should contain at least 1 uppercase character!",
-      "password-small-case": "Password must contain at least 1 lowercase character!",
-      "password-special-character": "Password must contain at least 1 special character!"
+      "password-min-length": "The password must contain at least {{minLength}} characters!",
+      "password-number": "The password must have at least a number!",
+      "password-capital-case": "The password should contain at least an uppercase character!",
+      "password-small-case": "The password must contain at least a lowercase character!",
+      "password-special-character": "The password must contain at least a special character!"
     },
     "core": {
       "close-modal": "Close modal window",
       "close-notification": "Close Notification: {{title}}",
       "close-alert": "Close alert",
       "page": "Page",
+      "previous": "Previous",
       "previous-page": "Previous page",
+      "next": "Next",
       "next-page": "Next page",
+      "go-to": "Go to",
+      "page-of-total": "Page {{page}} of {{total}}",
       "progress": "Progress",
       "loading": "Loading",
       "active": "Active",
@@ -51,9 +58,24 @@
       "step": "Step",
       "step-of": "Step {{current}} of {{available}}",
       "back": "Back",
-      "forward": "Forward"
+      "forward": "Forward",
+      "rate-star": "Rate {{current}} out of {{total}} stars",
+      "rating-star": "Rating {{current}} out of {{total}} stars"
     },
     "form": {
+      "caps-inserted": "CAPS LOCK entered",
+      "password-strength-meter": {
+        "description": {
+          "default": "Enter at least {{minLength}} characters",
+          "number": "a number",
+          "capital-case": "an uppercase character",
+          "special-character": "a special character"
+        },
+        "password-short": "Very weak password",
+        "password-bad": "Weak password",
+        "password-good": "Secure password",
+        "password-strong": "Very secure password"
+      },
       "increase-value": "Increase value",
       "decrease-value": "Decrease value",
       "upload": "Upload",
@@ -80,10 +102,19 @@
       "selected": "Selected",
       "language-selection": "Language selection: {{lang}}",
       "select-language": "Select a language",
-      "404": {
-        "title": "Resource not found",
-        "description": "Oops! The resource you are looking for was not found, go back to the homepage and use the menu to continue browsing.",
-        "go-back": "Go back",
+      "error-page": {
+        "404": {
+          "title": "Resource not found",
+          "description": "Oops! The resource you are looking for was not found, go back to the homepage and use the menu to continue browsing."
+        },
+        "403": {
+          "title": "Forbidden",
+          "description": "You are not authorized to access this resource!"
+        },
+        "500": {
+          "title": "An error has occurred",
+          "description": "There was an unexpected error. Please try again later or contact support."
+        },
         "go-to-homepage": "Return to homepage"
       }
     }

@@ -45,10 +45,12 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
-#### Link veloci
-[Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/) |
-[Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127) |
-[Milestone 1.0.0](https://github.com/italia/design-angular-kit/milestone/3)
+## Link utili
+- [Video Meetup Angular Roma: Angular, Bootstrap Italia e non solo..](https://www.youtube.com/live/asGk-mYU-zM?feature=share)
+- [Demo Design Angular Kit](https://github.com/cri99/demo-design-angular-kit)
+- [Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/)
+- [Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127)
+- [Milestone 1.0.0](https://github.com/italia/design-angular-kit/milestone/3)
 
 ## Come iniziare
 
@@ -61,12 +63,63 @@ npm install design-angular-kit@unstable --save
 Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
 
 ```typescript
+import {DesignAngularKitModule, ItComponentsModule} from 'design-angular-kit';
+
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule
+    DesignAngularKitModule,
+    ItComponentsModule // importa tutti i componenti della libreria
   ]
 })
+```
+<details>
+  <summary>Configurazione custom della libreria</summary>
+
+  ```typescript
+  import {DesignAngularKitModule, DesignAngularKitInit} from 'design-angular-kit';
+  
+  // Puoi aggiungere alla libreria una configurazione iniziale
+  const initConfig: DesignAngularKitInit | undefined = {
+    /**
+     * The initial path in the `href` attribute in the `IconComponent` component
+     * @default './bootstrap-italia/dist/svg/sprites.svg'
+     */
+    iconHref: string | undefined,
+  };
+  
+  @NgModule({
+    imports: [
+      ...
+      DesignAngularKitModule.forRoot(initConfig)
+    ]
+  })
+  ```
+</details>
+
+Usa `ItComponentsModule` per importare tutti i componenti della libreria, in alternativa puoi importare solo i componenti/moduli di cui hai bisogno, ad es. Alert, Paginazione e Breadcrumb.
+
+```typescript
+import {ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule} from 'design-angular-kit';
+
+@NgModule({
+  imports: [
+    ItAlertComponent, 
+    ItPaginationComponent, 
+    ItBreadcrumbsModule // Include ItBreadcrumbComponent e ItBreadcrumbItemComponent 
+  ],
+})
+export class YourAppModule {
+}
+
+@Component({
+  selector: 'app-product',
+  standalone: true,
+  imports: [ItAlertComponent],
+  templateUrl: './product.component.html'
+})
+export class ProductComponent {
+}
 ```
 
 ### Importazione stili bootstrap-italia

@@ -2,55 +2,43 @@
 
 <div class="bd-example">
 
-  <button id="interactive-button" itButton="primary" class="mb-5">
-    <it-icon *ngIf="iconPosition === 'start'" [name]="icon" [color]="iconColor" class="me-3"></it-icon>
+  <button itButton="primary" class="mb-5">
+    <it-icon *ngIf="iconPosition === 'start'" [name]="icon" [color]="iconColor" class="me-2"></it-icon>
     Login
-    <it-icon *ngIf="iconPosition === 'end'" [name]="icon" [color]="iconColor" class="ms-3"></it-icon>
+    <it-icon *ngIf="iconPosition === 'end'" [name]="icon" [color]="iconColor" class="ms-2"></it-icon>
   </button>
 
   <div class="row">
     <div class="form-check col-2">
       <h5>Icona</h5>
-      <it-radio-button id="radio-icon-user-icon-example" value="user" label="it-user" name="icon"
-                       [(ngModel)]="icon"></it-radio-button>
-      <it-radio-button id="radio-icon-check-icon-example" value="check" label="it-check" name="icon"
-                       [(ngModel)]="icon"></it-radio-button>
+      <it-radio-button value="user" label="it-user" name="icon" [(ngModel)]="icon"></it-radio-button>
+      <it-radio-button value="check" label="it-check" name="icon" [(ngModel)]="icon"></it-radio-button>
     </div>
 
     <div class="form-check col-2">
       <h5>Posizione</h5>
-      <it-radio-button id="radio-icon-start-icon-example" value="start" label="Start" name="position"
-                       [(ngModel)]="iconPosition"></it-radio-button>
-      <it-radio-button id="radio-icon-end-icon-example" value="end" label="End" name="position"
-                       [(ngModel)]="iconPosition"></it-radio-button>
+      <it-radio-button value="start" label="Start" name="position" [(ngModel)]="iconPosition"></it-radio-button>
+      <it-radio-button value="end" label="End" name="position" [(ngModel)]="iconPosition"></it-radio-button>
     </div>
 
     <div class="form-check col-6">
       <h5>Colorazione Icona</h5>
       <div class="row">
         <div class="form-check col-5">
-          <it-radio-button id="radio-white-icon-example" value="white" label="White" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
-          <it-radio-button id="radio-primary-icon-example" value="primary" label="Primary" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
-          <it-radio-button id="radio-secondary-icon-example" value="secondary" label="Secondary" name="icon-color"
+          <it-radio-button value="white" label="White" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="primary" label="Primary" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="secondary" label="Secondary" name="icon-color"
                            [(ngModel)]="iconColor"></it-radio-button>
         </div>
         <div class="form-check col-4">
-          <it-radio-button id="radio-success-icon-example" value="success" label="Success" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
-          <it-radio-button id="radio-warning-icon-example" value="warning" label="Warning" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
-          <it-radio-button id="radio-danger-icon-example" value="danger" label="Danger" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="success" label="Success" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="warning" label="Warning" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="danger" label="Danger" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
         </div>
         <div class="form-check col-3">
-          <it-radio-button id="radio-info-icon-example" value="info" label="Info" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
-          <it-radio-button id="radio-light-icon-example" value="light" label="Light" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
-          <it-radio-button id="radio-dark-icon-example" value="dark" label="Dark" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="info" label="Info" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="light" label="Light" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="dark" label="Dark" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
         </div>
       </div>
     </div>
@@ -58,26 +46,26 @@
   <!--  <div class="row mt-4">-->
   <!--    <div class="form-check col-4">-->
   <!--      <h5>Icona Cerchiata</h5>-->
-  <!--      <it-checkbox [(ngModel)]="iconRounded" label="Rounded" id="icon-rounded-checkbox"></it-checkbox>-->
+  <!--      <it-checkbox [(ngModel)]="iconRounded" label="Rounded"></it-checkbox>-->
   <!--    </div>-->
   <!--    <div class="form-check col-7" *ngIf = "iconRounded">-->
   <!--      <h5>Colorazione Sfondo Icona</h5>-->
   <!--      <it-radio-group [(ngModel)]="iconRoundedColor">-->
   <!--        <div class="row">-->
   <!--          <div class="form-check col-5">-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-white" name="radio-icon-rounded-white" value="white" label="White"></it-radio-button>-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-primary" name="radio-icon-rounded-primary" value="primary" label="Primary"></it-radio-button>-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-secondary" name="radio-icon-rounded-secondary" value="secondary" label="Secondary"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-white" value="white" label="White"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-primary" value="primary" label="Primary"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-secondary" value="secondary" label="Secondary"></it-radio-button>-->
   <!--          </div>-->
   <!--          <div class="form-check col-4">-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-success" name="radio-icon-rounded-success" value="success" label="Success"></it-radio-button>-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-warning" name="radio-icon-rounded-warning" value="warning" label="Warning"></it-radio-button>-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-danger" name="radio-icon-rounded-danger" value="danger" label="Danger"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-success" value="success" label="Success"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-warning" value="warning" label="Warning"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-danger" value="danger" label="Danger"></it-radio-button>-->
   <!--          </div>-->
   <!--          <div class="form-check col-3">-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-info" name="radio-icon-rounded-info" value="info" label="Info"></it-radio-button>-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-light" name="radio-icon-rounded-light" value="light" label="Light"></it-radio-button>-->
-  <!--            <it-radio-button showValidation="false" id="radio-icon-rounded-dark" name="radio-icon-rounded-dark" value="dark" label="Dark"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-info" value="info" label="Info"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-light" value="light" label="Light"></it-radio-button>-->
+  <!--            <it-radio-button showValidation="false" name="radio-icon-rounded-dark" value="dark" label="Dark"></it-radio-button>-->
   <!--          </div>-->
   <!--        </div>-->
   <!--      </it-radio-group>-->

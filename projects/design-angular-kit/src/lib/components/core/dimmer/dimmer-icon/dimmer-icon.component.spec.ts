@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DimmerIconComponent } from './dimmer-icon.component';
+import { ItDimmerIconComponent } from './dimmer-icon.component';
 
-describe('DimmerIconComponent', () => {
-  let component: DimmerIconComponent;
-  let fixture: ComponentFixture<DimmerIconComponent>;
+describe('ItDimmerIconComponent', () => {
+  let component: ItDimmerIconComponent;
+  let fixture: ComponentFixture<ItDimmerIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DimmerIconComponent ]
+      imports: [ ItDimmerIconComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DimmerIconComponent);
+    fixture = TestBed.createComponent(ItDimmerIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

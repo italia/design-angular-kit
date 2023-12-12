@@ -25,6 +25,7 @@ export class ModelDrivenValidationExampleComponent {
       email: [null],
       url: [null],
       phone: [null],
+      iban: [null, ItValidators.iban],
       myInput: ['', validators],
     });
   }
@@ -36,4 +37,7 @@ export class ModelDrivenValidationExampleComponent {
     this.savedValue = form.value.myInput;
   }
 
+  markAllAsTouched() {
+    this.myForm.markAllAsTouched();
+  }
 }

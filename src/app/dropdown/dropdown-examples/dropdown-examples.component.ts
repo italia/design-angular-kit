@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dropdown-examples.component.html',
   styleUrls: ['./dropdown-examples.component.scss']
 })
-export class DropdownExamplesComponent implements OnInit {
+export class DropdownExamplesComponent {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

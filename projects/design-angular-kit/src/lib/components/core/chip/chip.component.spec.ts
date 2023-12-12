@@ -3,23 +3,24 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ChipComponent } from './chip.component';
+import { ItChipComponent } from './chip.component';
+import { tb_base } from '../../../../test';
 
-describe('ChipComponent', () => {
-  let component: ChipComponent;
-  let fixture: ComponentFixture<ChipComponent>;
+describe('ItChipComponent', () => {
+  let component: ItChipComponent;
+  let fixture: ComponentFixture<ItChipComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChipComponent ],
-      imports: [TranslateModule.forRoot()]
+      imports: [ItChipComponent, TranslateModule.forRoot()],
+      providers: tb_base.providers
     })
-    .overrideComponent(ChipComponent, {
+    .overrideComponent(ItChipComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ChipComponent);
+    fixture = TestBed.createComponent(ItChipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -29,22 +30,22 @@ describe('ChipComponent', () => {
   });
 
   it('click on close button should trigger close.emit()', () => {
-    spyOn(component.close, 'emit').and.returnValue();
+    spyOn(component.closeEvent, 'emit').and.returnValue();
     component.showCloseButton = true;
     fixture.detectChanges();
     const buttonElement = fixture.debugElement.query(By.css('button'));
     buttonElement.nativeElement.click();
-    expect(component.close.emit).toHaveBeenCalled();
+    expect(component.closeEvent.emit).toHaveBeenCalled();
   });
 
   it('click on close button DISABLED should NOT trigger close.emit()', () => {
-    spyOn(component.close, 'emit').and.returnValue();
+    spyOn(component.closeEvent, 'emit').and.returnValue();
     component.showCloseButton = true;
     component.disabled = true;
     fixture.detectChanges();
     const buttonElement = fixture.debugElement.query(By.css('button'));
     buttonElement.nativeElement.click();
-    expect(component.close.emit).not.toHaveBeenCalled();
+    expect(component.closeEvent.emit).not.toHaveBeenCalled();
   });
 
   it('can set label', () => {

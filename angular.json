@@ -39,16 +39,29 @@
             "styles": [
               {
                 "input": "node_modules/@splidejs/splide/dist/css/splide-core.min.css",
-                "inject" : false,
+                "inject": false,
                 "bundleName": "theme-dark"
               },
               {
                 "input": "node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.css",
-                "inject" : false,
+                "inject": false,
                 "bundleName": "theme-dark"
               },
               "node_modules/highlight.js/styles/github.css",
               "src/styles.scss"
+            ],
+            "allowedCommonJsDependencies": [
+              "progressbar.js",
+              "accessible-autocomplete",
+              "ev-emitter/ev-emitter",
+              "@videojs/xhr",
+              "global/document",
+              "global/window",
+              "keycode",
+              "mux.js/lib/tools/parse-sidx",
+              "mux.js/lib/utils/clock",
+              "safe-json-parse/tuple",
+              "videojs-vtt.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -116,6 +129,15 @@
               "src/assets"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -142,6 +164,11 @@
       "sourceRoot": "projects/design-angular-kit/src",
       "projectType": "library",
       "prefix": "it",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -154,7 +181,8 @@
               "project": "projects/design-angular-kit/ng-package.prod.json",
               "tsConfig": "projects/design-angular-kit/tsconfig.lib.prod.json"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -164,11 +192,23 @@
             "karmaConfig": "projects/design-angular-kit/karma.conf.js",
             "codeCoverage": true
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/design-angular-kit/**/*.ts",
+              "projects/design-angular-kit/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

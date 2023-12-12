@@ -1,34 +1,37 @@
-import {Component, Input} from '@angular/core';
-import {BooleanInput, isTrueBooleanInput} from "../../../utils/boolean-input";
-import {AbstractComponent} from "../../../abstracts/abstract.component";
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
+import { BackToTop } from 'bootstrap-italia';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 
 @Component({
+  standalone: true,
   selector: 'it-back-to-top',
   templateUrl: './back-to-top.component.html',
-  styleUrls: ['./back-to-top.component.scss']
+  exportAs: 'itBackToTop',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ItIconComponent]
 })
-export class BackToTopComponent extends AbstractComponent {
-
-  /**
-   * The back to top ID
-   * @default 'back-to-top-button'
-   */
-  @Input() override id: string = 'back-to-top-button';
+export class ItBackToTopComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * Show small button
    */
-  @Input() small?: BooleanInput;
+  @Input() small: BooleanInput | undefined;
 
   /**
    * Show shadow
    */
-  @Input() shadow?: BooleanInput;
+  @Input() shadow: BooleanInput | undefined;
 
   /**
    * Button usable button on a dark background
    */
-  @Input() dark?: BooleanInput;
+  @Input() dark: BooleanInput | undefined;
+
+  private backToTop?: BackToTop;
+
+  @ViewChild('backToTop') private backToTopElement?: ElementRef<HTMLAnchorElement>;
 
   get isSmall(): boolean {
     return isTrueBooleanInput(this.small);
@@ -40,5 +43,42 @@ export class BackToTopComponent extends AbstractComponent {
 
   get isDark(): boolean {
     return isTrueBooleanInput(this.dark);
+  }
+
+  override ngAfterViewInit() {
+    super.ngAfterViewInit();
+
+    if (this.backToTopElement) {
+      const element = this.backToTopElement.nativeElement;
+      this.backToTop = BackToTop.getOrCreateInstance(element);
+    }
+  }
+
+  /**
+   * Show button
+   */
+  public show(): void {
+    this.backToTop?.show();
+  }
+
+  /**
+   * Hide the button
+   */
+  public hide(): void {
+    this.backToTop?.hide();
+  }
+
+  /**
+   * Activates the scroll animation towards the Y coordinate indicated by the positionTop option
+   */
+  public scrollToTop(): void {
+    this.backToTop?.scrollToTop();
+  }
+
+  /**
+   * Eliminate component features
+   */
+  public dispose(): void {
+    this.backToTop?.dispose();
   }
 }

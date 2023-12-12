@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LinkComponent } from './link.component';
+import { ItLinkComponent } from './link.component';
+import { tb_base } from '../../../../test';
 
-describe('LinkComponent', () => {
-  let component: LinkComponent;
-  let fixture: ComponentFixture<LinkComponent>;
+describe('ItLinkComponent', () => {
+  let component: ItLinkComponent;
+  let fixture: ComponentFixture<ItLinkComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LinkComponent ]
-    })
-    .compileComponents();
+    await TestBed.configureTestingModule(tb_base)
+      .compileComponents();
 
-    fixture = TestBed.createComponent(LinkComponent);
+    fixture = TestBed.createComponent(ItLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,14 +1,18 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { IconName } from '../../../interfaces/icon';
-
-export type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
+import { ChipColor } from '../../../interfaces/core';
+import { NgClass, NgIf } from '@angular/common';
+import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from '../../../design-angular-kit-config';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+  standalone: true,
   selector: 'it-chip',
   templateUrl: './chip.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgClass, NgIf, TranslateModule]
 })
-export class ChipComponent {
+export class ItChipComponent {
 
   /**
    * Indica la label
@@ -69,11 +73,16 @@ export class ChipComponent {
   /**
    * Evento emesso al click sul bottone di chiusura
   */
-  @Output() close = new EventEmitter();
+  @Output() closeEvent = new EventEmitter();
 
   iconClose: IconName = 'close';
 
+  constructor(
+    @Inject(DESIGN_ANGULAR_KIT_CONFIG) protected readonly config: DesignAngularKitConfig
+  ) {
+  }
+
   clickToClose(): void {
-    this.close.emit();
+    this.closeEvent.emit();
   }
 }

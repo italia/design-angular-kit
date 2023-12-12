@@ -1,9 +1,11 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { NgClass, NgIf } from '@angular/common';
 
 export type DimmerColor = '' | 'dimmer-primary';
 
 @Component({
+  standalone: true,
   selector: 'it-dimmer',
   templateUrl: './dimmer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,9 +19,10 @@ export type DimmerColor = '' | 'dimmer-primary';
             animate('150ms', style({ opacity: 0 })),
         ]),
     ])
-]
+  ],
+  imports: [NgIf, NgClass]
 })
-export class DimmerComponent implements OnInit {
+export class ItDimmerComponent implements OnInit {
 
   /**
    * Dimmer status

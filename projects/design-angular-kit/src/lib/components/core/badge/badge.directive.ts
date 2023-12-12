@@ -2,24 +2,31 @@ import { Directive, HostBinding, Input } from '@angular/core';
 import { BadgeColor } from '../../../interfaces/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
+/**
+ * Badge
+ * @description Useful for small counters and labels
+ */
 @Directive({
+  standalone: true,
   selector: '[itBadge]',
   exportAs: 'itBadge'
 })
-export class BadgeDirective {
+export class ItBadgeDirective {
 
   /**
    * Define the badge color
+   * @default undefined
    */
-  @Input('itBadge') color?: BadgeColor;
+  @Input('itBadge') color: BadgeColor | undefined;
 
   /**
    * Show rounded badge
+   * @default false
    */
-  @Input('rounded') rounded?: BooleanInput;
+  @Input() rounded: BooleanInput | undefined;
 
   @HostBinding('class')
-  get badgeClass(): string {
+  protected get badgeClass(): string {
     let badgeClass = 'badge';
     if (isTrueBooleanInput(this.rounded)) {
       badgeClass += ` rounded-pill`;

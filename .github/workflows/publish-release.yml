@@ -34,7 +34,13 @@ jobs:
       - name: Publish on gh-pages
         run: |
           npm run build
+          cp dist/design-angular-kit-bundle/index.html dist/design-angular-kit-bundle/404.html
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run documentation-deploy-to-gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: italia/slack-notify-release-action@v0.4.0
+        with:
+          slack_token: ${{ secrets.SLACK_TOKEN }}
+          channel_id: ${{ secrets.SLACK_CHANNEL }}
+          project_name: Design Angular Kit

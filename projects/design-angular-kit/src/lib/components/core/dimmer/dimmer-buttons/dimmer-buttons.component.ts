@@ -1,11 +1,14 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'it-dimmer-buttons',
   templateUrl: './dimmer-buttons.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgClass]
 })
-export class DimmerButtonsComponent {
+export class ItDimmerButtonsComponent {
 
   /**
    * Indica se abbiamo 1 solo bottone

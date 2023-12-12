@@ -1,6 +1,7 @@
 <div class="upload-dragdrop" [class.dragover]="isDragover" [class.loading]="isLoading" [class.success]="isSuccess">
   <div class="upload-dragdrop-image">
-    <img src="/bootstrap-italia/dist/assets/upload-drag-drop-icon.svg" alt="drag-drop-icon" aria-hidden="true">
+    <img ngSrc="/bootstrap-italia/dist/assets/upload-drag-drop-icon.svg"
+         alt="drag-drop-icon" aria-hidden="true" [width]="180" [height]="180">
     <div class="upload-dragdrop-loading">
       <div class="progress-donut" #donutElement></div>
     </div>

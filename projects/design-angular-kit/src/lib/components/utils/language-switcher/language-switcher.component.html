@@ -1,10 +1,10 @@
-<it-dropdown id="language-switcher">
+<it-dropdown [mode]="mode">
   <ng-container button>
     <span class="visually-hidden">{{'it.utils.selected' | translate: { lang: (currentLang$ | async)?.label } }}</span>
     <span>{{(currentLang$ | async)?.label || ('it.utils.select-language' | translate)}}</span>
   </ng-container>
 
-  <ng-container list>
+  <ng-container *ngIf="availableLanguages" list>
     <it-dropdown-item *ngFor="let lang of availableLanguages" (click)="changeLanguage(lang.code)"
                       [active]="lang.code === (currentLang$ | async)?.code">
       {{lang.label}}

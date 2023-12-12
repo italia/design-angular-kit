@@ -1,13 +1,20 @@
-import { Component, Input } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 
+/**
+ * Card
+ * @description A container of texts and images with many options and variations.
+ */
 @Component({
+  standalone: true,
   selector: 'it-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
-export class CardComponent extends AbstractComponent {
+export class ItCardComponent extends ItAbstractComponent {
 
   /**
    * It serves to space the cards in their mobile version.
@@ -17,51 +24,57 @@ export class CardComponent extends AbstractComponent {
 
   /**
    * To create cards with short or "preview" content
+   * @default false
    */
-  @Input() teaser?: BooleanInput;
+  @Input() teaser: BooleanInput | undefined;
 
   /**
    * Card with image
+   * @default false
    */
-  @Input() hasImage?: BooleanInput;
+  @Input() hasImage: BooleanInput | undefined;
 
   /**
    * To add rounding effects
+   * @default false
    */
-  @Input() rounded?: BooleanInput;
+  @Input() rounded: BooleanInput | undefined;
 
   /**
    * To add shadow effects
+   * @default false
    */
-  @Input() shadow?: BooleanInput;
+  @Input() shadow: BooleanInput | undefined;
 
   /**
    * Custom card class
+   * @default ''
    */
   @Input() cardClass: string = '';
 
   /**
    * Custom card body class
+   * @default ''
    */
   @Input() bodyClass: string = '';
 
-  get isSpace(): boolean {
+  protected get isSpace(): boolean {
     return isTrueBooleanInput(this.space);
   }
 
-  get isTeaser(): boolean {
+  protected get isTeaser(): boolean {
     return isTrueBooleanInput(this.teaser);
   }
 
-  get isHasImage(): boolean {
+  protected get isHasImage(): boolean {
     return isTrueBooleanInput(this.hasImage);
   }
 
-  get isRounded(): boolean {
+  protected get isRounded(): boolean {
     return isTrueBooleanInput(this.rounded);
   }
 
-  get isShadow(): boolean {
+  protected get isShadow(): boolean {
     return isTrueBooleanInput(this.shadow);
   }
 

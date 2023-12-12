@@ -11,7 +11,7 @@ export class UploadIndexComponent {
   dragDropComponent: any;
 
   constructor() {
-    this.fileListComponent = (<any>Documentation).components.find(component => component.name === 'UploadFileListComponent');
-    this.dragDropComponent = (<any>Documentation).components.find(component => component.name === 'UploadDragDropComponent');
+    this.fileListComponent = (<any>Documentation).components.find(component => component.name === 'ItUploadFileListComponent');
+    this.dragDropComponent = (<any>Documentation).components.find(component => component.name === 'ItUploadDragDropComponent');
   }
 }

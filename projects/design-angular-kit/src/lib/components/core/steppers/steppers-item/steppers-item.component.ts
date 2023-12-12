@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { IconName } from '../../../../interfaces/icon';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 
 @Component({
+  standalone: true,
   selector: 'it-steppers-item[label]',
   templateUrl: './steppers-item.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
-export class SteppersItemComponent {
+export class ItSteppersItemComponent extends ItAbstractComponent {
 
   /**
    * The labels present in the header steps
@@ -16,7 +19,7 @@ export class SteppersItemComponent {
   /**
    * The labels present in the header steps can be preceded by an icon.
    */
-  @Input() icon?: IconName;
+  @Input() icon: IconName | undefined;
 
   /**
    * The content of step

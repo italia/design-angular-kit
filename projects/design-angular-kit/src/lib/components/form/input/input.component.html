@@ -23,25 +23,32 @@
       <input type="number"
              [id]="id"
              [step]="step ?? null"
+             [min]="min ?? null"
+             [max]="max ?? null"
+             [class.form-control]="readonly !== 'plaintext'"
+             [class.form-control-plaintext]="readonly === 'plaintext'"
              [class.is-invalid]="isInvalid"
              [class.is-valid]="isValid"
              [formControl]="control"
              [placeholder]="placeholder"
              [readonly]="isReadonly"
+             [autocomplete]="autocomplete"
              [attr.aria-describedby]="id + '-description'"
              (blur)="markAsTouched()" />
 
-      <button type="button" class="input-number-add" (click)="incrementNumber()">
-        <span class="visually-hidden">{{'it.form.increase-value'}}</span>
+      <button type="button" class="input-number-add" [disabled]="!control.enabled" (click)="incrementNumber()">
+        <span class="visually-hidden">{{'it.form.increase-value' | translate}}</span>
       </button>
-      <button type="button" class="input-number-sub" (click)="incrementNumber(true)">
-        <span class="visually-hidden">{{'it.form.decrease-value'}}</span>
+      <button type="button" class="input-number-sub" [disabled]="!control.enabled" (click)="incrementNumber(true)">
+        <span class="visually-hidden">{{'it.form.decrease-value' | translate}}</span>
       </button>
     </span>
 
     <input *ngIf="type !== 'number'"
            [id]="id"
            [type]="type"
+           [max]="type === 'date' ? maxDate : undefined"
+           [min]="type === 'date' ? minDate : undefined"
            [class.form-control]="readonly !== 'plaintext'"
            [class.form-control-plaintext]="readonly === 'plaintext'"
            [class.is-invalid]="isInvalid"
@@ -50,6 +57,7 @@
            [placeholder]="placeholder"
            [readonly]="isReadonly"
            (keydown)="onKeyDown()"
+           [autocomplete]="autocomplete"
            [attr.aria-describedby]="id + '-description'"
            (blur)="markAsTouched()">
 

@@ -5,8 +5,7 @@
     limitare il valore minimo e massimo del campo e decidere di quanto varierà a ogni click sui pulsanti.</p>
 
   <!-- Input numerico con min, max e step -->
-  <it-input id="interactive-input-number-0"
-            type="number"
+  <it-input type="number"
             label="Min, Max & Step"
             [min]="10" [max]="100" [step]="5"></it-input>
 
@@ -15,8 +14,7 @@
   <p class="mb-5">Per anteporre il simbolo della valuta in Euro, aggiungere la proprietà "currency"</p>
 
   <!-- Input numerico con valuta -->
-  <it-input id="interactive-input-number-1"
-            type="number"
+  <it-input type="number"
             label="Currency"
             currency="true"></it-input>
 
@@ -25,8 +23,7 @@
   <p class="mb-5">Per anteporre il simbolo della percentuale in Euro, aggiungere la proprietà "percentage"</p>
 
   <!-- Input numerico con percentuale -->
-  <it-input id="interactive-input-number-2"
-            type="number"
+  <it-input type="number"
             label="Percentage"
             percentage="true"></it-input>
 
@@ -36,8 +33,7 @@
     Basta aggiungere la proprietà "adaptive"</p>
 
   <!-- Input numerico con ridimensionamento automatico -->
-  <it-input id="interactive-input-number-3"
-            type="number"
+  <it-input type="number"
             label="Adattivo"
             adaptive="true"
             [(ngModel)]="adaptiveInputValue"></it-input>

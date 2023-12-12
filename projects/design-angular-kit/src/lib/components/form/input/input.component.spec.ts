@@ -1,26 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-import {
-  TranslateCompiler,
-  TranslateLoader,
-  TranslateModule,
-  TranslateParser,
-  TranslateService,
-  TranslateStore,
-} from '@ngx-translate/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputComponent } from './input.component'
+import { ItInputComponent } from './input.component';
+import { tb_base } from '../../../../test';
 
-describe('InputComponent', () => {
-  let component: InputComponent;
-  let fixture: ComponentFixture<InputComponent>;
+describe('ItInputComponent', () => {
+  let component: ItInputComponent;
+  let fixture: ComponentFixture<ItInputComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ InputComponent ],imports:[TranslateModule.forRoot()]
-    })
-    .compileComponents();
+    await TestBed.configureTestingModule(tb_base)
+      .compileComponents();
 
-    fixture = TestBed.createComponent(InputComponent);
+    fixture = TestBed.createComponent(ItInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

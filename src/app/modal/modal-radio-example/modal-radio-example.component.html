@@ -1,0 +1,24 @@
+<h3>Modale con radiobuttons</h3>
+<p>All’interno della modale è possibile inserire elementi form. Di seguito una modale con un elenco di radio button.</p>
+
+<div class="bd-example">
+
+  <button type="button" itButton="primary" class="me-2" (click)="radioModal.toggle()">
+    Lancia modale con radio
+  </button>
+
+  <it-modal #radioModal="itModal">
+    <ng-container modalTitle>Scegli una opzione</ng-container>
+
+    <form [formGroup]="formGroup">
+      <it-radio-button formControlName="radio" value="1" label="Opzione 1"></it-radio-button>
+      <it-radio-button formControlName="radio" value="2" label="Opzione 2"></it-radio-button>
+      <it-radio-button formControlName="radio" value="3" label="Opzione 3"></it-radio-button>
+      <it-radio-button formControlName="radio" value="4" label="Opzione 4"></it-radio-button>
+    </form>
+
+    <ng-container footer>
+      <button itButton="primary" size="sm" type="button" [disabled]="formGroup.invalid" (click)="submit()">Ok</button>   </ng-container>
+  </it-modal>
+
+</div>

@@ -1,0 +1,11 @@
+<h3>Changer</h3>
+<p>La funzionalità di changer permette di scegliere da un dropdown la quantità di record da visualizzare in una pagina.</p>
+
+<div class="bd-example">
+  <it-pagination [currentPage]="currentPage" [pageNumbers]="50"
+                 [currentChanger]="changerValue"
+                 [changerValues]="changerValues"
+                 (pageEvent)="pageChange($event)"
+                 (changerEvent)="changerEvent($event)"></it-pagination>
+
+</div>

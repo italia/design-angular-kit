@@ -1,19 +1,26 @@
-import {Component, ElementRef, EventEmitter, Input, Output, Renderer2} from '@angular/core';
-import {BooleanInput, isTrueBooleanInput} from "../../../utils/boolean-input";
-import {AbstractComponent} from "../../../abstracts/abstract.component";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
+import { NgIf } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { ItButtonDirective } from '../../core/button/button.directive';
 
 @Component({
+  standalone: true,
   selector: 'it-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, TranslateModule, ItIconComponent, ItButtonDirective]
 })
-export class HeaderComponent extends AbstractComponent {
+export class ItHeaderComponent extends ItAbstractComponent {
 
-  @Input() light?: BooleanInput;
+  @Input() light: BooleanInput | undefined;
 
   @Input() showSlim?: BooleanInput = true;
 
-  @Input() slimTitle?: string;
+  @Input() slimTitle: string | undefined;
 
   @Input() loginStyle: 'none' | 'default' | 'full' = 'full';
 
@@ -27,16 +34,12 @@ export class HeaderComponent extends AbstractComponent {
 
   /**
    * TODO: complete header
-   * @param _renderer
-   * @param _elementRef
    */
-  constructor(
-    protected override readonly _renderer: Renderer2,
-    protected override readonly _elementRef: ElementRef
-  ) {
-    super(_renderer, _elementRef);
-    this.loginClick = new EventEmitter<Event>()
-    this.searchClick = new EventEmitter<Event>()
+  constructor() {
+    super();
+
+    this.loginClick = new EventEmitter<Event>();
+    this.searchClick = new EventEmitter<Event>();
   }
 
   get isLight(): boolean {

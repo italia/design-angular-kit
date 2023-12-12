@@ -1,19 +1,26 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NotificationsService } from '../../../services/notifications/notifications.service';
+import { ItNotificationService } from '../../../services/notification/notification.service';
 import { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';
-
 import { Notification as BSNotification } from 'bootstrap-italia';
+import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { IconName } from '../../../interfaces/icon';
+import { NgForOf, NgIf } from '@angular/common';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+  standalone: true,
   selector: 'it-notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.scss']
+  styleUrls: ['./notifications.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgForOf, NgIf, ItIconComponent, TranslateModule]
 })
-export class NotificationsComponent implements OnDestroy {
+export class ItNotificationsComponent implements OnDestroy {
 
   /**
-   * Default notifications duration
+   * Default notifications duration (milliseconds)
    * @default 8000
    */
   @Input() duration: number = 8000;
@@ -21,13 +28,21 @@ export class NotificationsComponent implements OnDestroy {
   /**
    * Default notifications position
    */
-  @Input() position?: NotificationPosition;
+  @Input() position: NotificationPosition | undefined;
+
+  /**
+   * Default notifications is dismissible
+   * @default true
+   */
+  @Input() dismissible?: BooleanInput = true;
 
   private subscription: Subscription;
-  notifications: Array<Notification & { id: string }> = [];
+  private notificationCount: number = 0;
+  protected notifications: Array<Notification & { id: string }> = [];
 
   constructor(
-    private readonly _notificationService: NotificationsService
+    private readonly _changeDetectorRef: ChangeDetectorRef,
+    private readonly _notificationService: ItNotificationService
   ) {
     this.subscription = this._notificationService.onNotification().subscribe(notification => {
       if (!notification.duration) {
@@ -36,12 +51,19 @@ export class NotificationsComponent implements OnDestroy {
       if (!notification.position && this.position) {
         notification.position = this.position; // Add position if not is set
       }
+      if (notification.dismissible === undefined && isTrueBooleanInput(this.dismissible)) {
+        notification.dismissible = true; // Add dismissible if not is set
+      }
+      if (!notification.icon) {
+        notification.icon = this.getNotificationIcon(notification);
+      }
 
       const newNotification = {
         ...notification,
-        id: `${notification.type}-${this.notifications.length}-notification`
+        id: `${notification.type}-${this.notificationCount++}-notification`
       };
-      const index = this.notifications.push(newNotification);
+      this.notifications.push(newNotification);
+      this._changeDetectorRef.detectChanges();
 
       setTimeout(() => {
         // Show the notification
@@ -51,7 +73,14 @@ export class NotificationsComponent implements OnDestroy {
 
         // Clear notification after the duration
         setTimeout(() => {
-          this.notifications = this.notifications.splice(index, 1);
+          const index = this.notifications.findIndex(n => n.id === newNotification.id);
+          if (index > -1) {
+            this.notifications.splice(index, 1);
+            if (!this.notifications.length) {
+              this.notificationCount = 0;
+            }
+            this._changeDetectorRef.detectChanges();
+          }
         }, notification.duration);
       }, 200);
     });
@@ -61,7 +90,7 @@ export class NotificationsComponent implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  get NotificationType(): typeof NotificationType {
+  protected get NotificationType(): typeof NotificationType {
     return NotificationType;
   }
 
@@ -69,7 +98,28 @@ export class NotificationsComponent implements OnDestroy {
    * Hide the notification
    * @param id
    */
-  hideNotification(id: string): void {
+  protected hideNotification(id: string): void {
     BSNotification.getInstance(document.getElementById(id)!)?.hide();
+  }
+
+  /**
+   * Retrieve the icon name by notification type
+   * @param notification the notification
+   * @protected
+   */
+  private getNotificationIcon(notification: Notification): IconName | undefined {
+    switch (notification.type) {
+      case NotificationType.Success:
+        return 'check-circle';
+      case NotificationType.Error:
+        return 'close-circle';
+      case NotificationType.Warning:
+        return 'error';
+      case NotificationType.Info:
+        return 'info-circle';
+      case NotificationType.Standard:
+      default:
+        return undefined;
+    }
   }
 }

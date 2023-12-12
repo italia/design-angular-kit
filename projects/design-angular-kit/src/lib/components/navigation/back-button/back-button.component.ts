@@ -1,13 +1,19 @@
-import { Component, Input } from '@angular/core';
-import { Location } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Location, NgIf, NgTemplateOutlet } from '@angular/common';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { ItButtonDirective } from '../../core/button/button.directive';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+  standalone: true,
   selector: 'it-back-button',
   templateUrl: './back-button.component.html',
-  exportAs: 'itBackButton'
+  exportAs: 'itBackButton',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgTemplateOutlet, ItButtonDirective, ItIconComponent, TranslateModule]
 })
-export class BackButtonComponent {
+export class ItBackButtonComponent {
 
   /**
    * Back button style

@@ -1,27 +1,42 @@
-import {Component, Input} from '@angular/core';
-import {AbstractComponent} from "../../../abstracts/abstract.component";
-import {BooleanInput} from "../../../utils/boolean-input";
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ItCollapseComponent } from '../collapse/collapse.component';
 
+/**
+ * Accordion
+ * @description Build vertically collapsible accordions based on Collapse.
+ */
 @Component({
-  selector: 'it-accordion[id][title]',
+  standalone: true,
+  selector: 'it-accordion[title]',
   templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss']
+  exportAs: 'itAccordion',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
-export class AccordionComponent extends AbstractComponent {
+export class ItAccordionComponent extends ItCollapseComponent implements AfterViewInit {
 
   /**
    * Accordion Title
    */
   @Input() title!: string;
 
-  /**
-   * True to set accordion opened by default
-   */
-  @Input() opened?: BooleanInput;
+  @ViewChild('collapse') protected override collapseDiv?: ElementRef<HTMLDivElement>;
+
+  protected isCollapsed: boolean = true;
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'title');
+
+    this.isCollapsed = !this.isOpenedOnStart;
+    this.hideEvent.subscribe(() => {
+      this.isCollapsed = true;
+      this._changeDetectorRef.detectChanges();
+    });
+    this.showEvent.subscribe(() => {
+      this.isCollapsed = false;
+      this._changeDetectorRef.detectChanges();
+    });
   }
 
 }

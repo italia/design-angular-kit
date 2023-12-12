@@ -1,14 +1,30 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { FileUtils } from '../../../utils/file-utils';
 import { ProgressDonut } from 'bootstrap-italia';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { NgIf, NgOptimizedImage } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'it-upload-drag-drop[id]',
+  standalone: true,
+  selector: 'it-upload-drag-drop',
   templateUrl: './upload-drag-drop.component.html',
-  exportAs: 'itUploadDragDrop'
+  exportAs: 'itUploadDragDrop',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ItIconComponent, NgIf, TranslateModule, NgOptimizedImage]
 })
-export class UploadDragDropComponent extends AbstractComponent {
+export class ItUploadDragDropComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * The accepted file type to upload <br>
@@ -27,10 +43,9 @@ export class UploadDragDropComponent extends AbstractComponent {
   isLoading: boolean = false;
   isSuccess: boolean = false;
 
-  donut?: any;
+  donut?: ProgressDonut;
 
-  @ViewChild('donutElement')
-  private donutElement?: ElementRef<HTMLDivElement>;
+  @ViewChild('donutElement') private donutElement?: ElementRef<HTMLDivElement>;
 
   filename?: string;
   extension?: string;
@@ -128,6 +143,7 @@ export class UploadDragDropComponent extends AbstractComponent {
   public success(): void {
     this.isLoading = false;
     this.isSuccess = true;
+    this._changeDetectorRef.detectChanges();
   }
 
   /**
@@ -138,6 +154,7 @@ export class UploadDragDropComponent extends AbstractComponent {
     this.isSuccess = false;
     this.filename = this.extension = this.fileSize = undefined;
     this.donut?.set(0);
+    this._changeDetectorRef.detectChanges();
   }
 
 }

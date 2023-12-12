@@ -1,21 +1,36 @@
-import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild } from '@angular/core';
-import { AbstractComponent } from '../../../abstracts/abstract.component';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-
 import { Collapse } from 'bootstrap-italia';
 
 @Component({
-  selector: 'it-collapse[id]',
+  standalone: true,
+  selector: 'it-collapse',
   templateUrl: './collapse.component.html',
-  styleUrls: ['./collapse.component.scss'],
-  exportAs: 'itCollapse'
+  exportAs: 'itCollapse',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
-export class CollapseComponent extends AbstractComponent {
+export class ItCollapseComponent extends ItAbstractComponent implements AfterViewInit {
 
   /**
    * Enable multiple collapse
    */
-  @Input() multi?: BooleanInput;
+  @Input() multi: BooleanInput | undefined;
+
+  /**
+   * Toggles the collapsible element on invocation
+   */
+  @Input() opened: BooleanInput | undefined;
 
   /**
    * Custom class
@@ -25,52 +40,51 @@ export class CollapseComponent extends AbstractComponent {
   /**
    * This event fires immediately when the show method is called.
    */
-  @Output() onShow: EventEmitter<Event> = new EventEmitter();
+  @Output() showEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is triggered when the tooltip has been made visible to the user (it will wait for the CSS transitions to complete).
    */
-  @Output() onShown: EventEmitter<Event> = new EventEmitter();
+  @Output() shownEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event fires immediately when the hide method is called.
    */
-  @Output() onHide: EventEmitter<Event> = new EventEmitter();
+  @Output() hideEvent: EventEmitter<Event> = new EventEmitter();
 
   /**
    * This event is raised when the tooltip has finished being hidden from the user (it will wait for the CSS transitions to complete).
    */
-  @Output() onHidden: EventEmitter<Event> = new EventEmitter();
+  @Output() hiddenEvent: EventEmitter<Event> = new EventEmitter();
 
-  private readonly element: HTMLElement;
-  private collapse?: any;
 
-  @ViewChild('collapse')
-  private collapseDiv!: ElementRef<HTMLDivElement>;
+  private collapse?: Collapse;
+
+  @ViewChild('collapse') protected collapseDiv?: ElementRef<HTMLDivElement>;
 
   get isMulti(): boolean {
     return isTrueBooleanInput(this.multi);
   }
 
-  constructor(
-    override readonly _renderer: Renderer2,
-    override readonly _elementRef: ElementRef
-  ) {
-    super(_renderer, _elementRef);
-    this.element = this._elementRef.nativeElement;
+  get isOpenedOnStart(): boolean {
+    return isTrueBooleanInput(this.opened);
   }
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');
-    this.collapse = Collapse.getOrCreateInstance(this.collapseDiv.nativeElement, {
-      toggle: false
-    });
 
-    this.element.addEventListener('show.bs.collapse', event => this.onShow.emit(event));
-    this.element.addEventListener('shown.bs.collapse', event => this.onShown.emit(event));
-    this.element.addEventListener('hide.bs.collapse', event => this.onHide.emit(event));
-    this.element.addEventListener('hidden.bs.collapse', event => this.onHidden.emit(event));
+    if (this.collapseDiv) {
+      const element = this.collapseDiv.nativeElement;
+      this.collapse = Collapse.getOrCreateInstance(element, {
+        toggle: this.isOpenedOnStart
+      });
+
+      element.addEventListener('show.bs.collapse', event => this.showEvent.emit(event));
+      element.addEventListener('shown.bs.collapse', event => this.shownEvent.emit(event));
+      element.addEventListener('hide.bs.collapse', event => this.hideEvent.emit(event));
+      element.addEventListener('hidden.bs.collapse', event => this.hiddenEvent.emit(event));
+    }
   }
 
   /**

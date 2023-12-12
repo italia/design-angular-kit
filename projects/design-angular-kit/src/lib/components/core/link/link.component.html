@@ -1,8 +1,8 @@
-<a *ngIf="!isExternalLink; else externalLink" [class]="class" [routerLink]="isDisabled ? null : href">
+<a *ngIf="!isExternalLink; else externalLink" [id]="id" [class]="class" [routerLink]="(isDisabled ? null : href)!">
   <ng-container *ngTemplateOutlet="linkContent"></ng-container>
 </a>
 <ng-template #externalLink>
-  <a [class]="class" [attr.href]="isDisabled ? null : href">
+  <a [id]="id" [class]="class" [attr.href]="isDisabled ? null : href">
     <ng-container *ngTemplateOutlet="linkContent"></ng-container>
   </a>
 </ng-template>

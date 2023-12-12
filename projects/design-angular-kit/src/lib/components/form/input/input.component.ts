@@ -1,17 +1,24 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { AutocompleteItem, InputControlType } from '../../../interfaces/form';
-import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
+import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 
 @Component({
-  selector: 'it-input[id]',
+  standalone: true,
+  selector: 'it-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]
 })
-export class InputComponent extends AbstractFormComponent<string | number> {
+export class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {
 
   /**
    * The input type
@@ -27,50 +34,69 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   /**
    * The input description
    */
-  @Input() description?: string;
+  @Input() description: string | undefined;
 
   /**
    * To prevent modification of the contained value.
    * - <b>plaintext</b>: Readonly field in the form stylized as plain text
    */
-  @Input() readonly?: BooleanInput | 'plaintext';
+  @Input() readonly: BooleanInput | 'plaintext' | undefined;
+
+  /**
+   * The max date value [Used only in type = 'date']
+   * @default '9999-12-31'
+   * @example 'yyyy-mm-dd'
+   */
+  @Input() maxDate?: string = '9999-12-31';
+
+  /**
+   * The min date value [Used only in type = 'date']
+   * @example 'yyyy-mm-dd'
+   */
+  @Input() minDate: string | undefined;
 
   /**
    * The max value [Used only in type = 'number']
    */
-  @Input() max?: number;
+  @Input() max: number | undefined;
 
   /**
    * The min value [Used only in type = 'number']
    */
-  @Input() min?: number;
+  @Input() min: number | undefined;
 
   /**
    * The step value [Used only in type = 'number']
    */
-  @Input() step?: number | 'any';
+  @Input() step: number | 'any' | undefined;
 
   /**
    * If is a currency number [Used only in type = 'number']
    */
-  @Input() currency?: BooleanInput;
+  @Input() currency: BooleanInput | undefined;
 
   /**
    * If is a percentage number [Used only in type = 'number']
    */
-  @Input() percentage?: BooleanInput;
+  @Input() percentage: BooleanInput | undefined;
 
   /**
    * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']
    */
-  @Input() adaptive?: BooleanInput;
+  @Input() adaptive: BooleanInput | undefined;
+
+  /**
+   * Input autocomplete attribute (Browser autocomplete)
+   * @default undefined
+   */
+  @Input() autocomplete: string | undefined;
 
   /**
    * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']
    * If you need to retrieve items via API, can pass a function of Observable
    * @default undefined
    */
-  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string) => Observable<Array<AutocompleteItem>>);
+  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string | number | null) => Observable<Array<AutocompleteItem>>);
 
   /**
    * Time span [ms] has passed without another source emission, to delay data filtering.
@@ -82,9 +108,9 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   /**
    * Fired when the Autocomplete Item has been selected
    */
-  @Output() onAutocompleteSelected: EventEmitter<AutocompleteItem> = new EventEmitter();
+  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();
 
-  showAutocompletion = false;
+  protected showAutocompletion = false;
 
 
   get isActiveLabel(): boolean {
@@ -97,7 +123,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
       return true;
     }
 
-    return this.type === 'date' || this.type === 'time';
+    return this.type === 'date' || this.type === 'time' || this.type === 'color';
   }
 
   /**
@@ -147,6 +173,9 @@ export class InputComponent extends AbstractFormComponent<string | number> {
     if (this.hasError('invalidCap')) {
       return this._translateService.get('it.errors.cap-invalid');
     }
+    if (this.hasError('invalidIban')) {
+      return this._translateService.get('it.errors.iban-invalid');
+    }
     if (this.hasError('invalidRegex')) {
       return this._translateService.get('it.errors.regex-invalid');
     }
@@ -159,7 +188,10 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   }
 
   /** Observable da cui vengono emessi i risultati dell'auto completamento */
-  autocompleteResults$: Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> = new Observable();
+  autocompleteResults$: Observable<{
+    searchedValue: string | number | null | undefined,
+    relatedEntries: Array<AutocompleteItem>
+  }> = new Observable();
 
 
   override ngOnInit() {
@@ -218,7 +250,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
   /**
    * Create the autocomplete list
    */
-  private getAutocompleteResults$(): Observable<{ searchedValue: string, relatedEntries: Array<AutocompleteItem> }> {
+  private getAutocompleteResults$(): Observable<{ searchedValue: string | number | null | undefined, relatedEntries: Array<AutocompleteItem> }> {
     if (this.type !== 'search') {
       return of({ searchedValue: '', relatedEntries: [] });
     }
@@ -227,13 +259,13 @@ export class InputComponent extends AbstractFormComponent<string | number> {
       distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value
       switchMap(searchedValue => {
         if (!this.autocompleteData) {
-          return of({ searchedValue, relatedEntries: [] });
+          return of({ searchedValue, relatedEntries: <Array<AutocompleteItem>>[] });
         }
 
         const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);
         return autoCompleteData$.pipe(
           map(autocompleteData => {
-            if (!searchedValue) {
+            if (!searchedValue || typeof searchedValue === 'number') {
               return { searchedValue, relatedEntries: [] };
             }
 
@@ -254,7 +286,7 @@ export class InputComponent extends AbstractFormComponent<string | number> {
       event.preventDefault();
     }
 
-    this.onAutocompleteSelected.next(entry);
+    this.autocompleteSelectedEvent.next(entry);
     this.control.setValue(entry.value);
     this.showAutocompletion = false;
   }

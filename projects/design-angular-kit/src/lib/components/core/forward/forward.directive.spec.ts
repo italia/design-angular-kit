@@ -1,4 +1,4 @@
-import { ForwardDirective } from './forward.directive';
+import { ItForwardDirective } from './forward.directive';
 import { Component, QueryList, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -14,16 +14,17 @@ import { By } from '@angular/platform-browser';
   }
 )
 class UnitTestComponent {
-  @ViewChildren(ForwardDirective) directives: QueryList<ForwardDirective>
+  @ViewChildren(ItForwardDirective) directives: QueryList<ItForwardDirective>
 }
 
-describe('ForwardDirective', () => {
+describe('ItForwardDirective', () => {
 
   let component: UnitTestComponent;
   let fixture: ComponentFixture<UnitTestComponent>;
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent, ForwardDirective]
+      declarations: [UnitTestComponent],
+      imports: [ItForwardDirective]
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);
@@ -32,7 +33,7 @@ describe('ForwardDirective', () => {
   }));
 
   it('should create an instance', () => {
-    const directive = new ForwardDirective();
+    const directive = new ItForwardDirective();
     expect(directive).toBeTruthy();
   });
 

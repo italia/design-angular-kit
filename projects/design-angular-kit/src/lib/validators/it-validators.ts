@@ -2,6 +2,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@ang
 import {
   CAP_REGEX,
   EMAIL_REGEX,
+  IBAN_REGEX,
   ITALIAN_TAX_CODE_REGEX,
   PHONE_NUMBER_REGEX,
   URL_REGEX,
@@ -51,14 +52,17 @@ export class ItValidators {
   /**
    * Check whether our password and confirm password are a match
    * @param control
+   * @param passwordControlName the password formControlName
+   * @param confirmControlName the confirmPassword formControlName
    */
-  public static passwordMatch(control: AbstractControl): AbstractControl | null {
-    const confirmControl = control.get('passwordConfirm'); //confirmPassword form control
+  public static passwordMatch(control: AbstractControl, passwordControlName = 'password', confirmControlName = 'confirmPassword'): AbstractControl | null {
+    const confirmControl = control.get(confirmControlName); // confirmPassword form control
     if (!confirmControl) {
       return null;
     }
 
-    const password = control.get('password')?.value; // get password from our password form control
+    const passwordControl = control.get(passwordControlName); // password form control
+    const password = passwordControl?.value; // get password from our password form control
 
     // compare is the password match
     if ((password && !confirmControl.value) || (confirmControl.value && password !== confirmControl.value)) {
@@ -68,7 +72,7 @@ export class ItValidators {
       return control;
     }
 
-    if (password) {
+    if (password && passwordControl?.touched) {
       confirmControl?.markAsTouched();
     }
     return null;
@@ -81,16 +85,26 @@ export class ItValidators {
    * @param hasCapitalCase check whether the entered password has upper case letter - default true
    * @param hasSmallCase check whether the entered password has a lower-case letter - default true
    * @param hasSpecialCharacters check whether the entered password has a special character - default true
+   * @param required the field is required - default true
    */
-  public static password(minLength = 10, hasNumber = true, hasCapitalCase = true, hasSmallCase = true, hasSpecialCharacters = true): ValidatorFn {
-    return <ValidatorFn>Validators.compose([
-      Validators.required,
-      ItValidators.customPattern(/\d/, { hasNumber: hasNumber }),
-      ItValidators.customPattern(/[A-Z]/, { hasCapitalCase: hasCapitalCase }),
-      ItValidators.customPattern(/[a-z]/, { hasSmallCase: hasSmallCase }),
-      ItValidators.customPattern(new RegExp(`[${ItValidators.SpecialCharacterPattern}]`), { hasSpecialCharacters: hasSpecialCharacters }),
-      Validators.minLength(minLength)
-    ]);
+  public static password(minLength = 10, hasNumber = true, hasCapitalCase = true, hasSmallCase = true, hasSpecialCharacters = true, required = true): ValidatorFn {
+    const validators: Array<ValidatorFn> = [Validators.minLength(minLength)];
+    if (hasNumber) {
+      validators.push(ItValidators.customPattern(/\d/, { hasNumber }));
+    }
+    if (hasCapitalCase) {
+      validators.push(ItValidators.customPattern(/[A-Z]/, { hasCapitalCase }));
+    }
+    if (hasSmallCase) {
+      validators.push(ItValidators.customPattern(/[a-z]/, { hasSmallCase }));
+    }
+    if (hasSpecialCharacters) {
+      validators.push(ItValidators.customPattern(new RegExp(`[${ItValidators.SpecialCharacterPattern}]`), { hasSpecialCharacters }));
+    }
+    if (required) {
+      validators.push(Validators.required);
+    }
+    return <ValidatorFn>Validators.compose(validators);
   }
 
   /**
@@ -136,6 +150,13 @@ export class ItValidators {
    */
   public static get cap(): ValidatorFn {
     return ItValidators.customPattern(CAP_REGEX, { invalidCap: true });
+  }
+
+  /**
+   * IBAN validator
+   */
+  public static get iban(): ValidatorFn {
+    return ItValidators.customPattern(IBAN_REGEX, { invalidIban: true });
   }
 
   /**

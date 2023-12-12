@@ -90,6 +90,66 @@
         {
           "label": "Steppers",
           "link": "/componenti/steppers"
+        },
+        {
+          "label": "Select",
+          "link": "/componenti/select"
+        },
+        {
+          "label": "Notifications",
+          "link": "/componenti/notifications"
+        },
+        {
+          "label": "Rating",
+          "link": "/componenti/rating"
+        },
+        {
+          "label": "Pagination",
+          "link": "/componenti/pagination"
+        },
+        {
+          "label": "Table",
+          "link": "/componenti/table"
+        },
+        {
+          "label": "Textarea",
+          "link": "/componenti/textarea"
+        },
+        {
+          "label": "Alert",
+          "link": "/componenti/alert"
+        },
+        {
+          "label": "Spinner",
+          "link": "/componenti/spinner"
+        },
+        {
+          "label": "Icons",
+          "link": "/componenti/icon"
+        },
+        {
+          "label": "Error Page",
+          "link": "/componenti/error-page"
+        },
+        {
+          "label": "Modal",
+          "link": "/componenti/modal"
+        },
+        {
+          "label": "Language switcher",
+          "link": "/componenti/language-switcher"
+        },
+        {
+          "label": "Password Input",
+          "link": "/componenti/password-input"
+        },
+        {
+          "label": "Carousel",
+          "link": "/componenti/carousel"
+        },
+        {
+          "label": "Range",
+          "link": "/componenti/range"
         }
       ]
     }

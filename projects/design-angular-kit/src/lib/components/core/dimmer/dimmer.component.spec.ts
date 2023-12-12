@@ -3,23 +3,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { DimmerComponent } from './dimmer.component';
+import { ItDimmerComponent } from './dimmer.component';
 
-describe('DimmerComponent', () => {
-  let component: DimmerComponent;
-  let fixture: ComponentFixture<DimmerComponent>;
+describe('ItDimmerComponent', () => {
+  let component: ItDimmerComponent;
+  let fixture: ComponentFixture<ItDimmerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DimmerComponent ],
-      imports: [ BrowserAnimationsModule ]
+      imports: [ ItDimmerComponent, BrowserAnimationsModule ]
     })
-    .overrideComponent(DimmerComponent, {
+    .overrideComponent(ItDimmerComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DimmerComponent);
+    fixture = TestBed.createComponent(ItDimmerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

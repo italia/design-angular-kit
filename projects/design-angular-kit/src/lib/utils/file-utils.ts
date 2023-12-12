@@ -32,7 +32,7 @@ export class FileUtils {
     return new Observable<string>(observer => {
       reader.onload = (e) => {
         const target = e.target;
-        if (!target || !target.result || target.result instanceof ArrayBuffer) {
+        if (!target?.result || target.result instanceof ArrayBuffer) {
           return observer.error('Error on parse');
         }
         observer.next(target.result);
@@ -68,5 +68,14 @@ export class FileUtils {
   public static base64ToFile(base64: string, mimeType: string, filename: string): File {
     const fileBlob = FileUtils.base64ToBlob(base64, mimeType);
     return new File([fileBlob], filename, { type: mimeType });
+  }
+
+  /**
+   * Extract the MIME type from base64 string
+   * @param base64 the base64 string
+   */
+  public static getMimeTypeFromBase64(base64: string): string|undefined {
+    const mime = base64.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+    return mime?.length ? mime[1] : undefined;
   }
 }

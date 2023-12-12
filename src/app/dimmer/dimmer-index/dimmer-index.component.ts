@@ -11,7 +11,7 @@ export class DimmerIndexComponent {
   componentButtons?: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'DimmerComponent');
-    this.componentButtons = (<any>Documentation).components.find(component => component.name === 'DimmerButtonsComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItDimmerComponent');
+    this.componentButtons = (<any>Documentation).components.find(component => component.name === 'ItDimmerButtonsComponent');
   }
 }

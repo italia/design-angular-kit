@@ -7,8 +7,10 @@
       "close": "Chiudi",
       "continue": "Continua",
       "edit": "Modifica",
+      "show": "Visualizza",
       "show-all": "Mostra tutto",
-      "details": "Dettagli"
+      "details": "Dettagli",
+      "download": "Scarica"
     },
     "errors": {
       "generic": "Si è verificato un errore",
@@ -19,29 +21,34 @@
       "min-invalid": "Il valore minimo per questo campo è: {{min}}",
       "max-invalid": "Il valore massimo per questo campo è: {{max}}",
       "min-length-invalid": "La lunghezza minima per questo campo è: {{min}}",
-      "max-length-invalid": "La lunghezza minima per questo campo è: {{max}}",
+      "max-length-invalid": "La lunghezza massima per questo campo è: {{max}}",
       "email-invalid": "Inserisci un email valida",
       "tel-invalid": "Inserisci un formato telefonico valido",
       "url-invalid": "Inserisci un url valido",
       "tax-code-invalid": "Inserisci un codice fiscale valido",
       "vat-number-invalid": "Inserisci una partita iva valida",
       "cap-invalid": "Inserisci un CAP valido",
+      "iban-invalid": "Inserisci un IBAN valido",
       "regex-invalid": "Inserisci un espressione REGEX valida",
       "pattern-invalid": "Il campo deve avere il pattern {{pattern}}",
       "password-no-match": "Le password devono essere identiche",
       "password-min-length": "La password deve contenere almeno {{minLength}} caratteri!",
-      "password-number": "La password deve avere almeno 1 numero!",
-      "password-capital-case": "La password deve contenere almeno 1 carattere maiuscolo!",
-      "password-small-case": "La password deve contenere almeno 1 carattere minuscolo!",
-      "password-special-character": "La password deve contenere almeno 1 carattere speciale!"
+      "password-number": "La password deve avere almeno un numero!",
+      "password-capital-case": "La password deve contenere almeno un carattere maiuscolo!",
+      "password-small-case": "La password deve contenere almeno un carattere minuscolo!",
+      "password-special-character": "La password deve contenere almeno un carattere speciale!"
     },
     "core": {
       "close-modal": "Chiudi finestra modale",
       "close-notification": "Chiudi notifica: {{title}}",
       "close-alert": "Chiudi avviso",
       "page": "Pagina",
+      "previous": "Precedente",
       "previous-page": "Pagina precedente",
+      "next": "Successiva",
       "next-page": "Pagina successiva",
+      "go-to": "Vai a",
+      "page-of-total": "Pagina {{page}} di {{total}}",
       "progress": "Progresso",
       "loading": "Caricamento",
       "active": "Attivo",
@@ -51,9 +58,24 @@
       "step": "Step",
       "step-of": "Step {{current}} di {{available}}",
       "back": "Indietro",
-      "forward": "Avanti"
+      "forward": "Avanti",
+      "rate-star": "Valuta {{current}} stelle su {{total}}",
+      "rating-star": "Valutazione {{current}} stelle su {{total}}"
     },
     "form": {
+      "caps-inserted": "CAPS LOCK inserito",
+      "password-strength-meter": {
+        "description": {
+          "default": "Inserisci almeno {{minLength}} caratteri",
+          "number": "un numero",
+          "capital-case": "un carattere maiuscolo",
+          "special-character": "un carattere speciale"
+        },
+        "password-short": "Password molto debole",
+        "password-bad": "Password debole",
+        "password-good": "Password sicura",
+        "password-strong": "Password molto sicura"
+      },
       "increase-value": "Aumenta valore",
       "decrease-value": "Diminuisci valore",
       "upload": "Upload",
@@ -80,10 +102,19 @@
       "selected": "Selezionata",
       "language-selection": "Selezione lingua: {{lang}}",
       "select-language": "Seleziona una lingua",
-      "404": {
-        "title": "Risorsa non trovata",
-        "description": "Oops! La risorsa che cerchi non è stata trovata, torna alla homepage e utilizza il menu per continuare la navigazione.",
-        "go-back": "Torna indietro",
+      "error-page": {
+        "404": {
+          "title": "Risorsa non trovata",
+          "description": "Oops! La risorsa che cerchi non è stata trovata, torna alla homepage e utilizza il menu per continuare la navigazione."
+        },
+        "403": {
+          "title": "Non autorizzato",
+          "description": "Non sei autorizzato ad accedere a questa risorsa!"
+        },
+        "500": {
+          "title": "Si è verificato un errore",
+          "description": "Si è verificato un errore imprevisto. Riprova più tardi o contatta il supporto."
+        },
         "go-to-homepage": "Torna alla homepage"
       }
     }

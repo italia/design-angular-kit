@@ -2,43 +2,54 @@
 
 <div class="bd-example">
   <form [formGroup]="myForm">
-    <it-input id="myInput-validation" label="Custom" formControlName="myInput" #myInput>
-      <ng-container error>
-        <!-- Custom errors-->
-        <div *ngIf="myInput.hasError('required')">Il campo è obbligatorio</div>
-        <div *ngIf="myInput.hasError('minlength')">Deve essere almeno di lunghezza 3</div>
-        <div *ngIf="myInput.hasError('maxlength')">Deve essere massimo di lunghezza 10</div>
-        <div *ngIf="myInput.hasError('pattern')">Non corrisponde al pattern [ab]+</div>
-      </ng-container>
-    </it-input>
 
     <div class="row">
-      <div class="col-4">
-        <it-input id="tax-code-validation" label="Codice fiscale" formControlName="taxCode" required>
+      <div class="col-6">
+        <it-input label="Custom" formControlName="myInput" #myInput>
+          <ng-container error>
+            <!-- Custom errors-->
+            <div *ngIf="myInput.hasError('required')">Il campo è obbligatorio</div>
+            <div *ngIf="myInput.hasError('minlength')">Deve essere almeno di lunghezza 3</div>
+            <div *ngIf="myInput.hasError('maxlength')">Deve essere massimo di lunghezza 10</div>
+            <div *ngIf="myInput.hasError('pattern')">Non corrisponde al pattern [ab]+</div>
+          </ng-container>
+        </it-input>
+      </div>
+      <div class="col-6">
+        <it-input label="Codice fiscale" formControlName="taxCode" required>
           <!-- Default errors-->
         </it-input>
       </div>
+    </div>
+
+    <div class="row">
       <div class="col-4">
-        <it-input id="vat-validation" label="Partita IVA" formControlName="vat" required></it-input>
+        <it-input label="IBAN" formControlName="iban"></it-input>
       </div>
       <div class="col-4">
-        <it-input id="cap-validation" label="Cap" formControlName="cap" required></it-input>
+        <it-input label="Partita IVA" formControlName="vat" required></it-input>
+      </div>
+      <div class="col-4">
+        <it-input label="Cap" formControlName="cap" required></it-input>
       </div>
     </div>
 
     <div class="row">
       <div class="col-4">
-        <it-input id="email-validation" type="email" label="Email" formControlName="email" required></it-input>
+        <it-input type="email" label="Email" formControlName="email" required></it-input>
       </div>
       <div class="col-4">
-        <it-input id="url-validation" type="url" label="Url" formControlName="url" required></it-input>
+        <it-input type="url" label="Url" formControlName="url" required></it-input>
       </div>
       <div class="col-4">
-        <it-input id="phone-validation" type="tel" label="Telefono" formControlName="phone" required></it-input>
+        <it-input type="tel" label="Telefono" formControlName="phone" required></it-input>
       </div>
     </div>
 
-    <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
+    <div class="d-flex justify-content-between">
+      <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
+      <button itButton="secondary" type="button" (click)="markAllAsTouched()">Valida</button>
+    </div>
 
     <div *ngIf="savedValue">Salvato `{{savedValue}}`</div>
   </form>

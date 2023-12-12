@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ApiParametersComponent {
 
-  @Input() component: any;
+  @Input() component?: any;
+  @Input() service?: any;
 
 }

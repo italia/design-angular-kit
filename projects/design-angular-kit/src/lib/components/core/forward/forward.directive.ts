@@ -2,10 +2,12 @@ import { DOCUMENT } from '@angular/common';
 import { Directive, HostListener, Inject, Input } from '@angular/core';
 
 @Directive({
+  standalone: true,
   selector: '[itForward]',
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {'class': 'forward'}
 })
-export class ForwardDirective {
+export class ItForwardDirective {
 
   /**
    * Indica, se HTMLElement, l'elemento a cui navigare, o se stringa, il selettore che selezionerà l'elemento a cui navigare.

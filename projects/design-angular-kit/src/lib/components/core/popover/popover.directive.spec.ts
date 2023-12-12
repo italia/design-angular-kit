@@ -1,17 +1,17 @@
 import { ElementRef } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-import { PopoverDirective } from './popover.directive'
+import { ItPopoverDirective } from './popover.directive'
 
 export class MockElementRef extends ElementRef {
   nativeElement= {}
 }
 
-describe('PopoverDirective', () => {
+describe('ItPopoverDirective', () => {
 
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       providers: [
         { provide: ElementRef, useClass: MockElementRef }
       ]
@@ -19,7 +19,7 @@ describe('PopoverDirective', () => {
   })
 
   it('should create an instance', () => {
-    const directive = new PopoverDirective(TestBed.inject(ElementRef));
+    const directive = new ItPopoverDirective(TestBed.inject(ElementRef));
     expect(directive).toBeTruthy();
   });
 });

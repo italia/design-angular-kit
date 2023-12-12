@@ -1,19 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { TranslateModule } from '@ngx-translate/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextareaComponent } from './textarea.component'
+import { ItTextareaComponent } from './textarea.component';
+import { tb_base } from '../../../../test';
 
-describe('TextareaComponent', () => {
-  let component: TextareaComponent;
-  let fixture: ComponentFixture<TextareaComponent>;
+describe('ItTextareaComponent', () => {
+  let component: ItTextareaComponent;
+  let fixture: ComponentFixture<ItTextareaComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ TextareaComponent ], imports:[TranslateModule.forRoot()]
-    })
-    .compileComponents();
+    await TestBed.configureTestingModule(tb_base)
+      .compileComponents();
 
-    fixture = TestBed.createComponent(TextareaComponent);
+    fixture = TestBed.createComponent(ItTextareaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

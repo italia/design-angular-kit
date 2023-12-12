@@ -1,27 +1,26 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { IconComponent } from '../../utils/icon/icon.component';
 
-import { CalloutComponent } from './callout.component';
+import { ItCalloutComponent } from './callout.component';
+import { tb_base } from '../../../../test';
 
-describe('CalloutComponent', () => {
-  let component: CalloutComponent;
-  let fixture: ComponentFixture<CalloutComponent>;
+describe('ItCalloutComponent', () => {
+  let component: ItCalloutComponent;
+  let fixture: ComponentFixture<ItCalloutComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CalloutComponent, IconComponent ]
-    })
-    .overrideComponent(CalloutComponent, {
-      set: { changeDetection: ChangeDetectionStrategy.Default }
-    })
-    .compileComponents();
+    await TestBed.configureTestingModule(tb_base)
+      .overrideComponent(ItCalloutComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
 
-    fixture = TestBed.createComponent(CalloutComponent);
+    fixture = TestBed.createComponent(ItCalloutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -79,14 +78,14 @@ describe('CalloutComponent', () => {
     component.label = 'label';
     component.icon = 'zoom-in';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
     expect(useElement).toBeTruthy();
   });
 
   it('if i don\'t set a icon (with a label), that will be on DOM (default is info-circle)', () => {
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -94,7 +93,7 @@ describe('CalloutComponent', () => {
     component.appearance = 'more';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-zoom-in'));
     expect(useElement).toBeTruthy();
   });
 
@@ -102,7 +101,7 @@ describe('CalloutComponent', () => {
     component.color = 'success';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-check-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-check-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -110,7 +109,7 @@ describe('CalloutComponent', () => {
     component.color = 'warning';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-help-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-help-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -118,7 +117,7 @@ describe('CalloutComponent', () => {
     component.color = 'danger';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-close-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-close-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -126,7 +125,7 @@ describe('CalloutComponent', () => {
     component.color = 'important';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
     expect(useElement).toBeTruthy();
   });
 
@@ -134,7 +133,7 @@ describe('CalloutComponent', () => {
     component.color = 'note';
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="/bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
+    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
     expect(useElement).toBeTruthy();
   });
 });

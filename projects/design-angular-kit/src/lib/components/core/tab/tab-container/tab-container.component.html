@@ -1,28 +1,28 @@
-<ul class="nav nav-tabs"
+<ul *ngIf="tabs"
+    class="nav nav-tabs"
     [class.auto]="isTrueBooleanInput(auto)"
     [class.nav-tabs-icon-text]="isTrueBooleanInput(iconText)"
     [class.nav-dark]="isTrueBooleanInput(dark)"
     role="tablist">
 
   <li class="nav-item" *ngFor="let tab of tabs">
-    <a [id]="tab.id+'-tab-link'"
+    <a #tabNavLinks [id]="tab.id+'-tab-link'"
        role="tab"
-       data-bs-toggle="tab"
        class="nav-link"
        [class.active]="isTrueBooleanInput(tab.active)"
        [class.disabled]="isTrueBooleanInput(tab.disabled)"
        [attr.href]="'#'+tab.id+'-tab'"
        [attr.aria-controls]="tab.id+'-tab'">
-      <it-icon *ngIf="tab.icon" [name]="tab.icon"></it-icon>
+      <it-icon *ngIf="tab.icon" [name]="tab.icon" class="me-2"></it-icon>
       {{tab.label}}
     </a>
   </li>
 </ul>
 
-<div class="tab-content">
+<div *ngIf="tabs" class="tab-content">
   <div *ngFor="let tab of tabs"
        [id]="tab.id+'-tab'"
-       class="tab-pane fade {{tab.class ?? ''}}"
+       class="tab-pane p-4 fade {{tab.class ?? ''}}"
        [class.active]="isTrueBooleanInput(tab.active)"
        [class.show]="isTrueBooleanInput(tab.active)"
        role="tabpanel"

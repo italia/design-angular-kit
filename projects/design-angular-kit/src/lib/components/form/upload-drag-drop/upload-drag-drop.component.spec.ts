@@ -1,19 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { TranslateModule } from '@ngx-translate/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadDragDropComponent } from './upload-drag-drop.component'
+import { ItUploadDragDropComponent } from './upload-drag-drop.component';
+import { tb_base } from '../../../../test';
 
-describe('UploadDragDropComponent', () => {
-  let component: UploadDragDropComponent;
-  let fixture: ComponentFixture<UploadDragDropComponent>;
+describe('ItUploadDragDropComponent', () => {
+  let component: ItUploadDragDropComponent;
+  let fixture: ComponentFixture<ItUploadDragDropComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ UploadDragDropComponent ], imports:[TranslateModule.forRoot()]
-    })
-    .compileComponents();
+    await TestBed.configureTestingModule(tb_base)
+      .compileComponents();
 
-    fixture = TestBed.createComponent(UploadDragDropComponent);
+    fixture = TestBed.createComponent(ItUploadDragDropComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

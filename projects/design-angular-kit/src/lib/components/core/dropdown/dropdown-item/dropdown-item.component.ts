@@ -1,34 +1,40 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
-import { LinkComponent } from '../../link/link.component';
+import { ItLinkComponent } from '../../link/link.component';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgIf } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'it-dropdown-item',
   templateUrl: './dropdown-item.component.html',
-  styleUrls: ['./dropdown-item.component.scss']
+  styleUrls: ['./dropdown-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, ItIconComponent, TranslateModule, ItLinkComponent]
 })
-export class DropdownItemComponent extends LinkComponent {
+export class ItDropdownItemComponent extends ItLinkComponent {
 
   /**
    * Show divider
    */
-  @Input() divider?: BooleanInput;
+  @Input() divider: BooleanInput | undefined;
 
   /**
    * Active item
    */
-  @Input() active?: BooleanInput;
+  @Input() active: BooleanInput | undefined;
 
   /**
    * To increase the size of links
    */
-  @Input() large?: BooleanInput;
+  @Input() large: BooleanInput | undefined;
 
   /**
    * The name of icon to show
    */
-  @Input() iconName?: IconName;
+  @Input() iconName: IconName | undefined;
 
   /**
    * The icon position
@@ -67,14 +73,6 @@ export class DropdownItemComponent extends LinkComponent {
     }
 
     return linkClass;
-  }
-
-  constructor(
-    protected override readonly _renderer: Renderer2,
-    protected override readonly _elementRef: ElementRef,
-    private readonly _changeDetectorRef: ChangeDetectorRef
-  ) {
-    super(_renderer, _elementRef);
   }
 
   setDark(dark: boolean): void {

@@ -10,6 +10,6 @@ export class CalloutIndexComponent {
   component?: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'CalloutComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItCalloutComponent');
   }
 }

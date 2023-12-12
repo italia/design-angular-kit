@@ -1,6 +1,6 @@
 <div class="steppers" [class.bg-dark]="isDark">
   <div *ngIf="isShowHeader" class="steppers-header">
-    <ul>
+    <ul *ngIf="steps">
       <li *ngFor="let step of steps; let i = index"
           [class.confirmed]="i < activeStep"
           [class.active]="i === activeStep"
@@ -18,15 +18,16 @@
 
         {{step.label}}
 
-        <span *ngIf="i < activeStep && !isSteppersNumber" class="ms-auto">
+        <ng-container *ngIf="i < activeStep && !isSteppersNumber">
           <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-        </span>
+        </ng-container>
         <span *ngIf="i === activeStep" class="visually-hidden">{{'it.core.active' | translate}}</span>
       </li>
     </ul>
-    <span class="steppers-index" aria-hidden="true">
-      <ng-container
-        *ngIf="!isSteppersNumber; else showNumbers">{{(activeStep + 1) + '/' + steps?.length}}</ng-container>
+    <span *ngIf="steps" class="steppers-index" aria-hidden="true">
+      <ng-container *ngIf="!isSteppersNumber; else showNumbers">
+        {{(activeStep + 1) + '/' + steps.length}}
+      </ng-container>
       <ng-template #showNumbers>
         <span *ngFor="let step of steps; let i = index" [class.active]="i === activeStep">{{i + 1}}</span>
       </ng-template>
@@ -40,12 +41,13 @@
   <nav *ngIf="isShowBackButton || isShowSaveButton || isShowForwardButton || isShowConfirmButton || !!progressStyle"
        class="steppers-nav">
     <button *ngIf="isShowBackButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-prev"
+            [disabled]="isDisableBackButton"
             (click)="backClick.emit(activeStep)">
       <it-icon name="chevron-left" color="primary"></it-icon>
       {{'it.core.back' | translate}}
     </button>
 
-    <ng-container *ngIf="!!progressStyle">
+    <ng-container *ngIf="!!progressStyle && steps">
       <ul *ngIf="progressStyle === 'dots'; else progressBar" class="steppers-dots">
         <li *ngFor="let step of steps; let i = index" [class.done]="i < activeStep">
           <span class="visually-hidden">
@@ -63,11 +65,13 @@
     </ng-container>
 
     <button *ngIf="isShowSaveButton" type="button" itButton="primary" size="sm" class="steppers-btn-save"
-            [progress]="isSaveLoading" [disabled]="isSaveLoading" (click)="saveClick.emit(activeStep)">
+            [progress]="isSaveLoading" [disabled]="isSaveLoading || isDisableSaveButton"
+            (click)="saveClick.emit(activeStep)">
       {{'it.general.save' | translate}}
     </button>
 
     <button *ngIf="isShowForwardButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-next"
+            [disabled]="isDisableForwardButton"
             (click)="forwardClick.emit(activeStep)">
       {{'it.core.forward' | translate}}
       <it-icon name="chevron-right" color="primary"></it-icon>
@@ -75,7 +79,7 @@
 
     <button *ngIf="isShowConfirmButton" type="button" itButton="primary" size="sm"
             class="steppers-btn-confirm d-lg-block"
-            [progress]="isConfirmLoading" [disabled]="isConfirmLoading"
+            [progress]="isConfirmLoading" [disabled]="isConfirmLoading || isDisableConfirmButton"
             (click)="confirmClick.emit(activeStep)">
       {{'it.core.confirm' | translate}}
     </button>

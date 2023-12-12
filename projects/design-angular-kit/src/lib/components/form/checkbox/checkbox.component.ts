@@ -1,37 +1,42 @@
-import { Component, Input } from '@angular/core';
-import { AbstractFormComponent } from '../../../abstracts/abstract-form-component';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'it-checkbox[id]',
-  templateUrl: './checkbox.component.html'
+  standalone: true,
+  selector: 'it-checkbox',
+  templateUrl: './checkbox.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgTemplateOutlet, ReactiveFormsModule, AsyncPipe]
 })
-export class CheckboxComponent extends AbstractFormComponent<boolean> {
+export class ItCheckboxComponent extends ItAbstractFormComponent<boolean | null | undefined> implements OnInit, OnChanges {
 
   /**
    * If show checkbox as toggle
    */
-  @Input() toggle?: BooleanInput;
+  @Input() toggle: BooleanInput | undefined;
 
   /**
    * If show checkbox inline
    */
-  @Input() inline?: BooleanInput;
+  @Input() inline: BooleanInput | undefined;
 
   /**
    * If is checkbox group
    */
-  @Input() group?: BooleanInput;
+  @Input() group: BooleanInput | undefined;
 
   /**
    * If checkbox is checked
    */
-  @Input() checked?: BooleanInput;
+  @Input() checked: BooleanInput | undefined;
 
   /**
    * If checkbox is indeterminate
    */
-  @Input() indeterminate?: BooleanInput;
+  @Input() indeterminate: BooleanInput | undefined;
 
   get isIndeterminate(): boolean {
     return isTrueBooleanInput(this.indeterminate);
@@ -43,7 +48,16 @@ export class CheckboxComponent extends AbstractFormComponent<boolean> {
 
   override ngOnInit() {
     super.ngOnInit();
+    this.markAsChecked();
+  }
 
+  override ngOnChanges(changes: SimpleChanges) {
+    if (changes['checked']) {
+      this.markAsChecked();
+    }
+  }
+
+  private markAsChecked(): void {
     if (this.control.value || this.checked === undefined) {
       return;
     }

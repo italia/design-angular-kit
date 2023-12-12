@@ -1,4 +1,6 @@
-export type AlertColor = 'info' | 'success' | 'warning' | 'danger';
+import { IconName } from './icon';
+
+export type AlertColor = 'primary' | 'info' | 'success' | 'warning' | 'danger';
 
 export type ButtonColor =
   'primary'
@@ -24,6 +26,8 @@ export type ButtonType = 'submit' | 'button';
 
 export type CalloutColor = 'success' | 'warning' | 'danger' | 'important' | 'note';
 export type CalloutAppearance = 'default' | 'highlight' | 'more';
+
+export type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
 
 export type ElementPlacement = 'top' | 'bottom' | 'left' | 'right';
 
@@ -56,12 +60,41 @@ export type DropdownDirection = 'dropup' | 'dropend' | 'dropstart';
 export type CarouselType = 'default' | 'three-cols' | 'three-cols-arrow-visible';
 
 export interface Notification {
+
+  /**
+   * Notification type
+   */
   type: NotificationType;
+
+  /**
+   * Notification title
+   */
   title: string;
+
+  /**
+   * Notification message / text
+   */
   message?: string;
+
+  /**
+   * Custom duration of notification
+   */
   duration?: number;
-  dismissable?: boolean;
+
+  /**
+   * The close notification button appears
+   */
+  dismissible?: boolean;
+
+  /**
+   * Custom position of notification
+   */
   position?: NotificationPosition;
+
+  /**
+   * Custom icon of notification
+   */
+  icon?: IconName;
 }
 
 export enum NotificationType {
