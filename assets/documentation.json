@@ -2635,6 +2635,170 @@
     ],
     "directives": [
         {
+            "name": "ItAvatarDirective",
+            "id": "directive-ItAvatarDirective-f66bc0ba706332b1164bf3f06e1f418cdaa1793142a1b95134b2f46f0eeca1968cee82223efe1b0f2cc4a782d5d01150ae1018d4de2b172806348807f0fd10c3",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { ColorsEnum } from '../../../enums/colors.enums';\nimport { SizesEnum } from '../../../enums/sizes.enum';\nimport { Directive, HostBinding, Input } from \"@angular/core\";\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatar]',\n  exportAs: 'itAvatar'\n})\nexport class ItAvatarDirective {\n  /**\n   * Indica il colore dell'avatar. Può assumere i valori:\n   * <ul>\n   * <li> primary\n   * <li> secondary\n   * <li> green\n   * <li> orange\n   * <li> red\n   * </ul>\n   */\n  @Input()\n  get color(): string | undefined {\n    return this._color\n  }\n  set color(value: string | undefined) {\n    const colorsKey = value as keyof typeof ColorsEnum;\n    if (ColorsEnum[colorsKey]){\n      this._color = ColorsEnum[colorsKey] \n    }else{\n      this._color = undefined;\n    }\n  }\n  private _color?: ColorsEnum;\n  /**\n   * Indica la grandezza dell'avatar. Può assumere i valori:\n   * <ul>\n   * <li> xs\n   * <li> sm\n   * <li> lg\n   * <li> xl\n   * <li> xxl\n   * </ul>\n   */\n  @Input()\n  get size(): SizesEnum | undefined {\n    return this._size\n  }\n  set size(value: string | undefined) {\n    const sizesKey = value as keyof typeof SizesEnum;\n    if (SizesEnum[sizesKey]) {\n      this._size = SizesEnum[sizesKey];\n    } \n    else {\n      this._size = undefined\n    }\n  }\n\n  private _size?: SizesEnum;\n\n  @HostBinding('class')\n  get hostClasses(): string {\n    let cssClass = 'avatar'\n\n    if (this.size) {\n      cssClass += ` ${this.size}`\n    }\n\n    if (this.color) {\n      cssClass += ` avatar-${this.color}`\n    }\n\n    return cssClass\n  }\n\n\n}\n",
+            "selector": "[itAvatar]",
+            "providers": [],
+            "exportAs": "itAvatar",
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIndica il colore dell'avatar. Può assumere i valori:\n<ul>\n<li> primary\n<li> secondary\n<li> green\n<li> orange\n<li> red\n</ul>\n",
+                    "description": "<p>Indica il colore dell&#39;avatar. Può assumere i valori:</p>\n<ul>\n<li> primary\n<li> secondary\n<li> green\n<li> orange\n<li> red\n</ul>\n",
+                    "line": 22,
+                    "type": "string | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIndica la grandezza dell'avatar. Può assumere i valori:\n<ul>\n<li> xs\n<li> sm\n<li> lg\n<li> xl\n<li> xxl\n</ul>\n",
+                    "description": "<p>Indica la grandezza dell&#39;avatar. Può assumere i valori:</p>\n<ul>\n<li> xs\n<li> sm\n<li> lg\n<li> xl\n<li> xxl\n</ul>\n",
+                    "line": 45,
+                    "type": "SizesEnum | undefined",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 61,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "_color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ColorsEnum",
+                    "optional": true,
+                    "description": "",
+                    "line": 33,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "_size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "SizesEnum",
+                    "optional": true,
+                    "description": "",
+                    "line": 58,
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "accessors": {
+                "color": {
+                    "name": "color",
+                    "setSignature": {
+                        "name": "color",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 25,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "color",
+                        "type": "",
+                        "returnType": "string | undefined",
+                        "line": 22,
+                        "rawdescription": "\n\nIndica il colore dell'avatar. Può assumere i valori:\n<ul>\n<li> primary\n<li> secondary\n<li> green\n<li> orange\n<li> red\n</ul>\n",
+                        "description": "<p>Indica il colore dell&#39;avatar. Può assumere i valori:</p>\n<ul>\n<li> primary\n<li> secondary\n<li> green\n<li> orange\n<li> red\n</ul>\n"
+                    }
+                },
+                "size": {
+                    "name": "size",
+                    "setSignature": {
+                        "name": "size",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 48,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "size",
+                        "type": "",
+                        "returnType": "SizesEnum | undefined",
+                        "line": 45,
+                        "rawdescription": "\n\nIndica la grandezza dell'avatar. Può assumere i valori:\n<ul>\n<li> xs\n<li> sm\n<li> lg\n<li> xl\n<li> xxl\n</ul>\n",
+                        "description": "<p>Indica la grandezza dell&#39;avatar. Può assumere i valori:</p>\n<ul>\n<li> xs\n<li> sm\n<li> lg\n<li> xl\n<li> xxl\n</ul>\n"
+                    }
+                },
+                "hostClasses": {
+                    "name": "hostClasses",
+                    "getSignature": {
+                        "name": "hostClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 61
+                    }
+                }
+            }
+        },
+        {
             "name": "ItBadgeDirective",
             "id": "directive-ItBadgeDirective-bc8bcde6bfeec45216355d5fd690cf915673928e2c37d2a5d060f6b8155c2f5d12598b204e953acb2c569db3767ca696233e1a086cae9dab2ecd20bc33057194",
             "file": "projects/design-angular-kit/src/lib/components/core/badge/badge.directive.ts",
@@ -6429,6 +6593,338 @@
                 }
             },
             "templateData": "<div class=\"alert alert-{{color}}\" #alertElement\n     [class.alert-dismissible]=\"isDismissible\"\n     [class.fade]=\"isDismissible\"\n     [class.show]=\"isDismissible\"\n     role=\"alert\">\n  <h4 class=\"alert-heading\">\n    <ng-content select=\"[heading]\"></ng-content>\n  </h4>\n\n  <ng-content></ng-content>\n\n  <button *ngIf=\"isDismissible\"\n          type=\"button\"\n          class=\"btn-close\"\n          data-bs-dismiss=\"alert\"\n          [attr.aria-label]=\"'it.core.close-alert'|translate\">\n    <it-icon name=\"close\"></it-icon>\n  </button>\n</div>\n"
+        },
+        {
+            "name": "ItAvatarDropdownComponent",
+            "id": "component-ItAvatarDropdownComponent-655c46334f38bcf1918c9ac75ec7332d0cc14b879b2e754eabf16d0597fe2fa3ab0c4e0376a061c7ec4a4e1ae7b649aafd75bdb18c23f154c93fa20081794d47",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-avatar-dropdown",
+            "styleUrls": [
+                "./avatar-dropdown.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./avatar-dropdown.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<ItAvatarDropdownItemComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "ItAvatarDropdownItemComponent"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ItDropdownModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NgTemplateOutlet"
+                },
+                {
+                    "name": "NgForOf"
+                },
+                {
+                    "name": "NgIf"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ViewChild, TemplateRef, ContentChildren, QueryList, Input, ViewEncapsulation } from '@angular/core';\nimport { ItDropdownModule } from '../../dropdown/dropdown.module';\nimport { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';\n\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-dropdown-item',\n  templateUrl: './avatar-dropdown-item.component.html',\n  styleUrls: ['./avatar-dropdown.component.scss'],\n  imports: [NgForOf, NgIf, NgTemplateOutlet]\n})\nexport class ItAvatarDropdownItemComponent{\n  @ViewChild(TemplateRef, {static: true}) _implicitContent!: TemplateRef<any>\n  /**\n   * Indica il link che possiamo passare all'elemento\n   */\n  @Input() link?: string | any[] | null | undefined;\n  /**\n   * Permette di utilizzare l'attributo html title\n   */\n  @Input() title?: string\n  /**\n   * Permette di utilizzare l'attributo html accesskey\n   */\n  @Input() accesskey?: string\n    /**\n   * Permette di utilizzare l'attributo html tabindex\n   */\n  @Input() tabindex?: number\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-dropdown',\n  templateUrl: './avatar-dropdown.component.html',\n  styleUrls: ['./avatar-dropdown.component.scss'],\n  host: { 'class': 'avatar avatar-dropdown' },\n  imports: [ItDropdownModule, NgTemplateOutlet, NgForOf, NgIf]\n})\nexport class ItAvatarDropdownComponent{\n  constructor() { }\n  @ContentChildren(ItAvatarDropdownItemComponent) items! : QueryList<ItAvatarDropdownItemComponent>\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// made because of bug with before triangle that goes up \n.link-list-wrapper{\n  z-index: 2;\n  position: relative;\n}\n\na {\n  cursor: pointer;\n}\n\n:host ::ng-deep .dropdown-toggle {\n  width: 100%;\n  height: 100%;\n  .icon {\n    display: none;\n  }\n}",
+                    "styleUrl": "./avatar-dropdown.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 41
+            },
+            "templateData": "<it-dropdown id=\"dropdown\" class=\"dropdown\">  \n  <a button role=\"button\" class=\"\" aria-pressed=\"false\">\n    <ng-content select=\"[it-avatar-dropdown-toggle]\"></ng-content>\n  </a>\n  <ng-container list class=\"dropdown-menu\">\n    <li it-dropdown-item *ngFor=\"let item of items\">\n      <a *ngIf=\"item.link; else nolink\" \n      [routerLink]=\"item.link\" \n      class=\"dropdown-item list-item\"\n      title=\"item.title\"\n      accesskey=\"item.accesskey\"\n      tabindex=\"item.tabindex\"\n      >\n        <ng-template *ngTemplateOutlet=\"item._implicitContent\"></ng-template>\n      </a>\n      <ng-template #nolink>\n        <div class=\"dropdown-item list-item\">\n          <ng-template *ngTemplateOutlet=\"item._implicitContent\"></ng-template>\n        </div>\n      </ng-template>\n    </li>\n  </ng-container>\n</it-dropdown>"
+        },
+        {
+            "name": "ItAvatarDropdownItemComponent",
+            "id": "component-ItAvatarDropdownItemComponent-655c46334f38bcf1918c9ac75ec7332d0cc14b879b2e754eabf16d0597fe2fa3ab0c4e0376a061c7ec4a4e1ae7b649aafd75bdb18c23f154c93fa20081794d47",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-avatar-dropdown-item",
+            "styleUrls": [
+                "./avatar-dropdown.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./avatar-dropdown-item.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "accesskey",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nPermette di utilizzare l'attributo html accesskey\n",
+                    "description": "<p>Permette di utilizzare l&#39;attributo html accesskey</p>\n",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "link",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIndica il link che possiamo passare all'elemento\n",
+                    "description": "<p>Indica il link che possiamo passare all&#39;elemento</p>\n",
+                    "line": 18,
+                    "type": "string | any[] | null | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "tabindex",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nPermette di utilizzare l'attributo html tabindex\n",
+                    "description": "<p>Permette di utilizzare l&#39;attributo html tabindex</p>\n",
+                    "line": 30,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nPermette di utilizzare l'attributo html title\n",
+                    "description": "<p>Permette di utilizzare l&#39;attributo html title</p>\n",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_implicitContent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "TemplateRef, {static: true}"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgForOf"
+                },
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "NgTemplateOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ViewChild, TemplateRef, ContentChildren, QueryList, Input, ViewEncapsulation } from '@angular/core';\nimport { ItDropdownModule } from '../../dropdown/dropdown.module';\nimport { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';\n\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-dropdown-item',\n  templateUrl: './avatar-dropdown-item.component.html',\n  styleUrls: ['./avatar-dropdown.component.scss'],\n  imports: [NgForOf, NgIf, NgTemplateOutlet]\n})\nexport class ItAvatarDropdownItemComponent{\n  @ViewChild(TemplateRef, {static: true}) _implicitContent!: TemplateRef<any>\n  /**\n   * Indica il link che possiamo passare all'elemento\n   */\n  @Input() link?: string | any[] | null | undefined;\n  /**\n   * Permette di utilizzare l'attributo html title\n   */\n  @Input() title?: string\n  /**\n   * Permette di utilizzare l'attributo html accesskey\n   */\n  @Input() accesskey?: string\n    /**\n   * Permette di utilizzare l'attributo html tabindex\n   */\n  @Input() tabindex?: number\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-dropdown',\n  templateUrl: './avatar-dropdown.component.html',\n  styleUrls: ['./avatar-dropdown.component.scss'],\n  host: { 'class': 'avatar avatar-dropdown' },\n  imports: [ItDropdownModule, NgTemplateOutlet, NgForOf, NgIf]\n})\nexport class ItAvatarDropdownComponent{\n  constructor() { }\n  @ContentChildren(ItAvatarDropdownItemComponent) items! : QueryList<ItAvatarDropdownItemComponent>\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// made because of bug with before triangle that goes up \n.link-list-wrapper{\n  z-index: 2;\n  position: relative;\n}\n\na {\n  cursor: pointer;\n}\n\n:host ::ng-deep .dropdown-toggle {\n  width: 100%;\n  height: 100%;\n  .icon {\n    display: none;\n  }\n}",
+                    "styleUrl": "./avatar-dropdown.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<ng-template>\n  <ng-content></ng-content>\n</ng-template>\n"
+        },
+        {
+            "name": "ItAvatarGroupComponent",
+            "id": "component-ItAvatarGroupComponent-be7b1a87cafba32cd3b67e112b41863b355e17b9153e8717413c13d80d8b314ef0a1bbba5fe7701c1d1edbc84631142f7fb6b74213c91a65263c8ac618c19c0a",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-avatar-group",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./avatar-group.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "avatars",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<ItAvatarGroupItemComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "ItAvatarGroupItemComponent"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgForOf"
+                },
+                {
+                    "name": "NgTemplateOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ContentChildren, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { NgForOf, NgTemplateOutlet } from '@angular/common';\n\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  templateUrl: './avatar-group-item.component.html',\n})\nexport class ItAvatarGroupItemComponent {\n  constructor(){}\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  templateUrl: './avatar-group.component.html',\n  host:{\n    '[class.link-list-wrapper]': 'linkList'\n  },\n  imports: [NgForOf, NgTemplateOutlet]\n})\nexport class ItAvatarGroupComponent {\n  constructor() {}\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 25
+            },
+            "templateData": "<ul class=\"avatar-group-stacked\">\n  <li *ngFor=\"let avatar of avatars\">\n      <ng-container *ngTemplateOutlet=\"avatar._implicitContent\"></ng-container>\n  </li>\n</ul>"
+        },
+        {
+            "name": "ItAvatarGroupItemComponent",
+            "id": "component-ItAvatarGroupItemComponent-be7b1a87cafba32cd3b67e112b41863b355e17b9153e8717413c13d80d8b314ef0a1bbba5fe7701c1d1edbc84631142f7fb6b74213c91a65263c8ac618c19c0a",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-avatar-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./avatar-group-item.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_implicitContent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "TemplateRef, {static: true}"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ContentChildren, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { NgForOf, NgTemplateOutlet } from '@angular/common';\n\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  templateUrl: './avatar-group-item.component.html',\n})\nexport class ItAvatarGroupItemComponent {\n  constructor(){}\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  templateUrl: './avatar-group.component.html',\n  host:{\n    '[class.link-list-wrapper]': 'linkList'\n  },\n  imports: [NgForOf, NgTemplateOutlet]\n})\nexport class ItAvatarGroupComponent {\n  constructor() {}\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 10
+            },
+            "templateData": "<ng-template>\n  <ng-content></ng-content>\n</ng-template>\n"
         },
         {
             "name": "ItBackButtonComponent",
@@ -13169,7 +13665,7 @@
         },
         {
             "name": "ItInputComponent",
-            "id": "component-ItInputComponent-10ff9e7b72affb88356efb746613b50c9372632322935de6e22d106bbba8061a32f82c3705be365c26556d882f56231a571ca1f83b5ef63b5822da58392919e1",
+            "id": "component-ItInputComponent-dcc7f3c453a28a2f5eab13948506f3ebb9d6e7901a200844e678ec3c34e72b180d728706cfc635449176648e3a604399ad96fc6459776be9aec3f398c1f91722",
             "file": "projects/design-angular-kit/src/lib/components/form/input/input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -13194,7 +13690,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTo make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n",
                     "description": "<p>To make the numeric field automatically resize according to the value contained in it. [Used only in type = &#39;number&#39;]</p>\n",
-                    "line": 86,
+                    "line": 92,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
@@ -13204,15 +13700,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 2887,
-                            "end": 2909,
+                            "pos": 3034,
+                            "end": 3056,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 2888,
-                                "end": 2895,
+                                "pos": 3035,
+                                "end": 3042,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13224,7 +13720,7 @@
                     ],
                     "rawdescription": "\n\nInput autocomplete attribute (Browser autocomplete)\n",
                     "description": "<p>Input autocomplete attribute (Browser autocomplete)</p>\n",
-                    "line": 92,
+                    "line": 98,
                     "type": "string | undefined",
                     "decorators": []
                 },
@@ -13234,15 +13730,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 3182,
-                            "end": 3204,
+                            "pos": 3329,
+                            "end": 3351,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 3183,
-                                "end": 3190,
+                                "pos": 3330,
+                                "end": 3337,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13254,7 +13750,7 @@
                     ],
                     "rawdescription": "\n\nIndicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\nIf you need to retrieve items via API, can pass a function of Observable\n",
                     "description": "<p>Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = &#39;search&#39;]\nIf you need to retrieve items via API, can pass a function of Observable</p>\n",
-                    "line": 99,
+                    "line": 105,
                     "type": "Array<AutocompleteItem> | ",
                     "decorators": []
                 },
@@ -13265,15 +13761,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 3493,
-                            "end": 3514,
+                            "pos": 3640,
+                            "end": 3661,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 3494,
-                                "end": 3501,
+                                "pos": 3641,
+                                "end": 3648,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13285,7 +13781,7 @@
                     ],
                     "rawdescription": "\n\nTime span [ms] has passed without another source emission, to delay data filtering.\nUseful when the user is typing multiple letters\n",
                     "description": "<p>Time span [ms] has passed without another source emission, to delay data filtering.\nUseful when the user is typing multiple letters</p>\n",
-                    "line": 106,
+                    "line": 112,
                     "type": "number",
                     "decorators": []
                 },
@@ -13450,6 +13946,36 @@
                     "decorators": []
                 },
                 {
+                    "name": "symbol",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 2724,
+                            "end": 2740,
+                            "flags": 8421376,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 330,
+                            "tagName": {
+                                "pos": 2725,
+                                "end": 2732,
+                                "flags": 8421376,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<p>&#39;$&#39;</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nThe currency or percentage symbol [Used only if percentage or currency]\n```html\n```",
+                    "description": "<p>The currency or percentage symbol [Used only if percentage or currency]</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\"></code></pre></div>",
+                    "line": 87,
+                    "type": "string | undefined",
+                    "decorators": []
+                },
+                {
                     "name": "type",
                     "defaultValue": "'text'",
                     "deprecated": false,
@@ -13563,7 +14089,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired when the Autocomplete Item has been selected\n",
                     "description": "<p>Fired when the Autocomplete Item has been selected</p>\n",
-                    "line": 111,
+                    "line": 117,
                     "type": "EventEmitter<AutocompleteItem>"
                 },
                 {
@@ -13588,7 +14114,7 @@
                     "type": "Observable<literal type>",
                     "optional": false,
                     "description": "<p>Observable da cui vengono emessi i risultati dell&#39;auto completamento</p>\n",
-                    "line": 191,
+                    "line": 197,
                     "rawdescription": "\nObservable da cui vengono emessi i risultati dell'auto completamento"
                 },
                 {
@@ -13599,7 +14125,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 113,
+                    "line": 119,
                     "modifierKind": [
                         122
                     ]
@@ -13753,7 +14279,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 294,
+                    "line": 300,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13783,7 +14309,7 @@
                     "optional": false,
                     "returnType": "Observable<literal type>",
                     "typeParameters": [],
-                    "line": 253,
+                    "line": 259,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCreate the autocomplete list\n",
@@ -13806,7 +14332,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 231,
+                    "line": 237,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIncrement or decrease the input number value of step\n",
@@ -13814,8 +14340,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 7524,
-                                "end": 7532,
+                                "pos": 7671,
+                                "end": 7679,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13827,8 +14353,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "false",
                             "tagName": {
-                                "pos": 7518,
-                                "end": 7523,
+                                "pos": 7665,
+                                "end": 7670,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13845,7 +14371,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 197,
+                    "line": 203,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -13874,7 +14400,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 282,
+                    "line": 288,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13904,7 +14430,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 298,
+                    "line": 304,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -14419,11 +14945,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { AutocompleteItem, InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';\nimport { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';\n\n@Component({\n  standalone: true,\n  selector: 'it-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]\n})\nexport class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {\n\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder: string = '';\n\n  /**\n   * The input description\n   */\n  @Input() description: string | undefined;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   */\n  @Input() readonly: BooleanInput | 'plaintext' | undefined;\n\n  /**\n   * The max date value [Used only in type = 'date']\n   * @default '9999-12-31'\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() maxDate?: string = '9999-12-31';\n\n  /**\n   * The min date value [Used only in type = 'date']\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() minDate: string | undefined;\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max: number | undefined;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min: number | undefined;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step: number | 'any' | undefined;\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   */\n  @Input() currency: BooleanInput | undefined;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   */\n  @Input() percentage: BooleanInput | undefined;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   */\n  @Input() adaptive: BooleanInput | undefined;\n\n  /**\n   * Input autocomplete attribute (Browser autocomplete)\n   * @default undefined\n   */\n  @Input() autocomplete: string | undefined;\n\n  /**\n   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\n   * If you need to retrieve items via API, can pass a function of Observable\n   * @default undefined\n   */\n  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string | number | null) => Observable<Array<AutocompleteItem>>);\n\n  /**\n   * Time span [ms] has passed without another source emission, to delay data filtering.\n   * Useful when the user is typing multiple letters\n   * @default 300 [ms]\n   */\n  @Input() autocompleteDebounceTime: number = 300;\n\n  /**\n   * Fired when the Autocomplete Item has been selected\n   */\n  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();\n\n  protected showAutocompletion = false;\n\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time' || this.type === 'color';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidIban')) {\n      return this._translateService.get('it.errors.iban-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });\n    }\n\n    return super.invalidMessage;\n  }\n\n  /** Observable da cui vengono emessi i risultati dell'auto completamento */\n  autocompleteResults$: Observable<{\n    searchedValue: string | number | null | undefined,\n    relatedEntries: Array<AutocompleteItem>\n  }> = new Observable();\n\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (isTrueBooleanInput(this.percentage)) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);\n        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n    this.autocompleteResults$ = this.getAutocompleteResults$();\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  incrementNumber(decrease: boolean = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = (this.step === 'any' ? 1 : (this.step ?? 1));\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n\n\n  /**\n   * Create the autocomplete list\n   */\n  private getAutocompleteResults$(): Observable<{ searchedValue: string | number | null | undefined, relatedEntries: Array<AutocompleteItem> }> {\n    if (this.type !== 'search') {\n      return of({ searchedValue: '', relatedEntries: [] });\n    }\n    return this.control.valueChanges.pipe(\n      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters\n      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value\n      switchMap(searchedValue => {\n        if (!this.autocompleteData) {\n          return of({ searchedValue, relatedEntries: <Array<AutocompleteItem>>[] });\n        }\n\n        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);\n        return autoCompleteData$.pipe(\n          map(autocompleteData => {\n            if (!searchedValue || typeof searchedValue === 'number') {\n              return { searchedValue, relatedEntries: [] };\n            }\n\n            const lowercaseValue = searchedValue.toLowerCase();\n            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));\n\n            return { searchedValue, relatedEntries };\n          })\n        );\n      })\n    );\n  }\n\n  onEntryClick(entry: AutocompleteItem, event: Event) {\n    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata\n    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.\n    if (!entry.link) {\n      event.preventDefault();\n    }\n\n    this.autocompleteSelectedEvent.next(entry);\n    this.control.setValue(entry.value);\n    this.showAutocompletion = false;\n  }\n\n  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {\n    return item.value;\n  }\n\n  onKeyDown() {\n    this.showAutocompletion = this.type === 'search';\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { AutocompleteItem, InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';\nimport { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';\n\n@Component({\n  standalone: true,\n  selector: 'it-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]\n})\nexport class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {\n\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder: string = '';\n\n  /**\n   * The input description\n   */\n  @Input() description: string | undefined;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   */\n  @Input() readonly: BooleanInput | 'plaintext' | undefined;\n\n  /**\n   * The max date value [Used only in type = 'date']\n   * @default '9999-12-31'\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() maxDate?: string = '9999-12-31';\n\n  /**\n   * The min date value [Used only in type = 'date']\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() minDate: string | undefined;\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max: number | undefined;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min: number | undefined;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step: number | 'any' | undefined;\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   */\n  @Input() currency: BooleanInput | undefined;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   */\n  @Input() percentage: BooleanInput | undefined;\n\n  /**\n   * The currency or percentage symbol [Used only if percentage or currency]\n   * @example '$'\n   */\n  @Input() symbol: string | undefined;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   */\n  @Input() adaptive: BooleanInput | undefined;\n\n  /**\n   * Input autocomplete attribute (Browser autocomplete)\n   * @default undefined\n   */\n  @Input() autocomplete: string | undefined;\n\n  /**\n   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']\n   * If you need to retrieve items via API, can pass a function of Observable\n   * @default undefined\n   */\n  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string | number | null) => Observable<Array<AutocompleteItem>>);\n\n  /**\n   * Time span [ms] has passed without another source emission, to delay data filtering.\n   * Useful when the user is typing multiple letters\n   * @default 300 [ms]\n   */\n  @Input() autocompleteDebounceTime: number = 300;\n\n  /**\n   * Fired when the Autocomplete Item has been selected\n   */\n  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();\n\n  protected showAutocompletion = false;\n\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time' || this.type === 'color';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidIban')) {\n      return this._translateService.get('it.errors.iban-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });\n    }\n\n    return super.invalidMessage;\n  }\n\n  /** Observable da cui vengono emessi i risultati dell'auto completamento */\n  autocompleteResults$: Observable<{\n    searchedValue: string | number | null | undefined,\n    relatedEntries: Array<AutocompleteItem>\n  }> = new Observable();\n\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (isTrueBooleanInput(this.percentage)) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);\n        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n    this.autocompleteResults$ = this.getAutocompleteResults$();\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  incrementNumber(decrease: boolean = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = (this.step === 'any' ? 1 : (this.step ?? 1));\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n\n\n  /**\n   * Create the autocomplete list\n   */\n  private getAutocompleteResults$(): Observable<{ searchedValue: string | number | null | undefined, relatedEntries: Array<AutocompleteItem> }> {\n    if (this.type !== 'search') {\n      return of({ searchedValue: '', relatedEntries: [] });\n    }\n    return this.control.valueChanges.pipe(\n      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters\n      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value\n      switchMap(searchedValue => {\n        if (!this.autocompleteData) {\n          return of({ searchedValue, relatedEntries: <Array<AutocompleteItem>>[] });\n        }\n\n        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);\n        return autoCompleteData$.pipe(\n          map(autocompleteData => {\n            if (!searchedValue || typeof searchedValue === 'number') {\n              return { searchedValue, relatedEntries: [] };\n            }\n\n            const lowercaseValue = searchedValue.toLowerCase();\n            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));\n\n            return { searchedValue, relatedEntries };\n          })\n        );\n      })\n    );\n  }\n\n  onEntryClick(entry: AutocompleteItem, event: Event) {\n    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata\n    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.\n    if (!entry.link) {\n      event.preventDefault();\n    }\n\n    this.autocompleteSelectedEvent.next(entry);\n    this.control.setValue(entry.value);\n    this.showAutocompletion = false;\n  }\n\n  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {\n    return item.value;\n  }\n\n  onKeyDown() {\n    this.showAutocompletion = this.type === 'search';\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".form-group {\n  label {\n    z-index: 1000;\n  }\n\n  input:focus:not(.focus--mouse) {\n    box-shadow: inherit !important;\n    border-color: inherit !important;\n  }\n\n  .input-number {\n    button.input-number-add {\n      top: 0;\n    }\n\n    button.input-number-sub {\n      bottom: 0;\n    }\n  }\n\n  .input-group-text:empty {\n    display: none;\n  }\n\n  label.empty-prepend-label {\n    left: auto !important;\n    max-width: 100% !important;\n  }\n\n  label:not(.active):has(+ input:-webkit-autofill) {\n    transform: translateY(-75%);\n  }\n}\n\n",
+                    "data": ".form-group {\n  label {\n    z-index: 1000;\n  }\n\n  input:focus:not(.focus--mouse) {\n    box-shadow: inherit !important;\n    border-color: inherit !important;\n  }\n\n  .input-number {\n    .align-buttons{\n      height: 100%;\n    }\n  }\n\n  .input-group-text:empty {\n    display: none;\n  }\n\n  label.empty-prepend-label {\n    left: auto !important;\n    max-width: 100% !important;\n  }\n\n  label:not(.active):has(+ input:-webkit-autofill) {\n    transform: translateY(-75%);\n  }\n}\n\n",
                     "styleUrl": "./input.component.scss"
                 }
             ],
@@ -14439,7 +14965,7 @@
                         "name": "isActiveLabel",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 116
+                        "line": 122
                     }
                 },
                 "isReadonly": {
@@ -14448,7 +14974,7 @@
                         "name": "isReadonly",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 132,
+                        "line": 138,
                         "rawdescription": "\n\nCheck is readonly field\n",
                         "description": "<p>Check is readonly field</p>\n"
                     }
@@ -14459,13 +14985,13 @@
                         "name": "invalidMessage",
                         "type": "",
                         "returnType": "Observable<string>",
-                        "line": 139,
+                        "line": 145,
                         "rawdescription": "\n\nReturn the invalid message string from TranslateService\n",
                         "description": "<p>Return the invalid message string from TranslateService</p>\n"
                     }
                 }
             },
-            "templateData": "<div class=\"form-group\">\n  <div class=\"input-group\">\n    <div class=\"input-group-prepend\" [class.d-none]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      <div #prepend>\n        <ng-content select=\"[prepend]\"></ng-content>\n      </div>\n      <div class=\"input-group-text\" #prependText>\n        <ng-content select=\"[prependText]\"></ng-content>\n      </div>\n    </div>\n\n    <label *ngIf=\"label\" [for]=\"id\" [class.active]=\"isActiveLabel\"\n           [class.empty-prepend-label]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      {{label}}\n    </label>\n\n    <span *ngIf=\"type === 'number'\"\n          class=\"input-number\"\n          [class.input-number-currency]=\"currency\"\n          [class.input-number-percentage]=\"percentage\"\n          [class.input-number-adaptive]=\"adaptive\">\n\n      <input type=\"number\"\n             [id]=\"id\"\n             [step]=\"step ?? null\"\n             [min]=\"min ?? null\"\n             [max]=\"max ?? null\"\n             [class.form-control]=\"readonly !== 'plaintext'\"\n             [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [formControl]=\"control\"\n             [placeholder]=\"placeholder\"\n             [readonly]=\"isReadonly\"\n             [autocomplete]=\"autocomplete\"\n             [attr.aria-describedby]=\"id + '-description'\"\n             (blur)=\"markAsTouched()\" />\n\n      <button type=\"button\" class=\"input-number-add\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber()\">\n        <span class=\"visually-hidden\">{{'it.form.increase-value' | translate}}</span>\n      </button>\n      <button type=\"button\" class=\"input-number-sub\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber(true)\">\n        <span class=\"visually-hidden\">{{'it.form.decrease-value' | translate}}</span>\n      </button>\n    </span>\n\n    <input *ngIf=\"type !== 'number'\"\n           [id]=\"id\"\n           [type]=\"type\"\n           [max]=\"type === 'date' ? maxDate : undefined\"\n           [min]=\"type === 'date' ? minDate : undefined\"\n           [class.form-control]=\"readonly !== 'plaintext'\"\n           [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n           [class.is-invalid]=\"isInvalid\"\n           [class.is-valid]=\"isValid\"\n           [formControl]=\"control\"\n           [placeholder]=\"placeholder\"\n           [readonly]=\"isReadonly\"\n           (keydown)=\"onKeyDown()\"\n           [autocomplete]=\"autocomplete\"\n           [attr.aria-describedby]=\"id + '-description'\"\n           (blur)=\"markAsTouched()\">\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  <small *ngIf=\"description\" [id]=\"id + '-description'\" class=\"form-text\">{{description}}</small>\n\n  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->\n  <ng-container *ngIf=\"type === 'search'\">\n    <!-- Icona lente per autocompletamento -->\n    <span class=\"autocomplete-icon\" aria-hidden=\"true\">\n      <it-icon name=\"search\" size=\"sm\"></it-icon>\n    </span>\n\n    <ng-container *ngIf=\"autocompleteResults$ | async as autocomplete\">\n      <!-- Lista di autocompletamento -->\n      <ul class=\"autocomplete-list\" [class.autocomplete-list-show]=\"autocomplete.relatedEntries?.length && showAutocompletion\">\n        <li *ngFor=\"let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn\"\n            (click)=\"onEntryClick(entry, $event)\">\n          <a [href]=\"entry.link\">\n            <ng-container *ngTemplateOutlet=\"autocompleteItemTemplate\"></ng-container>\n          </a>\n          <ng-template #autocompleteItemTemplate>\n            <div class=\"avatar size-sm\" *ngIf=\"entry.avatarSrcPath\">\n              <img [src]=\"entry.avatarSrcPath\" [alt]=\"entry.avatarAltText\">\n            </div>\n            <it-icon *ngIf=\"entry.icon\" [name]=\"entry.icon\" size=\"sm\"></it-icon>\n            <span class=\"autocomplete-list-text\">\n            <span [innerHTML]=\"entry.value | markMatchingText: autocomplete.searchedValue\"></span>\n            <em *ngIf=\"entry.label\">{{entry.label}}</em>\n          </span>\n          </ng-template>\n        </li>\n      </ul>\n    </ng-container>\n  </ng-container>\n  <!-- FINE gestione AUTOCOMPLETAMENTO -->\n\n  <div *ngIf=\"isInvalid\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"form-group\">\n\n  <div class=\"input-group\" [class.disabled]=\"!control.enabled\" [class.input-number]=\"type === 'number'\"\n    [class.input-number-currency]=\"currency\" [class.input-number-percentage]=\"percentage\"\n    [class.input-number-adaptive]=\"adaptive\">\n    <div class=\"input-group-prepend\" [class.d-none]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n      <div #prepend>\n        <ng-content select=\"[prepend]\"></ng-content>\n      </div>\n      <div class=\"input-group-text\" #prependText>\n        <ng-content select=\"[prependText]\"></ng-content>\n      </div>\n    </div>\n    <label *ngIf=\"label\" [for]=\"id\" [class.active]=\"isActiveLabel\" [class.input-number-label]=\"type === 'number'\"\n    [class.empty-prepend-label]=\"!prependText.hasChildNodes() && !prepend.hasChildNodes()\">\n    {{label}}\n  </label>\n    <ng-container *ngIf=\"type === 'number'\">\n      <span *ngIf=\"currency || percentage\" class=\"input-group-text fw-semibold\">{{symbol}}</span>\n      <input type=\"number\" [id]=\"id\" [step]=\"step ?? null\" [min]=\"min ?? null\" [max]=\"max ?? null\"\n        [class.form-control]=\"readonly !== 'plaintext'\" [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\" [class.is-valid]=\"isValid\" [formControl]=\"control\" [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\" [autocomplete]=\"autocomplete\" [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n      <span class=\"input-group-text align-buttons flex-column\">\n        <button type=\"button\" class=\"input-number-add\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber()\">\n          <span class=\"visually-hidden\">{{'it.form.increase-value' | translate}}</span>\n        </button>\n        <button type=\"button\" class=\"input-number-sub\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber(true)\">\n          <span class=\"visually-hidden\">{{'it.form.decrease-value' | translate}}</span>\n        </button>\n      </span>\n    </ng-container>\n    <input *ngIf=\"type !== 'number'\" [id]=\"id\" [type]=\"type\" [max]=\"type === 'date' ? maxDate : undefined\"\n      [min]=\"type === 'date' ? minDate : undefined\" [class.form-control]=\"readonly !== 'plaintext'\"\n      [class.form-control-plaintext]=\"readonly === 'plaintext'\" [class.is-invalid]=\"isInvalid\"\n      [class.is-valid]=\"isValid\" [formControl]=\"control\" [placeholder]=\"placeholder\" [readonly]=\"isReadonly\"\n      (keydown)=\"onKeyDown()\" [autocomplete]=\"autocomplete\" [attr.aria-describedby]=\"id + '-description'\"\n      (blur)=\"markAsTouched()\">\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  <small *ngIf=\"description\" [id]=\"id + '-description'\" class=\"form-text\">{{description}}</small>\n\n  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->\n  <ng-container *ngIf=\"type === 'search'\">\n    <!-- Icona lente per autocompletamento -->\n    <span class=\"autocomplete-icon\" aria-hidden=\"true\">\n      <it-icon name=\"search\" size=\"sm\"></it-icon>\n    </span>\n\n    <ng-container *ngIf=\"autocompleteResults$ | async as autocomplete\">\n      <!-- Lista di autocompletamento -->\n      <ul class=\"autocomplete-list\"\n        [class.autocomplete-list-show]=\"autocomplete.relatedEntries?.length && showAutocompletion\">\n        <li *ngFor=\"let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn\"\n          (click)=\"onEntryClick(entry, $event)\">\n          <a [href]=\"entry.link\">\n            <ng-container *ngTemplateOutlet=\"autocompleteItemTemplate\"></ng-container>\n          </a>\n          <ng-template #autocompleteItemTemplate>\n            <div class=\"avatar size-sm\" *ngIf=\"entry.avatarSrcPath\">\n              <img [src]=\"entry.avatarSrcPath\" [alt]=\"entry.avatarAltText\">\n            </div>\n            <it-icon *ngIf=\"entry.icon\" [name]=\"entry.icon\" size=\"sm\"></it-icon>\n            <span class=\"autocomplete-list-text\">\n              <span [innerHTML]=\"entry.value | markMatchingText: autocomplete.searchedValue\"></span>\n              <em *ngIf=\"entry.label\">{{entry.label}}</em>\n            </span>\n          </ng-template>\n        </li>\n      </ul>\n    </ng-container>\n  </ng-container>\n  <!-- FINE gestione AUTOCOMPLETAMENTO -->\n\n  <div *ngIf=\"isInvalid\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <div #customError>\n      <ng-content select=\"[error]\"></ng-content>\n    </div>\n    <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n  </div>\n</div>"
         },
         {
             "name": "ItLanguageSwitcherComponent",
@@ -26464,13 +26990,13 @@
         },
         {
             "name": "ItComponentsModule",
-            "id": "module-ItComponentsModule-017fb5a86c7f7e844a0148117dcaa120232dd32bab80189e8913f25a103da2543a071d7c106e78b45132369648fa79b49a41b27328a9589cf55afcb90ce01097",
+            "id": "module-ItComponentsModule-5c19747445516e32a15e8b17fd221cfc7895ff41d7494e510589eb789f55fa050560126ae301aec402397ae152b6d427fb55c9934a52167b95908d69741b341c",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/design-angular-kit/src/lib/components/components.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { ItAccordionComponent } from './core/accordion/accordion.component';\nimport { ItAlertComponent } from './core/alert/alert.component';\nimport { ItBadgeDirective } from './core/badge/badge.directive';\nimport { ItButtonDirective } from './core/button/button.directive';\nimport { ItCalloutComponent } from './core/callout/callout.component';\nimport { ItCardComponent } from './core/card/card.component';\nimport { ItCarouselModule } from './core/carousel/carousel.module';\nimport { ItCollapseComponent } from './core/collapse/collapse.component';\nimport { ItDimmerModule } from './core/dimmer/dimmer.module';\nimport { ItDropdownModule } from './core/dropdown/dropdown.module';\nimport { ItLinkComponent } from './core/link/link.component';\nimport { ItListModule } from './core/list/list.module';\nimport { ItModalComponent } from './core/modal/modal.component';\nimport { ItNotificationsComponent } from './core/notifications/notifications.component';\nimport { ItPaginationComponent } from './core/pagination/pagination.component';\nimport { ItPopoverDirective } from './core/popover/popover.directive';\nimport { ItProgressBarComponent } from './core/progress-bar/progress-bar.component';\nimport { ItProgressButtonComponent } from './core/progress-button/progress-button.component';\nimport { ItSpinnerComponent } from './core/spinner/spinner.component';\nimport { ItSteppersModule } from './core/steppers/steppers.module';\nimport { ItTabModule } from './core/tab/tab.module';\nimport { ItTableComponent } from './core/table/table.component';\nimport { ItTooltipDirective } from './core/tooltip/tooltip.directive';\nimport { ItFormModule } from './form/form.module';\nimport { ItBackButtonComponent } from './navigation/back-button/back-button.component';\nimport { ItBackToTopComponent } from './navigation/back-to-top/back-to-top.component';\nimport { ItBreadcrumbsModule } from './navigation/breadcrumbs/breadcrumbs.module';\nimport { ItHeaderComponent } from './navigation/header/header.component';\nimport { ItIconComponent } from './utils/icon/icon.component';\nimport { ItLanguageSwitcherComponent } from './utils/language-switcher/language-switcher.component';\nimport { ItErrorPageComponent } from './utils/error-page/error-page.component';\nimport { ItChipComponent } from './core/chip/chip.component';\nimport { ItForwardDirective } from './core/forward/forward.directive';\nimport { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';\n\n\n/**\n * Core components\n */\nconst core = [\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableComponent,\n  ItTooltipDirective\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent\n];\n\n/**\n * Utils components\n */\nconst utils = [\n  ItErrorPageComponent,\n  ItIconComponent,\n  ItLanguageSwitcherComponent,\n  MarkMatchingTextPipe\n];\n\n@NgModule({\n  imports: [\n    ...core,\n    ItFormModule, // Form components\n    ...navigation,\n    ...utils\n  ],\n  exports: [\n    ...core,\n    ItFormModule, // Form components\n    ...navigation,\n    ...utils\n  ]\n})\nexport class ItComponentsModule {\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { ItAccordionComponent } from './core/accordion/accordion.component';\nimport { ItAlertComponent } from './core/alert/alert.component';\nimport { ItAvatarDropdownComponent, ItAvatarDropdownItemComponent } from './core/avatar/avatar-dropdown/avatar-dropdown.component';\nimport { ItAvatarGroupItemComponent, ItAvatarGroupComponent } from './core/avatar/avatar-group/avatar-group.component';\nimport { ItAvatarDirective } from './core/avatar/avatar.directive'\nimport { ItBadgeDirective } from './core/badge/badge.directive';\nimport { ItButtonDirective } from './core/button/button.directive';\nimport { ItCalloutComponent } from './core/callout/callout.component';\nimport { ItCardComponent } from './core/card/card.component';\nimport { ItCarouselModule } from './core/carousel/carousel.module';\nimport { ItCollapseComponent } from './core/collapse/collapse.component';\nimport { ItDimmerModule } from './core/dimmer/dimmer.module';\nimport { ItDropdownModule } from './core/dropdown/dropdown.module';\nimport { ItLinkComponent } from './core/link/link.component';\nimport { ItListModule } from './core/list/list.module';\nimport { ItModalComponent } from './core/modal/modal.component';\nimport { ItNotificationsComponent } from './core/notifications/notifications.component';\nimport { ItPaginationComponent } from './core/pagination/pagination.component';\nimport { ItPopoverDirective } from './core/popover/popover.directive';\nimport { ItProgressBarComponent } from './core/progress-bar/progress-bar.component';\nimport { ItProgressButtonComponent } from './core/progress-button/progress-button.component';\nimport { ItSpinnerComponent } from './core/spinner/spinner.component';\nimport { ItSteppersModule } from './core/steppers/steppers.module';\nimport { ItTabModule } from './core/tab/tab.module';\nimport { ItTableComponent } from './core/table/table.component';\nimport { ItTooltipDirective } from './core/tooltip/tooltip.directive';\nimport { ItFormModule } from './form/form.module';\nimport { ItBackButtonComponent } from './navigation/back-button/back-button.component';\nimport { ItBackToTopComponent } from './navigation/back-to-top/back-to-top.component';\nimport { ItBreadcrumbsModule } from './navigation/breadcrumbs/breadcrumbs.module';\nimport { ItHeaderComponent } from './navigation/header/header.component';\nimport { ItIconComponent } from './utils/icon/icon.component';\nimport { ItLanguageSwitcherComponent } from './utils/language-switcher/language-switcher.component';\nimport { ItErrorPageComponent } from './utils/error-page/error-page.component';\nimport { ItChipComponent } from './core/chip/chip.component';\nimport { ItForwardDirective } from './core/forward/forward.directive';\nimport { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';\n\n\n/**\n * Core components\n */\nconst core = [\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarGroupItemComponent, \n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableComponent,\n  ItTooltipDirective\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent\n];\n\n/**\n * Utils components\n */\nconst utils = [\n  ItErrorPageComponent,\n  ItIconComponent,\n  ItLanguageSwitcherComponent,\n  MarkMatchingTextPipe\n];\n\n@NgModule({\n  imports: [\n    ...core,\n    ItFormModule, // Form components\n    ...navigation,\n    ...utils\n  ],\n  exports: [\n    ...core,\n    ItFormModule, // Form components\n    ...navigation,\n    ...utils\n  ]\n})\nexport class ItComponentsModule {\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -26488,6 +27014,21 @@
                         },
                         {
                             "name": "ItAlertComponent"
+                        },
+                        {
+                            "name": "ItAvatarDirective"
+                        },
+                        {
+                            "name": "ItAvatarDropdownComponent"
+                        },
+                        {
+                            "name": "ItAvatarDropdownItemComponent"
+                        },
+                        {
+                            "name": "ItAvatarGroupComponent"
+                        },
+                        {
+                            "name": "ItAvatarGroupItemComponent"
                         },
                         {
                             "name": "ItBackButtonComponent"
@@ -26595,6 +27136,21 @@
                         },
                         {
                             "name": "ItAlertComponent"
+                        },
+                        {
+                            "name": "ItAvatarDirective"
+                        },
+                        {
+                            "name": "ItAvatarDropdownComponent"
+                        },
+                        {
+                            "name": "ItAvatarDropdownItemComponent"
+                        },
+                        {
+                            "name": "ItAvatarGroupComponent"
+                        },
+                        {
+                            "name": "ItAvatarGroupItemComponent"
                         },
                         {
                             "name": "ItBackButtonComponent"
@@ -27101,7 +27657,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableComponent,\n  ItTooltipDirective\n]",
+                "defaultValue": "[\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarGroupItemComponent, \n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableComponent,\n  ItTooltipDirective\n]",
                 "rawdescription": "Core components",
                 "description": "<p>Core components</p>\n"
             },
@@ -27622,6 +28178,65 @@
         ],
         "enumerations": [
             {
+                "name": "ColorsEnum",
+                "childs": [
+                    {
+                        "name": "primary",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "primary"
+                    },
+                    {
+                        "name": "secondary",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "secondary"
+                    },
+                    {
+                        "name": "success",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "success"
+                    },
+                    {
+                        "name": "danger",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "danger"
+                    },
+                    {
+                        "name": "warning",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "warning"
+                    },
+                    {
+                        "name": "green",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "green"
+                    },
+                    {
+                        "name": "orange",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "orange"
+                    },
+                    {
+                        "name": "red",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "red"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "projects/design-angular-kit/src/lib/enums/colors.enums.ts"
+            },
+            {
                 "name": "NotificationPosition",
                 "childs": [
                     {
@@ -27696,6 +28311,47 @@
                 "deprecationMessage": "",
                 "description": "",
                 "file": "projects/design-angular-kit/src/lib/interfaces/core.ts"
+            },
+            {
+                "name": "SizesEnum",
+                "childs": [
+                    {
+                        "name": "xs",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "size-xs"
+                    },
+                    {
+                        "name": "sm",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "size-sm"
+                    },
+                    {
+                        "name": "lg",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "size-lg"
+                    },
+                    {
+                        "name": "xl",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "size-xl"
+                    },
+                    {
+                        "name": "xxl",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "size-xxl"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "projects/design-angular-kit/src/lib/enums/sizes.enum.ts"
             }
         ],
         "groupedVariables": {
@@ -27818,7 +28474,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableComponent,\n  ItTooltipDirective\n]",
+                    "defaultValue": "[\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarGroupItemComponent, \n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableComponent,\n  ItTooltipDirective\n]",
                     "rawdescription": "Core components",
                     "description": "<p>Core components</p>\n"
                 },
@@ -28041,6 +28697,67 @@
             ]
         },
         "groupedEnumerations": {
+            "projects/design-angular-kit/src/lib/enums/colors.enums.ts": [
+                {
+                    "name": "ColorsEnum",
+                    "childs": [
+                        {
+                            "name": "primary",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "primary"
+                        },
+                        {
+                            "name": "secondary",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "secondary"
+                        },
+                        {
+                            "name": "success",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "success"
+                        },
+                        {
+                            "name": "danger",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "danger"
+                        },
+                        {
+                            "name": "warning",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "warning"
+                        },
+                        {
+                            "name": "green",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "green"
+                        },
+                        {
+                            "name": "orange",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "orange"
+                        },
+                        {
+                            "name": "red",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "red"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "projects/design-angular-kit/src/lib/enums/colors.enums.ts"
+                }
+            ],
             "projects/design-angular-kit/src/lib/interfaces/core.ts": [
                 {
                     "name": "NotificationPosition",
@@ -28117,6 +28834,49 @@
                     "deprecationMessage": "",
                     "description": "",
                     "file": "projects/design-angular-kit/src/lib/interfaces/core.ts"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/enums/sizes.enum.ts": [
+                {
+                    "name": "SizesEnum",
+                    "childs": [
+                        {
+                            "name": "xs",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "size-xs"
+                        },
+                        {
+                            "name": "sm",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "size-sm"
+                        },
+                        {
+                            "name": "lg",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "size-lg"
+                        },
+                        {
+                            "name": "xl",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "size-xl"
+                        },
+                        {
+                            "name": "xxl",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "size-xxl"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "projects/design-angular-kit/src/lib/enums/sizes.enum.ts"
                 }
             ]
         },
@@ -28377,7 +29137,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 56,
+        "count": 54,
         "status": "good",
         "files": [
             {
@@ -28445,6 +29205,51 @@
                 "coveragePercent": 61,
                 "coverageCount": "11/18",
                 "status": "good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ItAvatarDropdownComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ItAvatarDropdownItemComponent",
+                "coveragePercent": 66,
+                "coverageCount": "4/6",
+                "status": "good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ItAvatarGroupComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ItAvatarGroupItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ItAvatarDirective",
+                "coveragePercent": 33,
+                "coverageCount": "2/6",
+                "status": "medium"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/components/core/badge/badge.directive.ts",
@@ -28800,8 +29605,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItInputComponent",
-                "coveragePercent": 65,
-                "coverageCount": "32/49",
+                "coveragePercent": 66,
+                "coverageCount": "33/50",
                 "status": "good"
             },
             {
