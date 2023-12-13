@@ -1,0 +1,5 @@
+<ul class="avatar-group-stacked">
+  <li *ngFor="let avatar of avatars">
+      <ng-container *ngTemplateOutlet="avatar._implicitContent"></ng-container>
+  </li>
+</ul>

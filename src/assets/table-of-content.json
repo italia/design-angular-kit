@@ -10,9 +10,10 @@
     {
       "label": "Componenti",
       "link": "/componenti",
-      "links": [{
-          "label": "Checkbox",
-          "link": "/componenti/checkbox"
+      "links": [
+        {
+          "label": "Avatar",
+          "link": "/componenti/avatar"
         },
         {
           "label": "Progress Bar",

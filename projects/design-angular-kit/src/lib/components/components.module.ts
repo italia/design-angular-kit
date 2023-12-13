@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { ItAccordionComponent } from './core/accordion/accordion.component';
 import { ItAlertComponent } from './core/alert/alert.component';
+import { ItAvatarDropdownComponent, ItAvatarDropdownItemComponent } from './core/avatar/avatar-dropdown/avatar-dropdown.component';
+import { ItAvatarGroupItemComponent, ItAvatarGroupComponent } from './core/avatar/avatar-group/avatar-group.component';
+import { ItAvatarDirective } from './core/avatar/avatar.directive'
 import { ItBadgeDirective } from './core/badge/badge.directive';
 import { ItButtonDirective } from './core/button/button.directive';
 import { ItCalloutComponent } from './core/callout/callout.component';
@@ -41,6 +44,11 @@ import { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';
 const core = [
   ItAccordionComponent,
   ItAlertComponent,
+  ItAvatarGroupItemComponent, 
+  ItAvatarGroupComponent,
+  ItAvatarDropdownComponent,
+  ItAvatarDropdownItemComponent,
+  ItAvatarDirective,
   ItBadgeDirective,
   ItButtonDirective,
   ItCalloutComponent,

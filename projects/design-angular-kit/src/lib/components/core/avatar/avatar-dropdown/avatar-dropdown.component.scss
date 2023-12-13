@@ -1,0 +1,17 @@
+// made because of bug with before triangle that goes up 
+.link-list-wrapper{
+  z-index: 2;
+  position: relative;
+}
+
+a {
+  cursor: pointer;
+}
+
+:host ::ng-deep .dropdown-toggle {
+  width: 100%;
+  height: 100%;
+  .icon {
+    display: none;
+  }
+}
