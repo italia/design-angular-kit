@@ -40,5 +40,5 @@ export class ItAvatarDropdownItemComponent{
 })
 export class ItAvatarDropdownComponent{
   constructor() { }
-  @ContentChildren(ItAvatarDropdownComponent) items! : QueryList<ItAvatarDropdownComponent>
+  @ContentChildren(ItAvatarDropdownItemComponent) items! : QueryList<ItAvatarDropdownItemComponent>
 }
