@@ -1,3 +1,20 @@
+# [1.0.0-22](https://github.com/italia/design-angular-kit/compare/v1.0.0-21...v1.0.0-22) (2023-12-13)
+
+
+### Bug Fixes
+
+* align buttons during validation ([e9dbd11](https://github.com/italia/design-angular-kit/commit/e9dbd11d09b8010b6145414903699566ccf1c2df))
+* input label ([77bdeea](https://github.com/italia/design-angular-kit/commit/77bdeea098afeeea4795719479379547fdd0cfa2))
+* numeric inputs ([a7b5a4f](https://github.com/italia/design-angular-kit/commit/a7b5a4f9748a0e76f44c35038a6a288d98f358ba))
+* restore symbol for currency and percentage ([5d7682c](https://github.com/italia/design-angular-kit/commit/5d7682c78e8bb09efabf3e3ed1119dd720d9c33b))
+
+
+### Features
+
+* avatar component ([d030d59](https://github.com/italia/design-angular-kit/commit/d030d594a45a6c067713282cea226cab6f9b7428))
+
+
+
 # [1.0.0-21](https://github.com/italia/design-angular-kit/compare/v1.0.0-20...v1.0.0-21) (2023-12-07)
 
 
