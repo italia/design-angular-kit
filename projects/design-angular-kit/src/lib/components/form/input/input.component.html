@@ -20,6 +20,7 @@
     </div>
 
     <ng-container *ngIf="type === 'number'">
+      <span *ngIf="currency || percentage" class="input-group-text fw-semibold">{{symbol}}</span>
       <input type="number"
              [id]="id"
              [step]="step ?? null"
@@ -93,9 +94,9 @@
             </div>
             <it-icon *ngIf="entry.icon" [name]="entry.icon" size="sm"></it-icon>
             <span class="autocomplete-list-text">
-            <span [innerHTML]="entry.value | markMatchingText: autocomplete.searchedValue"></span>
-            <em *ngIf="entry.label">{{entry.label}}</em>
-          </span>
+              <span [innerHTML]="entry.value | markMatchingText: autocomplete.searchedValue"></span>
+              <em *ngIf="entry.label">{{entry.label}}</em>
+            </span>
           </ng-template>
         </li>
       </ul>
