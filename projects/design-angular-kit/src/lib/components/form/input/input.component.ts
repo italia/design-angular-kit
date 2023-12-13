@@ -81,6 +81,12 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
   @Input() percentage: BooleanInput | undefined;
 
   /**
+   * The currency or percentage symbol [Used only if percentage or currency]
+   * @example '$'
+   */
+  @Input() symbol: string | undefined;
+
+  /**
    * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']
    */
   @Input() adaptive: BooleanInput | undefined;
