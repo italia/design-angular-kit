@@ -9,12 +9,8 @@
   }
 
   .input-number {
-    button.input-number-add {
-      top: 0;
-    }
-
-    button.input-number-sub {
-      bottom: 0;
+    .align-buttons{
+      height: 100%;
     }
   }
 
