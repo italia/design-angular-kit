@@ -1,5 +1,15 @@
 <div class="form-group">
-  <div class="input-group">
+  <label *ngIf="label" [for]="id" [class.active]="isActiveLabel"
+    [class.input-number-label]="type === 'number'"
+    [class.empty-prepend-label]="!prependText.hasChildNodes() && !prepend.hasChildNodes()">
+    {{label}}
+  </label>
+  <div class="input-group" 
+      [class.disabled]="!control.enabled"
+      [class.input-number]="type === 'number'"
+      [class.input-number-currency]="currency"
+      [class.input-number-percentage]="percentage"
+      [class.input-number-adaptive]="adaptive">
     <div class="input-group-prepend" [class.d-none]="!prependText.hasChildNodes() && !prepend.hasChildNodes()">
       <div #prepend>
         <ng-content select="[prepend]"></ng-content>
@@ -9,17 +19,7 @@
       </div>
     </div>
 
-    <label *ngIf="label" [for]="id" [class.active]="isActiveLabel"
-           [class.empty-prepend-label]="!prependText.hasChildNodes() && !prepend.hasChildNodes()">
-      {{label}}
-    </label>
-
-    <span *ngIf="type === 'number'"
-          class="input-number"
-          [class.input-number-currency]="currency"
-          [class.input-number-percentage]="percentage"
-          [class.input-number-adaptive]="adaptive">
-
+    <ng-container *ngIf="type === 'number'">
       <input type="number"
              [id]="id"
              [step]="step ?? null"
@@ -35,15 +35,15 @@
              [autocomplete]="autocomplete"
              [attr.aria-describedby]="id + '-description'"
              (blur)="markAsTouched()" />
-
-      <button type="button" class="input-number-add" [disabled]="!control.enabled" (click)="incrementNumber()">
-        <span class="visually-hidden">{{'it.form.increase-value' | translate}}</span>
-      </button>
-      <button type="button" class="input-number-sub" [disabled]="!control.enabled" (click)="incrementNumber(true)">
-        <span class="visually-hidden">{{'it.form.decrease-value' | translate}}</span>
-      </button>
-    </span>
-
+      <span class="input-group-text align-buttons flex-column">
+        <button type="button" class="input-number-add" [disabled]="!control.enabled" (click)="incrementNumber()">
+          <span class="visually-hidden">{{'it.form.increase-value' | translate}}</span>
+        </button>
+        <button type="button" class="input-number-sub" [disabled]="!control.enabled" (click)="incrementNumber(true)">
+          <span class="visually-hidden">{{'it.form.decrease-value' | translate}}</span>
+        </button>
+      </span>
+    </ng-container>
     <input *ngIf="type !== 'number'"
            [id]="id"
            [type]="type"
