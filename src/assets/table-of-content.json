@@ -68,6 +68,10 @@
           "link": "/componenti/back-button"
         },
         {
+          "label": "Back To Top",
+          "link": "/componenti/back-to-top"
+        },
+        {
           "label": "Chip",
           "link": "/componenti/chip"
         },

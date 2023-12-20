@@ -1,0 +1,20 @@
+<h3>Interazione con il componente Back to top</h3>
+
+<div class="bd-example">
+
+  <p>Per visualizzare il componente, scorrere la pagina.</p>
+  <it-back-to-top
+          [small]="small"
+          [shadow]="shadow"
+          [dark]="dark">
+  </it-back-to-top>
+
+  <div class="row">
+    <div class="form-check col-2">
+      <h5>Opzioni</h5>
+      <it-checkbox [(ngModel)]="small" label="Small"></it-checkbox>
+      <it-checkbox [(ngModel)]="shadow" label="Shadow"></it-checkbox>
+      <it-checkbox [(ngModel)]="dark" label="Dark"></it-checkbox>
+    </div>
+  </div>
+</div>
