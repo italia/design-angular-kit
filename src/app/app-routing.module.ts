@@ -29,6 +29,7 @@ const routes: Routes = [
     { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
     { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
     { path: 'back-button', loadChildren: () => import('src/app/back-button/back-button.module').then(m => m.BackButtonModule) },
+    { path: 'back-to-top', loadChildren: () => import('src/app/back-to-top/back-to-top.module').then(m => m.BackToTopModule) },
     { path: 'chip', loadChildren: () => import('src/app/chip/chip.module').then(m => m.ChipModule) },
     { path: 'forward', loadChildren: () => import('src/app/forward/forward.module').then(m => m.ForwardModule) },
     { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
