@@ -1,14 +1,56 @@
 {% from "../../macro.template.njk" import sanitize as sanitize %}
 
-{% set html %}
+{% set htmlExample %}
   {% include "../list-example/list-example.component.html" %}
 {% endset %}
 
-{% set typescript %}
+{% set typescriptExample %}
   {% include "../list-example/list-example.component.ts" %}
 {% endset %}
 
 <it-list-example></it-list-example>
 
-<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}" >
+<it-source-display html="{$ sanitize(htmlExample) $}" typescript="{$ sanitize(typescriptExample) $}" >
+</it-source-display>
+
+
+{% set htmlLink %}
+  {% include "../list-link/list-link.component.html" %}
+{% endset %}
+
+{% set typescriptLink %}
+  {% include "../list-link/list-link.component.ts" %}
+{% endset %}
+
+<it-list-link></it-list-link>
+
+<it-source-display html="{$ sanitize(htmlLink) $}" typescript="{$ sanitize(typescriptLink) $}" >
+</it-source-display>
+
+
+{% set htmlAvatar %}
+  {% include "../list-avatar/list-avatar.component.html" %}
+{% endset %}
+
+{% set typescriptAvatar %}
+  {% include "../list-avatar/list-avatar.component.ts" %}
+{% endset %}
+
+<it-list-avatar></it-list-avatar>
+
+<it-source-display html="{$ sanitize(htmlAvatar) $}" typescript="{$ sanitize(typescriptAvatar) $}" >
+</it-source-display>
+
+
+{% set htmlImage %}
+  {% include "../list-image/list-image.component.html" %}
+{% endset %}
+
+{% set typescriptImage %}
+  {% include "../list-image/list-image.component.ts" %}
+{% endset %}
+
+<it-list-image></it-list-image>
+
+<it-source-display html="{$ sanitize(htmlImage) $}" typescript="{$ sanitize(typescriptImage) $}" >
 </it-source-display>
