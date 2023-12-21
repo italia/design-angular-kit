@@ -18,8 +18,9 @@
   },
   "contributors": [
     {
-      "name": "Cristian Borelli",
-      "url": "https://github.com/cri99"
+      "name": "Net Service Srl",
+      "email": "areatecnica@net-serv.it",
+      "url": "https://www.net-serv.it/"
     },
     {
       "name": "Antonino Bonanno",
@@ -27,9 +28,12 @@
       "url": "https://github.com/AntoninoBonanno"
     },
     {
-      "name": "Net Service Srl",
-      "email": "areatecnica@net-serv.it",
-      "url": "https://www.net-serv.it/"
+      "name": "Alessio Napolitano",
+      "url": "https://github.com/alenap93"
+    },
+    {
+      "name": "Cristian Borelli",
+      "url": "https://github.com/cri99"
     },
     {
       "name": "Design Angular Kit community",
