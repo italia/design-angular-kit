@@ -47,6 +47,7 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 
 ## Link utili
 - [Video Meetup Angular Roma: Angular, Bootstrap Italia e non solo..](https://www.youtube.com/live/asGk-mYU-zM?feature=share)
+- [Sviluppare da zero una Angular Web App per la PA](https://www.youtube.com/watch?v=gH-0P36E5jk&t=385s) ([slide](https://www.slideshare.net/commitsoftware/sviluppare-da-zero-una-angular-web-app-per-la-pa))
 - [Demo Design Angular Kit](https://github.com/cri99/demo-design-angular-kit)
 - [Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/)
 - [Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127)
