@@ -8,9 +8,11 @@ import Documentation from '../../../assets/documentation.json';
 export class ListIndexComponent {
 
   component: any;
+  subcomponent: any;
 
   constructor() {
     this.component = (<any>Documentation).components.find(component => component.name === 'ItListComponent');
+    this.subcomponent = (<any>Documentation).components.find(component => component.name === 'ItListItemComponent');
   }
 
 }
