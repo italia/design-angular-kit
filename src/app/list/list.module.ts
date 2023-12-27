@@ -12,6 +12,7 @@ import { ListAvatarComponent } from './list-avatar/list-avatar.component';
 import { ListImageComponent } from './list-image/list-image.component';
 import { ListArrowComponent } from './list-arrow/list-arrow.component';
 import { ListMultipleComponent } from './list-multiple/list-multiple.component';
+import { ListToggleCheckboxComponent } from './list-toggle-checkbox/list-toggle-checkbox.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ListMultipleComponent } from './list-multiple/list-multiple.component';
     ListImageComponent,
     ListArrowComponent,
     ListMultipleComponent,
+    ListToggleCheckboxComponent,
   ],
   imports: [
     CommonModule,

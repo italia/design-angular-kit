@@ -82,3 +82,17 @@
 
 <it-source-display html="{$ sanitize(htmlLink) $}" typescript="{$ sanitize(typescriptLink) $}" >
 </it-source-display>
+
+
+{% set htmltogglecheckbox %}
+  {% include "../list-toggle-checkbox/list-toggle-checkbox.component.html" %}
+{% endset %}
+
+{% set typescripttogglecheckbox %}
+  {% include "../list-toggle-checkbox/list-toggle-checkbox.component.ts" %}
+{% endset %}
+
+<it-list-toggle-checkbox></it-list-toggle-checkbox>
+
+<it-source-display html="{$ sanitize(htmltogglecheckbox) $}" typescript="{$ sanitize(typescripttogglecheckbox) $}" >
+</it-source-display>
