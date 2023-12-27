@@ -1,0 +1,28 @@
+<h3>Lista collassabile</h3>
+<p></p>
+
+<div class="bd-example">
+    <it-list linkList="true">
+        <it-list-item iconRight="true">
+            <a class="list-item large medium icon-right" role="button" [attr.aria-expanded]="itCollapse.isOpen()" (click)="itCollapse.toggle()">
+                <span class="list-item-title-icon-wrapper">
+                    <span class="list-item-title">Link lista con icona</span>
+                    <it-icon name="expand" color="primary"></it-icon>
+                </span>
+            </a>
+            <it-collapse #itCollapse="itCollapse">
+                <it-list linkList="true" action>
+                    <it-list-item href="#" externalLink="true">
+                    <span class="text">Link lista 1</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true" disabled="true">
+                    <span class="text">Link lista 2</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true" active="true">
+                    <span class="text">Link lista 3</span>
+                    </it-list-item>
+                </it-list>
+            </it-collapse>
+        </it-list-item>
+    </it-list>
+</div>

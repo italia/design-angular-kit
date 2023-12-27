@@ -13,6 +13,7 @@ import { ListImageComponent } from './list-image/list-image.component';
 import { ListArrowComponent } from './list-arrow/list-arrow.component';
 import { ListMultipleComponent } from './list-multiple/list-multiple.component';
 import { ListToggleCheckboxComponent } from './list-toggle-checkbox/list-toggle-checkbox.component';
+import { ListCollassibleComponent } from './list-collassible/list-collassible.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ListToggleCheckboxComponent } from './list-toggle-checkbox/list-toggle-
     ListArrowComponent,
     ListMultipleComponent,
     ListToggleCheckboxComponent,
+    ListCollassibleComponent,
   ],
   imports: [
     CommonModule,

@@ -96,3 +96,16 @@
 
 <it-source-display html="{$ sanitize(htmltogglecheckbox) $}" typescript="{$ sanitize(typescripttogglecheckbox) $}" >
 </it-source-display>
+
+{% set htmlcollassible %}
+  {% include "../list-collassible/list-collassible.component.html" %}
+{% endset %}
+
+{% set typescriptcollassible %}
+  {% include "../list-collassible/list-collassible.component.ts" %}
+{% endset %}
+
+<it-list-collassible></it-list-collassible>
+
+<it-source-display html="{$ sanitize(htmlcollassible) $}" typescript="{$ sanitize(typescriptcollassible) $}" >
+</it-source-display>

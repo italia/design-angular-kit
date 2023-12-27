@@ -60,6 +60,8 @@ export class ItCollapseComponent extends ItAbstractComponent implements AfterVie
 
   private collapse?: Collapse;
 
+  private open: boolean = false;
+
   @ViewChild('collapse') protected collapseDiv?: ElementRef<HTMLDivElement>;
 
   get isMulti(): boolean {
@@ -81,10 +83,17 @@ export class ItCollapseComponent extends ItAbstractComponent implements AfterVie
       });
 
       element.addEventListener('show.bs.collapse', event => this.showEvent.emit(event));
-      element.addEventListener('shown.bs.collapse', event => this.shownEvent.emit(event));
+      element.addEventListener('shown.bs.collapse', event => {this.open = true; this.shownEvent.emit(event)});
       element.addEventListener('hide.bs.collapse', event => this.hideEvent.emit(event));
-      element.addEventListener('hidden.bs.collapse', event => this.hiddenEvent.emit(event));
+      element.addEventListener('hidden.bs.collapse', event => {this.open = false; this.hiddenEvent.emit(event)});
     }
+  }
+
+  /**
+   * Shows if collapse is open or not
+   */
+  public isOpen(): boolean {
+    return this.open;
   }
 
   /**
