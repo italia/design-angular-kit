@@ -1,3 +1,9 @@
 .metadata:empty, .it-rounded-icon:empty {
   display: none;
 }
+
+:host ::ng-deep {
+  it-icon + .it-multiple {
+    display: none !important;
+  }
+}
