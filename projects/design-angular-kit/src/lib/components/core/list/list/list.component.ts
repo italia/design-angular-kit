@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'it-list',
   templateUrl: './list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [NgIf, NgTemplateOutlet]
 })
 export class ItListComponent {
 
@@ -15,8 +16,17 @@ export class ItListComponent {
    */
   @Input() linkList: BooleanInput | undefined;
 
+  /**
+   * Add 'link-sublist' class for navigation menu
+   */
+  @Input() linkSubList: BooleanInput | undefined;
+
 
   protected get isLinkList(): boolean {
     return isTrueBooleanInput(this.linkList);
+  }
+
+  protected get isLinkSubList(): boolean {
+    return isTrueBooleanInput(this.linkSubList);
   }
 }
