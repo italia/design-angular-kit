@@ -10,6 +10,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ListLinkComponent } from './list-link/list-link.component';
 import { ListAvatarComponent } from './list-avatar/list-avatar.component';
 import { ListImageComponent } from './list-image/list-image.component';
+import { ListArrowComponent } from './list-arrow/list-arrow.component';
+import { ListMultipleComponent } from './list-multiple/list-multiple.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ListImageComponent } from './list-image/list-image.component';
     ListLinkComponent,
     ListAvatarComponent,
     ListImageComponent,
+    ListArrowComponent,
+    ListMultipleComponent,
   ],
   imports: [
     CommonModule,

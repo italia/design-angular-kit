@@ -14,20 +14,6 @@
 </it-source-display>
 
 
-{% set htmlLink %}
-  {% include "../list-link/list-link.component.html" %}
-{% endset %}
-
-{% set typescriptLink %}
-  {% include "../list-link/list-link.component.ts" %}
-{% endset %}
-
-<it-list-link></it-list-link>
-
-<it-source-display html="{$ sanitize(htmlLink) $}" typescript="{$ sanitize(typescriptLink) $}" >
-</it-source-display>
-
-
 {% set htmlAvatar %}
   {% include "../list-avatar/list-avatar.component.html" %}
 {% endset %}
@@ -53,4 +39,46 @@
 <it-list-image></it-list-image>
 
 <it-source-display html="{$ sanitize(htmlImage) $}" typescript="{$ sanitize(typescriptImage) $}" >
+</it-source-display>
+
+{% set htmlarrow %}
+  {% include "../list-arrow/list-arrow.component.html" %}
+{% endset %}
+
+{% set typescriptarrow %}
+  {% include "../list-arrow/list-arrow.component.ts" %}
+{% endset %}
+
+<it-list-arrow></it-list-arrow>
+
+<it-source-display html="{$ sanitize(htmlarrow) $}" typescript="{$ sanitize(typescriptarrow) $}" >
+</it-source-display>
+
+{% set htmlmultiple %}
+  {% include "../list-multiple/list-multiple.component.html" %}
+{% endset %}
+
+{% set typescriptmultiple %}
+  {% include "../list-multiple/list-multiple.component.ts" %}
+{% endset %}
+
+<it-list-multiple></it-list-multiple>
+
+<it-source-display html="{$ sanitize(htmlmultiple) $}" typescript="{$ sanitize(typescriptmultiple) $}" >
+</it-source-display>
+
+
+<h2>Liste per menù di navigazione</h2>
+
+{% set htmlLink %}
+  {% include "../list-link/list-link.component.html" %}
+{% endset %}
+
+{% set typescriptLink %}
+  {% include "../list-link/list-link.component.ts" %}
+{% endset %}
+
+<it-list-link></it-list-link>
+
+<it-source-display html="{$ sanitize(htmlLink) $}" typescript="{$ sanitize(typescriptLink) $}" >
 </it-source-display>
