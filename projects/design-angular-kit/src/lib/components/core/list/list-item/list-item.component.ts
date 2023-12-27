@@ -41,6 +41,9 @@ export class ItListItemComponent extends ItLinkComponent {
 
   get itemClass(): string {
     let itemClass = 'list-item';
+    if (isTrueBooleanInput(this.disabled)) {
+      itemClass += ` disabled`;
+    }
     if (isTrueBooleanInput(this.active)) {
       itemClass += ` active`;
     }
