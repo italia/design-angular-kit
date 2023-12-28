@@ -29,6 +29,11 @@ export class ItListItemComponent extends ItLinkComponent {
   @Input() iconLeft: BooleanInput | undefined;
 
   /**
+   * Add icon-right class
+   */
+  @Input() iconRight: BooleanInput | undefined;
+
+  /**
    * The avatar url
    */
   @Input() avatar: URL | undefined;
@@ -41,6 +46,9 @@ export class ItListItemComponent extends ItLinkComponent {
 
   get itemClass(): string {
     let itemClass = 'list-item';
+    if (isTrueBooleanInput(this.disabled)) {
+      itemClass += ` disabled`;
+    }
     if (isTrueBooleanInput(this.active)) {
       itemClass += ` active`;
     }
@@ -49,6 +57,9 @@ export class ItListItemComponent extends ItLinkComponent {
     }
     if (isTrueBooleanInput(this.iconLeft)) {
       itemClass += ` icon-left`;
+    }
+    if (isTrueBooleanInput(this.iconRight)) {
+      itemClass += ` icon-right`;
     }
     if (this.class) {
       itemClass += ` ${this.class}`;

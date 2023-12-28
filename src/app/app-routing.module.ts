@@ -33,6 +33,7 @@ const routes: Routes = [
     { path: 'chip', loadChildren: () => import('src/app/chip/chip.module').then(m => m.ChipModule) },
     { path: 'forward', loadChildren: () => import('src/app/forward/forward.module').then(m => m.ForwardModule) },
     { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
+    { path: 'list', loadChildren: () => import('src/app/list/list.module').then(m => m.ListModule) },
     { path: 'callout', loadChildren: () => import('src/app/callout/callout.module').then(m => m.CalloutModule) },
     { path: 'upload', loadChildren: () => import('src/app/upload/upload.module').then(m => m.UploadModule) },
     { path: 'steppers', loadChildren: () => import('src/app/steppers/steppers.module').then(m => m.SteppersModule) },

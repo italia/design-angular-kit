@@ -88,6 +88,10 @@
           "link": "/componenti/dimmer"
         },
         {
+          "label": "Lists",
+          "link": "/componenti/list"
+        },
+        {
           "label": "Callout",
           "link": "/componenti/callout"
         },

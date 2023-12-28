@@ -1,0 +1,14 @@
+<h1 class="bd-title">List</h1>
+<p class="bd-lead">Consente agli utenti di creare delle liste.</p>
+<div [innerHTML]="component.description"></div>
+<it-tab-container>
+  <it-tab-item label="Esempi" active="true" class="pt-3">
+    <it-list-examples></it-list-examples>
+  </it-tab-item>
+  <it-tab-item label="API" class="pt-3">
+    <h2>List</h2>
+    <it-api-parameters [component]="component"></it-api-parameters>
+    <h2>List Item</h2>
+    <it-api-parameters [component]="subcomponent"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>

@@ -13,14 +13,12 @@
     </div>
 
     <div class="it-right-zone">
-      <span class="text">
-        <ng-content></ng-content>
-      </span>
+      <ng-content></ng-content>
       <ng-content select="[action]"></ng-content>
 
       <span class="it-multiple">
         <span class="metadata">
-          <ng-content select="[metadata]"></ng-content>
+          <ng-content select="[metadata]" ></ng-content>
         </span>
 
         <ng-content select="[multiple]"></ng-content>
