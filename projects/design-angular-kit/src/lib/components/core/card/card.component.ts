@@ -46,6 +46,13 @@ export class ItCardComponent extends ItAbstractComponent {
    */
   @Input() shadow: BooleanInput | undefined;
 
+
+  /**
+   * To add background and shadow
+   * @default false
+   */
+  @Input() background: BooleanInput | undefined;
+
   /**
    * Custom card class
    * @default ''
@@ -76,6 +83,10 @@ export class ItCardComponent extends ItAbstractComponent {
 
   protected get isShadow(): boolean {
     return isTrueBooleanInput(this.shadow);
+  }
+
+  protected get isBackground(): boolean {
+    return isTrueBooleanInput(this.background);
   }
 
 }
