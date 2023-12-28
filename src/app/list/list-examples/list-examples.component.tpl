@@ -97,6 +97,20 @@
 </it-source-display>
 
 
+{% set htmlLinkMultiline %}
+  {% include "../list-link-multiline/list-link-multiline.component.html" %}
+{% endset %}
+
+{% set typescriptLinkMultiline %}
+  {% include "../list-link-multiline/list-link-multiline.component.ts" %}
+{% endset %}
+
+<it-list-link-multiline></it-list-link-multiline>
+
+<it-source-display html="{$ sanitize(htmlLinkMultiline) $}" typescript="{$ sanitize(typescriptLinkMultiline) $}" >
+</it-source-display>
+
+
 {% set htmltogglecheckbox %}
   {% include "../list-toggle-checkbox/list-toggle-checkbox.component.html" %}
 {% endset %}

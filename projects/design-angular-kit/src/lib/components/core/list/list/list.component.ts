@@ -21,9 +21,18 @@ export class ItListComponent {
    */
   @Input() linkSubList: BooleanInput | undefined;
 
+  /**
+   * Add 'multiline' class for wrapper
+   */
+  @Input() multiline: BooleanInput | undefined;
+
 
   protected get isLinkList(): boolean {
     return isTrueBooleanInput(this.linkList);
+  }
+
+  protected get isMultiline(): boolean {
+    return isTrueBooleanInput(this.multiline);
   }
 
   protected get isLinkSubList(): boolean {

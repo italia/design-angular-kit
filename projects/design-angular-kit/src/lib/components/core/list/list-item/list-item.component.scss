@@ -9,4 +9,7 @@
   .list-item-title-icon-wrapper + .it-multiple {
     display: none !important;
   }
+  p + .it-multiple {
+    display: none !important;
+  }
 }
