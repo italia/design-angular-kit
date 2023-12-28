@@ -83,6 +83,19 @@
 <it-source-display html="{$ sanitize(htmlLink) $}" typescript="{$ sanitize(typescriptLink) $}" >
 </it-source-display>
 
+{% set htmlLinkIcons %}
+  {% include "../list-link-icons/list-link-icons.component.html" %}
+{% endset %}
+
+{% set typescriptLinkIcons %}
+  {% include "../list-link-icons/list-link-icons.component.ts" %}
+{% endset %}
+
+<it-list-link-icons></it-list-link-icons>
+
+<it-source-display html="{$ sanitize(htmlLinkIcons) $}" typescript="{$ sanitize(typescriptLinkIcons) $}" >
+</it-source-display>
+
 
 {% set htmltogglecheckbox %}
   {% include "../list-toggle-checkbox/list-toggle-checkbox.component.html" %}
