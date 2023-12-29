@@ -29,6 +29,12 @@ export class ItCardComponent extends ItAbstractComponent {
   @Input() teaser: BooleanInput | undefined;
 
   /**
+   * To create special cards
+   * @default false
+   */
+  @Input() special: BooleanInput | undefined;
+
+  /**
    * Card with image
    * @default false
    */
@@ -84,6 +90,10 @@ export class ItCardComponent extends ItAbstractComponent {
 
   protected get isTeaser(): boolean {
     return isTrueBooleanInput(this.teaser);
+  }
+
+  protected get isSpecial(): boolean {
+    return isTrueBooleanInput(this.special);
   }
 
   protected get isHasImage(): boolean {
