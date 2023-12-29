@@ -53,6 +53,13 @@ export class ItCardComponent extends ItAbstractComponent {
    */
   @Input() background: BooleanInput | undefined;
 
+
+  /**
+   * To render a big card
+   * @default false
+   */
+    @Input() big: BooleanInput | undefined;
+
   /**
    * Custom card class
    * @default ''
@@ -87,6 +94,10 @@ export class ItCardComponent extends ItAbstractComponent {
 
   protected get isBackground(): boolean {
     return isTrueBooleanInput(this.background);
+  }
+
+  protected get isBig(): boolean {
+    return isTrueBooleanInput(this.big);
   }
 
 }
