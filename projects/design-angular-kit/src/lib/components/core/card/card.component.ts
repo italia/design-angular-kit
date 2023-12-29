@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 /**
  * Card
@@ -12,7 +13,7 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [NgIf, NgTemplateOutlet]
 })
 export class ItCardComponent extends ItAbstractComponent {
 

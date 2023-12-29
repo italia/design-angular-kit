@@ -1,12 +1,4 @@
-<div class="card-wrapper" [class.card-space]="isSpace" [class.card-teaser-wrapper]="isTeaser">
-  <div class="card {{cardClass}}"
-       [class.special-card]="isSpecial"
-       [class.card-img.no-after]="isHasImage"
-       [class.shadow]="isShadow"
-       [class.card-bg]="isBackground"
-       [class.card-big]="isBig"
-       [class.border-bottom-card]="isBorderedBottom"
-       [class.rounded]="isRounded">
+<ng-template #cardcontent>
 
     <ng-content select="[beforeBody]"></ng-content>
 
@@ -14,5 +6,17 @@
       <ng-content></ng-content>
     </div>
 
+</ng-template>
+
+
+<div class="card-wrapper" [class.card-space]="isSpace" [class.card-teaser-wrapper]="isTeaser">
+  <div *ngIf="!isSpecial" class="card {{cardClass}}" [class.special-card]="isSpecial" [class.card-img]="isHasImage" [class.no-after]="isHasImage" [class.shadow]="isShadow" [class.card-bg]="isBackground" [class.card-big]="isBig"
+  [class.border-bottom-card]="isBorderedBottom" [class.rounded]="isRounded">
+    <ng-container *ngTemplateOutlet="cardcontent"></ng-container>
   </div>
+  <a *ngIf="isSpecial" class="card {{cardClass}}" [class.special-card]="isSpecial" [class.card-img]="isHasImage"
+  [class.shadow]="isShadow" [class.card-bg]="isBackground" [class.card-big]="isBig" [class.no-after]="isHasImage"
+  [class.border-bottom-card]="isBorderedBottom" [class.rounded]="isRounded">
+    <ng-container *ngTemplateOutlet="cardcontent"></ng-container>
+  </a>
 </div>
