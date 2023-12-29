@@ -53,6 +53,12 @@ export class ItCardComponent extends ItAbstractComponent {
    */
   @Input() background: BooleanInput | undefined;
 
+  /**
+   * To add bottom border
+   * @default false
+   */
+  @Input() borderBottom: BooleanInput | undefined;
+
 
   /**
    * To render a big card
@@ -98,6 +104,10 @@ export class ItCardComponent extends ItAbstractComponent {
 
   protected get isBig(): boolean {
     return isTrueBooleanInput(this.big);
+  }
+
+  protected get isBorderedBottom(): boolean {
+    return isTrueBooleanInput(this.borderBottom);
   }
 
 }
