@@ -1,0 +1,27 @@
+.it-sort-header-container {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    letter-spacing: normal;
+  
+    // Needs to be reset since we don't want an outline around the inner
+    // div which is focusable. We have our own alternate focus styling.
+    outline: 0;
+
+    .it-sort-header-disabled & {
+      cursor: default;
+    }
+  
+    // For the sort-header element, default inset/offset values are necessary to ensure that
+    // the focus indicator is sufficiently contrastive and renders appropriately.
+    &::before {
+      $border-width: 3px;
+      $offset: calc(#{$border-width} + 2px);
+      margin: calc(#{$offset} * -1);
+    }
+  }
+
+.it-sort-header-position-before {
+    flex-direction: row-reverse;
+}
+
