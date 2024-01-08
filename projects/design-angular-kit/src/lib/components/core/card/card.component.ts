@@ -18,12 +18,6 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
 export class ItCardComponent extends ItAbstractComponent {
 
   /**
-   * It serves to space the cards in their mobile version.
-   * @default true
-   */
-  @Input() space: BooleanInput = true;
-
-  /**
    * To create cards with short or "preview" content
    * @default false
    */
@@ -84,10 +78,6 @@ export class ItCardComponent extends ItAbstractComponent {
    * @default ''
    */
   @Input() bodyClass: string = '';
-
-  protected get isSpace(): boolean {
-    return isTrueBooleanInput(this.space);
-  }
 
   protected get isTeaser(): boolean {
     return isTrueBooleanInput(this.teaser);
