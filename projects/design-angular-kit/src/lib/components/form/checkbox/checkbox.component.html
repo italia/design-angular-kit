@@ -9,7 +9,8 @@
         <input [id]="id"
                type="checkbox"
                [formControl]="control"
-               [attr.aria-describedby]="id + '-help'">
+               [attr.aria-describedby]="id + '-help'"
+               (click)="$event.stopPropagation();">
         <span class="lever"></span>
       </label>
     </div>
@@ -22,7 +23,8 @@
              [class.is-valid]="isValid"
              [class.semi-checked]="isIndeterminate"
              [formControl]="control"
-             [attr.aria-describedby]="id + '-help'">
+             [attr.aria-describedby]="id + '-help'"
+             (click)="$event.stopPropagation();">
       <label class="form-check-label" [for]="id">
         <ng-container *ngTemplateOutlet="htmlLabel"></ng-container>
       </label>
