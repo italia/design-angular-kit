@@ -16,6 +16,10 @@
           "link": "/componenti/avatar"
         },
         {
+          "label": "Checkbox",
+          "link": "/componenti/checkbox"
+        },
+        {
           "label": "Progress Bar",
           "link": "/componenti/progress-bar"
         },
@@ -68,6 +72,14 @@
           "link": "/componenti/back-button"
         },
         {
+          "label": "Back To Top",
+          "link": "/componenti/back-to-top"
+        },
+        {
+          "label": "Card",
+          "link": "/componenti/card"
+        },
+        {
           "label": "Chip",
           "link": "/componenti/chip"
         },
@@ -78,6 +90,10 @@
         {
           "label": "Dimmer",
           "link": "/componenti/dimmer"
+        },
+        {
+          "label": "Lists",
+          "link": "/componenti/list"
         },
         {
           "label": "Callout",

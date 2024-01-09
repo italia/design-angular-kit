@@ -5927,6 +5927,22 @@
                     }
                 },
                 {
+                    "name": "open",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        121
+                    ],
+                    "inheritance": {
+                        "file": "ItCollapseComponent"
+                    }
+                },
+                {
                     "name": "_changeDetectorRef",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -6036,7 +6052,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 117,
+                    "line": 126,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEliminates the possibility of an item being resealable\n",
@@ -6054,11 +6070,29 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 102,
+                    "line": 111,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHides a resealable item\nNOTE: Returns to the caller before the collapsable element has actually been hidden (onHidden Event)\n",
                     "description": "<p>Hides a resealable item\nNOTE: Returns to the caller before the collapsable element has actually been hidden (onHidden Event)</p>\n",
+                    "modifierKind": [
+                        123
+                    ],
+                    "inheritance": {
+                        "file": "ItCollapseComponent"
+                    }
+                },
+                {
+                    "name": "isOpen",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nShows if collapse is open or not\n",
+                    "description": "<p>Shows if collapse is open or not</p>\n",
                     "modifierKind": [
                         123
                     ],
@@ -6072,7 +6106,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 94,
+                    "line": 103,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nShows a resealable item\nNOTE: Returns to the caller before the collapsable element has actually been shown (onShown event).\n",
@@ -6090,7 +6124,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 110,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nToggle a collapsible item to show or hide it.\nNOTE: Returns to the caller before the collapsable element has actually been shown or hidden (onShown and onHidden events)\n",
@@ -8422,7 +8456,7 @@
         },
         {
             "name": "ItCardComponent",
-            "id": "component-ItCardComponent-a7429c96992066accfa36b595ae41ac51e496efe65ce2fb9a97dce0f4ee8e7354a4b25751494bf32fbbc4e4486db9334bce33aea37af4bae3ef2af65b261f7bd",
+            "id": "component-ItCardComponent-b37a8be6ddaf8cde7ce1bf3ed82c3de4325b9b32d7f3867ef1d026d5fbb86c376b00d804ca19d0e4334108262bd0c1898946d944459ac9733077a2cea62dd2ad",
             "file": "projects/design-angular-kit/src/lib/components/core/card/card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8442,21 +8476,81 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "background",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1275,
+                            "end": 1293,
+                            "flags": 8421376,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 330,
+                            "tagName": {
+                                "pos": 1276,
+                                "end": 1283,
+                                "flags": 8421376,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>false</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nTo add background and shadow\n",
+                    "description": "<p>To add background and shadow</p>\n",
+                    "line": 55,
+                    "type": "BooleanInput | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "big",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1494,
+                            "end": 1512,
+                            "flags": 8421376,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 330,
+                            "tagName": {
+                                "pos": 1495,
+                                "end": 1502,
+                                "flags": 8421376,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>false</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nTo render a big card\n",
+                    "description": "<p>To render a big card</p>\n",
+                    "line": 68,
+                    "type": "BooleanInput | undefined",
+                    "decorators": []
+                },
+                {
                     "name": "bodyClass",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1298,
-                            "end": 1313,
+                            "pos": 1687,
+                            "end": 1702,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1299,
-                                "end": 1306,
+                                "pos": 1688,
+                                "end": 1695,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8468,8 +8562,38 @@
                     ],
                     "rawdescription": "\n\nCustom card body class\n",
                     "description": "<p>Custom card body class</p>\n",
-                    "line": 59,
+                    "line": 80,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "borderBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1383,
+                            "end": 1401,
+                            "flags": 8421376,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 330,
+                            "tagName": {
+                                "pos": 1384,
+                                "end": 1391,
+                                "flags": 8421376,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>false</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nTo add bottom border\n",
+                    "description": "<p>To add bottom border</p>\n",
+                    "line": 61,
+                    "type": "BooleanInput | undefined",
                     "decorators": []
                 },
                 {
@@ -8479,15 +8603,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1205,
-                            "end": 1220,
+                            "pos": 1594,
+                            "end": 1609,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1206,
-                                "end": 1213,
+                                "pos": 1595,
+                                "end": 1602,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8499,7 +8623,7 @@
                     ],
                     "rawdescription": "\n\nCustom card class\n",
                     "description": "<p>Custom card class</p>\n",
-                    "line": 53,
+                    "line": 74,
                     "type": "string",
                     "decorators": []
                 },
@@ -8509,15 +8633,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 889,
-                            "end": 907,
+                            "pos": 947,
+                            "end": 965,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 890,
-                                "end": 897,
+                                "pos": 948,
+                                "end": 955,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8529,7 +8653,7 @@
                     ],
                     "rawdescription": "\n\nCard with image\n",
                     "description": "<p>Card with image</p>\n",
-                    "line": 35,
+                    "line": 36,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
@@ -8539,15 +8663,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 998,
-                            "end": 1016,
+                            "pos": 1056,
+                            "end": 1074,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 999,
-                                "end": 1006,
+                                "pos": 1057,
+                                "end": 1064,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8559,7 +8683,7 @@
                     ],
                     "rawdescription": "\n\nTo add rounding effects\n",
                     "description": "<p>To add rounding effects</p>\n",
-                    "line": 41,
+                    "line": 42,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
@@ -8569,15 +8693,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1104,
-                            "end": 1122,
+                            "pos": 1162,
+                            "end": 1180,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 1105,
-                                "end": 1112,
+                                "pos": 1163,
+                                "end": 1170,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8589,39 +8713,38 @@
                     ],
                     "rawdescription": "\n\nTo add shadow effects\n",
                     "description": "<p>To add shadow effects</p>\n",
-                    "line": 47,
+                    "line": 48,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
                 {
-                    "name": "space",
-                    "defaultValue": "true",
+                    "name": "special",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 666,
-                            "end": 683,
+                            "pos": 847,
+                            "end": 865,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 667,
-                                "end": 674,
+                                "pos": 848,
+                                "end": 855,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
                                 "kind": 79,
                                 "escapedText": "default"
                             },
-                            "comment": "<p>true</p>\n"
+                            "comment": "<p>false</p>\n"
                         }
                     ],
-                    "rawdescription": "\n\nIt serves to space the cards in their mobile version.\n",
-                    "description": "<p>It serves to space the cards in their mobile version.</p>\n",
-                    "line": 23,
-                    "type": "BooleanInput",
+                    "rawdescription": "\n\nTo create special cards\n",
+                    "description": "<p>To create special cards</p>\n",
+                    "line": 30,
+                    "type": "BooleanInput | undefined",
                     "decorators": []
                 },
                 {
@@ -8630,15 +8753,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 790,
-                            "end": 808,
+                            "pos": 740,
+                            "end": 758,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 330,
                             "tagName": {
-                                "pos": 791,
-                                "end": 798,
+                                "pos": 741,
+                                "end": 748,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8650,7 +8773,7 @@
                     ],
                     "rawdescription": "\n\nTo create cards with short or \"preview\" content\n",
                     "description": "<p>To create cards with short or &quot;preview&quot; content</p>\n",
-                    "line": 29,
+                    "line": 24,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 },
@@ -8854,37 +8977,44 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "NgTemplateOutlet"
+                }
+            ],
             "description": "<p>Card</p>\n",
             "rawdescription": "\n\nCard\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\n\n/**\n * Card\n * @description A container of texts and images with many options and variations.\n */\n@Component({\n  standalone: true,\n  selector: 'it-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: []\n})\nexport class ItCardComponent extends ItAbstractComponent {\n\n  /**\n   * It serves to space the cards in their mobile version.\n   * @default true\n   */\n  @Input() space: BooleanInput = true;\n\n  /**\n   * To create cards with short or \"preview\" content\n   * @default false\n   */\n  @Input() teaser: BooleanInput | undefined;\n\n  /**\n   * Card with image\n   * @default false\n   */\n  @Input() hasImage: BooleanInput | undefined;\n\n  /**\n   * To add rounding effects\n   * @default false\n   */\n  @Input() rounded: BooleanInput | undefined;\n\n  /**\n   * To add shadow effects\n   * @default false\n   */\n  @Input() shadow: BooleanInput | undefined;\n\n  /**\n   * Custom card class\n   * @default ''\n   */\n  @Input() cardClass: string = '';\n\n  /**\n   * Custom card body class\n   * @default ''\n   */\n  @Input() bodyClass: string = '';\n\n  protected get isSpace(): boolean {\n    return isTrueBooleanInput(this.space);\n  }\n\n  protected get isTeaser(): boolean {\n    return isTrueBooleanInput(this.teaser);\n  }\n\n  protected get isHasImage(): boolean {\n    return isTrueBooleanInput(this.hasImage);\n  }\n\n  protected get isRounded(): boolean {\n    return isTrueBooleanInput(this.rounded);\n  }\n\n  protected get isShadow(): boolean {\n    return isTrueBooleanInput(this.shadow);\n  }\n\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { NgIf, NgTemplateOutlet } from '@angular/common';\n\n/**\n * Card\n * @description A container of texts and images with many options and variations.\n */\n@Component({\n  standalone: true,\n  selector: 'it-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, NgTemplateOutlet]\n})\nexport class ItCardComponent extends ItAbstractComponent {\n\n  /**\n   * To create cards with short or \"preview\" content\n   * @default false\n   */\n  @Input() teaser: BooleanInput | undefined;\n\n  /**\n   * To create special cards\n   * @default false\n   */\n  @Input() special: BooleanInput | undefined;\n\n  /**\n   * Card with image\n   * @default false\n   */\n  @Input() hasImage: BooleanInput | undefined;\n\n  /**\n   * To add rounding effects\n   * @default false\n   */\n  @Input() rounded: BooleanInput | undefined;\n\n  /**\n   * To add shadow effects\n   * @default false\n   */\n  @Input() shadow: BooleanInput | undefined;\n\n\n  /**\n   * To add background and shadow\n   * @default false\n   */\n  @Input() background: BooleanInput | undefined;\n\n  /**\n   * To add bottom border\n   * @default false\n   */\n  @Input() borderBottom: BooleanInput | undefined;\n\n\n  /**\n   * To render a big card\n   * @default false\n   */\n    @Input() big: BooleanInput | undefined;\n\n  /**\n   * Custom card class\n   * @default ''\n   */\n  @Input() cardClass: string = '';\n\n  /**\n   * Custom card body class\n   * @default ''\n   */\n  @Input() bodyClass: string = '';\n\n  protected get isTeaser(): boolean {\n    return isTrueBooleanInput(this.teaser);\n  }\n\n  protected get isSpecial(): boolean {\n    return isTrueBooleanInput(this.special);\n  }\n\n  protected get isHasImage(): boolean {\n    return isTrueBooleanInput(this.hasImage);\n  }\n\n  protected get isRounded(): boolean {\n    return isTrueBooleanInput(this.rounded);\n  }\n\n  protected get isShadow(): boolean {\n    return isTrueBooleanInput(this.shadow);\n  }\n\n  protected get isBackground(): boolean {\n    return isTrueBooleanInput(this.background);\n  }\n\n  protected get isBig(): boolean {\n    return isTrueBooleanInput(this.big);\n  }\n\n  protected get isBorderedBottom(): boolean {\n    return isTrueBooleanInput(this.borderBottom);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".card-body:empty {\n  display: none;\n}\n",
+                    "data": ".card-body:empty {\n  display: none;\n}\n\n\n::ng-deep .row [class*=col-] {\n  .card, .card-wrapper {\n    height: 100%;\n  }\n}\n\n::ng-deep .card-wrapper.card-teaser-wrapper {\n  it-card {\n    flex-direction: row;\n    align-items: flex-start;\n    flex: 0 0 100%;\n    flex-wrap: wrap;\n    margin: 16px 0;\n  }\n\n  @media (min-width: 768px) { \n    it-card {\n      flex: 0 0 49%;\n    }\n  }\n}",
                     "styleUrl": "./card.component.scss"
                 }
             ],
             "stylesData": "",
             "extends": "ItAbstractComponent",
             "accessors": {
-                "isSpace": {
-                    "name": "isSpace",
-                    "getSignature": {
-                        "name": "isSpace",
-                        "type": "boolean",
-                        "returnType": "boolean",
-                        "line": 61
-                    }
-                },
                 "isTeaser": {
                     "name": "isTeaser",
                     "getSignature": {
                         "name": "isTeaser",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 65
+                        "line": 82
+                    }
+                },
+                "isSpecial": {
+                    "name": "isSpecial",
+                    "getSignature": {
+                        "name": "isSpecial",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 86
                     }
                 },
                 "isHasImage": {
@@ -8893,7 +9023,7 @@
                         "name": "isHasImage",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 69
+                        "line": 90
                     }
                 },
                 "isRounded": {
@@ -8902,7 +9032,7 @@
                         "name": "isRounded",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 73
+                        "line": 94
                     }
                 },
                 "isShadow": {
@@ -8911,11 +9041,38 @@
                         "name": "isShadow",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 77
+                        "line": 98
+                    }
+                },
+                "isBackground": {
+                    "name": "isBackground",
+                    "getSignature": {
+                        "name": "isBackground",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 102
+                    }
+                },
+                "isBig": {
+                    "name": "isBig",
+                    "getSignature": {
+                        "name": "isBig",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 106
+                    }
+                },
+                "isBorderedBottom": {
+                    "name": "isBorderedBottom",
+                    "getSignature": {
+                        "name": "isBorderedBottom",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 110
                     }
                 }
             },
-            "templateData": "<div class=\"card-wrapper\" [class.card-space]=\"isSpace\">\n  <div class=\"card {{cardClass}}\"\n       [class.card-teaser]=\"isTeaser\"\n       [class.card-img.no-after]=\"isHasImage\"\n       [class.shadow]=\"isShadow\"\n       [class.rounded]=\"isRounded\">\n\n    <ng-content select=\"[beforeBody]\"></ng-content>\n\n    <div class=\"card-body {{bodyClass}}\">\n      <ng-content></ng-content>\n    </div>\n\n  </div>\n</div>\n"
+            "templateData": "<ng-template #cardcontent>\n\n    <ng-content select=\"[beforeBody]\"></ng-content>\n\n    <div class=\"card-body {{bodyClass}}\">\n      <ng-content></ng-content>\n    </div>\n\n</ng-template>\n\n\n<div *ngIf=\"!isSpecial\" class=\"card {{cardClass}}\" [class.special-card]=\"isSpecial\" [class.card-img]=\"isHasImage\" [class.card-teaser]=\"isTeaser\" [class.no-after]=\"isHasImage\" [class.shadow]=\"isShadow\" [class.card-bg]=\"isBackground\" [class.card-big]=\"isBig\"\n[class.border-bottom-card]=\"isBorderedBottom\" [class.rounded]=\"isRounded\">\n  <ng-container *ngTemplateOutlet=\"cardcontent\"></ng-container>\n</div>\n<a *ngIf=\"isSpecial\" class=\"card {{cardClass}}\" [class.special-card]=\"isSpecial\" [class.card-img]=\"isHasImage\"\n[class.card-teaser]=\"isTeaser\" [class.shadow]=\"isShadow\" [class.card-bg]=\"isBackground\" [class.card-big]=\"isBig\" [class.no-after]=\"isHasImage\"\n[class.border-bottom-card]=\"isBorderedBottom\" [class.rounded]=\"isRounded\">\n  <ng-container *ngTemplateOutlet=\"cardcontent\"></ng-container>\n</a>\n"
         },
         {
             "name": "ItCarouselComponent",
@@ -10457,7 +10614,7 @@
                     }
                 }
             },
-            "templateData": "<ng-container>\n  <div class=\"form-check\"\n       [class.form-check-group]=\"isGroup\"\n       [class.form-check-inline]=\"inline\">\n\n    <div *ngIf=\"toggle; else defaultStyle\" class=\"toggles\">\n      <label [for]=\"id\">\n        <ng-container *ngTemplateOutlet=\"htmlLabel\"></ng-container>\n        <input [id]=\"id\"\n               type=\"checkbox\"\n               [formControl]=\"control\"\n               [attr.aria-describedby]=\"id + '-help'\">\n        <span class=\"lever\"></span>\n      </label>\n    </div>\n\n    <ng-template #defaultStyle>\n      <input [id]=\"id\"\n             type=\"checkbox\"\n             class=\"form-check-input\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [class.semi-checked]=\"isIndeterminate\"\n             [formControl]=\"control\"\n             [attr.aria-describedby]=\"id + '-help'\">\n      <label class=\"form-check-label\" [for]=\"id\">\n        <ng-container *ngTemplateOutlet=\"htmlLabel\"></ng-container>\n      </label>\n    </ng-template>\n\n    <small *ngIf=\"isGroup\" [id]=\"id + '-help'\" class=\"form-text\">\n      <ng-content></ng-content>\n    </small>\n\n    <div *ngIf=\"isInvalid && isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <ng-container *ngTemplateOutlet=\"error\"></ng-container>\n    </div>\n  </div>\n\n  <div *ngIf=\"isInvalid && !isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <ng-container *ngTemplateOutlet=\"error\"></ng-container>\n  </div>\n</ng-container>\n\n<ng-template #error>\n  <div #customError>\n    <ng-content select=\"[error]\"></ng-content>\n  </div>\n  <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n</ng-template>\n\n<ng-template #htmlLabel>\n  <div #customLabel>\n    <ng-content select=\"[label]\"></ng-content>\n  </div>\n  <ng-container *ngIf=\"!customLabel.hasChildNodes()\">{{label}}</ng-container>\n</ng-template>\n"
+            "templateData": "<ng-container>\n  <div class=\"form-check\"\n       [class.form-check-group]=\"isGroup\"\n       [class.form-check-inline]=\"inline\">\n\n    <div *ngIf=\"toggle; else defaultStyle\" class=\"toggles\">\n      <label [for]=\"id\">\n        <ng-container *ngTemplateOutlet=\"htmlLabel\"></ng-container>\n        <input [id]=\"id\"\n               type=\"checkbox\"\n               [formControl]=\"control\"\n               [attr.aria-describedby]=\"id + '-help'\"\n               (click)=\"$event.stopPropagation();\">\n        <span class=\"lever\"></span>\n      </label>\n    </div>\n\n    <ng-template #defaultStyle>\n      <input [id]=\"id\"\n             type=\"checkbox\"\n             class=\"form-check-input\"\n             [class.is-invalid]=\"isInvalid\"\n             [class.is-valid]=\"isValid\"\n             [class.semi-checked]=\"isIndeterminate\"\n             [formControl]=\"control\"\n             [attr.aria-describedby]=\"id + '-help'\"\n             (click)=\"$event.stopPropagation();\">\n      <label class=\"form-check-label\" [for]=\"id\">\n        <ng-container *ngTemplateOutlet=\"htmlLabel\"></ng-container>\n      </label>\n    </ng-template>\n\n    <small *ngIf=\"isGroup\" [id]=\"id + '-help'\" class=\"form-text\">\n      <ng-content></ng-content>\n    </small>\n\n    <div *ngIf=\"isInvalid && isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <ng-container *ngTemplateOutlet=\"error\"></ng-container>\n    </div>\n  </div>\n\n  <div *ngIf=\"isInvalid && !isGroup\" class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n    <ng-container *ngTemplateOutlet=\"error\"></ng-container>\n  </div>\n</ng-container>\n\n<ng-template #error>\n  <div #customError>\n    <ng-content select=\"[error]\"></ng-content>\n  </div>\n  <ng-container *ngIf=\"!customError.hasChildNodes()\">{{invalidMessage | async}}</ng-container>\n</ng-template>\n\n<ng-template #htmlLabel>\n  <div #customLabel>\n    <ng-content select=\"[label]\"></ng-content>\n  </div>\n  <ng-container *ngIf=\"!customLabel.hasChildNodes()\">{{label}}</ng-container>\n</ng-template>\n"
         },
         {
             "name": "ItChipComponent",
@@ -11059,7 +11216,7 @@
         },
         {
             "name": "ItCollapseComponent",
-            "id": "component-ItCollapseComponent-6f4e5ac3d32dedf29af7c848abaf701e3ad3d3afcf575e79c6f9ec0a41ce13e3539c635e12e4daba68a4ef69dfea974f54f33d2c37d04ab258e32bb06e851343",
+            "id": "component-ItCollapseComponent-41b7756ff24e81633f8ab8867e70e9a82c75510b675302772197230f087fcc26f40b403efb065cfad4955501a8af72148c66d84a23e9298a58aa9ef4da5a867b",
             "file": "projects/design-angular-kit/src/lib/components/core/collapse/collapse.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -11197,7 +11354,7 @@
                     "type": "ElementRef<HTMLDivElement>",
                     "optional": true,
                     "description": "",
-                    "line": 63,
+                    "line": 65,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -11207,6 +11364,19 @@
                     "modifierKind": [
                         167,
                         122
+                    ]
+                },
+                {
+                    "name": "open",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        121
                     ]
                 },
                 {
@@ -11303,7 +11473,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 117,
+                    "line": 126,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEliminates the possibility of an item being resealable\n",
@@ -11318,11 +11488,26 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 102,
+                    "line": 111,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHides a resealable item\nNOTE: Returns to the caller before the collapsable element has actually been hidden (onHidden Event)\n",
                     "description": "<p>Hides a resealable item\nNOTE: Returns to the caller before the collapsable element has actually been hidden (onHidden Event)</p>\n",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isOpen",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nShows if collapse is open or not\n",
+                    "description": "<p>Shows if collapse is open or not</p>\n",
                     "modifierKind": [
                         123
                     ]
@@ -11333,7 +11518,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 73,
+                    "line": 75,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -11349,7 +11534,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 94,
+                    "line": 103,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nShows a resealable item\nNOTE: Returns to the caller before the collapsable element has actually been shown (onShown event).\n",
@@ -11364,7 +11549,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 110,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nToggle a collapsible item to show or hide it.\nNOTE: Returns to the caller before the collapsable element has actually been shown or hidden (onShown and onHidden events)\n",
@@ -11446,7 +11631,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild\n} from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { Collapse } from 'bootstrap-italia';\n\n@Component({\n  standalone: true,\n  selector: 'it-collapse',\n  templateUrl: './collapse.component.html',\n  exportAs: 'itCollapse',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: []\n})\nexport class ItCollapseComponent extends ItAbstractComponent implements AfterViewInit {\n\n  /**\n   * Enable multiple collapse\n   */\n  @Input() multi: BooleanInput | undefined;\n\n  /**\n   * Toggles the collapsible element on invocation\n   */\n  @Input() opened: BooleanInput | undefined;\n\n  /**\n   * Custom class\n   */\n  @Input() class: string = '';\n\n  /**\n   * This event fires immediately when the show method is called.\n   */\n  @Output() showEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event is triggered when the tooltip has been made visible to the user (it will wait for the CSS transitions to complete).\n   */\n  @Output() shownEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event fires immediately when the hide method is called.\n   */\n  @Output() hideEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event is raised when the tooltip has finished being hidden from the user (it will wait for the CSS transitions to complete).\n   */\n  @Output() hiddenEvent: EventEmitter<Event> = new EventEmitter();\n\n\n  private collapse?: Collapse;\n\n  @ViewChild('collapse') protected collapseDiv?: ElementRef<HTMLDivElement>;\n\n  get isMulti(): boolean {\n    return isTrueBooleanInput(this.multi);\n  }\n\n  get isOpenedOnStart(): boolean {\n    return isTrueBooleanInput(this.opened);\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');\n\n    if (this.collapseDiv) {\n      const element = this.collapseDiv.nativeElement;\n      this.collapse = Collapse.getOrCreateInstance(element, {\n        toggle: this.isOpenedOnStart\n      });\n\n      element.addEventListener('show.bs.collapse', event => this.showEvent.emit(event));\n      element.addEventListener('shown.bs.collapse', event => this.shownEvent.emit(event));\n      element.addEventListener('hide.bs.collapse', event => this.hideEvent.emit(event));\n      element.addEventListener('hidden.bs.collapse', event => this.hiddenEvent.emit(event));\n    }\n  }\n\n  /**\n   * Shows a resealable item\n   * NOTE: Returns to the caller before the collapsable element has actually been shown (onShown event).\n   */\n  public show(): void {\n    this.collapse?.show();\n  }\n\n  /**\n   * Hides a resealable item\n   * NOTE: Returns to the caller before the collapsable element has actually been hidden (onHidden Event)\n   */\n  public hide(): void {\n    this.collapse?.hide();\n  }\n\n  /**\n   * Toggle a collapsible item to show or hide it.\n   * NOTE: Returns to the caller before the collapsable element has actually been shown or hidden (onShown and onHidden events)\n   */\n  public toggle(): void {\n    this.collapse?.toggle();\n  }\n\n  /**\n   * Eliminates the possibility of an item being resealable\n   */\n  public dispose(): void {\n    this.collapse?.dispose();\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild\n} from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';\nimport { Collapse } from 'bootstrap-italia';\n\n@Component({\n  standalone: true,\n  selector: 'it-collapse',\n  templateUrl: './collapse.component.html',\n  exportAs: 'itCollapse',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: []\n})\nexport class ItCollapseComponent extends ItAbstractComponent implements AfterViewInit {\n\n  /**\n   * Enable multiple collapse\n   */\n  @Input() multi: BooleanInput | undefined;\n\n  /**\n   * Toggles the collapsible element on invocation\n   */\n  @Input() opened: BooleanInput | undefined;\n\n  /**\n   * Custom class\n   */\n  @Input() class: string = '';\n\n  /**\n   * This event fires immediately when the show method is called.\n   */\n  @Output() showEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event is triggered when the tooltip has been made visible to the user (it will wait for the CSS transitions to complete).\n   */\n  @Output() shownEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event fires immediately when the hide method is called.\n   */\n  @Output() hideEvent: EventEmitter<Event> = new EventEmitter();\n\n  /**\n   * This event is raised when the tooltip has finished being hidden from the user (it will wait for the CSS transitions to complete).\n   */\n  @Output() hiddenEvent: EventEmitter<Event> = new EventEmitter();\n\n\n  private collapse?: Collapse;\n\n  private open: boolean = false;\n\n  @ViewChild('collapse') protected collapseDiv?: ElementRef<HTMLDivElement>;\n\n  get isMulti(): boolean {\n    return isTrueBooleanInput(this.multi);\n  }\n\n  get isOpenedOnStart(): boolean {\n    return isTrueBooleanInput(this.opened);\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');\n\n    if (this.collapseDiv) {\n      const element = this.collapseDiv.nativeElement;\n      this.collapse = Collapse.getOrCreateInstance(element, {\n        toggle: this.isOpenedOnStart\n      });\n\n      element.addEventListener('show.bs.collapse', event => {this.open = true; this.showEvent.emit(event)});\n      element.addEventListener('shown.bs.collapse', event => {this.open = true; this.shownEvent.emit(event)});\n      element.addEventListener('hide.bs.collapse', event => {this.open = false; this.hideEvent.emit(event)});\n      element.addEventListener('hidden.bs.collapse', event => {this.open = false; this.hiddenEvent.emit(event)});\n    }\n  }\n\n  /**\n   * Shows if collapse is open or not\n   */\n  public isOpen(): boolean {\n    return this.open;\n  }\n\n  /**\n   * Shows a resealable item\n   * NOTE: Returns to the caller before the collapsable element has actually been shown (onShown event).\n   */\n  public show(): void {\n    this.collapse?.show();\n  }\n\n  /**\n   * Hides a resealable item\n   * NOTE: Returns to the caller before the collapsable element has actually been hidden (onHidden Event)\n   */\n  public hide(): void {\n    this.collapse?.hide();\n  }\n\n  /**\n   * Toggle a collapsible item to show or hide it.\n   * NOTE: Returns to the caller before the collapsable element has actually been shown or hidden (onShown and onHidden events)\n   */\n  public toggle(): void {\n    this.collapse?.toggle();\n  }\n\n  /**\n   * Eliminates the possibility of an item being resealable\n   */\n  public dispose(): void {\n    this.collapse?.dispose();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -11461,7 +11646,7 @@
                         "name": "isMulti",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 65
+                        "line": 67
                     }
                 },
                 "isOpenedOnStart": {
@@ -11470,7 +11655,7 @@
                         "name": "isOpenedOnStart",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 69
+                        "line": 71
                     }
                 }
             },
@@ -15505,7 +15690,7 @@
         },
         {
             "name": "ItListComponent",
-            "id": "component-ItListComponent-ccff8216dc01255ab052a9f02586ff96a466d55bf7fae04c313cc136efb34d87711fe777cff8d52a0e6b380bd73b71f532ffc5f9b5b4ddaa909dfa5de7ee4ab3",
+            "id": "component-ItListComponent-a22662a63c758667af024994d6fb651f72c57878b38505e05dba9f391387c576534094d35f9bc5b4227bbbc737cdc298515559c4d79cd20fe7f21aa7ee788a9e",
             "file": "projects/design-angular-kit/src/lib/components/core/list/list/list.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -15528,7 +15713,27 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd 'link-list' class for navigation menu\n",
                     "description": "<p>Add &#39;link-list&#39; class for navigation menu</p>\n",
-                    "line": 16,
+                    "line": 17,
+                    "type": "BooleanInput | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "linkSubList",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nAdd 'link-sublist' class for navigation menu\n",
+                    "description": "<p>Add &#39;link-sublist&#39; class for navigation menu</p>\n",
+                    "line": 22,
+                    "type": "BooleanInput | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "multiline",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nAdd 'multiline' class for wrapper\n",
+                    "description": "<p>Add &#39;multiline&#39; class for wrapper</p>\n",
+                    "line": 27,
                     "type": "BooleanInput | undefined",
                     "decorators": []
                 }
@@ -15541,11 +15746,18 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "NgTemplateOutlet"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';\n\n@Component({\n  standalone: true,\n  selector: 'it-list',\n  templateUrl: './list.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: []\n})\nexport class ItListComponent {\n\n  /**\n   * Add 'link-list' class for navigation menu\n   */\n  @Input() linkList: BooleanInput | undefined;\n\n\n  protected get isLinkList(): boolean {\n    return isTrueBooleanInput(this.linkList);\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';\nimport { NgIf, NgTemplateOutlet } from '@angular/common';\n\n@Component({\n  standalone: true,\n  selector: 'it-list',\n  templateUrl: './list.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, NgTemplateOutlet]\n})\nexport class ItListComponent {\n\n  /**\n   * Add 'link-list' class for navigation menu\n   */\n  @Input() linkList: BooleanInput | undefined;\n\n  /**\n   * Add 'link-sublist' class for navigation menu\n   */\n  @Input() linkSubList: BooleanInput | undefined;\n\n  /**\n   * Add 'multiline' class for wrapper\n   */\n  @Input() multiline: BooleanInput | undefined;\n\n\n  protected get isLinkList(): boolean {\n    return isTrueBooleanInput(this.linkList);\n  }\n\n  protected get isMultiline(): boolean {\n    return isTrueBooleanInput(this.multiline);\n  }\n\n  protected get isLinkSubList(): boolean {\n    return isTrueBooleanInput(this.linkSubList);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -15556,15 +15768,33 @@
                         "name": "isLinkList",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 19
+                        "line": 30
+                    }
+                },
+                "isMultiline": {
+                    "name": "isMultiline",
+                    "getSignature": {
+                        "name": "isMultiline",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 34
+                    }
+                },
+                "isLinkSubList": {
+                    "name": "isLinkSubList",
+                    "getSignature": {
+                        "name": "isLinkSubList",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 38
                     }
                 }
             },
-            "templateData": "<div [class]=\"isLinkList ? 'link-list-wrapper' : 'it-list-wrapper'\">\n  <ul [class]=\"isLinkList ? 'link-list' : 'it-list'\">\n    <ng-content></ng-content>\n  </ul>\n</div>\n"
+            "templateData": "<div *ngIf=\"!isLinkSubList\" [class.multiline]=\"isMultiline\"  [class]=\"isLinkList ? 'link-list-wrapper' : 'it-list-wrapper'\">\n  <ul [class]=\"isLinkList ? 'link-list' : 'it-list'\">\n    <ng-container *ngTemplateOutlet=\"contentTpl\"></ng-container>\n  </ul>\n</div>\n<ul *ngIf=\"isLinkSubList\" class=\"link-sublist\">\n  <ng-container *ngTemplateOutlet=\"contentTpl\"></ng-container>\n</ul>\n<ng-template #contentTpl><ng-content></ng-content></ng-template>"
         },
         {
             "name": "ItListItemComponent",
-            "id": "component-ItListItemComponent-c4c9b9b2d1be19a4ebd310e78d198a1be69bda229f32951aa24c0df6d79037d54c57e3549e949abc43fe5a90c4181450bb1458cf2448173387633d812c993d1d",
+            "id": "component-ItListItemComponent-0041508b755dfabfe300831eff924a4129f6142b8a809ec90c99b4bf13aa899f7047702dc2890a052602e3b0ba9e9697cbe8eff6b77f00a6f910320c982bbb76",
             "file": "projects/design-angular-kit/src/lib/components/core/list/list-item/list-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -15599,7 +15829,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe avatar url\n",
                     "description": "<p>The avatar url</p>\n",
-                    "line": 34,
+                    "line": 39,
                     "type": "URL | undefined",
                     "decorators": []
                 },
@@ -15614,12 +15844,22 @@
                     "decorators": []
                 },
                 {
+                    "name": "iconRight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nAdd icon-right class\n",
+                    "description": "<p>Add icon-right class</p>\n",
+                    "line": 34,
+                    "type": "BooleanInput | undefined",
+                    "decorators": []
+                },
+                {
                     "name": "image",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe thumb image url\n",
                     "description": "<p>The thumb image url</p>\n",
-                    "line": 39,
+                    "line": 44,
                     "type": "URL | undefined",
                     "decorators": []
                 },
@@ -15907,11 +16147,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';\nimport { ItLinkComponent } from '../../link/link.component';\nimport { NgIf, NgTemplateOutlet } from '@angular/common';\n\n@Component({\n  standalone: true,\n  selector: 'it-list-item',\n  templateUrl: './list-item.component.html',\n  styleUrls: ['./list-item.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, NgTemplateOutlet, ItLinkComponent]\n})\nexport class ItListItemComponent extends ItLinkComponent {\n\n  /**\n   * Add active class\n   */\n  @Input() active: BooleanInput | undefined;\n\n  /**\n   * Add large class\n   */\n  @Input() large: BooleanInput | undefined;\n\n  /**\n   * Add icon-left class\n   */\n  @Input() iconLeft: BooleanInput | undefined;\n\n  /**\n   * The avatar url\n   */\n  @Input() avatar: URL | undefined;\n\n  /**\n   * The thumb image url\n   */\n  @Input() image: URL | undefined;\n\n\n  get itemClass(): string {\n    let itemClass = 'list-item';\n    if (isTrueBooleanInput(this.active)) {\n      itemClass += ` active`;\n    }\n    if (isTrueBooleanInput(this.large)) {\n      itemClass += ` large`;\n    }\n    if (isTrueBooleanInput(this.iconLeft)) {\n      itemClass += ` icon-left`;\n    }\n    if (this.class) {\n      itemClass += ` ${this.class}`;\n    }\n    return itemClass;\n  }\n\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';\nimport { ItLinkComponent } from '../../link/link.component';\nimport { NgIf, NgTemplateOutlet } from '@angular/common';\n\n@Component({\n  standalone: true,\n  selector: 'it-list-item',\n  templateUrl: './list-item.component.html',\n  styleUrls: ['./list-item.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgIf, NgTemplateOutlet, ItLinkComponent]\n})\nexport class ItListItemComponent extends ItLinkComponent {\n\n  /**\n   * Add active class\n   */\n  @Input() active: BooleanInput | undefined;\n\n  /**\n   * Add large class\n   */\n  @Input() large: BooleanInput | undefined;\n\n  /**\n   * Add icon-left class\n   */\n  @Input() iconLeft: BooleanInput | undefined;\n\n  /**\n   * Add icon-right class\n   */\n  @Input() iconRight: BooleanInput | undefined;\n\n  /**\n   * The avatar url\n   */\n  @Input() avatar: URL | undefined;\n\n  /**\n   * The thumb image url\n   */\n  @Input() image: URL | undefined;\n\n\n  get itemClass(): string {\n    let itemClass = 'list-item';\n    if (isTrueBooleanInput(this.disabled)) {\n      itemClass += ` disabled`;\n    }\n    if (isTrueBooleanInput(this.active)) {\n      itemClass += ` active`;\n    }\n    if (isTrueBooleanInput(this.large)) {\n      itemClass += ` large`;\n    }\n    if (isTrueBooleanInput(this.iconLeft)) {\n      itemClass += ` icon-left`;\n    }\n    if (isTrueBooleanInput(this.iconRight)) {\n      itemClass += ` icon-right`;\n    }\n    if (this.class) {\n      itemClass += ` ${this.class}`;\n    }\n    return itemClass;\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".metadata:empty, .it-rounded-icon:empty {\n  display: none;\n}\n",
+                    "data": ".metadata:empty, .it-rounded-icon:empty {\n  display: none;\n}\n\n:host ::ng-deep {\n  it-icon + .it-multiple {\n    display: none !important;\n  }\n  .list-item-title-icon-wrapper + .it-multiple {\n    display: none !important;\n  }\n  p + .it-multiple {\n    display: none !important;\n  }\n}",
                     "styleUrl": "./list-item.component.scss"
                 }
             ],
@@ -15924,11 +16164,11 @@
                         "name": "itemClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 42
+                        "line": 47
                     }
                 }
             },
-            "templateData": "<li>\n  <ng-template #content>\n    <div class=\"it-rounded-icon\">\n      <ng-content select=\"[icon]\"></ng-content>\n    </div>\n\n    <div *ngIf=\"avatar\" class=\"avatar size-lg\">\n      <img [attr.src]=\"avatar\" alt=\"avatar\">\n    </div>\n\n    <div *ngIf=\"image\" class=\"it-thumb\">\n      <img [attr.src]=\"image\" alt=\"thumb\">\n    </div>\n\n    <div class=\"it-right-zone\">\n      <span class=\"text\">\n        <ng-content></ng-content>\n      </span>\n      <ng-content select=\"[action]\"></ng-content>\n\n      <span class=\"it-multiple\">\n        <span class=\"metadata\">\n          <ng-content select=\"[metadata]\"></ng-content>\n        </span>\n\n        <ng-content select=\"[multiple]\"></ng-content>\n      </span>\n    </div>\n  </ng-template>\n\n\n  <div *ngIf=\"!href; else link\" [class]=\"itemClass\">\n    <ng-container *ngTemplateOutlet=\"content\"></ng-container>\n  </div>\n\n  <ng-template #link>\n    <it-link [class]=\"itemClass\" [href]=\"href\" [externalLink]=\"externalLink\" [disabled]=\"disabled\">\n      <ng-container *ngTemplateOutlet=\"content\"></ng-container>\n    </it-link>\n  </ng-template>\n</li>\n"
+            "templateData": "<li>\n  <ng-template #content>\n    <div class=\"it-rounded-icon\">\n      <ng-content select=\"[icon]\"></ng-content>\n    </div>\n\n    <div *ngIf=\"avatar\" class=\"avatar size-lg\">\n      <img [attr.src]=\"avatar\" alt=\"avatar\">\n    </div>\n\n    <div *ngIf=\"image\" class=\"it-thumb\">\n      <img [attr.src]=\"image\" alt=\"thumb\">\n    </div>\n\n    <div class=\"it-right-zone\">\n      <ng-content></ng-content>\n      <ng-content select=\"[action]\"></ng-content>\n\n      <span class=\"it-multiple\">\n        <span class=\"metadata\">\n          <ng-content select=\"[metadata]\" ></ng-content>\n        </span>\n\n        <ng-content select=\"[multiple]\"></ng-content>\n      </span>\n    </div>\n  </ng-template>\n\n\n  <div *ngIf=\"!href; else link\" [class]=\"itemClass\">\n    <ng-container *ngTemplateOutlet=\"content\"></ng-container>\n  </div>\n\n  <ng-template #link>\n    <it-link [class]=\"itemClass\" [href]=\"href\" [externalLink]=\"externalLink\" [disabled]=\"disabled\">\n      <ng-container *ngTemplateOutlet=\"content\"></ng-container>\n    </it-link>\n  </ng-template>\n</li>\n"
         },
         {
             "name": "ItModalComponent",
@@ -29193,8 +29433,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItAccordionComponent",
-                "coveragePercent": 68,
-                "coverageCount": "17/25",
+                "coveragePercent": 66,
+                "coverageCount": "18/27",
                 "status": "good"
             },
             {
@@ -29283,8 +29523,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItCardComponent",
-                "coveragePercent": 70,
-                "coverageCount": "12/17",
+                "coveragePercent": 75,
+                "coverageCount": "15/20",
                 "status": "good"
             },
             {
@@ -29329,8 +29569,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItCollapseComponent",
-                "coveragePercent": 65,
-                "coverageCount": "15/23",
+                "coveragePercent": 64,
+                "coverageCount": "16/25",
                 "status": "good"
             },
             {
@@ -29421,8 +29661,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItListItemComponent",
-                "coveragePercent": 68,
-                "coverageCount": "13/19",
+                "coveragePercent": 70,
+                "coverageCount": "14/20",
                 "status": "good"
             },
             {
@@ -29440,9 +29680,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItListComponent",
-                "coveragePercent": 50,
-                "coverageCount": "1/2",
-                "status": "medium"
+                "coveragePercent": 75,
+                "coverageCount": "3/4",
+                "status": "good"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/components/core/modal/modal.component.ts",
