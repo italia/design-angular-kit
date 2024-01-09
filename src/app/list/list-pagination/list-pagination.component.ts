@@ -8,8 +8,7 @@ interface PaginatedData {
 
 @Component({
   selector: 'it-list-pagination',
-  templateUrl: './list-pagination.component.html',
-  styleUrls: ['./list-pagination.component.scss']
+  templateUrl: './list-pagination.component.html'
 })
 export class ListPaginationComponent {
   private pages: Array<Array<string>> = [
@@ -17,8 +16,8 @@ export class ListPaginationComponent {
     ['Linda', 'Riccardo', 'Marco'],
     ['Daniel', 'Gioele', 'Giulio'],
     ['Diego', 'Andrea', 'Lorenzo'],
-    ['Giorgio', 'Manuel', 'Luca'],
-  ]
+    ['Giorgio', 'Manuel', 'Luca']
+  ];
 
   protected selectedItem: PaginatedData = {
     currentPage: 0,
