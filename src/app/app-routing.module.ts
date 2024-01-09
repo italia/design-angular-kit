@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
-import {
-  ItErrorPageComponent
-} from '../../projects/design-angular-kit/src/lib/components/utils/error-page/error-page.component';
+import { ItErrorPageComponent } from 'design-angular-kit/components/utils/error-page/error-page.component';
 
 
 const routes: Routes = [

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IconName, IconNameArray } from '../../../../projects/design-angular-kit/src/lib/interfaces/icon';
+import { IconName, IconNameArray } from 'design-angular-kit/interfaces/icon';
 
 @Component({
   selector: 'it-icon-list-example',

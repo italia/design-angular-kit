@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ItModalComponent } from '../../../../projects/design-angular-kit/src/lib/components/core/modal/modal.component';
+import { ItModalComponent } from 'design-angular-kit/components/core/modal/modal.component';
 
 @Component({
   selector: 'it-modal-radio-example',

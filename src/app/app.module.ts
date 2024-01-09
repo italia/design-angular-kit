@@ -10,7 +10,7 @@ import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher
 import { LinkSortPipe } from './link-sort.pipe';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { TranslateStore } from '@ngx-translate/core';
-import { DesignAngularKitModule } from '../../projects/design-angular-kit/src/lib/design-angular-kit.module';
+import { DesignAngularKitModule } from 'design-angular-kit/design-angular-kit.module';
 
 @NgModule({
   declarations: [

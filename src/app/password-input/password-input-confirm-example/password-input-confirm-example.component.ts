@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ItValidators } from '../../../../projects/design-angular-kit/src/lib/validators/it-validators';
+import { ItValidators } from 'design-angular-kit/validators/it-validators';
 
 @Component({
   selector: 'it-password-input-confirm-example',

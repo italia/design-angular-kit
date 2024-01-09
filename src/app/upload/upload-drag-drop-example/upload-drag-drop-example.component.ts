@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {interval, map, take} from "rxjs";
 import {
   ItUploadDragDropComponent
-} from "../../../../projects/design-angular-kit/src/lib/components/form/upload-drag-drop/upload-drag-drop.component";
+} from "design-angular-kit/components/form/upload-drag-drop/upload-drag-drop.component";
 
 @Component({
   selector: 'it-upload-drag-drop-example',

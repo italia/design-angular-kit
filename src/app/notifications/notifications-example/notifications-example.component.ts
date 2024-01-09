@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {
   ItNotificationService
-} from '../../../../projects/design-angular-kit/src/lib/services/notification/notification.service';
+} from 'design-angular-kit/services/notification/notification.service';
 import {
   NotificationPosition,
   NotificationType
-} from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
+} from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-notifications-example',
