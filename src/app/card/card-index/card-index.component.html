@@ -1,0 +1,12 @@
+<h1 class="bd-title">Card</h1>
+<p class="bd-lead">Consente agli utenti di creare delle card.</p>
+<div [innerHTML]="component.description"></div>
+<it-tab-container>
+  <it-tab-item label="Esempi" active="true" class="pt-3">
+    <it-card-examples></it-card-examples>
+  </it-tab-item>
+  <it-tab-item label="API" class="pt-3">
+    <h2>Card</h2>
+    <it-api-parameters [component]="component"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>
