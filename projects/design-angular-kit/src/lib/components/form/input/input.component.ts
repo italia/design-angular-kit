@@ -139,7 +139,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
   /**
    * Check is readonly field
    */
-  get isReadonly(): boolean {
+  protected get isReadonly(): boolean {
     return this.readonly === 'plaintext' || !!this.readonly;
   }
 
