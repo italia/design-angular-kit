@@ -105,6 +105,7 @@ export * from './lib/interfaces/utils';
 
 // Utils
 export * from './lib/utils/regex';
+export * from './lib/utils/date-utils';
 export * from './lib/utils/file-utils';
 
 // Validators
