@@ -42,6 +42,7 @@ export class TablePaginatedComponent implements OnInit {
 
   private pages: Array<Array<string>> = [
     ['Antonino', 'Francesco', 'Giovanni'],
+    ['Emanuele', 'Francesca', 'Giovanna'],
     ['Linda', 'Riccardo', 'Marco'],
     ['Daniel', 'Gioele', 'Giulio'],
     ['Diego', 'Andrea', 'Lorenzo'],
