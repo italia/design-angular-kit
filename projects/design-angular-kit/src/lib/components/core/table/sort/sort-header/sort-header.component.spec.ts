@@ -1,21 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SortHeaderComponent } from './sort-header.component';
-import { SortDirective } from '../sort.directive';
+import { ItSortHeaderComponent } from './sort-header.component';
+import { ItSortDirective } from '../sort.directive';
+import {tb_base} from "../../../../../../test";
 
-describe('SortHeaderComponent', () => {
-  let component: SortHeaderComponent;
-  let fixture: ComponentFixture<SortHeaderComponent>;
-  let sortDirective: SortDirective = new SortDirective();
+describe('ItSortHeaderComponent', () => {
+  let component: ItSortHeaderComponent;
+  let fixture: ComponentFixture<ItSortHeaderComponent>;
+  let sortDirective: ItSortDirective = new ItSortDirective();
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        SortHeaderComponent,
+        ItSortHeaderComponent,
       ],
-      providers: [{ provide: SortDirective, useValue: sortDirective }],
+      providers: [
+        { provide: ItSortDirective, useValue: sortDirective },
+        ...tb_base.providers
+      ],
     });
-    fixture = TestBed.createComponent(SortHeaderComponent);
+    fixture = TestBed.createComponent(ItSortHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

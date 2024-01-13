@@ -9,22 +9,19 @@
   The approach is based off of: https://dequeuniversity.com/library/aria/tables/sf-sortable-grid
 -->
 <div class="it-sort-header-container it-focus-indicator"
-     [class.it-sort-header-sorted]="_isSorted()"
+     [class.it-sort-header-sorted]="isSorted"
      [class.it-sort-header-position-before]="arrowPosition === 'before'"
-     [attr.tabindex]="_isDisabled() ? null : 0"
-     [attr.role]="_isDisabled() ? null : 'button'">
+     [attr.tabindex]="isDisabled ? null : 0"
+     [attr.role]="isDisabled ? null : 'button'">
 
   <!--
-    TODO(crisbeto): this div isn't strictly necessary, but we have to keep it due to a large
-    number of screenshot diff failures. It should be removed eventually. Note that the difference
-    isn't visible with a shorter header, but once it breaks up into multiple lines, this element
+    We have to keep it due to a large number of screenshot diff failures. It should be removed eventually.
+    Note that the difference isn't visible with a shorter header, but once it breaks up into multiple lines, this element
     causes it to be center-aligned, whereas removing it will keep the text to the left.
   -->
   <div class="it-sort-header-content">
     <ng-content></ng-content>
-    <it-icon *ngIf="_isSorted()" [name]="_arrowIconClass()"></it-icon>
   </div>
 
-
-
+  <it-icon class="it-sort-arrow" size="sm" [name]="arrowIconClass" />
 </div>

@@ -15,8 +15,8 @@ import { TableAlignmentExampleComponent } from './table-alignment-example/table-
 import { TableHeaderExampleComponent } from './table-header-example/table-header-example.component';
 import { TableFooterExampleComponent } from './table-footer-example/table-footer-example.component';
 import { TableCaptionExampleComponent } from './table-caption-example/table-caption-example.component';
-import { SortDirective } from 'projects/design-angular-kit/src/lib/components/core/table/sort/sort.directive';
-import { SortHeaderComponent } from 'projects/design-angular-kit/src/lib/components/core/table/sort/sort-header/sort-header.component';
+import { ItSortDirective } from 'projects/design-angular-kit/src/lib/components/core/table/sort/sort.directive';
+import { ItSortHeaderComponent } from 'projects/design-angular-kit/src/lib/components/core/table/sort/sort-header/sort-header.component';
 
 
 
@@ -40,8 +40,8 @@ import { SortHeaderComponent } from 'projects/design-angular-kit/src/lib/compone
     SharedModule,
     TableRoutingModule,
     FormsModule,
-    SortDirective,
-    SortHeaderComponent
+    ItSortDirective,
+    ItSortHeaderComponent
   ]
 })
 export class TableModule { }

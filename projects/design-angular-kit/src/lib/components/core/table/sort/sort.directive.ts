@@ -1,76 +1,33 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
-
-import { Directive, EventEmitter, Inject, InjectionToken, Input, OnChanges, OnDestroy, Optional, Output, booleanAttribute } from '@angular/core';
-import { SortDirection } from './sort-direction';
+import {
+  Directive,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Optional,
+  Output,
+  booleanAttribute,
+  HostBinding
+} from '@angular/core';
 import { Subject } from 'rxjs';
-
-
-/** Position of the arrow that displays when sorted. */
-export type SortHeaderArrowPosition = 'before' | 'after';
-
-
-
-/** Interface for a directive that holds sorting state consumed by `ItSortHeader`. */
-export interface ItSortable {
-  /** The id of the column being sorted. */
-  id: string;
-
-  /** Starting sort direction. */
-  start: SortDirection;
-
-  /** Whether to disable clearing the sorting state. */
-  disableClear: boolean;
-}
-
-/** The current sort state. */
-export interface Sort {
-  /** The id of the column being sorted. */
-  active: string;
-
-  /** The sort direction. */
-  direction: SortDirection;
-}
-
-
-/** Default options for `it-sort`.  */
-export interface ItSortDefaultOptions {
-  /** Whether to disable clearing the sorting state. */
-  disableClear?: boolean;
-  /** Position of the arrow that displays when sorted. */
-  arrowPosition?: SortHeaderArrowPosition;
-}
-
-/** Injection token to be used to override the default options for `it-sort`. */
-export const IT_SORT_DEFAULT_OPTIONS = new InjectionToken<ItSortDefaultOptions>(
-  'IT_SORT_DEFAULT_OPTIONS',
-);
-
+import {
+  IT_SORT_DEFAULT_OPTIONS,
+  ItSortable,
+  ItSortDefaultOptions,
+  ItSortEvent,
+  SortDirection
+} from "../../../../interfaces/sortable-table";
 
 @Directive({
   standalone: true,
   selector: '[itSort]',
-  exportAs: 'itSort',
-  host: {
-    'class': 'it-sort',
-  }
+  exportAs: 'itSort'
 })
-export class SortDirective implements OnChanges, OnDestroy {
-
-  /** Collection of all registered sortables that this directive manages. */
-  sortables = new Map<string, ItSortable>();
-
-  /** Used to notify any child components listening to state changes. */
-  readonly _stateChanges = new Subject<void>();
+export class ItSortDirective implements OnChanges, OnDestroy {
 
   /** The id of the most recently sorted ItSortable. */
-  @Input('itSortActive') active: string;
+  @Input('itSortActive') active?: string;
 
   /**
     * The direction to set when an MatSortable is initially sorted.
@@ -86,23 +43,31 @@ export class SortDirective implements OnChanges, OnDestroy {
   set direction(direction: SortDirection) {
     this._direction = direction;
   }
-  private _direction: SortDirection = '';
-
+  private _direction: SortDirection;
 
   /**
    * Whether to disable the user from clearing the sort by finishing the sort direction cycle.
    * May be overridden by the ItSortable's disable clear input.
    */
-  @Input({alias: 'itSortDisableClear', transform: booleanAttribute})
-  disableClear: boolean;
+  @Input({transform: booleanAttribute})
+  disableSortClear?: boolean;
 
 
   /** Whether the sortable is disabled. */
-  @Input({alias: 'itSortDisabled', transform: booleanAttribute})
-  disabled: boolean = false;
+  @Input({transform: booleanAttribute})
+  sortDisabled: boolean = false;
 
   /** Event emitted when the user changes either the active sort or sort direction. */
-  @Output('itSortChange') readonly sortChange: EventEmitter<Sort> = new EventEmitter<Sort>();
+  @Output() readonly sortChange: EventEmitter<ItSortEvent> = new EventEmitter<ItSortEvent>();
+
+  @HostBinding('class')
+  public readonly sortDirectiveClass = 'it-sort';
+
+  /** Collection of all registered sortables that this directive manages. */
+  protected sortables = new Map<string, ItSortable>();
+
+  /** Used to notify any child components listening to state changes. */
+  readonly _stateChanges = new Subject<void>();
 
   constructor(
     @Optional()
@@ -110,7 +75,6 @@ export class SortDirective implements OnChanges, OnDestroy {
     private _defaultOptions?: ItSortDefaultOptions,
   ) {
   }
-
 
   /**
      * Register function to be used by the contained ItSortables. Adds the ItSortable to the
@@ -120,7 +84,6 @@ export class SortDirective implements OnChanges, OnDestroy {
     this.sortables.set(sortable.id, sortable);
   }
 
-  
   /**
    * Unregister function to be used by the contained ItSortables. Removes the ItSortable from the
    * collection of contained ItSortables.
@@ -142,27 +105,24 @@ export class SortDirective implements OnChanges, OnDestroy {
   }
 
 
-
   /** Returns the next sort direction of the active sortable, checking for potential overrides. */
   getNextSortDirection(sortable: ItSortable): SortDirection {
-  if (!sortable) {
-    return '';
+    if (!sortable) {
+      return undefined;
+    }
+
+    // Get the sort direction cycle with the potential sortable overrides.
+    const disableClear =
+      sortable?.disableSortClear ?? this.disableSortClear ?? !!this._defaultOptions?.disableClear;
+    let sortDirectionCycle = getSortDirectionCycle(sortable.start || this.start, disableClear);
+
+    // Get and return the next direction in the cycle
+    let nextDirectionIndex = sortDirectionCycle.indexOf(this.direction) + 1;
+    if (nextDirectionIndex >= sortDirectionCycle.length) {
+      nextDirectionIndex = 0;
+    }
+    return sortDirectionCycle[nextDirectionIndex];
   }
-
-  // Get the sort direction cycle with the potential sortable overrides.
-  const disableClear =
-    sortable?.disableClear ?? this.disableClear ?? !!this._defaultOptions?.disableClear;
-  let sortDirectionCycle = getSortDirectionCycle(sortable.start || this.start, disableClear);
-
-  // Get and return the next direction in the cycle
-  let nextDirectionIndex = sortDirectionCycle.indexOf(this.direction) + 1;
-  if (nextDirectionIndex >= sortDirectionCycle.length) {
-    nextDirectionIndex = 0;
-  }
-  return sortDirectionCycle[nextDirectionIndex];
-  }
-
-
 
   ngOnChanges() {
     this._stateChanges.next();
@@ -171,23 +131,17 @@ export class SortDirective implements OnChanges, OnDestroy {
   ngOnDestroy() {
     this._stateChanges.complete();
   }
-
-
-
-
-
-
 }
 
 
 /** Returns the sort direction cycle to use given the provided parameters of order and clear. */
-function getSortDirectionCycle(start: SortDirection, disableClear: boolean): SortDirection[] {
-  let sortOrder: SortDirection[] = ['asc', 'desc'];
+function getSortDirectionCycle(start: SortDirection, disableClear: boolean): Array<SortDirection|undefined> {
+  let sortOrder: Array<SortDirection> = ['asc', 'desc'];
   if (start == 'desc') {
     sortOrder.reverse();
   }
   if (!disableClear) {
-    sortOrder.push('');
+    sortOrder.push(undefined);
   }
 
   return sortOrder;

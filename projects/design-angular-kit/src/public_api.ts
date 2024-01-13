@@ -97,6 +97,7 @@ export * from './lib/pipes/mark-matching-text.pipe';
 
 // Interfaces
 export * from './lib/interfaces/design-angular-kit-init';
+export * from './lib/interfaces/sortable-table';
 
 export * from './lib/interfaces/core';
 export * from './lib/interfaces/form';
