@@ -37,7 +37,18 @@ export class ItRadioButtonComponent extends ItAbstractFormComponent<string | num
    */
   @Input({ transform: inputToBoolean }) checked?: boolean;
 
+  /**
+   * Set the radio name manually.
+   * For example when the radio button name is duplicated inside page
+   * @default by default the radio name is calculated from form field name
+   */
+  @Input() forceRadioName?: string;
+
   get name(): string {
+    if (this.forceRadioName) {
+      return this.forceRadioName;
+    }
+
     let name = '';
     if (this._ngControl) {
       name = this._ngControl.name?.toString() || '';
