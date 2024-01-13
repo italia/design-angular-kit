@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { UploadFileListItem } from '../../../interfaces/form';
-import { FileUtils } from '../../../utils/file-utils';
+import { ItFileUtils } from '../../../utils/file-utils';
 import { forkJoin, take, tap } from 'rxjs';
 import { NgForOf, NgIf } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
@@ -72,7 +72,7 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
 
   override ngOnChanges(changes: SimpleChanges): void {
     if (changes['fileList'] && !!this.images) {
-      const images$ = this.fileList.map(item => FileUtils.fileToBase64(item.file).pipe(
+      const images$ = this.fileList.map(item => ItFileUtils.fileToBase64(item.file).pipe(
         take(1),
         tap(base64 => this.previewImages.set(item.id, base64))
       ));
@@ -112,7 +112,7 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
    * @param file
    */
   getFileSize(file: File): string {
-    return FileUtils.getFileSizeString(file);
+    return ItFileUtils.getFileSizeString(file);
   }
 
 }
