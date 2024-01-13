@@ -94,6 +94,7 @@ export * from './lib/services/notification/notification.service';
 
 // Pipes
 export * from './lib/pipes/date-ago.pipe';
+export * from './lib/pipes/duration.pipe';
 export * from './lib/pipes/mark-matching-text.pipe';
 
 // Interfaces

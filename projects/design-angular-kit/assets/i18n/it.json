@@ -134,6 +134,22 @@
       "minute-ago": "{{count}} minuti fa",
       "singular-second-ago": "{{count}} secondo fa",
       "second-ago": "{{count}} secondi fa"
+    },
+    "duration": {
+      "second": "{{count}} secondo",
+      "seconds": "{{count}} secondi",
+      "minute": "{{count}} minuto",
+      "minutes": "{{count}} minuti",
+      "hour": "{{count}} ora",
+      "hours": "{{count}} ore",
+      "day": "{{count}} giorno",
+      "days": "{{count}} giorni",
+      "week": "{{count}} settimana",
+      "weeks": "{{count}} settimane",
+      "month": "{{count}} mese",
+      "months": "{{count}} mesi",
+      "year": "{{count}} anno",
+      "years": "{{count}} anni"
     }
   }
 }

@@ -134,6 +134,22 @@
       "minute-ago": "{{count}} minutes ago",
       "singular-second-ago": "{{count}} second ago",
       "second-ago": "{{count}} seconds ago"
+    },
+    "duration": {
+      "second": "{{count}} second",
+      "seconds": "{{count}} seconds",
+      "minute": "{{count}} minute",
+      "minutes": "{{count}} minutes",
+      "hour": "{{count}} hour",
+      "hours": "{{count}} hours",
+      "day": "{{count}} day",
+      "days": "{{count}} days",
+      "week": "{{count}} week",
+      "weeks": "{{count}} weeks",
+      "month": "{{count}} month",
+      "months": "{{count}} months",
+      "year": "{{count}} year",
+      "years": "{{count}} years"
     }
   }
 }
