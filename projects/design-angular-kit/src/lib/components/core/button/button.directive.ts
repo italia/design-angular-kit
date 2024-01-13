@@ -1,8 +1,8 @@
 import { ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
 import { ButtonColor, ButtonSize } from '../../../interfaces/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ItProgressButtonComponent } from '../progress-button/progress-button.component';
+import { inputToBoolean } from '../../../utils/coercion';
 
 /**
  * Button
@@ -37,7 +37,7 @@ export class ItButtonDirective {
    * If button is disabled
    * @default false
    */
-  @Input() @HostBinding('disabled') disabled: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) @HostBinding('disabled') disabled?: boolean;
 
   /**
    * The icon children
@@ -78,7 +78,7 @@ export class ItButtonDirective {
       cssClass += ' btn-block';
     }
 
-    if (isTrueBooleanInput(this.disabled)) {
+    if (this.disabled) {
       cssClass += ' disabled';
     }
 

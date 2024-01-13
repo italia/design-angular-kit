@@ -1,13 +1,13 @@
-<div class="steppers" [class.bg-dark]="isDark">
-  <div *ngIf="isShowHeader" class="steppers-header">
+<div class="steppers" [class.bg-dark]="dark">
+  <div *ngIf="showHeader" class="steppers-header">
     <ul *ngIf="steps">
       <li *ngFor="let step of steps; let i = index"
           [class.confirmed]="i < activeStep"
           [class.active]="i === activeStep"
-          [class.no-line]="i === activeStep && isSteppersNumber">
+          [class.no-line]="i === activeStep && steppersNumber">
 
-        <it-icon *ngIf="step.icon && !isSteppersNumber" [name]="step.icon"></it-icon>
-        <span *ngIf="isSteppersNumber" class="steppers-number">
+        <it-icon *ngIf="step.icon && !steppersNumber" [name]="step.icon"></it-icon>
+        <span *ngIf="steppersNumber" class="steppers-number">
           <ng-container *ngIf="i < activeStep; else showNumber">
             <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
           </ng-container>
@@ -18,14 +18,14 @@
 
         {{step.label}}
 
-        <ng-container *ngIf="i < activeStep && !isSteppersNumber">
+        <ng-container *ngIf="i < activeStep && !steppersNumber">
           <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
         </ng-container>
         <span *ngIf="i === activeStep" class="visually-hidden">{{'it.core.active' | translate}}</span>
       </li>
     </ul>
     <span *ngIf="steps" class="steppers-index" aria-hidden="true">
-      <ng-container *ngIf="!isSteppersNumber; else showNumbers">
+      <ng-container *ngIf="!steppersNumber; else showNumbers">
         {{(activeStep + 1) + '/' + steps.length}}
       </ng-container>
       <ng-template #showNumbers>
@@ -38,10 +38,10 @@
     <ng-container *ngTemplateOutlet="step.htmlContent"></ng-container>
   </div>
 
-  <nav *ngIf="isShowBackButton || isShowSaveButton || isShowForwardButton || isShowConfirmButton || !!progressStyle"
+  <nav *ngIf="showBackButton || showSaveButton || showForwardButton || showConfirmButton || !!progressStyle"
        class="steppers-nav">
-    <button *ngIf="isShowBackButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-prev"
-            [disabled]="isDisableBackButton"
+    <button *ngIf="showBackButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-prev"
+            [disabled]="disableBackButton"
             (click)="backClick.emit(activeStep)">
       <it-icon name="chevron-left" color="primary"></it-icon>
       {{'it.core.back' | translate}}
@@ -64,22 +64,22 @@
       </ng-template>
     </ng-container>
 
-    <button *ngIf="isShowSaveButton" type="button" itButton="primary" size="sm" class="steppers-btn-save"
-            [progress]="isSaveLoading" [disabled]="isSaveLoading || isDisableSaveButton"
+    <button *ngIf="showSaveButton" type="button" itButton="primary" size="sm" class="steppers-btn-save"
+            [progress]="saveLoading" [disabled]="saveLoading || disableSaveButton"
             (click)="saveClick.emit(activeStep)">
       {{'it.general.save' | translate}}
     </button>
 
-    <button *ngIf="isShowForwardButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-next"
-            [disabled]="isDisableForwardButton"
+    <button *ngIf="showForwardButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-next"
+            [disabled]="disableForwardButton"
             (click)="forwardClick.emit(activeStep)">
       {{'it.core.forward' | translate}}
       <it-icon name="chevron-right" color="primary"></it-icon>
     </button>
 
-    <button *ngIf="isShowConfirmButton" type="button" itButton="primary" size="sm"
+    <button *ngIf="showConfirmButton" type="button" itButton="primary" size="sm"
             class="steppers-btn-confirm d-lg-block"
-            [progress]="isConfirmLoading" [disabled]="isConfirmLoading || isDisableConfirmButton"
+            [progress]="confirmLoading" [disabled]="confirmLoading || disableConfirmButton"
             (click)="confirmClick.emit(activeStep)">
       {{'it.core.confirm' | translate}}
     </button>

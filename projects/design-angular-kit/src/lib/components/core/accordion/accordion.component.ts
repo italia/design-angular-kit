@@ -28,7 +28,7 @@ export class ItAccordionComponent extends ItCollapseComponent implements AfterVi
     super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'title');
 
-    this.isCollapsed = !this.isOpenedOnStart;
+    this.isCollapsed = !this.opened;
     this.hideEvent.subscribe(() => {
       this.isCollapsed = true;
       this._changeDetectorRef.detectChanges();

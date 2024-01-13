@@ -9,7 +9,7 @@
         [class.collapsed]="isCollapsed"
         [attr.data-bs-target]="'#collapse-' + id"
         [attr.aria-controls]="'collapse-' + id"
-        [attr.aria-expanded]="isOpenedOnStart ? 'true' : 'false'">
+        [attr.aria-expanded]="opened ? 'true' : 'false'">
         {{title}}
       </button>
     </h2>

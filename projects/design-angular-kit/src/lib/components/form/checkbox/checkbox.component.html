@@ -1,6 +1,6 @@
 <ng-container>
   <div class="form-check"
-       [class.form-check-group]="isGroup"
+       [class.form-check-group]="group"
        [class.form-check-inline]="inline">
 
     <div *ngIf="toggle; else defaultStyle" class="toggles">
@@ -21,7 +21,7 @@
              class="form-check-input"
              [class.is-invalid]="isInvalid"
              [class.is-valid]="isValid"
-             [class.semi-checked]="isIndeterminate"
+             [class.semi-checked]="indeterminate"
              [formControl]="control"
              [attr.aria-describedby]="id + '-help'"
              (click)="$event.stopPropagation();">
@@ -30,16 +30,16 @@
       </label>
     </ng-template>
 
-    <small *ngIf="isGroup" [id]="id + '-help'" class="form-text">
+    <small *ngIf="group" [id]="id + '-help'" class="form-text">
       <ng-content></ng-content>
     </small>
 
-    <div *ngIf="isInvalid && isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+    <div *ngIf="isInvalid && group" class="form-feedback just-validate-error-label" [id]="id + '-error'">
       <ng-container *ngTemplateOutlet="error"></ng-container>
     </div>
   </div>
 
-  <div *ngIf="isInvalid && !isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+  <div *ngIf="isInvalid && !group" class="form-feedback just-validate-error-label" [id]="id + '-error'">
     <ng-container *ngTemplateOutlet="error"></ng-container>
   </div>
 </ng-container>

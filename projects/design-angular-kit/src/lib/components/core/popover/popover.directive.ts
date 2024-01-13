@@ -1,7 +1,7 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { ElementPlacement } from '../../../interfaces/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Popover } from 'bootstrap-italia';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Directive({
   standalone: true,
@@ -52,8 +52,8 @@ export class ItPopoverDirective implements AfterViewInit, OnDestroy {
    * Indicates whether the title contains html
    * @param html true if contain html
    */
-  @Input() set popoverHtml(html: BooleanInput) {
-    this.element.setAttribute('data-bs-html', isTrueBooleanInput(html) ? 'true' : 'false');
+  @Input({ transform: inputToBoolean }) set popoverHtml(html: boolean) {
+    this.element.setAttribute('data-bs-html', html ? 'true' : 'false');
   }
 
   /**

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { UploadFileListItem } from '../../../interfaces/form';
 import { FileUtils } from '../../../utils/file-utils';
 import { forkJoin, take, tap } from 'rxjs';
@@ -9,6 +8,7 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItTooltipDirective } from '../../core/tooltip/tooltip.directive';
 import { ItProgressBarComponent } from '../../core/progress-bar/progress-bar.component';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -33,18 +33,21 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
 
   /**
    * If upload multiple files
+   * @default true
    */
-  @Input() multiple: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) multiple: boolean = true;
 
   /**
    * If is file list image
+   * @default false
    */
-  @Input() images: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) images?: boolean;
 
   /**
    * Hide the load button
+   * @default false
    */
-  @Input() hideLoadButton: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) hideLoadButton?: boolean;
 
   /**
    * Fired when upload new files
@@ -62,13 +65,13 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
   previewImages: Map<number, string> = new Map<number, string>();
 
   ngOnInit(): void {
-    if (this.isImageList && this.accept === '*') {
+    if (!!this.images && this.accept === '*') {
       this.accept = 'image/*';
     }
   }
 
   override ngOnChanges(changes: SimpleChanges): void {
-    if (changes['fileList'] && this.isImageList) {
+    if (changes['fileList'] && !!this.images) {
       const images$ = this.fileList.map(item => FileUtils.fileToBase64(item.file).pipe(
         take(1),
         tap(base64 => this.previewImages.set(item.id, base64))
@@ -80,18 +83,6 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
     } else {
       super.ngOnChanges(changes);
     }
-  }
-
-  get isMultipleInput(): boolean {
-    return isTrueBooleanInput(this.multiple);
-  }
-
-  get isImageList(): boolean {
-    return isTrueBooleanInput(this.images);
-  }
-
-  get isHideLoadButton(): boolean {
-    return isTrueBooleanInput(this.hideLoadButton);
   }
 
   /**

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { ItLinkComponent } from '../../link/link.component';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -15,23 +15,26 @@ export class ItListItemComponent extends ItLinkComponent {
 
   /**
    * Add active class
+   * @default false
    */
-  @Input() active: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) active?: boolean;
 
   /**
    * Add large class
    */
-  @Input() large: BooleanInput | undefined;
+  @Input() large?: boolean;
 
   /**
    * Add icon-left class
+   * @default false
    */
-  @Input() iconLeft: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) iconLeft?: boolean;
 
   /**
    * Add icon-right class
+   * @default false
    */
-  @Input() iconRight: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) iconRight?: boolean;
 
   /**
    * The avatar url
@@ -46,19 +49,19 @@ export class ItListItemComponent extends ItLinkComponent {
 
   get itemClass(): string {
     let itemClass = 'list-item';
-    if (isTrueBooleanInput(this.disabled)) {
+    if (this.disabled) {
       itemClass += ` disabled`;
     }
-    if (isTrueBooleanInput(this.active)) {
+    if (this.active) {
       itemClass += ` active`;
     }
-    if (isTrueBooleanInput(this.large)) {
+    if (this.large) {
       itemClass += ` large`;
     }
-    if (isTrueBooleanInput(this.iconLeft)) {
+    if (this.iconLeft) {
       itemClass += ` icon-left`;
     }
-    if (isTrueBooleanInput(this.iconRight)) {
+    if (this.iconRight) {
       itemClass += ` icon-right`;
     }
     if (this.class) {

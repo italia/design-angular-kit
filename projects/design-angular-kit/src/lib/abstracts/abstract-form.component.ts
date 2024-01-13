@@ -1,9 +1,9 @@
 import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';
 import { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';
 import { ItAbstractComponent } from './abstract.component';
-import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../utils/boolean-input';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { inputToBoolean } from '../utils/coercion';
 
 @Component({ template: '' })
 export abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
@@ -21,13 +21,13 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * - <b>only-invalid</b>: Show only invalid validation color
    * @default <b>only-invalid</b>: Show only invalid validation color
    */
-  @Input() validationMode: BooleanInput | 'only-valid' | 'only-invalid' = 'only-invalid';
+  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = 'only-invalid';
 
   /**
    * Set the disabled state
    */
-  @Input() set disabled(isDisabled: BooleanInput) {
-    this.setDisabledState(isTrueBooleanInput(isDisabled));
+  @Input({ transform: inputToBoolean }) set disabled(isDisabled: boolean) {
+    this.setDisabledState(isDisabled);
   }
 
   /**
@@ -48,7 +48,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * Check if field is invalid (Validation failed)
    */
   get isInvalid(): boolean | undefined {
-    if (this.validationMode === 'only-valid' || (this.validationMode !== 'only-invalid' && isFalseBooleanInput(this.validationMode))) {
+    if (this.validationMode === 'only-valid' || (this.validationMode !== 'only-invalid' && !this.validationMode)) {
       return undefined;
     }
 
@@ -62,7 +62,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * Check if field is valid (Validation successful)
    */
   get isValid(): boolean | undefined {
-    if (this.validationMode === 'only-invalid' || (this.validationMode !== 'only-valid' && isFalseBooleanInput(this.validationMode))) {
+    if (this.validationMode === 'only-invalid' || (this.validationMode !== 'only-valid' && !this.validationMode)) {
       return undefined;
     }
 

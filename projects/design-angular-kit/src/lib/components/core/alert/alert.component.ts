@@ -9,12 +9,12 @@ import {
   ViewChild
 } from '@angular/core';
 import { AlertColor } from '../../../interfaces/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Alert } from 'bootstrap-italia';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { NgIf } from '@angular/common';
+import { inputToBoolean } from '../../../utils/coercion';
 
 /**
  * Alert
@@ -41,7 +41,7 @@ export class ItAlertComponent extends ItAbstractComponent implements AfterViewIn
    * Inserts the close button
    * @default false
    */
-  @Input() dismissible: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) dismissible?: boolean;
 
   /**
    * This event fires immediately when the instance's close method is called.
@@ -56,11 +56,6 @@ export class ItAlertComponent extends ItAbstractComponent implements AfterViewIn
   private alert?: Alert;
 
   @ViewChild('alertElement') private alertElement?: ElementRef<HTMLDivElement>;
-
-
-  protected get isDismissible(): boolean {
-    return isTrueBooleanInput(this.dismissible);
-  }
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();

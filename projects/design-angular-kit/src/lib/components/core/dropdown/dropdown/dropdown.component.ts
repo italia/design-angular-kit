@@ -14,11 +14,11 @@ import {
 } from '@angular/core';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { ItDropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { Dropdown } from 'bootstrap-italia';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -51,13 +51,15 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
 
   /**
    * To get a dropdown menu as wide as the element containing the dropdown button
+   * @default false
    */
-  @Input() fullWidth: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) fullWidth?: boolean;
 
   /**
    * Dark menu style
+   * @default false
    */
-  @Input() dark: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) dark?: boolean;
 
   /**
    * The dropdown items
@@ -100,14 +102,6 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
     return btnClass;
   }
 
-  get isFullWidth(): boolean {
-    return isTrueBooleanInput(this.fullWidth);
-  }
-
-  get isDark(): boolean {
-    return isTrueBooleanInput(this.dark);
-  }
-
   override ngOnChanges(changes: SimpleChanges): void {
     if (changes['dark'] && !changes['dark'].firstChange) {
       this.setDarkItems();
@@ -129,9 +123,11 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
    * @private
    */
   private setDarkItems(): void {
-    this.items?.forEach(item => {
-      item.setDark(this.isDark);
-    });
+    if (this.dark !== undefined) {
+      this.items?.forEach(item => {
+        item.setDark(!!this.dark);
+      });
+    }
   }
 
   private updateListeners(): void {

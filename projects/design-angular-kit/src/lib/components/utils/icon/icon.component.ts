@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
 import { IconColor, IconName, IconSize } from '../../../interfaces/icon';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from '../../../design-angular-kit-config';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -29,8 +29,9 @@ export class ItIconComponent {
 
   /**
    * Create a padding proportional to the size of the surrounding icon.
+   * @default false
    */
-  @Input() padded: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) padded?: boolean;
 
   /**
    * Custom class of svg
@@ -55,7 +56,7 @@ export class ItIconComponent {
     if (this.color) {
       iconClass += ` icon-${this.color}`;
     }
-    if (isTrueBooleanInput(this.padded)) {
+    if (this.padded) {
       iconClass += ` icon-padded`;
     }
     if (this.svgClass) {

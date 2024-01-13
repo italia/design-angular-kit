@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
 import { ItLinkComponent } from '../../link/link.component';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgIf } from '@angular/common';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -18,18 +18,21 @@ export class ItDropdownItemComponent extends ItLinkComponent {
 
   /**
    * Show divider
+   * @default false
    */
-  @Input() divider: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) divider?: boolean;
 
   /**
    * Active item
+   * @default false
    */
-  @Input() active: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) active?: boolean;
 
   /**
    * To increase the size of links
+   * @default false
    */
-  @Input() large: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) large?: boolean;
 
   /**
    * The name of icon to show
@@ -48,24 +51,12 @@ export class ItDropdownItemComponent extends ItLinkComponent {
    */
   isDark: boolean = false;
 
-  get isDivider(): boolean {
-    return isTrueBooleanInput(this.divider);
-  }
-
-  get isActive(): boolean {
-    return isTrueBooleanInput(this.active);
-  }
-
-  get isLarge(): boolean {
-    return isTrueBooleanInput(this.large);
-  }
-
   get linkClass(): string {
-    let linkClass = `list-item ${this.isActive ? 'active' : 'dropdown-item'}`;
-    if (this.isDisabled) {
+    let linkClass = `list-item ${this.active ? 'active' : 'dropdown-item'}`;
+    if (this.disabled) {
       linkClass += ' disabled';
     }
-    if (this.isLarge) {
+    if (this.large) {
       linkClass += ' large';
     }
     if (this.iconName) {

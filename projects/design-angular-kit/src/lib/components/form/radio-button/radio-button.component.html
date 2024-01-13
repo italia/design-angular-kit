@@ -1,7 +1,7 @@
 <ng-container>
   <div class="form-check"
-       [class.form-check-group]="isGroup"
-       [class.form-check-inline]="isInline">
+       [class.form-check-group]="group"
+       [class.form-check-inline]="inline">
 
     <input
       [id]="id"
@@ -21,11 +21,11 @@
       <ng-container *ngIf="!customLabel.hasChildNodes()">{{label}}</ng-container>
     </label>
 
-    <small *ngIf="isGroup" [id]="id + '-help'" class="form-text">
+    <small *ngIf="group" [id]="id + '-help'" class="form-text">
       <ng-content></ng-content>
     </small>
 
-    <div *ngIf="isInvalid && isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+    <div *ngIf="isInvalid && group" class="form-feedback just-validate-error-label" [id]="id + '-error'">
       <div #customError>
         <ng-content select="[error]"></ng-content>
       </div>
@@ -34,7 +34,7 @@
 
   </div>
 
-  <div *ngIf="isInvalid && !isGroup" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+  <div *ngIf="isInvalid && !group" class="form-feedback just-validate-error-label" [id]="id + '-error'">
     <div #customError>
       <ng-content select="[error]"></ng-content>
     </div>

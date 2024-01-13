@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItBackButtonComponent } from '../../navigation/back-button/back-button.component';
 import { ItButtonDirective } from '../../core/button/button.directive';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -24,7 +24,7 @@ export class ItErrorPageComponent {
    * Show/Hide error code
    * @default true - show
    */
-  @Input() showErrorCode?: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) showErrorCode?: boolean = true;
 
   /**
    * Custom error title
@@ -44,13 +44,13 @@ export class ItErrorPageComponent {
    * Show/Hide back button
    * @default true - show
    */
-  @Input() showBackButton?: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) showBackButton?: boolean = true;
 
   /**
    * Show/Hide home button
    * @default true - show
    */
-  @Input() showHomeButton?: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) showHomeButton?: boolean = true;
 
   constructor(
     private readonly route: ActivatedRoute
@@ -79,18 +79,6 @@ export class ItErrorPageComponent {
 
   get isDefaultErrorCode(): boolean {
     return this.errorCode === 404 || this.errorCode === 403 || this.errorCode === 500;
-  }
-
-  get isShowErrorCode(): boolean {
-    return isTrueBooleanInput(this.showErrorCode);
-  }
-
-  get isShowBackButton(): boolean {
-    return isTrueBooleanInput(this.showBackButton);
-  }
-
-  get isShowHomeButton(): boolean {
-    return isTrueBooleanInput(this.showHomeButton);
   }
 
 }

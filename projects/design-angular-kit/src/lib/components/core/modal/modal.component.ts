@@ -10,10 +10,10 @@ import {
 } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { Modal as BSModal } from 'bootstrap'
+import { inputToBoolean } from '../../../utils/coercion';
 
 /**
  * Modal windows
@@ -34,37 +34,37 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
    * Show/Hide close button on header
    * @default true
    */
-  @Input() closeButton: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) closeButton: boolean = true;
 
   /**
    * To correctly format the contents of the modal with icon
    * @default false
    */
-  @Input() alertModal: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) alertModal?: boolean;
 
   /**
    * To correctly format the contents of the modal with Link List
    * @default false
    */
-  @Input() dialogLinkList: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) dialogLinkList?: boolean;
 
   /**
    * Modal type Popconfirm can be used for short confirmation messages.
    * @default false
    */
-  @Input() popconfirm: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) popconfirm?: boolean;
 
   /**
    * You can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible
    * @default false
    */
-  @Input() scrollable: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) scrollable?: boolean;
 
   /**
    * To have modals that appear with fades
    * @default true
    */
-  @Input() fade?: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) fade?: boolean = true;
 
   /**
    * Modal alignment
@@ -85,25 +85,25 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
    * Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn’t close the modal when clicked.
    * @default true
    */
-  @Input() backdrop: 'static' | BooleanInput = true;
+  @Input() backdrop: 'static' | boolean = true;
 
   /**
    * Puts the focus on the modal when initialized.
    * @default true
    */
-  @Input() focus: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) focus: boolean = true;
 
   /**
    * Closes the modal when escape key is pressed.
    * @default true
    */
-  @Input() keyboard: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) keyboard: boolean = true;
 
   /**
    * To better distinguish the footer element with a shadow
    * @default false
    */
-  @Input() footerShadow: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) footerShadow?: boolean;
 
   /**
    * Modal options
@@ -148,9 +148,9 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
       const element = this.modalElement.nativeElement;
       this.modal = Modal.getOrCreateInstance(element, {
         ...this.options,
-        backdrop: this.backdrop === 'static' ? 'static' : isTrueBooleanInput(this.backdrop),
-        focus: isTrueBooleanInput(this.focus),
-        keyboard: isTrueBooleanInput(this.keyboard)
+        backdrop: this.backdrop === 'static' ? 'static' : this.backdrop,
+        focus: this.focus,
+        keyboard: this.keyboard
       });
 
       element.addEventListener('show.bs.modal', event => this.showEvent.emit(event));
@@ -161,29 +161,21 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
     }
   }
 
-  protected get isCloseButton(): boolean {
-    return isTrueBooleanInput(this.closeButton);
-  }
-
-  protected get isFooterShadow(): boolean {
-    return isTrueBooleanInput(this.footerShadow);
-  }
-
   protected get modalClass(): string {
     let modalClass = 'modal';
-    if (isTrueBooleanInput(this.fade)) {
+    if (this.fade) {
       modalClass += ` fade`;
     }
-    if (isTrueBooleanInput(this.alertModal)) {
+    if (this.alertModal) {
       modalClass += ` alert-modal`;
     }
-    if (isTrueBooleanInput(this.dialogLinkList)) {
+    if (this.dialogLinkList) {
       modalClass += ` it-dialog-link-list`;
     }
-    if (isTrueBooleanInput(this.popconfirm)) {
+    if (this.popconfirm) {
       modalClass += ` popconfirm-modal`;
     }
-    if (isTrueBooleanInput(this.scrollable)) {
+    if (this.scrollable) {
       modalClass += ` it-dialog-scrollable`;
     }
     return modalClass;

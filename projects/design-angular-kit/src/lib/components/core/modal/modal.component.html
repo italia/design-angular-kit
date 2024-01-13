@@ -15,7 +15,7 @@
           <ng-content select="[modalTitle]"></ng-content>
         </h2>
 
-        <button *ngIf="isCloseButton" type="button" class="btn-close" data-bs-dismiss="modal"
+        <button *ngIf="closeButton" type="button" class="btn-close" data-bs-dismiss="modal"
                 [attr.aria-label]="'it.core.close-modal'|translate"></button>
       </div>
 
@@ -26,7 +26,7 @@
         <ng-content></ng-content>
       </div>
 
-      <div class="modal-footer" [class.modal-footer-shadow]="isFooterShadow">
+      <div class="modal-footer" [class.modal-footer-shadow]="footerShadow">
         <ng-content select="[footer]"></ng-content>
       </div>
     </div>

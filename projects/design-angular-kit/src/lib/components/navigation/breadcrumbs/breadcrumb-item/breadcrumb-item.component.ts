@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { IconName } from '../../../../interfaces/icon';
 import { ItLinkComponent } from '../../../core/link/link.component';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -14,8 +14,9 @@ export class ItBreadcrumbItemComponent extends ItLinkComponent {
 
   /**
    * Is active breadcrumb item
+   * @default false
    */
-  @Input() active: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) active?: boolean;
 
   /**
    * The name of icon to show
@@ -26,9 +27,5 @@ export class ItBreadcrumbItemComponent extends ItLinkComponent {
    * The content of item
    */
   @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;
-
-  public get isActive(): boolean {
-    return isTrueBooleanInput(this.active);
-  }
 
 }
