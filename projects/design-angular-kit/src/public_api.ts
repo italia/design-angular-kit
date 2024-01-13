@@ -93,6 +93,7 @@ export * from './lib/components/utils/language-switcher/language-switcher.compon
 export * from './lib/services/notification/notification.service';
 
 // Pipes
+export * from './lib/pipes/date-ago.pipe';
 export * from './lib/pipes/mark-matching-text.pipe';
 
 // Interfaces
