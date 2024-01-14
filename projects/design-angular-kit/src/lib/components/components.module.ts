@@ -35,7 +35,6 @@ import { ItLanguageSwitcherComponent } from './utils/language-switcher/language-
 import { ItErrorPageComponent } from './utils/error-page/error-page.component';
 import { ItChipComponent } from './core/chip/chip.component';
 import { ItForwardDirective } from './core/forward/forward.directive';
-import { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';
 
 
 /**
@@ -44,7 +43,7 @@ import { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';
 const core = [
   ItAccordionComponent,
   ItAlertComponent,
-  ItAvatarGroupItemComponent, 
+  ItAvatarGroupItemComponent,
   ItAvatarGroupComponent,
   ItAvatarDropdownComponent,
   ItAvatarDropdownItemComponent,
@@ -90,8 +89,7 @@ const navigation = [
 const utils = [
   ItErrorPageComponent,
   ItIconComponent,
-  ItLanguageSwitcherComponent,
-  MarkMatchingTextPipe
+  ItLanguageSwitcherComponent
 ];
 
 @NgModule({

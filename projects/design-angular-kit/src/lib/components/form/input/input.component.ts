@@ -7,7 +7,7 @@ import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } fr
 import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
-import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
+import { ItMarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
@@ -16,7 +16,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]
+  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgTemplateOutlet, NgForOf]
 })
 export class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {
 
