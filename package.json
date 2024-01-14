@@ -48,12 +48,15 @@
     "watch:lib": "ng build --watch design-angular-kit",
     "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
     "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "lint:format": "npx prettier --write .",
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
     "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'",
     "version": "node ./scripts/sync-versions.js && git add ./projects/design-angular-kit/package.json && conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/wait-confirm && git add CHANGELOG.md",
-    "postversion": "echo \"You can now publish your version using 'git push --follow-tags'\""
+    "postversion": "echo \"You can now publish your version using 'git push --follow-tags'\"",
+    "prepare": "is-ci || husky install"
   },
   "dependencies": {
     "@angular-devkit/schematics": "^16.2.4",
@@ -103,6 +106,8 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "gh-pages": "^5.0.0",
+    "husky": "^8.0.0",
+    "is-ci": "^3.0.1",
     "jasmine-core": "~5.1.1",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.2",
@@ -111,6 +116,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
+    "lint-staged": "^15.2.0",
     "ng-packagr": "^16.2.3",
     "nunjucks-cli": "^1.0.0",
     "prettier": "^3.2.2",
