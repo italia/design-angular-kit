@@ -1,23 +1,39 @@
 name: Update documentation
+
 on:
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Publish release"]
+    branches:
+      - main
+    types:
+      - completed
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: git config
+      - name: Git config
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - run: npm ci
-      - run: npm run build
-      - run: cp dist/design-angular-kit-bundle/index.html dist/design-angular-kit-bundle/404.html
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build documentation
+        run: |
+          npm run build
+          cp dist/design-angular-kit-bundle/index.html dist/design-angular-kit-bundle/404.html
+
       - name: Publish on gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git

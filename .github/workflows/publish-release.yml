@@ -1,46 +1,50 @@
-name: Generate new release
+# Workflow base: https://semantic-release.gitbook.io/semantic-release/recipes/ci-configurations/github-actions
+
+name: Publish release
+
 on:
-  push:
-    tags:
-      - 'v1*'
+  workflow_run:
+    workflows: ["Run tests"]
+    branches:
+      - main
+    types:
+      - completed
+
+permissions:
+  contents: read # for checkout
+
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: git config
+      - name: Install dependencies
+        run: npm ci
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+
+      - name: Build library
+        run: npm run build:lib
+      - name: Copy readme and npmrc files to dist folder
         run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - run: mv .npmrc-dist .npmrc
-      - run: npm ci
-      - run: npm run build:lib
-      - name: Publish package to NPM
-        run: cp .npmrc dist/design-angular-kit/.npmrc && cd dist/design-angular-kit && npm publish --tag unstable
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm i extract-changelog-release
-      - name: Generate Release Body
-        run: npx extract-changelog-release > RELEASE_BODY.md
-      - uses: ncipollo/release-action@v1
-        with:
-          bodyFile: 'RELEASE_BODY.md'
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish on gh-pages
-        run: |
-          npm run build
-          cp dist/design-angular-kit-bundle/index.html dist/design-angular-kit-bundle/404.html
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run documentation-deploy-to-gh-pages
+          cp README.md dist/design-angular-kit/README.md
+          cp .npmrc dist/design-angular-kit/.npmrc
+
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: italia/slack-notify-release-action@v0.4.0
-        with:
-          slack_token: ${{ secrets.SLACK_TOKEN }}
-          channel_id: ${{ secrets.SLACK_CHANNEL }}
-          project_name: Design Angular Kit
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
