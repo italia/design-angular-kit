@@ -91,9 +91,14 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -103,8 +108,12 @@
           "configurations": {
             "production": {
               "browserTarget": "design-angular-kit-bundle:build:production"
+            },
+            "development": {
+              "browserTarget": "design-angular-kit-bundle:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -180,6 +189,9 @@
             "production": {
               "project": "projects/design-angular-kit/ng-package.prod.json",
               "tsConfig": "projects/design-angular-kit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/design-angular-kit/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
