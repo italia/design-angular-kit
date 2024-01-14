@@ -22,6 +22,9 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/semantic-release/semantic-release">
+    <img src="https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release" alt="semantic-release: angular" />
+  </a>
   <a href="https://developersitalia.slack.com/messages/C04H3C19D52/">
     <img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" />
   </a>
