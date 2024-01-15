@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef, ContentChildren, QueryList, Input, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, TemplateRef, ContentChildren, QueryList, Input } from '@angular/core';
 import { ItDropdownModule } from '../../dropdown/dropdown.module';
 import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
