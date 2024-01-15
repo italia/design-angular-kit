@@ -1,3 +1,30 @@
 .card-body:empty {
   display: none;
 }
+
+
+::ng-deep .row [class*=col-] {
+  .card, .card-wrapper {
+    height: 100%;
+  }
+}
+
+::ng-deep .card-wrapper.card-teaser-wrapper {
+  it-card {
+    flex-direction: row;
+    align-items: flex-start;
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+
+  @media (min-width: 768px) { 
+    it-card {
+      flex: 0 0 49%;
+    }
+  }
+}
+
+:host {
+  width: 100%;
+}

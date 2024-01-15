@@ -16,6 +16,7 @@ import { ListToggleCheckboxComponent } from './list-toggle-checkbox/list-toggle-
 import { ListCollassibleComponent } from './list-collassible/list-collassible.component';
 import { ListLinkIconsComponent } from './list-link-icons/list-link-icons.component';
 import { ListLinkMultilineComponent } from './list-link-multiline/list-link-multiline.component';
+import { ListPaginationComponent } from './list-pagination/list-pagination.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ListLinkMultilineComponent } from './list-link-multiline/list-link-mult
     ListCollassibleComponent,
     ListLinkIconsComponent,
     ListLinkMultilineComponent,
+    ListPaginationComponent,
   ],
   imports: [
     CommonModule,

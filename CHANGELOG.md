@@ -1,3 +1,20 @@
+# [1.0.0-23](https://github.com/italia/design-angular-kit/compare/v1.0.0-22...v1.0.0-23) (2024-01-09)
+
+
+### Bug Fixes
+
+* checkbox click fired twice ([6cf4b7f](https://github.com/italia/design-angular-kit/commit/6cf4b7fcb8459713b1bafffc38242584fc821e75))
+
+
+### Features
+
+* add back to top component ([8ba1cfe](https://github.com/italia/design-angular-kit/commit/8ba1cfe3197c2f283d9557842c32c770c0cc0ee8))
+* add checkbox ([e737388](https://github.com/italia/design-angular-kit/commit/e737388339561f49ce77672f681d4ab1e507bdfa))
+* add list component ([2503fcd](https://github.com/italia/design-angular-kit/commit/2503fcde1de5111809f728af1e8be5fe0b5a3cf1))
+* card component ([b0333ff](https://github.com/italia/design-angular-kit/commit/b0333ffc607067a4dc855628a6e71b23f3121edd))
+
+
+
 # [1.0.0-22](https://github.com/italia/design-angular-kit/compare/v1.0.0-21...v1.0.0-22) (2023-12-13)
 
 

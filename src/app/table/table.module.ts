@@ -17,6 +17,8 @@ import { TableFooterExampleComponent } from './table-footer-example/table-footer
 import { TableCaptionExampleComponent } from './table-caption-example/table-caption-example.component';
 import { ItSortDirective } from 'projects/design-angular-kit/src/lib/components/core/table/sort/sort.directive';
 import { ItSortHeaderComponent } from 'projects/design-angular-kit/src/lib/components/core/table/sort/sort-header/sort-header.component';
+import { TablePaginatedComponent } from './table-paginated/table-paginated.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -33,7 +35,8 @@ import { ItSortHeaderComponent } from 'projects/design-angular-kit/src/lib/compo
     TableAlignmentExampleComponent,
     TableHeaderExampleComponent,
     TableFooterExampleComponent,
-    TableCaptionExampleComponent
+    TableCaptionExampleComponent,
+    TablePaginatedComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +44,8 @@ import { ItSortHeaderComponent } from 'projects/design-angular-kit/src/lib/compo
     TableRoutingModule,
     FormsModule,
     ItSortDirective,
-    ItSortHeaderComponent
+    ItSortHeaderComponent,
+    TranslateModule
   ]
 })
 export class TableModule { }

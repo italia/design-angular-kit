@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonColor, ButtonSize } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
+import { ButtonColor, ButtonSize } from 'design-angular-kit/interfaces/core';
 
 
 @Component({

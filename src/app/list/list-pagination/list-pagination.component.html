@@ -1,0 +1,18 @@
+<h3>Lista con paginazione</h3>
+<p></p>
+
+<div class="bd-example">
+  <it-list>
+    <it-list-item *ngFor="let val of selectedItem.data">
+      <it-icon name="user" color="primary" icon></it-icon>
+      <span class="text-primary">{{ val }}</span>
+    </it-list-item>
+  </it-list>
+
+  <div class="mt-4">
+    <it-pagination [currentPage]="selectedItem.currentPage"
+                   [pageNumbers]="selectedItem.pageNumbers"
+                   alignment="center"
+                   (pageEvent)="onPageChange($event)"></it-pagination>
+  </div>
+</div>

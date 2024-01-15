@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UploadFileListItem} from "../../../../projects/design-angular-kit/src/lib/interfaces/form";
+import {UploadFileListItem} from "design-angular-kit/interfaces/form";
 import {HttpClient} from "@angular/common/http";
 import {forkJoin} from "rxjs";
 

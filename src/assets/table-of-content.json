@@ -76,6 +76,10 @@
           "link": "/componenti/back-to-top"
         },
         {
+          "label": "Card",
+          "link": "/componenti/card"
+        },
+        {
           "label": "Chip",
           "link": "/componenti/chip"
         },

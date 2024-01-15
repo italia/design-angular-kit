@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconColor, IconName } from '../../../../projects/design-angular-kit/src/lib/interfaces/icon';
+import { IconColor, IconName } from 'design-angular-kit/interfaces/icon';
 
 @Component({
   selector: 'it-button-example-icon',

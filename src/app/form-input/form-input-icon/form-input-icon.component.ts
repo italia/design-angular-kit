@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconName } from '../../../../projects/design-angular-kit/src/lib/interfaces/icon';
+import { IconName } from 'design-angular-kit/interfaces/icon';
 
 @Component({
   selector: 'it-form-input-icon-example',

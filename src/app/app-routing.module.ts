@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
-import {
-  ItErrorPageComponent
-} from '../../projects/design-angular-kit/src/lib/components/utils/error-page/error-page.component';
+import { ItErrorPageComponent } from 'design-angular-kit/components/utils/error-page/error-page.component';
 
 
 const routes: Routes = [
@@ -51,6 +49,7 @@ const routes: Routes = [
     { path: 'language-switcher', loadChildren: () => import('src/app/language-switcher/language-switcher.module').then(m => m.LanguageSwitcherModule) },
     { path: 'password-input', loadChildren: () => import('src/app/password-input/password-input.module').then(m => m.PasswordInputModule) },
     { path: 'carousel', loadChildren: () => import('src/app/carousel/carousel.module').then(m => m.CarouselModule) },
+    { path: 'card', loadChildren: () => import('src/app/card/card.module').then(m => m.CardModule) },
     { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) }
   ]},
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },

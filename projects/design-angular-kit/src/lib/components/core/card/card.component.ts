@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 /**
  * Card
@@ -12,21 +13,21 @@ import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [NgIf, NgTemplateOutlet]
 })
 export class ItCardComponent extends ItAbstractComponent {
-
-  /**
-   * It serves to space the cards in their mobile version.
-   * @default true
-   */
-  @Input() space: BooleanInput = true;
 
   /**
    * To create cards with short or "preview" content
    * @default false
    */
   @Input() teaser: BooleanInput | undefined;
+
+  /**
+   * To create special cards
+   * @default false
+   */
+  @Input() special: BooleanInput | undefined;
 
   /**
    * Card with image
@@ -46,6 +47,26 @@ export class ItCardComponent extends ItAbstractComponent {
    */
   @Input() shadow: BooleanInput | undefined;
 
+
+  /**
+   * To add background and shadow
+   * @default false
+   */
+  @Input() background: BooleanInput | undefined;
+
+  /**
+   * To add bottom border
+   * @default false
+   */
+  @Input() borderBottom: BooleanInput | undefined;
+
+
+  /**
+   * To render a big card
+   * @default false
+   */
+    @Input() big: BooleanInput | undefined;
+
   /**
    * Custom card class
    * @default ''
@@ -58,12 +79,12 @@ export class ItCardComponent extends ItAbstractComponent {
    */
   @Input() bodyClass: string = '';
 
-  protected get isSpace(): boolean {
-    return isTrueBooleanInput(this.space);
-  }
-
   protected get isTeaser(): boolean {
     return isTrueBooleanInput(this.teaser);
+  }
+
+  protected get isSpecial(): boolean {
+    return isTrueBooleanInput(this.special);
   }
 
   protected get isHasImage(): boolean {
@@ -76,6 +97,18 @@ export class ItCardComponent extends ItAbstractComponent {
 
   protected get isShadow(): boolean {
     return isTrueBooleanInput(this.shadow);
+  }
+
+  protected get isBackground(): boolean {
+    return isTrueBooleanInput(this.background);
+  }
+
+  protected get isBig(): boolean {
+    return isTrueBooleanInput(this.big);
+  }
+
+  protected get isBorderedBottom(): boolean {
+    return isTrueBooleanInput(this.borderBottom);
   }
 
 }
