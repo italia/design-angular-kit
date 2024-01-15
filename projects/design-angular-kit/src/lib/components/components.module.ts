@@ -35,6 +35,8 @@ import { ItLanguageSwitcherComponent } from './utils/language-switcher/language-
 import { ItErrorPageComponent } from './utils/error-page/error-page.component';
 import { ItChipComponent } from './core/chip/chip.component';
 import { ItForwardDirective } from './core/forward/forward.directive';
+import { ItSortDirective } from "./core/table/sort/sort.directive";
+import { ItSortHeaderComponent } from "./core/table/sort/sort-header/sort-header.component";
 
 
 /**
@@ -70,6 +72,8 @@ const core = [
   ItSteppersModule,
   ItTabModule,
   ItTableComponent,
+  ItSortDirective,
+  ItSortHeaderComponent,
   ItTooltipDirective
 ];
 

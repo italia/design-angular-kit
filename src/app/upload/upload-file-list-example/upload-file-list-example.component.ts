@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UploadFileListItem} from "../../../../projects/design-angular-kit/src/lib/interfaces/form";
+import {UploadFileListItem} from "design-angular-kit/interfaces/form";
 import {catchError, finalize, from, map, of, skipWhile, switchMap, tap} from "rxjs";
 import {HttpClient, HttpEventType, HttpResponse} from "@angular/common/http";
 

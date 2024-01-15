@@ -136,3 +136,16 @@
 
 <it-source-display html="{$ sanitize(htmlcollassible) $}" typescript="{$ sanitize(typescriptcollassible) $}" >
 </it-source-display>
+
+{% set htmlpagination %}
+  {% include "../list-pagination/list-pagination.component.html" %}
+{% endset %}
+
+{% set typescriptpagination %}
+  {% include "../list-pagination/list-pagination.component.ts" %}
+{% endset %}
+
+<it-list-pagination></it-list-pagination>
+
+<it-source-display html="{$ sanitize(htmlpagination) $}" typescript="{$ sanitize(typescriptpagination) $}" >
+</it-source-display>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NotificationPosition } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
+import { NotificationPosition } from 'design-angular-kit/interfaces/core';
 import {
   ItNotificationService
-} from '../../../../projects/design-angular-kit/src/lib/services/notification/notification.service';
+} from 'design-angular-kit/services/notification/notification.service';
 
 @Component({
   selector: 'it-notifications-setup',
