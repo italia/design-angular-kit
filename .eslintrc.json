@@ -20,7 +20,6 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "@angular-eslint/no-host-metadata-property" : "off",
         "@angular-eslint/component-selector": [
           "error",
           {
