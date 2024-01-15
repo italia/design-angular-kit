@@ -3,7 +3,7 @@
     <ng-content select="[it-avatar-dropdown-toggle]"></ng-content>
   </a>
   <ng-container list class="dropdown-menu">
-    <li it-dropdown-item *ngFor="let item of items">
+    <li *ngFor="let item of items">
       <a *ngIf="item.link; else nolink" 
       [routerLink]="item.link" 
       class="dropdown-item list-item"
