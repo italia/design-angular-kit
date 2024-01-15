@@ -36,6 +36,8 @@ import { ItErrorPageComponent } from './utils/error-page/error-page.component';
 import { ItChipComponent } from './core/chip/chip.component';
 import { ItForwardDirective } from './core/forward/forward.directive';
 import { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';
+import { ItSortDirective } from "./core/table/sort/sort.directive";
+import { ItSortHeaderComponent } from "./core/table/sort/sort-header/sort-header.component";
 
 
 /**
@@ -44,7 +46,7 @@ import { MarkMatchingTextPipe } from '../pipes/mark-matching-text.pipe';
 const core = [
   ItAccordionComponent,
   ItAlertComponent,
-  ItAvatarGroupItemComponent, 
+  ItAvatarGroupItemComponent,
   ItAvatarGroupComponent,
   ItAvatarDropdownComponent,
   ItAvatarDropdownItemComponent,
@@ -71,6 +73,8 @@ const core = [
   ItSteppersModule,
   ItTabModule,
   ItTableComponent,
+  ItSortDirective,
+  ItSortHeaderComponent,
   ItTooltipDirective
 ];
 

@@ -1,11 +1,11 @@
 <div class="bd-example">
-  <it-table [color]="color">
+  <it-table [color]="color" itSort (sortChange)="sortData($event)" >
     <ng-container thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Cognome</th>
-        <th scope="col">Username</th>
+        <th it-sort-header="name" scope="col">Nome</th>
+        <th it-sort-header="surname" scope="col">Cognome</th>
+        <th it-sort-header="username" [arrowPosition]="'before'" scope="col">Username</th>
       </tr>
     </ng-container>
 
