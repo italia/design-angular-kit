@@ -1,4 +1,6 @@
-import { booleanAttribute } from '@angular/core';
+import { booleanAttribute } from "@angular/core";
+
+export type BooleanInput = "false" | "true" | boolean | undefined;
 
 /**
  * Transforms a value (typically a string) to a boolean.
@@ -8,11 +10,11 @@ import { booleanAttribute } from '@angular/core';
  *  ```typescript
  *  @Input({ transform: booleanAttribute }) status?: boolean;
  *  ```
- * @param {'false' | 'true' | boolean} value Value to be transformed.
+ * @param {BooleanInput} value Value to be transformed.
  *
  * @publicApi
  */
-export function inputToBoolean(value: 'false' | 'true' | boolean | undefined): boolean {
+export function inputToBoolean(value: BooleanInput): boolean {
   // Wrap `@angular/core` function to force value type, for ide hits
   return booleanAttribute(value);
 }
