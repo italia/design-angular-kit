@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AvailableLanguage } from '../../../../projects/design-angular-kit/src/lib/interfaces/utils';
+import { AvailableLanguage } from 'design-angular-kit/interfaces/utils';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

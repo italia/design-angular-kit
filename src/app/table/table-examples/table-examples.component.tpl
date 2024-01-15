@@ -128,3 +128,16 @@
 <it-table-caption-example></it-table-caption-example>
 
 <it-source-display html="{$ sanitize(htmlCaption) $}" typescript="{$ sanitize(typescriptCaption) $}"></it-source-display>
+
+
+{% set htmlPaginated %}
+  {% include "../table-paginated/table-paginated.component.html" %}
+{% endset %}
+
+{% set typescriptPaginated %}
+  {% include "../table-paginated/table-paginated.component.ts" %}
+{% endset %}
+
+<it-table-paginated></it-table-paginated>
+
+<it-source-display html="{$ sanitize(htmlPaginated) $}" typescript="{$ sanitize(typescriptPaginated) $}"></it-source-display>

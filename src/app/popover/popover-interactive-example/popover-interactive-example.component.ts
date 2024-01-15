@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ElementPlacement } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
+import { ElementPlacement } from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-popover-interactive-example',

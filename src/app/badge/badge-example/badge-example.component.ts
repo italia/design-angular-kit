@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BadgeColor } from '../../../../projects/design-angular-kit/src/lib/interfaces/core';
+import { BadgeColor } from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-badge-example',

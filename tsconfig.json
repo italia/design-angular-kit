@@ -22,11 +22,8 @@
       "dom"
     ],
     "paths": {
-      "design-angular-kit": [
-        "dist/design-angular-kit"
-      ],
       "design-angular-kit/*": [
-        "dist/design-angular-kit/*"
+        "projects/design-angular-kit/src/lib/*"
       ]
     },
     "useDefineForClassFields": false

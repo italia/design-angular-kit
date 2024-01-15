@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
-import { SelectControlOption } from '../../../../projects/design-angular-kit/src/lib/interfaces/form';
+import { SelectControlOption } from 'design-angular-kit/interfaces/form';
 
 @Component({
   selector: 'it-select-formgroup-example',
