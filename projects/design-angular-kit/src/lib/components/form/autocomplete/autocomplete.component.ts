@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ItAbstractFormComponent } from 'design-angular-kit/abstracts/abstract-form.component';
-import { AutocompleteItem } from 'design-angular-kit/interfaces/form';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
 import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
-import { ItIconComponent } from 'design-angular-kit/components/utils/icon/icon.component';
-import { MarkMatchingTextPipe } from 'design-angular-kit/pipes/mark-matching-text.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ItIconComponent } from '../../utils/icon/icon.component';
+import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
+import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { AutocompleteItem } from '../../../interfaces/form';
 
 @Component({
   standalone: true,
