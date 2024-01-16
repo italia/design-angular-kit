@@ -1,14 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
-import { AutocompleteItem, InputControlType } from '../../../interfaces/form';
+import { InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
 import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
-import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
-import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { Observable } from 'rxjs';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { ItIconComponent } from '../../utils/icon/icon.component';
-import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 
 @Component({
   standalone: true,
@@ -16,10 +14,9 @@ import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgTemplateOutlet, NgForOf]
+  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, NgForOf],
 })
 export class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {
-
   /**
    * The input type
    * @default text
@@ -29,7 +26,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
   /**
    * The input placeholder
    */
-  @Input() placeholder: string = '';
+  @Input() placeholder = '';
 
   /**
    * The input description
@@ -97,28 +94,6 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
    */
   @Input() autocomplete: string | undefined;
 
-  /**
-   * Indicates the list of searchable elements on which to base the input autocomplete system [Optional. Used only in type = 'search']
-   * If you need to retrieve items via API, can pass a function of Observable
-   * @default undefined
-   */
-  @Input() autocompleteData?: Array<AutocompleteItem> | ((search?: string | number | null) => Observable<Array<AutocompleteItem>>);
-
-  /**
-   * Time span [ms] has passed without another source emission, to delay data filtering.
-   * Useful when the user is typing multiple letters
-   * @default 300 [ms]
-   */
-  @Input() autocompleteDebounceTime: number = 300;
-
-  /**
-   * Fired when the Autocomplete Item has been selected
-   */
-  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();
-
-  protected showAutocompletion = false;
-
-
   get isActiveLabel(): boolean {
     const value = this.control.value;
     if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {
@@ -145,21 +120,25 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
   override get invalidMessage(): Observable<string> {
     if (this.hasError('min') && this.min) {
       return this._translateService.get('it.errors.min-invalid', {
-        min: this.min
+        min: this.min,
       });
     }
     if (this.hasError('max') && this.max) {
       return this._translateService.get('it.errors.max-invalid', {
-        max: this.max
+        max: this.max,
       });
     }
     if (this.hasError('minlength')) {
       const error = this.getError('minlength');
-      return this._translateService.get('it.errors.min-length-invalid', { min: error.requiredLength });
+      return this._translateService.get('it.errors.min-length-invalid', {
+        min: error.requiredLength,
+      });
     }
     if (this.hasError('maxlength')) {
       const error = this.getError('maxlength');
-      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });
+      return this._translateService.get('it.errors.max-length-invalid', {
+        max: error.requiredLength,
+      });
     }
     if (this.hasError('email') || this.hasError('invalidEmail')) {
       return this._translateService.get('it.errors.email-invalid');
@@ -187,18 +166,13 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
     }
     if (this.hasError('pattern')) {
       const error = this.getError('pattern');
-      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });
+      return this._translateService.get('it.errors.pattern-invalid', {
+        pattern: error.requiredPattern,
+      });
     }
 
     return super.invalidMessage;
   }
-
-  /** Observable da cui vengono emessi i risultati dell'auto completamento */
-  autocompleteResults$: Observable<{
-    searchedValue: string | number | null | undefined,
-    relatedEntries: Array<AutocompleteItem>
-  }> = new Observable();
-
 
   override ngOnInit() {
     super.ngOnInit();
@@ -212,8 +186,8 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
         }
 
         // Dynamic min/max validators
-        validators.push((control: AbstractControl) => this.min ? Validators.min(this.min)(control) : null);
-        validators.push((control: AbstractControl) => this.max ? Validators.max(this.max)(control) : null);
+        validators.push((control: AbstractControl) => (this.min ? Validators.min(this.min)(control) : null));
+        validators.push((control: AbstractControl) => (this.max ? Validators.max(this.max)(control) : null));
         break;
       case 'email':
         validators.push(ItValidators.email);
@@ -227,18 +201,17 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
     }
 
     this.addValidators(validators);
-    this.autocompleteResults$ = this.getAutocompleteResults$();
   }
 
   /**
    * Increment or decrease the input number value of step
    * @param decrease true to decrease value
    */
-  incrementNumber(decrease: boolean = false): void {
+  protected incrementNumber(decrease = false): void {
     if (this.type !== 'number') {
       return;
     }
-    const step = (this.step === 'any' ? 1 : (this.step ?? 1));
+    const step = this.step === 'any' ? 1 : this.step ?? 1;
     let value = Number(this.control.value);
     value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);
     value = Math.round(value * 1e12) / 1e12; // prevent js decimal error
@@ -250,58 +223,5 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
     }
 
     this.control.setValue(value);
-  }
-
-
-  /**
-   * Create the autocomplete list
-   */
-  private getAutocompleteResults$(): Observable<{ searchedValue: string | number | null | undefined, relatedEntries: Array<AutocompleteItem> }> {
-    if (this.type !== 'search') {
-      return of({ searchedValue: '', relatedEntries: [] });
-    }
-    return this.control.valueChanges.pipe(
-      debounceTime(this.autocompleteDebounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters
-      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value
-      switchMap(searchedValue => {
-        if (!this.autocompleteData) {
-          return of({ searchedValue, relatedEntries: <Array<AutocompleteItem>>[] });
-        }
-
-        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);
-        return autoCompleteData$.pipe(
-          map(autocompleteData => {
-            if (!searchedValue || typeof searchedValue === 'number') {
-              return { searchedValue, relatedEntries: [] };
-            }
-
-            const lowercaseValue = searchedValue.toLowerCase();
-            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));
-
-            return { searchedValue, relatedEntries };
-          })
-        );
-      })
-    );
-  }
-
-  onEntryClick(entry: AutocompleteItem, event: Event) {
-    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata
-    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.
-    if (!entry.link) {
-      event.preventDefault();
-    }
-
-    this.autocompleteSelectedEvent.next(entry);
-    this.control.setValue(entry.value);
-    this.showAutocompletion = false;
-  }
-
-  autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {
-    return item.value;
-  }
-
-  onKeyDown() {
-    this.showAutocompletion = this.type === 'search';
   }
 }

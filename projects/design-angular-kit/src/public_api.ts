@@ -57,12 +57,13 @@ export * from './lib/components/core/tab/tab-item/tab-item.component';
 
 export * from './lib/components/core/table/table.component';
 export * from './lib/components/core/tooltip/tooltip.directive';
-export * from './lib/components/core/avatar/avatar.directive'
-export * from './lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component'
-export * from './lib/components/core/avatar/avatar-group/avatar-group.component'
+export * from './lib/components/core/avatar/avatar.directive';
+export * from './lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component';
+export * from './lib/components/core/avatar/avatar-group/avatar-group.component';
 
 // Forms components
 export * from './lib/components/form/form.module';
+export * from './lib/components/form/autocomplete/autocomplete.component';
 export * from './lib/components/form/checkbox/checkbox.component';
 export * from './lib/components/form/input/input.component';
 export * from './lib/components/form/password-input/password-input.component';

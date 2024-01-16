@@ -104,3 +104,16 @@
 
 <it-source-display html="{$ sanitize(mdvHtml) $}" typescript="{$ sanitize(mdvTs) $}">
 </it-source-display>
+
+
+{% set htmlAutocomplete %}
+  {% include "../form-autocomplete-example/form-autocomplete-example.component.html" %}
+{% endset %}
+
+{% set typescriptAutocomplete %}
+  {% include "../form-autocomplete-example/form-autocomplete-example.component.ts" %}
+{% endset %}
+
+<it-form-autocomplete-example></it-form-autocomplete-example>
+
+<it-source-display html="{$ sanitize(htmlAutocomplete) $}" typescript="{$ sanitize(typescriptAutocomplete) $}"></it-source-display>

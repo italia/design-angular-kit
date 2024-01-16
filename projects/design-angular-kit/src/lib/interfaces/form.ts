@@ -1,30 +1,30 @@
 import { IconName } from './icon';
 
-export type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url' | 'search';
+export type InputControlType = 'text' | 'email' | 'number' | 'date' | 'time' | 'tel' | 'color' | 'url';
 
 export interface SelectControlOption<T = any> {
-  value: T,
-  text?: string,
-  selected?: boolean | ((value: T) => boolean),
-  disabled?: boolean | ((value: T) => boolean)
+  value: T;
+  text?: string;
+  selected?: boolean | ((value: T) => boolean);
+  disabled?: boolean | ((value: T) => boolean);
 }
 
 export interface SelectControlGroup<T = any> {
-  label: string,
-  options: Array<SelectControlOption<T>>,
-  dragdrop?: boolean
+  label: string;
+  options: Array<SelectControlOption<T>>;
+  dragdrop?: boolean;
 }
 
 export interface UploadFileListItem {
   /**
    * The item id
    */
-  id: number,
+  id: number;
 
   /**
    * The uploaded file
    */
-  file: File,
+  file: File;
 
   /**
    * Show progress bar
@@ -33,26 +33,25 @@ export interface UploadFileListItem {
    * - <b>uploading</b>: if value is between 0 and 100 (exclusive 0 < value < 100)
    * - <b>success</b>: if value is greater than 100
    */
-  progress?: number,
+  progress?: number;
 
   /**
    * Show the ability to delete item
    * @default false
    */
-  removable?: boolean,
+  removable?: boolean;
 
   /**
    * Set the status of the item as 'error'
    */
-  error?: boolean,
+  error?: boolean;
 
   /**
    * Add tooltip on file item name
    * @example It can be used to show the error message or additional information about the file
    */
-  tooltip?: string
+  tooltip?: string;
 }
-
 
 /**
  * Elemento disponibile per l'autocompletamento del it-form-input

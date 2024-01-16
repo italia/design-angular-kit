@@ -1,7 +1,10 @@
 <div class="form-group">
-
-  <div class="input-group" [class.disabled]="!control.enabled" [class.input-number]="type === 'number'"
-    [class.input-number-currency]="currency" [class.input-number-percentage]="percentage"
+  <div
+    class="input-group"
+    [class.disabled]="!control.enabled"
+    [class.input-number]="type === 'number'"
+    [class.input-number-currency]="currency"
+    [class.input-number-percentage]="percentage"
     [class.input-number-adaptive]="adaptive">
     <div class="input-group-prepend" [class.d-none]="!prependText.hasChildNodes() && !prepend.hasChildNodes()">
       <div #prepend>
@@ -11,32 +14,60 @@
         <ng-content select="[prependText]"></ng-content>
       </div>
     </div>
-    <label *ngIf="label" [for]="id" [class.active]="isActiveLabel" [class.input-number-label]="type === 'number'"
-    [class.empty-prepend-label]="!prependText.hasChildNodes() && !prepend.hasChildNodes()">
-    {{label}}
-  </label>
+
+    <label
+      *ngIf="label"
+      [for]="id"
+      [class.active]="isActiveLabel"
+      [class.input-number-label]="type === 'number'"
+      [class.empty-prepend-label]="!prependText.hasChildNodes() && !prepend.hasChildNodes()">
+      {{ label }}
+    </label>
+
     <ng-container *ngIf="type === 'number'">
-      <span *ngIf="currency || percentage" class="input-group-text fw-semibold">{{symbol}}</span>
-      <input type="number" [id]="id" [step]="step ?? null" [min]="min ?? null" [max]="max ?? null"
-        [class.form-control]="readonly !== 'plaintext'" [class.form-control-plaintext]="readonly === 'plaintext'"
-        [class.is-invalid]="isInvalid" [class.is-valid]="isValid" [formControl]="control" [placeholder]="placeholder"
-        [readonly]="isReadonly" [autocomplete]="autocomplete" [attr.aria-describedby]="id + '-description'"
+      <span *ngIf="currency || percentage" class="input-group-text fw-semibold">{{ symbol }}</span>
+      <input
+        type="number"
+        [id]="id"
+        [step]="step ?? null"
+        [min]="min ?? null"
+        [max]="max ?? null"
+        [class.form-control]="readonly !== 'plaintext'"
+        [class.form-control-plaintext]="readonly === 'plaintext'"
+        [class.is-invalid]="isInvalid"
+        [class.is-valid]="isValid"
+        [formControl]="control"
+        [placeholder]="placeholder"
+        [readonly]="isReadonly"
+        [autocomplete]="autocomplete"
+        [attr.aria-describedby]="id + '-description'"
         (blur)="markAsTouched()" />
       <span class="input-group-text align-buttons flex-column">
         <button type="button" class="input-number-add" [disabled]="!control.enabled" (click)="incrementNumber()">
-          <span class="visually-hidden">{{'it.form.increase-value' | translate}}</span>
+          <span class="visually-hidden">{{ 'it.form.increase-value' | translate }}</span>
         </button>
         <button type="button" class="input-number-sub" [disabled]="!control.enabled" (click)="incrementNumber(true)">
-          <span class="visually-hidden">{{'it.form.decrease-value' | translate}}</span>
+          <span class="visually-hidden">{{ 'it.form.decrease-value' | translate }}</span>
         </button>
       </span>
     </ng-container>
-    <input *ngIf="type !== 'number'" [id]="id" [type]="type" [max]="type === 'date' ? maxDate : undefined"
-      [min]="type === 'date' ? minDate : undefined" [class.form-control]="readonly !== 'plaintext'"
-      [class.form-control-plaintext]="readonly === 'plaintext'" [class.is-invalid]="isInvalid"
-      [class.is-valid]="isValid" [formControl]="control" [placeholder]="placeholder" [readonly]="isReadonly"
-      (keydown)="onKeyDown()" [autocomplete]="autocomplete" [attr.aria-describedby]="id + '-description'"
-      (blur)="markAsTouched()">
+
+    <input
+      *ngIf="type !== 'number'"
+      [id]="id"
+      [type]="type"
+      [max]="type === 'date' ? maxDate : undefined"
+      [min]="type === 'date' ? minDate : undefined"
+      [class.form-control]="readonly !== 'plaintext'"
+      [class.form-control-plaintext]="readonly === 'plaintext'"
+      [class.is-invalid]="isInvalid"
+      [class.is-valid]="isValid"
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [readonly]="isReadonly"
+      [autocomplete]="autocomplete"
+      [attr.aria-describedby]="id + '-description'"
+      (blur)="markAsTouched()" />
 
     <div class="input-group-append">
       <ng-content select="[append]"></ng-content>
@@ -47,44 +78,12 @@
     </div>
   </div>
 
-  <small *ngIf="description" [id]="id + '-description'" class="form-text">{{description}}</small>
-
-  <!-- INIZIO gestione AUTOCOMPLETAMENTO -->
-  <ng-container *ngIf="type === 'search'">
-    <!-- Icona lente per autocompletamento -->
-    <span class="autocomplete-icon" aria-hidden="true">
-      <it-icon name="search" size="sm"></it-icon>
-    </span>
-
-    <ng-container *ngIf="autocompleteResults$ | async as autocomplete">
-      <!-- Lista di autocompletamento -->
-      <ul class="autocomplete-list"
-        [class.autocomplete-list-show]="autocomplete.relatedEntries?.length && showAutocompletion">
-        <li *ngFor="let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn"
-          (click)="onEntryClick(entry, $event)">
-          <a [href]="entry.link">
-            <ng-container *ngTemplateOutlet="autocompleteItemTemplate"></ng-container>
-          </a>
-          <ng-template #autocompleteItemTemplate>
-            <div class="avatar size-sm" *ngIf="entry.avatarSrcPath">
-              <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText">
-            </div>
-            <it-icon *ngIf="entry.icon" [name]="entry.icon" size="sm"></it-icon>
-            <span class="autocomplete-list-text">
-              <span [innerHTML]="entry.value | markMatchingText: autocomplete.searchedValue"></span>
-              <em *ngIf="entry.label">{{entry.label}}</em>
-            </span>
-          </ng-template>
-        </li>
-      </ul>
-    </ng-container>
-  </ng-container>
-  <!-- FINE gestione AUTOCOMPLETAMENTO -->
+  <small *ngIf="description" [id]="id + '-description'" class="form-text">{{ description }}</small>
 
   <div *ngIf="isInvalid" class="form-feedback just-validate-error-label" [id]="id + '-error'">
     <div #customError>
       <ng-content select="[error]"></ng-content>
     </div>
-    <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
+    <ng-container *ngIf="!customError.hasChildNodes()">{{ invalidMessage | async }}</ng-container>
   </div>
 </div>

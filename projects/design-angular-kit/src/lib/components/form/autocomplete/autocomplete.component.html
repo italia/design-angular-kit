@@ -1,0 +1,44 @@
+<div class="form-group">
+  <label *ngIf="label" [for]="id" class="visually-hidden">{{ label }}</label>
+
+  <input
+    [id]="id"
+    type="search"
+    class="autocomplete"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [class.is-invalid]="isInvalid"
+    [class.is-valid]="isValid"
+    (blur)="markAsTouched()"
+    (keydown)="onKeyDown()" />
+
+  <span class="autocomplete-icon" aria-hidden="true">
+    <it-icon name="search" size="sm"></it-icon>
+  </span>
+
+  <ng-container *ngIf="autocompleteResults$ | async as autocomplete">
+    <ul class="autocomplete-list" [class.autocomplete-list-show]="autocomplete.relatedEntries?.length && showAutocompletion">
+      <li *ngFor="let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn">
+        <a [href]="entry.link" (click)="onEntryClick(entry, $event)">
+          <div class="avatar size-sm" *ngIf="entry.avatarSrcPath">
+            <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText" />
+          </div>
+
+          <it-icon *ngIf="entry.icon" [name]="entry.icon" size="sm"></it-icon>
+
+          <span class="autocomplete-list-text">
+            <span [innerHTML]="entry.value | markMatchingText: autocomplete.searchedValue"></span>
+            <em *ngIf="entry.label">{{ entry.label }}</em>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+
+  <div *ngIf="isInvalid" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+    <div #customError>
+      <ng-content select="[error]"></ng-content>
+    </div>
+    <ng-container *ngIf="!customError.hasChildNodes()">{{ invalidMessage | async }}</ng-container>
+  </div>
+</div>

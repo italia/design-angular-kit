@@ -4,24 +4,24 @@
 <div class="bd-example">
   <div class="row">
     <div class="col-8">
-      <it-input *ngIf="type !== 'password'"
-                [label]="label"
-                [placeholder]="placeholder"
-                [disabled]="disabled"
-                [readonly]="readOnly"
-                [type]="type !== 'password' ? type : 'text'"
-                [(ngModel)]="value"
-                [description]="note"
-                [autocompleteData]="autocompleteUsers$"
-                (autocompleteSelectedEvent)="onAutocompleteSelected($event)">
+      <it-input
+        *ngIf="type !== 'password'"
+        [label]="label"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [readonly]="readOnly"
+        [type]="type !== 'password' ? type : 'text'"
+        [(ngModel)]="value"
+        [description]="note">
       </it-input>
-      <it-password-input *ngIf="type === 'password'"
-                         [label]="label"
-                         [placeholder]="placeholder"
-                         [disabled]="disabled"
-                         [(ngModel)]="value"
-                         showStrengthMeter="true"
-                         validationMode="false"></it-password-input>
+      <it-password-input
+        *ngIf="type === 'password'"
+        [label]="label"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [(ngModel)]="value"
+        showStrengthMeter="true"
+        [validationMode]="false"></it-password-input>
     </div>
   </div>
 
@@ -46,20 +46,18 @@
       <div class="row">
         <div class="col-4">
           <it-radio-button name="text" [(ngModel)]="type" value="text" label="text"></it-radio-button>
-          <it-radio-button name="email" [(ngModel)]="type" value="email"
-                           label="email"></it-radio-button>
-          <it-radio-button name="password" [(ngModel)]="type" value="password"
-                           label="password"></it-radio-button>
+          <it-radio-button name="number" [(ngModel)]="type" value="number" label="number"></it-radio-button>
+          <it-radio-button name="email" [(ngModel)]="type" value="email" label="email"></it-radio-button>
+          <it-radio-button name="password" [(ngModel)]="type" value="password" label="password"></it-radio-button>
         </div>
         <div class="col-auto">
-          <it-radio-button name="number" [(ngModel)]="type" value="number"
-                           label="number"></it-radio-button>
           <it-radio-button name="time" [(ngModel)]="type" value="time" label="time"></it-radio-button>
-                    <it-radio-button name="search" [(ngModel)]="type" value="search"
-                                     label="search"></it-radio-button>
+          <it-radio-button name="date" [(ngModel)]="type" value="date" label="date"></it-radio-button>
+          <it-radio-button name="tel" [(ngModel)]="type" value="tel" label="tel"></it-radio-button>
+          <it-radio-button name="color" [(ngModel)]="type" value="color" label="color"></it-radio-button>
+          <it-radio-button name="url" [(ngModel)]="type" value="url" label="url"></it-radio-button>
         </div>
       </div>
     </div>
   </div>
-
 </div>

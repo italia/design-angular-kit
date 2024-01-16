@@ -9,9 +9,10 @@ import { ItSelectComponent } from './select/select.component';
 import { ItTextareaComponent } from './textarea/textarea.component';
 import { ItUploadDragDropComponent } from './upload-drag-drop/upload-drag-drop.component';
 import { ItUploadFileListComponent } from './upload-file-list/upload-file-list.component';
-
+import { ItAutocompleteComponent } from './autocomplete/autocomplete.component';
 
 const formComponents = [
+  ItAutocompleteComponent,
   ItCheckboxComponent,
   ItInputComponent,
   ItPasswordInputComponent,
@@ -21,11 +22,11 @@ const formComponents = [
   ItSelectComponent,
   ItTextareaComponent,
   ItUploadDragDropComponent,
-  ItUploadFileListComponent
+  ItUploadFileListComponent,
 ];
 
 @NgModule({
   imports: formComponents,
-  exports: formComponents
+  exports: formComponents,
 })
-export class ItFormModule { }
+export class ItFormModule {}
