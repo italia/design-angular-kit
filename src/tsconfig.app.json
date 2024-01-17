@@ -3,7 +3,12 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "types": [ "node" ],
-    "typeRoots": [ "../node_modules/@types" ]
+    "typeRoots": [ "../node_modules/@types" ],
+    "paths": {
+      "design-angular-kit/*": [
+        "projects/design-angular-kit/src/lib/*"
+      ]
+    }
   },
   "files": [
     "main.ts",
