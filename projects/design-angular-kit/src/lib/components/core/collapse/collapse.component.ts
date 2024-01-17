@@ -9,8 +9,8 @@ import {
   ViewChild
 } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Collapse } from 'bootstrap-italia';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -24,13 +24,15 @@ export class ItCollapseComponent extends ItAbstractComponent implements AfterVie
 
   /**
    * Enable multiple collapse
+   * @default false
    */
-  @Input() multi: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) multi?: boolean;
 
   /**
    * Toggles the collapsible element on invocation
+   * @default false
    */
-  @Input() opened: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) opened?: boolean;
 
   /**
    * Custom class
@@ -64,14 +66,6 @@ export class ItCollapseComponent extends ItAbstractComponent implements AfterVie
 
   @ViewChild('collapse') protected collapseDiv?: ElementRef<HTMLDivElement>;
 
-  get isMulti(): boolean {
-    return isTrueBooleanInput(this.multi);
-  }
-
-  get isOpenedOnStart(): boolean {
-    return isTrueBooleanInput(this.opened);
-  }
-
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'class');
@@ -79,7 +73,7 @@ export class ItCollapseComponent extends ItAbstractComponent implements AfterVie
     if (this.collapseDiv) {
       const element = this.collapseDiv.nativeElement;
       this.collapse = Collapse.getOrCreateInstance(element, {
-        toggle: this.isOpenedOnStart
+        toggle: this.opened
       });
 
       element.addEventListener('show.bs.collapse', event => {this.open = true; this.showEvent.emit(event)});

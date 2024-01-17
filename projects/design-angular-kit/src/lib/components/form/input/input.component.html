@@ -71,7 +71,7 @@
             </div>
             <it-icon *ngIf="entry.icon" [name]="entry.icon" size="sm"></it-icon>
             <span class="autocomplete-list-text">
-              <span [innerHTML]="entry.value | markMatchingText: autocomplete.searchedValue"></span>
+              <span [innerHTML]="entry.value | itMarkMatchingText: autocomplete.searchedValue"></span>
               <em *ngIf="entry.label">{{entry.label}}</em>
             </span>
           </ng-template>

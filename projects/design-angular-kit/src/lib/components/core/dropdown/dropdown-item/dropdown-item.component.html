@@ -1,5 +1,5 @@
 <li>
-  <span *ngIf="isDivider; else item" class="divider"></span>
+  <span *ngIf="divider; else item" class="divider"></span>
 
   <ng-template #item>
     <it-link [class]="linkClass" [id]="id" [href]="href" [externalLink]="externalLink" [disabled]="disabled">
@@ -17,7 +17,7 @@
                 [color]="isDark ? 'light' : 'primary'"
                 [svgClass]="iconPosition"></it-icon>
 
-      <span *ngIf="isActive" class="visually-hidden">{{'it.core.active'|translate}}</span>
+      <span *ngIf="active" class="visually-hidden">{{'it.core.active'|translate}}</span>
     </it-link>
   </ng-template>
 </li>

@@ -11,8 +11,8 @@ export class DesignAngularKitConfig {
    */
   private readonly initConfig?: DesignAngularKitInit;
 
-  constructor(nextInit?: DesignAngularKitInit) {
-    this.initConfig = nextInit;
+  constructor(designAngularKitInit?: DesignAngularKitInit) {
+    this.initConfig = designAngularKitInit;
   }
 
   /**

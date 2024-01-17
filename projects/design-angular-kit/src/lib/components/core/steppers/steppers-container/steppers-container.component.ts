@@ -10,7 +10,6 @@ import {
   Output,
   QueryList
 } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { ItSteppersItemComponent } from '../steppers-item/steppers-item.component';
 import { ProgressBarColor } from '../../../../interfaces/core';
 import { startWith, Subscription } from 'rxjs';
@@ -20,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ItButtonDirective } from '../../button/button.directive';
 import { ItProgressBarComponent } from '../../progress-bar/progress-bar.component';
 import { ItProgressButtonComponent } from '../../progress-button/progress-button.component';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -40,17 +40,19 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
    * Show the stepper header
    * @default true
    */
-  @Input() showHeader: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) showHeader: boolean = true;
 
   /**
    * Dark style
+   * @default false
    */
-  @Input() dark: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) dark?: boolean;
 
   /**
    * The labels present in the header steps can be anticipated by the relative ordinal number.
+   * @efualt false
    */
-  @Input() steppersNumber: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) steppersNumber?: boolean;
 
   /**
    * The progress style
@@ -69,59 +71,59 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
    * Show the back button
    * @default true
    */
-  @Input() showBackButton: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) showBackButton: boolean = true;
 
   /**
    * Disable the back button
    * @default false
    */
-  @Input() disableBackButton: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) disableBackButton?: boolean;
 
   /**
    * Show the forward button
    * @default true
    */
-  @Input() showForwardButton: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) showForwardButton: boolean = true;
 
   /**
    * Disable the forward button
    * @default false
    */
-  @Input() disableForwardButton: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) disableForwardButton?: boolean;
 
   /**
    * Show the confirm button
    * @default false
    */
-  @Input() showConfirmButton: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) showConfirmButton?: boolean;
 
   /**
    * Disable the confirm button
    * @default false
    */
-  @Input() disableConfirmButton: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) disableConfirmButton?: boolean;
 
   /**
    * Show the confirm button as indeterminate progress button
    */
-  @Input() confirmLoading: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) confirmLoading?: boolean;
 
   /**
    * Show the save button
    * @default false
    */
-  @Input() showSaveButton: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) showSaveButton?: boolean;
 
   /**
    * Disable the save button
    * @default false
    */
-  @Input() disableSaveButton: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) disableSaveButton?: boolean;
 
   /**
    * Show the save button as indeterminate progress button
    */
-  @Input() saveLoading: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) saveLoading?: boolean;
 
   /**
    * The stepper items
@@ -151,58 +153,6 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
    * @event activeStep the current step index
    */
   @Output() saveClick: EventEmitter<number>;
-
-  get isShowHeader(): boolean {
-    return isTrueBooleanInput(this.showHeader);
-  }
-
-  get isSteppersNumber(): boolean {
-    return isTrueBooleanInput(this.steppersNumber);
-  }
-
-  get isDark(): boolean {
-    return isTrueBooleanInput(this.dark);
-  }
-
-  get isShowBackButton(): boolean {
-    return isTrueBooleanInput(this.showBackButton);
-  }
-
-  get isDisableBackButton(): boolean {
-    return isTrueBooleanInput(this.disableBackButton);
-  }
-
-  get isShowForwardButton(): boolean {
-    return isTrueBooleanInput(this.showForwardButton);
-  }
-
-  get isDisableForwardButton(): boolean {
-    return isTrueBooleanInput(this.disableForwardButton);
-  }
-
-  get isShowConfirmButton(): boolean {
-    return isTrueBooleanInput(this.showConfirmButton);
-  }
-
-  get isDisableConfirmButton(): boolean {
-    return isTrueBooleanInput(this.disableConfirmButton);
-  }
-
-  get isConfirmLoading(): boolean {
-    return isTrueBooleanInput(this.confirmLoading);
-  }
-
-  get isShowSaveButton(): boolean {
-    return isTrueBooleanInput(this.showSaveButton);
-  }
-
-  get isDisableSaveButton(): boolean {
-    return isTrueBooleanInput(this.disableSaveButton);
-  }
-
-  get isSaveLoading(): boolean {
-    return isTrueBooleanInput(this.saveLoading);
-  }
 
   private stepsSubscriptions?: Array<Subscription>;
 

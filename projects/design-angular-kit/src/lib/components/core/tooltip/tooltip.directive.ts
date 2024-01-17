@@ -1,7 +1,7 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { ElementPlacement } from '../../../interfaces/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Tooltip } from 'bootstrap-italia';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Directive({
   standalone: true,
@@ -33,8 +33,8 @@ export class ItTooltipDirective implements AfterViewInit, OnDestroy {
    * Indicates whether the title contains html
    * @param html true if contain html
    */
-  @Input() set tooltipHtml(html: BooleanInput) {
-    this.element.setAttribute('data-bs-html', isTrueBooleanInput(html) ? 'true' : 'false');
+  @Input({ transform: inputToBoolean }) set tooltipHtml(html: boolean) {
+    this.element.setAttribute('data-bs-html', html ? 'true' : 'false');
   }
 
   /**

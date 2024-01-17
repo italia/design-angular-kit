@@ -7,13 +7,13 @@
 </button>
 
 <ng-template #content>
-  <it-icon *ngIf="isShowIcon"
+  <it-icon *ngIf="showIcon"
            size="sm"
            [name]="direction === 'left' ? 'arrow-left' : 'arrow-up'"
            [color]="buttonStyle === 'link' ? 'primary' : 'white'"
-           [class.me-2]="isShowText"></it-icon>
+           [class.me-2]="showText"></it-icon>
 
-  <span [class.visually-hidden]="!isShowText">
+  <span [class.visually-hidden]="!showText">
     {{(direction === 'left' ? 'it.navigation.go-back' : 'it.navigation.upper-level') | translate}}
   </span>
 </ng-template>

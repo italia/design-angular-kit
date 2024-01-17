@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -15,36 +15,33 @@ export class ItCheckboxComponent extends ItAbstractFormComponent<boolean | null 
 
   /**
    * If show checkbox as toggle
+   * @default false
    */
-  @Input() toggle: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) toggle?: boolean;
 
   /**
    * If show checkbox inline
+   * @default false
    */
-  @Input() inline: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) inline?: boolean;
 
   /**
    * If is checkbox group
+   * @default false
    */
-  @Input() group: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) group?: boolean;
 
   /**
    * If checkbox is checked
+   * @default false
    */
-  @Input() checked: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) checked?: boolean;
 
   /**
    * If checkbox is indeterminate
+   * @default false
    */
-  @Input() indeterminate: BooleanInput | undefined;
-
-  get isIndeterminate(): boolean {
-    return isTrueBooleanInput(this.indeterminate);
-  }
-
-  get isGroup(): boolean {
-    return isTrueBooleanInput(this.group);
-  }
+  @Input({ transform: inputToBoolean }) indeterminate?: boolean;
 
   override ngOnInit() {
     super.ngOnInit();
@@ -62,7 +59,7 @@ export class ItCheckboxComponent extends ItAbstractFormComponent<boolean | null 
       return;
     }
 
-    const value = isTrueBooleanInput(this.checked);
+    const value = this.checked;
     this.writeValue(value);
     return this.onChange(value);
   }

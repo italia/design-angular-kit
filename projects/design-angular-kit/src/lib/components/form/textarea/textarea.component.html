@@ -3,10 +3,13 @@
   <textarea
     [id]="id"
     [rows]="rows"
+    [class.form-control]="readonly !== 'plaintext'"
+    [class.form-control-plaintext]="readonly === 'plaintext'"
     [class.is-invalid]="isInvalid"
     [class.is-valid]="isValid"
     [placeholder]="placeholder"
     [formControl]="control"
+    [readonly]="isReadonly"
     (blur)="markAsTouched()"></textarea>
 
   <small *ngIf="description" [id]="id + '-description'" class="form-text">{{description}}</small>

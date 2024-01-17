@@ -10,7 +10,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
-import { FileUtils } from '../../../utils/file-utils';
+import { ItFileUtils } from '../../../utils/file-utils';
 import { ProgressDonut } from 'bootstrap-italia';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { NgIf, NgOptimizedImage } from '@angular/common';
@@ -116,7 +116,7 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
     const splitName = file.name.split('.');
     this.filename = splitName[0];
     this.extension = splitName[1]?.toUpperCase();
-    this.fileSize = FileUtils.getFileSizeString(file);
+    this.fileSize = ItFileUtils.getFileSizeString(file);
 
     this.fileStartUpload.emit(file);
   }

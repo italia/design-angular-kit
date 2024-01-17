@@ -1,5 +1,5 @@
 <div class="container text-center mt-5">
-  <h1 *ngIf="errorCode && isShowErrorCode">{{errorCode}}</h1>
+  <h1 *ngIf="errorCode && showErrorCode">{{errorCode}}</h1>
   <h2>
     <ng-container *ngIf="!errorTitle && isDefaultErrorCode; else customTitle">
       {{'it.utils.error-page.' + errorCode + '.title' | translate}}
@@ -17,9 +17,9 @@
     </ng-template>
   </p>
 
-  <div class="mt-5" *ngIf="isShowBackButton || isShowHomeButton">
-    <it-back-button *ngIf="isShowBackButton"></it-back-button>
-    <a *ngIf="isShowHomeButton" itButton="outline-primary" class="ms-3" routerLink="/"
+  <div class="mt-5" *ngIf="showBackButton || showHomeButton">
+    <it-back-button *ngIf="showBackButton"></it-back-button>
+    <a *ngIf="showHomeButton" itButton="outline-primary" class="ms-3" routerLink="/"
        title="{{'it.utils.error-page.go-to-homepage' | translate}}">
       {{'it.utils.error-page.go-to-homepage' | translate}}
     </a>

@@ -1,17 +1,17 @@
 <nav class="breadcrumb-container" [attr.aria-label]="'it.navigation.navigation-path'|translate">
-  <ol *ngIf="items" class="breadcrumb" [class.dark]="isDark" [class.px-3]="isDark">
+  <ol *ngIf="items" class="breadcrumb" [class.dark]="dark" [class.px-3]="dark">
     <li *ngFor="let item of items; let i = index"
         class="breadcrumb-item"
-        [class.active]="item.isActive"
-        [attr.aria-current]="item.isActive ? 'page' : null">
+        [class.active]="item.active"
+        [attr.aria-current]="item.active ? 'page' : null">
 
       <it-icon *ngIf="item.iconName"
                 [name]="item.iconName"
-                [color]="isDark ? 'white' : 'secondary'"
+                [color]="dark ? 'white' : 'secondary'"
                 size="sm"
                 svgClass="align-top me-1"></it-icon>
 
-      <it-link *ngIf="!item.isActive && !isLastItem(i); else activeContent"
+      <it-link *ngIf="!item.active && !isLastItem(i); else activeContent"
                 [href]="item.href" [class]="item.class" [externalLink]="item.externalLink" [disabled]="item.disabled">
         <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
       </it-link>

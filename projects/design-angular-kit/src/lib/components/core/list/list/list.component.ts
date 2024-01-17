@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -13,29 +13,20 @@ export class ItListComponent {
 
   /**
    * Add 'link-list' class for navigation menu
+   * @default false
    */
-  @Input() linkList: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) linkList?: boolean;
 
   /**
    * Add 'link-sublist' class for navigation menu
+   * @default false
    */
-  @Input() linkSubList: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) linkSubList?: boolean;
 
   /**
    * Add 'multiline' class for wrapper
+   * @default false
    */
-  @Input() multiline: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) multiline?: boolean;
 
-
-  protected get isLinkList(): boolean {
-    return isTrueBooleanInput(this.linkList);
-  }
-
-  protected get isMultiline(): boolean {
-    return isTrueBooleanInput(this.multiline);
-  }
-
-  protected get isLinkSubList(): boolean {
-    return isTrueBooleanInput(this.linkSubList);
-  }
 }

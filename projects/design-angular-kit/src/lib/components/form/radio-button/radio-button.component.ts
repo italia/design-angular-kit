@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
-import { BooleanInput, isFalseBooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -23,28 +23,32 @@ export class ItRadioButtonComponent extends ItAbstractFormComponent<string | num
    * If show radio inline
    * @default false
    */
-  @Input() inline: BooleanInput = false;
+  @Input({ transform: inputToBoolean }) inline?: boolean;
 
   /**
    * If is radio group
    * @default false
    */
-  @Input() group: BooleanInput = false;
+  @Input({ transform: inputToBoolean }) group?: boolean;
 
   /**
    * If is radio is checked
+   * @default false
    */
-  @Input() checked: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) checked?: boolean;
 
-  get isInline(): boolean {
-    return isTrueBooleanInput(this.inline);
-  }
-
-  get isGroup(): boolean {
-    return isTrueBooleanInput(this.group);
-  }
+  /**
+   * Set the radio name manually.
+   * For example when the radio button name is duplicated inside page
+   * @default by default the radio name is calculated from form field name
+   */
+  @Input() forceRadioName?: string;
 
   get name(): string {
+    if (this.forceRadioName) {
+      return this.forceRadioName;
+    }
+
     let name = '';
     if (this._ngControl) {
       name = this._ngControl.name?.toString() || '';
@@ -68,7 +72,7 @@ export class ItRadioButtonComponent extends ItAbstractFormComponent<string | num
   override ngOnInit() {
     super.ngOnInit();
 
-    if (this.control.value || !this.value || isFalseBooleanInput(this.checked)) {
+    if (this.control.value || !this.value || !this.checked) {
       return;
     }
 

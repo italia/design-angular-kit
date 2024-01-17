@@ -31,6 +31,13 @@ export class ItTextareaComponent extends ItAbstractFormComponent<string | null |
   @Input() description: string | undefined;
 
   /**
+   * To prevent modification of the contained value.
+   * - <b>plaintext</b>: Readonly field in the form stylized as plain text
+   * @default undefined
+   */
+  @Input() readonly: boolean | 'plaintext' | undefined;
+
+  /**
    * Return the invalid message string from TranslateService
    */
   override get invalidMessage(): Observable<string> {
@@ -44,5 +51,12 @@ export class ItTextareaComponent extends ItAbstractFormComponent<string | null |
     }
 
     return super.invalidMessage;
+  }
+
+  /**
+   * Check is readonly field
+   */
+  protected get isReadonly(): boolean {
+    return this.readonly === 'plaintext' || !!this.readonly;
   }
 }

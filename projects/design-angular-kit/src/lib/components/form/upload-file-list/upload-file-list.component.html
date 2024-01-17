@@ -1,5 +1,5 @@
-<ng-container *ngIf="!isHideLoadButton">
-  <input type="file" [id]="id" class="upload" [accept]="accept" [multiple]="isMultipleInput"
+<ng-container *ngIf="!hideLoadButton">
+  <input type="file" [id]="id" class="upload" [accept]="accept" [multiple]="multiple"
          (change)="onLoadFiles($event)" />
   <label [for]="id">
     <it-icon name="upload" size="sm"></it-icon>
@@ -7,13 +7,13 @@
   </label>
 </ng-container>
 
-<ul class="upload-file-list" [class.upload-file-list-image]="isImageList" *ngIf="fileList.length">
+<ul class="upload-file-list" [class.upload-file-list-image]="images" *ngIf="fileList.length">
   <li *ngFor="let item of fileList" class="upload-file"
       [class.error]="item.error"
       [class.uploading]="!item.error && item.progress !== undefined && item.progress > 0 && item.progress < 100"
       [class.success]="!item.error && (!item.progress || item.progress >= 100)">
 
-    <div class="upload-image" *ngIf="isImageList; else icon">
+    <div class="upload-image" *ngIf="images; else icon">
       <img [attr.src]="previewImages.get(item.id)" [alt]="item.file.name" />
     </div>
     <ng-template #icon>

@@ -5,16 +5,16 @@
 
   <ul *ngIf="pages.length" class="pagination">
     <li class="page-item" [class.disabled]="currentPage < 1">
-      <a class="page-link" [class.text]="isTextLinks" href="#" (click)="pageChange($event, currentPage)">
-        <it-icon *ngIf="!isTextLinks" name="chevron-left" color="primary"></it-icon>
+      <a class="page-link" [class.text]="textLinks" href="#" (click)="pageChange($event, currentPage)">
+        <it-icon *ngIf="!textLinks" name="chevron-left" color="primary"></it-icon>
         <span class="visually-hidden">
-          {{(isTextLinks ? 'it.core.page' : 'it.core.previous-page') | translate}}
+          {{(textLinks ? 'it.core.page' : 'it.core.previous-page') | translate}}
         </span>
-        <ng-container *ngIf="isTextLinks">{{'it.core.previous' | translate}}</ng-container>
+        <ng-container *ngIf="textLinks">{{'it.core.previous' | translate}}</ng-container>
       </a>
     </li>
 
-    <ng-container *ngIf="isSimpleMode; else defaultView">
+    <ng-container *ngIf="simpleMode; else defaultView">
       <li class="page-item"><span class="page-link" aria-current="page">{{currentPage + 1}}</span></li>
       <li class="page-item"><span class="page-link">/</span></li>
       <li class="page-item"><span class="page-link">{{pageNumbers}}</span></li>
@@ -54,12 +54,12 @@
     </ng-template>
 
     <li class="page-item" [class.disabled]="currentPage >= pageNumbers - 1">
-      <a class="page-link" [class.text]="isTextLinks" href="#" (click)="pageChange($event, currentPage + 2)">
+      <a class="page-link" [class.text]="textLinks" href="#" (click)="pageChange($event, currentPage + 2)">
         <span class="visually-hidden">
-          {{(isTextLinks ? 'it.core.page' : 'it.core.next-page') | translate}}
+          {{(textLinks ? 'it.core.page' : 'it.core.next-page') | translate}}
         </span>
-        <ng-container *ngIf="isTextLinks">{{'it.core.next' | translate}}</ng-container>
-        <it-icon *ngIf="!isTextLinks" name="chevron-right" color="primary"></it-icon>
+        <ng-container *ngIf="textLinks">{{'it.core.next' | translate}}</ng-container>
+        <it-icon *ngIf="!textLinks" name="chevron-right" color="primary"></it-icon>
       </a>
     </li>
   </ul>
@@ -74,7 +74,7 @@
     </ng-container>
   </it-dropdown>
 
-  <it-input *ngIf="isShowJumpToPage" type="number" [min]="1" [max]="pageNumbers"
+  <it-input *ngIf="showJumpToPage" type="number" [min]="1" [max]="pageNumbers"
             [label]="('it.core.go-to' | translate) + '...'" [formControl]="jumpToPage"></it-input>
 
   <p [class.d-none]="!totalNumberText.hasChildNodes()" #totalNumberText>

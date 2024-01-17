@@ -9,12 +9,12 @@ import {
   QueryList
 } from '@angular/core';
 import { ItBreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { startWith, Subscription } from 'rxjs';
 import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { ItLinkComponent } from '../../../core/link/link.component';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -33,17 +33,14 @@ export class ItBreadcrumbComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Dark style
+   * @default false
    */
-  @Input() dark: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) dark?: boolean;
 
   /**
    * The tab items
    */
   @ContentChildren(ItBreadcrumbItemComponent) items?: QueryList<ItBreadcrumbItemComponent>;
-
-  get isDark(): boolean {
-    return isTrueBooleanInput(this.dark);
-  }
 
   private itemSubscriptions?: Array<Subscription>;
 

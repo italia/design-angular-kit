@@ -3,11 +3,11 @@ import { Subscription } from 'rxjs';
 import { ItNotificationService } from '../../../services/notification/notification.service';
 import { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';
 import { Notification as BSNotification } from 'bootstrap-italia';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { IconName } from '../../../interfaces/icon';
 import { NgForOf, NgIf } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -34,7 +34,7 @@ export class ItNotificationsComponent implements OnDestroy {
    * Default notifications is dismissible
    * @default true
    */
-  @Input() dismissible?: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) dismissible: boolean = true;
 
   private subscription: Subscription;
   private notificationCount: number = 0;
@@ -51,7 +51,7 @@ export class ItNotificationsComponent implements OnDestroy {
       if (!notification.position && this.position) {
         notification.position = this.position; // Add position if not is set
       }
-      if (notification.dismissible === undefined && isTrueBooleanInput(this.dismissible)) {
+      if (notification.dismissible === undefined && this.dismissible) {
         notification.dismissible = true; // Add dismissible if not is set
       }
       if (!notification.icon) {

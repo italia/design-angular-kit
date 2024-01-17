@@ -1,11 +1,11 @@
 <div [class]="responsive ? 'table-' + responsive : undefined">
   <table class="table{{color ? ' table-' + color : '' }}{{alignment ? ' ' + alignment : '' }}"
-         [class.table-striped]="isStriped"
-         [class.table-hover]="isHover"
-         [class.table-bordered]="isBordered"
-         [class.table-borderless]="isBorderless"
-         [class.table-sm]="isCompact"
-         [class.caption-top]="isCaptionTop">
+         [class.table-striped]="striped"
+         [class.table-hover]="hover"
+         [class.table-bordered]="bordered"
+         [class.table-borderless]="borderless"
+         [class.table-sm]="compact"
+         [class.caption-top]="captionTop">
     <caption>
       <ng-content select="[caption]"></ng-content>
     </caption>
