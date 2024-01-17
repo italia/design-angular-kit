@@ -1,5 +1,5 @@
 <header class="it-header-wrapper">
-  <div *ngIf="isShowSlim" class="it-header-slim-wrapper" [class.theme-light]="isLight">
+  <div *ngIf="showSlim" class="it-header-slim-wrapper" [class.theme-light]="light">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -38,7 +38,7 @@
     </div>
   </div>
   <div class="it-nav-wrapper">
-    <div class="it-header-center-wrapper" [class.it-small-header]="isSmallHeader">
+    <div class="it-header-center-wrapper" [class.it-small-header]="smallHeader">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -49,7 +49,7 @@
               <div class="it-right-zone">
                 <ng-content select="[rightZone]"></ng-content>
 
-                <div class="it-search-wrapper" *ngIf="isShowSearch">
+                <div class="it-search-wrapper" *ngIf="showSearch">
                   <span class="d-none d-md-block">{{'it.navigation.search'|translate}}</span>
                   <a class="search-link rounded-icon" [attr.aria-label]="'it.navigation.website-search'|translate" (click)="searchClick.emit($event)">
                     <it-icon name="search"></it-icon>

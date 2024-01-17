@@ -1,7 +1,7 @@
 <div class="alert alert-{{color}}" #alertElement
-     [class.alert-dismissible]="isDismissible"
-     [class.fade]="isDismissible"
-     [class.show]="isDismissible"
+     [class.alert-dismissible]="dismissible"
+     [class.fade]="dismissible"
+     [class.show]="dismissible"
      role="alert">
   <h4 class="alert-heading">
     <ng-content select="[heading]"></ng-content>
@@ -9,7 +9,7 @@
 
   <ng-content></ng-content>
 
-  <button *ngIf="isDismissible"
+  <button *ngIf="dismissible"
           type="button"
           class="btn-close"
           data-bs-dismiss="alert"

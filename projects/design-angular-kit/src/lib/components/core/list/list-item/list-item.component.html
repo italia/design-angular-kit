@@ -32,7 +32,7 @@
   </div>
 
   <ng-template #link>
-    <it-link [class]="itemClass" [href]="href" [externalLink]="externalLink" [disabled]="disabled">
+    <it-link [class]="itemClass" [href]="href" [externalLink]="!!externalLink" [disabled]="!!disabled">
       <ng-container *ngTemplateOutlet="content"></ng-container>
     </it-link>
   </ng-template>

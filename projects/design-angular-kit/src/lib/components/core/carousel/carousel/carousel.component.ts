@@ -11,11 +11,11 @@ import {
   ViewChild
 } from '@angular/core';
 import { CarouselType } from '../../../../interfaces/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { ItCarouselItemComponent } from '../carousel-item/carousel-item.component';
 import { CarouselBI } from 'bootstrap-italia';
 import { startWith, Subscription } from 'rxjs';
 import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 /**
  * Carousel
@@ -52,27 +52,27 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
 
   /**
    * True for full screen (landscape) viewing
-   * @default undefined
+   * @default false
    */
-  @Input() fullCarousel: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) fullCarousel?: boolean;
 
   /**
    * To indicate that the contained image is of a large type
-   * @default undefined
+   * @default false
    */
-  @Input() bigImg: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) bigImg?: boolean;
 
   /**
    * To indicate that the contained image is of a standard type
-   * @default undefined
+   * @default false
    */
-  @Input() standardImage: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) standardImage?: boolean;
 
   /**
    * Card line style
-   * @default undefined
+   * @default false
    */
-  @Input() lined: BooleanInput | undefined;
+  @Input({transform: inputToBoolean}) lined?: boolean;
 
   @ContentChildren(ItCarouselItemComponent) protected items?: QueryList<ItCarouselItemComponent>;
 
@@ -85,22 +85,6 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
   protected get typeClass(): string {
     const typeClass = 'it-carousel-landscape-abstract';
     return this.type === 'default' ? typeClass : typeClass + `-${this.type}`;
-  }
-
-  protected get isFullCarousel(): boolean {
-    return isTrueBooleanInput(this.fullCarousel);
-  }
-
-  protected get isBigImg(): boolean {
-    return isTrueBooleanInput(this.bigImg);
-  }
-
-  protected get isStandardImage(): boolean {
-    return isTrueBooleanInput(this.standardImage);
-  }
-
-  protected get isLined(): boolean {
-    return isTrueBooleanInput(this.lined);
   }
 
   constructor(

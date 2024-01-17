@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -25,26 +25,20 @@ export class ItLinkComponent extends ItAbstractComponent implements AfterViewIni
 
   /**
    * Is an external link (false to not use Angular router link)
+   * @default false
    */
-  @Input() externalLink: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) externalLink?: boolean;
 
   /**
    * Is disabled link
+   * @default false
    */
-  @Input() disabled: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) disabled?: boolean;
 
   /**
    * Custom class
    */
   @Input() class: string = '';
-
-  get isExternalLink(): boolean {
-    return isTrueBooleanInput(this.externalLink);
-  }
-
-  get isDisabled(): boolean {
-    return isTrueBooleanInput(this.disabled);
-  }
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();

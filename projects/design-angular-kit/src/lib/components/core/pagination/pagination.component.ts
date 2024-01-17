@@ -7,7 +7,6 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { LowerCasePipe, NgForOf, NgIf } from '@angular/common';
@@ -15,6 +14,7 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItDropdownModule } from '../dropdown/dropdown.module';
 import { ItInputComponent } from '../../form/input/input.component';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -49,16 +49,16 @@ export class ItPaginationComponent implements OnChanges {
   /**
    * Enable/Disable simple mode
    * Pagination in the "Simple mode" version is optimized for mobile devices.
-   * @default undefined - disabled
+   * @default false - disabled
    */
-  @Input() simpleMode: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) simpleMode?: boolean;
 
   /**
    * Enable/Disable text links
    * Chevron icons used as navigation links are replaced by text links such as “previous” and “next”.
-   * @default undefined - disabled
+   * @default false - disabled
    */
-  @Input() textLinks: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) textLinks?: boolean;
 
   /**
    * Current value of Changer
@@ -75,9 +75,9 @@ export class ItPaginationComponent implements OnChanges {
 
   /**
    * Hide/Show "Jump to page" input
-   * @default undefined - hidden
+   * @default false - hidden
    */
-  @Input() showJumpToPage: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) showJumpToPage?: boolean;
 
   /**
    * Fired when page is changed. Emit the new index of page
@@ -101,18 +101,6 @@ export class ItPaginationComponent implements OnChanges {
    */
   protected jumpToPage: FormControl<number | null> = new FormControl<number | null>(null);
 
-  get isSimpleMode(): boolean {
-    return isTrueBooleanInput(this.simpleMode);
-  }
-
-  get isTextLinks(): boolean {
-    return isTrueBooleanInput(this.textLinks);
-  }
-
-  get isShowJumpToPage(): boolean {
-    return isTrueBooleanInput(this.showJumpToPage);
-  }
-
   constructor() {
     this.jumpToPage.valueChanges.pipe(
       debounceTime(300), // Delay filter data after time span has passed without another source emission
@@ -134,7 +122,7 @@ export class ItPaginationComponent implements OnChanges {
    * Create array to generate pagination of `visiblePages` element
    */
   private calculatePages(): Array<number> {
-    if (this.isSimpleMode) {
+    if (this.simpleMode) {
       return [this.currentPage];
     }
 

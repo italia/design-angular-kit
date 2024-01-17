@@ -117,6 +117,39 @@
         },
         "go-to-homepage": "Torna alla homepage"
       }
+    },
+    "date-ago-pipe": {
+      "just-now": "Proprio adesso",
+      "singular-year-ago": "{{count}} anno fa",
+      "year-ago": "{{count}} anni fa",
+      "singular-month-ago": "{{count}} mese fa",
+      "month-ago": "{{count}} mesi fa",
+      "singular-week-ago": "{{count}} settimana fa",
+      "week-ago": "{{count}} settimane fa",
+      "singular-day-ago": "{{count}} giorno fa",
+      "day-ago": "{{count}} giorni fa",
+      "singular-hour-ago": "{{count}} ora fa",
+      "hour-ago": "{{count}} ore fa",
+      "singular-minute-ago": "{{count}} minuto fa",
+      "minute-ago": "{{count}} minuti fa",
+      "singular-second-ago": "{{count}} secondo fa",
+      "second-ago": "{{count}} secondi fa"
+    },
+    "duration": {
+      "second": "{{count}} secondo",
+      "seconds": "{{count}} secondi",
+      "minute": "{{count}} minuto",
+      "minutes": "{{count}} minuti",
+      "hour": "{{count}} ora",
+      "hours": "{{count}} ore",
+      "day": "{{count}} giorno",
+      "days": "{{count}} giorni",
+      "week": "{{count}} settimana",
+      "weeks": "{{count}} settimane",
+      "month": "{{count}} mese",
+      "months": "{{count}} mesi",
+      "year": "{{count}} anno",
+      "years": "{{count}} anni"
     }
   }
 }

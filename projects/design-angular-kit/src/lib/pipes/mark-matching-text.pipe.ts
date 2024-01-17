@@ -1,22 +1,35 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
+/**
+ * Allows you to highlight text with the <mark> tag
+ */
 @Pipe({
   standalone: true,
-  name: 'markMatchingText'
+  name: 'itMarkMatchingText'
 })
-export class MarkMatchingTextPipe implements PipeTransform {
+export class ItMarkMatchingTextPipe implements PipeTransform {
   constructor(
     private readonly domSanitizer: DomSanitizer
   ) {
   }
 
-  transform(allString: string, searchString: string): any {
+  /**
+   * Allows you to highlight text with the <mark> tag
+   * @param allString the full text to search from
+   * @param searchString the string to search
+   */
+  transform(allString: string | undefined, searchString: string | number | null | undefined): SafeHtml | string | undefined {
     if (!searchString) {
       return allString;
     } else if (!allString) {
       return '';
     }
+
+    if (typeof searchString === 'number') {
+      searchString = searchString.toString();
+    }
+
     // Check if search string is a substring of pivot string (no case-sensitive)
     const idxOfMatchString = allString.toLowerCase().indexOf(searchString.toLowerCase());
     if (idxOfMatchString !== -1) {

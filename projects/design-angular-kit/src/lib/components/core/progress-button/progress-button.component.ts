@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ProgressBarColor } from '../../../interfaces/core';
 import { ItProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { NgIf } from '@angular/common';
@@ -21,7 +20,7 @@ export class ItProgressButtonComponent {
    * - <b>number</b> [0, 100]: Assign a specific value to the progress bar
    * @default undefined
    */
-  @Input() progress: number | BooleanInput | undefined;
+  @Input() progress: number | boolean | undefined;
 
   /**
    * The progress bar color
@@ -29,7 +28,7 @@ export class ItProgressButtonComponent {
   @Input() progressColor: ProgressBarColor | undefined;
 
   get isProgress(): boolean {
-    return typeof this.progress === 'number' || isTrueBooleanInput(this.progress);
+    return typeof this.progress === 'number' || !!this.progress;
   }
 
   get progressValue(): number {
@@ -37,7 +36,7 @@ export class ItProgressButtonComponent {
   }
 
   get isIndeterminate(): boolean {
-    return typeof this.progress !== 'number' && isTrueBooleanInput(this.progress);
+    return typeof this.progress !== 'number' && !!this.progress;
   }
 
 }

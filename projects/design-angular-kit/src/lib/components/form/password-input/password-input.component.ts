@@ -2,12 +2,12 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, O
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { ItValidators } from '../../../validators/it-validators';
 import { map, Observable } from 'rxjs';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { InputPassword } from 'bootstrap-italia';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -72,13 +72,13 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
    * Enable to show the strength meter
    * @default false
    */
-  @Input() showStrengthMeter: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) showStrengthMeter?: boolean;
 
   /**
    * Is the confirmation password field
    * @default false
    */
-  @Input() confirmPasswordField: BooleanInput = false;
+  @Input({ transform: inputToBoolean }) confirmPasswordField?: boolean;
 
   /**
    * Input autocomplete attribute (Browser autocomplete)
@@ -93,7 +93,7 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
   override ngOnInit() {
     super.ngOnInit();
 
-    if (!this.isConfirmPasswordField) {
+    if (!this.confirmPasswordField) {
       this.addValidators(ItValidators.password(
         this.minLength,
         this.useNumber,
@@ -119,11 +119,7 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
   }
 
   protected get isStrengthMeter(): boolean {
-    return !this.isConfirmPasswordField && isTrueBooleanInput(this.showStrengthMeter);
-  }
-
-  protected get isConfirmPasswordField(): boolean {
-    return isTrueBooleanInput(this.confirmPasswordField);
+    return !this.confirmPasswordField && !!this.showStrengthMeter;
   }
 
   /**

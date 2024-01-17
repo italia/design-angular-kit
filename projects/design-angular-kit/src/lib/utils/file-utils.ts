@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-export class FileUtils {
+export class ItFileUtils {
 
   /**
    * Return the file size string
@@ -66,7 +66,7 @@ export class FileUtils {
    * @param filename the file name
    */
   public static base64ToFile(base64: string, mimeType: string, filename: string): File {
-    const fileBlob = FileUtils.base64ToBlob(base64, mimeType);
+    const fileBlob = ItFileUtils.base64ToBlob(base64, mimeType);
     return new File([fileBlob], filename, { type: mimeType });
   }
 

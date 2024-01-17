@@ -1,9 +1,9 @@
-<div *ngIf="!isLinkSubList" [class.multiline]="isMultiline"  [class]="isLinkList ? 'link-list-wrapper' : 'it-list-wrapper'">
-  <ul [class]="isLinkList ? 'link-list' : 'it-list'">
+<div *ngIf="!linkSubList" [class.multiline]="multiline"  [class]="linkList ? 'link-list-wrapper' : 'it-list-wrapper'">
+  <ul [class]="linkList ? 'link-list' : 'it-list'">
     <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
   </ul>
 </div>
-<ul *ngIf="isLinkSubList" class="link-sublist">
+<ul *ngIf="linkSubList" class="link-sublist">
   <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
 </ul>
 <ng-template #contentTpl><ng-content></ng-content></ng-template>

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Location, NgIf, NgTemplateOutlet } from '@angular/common';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ItButtonDirective } from '../../core/button/button.directive';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -35,13 +35,13 @@ export class ItBackButtonComponent {
    * Show/Hide icon
    * @default true
    */
-  @Input() showIcon: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) showIcon: boolean = true;
 
   /**
    * Show/Hide text
    * @default true
    */
-  @Input() showText: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) showText: boolean = true;
 
   /**
    * Custom back logic <br/>
@@ -51,14 +51,6 @@ export class ItBackButtonComponent {
    * (errorCallback is your function, pass backCbFn to the component)
    */
   @Input() backFn?: (location: Location) => void;
-
-  get isShowIcon(): boolean {
-    return isTrueBooleanInput(this.showIcon);
-  }
-
-  get isShowText(): boolean {
-    return isTrueBooleanInput(this.showText);
-  }
 
   constructor(
     public readonly _location: Location

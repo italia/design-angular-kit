@@ -3,10 +3,10 @@ import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.compon
 import { InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -36,8 +36,9 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
   /**
    * To prevent modification of the contained value.
    * - <b>plaintext</b>: Readonly field in the form stylized as plain text
+   * @default undefined
    */
-  @Input() readonly: BooleanInput | 'plaintext' | undefined;
+  @Input() readonly: boolean | 'plaintext' | undefined;
 
   /**
    * The max date value [Used only in type = 'date']
@@ -69,13 +70,15 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
 
   /**
    * If is a currency number [Used only in type = 'number']
+   * @default false
    */
-  @Input() currency: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) currency?: boolean;
 
   /**
    * If is a percentage number [Used only in type = 'number']
+   * @default false
    */
-  @Input() percentage: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) percentage?: boolean;
 
   /**
    * The currency or percentage symbol [Used only if percentage or currency]
@@ -85,8 +88,9 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
 
   /**
    * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']
+   * @default false
    */
-  @Input() adaptive: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) adaptive?: boolean;
 
   /**
    * Input autocomplete attribute (Browser autocomplete)
@@ -100,7 +104,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
       return true;
     }
 
-    if (this.type === 'number' && (isTrueBooleanInput(this.currency) || isTrueBooleanInput(this.percentage))) {
+    if (this.type === 'number' && (!!this.currency || !!this.percentage)) {
       return true;
     }
 
@@ -110,8 +114,8 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
   /**
    * Check is readonly field
    */
-  get isReadonly(): boolean {
-    return this.readonly === 'plaintext' || isTrueBooleanInput(this.readonly);
+  protected get isReadonly(): boolean {
+    return this.readonly === 'plaintext' || !!this.readonly;
   }
 
   /**
@@ -180,7 +184,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
     const validators: Array<ValidatorFn> = [];
     switch (this.type) {
       case 'number':
-        if (isTrueBooleanInput(this.percentage)) {
+        if (this.percentage) {
           this.min = this.min || 0;
           this.max = this.max || 100;
         }

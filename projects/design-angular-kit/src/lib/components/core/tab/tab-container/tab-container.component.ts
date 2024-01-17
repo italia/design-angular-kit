@@ -9,13 +9,13 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../../utils/boolean-input';
 import { ItTabItemComponent } from '../tab-item/tab-item.component';
 import { of, startWith, Subscription, switchMap, tap } from 'rxjs';
 import { Tab } from 'bootstrap-italia';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -28,18 +28,19 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
 
   /**
    * Tabs automatically occupy the entire available width
+   * @default false
    */
-  @Input() auto: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) auto?: boolean;
 
   /**
    * To obtain the correct margin between text and icon in the horizontally developed tab
    */
-  @Input() iconText: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) iconText?: boolean;
 
   /**
    * Dark style
    */
-  @Input() dark: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) dark?: boolean;
 
   /**
    * The tab items
@@ -49,10 +50,6 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
   @ViewChildren('tabNavLinks') private tabNavLinks?: QueryList<ElementRef<HTMLAnchorElement>>;
 
   private tabSubscriptions?: Array<Subscription>;
-
-  isTrueBooleanInput(booleanInput?: BooleanInput): boolean {
-    return isTrueBooleanInput(booleanInput);
-  }
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();

@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BackToTop } from 'bootstrap-italia';
 import { ItIconComponent } from '../../utils/icon/icon.component';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -16,34 +16,25 @@ export class ItBackToTopComponent extends ItAbstractComponent implements AfterVi
 
   /**
    * Show small button
+   * @default false
    */
-  @Input() small: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) small?: boolean;
 
   /**
    * Show shadow
+   * @default false
    */
-  @Input() shadow: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) shadow?: boolean;
 
   /**
    * Button usable button on a dark background
+   * @default false
    */
-  @Input() dark: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) dark?: boolean;
 
   private backToTop?: BackToTop;
 
   @ViewChild('backToTop') private backToTopElement?: ElementRef<HTMLAnchorElement>;
-
-  get isSmall(): boolean {
-    return isTrueBooleanInput(this.small);
-  }
-
-  get isShadow(): boolean {
-    return isTrueBooleanInput(this.shadow);
-  }
-
-  get isDark(): boolean {
-    return isTrueBooleanInput(this.dark);
-  }
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();

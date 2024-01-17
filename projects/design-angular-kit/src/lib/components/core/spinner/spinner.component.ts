@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { BooleanInput, isTrueBooleanInput } from '../../../utils/boolean-input';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -14,29 +14,20 @@ export class ItSpinnerComponent {
 
   /**
    * The spinner is active
+   * @default true
    */
-  @Input() active: BooleanInput = true;
+  @Input({ transform: inputToBoolean }) active: boolean = true;
 
   /**
    * Show a small spinner
+   * @default false
    */
-  @Input() small: BooleanInput | undefined;
+  @Input({ transform: inputToBoolean }) small?: boolean;
 
   /**
    * Show the double animation
+   * @default false
    */
-  @Input() double: BooleanInput | undefined;
-
-  get isActive(): boolean {
-    return isTrueBooleanInput(this.active);
-  }
-
-  get isSmall(): boolean {
-    return isTrueBooleanInput(this.small);
-  }
-
-  get isDouble(): boolean {
-    return isTrueBooleanInput(this.double);
-  }
+  @Input({ transform: inputToBoolean }) double?: boolean;
 
 }
