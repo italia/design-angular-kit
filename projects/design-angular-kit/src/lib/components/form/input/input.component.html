@@ -6,8 +6,7 @@
     [class.input-number-currency]="currency"
     [class.input-number-percentage]="percentage"
     [class.input-number-adaptive]="adaptive">
-
-    <span class="input-group-text" #prependText [class.d-none]="!prependText.hasChildNodes()">
+    <span class="input-group-text" #prependText>
       <ng-content select="[prependText]"></ng-content>
     </span>
 
@@ -16,7 +15,7 @@
       [for]="id"
       [class.active]="isActiveLabel"
       [class.input-number-label]="type === 'number'"
-      [class.empty-prepend-label]="!prependText.hasChildNodes()">
+      [class.empty-prepend-label]="!prependText.clientWidth">
       {{ label }}
     </label>
 
@@ -26,8 +25,8 @@
         type="number"
         [id]="id"
         [step]="step ?? null"
-        [min]="min ?? null"
-        [max]="max ?? null"
+        [min]="min ?? ''"
+        [max]="max ?? ''"
         [class.form-control]="readonly !== 'plaintext'"
         [class.form-control-plaintext]="readonly === 'plaintext'"
         [class.is-invalid]="isInvalid"
