@@ -3,7 +3,7 @@ import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } fr
 import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItIconComponent } from '../../utils/icon/icon.component';
-import { MarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
+import { ItMarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { AutocompleteItem } from '../../../interfaces/form';
 
@@ -11,7 +11,7 @@ import { AutocompleteItem } from '../../../interfaces/form';
   standalone: true,
   selector: 'it-autocomplete[autocompleteData]',
   templateUrl: './autocomplete.component.html',
-  imports: [AsyncPipe, ItIconComponent, MarkMatchingTextPipe, NgForOf, NgIf, NgTemplateOutlet, ReactiveFormsModule],
+  imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgForOf, NgIf, NgTemplateOutlet, ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItAutocompleteComponent extends ItAbstractFormComponent<string | null | undefined> implements OnInit {
