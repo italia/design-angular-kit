@@ -6,21 +6,17 @@
     [class.input-number-currency]="currency"
     [class.input-number-percentage]="percentage"
     [class.input-number-adaptive]="adaptive">
-    <div class="input-group-prepend" [class.d-none]="!prependText.hasChildNodes() && !prepend.hasChildNodes()">
-      <div #prepend>
-        <ng-content select="[prepend]"></ng-content>
-      </div>
-      <div class="input-group-text" #prependText>
-        <ng-content select="[prependText]"></ng-content>
-      </div>
-    </div>
+    
+    <span class="input-group-text" #prependText [class.d-none]="!prependText.hasChildNodes()">
+      <ng-content select="[prependText]"></ng-content>
+    </span>
 
     <label
       *ngIf="label"
       [for]="id"
       [class.active]="isActiveLabel"
       [class.input-number-label]="type === 'number'"
-      [class.empty-prepend-label]="!prependText.hasChildNodes() && !prepend.hasChildNodes()">
+      [class.empty-prepend-label]="!prependText.hasChildNodes()">
       {{ label }}
     </label>
 
