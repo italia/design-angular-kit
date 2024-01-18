@@ -34,7 +34,7 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
   /**
    * Dropdown mode
    */
-  @Input() mode: 'button' | 'link' = 'button';
+  @Input() mode: 'button' | 'link' | 'nav' = 'button';
 
   /**
    * Button color

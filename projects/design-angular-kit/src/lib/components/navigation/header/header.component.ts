@@ -22,7 +22,7 @@ export class ItHeaderComponent extends ItAbstractComponent {
 
   @Input() slimTitle: string | undefined;
 
-  @Input() loginStyle: 'none' | 'default' | 'full' = 'full';
+  @Input() loginStyle: 'none' | 'default' | 'full' = 'none';
 
   @Input({ transform: inputToBoolean }) smallHeader?: boolean = true;
 

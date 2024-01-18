@@ -60,6 +60,10 @@
           "link": "/componenti/tabs"
         },
         {
+          "label": "Header",
+          "link": "/componenti/header"
+        },
+        {
           "label": "Collapse",
           "link": "/componenti/collapse"
         },

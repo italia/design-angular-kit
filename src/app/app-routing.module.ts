@@ -23,6 +23,7 @@ const routes: Routes = [
     { path: 'tabs', loadChildren: () => import('src/app/tabs/tabs.module').then(m => m.TabsModule) },
     { path: 'tooltip', loadChildren: () => import('src/app/tooltip/tooltip.module').then(m => m.TooltipModule) },
     { path: 'button', loadChildren: () => import('src/app/button/button.module').then(m => m.ButtonModule) },
+    { path: 'header', loadChildren: () => import('src/app/header/header.module').then(m => m.HeaderModule) },
     { path: 'collapse', loadChildren: () => import('src/app/collapse/collapse.module').then(m => m.CollapseModule) },
     { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
     { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
