@@ -6,6 +6,7 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItMarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { AutocompleteItem } from '../../../interfaces/form';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -21,6 +22,11 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
    * @default undefined
    */
   @Input({ required: true }) autocompleteData!: Array<AutocompleteItem> | ((search?: string | null) => Observable<Array<AutocompleteItem>>);
+
+  /**
+   * To get a large version of Autocomplete
+   */
+  @Input({transform: inputToBoolean}) big?: boolean;
 
   /**
    * Time span [ms] has passed without another source emission, to delay data filtering.
