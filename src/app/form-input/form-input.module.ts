@@ -14,7 +14,6 @@ import { ModelDrivenValidationExampleComponent } from './model-driven-validation
 import { FormInputIconExampleComponent } from './form-input-icon/form-input-icon.component';
 import { FormInputNumberExampleComponent } from './form-input-number/form-input-number.component';
 import { FormInputCalendarExampleComponent } from './form-input-calendar/form-input-calendar.component';
-import { FormAutocompleteExampleComponent } from './form-autocomplete-example/form-autocomplete-example.component';
 
 @NgModule({
   imports: [
@@ -33,7 +32,6 @@ import { FormAutocompleteExampleComponent } from './form-autocomplete-example/fo
     ModelDrivenValidationExampleComponent,
     FormInputNumberExampleComponent,
     FormInputCalendarExampleComponent,
-    FormAutocompleteExampleComponent
   ]
 })
 export class FormInputModule { }

@@ -3,10 +3,10 @@ import { AutocompleteItem } from 'design-angular-kit/interfaces/form';
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'it-form-autocomplete-example',
-  templateUrl: './form-autocomplete-example.component.html',
+  selector: 'it-autocomplete-search-example',
+  templateUrl: './autocomplete-search-example.component.html',
 })
-export class FormAutocompleteExampleComponent {
+export class AutocompleteSearchExampleComponent {
   private _autoCompleteData: AutocompleteItem[] = [
     {
       value: 'Luisa Neri',

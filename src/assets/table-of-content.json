@@ -170,6 +170,10 @@
         {
           "label": "Range",
           "link": "/componenti/range"
+        },
+        {
+          "label": "Autocomplete",
+          "link": "/componenti/autocomplete"
         }
       ]
     }

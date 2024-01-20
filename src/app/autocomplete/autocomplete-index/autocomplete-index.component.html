@@ -1,0 +1,12 @@
+<h1 class="bd-title">Autocompletamento</h1>
+<p class="bd-lead">Elementi e stili per la creazione di input con autocompletamento.</p>
+<div [innerHTML]="component.description"></div>
+<it-tab-container>
+  <it-tab-item label="Esempi" active="true" class="pt-3">
+    <it-autocomplete-examples></it-autocomplete-examples>
+  </it-tab-item>
+  <it-tab-item label="API" class="pt-3">
+    <it-api-parameters [component]="component"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>
+

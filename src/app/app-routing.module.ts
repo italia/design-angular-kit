@@ -51,7 +51,8 @@ const routes: Routes = [
     { path: 'password-input', loadChildren: () => import('src/app/password-input/password-input.module').then(m => m.PasswordInputModule) },
     { path: 'carousel', loadChildren: () => import('src/app/carousel/carousel.module').then(m => m.CarouselModule) },
     { path: 'card', loadChildren: () => import('src/app/card/card.module').then(m => m.CardModule) },
-    { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) }
+    { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) },
+    { path: 'autocomplete', loadChildren: () => import('src/app/autocomplete/autocomplete.module').then(m => m.AutocompleteModule) },
   ]},
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },
