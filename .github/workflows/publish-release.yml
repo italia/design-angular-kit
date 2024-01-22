@@ -3,18 +3,15 @@
 name: Publish release
 
 on:
-  workflow_run:
-    workflows: ["Run tests"]
-    branches:
-      - main
-    types:
-      - completed
+  workflow_dispatch:
 
 permissions:
   contents: read # for checkout
 
 jobs:
   release:
+    # Run job only on main branch
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
