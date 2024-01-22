@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -9,12 +8,6 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './navbar-item.component.html',
   styleUrls: ['./navbar-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule]
+  imports: [NgIf, TranslateModule],
 })
-export class ItNavBarItemComponent extends ItAbstractComponent {
-
-  constructor() {
-    super();
-  }
-
-}
+export class ItNavBarItemComponent {}

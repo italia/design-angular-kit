@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -14,30 +14,24 @@ import { NavBarCollapsible } from 'bootstrap-italia';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule, ItIconComponent, ItButtonDirective]
+  imports: [NgIf, TranslateModule, ItIconComponent, ItButtonDirective],
 })
-export class ItNavBarComponent extends ItAbstractComponent {
-
-  private navbar?: NavBarCollapsible;
+export class ItNavBarComponent implements AfterViewInit {
   @Input({ transform: inputToBoolean }) megamenu?: boolean;
   @Input({ transform: inputToBoolean }) expand?: boolean = true;
+
   @ViewChild('collapseButton') private collapseButton?: ElementRef<HTMLButtonElement>;
   @ViewChild('collapseView') private collapseView?: ElementRef<HTMLButtonElement>;
 
+  private navbar?: NavBarCollapsible;
 
-  constructor() {
-    super();
-  }
-
-  override ngAfterViewInit() {
-    super.ngAfterViewInit();
+  ngAfterViewInit() {
     if (this.collapseButton && this.collapseView) {
       this.navbar = NavBarCollapsible.getOrCreateInstance(this.collapseView.nativeElement);
     }
   }
 
   toggleCollapse() {
-    this.navbar?.toggle(this.collapseButton?.nativeElement)
+    this.navbar?.toggle(this.collapseButton?.nativeElement);
   }
-
 }

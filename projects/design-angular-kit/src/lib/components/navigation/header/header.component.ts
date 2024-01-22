@@ -1,13 +1,23 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { ItAbstractComponent } from '../../../abstracts/abstract.component';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
-import { ItNavBarModule } from '../../navigation/navbar/navbar.module';
+import { ItNavBarModule } from '../navbar/navbar.module';
 
 import { ItButtonDirective } from '../../core/button/button.directive';
 import { inputToBoolean } from '../../../utils/coercion';
-import { HeaderSticky, Sticky } from 'bootstrap-italia';
+import { HeaderSticky } from 'bootstrap-italia';
 
 @Component({
   standalone: true,
@@ -15,10 +25,9 @@ import { HeaderSticky, Sticky } from 'bootstrap-italia';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule, ItIconComponent, ItButtonDirective, ItNavBarModule]
+  imports: [NgIf, TranslateModule, ItIconComponent, ItButtonDirective, ItNavBarModule],
 })
-export class ItHeaderComponent extends ItAbstractComponent {
-
+export class ItHeaderComponent implements AfterViewInit, OnChanges {
   @Input({ transform: inputToBoolean }) light?: boolean;
 
   @Input({ transform: inputToBoolean }) sticky?: boolean;
@@ -41,30 +50,25 @@ export class ItHeaderComponent extends ItAbstractComponent {
 
   private stickyHeader?: HeaderSticky;
 
-
   constructor() {
-    super();
-
     this.loginClick = new EventEmitter<Event>();
     this.searchClick = new EventEmitter<Event>();
   }
 
-  override ngAfterViewInit() {
-    super.ngAfterViewInit();
-    this.updateListeners()
+  ngAfterViewInit() {
+    this.updateListeners();
   }
 
-  override ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['sticky'] && changes['sticky'].currentValue == true && !changes['sticky'].firstChange) {
       this.updateListeners();
     }
-    if (changes['sticky'] && changes['sticky'].currentValue == false){
+    if (changes['sticky'] && changes['sticky'].currentValue == false) {
       this.stickyHeader?._elementObj?._unsetSticky();
-      this.stickyHeader?._elementObj?.dispose()
+      this.stickyHeader?._elementObj?.dispose();
       delete this.stickyHeader;
       this.stickyHeader = undefined;
     }
-    super.ngOnChanges(changes);
   }
 
   updateListeners() {
@@ -72,5 +76,4 @@ export class ItHeaderComponent extends ItAbstractComponent {
       this.stickyHeader = new HeaderSticky(this.headerWrapper.nativeElement);
     }
   }
-
 }
