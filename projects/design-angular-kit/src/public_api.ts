@@ -56,13 +56,17 @@ export * from './lib/components/core/tab/tab-container/tab-container.component';
 export * from './lib/components/core/tab/tab-item/tab-item.component';
 
 export * from './lib/components/core/table/table.component';
+export * from './lib/components/core/table/sort/sort.directive';
+export * from './lib/components/core/table/sort/sort-header/sort-header.component';
+
 export * from './lib/components/core/tooltip/tooltip.directive';
-export * from './lib/components/core/avatar/avatar.directive'
-export * from './lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component'
-export * from './lib/components/core/avatar/avatar-group/avatar-group.component'
+export * from './lib/components/core/avatar/avatar.directive';
+export * from './lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component';
+export * from './lib/components/core/avatar/avatar-group/avatar-group.component';
 
 // Forms components
 export * from './lib/components/form/form.module';
+export * from './lib/components/form/autocomplete/autocomplete.component';
 export * from './lib/components/form/checkbox/checkbox.component';
 export * from './lib/components/form/input/input.component';
 export * from './lib/components/form/password-input/password-input.component';
@@ -83,6 +87,10 @@ export * from './lib/components/navigation/breadcrumbs/breadcrumb/breadcrumb.com
 export * from './lib/components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';
 
 export * from './lib/components/navigation/header/header.component';
+export * from './lib/components/navigation/navbar/navbar/navbar.component';
+export * from './lib/components/navigation/navbar/navbar-item/navbar-item.component';
+export * from './lib/components/navigation/navbar/navbar.module';
+
 
 // Utils components
 export * from './lib/components/utils/error-page/error-page.component';

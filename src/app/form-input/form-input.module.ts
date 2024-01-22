@@ -31,7 +31,7 @@ import { FormInputCalendarExampleComponent } from './form-input-calendar/form-in
     TemplateDrivenValidationExampleComponent,
     ModelDrivenValidationExampleComponent,
     FormInputNumberExampleComponent,
-    FormInputCalendarExampleComponent
+    FormInputCalendarExampleComponent,
   ]
 })
 export class FormInputModule { }

@@ -23,6 +23,7 @@ const routes: Routes = [
     { path: 'tabs', loadChildren: () => import('src/app/tabs/tabs.module').then(m => m.TabsModule) },
     { path: 'tooltip', loadChildren: () => import('src/app/tooltip/tooltip.module').then(m => m.TooltipModule) },
     { path: 'button', loadChildren: () => import('src/app/button/button.module').then(m => m.ButtonModule) },
+    { path: 'header', loadChildren: () => import('src/app/header/header.module').then(m => m.HeaderModule) },
     { path: 'collapse', loadChildren: () => import('src/app/collapse/collapse.module').then(m => m.CollapseModule) },
     { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
     { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
@@ -50,7 +51,8 @@ const routes: Routes = [
     { path: 'password-input', loadChildren: () => import('src/app/password-input/password-input.module').then(m => m.PasswordInputModule) },
     { path: 'carousel', loadChildren: () => import('src/app/carousel/carousel.module').then(m => m.CarouselModule) },
     { path: 'card', loadChildren: () => import('src/app/card/card.module').then(m => m.CardModule) },
-    { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) }
+    { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) },
+    { path: 'autocomplete', loadChildren: () => import('src/app/autocomplete/autocomplete.module').then(m => m.AutocompleteModule) },
   ]},
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },

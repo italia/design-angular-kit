@@ -98,6 +98,11 @@
       "website-search": "Search in the site",
       "navigation-path": "Navigation path"
     },
+    "navbar": {
+      "aria-label-main": "Main navigation",
+      "aria-label-toggle": "Show/Hide navigation",
+      "hide": "Hide navigation"
+    },
     "utils": {
       "selected": "Selected",
       "language-selection": "Language selection: {{lang}}",

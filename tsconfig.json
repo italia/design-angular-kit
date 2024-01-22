@@ -21,11 +21,6 @@
       "es2020",
       "dom"
     ],
-    "paths": {
-      "design-angular-kit/*": [
-        "projects/design-angular-kit/src/lib/*"
-      ]
-    },
     "useDefineForClassFields": false
   }
 }
