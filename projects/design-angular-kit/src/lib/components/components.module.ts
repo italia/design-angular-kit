@@ -32,6 +32,7 @@ import { ItBreadcrumbsModule } from './navigation/breadcrumbs/breadcrumbs.module
 import { ItHeaderComponent } from './navigation/header/header.component';
 import { ItIconComponent } from './utils/icon/icon.component';
 import { ItLanguageSwitcherComponent } from './utils/language-switcher/language-switcher.component';
+import { ItNavBarModule } from './navigation/navbar/navbar.module';
 import { ItErrorPageComponent } from './utils/error-page/error-page.component';
 import { ItChipComponent } from './core/chip/chip.component';
 import { ItForwardDirective } from './core/forward/forward.directive';
@@ -84,7 +85,8 @@ const navigation = [
   ItBackButtonComponent,
   ItBackToTopComponent,
   ItBreadcrumbsModule,
-  ItHeaderComponent
+  ItHeaderComponent,
+  ItNavBarModule
 ];
 
 /**

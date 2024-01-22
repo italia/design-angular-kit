@@ -98,6 +98,11 @@
       "website-search": "Cerca nel sito",
       "navigation-path": "Percorso di navigazione"
     },
+    "navbar": {
+      "aria-label-main": "Navigazione principale",
+      "aria-label-toggle": "Mostra/Nascondi la navigazione",
+      "hide": "Nascondi la navigazione"
+    },
     "utils": {
       "selected": "Selezionata",
       "language-selection": "Selezione lingua: {{lang}}",

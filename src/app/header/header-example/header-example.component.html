@@ -1,18 +1,12 @@
 <h3>Componente Header</h3>
 <div class="bd-example">
-  <it-header slimTitle="Ente di appartenenza" [loginStyle]="login" [light]="light" [showSearch]="search">
+  <it-header slimTitle="Ente di appartenenza" [loginStyle]="login" [light]="light" [showSearch]="search" [sticky]="sticky">
     <ul class="link-list" slimLinkList>
       <li><a class="dropdown-item list-item" href="#">Link 1</a></li>
       <li><a class="list-item active" href="#" aria-current="page">Link 2 (Attivo)</a></li>
     </ul>
     <ng-container slimRightZone>
-      <it-dropdown mode="nav">
-        <span button>ITA</span>
-        <ng-container list>
-          <it-dropdown-item>ITA</it-dropdown-item>
-          <it-dropdown-item>ENG</it-dropdown-item>
-        </ng-container>
-      </it-dropdown>
+      <it-language-switcher mode="nav"></it-language-switcher>
     </ng-container>
     <ng-container brand>
       <a href="#">
@@ -43,22 +37,37 @@
         </li>
       </ul>
     </div>
+    <ng-container navItems>
+      <it-navbar-item><a class="nav-link active" href="#" aria-current="page"><span>Link 1 (attivo)</span></a></it-navbar-item>
+      <it-navbar-item><a class="nav-link disabled" href="#" aria-disabled="true"><span>Link 2 (disabilitato)</span></a></it-navbar-item>
+      <it-navbar-item><a class="nav-link" href="#"><span>Link 3</span></a></it-navbar-item>
+      <it-navbar-item><a class="nav-link" href="#"><span>Link 4</span></a></it-navbar-item>
+      <it-navbar-item>
+        <it-dropdown mode="nav">
+          <span button>Menu dropdown</span>
+          <ng-container list>
+            <it-dropdown-item>Link lista 1</it-dropdown-item>
+            <it-dropdown-item>Link lista 2</it-dropdown-item>
+          </ng-container>
+        </it-dropdown>
+      </it-navbar-item>
+    </ng-container>
   </it-header>
-</div>
-
-<div class="row">
-  <div class="form-check col-12 col-md-3">
-    <h5>Opzioni</h5>
-    <it-checkbox [(ngModel)]="light" label="Tema chiaro"></it-checkbox>
-    <it-checkbox [(ngModel)]="search" label="Visualizza ricerca"></it-checkbox>
-  </div>
-  <div class="form-check col-12 col-md-3">
-    <h5>Tipologia di login</h5>
-    <it-radio-button name="default" [(ngModel)]="login" value="none"
-                     label="Nessuno"></it-radio-button>
-    <it-radio-button name="dropup" [(ngModel)]="login" value="default"
-                     label="Default"></it-radio-button>
-    <it-radio-button name="dropstart" [(ngModel)]="login" value="full"
-                     label="Pulsante largo"></it-radio-button>
+  <div class="row">
+    <div class="form-check col-12 col-md-3">
+      <h5>Opzioni</h5>
+      <it-checkbox [(ngModel)]="light" label="Tema chiaro"></it-checkbox>
+      <it-checkbox [(ngModel)]="search" label="Visualizza ricerca"></it-checkbox>
+      <it-checkbox [(ngModel)]="sticky" label="Header sticky"></it-checkbox>
+    </div>
+    <div class="form-check col-12 col-md-3">
+      <h5>Tipologia di login</h5>
+      <it-radio-button name="default" [(ngModel)]="login" value="none"
+                       label="Nessuno"></it-radio-button>
+      <it-radio-button name="dropup" [(ngModel)]="login" value="default"
+                       label="Default"></it-radio-button>
+      <it-radio-button name="dropstart" [(ngModel)]="login" value="full"
+                       label="Pulsante largo"></it-radio-button>
+    </div>
   </div>
 </div>

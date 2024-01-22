@@ -1,4 +1,4 @@
-<header class="it-header-wrapper">
+<header #headerWrapper class="it-header-wrapper" [class.it-header-sticky]="sticky" data-bs-position-type="fixed" data-bs-sticky-class-name="is-sticky">
   <div *ngIf="showSlim" class="it-header-slim-wrapper" [class.theme-light]="light">
     <div class="container">
       <div class="row">
@@ -60,7 +60,16 @@
         </div>
       </div>
     </div>
-
-    <!-- TODO: complete header -->
+    <div class="it-header-navbar-wrapper" [class.theme-light-desk]="light">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <it-navbar>
+              <ng-content navItems select="[navItems]"></ng-content>
+            </it-navbar>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </header>

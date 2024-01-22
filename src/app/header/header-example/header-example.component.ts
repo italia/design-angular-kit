@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderExampleComponent {
   light = false;
+  sticky = false;
   search = false;
   login = 'none';
 }
