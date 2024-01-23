@@ -22,7 +22,7 @@
 <div *ngIf="tabs" class="tab-content">
   <div *ngFor="let tab of tabs"
        [id]="tab.id+'-tab'"
-       class="tab-pane p-4 fade {{tab.class ?? ''}}"
+       class="tab-pane p-0 p-md-4 p-lg-0 p-sm-0 fade {{tab.class ?? ''}}"
        [class.active]="isTrueBooleanInput(tab.active)"
        [class.show]="isTrueBooleanInput(tab.active)"
        role="tabpanel"

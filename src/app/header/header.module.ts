@@ -6,7 +6,6 @@ import {HeaderRoutingModule} from "./header-routing.module";
 import { HeaderSlimComponent } from './header-slim/header-slim.component';
 import { HeaderExamplesComponent } from './header-examples/header-examples.component';
 import { HeaderCentralComponent } from './header-central/header-central.component';
-import { HeaderNavComponent } from './header-nav/header-nav.component';
 
 
 @NgModule({
@@ -14,8 +13,7 @@ import { HeaderNavComponent } from './header-nav/header-nav.component';
     HeaderIndexComponent,
     HeaderSlimComponent,
     HeaderExamplesComponent,
-    HeaderCentralComponent,
-    HeaderNavComponent
+    HeaderCentralComponent
   ],
   imports: [
     CommonModule,
