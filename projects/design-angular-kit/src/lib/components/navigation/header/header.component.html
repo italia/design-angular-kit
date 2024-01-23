@@ -4,10 +4,10 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="it-header-slim-wrapper-content">
-						<a [class.d-none]="secondaryNavigation" class="d-lg-block navbar-brand" href="#">{{title}}</a>
+						<a [class.d-none]="secondaryNavigation" class="d-lg-block navbar-brand" href="#">{{slimTitle}}</a>
             <div class="nav-mobile">
               <it-menu *ngIf="secondaryNavigation" [menuConfig]="secondaryNavigation" class="nav-mobile"
-							[slimTitle]="title"></it-menu>
+							[slimTitle]="slimTitle"></it-menu>
             </div>
 						<div class="it-header-slim-right-zone">
 							<it-language-switcher></it-language-switcher>
@@ -28,13 +28,13 @@
 			</div>
 		</div>
 	</div>
-	<div *ngIf="!isSlimHeader" class="it-nav-wrapper">
-		<div class="it-header-center-wrapper" [class.it-small-header]="isSmallHeader" [class.theme-light]="isLight">
+	<div class="it-nav-wrapper">
+		<div *ngIf="isMainHeader" class="it-header-center-wrapper" [class.it-small-header]="isCompactHeader" [class.theme-light]="isLight">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
 						<div class="it-header-center-content-wrapper">
-							<div class="it-brand-wrapper">
+							<div class="it-brand-wrapper p-0">
 								<ng-content select="[brand]"></ng-content>
 								<a href="#">
 									<it-icon [name]="titleIcon"></it-icon>
@@ -46,8 +46,9 @@
 							</div>
 							<div class="it-right-zone">
 								<ng-content select="[rightZone]"></ng-content>
-								<div class="it-socials d-none d-md-flex">
-									<it-menu *ngIf="socialNavigation" [menuConfig]="socialNavigation"></it-menu>
+								<div class="it-socials d-none d-md-flex" *ngIf="socialNavigation" >
+                  <span class="d-none d-md-block">{{'it.navigation.follow-us'|translate}}</span>
+									<it-menu [menuConfig]="socialNavigation"></it-menu>
 								</div>
 								<div class="it-search-wrapper" *ngIf="isShowSearch">
 									<span class="d-none d-md-block">{{'it.navigation.search'|translate}}</span>

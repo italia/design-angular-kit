@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
-import {ItMenuConfig} from "../../../../projects/design-angular-kit/src/lib/components/navigation/menu/menu.interface";
+import {
+  ItMenuConfig, ItMenuDivider,
+  ItMenuLink
+} from "../../../../projects/design-angular-kit/src/lib/components/navigation/menu/menu.interface";
 
 @Component({
   selector: 'it-header-slim',
@@ -28,8 +31,8 @@ export class HeaderSlimComponent {
         type: 'link',
         label: 'Link 3 (Disabilitato)',
         link: 'https://www.link3.it',
-        disabled: true,
       }
     ]
   }
+
 }

@@ -24,6 +24,10 @@ export class ItHeaderComponent extends ItAbstractComponent {
 
   @Input() slimHeader?: BooleanInput = false;
 
+  @Input() mainHeader?: BooleanInput = true;
+
+  @Input() compactHeader?: BooleanInput = false;
+
   @Input() slimTitle: string | undefined;
 
   @Input() mainNavigation: ItMenuConfig | undefined;
@@ -61,6 +65,14 @@ export class ItHeaderComponent extends ItAbstractComponent {
 
   get isSlimHeader(): boolean {
     return isTrueBooleanInput(this.slimHeader);
+  }
+
+  get isMainHeader(): boolean {
+    return isTrueBooleanInput(this.mainHeader);
+  }
+
+  get isCompactHeader(): boolean {
+    return isTrueBooleanInput(this.compactHeader);
   }
 
   get isSmallHeader(): boolean {

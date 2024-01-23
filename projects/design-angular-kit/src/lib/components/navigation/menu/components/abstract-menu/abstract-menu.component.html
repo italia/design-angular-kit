@@ -1,14 +1,17 @@
-<ul *ngIf="menuConfig.type == 'icon-list'">
-  <li *ngFor="let i of menuConfig.items">
-    <a *ngIf="isIcon(i)" [href]="i.link" target="_blank">
-      <it-icon [name]="i.icon"></it-icon>
-    </a>
-    <span *ngIf="isText(i)">{{ i.label |translate}}</span>
-  </li>
-</ul>
+<div *ngIf="menuConfig.type == 'icon-list'">
+  <ul>
+    <li *ngFor="let i of menuConfig.items">
+      <a *ngIf="isIcon(i)" [href]="i.link" target="_blank">
+        <it-icon [name]="i.icon"></it-icon>
+      </a>
+      <span *ngIf="isText(i)">{{ i.label |translate}}</span>
+    </li>
+  </ul>
+</div>
 
 <nav *ngIf="menuConfig.type == 'link-list'" aria-label="{{menuConfig.label| translate}}">
-  <a id="it-opener" class="it-opener d-lg-none" data-bs-toggle="collapse" href="#menu1a" role="button" aria-expanded="false" aria-controls="menu4">
+  <a id="it-opener" class="it-opener d-lg-none" data-bs-toggle="collapse" href="#menu1a" role="button"
+     aria-expanded="false" aria-controls="menu4">
     <span>{{slimTitle}}</span>
     <it-icon aria-hidden="true" name="expand"></it-icon>
   </a>
