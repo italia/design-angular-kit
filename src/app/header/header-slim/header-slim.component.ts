@@ -31,6 +31,7 @@ export class HeaderSlimComponent {
         type: 'link',
         label: 'Link 3 (Disabilitato)',
         link: 'https://www.link3.it',
+        disabled: true
       }
     ]
   }
