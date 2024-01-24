@@ -6,6 +6,7 @@ module.exports = {
     "main",
     {
       name: "prerelease",
+      channel: "prerelease",
       prerelease: true
     },
   ],
