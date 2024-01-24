@@ -14,8 +14,12 @@
 </p>
 
 <p align="center">
+    <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit/prerelease.svg" alt="NPM"></a>
     <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit/unstable.svg" alt="NPM"></a>
-    <a href="https://github.com/italia/design-angular-kit/actions"><img src="https://github.com/italia/design-angular-kit/actions/workflows/ci.yml/badge.svg" alt="Build"></a>
+</p>
+
+<p align="center">
+    <a href="https://github.com/italia/design-angular-kit/actions"><img src="https://github.com/italia/design-angular-kit/actions/workflows/publish-release.yml/badge.svg" alt="Build"></a>
     <a href="https://codecov.io/gh/italia/design-angular-kit"><img src="https://codecov.io/gh/italia/design-angular-kit/branch/main/graph/badge.svg?token=0Ud6YSFi0r" alt="codecov"></a>
     <a href="https://github.com/italia/design-angular-kit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/italia/design-angular-kit.svg" alt="License"></a>
     <a href="https://github.com/italia/design-angular-kit/issues"><img src="https://img.shields.io/github/issues/italia/design-angular-kit.svg" alt="GitHub issues"></a>
@@ -25,6 +29,15 @@
   <a href="https://github.com/semantic-release/semantic-release">
     <img src="https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release" alt="semantic-release: angular" />
   </a>
+  <a href="https://github.com/prettier/prettier">
+    <img src="https://img.shields.io/badge/code%20style-prettier-ff69b4?logo=Prettier" alt="code style: prettier" />
+  </a>
+  <a href="https://github.com/eslint/eslint">
+    <img src="https://img.shields.io/badge/formatter-angular--eslint-4B32C3?logo=eslint" alt="formatter: angular-eslint" />
+  </a>
+</p>
+
+<p align="center">
   <a href="https://developersitalia.slack.com/messages/C04H3C19D52/">
     <img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" />
   </a>
@@ -61,7 +74,7 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 Design Angular Kit è disponibile su NPM, per installarlo su una applicazione esistente sulla quale provare la libreria (attualmente non stabile) esegui il comando
 
 ```
-npm install design-angular-kit@unstable --save
+npm install design-angular-kit@prerelease --save
 ```
 
 Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.

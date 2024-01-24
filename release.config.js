@@ -3,9 +3,7 @@
  */
 module.exports = {
   branches: [
-    {
-      name: "main",
-    },
+    "main",
     {
       name: "prerelease",
       prerelease: true
@@ -13,7 +11,19 @@ module.exports = {
   ],
   preset: "angular",
   plugins: [
-    "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [
+          { type: "feat", scope: "upgrade-major", release: "major" },
+          { breaking: true, release: "minor" },
+          { revert: true, release: "patch" },
+          { type: "feat", release: "patch" },
+          { type: "fix", release: "patch" },
+          { type: "perf", release: "patch" },
+        ]
+      }
+    ],
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/github", // Creating the release and tag on GitHub
