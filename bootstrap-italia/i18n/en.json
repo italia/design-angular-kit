@@ -98,6 +98,11 @@
       "website-search": "Search in the site",
       "navigation-path": "Navigation path"
     },
+    "navbar": {
+      "aria-label-main": "Main navigation",
+      "aria-label-toggle": "Show/Hide navigation",
+      "hide": "Hide navigation"
+    },
     "utils": {
       "selected": "Selected",
       "language-selection": "Language selection: {{lang}}",
@@ -117,6 +122,39 @@
         },
         "go-to-homepage": "Return to homepage"
       }
+    },
+    "date-ago-pipe": {
+      "just-now": "Just now",
+      "singular-year-ago": "{{count}} year ago",
+      "year-ago": "{{count}} years ago",
+      "singular-month-ago": "{{count}} month ago",
+      "month-ago": "{{count}} months ago",
+      "singular-week-ago": "{{count}} week ago",
+      "week-ago": "{{count}} weeks ago",
+      "singular-day-ago": "{{count}} day ago",
+      "day-ago": "{{count}} days ago",
+      "singular-hour-ago": "{{count}} hour ago",
+      "hour-ago": "{{count}} hours ago",
+      "singular-minute-ago": "{{count}} minute ago",
+      "minute-ago": "{{count}} minutes ago",
+      "singular-second-ago": "{{count}} second ago",
+      "second-ago": "{{count}} seconds ago"
+    },
+    "duration": {
+      "second": "{{count}} second",
+      "seconds": "{{count}} seconds",
+      "minute": "{{count}} minute",
+      "minutes": "{{count}} minutes",
+      "hour": "{{count}} hour",
+      "hours": "{{count}} hours",
+      "day": "{{count}} day",
+      "days": "{{count}} days",
+      "week": "{{count}} week",
+      "weeks": "{{count}} weeks",
+      "month": "{{count}} month",
+      "months": "{{count}} months",
+      "year": "{{count}} year",
+      "years": "{{count}} years"
     }
   }
 }
