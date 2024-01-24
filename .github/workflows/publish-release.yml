@@ -10,8 +10,7 @@ permissions:
 
 jobs:
   release:
-    # Run job only on main branch
-    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/prerelease' #|| github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
@@ -39,7 +38,6 @@ jobs:
         run: |
           cp README.md dist/design-angular-kit/README.md
           cp .npmrc dist/design-angular-kit/.npmrc
-
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

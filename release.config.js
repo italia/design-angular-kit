@@ -5,6 +5,9 @@ module.exports = {
   branches: [
     {
       name: "main",
+    },
+    {
+      name: "prerelease",
       prerelease: true
     },
   ],

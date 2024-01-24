@@ -4,7 +4,8 @@ on:
   workflow_run:
     workflows: ["Publish release"]
     branches:
-      - main
+      # - main
+      - prerelease
     types:
       - completed
 
