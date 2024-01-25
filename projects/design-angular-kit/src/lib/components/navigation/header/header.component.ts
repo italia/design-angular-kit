@@ -22,6 +22,8 @@ export class ItHeaderComponent extends ItAbstractComponent {
 
   @Input() light: BooleanInput | undefined;
 
+  @Input() darkMobile: BooleanInput | undefined;
+
   @Input() slimHeader?: BooleanInput = false;
 
   @Input() mainHeader?: BooleanInput = true;
@@ -61,6 +63,10 @@ export class ItHeaderComponent extends ItAbstractComponent {
 
   get isLight(): boolean {
     return isTrueBooleanInput(this.light);
+  }
+
+  get isDarkMobile(): boolean {
+    return isTrueBooleanInput(this.darkMobile);
   }
 
   get isSlimHeader(): boolean {
