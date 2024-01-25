@@ -4,7 +4,7 @@
       <a *ngIf="isIcon(i)" [href]="i.link" target="_blank">
         <it-icon [name]="i.icon"></it-icon>
       </a>
-      <span *ngIf="isText(i)">{{ i.label | translate}}</span>
+      <span *ngIf="isText(i)">{{ i.label | translate }}</span>
     </li>
   </ul>
 </div>
@@ -17,8 +17,8 @@
      href="#menu1a"
      role="button"
      [attr.aria-expanded]="menuConfig.items.length > 0 ? 'false' : null"
-      [attr.aria-controls]="menuConfig.items.length > 0 ? 'menu4' : null">
-    <span>{{slimTitle}}</span>
+     [attr.aria-controls]="menuConfig.items.length > 0 ? 'menu4' : null">
+    <span>{{ slimTitle }}</span>
     <it-icon aria-hidden="true" name="expand"></it-icon>
   </a>
   <div id="menu1a" class="link-list-wrapper collapse">
@@ -33,7 +33,7 @@
           >{{ i.label }}</a>
         </span>
         <span *ngIf="i.type === 'text'">
-          <p class="list-item" >{{i.label}}</p>
+          <p class="list-item">{{ i.label }}</p>
         </span>
 
       </li>
@@ -42,63 +42,64 @@
 </nav>
 
 <nav *ngIf="menuConfig.type == 'navbar'"
-     [attr.aria-label]="menuConfig.label| translate"
-     class="navbar navbar-expand-lg has-megamenu">
-  <button class="custom-navbar-toggler"
-          type="button"
-          aria-controls="nav1"
-          aria-expanded="false"
-          [attr.aria-label]="('it.navigation.show'| translate)+'/'+('it.navigation.hide-navigation'| translate)"
-          data-bs-toggle="navbarcollapsible" data-bs-target="#nav1">
-    <it-icon name="burger"></it-icon>
-  </button>
-  <div class="navbar-collapsable" id="nav1" style="display: none;">
-    <div class="overlay" style="display: none;"></div>
-    <div class="close-div">
-      <button class="btn close-menu" type="button">
-        <span class="visually-hidden">{{'it.navigation.hide-navigation'| translate}}</span>
-        <it-icon name="close-big"></it-icon>
-      </button>
-    </div>
-    <div class="menu-wrapper">
-      <ul class="navbar-nav">
-        <li *ngFor="let i of menuConfig.items" class="nav-item"
-            [class.dropdown]="isMegamenu(i) || isDropdown(i)"
-            [class.megamenu]="isMegamenu(i)">
-          <a *ngIf="i.type === 'link'"
-             class="nav-link"
-             [href]="i.link"
-             [attr.aria-disabled]="i.disabled"
-             [class.active]="isLinkActive(i.link)"
-             [class.disabled]="i.disabled">
-            <span>{{ i.label| translate}}</span>
-          </a>
-          <a *ngIf="i.type === 'megamenu' || i.type === 'dropdown'"
-             class="nav-link dropdown-toggle"
-             href="#"
-             [attr.aria-disabled]="i.disabled"
-             [attr.aria-expanded]="false"
-             [attr.data-bs-toggle]="'dropdown'"
-             [class.active]="false"
-             [class.disabled]="i.disabled">
-            <span>{{ i.label| translate}}</span>
-            <it-icon name="expand" size="xs"></it-icon>
-          </a>
-          <div *ngIf="i.type === 'dropdown'" class="dropdown-menu" role="region">
-            <it-menu-dropdown [dropdown]="i"></it-menu-dropdown>
-          </div>
-          <div *ngIf="i.type === 'megamenu' && i.items"
-               class="dropdown-menu"
-               role="region"
-               aria-labelledby="mainNavMegamenu1">
-            <div class="row">
-              <div class="col-12 col-lg-4" *ngFor="let s of i.items">
-                <it-menu-dropdown [dropdown]="s"></it-menu-dropdown>
+     [attr.aria-label]="menuConfig.label| translate">
+  <div class="navbar navbar-expand-lg has-megamenu">
+    <button class="custom-navbar-toggler"
+            type="button"
+            aria-controls="nav1"
+            aria-expanded="false"
+            [attr.aria-label]="('it.navigation.show'| translate)+'/'+('it.navigation.hide-navigation'| translate)"
+            data-bs-toggle="navbarcollapsible" data-bs-target="#nav1">
+      <it-icon name="burger"></it-icon>
+    </button>
+    <div class="navbar-collapsable" id="nav1" style="display: none;">
+      <div class="overlay" style="display: none;"></div>
+      <div class="close-div">
+        <button class="btn close-menu" type="button">
+          <span class="visually-hidden">{{ 'it.navigation.hide-navigation'| translate }}</span>
+          <it-icon name="close-big"></it-icon>
+        </button>
+      </div>
+      <div class="menu-wrapper">
+        <ul class="navbar-nav">
+          <li *ngFor="let i of menuConfig.items" class="nav-item"
+              [class.dropdown]="isMegamenu(i) || isDropdown(i)"
+              [class.megamenu]="isMegamenu(i)">
+            <a *ngIf="i.type === 'link'"
+               class="nav-link"
+               [href]="i.link"
+               [attr.aria-disabled]="i.disabled"
+               [class.active]="isLinkActive(i.link)"
+               [class.disabled]="i.disabled">
+              <span>{{ i.label| translate }}</span>
+            </a>
+            <a *ngIf="i.type === 'megamenu' || i.type === 'dropdown'"
+               class="nav-link dropdown-toggle"
+               href="#"
+               [attr.aria-disabled]="i.disabled"
+               [attr.aria-expanded]="false"
+               [attr.data-bs-toggle]="'dropdown'"
+               [class.active]="false"
+               [class.disabled]="i.disabled">
+              <span>{{ i.label| translate }}</span>
+              <it-icon name="expand" size="xs"></it-icon>
+            </a>
+            <div *ngIf="i.type === 'dropdown'" class="dropdown-menu" role="region">
+              <it-menu-dropdown [dropdown]="i"></it-menu-dropdown>
+            </div>
+            <div *ngIf="i.type === 'megamenu' && i.items"
+                 class="dropdown-menu"
+                 role="region"
+                 aria-labelledby="mainNavMegamenu1">
+              <div class="row">
+                <div class="col-12 col-lg-4" *ngFor="let s of i.items">
+                  <it-menu-dropdown [dropdown]="s"></it-menu-dropdown>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
