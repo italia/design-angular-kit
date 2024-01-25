@@ -20,6 +20,8 @@ export class ItAbstractMenuComponent extends ItAbstractComponent {
    */
   @Input() slimTitle: string | undefined;
 
+  navUUID: string | undefined = Math.random().toString(36).substring(7);
+
 
   isMegamenu(menuItem: ItMenuItem) {
     return menuItem.type == 'megamenu';

@@ -41,18 +41,18 @@
   </div>
 </nav>
 
-<nav *ngIf="menuConfig.type == 'navbar'"
-     [attr.aria-label]="menuConfig.label| translate">
-  <div class="navbar navbar-expand-lg has-megamenu">
+<ng-container *ngIf="menuConfig.type == 'navbar'">
+  <nav [attr.aria-label]="menuConfig.label| translate" class="navbar navbar-expand-lg has-megamenu">
     <button class="custom-navbar-toggler"
             type="button"
-            aria-controls="nav1"
+            [attr.aria-controls]="navUUID"
             aria-expanded="false"
             [attr.aria-label]="('it.navigation.show'| translate)+'/'+('it.navigation.hide-navigation'| translate)"
-            data-bs-toggle="navbarcollapsible" data-bs-target="#nav1">
+            [attr.data-bs-target]="'#'+navUUID"
+            data-bs-toggle="navbarcollapsible">
       <it-icon name="burger"></it-icon>
     </button>
-    <div class="navbar-collapsable" id="nav1" style="display: none;">
+    <div class="navbar-collapsable" [id]="navUUID" style="display: none;">
       <div class="overlay" style="display: none;"></div>
       <div class="close-div">
         <button class="btn close-menu" type="button">
@@ -101,5 +101,6 @@
         </ul>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+
+</ng-container>
