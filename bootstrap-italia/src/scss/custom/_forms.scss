@@ -202,6 +202,9 @@ textarea {
     border-bottom: 1px solid $input-border;
     border-radius: 0;
     min-height: 2.5rem;
+  }
+
+  .input-group-prepend {
     margin-right: 0;
 
     .icon {
@@ -236,7 +239,9 @@ textarea {
 
 .input-group-lg {
   & > .form-control,
+  & > .input-group-prepend > .input-group-text,
   & > .input-group-append > .input-group-text,
+  & > .input-group-prepend > .btn,
   & > .input-group-append > .btn {
     padding: 0 1rem;
     border-radius: 0;
