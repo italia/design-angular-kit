@@ -1,10 +1,12 @@
+export type ItMenuType = 'megamenu' | 'megamenu-child' | 'dropdown' | 'link' | 'divider' | 'icon' | 'text';
 export interface ItMenuItem {
-  type: 'megamenu' | 'megamenu-child' | 'dropdown' | 'link' | 'divider' | 'icon' | 'text'
+  type: ItMenuType
 }
 
 export interface ItMenuMegaMenu extends ItMenuItem {
   type: 'megamenu'
   label: string
+  disabled?: boolean
   items?: ItMenuMegaMenuChild[]
 }
 
@@ -18,6 +20,7 @@ export interface ItMenuDropdown extends ItMenuItem {
   type: 'dropdown'
   label: string
   title?: string
+  disabled?: boolean
   items?: (ItMenuLink | ItMenuDivider)[]
 }
 
@@ -59,5 +62,4 @@ export type ItMenuConfig = {
   | {
   type: 'navbar';
   items: (ItMenuLink | ItMenuDivider | ItMenuDropdown | ItMenuMegaMenu)[];
-}
-  )
+})

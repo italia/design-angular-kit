@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ItMenuDropdown } from '../../menu.interface';
+import {ItMenuDropdown, ItMenuMegaMenuChild} from '../../menu.interface';
 
 @Component({
 	selector: 'it-menu-dropdown',
@@ -8,5 +8,5 @@ import { ItMenuDropdown } from '../../menu.interface';
 
 export class ItMenuDropdownComponent {
 
-	@Input({ required: true }) dropdown: ItMenuDropdown | undefined;
+	@Input({ required: true }) dropdown: ItMenuDropdown | ItMenuMegaMenuChild | undefined;
 }

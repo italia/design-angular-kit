@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ItAbstractComponent} from 'projects/design-angular-kit/src/lib/abstracts/abstract.component';
-import {ItMenuConfig, ItMenuItem} from '../../menu.interface';
+import {ItMenuConfig, ItMenuItem, ItMenuType} from '../../menu.interface';
 
 @Component({
   selector: 'it-menu',
@@ -23,7 +23,6 @@ export class ItAbstractMenuComponent extends ItAbstractComponent {
 
   isMegamenu(menuItem: ItMenuItem) {
     return menuItem.type == 'megamenu';
-
   }
 
   isDropdown(menuItem: ItMenuItem) {
@@ -33,18 +32,14 @@ export class ItAbstractMenuComponent extends ItAbstractComponent {
 
   isLink(menuItem: ItMenuItem) {
     return menuItem.type == 'link';
-
   }
 
   isDivider(menuItem: ItMenuItem) {
     return menuItem.type == 'divider';
-
   }
 
   isIcon(menuItem: ItMenuItem) {
-    console.log(menuItem);
     return menuItem.type == 'icon';
-
   }
 
   isText(menuItem: ItMenuItem) {

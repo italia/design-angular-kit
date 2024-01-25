@@ -149,6 +149,10 @@
         {
           "label": "Range",
           "link": "/componenti/range"
+        },
+        {
+          "label": "Header",
+          "link": "/componenti/header"
         }
       ]
     }

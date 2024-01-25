@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItMenuDropdownComponent } from './components/dropdown/dropdown.component';
@@ -10,7 +10,7 @@ import { ItAbstractMenuComponent } from './components/abstract-menu/abstract-men
 	CommonModule,
 	TranslateModule,
 	ItIconComponent,
-	
+
   ],
   declarations: [
 	ItAbstractMenuComponent,
@@ -19,7 +19,7 @@ import { ItAbstractMenuComponent } from './components/abstract-menu/abstract-men
   ],
   exports: [
 	ItAbstractMenuComponent,
-	
+
   ]
 })
 export class ItMenusModule {
