@@ -55,4 +55,5 @@ export class ItAbstractMenuComponent extends ItAbstractComponent {
   isLinkActive(link: string) {
     return link == window.location.href;
   }
+
 }
