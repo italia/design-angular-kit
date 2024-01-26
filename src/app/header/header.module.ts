@@ -6,7 +6,6 @@ import {HeaderRoutingModule} from "./header-routing.module";
 import { HeaderSlimComponent } from './header-slim/header-slim.component';
 import { HeaderExamplesComponent } from './header-examples/header-examples.component';
 import { HeaderCentralComponent } from './header-central/header-central.component';
-import { HeaderNavComponent } from './header-nav/header-nav.component';
 import {HeaderCompleteComponent} from "./header-complete/header-complete.component";
 
 
@@ -16,7 +15,6 @@ import {HeaderCompleteComponent} from "./header-complete/header-complete.compone
     HeaderSlimComponent,
     HeaderExamplesComponent,
     HeaderCentralComponent,
-    HeaderNavComponent,
     HeaderCompleteComponent
   ],
   imports: [
