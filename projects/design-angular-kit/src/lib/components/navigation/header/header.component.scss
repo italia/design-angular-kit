@@ -6,10 +6,6 @@
   display: none;
 }
 
-.it-header-wrapper {
-  z-index: 2000; // FIXME change class with real component hierarchy
-}
-
 .it-header-wrapper .disabled-link {
   pointer-events: none;
   cursor: default;

@@ -28,7 +28,7 @@ export class HeaderCentralComponent {
         type: 'icon',
         label: 'X',
         link: '#',
-        icon: 'twitter' // TODO: change with real icon
+        icon: 'twitter'
       }
     ]
   }

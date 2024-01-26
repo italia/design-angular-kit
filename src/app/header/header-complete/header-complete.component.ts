@@ -20,7 +20,7 @@ export class HeaderCompleteComponent {
       {
         type: 'link',
         label: 'Link 2 (Attivo)',
-        link: 'http://localhost:4200/#/componenti/header', // TODO: change with real link
+        link: 'https://italia.github.io/design-angular-kit/design-angular-kit#/componenti/header',
       },
       {
         type: 'link',
@@ -51,7 +51,7 @@ export class HeaderCompleteComponent {
         type: 'icon',
         label: 'X',
         link: '#',
-        icon: 'twitter' // TODO: change with real icon
+        icon: 'twitter'
       }
     ]
   }
@@ -63,7 +63,7 @@ export class HeaderCompleteComponent {
       {
         type: "link",
         label: "Link 1 (attivo)",
-        link: 'http://localhost:4200/#/componenti/header',  //TODO: change with real link
+        link: 'https://italia.github.io/design-angular-kit/design-angular-kit#/componenti/header',
       },
       {
         type: "link",

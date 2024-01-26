@@ -86,11 +86,6 @@ export class ItHeaderComponent extends ItAbstractComponent {
   get isCompactHeader(): boolean {
     return isTrueBooleanInput(this.compactHeader);
   }
-
-  get isSmallHeader(): boolean {
-    return isTrueBooleanInput(this.smallHeader);
-  }
-
   get isShowSearch(): boolean {
     return isTrueBooleanInput(this.showSearch);
   }

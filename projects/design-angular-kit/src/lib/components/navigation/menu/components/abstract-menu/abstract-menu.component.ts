@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ItAbstractComponent} from 'projects/design-angular-kit/src/lib/abstracts/abstract.component';
-import {ItMenuConfig, ItMenuItem, ItMenuType} from '../../menu.interface';
+import {ItMenuConfig, ItMenuItem} from '../../menu.interface';
 
 @Component({
   selector: 'it-menu',
@@ -30,10 +30,6 @@ export class ItAbstractMenuComponent extends ItAbstractComponent {
   isDropdown(menuItem: ItMenuItem) {
     return menuItem.type == 'dropdown';
 
-  }
-
-  isLink(menuItem: ItMenuItem) {
-    return menuItem.type == 'link';
   }
 
   isDivider(menuItem: ItMenuItem) {

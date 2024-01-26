@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {
-  ItMenuConfig, ItMenuDivider,
-  ItMenuLink
+  ItMenuConfig,
 } from "../../../../projects/design-angular-kit/src/lib/components/navigation/menu/menu.interface";
 
 @Component({
@@ -25,7 +24,7 @@ export class HeaderSlimComponent {
       {
         type: 'link',
         label: 'Link 2 (Attivo)',
-        link: 'http://localhost:4200/#/componenti/header', // TODO: change with real link
+        link: 'https://italia.github.io/design-angular-kit/design-angular-kit#/componenti/header',
       },
       {
         type: 'link',
