@@ -4,13 +4,17 @@
       <ng-content select="[icon]"></ng-content>
     </div>
 
-    <div *ngIf="avatar" class="avatar size-lg">
-      <img [attr.src]="avatar" alt="avatar">
-    </div>
+    @if (avatar) {
+      <div class="avatar size-lg">
+        <img [attr.src]="avatar" alt="avatar" />
+      </div>
+    }
 
-    <div *ngIf="image" class="it-thumb">
-      <img [attr.src]="image" alt="thumb">
-    </div>
+    @if (image) {
+      <div class="it-thumb">
+        <img [attr.src]="image" alt="thumb" />
+      </div>
+    }
 
     <div class="it-right-zone">
       <ng-content></ng-content>
@@ -18,7 +22,7 @@
 
       <span class="it-multiple">
         <span class="metadata">
-          <ng-content select="[metadata]" ></ng-content>
+          <ng-content select="[metadata]"></ng-content>
         </span>
 
         <ng-content select="[multiple]"></ng-content>
@@ -26,14 +30,13 @@
     </div>
   </ng-template>
 
-
-  <div *ngIf="!href; else link" [class]="itemClass">
-    <ng-container *ngTemplateOutlet="content"></ng-container>
-  </div>
-
-  <ng-template #link>
+  @if (!href) {
+    <div [class]="itemClass">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+  } @else {
     <it-link [class]="itemClass" [href]="href" [externalLink]="!!externalLink" [disabled]="!!disabled">
       <ng-container *ngTemplateOutlet="content"></ng-container>
     </it-link>
-  </ng-template>
+  }
 </li>

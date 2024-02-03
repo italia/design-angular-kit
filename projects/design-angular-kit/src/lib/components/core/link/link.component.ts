@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { inputToBoolean } from '../../../utils/coercion';
 
@@ -9,10 +9,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   selector: 'it-link',
   templateUrl: './link.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, RouterLink, NgTemplateOutlet]
+  imports: [RouterLink, NgTemplateOutlet],
 })
 export class ItLinkComponent extends ItAbstractComponent implements AfterViewInit, OnChanges {
-
   /**
    * The router link action
    *
@@ -21,6 +20,7 @@ export class ItLinkComponent extends ItAbstractComponent implements AfterViewIni
    * - string: shorthand for array of commands with just the string, i.e. ['/route']
    * - null|undefined: Disables the link by removing the href
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() href: any[] | string | null | undefined;
 
   /**

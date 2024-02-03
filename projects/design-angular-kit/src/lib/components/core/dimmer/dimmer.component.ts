@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 export type DimmerColor = '' | 'dimmer-primary';
 
@@ -11,38 +11,38 @@ export type DimmerColor = '' | 'dimmer-primary';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('fade', [
-        transition(':enter', [
-            style({ opacity: 0 }),
-            animate('150ms', style({ opacity: 0.92 })),
-        ]),
-        transition(':leave', [
-            animate('150ms', style({ opacity: 0 })),
-        ]),
-    ])
+      transition(':enter', [style({ opacity: 0 }), animate('150ms', style({ opacity: 0.92 }))]),
+      transition(':leave', [animate('150ms', style({ opacity: 0 }))]),
+    ]),
   ],
-  imports: [NgIf, NgClass]
+  imports: [NgClass],
 })
 export class ItDimmerComponent implements OnInit {
-
   /**
    * Dimmer status
    * @default false
-  */
-  @Input() set active (value: boolean) {this._active = value};
-  get active() {return this._active; }
+   */
+  @Input() set active(value: boolean) {
+    this._active = value;
+  }
+  get active() {
+    return this._active;
+  }
   private _active = false;
 
   /**
    * Colore del dimmer
    * @default ''
-  */
-  @Input() set color (value: DimmerColor) {this._color = value};
-  get color() {return this._color; }
+   */
+  @Input() set color(value: DimmerColor) {
+    this._color = value;
+  }
+  get color() {
+    return this._color;
+  }
   private _color: DimmerColor = '';
 
-  constructor(
-    private elementRef: ElementRef
-  ) {}
+  constructor(private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.elementRef?.nativeElement?.parentElement?.classList?.add('dimmable');

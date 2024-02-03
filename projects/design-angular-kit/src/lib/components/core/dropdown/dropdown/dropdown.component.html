@@ -1,32 +1,32 @@
-<div class="dropdown {{direction}}" [class.nav-item]="mode === 'nav'">
-  <button #dropdownButton
-          *ngIf="mode === 'button'; else linkButton"
-          [id]="id"
-          [class]="buttonClass"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false">
-    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-    <it-icon svgClass="icon-expand" name="expand" size="sm" [color]="this.color ? 'light' : 'primary'"></it-icon>
-  </button>
-
-  <ng-template #linkButton>
-    <a #dropdownButton
-       [id]="id"
-       [class.btn]="mode === 'link'"
-       [class.btn-dropdown]="mode === 'link'"
-       [class.nav-link]="mode === 'nav'"
-       class="dropdown-toggle"
-       role="button"
-       data-bs-toggle="dropdown"
-       aria-haspopup="true"
-       aria-expanded="false">
+<div class="dropdown {{ direction }}" [class.nav-item]="mode === 'nav'">
+  @if (mode === 'button') {
+    <button
+      #dropdownButton
+      [id]="id"
+      [class]="buttonClass"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
+      <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+      <it-icon svgClass="icon-expand" name="expand" size="sm" [color]="this.color ? 'light' : 'primary'"></it-icon>
+    </button>
+  } @else {
+    <a
+      #dropdownButton
+      [id]="id"
+      [class.btn]="mode === 'link'"
+      [class.btn-dropdown]="mode === 'link'"
+      [class.nav-link]="mode === 'nav'"
+      class="dropdown-toggle"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
       <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
       <it-icon svgClass="icon-expand" name="expand" size="sm"></it-icon>
     </a>
-  </ng-template>
-
+  }
 
   <div class="dropdown-menu" [class.full-width]="fullWidth" [class.dark]="dark" [attr.aria-labelledby]="id">
     <div class="link-list-wrapper">

@@ -1,8 +1,7 @@
-<div class="progress-spinner"
-     [class.progress-spinner-double]="double"
-     [class.progress-spinner-active]="active"
-     [class.size-sm]="small">
-  <div *ngIf="double" class="progress-spinner-inner"></div>
-  <div *ngIf="double" class="progress-spinner-inner"></div>
-  <span class="visually-hidden">{{'it.core.loading'|translate}}...</span>
+<div class="progress-spinner" [class.progress-spinner-double]="double" [class.progress-spinner-active]="active" [class.size-sm]="small">
+  @if (double) {
+    <div class="progress-spinner-inner"></div>
+    <div class="progress-spinner-inner"></div>
+  }
+  <span class="visually-hidden">{{ 'it.core.loading' | translate }}...</span>
 </div>

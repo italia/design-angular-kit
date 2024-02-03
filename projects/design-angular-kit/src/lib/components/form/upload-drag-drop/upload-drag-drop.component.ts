@@ -7,13 +7,13 @@ import {
   HostListener,
   Input,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { ItFileUtils } from '../../../utils/file-utils';
 import { ProgressDonut } from 'bootstrap-italia';
 import { ItIconComponent } from '../../utils/icon/icon.component';
-import { NgIf, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -22,10 +22,9 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './upload-drag-drop.component.html',
   exportAs: 'itUploadDragDrop',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItIconComponent, NgIf, TranslateModule, NgOptimizedImage]
+  imports: [ItIconComponent, TranslateModule, NgOptimizedImage],
 })
 export class ItUploadDragDropComponent extends ItAbstractComponent implements AfterViewInit {
-
   /**
    * The accepted file type to upload <br>
    * Possible values: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME Types</a> separated by comma
@@ -65,7 +64,6 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
     evt.stopPropagation();
     this.isDragover = !this.isLoading;
   }
-
 
   // Dragleave listener
   @HostListener('dragleave', ['$event'])
@@ -133,7 +131,7 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
     if (value >= 100) {
       this.success();
     } else {
-      this.donut?.set(((value < 0) ? 0 : value) / 100);
+      this.donut?.set((value < 0 ? 0 : value) / 100);
     }
   }
 
@@ -156,5 +154,4 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
     this.donut?.set(0);
     this._changeDetectorRef.detectChanges();
   }
-
 }

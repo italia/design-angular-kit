@@ -1,15 +1,20 @@
 <div class="progress-bar-wrapper">
-  <div *ngIf="showLabel" class="progress-bar-label">
-    <span class="visually-hidden">{{'it.core.progress'|translate}} </span>{{value}}%
-  </div>
-  <div class="progress"
-       [class.progress-color]="!!color"
-       [class.progress-indeterminate]="indeterminate">
-
-    <div *ngIf="indeterminate; else determinate" class="progress-bar{{bgColor}}" role="progressbar"></div>
-    <ng-template #determinate>
-      <div class="progress-bar{{bgColor}}" role="progressbar" [style.width.%]="value"
-           [attr.aria-valuenow]="value" aria-valuemin="0" aria-valuemax="100"></div>
-    </ng-template>
+  @if (showLabel) {
+    <div class="progress-bar-label">
+      <span class="visually-hidden">{{ 'it.core.progress' | translate }} </span>{{ value }}%
+    </div>
+  }
+  <div class="progress" [class.progress-color]="!!color" [class.progress-indeterminate]="indeterminate">
+    @if (indeterminate) {
+      <div class="progress-bar{{ bgColor }}" role="progressbar"></div>
+    } @else {
+      <div
+        class="progress-bar{{ bgColor }}"
+        role="progressbar"
+        [style.width.%]="value"
+        [attr.aria-valuenow]="value"
+        aria-valuemin="0"
+        aria-valuemax="100"></div>
+    }
   </div>
 </div>

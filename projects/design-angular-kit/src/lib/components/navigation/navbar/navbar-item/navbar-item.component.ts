@@ -1,6 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
@@ -8,6 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './navbar-item.component.html',
   styleUrls: ['./navbar-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule],
+  imports: [],
 })
 export class ItNavBarItemComponent {}

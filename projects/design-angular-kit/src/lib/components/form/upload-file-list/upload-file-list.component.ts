@@ -3,7 +3,6 @@ import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { UploadFileListItem } from '../../../interfaces/form';
 import { ItFileUtils } from '../../../utils/file-utils';
 import { forkJoin, take, tap } from 'rxjs';
-import { NgForOf, NgIf } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItTooltipDirective } from '../../core/tooltip/tooltip.directive';
@@ -14,10 +13,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   standalone: true,
   selector: 'it-upload-file-list[fileList]',
   templateUrl: './upload-file-list.component.html',
-  imports: [NgIf, NgForOf, ItIconComponent, TranslateModule, ItTooltipDirective, ItProgressBarComponent]
+  imports: [ItIconComponent, TranslateModule, ItTooltipDirective, ItProgressBarComponent],
 })
 export class ItUploadFileListComponent extends ItAbstractComponent implements OnInit, OnChanges {
-
   /**
    * The list of files to show in list
    */
@@ -72,10 +70,12 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
 
   override ngOnChanges(changes: SimpleChanges): void {
     if (changes['fileList'] && !!this.images) {
-      const images$ = this.fileList.map(item => ItFileUtils.fileToBase64(item.file).pipe(
-        take(1),
-        tap(base64 => this.previewImages.set(item.id, base64))
-      ));
+      const images$ = this.fileList.map(item =>
+        ItFileUtils.fileToBase64(item.file).pipe(
+          take(1),
+          tap(base64 => this.previewImages.set(item.id, base64))
+        )
+      );
       forkJoin(images$).subscribe(() => {
         this._changeDetectorRef.detectChanges();
         super.ngOnChanges(changes);
@@ -96,9 +96,12 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
       return;
     }
 
-    const newFiles = Array.from(files).filter(file => !this.fileList.some(item => {
-      return item.file.name === file.name && item.file.size === file.size && item.file.type === file.type
-    }));
+    const newFiles = Array.from(files).filter(
+      file =>
+        !this.fileList.some(item => {
+          return item.file.name === file.name && item.file.size === file.size && item.file.type === file.type;
+        })
+    );
 
     const fileList = new DataTransfer();
     newFiles.forEach(file => fileList.items.add(file));
@@ -114,5 +117,4 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
   getFileSize(file: File): string {
     return ItFileUtils.getFileSizeString(file);
   }
-
 }

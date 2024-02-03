@@ -1,7 +1,11 @@
 <div class="upload-dragdrop" [class.dragover]="isDragover" [class.loading]="isLoading" [class.success]="isSuccess">
   <div class="upload-dragdrop-image">
-    <img ngSrc="/bootstrap-italia/dist/assets/upload-drag-drop-icon.svg"
-         alt="drag-drop-icon" aria-hidden="true" [width]="180" [height]="180">
+    <img
+      ngSrc="/bootstrap-italia/dist/assets/upload-drag-drop-icon.svg"
+      alt="drag-drop-icon"
+      aria-hidden="true"
+      [width]="180"
+      [height]="180" />
     <div class="upload-dragdrop-loading">
       <div class="progress-donut" #donutElement></div>
     </div>
@@ -12,14 +16,21 @@
   <div class="upload-dragdrop-text">
     <p class="upload-dragdrop-weight">
       <it-icon name="file" size="xs"></it-icon>
-      {{extension}} ({{fileSize}})
+      {{ extension }} ({{ fileSize }})
     </p>
-    <h5>{{filename || ('it.form.upload-drag-file'|translate)}}</h5>
-    <p *ngIf="isLoading">{{'it.form.upload-loading'|translate}}</p>
-    <p *ngIf="isSuccess">{{'it.form.upload-complete'|translate}}</p>
-    <p *ngIf="!isLoading && !isSuccess">{{'it.form.upload-or'|translate}}
-      <input type="file" [id]="id" class="upload-dragdrop-input" [accept]="accept" (change)="onLoadFile($event)"/>
-      <label [for]="id">{{'it.form.upload-select-device'|translate}}</label>
-    </p>
+    <h5>{{ filename || ('it.form.upload-drag-file' | translate) }}</h5>
+    @if (isLoading) {
+      <p>{{ 'it.form.upload-loading' | translate }}</p>
+    }
+    @if (isSuccess) {
+      <p>{{ 'it.form.upload-complete' | translate }}</p>
+    }
+    @if (!isLoading && !isSuccess) {
+      <p>
+        {{ 'it.form.upload-or' | translate }}
+        <input type="file" [id]="id" class="upload-dragdrop-input" [accept]="accept" (change)="onLoadFile($event)" />
+        <label [for]="id">{{ 'it.form.upload-select-device' | translate }}</label>
+      </p>
+    }
   </div>
 </div>

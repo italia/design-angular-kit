@@ -1,6 +1,5 @@
 <ng-content></ng-content>
 
-<it-progress-bar *ngIf="isProgress"
-                 [value]="progressValue"
-                 [indeterminate]="isIndeterminate"
-                 [color]="progressColor"></it-progress-bar>
+@if (isProgress) {
+  <it-progress-bar [value]="progressValue" [indeterminate]="isIndeterminate" [color]="progressColor"></it-progress-bar>
+}

@@ -1,23 +1,18 @@
 <li>
-  <span *ngIf="divider; else item" class="divider"></span>
-
-  <ng-template #item>
+  @if (divider) {
+    <span class="divider"></span>
+  } @else {
     <it-link [class]="linkClass" [id]="id" [href]="href" [externalLink]="externalLink" [disabled]="disabled">
-      <it-icon *ngIf="iconName && iconPosition === 'left'"
-                size="sm"
-                [name]="iconName"
-                [color]="isDark ? 'light' : 'primary'"
-                [svgClass]="iconPosition"></it-icon>
-
+      @if (iconName && iconPosition === 'left') {
+        <it-icon size="sm" [name]="iconName" [color]="isDark ? 'light' : 'primary'" [svgClass]="iconPosition"></it-icon>
+      }
       <span><ng-content></ng-content></span>
-
-      <it-icon *ngIf="iconName && iconPosition === 'right'"
-                size="sm"
-                [name]="iconName"
-                [color]="isDark ? 'light' : 'primary'"
-                [svgClass]="iconPosition"></it-icon>
-
-      <span *ngIf="active" class="visually-hidden">{{'it.core.active'|translate}}</span>
+      @if (iconName && iconPosition === 'right') {
+        <it-icon size="sm" [name]="iconName" [color]="isDark ? 'light' : 'primary'" [svgClass]="iconPosition"></it-icon>
+      }
+      @if (active) {
+        <span class="visually-hidden">{{ 'it.core.active' | translate }}</span>
+      }
     </it-link>
-  </ng-template>
+  }
 </li>

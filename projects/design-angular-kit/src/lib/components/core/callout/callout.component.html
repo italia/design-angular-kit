@@ -1,17 +1,23 @@
-<div class="callout {{color}}" [class.callout-highlight]="appearance === 'highlight'"
-  [class.callout-more]="appearance === 'more'">
-
-  <div *ngIf="appearance === 'default'; else inner" class="callout-inner">
+<div class="callout {{ color }}" [class.callout-highlight]="appearance === 'highlight'" [class.callout-more]="appearance === 'more'">
+  @if (appearance === 'default') {
+    <div class="callout-inner">
+      <ng-container *ngTemplateOutlet="inner"></ng-container>
+    </div>
+  } @else {
     <ng-container *ngTemplateOutlet="inner"></ng-container>
-  </div>
+  }
 </div>
 
 <ng-template #inner>
-  <div class="callout-title" *ngIf="label">
-    <it-icon [name]="iconName"></it-icon>
-    <span *ngIf="hiddenLabel" class="visually-hidden">{{ hiddenLabel }}</span>
-    <span class="text">{{ label }}</span>
-  </div>
+  @if (label) {
+    <div class="callout-title">
+      <it-icon [name]="iconName"></it-icon>
+      @if (hiddenLabel) {
+        <span class="visually-hidden">{{ hiddenLabel }}</span>
+      }
+      <span class="text">{{ label }}</span>
+    </div>
+  }
   <p class="callout-big-text">
     <ng-content select="[bigText]"></ng-content>
   </p>

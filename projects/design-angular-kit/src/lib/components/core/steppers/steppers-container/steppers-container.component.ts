@@ -8,12 +8,12 @@ import {
   Input,
   OnDestroy,
   Output,
-  QueryList
+  QueryList,
 } from '@angular/core';
 import { ItSteppersItemComponent } from '../steppers-item/steppers-item.component';
 import { ProgressBarColor } from '../../../../interfaces/core';
 import { startWith, Subscription } from 'rxjs';
-import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItButtonDirective } from '../../button/button.directive';
@@ -26,10 +26,9 @@ import { inputToBoolean } from '../../../../utils/coercion';
   selector: 'it-steppers-container[activeStep]',
   templateUrl: './steppers-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgForOf, ItIconComponent, NgTemplateOutlet, TranslateModule, ItButtonDirective, ItProgressBarComponent, ItProgressButtonComponent]
+  imports: [ItIconComponent, NgTemplateOutlet, TranslateModule, ItButtonDirective, ItProgressBarComponent, ItProgressButtonComponent],
 })
 export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
-
   /**
    * The active step index
    * @param index the step index
@@ -156,9 +155,7 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
 
   private stepsSubscriptions?: Array<Subscription>;
 
-  constructor(
-    private readonly _changeDetectorRef: ChangeDetectorRef
-  ) {
+  constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {
     this.backClick = new EventEmitter<number>();
     this.forwardClick = new EventEmitter<number>();
     this.confirmClick = new EventEmitter<number>();
@@ -166,15 +163,20 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.steps?.changes.pipe( // When steps changes (dynamic add/remove)
-      startWith(undefined)
-    ).subscribe(() => {
-      this.stepsSubscriptions?.forEach(sub => sub.unsubscribe()); // Remove old subscriptions
-      this.stepsSubscriptions = this.steps?.map(step => step.valueChanges.subscribe(() => {
-        this._changeDetectorRef.detectChanges(); // DetectChanges when step attributes changes
-      }));
-      this._changeDetectorRef.detectChanges(); // Force update html render
-    });
+    this.steps?.changes
+      .pipe(
+        // When steps changes (dynamic add/remove)
+        startWith(undefined)
+      )
+      .subscribe(() => {
+        this.stepsSubscriptions?.forEach(sub => sub.unsubscribe()); // Remove old subscriptions
+        this.stepsSubscriptions = this.steps?.map(step =>
+          step.valueChanges.subscribe(() => {
+            this._changeDetectorRef.detectChanges(); // DetectChanges when step attributes changes
+          })
+        );
+        this._changeDetectorRef.detectChanges(); // Force update html render
+      });
   }
 
   ngOnDestroy(): void {

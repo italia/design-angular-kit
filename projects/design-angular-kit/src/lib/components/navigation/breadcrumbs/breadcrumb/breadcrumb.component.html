@@ -1,26 +1,23 @@
-<nav class="breadcrumb-container" [attr.aria-label]="'it.navigation.navigation-path'|translate">
-  <ol *ngIf="items" class="breadcrumb" [class.dark]="dark" [class.px-3]="dark">
-    <li *ngFor="let item of items; let i = index"
-        class="breadcrumb-item"
-        [class.active]="item.active"
-        [attr.aria-current]="item.active ? 'page' : null">
-
-      <it-icon *ngIf="item.iconName"
-                [name]="item.iconName"
-                [color]="dark ? 'white' : 'secondary'"
-                size="sm"
-                svgClass="align-top me-1"></it-icon>
-
-      <it-link *ngIf="!item.active && !isLastItem(i); else activeContent"
-                [href]="item.href" [class]="item.class" [externalLink]="item.externalLink" [disabled]="item.disabled">
-        <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
-      </it-link>
-
-      <ng-template #activeContent>
-        <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
-      </ng-template>
-
-      <span *ngIf="!isLastItem(i)" class="separator">{{separator}}</span>
-    </li>
-  </ol>
+<nav class="breadcrumb-container" [attr.aria-label]="'it.navigation.navigation-path' | translate">
+  @if (items) {
+    <ol class="breadcrumb" [class.dark]="dark" [class.px-3]="dark">
+      @for (item of items; track item; let isLast = $last) {
+        <li class="breadcrumb-item" [class.active]="item.active" [attr.aria-current]="item.active ? 'page' : null">
+          @if (item.iconName) {
+            <it-icon [name]="item.iconName" [color]="dark ? 'white' : 'secondary'" size="sm" svgClass="align-top me-1"></it-icon>
+          }
+          @if (!item.active && !isLast) {
+            <it-link [href]="item.href" [class]="item.class" [externalLink]="item.externalLink" [disabled]="item.disabled">
+              <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
+            </it-link>
+          } @else {
+            <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
+          }
+          @if (!isLast) {
+            <span class="separator">{{ separator }}</span>
+          }
+        </li>
+      }
+    </ol>
+  }
 </nav>

@@ -1,19 +1,25 @@
-<a *ngIf="buttonStyle === 'link'" href="#" class="go-back" (click)="goBack($event)">
-  <ng-container *ngTemplateOutlet="content"></ng-container>
-</a>
+@if (buttonStyle === 'link') {
+  <a href="#" class="go-back" (click)="goBack($event)">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+}
 
-<button *ngIf="buttonStyle === 'button'" itButton="primary" class="go-back" (click)="goBack($event)">
-  <ng-container *ngTemplateOutlet="content"></ng-container>
-</button>
+@if (buttonStyle === 'button') {
+  <button itButton="primary" class="go-back" (click)="goBack($event)">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </button>
+}
 
 <ng-template #content>
-  <it-icon *ngIf="showIcon"
-           size="sm"
-           [name]="direction === 'left' ? 'arrow-left' : 'arrow-up'"
-           [color]="buttonStyle === 'link' ? 'primary' : 'white'"
-           [class.me-2]="showText"></it-icon>
+  @if (showIcon) {
+    <it-icon
+      size="sm"
+      [name]="direction === 'left' ? 'arrow-left' : 'arrow-up'"
+      [color]="buttonStyle === 'link' ? 'primary' : 'white'"
+      [class.me-2]="showText"></it-icon>
+  }
 
   <span [class.visually-hidden]="!showText">
-    {{(direction === 'left' ? 'it.navigation.go-back' : 'it.navigation.upper-level') | translate}}
+    {{ (direction === 'left' ? 'it.navigation.go-back' : 'it.navigation.upper-level') | translate }}
   </span>
 </ng-template>

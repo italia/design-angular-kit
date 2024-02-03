@@ -10,14 +10,14 @@ import {
   Output,
   QueryList,
   SimpleChanges,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
 import { ItDropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { Dropdown } from 'bootstrap-italia';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
@@ -27,10 +27,9 @@ import { inputToBoolean } from '../../../../utils/coercion';
   styleUrls: ['./dropdown.component.scss'],
   exportAs: 'itDropdown',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItIconComponent, NgTemplateOutlet, NgIf]
+  imports: [ItIconComponent, NgTemplateOutlet],
 })
 export class ItDropdownComponent extends ItAbstractComponent implements AfterViewInit, OnChanges {
-
   /**
    * Dropdown mode
    */
@@ -53,13 +52,13 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
    * To get a dropdown menu as wide as the element containing the dropdown button
    * @default false
    */
-  @Input({transform: inputToBoolean}) fullWidth?: boolean;
+  @Input({ transform: inputToBoolean }) fullWidth?: boolean;
 
   /**
    * Dark menu style
    * @default false
    */
-  @Input({transform: inputToBoolean}) dark?: boolean;
+  @Input({ transform: inputToBoolean }) dark?: boolean;
 
   /**
    * The dropdown items
@@ -85,7 +84,6 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
    * Fired when the dropdown has finished being hidden from the user and CSS transitions have completed.
    */
   @Output() hiddenEvent: EventEmitter<Event> = new EventEmitter();
-
 
   private dropdown?: Dropdown;
 

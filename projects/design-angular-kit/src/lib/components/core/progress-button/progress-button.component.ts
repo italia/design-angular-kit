@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ProgressBarColor } from '../../../interfaces/core';
 import { ItProgressBarComponent } from '../progress-bar/progress-bar.component';
-import { NgIf } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -9,10 +8,9 @@ import { NgIf } from '@angular/common';
   selector: 'button[itButton][progress]',
   templateUrl: './progress-button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ItProgressBarComponent]
+  imports: [ItProgressBarComponent],
 })
 export class ItProgressButtonComponent {
-
   /**
    * Behavior of the progress bar
    * - <b>true</b>: Show indeterminate progress bar
@@ -38,5 +36,4 @@ export class ItProgressButtonComponent {
   get isIndeterminate(): boolean {
     return typeof this.progress !== 'number' && !!this.progress;
   }
-
 }

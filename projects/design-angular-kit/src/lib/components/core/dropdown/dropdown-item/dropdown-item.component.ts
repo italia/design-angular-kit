@@ -3,7 +3,7 @@ import { IconName } from '../../../../interfaces/icon';
 import { ItLinkComponent } from '../../link/link.component';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgIf } from '@angular/common';
+
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
@@ -12,27 +12,26 @@ import { inputToBoolean } from '../../../../utils/coercion';
   templateUrl: './dropdown-item.component.html',
   styleUrls: ['./dropdown-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ItIconComponent, TranslateModule, ItLinkComponent]
+  imports: [ItIconComponent, TranslateModule, ItLinkComponent],
 })
 export class ItDropdownItemComponent extends ItLinkComponent {
-
   /**
    * Show divider
    * @default false
    */
-  @Input({transform: inputToBoolean}) divider?: boolean;
+  @Input({ transform: inputToBoolean }) divider?: boolean;
 
   /**
    * Active item
    * @default false
    */
-  @Input({transform: inputToBoolean}) active?: boolean;
+  @Input({ transform: inputToBoolean }) active?: boolean;
 
   /**
    * To increase the size of links
    * @default false
    */
-  @Input({transform: inputToBoolean}) large?: boolean;
+  @Input({ transform: inputToBoolean }) large?: boolean;
 
   /**
    * The name of icon to show

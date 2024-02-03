@@ -1,32 +1,38 @@
-<ul *ngIf="tabs"
-    class="nav nav-tabs"
-    [class.auto]="auto"
-    [class.nav-tabs-icon-text]="iconText"
-    [class.nav-dark]="dark"
-    role="tablist">
+@if (tabs) {
+  <ul class="nav nav-tabs" [class.auto]="auto" [class.nav-tabs-icon-text]="iconText" [class.nav-dark]="dark" role="tablist">
+    @for (tab of tabs; track tab.id) {
+      <li class="nav-item">
+        <a
+          #tabNavLinks
+          [id]="tab.id + '-tab-link'"
+          role="tab"
+          class="nav-link"
+          [class.active]="tab.active"
+          [class.disabled]="tab.disabled"
+          [attr.href]="'#' + tab.id + '-tab'"
+          [attr.aria-controls]="tab.id + '-tab'">
+          @if (tab.icon) {
+            <it-icon [name]="tab.icon" class="me-2"></it-icon>
+          }
+          {{ tab.label }}
+        </a>
+      </li>
+    }
+  </ul>
+}
 
-  <li class="nav-item" *ngFor="let tab of tabs">
-    <a #tabNavLinks [id]="tab.id+'-tab-link'"
-       role="tab"
-       class="nav-link"
-       [class.active]="tab.active"
-       [class.disabled]="tab.disabled"
-       [attr.href]="'#'+tab.id+'-tab'"
-       [attr.aria-controls]="tab.id+'-tab'">
-      <it-icon *ngIf="tab.icon" [name]="tab.icon" class="me-2"></it-icon>
-      {{tab.label}}
-    </a>
-  </li>
-</ul>
-
-<div *ngIf="tabs" class="tab-content">
-  <div *ngFor="let tab of tabs"
-       [id]="tab.id+'-tab'"
-       class="tab-pane p-4 fade {{tab.class ?? ''}}"
-       [class.active]="tab.active"
-       [class.show]="tab.active"
-       role="tabpanel"
-       [attr.aria-labelledby]="tab.id+'-tab-link'">
-    <ng-container *ngTemplateOutlet="tab.htmlContent"></ng-container>
+@if (tabs) {
+  <div class="tab-content">
+    @for (tab of tabs; track tab.id) {
+      <div
+        [id]="tab.id + '-tab'"
+        class="tab-pane p-4 fade {{ tab.class ?? '' }}"
+        [class.active]="tab.active"
+        [class.show]="tab.active"
+        role="tabpanel"
+        [attr.aria-labelledby]="tab.id + '-tab-link'">
+        <ng-container *ngTemplateOutlet="tab.htmlContent"></ng-container>
+      </div>
+    }
   </div>
-</div>
+}

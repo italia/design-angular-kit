@@ -1,27 +1,33 @@
 <div class="container text-center mt-5">
-  <h1 *ngIf="errorCode && showErrorCode">{{errorCode}}</h1>
+  @if (errorCode && showErrorCode) {
+    <h1>{{ errorCode }}</h1>
+  }
   <h2>
-    <ng-container *ngIf="!errorTitle && isDefaultErrorCode; else customTitle">
-      {{'it.utils.error-page.' + errorCode + '.title' | translate}}
-    </ng-container>
-    <ng-template #customTitle>{{(errorTitle || 'it.errors.generic') | translate}}</ng-template>
+    @if (!errorTitle && isDefaultErrorCode) {
+      {{ 'it.utils.error-page.' + errorCode + '.title' | translate }}
+    } @else {
+      {{ errorTitle || 'it.errors.generic' | translate }}
+    }
   </h2>
 
   <p class="mt-3 w-75 mx-auto">
-    <ng-container
-      *ngIf="!errorDescription && isDefaultErrorCode; else customDescription">
-      {{'it.utils.error-page.' + errorCode + '.description' | translate}}
-    </ng-container>
-    <ng-template #customDescription>
-      {{(errorDescription || 'it.errors.generic-support-message') | translate}}
-    </ng-template>
+    @if (!errorDescription && isDefaultErrorCode) {
+      {{ 'it.utils.error-page.' + errorCode + '.description' | translate }}
+    } @else {
+      {{ errorDescription || 'it.errors.generic-support-message' | translate }}
+    }
   </p>
 
-  <div class="mt-5" *ngIf="showBackButton || showHomeButton">
-    <it-back-button *ngIf="showBackButton"></it-back-button>
-    <a *ngIf="showHomeButton" itButton="outline-primary" class="ms-3" routerLink="/"
-       title="{{'it.utils.error-page.go-to-homepage' | translate}}">
-      {{'it.utils.error-page.go-to-homepage' | translate}}
-    </a>
-  </div>
+  @if (showBackButton || showHomeButton) {
+    <div class="mt-5">
+      @if (showBackButton) {
+        <it-back-button></it-back-button>
+      }
+      @if (showHomeButton) {
+        <a itButton="outline-primary" class="ms-3" routerLink="/" title="{{ 'it.utils.error-page.go-to-homepage' | translate }}">
+          {{ 'it.utils.error-page.go-to-homepage' | translate }}
+        </a>
+      }
+    </div>
+  }
 </div>

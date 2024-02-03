@@ -1,12 +1,21 @@
-<nav class="navbar" [class.navbar-expand-lg]="expand" [class.has-megamenu]="megamenu" [attr.aria-label]="'it.navbar.aria-label-main'|translate">
-  <button (click)="toggleCollapse()" #collapseButton class="custom-navbar-toggler" type="button" [attr.aria-label]="'it.navbar.aria-label-toggle'|translate">
+<nav
+  class="navbar"
+  [class.navbar-expand-lg]="expand"
+  [class.has-megamenu]="megamenu"
+  [attr.aria-label]="'it.navbar.aria-label-main' | translate">
+  <button
+    (click)="toggleCollapse()"
+    #collapseButton
+    class="custom-navbar-toggler"
+    type="button"
+    [attr.aria-label]="'it.navbar.aria-label-toggle' | translate">
     <it-icon name="burger"></it-icon>
   </button>
-  <div #collapseView class="navbar-collapsable" style="display: none;">
-    <div class="overlay" style="display: none;"></div>
+  <div #collapseView class="navbar-collapsable" style="display: none">
+    <div class="overlay" style="display: none"></div>
     <div class="close-div">
       <button class="btn close-menu" type="button">
-        <span class="visually-hidden">{{'it.navbar.hide'|translate}}</span>
+        <span class="visually-hidden">{{ 'it.navbar.hide' | translate }}</span>
         <it-icon name="close-big"></it-icon>
       </button>
     </div>
