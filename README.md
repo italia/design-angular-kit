@@ -26,25 +26,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/semantic-release/semantic-release">
-    <img src="https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release" alt="semantic-release: angular" />
-  </a>
-  <a href="https://github.com/prettier/prettier">
-    <img src="https://img.shields.io/badge/code%20style-prettier-ff69b4?logo=Prettier" alt="code style: prettier" />
-  </a>
-  <a href="https://github.com/eslint/eslint">
-    <img src="https://img.shields.io/badge/formatter-angular--eslint-4B32C3?logo=eslint" alt="formatter: angular-eslint" />
-  </a>
+  <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release" alt="semantic-release: angular" /></a>
+  <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code%20style-prettier-ff69b4?logo=Prettier" alt="code style: prettier" /></a>
+  <a href="https://github.com/eslint/eslint"><img src="https://img.shields.io/badge/formatter-angular--eslint-4B32C3?logo=eslint" alt="formatter: angular-eslint" /></a>
 </p>
 
 <p align="center">
-  <a href="https://developersitalia.slack.com/messages/C04H3C19D52/">
-    <img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" />
-  </a>
-  <a href="https://slack.developers.italia.it/">
-    <img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" />
-  </a>
-</p>
+  <a href="https://developersitalia.slack.com/messages/C04H3C19D52/"><img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" /></a>
+  <a href="https://slack.developers.italia.it/"><img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" /></a></p>
 
 _⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Stiamo lavorando all'aggiornamento per portare il kit alla versione 1.0.0, commenti e contributi di tutta la community sono più che benvenuti! Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
 
@@ -69,13 +58,23 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 - [Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127)
 - [Milestone 1.0.0](https://github.com/italia/design-angular-kit/milestone/3)
 
-## Come iniziare
+## Installazione
 
 Design Angular Kit è disponibile su NPM, per installarlo su una applicazione esistente sulla quale provare la libreria (attualmente non stabile) esegui il comando
 
 ```
 npm install design-angular-kit@prerelease --save
 ```
+
+Scegli la versione corrispondente alla tua versione Angular:
+
+| Angular | design-angular-kit    |
+|---------|-----------------------|
+| 17+     | v1.0.0-prerelease.2 + |
+| 16+     | v1.0.0-17 +           |
+| 15+     | v1.0.0-2 +            |
+
+## Come iniziare
 
 Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
 
