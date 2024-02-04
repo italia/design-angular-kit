@@ -1,7 +1,7 @@
 <div class="upload-dragdrop" [class.dragover]="isDragover" [class.loading]="isLoading" [class.success]="isSuccess">
   <div class="upload-dragdrop-image">
     <img
-      ngSrc="/bootstrap-italia/dist/assets/upload-drag-drop-icon.svg"
+      [ngSrc]="assetBasePath + '/dist/assets/upload-drag-drop-icon.svg'"
       alt="drag-drop-icon"
       aria-hidden="true"
       [width]="180"

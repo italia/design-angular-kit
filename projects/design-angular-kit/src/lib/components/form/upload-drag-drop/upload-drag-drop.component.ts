@@ -5,6 +5,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  inject,
   Input,
   Output,
   ViewChild,
@@ -15,6 +16,7 @@ import { ProgressDonut } from 'bootstrap-italia';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
 
 @Component({
   standalone: true,
@@ -38,17 +40,28 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
    */
   @Output() fileStartUpload = new EventEmitter<File>();
 
-  isDragover: boolean = false;
-  isLoading: boolean = false;
-  isSuccess: boolean = false;
+  protected isDragover: boolean = false;
+  protected isLoading: boolean = false;
+  protected isSuccess: boolean = false;
 
-  donut?: ProgressDonut;
+  protected donut?: ProgressDonut;
 
   @ViewChild('donutElement') private donutElement?: ElementRef<HTMLDivElement>;
 
-  filename?: string;
-  extension?: string;
-  fileSize?: string;
+  protected filename?: string;
+  protected extension?: string;
+  protected fileSize?: string;
+
+  /**
+   * The bootstrap-italia asset folder path
+   * @default ./bootstrap-italia
+   */
+  protected assetBasePath: string;
+
+  constructor() {
+    super();
+    this.assetBasePath = inject(IT_ASSET_BASE_PATH);
+  }
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();

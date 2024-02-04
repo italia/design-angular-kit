@@ -4,25 +4,23 @@ import 'zone.js';
 import 'zone.js/testing';
 import { getTestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ItComponentsModule } from './lib/components/components.module';
-import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from './lib/design-angular-kit-config';
+import { importProvidersFrom } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { IT_ASSET_BASE_PATH } from './lib/interfaces/design-angular-kit-config'; // First, initialize the Angular testing environment.
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting(), {
-    teardown: { destroyAfterEach: false }
-  }
-);
+getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), {
+  teardown: { destroyAfterEach: false },
+});
 
 export const tb_base = {
-  imports: [ItComponentsModule, TranslateModule.forRoot(), RouterTestingModule], //FormsModule,ReactiveFormsModule
+  imports: [RouterTestingModule], //FormsModule,ReactiveFormsModule
   providers: [
+    importProvidersFrom(TranslateModule.forRoot()),
     {
-      provide: DESIGN_ANGULAR_KIT_CONFIG,
-      useValue: new DesignAngularKitConfig()
-    }
-  ]
+      provide: IT_ASSET_BASE_PATH,
+      useValue: './bootstrap-italia',
+    },
+  ],
 };

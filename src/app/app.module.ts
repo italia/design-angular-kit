@@ -10,22 +10,12 @@ import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher
 import { LinkSortPipe } from './link-sort.pipe';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { TranslateStore } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
 import { DesignAngularKitModule } from 'design-angular-kit/design-angular-kit.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TableOfContentComponent,
-    TableOfContentItemComponent,
-    RouterDispatcherComponent,
-    LinkSortPipe
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    DesignAngularKitModule
-  ],
+  declarations: [AppComponent, TableOfContentComponent, TableOfContentItemComponent, RouterDispatcherComponent, LinkSortPipe],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, DesignAngularKitModule.forRoot()],
   providers: [
     TranslateStore,
     {
@@ -35,12 +25,11 @@ import { DesignAngularKitModule } from 'design-angular-kit/design-angular-kit.mo
         languages: {
           typescript: () => import('highlight.js/lib/languages/typescript'),
           HTML: () => import('highlight.js/lib/languages/xml'),
-          scss: () => import('highlight.js/lib/languages/scss')
-        }
-      }
-    }
+          scss: () => import('highlight.js/lib/languages/scss'),
+        },
+      },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

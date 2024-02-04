@@ -1,49 +1,23 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from './design-angular-kit-config';
-import { DesignAngularKitInit } from './interfaces/design-angular-kit-init';
-import { loadFonts } from 'bootstrap-italia';
+import { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';
+import { provideDesignAngularKit } from './provide-design-angular-kit';
+import { ItComponentsModule } from './components/components.module';
 
 @NgModule({
-  imports: [
-    HttpClientModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, '/bootstrap-italia/i18n/'),
-        deps: [HttpClient],
-      },
-      extend: true,
-      isolate: false,
-      defaultLanguage: 'it',
-    }),
-  ],
-  providers: [
-    {
-      provide: DESIGN_ANGULAR_KIT_CONFIG,
-      useValue: new DesignAngularKitConfig(),
-    },
-  ],
+  imports: [ItComponentsModule],
+  exports: [ItComponentsModule],
 })
 export class DesignAngularKitModule {
-  static forRoot(initConfig?: DesignAngularKitInit): ModuleWithProviders<DesignAngularKitModule> {
+  public static forRoot(config?: DesignAngularKitConfig): ModuleWithProviders<DesignAngularKitModule> {
     return {
       ngModule: DesignAngularKitModule,
-      providers: [
-        {
-          provide: DESIGN_ANGULAR_KIT_CONFIG,
-          useValue: new DesignAngularKitConfig(initConfig),
-        },
-      ],
+      providers: [provideDesignAngularKit(config)],
     };
   }
 
-  constructor(private readonly translateService: TranslateService) {
-    this.translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.
-    this.translateService.use(translateService.defaultLang);
-
-    loadFonts('/bootstrap-italia/dist/fonts');
+  public static forChild(): ModuleWithProviders<DesignAngularKitModule> {
+    return {
+      ngModule: DesignAngularKitModule,
+    };
   }
 }

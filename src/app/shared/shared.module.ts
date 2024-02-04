@@ -4,23 +4,11 @@ import { HighlightModule } from 'ngx-highlightjs';
 
 import { SourceDisplayComponent } from './source-display/source-display.component';
 import { ApiParametersComponent } from './api-parameters/api-parameters.component';
-import { ItComponentsModule } from 'design-angular-kit/components/components.module';
+import { DesignAngularKitModule } from 'design-angular-kit/design-angular-kit.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HighlightModule,
-    ItComponentsModule
-  ],
-  declarations: [
-    SourceDisplayComponent,
-    ApiParametersComponent
-  ],
-  exports: [
-    SourceDisplayComponent,
-    ApiParametersComponent,
-    ItComponentsModule
-  ]
+  imports: [CommonModule, HighlightModule, DesignAngularKitModule.forChild()],
+  declarations: [SourceDisplayComponent, ApiParametersComponent],
+  exports: [SourceDisplayComponent, ApiParametersComponent, DesignAngularKitModule],
 })
-export class SharedModule {
-}
+export class SharedModule {}

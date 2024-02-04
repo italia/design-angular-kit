@@ -2,11 +2,9 @@
  * Public API Surface of design-angular-kit
  */
 
+export * from './lib/provide-design-angular-kit';
 export * from './lib/design-angular-kit.module';
 export * from './lib/components/components.module';
-
-// Config
-export * from './lib/design-angular-kit-config';
 
 // Core components
 export * from './lib/components/core/accordion/accordion.component';
@@ -91,7 +89,6 @@ export * from './lib/components/navigation/navbar/navbar/navbar.component';
 export * from './lib/components/navigation/navbar/navbar-item/navbar-item.component';
 export * from './lib/components/navigation/navbar/navbar.module';
 
-
 // Utils components
 export * from './lib/components/utils/error-page/error-page.component';
 export * from './lib/components/utils/icon/icon.component';
@@ -106,7 +103,7 @@ export * from './lib/pipes/duration.pipe';
 export * from './lib/pipes/mark-matching-text.pipe';
 
 // Interfaces
-export * from './lib/interfaces/design-angular-kit-init';
+export * from './lib/interfaces/design-angular-kit-config';
 export * from './lib/interfaces/sortable-table';
 
 export * from './lib/interfaces/core';

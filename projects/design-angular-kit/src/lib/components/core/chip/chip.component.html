@@ -8,7 +8,7 @@
   ]">
   @if (icon) {
     <svg class="icon icon-xs">
-      <use [attr.href]="this.config.iconHref + '#it-' + icon" [attr.xlink:href]="this.config.iconHref + '#it-' + icon"></use>
+      <use [attr.href]="iconHref" [attr.xlink:href]="iconHref"></use>
     </svg>
   }
   @if (avatar) {
@@ -18,7 +18,7 @@
   @if (showCloseButton) {
     <button (click)="clickToClose()" [disabled]="disabled">
       <svg class="icon">
-        <use [attr.href]="this.config.iconHref + '#it-close'" [attr.xlink:href]="this.config.iconHref + '#it-close'"></use>
+        <use [attr.href]="iconCloseHref" [attr.xlink:href]="iconCloseHref"></use>
       </svg>
       <span class="visually-hidden">{{ 'it.core.remove' | translate }} {{ label }}</span>
     </button>

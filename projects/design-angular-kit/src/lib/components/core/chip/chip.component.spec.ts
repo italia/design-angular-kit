@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { ItChipComponent } from './chip.component';
 import { tb_base } from '../../../../test';
@@ -12,13 +11,13 @@ describe('ItChipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ItChipComponent, TranslateModule.forRoot()],
-      providers: tb_base.providers
+      imports: [ItChipComponent],
+      providers: tb_base.providers,
     })
-    .overrideComponent(ItChipComponent, {
-      set: { changeDetection: ChangeDetectionStrategy.Default }
-    })
-    .compileComponents();
+      .overrideComponent(ItChipComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(ItChipComponent);
     component = fixture.componentInstance;
@@ -51,7 +50,7 @@ describe('ItChipComponent', () => {
   it('can set label', () => {
     component.label = 'label';
     fixture.detectChanges();
-    const spanElement = fixture.debugElement.query(By.css('.chip-label'));
+    // const spanElement = fixture.debugElement.query(By.css('.chip-label'));
     expect(component).toBeTruthy();
   });
 
@@ -80,7 +79,9 @@ describe('ItChipComponent', () => {
     component.altAvatar = 'alt';
     component.avatar = 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
     fixture.detectChanges();
-    const imgElement = fixture.debugElement.query(By.css('img[alt="alt"][src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"]'));
+    const imgElement = fixture.debugElement.query(
+      By.css('img[alt="alt"][src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"]')
+    );
     expect(imgElement).toBeTruthy();
   });
 });
