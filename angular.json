@@ -175,7 +175,8 @@
       "prefix": "it",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "none",
+          "changeDetection": "OnPush"
         }
       },
       "architect": {

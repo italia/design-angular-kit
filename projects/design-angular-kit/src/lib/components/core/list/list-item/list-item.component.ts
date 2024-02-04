@@ -21,7 +21,7 @@ export class ItListItemComponent extends ItLinkComponent {
   /**
    * Add large class
    */
-  @Input() large?: boolean;
+  @Input() size?: 'large' | 'medium';
 
   /**
    * Add icon-left class
@@ -53,8 +53,8 @@ export class ItListItemComponent extends ItLinkComponent {
     if (this.active) {
       itemClass += ` active`;
     }
-    if (this.large) {
-      itemClass += ` large`;
+    if (this.size) {
+      itemClass += ` ${this.size}`;
     }
     if (this.iconLeft) {
       itemClass += ` icon-left`;
