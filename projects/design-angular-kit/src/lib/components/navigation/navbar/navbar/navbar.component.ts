@@ -3,14 +3,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { ItButtonDirective } from '../../../core/button/button.directive';
 import { inputToBoolean } from '../../../../utils/coercion';
-
 import { NavBarCollapsible } from 'bootstrap-italia';
 
 @Component({
   standalone: true,
   selector: 'it-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslateModule, ItIconComponent, ItButtonDirective],
 })

@@ -6,6 +6,6 @@ const navbarComponents = [ItNavBarComponent, ItNavBarItemComponent];
 
 @NgModule({
   imports: navbarComponents,
-  exports: navbarComponents
+  exports: navbarComponents,
 })
-export class ItNavBarModule { }
+export class ItNavBarModule {}

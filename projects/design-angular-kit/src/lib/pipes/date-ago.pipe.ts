@@ -12,8 +12,7 @@ type DateAgoPipeInterval = 'year' | 'month' | 'week' | 'day' | 'hour' | 'minute'
   pure: false,
   standalone: true,
 })
-export class DateAgoPipe extends TranslatePipe implements PipeTransform {
-
+export class ItDateAgoPipe extends TranslatePipe implements PipeTransform {
   /**
    * Indicates in a textual way how much time has passed since the indicated date
    * @example 2 hours ago

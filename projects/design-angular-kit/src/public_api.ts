@@ -4,11 +4,16 @@
 
 export * from './lib/provide-design-angular-kit';
 export * from './lib/design-angular-kit.module';
-export * from './lib/components/components.module';
 
 // Core components
 export * from './lib/components/core/accordion/accordion.component';
 export * from './lib/components/core/alert/alert.component';
+
+export * from './lib/components/core/avatar/avatar.module';
+export * from './lib/components/core/avatar/avatar.directive';
+export * from './lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component';
+export * from './lib/components/core/avatar/avatar-group/avatar-group.component';
+
 export * from './lib/components/core/badge/badge.directive';
 export * from './lib/components/core/button/button.directive';
 export * from './lib/components/core/callout/callout.component';
@@ -53,14 +58,12 @@ export * from './lib/components/core/tab/tab.module';
 export * from './lib/components/core/tab/tab-container/tab-container.component';
 export * from './lib/components/core/tab/tab-item/tab-item.component';
 
+export * from './lib/components/core/table/table.module';
 export * from './lib/components/core/table/table.component';
 export * from './lib/components/core/table/sort/sort.directive';
 export * from './lib/components/core/table/sort/sort-header/sort-header.component';
 
 export * from './lib/components/core/tooltip/tooltip.directive';
-export * from './lib/components/core/avatar/avatar.directive';
-export * from './lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component';
-export * from './lib/components/core/avatar/avatar-group/avatar-group.component';
 
 // Forms components
 export * from './lib/components/form/form.module';
@@ -85,9 +88,10 @@ export * from './lib/components/navigation/breadcrumbs/breadcrumb/breadcrumb.com
 export * from './lib/components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';
 
 export * from './lib/components/navigation/header/header.component';
+
+export * from './lib/components/navigation/navbar/navbar.module';
 export * from './lib/components/navigation/navbar/navbar/navbar.component';
 export * from './lib/components/navigation/navbar/navbar-item/navbar-item.component';
-export * from './lib/components/navigation/navbar/navbar.module';
 
 // Utils components
 export * from './lib/components/utils/error-page/error-page.component';
