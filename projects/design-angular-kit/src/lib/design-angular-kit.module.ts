@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from './design-angular-kit-config';
 import { DesignAngularKitInit } from './interfaces/design-angular-kit-init';
+import { loadFonts } from 'bootstrap-italia';
 
 @NgModule({
   imports: [
@@ -12,39 +13,37 @@ import { DesignAngularKitInit } from './interfaces/design-angular-kit-init';
       loader: {
         provide: TranslateLoader,
         useFactory: (http: HttpClient) => new TranslateHttpLoader(http, '/bootstrap-italia/i18n/'),
-        deps: [HttpClient]
+        deps: [HttpClient],
       },
       extend: true,
       isolate: false,
-      defaultLanguage: 'it'
-    })
+      defaultLanguage: 'it',
+    }),
   ],
   providers: [
     {
       provide: DESIGN_ANGULAR_KIT_CONFIG,
-      useValue: new DesignAngularKitConfig()
-    }
-  ]
+      useValue: new DesignAngularKitConfig(),
+    },
+  ],
 })
 export class DesignAngularKitModule {
-
   static forRoot(initConfig?: DesignAngularKitInit): ModuleWithProviders<DesignAngularKitModule> {
     return {
       ngModule: DesignAngularKitModule,
       providers: [
         {
           provide: DESIGN_ANGULAR_KIT_CONFIG,
-          useValue: new DesignAngularKitConfig(initConfig)
-        }
-      ]
+          useValue: new DesignAngularKitConfig(initConfig),
+        },
+      ],
     };
   }
 
-  constructor(
-    private readonly translateService: TranslateService
-  ) {
-    translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.
-    translateService.use(translateService.defaultLang);
-  }
+  constructor(private readonly translateService: TranslateService) {
+    this.translateService.addLangs(['it', 'en']); // Adds 'it' and 'eng' as available languages.
+    this.translateService.use(translateService.defaultLang);
 
+    loadFonts('/bootstrap-italia/dist/fonts');
+  }
 }
