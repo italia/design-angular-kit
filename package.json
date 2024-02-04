@@ -4,6 +4,26 @@
   "author": "Presidenza del Consiglio dei Ministri",
   "version": "1.0.0-prerelease.1",
   "license": "BSD-3-Clause",
+  "scripts": {
+    "ng": "ng",
+    "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
+    "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build --base-href design-angular-kit",
+    "build:lib": "ng build design-angular-kit",
+    "watch:lib": "ng build --configuration development --watch design-angular-kit",
+    "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
+    "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "lint:format": "npx prettier --write .",
+    "prepare": "is-ci || husky",
+    "postversion": "npm version $npm_package_version --prefix projects/design-angular-kit/ --no-git-tag-version",
+    "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'",
+    "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
+    "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl"
+  },
+  "browserslist": [
+    "extends browserslist-config-design-italia"
+  ],
   "keywords": [
     "angular",
     "toolkit",
@@ -40,23 +60,6 @@
       "url": "https://github.com/italia/design-angular-kit/graphs/contributors"
     }
   ],
-  "scripts": {
-    "ng": "ng",
-    "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
-    "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build --base-href design-angular-kit",
-    "build:lib": "ng build design-angular-kit",
-    "watch:lib": "ng build --configuration development --watch design-angular-kit",
-    "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
-    "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
-    "lint": "ng lint",
-    "lint:fix": "ng lint --fix",
-    "lint:format": "npx prettier --write .",
-    "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
-    "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
-    "prepare": "is-ci || husky",
-    "postversion": "npm version $npm_package_version --prefix projects/design-angular-kit/ --no-git-tag-version",
-    "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle -m 'chore: update documentation'"
-  },
   "dependencies": {
     "@angular-devkit/schematics": "^17.1.2",
     "@angular/animations": "^17.1.2",
@@ -125,8 +128,5 @@
     "semantic-release": "^23.0.0",
     "ts-node": "~10.9.2",
     "typescript": "~5.3.3"
-  },
-  "browserslist": [
-    "extends browserslist-config-design-italia"
-  ]
+  }
 }

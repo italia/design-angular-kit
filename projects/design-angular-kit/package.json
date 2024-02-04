@@ -39,5 +39,6 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "bootstrap-italia": "^2.8.2"
-  }
+  },
+  "sideEffects": false
 }
