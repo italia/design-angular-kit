@@ -27,7 +27,7 @@ export class ItLanguageSwitcherComponent implements OnInit {
   protected currentLang$: Observable<AvailableLanguage | undefined>;
 
   constructor(private readonly translateService: TranslateService) {
-    this.currentLang$ = translateService.onLangChange.pipe(
+    this.currentLang$ = this.translateService.onLangChange.pipe(
       startWith({ lang: translateService.currentLang }),
       map(event => this.availableLanguages?.find(l => l.code === event.lang))
     );
@@ -41,6 +41,8 @@ export class ItLanguageSwitcherComponent implements OnInit {
         ...(lang === 'it' && { label: 'ITA' }),
         ...(lang === 'en' && { label: 'ENG' }),
       }));
+    } else {
+      this.translateService.addLangs(this.availableLanguages.map(l => l.code)); // Adds custom languages
     }
   }
 
