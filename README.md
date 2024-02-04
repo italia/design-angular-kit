@@ -74,68 +74,120 @@ Scegli la versione corrispondente alla tua versione Angular:
 | 16+     | v1.0.0-17 +           |
 | 15+     | v1.0.0-2 +            |
 
-## Come iniziare
+## Configurazione
 
-Procedi a registrare `DesignAngularKitModule` nel tuo **app.module.ts**.
+### Configurazione app
+
+La libreria `design-angular-kit` può essere utilizzata con i componenti _standalone_ o con l'applicazione che utilizza i moduli. Segui la sezione di
+configurazione che corrisponde alla tua applicazione.
+
+#### Applicazione standalone
+
+Utilizza la funzione `provideDesignAngularKit` nella configurazione dell'applicazione `ApplicationConfig` per
+poter inizializzare le funzionalità della libreria.
 
 ```typescript
-import {DesignAngularKitModule, ItComponentsModule} from 'design-angular-kit';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideDesignAngularKit } from 'design-angular-kit';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    ...
+    provideAnimations(), // Necessario per il funzionamento della libreria
+    provideHttpClient(), // Necessario per il funzionamento della libreria
+    provideDesignAngularKit(),
+  ]
+}
+```
+
+#### Applicazione modulare
+
+È necessario importare `DesignAngularKitModule` all'interno del modulo principale dell'applicazione (solitamente denominato **AppModule**) 
+utilizzando il metodo `forRoot` per poter inizializzare le funzionalità della libreria e importare tutti i componenti.
+
+```typescript
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DesignAngularKitModule } from 'design-angular-kit';
 
 @NgModule({
   imports: [
     ...
-    DesignAngularKitModule,
-    ItComponentsModule // importa tutti i componenti della libreria
+    HttpClientModule, // Necessario per il funzionamento della libreria
+    BrowserAnimationsModule, // Necessario per il funzionamento della libreria
+    DesignAngularKitModule.forRoot()
   ]
 })
+export class AppModule { }
 ```
-<details>
-  <summary>Configurazione custom della libreria</summary>
 
-  ```typescript
-  import {DesignAngularKitModule, DesignAngularKitInit} from 'design-angular-kit';
-  
-  // Puoi aggiungere alla libreria una configurazione iniziale
-  const initConfig: DesignAngularKitInit | undefined = {
-    /**
-     * The initial path in the `href` attribute in the `IconComponent` component
-     * @default './bootstrap-italia/dist/svg/sprites.svg'
-     */
-    iconHref: string | undefined,
-  };
-  
-  @NgModule({
-    imports: [
-      ...
-      DesignAngularKitModule.forRoot(initConfig)
-    ]
-  })
-  ```
-</details>
+Utilizza il metodo `forChild` durante l'importazione del modulo `DesignAngularKitModule` in altri moduli dell'applicazione per importare tutti i componenti della libreria.
 
-Usa `ItComponentsModule` per importare tutti i componenti della libreria, in alternativa puoi importare solo i componenti/moduli di cui hai bisogno, ad es. Alert, Paginazione e Breadcrumb.
 
 ```typescript
-import {ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule} from 'design-angular-kit';
+import { DesignAngularKitModule } from 'design-angular-kit';
 
 @NgModule({
   imports: [
-    ItAlertComponent, 
-    ItPaginationComponent, 
-    ItBreadcrumbsModule // Include ItBreadcrumbComponent e ItBreadcrumbItemComponent 
+    ...
+    DesignAngularKitModule.forChild()
   ],
+  exports: [DesignAngularKitModule],
 })
-export class YourAppModule {
-}
+export class SharedModule { }
+```
 
-@Component({
-  selector: 'app-product',
-  standalone: true,
-  imports: [ItAlertComponent],
-  templateUrl: './product.component.html'
+#### Applicazione ibrida
+
+Se nella tua applicazione è presente il modulo **AppModule** ma vuoi utilizzare i nostri componenti con la configurazione _standalone_, 
+utilizza la funzione `provideDesignAngularKit` all'interno del modulo principale dell'applicazione per poter inizializzare le funzionalità della libreria.
+
+```typescript
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideDesignAngularKit } from 'design-angular-kit';
+
+@NgModule({
+  imports: [
+    ...
+    HttpClientModule, // Necessario per il funzionamento della libreria
+    BrowserAnimationsModule, // Necessario per il funzionamento della libreria
+  ],
+  providers: [
+    provideDesignAngularKit(),
+  ]
 })
-export class ProductComponent {
-}
+export class AppModule { }
+```
+
+#### Parametri di configurazione
+
+Sia per la funzione `provideDesignAngularKit` che per il modulo `DesignAngularKitModule.forRoot()` è possibile utilizzare una configurazione iniziale [`DesignAngularKitConfig`](/projects/design-angular-kit/src/lib/interfaces/design-angular-kit-config.ts).
+
+```typescript
+import { provideDesignAngularKit, DesignAngularKitModule, DesignAngularKitConfig } from 'design-angular-kit';
+
+// Puoi aggiungere alla libreria una configurazione iniziale
+const initConfig: DesignAngularKitConfig | undefined = {
+  /**
+   * The bootstrap-italia asset folder path
+   * @default ./bootstrap-italia
+   */
+  assetBasePath: string | undefined,
+
+  /**
+   * Load the <a href="https://italia.github.io/bootstrap-italia/docs/come-iniziare/introduzione/#fonts">bootstrap-italia fonts</a>
+   * @default true
+   */
+  loadFont: boolean | undefined,
+  
+  ...
+};
+
+provideDesignAngularKit(initConfig)
+
+DesignAngularKitModule.forRoot(initConfig)
 ```
 
 ### Importazione stili bootstrap-italia
@@ -149,8 +201,8 @@ Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS c
 <details>
   <summary>Come personalizzare e sovrascrivere le variabili di default della libreria (es. colori, font-family, misure, ecc.)</summary>
 
-Bootstrap Italia eredita ed estende tutte le variabili di default di Bootstrap, sovrascrivendo 
-alcuni valori in fase di compilazione e impostandone di nuovi all’occorenza. Un esempio fra tutti è 
+Bootstrap Italia eredita ed estende tutte le variabili di default di Bootstrap, sovrascrivendo
+alcuni valori in fase di compilazione e impostandone di nuovi all’occorenza. Un esempio fra tutti è
 il valore del colore $primary che in Bootstrap Italia è rappresentato dal colore blu #0066CC,
 tipico della libreria.
 
@@ -187,7 +239,8 @@ $font-family-monospace: 'Custom Font', 'Courier New', Courier, monospace;
 
 Per aggiungere il supporto icone/assets, modifica il tuo `angular.json` aggiungendo:
 
-```
+```json
+{
  "assets": [
     ...
     {
@@ -196,7 +249,8 @@ Per aggiungere il supporto icone/assets, modifica il tuo `angular.json` aggiunge
       "output": "/bootstrap-italia/"
     }
   ]
- ```
+}
+```
 
 ### Supporto i18n (localizzazione)
 
@@ -204,8 +258,9 @@ La libreria usa [ngx-translate](https://github.com/ngx-translate/core) per aggiu
 
 Modifica il tuo `angular.json` aggiungendo:
 
-```
- "assets": [
+```json
+{
+  "assets": [
     ...
     {
       "glob": "**/*",
@@ -213,71 +268,95 @@ Modifica il tuo `angular.json` aggiungendo:
       "output": "/bootstrap-italia/i18n/"
     }
   ]
- ```
+}
+```
+Puoi utilizzare le label localizzate della libreria `design-angular-kit` nella tua applicazione, ad esempio `{{'it.errors.required-field' | translate}}`. [Vedi le nostre label](projects/design-angular-kit/assets/i18n/it.json)
 
 #### Localizzazione esistente
 
 Se utilizzi già i file di localizzazione nella tua app, puoi utilizzare la libreria [ngx-translate-multi-http-loader](https://www.npmjs.com/package/ngx-translate-multi-http-loader)
-per caricare i file di localizzazione dell'app e di `design-angular-kit`
+per caricare sia i file di localizzazione dell'app che quelli della libreria `design-angular-kit`
 
-Modifica nel tuo `app.module.ts`:
+
+**Utilizzando la funzione `provideDesignAngularKit`:**
 
 ```typescript
-@NgModule({
-  imports: [
-    ...
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
-          './bootstrap-italia/i18n/', // Load library translations first, so you can edit the keys in your localization file
-          './assets/i18n/' // Your i18n location
-        ]),
-        deps: [HttpBackend]
-      },      
-      defaultLanguage: 'it'
-    }),
-    DesignAngularKitModule
-  ]
+import { HttpBackend } from '@angular/common/http';
+import { TranslateLoader } from '@ngx-translate/core';
+import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
+import { provideDesignAngularKit } from 'design-angular-kit';
+
+provideDesignAngularKit({
+  translateLoader: (itPrefix: string, itSuffix: string) => ({
+    provide: TranslateLoader,
+    useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
+      { prefix: itPrefix, suffix: itSuffix }, // Load library translations first, so you can edit the keys in your localization file
+      { prefix: './assets/i18n/' }, // Your i18n location
+    ]),
+    deps: [HttpBackend]
+  }),
 })
 ```
 
-Se vuoi personalizzare le nostre label puoi aggiungere le localizzazioni nei tuoi file json, sovrascrivendo le [chiavi del json della libreria](projects/design-angular-kit/assets/i18n/it.json).
-
-Puoi utilizzare le label localizzate di `design-angular-kit` nella tua applicazione, ad esempio `{{'it.errors.required-field' | translate}}`. [Vedi le nostre label](projects/design-angular-kit/assets/i18n/it.json)
-
-#### Localizzazione non esistente
-
-Se non utilizzi i file di localizzazione nella tua app, devi aggiungere il provider `TranslateStore` nel tuo `app.module.ts`:
-
+**Utilizzando il modulo `DesignAngularKitModule`:**
 ```typescript
-@NgModule({
-  imports: [
-    ...
-    DesignAngularKitModule,
-  ],
-  providers: [
-    TranslateStore
-  ],
+import { HttpBackend } from '@angular/common/http';
+import { TranslateLoader } from '@ngx-translate/core';
+import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
+import { DesignAngularKitModule } from 'design-angular-kit';
+
+DesignAngularKitModule.forRoot({
+  translateLoader: (itPrefix: string, itSuffix: string) => ({
+    provide: TranslateLoader,
+    useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
+      { prefix: itPrefix, suffix: itSuffix }, // Load library translations first, so you can edit the keys in your localization file
+      { prefix: './assets/i18n/' }, // Your i18n location
+    ]),
+    deps: [HttpBackend]
+  }),
 })
 ```
 
-Se vuoi personalizzare le nostre label:  
-- Non includere il supporto i18n nel tuo `angular.json` ma crea i tuoi file di localizzazione personalizzati nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste). 
-- Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
+#### Personalizzazione della localizzazione
 
-### Supporto animazione
+Se vuoi personalizzare le nostre label:
+- Non includere il supporto i18n nel tuo `angular.json` 
+    - Crea i tuoi file di localizzazione personalizzati nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste)
+    - Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
+    - Aggiungi nella configurazione iniziale della libreria il `translateLoader` custom, sostituendo la stringa `assets/bootstrap-italia/i18n/` all'attributo `itPrefix`  
+- Oppure, aggiungi le localizzazioni nei tuoi file json, sovrascrivendo le [chiavi del json della libreria](projects/design-angular-kit/assets/i18n/it.json).
 
-La libreria usa BrowserAnimationsModule per gestire alcune animazioni.
+## Utilizzo
 
-Per abilitarle, bisogna aggiungere al tuo `app.module.ts` il modulo :
+Utilizzando il modulo `DesignAngularKitModule` tutti i componenti della libreria verranno importati nell'applicazione.
+
+In alternativa, poiché tutti i nostri componenti e direttive sono _standalone_, puoi importare solo i componenti/moduli di cui hai bisogno, ad es. Alert, Paginazione e Breadcrumb.
 
 ```typescript
-imports: [
-  ...
-  BrowserAnimationsModule
-]
+import { ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule } from 'design-angular-kit';
+
+@NgModule({
+  imports: [
+    ItAlertComponent, 
+    ItPaginationComponent, 
+    ItBreadcrumbsModule // Include ItBreadcrumbComponent e ItBreadcrumbItemComponent 
+  ],
+})
+export class YourAppModule {
+}
+```
+
+```typescript
+import { ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule } from 'design-angular-kit';
+
+@Component({
+  selector: 'app-product',
+  standalone: true,
+  imports: [ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule],
+  templateUrl: './product.component.html'
+})
+export class ProductComponent {
+}
 ```
 
 ## Segnalazione bug e richieste di aiuto
