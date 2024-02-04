@@ -7,6 +7,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   standalone: true,
   selector: 'it-icon',
   templateUrl: './icon.component.html',
+  styles: ':host {display: contents;}',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
 })
