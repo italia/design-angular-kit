@@ -6,7 +6,7 @@ import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-radio-button[value]',
+  selector: 'it-radio-button',
   templateUrl: './radio-button.component.html',
   styleUrls: ['./radio-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,7 +16,7 @@ export class ItRadioButtonComponent extends ItAbstractFormComponent<string | num
   /**
    * The radio value
    */
-  @Input() value: string | number | undefined | null;
+  @Input({ required: true }) value: string | number | undefined | null;
 
   /**
    * If show radio inline

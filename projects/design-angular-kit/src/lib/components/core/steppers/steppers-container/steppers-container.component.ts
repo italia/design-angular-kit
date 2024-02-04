@@ -23,7 +23,7 @@ import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-steppers-container[activeStep]',
+  selector: 'it-steppers-container',
   templateUrl: './steppers-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ItIconComponent, NgTemplateOutlet, TranslateModule, ItButtonDirective, ItProgressBarComponent, ItProgressButtonComponent],
@@ -33,7 +33,7 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
    * The active step index
    * @param index the step index
    */
-  @Input() activeStep!: number;
+  @Input({ required: true }) activeStep!: number;
 
   /**
    * Show the stepper header

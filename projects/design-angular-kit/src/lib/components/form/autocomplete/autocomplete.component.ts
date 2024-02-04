@@ -10,7 +10,7 @@ import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-autocomplete[autocompleteData]',
+  selector: 'it-autocomplete',
   templateUrl: './autocomplete.component.html',
   imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgTemplateOutlet, ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -11,7 +11,7 @@ import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-upload-file-list[fileList]',
+  selector: 'it-upload-file-list',
   templateUrl: './upload-file-list.component.html',
   imports: [ItIconComponent, TranslateModule, ItTooltipDirective, ItProgressBarComponent],
 })
@@ -19,7 +19,7 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
   /**
    * The list of files to show in list
    */
-  @Input() fileList!: Array<UploadFileListItem>;
+  @Input({ required: true }) fileList!: Array<UploadFileListItem>;
 
   /**
    * The accepted file type to upload <br>

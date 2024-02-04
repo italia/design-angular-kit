@@ -10,7 +10,7 @@ import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-pagination[currentPage][pageNumbers]',
+  selector: 'it-pagination',
   templateUrl: './pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ItIconComponent, TranslateModule, LowerCasePipe, ItDropdownModule, ItInputComponent, ReactiveFormsModule],
@@ -19,12 +19,12 @@ export class ItPaginationComponent implements OnChanges {
   /**
    * Index of page (start 0)
    */
-  @Input() currentPage!: number;
+  @Input({ required: true }) currentPage!: number;
 
   /**
    * Max number of page (counter)
    */
-  @Input() pageNumbers!: number;
+  @Input({ required: true }) pageNumbers!: number;
 
   /**
    * Number of pages closest to the current one to display

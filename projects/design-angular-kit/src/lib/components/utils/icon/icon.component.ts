@@ -5,17 +5,16 @@ import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-icon[name]',
+  selector: 'it-icon',
   templateUrl: './icon.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItIconComponent {
-
   /**
    * The icon name
    */
-  @Input() name!: IconName;
+  @Input({ required: true }) name!: IconName;
 
   /**
    * The icon size
@@ -65,8 +64,5 @@ export class ItIconComponent {
     return iconClass;
   }
 
-  constructor(
-    @Inject(DESIGN_ANGULAR_KIT_CONFIG) private readonly config: DesignAngularKitConfig
-  ) {
-  }
+  constructor(@Inject(DESIGN_ANGULAR_KIT_CONFIG) private readonly config: DesignAngularKitConfig) {}
 }
