@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
@@ -7,10 +7,9 @@ import { inputToBoolean } from '../../../../utils/coercion';
   selector: 'it-list',
   templateUrl: './list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet]
+  imports: [NgTemplateOutlet],
 })
 export class ItListComponent {
-
   /**
    * Add 'link-list' class for navigation menu
    * @default false
@@ -28,5 +27,4 @@ export class ItListComponent {
    * @default false
    */
   @Input({ transform: inputToBoolean }) multiline?: boolean;
-
 }

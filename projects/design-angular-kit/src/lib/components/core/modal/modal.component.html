@@ -1,26 +1,28 @@
-<div #modalElement [id]="id"
-     [class]="modalClass"
-     tabindex="-1"
-     role="dialog"
-     aria-hidden="true"
-     [attr.aria-labelledby]="id+'-title'"
-     [attr.aria-describedby]="id+'-description'">
-
+<div
+  #modalElement
+  [id]="id"
+  [class]="modalClass"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+  [attr.aria-labelledby]="id + '-title'"
+  [attr.aria-describedby]="id + '-description'">
   <div [class]="dialogClass">
     <div class="modal-content" role="document">
       <div class="modal-header">
         <ng-content select="[beforeTitle]"></ng-content>
 
-        <h2 class="modal-title h5" id="{{id}}-title">
+        <h2 class="modal-title h5" id="{{ id }}-title">
           <ng-content select="[modalTitle]"></ng-content>
         </h2>
 
-        <button *ngIf="closeButton" type="button" class="btn-close" data-bs-dismiss="modal"
-                [attr.aria-label]="'it.core.close-modal'|translate"></button>
+        @if (closeButton) {
+          <button type="button" class="btn-close" data-bs-dismiss="modal" [attr.aria-label]="'it.core.close-modal' | translate"></button>
+        }
       </div>
 
       <div class="modal-body">
-        <div id="{{id}}-description">
+        <div id="{{ id }}-description">
           <ng-content select="[description]"></ng-content>
         </div>
         <ng-content></ng-content>
@@ -31,5 +33,4 @@
       </div>
     </div>
   </div>
-
 </div>

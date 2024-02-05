@@ -1,8 +1,5 @@
 <ng-container>
-  <div class="form-check"
-       [class.form-check-group]="group"
-       [class.form-check-inline]="inline">
-
+  <div class="form-check" [class.form-check-group]="group" [class.form-check-inline]="inline">
     <input
       [id]="id"
       type="radio"
@@ -12,32 +9,43 @@
       [class.is-invalid]="isInvalid"
       [class.is-valid]="isValid"
       [formControl]="control"
-      [attr.aria-describedby]="id + '-help'">
+      [attr.aria-describedby]="id + '-help'" />
 
     <label class="form-check-label" [for]="id">
       <div #customLabel>
         <ng-content select="[label]"></ng-content>
       </div>
-      <ng-container *ngIf="!customLabel.hasChildNodes()">{{label}}</ng-container>
+      @if (!customLabel.hasChildNodes()) {
+        {{ label }}
+      }
     </label>
 
-    <small *ngIf="group" [id]="id + '-help'" class="form-text">
-      <ng-content></ng-content>
-    </small>
+    @if (group) {
+      <small [id]="id + '-help'" class="form-text">
+        <ng-content></ng-content>
+      </small>
+    }
 
-    <div *ngIf="isInvalid && group" class="form-feedback just-validate-error-label" [id]="id + '-error'">
+    @if (isInvalid && group) {
+      <div class="form-feedback just-validate-error-label" [id]="id + '-error'">
+        <div #customError>
+          <ng-content select="[error]"></ng-content>
+        </div>
+        @if (!customError.hasChildNodes()) {
+          {{ invalidMessage | async }}
+        }
+      </div>
+    }
+  </div>
+
+  @if (isInvalid && !group) {
+    <div class="form-feedback just-validate-error-label" [id]="id + '-error'">
       <div #customError>
         <ng-content select="[error]"></ng-content>
       </div>
-      <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
+      @if (!customError.hasChildNodes()) {
+        {{ invalidMessage | async }}
+      }
     </div>
-
-  </div>
-
-  <div *ngIf="isInvalid && !group" class="form-feedback just-validate-error-label" [id]="id + '-error'">
-    <div #customError>
-      <ng-content select="[error]"></ng-content>
-    </div>
-    <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
-  </div>
+  }
 </ng-container>

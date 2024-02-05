@@ -4,17 +4,16 @@ import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 
 @Component({
   standalone: true,
-  selector: 'it-steppers-item[label]',
+  selector: 'it-steppers-item',
   templateUrl: './steppers-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItSteppersItemComponent extends ItAbstractComponent {
-
   /**
    * The labels present in the header steps
    */
-  @Input() label!: string;
+  @Input({ required: true }) label!: string;
 
   /**
    * The labels present in the header steps can be preceded by an icon.
@@ -24,5 +23,6 @@ export class ItSteppersItemComponent extends ItAbstractComponent {
   /**
    * The content of step
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;
 }

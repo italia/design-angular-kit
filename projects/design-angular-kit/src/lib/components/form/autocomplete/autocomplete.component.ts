@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
-import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItMarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
@@ -10,9 +10,9 @@ import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-autocomplete[autocompleteData]',
+  selector: 'it-autocomplete',
   templateUrl: './autocomplete.component.html',
-  imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgForOf, NgIf, NgTemplateOutlet, ReactiveFormsModule],
+  imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgTemplateOutlet, ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItAutocompleteComponent extends ItAbstractFormComponent<string | null | undefined> implements OnInit {
@@ -26,7 +26,7 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   /**
    * To get a large version of Autocomplete
    */
-  @Input({transform: inputToBoolean}) big?: boolean;
+  @Input({ transform: inputToBoolean }) big?: boolean;
 
   /**
    * Time span [ms] has passed without another source emission, to delay data filtering.

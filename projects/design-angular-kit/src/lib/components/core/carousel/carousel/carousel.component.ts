@@ -8,13 +8,13 @@ import {
   Input,
   OnDestroy,
   QueryList,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { CarouselType } from '../../../../interfaces/core';
 import { ItCarouselItemComponent } from '../carousel-item/carousel-item.component';
 import { CarouselBI } from 'bootstrap-italia';
 import { startWith, Subscription } from 'rxjs';
-import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 /**
@@ -28,10 +28,9 @@ import { inputToBoolean } from '../../../../utils/coercion';
   styleUrls: ['./carousel.component.scss'],
   exportAs: 'itCarousel',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgForOf, NgTemplateOutlet, NgIf]
+  imports: [NgTemplateOutlet],
 })
 export class ItCarouselComponent implements AfterViewInit, OnDestroy {
-
   /**
    * The callout title
    * @default undefined
@@ -54,25 +53,25 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
    * True for full screen (landscape) viewing
    * @default false
    */
-  @Input({transform: inputToBoolean}) fullCarousel?: boolean;
+  @Input({ transform: inputToBoolean }) fullCarousel?: boolean;
 
   /**
    * To indicate that the contained image is of a large type
    * @default false
    */
-  @Input({transform: inputToBoolean}) bigImg?: boolean;
+  @Input({ transform: inputToBoolean }) bigImg?: boolean;
 
   /**
    * To indicate that the contained image is of a standard type
    * @default false
    */
-  @Input({transform: inputToBoolean}) standardImage?: boolean;
+  @Input({ transform: inputToBoolean }) standardImage?: boolean;
 
   /**
    * Card line style
    * @default false
    */
-  @Input({transform: inputToBoolean}) lined?: boolean;
+  @Input({ transform: inputToBoolean }) lined?: boolean;
 
   @ContentChildren(ItCarouselItemComponent) protected items?: QueryList<ItCarouselItemComponent>;
 
@@ -87,22 +86,24 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
     return this.type === 'default' ? typeClass : typeClass + `-${this.type}`;
   }
 
-  constructor(
-    private readonly _changeDetectorRef: ChangeDetectorRef
-  ) {
-  }
+  constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     this.carousel = CarouselBI.getOrCreateInstance(this.carouselDiv.nativeElement);
-    this.items?.changes.pipe( // When carousel items changes (dynamic add/remove)
-      startWith(undefined)
-    ).subscribe(() => {
-      this.itemSubscriptions?.forEach(sub => sub.unsubscribe()); // Remove old subscriptions
-      this.itemSubscriptions = this.items?.map(item => item.valueChanges.subscribe(() => {
-        this._changeDetectorRef.detectChanges(); // DetectChanges when carousel item attributes changes
-      }));
-      this._changeDetectorRef.detectChanges(); // Force update html render
-    });
+    this.items?.changes
+      .pipe(
+        // When carousel items changes (dynamic add/remove)
+        startWith(undefined)
+      )
+      .subscribe(() => {
+        this.itemSubscriptions?.forEach(sub => sub.unsubscribe()); // Remove old subscriptions
+        this.itemSubscriptions = this.items?.map(item =>
+          item.valueChanges.subscribe(() => {
+            this._changeDetectorRef.detectChanges(); // DetectChanges when carousel item attributes changes
+          })
+        );
+        this._changeDetectorRef.detectChanges(); // Force update html render
+      });
   }
 
   ngOnDestroy(): void {

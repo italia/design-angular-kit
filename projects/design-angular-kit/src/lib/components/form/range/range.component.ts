@@ -7,9 +7,8 @@ import {
   OnDestroy,
   OnInit,
   SimpleChanges,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { distinctUntilChanged, startWith, Subscription } from 'rxjs';
@@ -17,13 +16,12 @@ import { distinctUntilChanged, startWith, Subscription } from 'rxjs';
 @Component({
   selector: 'it-range',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './range.component.html',
   styleUrls: ['./range.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItRangeComponent extends ItAbstractFormComponent<number | null | undefined> implements OnInit, OnChanges, OnDestroy {
-
   /**
    * The max value
    */
@@ -59,10 +57,9 @@ export class ItRangeComponent extends ItAbstractFormComponent<number | null | un
 
   override ngOnInit() {
     super.ngOnInit();
-    this.subscription = this.control.valueChanges.pipe(
-      distinctUntilChanged(),
-      startWith(undefined)
-    ).subscribe(() => this.updateSliderColor());
+    this.subscription = this.control.valueChanges
+      .pipe(distinctUntilChanged(), startWith(undefined))
+      .subscribe(() => this.updateSliderColor());
   }
 
   override ngOnChanges(changes: SimpleChanges) {
@@ -97,7 +94,7 @@ export class ItRangeComponent extends ItAbstractFormComponent<number | null | un
 
     // Calculate visible width
     const diff = max - min;
-    const val = (((this.control.value ?? (diff / 2)) - min) * 100) / diff;
+    const val = (((this.control.value ?? diff / 2) - min) * 100) / diff;
     this.slider.nativeElement.style.setProperty('--range-percentage', `${val}%`);
   }
 }

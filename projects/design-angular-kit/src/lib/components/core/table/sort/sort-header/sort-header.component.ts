@@ -10,21 +10,19 @@ import {
   OnDestroy,
   OnInit,
   Optional,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ItSortDirective,} from '../sort.directive';
-import {merge, Subscription} from 'rxjs';
-import {ItIconComponent} from '../../../../utils/icon/icon.component';
-import {IconName} from "../../../../../interfaces/icon";
+import { ItSortDirective } from '../sort.directive';
+import { merge, Subscription } from 'rxjs';
+import { ItIconComponent } from '../../../../utils/icon/icon.component';
+import { IconName } from '../../../../../interfaces/icon';
 import {
   IT_SORT_DEFAULT_OPTIONS,
   ItSortable,
   ItSortDefaultOptions,
   SortDirection,
-  SortHeaderArrowPosition
-} from "../../../../../interfaces/sortable-table";
-
+  SortHeaderArrowPosition,
+} from '../../../../../interfaces/sortable-table';
 
 /**
  * Applies sorting behavior (click to change sort) and styles to an element, including an
@@ -40,7 +38,7 @@ import {
   selector: '[it-sort-header]',
   exportAs: 'itSortHeader',
   standalone: true,
-  imports: [CommonModule, ItIconComponent],
+  imports: [ItIconComponent],
   templateUrl: './sort-header.component.html',
   styleUrls: ['./sort-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -60,11 +58,11 @@ export class ItSortHeaderComponent implements ItSortable, OnDestroy, OnInit {
   @Input() start?: SortDirection;
 
   /** whether the sort header is disabled. */
-  @Input({transform: booleanAttribute})
+  @Input({ transform: booleanAttribute })
   sortDisabled: boolean = false;
 
   /** Overrides the disable clear value of the containing SortDirective for this MatSortable. */
-  @Input({transform: booleanAttribute})
+  @Input({ transform: booleanAttribute })
   disableSortClear?: boolean;
 
   @HostBinding('class')
@@ -79,7 +77,7 @@ export class ItSortHeaderComponent implements ItSortable, OnDestroy, OnInit {
     private readonly _changeDetectorRef: ChangeDetectorRef,
     // `SortDirective` is not optionally injected, but just asserted manually w/ better error.
     @Optional() public readonly _sort: ItSortDirective,
-    @Optional() @Inject(IT_SORT_DEFAULT_OPTIONS) defaultOptions?: ItSortDefaultOptions,
+    @Optional() @Inject(IT_SORT_DEFAULT_OPTIONS) defaultOptions?: ItSortDefaultOptions
   ) {
     if (defaultOptions?.arrowPosition) {
       this.arrowPosition = defaultOptions?.arrowPosition;
@@ -110,10 +108,7 @@ export class ItSortHeaderComponent implements ItSortable, OnDestroy, OnInit {
    * Whether this MatSortHeader is currently sorted in either ascending or descending order.
    */
   protected get isSorted() {
-    return (
-      this._sort.active == this.id &&
-      (this._sort.direction === 'asc' || this._sort.direction === 'desc')
-    );
+    return this._sort.active == this.id && (this._sort.direction === 'asc' || this._sort.direction === 'desc');
   }
 
   /**
@@ -157,18 +152,13 @@ export class ItSortHeaderComponent implements ItSortable, OnDestroy, OnInit {
     return this._sort.direction == 'asc' ? 'ascending' : 'descending';
   }
 
-
   /** Handles changes in the sorting state. */
   private _handleStateChanges() {
-    this._rerenderSubscription = merge(
-      this._sort.sortChange,
-      this._sort._stateChanges,
-    ).subscribe(() => {
+    this._rerenderSubscription = merge(this._sort.sortChange, this._sort._stateChanges).subscribe(() => {
       if (this.isSorted) {
         this.updateArrowDirection();
       }
       this._changeDetectorRef.markForCheck();
     });
   }
-
 }

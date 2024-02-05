@@ -6,6 +6,6 @@ const dropdownComponents = [ItDropdownComponent, ItDropdownItemComponent];
 
 @NgModule({
   imports: dropdownComponents,
-  exports: dropdownComponents
+  exports: dropdownComponents,
 })
-export class ItDropdownModule { }
+export class ItDropdownModule {}

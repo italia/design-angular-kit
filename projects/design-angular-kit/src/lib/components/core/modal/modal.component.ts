@@ -1,18 +1,8 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
-import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { Modal as BSModal } from 'bootstrap'
+import { Modal as BSModal } from 'bootstrap';
 import { inputToBoolean } from '../../../utils/coercion';
 
 /**
@@ -26,10 +16,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   styleUrls: ['./modal.component.scss'],
   exportAs: 'itModal',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule]
+  imports: [TranslateModule],
 })
 export class ItModalComponent extends ItAbstractComponent implements AfterViewInit {
-
   /**
    * Show/Hide close button on header
    * @default true
@@ -108,7 +97,7 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
   /**
    * Modal options
    */
-  @Input() options?: Partial<BSModal.Options>
+  @Input() options?: Partial<BSModal.Options>;
 
   /**
    * This event fires immediately when the instance method show is called.
@@ -150,7 +139,7 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
         ...this.options,
         backdrop: this.backdrop === 'static' ? 'static' : this.backdrop,
         focus: this.focus,
-        keyboard: this.keyboard
+        keyboard: this.keyboard,
       });
 
       element.addEventListener('show.bs.modal', event => this.showEvent.emit(event));
@@ -226,5 +215,4 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
   public dispose(): void {
     this.modal?.dispose();
   }
-
 }

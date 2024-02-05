@@ -103,14 +103,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "design-angular-kit-bundle:build"
+            "buildTarget": "design-angular-kit-bundle:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "design-angular-kit-bundle:build:production"
+              "buildTarget": "design-angular-kit-bundle:build:production"
             },
             "development": {
-              "browserTarget": "design-angular-kit-bundle:build:development"
+              "buildTarget": "design-angular-kit-bundle:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -118,7 +118,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "design-angular-kit-bundle:build"
+            "buildTarget": "design-angular-kit-bundle:build"
           }
         },
         "test": {

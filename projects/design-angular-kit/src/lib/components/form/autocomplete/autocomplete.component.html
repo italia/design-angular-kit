@@ -1,5 +1,7 @@
 <div class="form-group" [class.autocomplete-wrapper-big]="big">
-  <label *ngIf="label" [for]="id" class="visually-hidden">{{ label }}</label>
+  @if (label) {
+    <label [for]="id" class="visually-hidden">{{ label }}</label>
+  }
 
   <input
     [id]="id"
@@ -16,29 +18,39 @@
     <it-icon name="search" size="sm"></it-icon>
   </span>
 
-  <ng-container *ngIf="autocompleteResults$ | async as autocomplete">
+  @if (autocompleteResults$ | async; as autocomplete) {
     <ul class="autocomplete-list" [class.autocomplete-list-show]="autocomplete.relatedEntries?.length && showAutocompletion">
-      <li *ngFor="let entry of autocomplete.relatedEntries; trackBy: autocompleteItemTrackByValueFn">
-        <a [href]="entry.link" (click)="onEntryClick(entry, $event)">
-          <div class="avatar size-sm" *ngIf="entry.avatarSrcPath">
-            <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText" />
-          </div>
-
-          <it-icon *ngIf="entry.icon" [name]="entry.icon" size="sm"></it-icon>
-
-          <span class="autocomplete-list-text">
-            <span [innerHTML]="entry.value | itMarkMatchingText: autocomplete.searchedValue"></span>
-            <em *ngIf="entry.label">{{ entry.label }}</em>
-          </span>
-        </a>
-      </li>
+      @for (entry of autocomplete.relatedEntries; track autocompleteItemTrackByValueFn($index, entry)) {
+        <li>
+          <a [href]="entry.link" (click)="onEntryClick(entry, $event)">
+            @if (entry.avatarSrcPath) {
+              <div class="avatar size-sm">
+                <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText" />
+              </div>
+            }
+            @if (entry.icon) {
+              <it-icon [name]="entry.icon" size="sm"></it-icon>
+            }
+            <span class="autocomplete-list-text">
+              <span [innerHTML]="entry.value | itMarkMatchingText: autocomplete.searchedValue"></span>
+              @if (entry.label) {
+                <em>{{ entry.label }}</em>
+              }
+            </span>
+          </a>
+        </li>
+      }
     </ul>
-  </ng-container>
+  }
 
-  <div *ngIf="isInvalid" class="form-feedback just-validate-error-label" [id]="id + '-error'">
-    <div #customError>
-      <ng-content select="[error]"></ng-content>
+  @if (isInvalid) {
+    <div class="form-feedback just-validate-error-label" [id]="id + '-error'">
+      <div #customError>
+        <ng-content select="[error]"></ng-content>
+      </div>
+      @if (!customError.hasChildNodes()) {
+        {{ invalidMessage | async }}
+      }
     </div>
-    <ng-container *ngIf="!customError.hasChildNodes()">{{ invalidMessage | async }}</ng-container>
-  </div>
+  }
 </div>

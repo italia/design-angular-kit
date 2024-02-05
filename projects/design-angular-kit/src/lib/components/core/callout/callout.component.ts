@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CalloutAppearance, CalloutColor } from '../../../interfaces/core';
 import { IconName } from '../../../interfaces/icon';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 
 /**
@@ -12,16 +12,17 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
   standalone: true,
   selector: 'it-callout',
   templateUrl: './callout.component.html',
-  styles: [`
-    .callout-big-text:empty {
-      display: none;
-    }
-  `],
+  styles: [
+    `
+      .callout-big-text:empty {
+        display: none;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, ItIconComponent]
+  imports: [NgTemplateOutlet, ItIconComponent],
 })
 export class ItCalloutComponent {
-
   /**
    * Callout label
    * @default undefined
@@ -82,5 +83,4 @@ export class ItCalloutComponent {
         return 'info-circle';
     }
   }
-
 }

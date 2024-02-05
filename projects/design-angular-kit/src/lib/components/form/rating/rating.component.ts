@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgForOf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 
@@ -10,10 +9,9 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
   selector: 'it-rating',
   templateUrl: './rating.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslateModule, NgForOf, ReactiveFormsModule, ItIconComponent]
+  imports: [TranslateModule, ReactiveFormsModule, ItIconComponent],
 })
 export class ItRatingComponent extends ItAbstractFormComponent<number | null | undefined> implements OnInit, OnChanges {
-
   /**
    * The rating value
    */

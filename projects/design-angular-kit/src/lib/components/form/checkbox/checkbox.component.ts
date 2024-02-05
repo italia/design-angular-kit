@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
-import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { inputToBoolean } from '../../../utils/coercion';
 
@@ -9,10 +9,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   selector: 'it-checkbox',
   templateUrl: './checkbox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, ReactiveFormsModule, AsyncPipe]
+  imports: [NgTemplateOutlet, ReactiveFormsModule, AsyncPipe],
 })
 export class ItCheckboxComponent extends ItAbstractFormComponent<boolean | null | undefined> implements OnInit, OnChanges {
-
   /**
    * If show checkbox as toggle
    * @default false

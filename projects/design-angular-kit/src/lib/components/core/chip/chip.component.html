@@ -1,11 +1,26 @@
-<div class="chip" [ngClass]="[!showCloseButton ? 'chip-simple': 'alert', size === 'lg' ? 'chip-lg': '', color ? 'chip-' + color : '', disabled ? 'chip-disabled' : '']">
-    <svg *ngIf="icon" class="icon icon-xs">
-      <use [attr.href]="this.config.iconHref + '#it-' + icon" [attr.xlink:href]="this.config.iconHref + '#it-' + icon"></use>
+<div
+  class="chip"
+  [ngClass]="[
+    !showCloseButton ? 'chip-simple' : 'alert',
+    size === 'lg' ? 'chip-lg' : '',
+    color ? 'chip-' + color : '',
+    disabled ? 'chip-disabled' : ''
+  ]">
+  @if (icon) {
+    <svg class="icon icon-xs">
+      <use [attr.href]="iconHref" [attr.xlink:href]="iconHref"></use>
     </svg>
-    <div *ngIf="avatar" class="avatar size-xs"><img [src]="avatar" [alt]="altAvatar"></div>
-    <span class="chip-label">{{ label }}</span>
-    <button *ngIf="showCloseButton" (click)="clickToClose()" [disabled]="disabled">
-        <svg class="icon"><use [attr.href]="this.config.iconHref + '#it-close'" [attr.xlink:href]="this.config.iconHref + '#it-close'"></use></svg>
-        <span class="visually-hidden">{{ 'it.core.remove' | translate }} {{ label }}</span>
+  }
+  @if (avatar) {
+    <div class="avatar size-xs"><img [src]="avatar" [alt]="altAvatar" /></div>
+  }
+  <span class="chip-label">{{ label }}</span>
+  @if (showCloseButton) {
+    <button (click)="clickToClose()" [disabled]="disabled">
+      <svg class="icon">
+        <use [attr.href]="iconCloseHref" [attr.xlink:href]="iconCloseHref"></use>
+      </svg>
+      <span class="visually-hidden">{{ 'it.core.remove' | translate }} {{ label }}</span>
     </button>
+  }
 </div>

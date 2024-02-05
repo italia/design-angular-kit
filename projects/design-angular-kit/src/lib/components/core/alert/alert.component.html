@@ -1,19 +1,19 @@
-<div class="alert alert-{{color}}" #alertElement
-     [class.alert-dismissible]="dismissible"
-     [class.fade]="dismissible"
-     [class.show]="dismissible"
-     role="alert">
+<div
+  #alertElement
+  class="alert alert-{{ color }}"
+  [class.alert-dismissible]="dismissible"
+  [class.fade]="dismissible"
+  [class.show]="dismissible"
+  role="alert">
   <h4 class="alert-heading">
     <ng-content select="[heading]"></ng-content>
   </h4>
 
   <ng-content></ng-content>
 
-  <button *ngIf="dismissible"
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          [attr.aria-label]="'it.core.close-alert'|translate">
-    <it-icon name="close"></it-icon>
-  </button>
+  @if (dismissible) {
+    <button type="button" class="btn-close" data-bs-dismiss="alert" [attr.aria-label]="'it.core.close-alert' | translate">
+      <it-icon name="close"></it-icon>
+    </button>
+  }
 </div>

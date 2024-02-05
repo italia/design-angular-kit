@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItBackButtonComponent } from '../../navigation/back-button/back-button.component';
 import { ItButtonDirective } from '../../core/button/button.directive';
@@ -11,10 +10,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   selector: 'it-error-page',
   templateUrl: './error-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule, RouterLink, ItBackButtonComponent, ItButtonDirective]
+  imports: [TranslateModule, RouterLink, ItBackButtonComponent, ItButtonDirective],
 })
 export class ItErrorPageComponent {
-
   /**
    * The error code to show
    */
@@ -52,27 +50,25 @@ export class ItErrorPageComponent {
    */
   @Input({ transform: inputToBoolean }) showHomeButton?: boolean = true;
 
-  constructor(
-    private readonly route: ActivatedRoute
-  ) {
+  constructor(private readonly route: ActivatedRoute) {
     this.route.data.subscribe(data => {
       if (!this.errorCode && data['errorCode']) {
         this.errorCode = data['errorCode']; // Get errorCode from route data
       }
       if (data['showErrorCode'] !== undefined) {
-        this.showErrorCode = data['showErrorCode'];  // Get showErrorCode from route data
+        this.showErrorCode = data['showErrorCode']; // Get showErrorCode from route data
       }
       if (!this.errorTitle && data['errorTitle']) {
-        this.errorTitle = data['errorTitle'];  // Get errorTitle from route data
+        this.errorTitle = data['errorTitle']; // Get errorTitle from route data
       }
       if (!this.errorDescription && data['errorDescription']) {
-        this.errorDescription = data['errorDescription'];  // Get errorDescription from route data
+        this.errorDescription = data['errorDescription']; // Get errorDescription from route data
       }
       if (data['showBackButton'] !== undefined) {
-        this.showBackButton = data['showBackButton'];  // Get showBackButton from route data
+        this.showBackButton = data['showBackButton']; // Get showBackButton from route data
       }
       if (data['showHomeButton'] !== undefined) {
-        this.showHomeButton = data['showHomeButton'];  // Get showHomeButton from route data
+        this.showHomeButton = data['showHomeButton']; // Get showHomeButton from route data
       }
     });
   }
@@ -80,5 +76,4 @@ export class ItErrorPageComponent {
   get isDefaultErrorCode(): boolean {
     return this.errorCode === 404 || this.errorCode === 403 || this.errorCode === 500;
   }
-
 }

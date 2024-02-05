@@ -1,22 +1,20 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ProgressBarColor } from '../../../interfaces/core';
-import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-progress-bar[value]',
+  selector: 'it-progress-bar',
   templateUrl: './progress-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule]
+  imports: [TranslateModule],
 })
 export class ItProgressBarComponent {
-
   /**
    * The progress bar value [0, 100]
    */
-  @Input() value!: number;
+  @Input({ required: true }) value!: number;
 
   /**
    * Show the progress label
@@ -45,5 +43,4 @@ export class ItProgressBarComponent {
 
     return ` bg-${this.color}`;
   }
-
 }

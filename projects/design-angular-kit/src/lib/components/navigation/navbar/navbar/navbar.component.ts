@@ -1,20 +1,16 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
-import { NgIf } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { ItButtonDirective } from '../../../core/button/button.directive';
 import { inputToBoolean } from '../../../../utils/coercion';
-
 import { NavBarCollapsible } from 'bootstrap-italia';
 
 @Component({
   standalone: true,
   selector: 'it-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule, ItIconComponent, ItButtonDirective],
+  imports: [TranslateModule, ItIconComponent, ItButtonDirective],
 })
 export class ItNavBarComponent implements AfterViewInit {
   @Input({ transform: inputToBoolean }) megamenu?: boolean;

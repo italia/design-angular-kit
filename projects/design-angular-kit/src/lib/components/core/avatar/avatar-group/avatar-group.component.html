@@ -1,5 +1,7 @@
 <ul [class]="linkList ? 'link-list avatar-group' : 'avatar-group-stacked'">
-  <li *ngFor="let avatar of avatars">
+  @for (avatar of avatars; track avatar) {
+    <li>
       <ng-container *ngTemplateOutlet="avatar._implicitContent"></ng-container>
-  </li>
+    </li>
+  }
 </ul>

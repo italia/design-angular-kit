@@ -7,18 +7,17 @@ import { ItCollapseComponent } from '../collapse/collapse.component';
  */
 @Component({
   standalone: true,
-  selector: 'it-accordion[title]',
+  selector: 'it-accordion',
   templateUrl: './accordion.component.html',
   exportAs: 'itAccordion',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItAccordionComponent extends ItCollapseComponent implements AfterViewInit {
-
   /**
    * Accordion Title
    */
-  @Input() title!: string;
+  @Input({ required: true }) title!: string;
 
   @ViewChild('collapse') protected override collapseDiv?: ElementRef<HTMLDivElement>;
 
@@ -38,5 +37,4 @@ export class ItAccordionComponent extends ItCollapseComponent implements AfterVi
       this._changeDetectorRef.detectChanges();
     });
   }
-
 }

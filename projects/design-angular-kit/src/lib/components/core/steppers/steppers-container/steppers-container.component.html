@@ -1,92 +1,126 @@
 <div class="steppers" [class.bg-dark]="dark">
-  <div *ngIf="showHeader" class="steppers-header">
-    <ul *ngIf="steps">
-      <li *ngFor="let step of steps; let i = index"
-          [class.confirmed]="i < activeStep"
-          [class.active]="i === activeStep"
-          [class.no-line]="i === activeStep && steppersNumber">
-
-        <it-icon *ngIf="step.icon && !steppersNumber" [name]="step.icon"></it-icon>
-        <span *ngIf="steppersNumber" class="steppers-number">
-          <ng-container *ngIf="i < activeStep; else showNumber">
-            <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-          </ng-container>
-          <ng-template #showNumber>
-            <span class="visually-hidden">{{'it.core.step' | translate}} </span>{{i + 1}}
-          </ng-template>
+  @if (showHeader) {
+    <div class="steppers-header">
+      @if (steps) {
+        <ul>
+          @for (step of steps; track step.id; let i = $index) {
+            <li [class.confirmed]="i < activeStep" [class.active]="i === activeStep" [class.no-line]="i === activeStep && steppersNumber">
+              @if (step.icon && !steppersNumber) {
+                <it-icon [name]="step.icon"></it-icon>
+              }
+              @if (steppersNumber) {
+                <span class="steppers-number">
+                  @if (i < activeStep) {
+                    <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+                  } @else {
+                    <span class="visually-hidden">{{ 'it.core.step' | translate }} </span>{{ i + 1 }}
+                  }
+                </span>
+              }
+              {{ step.label }}
+              @if (i < activeStep && !steppersNumber) {
+                <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              }
+              @if (i === activeStep) {
+                <span class="visually-hidden">{{ 'it.core.active' | translate }}</span>
+              }
+            </li>
+          }
+        </ul>
+      }
+      @if (steps) {
+        <span class="steppers-index" aria-hidden="true">
+          @if (!steppersNumber) {
+            {{ activeStep + 1 + '/' + steps.length }}
+          } @else {
+            @for (step of steps; track step.id; let i = $index) {
+              <span [class.active]="i === activeStep">{{ i + 1 }}</span>
+            }
+          }
         </span>
+      }
+    </div>
+  }
 
-        {{step.label}}
+  @if (steps?.get(activeStep); as step) {
+    <div class="steppers-content" aria-live="polite">
+      <ng-container *ngTemplateOutlet="step.htmlContent"></ng-container>
+    </div>
+  }
 
-        <ng-container *ngIf="i < activeStep && !steppersNumber">
-          <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-        </ng-container>
-        <span *ngIf="i === activeStep" class="visually-hidden">{{'it.core.active' | translate}}</span>
-      </li>
-    </ul>
-    <span *ngIf="steps" class="steppers-index" aria-hidden="true">
-      <ng-container *ngIf="!steppersNumber; else showNumbers">
-        {{(activeStep + 1) + '/' + steps.length}}
-      </ng-container>
-      <ng-template #showNumbers>
-        <span *ngFor="let step of steps; let i = index" [class.active]="i === activeStep">{{i + 1}}</span>
-      </ng-template>
-    </span>
-  </div>
-
-  <div *ngIf="steps?.get(activeStep) as step" class="steppers-content" aria-live="polite">
-    <ng-container *ngTemplateOutlet="step.htmlContent"></ng-container>
-  </div>
-
-  <nav *ngIf="showBackButton || showSaveButton || showForwardButton || showConfirmButton || !!progressStyle"
-       class="steppers-nav">
-    <button *ngIf="showBackButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-prev"
-            [disabled]="disableBackButton"
-            (click)="backClick.emit(activeStep)">
-      <it-icon name="chevron-left" color="primary"></it-icon>
-      {{'it.core.back' | translate}}
-    </button>
-
-    <ng-container *ngIf="!!progressStyle && steps">
-      <ul *ngIf="progressStyle === 'dots'; else progressBar" class="steppers-dots">
-        <li *ngFor="let step of steps; let i = index" [class.done]="i < activeStep">
-          <span class="visually-hidden">
-            {{'it.core.step-of' | translate: { current: activeStep + 1, available: steps?.length } }}
-            {{i < activeStep ? ('- ' + ('it.core.confirmed' | translate)) : ''}}
-          </span>
-        </li>
-      </ul>
-
-      <ng-template #progressBar>
-        <div class="steppers-progress">
-          <it-progress-bar [color]="progressColor" [value]="(activeStep/(steps?.length||1)) * 100"></it-progress-bar>
-        </div>
-      </ng-template>
-    </ng-container>
-
-    <button *ngIf="showSaveButton" type="button" itButton="primary" size="sm" class="steppers-btn-save"
-            [progress]="saveLoading" [disabled]="saveLoading || disableSaveButton"
-            (click)="saveClick.emit(activeStep)">
-      {{'it.general.save' | translate}}
-    </button>
-
-    <button *ngIf="showForwardButton" type="button" itButton="outline-primary" size="sm" class="steppers-btn-next"
-            [disabled]="disableForwardButton"
-            (click)="forwardClick.emit(activeStep)">
-      {{'it.core.forward' | translate}}
-      <it-icon name="chevron-right" color="primary"></it-icon>
-    </button>
-
-    <button *ngIf="showConfirmButton" type="button" itButton="primary" size="sm"
-            class="steppers-btn-confirm d-lg-block"
-            [progress]="confirmLoading" [disabled]="confirmLoading || disableConfirmButton"
-            (click)="confirmClick.emit(activeStep)">
-      {{'it.core.confirm' | translate}}
-    </button>
-  </nav>
+  @if (showBackButton || showSaveButton || showForwardButton || showConfirmButton || !!progressStyle) {
+    <nav class="steppers-nav">
+      @if (showBackButton) {
+        <button
+          type="button"
+          itButton="outline-primary"
+          size="sm"
+          class="steppers-btn-prev"
+          [disabled]="disableBackButton"
+          (click)="backClick.emit(activeStep)">
+          <it-icon name="chevron-left" color="primary"></it-icon>
+          {{ 'it.core.back' | translate }}
+        </button>
+      }
+      @if (!!progressStyle && steps) {
+        @if (progressStyle === 'dots') {
+          <ul class="steppers-dots">
+            @for (step of steps; track step; let i = $index) {
+              <li [class.done]="i < activeStep">
+                <span class="visually-hidden">
+                  {{ 'it.core.step-of' | translate: { current: activeStep + 1, available: steps?.length } }}
+                  {{ i < activeStep ? '- ' + ('it.core.confirmed' | translate) : '' }}
+                </span>
+              </li>
+            }
+          </ul>
+        } @else {
+          <div class="steppers-progress">
+            <it-progress-bar [color]="progressColor" [value]="(activeStep / (steps?.length || 1)) * 100"></it-progress-bar>
+          </div>
+        }
+      }
+      @if (showSaveButton) {
+        <button
+          type="button"
+          itButton="primary"
+          size="sm"
+          class="steppers-btn-save"
+          [progress]="saveLoading"
+          [disabled]="saveLoading || disableSaveButton"
+          (click)="saveClick.emit(activeStep)">
+          {{ 'it.general.save' | translate }}
+        </button>
+      }
+      @if (showForwardButton) {
+        <button
+          type="button"
+          itButton="outline-primary"
+          size="sm"
+          class="steppers-btn-next"
+          [disabled]="disableForwardButton"
+          (click)="forwardClick.emit(activeStep)">
+          {{ 'it.core.forward' | translate }}
+          <it-icon name="chevron-right" color="primary"></it-icon>
+        </button>
+      }
+      @if (showConfirmButton) {
+        <button
+          type="button"
+          itButton="primary"
+          size="sm"
+          class="steppers-btn-confirm d-lg-block"
+          [progress]="confirmLoading"
+          [disabled]="confirmLoading || disableConfirmButton"
+          (click)="confirmClick.emit(activeStep)">
+          {{ 'it.core.confirm' | translate }}
+        </button>
+      }
+    </nav>
+  }
 </div>
 
 <ng-template #checkIcon>
   <it-icon name="check" class="steppers-success"></it-icon>
-  <span class="visually-hidden">{{'it.core.confirmed' | translate}}</span>
+  <span class="visually-hidden">{{ 'it.core.confirmed' | translate }}</span>
 </ng-template>

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Location, NgIf, NgTemplateOutlet } from '@angular/common';
+import { Location, NgTemplateOutlet } from '@angular/common';
 import { ItButtonDirective } from '../../core/button/button.directive';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -11,10 +11,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './back-button.component.html',
   exportAs: 'itBackButton',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, ItButtonDirective, ItIconComponent, TranslateModule]
+  imports: [NgTemplateOutlet, ItButtonDirective, ItIconComponent, TranslateModule],
 })
 export class ItBackButtonComponent {
-
   /**
    * Back button style
    * - <b>link</b>: use a link with icon and text
@@ -52,10 +51,7 @@ export class ItBackButtonComponent {
    */
   @Input() backFn?: (location: Location) => void;
 
-  constructor(
-    public readonly _location: Location
-  ) {
-  }
+  constructor(public readonly _location: Location) {}
 
   /**
    * Go back function

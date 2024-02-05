@@ -10,7 +10,6 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItNavBarModule } from '../navbar/navbar.module';
@@ -25,7 +24,7 @@ import { HeaderSticky } from 'bootstrap-italia';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule, ItIconComponent, ItButtonDirective, ItNavBarModule],
+  imports: [TranslateModule, ItIconComponent, ItButtonDirective, ItNavBarModule],
 })
 export class ItHeaderComponent implements AfterViewInit, OnChanges {
   @Input({ transform: inputToBoolean }) light?: boolean;
@@ -75,5 +74,15 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
     if (!this.stickyHeader && this.headerWrapper && this.sticky) {
       this.stickyHeader = new HeaderSticky(this.headerWrapper.nativeElement);
     }
+  }
+
+  protected emitLoginClick(event: Event): void {
+    event.preventDefault();
+    this.loginClick.emit(event);
+  }
+
+  protected emitSearchClick(event: Event): void {
+    event.preventDefault();
+    this.searchClick.emit(event);
   }
 }

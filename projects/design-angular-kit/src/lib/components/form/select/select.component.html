@@ -1,37 +1,54 @@
 <div class="select-wrapper">
-  <label *ngIf="label" [for]="id">{{label}}</label>
-  <select [id]="id" [formControl]="control"
-          [class.is-invalid]="isInvalid"
-          [class.is-valid]="isValid"
-          (blur)="markAsTouched()"
-          [attr.aria-describedby]="id + '-description'">
-
-    <option *ngIf="defaultOption" [ngValue]="null" disabled selected>
-      {{defaultOption}}
-    </option>
+  @if (label) {
+    <label [for]="id">{{ label }}</label>
+  }
+  <select
+    [id]="id"
+    [formControl]="control"
+    [class.is-invalid]="isInvalid"
+    [class.is-valid]="isValid"
+    (blur)="markAsTouched()"
+    [attr.aria-describedby]="id + '-description'">
+    @if (defaultOption) {
+      <option [ngValue]="null" disabled selected>
+        {{ defaultOption }}
+      </option>
+    }
 
     <ng-content></ng-content>
 
-    <ng-container *ngIf="options">
-      <option *ngFor="let option of options" [disabled]="optionIsDisabled(option)" [ngValue]="option.value">
-        {{option.text ?? option.value}}
-      </option>
-    </ng-container>
-
-    <ng-container *ngIf="groups">
-      <optgroup *ngFor="let group of groups" [label]="group.label">
-        <option *ngFor="let option of group.options" [disabled]="optionIsDisabled(option)" [ngValue]="option.value">
-          {{option.text ?? option.value}}
+    @if (options) {
+      @for (option of options; track option.value) {
+        <option [disabled]="optionIsDisabled(option)" [ngValue]="option.value">
+          {{ option.text ?? option.value }}
         </option>
-      </optgroup>
-    </ng-container>
-  </select>
-  <small *ngIf="description" [id]="id + '-description'" class="form-text">{{description}}</small>
+      }
+    }
 
-  <div *ngIf="isInvalid" class="form-feedback just-validate-error-label" [id]="id + '-error'">
-    <div #customError>
-      <ng-content select="[error]"></ng-content>
+    @if (groups) {
+      @for (group of groups; track group) {
+        <optgroup [label]="group.label">
+          @for (option of group.options; track option.value) {
+            <option [disabled]="optionIsDisabled(option)" [ngValue]="option.value">
+              {{ option.text ?? option.value }}
+            </option>
+          }
+        </optgroup>
+      }
+    }
+  </select>
+  @if (description) {
+    <small [id]="id + '-description'" class="form-text">{{ description }}</small>
+  }
+
+  @if (isInvalid) {
+    <div class="form-feedback just-validate-error-label" [id]="id + '-error'">
+      <div #customError>
+        <ng-content select="[error]"></ng-content>
+      </div>
+      @if (!customError.hasChildNodes()) {
+        {{ invalidMessage | async }}
+      }
     </div>
-    <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
-  </div>
+  }
 </div>

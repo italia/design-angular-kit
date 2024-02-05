@@ -1,15 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
-import { LowerCasePipe, NgForOf, NgIf } from '@angular/common';
+import { LowerCasePipe } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItDropdownModule } from '../dropdown/dropdown.module';
@@ -18,22 +10,21 @@ import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-pagination[currentPage][pageNumbers]',
+  selector: 'it-pagination',
   templateUrl: './pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgForOf, ItIconComponent, TranslateModule, LowerCasePipe, ItDropdownModule, ItInputComponent, ReactiveFormsModule]
+  imports: [ItIconComponent, TranslateModule, LowerCasePipe, ItDropdownModule, ItInputComponent, ReactiveFormsModule],
 })
 export class ItPaginationComponent implements OnChanges {
-
   /**
    * Index of page (start 0)
    */
-  @Input() currentPage!: number;
+  @Input({ required: true }) currentPage!: number;
 
   /**
    * Max number of page (counter)
    */
-  @Input() pageNumbers!: number;
+  @Input({ required: true }) pageNumbers!: number;
 
   /**
    * Number of pages closest to the current one to display
@@ -102,13 +93,15 @@ export class ItPaginationComponent implements OnChanges {
   protected jumpToPage: FormControl<number | null> = new FormControl<number | null>(null);
 
   constructor() {
-    this.jumpToPage.valueChanges.pipe(
-      debounceTime(300), // Delay filter data after time span has passed without another source emission
-      distinctUntilChanged(),
-      filter(value => !!value && this.jumpToPage.valid)
-    ).subscribe(value => {
-      this.pageEvent.emit(value! - 1);
-    });
+    this.jumpToPage.valueChanges
+      .pipe(
+        debounceTime(300), // Delay filter data after time span has passed without another source emission
+        distinctUntilChanged(),
+        filter(value => !!value && this.jumpToPage.valid)
+      )
+      .subscribe(value => {
+        this.pageEvent.emit(value! - 1);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -129,14 +122,13 @@ export class ItPaginationComponent implements OnChanges {
     const length = this.pageNumbers > this.visiblePages ? this.visiblePages : this.pageNumbers;
 
     const halfVisiblePages = Math.floor(this.visiblePages / 2);
-    let start = (this.currentPage > halfVisiblePages && this.pageNumbers > this.visiblePages) ?
-      this.currentPage - halfVisiblePages + 1 : 1;
+    let start = this.currentPage > halfVisiblePages && this.pageNumbers > this.visiblePages ? this.currentPage - halfVisiblePages + 1 : 1;
 
     if (this.pageNumbers > this.visiblePages) {
-      if ((this.currentPage + 1) >= this.pageNumbers) {
+      if (this.currentPage + 1 >= this.pageNumbers) {
         start -= halfVisiblePages;
-      } else if (this.currentPage >= (this.pageNumbers - halfVisiblePages)) {
-        start -= (this.pageNumbers - (this.currentPage + 1));
+      } else if (this.currentPage >= this.pageNumbers - halfVisiblePages) {
+        start -= this.pageNumbers - (this.currentPage + 1);
       }
     }
 
@@ -162,5 +154,4 @@ export class ItPaginationComponent implements OnChanges {
     event.preventDefault();
     this.changerEvent.emit(value); // emit new changer value
   }
-
 }

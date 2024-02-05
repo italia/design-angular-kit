@@ -4,7 +4,7 @@ import { ItValidators } from '../../../validators/it-validators';
 import { map, Observable } from 'rxjs';
 import { InputPassword } from 'bootstrap-italia';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
@@ -15,10 +15,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './password-input.component.html',
   styleUrls: ['./password-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ReactiveFormsModule, ItIconComponent, AsyncPipe, TranslateModule]
+  imports: [ReactiveFormsModule, ItIconComponent, AsyncPipe, TranslateModule],
 })
 export class ItPasswordInputComponent extends ItAbstractFormComponent<string | null | undefined> implements OnInit, AfterViewInit {
-
   /**
    * The field is required
    * @default true
@@ -94,14 +93,16 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
     super.ngOnInit();
 
     if (!this.confirmPasswordField) {
-      this.addValidators(ItValidators.password(
-        this.minLength,
-        this.useNumber,
-        this.useCapitalCase,
-        this.useSmallCase,
-        this.useSpecialCharacters,
-        this.required
-      ));
+      this.addValidators(
+        ItValidators.password(
+          this.minLength,
+          this.useNumber,
+          this.useCapitalCase,
+          this.useSmallCase,
+          this.useSpecialCharacters,
+          this.required
+        )
+      );
     } else if (this.required) {
       this.addValidators(Validators.required);
     }
@@ -113,7 +114,7 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
     if (this.inputElement) {
       this.inputPasswordBs = InputPassword.getOrCreateInstance(this.inputElement.nativeElement, {
         showText: this.isStrengthMeter,
-        minimumLength: this.minLength
+        minimumLength: this.minLength,
       });
     }
   }
@@ -131,7 +132,7 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
     }
     if (this.hasError('minlength')) {
       return this._translateService.get('it.errors.password-min-length', {
-        minLength: this.minLength
+        minLength: this.minLength,
       });
     }
     if (this.hasError('hasNumber')) {
@@ -165,8 +166,6 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
       keys.push('it.form.password-strength-meter.description.special-character');
     }
 
-    return this._translateService.get(keys, { minLength: this.minLength }).pipe(
-      map(labels => Object.values(labels).join(', '))
-    );
+    return this._translateService.get(keys, { minLength: this.minLength }).pipe(map(labels => Object.values(labels).join(', ')));
   }
 }

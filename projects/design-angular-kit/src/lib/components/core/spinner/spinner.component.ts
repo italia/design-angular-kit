@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
+
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
@@ -8,10 +8,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   selector: 'it-spinner',
   templateUrl: './spinner.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, TranslateModule]
+  imports: [TranslateModule],
 })
 export class ItSpinnerComponent {
-
   /**
    * The spinner is active
    * @default true
@@ -29,5 +28,4 @@ export class ItSpinnerComponent {
    * @default false
    */
   @Input({ transform: inputToBoolean }) double?: boolean;
-
 }

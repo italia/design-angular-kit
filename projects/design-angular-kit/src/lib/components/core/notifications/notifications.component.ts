@@ -4,7 +4,6 @@ import { ItNotificationService } from '../../../services/notification/notificati
 import { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';
 import { Notification as BSNotification } from 'bootstrap-italia';
 import { IconName } from '../../../interfaces/icon';
-import { NgForOf, NgIf } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
@@ -15,10 +14,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgForOf, NgIf, ItIconComponent, TranslateModule]
+  imports: [ItIconComponent, TranslateModule],
 })
 export class ItNotificationsComponent implements OnDestroy {
-
   /**
    * Default notifications duration (milliseconds)
    * @default 8000
@@ -60,7 +58,7 @@ export class ItNotificationsComponent implements OnDestroy {
 
       const newNotification = {
         ...notification,
-        id: `${notification.type}-${this.notificationCount++}-notification`
+        id: `${notification.type}-${this.notificationCount++}-notification`,
       };
       this.notifications.push(newNotification);
       this._changeDetectorRef.detectChanges();
@@ -68,7 +66,7 @@ export class ItNotificationsComponent implements OnDestroy {
       setTimeout(() => {
         // Show the notification
         new BSNotification(document.getElementById(newNotification.id)!, {
-          timeout: notification.duration
+          timeout: notification.duration,
         }).show();
 
         // Clear notification after the duration

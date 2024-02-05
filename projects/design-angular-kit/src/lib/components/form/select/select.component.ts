@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { SelectControlGroup, SelectControlOption } from '../../../interfaces/form';
-import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -9,10 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   selector: 'it-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
-  imports: [NgIf, NgForOf, ReactiveFormsModule, AsyncPipe]
+  imports: [ReactiveFormsModule, AsyncPipe],
 })
 export class ItSelectComponent extends ItAbstractFormComponent implements OnInit {
-
   /**
    * The select options
    */

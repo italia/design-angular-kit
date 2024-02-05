@@ -1,41 +1,57 @@
-<header #headerWrapper class="it-header-wrapper" [class.it-header-sticky]="sticky" data-bs-position-type="fixed" data-bs-sticky-class-name="is-sticky">
-  <div *ngIf="showSlim" class="it-header-slim-wrapper" [class.theme-light]="light">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="it-header-slim-wrapper-content">
-            <a class="d-none d-lg-block navbar-brand" href="#">{{slimTitle}}</a>
-            <div class="nav-mobile">
-              <nav [attr.aria-label]="'it.navigation.secondary-navigation'|translate">
-                <a class="it-opener d-lg-none" data-bs-toggle="collapse" href="#menuC1" role="button"
-                   aria-expanded="false" aria-controls="menuC1">
-                  <span>{{slimTitle}}</span>
-                  <it-icon name="expand"></it-icon>
-                </a>
-                <div class="link-list-wrapper collapse" id="menuC1">
-                  <ng-content select="[slimLinkList]"></ng-content>
-                </div>
-              </nav>
-            </div>
-            <div class="it-header-slim-right-zone">
-              <ng-content select="[slimRightZone]"></ng-content>
-              <div *ngIf="loginStyle === 'default'" class="it-access-top-wrapper">
-                <a class="btn btn-primary btn-sm" (click)="loginClick.emit($event)">
-                  {{'it.navigation.login'|translate}}
-                </a>
+<header
+  #headerWrapper
+  class="it-header-wrapper"
+  [class.it-header-sticky]="sticky"
+  data-bs-position-type="fixed"
+  data-bs-sticky-class-name="is-sticky">
+  @if (showSlim) {
+    <div class="it-header-slim-wrapper" [class.theme-light]="light">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="it-header-slim-wrapper-content">
+              <a class="d-none d-lg-block navbar-brand" href="#">{{ slimTitle }}</a>
+              <div class="nav-mobile">
+                <nav [attr.aria-label]="'it.navigation.secondary-navigation' | translate">
+                  <a
+                    class="it-opener d-lg-none"
+                    data-bs-toggle="collapse"
+                    href="#menuC1"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="menuC1">
+                    <span>{{ slimTitle }}</span>
+                    <it-icon name="expand"></it-icon>
+                  </a>
+                  <div class="link-list-wrapper collapse" id="menuC1">
+                    <ng-content select="[slimLinkList]"></ng-content>
+                  </div>
+                </nav>
               </div>
-              <a *ngIf="loginStyle === 'full'" itButton="primary" class="btn-full btn-icon" (click)="loginClick.emit($event)">
-                <span class="rounded-icon">
-                  <it-icon name="user" color="primary"></it-icon>
-                </span>
-                <span class="d-none d-lg-block">{{'it.navigation.full-login'|translate}}</span>
-              </a>
+              <div class="it-header-slim-right-zone">
+                <ng-content select="[slimRightZone]"></ng-content>
+                @if (loginStyle === 'default') {
+                  <div class="it-access-top-wrapper">
+                    <a class="btn btn-primary btn-sm" (click)="emitLoginClick($event)" href="#">
+                      {{ 'it.navigation.login' | translate }}
+                    </a>
+                  </div>
+                }
+                @if (loginStyle === 'full') {
+                  <a itButton="primary" class="btn-full btn-icon" (click)="emitLoginClick($event)" href="#">
+                    <span class="rounded-icon">
+                      <it-icon name="user" color="primary"></it-icon>
+                    </span>
+                    <span class="d-none d-lg-block">{{ 'it.navigation.full-login' | translate }}</span>
+                  </a>
+                }
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  }
   <div class="it-nav-wrapper">
     <div class="it-header-center-wrapper" [class.it-small-header]="smallHeader" [class.theme-light]="light">
       <div class="container-fluid">
@@ -48,12 +64,18 @@
               <div class="it-right-zone">
                 <ng-content select="[rightZone]"></ng-content>
 
-                <div class="it-search-wrapper" *ngIf="showSearch">
-                  <span class="d-none d-md-block">{{'it.navigation.search'|translate}}</span>
-                  <a class="search-link rounded-icon" [attr.aria-label]="'it.navigation.website-search'|translate" (click)="searchClick.emit($event)">
-                    <it-icon name="search"></it-icon>
-                  </a>
-                </div>
+                @if (showSearch) {
+                  <div class="it-search-wrapper">
+                    <span class="d-none d-md-block">{{ 'it.navigation.search' | translate }}</span>
+                    <a
+                      href="#"
+                      class="search-link rounded-icon"
+                      [attr.aria-label]="'it.navigation.website-search' | translate"
+                      (click)="emitSearchClick($event)">
+                      <it-icon name="search"></it-icon>
+                    </a>
+                  </div>
+                }
               </div>
             </div>
           </div>
@@ -65,7 +87,9 @@
         <div class="row">
           <div class="col-12">
             <it-navbar>
-              <ng-content navItems select="[navItems]"></ng-content>
+              <ng-container navItems>
+                <ng-content select="[navItems]"></ng-content>
+              </ng-container>
             </it-navbar>
           </div>
         </div>

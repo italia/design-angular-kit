@@ -1,21 +1,21 @@
-import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { IconColor, IconName, IconSize } from '../../../interfaces/icon';
-import { DESIGN_ANGULAR_KIT_CONFIG, DesignAngularKitConfig } from '../../../design-angular-kit-config';
 import { inputToBoolean } from '../../../utils/coercion';
+import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
 
 @Component({
   standalone: true,
-  selector: 'it-icon[name]',
+  selector: 'it-icon',
   templateUrl: './icon.component.html',
+  styles: ':host {display: contents;}',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItIconComponent {
-
   /**
    * The icon name
    */
-  @Input() name!: IconName;
+  @Input({ required: true }) name!: IconName;
 
   /**
    * The icon size
@@ -41,14 +41,14 @@ export class ItIconComponent {
   /**
    * Return the icon href
    */
-  get iconHref(): string {
-    return `${this.config.iconHref}#it-${this.name}`;
+  protected get iconHref(): string {
+    return `${this.assetBasePath}/dist/svg/sprites.svg#it-${this.name}`;
   }
 
   /**
    * Return the icon class
    */
-  get iconClass(): string {
+  protected get iconClass(): string {
     let iconClass = 'icon';
     if (this.size) {
       iconClass += ` icon-${this.size}`;
@@ -65,8 +65,13 @@ export class ItIconComponent {
     return iconClass;
   }
 
-  constructor(
-    @Inject(DESIGN_ANGULAR_KIT_CONFIG) private readonly config: DesignAngularKitConfig
-  ) {
+  /**
+   * The bootstrap-italia asset folder path
+   * @default ./bootstrap-italia
+   */
+  protected assetBasePath: string;
+
+  constructor() {
+    this.assetBasePath = inject(IT_ASSET_BASE_PATH);
   }
 }

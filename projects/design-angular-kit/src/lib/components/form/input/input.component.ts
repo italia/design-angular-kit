@@ -4,7 +4,7 @@ import { InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { ItValidators } from '../../../validators/it-validators';
 import { Observable } from 'rxjs';
-import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
@@ -14,7 +14,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ReactiveFormsModule, TranslateModule, AsyncPipe, NgForOf],
+  imports: [ReactiveFormsModule, TranslateModule, AsyncPipe],
 })
 export class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {
   /**

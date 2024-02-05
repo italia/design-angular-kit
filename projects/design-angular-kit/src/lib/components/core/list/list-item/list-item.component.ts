@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ItLinkComponent } from '../../link/link.component';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
@@ -9,10 +9,9 @@ import { inputToBoolean } from '../../../../utils/coercion';
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, ItLinkComponent]
+  imports: [NgTemplateOutlet, ItLinkComponent],
 })
 export class ItListItemComponent extends ItLinkComponent {
-
   /**
    * Add active class
    * @default false
@@ -46,7 +45,6 @@ export class ItListItemComponent extends ItLinkComponent {
    */
   @Input() image: URL | undefined;
 
-
   get itemClass(): string {
     let itemClass = 'list-item';
     if (this.disabled) {
@@ -69,5 +67,4 @@ export class ItListItemComponent extends ItLinkComponent {
     }
     return itemClass;
   }
-
 }

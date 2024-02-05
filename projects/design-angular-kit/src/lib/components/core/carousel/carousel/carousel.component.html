@@ -1,22 +1,29 @@
-<div #carousel class="it-carousel-wrapper splide {{typeClass}}"
-     [class.it-full-carousel]="fullCarousel"
-     [class.it-big-img]="bigImg"
-     [class.it-standard-image]="standardImage"
-     data-bs-carousel-splide>
-
-  <div class="it-header-block" *ngIf="title">
-    <div class="it-header-block-title">
-      <h2>{{title}}</h2>
+<div
+  #carousel
+  class="it-carousel-wrapper splide {{ typeClass }}"
+  [class.it-full-carousel]="fullCarousel"
+  [class.it-big-img]="bigImg"
+  [class.it-standard-image]="standardImage"
+  data-bs-carousel-splide>
+  @if (title) {
+    <div class="it-header-block">
+      <div class="it-header-block-title">
+        <h2>{{ title }}</h2>
+      </div>
     </div>
-  </div>
+  }
 
-  <div class="splide__track {{trackClass}}">
-    <ul *ngIf="items" class="splide__list">
-      <li *ngFor="let item of items" class="splide__slide" [class.lined_slide]="lined">
-        <div class="it-single-slide-wrapper">
-          <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
-        </div>
-      </li>
-    </ul>
+  <div class="splide__track {{ trackClass }}">
+    @if (items) {
+      <ul class="splide__list">
+        @for (item of items; track item) {
+          <li class="splide__slide" [class.lined_slide]="lined">
+            <div class="it-single-slide-wrapper">
+              <ng-container *ngTemplateOutlet="item.htmlContent"></ng-container>
+            </div>
+          </li>
+        }
+      </ul>
+    }
   </div>
 </div>

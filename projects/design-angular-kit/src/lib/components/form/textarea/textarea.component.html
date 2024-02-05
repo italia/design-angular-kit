@@ -1,5 +1,7 @@
 <div class="form-group">
-  <label *ngIf="label" [for]="id" [class.active]="!!control.value || !!placeholder">{{label}}</label>
+  @if (label) {
+    <label [for]="id" [class.active]="!!control.value || !!placeholder">{{ label }}</label>
+  }
   <textarea
     [id]="id"
     [rows]="rows"
@@ -12,9 +14,15 @@
     [readonly]="isReadonly"
     (blur)="markAsTouched()"></textarea>
 
-  <small *ngIf="description" [id]="id + '-description'" class="form-text">{{description}}</small>
-  <div *ngIf="isInvalid" class="form-feedback just-validate-error-label" [id]="id + '-error'">
-    <div #customError><ng-content select="[error]"></ng-content></div>
-    <ng-container *ngIf="!customError.hasChildNodes()">{{invalidMessage | async}}</ng-container>
-  </div>
+  @if (description) {
+    <small [id]="id + '-description'" class="form-text">{{ description }}</small>
+  }
+  @if (isInvalid) {
+    <div class="form-feedback just-validate-error-label" [id]="id + '-error'">
+      <div #customError><ng-content select="[error]"></ng-content></div>
+      @if (!customError.hasChildNodes()) {
+        {{ invalidMessage | async }}
+      }
+    </div>
+  }
 </div>

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { map, Observable, startWith } from 'rxjs';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AvailableLanguage } from '../../../interfaces/utils';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ItDropdownModule } from '../../core/dropdown/dropdown.module';
 
 @Component({
@@ -10,10 +10,9 @@ import { ItDropdownModule } from '../../core/dropdown/dropdown.module';
   selector: 'it-language-switcher',
   templateUrl: './language-switcher.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgFor, NgIf, AsyncPipe, TranslateModule, ItDropdownModule]
+  imports: [AsyncPipe, TranslateModule, ItDropdownModule],
 })
 export class ItLanguageSwitcherComponent implements OnInit {
-
   /**
    * The available languages
    * @default The languages available through TranslateService (ngx-translate)
@@ -27,10 +26,8 @@ export class ItLanguageSwitcherComponent implements OnInit {
 
   protected currentLang$: Observable<AvailableLanguage | undefined>;
 
-  constructor(
-    private readonly translateService: TranslateService
-  ) {
-    this.currentLang$ = translateService.onLangChange.pipe(
+  constructor(private readonly translateService: TranslateService) {
+    this.currentLang$ = this.translateService.onLangChange.pipe(
       startWith({ lang: translateService.currentLang }),
       map(event => this.availableLanguages?.find(l => l.code === event.lang))
     );
@@ -42,8 +39,10 @@ export class ItLanguageSwitcherComponent implements OnInit {
         code: lang,
         label: lang,
         ...(lang === 'it' && { label: 'ITA' }),
-        ...(lang === 'en' && { label: 'ENG' })
+        ...(lang === 'en' && { label: 'ENG' }),
       }));
+    } else {
+      this.translateService.addLangs(this.availableLanguages.map(l => l.code)); // Adds custom languages
     }
   }
 
@@ -54,5 +53,4 @@ export class ItLanguageSwitcherComponent implements OnInit {
   public changeLanguage(lang: string): void {
     this.translateService.use(lang);
   }
-
 }
