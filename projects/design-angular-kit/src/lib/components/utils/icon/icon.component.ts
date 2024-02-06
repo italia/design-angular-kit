@@ -71,6 +71,15 @@ export class ItIconComponent {
    */
   protected assetBasePath: string;
 
+  /**
+   * Custom Waria label
+   */
+  @Input() labelWaria: string | undefined;
+
+  get isAriaHidden(): boolean {
+    return this.labelWaria == undefined;
+  }
+
   constructor() {
     this.assetBasePath = inject(IT_ASSET_BASE_PATH);
   }
