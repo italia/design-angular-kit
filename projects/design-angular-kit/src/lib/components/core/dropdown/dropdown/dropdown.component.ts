@@ -55,6 +55,12 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
   @Input({ transform: inputToBoolean }) fullWidth?: boolean;
 
   /**
+   * Contains a Megamenu element
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) megamenu?: boolean;
+
+  /**
    * Dark menu style
    * @default false
    */
