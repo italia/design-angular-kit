@@ -69,7 +69,59 @@
         <it-dropdown mode="nav" [megamenu]="true">
           <span button>Megamenu</span>
           <ng-container list>
-            <it-megamenu></it-megamenu>
+            <it-megamenu>
+              <ng-container megamenuLeftZone>
+                <div class="ratio ratio-21x9 lightgrey-bg-a1 mb-4 rounded">
+                  <figure class="figure">
+                    <img
+                      src="https://via.placeholder.com/560x240/ebebeb/808080/?text=Immagine"
+                      class="figure-img img-fluid rounded"
+                      alt="Segnaposto" />
+                  </figure>
+                </div>
+                <p>Testo utile a fornire una descrizione dei contenuti della sezione <strong>megamenu 1</strong>.</p>
+              </ng-container>
+              <ng-container megamenuHeadingLink>
+                <a class="it-heading-link" href="#"
+                  ><it-icon name="arrow-right-triangle"></it-icon>
+                  <span>Esplora la sezione megamenu 1</span>
+                </a>
+              </ng-container>
+              <ng-container megamenuLinkList>
+                <div class="col-12 col-lg-6">
+                  <it-list linkList="true">
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 1</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 2</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 3</span>
+                    </it-list-item>
+                  </it-list>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <it-list linkList="true">
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 4</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 5</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 6</span>
+                    </it-list-item>
+                  </it-list>
+                </div>
+              </ng-container>
+            </it-megamenu>
           </ng-container>
         </it-dropdown>
       </it-navbar-item>
