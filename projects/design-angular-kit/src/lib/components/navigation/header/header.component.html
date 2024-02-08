@@ -54,7 +54,7 @@
   }
   <div class="it-nav-wrapper">
     <div class="it-header-center-wrapper" [class.it-small-header]="smallHeader" [class.theme-light]="light">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="it-header-center-content-wrapper">
@@ -86,7 +86,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <it-navbar>
+            <it-navbar [megamenu]="megamenu" [expand]="expand">
               <ng-container navItems>
                 <ng-content select="[navItems]"></ng-content>
               </ng-container>

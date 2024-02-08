@@ -88,6 +88,7 @@ export * from './lib/components/navigation/breadcrumbs/breadcrumb/breadcrumb.com
 export * from './lib/components/navigation/breadcrumbs/breadcrumb-item/breadcrumb-item.component';
 
 export * from './lib/components/navigation/header/header.component';
+export * from './lib/components/navigation/megamenu/megamenu.component';
 
 export * from './lib/components/navigation/navbar/navbar.module';
 export * from './lib/components/navigation/navbar/navbar/navbar.component';
