@@ -1,26 +1,34 @@
 <div class="megamenu pb-5 pt-3 py-lg-0">
   <div class="row">
-    <div class="col-xs-12 col-lg-4 px-0">
-      <div class="row">
-        <div class="col-12 it-vertical it-description pb-lg-3">
-          <div class="description-content ps-4 ps-sm-5 ms-3">
-            <ng-content select="[megamenuLeftZone]"></ng-content>
+    @if (mode === 'left-section') {
+      <div class="col-xs-12 col-lg-4 px-0">
+        <div class="row">
+          <div class="col-12 it-vertical it-description pb-lg-3">
+            <div class="description-content ps-4 ps-sm-5 ms-3">
+              <ng-content select="[megamenuLeftZone]"></ng-content>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-12 col-lg-8">
-      <div class="it-heading-link-wrapper">
-        <ng-content select="[megamenuHeadingLink]"></ng-content>
-      </div>
+    }
+    <div class="col-12" [class.col-lg-8]="mode !== 'normal'">
+      @if (header) {
+        <div class="it-heading-link-wrapper">
+          <ng-content select="[megamenuHeadingLink]"></ng-content>
+        </div>
+      }
       <div class="row">
         <ng-content select="[megamenuLinkList]"></ng-content>
       </div>
-      <div class="it-footer-link-wrapper">
-        <div class="d-flex flex-column flex-lg-row justify-content-around">
-          <ng-content select="[megamenuFooter]"></ng-content>
+    </div>
+    @if (footer || mode === 'right-section') {
+      <div [class.col-xs-12]="mode === 'right-section'" [class.col-lg-4]="mode === 'right-section'" [class.px-0]="mode === 'right-section'">
+        <div [class.it-footer-link-wrapper]="footer" [class.it-footer-link-wrapper-vertical]="mode === 'right-section'">
+          <div class="d-flex flex-column justify-content-around" [class.flex-lg-row]="mode !== 'right-section'">
+            <ng-content select="[megamenuFooter]"></ng-content>
+          </div>
         </div>
       </div>
-    </div>
+    }
   </div>
 </div>

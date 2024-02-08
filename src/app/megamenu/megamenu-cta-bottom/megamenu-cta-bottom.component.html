@@ -1,4 +1,4 @@
-<h3>Componente Megamenu completo</h3>
+<h3>Componente Megamenu con CTA in basso</h3>
 <div class="bd-example">
   <it-navbar [megamenu]="true" [expand]="true">
     <ng-container navItems>
@@ -6,7 +6,7 @@
         <it-dropdown mode="nav" [megamenu]="true">
           <span button>Megamenu</span>
           <ng-container list>
-            <it-megamenu [mode]="'left-section'" [header]="true">
+            <it-megamenu [footer]="true">
               <ng-container megamenuLeftZone>
                 <div class="ratio ratio-21x9 lightgrey-bg-a1 mb-4 rounded">
                   <figure class="figure">
@@ -25,7 +25,7 @@
                 </a>
               </ng-container>
               <ng-container megamenuLinkList>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                   <it-list linkList="true">
                     <it-list-item href="#" externalLink="true">
                       <it-icon name="arrow-right-triangle"></it-icon>
@@ -41,7 +41,7 @@
                     </it-list-item>
                   </it-list>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                   <it-list linkList="true">
                     <it-list-item href="#" externalLink="true">
                       <it-icon name="arrow-right-triangle"></it-icon>
@@ -57,6 +57,32 @@
                     </it-list-item>
                   </it-list>
                 </div>
+                <div class="col-12 col-lg-4">
+                  <it-list linkList="true">
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 7</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 8</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 9</span>
+                    </it-list-item>
+                  </it-list>
+                </div>
+              </ng-container>
+              <ng-container megamenuFooter>
+                <a class="it-footer-link" href="#">
+                  <it-icon name="bookmark"></it-icon>
+                  <span>Call to action 1</span>
+                </a>
+                <a class="it-footer-link" href="#">
+                  <it-icon name="bookmark"></it-icon>
+                  <span>Call to action 2</span>
+                </a>
               </ng-container>
             </it-megamenu>
           </ng-container>
