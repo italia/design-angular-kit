@@ -69,7 +69,7 @@
         <it-dropdown mode="nav" [megamenu]="true">
           <span button>Megamenu</span>
           <ng-container list>
-            <it-megamenu>
+            <it-megamenu [header]="true" [mode]="'left-section'">
               <ng-container megamenuLeftZone>
                 <div class="ratio ratio-21x9 lightgrey-bg-a1 mb-4 rounded">
                   <figure class="figure">
@@ -120,16 +120,6 @@
                     </it-list-item>
                   </it-list>
                 </div>
-              </ng-container>
-              <ng-container megamenuFooter>
-                <a class="it-footer-link" href="#">
-                  <it-icon name="bookmark"></it-icon>
-                  <span>Call to action 1</span>
-                </a>
-                <a class="it-footer-link" href="#">
-                  <it-icon name="bookmark"></it-icon>
-                  <span>Call to action 2</span>
-                </a>
               </ng-container>
             </it-megamenu>
           </ng-container>

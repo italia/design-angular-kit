@@ -6,6 +6,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   standalone: true,
   selector: 'it-megamenu',
   templateUrl: './megamenu.component.html',
+  styleUrls: ['./megamenu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgTemplateOutlet],
 })
@@ -16,13 +17,13 @@ export class ItMegamenuComponent {
   @Input() mode: 'right-section' | 'left-section' | 'normal' = 'normal';
 
   /**
-   * To show megamenu header
+   * To show Megamenu header
    * @default false
    */
   @Input({ transform: inputToBoolean }) header?: boolean;
 
   /**
-   * To show megamenu footer
+   * To show Megamenu footer
    * @default false
    */
   @Input({ transform: inputToBoolean }) footer?: boolean;
