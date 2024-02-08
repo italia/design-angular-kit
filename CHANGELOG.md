@@ -1,3 +1,17 @@
+# [1.0.0-prerelease.2](https://github.com/italia/design-angular-kit/compare/v1.0.0-prerelease.1...v1.0.0-prerelease.2) (2024-02-08)
+
+
+### Bug Fixes
+
+* **a11y:** wai aria label for icon component ([3bfe2b4](https://github.com/italia/design-angular-kit/commit/3bfe2b4e8cbd539f9b5a1d60e41a997c875a87b7))
+* autocomplete label ([c7271f0](https://github.com/italia/design-angular-kit/commit/c7271f0a10dce3ecd5e0c5d1a5e7eac3fbac1cf7))
+
+
+### Features
+
+* add megamenu component ([0da7bee](https://github.com/italia/design-angular-kit/commit/0da7bee896c6ab37590d21b8625e67ecaf9f27a1))
+* upgrade to angular 17 ([072df92](https://github.com/italia/design-angular-kit/commit/072df9255a19d73d2bc8af09680c426ac5630eac))
+
 # [1.0.0-prerelease.1](https://github.com/italia/design-angular-kit/compare/v0.20.0...v1.0.0-prerelease.1) (2024-01-25)
 
 
