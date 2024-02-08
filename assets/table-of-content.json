@@ -116,6 +116,10 @@
           "link": "/componenti/select"
         },
         {
+          "label": "Megamenu",
+          "link": "/componenti/megamenu"
+        },
+        {
           "label": "Notifications",
           "link": "/componenti/notifications"
         },
