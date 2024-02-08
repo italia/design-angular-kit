@@ -41,6 +41,11 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   @Input() placeholder = '';
 
   /**
+   * Show the label
+   */
+  @Input({ transform: inputToBoolean }) forceShowLabel: boolean = true;
+
+  /**
    * Fired when the Autocomplete Item has been selected
    */
   @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();
@@ -111,5 +116,10 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
 
   protected onKeyDown() {
     this.showAutocompletion = true;
+  }
+
+  protected get isActiveLabel(): boolean {
+    const value = this.control.value;
+    return this.forceShowLabel && (!!value || !!this.placeholder);
   }
 }
