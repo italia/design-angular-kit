@@ -6,7 +6,7 @@
           @for (step of steps; track step.id; let i = $index) {
             <li [class.confirmed]="i < activeStep" [class.active]="i === activeStep" [class.no-line]="i === activeStep && steppersNumber">
               @if (step.icon && !steppersNumber) {
-                <it-icon [name]="step.icon"></it-icon>
+                <it-icon [labelWaria]="'check'" [name]="step.icon"></it-icon>
               }
               @if (steppersNumber) {
                 <span class="steppers-number">
@@ -58,7 +58,7 @@
           class="steppers-btn-prev"
           [disabled]="disableBackButton"
           (click)="backClick.emit(activeStep)">
-          <it-icon name="chevron-left" color="primary"></it-icon>
+          <it-icon [labelWaria]="'left'" name="chevron-left" color="primary"></it-icon>
           {{ 'it.core.back' | translate }}
         </button>
       }
@@ -101,7 +101,7 @@
           [disabled]="disableForwardButton"
           (click)="forwardClick.emit(activeStep)">
           {{ 'it.core.forward' | translate }}
-          <it-icon name="chevron-right" color="primary"></it-icon>
+          <it-icon [labelWaria]="'right'" name="chevron-right" color="primary"></it-icon>
         </button>
       }
       @if (showConfirmButton) {
@@ -121,6 +121,6 @@
 </div>
 
 <ng-template #checkIcon>
-  <it-icon name="check" class="steppers-success"></it-icon>
+  <it-icon [labelWaria]="'check'" name="check" class="steppers-success"></it-icon>
   <span class="visually-hidden">{{ 'it.core.confirmed' | translate }}</span>
 </ng-template>
