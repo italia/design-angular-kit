@@ -17971,7 +17971,7 @@
         },
         {
             "name": "ItLanguageSwitcherComponent",
-            "id": "component-ItLanguageSwitcherComponent-7c1d438bb2f3728db9ea7e63d7664a1859ff13c061b314f23b1d382d7ebef4896d4d3580e6579e7065d221183a37e04379725fb910362c9aa78564fd6f0e73e8",
+            "id": "component-ItLanguageSwitcherComponent-3b4d0851e1fb83c8c66d0d54b47cbc764f94ed73e752b04f2e75d5bdfe1f15ae391418256f3930267fe111ccdf3242e5b0462d8fa43841e097270d61e426b5d1",
             "file": "projects/design-angular-kit/src/lib/components/utils/language-switcher/language-switcher.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -18026,7 +18026,7 @@
                     "rawdescription": "\n\nDropdown mode\n",
                     "description": "<p>Dropdown mode</p>\n",
                     "line": 25,
-                    "type": "\"button\" | \"link\"",
+                    "type": "\"button\" | \"link\" | \"nav\"",
                     "decorators": []
                 }
             ],
@@ -18070,8 +18070,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1767,
-                                "end": 1771,
+                                "pos": 1775,
+                                "end": 1779,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18082,8 +18082,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 1761,
-                                "end": 1766,
+                                "pos": 1769,
+                                "end": 1774,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18127,7 +18127,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';\nimport { map, Observable, startWith } from 'rxjs';\nimport { TranslateModule, TranslateService } from '@ngx-translate/core';\nimport { AvailableLanguage } from '../../../interfaces/utils';\nimport { AsyncPipe } from '@angular/common';\nimport { ItDropdownModule } from '../../core/dropdown/dropdown.module';\n\n@Component({\n  standalone: true,\n  selector: 'it-language-switcher',\n  templateUrl: './language-switcher.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [AsyncPipe, TranslateModule, ItDropdownModule],\n})\nexport class ItLanguageSwitcherComponent implements OnInit {\n  /**\n   * The available languages\n   * @default The languages available through TranslateService (ngx-translate)\n   */\n  @Input() availableLanguages: Array<AvailableLanguage> | undefined;\n\n  /**\n   * Dropdown mode\n   */\n  @Input() mode: 'button' | 'link' = 'link';\n\n  protected currentLang$: Observable<AvailableLanguage | undefined>;\n\n  constructor(private readonly translateService: TranslateService) {\n    this.currentLang$ = this.translateService.onLangChange.pipe(\n      startWith({ lang: translateService.currentLang }),\n      map(event => this.availableLanguages?.find(l => l.code === event.lang))\n    );\n  }\n\n  ngOnInit(): void {\n    if (!this.availableLanguages) {\n      this.availableLanguages = this.translateService.getLangs().map(lang => ({\n        code: lang,\n        label: lang,\n        ...(lang === 'it' && { label: 'ITA' }),\n        ...(lang === 'en' && { label: 'ENG' }),\n      }));\n    } else {\n      this.translateService.addLangs(this.availableLanguages.map(l => l.code)); // Adds custom languages\n    }\n  }\n\n  /**\n   * Change the current language\n   * @param lang the language code\n   */\n  public changeLanguage(lang: string): void {\n    this.translateService.use(lang);\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';\nimport { map, Observable, startWith } from 'rxjs';\nimport { TranslateModule, TranslateService } from '@ngx-translate/core';\nimport { AvailableLanguage } from '../../../interfaces/utils';\nimport { AsyncPipe } from '@angular/common';\nimport { ItDropdownModule } from '../../core/dropdown/dropdown.module';\n\n@Component({\n  standalone: true,\n  selector: 'it-language-switcher',\n  templateUrl: './language-switcher.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [AsyncPipe, TranslateModule, ItDropdownModule],\n})\nexport class ItLanguageSwitcherComponent implements OnInit {\n  /**\n   * The available languages\n   * @default The languages available through TranslateService (ngx-translate)\n   */\n  @Input() availableLanguages: Array<AvailableLanguage> | undefined;\n\n  /**\n   * Dropdown mode\n   */\n  @Input() mode: 'button' | 'link' | 'nav' = 'link';\n\n  protected currentLang$: Observable<AvailableLanguage | undefined>;\n\n  constructor(private readonly translateService: TranslateService) {\n    this.currentLang$ = this.translateService.onLangChange.pipe(\n      startWith({ lang: translateService.currentLang }),\n      map(event => this.availableLanguages?.find(l => l.code === event.lang))\n    );\n  }\n\n  ngOnInit(): void {\n    if (!this.availableLanguages) {\n      this.availableLanguages = this.translateService.getLangs().map(lang => ({\n        code: lang,\n        label: lang,\n        ...(lang === 'it' && { label: 'ITA' }),\n        ...(lang === 'en' && { label: 'ENG' }),\n      }));\n    } else {\n      this.translateService.addLangs(this.availableLanguages.map(l => l.code)); // Adds custom languages\n    }\n  }\n\n  /**\n   * Change the current language\n   * @param lang the language code\n   */\n  public changeLanguage(lang: string): void {\n    this.translateService.use(lang);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -26470,7 +26470,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".it-sort-header-container {\n  display: flex;\n  cursor: pointer;\n  align-items: center;\n  justify-content: space-between;\n  letter-spacing: normal;\n\n  // Needs to be reset since we don't want an outline around the inner\n  // div which is focusable. We have our own alternate focus styling.\n  outline: 0;\n\n  .it-sort-header-disabled & {\n    cursor: default;\n\n    .it-sort-arrow {\n      opacity: 0 !important;\n    }\n  }\n\n  // For the sort-header element, default inset/offset values are necessary to ensure that\n  // the focus indicator is sufficiently contrastive and renders appropriately.\n  &::before {\n    $border-width: 3px;\n    $offset: calc(#{$border-width} + 2px);\n    margin: calc(#{$offset} * -1);\n  }\n\n  &.it-sort-header-position-before {\n    flex-direction: row-reverse;\n    justify-content: left;\n    gap: 0.5rem;\n  }\n\n  .it-sort-arrow {\n    opacity: 0;\n    transition: opacity .3s ease-out;\n    -moz-transition: opacity .3s ease-out;\n    -webkit-transition: opacity .3s ease-out;\n    -o-transition: opacity .3s ease-out;\n  }\n\n  &:hover {\n    .it-sort-arrow {\n      opacity: 0.5;\n    }\n  }\n\n  &.it-sort-header-sorted {\n    .it-sort-arrow {\n      opacity: 1 !important;\n    }\n  }\n}\n\n\n",
+                    "data": ".it-sort-header-container {\n  display: flex;\n  cursor: pointer;\n  align-items: center;\n  justify-content: space-between;\n  letter-spacing: normal;\n\n  // Needs to be reset since we don't want an outline around the inner\n  // div which is focusable. We have our own alternate focus styling.\n  outline: 0;\n\n  .it-sort-header-disabled & {\n    cursor: default;\n\n    .it-sort-arrow {\n      opacity: 0 !important;\n      fill-opacity: 0 !important;\n    }\n  }\n\n  // For the sort-header element, default inset/offset values are necessary to ensure that\n  // the focus indicator is sufficiently contrastive and renders appropriately.\n  &::before {\n    $border-width: 3px;\n    $offset: calc(#{$border-width} + 2px);\n    margin: calc(#{$offset} * -1);\n  }\n\n  &.it-sort-header-position-before {\n    flex-direction: row-reverse;\n    justify-content: left;\n    gap: 0.5rem;\n  }\n\n  .it-sort-arrow {\n    opacity: 0;\n    fill-opacity: 0;\n    transition:\n      fill-opacity 0.3s ease-out,\n      opacity 0.3s ease-out;\n    -moz-transition:\n      fill-opacity 0.3s ease-out,\n      opacity 0.3s ease-out;\n    -webkit-transition:\n      fill-opacity 0.3s ease-out,\n      opacity 0.3s ease-out;\n    -o-transition:\n      fill-opacity 0.3s ease-out,\n      opacity 0.3s ease-out;\n  }\n\n  &:hover {\n    .it-sort-arrow {\n      opacity: 0.5;\n      fill-opacity: 0.5;\n    }\n  }\n\n  &.it-sort-header-sorted {\n    .it-sort-arrow {\n      opacity: 1 !important;\n      fill-opacity: 1 !important;\n    }\n  }\n}\n",
                     "styleUrl": "./sort-header.component.scss"
                 }
             ],
