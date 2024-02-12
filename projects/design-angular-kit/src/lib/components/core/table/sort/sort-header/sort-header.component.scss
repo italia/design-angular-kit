@@ -14,6 +14,7 @@
 
     .it-sort-arrow {
       opacity: 0 !important;
+      fill-opacity: 0 !important;
     }
   }
 
@@ -33,23 +34,32 @@
 
   .it-sort-arrow {
     opacity: 0;
-    transition: opacity .3s ease-out;
-    -moz-transition: opacity .3s ease-out;
-    -webkit-transition: opacity .3s ease-out;
-    -o-transition: opacity .3s ease-out;
+    fill-opacity: 0;
+    transition:
+      fill-opacity 0.3s ease-out,
+      opacity 0.3s ease-out;
+    -moz-transition:
+      fill-opacity 0.3s ease-out,
+      opacity 0.3s ease-out;
+    -webkit-transition:
+      fill-opacity 0.3s ease-out,
+      opacity 0.3s ease-out;
+    -o-transition:
+      fill-opacity 0.3s ease-out,
+      opacity 0.3s ease-out;
   }
 
   &:hover {
     .it-sort-arrow {
       opacity: 0.5;
+      fill-opacity: 0.5;
     }
   }
 
   &.it-sort-header-sorted {
     .it-sort-arrow {
       opacity: 1 !important;
+      fill-opacity: 1 !important;
     }
   }
 }
-
-

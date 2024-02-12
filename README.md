@@ -42,7 +42,9 @@ _⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto 
 Sono partite le lavorazioni per l'aggiornamento del kit Angular a Bootstrap Italia 2 (basato su Bootstrap 5). 
 Sul branch `main` potete trovare il codice dei lavori in corso e nella [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3) un piano preliminare delle attività. La vecchia versione è da considerarsi deprecata.
 
-👉🏻 È possibile contribuire a questa nuova versione in vari modi:
+## Come contribuire 💙
+
+👉🏻 È possibile contribuire alla libreria in vari modi:
 
 *   Con il proprio codice, prendendo in carico una issue tra quelle aperte e non già assegnate tra [le issue](https://github.com/italia/design-angular-kit/issues) di Angular Kit (è sufficiente anche un commento sulla issue per notificare la volontà di presa in carico).
 *   Attraverso la segnalazione di bug o miglioramenti al [repository ufficiale](https://github.com/italia/design-angular-kit/) di Angular Kit.
@@ -51,12 +53,14 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
 ## Link utili
+
+- [Playground Angular Kit](https://github.com/italia/design-angular-kit-playground)
+- [Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/)
+
+### Dalla community
+
 - [Video Commit University: Sviluppare da zero una Angular Web App per la PA](https://www.youtube.com/watch?v=gH-0P36E5jk&t=385s) ([slide](https://www.slideshare.net/commitsoftware/sviluppare-da-zero-una-angular-web-app-per-la-pa))
 - [Video Meetup Angular Roma: Angular, Bootstrap Italia e non solo..](https://www.youtube.com/live/asGk-mYU-zM?feature=share)
-- [Demo Design Angular Kit](https://github.com/cri99/demo-design-angular-kit)
-- [Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/)
-- [Discussione sulla nuova release](https://github.com/italia/design-angular-kit/discussions/127)
-- [Milestone 1.0.0](https://github.com/italia/design-angular-kit/milestone/3)
 
 ## Installazione
 
