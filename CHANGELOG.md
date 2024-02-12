@@ -1,3 +1,11 @@
+# [1.0.0-prerelease.3](https://github.com/italia/design-angular-kit/compare/v1.0.0-prerelease.2...v1.0.0-prerelease.3) (2024-02-12)
+
+
+### Bug Fixes
+
+* add nav mode for language switch ([af2159f](https://github.com/italia/design-angular-kit/commit/af2159fea36f2017641e4ea1545a4d7686ff092d))
+* use fill-opacity to display the sorting arrows correctly ([3516dae](https://github.com/italia/design-angular-kit/commit/3516daee43a15281b75a0a723679282a3cc1c722))
+
 # [1.0.0-prerelease.2](https://github.com/italia/design-angular-kit/compare/v1.0.0-prerelease.1...v1.0.0-prerelease.2) (2024-02-08)
 
 
