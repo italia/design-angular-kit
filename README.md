@@ -35,38 +35,35 @@
   <a href="https://developersitalia.slack.com/messages/C04H3C19D52/"><img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" /></a>
   <a href="https://slack.developers.italia.it/"><img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" /></a></p>
 
-_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Stiamo lavorando all'aggiornamento per portare il kit alla versione 1.0.0, commenti e contributi di tutta la community sono più che benvenuti! Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
+_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Stiamo lavorando all'aggiornamento per portare il kit alla versione 1.0.0, commenti e contributi di tutta la community sono più che benvenuti!_
+
+_⚠️ Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
 
 ## Verso la versione 1.0.0 📣 
 
 Sono partite le lavorazioni per l'aggiornamento del kit Angular a Bootstrap Italia 2 (basato su Bootstrap 5). 
 Sul branch `main` potete trovare il codice dei lavori in corso e nella [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3) un piano preliminare delle attività. La vecchia versione è da considerarsi deprecata.
 
-## Come contribuire 💙
-
-👉🏻 È possibile contribuire alla libreria in vari modi:
-
-*   Con il proprio codice, prendendo in carico una issue tra quelle aperte e non già assegnate tra [le issue](https://github.com/italia/design-angular-kit/issues) di Angular Kit (è sufficiente anche un commento sulla issue per notificare la volontà di presa in carico).
-*   Attraverso la segnalazione di bug o miglioramenti al [repository ufficiale](https://github.com/italia/design-angular-kit/) di Angular Kit.
-*   Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C04H3C19D52/) di Slack.
-
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
-## Link utili
+## Intro
 
-- [Playground Angular Kit](https://github.com/italia/design-angular-kit-playground)
-- [Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/)
+**Design Angular kit** è un set di componenti Angular che implementa [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) e gli stili presenti su [Design UI Kit](https://github.com/italia/design-ui-kit).
+La versione pubblica della documentazione della libreria è disponibile [qui](https://italia.github.io/design-angular-kit) per l'ultima release stabile pubblicata, mentre [qui](https://design-angular-kit.vercel.app/) per la versione di sviluppo relativa al branch `main`.
+Per giocare con la libreria è disponibile il [Playground Angular Kit](https://github.com/italia/design-angular-kit-playground).
 
-### Dalla community
+## Indice
 
-- [Video Commit University: Sviluppare da zero una Angular Web App per la PA](https://www.youtube.com/watch?v=gH-0P36E5jk&t=385s) ([slide](https://www.slideshare.net/commitsoftware/sviluppare-da-zero-una-angular-web-app-per-la-pa))
-- [Video Meetup Angular Roma: Angular, Bootstrap Italia e non solo..](https://www.youtube.com/live/asGk-mYU-zM?feature=share)
+- [Come usare il kit](#come-usare-il-kit)
+- [Come contribuire](#come-contribuire-)
+- [Come contribuire con il codice](#come-contribuire-con-il-codice)
+- [Link utili](#link-utili)
 
-## Installazione
+## Come usare il kit
 
 Design Angular Kit è disponibile su NPM, per installarlo su una applicazione esistente sulla quale provare la libreria (attualmente non stabile) esegui il comando
 
-```
+```sh
 npm install design-angular-kit@prerelease --save
 ```
 
@@ -330,7 +327,7 @@ Se vuoi personalizzare le nostre label:
     - Aggiungi nella configurazione iniziale della libreria il `translateLoader` custom, sostituendo la stringa `assets/bootstrap-italia/i18n/` all'attributo `itPrefix`  
 - Oppure, aggiungi le localizzazioni nei tuoi file json, sovrascrivendo le [chiavi del json della libreria](projects/design-angular-kit/assets/i18n/it.json).
 
-## Utilizzo
+### Utilizzo
 
 Utilizzando il modulo `DesignAngularKitModule` tutti i componenti della libreria verranno importati nell'applicazione.
 
@@ -363,21 +360,27 @@ export class ProductComponent {
 }
 ```
 
-## Segnalazione bug e richieste di aiuto
+## Come contribuire 💙
 
-Vuoi segnalare un bug o fare una richiesta?
+👉🏻 È possibile contribuire alla libreria in vari modi:
 
-Prima di tutto assicurati che sia un problema relativo al tema Design Angular Kit e non alla libreria Bootstrap Italia da cui deriva 
-(in tal caso puoi fare riferimento al [repository di Bootstrap Italia](https://github.com/italia/bootstrap-italia)), poi
-dai un'occhiata a come [creare una issue](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md#creare-una-issue).
+*   Con il proprio codice, prendendo in carico una issue tra quelle aperte e non già assegnate tra [le issue](https://github.com/italia/design-angular-kit/issues) di Angular Kit (è sufficiente anche un commento sulla issue per notificare la volontà di presa in carico).
+*   Attraverso la segnalazione di bug o miglioramenti al [repository ufficiale](https://github.com/italia/design-angular-kit/) di Angular Kit.
+*   Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C04H3C19D52/) di Slack.
 
-## Come contribuire
+## Come contribuire con il codice
 
 Vorresti dare una mano su Design Angular Kit? **Sei nel posto giusto!**
  
 Se non l'hai già fatto, inizia spendendo qualche minuto per approfondire la tua conoscenza sulle
 [linee guida di design per i servizi web della PA](https://design-italia.readthedocs.io/it/stable/index.html),
 e fai riferimento alle [indicazioni su come contribuire a Design Angular Kit](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md).
+
+### Impostare l'ambiente locale
+
+I requisiti minimi del tuo ambiente locale devono essere:
+
+- NodeJS (>= 18)
 
 A questo punto, è necessario impostare il tuo ambiente locale per la compilazione dei file sorgente e la generazione
 della documentazione:
@@ -406,7 +409,17 @@ npm run start
 npm run test
 ```
 
-# Contributor della libreria
+## Link utili
+
+- [Playground Angular Kit](https://github.com/italia/design-angular-kit-playground)
+- [Preview di Vercel (aggiornata ad ogni commit)](https://design-angular-kit.vercel.app/)
+
+### Dalla community
+
+- [Video Commit University: Sviluppare da zero una Angular Web App per la PA](https://www.youtube.com/watch?v=gH-0P36E5jk&t=385s) ([slide](https://www.slideshare.net/commitsoftware/sviluppare-da-zero-una-angular-web-app-per-la-pa))
+- [Video Meetup Angular Roma: Angular, Bootstrap Italia e non solo..](https://www.youtube.com/live/asGk-mYU-zM?feature=share)
+
+## Contributor della libreria
 
 Un grazie speciale a chi ha reso possibile lo sviluppo di questa nuova versione!
 
