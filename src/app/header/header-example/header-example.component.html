@@ -1,6 +1,12 @@
 <h3>Componente Header</h3>
 <div class="bd-example">
-  <it-header slimTitle="Ente di appartenenza" [loginStyle]="login" [light]="light" [showSearch]="search" [sticky]="sticky">
+  <it-header
+    slimTitle="Ente di appartenenza"
+    [loginStyle]="login"
+    [light]="light"
+    [showSearch]="search"
+    [sticky]="sticky"
+    [megamenu]="true">
     <ul class="link-list" slimLinkList>
       <li><a class="dropdown-item list-item" href="#">Link 1</a></li>
       <li><a class="list-item active" href="#" aria-current="page">Link 2 (Attivo)</a></li>
@@ -38,16 +44,84 @@
       </ul>
     </div>
     <ng-container navItems>
-      <it-navbar-item><a class="nav-link active" href="#" aria-current="page"><span>Link 1 (attivo)</span></a></it-navbar-item>
-      <it-navbar-item><a class="nav-link disabled" href="#" aria-disabled="true"><span>Link 2 (disabilitato)</span></a></it-navbar-item>
-      <it-navbar-item><a class="nav-link" href="#"><span>Link 3</span></a></it-navbar-item>
-      <it-navbar-item><a class="nav-link" href="#"><span>Link 4</span></a></it-navbar-item>
+      <it-navbar-item
+        ><a class="nav-link active" href="#" aria-current="page"><span>Link 1 (attivo)</span></a></it-navbar-item
+      >
+      <it-navbar-item
+        ><a class="nav-link disabled" href="#" aria-disabled="true"><span>Link 2 (disabilitato)</span></a></it-navbar-item
+      >
+      <it-navbar-item
+        ><a class="nav-link" href="#"><span>Link 3</span></a></it-navbar-item
+      >
+      <it-navbar-item
+        ><a class="nav-link" href="#"><span>Link 4</span></a></it-navbar-item
+      >
       <it-navbar-item>
         <it-dropdown mode="nav">
           <span button>Menu dropdown</span>
           <ng-container list>
             <it-dropdown-item>Link lista 1</it-dropdown-item>
             <it-dropdown-item>Link lista 2</it-dropdown-item>
+          </ng-container>
+        </it-dropdown>
+      </it-navbar-item>
+      <it-navbar-item>
+        <it-dropdown mode="nav" [megamenu]="true">
+          <span button>Megamenu</span>
+          <ng-container list>
+            <it-megamenu [header]="true" [mode]="'left-section'">
+              <ng-container megamenuLeftZone>
+                <div class="ratio ratio-21x9 lightgrey-bg-a1 mb-4 rounded">
+                  <figure class="figure">
+                    <img
+                      src="https://via.placeholder.com/560x240/ebebeb/808080/?text=Immagine"
+                      class="figure-img img-fluid rounded"
+                      alt="Segnaposto" />
+                  </figure>
+                </div>
+                <p>Testo utile a fornire una descrizione dei contenuti della sezione <strong>megamenu 1</strong>.</p>
+              </ng-container>
+              <ng-container megamenuHeadingLink>
+                <a class="it-heading-link" href="#"
+                  ><it-icon name="arrow-right-triangle"></it-icon>
+                  <span>Esplora la sezione megamenu 1</span>
+                </a>
+              </ng-container>
+              <ng-container megamenuLinkList>
+                <div class="col-12 col-lg-6">
+                  <it-list linkList="true">
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 1</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 2</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 3</span>
+                    </it-list-item>
+                  </it-list>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <it-list linkList="true">
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 4</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 5</span>
+                    </it-list-item>
+                    <it-list-item href="#" externalLink="true">
+                      <it-icon name="arrow-right-triangle"></it-icon>
+                      <span>Link lista 6</span>
+                    </it-list-item>
+                  </it-list>
+                </div>
+              </ng-container>
+            </it-megamenu>
           </ng-container>
         </it-dropdown>
       </it-navbar-item>
@@ -62,12 +136,9 @@
     </div>
     <div class="form-check col-12 col-md-3">
       <h5>Tipologia di login</h5>
-      <it-radio-button name="default" [(ngModel)]="login" value="none"
-                       label="Nessuno"></it-radio-button>
-      <it-radio-button name="dropup" [(ngModel)]="login" value="default"
-                       label="Default"></it-radio-button>
-      <it-radio-button name="dropstart" [(ngModel)]="login" value="full"
-                       label="Pulsante largo"></it-radio-button>
+      <it-radio-button name="default" [(ngModel)]="login" value="none" label="Nessuno"></it-radio-button>
+      <it-radio-button name="dropup" [(ngModel)]="login" value="default" label="Default"></it-radio-button>
+      <it-radio-button name="dropstart" [(ngModel)]="login" value="full" label="Pulsante largo"></it-radio-button>
     </div>
   </div>
 </div>

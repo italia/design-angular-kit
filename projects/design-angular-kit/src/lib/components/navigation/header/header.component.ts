@@ -47,6 +47,9 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
 
   @ViewChild('headerWrapper') private headerWrapper?: ElementRef<HTMLButtonElement>;
 
+  @Input({ transform: inputToBoolean }) megamenu?: boolean;
+  @Input({ transform: inputToBoolean }) expand?: boolean = true;
+
   private stickyHeader?: HeaderSticky;
 
   constructor() {

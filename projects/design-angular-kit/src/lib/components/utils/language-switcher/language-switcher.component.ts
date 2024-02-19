@@ -22,7 +22,7 @@ export class ItLanguageSwitcherComponent implements OnInit {
   /**
    * Dropdown mode
    */
-  @Input() mode: 'button' | 'link' = 'link';
+  @Input() mode: 'button' | 'link' | 'nav' = 'link';
 
   protected currentLang$: Observable<AvailableLanguage | undefined>;
 

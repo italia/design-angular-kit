@@ -16,6 +16,7 @@ import { ItDropdownModule } from './components/core/dropdown/dropdown.module';
 import { ItForwardDirective } from './components/core/forward/forward.directive';
 import { ItLinkComponent } from './components/core/link/link.component';
 import { ItListModule } from './components/core/list/list.module';
+import { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';
 import { ItModalComponent } from './components/core/modal/modal.component';
 import { ItNotificationsComponent } from './components/core/notifications/notifications.component';
 import { ItPaginationComponent } from './components/core/pagination/pagination.component';
@@ -83,6 +84,7 @@ const navigation = [
   ItHeaderComponent,
   ItNavBarModule,
   ItSidebarComponent,
+  ItMegamenuComponent,
 ];
 
 /**
