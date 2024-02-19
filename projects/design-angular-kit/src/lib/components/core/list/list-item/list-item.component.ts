@@ -1,17 +1,17 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ItLinkComponent } from '../../link/link.component';
-import { NgTemplateOutlet } from '@angular/common';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, TemplateRef } from '@angular/core';
 import { inputToBoolean } from '../../../../utils/coercion';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 
 @Component({
   standalone: true,
-  selector: 'it-list-item',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[itListItem]',
+  imports: [],
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgTemplateOutlet, ItLinkComponent],
 })
-export class ItListItemComponent extends ItLinkComponent {
+export class ItListItemComponent extends ItAbstractComponent {
   /**
    * Add active class
    * @default false
@@ -19,7 +19,7 @@ export class ItListItemComponent extends ItLinkComponent {
   @Input({ transform: inputToBoolean }) active?: boolean;
 
   /**
-   * Add large class
+   * Add size class
    */
   @Input() size?: 'large' | 'medium';
 
@@ -36,6 +36,12 @@ export class ItListItemComponent extends ItLinkComponent {
   @Input({ transform: inputToBoolean }) iconRight?: boolean;
 
   /**
+   * Is disabled
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) disabled?: boolean;
+
+  /**
    * The avatar url
    */
   @Input() avatar: URL | undefined;
@@ -45,7 +51,12 @@ export class ItListItemComponent extends ItLinkComponent {
    */
   @Input() image: URL | undefined;
 
-  get itemClass(): string {
+  constructor(public readonly templateRef: TemplateRef<unknown>) {
+    super();
+  }
+
+  @HostBinding('class')
+  public get itemClass(): string {
     let itemClass = 'list-item';
     if (this.disabled) {
       itemClass += ` disabled`;
@@ -61,9 +72,6 @@ export class ItListItemComponent extends ItLinkComponent {
     }
     if (this.iconRight) {
       itemClass += ` icon-right`;
-    }
-    if (this.class) {
-      itemClass += ` ${this.class}`;
     }
     return itemClass;
   }

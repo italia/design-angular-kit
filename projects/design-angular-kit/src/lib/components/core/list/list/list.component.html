@@ -1,13 +1,7 @@
-@if (!linkSubList) {
-  <div [class.multiline]="multiline" [class]="linkList ? 'link-list-wrapper' : 'it-list-wrapper'">
-    <ul [class]="linkList ? 'link-list' : 'it-list'">
-      <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
-    </ul>
-  </div>
-}
-@if (linkSubList) {
-  <ul class="link-sublist">
-    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
-  </ul>
-}
-<ng-template #contentTpl><ng-content></ng-content></ng-template>
+<ul [class]="listClass">
+  @for (item of items; track item) {
+    <li>
+      <ng-container [ngTemplateOutlet]="item.templateRef"></ng-container>
+    </li>
+  }
+</ul>
