@@ -2,6 +2,97 @@
 
 <div class="bd-example">
   <it-sidebar header="Header">
-    <!--TODO: add example-->
+    <it-list linkList="true">
+      <it-list-item size="medium" active="true" iconRight="true">
+        <a
+          class="list-item large medium icon-right"
+          role="button"
+          tabindex="0"
+          [attr.aria-expanded]="itCollapse.isOpen()"
+          (click)="itCollapse.toggle()"
+          (keydown)="itCollapse.toggle()">
+          <span class="list-item-title-icon-wrapper">
+            <span class="list-item-title">Link lista 1</span>
+            <it-icon name="expand" color="primary"></it-icon>
+          </span>
+        </a>
+        <it-collapse #itCollapse="itCollapse">
+          <it-list linkSubList="true" action>
+            <it-list-item href="#" externalLink="true">
+              <span class="text">Link lista 1</span>
+            </it-list-item>
+            <it-list-item href="#" externalLink="true">
+              <span class="text">Link lista 2</span>
+            </it-list-item>
+            <it-list-item href="#" externalLink="true">
+              <span class="text">Link lista 3</span>
+            </it-list-item>
+          </it-list>
+        </it-collapse>
+      </it-list-item>
+      <it-list-item size="medium">
+        <it-list-item size="medium" active="true" iconRight="true">
+          <a
+            class="list-item large medium icon-right"
+            role="button"
+            tabindex="0"
+            [attr.aria-expanded]="itCollapse2.isOpen()"
+            (click)="itCollapse2.toggle()"
+            (keydown)="itCollapse2.toggle()">
+            <span class="list-item-title-icon-wrapper">
+              <span class="list-item-title">Link lista 2</span>
+              <it-icon name="expand" color="primary"></it-icon>
+            </span>
+          </a>
+          <it-collapse #itCollapse2="itCollapse">
+            <it-list linkSubList="true" action>
+              <it-list-item href="#" externalLink="true">
+                <span class="text">Link lista 1</span>
+              </it-list-item>
+              <it-list-item href="#" externalLink="true">
+                <span class="text">Link lista 2</span>
+              </it-list-item>
+              <it-list-item href="#" externalLink="true">
+                <span class="text">Link lista 3</span>
+              </it-list-item>
+            </it-list>
+          </it-collapse>
+        </it-list-item>
+      </it-list-item>
+      <it-list-item size="medium">
+        <it-list-item size="medium" active="true" iconRight="true">
+          <a
+            class="list-item large medium icon-right"
+            role="button"
+            tabindex="0"
+            [attr.aria-expanded]="itCollapse3.isOpen()"
+            (click)="itCollapse3.toggle()"
+            (keydown)="itCollapse3.toggle()">
+            <span class="list-item-title-icon-wrapper">
+              <span class="list-item-title">Link lista 3</span>
+              <it-icon name="expand" color="primary"></it-icon>
+            </span>
+          </a>
+          <it-collapse #itCollapse3="itCollapse">
+            <it-list linkSubList="true" action>
+              <it-list-item href="#" externalLink="true">
+                <span class="text">Link lista 1</span>
+              </it-list-item>
+              <it-list-item href="#" externalLink="true">
+                <span class="text">Link lista 2</span>
+              </it-list-item>
+              <it-list-item href="#" externalLink="true">
+                <span class="text">Link lista 3</span>
+              </it-list-item>
+            </it-list>
+          </it-collapse>
+        </it-list-item>
+      </it-list-item>
+    </it-list>
+    <it-list linkList="true" secondary>
+      <it-list-item size="medium" href="#"><span>Link secondario 1</span></it-list-item>
+      <it-list-item size="medium" active="true" href="#"><span>Link secondario 2 (attivo)</span></it-list-item>
+      <it-list-item size="medium" disabled="true" href="#"><span>Link secondario 3 (disabilitato)</span></it-list-item>
+    </it-list>
   </it-sidebar>
 </div>
