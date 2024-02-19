@@ -34,6 +34,7 @@ import { ItBackToTopComponent } from './components/navigation/back-to-top/back-t
 import { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';
 import { ItHeaderComponent } from './components/navigation/header/header.component';
 import { ItNavBarModule } from './components/navigation/navbar/navbar.module';
+import { ItSidebarComponent } from './components/navigation/sidebar/sidebar.component';
 import { ItErrorPageComponent } from './components/utils/error-page/error-page.component';
 import { ItIconComponent } from './components/utils/icon/icon.component';
 import { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';
@@ -82,6 +83,7 @@ const navigation = [
   ItBreadcrumbsModule,
   ItHeaderComponent,
   ItNavBarModule,
+  ItSidebarComponent,
   ItMegamenuComponent,
 ];
 

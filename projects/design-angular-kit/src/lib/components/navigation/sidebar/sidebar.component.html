@@ -1,0 +1,11 @@
+@if (header) {
+  <h3>{{ header }}</h3>
+}
+<div class="sidebar-linklist-wrapper">
+  <!--TODO: wrap ng-content with it-list -> inside content use a list of it-list-item directives-->
+  <ng-content></ng-content>
+</div>
+<div class="sidebar-linklist-wrapper linklist-secondary">
+  <!--TODO: wrap ng-content with it-list -> inside content use a list of it-list-item directives-->
+  <ng-content select="[secondary]"></ng-content>
+</div>

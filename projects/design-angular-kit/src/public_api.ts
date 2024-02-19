@@ -94,6 +94,8 @@ export * from './lib/components/navigation/navbar/navbar.module';
 export * from './lib/components/navigation/navbar/navbar/navbar.component';
 export * from './lib/components/navigation/navbar/navbar-item/navbar-item.component';
 
+export * from './lib/components/navigation/sidebar/sidebar.component';
+
 // Utils components
 export * from './lib/components/utils/error-page/error-page.component';
 export * from './lib/components/utils/icon/icon.component';
