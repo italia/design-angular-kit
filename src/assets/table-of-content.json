@@ -178,6 +178,10 @@
         {
           "label": "Autocomplete",
           "link": "/componenti/autocomplete"
+        },
+        {
+          "label": "Sidebar",
+          "link": "/componenti/sidebar"
         }
       ]
     }

@@ -10,7 +10,9 @@
       "prefix": "it",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "none",
+          "standalone": false,
+          "skipTests": true
         }
       },
       "architect": {
@@ -175,7 +177,8 @@
       "prefix": "it",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "none",
+          "changeDetection": "OnPush"
         }
       },
       "architect": {

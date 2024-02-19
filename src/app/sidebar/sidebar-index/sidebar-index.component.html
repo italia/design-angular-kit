@@ -1,0 +1,12 @@
+<h1 class="bd-title">Sidebar</h1>
+<p class="bd-lead">Barra di navigazione laterale, include liste di link e liste di link annidate.</p>
+<div [innerHTML]="sidebarComponent.description"></div>
+<it-tab-container>
+  <it-tab-item label="Esempi" active="true" class="mt-3">
+    <it-sidebar-examples></it-sidebar-examples>
+  </it-tab-item>
+  <it-tab-item label="API" class="mt-3">
+    <h2>Sidebar</h2>
+    <it-api-parameters [component]="sidebarComponent"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>

@@ -1,5 +1,6 @@
 import { Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -18,7 +19,7 @@ export class ItAvatarGroupItemComponent {
   imports: [NgTemplateOutlet],
 })
 export class ItAvatarGroupComponent {
-  @Input() @HostBinding('class.link-list-wrapper') linkList = false;
+  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;
 
   @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;
 }
