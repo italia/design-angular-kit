@@ -3,27 +3,35 @@
 <div class="bd-example">
   <it-sidebar header="Header">
     <it-list linkList="true">
-      <it-list-item size="medium" active="true">
-        <it-icon name="star-outline" icon />
-        Link lista 1 (attivo)
+      <it-list-item size="medium" active="true" href="#" iconLeft="true">
+        <span class="list-item-title-icon-wrapper">
+          <it-icon name="star-outline" />
+          <span>Link lista 1 (attivo)</span>
+        </span>
       </it-list-item>
-      <it-list-item size="medium" disabled="true">
-        <it-icon name="star-outline" icon />
-        Link lista 2 (disabilitato)
+      <it-list-item size="medium" disabled="true" href="#" iconLeft="true">
+        <span class="list-item-title-icon-wrapper">
+          <it-icon name="star-outline" />
+          <span>Link lista 2 (disabilitato)</span>
+        </span>
       </it-list-item>
-      <it-list-item size="medium">
-        <it-icon name="star-outline" icon />
-        Link lista 3
+      <it-list-item size="medium" href="#" iconLeft="true">
+        <span class="list-item-title-icon-wrapper">
+          <it-icon name="star-outline" />
+          <span>Link lista 3</span>
+        </span>
       </it-list-item>
-      <it-list-item size="medium">
-        <it-icon name="star-outline" icon />
-        Link lista 4
+      <it-list-item size="medium" href="#" iconLeft="true">
+        <span class="list-item-title-icon-wrapper">
+          <it-icon name="star-outline" />
+          <span>Link lista 4</span>
+        </span>
       </it-list-item>
     </it-list>
     <it-list linkList="true" secondary>
-      <it-list-item size="medium" active="true">Link secondario 1</it-list-item>
-      <it-list-item size="medium">Link secondario 2 (attivo)</it-list-item>
-      <it-list-item size="medium" disabled="true">Link secondario 3 (disabilitato)</it-list-item>
+      <it-list-item size="medium" active="true" href="#">Link secondario 1</it-list-item>
+      <it-list-item size="medium" href="#">Link secondario 2 (attivo)</it-list-item>
+      <it-list-item size="medium" disabled="true" href="#">Link secondario 3 (disabilitato)</it-list-item>
     </it-list>
   </it-sidebar>
 </div>

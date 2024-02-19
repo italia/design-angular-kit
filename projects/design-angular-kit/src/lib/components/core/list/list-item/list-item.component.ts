@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
 import { ItLinkComponent } from '../../link/link.component';
 import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
@@ -12,6 +12,10 @@ import { inputToBoolean } from '../../../../utils/coercion';
   imports: [NgTemplateOutlet, ItLinkComponent],
 })
 export class ItListItemComponent extends ItLinkComponent {
+  constructor(private elRef: ElementRef) {
+    super();
+  }
+
   /**
    * Add active class
    * @default false
@@ -46,6 +50,7 @@ export class ItListItemComponent extends ItLinkComponent {
   @Input() image: URL | undefined;
 
   get itemClass(): string {
+    const inSidebar: boolean = this.elRef.nativeElement.closest('.sidebar-linklist-wrapper') ? true : false;
     let itemClass = 'list-item';
     if (this.disabled) {
       itemClass += ` disabled`;
@@ -57,10 +62,10 @@ export class ItListItemComponent extends ItLinkComponent {
       itemClass += ` ${this.size}`;
     }
     if (this.iconLeft) {
-      itemClass += ` icon-left`;
+      itemClass += inSidebar ? ` left-icon` : ` icon-left`;
     }
     if (this.iconRight) {
-      itemClass += ` icon-right`;
+      itemClass += inSidebar ? ` right-icon` : ` icon-right`;
     }
     if (this.class) {
       itemClass += ` ${this.class}`;
