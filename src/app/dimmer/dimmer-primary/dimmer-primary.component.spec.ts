@@ -8,9 +8,8 @@ describe('DimmerPrimaryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DimmerPrimaryComponent ]
-    })
-    .compileComponents();
+      declarations: [DimmerPrimaryComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DimmerPrimaryComponent);
     component = fixture.componentInstance;

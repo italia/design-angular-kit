@@ -4,10 +4,9 @@ import { ElementPlacement } from 'design-angular-kit/interfaces/core';
 @Component({
   selector: 'it-tooltip-placements-example',
   templateUrl: './tooltip-placements-example.component.html',
-  styleUrls: ['./tooltip-placements-example.component.scss']
+  styleUrls: ['./tooltip-placements-example.component.scss'],
 })
 export class TooltipPlacementsExampleComponent {
-
   currentPlacement: ElementPlacement = 'right';
 
   changeCurrentPlacement() {
@@ -26,5 +25,4 @@ export class TooltipPlacementsExampleComponent {
         break;
     }
   }
-
 }

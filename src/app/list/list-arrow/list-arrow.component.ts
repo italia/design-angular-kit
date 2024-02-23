@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-list-arrow',
   templateUrl: './list-arrow.component.html',
-  styleUrls: ['./list-arrow.component.scss']
+  styleUrls: ['./list-arrow.component.scss'],
 })
-export class ListArrowComponent {
-
-}
+export class ListArrowComponent {}

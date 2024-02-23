@@ -10,9 +10,10 @@
   </it-list>
 
   <div class="mt-4">
-    <it-pagination [currentPage]="selectedItem.currentPage"
-                   [pageNumbers]="selectedItem.pageNumbers"
-                   alignment="center"
-                   (pageEvent)="onPageChange($event)"></it-pagination>
+    <it-pagination
+      [currentPage]="selectedItem.currentPage"
+      [pageNumbers]="selectedItem.pageNumbers"
+      alignment="center"
+      (pageEvent)="onPageChange($event)"></it-pagination>
   </div>
 </div>

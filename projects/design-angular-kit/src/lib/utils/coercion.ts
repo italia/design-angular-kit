@@ -1,6 +1,6 @@
-import { booleanAttribute } from "@angular/core";
+import { booleanAttribute } from '@angular/core';
 
-export type BooleanInput = "false" | "true" | boolean | undefined;
+export type BooleanInput = 'false' | 'true' | boolean | undefined;
 
 /**
  * Transforms a value (typically a string) to a boolean.

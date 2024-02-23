@@ -8,9 +8,8 @@ describe('ErrorPageRouteExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorPageRouteExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [ErrorPageRouteExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ErrorPageRouteExampleComponent);
     component = fixture.componentInstance;

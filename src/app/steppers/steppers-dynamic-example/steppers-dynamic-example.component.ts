@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-steppers-dynamic-example',
-  templateUrl: './steppers-dynamic-example.component.html'
+  templateUrl: './steppers-dynamic-example.component.html',
 })
 export class SteppersDynamicExampleComponent {
-
   /**
    * Step index
    */
   activeStep = 1;
-  steps = ['Primo contenuto', 'Secondo contenuto', 'Terzo contenuto']
+  steps = ['Primo contenuto', 'Secondo contenuto', 'Terzo contenuto'];
 
   isDark = false;
 
@@ -32,12 +31,11 @@ export class SteppersDynamicExampleComponent {
     this.isSaveLoading = false;
   }
 
-  onConfirmClick(activeStep: number): void {
+  onConfirmClick(): void {
     this.isConfirmLoading = true;
   }
 
-  onSaveClick(activeStep: number): void {
+  onSaveClick(): void {
     this.isSaveLoading = true;
   }
-
 }

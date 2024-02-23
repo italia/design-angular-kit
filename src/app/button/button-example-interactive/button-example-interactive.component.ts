@@ -1,28 +1,19 @@
 import { Component } from '@angular/core';
 import { ButtonColor, ButtonSize } from 'design-angular-kit/interfaces/core';
 
-
 @Component({
   selector: 'it-button-example-interactive',
   templateUrl: './button-example-interactive.component.html',
-  styleUrls: ['./button-example-interactive.component.scss']
+  styleUrls: ['./button-example-interactive.component.scss'],
 })
 export class ButtonExampleInteractiveComponent {
-
   disabled = false;
 
   outline = false;
 
   block = false;
 
-  selectedColor?: 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'light'
-    | 'dark' = 'primary';
+  selectedColor?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';
   selectedSize?: ButtonSize;
   count = 0;
 
@@ -36,5 +27,4 @@ export class ButtonExampleInteractiveComponent {
   increaseCount() {
     this.count++;
   }
-
 }

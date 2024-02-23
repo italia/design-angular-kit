@@ -7,20 +7,8 @@ import { TextareaExamplesComponent } from './textarea-examples/textarea-examples
 import { TextareaExampleComponent } from './textarea-example/textarea-example.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
-  declarations: [
-    TextareaIndexComponent,
-    TextareaExamplesComponent,
-    TextareaExampleComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    TextareaRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+  declarations: [TextareaIndexComponent, TextareaExamplesComponent, TextareaExampleComponent],
+  imports: [CommonModule, SharedModule, TextareaRoutingModule, FormsModule, ReactiveFormsModule],
 })
-export class TextareaModule { }
+export class TextareaModule {}

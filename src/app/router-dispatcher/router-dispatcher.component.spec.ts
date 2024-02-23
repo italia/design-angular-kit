@@ -8,9 +8,8 @@ describe('RouterDispatcherComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouterDispatcherComponent ]
-    })
-    .compileComponents();
+      declarations: [RouterDispatcherComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

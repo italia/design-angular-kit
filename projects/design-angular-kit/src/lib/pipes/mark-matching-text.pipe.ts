@@ -6,13 +6,10 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
  */
 @Pipe({
   standalone: true,
-  name: 'itMarkMatchingText'
+  name: 'itMarkMatchingText',
 })
 export class ItMarkMatchingTextPipe implements PipeTransform {
-  constructor(
-    private readonly domSanitizer: DomSanitizer
-  ) {
-  }
+  constructor(private readonly domSanitizer: DomSanitizer) {}
 
   /**
    * Allows you to highlight text with the <mark> tag
@@ -43,5 +40,4 @@ export class ItMarkMatchingTextPipe implements PipeTransform {
 
     return allString;
   }
-
 }

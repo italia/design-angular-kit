@@ -7,7 +7,6 @@ import { inputToBoolean } from '../utils/coercion';
 
 @Component({ template: '' })
 export abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
-
   /**
    * The label of form control
    */
@@ -89,11 +88,9 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
     }
   }
 
-  onChange = (_: T) => {
-  };
+  onChange = () => {};
 
-  onTouched = () => {
-  };
+  onTouched = () => {};
 
   registerOnChange(fn: any): void {
     this.control.valueChanges.subscribe(fn);

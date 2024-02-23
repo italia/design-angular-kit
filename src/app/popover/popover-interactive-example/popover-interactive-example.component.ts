@@ -4,7 +4,7 @@ import { ElementPlacement } from 'design-angular-kit/interfaces/core';
 @Component({
   selector: 'it-popover-interactive-example',
   templateUrl: './popover-interactive-example.component.html',
-  styleUrls: ['./popover-interactive-example.component.scss']
+  styleUrls: ['./popover-interactive-example.component.scss'],
 })
 export class PopoverInteractiveExampleComponent {
   placement: ElementPlacement = 'right';
@@ -16,11 +16,11 @@ export class PopoverInteractiveExampleComponent {
   hiddenTime = '';
 
   logShown() {
-    this.shownTime = (new Date()).toISOString();
+    this.shownTime = new Date().toISOString();
   }
 
   logHidden() {
-    this.hiddenTime = (new Date()).toISOString();
+    this.hiddenTime = new Date().toISOString();
   }
 
   get myDescription() {
@@ -30,5 +30,4 @@ export class PopoverInteractiveExampleComponent {
   get myTitle() {
     return !this.removeTitle ? 'Titolo del Popover' : '';
   }
-
 }

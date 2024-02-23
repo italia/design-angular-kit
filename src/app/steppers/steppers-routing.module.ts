@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SteppersIndexComponent } from './steppers-index/steppers-index.component';
 
-const routes: Routes = [
-  { path: '', component: SteppersIndexComponent }
-];
+const routes: Routes = [{ path: '', component: SteppersIndexComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SteppersRoutingModule {
-}
+export class SteppersRoutingModule {}

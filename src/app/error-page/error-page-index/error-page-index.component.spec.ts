@@ -8,9 +8,8 @@ describe('ErrorPageIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorPageIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [ErrorPageIndexComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ErrorPageIndexComponent);
     component = fixture.componentInstance;

@@ -11,18 +11,13 @@ import { BackButtonButtonComponent } from './back-button-button/back-button-butt
 import { BackButtonOnlyIconComponent } from './back-button-only-icon/back-button-only-icon.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    BackButtonRoutingModule
-  ],
+  imports: [CommonModule, SharedModule, FormsModule, BackButtonRoutingModule],
   declarations: [
     BackButtonIndexComponent,
     BackButtonExamplesComponent,
     BackButtonLinkComponent,
     BackButtonButtonComponent,
-    BackButtonOnlyIconComponent
-  ]
+    BackButtonOnlyIconComponent,
+  ],
 })
-export class BackButtonModule { }
+export class BackButtonModule {}

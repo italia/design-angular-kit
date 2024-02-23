@@ -8,9 +8,8 @@ describe('SelectFormgroupExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectFormgroupExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [SelectFormgroupExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SelectFormgroupExampleComponent);
     component = fixture.componentInstance;

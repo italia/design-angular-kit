@@ -8,7 +8,7 @@ describe('ListArrowComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListArrowComponent]
+      declarations: [ListArrowComponent],
     });
     fixture = TestBed.createComponent(ListArrowComponent);
     component = fixture.componentInstance;

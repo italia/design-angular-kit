@@ -8,8 +8,7 @@ describe('ItUploadFileListComponent', () => {
   let fixture: ComponentFixture<ItUploadFileListComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItUploadFileListComponent);
     component = fixture.componentInstance;

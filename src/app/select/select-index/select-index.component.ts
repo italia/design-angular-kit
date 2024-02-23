@@ -4,10 +4,9 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-select-index',
   templateUrl: './select-index.component.html',
-  styleUrls: ['./select-index.component.scss']
+  styleUrls: ['./select-index.component.scss'],
 })
 export class SelectIndexComponent {
-
   component: any;
 
   constructor() {

@@ -10,10 +10,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './back-to-top.component.html',
   exportAs: 'itBackToTop',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItIconComponent]
+  imports: [ItIconComponent],
 })
 export class ItBackToTopComponent extends ItAbstractComponent implements AfterViewInit {
-
   /**
    * Show small button
    * @default false

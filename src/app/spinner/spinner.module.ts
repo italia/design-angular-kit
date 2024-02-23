@@ -7,19 +7,8 @@ import { SpinnerExamplesComponent } from './spinner-examples/spinner-examples.co
 import { SpinnerSingleExampleComponent } from './spinner-single-example/spinner-single-example.component';
 import { SpinnerDoubleExampleComponent } from './spinner-double-example/spinner-double-example.component';
 
-
 @NgModule({
-  declarations: [
-    SpinnerIndexComponent,
-    SpinnerExamplesComponent,
-    SpinnerSingleExampleComponent,
-    SpinnerDoubleExampleComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    SpinnerRoutingModule
-  ]
+  declarations: [SpinnerIndexComponent, SpinnerExamplesComponent, SpinnerSingleExampleComponent, SpinnerDoubleExampleComponent],
+  imports: [CommonModule, SharedModule, SpinnerRoutingModule],
 })
-export class SpinnerModule {
-}
+export class SpinnerModule {}

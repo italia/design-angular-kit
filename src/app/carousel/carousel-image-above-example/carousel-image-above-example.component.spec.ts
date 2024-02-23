@@ -8,9 +8,8 @@ describe('CarouselImageAboveExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarouselImageAboveExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [CarouselImageAboveExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CarouselImageAboveExampleComponent);
     component = fixture.componentInstance;

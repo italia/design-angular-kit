@@ -8,9 +8,8 @@ describe('PaginationSimpleExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaginationSimpleExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [PaginationSimpleExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PaginationSimpleExampleComponent);
     component = fixture.componentInstance;

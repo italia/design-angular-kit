@@ -3,10 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-tabs-dynamic-example',
   templateUrl: './tabs-dynamic-example.component.html',
-  styleUrls: ['./tabs-dynamic-example.component.scss']
+  styleUrls: ['./tabs-dynamic-example.component.scss'],
 })
 export class TabsDynamicExampleComponent {
-
   tabs = ['Primo', 'Secondo', 'Terzo'];
   selectedIndex = 0;
   selectAfterAdding = false;

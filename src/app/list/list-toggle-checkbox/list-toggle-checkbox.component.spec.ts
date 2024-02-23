@@ -8,7 +8,7 @@ describe('ListToggleCheckboxComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListToggleCheckboxComponent]
+      declarations: [ListToggleCheckboxComponent],
     });
     fixture = TestBed.createComponent(ListToggleCheckboxComponent);
     component = fixture.componentInstance;

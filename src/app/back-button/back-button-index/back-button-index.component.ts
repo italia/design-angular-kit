@@ -3,10 +3,9 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-go-back-index',
-  templateUrl: './back-button-index.component.html'
+  templateUrl: './back-button-index.component.html',
 })
 export class BackButtonIndexComponent {
-
   component: any;
 
   constructor() {

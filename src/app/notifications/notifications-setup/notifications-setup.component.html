@@ -2,9 +2,10 @@
 
 <!--Import notifications component only one time in page (for example in app.component.html)-->
 <!--These options will be used in all notifications unless overridden during notification invocation-->
-<it-notifications [duration]="duration >= 1000 ? duration : undefined"
-                  [position]="position"
-                  [dismissible]="isDismissible"></it-notifications>
+<it-notifications
+  [duration]="duration >= 1000 ? duration : undefined"
+  [position]="position"
+  [dismissible]="isDismissible"></it-notifications>
 
 <div class="bd-example mb-4">
   <p>Importa il componente notifiche nel tuo <em class="text-muted fw-bold">app.component.html</em></p>
@@ -27,21 +28,27 @@
     </div>
     <div class="form-check col-4">
       <h5>Posizione</h5>
-      <it-radio-button name="notification-setup-position"
-                       [value]="undefined" label="Default"
-                       [(ngModel)]="position"></it-radio-button>
-      <it-radio-button name="notification-setup-position"
-                       [value]="NotificationPosition.Top" label="Top"
-                       [(ngModel)]="position"></it-radio-button>
-      <it-radio-button name="notification-setup-position"
-                       [value]="NotificationPosition.Bottom" label="Bottom"
-                       [(ngModel)]="position"></it-radio-button>
-      <it-radio-button name="notification-setup-position"
-                       [value]="NotificationPosition.Left" label="Left"
-                       [(ngModel)]="position"></it-radio-button>
-      <it-radio-button name="notification-setup-position"
-                       [value]="NotificationPosition.Right" label="Right"
-                       [(ngModel)]="position"></it-radio-button>
+      <it-radio-button name="notification-setup-position" [value]="undefined" label="Default" [(ngModel)]="position"></it-radio-button>
+      <it-radio-button
+        name="notification-setup-position"
+        [value]="NotificationPosition.Top"
+        label="Top"
+        [(ngModel)]="position"></it-radio-button>
+      <it-radio-button
+        name="notification-setup-position"
+        [value]="NotificationPosition.Bottom"
+        label="Bottom"
+        [(ngModel)]="position"></it-radio-button>
+      <it-radio-button
+        name="notification-setup-position"
+        [value]="NotificationPosition.Left"
+        label="Left"
+        [(ngModel)]="position"></it-radio-button>
+      <it-radio-button
+        name="notification-setup-position"
+        [value]="NotificationPosition.Right"
+        label="Right"
+        [(ngModel)]="position"></it-radio-button>
     </div>
     <div class="form-check col-4">
       <h5>Durata <small>(ms)</small></h5>

@@ -9,12 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    BreadcrumbRoutingModule
-  ],
-  declarations: [BreadcrumbExampleComponent, BreadcrumbExamplesComponent, BreadcrumbIndexComponent]
+  imports: [CommonModule, FormsModule, SharedModule, BreadcrumbRoutingModule],
+  declarations: [BreadcrumbExampleComponent, BreadcrumbExamplesComponent, BreadcrumbIndexComponent],
 })
-export class BreadcrumbModule { }
+export class BreadcrumbModule {}

@@ -8,9 +8,8 @@ describe('RatingExampleReadonlyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RatingExampleReadonlyComponent ]
-    })
-    .compileComponents();
+      declarations: [RatingExampleReadonlyComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RatingExampleReadonlyComponent);
     component = fixture.componentInstance;

@@ -8,9 +8,8 @@ describe('BackButtonButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BackButtonButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [BackButtonButtonComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BackButtonButtonComponent);
     component = fixture.componentInstance;

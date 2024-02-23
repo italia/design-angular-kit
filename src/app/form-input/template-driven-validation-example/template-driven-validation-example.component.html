@@ -2,16 +2,12 @@
 
 <div class="bd-example">
   <form #myForm="ngForm">
-    <it-input [(ngModel)]="value" name="myInput"
-              minlength="3"
-              maxlength="10"
-              pattern="[ab]+"
-              required>
+    <it-input [(ngModel)]="value" name="myInput" minlength="3" maxlength="10" pattern="[ab]+" required>
       <!-- Default errors-->
     </it-input>
 
     <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
 
-    <div *ngIf="savedValue">Salvato `{{savedValue}}`</div>
+    <div *ngIf="savedValue">Salvato `{{ savedValue }}`</div>
   </form>
 </div>

@@ -12,7 +12,7 @@ describe('ItCalloutComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule(tb_base)
       .overrideComponent(ItCalloutComponent, {
-        set: { changeDetection: ChangeDetectionStrategy.Default }
+        set: { changeDetection: ChangeDetectionStrategy.Default },
       })
       .compileComponents();
 
@@ -20,7 +20,6 @@ describe('ItCalloutComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -47,7 +46,7 @@ describe('ItCalloutComponent', () => {
     expect(spanPrimaryElement).toBeTruthy();
   });
 
-  it('if i don\'t set a label, that cannot be on DOM', () => {
+  it("if i don't set a label, that cannot be on DOM", () => {
     const spanPrimaryElement = fixture.debugElement.query(By.css('.callout-title > span:not(.visually-hidden)'));
     expect(spanPrimaryElement).toBeFalsy();
   });
@@ -60,7 +59,7 @@ describe('ItCalloutComponent', () => {
     expect(spanPrimaryElement).toBeTruthy();
   });
 
-  it('if i don\'t set a hiddenLabel (with a label), that cannot be on DOM', () => {
+  it("if i don't set a hiddenLabel (with a label), that cannot be on DOM", () => {
     component.label = 'label';
     fixture.detectChanges();
     const spanPrimaryElement = fixture.debugElement.query(By.css('.callout-title > span.visually-hidden'));
@@ -82,7 +81,7 @@ describe('ItCalloutComponent', () => {
     expect(useElement).toBeTruthy();
   });
 
-  it('if i don\'t set a icon (with a label), that will be on DOM (default is info-circle)', () => {
+  it("if i don't set a icon (with a label), that will be on DOM (default is info-circle)", () => {
     component.label = 'label';
     fixture.detectChanges();
     const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));

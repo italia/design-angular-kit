@@ -9,21 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordInputConfirmExampleComponent } from './password-input-confirm-example/password-input-confirm-example.component';
 import { PasswordInputValidationExampleComponent } from './password-input-validation-example/password-input-validation-example.component';
 
-
 @NgModule({
   declarations: [
     PasswordInputIndexComponent,
     PasswordInputExamplesComponent,
     PasswordInputExampleComponent,
     PasswordInputConfirmExampleComponent,
-    PasswordInputValidationExampleComponent
+    PasswordInputValidationExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PasswordInputRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+  imports: [CommonModule, SharedModule, PasswordInputRoutingModule, ReactiveFormsModule, FormsModule],
 })
-export class PasswordInputModule { }
+export class PasswordInputModule {}

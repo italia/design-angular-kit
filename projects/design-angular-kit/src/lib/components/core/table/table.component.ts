@@ -8,10 +8,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItTableComponent {
-
   /**
    * Table color
    */
@@ -68,5 +67,4 @@ export class ItTableComponent {
    * @default responsive
    */
   @Input() responsive: TableResponsive = 'responsive';
-
 }

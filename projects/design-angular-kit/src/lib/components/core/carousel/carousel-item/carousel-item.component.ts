@@ -10,13 +10,11 @@ import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
   selector: 'it-carousel-item',
   templateUrl: './carousel-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItCarouselItemComponent extends ItAbstractComponent {
-
   /**
    * The content of item
    */
   @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;
-
 }

@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-collapse-examples',
   templateUrl: './collapse-examples.component.html',
-  styleUrls: ['./collapse-examples.component.scss']
+  styleUrls: ['./collapse-examples.component.scss'],
 })
 export class CollapseExamplesComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

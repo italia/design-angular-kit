@@ -19,7 +19,6 @@ export type ItDurationPipeType = 'year' | 'month' | 'week' | 'day' | 'hour' | 'm
   standalone: true,
 })
 export class ItDurationPipe extends TranslatePipe implements PipeTransform {
-
   /**
    * Transform a number into a duration.
    * Is necessary indicate the value expressed by the number, for example 'day'.
@@ -43,7 +42,6 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
 
     switch (type) {
       // eslint-disable-next-line no-fallthrough
-      // @ts-ignore
       case 'second':
         if (valueAdjust < 60) {
           return super.transform(`it.duration.${type}${valueAdjust === 1 ? '' : 's'}`, {
@@ -52,7 +50,6 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 60);
       // eslint-disable-next-line no-fallthrough
-      // @ts-ignore
       case 'minute':
         if (valueAdjust < 60) {
           return super.transform(`it.duration.${type}${valueAdjust === 1 ? '' : 's'}`, {
@@ -61,7 +58,6 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 60);
       // eslint-disable-next-line no-fallthrough
-      // @ts-ignore
       case 'hour':
         if (valueAdjust < 24) {
           return super.transform(`it.duration.${type}${valueAdjust === 1 ? '' : 's'}`, {
@@ -70,7 +66,6 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 24);
       // eslint-disable-next-line no-fallthrough
-      // @ts-ignore
       case 'day':
         if (valueAdjust < 7) {
           return super.transform(`it.duration.${type}${valueAdjust === 1 ? '' : 's'}`, {
@@ -79,7 +74,6 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 7);
       // eslint-disable-next-line no-fallthrough
-      // @ts-ignore
       case 'week':
         if (valueAdjust < 5) {
           return super.transform(`it.duration.${type}${valueAdjust === 1 ? '' : 's'}`, {
@@ -88,7 +82,6 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 5);
       // eslint-disable-next-line no-fallthrough
-      // @ts-ignore
       case 'month':
         if (valueAdjust < 24) {
           return super.transform(`it.duration.${type}${valueAdjust === 1 ? '' : 's'}`, {

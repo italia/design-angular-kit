@@ -8,10 +8,9 @@ import { inputToBoolean } from '../../../../utils/coercion';
   selector: 'it-tab-item',
   templateUrl: './tab-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItTabItemComponent extends ItAbstractComponent implements AfterViewInit {
-
   /**
    * The tab label
    */

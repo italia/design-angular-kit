@@ -8,8 +8,7 @@ describe('ItModalComponent', () => {
   let fixture: ComponentFixture<ItModalComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItModalComponent);
     component = fixture.componentInstance;

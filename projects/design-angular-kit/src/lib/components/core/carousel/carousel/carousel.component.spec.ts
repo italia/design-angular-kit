@@ -8,8 +8,7 @@ describe('ItCarouselComponent', () => {
   let fixture: ComponentFixture<ItCarouselComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItCarouselComponent);
     component = fixture.componentInstance;

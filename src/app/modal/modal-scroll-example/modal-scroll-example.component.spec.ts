@@ -8,9 +8,8 @@ describe('ModalScrollExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalScrollExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [ModalScrollExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ModalScrollExampleComponent);
     component = fixture.componentInstance;

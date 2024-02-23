@@ -1,24 +1,17 @@
 import { Component } from '@angular/core';
-import {
-  ItNotificationService
-} from 'design-angular-kit/services/notification/notification.service';
-import {
-  NotificationPosition,
-  NotificationType
-} from 'design-angular-kit/interfaces/core';
+import { ItNotificationService } from 'design-angular-kit/services/notification/notification.service';
+import { NotificationPosition, NotificationType } from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-notifications-example',
-  templateUrl: './notifications-example.component.html'
+  templateUrl: './notifications-example.component.html',
 })
 export class NotificationsExampleComponent {
-
   withText = true;
   type: NotificationType = NotificationType.Standard;
   duration?: number;
-  dismissible?: 'true'|'false';
+  dismissible?: 'true' | 'false';
   position?: NotificationPosition;
-
 
   get NotificationPosition(): typeof NotificationPosition {
     return NotificationPosition;
@@ -29,10 +22,7 @@ export class NotificationsExampleComponent {
 
   private text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...';
 
-  constructor(
-    private readonly notificationService: ItNotificationService
-  ) {
-  }
+  constructor(private readonly notificationService: ItNotificationService) {}
 
   showNotification(): void {
     this.notificationService.addNotification({
@@ -41,7 +31,7 @@ export class NotificationsExampleComponent {
       message: this.withText && this.text,
       dismissible: this.dismissible && this.dismissible === 'true',
       position: this.position,
-      duration: this.duration
+      duration: this.duration,
     });
 
     // You can also use helper methods `standard`, `success`, `error`, `warning`, `info`
@@ -53,5 +43,4 @@ export class NotificationsExampleComponent {
     //   this.position
     // );
   }
-
 }

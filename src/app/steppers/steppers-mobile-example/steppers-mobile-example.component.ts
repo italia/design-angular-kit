@@ -4,8 +4,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'it-steppers-mobile-example',
   templateUrl: './steppers-mobile-example.component.html',
   styleUrls: ['steppers-mobile-example.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-export class SteppersMobileExampleComponent {
-
-}
+export class SteppersMobileExampleComponent {}

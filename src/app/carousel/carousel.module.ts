@@ -13,8 +13,6 @@ import { CarouselSpecialCardsExampleComponent } from './carousel-special-cards-e
 import { CarouselFullscreenImageExampleComponent } from './carousel-fullscreen-image-example/carousel-fullscreen-image-example.component';
 import { CarouselFullscreenImageStandardExampleComponent } from './carousel-fullscreen-image-standard-example/carousel-fullscreen-image-standard-example.component';
 
-
-
 @NgModule({
   declarations: [
     CarouselIndexComponent,
@@ -25,14 +23,8 @@ import { CarouselFullscreenImageStandardExampleComponent } from './carousel-full
     CarouselImageAboveExampleComponent,
     CarouselSpecialCardsExampleComponent,
     CarouselFullscreenImageExampleComponent,
-    CarouselFullscreenImageStandardExampleComponent
+    CarouselFullscreenImageStandardExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    CarouselRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+  imports: [CommonModule, SharedModule, CarouselRoutingModule, FormsModule, ReactiveFormsModule],
 })
-export class CarouselModule { }
+export class CarouselModule {}

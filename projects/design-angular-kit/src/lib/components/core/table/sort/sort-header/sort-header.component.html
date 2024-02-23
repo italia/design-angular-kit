@@ -8,12 +8,12 @@
 
   The approach is based off of: https://dequeuniversity.com/library/aria/tables/sf-sortable-grid
 -->
-<div class="it-sort-header-container it-focus-indicator"
-     [class.it-sort-header-sorted]="isSorted"
-     [class.it-sort-header-position-before]="arrowPosition === 'before'"
-     [attr.tabindex]="isDisabled ? null : 0"
-     [attr.role]="isDisabled ? null : 'button'">
-
+<div
+  class="it-sort-header-container it-focus-indicator"
+  [class.it-sort-header-sorted]="isSorted"
+  [class.it-sort-header-position-before]="arrowPosition === 'before'"
+  [attr.tabindex]="isDisabled ? null : 0"
+  [attr.role]="isDisabled ? null : 'button'">
   <!--
     We have to keep it due to a large number of screenshot diff failures. It should be removed eventually.
     Note that the difference isn't visible with a shorter header, but once it breaks up into multiple lines, this element

@@ -9,12 +9,10 @@ import {
   OnChanges,
   Output,
   Renderer2,
-  SimpleChanges
 } from '@angular/core';
 
 @Component({ template: '' })
 export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {
-
   /**
    * The element ID
    */
@@ -30,7 +28,6 @@ export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {
    * @private
    */
   private static instances = 0;
-
 
   protected readonly _renderer: Renderer2; // Injected
   protected readonly _elementRef: ElementRef; // Injected
@@ -48,7 +45,7 @@ export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'id');
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.valueChanges.next(); // The inputs were changed
   }
 

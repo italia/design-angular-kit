@@ -2,7 +2,6 @@
 
 <div class="bd-example">
   <form [formGroup]="myForm">
-
     <div class="row">
       <div class="col-6">
         <it-input label="Custom" formControlName="myInput" #myInput>
@@ -51,6 +50,6 @@
       <button itButton="secondary" type="button" (click)="markAllAsTouched()">Valida</button>
     </div>
 
-    <div *ngIf="savedValue">Salvato `{{savedValue}}`</div>
+    <div *ngIf="savedValue">Salvato `{{ savedValue }}`</div>
   </form>
 </div>

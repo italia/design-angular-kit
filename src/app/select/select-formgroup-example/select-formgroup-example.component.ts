@@ -4,18 +4,16 @@ import { SelectControlOption } from 'design-angular-kit/interfaces/form';
 
 @Component({
   selector: 'it-select-formgroup-example',
-  templateUrl: './select-formgroup-example.component.html'
+  templateUrl: './select-formgroup-example.component.html',
 })
 export class SelectFormgroupExampleComponent {
   myForm: FormGroup;
 
-  options: Array<SelectControlOption> = [
-    { value: null, text: 'Seleziona un elemento', selected: true }
-  ];
+  options: Array<SelectControlOption> = [{ value: null, text: 'Seleziona un elemento', selected: true }];
 
   constructor(private _fb: FormBuilder) {
     this.myForm = this._fb.group({
-      select: [null, Validators.required]
+      select: [null, Validators.required],
     });
 
     Array.from(Array(10).keys()).forEach(number => {

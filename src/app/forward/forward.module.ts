@@ -9,16 +9,8 @@ import { ForwardExampleComponent } from './forward-example/forward-example.compo
 import { ForwardExamplesComponent } from './forward-examples/forward-examples.component';
 import { ForwardIndexComponent } from './forward-index/forward-index.component';
 
-
-
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    ForwardRoutingModule
-  ],
-  declarations: [ForwardExampleComponent, ForwardExamplesComponent, ForwardIndexComponent]
+  imports: [CommonModule, FormsModule, SharedModule, ForwardRoutingModule],
+  declarations: [ForwardExampleComponent, ForwardExamplesComponent, ForwardIndexComponent],
 })
-export class ForwardModule { }
+export class ForwardModule {}

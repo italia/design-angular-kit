@@ -8,9 +8,8 @@ describe('CalloutSuccessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalloutSuccessComponent ]
-    })
-    .compileComponents();
+      declarations: [CalloutSuccessComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CalloutSuccessComponent);
     component = fixture.componentInstance;

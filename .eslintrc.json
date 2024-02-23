@@ -17,6 +17,9 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "no-control-regex": "off",
         "@angular-eslint/component-selector": [
           "error",
           {

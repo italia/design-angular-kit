@@ -14,15 +14,16 @@ import { ButtonExampleIconComponent } from './button-example-icon/button-example
 import { ButtonExampleColorDarkComponent } from './button-example-color-dark/button-example-color-dark.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    ButtonRoutingModule
-  ],
+  imports: [CommonModule, SharedModule, FormsModule, ButtonRoutingModule],
   declarations: [
-    ButtonExamplesComponent, ButtonIndexComponent, ButtonExampleIconComponent, ButtonExampleColorDarkComponent,
-    ButtonExampleComponent, ButtonExampleColorComponent, ButtonExampleSizeComponent, ButtonExampleInteractiveComponent
-  ]
+    ButtonExamplesComponent,
+    ButtonIndexComponent,
+    ButtonExampleIconComponent,
+    ButtonExampleColorDarkComponent,
+    ButtonExampleComponent,
+    ButtonExampleColorComponent,
+    ButtonExampleSizeComponent,
+    ButtonExampleInteractiveComponent,
+  ],
 })
-export class ButtonModule { }
+export class ButtonModule {}

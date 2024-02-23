@@ -3,10 +3,9 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-list-index',
-  templateUrl: './list-index.component.html'
+  templateUrl: './list-index.component.html',
 })
 export class ListIndexComponent {
-
   component: any;
   subcomponent: any;
 
@@ -14,5 +13,4 @@ export class ListIndexComponent {
     this.component = (<any>Documentation).components.find(component => component.name === 'ItListComponent');
     this.subcomponent = (<any>Documentation).components.find(component => component.name === 'ItListItemComponent');
   }
-
 }

@@ -11,13 +11,13 @@ import { CollapseGroupExampleComponent } from './collapse-group-example/collapse
 import { CollapseNestedExampleComponent } from './collapse-nested-example/collapse-nested-example.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    CollapseRoutingModule
+  imports: [CommonModule, FormsModule, SharedModule, CollapseRoutingModule],
+  declarations: [
+    CollapseExampleComponent,
+    CollapseExamplesComponent,
+    CollapseIndexComponent,
+    CollapseGroupExampleComponent,
+    CollapseNestedExampleComponent,
   ],
-  declarations: [CollapseExampleComponent, CollapseExamplesComponent, CollapseIndexComponent,
-    CollapseGroupExampleComponent, CollapseNestedExampleComponent]
 })
-export class CollapseModule { }
+export class CollapseModule {}

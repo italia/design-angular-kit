@@ -6,7 +6,7 @@ import {
   ITALIAN_TAX_CODE_REGEX,
   PHONE_NUMBER_REGEX,
   URL_REGEX,
-  VAT_NUMBER_REGEX
+  VAT_NUMBER_REGEX,
 } from '../utils/regex';
 
 export class ItValidators {
@@ -55,7 +55,11 @@ export class ItValidators {
    * @param passwordControlName the password formControlName
    * @param confirmControlName the confirmPassword formControlName
    */
-  public static passwordMatch(control: AbstractControl, passwordControlName = 'password', confirmControlName = 'confirmPassword'): AbstractControl | null {
+  public static passwordMatch(
+    control: AbstractControl,
+    passwordControlName = 'password',
+    confirmControlName = 'confirmPassword'
+  ): AbstractControl | null {
     const confirmControl = control.get(confirmControlName); // confirmPassword form control
     if (!confirmControl) {
       return null;
@@ -87,7 +91,14 @@ export class ItValidators {
    * @param hasSpecialCharacters check whether the entered password has a special character - default true
    * @param required the field is required - default true
    */
-  public static password(minLength = 10, hasNumber = true, hasCapitalCase = true, hasSmallCase = true, hasSpecialCharacters = true, required = true): ValidatorFn {
+  public static password(
+    minLength = 10,
+    hasNumber = true,
+    hasCapitalCase = true,
+    hasSmallCase = true,
+    hasSpecialCharacters = true,
+    required = true
+  ): ValidatorFn {
     const validators: Array<ValidatorFn> = [Validators.minLength(minLength)];
     if (hasNumber) {
       validators.push(ItValidators.customPattern(/\d/, { hasNumber }));
@@ -111,10 +122,7 @@ export class ItValidators {
    * Email validator
    */
   public static get email(): ValidatorFn {
-    return <ValidatorFn>Validators.compose([
-      Validators.email,
-      ItValidators.customPattern(EMAIL_REGEX, { invalidEmail: true })
-    ]);
+    return <ValidatorFn>Validators.compose([Validators.email, ItValidators.customPattern(EMAIL_REGEX, { invalidEmail: true })]);
   }
 
   /**

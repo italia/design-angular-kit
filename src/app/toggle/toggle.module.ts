@@ -10,12 +10,7 @@ import { ToggleExamplesComponent } from './toggle-examples/toggle-examples.compo
 import { ToggleIndexComponent } from './toggle-index/toggle-index.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    ToggleRoutingModule
-  ],
-  declarations: [ToggleExampleComponent, ToggleExamplesComponent, ToggleIndexComponent]
+  imports: [CommonModule, FormsModule, SharedModule, ToggleRoutingModule],
+  declarations: [ToggleExampleComponent, ToggleExamplesComponent, ToggleIndexComponent],
 })
-export class ToggleModule { }
+export class ToggleModule {}

@@ -3,10 +3,9 @@ import { CalloutAppearance, CalloutColor } from 'projects/design-angular-kit/src
 
 @Component({
   selector: 'it-callout-approfondimento',
-  templateUrl: './callout-approfondimento.component.html'
+  templateUrl: './callout-approfondimento.component.html',
 })
 export class CalloutApprofondimentoComponent {
-
   color: CalloutColor = 'note';
   label = 'Approfondimento';
   appearance: CalloutAppearance = 'more';

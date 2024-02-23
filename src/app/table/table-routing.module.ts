@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TableIndexComponent } from './table-index/table-index.component';
 
-const routes: Routes = [
-  { path: '', component: TableIndexComponent }
-];
+const routes: Routes = [{ path: '', component: TableIndexComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TableRoutingModule {
-}
+export class TableRoutingModule {}

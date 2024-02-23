@@ -8,9 +8,8 @@ describe('BackButtonOnlyIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BackButtonOnlyIconComponent ]
-    })
-    .compileComponents();
+      declarations: [BackButtonOnlyIconComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BackButtonOnlyIconComponent);
     component = fixture.componentInstance;

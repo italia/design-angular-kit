@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-range-index',
-  templateUrl: './range-index.component.html'
+  templateUrl: './range-index.component.html',
 })
 export class RangeIndexComponent {
   component: any;

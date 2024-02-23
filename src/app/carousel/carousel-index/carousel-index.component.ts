@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-carousel-index',
-  templateUrl: './carousel-index.component.html'
+  templateUrl: './carousel-index.component.html',
 })
 export class CarouselIndexComponent {
   component: any;

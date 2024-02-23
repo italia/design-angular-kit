@@ -8,10 +8,9 @@ import { inputToBoolean } from '../../../../utils/coercion';
   selector: 'it-breadcrumb-item',
   templateUrl: './breadcrumb-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItBreadcrumbItemComponent extends ItLinkComponent {
-
   /**
    * Is active breadcrumb item
    * @default false
@@ -27,5 +26,4 @@ export class ItBreadcrumbItemComponent extends ItLinkComponent {
    * The content of item
    */
   @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;
-
 }

@@ -11,10 +11,9 @@ import { inputToBoolean } from '../../../utils/coercion';
 @Directive({
   standalone: true,
   selector: '[itButton]',
-  exportAs: 'itButton'
+  exportAs: 'itButton',
 })
 export class ItButtonDirective {
-
   /**
    * Button color
    * @default undefined
@@ -37,7 +36,7 @@ export class ItButtonDirective {
    * If button is disabled
    * @default false
    */
-  @Input({transform: inputToBoolean}) @HostBinding('disabled') disabled?: boolean;
+  @Input({ transform: inputToBoolean }) @HostBinding('disabled') disabled?: boolean;
 
   /**
    * The icon children
@@ -47,10 +46,7 @@ export class ItButtonDirective {
 
   private isFocus = false;
 
-  constructor(
-    @Optional() @Host() private progressButtonComponent: ItProgressButtonComponent
-  ) {
-  }
+  constructor(@Optional() @Host() private progressButtonComponent: ItProgressButtonComponent) {}
 
   @HostListener('focus')
   protected onFocus() {
@@ -96,5 +92,4 @@ export class ItButtonDirective {
 
     return cssClass;
   }
-
 }

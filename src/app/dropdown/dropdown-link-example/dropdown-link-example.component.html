@@ -2,30 +2,24 @@
 <div class="bd-example">
   <p class="example-section">
     <it-dropdown mode="link" (showEvent)="onOpenEvent()" (hideEvent)="onCloseEvent()">
-
       <span button>Apri dropdown</span>
       <ng-container list>
-        <it-dropdown-item *ngFor="let item of items"
-                          [href]="item.link"
-                          externalLink="true"
-                          [active]="item.active"
-                          [disabled]="item.disabled"
-                          [large]="item.large"
-                          [iconName]="item.icon"
-                          [iconPosition]="item.iconPosition">
-          {{item.text}}
+        <it-dropdown-item
+          *ngFor="let item of items"
+          [href]="item.link"
+          externalLink="true"
+          [active]="item.active"
+          [disabled]="item.disabled"
+          [large]="item.large"
+          [iconName]="item.icon"
+          [iconPosition]="item.iconPosition">
+          {{ item.text }}
         </it-dropdown-item>
       </ng-container>
-
     </it-dropdown>
   </p>
 
-  <p class="example-section">
-    Open: {{openTime}}
-  </p>
+  <p class="example-section">Open: {{ openTime }}</p>
 
-  <p class="example-section">
-    Close: {{closeTime}}
-  </p>
-
+  <p class="example-section">Close: {{ closeTime }}</p>
 </div>

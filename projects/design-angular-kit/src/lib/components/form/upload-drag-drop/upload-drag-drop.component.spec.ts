@@ -8,8 +8,7 @@ describe('ItUploadDragDropComponent', () => {
   let fixture: ComponentFixture<ItUploadDragDropComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItUploadDragDropComponent);
     component = fixture.componentInstance;

@@ -8,20 +8,14 @@ import { AlertColorExampleComponent } from './alert-color-example/alert-color-ex
 import { AlertAdditionalContentExampleComponent } from './alert-additional-content-example/alert-additional-content-example.component';
 import { AlertClosingExampleComponent } from './alert-closing-example/alert-closing-example.component';
 
-
-
 @NgModule({
   declarations: [
     AlertIndexComponent,
     AlertExamplesComponent,
     AlertColorExampleComponent,
     AlertAdditionalContentExampleComponent,
-    AlertClosingExampleComponent
+    AlertClosingExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    AlertRoutingModule
-  ]
+  imports: [CommonModule, SharedModule, AlertRoutingModule],
 })
-export class AlertModule { }
+export class AlertModule {}

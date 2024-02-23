@@ -1,11 +1,9 @@
-import {InjectionToken} from "@angular/core";
+import { InjectionToken } from '@angular/core';
 
 export type SortDirection = 'asc' | 'desc' | undefined;
 
-
 /** Position of the arrow that displays when sorted. */
 export type SortHeaderArrowPosition = 'before' | 'after';
-
 
 /** Interface for a directive that holds sorting state consumed by `ItSortHeader`. */
 export interface ItSortable {
@@ -28,7 +26,6 @@ export interface ItSortEvent {
   direction: SortDirection;
 }
 
-
 /**
  * Default options for `it-sort`.
  */
@@ -42,6 +39,4 @@ export interface ItSortDefaultOptions {
 /**
  * Injection token to be used to override the default options for `it-sort`.
  */
-export const IT_SORT_DEFAULT_OPTIONS = new InjectionToken<ItSortDefaultOptions>(
-  'IT_SORT_DEFAULT_OPTIONS',
-);
+export const IT_SORT_DEFAULT_OPTIONS = new InjectionToken<ItSortDefaultOptions>('IT_SORT_DEFAULT_OPTIONS');

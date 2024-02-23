@@ -8,8 +8,7 @@ describe('ItLanguageSwitcherComponent', () => {
   let fixture: ComponentFixture<ItLanguageSwitcherComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItLanguageSwitcherComponent);
     component = fixture.componentInstance;

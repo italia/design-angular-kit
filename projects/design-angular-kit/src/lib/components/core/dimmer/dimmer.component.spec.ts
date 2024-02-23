@@ -11,12 +11,12 @@ describe('ItDimmerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ ItDimmerComponent, BrowserAnimationsModule ]
+      imports: [ItDimmerComponent, BrowserAnimationsModule],
     })
-    .overrideComponent(ItDimmerComponent, {
-      set: { changeDetection: ChangeDetectionStrategy.Default }
-    })
-    .compileComponents();
+      .overrideComponent(ItDimmerComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(ItDimmerComponent);
     component = fixture.componentInstance;

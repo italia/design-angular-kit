@@ -2,17 +2,16 @@
 <p>Puoi utilizzare la pagina d'errore come un classico componente</p>
 
 <div class="bd-example">
-
   <div class="row">
     <div class="col-6">
       <h4>404 - Not Found</h4>
-      <hr>
+      <hr />
       <it-error-page [errorCode]="404"></it-error-page>
     </div>
 
     <div class="col-6">
       <h4>403 - Forbidden</h4>
-      <hr>
+      <hr />
       <it-error-page [errorCode]="403"></it-error-page>
     </div>
   </div>
@@ -20,20 +19,20 @@
   <div class="row mt-5">
     <div class="col-6">
       <h4>500 - Internal Server Error</h4>
-      <hr>
+      <hr />
       <it-error-page [errorCode]="500"></it-error-page>
     </div>
 
     <div class="col-6">
       <h4>Personalizzato</h4>
-      <hr>
-      <it-error-page showBackButton="true"
-                     showHomeButton="false"
-                     [errorCode]="503"
-                     showErrorCode="true"
-                     errorTitle="Servizio non disponibile"
-                     errorDescription="Mi dispiace, momentaneamente questa risorsa non è disponibile"></it-error-page>
+      <hr />
+      <it-error-page
+        showBackButton="true"
+        showHomeButton="false"
+        [errorCode]="503"
+        showErrorCode="true"
+        errorTitle="Servizio non disponibile"
+        errorDescription="Mi dispiace, momentaneamente questa risorsa non è disponibile"></it-error-page>
     </div>
   </div>
-
 </div>

@@ -8,7 +8,7 @@ describe('HeaderExampleComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderExampleComponent]
+      declarations: [HeaderExampleComponent],
     });
     fixture = TestBed.createComponent(HeaderExampleComponent);
     component = fixture.componentInstance;

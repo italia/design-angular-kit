@@ -7,19 +7,8 @@ import { ErrorPageExamplesComponent } from './error-page-examples/error-page-exa
 import { ErrorPageRouteExampleComponent } from './error-page-route-example/error-page-route-example.component';
 import { ErrorPageComponentExampleComponent } from './error-page-component-example/error-page-component-example.component';
 
-
-
 @NgModule({
-  declarations: [
-    ErrorPageIndexComponent,
-    ErrorPageExamplesComponent,
-    ErrorPageRouteExampleComponent,
-    ErrorPageComponentExampleComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ErrorPageRoutingModule
-  ]
+  declarations: [ErrorPageIndexComponent, ErrorPageExamplesComponent, ErrorPageRouteExampleComponent, ErrorPageComponentExampleComponent],
+  imports: [CommonModule, SharedModule, ErrorPageRoutingModule],
 })
-export class ErrorPageModule { }
+export class ErrorPageModule {}

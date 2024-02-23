@@ -14,8 +14,6 @@ import { ModalSizeExampleComponent } from './modal-size-example/modal-size-examp
 import { ModalRadioExampleComponent } from './modal-radio-example/modal-radio-example.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
     ModalIndexComponent,
@@ -27,13 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ModalScrollExampleComponent,
     ModalAlignmentExampleComponent,
     ModalSizeExampleComponent,
-    ModalRadioExampleComponent
+    ModalRadioExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ModalRoutingModule,
-    ReactiveFormsModule
-  ]
+  imports: [CommonModule, SharedModule, ModalRoutingModule, ReactiveFormsModule],
 })
-export class ModalModule { }
+export class ModalModule {}

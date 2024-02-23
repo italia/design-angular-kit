@@ -3,10 +3,9 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-chip-index',
-  templateUrl: './chip-index.component.html'
+  templateUrl: './chip-index.component.html',
 })
 export class ChipIndexComponent {
-
   component: any;
 
   constructor() {

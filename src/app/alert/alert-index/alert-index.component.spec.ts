@@ -8,9 +8,8 @@ describe('AlertIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlertIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [AlertIndexComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AlertIndexComponent);
     component = fixture.componentInstance;

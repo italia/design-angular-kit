@@ -8,8 +8,7 @@ describe('ItCardComponent', () => {
   let fixture: ComponentFixture<ItCardComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItCardComponent);
     component = fixture.componentInstance;

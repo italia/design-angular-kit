@@ -12,13 +12,13 @@ import { CheckboxExampleInlineComponent } from './checkbox-example-inline/checkb
 import { CheckboxExampleGroupComponent } from './checkbox-example-group/checkbox-example-group.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    CheckboxRoutingModule
+  imports: [CommonModule, FormsModule, SharedModule, CheckboxRoutingModule],
+  declarations: [
+    CheckboxExampleComponent,
+    CheckboxExamplesComponent,
+    CheckboxIndexComponent,
+    CheckboxExampleInlineComponent,
+    CheckboxExampleGroupComponent,
   ],
-  declarations: [ CheckboxExampleComponent, CheckboxExamplesComponent, CheckboxIndexComponent,
-                  CheckboxExampleInlineComponent, CheckboxExampleGroupComponent]
 })
-export class CheckboxModule { }
+export class CheckboxModule {}

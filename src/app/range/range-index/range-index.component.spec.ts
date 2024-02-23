@@ -8,7 +8,7 @@ describe('RangeIndexComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RangeIndexComponent]
+      declarations: [RangeIndexComponent],
     });
     fixture = TestBed.createComponent(RangeIndexComponent);
     component = fixture.componentInstance;

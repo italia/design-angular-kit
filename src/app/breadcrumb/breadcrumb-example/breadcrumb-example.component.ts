@@ -4,7 +4,7 @@ import { IconName } from 'design-angular-kit/interfaces/icon';
 @Component({
   selector: 'it-breadcrumb-example',
   templateUrl: './breadcrumb-example.component.html',
-  styleUrls: ['./breadcrumb-example.component.scss']
+  styleUrls: ['./breadcrumb-example.component.scss'],
 })
 export class BreadcrumbExampleComponent {
   get icon(): IconName {
@@ -12,10 +12,9 @@ export class BreadcrumbExampleComponent {
   }
   set icon(value: IconName) {
     this._icon = value;
-    this.items.forEach(item => item.icon = this._icon);
+    this.items.forEach(item => (item.icon = this._icon));
   }
   private _icon: IconName = 'star-outline';
-
 
   separator = '/';
   isDark = false;
@@ -33,7 +32,7 @@ export class BreadcrumbExampleComponent {
   }
 
   remove() {
-    if(this.items.length) {
+    if (this.items.length) {
       this.items.pop();
       this.i--;
     }
@@ -49,5 +48,4 @@ export class BreadcrumbExampleComponent {
   toggle() {
     this.isDark = !this.isDark;
   }
-
 }

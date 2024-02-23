@@ -20,12 +20,7 @@ import { HightlightsDangerComponent } from './hightlights-danger/hightlights-dan
 import { HightlightsWarningComponent } from './hightlights-warning/hightlights-warning.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    CalloutRoutingModule
-  ],
+  imports: [CommonModule, SharedModule, FormsModule, CalloutRoutingModule],
   declarations: [
     CalloutIndexComponent,
     CalloutExamplesComponent,
@@ -41,7 +36,7 @@ import { HightlightsWarningComponent } from './hightlights-warning/hightlights-w
     HightlightsNoteComponent,
     HightlightsImportantComponent,
     HightlightsDangerComponent,
-    HightlightsWarningComponent
-  ]
+    HightlightsWarningComponent,
+  ],
 })
-export class CalloutModule { }
+export class CalloutModule {}

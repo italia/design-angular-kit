@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-pagination-example',
-  templateUrl: './pagination-example.component.html'
+  templateUrl: './pagination-example.component.html',
 })
 export class PaginationExampleComponent {
-
   leftCurrentPage = 0;
   centerCurrentPage = 25;
   rightCurrentPage = 0;

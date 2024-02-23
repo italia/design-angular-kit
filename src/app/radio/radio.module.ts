@@ -11,13 +11,7 @@ import { RadioExamplesComponent } from './radio-examples/radio-examples.componen
 import { RadioCheckedExampleComponent } from './radio-checked-example/radio-checked-example.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    RadioRoutingModule
-  ],
-  declarations: [RadioIndexComponent, RadioExampleComponent, RadioExamplesComponent, RadioCheckedExampleComponent]
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, SharedModule, RadioRoutingModule],
+  declarations: [RadioIndexComponent, RadioExampleComponent, RadioExamplesComponent, RadioCheckedExampleComponent],
 })
-export class RadioModule { }
+export class RadioModule {}

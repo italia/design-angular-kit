@@ -8,9 +8,8 @@ describe('ModalPopconfirmExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalPopconfirmExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [ModalPopconfirmExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ModalPopconfirmExampleComponent);
     component = fixture.componentInstance;

@@ -43,7 +43,7 @@ export class ItSelectComponent extends ItAbstractFormComponent implements OnInit
     if (selectedOption) {
       this.writeValue(selectedOption.value);
       if (this._ngControl?.control && selectedOption.value !== this._ngControl.control.value) {
-        this.onChange(selectedOption.value);
+        this.onChange();
       }
       return;
     }
@@ -52,7 +52,7 @@ export class ItSelectComponent extends ItAbstractFormComponent implements OnInit
     if (selectedGroupOption) {
       this.writeValue(selectedGroupOption.value);
       if (this._ngControl?.control && selectedGroupOption.value !== this._ngControl.control.value) {
-        this.onChange(selectedGroupOption.value);
+        this.onChange();
       }
     }
   }

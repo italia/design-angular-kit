@@ -8,9 +8,8 @@ describe('PopoverPlacementsExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopoverPlacementsExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [PopoverPlacementsExampleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
