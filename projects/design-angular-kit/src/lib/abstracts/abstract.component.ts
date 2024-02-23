@@ -9,6 +9,7 @@ import {
   OnChanges,
   Output,
   Renderer2,
+  SimpleChanges,
 } from '@angular/core';
 
 @Component({ template: '' })
@@ -45,7 +46,8 @@ export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {
     this._renderer.removeAttribute(this._elementRef.nativeElement, 'id');
   }
 
-  ngOnChanges(): void {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ngOnChanges(changes: SimpleChanges): void {
     this.valueChanges.next(); // The inputs were changed
   }
 
