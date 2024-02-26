@@ -9576,7 +9576,7 @@
         },
         {
             "name": "ItAvatarGroupComponent",
-            "id": "component-ItAvatarGroupComponent-24aade37596ef90ec7885f9fc643974456491ef449b4b22a4da9dbf4de0ac27f27cac7121fa004817e9a2224dbda15fb2f6d631a587ee9f0944aa8273b02769a",
+            "id": "component-ItAvatarGroupComponent-8e1cd7b09c867ede4e12c50422f580432eeea06e6a7be286d5819f114feb1368f8688422a914899e85da1f78c9b4e73032f26dd15a8558a0636112b33d99d4d4",
             "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9593,11 +9593,12 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "required": false,
                     "name": "linkList",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 22,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -9611,7 +9612,7 @@
                     "type": "QueryList<ItAvatarGroupItemComponent>",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -9637,7 +9638,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: '<ng-template><ng-content></ng-content></ng-template>',\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  templateUrl: './avatar-group.component.html',\n  imports: [NgTemplateOutlet],\n})\nexport class ItAvatarGroupComponent {\n  @Input() @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
+            "sourceCode": "import { Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: '<ng-template><ng-content></ng-content></ng-template>',\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  templateUrl: './avatar-group.component.html',\n  imports: [NgTemplateOutlet],\n})\nexport class ItAvatarGroupComponent {\n  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -9646,7 +9647,7 @@
         },
         {
             "name": "ItAvatarGroupItemComponent",
-            "id": "component-ItAvatarGroupItemComponent-24aade37596ef90ec7885f9fc643974456491ef449b4b22a4da9dbf4de0ac27f27cac7121fa004817e9a2224dbda15fb2f6d631a587ee9f0944aa8273b02769a",
+            "id": "component-ItAvatarGroupItemComponent-8e1cd7b09c867ede4e12c50422f580432eeea06e6a7be286d5819f114feb1368f8688422a914899e85da1f78c9b4e73032f26dd15a8558a0636112b33d99d4d4",
             "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9670,7 +9671,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 12,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -9692,7 +9693,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: '<ng-template><ng-content></ng-content></ng-template>',\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  templateUrl: './avatar-group.component.html',\n  imports: [NgTemplateOutlet],\n})\nexport class ItAvatarGroupComponent {\n  @Input() @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
+            "sourceCode": "import { Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: '<ng-template><ng-content></ng-content></ng-template>',\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  templateUrl: './avatar-group.component.html',\n  imports: [NgTemplateOutlet],\n})\nexport class ItAvatarGroupComponent {\n  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -18633,7 +18634,7 @@
         },
         {
             "name": "ItListItemComponent",
-            "id": "component-ItListItemComponent-1ac138c1b3397bb54a85e782ecec753bcac6e0d079eba10cf62105d83aab30e21ba68b25e0c8386c980d8cb43d67d7f313070ddd347d43e4e96f0d733fde7681",
+            "id": "component-ItListItemComponent-942280269ea5a34e387e23885883dc2761455ba9ff94cef7cbbe917bdd13345d95178741e64c326466a11f2d43b8fa52d2524398a86b8212568a8778a35df29b",
             "file": "projects/design-angular-kit/src/lib/components/core/list/list-item/list-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -18659,15 +18660,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 595,
-                            "end": 613,
+                            "pos": 668,
+                            "end": 686,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 596,
-                                "end": 603,
+                                "pos": 669,
+                                "end": 676,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18679,7 +18680,7 @@
                     ],
                     "rawdescription": "\n\nAdd active class\n",
                     "description": "<p>Add active class</p>\n",
-                    "line": 19,
+                    "line": 23,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -18689,7 +18690,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe avatar url\n",
                     "description": "<p>The avatar url</p>\n",
-                    "line": 41,
+                    "line": 45,
                     "type": "URL | undefined",
                     "decorators": []
                 },
@@ -18700,15 +18701,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 773,
-                            "end": 791,
+                            "pos": 856,
+                            "end": 874,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 774,
-                                "end": 781,
+                                "pos": 857,
+                                "end": 864,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18720,7 +18721,7 @@
                     ],
                     "rawdescription": "\n\nAdd icon-left class\n",
                     "description": "<p>Add icon-left class</p>\n",
-                    "line": 30,
+                    "line": 34,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -18731,15 +18732,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 892,
-                            "end": 910,
+                            "pos": 975,
+                            "end": 993,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 893,
-                                "end": 900,
+                                "pos": 976,
+                                "end": 983,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18751,7 +18752,7 @@
                     ],
                     "rawdescription": "\n\nAdd icon-right class\n",
                     "description": "<p>Add icon-right class</p>\n",
-                    "line": 36,
+                    "line": 40,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -18761,18 +18762,18 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe thumb image url\n",
                     "description": "<p>The thumb image url</p>\n",
-                    "line": 46,
+                    "line": 50,
                     "type": "URL | undefined",
                     "decorators": []
                 },
                 {
-                    "name": "large",
+                    "name": "size",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd large class\n",
                     "description": "<p>Add large class</p>\n",
-                    "line": 24,
-                    "type": "boolean",
+                    "line": 28,
+                    "type": "\"large\" | \"medium\"",
                     "decorators": []
                 },
                 {
@@ -19088,7 +19089,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { ItLinkComponent } from '../../link/link.component';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-list-item',\n  templateUrl: './list-item.component.html',\n  styleUrls: ['./list-item.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, ItLinkComponent],\n})\nexport class ItListItemComponent extends ItLinkComponent {\n  /**\n   * Add active class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) active?: boolean;\n\n  /**\n   * Add large class\n   */\n  @Input() large?: boolean;\n\n  /**\n   * Add icon-left class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) iconLeft?: boolean;\n\n  /**\n   * Add icon-right class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) iconRight?: boolean;\n\n  /**\n   * The avatar url\n   */\n  @Input() avatar: URL | undefined;\n\n  /**\n   * The thumb image url\n   */\n  @Input() image: URL | undefined;\n\n  get itemClass(): string {\n    let itemClass = 'list-item';\n    if (this.disabled) {\n      itemClass += ` disabled`;\n    }\n    if (this.active) {\n      itemClass += ` active`;\n    }\n    if (this.large) {\n      itemClass += ` large`;\n    }\n    if (this.iconLeft) {\n      itemClass += ` icon-left`;\n    }\n    if (this.iconRight) {\n      itemClass += ` icon-right`;\n    }\n    if (this.class) {\n      itemClass += ` ${this.class}`;\n    }\n    return itemClass;\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';\nimport { ItLinkComponent } from '../../link/link.component';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-list-item',\n  templateUrl: './list-item.component.html',\n  styleUrls: ['./list-item.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, ItLinkComponent],\n})\nexport class ItListItemComponent extends ItLinkComponent {\n  constructor(private elRef: ElementRef) {\n    super();\n  }\n\n  /**\n   * Add active class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) active?: boolean;\n\n  /**\n   * Add large class\n   */\n  @Input() size?: 'large' | 'medium';\n\n  /**\n   * Add icon-left class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) iconLeft?: boolean;\n\n  /**\n   * Add icon-right class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) iconRight?: boolean;\n\n  /**\n   * The avatar url\n   */\n  @Input() avatar: URL | undefined;\n\n  /**\n   * The thumb image url\n   */\n  @Input() image: URL | undefined;\n\n  get itemClass(): string {\n    const inSidebar: boolean = this.elRef.nativeElement.closest('.sidebar-linklist-wrapper') ? true : false;\n    let itemClass = 'list-item';\n    if (this.disabled) {\n      itemClass += ` disabled`;\n    }\n    if (this.active) {\n      itemClass += ` active`;\n    }\n    if (this.size) {\n      itemClass += ` ${this.size}`;\n    }\n    if (this.iconLeft) {\n      itemClass += inSidebar ? ` left-icon` : ` icon-left`;\n    }\n    if (this.iconRight) {\n      itemClass += inSidebar ? ` right-icon` : ` icon-right`;\n    }\n    if (this.class) {\n      itemClass += ` ${this.class}`;\n    }\n    return itemClass;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -19097,6 +19098,32 @@
                 }
             ],
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "elRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [
                 "ItLinkComponent"
             ],
@@ -19107,7 +19134,7 @@
                         "name": "itemClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 48
+                        "line": 52
                     }
                 }
             },
@@ -26197,6 +26224,121 @@
             "templateData": "<div class=\"select-wrapper\">\n  @if (label) {\n    <label [for]=\"id\">{{ label }}</label>\n  }\n  <select\n    [id]=\"id\"\n    [formControl]=\"control\"\n    [class.is-invalid]=\"isInvalid\"\n    [class.is-valid]=\"isValid\"\n    (blur)=\"markAsTouched()\"\n    [attr.aria-describedby]=\"id + '-description'\">\n    @if (defaultOption) {\n      <option [ngValue]=\"null\" disabled selected>\n        {{ defaultOption }}\n      </option>\n    }\n\n    <ng-content></ng-content>\n\n    @if (options) {\n      @for (option of options; track option.value) {\n        <option [disabled]=\"optionIsDisabled(option)\" [ngValue]=\"option.value\">\n          {{ option.text ?? option.value }}\n        </option>\n      }\n    }\n\n    @if (groups) {\n      @for (group of groups; track group) {\n        <optgroup [label]=\"group.label\">\n          @for (option of group.options; track option.value) {\n            <option [disabled]=\"optionIsDisabled(option)\" [ngValue]=\"option.value\">\n              {{ option.text ?? option.value }}\n            </option>\n          }\n        </optgroup>\n      }\n    }\n  </select>\n  @if (description) {\n    <small [id]=\"id + '-description'\" class=\"form-text\">{{ description }}</small>\n  }\n\n  @if (isInvalid) {\n    <div class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      @if (!customError.hasChildNodes()) {\n        {{ invalidMessage | async }}\n      }\n    </div>\n  }\n</div>\n"
         },
         {
+            "name": "ItSidebarComponent",
+            "id": "component-ItSidebarComponent-05cd5b102d728c384e00b023ddf0a8c95d61c897bbdad29ea5643861588dbf00b3c495de50f97fbc4968bbc1dc350b60ddccfddd9f895d9b0a19a2b89a5892a3",
+            "file": "projects/design-angular-kit/src/lib/components/navigation/sidebar/sidebar.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-sidebar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sidebar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "required": false,
+                    "name": "dark",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nPer cambiare il tema della sidebar e renderla scura\n",
+                    "description": "<p>Per cambiare il tema della sidebar e renderla scura</p>\n",
+                    "line": 31,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "header",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nL'intestazione della sidebar\n",
+                    "description": "<p>L&#39;intestazione della sidebar</p>\n",
+                    "line": 36,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "required": false,
+                    "name": "withLeftLine",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nPer creare una sidebar con linea separatrice a sinistra è sufficiente aggiungere la classe\n",
+                    "description": "<p>Per creare una sidebar con linea separatrice a sinistra è sufficiente aggiungere la classe</p>\n",
+                    "line": 24,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "required": false,
+                    "name": "withRightLine",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nPer creare una sidebar con linea separatrice a destra è sufficiente aggiungere la classe\n",
+                    "description": "<p>Per creare una sidebar con linea separatrice a destra è sufficiente aggiungere la classe</p>\n",
+                    "line": 17,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "componentClass",
+                    "defaultValue": "'d-block sidebar-wrapper'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'class'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "defaultValue": "'d-block sidebar-wrapper'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\nimport { inputToBoolean } from '../../../utils/coercion';\n\n@Component({\n  selector: 'it-sidebar',\n  standalone: true,\n  imports: [],\n  templateUrl: './sidebar.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItSidebarComponent {\n  /**\n   * Per creare una sidebar con linea separatrice a destra è sufficiente aggiungere la classe\n   */\n  @Input({ transform: inputToBoolean })\n  @HostBinding('class.it-line-right-side')\n  public withRightLine = false;\n\n  /**\n   * Per creare una sidebar con linea separatrice a sinistra è sufficiente aggiungere la classe\n   */\n  @Input({ transform: inputToBoolean })\n  @HostBinding('class.it-line-left-side')\n  public withLeftLine = false;\n\n  /**\n   * Per cambiare il tema della sidebar e renderla scura\n   */\n  @Input({ transform: inputToBoolean })\n  @HostBinding('class.theme-dark')\n  public dark = false;\n\n  /**\n   * L'intestazione della sidebar\n   */\n  @Input() public header?: string;\n\n  @HostBinding('class') componentClass = 'd-block sidebar-wrapper';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "@if (header) {\n  <h3>{{ header }}</h3>\n}\n<div class=\"sidebar-linklist-wrapper\">\n  <!--TODO: wrap ng-content with it-list -> inside content use a list of it-list-item directives-->\n  <ng-content></ng-content>\n</div>\n<div class=\"sidebar-linklist-wrapper linklist-secondary\">\n  <!--TODO: wrap ng-content with it-list -> inside content use a list of it-list-item directives-->\n  <ng-content select=\"[secondary]\"></ng-content>\n</div>\n"
+        },
+        {
             "name": "ItSortHeaderComponent",
             "id": "component-ItSortHeaderComponent-93954caba2d2286273b6b4606dbd318952281bd74f79ad98b206e67c4fe6967e6e5d67ba539c6de5f5d2453f8ee9f196bcc79ba6f39ba69ffbd77eee9e152fd1",
             "file": "projects/design-angular-kit/src/lib/components/core/table/sort/sort-header/sort-header.component.ts",
@@ -30917,7 +31059,7 @@
     "modules": [
         {
             "name": "DesignAngularKitModule",
-            "id": "module-DesignAngularKitModule-e9cbd4e4262eb18f5868f69551b844accfc3a7d9e4ef9cbf0346e519e2ffcf62513febc2b6d3fb385c4a78a0b32a95861651dceefc53498822376958402d63f2",
+            "id": "module-DesignAngularKitModule-e67339fc92d268688352352bbdb92866f7de7e269466e09f1f449507287721967fafa1955bcde0cdad76920cbf272537c5b855918b817d985a1f06fe63cc0ac6",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -30929,7 +31071,7 @@
                     "optional": false,
                     "returnType": "ModuleWithProviders<DesignAngularKitModule>",
                     "typeParameters": [],
-                    "line": 118,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -30950,7 +31092,7 @@
                     "optional": false,
                     "returnType": "ModuleWithProviders<DesignAngularKitModule>",
                     "typeParameters": [],
-                    "line": 111,
+                    "line": 113,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -30970,7 +31112,7 @@
                     ]
                 }
             ],
-            "sourceCode": "import { ModuleWithProviders, NgModule } from '@angular/core';\nimport { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';\nimport { provideDesignAngularKit } from './provide-design-angular-kit';\nimport { ItAccordionComponent } from './components/core/accordion/accordion.component';\nimport { ItAlertComponent } from './components/core/alert/alert.component';\nimport { ItAvatarModule } from './components/core/avatar/avatar.module';\nimport { ItBadgeDirective } from './components/core/badge/badge.directive';\nimport { ItButtonDirective } from './components/core/button/button.directive';\nimport { ItCalloutComponent } from './components/core/callout/callout.component';\nimport { ItCardComponent } from './components/core/card/card.component';\nimport { ItCarouselModule } from './components/core/carousel/carousel.module';\nimport { ItChipComponent } from './components/core/chip/chip.component';\nimport { ItCollapseComponent } from './components/core/collapse/collapse.component';\nimport { ItDimmerModule } from './components/core/dimmer/dimmer.module';\nimport { ItDropdownModule } from './components/core/dropdown/dropdown.module';\nimport { ItForwardDirective } from './components/core/forward/forward.directive';\nimport { ItLinkComponent } from './components/core/link/link.component';\nimport { ItListModule } from './components/core/list/list.module';\nimport { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';\nimport { ItModalComponent } from './components/core/modal/modal.component';\nimport { ItNotificationsComponent } from './components/core/notifications/notifications.component';\nimport { ItPaginationComponent } from './components/core/pagination/pagination.component';\nimport { ItPopoverDirective } from './components/core/popover/popover.directive';\nimport { ItProgressBarComponent } from './components/core/progress-bar/progress-bar.component';\nimport { ItProgressButtonComponent } from './components/core/progress-button/progress-button.component';\nimport { ItSpinnerComponent } from './components/core/spinner/spinner.component';\nimport { ItSteppersModule } from './components/core/steppers/steppers.module';\nimport { ItTabModule } from './components/core/tab/tab.module';\nimport { ItTableModule } from './components/core/table/table.module';\nimport { ItTooltipDirective } from './components/core/tooltip/tooltip.directive';\nimport { ItFormModule } from './components/form/form.module';\nimport { ItBackButtonComponent } from './components/navigation/back-button/back-button.component';\nimport { ItBackToTopComponent } from './components/navigation/back-to-top/back-to-top.component';\nimport { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';\nimport { ItHeaderComponent } from './components/navigation/header/header.component';\nimport { ItNavBarModule } from './components/navigation/navbar/navbar.module';\nimport { ItErrorPageComponent } from './components/utils/error-page/error-page.component';\nimport { ItIconComponent } from './components/utils/icon/icon.component';\nimport { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';\nimport { ItDateAgoPipe } from './pipes/date-ago.pipe';\nimport { ItDurationPipe } from './pipes/duration.pipe';\nimport { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';\n\n/**\n * Core components\n */\nconst core = [\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarModule,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableModule,\n  ItTooltipDirective,\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItMegamenuComponent,\n];\n\n/**\n * Utils components\n */\nconst utils = [ItErrorPageComponent, ItIconComponent, ItLanguageSwitcherComponent];\n\n/**\n * Library pipes\n */\nconst pipes = [ItDateAgoPipe, ItDurationPipe, ItMarkMatchingTextPipe];\n\nconst components = [\n  ...core, // Core components\n  ItFormModule, // Form components\n  ...navigation, // Navigation Components\n  ...utils, // Utils components\n  ...pipes, // Library pipes\n];\n\n@NgModule({\n  imports: components,\n  exports: components,\n})\nexport class DesignAngularKitModule {\n  public static forRoot(config?: DesignAngularKitConfig): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n      providers: [provideDesignAngularKit(config)],\n    };\n  }\n\n  public static forChild(): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n    };\n  }\n}\n",
+            "sourceCode": "import { ModuleWithProviders, NgModule } from '@angular/core';\nimport { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';\nimport { provideDesignAngularKit } from './provide-design-angular-kit';\nimport { ItAccordionComponent } from './components/core/accordion/accordion.component';\nimport { ItAlertComponent } from './components/core/alert/alert.component';\nimport { ItAvatarModule } from './components/core/avatar/avatar.module';\nimport { ItBadgeDirective } from './components/core/badge/badge.directive';\nimport { ItButtonDirective } from './components/core/button/button.directive';\nimport { ItCalloutComponent } from './components/core/callout/callout.component';\nimport { ItCardComponent } from './components/core/card/card.component';\nimport { ItCarouselModule } from './components/core/carousel/carousel.module';\nimport { ItChipComponent } from './components/core/chip/chip.component';\nimport { ItCollapseComponent } from './components/core/collapse/collapse.component';\nimport { ItDimmerModule } from './components/core/dimmer/dimmer.module';\nimport { ItDropdownModule } from './components/core/dropdown/dropdown.module';\nimport { ItForwardDirective } from './components/core/forward/forward.directive';\nimport { ItLinkComponent } from './components/core/link/link.component';\nimport { ItListModule } from './components/core/list/list.module';\nimport { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';\nimport { ItModalComponent } from './components/core/modal/modal.component';\nimport { ItNotificationsComponent } from './components/core/notifications/notifications.component';\nimport { ItPaginationComponent } from './components/core/pagination/pagination.component';\nimport { ItPopoverDirective } from './components/core/popover/popover.directive';\nimport { ItProgressBarComponent } from './components/core/progress-bar/progress-bar.component';\nimport { ItProgressButtonComponent } from './components/core/progress-button/progress-button.component';\nimport { ItSpinnerComponent } from './components/core/spinner/spinner.component';\nimport { ItSteppersModule } from './components/core/steppers/steppers.module';\nimport { ItTabModule } from './components/core/tab/tab.module';\nimport { ItTableModule } from './components/core/table/table.module';\nimport { ItTooltipDirective } from './components/core/tooltip/tooltip.directive';\nimport { ItFormModule } from './components/form/form.module';\nimport { ItBackButtonComponent } from './components/navigation/back-button/back-button.component';\nimport { ItBackToTopComponent } from './components/navigation/back-to-top/back-to-top.component';\nimport { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';\nimport { ItHeaderComponent } from './components/navigation/header/header.component';\nimport { ItNavBarModule } from './components/navigation/navbar/navbar.module';\nimport { ItSidebarComponent } from './components/navigation/sidebar/sidebar.component';\nimport { ItErrorPageComponent } from './components/utils/error-page/error-page.component';\nimport { ItIconComponent } from './components/utils/icon/icon.component';\nimport { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';\nimport { ItDateAgoPipe } from './pipes/date-ago.pipe';\nimport { ItDurationPipe } from './pipes/duration.pipe';\nimport { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';\n\n/**\n * Core components\n */\nconst core = [\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarModule,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableModule,\n  ItTooltipDirective,\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n];\n\n/**\n * Utils components\n */\nconst utils = [ItErrorPageComponent, ItIconComponent, ItLanguageSwitcherComponent];\n\n/**\n * Library pipes\n */\nconst pipes = [ItDateAgoPipe, ItDurationPipe, ItMarkMatchingTextPipe];\n\nconst components = [\n  ...core, // Core components\n  ItFormModule, // Form components\n  ...navigation, // Navigation Components\n  ...utils, // Utils components\n  ...pipes, // Library pipes\n];\n\n@NgModule({\n  imports: components,\n  exports: components,\n})\nexport class DesignAngularKitModule {\n  public static forRoot(config?: DesignAngularKitConfig): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n      providers: [provideDesignAngularKit(config)],\n    };\n  }\n\n  public static forChild(): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n    };\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -31084,6 +31226,9 @@
                         },
                         {
                             "name": "ItProgressButtonComponent"
+                        },
+                        {
+                            "name": "ItSidebarComponent"
                         },
                         {
                             "name": "ItSpinnerComponent"
@@ -31206,6 +31351,9 @@
                         },
                         {
                             "name": "ItProgressButtonComponent"
+                        },
+                        {
+                            "name": "ItSidebarComponent"
                         },
                         {
                             "name": "ItSpinnerComponent"
@@ -32063,7 +32211,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItMegamenuComponent,\n]",
+                "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n]",
                 "rawdescription": "Navigation Components",
                 "description": "<p>Navigation Components</p>\n"
             },
@@ -32939,7 +33087,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItMegamenuComponent,\n]",
+                    "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n]",
                     "rawdescription": "Navigation Components",
                     "description": "<p>Navigation Components</p>\n"
                 },
@@ -34027,8 +34175,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItListItemComponent",
-                "coveragePercent": 70,
-                "coverageCount": "14/20",
+                "coveragePercent": 66,
+                "coverageCount": "14/21",
                 "status": "good"
             },
             {
@@ -34425,6 +34573,15 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/8",
                 "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/navigation/sidebar/sidebar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ItSidebarComponent",
+                "coveragePercent": 57,
+                "coverageCount": "4/7",
+                "status": "good"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/components/utils/error-page/error-page.component.ts",
