@@ -66,6 +66,7 @@ const routes: Routes = [
       { path: 'card', loadChildren: () => import('src/app/card/card.module').then(m => m.CardModule) },
       { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) },
       { path: 'autocomplete', loadChildren: () => import('src/app/autocomplete/autocomplete.module').then(m => m.AutocompleteModule) },
+      { path: 'sidebar', loadChildren: () => import('src/app/sidebar/sidebar.module').then(m => m.SidebarModule) },
     ],
   },
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },

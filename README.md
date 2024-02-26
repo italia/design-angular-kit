@@ -46,6 +46,12 @@ Sul branch `main` potete trovare il codice dei lavori in corso e nella [mileston
 
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
+## Intro
+
+**Design Angular kit** è un set di componenti Angular che implementa [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) e gli stili presenti su [Design UI Kit](https://github.com/italia/design-ui-kit).
+La versione pubblica della documentazione della libreria è disponibile [qui](https://italia.github.io/design-angular-kit) per l'ultima release stabile pubblicata, mentre [qui](https://design-angular-kit.vercel.app/) per la versione di sviluppo relativa al branch `main`.
+Per giocare con la libreria è disponibile il [Playground Angular Kit](https://github.com/italia/design-angular-kit-playground).
+
 ## Indice
 
 - [Come usare il kit](#come-usare-il-kit)
@@ -438,7 +444,6 @@ npm run start
 ```
 npm run test
 ```
-
 
 ## Link utili
 
