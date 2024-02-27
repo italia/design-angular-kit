@@ -1,3 +1,10 @@
+# [1.0.0-prerelease.4](https://github.com/italia/design-angular-kit/compare/v1.0.0-prerelease.3...v1.0.0-prerelease.4) (2024-02-26)
+
+
+### Features
+
+* add sidebar component ([cfb85c7](https://github.com/italia/design-angular-kit/commit/cfb85c77b68afd18069124c7a45511bd67da971c))
+
 # [1.0.0-prerelease.3](https://github.com/italia/design-angular-kit/compare/v1.0.0-prerelease.2...v1.0.0-prerelease.3) (2024-02-12)
 
 

@@ -409,6 +409,42 @@ npm run start
 npm run test
 ```
 
+### Impostare l'ambiente locale con Devcontainer
+
+I requisiti minimi del tuo ambiente locale per lavorare con i Devcontainer devono essere:
+
+- Visual Studio Code
+- Docker
+- git
+
+Avvia Visual Studio Code e installa l'estensione Dev Containers di Microsoft (ms-vscode-remote.remote-containers).
+
+A questo punto, è necessario impostare seguire i seguenti step:
+
+1. Clonare il progetto
+
+```
+git clone https://github.com/italia/design-angular-kit.git
+```
+
+2. Aprire la cartella di progetto con Visual Studio Code
+
+3. Al caricamento, Visual Studio Code riconoscerà la presenta della configurazione di un Devcontainer. Aprire il progetto con il devcontainer. Altre info [qui](https://code.visualstudio.com/docs/devcontainers/create-dev-container).
+
+4. Visual Studio Code effettuerà il setup del container, andando ad installare la corretta versione di NodeJs, di npm e delle estensioni dell'IDE. Le dipendenze di progetto saranno installate nel processo di creazione del container. L'ambiente di sviuppo sarà pronto a setup ultimato. 
+
+5. Lanciare l'applicazione in locale
+
+```
+npm run start
+```
+
+6. Per eseguire i test di unità eseguire il comando
+
+```
+npm run test
+```
+
 ## Link utili
 
 - [Playground Angular Kit](https://github.com/italia/design-angular-kit-playground)
