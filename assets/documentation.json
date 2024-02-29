@@ -6589,7 +6589,7 @@
         },
         {
             "name": "ItAbstractFormComponent",
-            "id": "component-ItAbstractFormComponent-8bb95bdef0129dcad655e43b50e685b8a66b425c208214c9e730b896804b6b4b3fb2015ffc90103e7b9b3a28d0b19e599070d6678f05f8858bf63a51984c2504",
+            "id": "component-ItAbstractFormComponent-f06a715b6f63fdfa293e75a1ab96ae4925532c950bf287b41b5b86700c8306812e0c81aa2c4ed13eb63c48855cbd74a8acf7a063bb3f8e07368623a09499ed81",
             "file": "projects/design-angular-kit/src/lib/abstracts/abstract-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6610,7 +6610,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -6620,26 +6620,26 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": []
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6651,7 +6651,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": []
                 },
@@ -6692,7 +6692,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -6716,7 +6716,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95
+                    "line": 94
                 },
                 {
                     "name": "_changeDetectorRef",
@@ -6819,7 +6819,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -6830,8 +6830,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6842,8 +6842,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6874,7 +6874,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -6885,8 +6885,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6897,8 +6897,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6909,8 +6909,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6922,8 +6922,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6934,8 +6934,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6966,7 +6966,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -6977,8 +6977,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6989,8 +6989,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7001,8 +7001,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7014,8 +7014,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7026,8 +7026,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7044,7 +7044,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -7056,7 +7056,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -7068,7 +7068,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 86,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -7085,7 +7085,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7113,7 +7113,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7141,7 +7141,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7169,7 +7169,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7270,7 +7270,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';\nimport { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';\nimport { ItAbstractComponent } from './abstract.component';\nimport { Observable } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\nimport { inputToBoolean } from '../utils/coercion';\n\n@Component({ template: '' })\nexport abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {\n\n  /**\n   * The label of form control\n   */\n  @Input() label?: string;\n\n  /**\n   * Validation color display mode (validation triggered if field is touched or not pristine)\n   * - <b>true</b>: Always show the validation color\n   * - <b>false</b>: Never show validation color\n   * - <b>only-valid</b>: Show only valid validation color\n   * - <b>only-invalid</b>: Show only invalid validation color\n   * @default <b>only-invalid</b>: Show only invalid validation color\n   */\n  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = 'only-invalid';\n\n  /**\n   * Set the disabled state\n   */\n  @Input({ transform: inputToBoolean }) set disabled(isDisabled: boolean) {\n    this.setDisabledState(isDisabled);\n  }\n\n  /**\n   * Internal form control\n   */\n  protected control: FormControl<T>;\n\n  constructor(\n    protected readonly _translateService: TranslateService,\n    @Self() @Optional() protected readonly _ngControl: NgControl\n  ) {\n    super();\n    this.control = new FormControl();\n    this._ngControl && (this._ngControl.valueAccessor = this);\n  }\n\n  /**\n   * Check if field is invalid (Validation failed)\n   */\n  get isInvalid(): boolean | undefined {\n    if (this.validationMode === 'only-valid' || (this.validationMode !== 'only-invalid' && !this.validationMode)) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.invalid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.invalid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Check if field is valid (Validation successful)\n   */\n  get isValid(): boolean | undefined {\n    if (this.validationMode === 'only-invalid' || (this.validationMode !== 'only-valid' && !this.validationMode)) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.valid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.valid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  get invalidMessage(): Observable<string> {\n    if (this.hasError('required')) {\n      return this._translateService.get('it.errors.required-field');\n    }\n\n    return this._translateService.get('it.errors.invalid-field');\n  }\n\n  ngOnInit(): void {\n    if (this._ngControl?.control) {\n      this.control.setValidators((this._ngControl.control as FormControl).validator);\n    }\n  }\n\n  onChange = (_: T) => {\n  };\n\n  onTouched = () => {\n  };\n\n  registerOnChange(fn: any): void {\n    this.control.valueChanges.subscribe(fn);\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (isDisabled) {\n      return this.control.disable();\n    }\n    this.control.enable();\n  }\n\n  writeValue(value: T): void {\n    this.control.setValue(value, { emitEvent: false });\n    this._changeDetectorRef.detectChanges();\n  }\n\n  /**\n   * Mark the control as touched\n   */\n  markAsTouched(): void {\n    if (!this.control.touched) {\n      this.onTouched();\n    }\n  }\n\n  /**\n   * Fired to check if form control is touched\n   */\n  ngDoCheck() {\n    if (this._ngControl?.control) {\n      const ngControl = this._ngControl.control;\n      if (this.control.touched !== ngControl.touched) {\n        if (ngControl.touched) {\n          this.control.markAsTouched();\n        } else {\n          this.control.markAsUntouched();\n        }\n      }\n      if (this.control.pristine !== ngControl.pristine) {\n        if (ngControl.pristine) {\n          this.control.markAsPristine();\n        } else {\n          this.control.markAsDirty();\n        }\n      }\n    }\n    this._changeDetectorRef.detectChanges();\n  }\n\n  /**\n   * Add the validators in control and parent control\n   * @param validators the validators\n   * @protected\n   */\n  protected addValidators(validators: ValidatorFn | ValidatorFn[]): void {\n    if (!Array.isArray(validators)) {\n      validators = [validators];\n    }\n\n    validators.forEach(validator => {\n      if (!this.control.hasValidator(validator)) {\n        this.control.addValidators(validator);\n      }\n\n      if (this._ngControl?.control && !this._ngControl.control.hasValidator(validator)) {\n        this._ngControl.control.addValidators(validator);\n      }\n    });\n  }\n\n  /**\n   * Reports whether the control with the given path has the error specified. <br/>\n   * If the control is not present, false is returned.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns whether the given error is present in the control at the given path.\n   */\n  public hasError(errorCode: string, path?: Array<string | number> | string): boolean {\n    if (this._ngControl) {\n      return this._ngControl.hasError(errorCode, path);\n    }\n    return this.control.hasError(errorCode, path);\n  }\n\n  /**\n   * Reports error data for the control with the given path.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns error data for that particular error. If the control or error is not present,\n   * null is returned.\n   */\n  public getError(errorCode: string, path?: Array<string | number> | string): any {\n    if (this._ngControl) {\n      return this._ngControl.getError(errorCode, path);\n    }\n    return this.control.getError(errorCode, path);\n  }\n}\n",
+            "sourceCode": "import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';\nimport { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';\nimport { ItAbstractComponent } from './abstract.component';\nimport { Observable } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\nimport { inputToBoolean } from '../utils/coercion';\n\n@Component({ template: '' })\nexport abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {\n  /**\n   * The label of form control\n   */\n  @Input() label?: string;\n\n  /**\n   * Validation color display mode (validation triggered if field is touched or not pristine)\n   * - <b>true</b>: Always show the validation color\n   * - <b>false</b>: Never show validation color\n   * - <b>only-valid</b>: Show only valid validation color\n   * - <b>only-invalid</b>: Show only invalid validation color\n   * @default <b>only-invalid</b>: Show only invalid validation color\n   */\n  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = true;\n\n  /**\n   * Set the disabled state\n   */\n  @Input({ transform: inputToBoolean }) set disabled(isDisabled: boolean) {\n    this.setDisabledState(isDisabled);\n  }\n\n  /**\n   * Internal form control\n   */\n  protected control: FormControl<T>;\n\n  constructor(\n    protected readonly _translateService: TranslateService,\n    @Self() @Optional() protected readonly _ngControl: NgControl\n  ) {\n    super();\n    this.control = new FormControl();\n    this._ngControl && (this._ngControl.valueAccessor = this);\n  }\n\n  /**\n   * Check if field is invalid (Validation failed)\n   */\n  get isInvalid(): boolean | undefined {\n    if (this.validationMode === 'only-valid' || (this.validationMode !== 'only-invalid' && !this.validationMode)) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.invalid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.invalid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Check if field is valid (Validation successful)\n   */\n  get isValid(): boolean | undefined {\n    if (this.validationMode === 'only-invalid' || (this.validationMode !== 'only-valid' && !this.validationMode)) {\n      return undefined;\n    }\n\n    if (this._ngControl) {\n      return this._ngControl.valid === true && (!this._ngControl.pristine || this._ngControl.touched === true);\n    }\n    return this.control.valid && (!this.control.pristine || this.control.touched);\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  get invalidMessage(): Observable<string> {\n    if (this.hasError('required')) {\n      return this._translateService.get('it.errors.required-field');\n    }\n\n    return this._translateService.get('it.errors.invalid-field');\n  }\n\n  ngOnInit(): void {\n    if (this._ngControl?.control) {\n      this.control.setValidators((this._ngControl.control as FormControl).validator);\n    }\n  }\n\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  onChange = (_: T) => {};\n\n  onTouched = () => {};\n\n  registerOnChange(fn: any): void {\n    this.control.valueChanges.subscribe(fn);\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    if (isDisabled) {\n      return this.control.disable();\n    }\n    this.control.enable();\n  }\n\n  writeValue(value: T): void {\n    this.control.setValue(value, { emitEvent: false });\n    this._changeDetectorRef.detectChanges();\n  }\n\n  /**\n   * Mark the control as touched\n   */\n  markAsTouched(): void {\n    if (!this.control.touched) {\n      this.onTouched();\n    }\n  }\n\n  /**\n   * Fired to check if form control is touched\n   */\n  ngDoCheck() {\n    if (this._ngControl?.control) {\n      const ngControl = this._ngControl.control;\n      if (this.control.touched !== ngControl.touched) {\n        if (ngControl.touched) {\n          this.control.markAsTouched();\n        } else {\n          this.control.markAsUntouched();\n        }\n      }\n      if (this.control.pristine !== ngControl.pristine) {\n        if (ngControl.pristine) {\n          this.control.markAsPristine();\n        } else {\n          this.control.markAsDirty();\n        }\n      }\n    }\n    this._changeDetectorRef.detectChanges();\n  }\n\n  /**\n   * Add the validators in control and parent control\n   * @param validators the validators\n   * @protected\n   */\n  protected addValidators(validators: ValidatorFn | ValidatorFn[]): void {\n    if (!Array.isArray(validators)) {\n      validators = [validators];\n    }\n\n    validators.forEach(validator => {\n      if (!this.control.hasValidator(validator)) {\n        this.control.addValidators(validator);\n      }\n\n      if (this._ngControl?.control && !this._ngControl.control.hasValidator(validator)) {\n        this._ngControl.control.addValidators(validator);\n      }\n    });\n  }\n\n  /**\n   * Reports whether the control with the given path has the error specified. <br/>\n   * If the control is not present, false is returned.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns whether the given error is present in the control at the given path.\n   */\n  public hasError(errorCode: string, path?: Array<string | number> | string): boolean {\n    if (this._ngControl) {\n      return this._ngControl.hasError(errorCode, path);\n    }\n    return this.control.hasError(errorCode, path);\n  }\n\n  /**\n   * Reports error data for the control with the given path.\n   * @param errorCode The code of the error to check\n   * @param path A list of control names that designates how to move from the current control\n   * to the control that should be queried for errors.\n   * @returns error data for that particular error. If the control or error is not present,\n   * null is returned.\n   */\n  public getError(errorCode: string, path?: Array<string | number> | string): any {\n    if (this._ngControl) {\n      return this._ngControl.getError(errorCode, path);\n    }\n    return this.control.getError(errorCode, path);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -7293,7 +7293,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 36,
+                "line": 35,
                 "jsdoctags": [
                     {
                         "name": "_translateService",
@@ -7340,7 +7340,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 29,
+                        "line": 28,
                         "rawdescription": "\n\nSet the disabled state\n",
                         "description": "<p>Set the disabled state</p>\n",
                         "jsdoctags": [
@@ -7362,7 +7362,7 @@
                         "name": "isInvalid",
                         "type": "",
                         "returnType": "boolean | undefined",
-                        "line": 50,
+                        "line": 49,
                         "rawdescription": "\n\nCheck if field is invalid (Validation failed)\n",
                         "description": "<p>Check if field is invalid (Validation failed)</p>\n"
                     }
@@ -7373,7 +7373,7 @@
                         "name": "isValid",
                         "type": "",
                         "returnType": "boolean | undefined",
-                        "line": 64,
+                        "line": 63,
                         "rawdescription": "\n\nCheck if field is valid (Validation successful)\n",
                         "description": "<p>Check if field is valid (Validation successful)</p>\n"
                     }
@@ -7384,7 +7384,7 @@
                         "name": "invalidMessage",
                         "type": "",
                         "returnType": "Observable<string>",
-                        "line": 78,
+                        "line": 77,
                         "rawdescription": "\n\nReturn the invalid message string from TranslateService\n",
                         "description": "<p>Return the invalid message string from TranslateService</p>\n"
                     }
@@ -8454,7 +8454,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -8467,7 +8467,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -8476,20 +8476,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8501,7 +8501,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -8582,7 +8582,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -8612,7 +8612,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -8854,7 +8854,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -8865,8 +8865,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8877,8 +8877,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8912,7 +8912,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -8923,8 +8923,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8935,8 +8935,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8947,8 +8947,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8960,8 +8960,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -8972,8 +8972,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9007,7 +9007,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -9018,8 +9018,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9030,8 +9030,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9042,8 +9042,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9055,8 +9055,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9067,8 +9067,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -9088,7 +9088,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -9103,7 +9103,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -9125,7 +9125,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9156,7 +9156,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9187,7 +9187,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9218,7 +9218,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12611,7 +12611,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -12624,7 +12624,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -12633,20 +12633,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12658,7 +12658,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -12702,7 +12702,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -12732,7 +12732,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -12901,7 +12901,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -12912,8 +12912,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12924,8 +12924,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12959,7 +12959,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -12970,8 +12970,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12982,8 +12982,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -12994,8 +12994,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13007,8 +13007,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13019,8 +13019,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13054,7 +13054,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -13065,8 +13065,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13077,8 +13077,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13089,8 +13089,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13102,8 +13102,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13114,8 +13114,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -13135,7 +13135,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -13150,7 +13150,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -13172,7 +13172,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13203,7 +13203,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13234,7 +13234,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13265,7 +13265,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -17146,7 +17146,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -17159,7 +17159,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -17168,20 +17168,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17193,7 +17193,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -17237,7 +17237,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -17267,7 +17267,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -17439,7 +17439,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -17450,8 +17450,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17462,8 +17462,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17497,7 +17497,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -17508,8 +17508,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17520,8 +17520,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17532,8 +17532,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17545,8 +17545,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17557,8 +17557,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17592,7 +17592,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -17603,8 +17603,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17615,8 +17615,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17627,8 +17627,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17640,8 +17640,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17652,8 +17652,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17673,7 +17673,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -17688,7 +17688,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -17710,7 +17710,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -17741,7 +17741,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -17772,7 +17772,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -17803,7 +17803,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -17968,7 +17968,7 @@
                     }
                 }
             },
-            "templateData": "<div class=\"form-group\">\n  <div\n    class=\"input-group\"\n    [class.disabled]=\"!control.enabled\"\n    [class.input-number]=\"type === 'number'\"\n    [class.input-number-currency]=\"currency\"\n    [class.input-number-percentage]=\"percentage\"\n    [class.input-number-adaptive]=\"adaptive\">\n    <span class=\"input-group-text\" #prependText>\n      <ng-content select=\"[prependText]\"></ng-content>\n    </span>\n\n    @if (label) {\n      <label\n        [for]=\"id\"\n        [class.active]=\"isActiveLabel\"\n        [class.input-number-label]=\"type === 'number'\"\n        [class.empty-prepend-label]=\"!prependText.clientWidth\">\n        {{ label }}\n      </label>\n    }\n\n    @if (type === 'number') {\n      @if (currency || percentage) {\n        <span class=\"input-group-text fw-semibold\">{{ symbol }}</span>\n      }\n      <input\n        type=\"number\"\n        [id]=\"id\"\n        [step]=\"step ?? null\"\n        [min]=\"min ?? ''\"\n        [max]=\"max ?? ''\"\n        [class.form-control]=\"readonly !== 'plaintext'\"\n        [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\"\n        [class.is-valid]=\"isValid\"\n        [formControl]=\"control\"\n        [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n      <span class=\"input-group-text align-buttons flex-column\">\n        <button type=\"button\" class=\"input-number-add\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber()\">\n          <span class=\"visually-hidden\">{{ 'it.form.increase-value' | translate }}</span>\n        </button>\n        <button type=\"button\" class=\"input-number-sub\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber(true)\">\n          <span class=\"visually-hidden\">{{ 'it.form.decrease-value' | translate }}</span>\n        </button>\n      </span>\n    } @else {\n      <input\n        [id]=\"id\"\n        [type]=\"type\"\n        [max]=\"type === 'date' ? maxDate : undefined\"\n        [min]=\"type === 'date' ? minDate : undefined\"\n        [class.form-control]=\"readonly !== 'plaintext'\"\n        [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\"\n        [class.is-valid]=\"isValid\"\n        [formControl]=\"control\"\n        [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n    }\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  @if (description) {\n    <small [id]=\"id + '-description'\" class=\"form-text\">{{ description }}</small>\n  }\n\n  @if (isInvalid) {\n    <div class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      @if (!customError.hasChildNodes()) {\n        {{ invalidMessage | async }}\n      }\n    </div>\n  }\n</div>\n"
+            "templateData": "<div class=\"form-group\">\n  <div\n    class=\"input-group\"\n    [class.disabled]=\"!control.enabled\"\n    [class.input-number]=\"type === 'number'\"\n    [class.input-number-currency]=\"currency\"\n    [class.input-number-percentage]=\"percentage\"\n    [class.input-number-adaptive]=\"adaptive\">\n    <span class=\"input-group-text\" #prependText>\n      <ng-content select=\"[prependText]\"></ng-content>\n    </span>\n\n    @if (label) {\n      <label\n        [for]=\"id\"\n        [class.active]=\"isActiveLabel\"\n        [class.input-number-label]=\"type === 'number'\"\n        [class.empty-prepend-label]=\"!prependText.clientWidth\">\n        {{ label }}\n      </label>\n    }\n\n    @if (type === 'number') {\n      @if (currency || percentage) {\n        <span class=\"input-group-text fw-semibold\">{{ symbol }}</span>\n      }\n      <input\n        type=\"number\"\n        [id]=\"id\"\n        [step]=\"step ?? null\"\n        [min]=\"min ?? ''\"\n        [max]=\"max ?? ''\"\n        [class.form-control]=\"readonly !== 'plaintext'\"\n        [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\"\n        [class.just-validate-success-field]=\"isValid\"\n        [formControl]=\"control\"\n        [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n      <span class=\"input-group-text align-buttons flex-column\">\n        <button type=\"button\" class=\"input-number-add\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber()\">\n          <span class=\"visually-hidden\">{{ 'it.form.increase-value' | translate }}</span>\n        </button>\n        <button type=\"button\" class=\"input-number-sub\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber(true)\">\n          <span class=\"visually-hidden\">{{ 'it.form.decrease-value' | translate }}</span>\n        </button>\n      </span>\n    } @else {\n      <input\n        [id]=\"id\"\n        [type]=\"type\"\n        [max]=\"type === 'date' ? maxDate : undefined\"\n        [min]=\"type === 'date' ? minDate : undefined\"\n        [class.form-control]=\"readonly !== 'plaintext'\"\n        [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\"\n        [class.just-validate-success-field]=\"isValid\"\n        [formControl]=\"control\"\n        [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n    }\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  @if (description) {\n    <small [id]=\"id + '-description'\" class=\"form-text\">{{ description }}</small>\n  }\n\n  @if (isInvalid) {\n    <div class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      @if (!customError.hasChildNodes()) {\n        {{ invalidMessage | async }}\n      }\n    </div>\n  }\n</div>\n"
         },
         {
             "name": "ItLanguageSwitcherComponent",
@@ -21518,7 +21518,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -21531,7 +21531,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -21540,20 +21540,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21565,7 +21565,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -21640,7 +21640,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -21670,7 +21670,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -21808,7 +21808,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -21819,8 +21819,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21831,8 +21831,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21866,7 +21866,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -21877,8 +21877,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21889,8 +21889,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21901,8 +21901,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21914,8 +21914,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21926,8 +21926,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21961,7 +21961,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -21972,8 +21972,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21984,8 +21984,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21996,8 +21996,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -22009,8 +22009,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -22021,8 +22021,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -22042,7 +22042,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -22057,7 +22057,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -22079,7 +22079,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -22110,7 +22110,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -22141,7 +22141,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -22172,7 +22172,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -22748,7 +22748,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -22761,7 +22761,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -22770,20 +22770,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -22795,7 +22795,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -22839,7 +22839,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -22869,7 +22869,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -22991,7 +22991,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -23002,8 +23002,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23014,8 +23014,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23049,7 +23049,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -23060,8 +23060,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23072,8 +23072,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23084,8 +23084,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23097,8 +23097,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23109,8 +23109,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23144,7 +23144,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -23155,8 +23155,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23167,8 +23167,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23179,8 +23179,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23192,8 +23192,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23204,8 +23204,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23225,7 +23225,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -23240,7 +23240,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -23262,7 +23262,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23293,7 +23293,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23324,7 +23324,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23355,7 +23355,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23650,7 +23650,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -23663,7 +23663,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -23672,20 +23672,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -23697,7 +23697,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -23771,7 +23771,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -23801,7 +23801,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -24030,7 +24030,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -24041,8 +24041,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24053,8 +24053,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24088,7 +24088,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -24099,8 +24099,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24111,8 +24111,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24123,8 +24123,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24136,8 +24136,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24148,8 +24148,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24183,7 +24183,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -24194,8 +24194,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24206,8 +24206,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24218,8 +24218,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24231,8 +24231,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24243,8 +24243,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24264,7 +24264,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -24279,7 +24279,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -24301,7 +24301,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24332,7 +24332,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24363,7 +24363,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24527,7 +24527,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -24540,7 +24540,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -24549,20 +24549,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24574,7 +24574,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -24631,7 +24631,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -24661,7 +24661,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -24846,7 +24846,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -24857,8 +24857,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24869,8 +24869,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24904,7 +24904,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -24915,8 +24915,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24927,8 +24927,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24939,8 +24939,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24952,8 +24952,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24964,8 +24964,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -24999,7 +24999,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -25010,8 +25010,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25022,8 +25022,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25034,8 +25034,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25047,8 +25047,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25059,8 +25059,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25080,7 +25080,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -25095,7 +25095,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -25117,7 +25117,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -25148,7 +25148,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -25179,7 +25179,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -25210,7 +25210,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -25396,7 +25396,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -25409,7 +25409,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -25418,20 +25418,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25443,7 +25443,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -25487,7 +25487,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -25517,7 +25517,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -25729,7 +25729,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -25740,8 +25740,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25752,8 +25752,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25787,7 +25787,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -25798,8 +25798,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25810,8 +25810,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25822,8 +25822,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25835,8 +25835,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25847,8 +25847,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25882,7 +25882,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -25893,8 +25893,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25905,8 +25905,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25917,8 +25917,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25930,8 +25930,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25942,8 +25942,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -25963,7 +25963,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -25978,7 +25978,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -26000,7 +26000,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -26031,7 +26031,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -26062,7 +26062,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -26093,7 +26093,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -28965,7 +28965,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the disabled state\n",
                     "description": "<p>Set the disabled state</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -28978,7 +28978,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label of form control\n",
                     "description": "<p>The label of form control</p>\n",
-                    "line": 14,
+                    "line": 13,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -28987,20 +28987,20 @@
                 },
                 {
                     "name": "validationMode",
-                    "defaultValue": "'only-invalid'",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 943,
-                            "end": 1011,
+                            "pos": 942,
+                            "end": 1010,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 944,
-                                "end": 951,
+                                "pos": 943,
+                                "end": 950,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29012,7 +29012,7 @@
                     ],
                     "rawdescription": "\n\nValidation color display mode (validation triggered if field is touched or not pristine)\n- <b>true</b>: Always show the validation color\n- <b>false</b>: Never show validation color\n- <b>only-valid</b>: Show only valid validation color\n- <b>only-invalid</b>: Show only invalid validation color\n",
                     "description": "<p>Validation color display mode (validation triggered if field is touched or not pristine)</p>\n<ul>\n<li><b>true</b>: Always show the validation color</li>\n<li><b>false</b>: Never show validation color</li>\n<li><b>only-valid</b>: Show only valid validation color</li>\n<li><b>only-invalid</b>: Show only invalid validation color</li>\n</ul>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "boolean | \"only-valid\" | \"only-invalid\"",
                     "decorators": [],
                     "inheritance": {
@@ -29056,7 +29056,7 @@
                     "type": "FormControl<T>",
                     "optional": false,
                     "description": "<p>Internal form control</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\n\nInternal form control\n",
                     "modifierKind": [
                         124
@@ -29086,7 +29086,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 94,
                     "inheritance": {
                         "file": "ItAbstractFormComponent"
                     }
@@ -29192,7 +29192,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdd the validators in control and parent control\n",
@@ -29203,8 +29203,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4387,
-                                "end": 4397,
+                                "pos": 4434,
+                                "end": 4444,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29215,8 +29215,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4381,
-                                "end": 4386,
+                                "pos": 4428,
+                                "end": 4433,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29250,7 +29250,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports error data for the control with the given path.\nto the control that should be queried for errors.\nnull is returned.\n",
@@ -29261,8 +29261,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5650,
-                                "end": 5659,
+                                "pos": 5697,
+                                "end": 5706,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29273,8 +29273,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5644,
-                                "end": 5649,
+                                "pos": 5691,
+                                "end": 5696,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29285,8 +29285,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5703,
-                                "end": 5707,
+                                "pos": 5750,
+                                "end": 5754,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29298,8 +29298,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5697,
-                                "end": 5702,
+                                "pos": 5744,
+                                "end": 5749,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29310,8 +29310,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5846,
-                                "end": 5853,
+                                "pos": 5893,
+                                "end": 5900,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29345,7 +29345,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReports whether the control with the given path has the error specified. <br/>\nIf the control is not present, false is returned.\nto the control that should be queried for errors.\n",
@@ -29356,8 +29356,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5059,
-                                "end": 5068,
+                                "pos": 5106,
+                                "end": 5115,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29368,8 +29368,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5053,
-                                "end": 5058,
+                                "pos": 5100,
+                                "end": 5105,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29380,8 +29380,8 @@
                         },
                         {
                             "name": {
-                                "pos": 5112,
-                                "end": 5116,
+                                "pos": 5159,
+                                "end": 5163,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29393,8 +29393,8 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 5106,
-                                "end": 5111,
+                                "pos": 5153,
+                                "end": 5158,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29405,8 +29405,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 5255,
-                                "end": 5262,
+                                "pos": 5302,
+                                "end": 5309,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -29426,7 +29426,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMark the control as touched\n",
@@ -29441,7 +29441,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired to check if form control is touched\n",
@@ -29456,7 +29456,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 86,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -29476,7 +29476,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -29507,7 +29507,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -29538,7 +29538,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -29569,7 +29569,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
