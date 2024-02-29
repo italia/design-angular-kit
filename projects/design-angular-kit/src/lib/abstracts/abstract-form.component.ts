@@ -7,7 +7,6 @@ import { inputToBoolean } from '../utils/coercion';
 
 @Component({ template: '' })
 export abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
-
   /**
    * The label of form control
    */
@@ -21,7 +20,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * - <b>only-invalid</b>: Show only invalid validation color
    * @default <b>only-invalid</b>: Show only invalid validation color
    */
-  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = 'only-invalid';
+  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = true;
 
   /**
    * Set the disabled state
@@ -89,11 +88,10 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
     }
   }
 
-  onChange = (_: T) => {
-  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onChange = (_: T) => {};
 
-  onTouched = () => {
-  };
+  onTouched = () => {};
 
   registerOnChange(fn: any): void {
     this.control.valueChanges.subscribe(fn);
