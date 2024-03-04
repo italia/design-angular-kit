@@ -1,3 +1,10 @@
+# [1.0.0-prerelease.5](https://github.com/italia/design-angular-kit/compare/v1.0.0-prerelease.4...v1.0.0-prerelease.5) (2024-03-04)
+
+
+### Bug Fixes
+
+* release ([48a2fa6](https://github.com/italia/design-angular-kit/commit/48a2fa6de8d3820de36b6eb0274a988b47360c10))
+
 # [1.0.0-prerelease.4](https://github.com/italia/design-angular-kit/compare/v1.0.0-prerelease.3...v1.0.0-prerelease.4) (2024-03-04)
 
 
