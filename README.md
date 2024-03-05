@@ -14,8 +14,7 @@
 </p>
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit/prerelease.svg" alt="NPM"></a>
-    <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit/unstable.svg" alt="NPM"></a>
+    <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit.svg?logo=npm" alt="NPM"></a>
 </p>
 
 <p align="center">
@@ -35,14 +34,7 @@
   <a href="https://developersitalia.slack.com/messages/C04H3C19D52/"><img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" /></a>
   <a href="https://slack.developers.italia.it/"><img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" /></a></p>
 
-_⚠️ Attenzione: questo codice è ancora in fase di sviluppo e non è pronto per essere utilizzato! Stiamo lavorando all'aggiornamento per portare il kit alla versione 1.0.0, commenti e contributi di tutta la community sono più che benvenuti!_
-
 _⚠️ Se si necessita della vecchia versione il codice e la sua documentazione possono essere reperiti [qua](https://github.com/italia/design-angular-kit/tree/0.x)._
-
-## Verso la versione 1.0.0 📣 
-
-Sono partite le lavorazioni per l'aggiornamento del kit Angular a Bootstrap Italia 2 (basato su Bootstrap 5). 
-Sul branch `main` potete trovare il codice dei lavori in corso e nella [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3) un piano preliminare delle attività. La vecchia versione è da considerarsi deprecata.
 
 **Commenti e contributi di tutta la community sono più che benvenuti!** 🎉
 
@@ -64,16 +56,14 @@ Per giocare con la libreria è disponibile il [Playground Angular Kit](https://g
 Design Angular Kit è disponibile su NPM, per installarlo su una applicazione esistente sulla quale provare la libreria (attualmente non stabile) esegui il comando
 
 ```sh
-npm install design-angular-kit@prerelease --save
+npm install design-angular-kit --save
 ```
 
 Scegli la versione corrispondente alla tua versione Angular:
 
 | Angular | design-angular-kit    |
 |---------|-----------------------|
-| 17+     | v1.0.0-prerelease.2 + |
-| 16+     | v1.0.0-17 +           |
-| 15+     | v1.0.0-2 +            |
+| 17+     | v1.0.0 +              |
 
 ## Configurazione
 

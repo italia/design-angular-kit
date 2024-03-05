@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   release:
-    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/prerelease' #|| github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' #|| github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
