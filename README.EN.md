@@ -457,11 +457,15 @@ npm run test
 
 ## Contributor to the library
 
-Special thanks to those who made the development of this new version possible!
+Special thanks to those who made the development of this library possible!
 
-[![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![NetService](https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg)](https://www.net-serv.it/) | [![Alessio Napolitano](https://github.com/alenap93.png?size=100)](https://github.com/alenap93) |
---- | --- | --- | --- |
-Cristian Borelli | Antonino Bonanno | NetService | Alessio Napolitano |
+[![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Alessio Napolitano](https://github.com/alenap93.png?size=100)](https://github.com/alenap93) |
+--- | --- | --- |
+Antonino Bonanno | Cristian Borelli | Alessio Napolitano |
+
+and thanks to [NetService team](https://www.net-serv.it/):
+
+<a href="https://www.net-serv.it/"><img src="https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg" alt="NetService logo" width="300"></a>
 
 ---
 
