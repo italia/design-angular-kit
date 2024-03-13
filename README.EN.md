@@ -370,7 +370,7 @@ and refer to [directions on how to contribute to Design Angular Kit](https://git
 
 The minimum requirements of your local environment must be:
 
-- NodeJS (>= 18)
+- NodeJS (>= 20)
 
 At this point, you need to set up your local environment for compiling source files and generating
 of the documentation:

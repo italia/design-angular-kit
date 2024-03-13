@@ -370,7 +370,7 @@ e fai riferimento alle [indicazioni su come contribuire a Design Angular Kit](ht
 
 I requisiti minimi del tuo ambiente locale devono essere:
 
-- NodeJS (>= 18)
+- NodeJS (>= 20)
 
 A questo punto, è necessario impostare il tuo ambiente locale per la compilazione dei file sorgente e la generazione
 della documentazione:
