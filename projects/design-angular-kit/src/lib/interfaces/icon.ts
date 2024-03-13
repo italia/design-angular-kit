@@ -2,7 +2,7 @@ export type IconSize = 'xs' | 'sm' | 'lg' | 'xl';
 
 export type IconColor = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'light' | 'white';
 
-export type IconName = typeof IconNameArray[number];
+export type IconName = (typeof IconNameArray)[number];
 
 export const IconNameArray = [
   'arrow-down',
@@ -156,6 +156,8 @@ export const IconNameArray = [
   'stackoverflow',
   'stackoverflow-square',
   'telegram',
+  'threads',
+  'threads-square',
   'tiktok',
   'tiktok-square',
   'twitter',
@@ -169,6 +171,5 @@ export const IconNameArray = [
 
   // Extra
   'designers-italia',
-  'team-digitale'
+  'team-digitale',
 ] as const;
-
