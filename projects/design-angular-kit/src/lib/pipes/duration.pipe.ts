@@ -42,7 +42,7 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
 
     switch (type) {
       // eslint-disable-next-line no-fallthrough,@typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-ignore
       case 'second':
         if (valueAdjust < 60) {
           return super.transform(`it.duration.${type}${valueAdjust === 1 ? '' : 's'}`, {
@@ -51,7 +51,7 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 60);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-ignore
       // eslint-disable-next-line no-fallthrough
       case 'minute':
         if (valueAdjust < 60) {
@@ -61,7 +61,7 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 60);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-ignore
       // eslint-disable-next-line no-fallthrough
       case 'hour':
         if (valueAdjust < 24) {
@@ -71,7 +71,7 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 24);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-ignore
       // eslint-disable-next-line no-fallthrough
       case 'day':
         if (valueAdjust < 7) {
@@ -81,7 +81,7 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 7);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-ignore
       // eslint-disable-next-line no-fallthrough
       case 'week':
         if (valueAdjust < 5) {
@@ -91,7 +91,7 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
         }
         valueAdjust = Math.round(valueAdjust / 5);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-ignore
       // eslint-disable-next-line no-fallthrough
       case 'month':
         if (valueAdjust < 24) {
