@@ -77,6 +77,6 @@ export class ItRadioButtonComponent extends ItAbstractFormComponent<string | num
     }
 
     this.writeValue(this.value);
-    return this.onChange();
+    return this.onChange(this.value);
   }
 }

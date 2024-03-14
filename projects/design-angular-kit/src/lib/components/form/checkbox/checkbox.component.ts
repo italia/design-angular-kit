@@ -60,6 +60,6 @@ export class ItCheckboxComponent extends ItAbstractFormComponent<boolean | null 
 
     const value = this.checked;
     this.writeValue(value);
-    return this.onChange();
+    return this.onChange(value);
   }
 }

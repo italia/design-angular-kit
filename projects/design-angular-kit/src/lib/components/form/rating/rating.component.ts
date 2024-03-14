@@ -38,7 +38,7 @@ export class ItRatingComponent extends ItAbstractFormComponent<number | null | u
 
     if (!this.control.value && !!this.value) {
       this.writeValue(this.value);
-      this.onChange();
+      this.onChange(this.value);
     }
   }
 
