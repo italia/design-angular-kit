@@ -18,9 +18,9 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * - <b>false</b>: Never show validation color
    * - <b>only-valid</b>: Show only valid validation color
    * - <b>only-invalid</b>: Show only invalid validation color
-   * @default <b>only-invalid</b>: Show only invalid validation color
+   * @default <b>true</b>: Always show the validation color
    */
-  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = 'only-invalid';
+  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = true;
 
   /**
    * Set the disabled state
@@ -88,7 +88,8 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
     }
   }
 
-  onChange = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onChange = (_: T) => {};
 
   onTouched = () => {};
 
