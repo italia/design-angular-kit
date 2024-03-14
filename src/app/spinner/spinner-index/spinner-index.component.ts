@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-spinner-index',
-  templateUrl: './spinner-index.component.html'
+  templateUrl: './spinner-index.component.html',
 })
 export class SpinnerIndexComponent {
   component: any;

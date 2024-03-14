@@ -34,11 +34,6 @@ import { ListPaginationComponent } from './list-pagination/list-pagination.compo
     ListLinkMultilineComponent,
     ListPaginationComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    ListRoutingModule
-  ]
+  imports: [CommonModule, FormsModule, SharedModule, ListRoutingModule],
 })
-export class ListModule { }
+export class ListModule {}

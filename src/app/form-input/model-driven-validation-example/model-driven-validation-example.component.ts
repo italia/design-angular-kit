@@ -5,19 +5,13 @@ import { ItValidators } from 'design-angular-kit/validators/it-validators';
 @Component({
   selector: 'it-model-driven-validation-example',
   templateUrl: './model-driven-validation-example.component.html',
-  styleUrls: ['./model-driven-validation-example.component.scss']
+  styleUrls: ['./model-driven-validation-example.component.scss'],
 })
 export class ModelDrivenValidationExampleComponent {
-
   myForm: FormGroup;
 
   constructor(private _fb: FormBuilder) {
-    const validators = [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(10),
-      Validators.pattern('[ab]+')
-    ];
+    const validators = [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('[ab]+')];
     this.myForm = this._fb.group({
       taxCode: [null, ItValidators.taxCode],
       vat: [null, ItValidators.vatNumber],

@@ -26,20 +26,20 @@
               <it-icon name="user" color="primary"></it-icon>
             </td>
             <td>
-              {{item}}
+              {{ item }}
             </td>
           </tr>
         </ng-template>
       </ng-template>
-
     </ng-container>
   </it-table>
 
-  <it-pagination *ngIf="!isLoading && totalPages > 0"
-                 alignment="center"
-                 [currentPage]="currentPage"
-                 [pageNumbers]="totalPages"
-                 [currentChanger]="pageOffset"
-                 (changerEvent)="changerEvent($event)"
-                 (pageEvent)="getPage($event)"></it-pagination>
+  <it-pagination
+    *ngIf="!isLoading && totalPages > 0"
+    alignment="center"
+    [currentPage]="currentPage"
+    [pageNumbers]="totalPages"
+    [currentChanger]="pageOffset"
+    (changerEvent)="changerEvent($event)"
+    (pageEvent)="getPage($event)"></it-pagination>
 </div>

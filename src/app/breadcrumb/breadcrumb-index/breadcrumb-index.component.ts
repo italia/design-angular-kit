@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-breadcrumb-index',
   templateUrl: './breadcrumb-index.component.html',
-  styleUrls: ['./breadcrumb-index.component.scss']
+  styleUrls: ['./breadcrumb-index.component.scss'],
 })
 export class BreadcrumbIndexComponent {
-
   component: any;
   subcomponent: any;
 
@@ -15,5 +14,4 @@ export class BreadcrumbIndexComponent {
     this.component = (<any>Documentation).components.find(component => component.name === 'ItBreadcrumbComponent');
     this.subcomponent = (<any>Documentation).components.find(component => component.name === 'ItBreadcrumbItemComponent');
   }
-
 }

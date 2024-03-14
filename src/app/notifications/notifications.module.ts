@@ -9,20 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { NotificationsSetupComponent } from './notifications-setup/notifications-setup.component';
 import { NotificationsExampleTypeComponent } from './notifications-example-type/notifications-example-type.component';
 
-
 @NgModule({
   declarations: [
     NotificationsIndexComponent,
     NotificationsExamplesComponent,
     NotificationsExampleComponent,
     NotificationsSetupComponent,
-    NotificationsExampleTypeComponent
+    NotificationsExampleTypeComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    NotificationsRoutingModule,
-    FormsModule
-  ]
+  imports: [CommonModule, SharedModule, NotificationsRoutingModule, FormsModule],
 })
-export class NotificationsModule { }
+export class NotificationsModule {}

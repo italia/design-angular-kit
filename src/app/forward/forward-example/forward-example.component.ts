@@ -7,18 +7,16 @@ import { IconColor, IconName, IconSize } from 'projects/design-angular-kit/src/p
   styles: [
     `
       .bd-content-title:before {
-        content: "";
+        content: '';
         display: block;
         height: 96px;
         margin: -96px 0 0;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class ForwardExampleComponent {
-
   icon: IconName = 'expand';
   color: IconColor = 'primary';
   size: IconSize = 'lg';
-
 }

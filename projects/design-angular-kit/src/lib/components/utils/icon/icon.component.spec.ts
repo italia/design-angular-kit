@@ -8,8 +8,7 @@ describe('ItIconComponent', () => {
   let fixture: ComponentFixture<ItIconComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItIconComponent);
     component = fixture.componentInstance;

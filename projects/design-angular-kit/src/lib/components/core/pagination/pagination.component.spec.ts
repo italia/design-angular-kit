@@ -8,8 +8,7 @@ describe('ItPaginationComponent', () => {
   let fixture: ComponentFixture<ItPaginationComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItPaginationComponent);
     component = fixture.componentInstance;

@@ -8,7 +8,7 @@ describe('ListLinkIconsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListLinkIconsComponent]
+      declarations: [ListLinkIconsComponent],
     });
     fixture = TestBed.createComponent(ListLinkIconsComponent);
     component = fixture.componentInstance;

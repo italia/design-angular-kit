@@ -8,7 +8,7 @@ describe('ListLinkMultilineComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListLinkMultilineComponent]
+      declarations: [ListLinkMultilineComponent],
     });
     fixture = TestBed.createComponent(ListLinkMultilineComponent);
     component = fixture.componentInstance;

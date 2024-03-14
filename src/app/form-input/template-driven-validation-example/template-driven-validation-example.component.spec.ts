@@ -8,9 +8,8 @@ describe('TemplateDrivenValidationExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemplateDrivenValidationExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [TemplateDrivenValidationExampleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

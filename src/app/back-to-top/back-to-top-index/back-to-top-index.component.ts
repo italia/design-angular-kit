@@ -3,10 +3,9 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-go-to-top-index',
-  templateUrl: './back-to-top-index.component.html'
+  templateUrl: './back-to-top-index.component.html',
 })
 export class BackToTopIndexComponent {
-
   component: any;
 
   constructor() {

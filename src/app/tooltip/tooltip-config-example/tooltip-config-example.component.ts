@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-tooltip-config-example',
   templateUrl: './tooltip-config-example.component.html',
   styleUrls: ['./tooltip-config-example.component.scss'],
-  providers: []
+  providers: [],
 })
-export class TooltipConfigExampleComponent {
-
-}
+export class TooltipConfigExampleComponent {}

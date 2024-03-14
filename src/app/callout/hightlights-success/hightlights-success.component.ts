@@ -3,12 +3,10 @@ import { CalloutAppearance, CalloutColor } from 'projects/design-angular-kit/src
 
 @Component({
   selector: 'it-hightlights-success',
-  templateUrl: './hightlights-success.component.html'
+  templateUrl: './hightlights-success.component.html',
 })
 export class HightlightsSuccessComponent {
-
   appearance: CalloutAppearance = 'highlight';
   label = 'Usa';
   color: CalloutColor = 'success';
-
 }

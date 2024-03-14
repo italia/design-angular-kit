@@ -15,14 +15,8 @@ import { SteppersMobileExampleComponent } from './steppers-mobile-example/steppe
     SteppersExamplesComponent,
     SteppersDynamicExampleComponent,
     SteppersHeaderExampleComponent,
-    SteppersMobileExampleComponent
+    SteppersMobileExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    SteppersRoutingModule
-  ]
+  imports: [CommonModule, SharedModule, FormsModule, SteppersRoutingModule],
 })
-export class SteppersModule {
-}
+export class SteppersModule {}

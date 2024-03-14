@@ -7,9 +7,8 @@ describe('BackButtonLinkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BackButtonLinkComponent ]
-    })
-    .compileComponents();
+      declarations: [BackButtonLinkComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BackButtonLinkComponent);
     component = fixture.componentInstance;

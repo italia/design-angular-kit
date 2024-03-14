@@ -3,10 +3,9 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-callout-index',
-  templateUrl: './callout-index.component.html'
+  templateUrl: './callout-index.component.html',
 })
 export class CalloutIndexComponent {
-
   component?: any;
 
   constructor() {

@@ -5,12 +5,12 @@
       <tbody>
         <tr>
           <td style="width: 20%">
-            <code>{{input.name}}</code>
+            <code>{{ input.name }}</code>
           </td>
           <td style="width: 80%">
             <p>
               <em>Tipo: </em>
-              <code>{{input.type}}</code>
+              <code>{{ input.type }}</code>
             </p>
           </td>
         </tr>
@@ -28,12 +28,12 @@
       <tbody>
         <tr>
           <td style="width: 20%">
-            <code>{{output.name}}</code>
+            <code>{{ output.name }}</code>
           </td>
           <td style="width: 80%">
             <p>
               <em>Tipo: </em>
-              <code>{{output.type}}</code>
+              <code>{{ output.type }}</code>
             </p>
           </td>
         </tr>
@@ -56,28 +56,28 @@
         </tr>
       </thead>
       <tbody>
-      <tr>
-        <td class="col-md-2" colspan="2">
-          <p>
-            <em>Tipo di ritorno: </em>
-            <code>{{method.returnType}}</code>
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td class="col-md-2" colspan="2">Attributi:</td>
-      </tr>
-      <tr *ngFor="let arg of (method.args || [])">
-        <td style="width: 20%">
-          <code>{{arg.name}}</code>
-        </td>
-        <td style="width: 80%">
-          <p>
-            <em>Tipo: </em>
-            <code>{{arg.type}}</code>
-          </p>
-        </td>
-      </tr>
+        <tr>
+          <td class="col-md-2" colspan="2">
+            <p>
+              <em>Tipo di ritorno: </em>
+              <code>{{ method.returnType }}</code>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-md-2" colspan="2">Attributi:</td>
+        </tr>
+        <tr *ngFor="let arg of method.args || []">
+          <td style="width: 20%">
+            <code>{{ arg.name }}</code>
+          </td>
+          <td style="width: 80%">
+            <p>
+              <em>Tipo: </em>
+              <code>{{ arg.type }}</code>
+            </p>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

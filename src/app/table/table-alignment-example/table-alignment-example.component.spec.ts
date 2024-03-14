@@ -8,9 +8,8 @@ describe('TableAlignmentExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableAlignmentExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [TableAlignmentExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TableAlignmentExampleComponent);
     component = fixture.componentInstance;

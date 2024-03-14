@@ -8,9 +8,8 @@ describe('HightlightsSuccessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HightlightsSuccessComponent ]
-    })
-    .compileComponents();
+      declarations: [HightlightsSuccessComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HightlightsSuccessComponent);
     component = fixture.componentInstance;

@@ -4,32 +4,39 @@ import { By } from '@angular/platform-browser';
 import { BadgeColor } from '../../../interfaces/core';
 import { ItBadgeDirective } from './badge.directive';
 
-@Component(
-  {
-    selector: 'it-unit-test',
-    template: `
-      <h5>Testo di esempio <span [itBadge]="selectedColor" [rounded]="isRounded">{{badgeText}}</span></h5>
-    `
-  }
-)
+@Component({
+  selector: 'it-unit-test',
+  template: `
+    <h5>
+      Testo di esempio <span [itBadge]="selectedColor" [rounded]="isRounded">{{ badgeText }}</span>
+    </h5>
+  `,
+})
 class UnitTestComponent {
-  @Input() set selectedColor(value: BadgeColor | undefined) {this._selectedColor = value;}
-  get selectedColor(): BadgeColor | undefined {return this._selectedColor;}
+  @Input() set selectedColor(value: BadgeColor | undefined) {
+    this._selectedColor = value;
+  }
+  get selectedColor(): BadgeColor | undefined {
+    return this._selectedColor;
+  }
   private _selectedColor: BadgeColor | undefined = undefined;
 
-  @Input() set isRounded(value: boolean) {this._isRounded = value;}
-  get isRounded(): boolean {return this._isRounded;}
+  @Input() set isRounded(value: boolean) {
+    this._isRounded = value;
+  }
+  get isRounded(): boolean {
+    return this._isRounded;
+  }
   private _isRounded: boolean = undefined;
 }
 
 describe('ItBadgeDirective', () => {
-
   let component: UnitTestComponent;
   let fixture: ComponentFixture<UnitTestComponent>;
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [UnitTestComponent],
-      imports: [ItBadgeDirective]
+      imports: [ItBadgeDirective],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);

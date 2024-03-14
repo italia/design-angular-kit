@@ -4,20 +4,20 @@ import { ItValidators } from 'design-angular-kit/validators/it-validators';
 
 @Component({
   selector: 'it-password-input-confirm-example',
-  templateUrl: './password-input-confirm-example.component.html'
+  templateUrl: './password-input-confirm-example.component.html',
 })
 export class PasswordInputConfirmExampleComponent {
-
   formGroup: FormGroup;
 
-  constructor(
-    private readonly formBuilder: FormBuilder
-  ) {
-    this.formGroup = this.formBuilder.group({
-      password: [null],
-      confirmPassword: [null]
-    }, {
-      validators: control => ItValidators.passwordMatch(control)
-    });
+  constructor(private readonly formBuilder: FormBuilder) {
+    this.formGroup = this.formBuilder.group(
+      {
+        password: [null],
+        confirmPassword: [null],
+      },
+      {
+        validators: control => ItValidators.passwordMatch(control),
+      }
+    );
   }
 }

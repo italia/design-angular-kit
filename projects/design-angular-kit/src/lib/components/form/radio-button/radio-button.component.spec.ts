@@ -8,8 +8,7 @@ describe('ItRadioButtonComponent', () => {
   let fixture: ComponentFixture<ItRadioButtonComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItRadioButtonComponent);
     component = fixture.componentInstance;

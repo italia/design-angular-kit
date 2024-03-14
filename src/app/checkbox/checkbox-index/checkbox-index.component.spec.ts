@@ -8,9 +8,8 @@ describe('CheckboxIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckboxIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [CheckboxIndexComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

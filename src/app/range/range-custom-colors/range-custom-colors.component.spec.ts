@@ -8,7 +8,7 @@ describe('RangeCustomColorsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RangeCustomColorsComponent]
+      declarations: [RangeCustomColorsComponent],
     });
     fixture = TestBed.createComponent(RangeCustomColorsComponent);
     component = fixture.componentInstance;

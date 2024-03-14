@@ -8,20 +8,13 @@ import { LanguageSwitcherRoutingModule } from './language-switcher-routing.modul
 import { LanguageSwitcherCustomExampleComponent } from './language-switcher-custom-example/language-switcher-custom-example.component';
 import { TranslateModule } from '@ngx-translate/core';
 
-
-
 @NgModule({
   declarations: [
     LanguageSwitcherIndexComponent,
     LanguageSwitcherExamplesComponent,
     LanguageSwitcherExampleComponent,
-    LanguageSwitcherCustomExampleComponent
+    LanguageSwitcherCustomExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    TranslateModule,
-    LanguageSwitcherRoutingModule
-  ]
+  imports: [CommonModule, SharedModule, TranslateModule, LanguageSwitcherRoutingModule],
 })
-export class LanguageSwitcherModule { }
+export class LanguageSwitcherModule {}

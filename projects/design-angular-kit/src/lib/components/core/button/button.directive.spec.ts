@@ -7,12 +7,11 @@ import { By } from '@angular/platform-browser';
 
 /** Componente per testare una singola button. */
 @Component({
-  template: `
-  <div>
+  template: ` <div>
     <button [disabled]="disabled" [itButton]="color" (click)="onClick()">
-      {{label}}
+      {{ label }}
     </button>
-  </div>`
+  </div>`,
 })
 class SingleButtonComponent {
   disabled = false;
@@ -22,14 +21,14 @@ class SingleButtonComponent {
 
   onClick = () => {
     this.count++;
-  }
+  };
 }
 
 describe('ItButtonDirective', () => {
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ItButtonDirective],
-      declarations: [SingleButtonComponent]
+      declarations: [SingleButtonComponent],
     });
 
     TestBed.compileComponents();
@@ -66,7 +65,7 @@ describe('ItButtonDirective', () => {
       expect(buttonInstance.disabled).toBe(false);
     });
 
-    it('dovrebbe ricevere l\'evento di click', () => {
+    it("dovrebbe ricevere l'evento di click", () => {
       expect(testComponent.count).toBe(0);
       fixture.detectChanges();
 
@@ -93,7 +92,5 @@ describe('ItButtonDirective', () => {
     it('dovrebbe generare un id univoco per bottone', () => {
       expect(buttonNativeElement.textContent.trim()).toBe('Test Button');
     });
-
   });
-
 });

@@ -8,9 +8,8 @@ describe('ItDimmerIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ ItDimmerIconComponent ]
-    })
-    .compileComponents();
+      imports: [ItDimmerIconComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ItDimmerIconComponent);
     component = fixture.componentInstance;

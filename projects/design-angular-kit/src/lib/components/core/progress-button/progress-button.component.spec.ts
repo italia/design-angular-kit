@@ -8,8 +8,7 @@ describe('ItProgressButtonComponent', () => {
   let fixture: ComponentFixture<ItProgressButtonComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItProgressButtonComponent);
     component = fixture.componentInstance;

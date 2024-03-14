@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-table-index',
-  templateUrl: './table-index.component.html'
+  templateUrl: './table-index.component.html',
 })
 export class TableIndexComponent {
   component: any;

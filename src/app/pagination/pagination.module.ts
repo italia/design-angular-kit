@@ -8,11 +8,8 @@ import { PaginationExampleComponent } from './pagination-example/pagination-exam
 import { PaginationChangerExampleComponent } from './pagination-changer-example/pagination-changer-example.component';
 import { PaginationJumpExampleComponent } from './pagination-jump-example/pagination-jump-example.component';
 import { PaginationSimpleExampleComponent } from './pagination-simple-example/pagination-simple-example.component';
-import {
-  PaginationTextLinksExampleComponent
-} from './pagination-text-links-example/pagination-text-links-example.component';
+import { PaginationTextLinksExampleComponent } from './pagination-text-links-example/pagination-text-links-example.component';
 import { PaginationTotalNumberExampleComponent } from './pagination-total-number-example/pagination-total-number-example.component';
-
 
 @NgModule({
   declarations: [
@@ -23,13 +20,8 @@ import { PaginationTotalNumberExampleComponent } from './pagination-total-number
     PaginationJumpExampleComponent,
     PaginationSimpleExampleComponent,
     PaginationTextLinksExampleComponent,
-    PaginationTotalNumberExampleComponent
+    PaginationTotalNumberExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PaginationRoutingModule
-  ]
+  imports: [CommonModule, SharedModule, PaginationRoutingModule],
 })
-export class PaginationModule {
-}
+export class PaginationModule {}

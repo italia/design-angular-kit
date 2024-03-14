@@ -6,10 +6,9 @@ import { inputToBoolean } from '../../../utils/coercion';
 @Directive({
   standalone: true,
   selector: '[itTooltip]',
-  exportAs: 'itTooltip'
+  exportAs: 'itTooltip',
 })
 export class ItTooltipDirective implements AfterViewInit, OnDestroy {
-
   /**
    * Define the tooltip title
    * @param title the tooltip title
@@ -65,9 +64,7 @@ export class ItTooltipDirective implements AfterViewInit, OnDestroy {
   private readonly element: HTMLElement;
   private tooltip?: Tooltip;
 
-  constructor(
-    private readonly _elementRef: ElementRef
-  ) {
+  constructor(private readonly _elementRef: ElementRef) {
     this.element = this._elementRef.nativeElement;
   }
 
@@ -141,5 +138,4 @@ export class ItTooltipDirective implements AfterViewInit, OnDestroy {
   public update(): void {
     this.tooltip?.disable();
   }
-
 }

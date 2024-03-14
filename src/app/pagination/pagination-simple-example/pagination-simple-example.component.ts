@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-pagination-simple-example',
-  templateUrl: './pagination-simple-example.component.html'
+  templateUrl: './pagination-simple-example.component.html',
 })
 export class PaginationSimpleExampleComponent {
   currentPage: number = 0;

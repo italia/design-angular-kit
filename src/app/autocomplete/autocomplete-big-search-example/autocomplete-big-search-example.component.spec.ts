@@ -8,7 +8,7 @@ describe('AutocompleteBigSearchExampleComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AutocompleteBigSearchExampleComponent]
+      declarations: [AutocompleteBigSearchExampleComponent],
     });
     fixture = TestBed.createComponent(AutocompleteBigSearchExampleComponent);
     component = fixture.componentInstance;

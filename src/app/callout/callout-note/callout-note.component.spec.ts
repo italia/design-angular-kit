@@ -8,9 +8,8 @@ describe('CalloutNoteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalloutNoteComponent ]
-    })
-    .compileComponents();
+      declarations: [CalloutNoteComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CalloutNoteComponent);
     component = fixture.componentInstance;

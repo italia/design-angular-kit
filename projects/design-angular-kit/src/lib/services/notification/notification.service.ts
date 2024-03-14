@@ -11,9 +11,7 @@ export class ItNotificationService {
    * @param filterType filter type of notification
    */
   public onNotification(filterType?: NotificationType): Observable<Notification> {
-    return this.subject.asObservable().pipe(
-      filter(n => n && (!filterType || (n.type === filterType)))
-    );
+    return this.subject.asObservable().pipe(filter(n => n && (!filterType || n.type === filterType)));
   }
 
   /**
@@ -32,14 +30,14 @@ export class ItNotificationService {
    * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  public standard(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
+  public standard(title: string, message?: string, dismissible?: boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Standard,
       message,
       title,
       duration,
       dismissible,
-      position
+      position,
     });
   }
 
@@ -51,14 +49,14 @@ export class ItNotificationService {
    * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  public success(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
+  public success(title: string, message?: string, dismissible?: boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Success,
       message,
       title,
       duration,
       dismissible,
-      position
+      position,
     });
   }
 
@@ -70,14 +68,14 @@ export class ItNotificationService {
    * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  public error(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
+  public error(title: string, message?: string, dismissible?: boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Error,
       message,
       title,
       duration,
       dismissible,
-      position
+      position,
     });
   }
 
@@ -89,14 +87,14 @@ export class ItNotificationService {
    * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  public warning(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
+  public warning(title: string, message?: string, dismissible?: boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Warning,
       message,
       title,
       duration,
       dismissible,
-      position
+      position,
     });
   }
 
@@ -108,14 +106,14 @@ export class ItNotificationService {
    * @param duration notification duration (milliseconds)
    * @param position notification position
    */
-  public info(title: string, message?: string, dismissible?:boolean, duration?: number, position?: NotificationPosition): void {
+  public info(title: string, message?: string, dismissible?: boolean, duration?: number, position?: NotificationPosition): void {
     this.addNotification({
       type: NotificationType.Info,
       message,
       title,
       duration,
       dismissible,
-      position
+      position,
     });
   }
 }

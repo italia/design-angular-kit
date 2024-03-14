@@ -1,41 +1,40 @@
 <h3>Configurazione badge</h3>
 <div class="bd-example">
-
   <div class="row">
     <div class="col-4">
       <div class="example-section">
-
         <div class="mt-4">
           <it-input label="Testo badge" [(ngModel)]="badgeText"></it-input>
-          <hr>
+          <hr />
         </div>
         <div class="row">
           <div class="col-6">
-            <label><strong>Colore Badge</strong></label>
+            <span><strong>Colore Badge</strong></span>
             <ng-container *ngFor="let color of colors; let i = index">
-              <it-radio-button [id]="'color-'+i" name="color"
-                               [label]="color" [value]="color"
-                               [(ngModel)]="selectedColor"></it-radio-button>
+              <it-radio-button
+                [id]="'color-' + i"
+                name="color"
+                [span]="color"
+                [value]="color"
+                [(ngModel)]="selectedColor"></it-radio-button>
             </ng-container>
           </div>
           <div class="col-6">
-            <label for="isRounded"><strong>Badge arrotondato</strong></label>
-
+            <span for="isRounded"><strong>Badge arrotondato</strong></span>
             <it-checkbox [(ngModel)]="isRounded" label="Rounded"></it-checkbox>
-
           </div>
         </div>
-
       </div>
     </div>
 
     <div class="col-6 offset-2">
       <h4 class="card-title">Risultato badge</h4>
 
-      <h5>Testo di esempio <span [itBadge]="selectedColor" [rounded]="isRounded">{{badgeText}}</span></h5>
+      <h5>
+        Testo di esempio <span [itBadge]="selectedColor" [rounded]="isRounded">{{ badgeText }}</span>
+      </h5>
 
       <h5>Link di esempio <a href="#" [itBadge]="selectedColor" [rounded]="isRounded">link</a></h5>
     </div>
   </div>
-
 </div>

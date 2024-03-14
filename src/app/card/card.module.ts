@@ -14,7 +14,6 @@ import { CardImageComponent } from './card-image/card-image.component';
 import { CardSpecialComponent } from './card-special/card-special.component';
 import { CardTeaserComponent } from './card-teaser/card-teaser.component';
 
-
 @NgModule({
   declarations: [
     CardExampleComponent,
@@ -27,12 +26,8 @@ import { CardTeaserComponent } from './card-teaser/card-teaser.component';
     CardCtaComponent,
     CardImageComponent,
     CardSpecialComponent,
-    CardTeaserComponent
+    CardTeaserComponent,
   ],
-  imports: [
-    CommonModule,
-    CardRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, CardRoutingModule, SharedModule],
 })
-export class CardModule { }
+export class CardModule {}

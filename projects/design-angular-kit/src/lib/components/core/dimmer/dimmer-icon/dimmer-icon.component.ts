@@ -5,8 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'it-dimmer-icon',
   templateUrl: './dimmer-icon.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
-export class ItDimmerIconComponent {
-
-}
+export class ItDimmerIconComponent {}

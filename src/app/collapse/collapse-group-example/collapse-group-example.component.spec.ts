@@ -8,9 +8,8 @@ describe('CollapseGroupExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CollapseGroupExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [CollapseGroupExampleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

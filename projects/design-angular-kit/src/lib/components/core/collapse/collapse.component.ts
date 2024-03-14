@@ -1,13 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Collapse } from 'bootstrap-italia';
 import { inputToBoolean } from '../../../utils/coercion';
@@ -18,21 +9,20 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './collapse.component.html',
   exportAs: 'itCollapse',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: []
+  imports: [],
 })
 export class ItCollapseComponent extends ItAbstractComponent implements AfterViewInit {
-
   /**
    * Enable multiple collapse
    * @default false
    */
-  @Input({transform: inputToBoolean}) multi?: boolean;
+  @Input({ transform: inputToBoolean }) multi?: boolean;
 
   /**
    * Toggles the collapsible element on invocation
    * @default false
    */
-  @Input({transform: inputToBoolean}) opened?: boolean;
+  @Input({ transform: inputToBoolean }) opened?: boolean;
 
   /**
    * Custom class
@@ -59,7 +49,6 @@ export class ItCollapseComponent extends ItAbstractComponent implements AfterVie
    */
   @Output() hiddenEvent: EventEmitter<Event> = new EventEmitter();
 
-
   private collapse?: Collapse;
 
   private open: boolean = false;
@@ -73,13 +62,25 @@ export class ItCollapseComponent extends ItAbstractComponent implements AfterVie
     if (this.collapseDiv) {
       const element = this.collapseDiv.nativeElement;
       this.collapse = Collapse.getOrCreateInstance(element, {
-        toggle: this.opened
+        toggle: this.opened,
       });
 
-      element.addEventListener('show.bs.collapse', event => {this.open = true; this.showEvent.emit(event)});
-      element.addEventListener('shown.bs.collapse', event => {this.open = true; this.shownEvent.emit(event)});
-      element.addEventListener('hide.bs.collapse', event => {this.open = false; this.hideEvent.emit(event)});
-      element.addEventListener('hidden.bs.collapse', event => {this.open = false; this.hiddenEvent.emit(event)});
+      element.addEventListener('show.bs.collapse', event => {
+        this.open = true;
+        this.showEvent.emit(event);
+      });
+      element.addEventListener('shown.bs.collapse', event => {
+        this.open = true;
+        this.shownEvent.emit(event);
+      });
+      element.addEventListener('hide.bs.collapse', event => {
+        this.open = false;
+        this.hideEvent.emit(event);
+      });
+      element.addEventListener('hidden.bs.collapse', event => {
+        this.open = false;
+        this.hiddenEvent.emit(event);
+      });
     }
   }
 

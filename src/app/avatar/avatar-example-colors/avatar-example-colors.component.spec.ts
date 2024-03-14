@@ -8,9 +8,8 @@ describe('AvatarExampleColorsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AvatarExampleColorsComponent ]
-    })
-    .compileComponents();
+      declarations: [AvatarExampleColorsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AvatarExampleColorsComponent);
     component = fixture.componentInstance;

@@ -6,10 +6,9 @@ import { inputToBoolean } from '../../../utils/coercion';
 @Directive({
   standalone: true,
   selector: '[itPopover]',
-  exportAs: 'itPopover'
+  exportAs: 'itPopover',
 })
 export class ItPopoverDirective implements AfterViewInit, OnDestroy {
-
   /**
    * Define the popover content
    * @param content the popover content
@@ -28,7 +27,6 @@ export class ItPopoverDirective implements AfterViewInit, OnDestroy {
       this.element.setAttribute('data-bs-original-title', title);
     }
   }
-
 
   /**
    * Define the popover placement
@@ -96,9 +94,7 @@ export class ItPopoverDirective implements AfterViewInit, OnDestroy {
   private readonly element: HTMLElement;
   private popover?: Popover;
 
-  constructor(
-    private readonly _elementRef: ElementRef
-  ) {
+  constructor(private readonly _elementRef: ElementRef) {
     this.element = this._elementRef.nativeElement;
   }
 
@@ -172,5 +168,4 @@ export class ItPopoverDirective implements AfterViewInit, OnDestroy {
   public update(): void {
     this.popover?.disable();
   }
-
 }

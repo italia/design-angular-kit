@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-alert-index',
-  templateUrl: './alert-index.component.html'
+  templateUrl: './alert-index.component.html',
 })
 export class AlertIndexComponent {
   component: any;

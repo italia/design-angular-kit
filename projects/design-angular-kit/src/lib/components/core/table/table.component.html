@@ -1,22 +1,23 @@
 <div [class]="responsive ? 'table-' + responsive : undefined">
-  <table class="table{{color ? ' table-' + color : '' }}{{alignment ? ' ' + alignment : '' }}"
-         [class.table-striped]="striped"
-         [class.table-hover]="hover"
-         [class.table-bordered]="bordered"
-         [class.table-borderless]="borderless"
-         [class.table-sm]="compact"
-         [class.caption-top]="captionTop">
+  <table
+    class="table{{ color ? ' table-' + color : '' }}{{ alignment ? ' ' + alignment : '' }}"
+    [class.table-striped]="striped"
+    [class.table-hover]="hover"
+    [class.table-bordered]="bordered"
+    [class.table-borderless]="borderless"
+    [class.table-sm]="compact"
+    [class.caption-top]="captionTop">
     <caption>
       <ng-content select="[caption]"></ng-content>
     </caption>
     <thead [class]="headColor ? 'table-' + headColor : undefined">
-    <ng-content select="[thead]"></ng-content>
+      <ng-content select="[thead]"></ng-content>
     </thead>
     <tbody>
-    <ng-content select="[tbody]"></ng-content>
+      <ng-content select="[tbody]"></ng-content>
     </tbody>
     <tfoot>
-    <ng-content select="[tfoot]"></ng-content>
+      <ng-content select="[tfoot]"></ng-content>
     </tfoot>
   </table>
 </div>

@@ -8,9 +8,8 @@ describe('LanguageSwitcherIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LanguageSwitcherIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [LanguageSwitcherIndexComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LanguageSwitcherIndexComponent);
     component = fixture.componentInstance;

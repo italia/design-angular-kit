@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 
 import { FormInputNumberExampleComponent } from './form-input-number.component';
 
@@ -8,9 +8,8 @@ describe('FormInputIconExampleComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormInputNumberExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [FormInputNumberExampleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

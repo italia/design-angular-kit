@@ -8,9 +8,8 @@ describe('PaginationIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaginationIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [PaginationIndexComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PaginationIndexComponent);
     component = fixture.componentInstance;

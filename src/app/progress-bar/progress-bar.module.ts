@@ -13,15 +13,15 @@ import { ProgressBarBgComponent } from './progress-bar-bg/progress-bar-bg.compon
 import { ProgressBarButtonComponent } from './progress-bar-button/progress-bar-button.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    ProgressBarRoutingModule
-  ],
+  imports: [CommonModule, SharedModule, ProgressBarRoutingModule],
   declarations: [
-    ProgressBarExampleComponent, ProgressBarExamplesComponent, ProgressBarIndexComponent,
-    ProgressBarLabelComponent, ProgressBarIndeterminateComponent, ProgressBarBgComponent,
-    ProgressBarButtonComponent
-  ]
+    ProgressBarExampleComponent,
+    ProgressBarExamplesComponent,
+    ProgressBarIndexComponent,
+    ProgressBarLabelComponent,
+    ProgressBarIndeterminateComponent,
+    ProgressBarBgComponent,
+    ProgressBarButtonComponent,
+  ],
 })
-export class ProgressBarModule { }
+export class ProgressBarModule {}

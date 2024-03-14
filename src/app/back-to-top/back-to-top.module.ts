@@ -8,18 +8,8 @@ import { BackToTopIndexComponent } from './back-to-top-index/back-to-top-index.c
 import { BackToTopExamplesComponent } from './back-to-top-examples/back-to-top-examples.component';
 import { BackToTopButtonComponent } from './back-to-top-button/back-to-top-button.component';
 
-
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    BackToTopRoutingModule
-  ],
-  declarations: [
-    BackToTopIndexComponent,
-    BackToTopExamplesComponent,
-    BackToTopButtonComponent
-  ]
+  imports: [CommonModule, SharedModule, FormsModule, BackToTopRoutingModule],
+  declarations: [BackToTopIndexComponent, BackToTopExamplesComponent, BackToTopButtonComponent],
 })
-export class BackToTopModule { }
+export class BackToTopModule {}

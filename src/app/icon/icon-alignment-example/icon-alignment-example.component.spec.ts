@@ -8,9 +8,8 @@ describe('IconAlignmentExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IconAlignmentExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [IconAlignmentExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(IconAlignmentExampleComponent);
     component = fixture.componentInstance;

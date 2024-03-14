@@ -3,10 +3,9 @@ import { IconName } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-chips-example',
-  templateUrl: './chips-example.component.html'
+  templateUrl: './chips-example.component.html',
 })
 export class ChipsExampleComponent {
-
   el = {
     first: true,
     second: true,
@@ -14,13 +13,12 @@ export class ChipsExampleComponent {
     fourth: true,
     fifth: true,
     sixth: true,
-  }
+  };
 
   iconGithub: IconName = 'github';
   size: '' | 'lg' = 'lg';
 
-  close (value: string): void {
+  close(value: string): void {
     this.el[value] = false;
   }
-
 }

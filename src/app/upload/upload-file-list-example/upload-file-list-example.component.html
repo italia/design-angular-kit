@@ -2,9 +2,10 @@
 <div class="bd-example">
   <div class="row my-2">
     <div class="col">
-      <it-upload-file-list [fileList]="uploadedFileList"
-                           (uploadFiles)="onUpdateFileList($event)"
-                           (deleteItem)="onDeleteFileList($event)"></it-upload-file-list>
+      <it-upload-file-list
+        [fileList]="uploadedFileList"
+        (uploadFiles)="onUpdateFileList($event)"
+        (deleteItem)="onDeleteFileList($event)"></it-upload-file-list>
     </div>
   </div>
 </div>

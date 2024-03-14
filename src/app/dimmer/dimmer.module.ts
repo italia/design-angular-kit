@@ -11,19 +11,14 @@ import { DimmerWithButtonsComponent } from './dimmer-with-buttons/dimmer-with-bu
 import { DimmerPrimaryOneButtonComponent } from './dimmer-primary-one-button/dimmer-primary-one-button.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    DimmerRoutingModule
-  ],
+  imports: [CommonModule, SharedModule, FormsModule, DimmerRoutingModule],
   declarations: [
     DimmerIndexComponent,
     DimmerExamplesComponent,
     DimmerExampleComponent,
     DimmerPrimaryComponent,
     DimmerWithButtonsComponent,
-    DimmerPrimaryOneButtonComponent
-  ]
+    DimmerPrimaryOneButtonComponent,
+  ],
 })
-export class DimmerModule { }
+export class DimmerModule {}

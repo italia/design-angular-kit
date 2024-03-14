@@ -3,10 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-avatar-example-group',
   templateUrl: './avatar-example-group.component.html',
-  styleUrls: ['./avatar-example-group.component.scss']
+  styleUrls: ['./avatar-example-group.component.scss'],
 })
 export class AvatarExampleGroupComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

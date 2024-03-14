@@ -8,7 +8,7 @@ import {
   Optional,
   Output,
   booleanAttribute,
-  HostBinding
+  HostBinding,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import {
@@ -16,23 +16,22 @@ import {
   ItSortable,
   ItSortDefaultOptions,
   ItSortEvent,
-  SortDirection
-} from "../../../../interfaces/sortable-table";
+  SortDirection,
+} from '../../../../interfaces/sortable-table';
 
 @Directive({
   standalone: true,
   selector: '[itSort]',
-  exportAs: 'itSort'
+  exportAs: 'itSort',
 })
 export class ItSortDirective implements OnChanges, OnDestroy {
-
   /** The id of the most recently sorted ItSortable. */
   @Input('itSortActive') active?: string;
 
   /**
-    * The direction to set when an MatSortable is initially sorted.
-    * May be overridden by the MatSortable's sort start.
-    */
+   * The direction to set when an MatSortable is initially sorted.
+   * May be overridden by the MatSortable's sort start.
+   */
   @Input('itSortStart') start: SortDirection = 'asc';
 
   /** The sort direction of the currently active ItSortable. */
@@ -49,12 +48,11 @@ export class ItSortDirective implements OnChanges, OnDestroy {
    * Whether to disable the user from clearing the sort by finishing the sort direction cycle.
    * May be overridden by the ItSortable's disable clear input.
    */
-  @Input({transform: booleanAttribute})
+  @Input({ transform: booleanAttribute })
   disableSortClear?: boolean;
 
-
   /** Whether the sortable is disabled. */
-  @Input({transform: booleanAttribute})
+  @Input({ transform: booleanAttribute })
   sortDisabled: boolean = false;
 
   /** Event emitted when the user changes either the active sort or sort direction. */
@@ -72,14 +70,13 @@ export class ItSortDirective implements OnChanges, OnDestroy {
   constructor(
     @Optional()
     @Inject(IT_SORT_DEFAULT_OPTIONS)
-    private _defaultOptions?: ItSortDefaultOptions,
-  ) {
-  }
+    private _defaultOptions?: ItSortDefaultOptions
+  ) {}
 
   /**
-     * Register function to be used by the contained ItSortables. Adds the ItSortable to the
-     * collection of ItSortables.
-     */
+   * Register function to be used by the contained ItSortables. Adds the ItSortable to the
+   * collection of ItSortables.
+   */
   register(sortable: ItSortable): void {
     this.sortables.set(sortable.id, sortable);
   }
@@ -101,9 +98,8 @@ export class ItSortDirective implements OnChanges, OnDestroy {
       this.direction = this.getNextSortDirection(sortable);
     }
 
-    this.sortChange.emit({active: this.active, direction: this.direction});
+    this.sortChange.emit({ active: this.active, direction: this.direction });
   }
-
 
   /** Returns the next sort direction of the active sortable, checking for potential overrides. */
   getNextSortDirection(sortable: ItSortable): SortDirection {
@@ -112,9 +108,8 @@ export class ItSortDirective implements OnChanges, OnDestroy {
     }
 
     // Get the sort direction cycle with the potential sortable overrides.
-    const disableClear =
-      sortable?.disableSortClear ?? this.disableSortClear ?? !!this._defaultOptions?.disableClear;
-    let sortDirectionCycle = getSortDirectionCycle(sortable.start || this.start, disableClear);
+    const disableClear = sortable?.disableSortClear ?? this.disableSortClear ?? !!this._defaultOptions?.disableClear;
+    const sortDirectionCycle = getSortDirectionCycle(sortable.start || this.start, disableClear);
 
     // Get and return the next direction in the cycle
     let nextDirectionIndex = sortDirectionCycle.indexOf(this.direction) + 1;
@@ -133,10 +128,9 @@ export class ItSortDirective implements OnChanges, OnDestroy {
   }
 }
 
-
 /** Returns the sort direction cycle to use given the provided parameters of order and clear. */
-function getSortDirectionCycle(start: SortDirection, disableClear: boolean): Array<SortDirection|undefined> {
-  let sortOrder: Array<SortDirection> = ['asc', 'desc'];
+function getSortDirectionCycle(start: SortDirection, disableClear: boolean): Array<SortDirection | undefined> {
+  const sortOrder: Array<SortDirection> = ['asc', 'desc'];
   if (start == 'desc') {
     sortOrder.reverse();
   }

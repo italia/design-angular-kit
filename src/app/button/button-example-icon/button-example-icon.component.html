@@ -1,7 +1,6 @@
 <h3>Bottone con icona</h3>
 
 <div class="bd-example">
-
   <button itButton="primary" class="mb-5">
     <it-icon *ngIf="iconPosition === 'start'" [name]="icon" [color]="iconColor" class="me-2"></it-icon>
     Login
@@ -27,8 +26,7 @@
         <div class="form-check col-5">
           <it-radio-button value="white" label="White" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
           <it-radio-button value="primary" label="Primary" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
-          <it-radio-button value="secondary" label="Secondary" name="icon-color"
-                           [(ngModel)]="iconColor"></it-radio-button>
+          <it-radio-button value="secondary" label="Secondary" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>
         </div>
         <div class="form-check col-4">
           <it-radio-button value="success" label="Success" name="icon-color" [(ngModel)]="iconColor"></it-radio-button>

@@ -20,8 +20,6 @@ import { ItSortHeaderComponent } from 'projects/design-angular-kit/src/lib/compo
 import { TablePaginatedComponent } from './table-paginated/table-paginated.component';
 import { TranslateModule } from '@ngx-translate/core';
 
-
-
 @NgModule({
   declarations: [
     TableIndexComponent,
@@ -36,16 +34,8 @@ import { TranslateModule } from '@ngx-translate/core';
     TableHeaderExampleComponent,
     TableFooterExampleComponent,
     TableCaptionExampleComponent,
-    TablePaginatedComponent
+    TablePaginatedComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    TableRoutingModule,
-    FormsModule,
-    ItSortDirective,
-    ItSortHeaderComponent,
-    TranslateModule
-  ]
+  imports: [CommonModule, SharedModule, TableRoutingModule, FormsModule, ItSortDirective, ItSortHeaderComponent, TranslateModule],
 })
-export class TableModule { }
+export class TableModule {}

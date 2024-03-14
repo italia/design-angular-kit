@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-alert-examples',
-  templateUrl: './alert-examples.component.html'
+  templateUrl: './alert-examples.component.html',
 })
-export class AlertExamplesComponent {
-
-}
+export class AlertExamplesComponent {}

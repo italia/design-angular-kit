@@ -8,9 +8,8 @@ describe('ButtonExampleColorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ButtonExampleColorComponent ]
-    })
-    .compileComponents();
+      declarations: [ButtonExampleColorComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

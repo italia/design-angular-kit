@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-rating-index',
-  templateUrl: './rating-index.component.html'
+  templateUrl: './rating-index.component.html',
 })
 export class RatingIndexComponent {
   component: any;

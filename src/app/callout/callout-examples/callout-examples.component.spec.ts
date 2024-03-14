@@ -7,9 +7,8 @@ describe('CalloutExamplesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalloutExamplesComponent ]
-    })
-    .compileComponents();
+      declarations: [CalloutExamplesComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CalloutExamplesComponent);
     component = fixture.componentInstance;

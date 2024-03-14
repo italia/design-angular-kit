@@ -2,7 +2,7 @@
 <div class="bd-example">
   <it-breadcrumb [dark]="isDark" [separator]="separator">
     <it-breadcrumb-item *ngFor="let item of items" class="me-1" [href]="item.link" [iconName]="item.icon">
-      {{item.label}}
+      {{ item.label }}
     </it-breadcrumb-item>
   </it-breadcrumb>
 
@@ -13,15 +13,10 @@
 
       <div class="row mt-4">
         <div class="col-6">
-          <button itButton="primary" size="lg" class="mb-3" (click)="insert()">
-            Aggiungi breadcrumb
-          </button>
+          <button itButton="primary" size="lg" class="mb-3" (click)="insert()">Aggiungi breadcrumb</button>
         </div>
         <div class="col-6">
-          <button itButton="primary" size="lg" class="mb-3" (click)="remove()"
-                     [disabled]="!items.length">
-            Rimuovi breadcrumb
-          </button>
+          <button itButton="primary" size="lg" class="mb-3" (click)="remove()" [disabled]="!items.length">Rimuovi breadcrumb</button>
         </div>
       </div>
     </div>
@@ -34,10 +29,8 @@
     </div>
     <div class="form-check col-3">
       <h5>Icona</h5>
-      <it-radio-button [value]="undefined" label="Nessuna" [(ngModel)]="icon"
-                       name="icon"></it-radio-button>
-      <it-radio-button value="star-outline" label="it-star-outline" [(ngModel)]="icon"
-                       name="icon"></it-radio-button>
+      <it-radio-button [value]="undefined" label="Nessuna" [(ngModel)]="icon" name="icon"></it-radio-button>
+      <it-radio-button value="star-outline" label="it-star-outline" [(ngModel)]="icon" name="icon"></it-radio-button>
       <it-radio-button value="link" label="it-link" [(ngModel)]="icon" name="icon"></it-radio-button>
     </div>
   </div>

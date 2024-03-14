@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+      - run: npm run lint
       - run: npm run build
       - run: npm run build:lib
       - run: npm run test

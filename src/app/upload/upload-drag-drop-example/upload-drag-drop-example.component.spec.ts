@@ -8,9 +8,8 @@ describe('UploadDragDropExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UploadDragDropExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [UploadDragDropExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UploadDragDropExampleComponent);
     component = fixture.componentInstance;

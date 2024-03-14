@@ -8,9 +8,8 @@ describe('FormInputIconExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormInputIconExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [FormInputIconExampleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

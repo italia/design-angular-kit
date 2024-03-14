@@ -12,19 +12,14 @@ import { ChipsGroupComponent } from './chips-group/chips-group.component';
 import { ChipsExampleComponent } from './chips-example/chips-example.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    ChipRoutingModule
-  ],
+  imports: [CommonModule, SharedModule, FormsModule, ChipRoutingModule],
   declarations: [
     ChipIndexComponent,
     ChipsExamplesComponent,
     ChipsColorsComponent,
     ChipsDisabledComponent,
     ChipsGroupComponent,
-    ChipsExampleComponent
-  ]
+    ChipsExampleComponent,
+  ],
 })
-export class ChipModule { }
+export class ChipModule {}
