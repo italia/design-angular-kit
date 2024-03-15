@@ -8,9 +8,8 @@ describe('HightlightsWarningComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HightlightsWarningComponent ]
-    })
-    .compileComponents();
+      declarations: [HightlightsWarningComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HightlightsWarningComponent);
     component = fixture.componentInstance;

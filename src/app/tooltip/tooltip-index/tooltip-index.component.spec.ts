@@ -8,9 +8,8 @@ describe('TooltipIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TooltipIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [TooltipIndexComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

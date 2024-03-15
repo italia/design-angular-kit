@@ -8,9 +8,8 @@ describe('ItTabItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ ItTabItemComponent ]
-    })
-    .compileComponents();
+      imports: [ItTabItemComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ItTabItemComponent);
     component = fixture.componentInstance;

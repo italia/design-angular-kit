@@ -8,8 +8,7 @@ describe('ItCollapseComponent', () => {
   let fixture: ComponentFixture<ItCollapseComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItCollapseComponent);
     component = fixture.componentInstance;

@@ -8,8 +8,7 @@ describe('ItBreadcrumbComponent', () => {
   let fixture: ComponentFixture<ItBreadcrumbComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItBreadcrumbComponent);
     component = fixture.componentInstance;

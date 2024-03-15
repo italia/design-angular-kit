@@ -11,23 +11,15 @@ import { SelectGroupExampleComponent } from './select-group-example/select-group
 import { SelectDisabledExampleComponent } from './select-disabled-example/select-disabled-example.component';
 import { SelectFormgroupExampleComponent } from './select-formgroup-example/select-formgroup-example.component';
 
-
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    SelectRoutingModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, SharedModule, SelectRoutingModule],
   declarations: [
     SelectIndexComponent,
     SelectDisabledExampleComponent,
     SelectGroupExampleComponent,
     SelectExamplesComponent,
     SelectExampleComponent,
-    SelectFormgroupExampleComponent
-  ]
+    SelectFormgroupExampleComponent,
+  ],
 })
-export class SelectModule {
-}
+export class SelectModule {}

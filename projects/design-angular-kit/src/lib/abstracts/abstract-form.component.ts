@@ -18,7 +18,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * - <b>false</b>: Never show validation color
    * - <b>only-valid</b>: Show only valid validation color
    * - <b>only-invalid</b>: Show only invalid validation color
-   * @default <b>only-invalid</b>: Show only invalid validation color
+   * @default <b>true</b>: Always show the validation color
    */
   @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = true;
 

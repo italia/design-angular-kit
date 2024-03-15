@@ -8,9 +8,8 @@ describe('TableBorderedExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableBorderedExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [TableBorderedExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TableBorderedExampleComponent);
     component = fixture.componentInstance;

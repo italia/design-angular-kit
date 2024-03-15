@@ -8,21 +8,8 @@ import { RatingExamplesComponent } from './rating-examples/rating-examples.compo
 import { RatingExampleComponent } from './rating-example/rating-example.component';
 import { RatingExampleReadonlyComponent } from './rating-example-readonly/rating-example-readonly.component';
 
-
 @NgModule({
-  declarations: [
-    RatingIndexComponent,
-    RatingExamplesComponent,
-    RatingExampleComponent,
-    RatingExampleReadonlyComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RatingRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+  declarations: [RatingIndexComponent, RatingExamplesComponent, RatingExampleComponent, RatingExampleReadonlyComponent],
+  imports: [CommonModule, SharedModule, RatingRoutingModule, FormsModule, ReactiveFormsModule],
 })
-export class RatingModule {
-}
+export class RatingModule {}

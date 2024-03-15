@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-list-toggle-checkbox',
   templateUrl: './list-toggle-checkbox.component.html',
-  styleUrls: ['./list-toggle-checkbox.component.scss']
+  styleUrls: ['./list-toggle-checkbox.component.scss'],
 })
-export class ListToggleCheckboxComponent {
-
-}
+export class ListToggleCheckboxComponent {}

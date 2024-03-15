@@ -9,10 +9,9 @@ import { inputToBoolean } from '../../../utils/coercion';
 @Directive({
   standalone: true,
   selector: '[itBadge]',
-  exportAs: 'itBadge'
+  exportAs: 'itBadge',
 })
 export class ItBadgeDirective {
-
   /**
    * Define the badge color
    * @default undefined
@@ -23,7 +22,7 @@ export class ItBadgeDirective {
    * Show rounded badge
    * @default false
    */
-  @Input({transform: inputToBoolean}) rounded?: boolean;
+  @Input({ transform: inputToBoolean }) rounded?: boolean;
 
   @HostBinding('class')
   protected get badgeClass(): string {
@@ -37,5 +36,4 @@ export class ItBadgeDirective {
 
     return badgeClass;
   }
-
 }

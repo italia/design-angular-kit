@@ -3,7 +3,7 @@ import { IconName } from './icon';
 export type AlertColor = 'primary' | 'info' | 'success' | 'warning' | 'danger';
 
 export type ButtonColor =
-  'primary'
+  | 'primary'
   | 'outline-primary'
   | 'secondary'
   | 'outline-secondary'
@@ -39,28 +39,15 @@ export type TableColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warni
 
 export type TableHeadColor = 'light' | 'dark';
 
-export type TableResponsive =
-  'responsive'
-  | 'responsive-sm'
-  | 'responsive-md'
-  | 'responsive-lg'
-  | 'responsive-xl'
-  | 'responsive-xxl';
+export type TableResponsive = 'responsive' | 'responsive-sm' | 'responsive-md' | 'responsive-lg' | 'responsive-xl' | 'responsive-xxl';
 
-export type VerticalAlignment =
-  'align-baseline'
-  | 'align-top'
-  | 'align-middle'
-  | 'align-bottom'
-  | 'align-text-bottom'
-  | 'align-text-top';
+export type VerticalAlignment = 'align-baseline' | 'align-top' | 'align-middle' | 'align-bottom' | 'align-text-bottom' | 'align-text-top';
 
 export type DropdownDirection = 'dropup' | 'dropend' | 'dropstart';
 
 export type CarouselType = 'default' | 'three-cols' | 'three-cols-arrow-visible';
 
 export interface Notification {
-
   /**
    * Notification type
    */
@@ -102,12 +89,12 @@ export enum NotificationType {
   Success = 'success',
   Error = 'error',
   Info = 'info',
-  Warning = 'warning'
+  Warning = 'warning',
 }
 
 export enum NotificationPosition {
   Top = 'top-fix mt-3',
   Bottom = 'bottom-fix mb-3',
   Left = 'left-fix ms-3',
-  Right = 'right-fix me-3'
+  Right = 'right-fix me-3',
 }

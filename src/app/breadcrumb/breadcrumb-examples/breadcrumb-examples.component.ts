@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-breadcrumb-examples',
   templateUrl: './breadcrumb-examples.component.html',
-  styleUrls: ['./breadcrumb-examples.component.scss']
+  styleUrls: ['./breadcrumb-examples.component.scss'],
 })
 export class BreadcrumbExamplesComponent {
-
-  constructor() { }
-
-
+  constructor() {}
 }

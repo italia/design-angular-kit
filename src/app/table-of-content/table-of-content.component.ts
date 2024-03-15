@@ -4,14 +4,13 @@ import TableOfContent from '../../assets/table-of-content.json';
 @Component({
   selector: 'it-table-of-content',
   templateUrl: './table-of-content.component.html',
-  styleUrls: ['./table-of-content.component.scss']
+  styleUrls: ['./table-of-content.component.scss'],
 })
 export class TableOfContentComponent {
-
   tableOfContent = (<any>TableOfContent).tableOfContent;
 
   public toggle(event, tocItem) {
-    this.tableOfContent = this.tableOfContent.map((item) => {
+    this.tableOfContent = this.tableOfContent.map(item => {
       const newTocItem = item;
       if (item.label === tocItem.label) {
         newTocItem.active = true;

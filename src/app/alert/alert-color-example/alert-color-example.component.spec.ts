@@ -8,9 +8,8 @@ describe('AlertColorExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlertColorExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [AlertColorExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AlertColorExampleComponent);
     component = fixture.componentInstance;

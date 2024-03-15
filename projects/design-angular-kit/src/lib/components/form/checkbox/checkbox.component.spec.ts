@@ -8,8 +8,7 @@ describe('ItCheckboxComponent', () => {
   let fixture: ComponentFixture<ItCheckboxComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItCheckboxComponent);
     component = fixture.componentInstance;

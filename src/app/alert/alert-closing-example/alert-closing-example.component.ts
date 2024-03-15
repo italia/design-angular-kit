@@ -2,19 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-alert-closing-example',
-  templateUrl: './alert-closing-example.component.html'
+  templateUrl: './alert-closing-example.component.html',
 })
 export class AlertClosingExampleComponent {
-
   closeTime?: string;
   closedTime?: string;
 
-
-  onClose(event: Event): void {
+  onClose(): void {
     this.closeTime = new Date().toISOString();
   }
 
-  onClosed(event: Event): void {
+  onClosed(): void {
     this.closedTime = new Date().toISOString();
   }
 }

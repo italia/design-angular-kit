@@ -16,17 +16,17 @@ import { PopoverConfigExampleComponent } from './popover-config-example/popover-
 import { PopoverInteractiveExampleComponent } from './popover-interactive-example/popover-interactive-example.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    PopoverRoutingModule,
-    SharedModule,
-    FormsModule
-  ],
+  imports: [CommonModule, PopoverRoutingModule, SharedModule, FormsModule],
   declarations: [
-    PopoverExamplesComponent, PopoverIndexComponent, PopoverExampleComponent,
-    PopoverPlacementsExampleComponent, PopoverFocusExampleComponent,
-    PopoverDisabledExampleComponent, PopoverContainerExampleComponent,
-    PopoverConfigExampleComponent, PopoverInteractiveExampleComponent
-  ]
+    PopoverExamplesComponent,
+    PopoverIndexComponent,
+    PopoverExampleComponent,
+    PopoverPlacementsExampleComponent,
+    PopoverFocusExampleComponent,
+    PopoverDisabledExampleComponent,
+    PopoverContainerExampleComponent,
+    PopoverConfigExampleComponent,
+    PopoverInteractiveExampleComponent,
+  ],
 })
-export class PopoverModule { }
+export class PopoverModule {}

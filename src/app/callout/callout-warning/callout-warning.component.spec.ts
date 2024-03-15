@@ -8,9 +8,8 @@ describe('CalloutWarningComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalloutWarningComponent ]
-    })
-    .compileComponents();
+      declarations: [CalloutWarningComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CalloutWarningComponent);
     component = fixture.componentInstance;

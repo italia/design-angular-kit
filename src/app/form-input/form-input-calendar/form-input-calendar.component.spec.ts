@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 
 import { FormInputCalendarExampleComponent } from './form-input-calendar.component';
 
@@ -8,9 +8,8 @@ describe('FormInputIconExampleComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormInputCalendarExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [FormInputCalendarExampleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

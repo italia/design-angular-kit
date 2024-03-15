@@ -10,12 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DropdownLinkExampleComponent } from './dropdown-link-example/dropdown-link-example.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DropdownRoutingModule,
-    SharedModule,
-    FormsModule
-  ],
-  declarations: [DropdownExampleComponent, DropdownExamplesComponent, DropdownIndexComponent, DropdownLinkExampleComponent]
+  imports: [CommonModule, DropdownRoutingModule, SharedModule, FormsModule],
+  declarations: [DropdownExampleComponent, DropdownExamplesComponent, DropdownIndexComponent, DropdownLinkExampleComponent],
 })
-export class DropdownModule { }
+export class DropdownModule {}

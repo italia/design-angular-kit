@@ -7,9 +7,8 @@ describe('DimmerIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DimmerIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [DimmerIndexComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,7 +8,7 @@ describe('DropdownLinkExampleComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DropdownLinkExampleComponent]
+      declarations: [DropdownLinkExampleComponent],
     });
     fixture = TestBed.createComponent(DropdownLinkExampleComponent);
     component = fixture.componentInstance;

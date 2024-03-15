@@ -1,42 +1,50 @@
 <h3>Le quattro direzioni</h3>
 <div class="bd-example">
   <p class="example-section mb-5">
-    <button type="button" class="btn btn-outline-secondary me-2"
-            itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-            tooltipPlacement="top">
+    <button
+      type="button"
+      class="btn btn-outline-secondary me-2"
+      itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      tooltipPlacement="top">
       Tooltip in alto
     </button>
 
-    <button type="button" class="btn btn-outline-secondary me-2"
-            itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-            tooltipPlacement="right">
+    <button
+      type="button"
+      class="btn btn-outline-secondary me-2"
+      itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      tooltipPlacement="right">
       Tooltip a destra
     </button>
 
-    <button type="button" class="btn btn-outline-secondary me-2"
-            itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-            tooltipPlacement="left">
+    <button
+      type="button"
+      class="btn btn-outline-secondary me-2"
+      itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      tooltipPlacement="left">
       Tooltip a sinistra
     </button>
 
-    <button type="button" class="btn btn-outline-secondary"
-            itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-            tooltipPlacement="bottom">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      itTooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      tooltipPlacement="bottom">
       Tooltip in basso
     </button>
   </p>
 
   <p class="example-section">
-    <button type="button" class="btn btn-lg btn-danger me-4"
-            itTooltip="Tooltip di esempio"
-            it-title="Titolo del Tooltip"
-            [tooltipPlacement]="currentPlacement"
-            triggers="click">
+    <button
+      type="button"
+      class="btn btn-lg btn-danger me-4"
+      itTooltip="Tooltip di esempio"
+      it-title="Titolo del Tooltip"
+      [tooltipPlacement]="currentPlacement"
+      triggers="click">
       Clicca per il tooltip ricollocabile
     </button>
 
-    <button type="button" class="btn btn-lg btn-primary" (click)="changeCurrentPlacement()">
-      Cambia il collocamento della tooltip
-    </button>
+    <button type="button" class="btn btn-lg btn-primary" (click)="changeCurrentPlacement()">Cambia il collocamento della tooltip</button>
   </p>
 </div>

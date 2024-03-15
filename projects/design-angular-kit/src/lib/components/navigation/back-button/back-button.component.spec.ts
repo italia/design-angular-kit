@@ -11,7 +11,7 @@ describe('ItBackButtonComponent', () => {
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule(tb_base)
       .overrideComponent(ItBackButtonComponent, {
-        set: { changeDetection: ChangeDetectionStrategy.Default }
+        set: { changeDetection: ChangeDetectionStrategy.Default },
       })
       .compileComponents();
 
@@ -50,7 +50,7 @@ describe('ItBackButtonComponent', () => {
     expect(visuallyElement).toBeTruthy();
   });
 
-  it('l\'icona deve poter essere rimossa', () => {
+  it("l'icona deve poter essere rimossa", () => {
     component.showIcon = false;
     fixture.detectChanges();
     expect(component.showIcon).toBe(false);
@@ -78,8 +78,7 @@ describe('ItBackButtonComponent', () => {
   });
 
   it('se passo una callback backFn, al click deve essere lanciata lei', () => {
-    component.backFn = () => {
-    };
+    component.backFn = () => {};
     component.buttonStyle = 'link';
     fixture.detectChanges();
     spyOn(component, 'backFn');

@@ -8,8 +8,7 @@ describe('ItAvatarGroupComponent', () => {
   let fixture: ComponentFixture<ItAvatarGroupComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItAvatarGroupComponent);
     component = fixture.componentInstance;
@@ -21,14 +20,12 @@ describe('ItAvatarGroupComponent', () => {
   });
 });
 
-
 describe('ItAvatarGroupItemComponent', () => {
   let component: ItAvatarGroupItemComponent;
   let fixture: ComponentFixture<ItAvatarGroupItemComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItAvatarGroupItemComponent);
     component = fixture.componentInstance;

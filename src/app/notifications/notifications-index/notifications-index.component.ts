@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-notifications-index',
-  templateUrl: './notifications-index.component.html'
+  templateUrl: './notifications-index.component.html',
 })
 export class NotificationsIndexComponent {
   component: any;

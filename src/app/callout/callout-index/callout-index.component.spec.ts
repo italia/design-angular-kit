@@ -7,9 +7,8 @@ describe('CalloutIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalloutIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [CalloutIndexComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,9 +8,8 @@ describe('TableHoverExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableHoverExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [TableHoverExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TableHoverExampleComponent);
     component = fixture.componentInstance;

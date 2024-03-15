@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-pagination-index',
-  templateUrl: './pagination-index.component.html'
+  templateUrl: './pagination-index.component.html',
 })
 export class PaginationIndexComponent {
   component: any;

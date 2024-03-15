@@ -4,10 +4,9 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-collapse-index',
   templateUrl: './collapse-index.component.html',
-  styleUrls: ['./collapse-index.component.scss']
+  styleUrls: ['./collapse-index.component.scss'],
 })
 export class CollapseIndexComponent {
-
   collapseComponent: any;
   accordionComponent: any;
 

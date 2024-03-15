@@ -8,9 +8,8 @@ describe('TextareaExamplesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextareaExamplesComponent ]
-    })
-    .compileComponents();
+      declarations: [TextareaExamplesComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TextareaExamplesComponent);
     component = fixture.componentInstance;

@@ -12,15 +12,15 @@ import { TooltipDisabledExampleComponent } from './tooltip-disabled-example/tool
 import { TooltipConfigExampleComponent } from './tooltip-config-example/tooltip-config-example.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    TooltipRoutingModule
-  ],
+  imports: [CommonModule, SharedModule, TooltipRoutingModule],
   declarations: [
-    TooltipExampleComponent, TooltipExamplesComponent, TooltipIndexComponent,
-    TooltipPlacementsExampleComponent, TooltipEventsExampleComponent,
-    TooltipDisabledExampleComponent, TooltipConfigExampleComponent
-  ]
+    TooltipExampleComponent,
+    TooltipExamplesComponent,
+    TooltipIndexComponent,
+    TooltipPlacementsExampleComponent,
+    TooltipEventsExampleComponent,
+    TooltipDisabledExampleComponent,
+    TooltipConfigExampleComponent,
+  ],
 })
-export class TooltipModule { }
+export class TooltipModule {}

@@ -11,8 +11,6 @@ import { IconListExampleComponent } from './icon-list-example/icon-list-example.
 import { IconColorExampleComponent } from './icon-color-example/icon-color-example.component';
 import { IconAlignmentExampleComponent } from './icon-alignment-example/icon-alignment-example.component';
 
-
-
 @NgModule({
   declarations: [
     IconIndexComponent,
@@ -21,13 +19,8 @@ import { IconAlignmentExampleComponent } from './icon-alignment-example/icon-ali
     IconSizeExampleComponent,
     IconListExampleComponent,
     IconColorExampleComponent,
-    IconAlignmentExampleComponent
+    IconAlignmentExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    IconRoutingModule,
-    FormsModule
-  ]
+  imports: [CommonModule, SharedModule, IconRoutingModule, FormsModule],
 })
-export class IconModule { }
+export class IconModule {}

@@ -8,9 +8,8 @@ describe('CarouselFullscreenImageExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarouselFullscreenImageExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [CarouselFullscreenImageExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CarouselFullscreenImageExampleComponent);
     component = fixture.componentInstance;

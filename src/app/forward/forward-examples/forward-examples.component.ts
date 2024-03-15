@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-forward-examples',
-  templateUrl: './forward-examples.component.html'
+  templateUrl: './forward-examples.component.html',
 })
-export class ForwardExamplesComponent {
-
-}
+export class ForwardExamplesComponent {}

@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-modal-index',
-  templateUrl: './modal-index.component.html'
+  templateUrl: './modal-index.component.html',
 })
 export class ModalIndexComponent {
   component: any;

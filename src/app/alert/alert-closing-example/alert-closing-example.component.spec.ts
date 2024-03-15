@@ -8,9 +8,8 @@ describe('AlertClosingExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlertClosingExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [AlertClosingExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AlertClosingExampleComponent);
     component = fixture.componentInstance;

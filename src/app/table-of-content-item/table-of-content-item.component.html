@@ -1,8 +1,8 @@
 <div class="bd-toc-item" [routerLinkActive]="'active'">
-  <a [routerLink]="tocItem.link" class="bd-toc-link" focusMouse >{{tocItem.label}}</a>
-  <ul class="nav bd-sidenav pl-2" >
+  <a [routerLink]="tocItem.link" class="bd-toc-link" focusMouse>{{ tocItem.label }}</a>
+  <ul class="nav bd-sidenav pl-2">
     <li *ngFor="let link of tocItem.links | linksort" [routerLinkActive]="['active', 'bd-sidenav-active']">
-      <a [routerLink]="link.link" class = "list-item" focusMouse>{{link.label}}</a>
+      <a [routerLink]="link.link" class="list-item" focusMouse>{{ link.label }}</a>
     </li>
   </ul>
 </div>

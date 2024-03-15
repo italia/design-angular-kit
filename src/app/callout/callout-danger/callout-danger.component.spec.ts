@@ -8,9 +8,8 @@ describe('CalloutDangerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalloutDangerComponent ]
-    })
-    .compileComponents();
+      declarations: [CalloutDangerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CalloutDangerComponent);
     component = fixture.componentInstance;

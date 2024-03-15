@@ -4,15 +4,17 @@
     <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
   </p>
 
-
   <h4>Risultato</h4>
 
   <div class="example-section">
-    <it-radio-button *ngFor="let color of colors; let i = index"
-                     [id]="'color-'+i"
-                     [(ngModel)]="selectedColor" [disabled]="disabled" [value]="color"
-                     [label]="color"></it-radio-button>
-    <div class="example-selected-value">Colore selezionato: {{selectedColor}}</div>
+    <it-radio-button
+      *ngFor="let color of colors; let i = index"
+      [id]="'color-' + i"
+      [(ngModel)]="selectedColor"
+      [disabled]="disabled"
+      [value]="color"
+      [label]="color"></it-radio-button>
+    <div class="example-selected-value">Colore selezionato: {{ selectedColor }}</div>
   </div>
 </div>
 
@@ -25,7 +27,9 @@
     <ng-container label>Altra label con <a href="https://italia.github.io/bootstrap-italia/docs/form/radio-button/">link</a></ng-container>
   </it-radio-button>
 
-  <div class="example-selected-value">Link selezionato: <strong>{{link}}</strong></div>
+  <div class="example-selected-value">
+    Link selezionato: <strong>{{ link }}</strong>
+  </div>
 </div>
 
 <div class="bd-example">
@@ -38,7 +42,7 @@
     <it-radio-button formControlName="gender" value="UNDEFINED" label="Preferisco non dirlo"></it-radio-button>
   </form>
 
-  <div class="example-selected-value">Sesso selezionato: <strong>{{genderFormGroup.value.gender}}</strong></div>
-
-
+  <div class="example-selected-value">
+    Sesso selezionato: <strong>{{ genderFormGroup.value.gender }}</strong>
+  </div>
 </div>

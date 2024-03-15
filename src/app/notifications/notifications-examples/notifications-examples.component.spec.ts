@@ -8,9 +8,8 @@ describe('NotificationsExamplesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotificationsExamplesComponent ]
-    })
-    .compileComponents();
+      declarations: [NotificationsExamplesComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NotificationsExamplesComponent);
     component = fixture.componentInstance;

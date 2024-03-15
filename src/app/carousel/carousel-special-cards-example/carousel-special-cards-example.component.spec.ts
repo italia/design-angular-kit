@@ -8,9 +8,8 @@ describe('CarouselSpecialCardsExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarouselSpecialCardsExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [CarouselSpecialCardsExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CarouselSpecialCardsExampleComponent);
     component = fixture.componentInstance;

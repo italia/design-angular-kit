@@ -10,20 +10,13 @@ import { AutocompleteExamplesComponent } from './autocomplete-examples/autocompl
 import { AutocompleteSearchExampleComponent } from './autocomplete-search-example/autocomplete-search-example.component';
 import { AutocompleteBigSearchExampleComponent } from './autocomplete-big-search-example/autocomplete-big-search-example.component';
 
-
 @NgModule({
   declarations: [
     AutocompleteIndexComponent,
     AutocompleteExamplesComponent,
     AutocompleteSearchExampleComponent,
-    AutocompleteBigSearchExampleComponent
+    AutocompleteBigSearchExampleComponent,
   ],
-  imports: [
-    CommonModule,
-    AutocompleteRoutingModule,
-    ItTabContainerComponent,
-    ItTabItemComponent,
-    SharedModule
-  ]
+  imports: [CommonModule, AutocompleteRoutingModule, ItTabContainerComponent, ItTabItemComponent, SharedModule],
 })
-export class AutocompleteModule { }
+export class AutocompleteModule {}

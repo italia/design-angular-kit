@@ -1,12 +1,11 @@
 export interface AvailableLanguage {
-
   /**
    * The language code
    */
-  code: string,
+  code: string;
 
   /**
    * Label to show
    */
-  label: string
+  label: string;
 }

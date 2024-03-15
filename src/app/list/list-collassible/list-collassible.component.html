@@ -4,8 +4,13 @@
 <div class="bd-example">
   <it-list linkList="true">
     <it-list-item iconRight="true">
-      <a class="list-item large medium icon-right" role="button" [attr.aria-expanded]="itCollapse.isOpen()"
-        (click)="itCollapse.toggle()">
+      <a
+        class="list-item large medium icon-right"
+        role="button"
+        tabindex="0"
+        [attr.aria-expanded]="itCollapse.isOpen()"
+        (click)="itCollapse.toggle()"
+        (keydown)="itCollapse.toggle()">
         <span class="list-item-title-icon-wrapper">
           <span class="list-item-title">Link lista collassabile</span>
           <it-icon name="expand" color="primary"></it-icon>

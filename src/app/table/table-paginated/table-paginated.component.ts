@@ -3,7 +3,7 @@ import { finalize, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'it-table-paginated',
-  templateUrl: './table-paginated.component.html'
+  templateUrl: './table-paginated.component.html',
 })
 export class TablePaginatedComponent implements OnInit {
   isLoading: boolean = false;
@@ -23,15 +23,17 @@ export class TablePaginatedComponent implements OnInit {
    */
   getPage(page: number = 0): void {
     this.isLoading = true;
-    this.fakeServer(page, this.pageOffset).pipe(
-      finalize(() => {
-        this.isLoading = false;
-      })
-    ).subscribe(data => {
-      this.list = data.list;
-      this.currentPage = page;
-      this.totalPages = Math.ceil(data.totalItemsCount / this.pageOffset);
-    });
+    this.fakeServer(page, this.pageOffset)
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe(data => {
+        this.list = data.list;
+        this.currentPage = page;
+        this.totalPages = Math.ceil(data.totalItemsCount / this.pageOffset);
+      });
   }
 
   changerEvent(value: number): void {
@@ -39,22 +41,21 @@ export class TablePaginatedComponent implements OnInit {
     this.getPage();
   }
 
-
   private pages: Array<Array<string>> = [
     ['Antonino', 'Francesco', 'Giovanni'],
     ['Emanuele', 'Francesca', 'Giovanna'],
     ['Linda', 'Riccardo', 'Marco'],
     ['Daniel', 'Gioele', 'Giulio'],
     ['Diego', 'Andrea', 'Lorenzo'],
-    ['Giorgio', 'Manuel', 'Luca']
+    ['Giorgio', 'Manuel', 'Luca'],
   ];
 
-  private fakeServer(page: number, pageOffset: number): Observable<{ list: Array<string>, totalItemsCount: number }> {
+  private fakeServer(page: number, pageOffset: number): Observable<{ list: Array<string>; totalItemsCount: number }> {
     const pageLength = Math.round(pageOffset / this.pages[0].length);
-    const list = Array.from({length: pageLength}).flatMap(() => this.pages[page]);
+    const list = Array.from({ length: pageLength }).flatMap(() => this.pages[page]);
     return of({
       list,
-      totalItemsCount: this.pages.length * list.length
+      totalItemsCount: this.pages.length * list.length,
     });
   }
 }

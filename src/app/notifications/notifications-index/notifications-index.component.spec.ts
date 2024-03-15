@@ -8,9 +8,8 @@ describe('NotificationsIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotificationsIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [NotificationsIndexComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NotificationsIndexComponent);
     component = fixture.componentInstance;

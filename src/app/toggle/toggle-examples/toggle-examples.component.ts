@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-toggle-examples',
   templateUrl: './toggle-examples.component.html',
-  styleUrls: ['./toggle-examples.component.scss']
+  styleUrls: ['./toggle-examples.component.scss'],
 })
 export class ToggleExamplesComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

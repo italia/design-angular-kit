@@ -3,28 +3,28 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-icon-index',
-  templateUrl: './icon-index.component.html'
+  templateUrl: './icon-index.component.html',
 })
 export class IconIndexComponent {
-
   component: any;
 
-  readonly hrefLibraryConfig = "import {DesignAngularKitModule, DesignAngularKitInit} from 'design-angular-kit';\n" +
-    "  \n" +
-    "  const initConfig: DesignAngularKitInit = {\n" +
-    "    /**\n" +
-    "     * The initial path in the `href` attribute in the `IconComponent` component\n" +
+  readonly hrefLibraryConfig =
+    "import {DesignAngularKitModule, DesignAngularKitInit} from 'design-angular-kit';\n" +
+    '  \n' +
+    '  const initConfig: DesignAngularKitInit = {\n' +
+    '    /**\n' +
+    '     * The initial path in the `href` attribute in the `IconComponent` component\n' +
     "     * @default './bootstrap-italia/dist/svg/sprites.svg'\n" +
-    "     */\n" +
+    '     */\n' +
     "    iconHref: 'my-path/svg/sprites.svg',\n" +
-    "  };\n" +
-    "  \n" +
-    "  @NgModule({\n" +
-    "    imports: [\n" +
-    "      ...\n" +
-    "      DesignAngularKitModule.forRoot(initConfig)\n" +
-    "    ]\n" +
-    "  })";
+    '  };\n' +
+    '  \n' +
+    '  @NgModule({\n' +
+    '    imports: [\n' +
+    '      ...\n' +
+    '      DesignAngularKitModule.forRoot(initConfig)\n' +
+    '    ]\n' +
+    '  })';
 
   constructor() {
     this.component = (<any>Documentation).components.find(component => component.name === 'ItIconComponent');

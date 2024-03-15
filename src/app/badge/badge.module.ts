@@ -9,16 +9,8 @@ import { BadgeExampleComponent } from './badge-example/badge-example.component';
 import { BadgeExamplesComponent } from './badge-examples/badge-examples.component';
 import { BadgeIndexComponent } from './badge-index/badge-index.component';
 
-
-
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    BadgeRoutingModule
-  ],
-  declarations: [BadgeExampleComponent, BadgeExamplesComponent, BadgeIndexComponent]
+  imports: [CommonModule, FormsModule, SharedModule, BadgeRoutingModule],
+  declarations: [BadgeExampleComponent, BadgeExamplesComponent, BadgeIndexComponent],
 })
-export class BadgeModule { }
+export class BadgeModule {}

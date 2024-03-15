@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 
 export class ItFileUtils {
-
   /**
    * Return the file size string
    * @param file the file
@@ -30,7 +29,7 @@ export class ItFileUtils {
     reader.readAsDataURL(file);
 
     return new Observable<string>(observer => {
-      reader.onload = (e) => {
+      reader.onload = e => {
         const target = e.target;
         if (!target?.result || target.result instanceof ArrayBuffer) {
           return observer.error('Error on parse');
@@ -74,7 +73,7 @@ export class ItFileUtils {
    * Extract the MIME type from base64 string
    * @param base64 the base64 string
    */
-  public static getMimeTypeFromBase64(base64: string): string|undefined {
+  public static getMimeTypeFromBase64(base64: string): string | undefined {
     const mime = base64.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
     return mime?.length ? mime[1] : undefined;
   }

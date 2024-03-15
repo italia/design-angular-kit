@@ -7,22 +7,14 @@ import { FormInputExamplesComponent } from './form-input-examples/form-input-exa
 import { FormInputIndexComponent } from './form-input-index/form-input-index.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  TemplateDrivenValidationExampleComponent
-} from './template-driven-validation-example/template-driven-validation-example.component';
+import { TemplateDrivenValidationExampleComponent } from './template-driven-validation-example/template-driven-validation-example.component';
 import { ModelDrivenValidationExampleComponent } from './model-driven-validation-example/model-driven-validation-example.component';
 import { FormInputIconExampleComponent } from './form-input-icon/form-input-icon.component';
 import { FormInputNumberExampleComponent } from './form-input-number/form-input-number.component';
 import { FormInputCalendarExampleComponent } from './form-input-calendar/form-input-calendar.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    FormInputRoutingModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, FormsModule, SharedModule, FormInputRoutingModule, ReactiveFormsModule],
   declarations: [
     FormInputExampleComponent,
     FormInputIconExampleComponent,
@@ -32,6 +24,6 @@ import { FormInputCalendarExampleComponent } from './form-input-calendar/form-in
     ModelDrivenValidationExampleComponent,
     FormInputNumberExampleComponent,
     FormInputCalendarExampleComponent,
-  ]
+  ],
 })
-export class FormInputModule { }
+export class FormInputModule {}

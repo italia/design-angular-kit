@@ -8,9 +8,8 @@ describe('ProgressBarHeightComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProgressBarButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [ProgressBarButtonComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

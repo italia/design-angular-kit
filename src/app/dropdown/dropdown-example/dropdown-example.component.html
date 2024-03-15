@@ -8,35 +8,30 @@
       [fullWidth]="isFullWidth"
       (showEvent)="onOpenEvent()"
       (hideEvent)="onCloseEvent()">
-
-      <span button>{{label}}</span>
+      <span button>{{ label }}</span>
       <span *ngIf="withHeading" listHeading>Intestazione Menu</span>
 
       <ng-container list>
         <it-dropdown-item *ngIf="withHeading" divider="true"></it-dropdown-item>
 
-        <it-dropdown-item *ngFor="let item of items"
-                          [href]="item.link"
-                          externalLink="true"
-                          [active]="item.active"
-                          [disabled]="item.disabled"
-                          [large]="item.large"
-                          [iconName]="item.icon"
-                          [iconPosition]="item.iconPosition">
-          {{item.text}}
+        <it-dropdown-item
+          *ngFor="let item of items"
+          [href]="item.link"
+          externalLink="true"
+          [active]="item.active"
+          [disabled]="item.disabled"
+          [large]="item.large"
+          [iconName]="item.icon"
+          [iconPosition]="item.iconPosition">
+          {{ item.text }}
         </it-dropdown-item>
       </ng-container>
-
     </it-dropdown>
   </p>
 
-  <p class="example-section">
-    Open: {{openTime}}
-  </p>
+  <p class="example-section">Open: {{ openTime }}</p>
 
-  <p class="example-section">
-    Close: {{closeTime}}
-  </p>
+  <p class="example-section">Close: {{ closeTime }}</p>
 
   <div class="row">
     <div class="form-check col-3">
@@ -47,51 +42,36 @@
     </div>
     <div class="form-check col-2">
       <h5>Posizione menu</h5>
-      <it-radio-button name="default" [(ngModel)]="menuPlacement" [value]="undefined"
-                       label="Default"></it-radio-button>
-      <it-radio-button name="dropup" [(ngModel)]="menuPlacement" value="dropup"
-                       label="Dropup"></it-radio-button>
-      <it-radio-button name="dropstart" [(ngModel)]="menuPlacement" value="dropstart"
-                       label="Dropstart"></it-radio-button>
-      <it-radio-button name="dropend" [(ngModel)]="menuPlacement" value="dropend"
-                       label="Dropend"></it-radio-button>
+      <it-radio-button name="default" [(ngModel)]="menuPlacement" [value]="undefined" label="Default"></it-radio-button>
+      <it-radio-button name="dropup" [(ngModel)]="menuPlacement" value="dropup" label="Dropup"></it-radio-button>
+      <it-radio-button name="dropstart" [(ngModel)]="menuPlacement" value="dropstart" label="Dropstart"></it-radio-button>
+      <it-radio-button name="dropend" [(ngModel)]="menuPlacement" value="dropend" label="Dropend"></it-radio-button>
     </div>
-
 
     <div class="form-check col-2">
       <h5>Testo</h5>
-      <it-radio-button name="clickMe" [(ngModel)]="label" value="Click me"
-                       label="Click me"></it-radio-button>
+      <it-radio-button name="clickMe" [(ngModel)]="label" value="Click me" label="Click me"></it-radio-button>
       <it-radio-button name="check" [(ngModel)]="label" value="Check" label="Check"></it-radio-button>
-      <it-radio-button name="hello" [(ngModel)]="label" value="Hello world!"
-                       label="Hello world!"></it-radio-button>
+      <it-radio-button name="hello" [(ngModel)]="label" value="Hello world!" label="Hello world!"></it-radio-button>
     </div>
 
     <div class="form-check col-5">
       <h5>Colorazione</h5>
       <div class="row">
         <div class="form-check col-4">
-          <it-radio-button name="none" [(ngModel)]="color" [value]="undefined"
-                           label="None"></it-radio-button>
-          <it-radio-button name="primary" [(ngModel)]="color" value="primary"
-                           label="Primary"></it-radio-button>
-          <it-radio-button name="secondary" [(ngModel)]="color" value="secondary"
-                           label="Secondary"></it-radio-button>
-          <it-radio-button name="success" [(ngModel)]="color" value="success"
-                           label="Success"></it-radio-button>
-          <it-radio-button name="warning" [(ngModel)]="color" value="warning"
-                           label="Warning"></it-radio-button>
+          <it-radio-button name="none" [(ngModel)]="color" [value]="undefined" label="None"></it-radio-button>
+          <it-radio-button name="primary" [(ngModel)]="color" value="primary" label="Primary"></it-radio-button>
+          <it-radio-button name="secondary" [(ngModel)]="color" value="secondary" label="Secondary"></it-radio-button>
+          <it-radio-button name="success" [(ngModel)]="color" value="success" label="Success"></it-radio-button>
+          <it-radio-button name="warning" [(ngModel)]="color" value="warning" label="Warning"></it-radio-button>
         </div>
         <div class="form-check col-5">
-          <it-radio-button name="danger" [(ngModel)]="color" value="danger"
-                           label="Danger"></it-radio-button>
+          <it-radio-button name="danger" [(ngModel)]="color" value="danger" label="Danger"></it-radio-button>
           <it-radio-button name="info" [(ngModel)]="color" value="info" label="Info"></it-radio-button>
-          <it-radio-button name="light" [(ngModel)]="color" value="light"
-                           label="Light"></it-radio-button>
+          <it-radio-button name="light" [(ngModel)]="color" value="light" label="Light"></it-radio-button>
           <it-radio-button name="dark" [(ngModel)]="color" value="dark" label="Dark"></it-radio-button>
         </div>
       </div>
     </div>
   </div>
-
 </div>

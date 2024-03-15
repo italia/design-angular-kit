@@ -7,19 +7,14 @@
       [(ngModel)]="selectedValue"
       [options]="selectOptions"
       defaultOption="Seleziona un elemento">
-
       <!--Puoi inserire gli option da html o dall'attributo options-->
       <option [value]="1">Opzione 1</option>
-
     </it-select>
   </p>
-
 
   <h4>Risultato</h4>
 
   <div class="example-section">
-
-    <div class="example-selected-value">Valore selezionato: {{selectedValue}}</div>
+    <div class="example-selected-value">Valore selezionato: {{ selectedValue }}</div>
   </div>
 </div>
-

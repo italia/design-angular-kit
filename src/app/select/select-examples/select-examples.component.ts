@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'it-select-examples',
   templateUrl: './select-examples.component.html',
-  styleUrls: ['./select-examples.component.scss']
+  styleUrls: ['./select-examples.component.scss'],
 })
 export class SelectExamplesComponent {
-
-  constructor() { }
-
-
+  constructor() {}
 }

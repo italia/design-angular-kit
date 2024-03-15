@@ -8,8 +8,7 @@ describe('ItBackToTopComponent', () => {
   let fixture: ComponentFixture<ItBackToTopComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItBackToTopComponent);
     component = fixture.componentInstance;

@@ -1,15 +1,12 @@
 <div class="bd-example">
   <div class="row">
     <div class="col-sm-12 col-md-6">
-      <it-range label="Esempio ngModel" [(ngModel)]="rangeValue">
-        {{rangeValue}} %
-      </it-range>
+      <it-range label="Esempio ngModel" [(ngModel)]="rangeValue"> {{ rangeValue }} % </it-range>
     </div>
     <div class="col-sm-12 col-md-6">
       <form [formGroup]="formGroup">
-        <it-range label="Esempio FormGroup"
-                  [min]="0" [max]="1000" [step]="2" formControlName="range">
-          Valore selezionato: {{formGroup.get('range').value}}
+        <it-range label="Esempio FormGroup" [min]="0" [max]="1000" [step]="2" formControlName="range">
+          Valore selezionato: {{ formGroup.get('range').value }}
         </it-range>
       </form>
     </div>

@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-error-page-index',
-  templateUrl: './error-page-index.component.html'
+  templateUrl: './error-page-index.component.html',
 })
 export class ErrorPageIndexComponent {
   component: any;

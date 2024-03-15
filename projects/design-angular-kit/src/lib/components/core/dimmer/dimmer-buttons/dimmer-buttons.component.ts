@@ -6,16 +6,18 @@ import { NgClass } from '@angular/common';
   selector: 'it-dimmer-buttons',
   templateUrl: './dimmer-buttons.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass]
+  imports: [NgClass],
 })
 export class ItDimmerButtonsComponent {
-
   /**
    * Indica se abbiamo 1 solo bottone
    * @default false
-  */
-  @Input() set hasOneButton (value: boolean) {this._hasOneButton = value};
-  get hasOneButton() {return this._hasOneButton; }
+   */
+  @Input() set hasOneButton(value: boolean) {
+    this._hasOneButton = value;
+  }
+  get hasOneButton() {
+    return this._hasOneButton;
+  }
   private _hasOneButton = false;
-
 }

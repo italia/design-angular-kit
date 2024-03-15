@@ -1,32 +1,51 @@
 <h3>Gruppi di Chip</h3>
 <div class="bd-example">
-    <div class="row">
-        <div class="col-6 col-sm-auto">
-            <it-chip label="Label"></it-chip>
-        </div>
-        <div class="col-6 col-sm-auto">
-            <it-chip *ngIf="el.first" [showCloseButton]="true" label="Label" (closeEvent)="close('first')"></it-chip>
-        </div>
-        <div class="col-6 col-sm-auto">
-            <it-chip *ngIf="el.second" [showCloseButton]="true" [icon]="iconGithub" label="Label" (closeEvent)="close('second')"></it-chip>
-        </div>
-        <div class="col-6 col-sm-auto">
-            <it-chip *ngIf="el.third" [showCloseButton]="true" [avatar]="'https://randomuser.me/api/portraits/men/46.jpg'" [altAvatar]="'Mario Rossi'" label="Label" (closeEvent)="close('third')"></it-chip>
-        </div>
+  <div class="row">
+    <div class="col-6 col-sm-auto">
+      <it-chip label="Label"></it-chip>
     </div>
-    <hr/>
-    <div class="row">
-        <div class="col-6 col-sm-auto">
-            <it-chip [size]="size" label="Label"></it-chip>
-        </div>
-        <div class="col-6 col-sm-auto">
-            <it-chip *ngIf="el.fourth" [showCloseButton]="true" [size]="size" label="Label" (closeEvent)="close('fourth')"></it-chip>
-        </div>
-        <div class="col-6 col-sm-auto">
-            <it-chip *ngIf="el.fifth"  [showCloseButton]="true" [icon]="iconGithub" [size]="size" label="Label" (closeEvent)="close('fifth')"></it-chip>
-        </div>
-        <div class="col-6 col-sm-auto">
-            <it-chip *ngIf="el.sixth" [showCloseButton]="true" [avatar]="'https://randomuser.me/api/portraits/men/46.jpg'" [size]="size" [altAvatar]="'Mario Rossi'" label="Label" (closeEvent)="close('sixth')"></it-chip>
-        </div>
+    <div class="col-6 col-sm-auto">
+      <it-chip *ngIf="el.first" [showCloseButton]="true" label="Label" (closeEvent)="close('first')"></it-chip>
     </div>
+    <div class="col-6 col-sm-auto">
+      <it-chip *ngIf="el.second" [showCloseButton]="true" [icon]="iconGithub" label="Label" (closeEvent)="close('second')"></it-chip>
+    </div>
+    <div class="col-6 col-sm-auto">
+      <it-chip
+        *ngIf="el.third"
+        [showCloseButton]="true"
+        [avatar]="'https://randomuser.me/api/portraits/men/46.jpg'"
+        [altAvatar]="'Mario Rossi'"
+        label="Label"
+        (closeEvent)="close('third')"></it-chip>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-6 col-sm-auto">
+      <it-chip [size]="size" label="Label"></it-chip>
+    </div>
+    <div class="col-6 col-sm-auto">
+      <it-chip *ngIf="el.fourth" [showCloseButton]="true" [size]="size" label="Label" (closeEvent)="close('fourth')"></it-chip>
+    </div>
+    <div class="col-6 col-sm-auto">
+      <it-chip
+        *ngIf="el.fifth"
+        [showCloseButton]="true"
+        [icon]="iconGithub"
+        [size]="size"
+        label="Label"
+        (closeEvent)="close('fifth')"></it-chip>
+    </div>
+    <div class="col-6 col-sm-auto">
+      <it-chip
+        *ngIf="el.sixth"
+        [showCloseButton]="true"
+        [avatar]="'https://randomuser.me/api/portraits/men/46.jpg'"
+        [size]="size"
+        [altAvatar]="'Mario Rossi'"
+        label="Label"
+        (closeEvent)="close('sixth')"></it-chip>
+    </div>
+  </div>
 </div>

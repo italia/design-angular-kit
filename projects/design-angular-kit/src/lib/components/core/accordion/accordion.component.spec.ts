@@ -8,8 +8,7 @@ describe('ItAccordionComponent', () => {
   let fixture: ComponentFixture<ItAccordionComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItAccordionComponent);
     component = fixture.componentInstance;

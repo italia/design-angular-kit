@@ -8,7 +8,7 @@ describe('ListCollassibleComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListCollassibleComponent]
+      declarations: [ListCollassibleComponent],
     });
     fixture = TestBed.createComponent(ListCollassibleComponent);
     component = fixture.componentInstance;

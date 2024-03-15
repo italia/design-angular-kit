@@ -7,9 +7,8 @@ describe('ChipIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChipIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [ChipIndexComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ChipIndexComponent);
     component = fixture.componentInstance;

@@ -8,21 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RangeRoutingModule } from './range-routing.module';
 import { RangeCustomColorsComponent } from './range-custom-colors/range-custom-colors.component';
 
-
 @NgModule({
-  declarations: [
-    RangeIndexComponent,
-    RangeExamplesComponent,
-    RangeExampleComponent,
-    RangeCustomColorsComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RangeRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+  declarations: [RangeIndexComponent, RangeExamplesComponent, RangeExampleComponent, RangeCustomColorsComponent],
+  imports: [CommonModule, SharedModule, RangeRoutingModule, ReactiveFormsModule, FormsModule],
 })
-export class RangeModule {
-}
+export class RangeModule {}

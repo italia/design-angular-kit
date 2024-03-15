@@ -8,8 +8,7 @@ describe('ItAvatarDropdownComponent', () => {
   let fixture: ComponentFixture<ItAvatarDropdownComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItAvatarDropdownComponent);
     component = fixture.componentInstance;

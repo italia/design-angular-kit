@@ -12,17 +12,12 @@
 
   <p class="example-section">
     <it-checkbox [(ngModel)]="checked" [indeterminate]="indeterminate" [disabled]="disabled">
-
       <ng-container label>
         <ng-container *ngIf="link; else simpleLabel">
           Accetto i <a href="https://italia.github.io/bootstrap-italia/">termini di servizio</a>
         </ng-container>
-        <ng-template #simpleLabel>
-          Sono una checkbox
-        </ng-template>
+        <ng-template #simpleLabel> Sono una checkbox </ng-template>
       </ng-container>
-
     </it-checkbox>
   </p>
-
 </div>

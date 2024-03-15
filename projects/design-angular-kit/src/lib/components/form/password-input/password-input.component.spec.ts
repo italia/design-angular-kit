@@ -8,8 +8,7 @@ describe('ItPasswordInputComponent', () => {
   let fixture: ComponentFixture<ItPasswordInputComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule(tb_base)
-      .compileComponents();
+    await TestBed.configureTestingModule(tb_base).compileComponents();
 
     fixture = TestBed.createComponent(ItPasswordInputComponent);
     component = fixture.componentInstance;

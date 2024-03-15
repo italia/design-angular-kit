@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-textarea-index',
-  templateUrl: './textarea-index.component.html'
+  templateUrl: './textarea-index.component.html',
 })
 export class TextareaIndexComponent {
   component: any;

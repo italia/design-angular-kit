@@ -3,7 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-steppers-index',
-  templateUrl: './steppers-index.component.html'
+  templateUrl: './steppers-index.component.html',
 })
 export class SteppersIndexComponent {
   steppersContainer: any;

@@ -8,9 +8,8 @@ describe('CollapseIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CollapseIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [CollapseIndexComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

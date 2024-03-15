@@ -8,9 +8,8 @@ describe('PaginationChangerExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaginationChangerExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [PaginationChangerExampleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PaginationChangerExampleComponent);
     component = fixture.componentInstance;
