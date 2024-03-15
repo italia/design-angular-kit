@@ -11,7 +11,7 @@
 <ng-template #inner>
   @if (label) {
     <div class="callout-title">
-      <it-icon [name]="iconName"></it-icon>
+      <it-icon [labelWaria]="labelWaria" [name]="iconName"></it-icon>
       @if (hiddenLabel) {
         <span class="visually-hidden">{{ hiddenLabel }}</span>
       }

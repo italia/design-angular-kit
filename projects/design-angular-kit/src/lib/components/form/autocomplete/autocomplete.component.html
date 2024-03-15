@@ -17,7 +17,7 @@
     (keydown)="onKeyDown()" />
 
   <span class="autocomplete-icon" aria-hidden="true">
-    <it-icon name="search" size="sm"></it-icon>
+    <it-icon [labelWaria]="labelWaria" name="search" size="sm"></it-icon>
   </span>
 
   @if (autocompleteResults$ | async; as autocomplete) {
