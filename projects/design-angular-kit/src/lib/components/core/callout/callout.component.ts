@@ -62,14 +62,10 @@ export class ItCalloutComponent {
   @Input() icon: IconName | undefined;
 
   /**
-   *  The input label even get labelWaria icon
+   * The input label even get labelWaria icon
    * @default undefined
    */
   @Input() labelWaria: string | undefined = undefined;
-
-  getlabel() {
-    return this.labelWaria;
-  }
 
   protected get iconName(): IconName {
     if (this.icon) {
