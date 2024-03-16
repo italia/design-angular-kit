@@ -78,15 +78,11 @@ Utilizza la funzione `provideDesignAngularKit` nella configurazione dell'applica
 poter inizializzare le funzionalità della libreria.
 
 ```typescript
-import { provideHttpClient } from '@angular/common/http';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideDesignAngularKit } from 'design-angular-kit';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     ...
-    provideAnimations(), // Necessario per il funzionamento della libreria
-    provideHttpClient(), // Necessario per il funzionamento della libreria
     provideDesignAngularKit(),
   ]
 }
@@ -95,25 +91,21 @@ export const appConfig: ApplicationConfig = {
 #### Applicazione modulare
 
 È necessario importare `DesignAngularKitModule` all'interno del modulo principale dell'applicazione (solitamente denominato **AppModule**) 
-utilizzando il metodo `forRoot` per poter inizializzare le funzionalità della libreria e importare tutti i componenti.
+utilizzando il metodo `forRoot` per poter inizializzare le funzionalità della libreria e **importare tutti i componenti**.
 
 ```typescript
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DesignAngularKitModule } from 'design-angular-kit';
 
 @NgModule({
   imports: [
     ...
-    HttpClientModule, // Necessario per il funzionamento della libreria
-    BrowserAnimationsModule, // Necessario per il funzionamento della libreria
     DesignAngularKitModule.forRoot()
   ]
 })
 export class AppModule { }
 ```
 
-Utilizza il metodo `forChild` durante l'importazione del modulo `DesignAngularKitModule` in altri moduli dell'applicazione per importare tutti i componenti della libreria.
+Utilizza il metodo `forChild` durante l'importazione del modulo `DesignAngularKitModule` in altri moduli dell'applicazione per **importare tutti i componenti** della libreria.
 
 
 ```typescript
@@ -131,20 +123,14 @@ export class SharedModule { }
 
 #### Applicazione ibrida
 
-Se nella tua applicazione è presente il modulo **AppModule** ma vuoi utilizzare i nostri componenti con la configurazione _standalone_, 
+Se nella tua applicazione è presente il modulo **AppModule** ma vuoi utilizzare i nostri **componenti con la configurazione _standalone_**, 
 utilizza la funzione `provideDesignAngularKit` all'interno del modulo principale dell'applicazione per poter inizializzare le funzionalità della libreria.
 
 ```typescript
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideDesignAngularKit } from 'design-angular-kit';
 
 @NgModule({
-  imports: [
-    ...
-    HttpClientModule, // Necessario per il funzionamento della libreria
-    BrowserAnimationsModule, // Necessario per il funzionamento della libreria
-  ],
+  imports: [],
   providers: [
     provideDesignAngularKit(),
   ]

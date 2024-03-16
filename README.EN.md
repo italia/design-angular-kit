@@ -78,15 +78,11 @@ Use the `provideDesignAngularKit` function in the application configuration `App
 initialise the library's functionality.
 
 ```typescript
-import { provideHttpClient } from '@angular/common/http';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideDesignAngularKit } from 'design-angular-kit';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     ...
-    provideAnimations(), // Necessary for the operation of the library
-    provideHttpClient(), // Necessary for the operation of the library
     provideDesignAngularKit(),
   ]
 }
@@ -95,25 +91,21 @@ export const appConfig: ApplicationConfig = {
 #### Modular application
 
 You need to import `DesignAngularKitModule` into the main application module (usually named **AppModule**)
-using the `forRoot` method in order to initialise the library functionality and import all components.
+using the `forRoot` method in order to initialise the library functionality and **import all components**.
 
 ```typescript
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DesignAngularKitModule } from 'design-angular-kit';
 
 @NgModule({
   imports: [
     ...
-    HttpClientModule, // Necessary for the operation of the library
-    BrowserAnimationsModule, // Necessary for the operation of the library
     DesignAngularKitModule.forRoot()
   ]
 })
 export class AppModule { }
 ```
 
-Uses the `forChild` method when importing the `DesignAngularKitModule` into other modules of the application to import all library components.
+Uses the `forChild` method when importing the `DesignAngularKitModule` into other modules of the application to **import all library components**.
 
 
 ```typescript
@@ -131,20 +123,14 @@ export class SharedModule { }
 
 #### Hybrid application
 
-If you have the **AppModule** in your application but want to use our components with the _standalone_ configuration,
+If you have the **AppModule** in your application but want to use **our components with the _standalone_ configuration**,
 use the `provideDesignAngularKit` function within the main application module to initialise the library functionality.
 
 ```typescript
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideDesignAngularKit } from 'design-angular-kit';
 
 @NgModule({
-  imports: [
-    ...
-    HttpClientModule, // Necessary for the operation of the library
-    BrowserAnimationsModule, // Necessary for the operation of the library
-  ],
+  imports: [],
   providers: [
     provideDesignAngularKit(),
   ]

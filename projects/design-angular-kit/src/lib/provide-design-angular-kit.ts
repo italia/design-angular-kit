@@ -2,8 +2,9 @@ import { APP_INITIALIZER, EnvironmentProviders, importProvidersFrom, makeEnviron
 import { DesignAngularKitConfig, IT_ASSET_BASE_PATH } from './interfaces/design-angular-kit-config';
 import { loadFonts } from 'bootstrap-italia';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 /**
  * Configures DesignAngularKit library
@@ -22,6 +23,8 @@ export function provideDesignAngularKit(config?: DesignAngularKitConfig): Enviro
       provide: IT_ASSET_BASE_PATH,
       useValue: assetBasePath,
     },
+    provideAnimationsAsync(),
+    provideHttpClient(),
   ];
 
   if (config?.loadFont !== false) {
