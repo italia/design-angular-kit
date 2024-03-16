@@ -156,6 +156,8 @@ export const IconNameArray = [
   'stackoverflow',
   'stackoverflow-square',
   'telegram',
+  'threads',
+  'threads-square',
   'tiktok',
   'tiktok-square',
   'twitter',
