@@ -55,7 +55,7 @@ To play with the library, the [Playground Angular Kit](https://github.com/italia
 
 ## How to use the kit
 
-Design Angular Kit is available on NPM, to install on an existing application on which to test the library (currently not stable) run command
+Design Angular Kit is available on NPM, to install on an existing application on which to test the library run command
 
 ```sh
 npm install design-angular-kit --save

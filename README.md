@@ -55,7 +55,7 @@ Per giocare con la libreria è disponibile il [Playground Angular Kit](https://g
 
 ## Come usare il kit
 
-Design Angular Kit è disponibile su NPM, per installarlo su una applicazione esistente sulla quale provare la libreria (attualmente non stabile) esegui il comando
+Design Angular Kit è disponibile su NPM, per installarlo su una applicazione esistente sulla quale provare la libreria esegui il comando
 
 ```sh
 npm install design-angular-kit --save
