@@ -14,8 +14,7 @@
 </p>
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit/prerelease.svg" alt="NPM"></a>
-    <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit/unstable.svg" alt="NPM"></a>
+    <a href="https://www.npmjs.com/package/design-angular-kit"><img src="https://img.shields.io/npm/v/design-angular-kit.svg" alt="NPM"></a>
 </p>
 
 <p align="center">
@@ -35,14 +34,7 @@
   <a href="https://developersitalia.slack.com/messages/C04H3C19D52/"><img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" /></a>
   <a href="https://slack.developers.italia.it/"><img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" /></a></p>
 
-_⚠️ Warning: this code is still under development and not ready to be used! We are working on updating it to version 1.0.0, comments and contributions from the whole community are more than welcome!_
-
 _⚠️ If you need the old version, the code and its documentation can be found [here](https://github.com/italia/design-angular-kit/tree/0.x)._
-
-## Towards version 1.0.0 📣
-
-Work has started on upgrading the Angular kit to Bootstrap Italia 2 (based on Bootstrap 5).
-On the `main` branch you can find the code of the work in progress and in [milestone Version 1.0.0](https://github.com/italia/design-angular-kit/milestone/3) a preliminary plan of activities. The old version is to be considered deprecated.
 
 **Comments and contributions from the entire community are more than welcome!** 🎉
 
@@ -64,16 +56,14 @@ To play with the library, the [Playground Angular Kit](https://github.com/italia
 Design Angular Kit is available on NPM, to install on an existing application on which to test the library (currently not stable) run command
 
 ```sh
-npm install design-angular-kit@prerelease --save
+npm install design-angular-kit --save
 ```
 
 Choose the version corresponding to your Angular version:
 
 | Angular | design-angular-kit    |
 |---------|-----------------------|
-| 17+     | v1.0.0-prerelease.2 + |
-| 16+     | v1.0.0-17 +           |
-| 15+     | v1.0.0-2 +            |
+| 17+     | v1.0.0 +              |
 
 ## Configuration
 
@@ -380,7 +370,7 @@ and refer to [directions on how to contribute to Design Angular Kit](https://git
 
 The minimum requirements of your local environment must be:
 
-- NodeJS (>= 18)
+- NodeJS (>= 20)
 
 At this point, you need to set up your local environment for compiling source files and generating
 of the documentation:
@@ -457,11 +447,15 @@ npm run test
 
 ## Contributor to the library
 
-Special thanks to those who made the development of this new version possible!
+Special thanks to those who made the development of this library possible!
 
-[![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![NetService](https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg)](https://www.net-serv.it/) | [![Alessio Napolitano](https://github.com/alenap93.png?size=100)](https://github.com/alenap93) |
---- | --- | --- | --- |
-Cristian Borelli | Antonino Bonanno | NetService | Alessio Napolitano |
+[![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Alessio Napolitano](https://github.com/alenap93.png?size=100)](https://github.com/alenap93) |
+--- | --- | --- |
+Antonino Bonanno | Cristian Borelli | Alessio Napolitano |
+
+and thanks to [NetService team](https://www.net-serv.it/):
+
+<a href="https://www.net-serv.it/"><img src="https://www.net-serv.it/css/internet/agid/images/svg/logo-netservicesrl.svg" alt="NetService logo" width="300"></a>
 
 ---
 
