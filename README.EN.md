@@ -34,6 +34,8 @@
   <a href="https://developersitalia.slack.com/messages/C04H3C19D52/"><img src="https://img.shields.io/badge/Slack%20channel-%23design--dev--angular-blue.svg" alt="Join the #design-dev-angular channel" /></a>
   <a href="https://slack.developers.italia.it/"><img src="https://slack.developers.italia.it/badge.svg" alt="Get invited" /></a></p>
 
+_Read this in other languages: [Italiano 🇮🇹](README.md)._
+
 _⚠️ If you need the old version, the code and its documentation can be found [here](https://github.com/italia/design-angular-kit/tree/0.x)._
 
 **Comments and contributions from the entire community are more than welcome!** 🎉
