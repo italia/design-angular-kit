@@ -1,3 +1,54 @@
+# [1.0.0](https://github.com/italia/design-angular-kit/compare/v0.20.0...v1.0.0) (2024-03-18)
+
+
+### Bug Fixes
+
+* **a11y:** wai aria label for icon component ([3bfe2b4](https://github.com/italia/design-angular-kit/commit/3bfe2b4e8cbd539f9b5a1d60e41a997c875a87b7))
+* add nav mode for language switch ([af2159f](https://github.com/italia/design-angular-kit/commit/af2159fea36f2017641e4ea1545a4d7686ff092d))
+* autocomplete label ([c7271f0](https://github.com/italia/design-angular-kit/commit/c7271f0a10dce3ecd5e0c5d1a5e7eac3fbac1cf7))
+* **autocomplete:** added ability to show big autocomplete ([9c75948](https://github.com/italia/design-angular-kit/commit/9c75948985a35787c9eafb2f5e6e3a69397ce112)), closes [#302](https://github.com/italia/design-angular-kit/issues/302)
+* **autocomplete:** fixed autocomplete imports ([ccbe840](https://github.com/italia/design-angular-kit/commit/ccbe84023c10ac11d358e3e8e470c54760089a39)), closes [#302](https://github.com/italia/design-angular-kit/issues/302)
+* avatar linting ([000238d](https://github.com/italia/design-angular-kit/commit/000238d1a2f472c137c352605dabde4854479199))
+* **avatar:** fixed router-link missing importation ([0bbb7cb](https://github.com/italia/design-angular-kit/commit/0bbb7cb23df12920ded6b4b01db6a0a88872daa7))
+* card in image carousel ([87f1f90](https://github.com/italia/design-angular-kit/commit/87f1f900d8be8d17b7e2597ce3ea8f7cb221e18a))
+* **DateUtils:** fixed countDays function ([5b11cc6](https://github.com/italia/design-angular-kit/commit/5b11cc6df3d63c003506a0d0e0ccfb808392ae87))
+* fixed directive compile broken when using @Input transform ([1b72e9e](https://github.com/italia/design-angular-kit/commit/1b72e9ef7c7fbe04120d0dac8a474ba6467588d9))
+* fixed input-group-text on input component when prependText content is dynamic ([19930c5](https://github.com/italia/design-angular-kit/commit/19930c513570271433d6d28981b1624893348fda))
+* fixed tsconfig path for library ([54ae4ef](https://github.com/italia/design-angular-kit/commit/54ae4ef546e4e3d7cd5e513df85eaaf0ab72028d))
+* form validation ([367bdd6](https://github.com/italia/design-angular-kit/commit/367bdd6152e24794b4db208d29f96dff974e854e))
+* input with icons ([4d39007](https://github.com/italia/design-angular-kit/commit/4d39007a894bd5f4f6be78fbfa604d5094e1ebe1))
+* merge fix ([4afaede](https://github.com/italia/design-angular-kit/commit/4afaede72cf893f29ddc6ec1b8922e14d9cd4c46))
+* **pipes:** fixed the mark-matching-text pipe ([b482ff8](https://github.com/italia/design-angular-kit/commit/b482ff874e7ca666a6fa32a420ed433bb4d2619f))
+* **radioButton:** added ability to set the radio name manually ([bbdc97e](https://github.com/italia/design-angular-kit/commit/bbdc97e8d4759350bf5191c79e9a41cf563b2dfe))
+* release ([48a2fa6](https://github.com/italia/design-angular-kit/commit/48a2fa6de8d3820de36b6eb0274a988b47360c10))
+* remove not existing directive from avatar ([2d1220c](https://github.com/italia/design-angular-kit/commit/2d1220cea71a07949e35b8256d9216d1b679dc3f))
+* removed unused ItAbstractComponent from header and navbar ([0ebe1e2](https://github.com/italia/design-angular-kit/commit/0ebe1e2b39d152ab6ce3c65b94bcc4db782d5f42))
+* **textarea:** added to set textarea as readonly ([409c411](https://github.com/italia/design-angular-kit/commit/409c4117621740076f4015186f7771ff069212ca))
+* use button instead of a for avatar dropdown ([3d0d492](https://github.com/italia/design-angular-kit/commit/3d0d492b96985ea4412d9a348d2abcaed32c1601))
+* use fill-opacity to display the sorting arrows correctly ([3516dae](https://github.com/italia/design-angular-kit/commit/3516daee43a15281b75a0a723679282a3cc1c722))
+* use library dependencies inside library provide ([4409748](https://github.com/italia/design-angular-kit/commit/44097489db0b1c6aad10cb98f715456428017836))
+
+
+### Features
+
+* add label waria on more components ([95d2b9d](https://github.com/italia/design-angular-kit/commit/95d2b9da884fcfa6540d67c8e358ba677ab35389))
+* add megamenu component ([0da7bee](https://github.com/italia/design-angular-kit/commit/0da7bee896c6ab37590d21b8625e67ecaf9f27a1))
+* add navbar ([13ad966](https://github.com/italia/design-angular-kit/commit/13ad9661f89f5e5f09fe49d95cebc2329a8e8271))
+* add sidebar component ([cfb85c7](https://github.com/italia/design-angular-kit/commit/cfb85c77b68afd18069124c7a45511bd67da971c))
+* add sorting to table ([0f039f4](https://github.com/italia/design-angular-kit/commit/0f039f48b201f340884bf34958d6ccf1e1160610))
+* improve header component ([b2552b9](https://github.com/italia/design-angular-kit/commit/b2552b91d4751202092e99f217300fa45e522e73))
+* **pipes:** added date-ago pipe ([97b3aed](https://github.com/italia/design-angular-kit/commit/97b3aed79e9e344eb6fc04e7f4f9cbfcf3c2a8be))
+* **pipes:** added duration pipe ([6beea0f](https://github.com/italia/design-angular-kit/commit/6beea0fdf1e52852deca3bd78a28c5f6f99a3e02))
+* split autocomple to another component ([082ee93](https://github.com/italia/design-angular-kit/commit/082ee935559762788058618ac438afded4fe018f)), closes [#302](https://github.com/italia/design-angular-kit/issues/302)
+* upgrade to angular 17 ([072df92](https://github.com/italia/design-angular-kit/commit/072df9255a19d73d2bc8af09680c426ac5630eac))
+* **upgrade-major:** fixed prerelease versioning ([fe3781d](https://github.com/italia/design-angular-kit/commit/fe3781d615510ee1977259e399667dfb70b9865e))
+* **utils:** added date utils ([2b22506](https://github.com/italia/design-angular-kit/commit/2b225067924fe91a31f5d6126cbdf518b3bd7609))
+
+
+### Performance Improvements
+
+* improved all BooleanInput with angular transform function ([0956e52](https://github.com/italia/design-angular-kit/commit/0956e5299ce60aa482d44d846017325ec8402385))
+
 # [1.0.0-prerelease.5](https://github.com/italia/design-angular-kit/compare/v1.0.0-prerelease.4...v1.0.0-prerelease.5) (2024-03-04)
 
 
