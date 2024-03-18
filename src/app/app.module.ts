@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,12 +9,11 @@ import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher
 import { LinkSortPipe } from './link-sort.pipe';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { TranslateStore } from '@ngx-translate/core';
-import { HttpClientModule } from '@angular/common/http';
 import { DesignAngularKitModule } from 'design-angular-kit/design-angular-kit.module';
 
 @NgModule({
   declarations: [AppComponent, TableOfContentComponent, TableOfContentItemComponent, RouterDispatcherComponent, LinkSortPipe],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, DesignAngularKitModule.forRoot()],
+  imports: [BrowserModule, AppRoutingModule, DesignAngularKitModule.forRoot()],
   providers: [
     TranslateStore,
     {
