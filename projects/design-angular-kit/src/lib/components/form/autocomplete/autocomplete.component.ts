@@ -41,6 +41,11 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   @Input() placeholder = '';
 
   /**
+   * The input label even get labelWaria icon
+   */
+  @Input() labelWaria: string | undefined = undefined;
+
+  /**
    * Show the label
    */
   @Input({ transform: inputToBoolean }) forceShowLabel: boolean = true;
