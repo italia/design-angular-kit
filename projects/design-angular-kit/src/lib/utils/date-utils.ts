@@ -70,12 +70,14 @@ export class ItDateUtils {
 
   /**
    * Calculate number of days between two date
-   * @param startDate the start date
-   * @param endDate the end date
+   * @param startDate
+   * @param endDate
+   * @param absolute return unsigned result
    */
-  public static countDays(startDate: Date, endDate: Date): number {
+  public static countDays(startDate: Date, endDate: Date, absolute: boolean = false): number {
     const differenceInTime = endDate.getTime() - startDate.getTime();
-    return Math.floor(differenceInTime / (1000 * 3600 * 24));
+    const diff = absolute ? Math.abs(differenceInTime) : differenceInTime;
+    return Math.ceil(diff / (1000 * 3600 * 24));
   }
 
   /**
