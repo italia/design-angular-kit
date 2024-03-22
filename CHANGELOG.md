@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/italia/design-angular-kit/compare/v1.0.0...v1.0.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* upgrade bootstrap italia ([b765661](https://github.com/italia/design-angular-kit/commit/b7656616439745b9d522674ffa1d8bdd70c396bc))
+
 # [1.0.0](https://github.com/italia/design-angular-kit/compare/v0.20.0...v1.0.0) (2024-03-18)
 
 
