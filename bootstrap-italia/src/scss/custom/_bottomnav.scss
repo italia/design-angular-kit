@@ -90,22 +90,21 @@
   .bottom-nav-badge {
     top: 0;
     right: 0;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 4px;
+    min-width: 1.15rem;
+    line-height: 1;
+    padding: 4px 6px;
     color: $white;
     font-size: 0.625rem;
-    border-radius: 50%;
+    border-radius: 2rem;
     font-style: normal;
   }
 
   // icon alert
   .bottom-nav-alert {
-    top: 4px;
-    right: 8px;
-    min-width: 10px;
-    height: 10px;
-    font-size: 0.625rem;
+    top: 0;
+    right: 4px;
+    min-width: 12px;
+    height: 12px;
     border-radius: 50%;
   }
 
