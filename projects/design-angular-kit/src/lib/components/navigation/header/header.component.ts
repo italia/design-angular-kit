@@ -38,6 +38,7 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
   @Input({ transform: inputToBoolean }) showSearch?: boolean = true;
 
   @Input() slimTitle: string | undefined;
+  @Input() slimTitleLink: string | undefined = '#';
 
   @Input() loginStyle: 'none' | 'default' | 'full' = 'none';
 
