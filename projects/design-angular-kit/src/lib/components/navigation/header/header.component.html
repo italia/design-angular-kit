@@ -10,7 +10,9 @@
         <div class="row">
           <div class="col-12">
             <div class="it-header-slim-wrapper-content">
-              <a class="d-none d-lg-block navbar-brand" href="#">{{ slimTitle }}</a>
+              <a class="d-none d-lg-block navbar-brand" [href]="slimTitleLink" [target]="slimTitleLink !== '#' ? '_blank' : '_self'">
+                {{ slimTitle }}
+              </a>
               <div class="nav-mobile">
                 <nav [attr.aria-label]="'it.navigation.secondary-navigation' | translate">
                   <a
