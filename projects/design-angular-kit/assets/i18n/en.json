@@ -60,7 +60,8 @@
       "back": "Back",
       "forward": "Forward",
       "rate-star": "Rate {{current}} out of {{total}} stars",
-      "rating-star": "Rating {{current}} out of {{total}} stars"
+      "rating-star": "Rating {{current}} out of {{total}} stars",
+      "today": "Today"
     },
     "form": {
       "caps-inserted": "CAPS LOCK entered",
@@ -102,6 +103,10 @@
       "aria-label-main": "Main navigation",
       "aria-label-toggle": "Show/Hide navigation",
       "hide": "Hide navigation"
+    },
+    "timeline": {
+      "read-more": "Read more",
+      "read-more-on": "on {{title}}"
     },
     "utils": {
       "selected": "Selected",
