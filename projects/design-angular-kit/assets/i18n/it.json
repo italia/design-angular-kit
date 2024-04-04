@@ -60,8 +60,7 @@
       "back": "Indietro",
       "forward": "Avanti",
       "rate-star": "Valuta {{current}} stelle su {{total}}",
-      "rating-star": "Valutazione {{current}} stelle su {{total}}",
-      "today": "Oggi"
+      "rating-star": "Valutazione {{current}} stelle su {{total}}"
     },
     "form": {
       "caps-inserted": "CAPS LOCK inserito",
@@ -103,10 +102,6 @@
       "aria-label-main": "Navigazione principale",
       "aria-label-toggle": "Mostra/Nascondi la navigazione",
       "hide": "Nascondi la navigazione"
-    },
-    "timeline": {
-      "read-more": "Leggi di più",
-      "read-more-on": "su {{title}}"
     },
     "utils": {
       "selected": "Selezionata",

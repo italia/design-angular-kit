@@ -34,7 +34,6 @@ export const IconNameArray = [
   'close',
   'close-big',
   'close-circle',
-  'code-circle',
   'comment',
   'copy',
   'delete',

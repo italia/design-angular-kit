@@ -47,25 +47,6 @@ export type DropdownDirection = 'dropup' | 'dropend' | 'dropstart';
 
 export type CarouselType = 'default' | 'three-cols' | 'three-cols-arrow-visible';
 
-export type TimelinePINType = 'default' | 'evidence' | 'now';
-
-export interface TimelineElement {
-  pin: {
-    type?: TimelinePINType;
-    icon?: IconName;
-    text: string;
-  };
-  category?: {
-    title: string;
-    link: string;
-  };
-  title: string;
-  text: string;
-  signature?: string;
-  eventDate?: Date;
-  link?: string;
-}
-
 export interface Notification {
   /**
    * Notification type
