@@ -15,33 +15,33 @@ import { IconName } from 'projects/design-angular-kit/src/lib/interfaces/icon';
 })
 export class ItTimelineItemComponent extends ItAbstractComponent {
   /** Timeline element title */
-  @Input({ required: true }) title: string;
+  @Input({ required: true }) title!: string;
   /** Timeline element text */
-  @Input({ required: true }) text: string;
+  @Input({ required: true }) text!: string;
   /** Timeline element signature */
-  @Input() signature: string;
+  @Input() signature?: string | undefined;
   /** Timeline element reference date */
-  @Input() eventDate?: Date;
+  @Input() eventDate?: Date | undefined;
   /** Timeline element reference date format
    * @default dd/MM/yyyy
    */
-  @Input() dateFormat: string = 'dd/MM/yyyy';
+  @Input() dateFormat?: string | undefined = 'dd/MM/yyyy';
 
   /** Timeline element PIN text */
-  @Input({ required: true }) pinText: string;
+  @Input({ required: true }) pinText!: string;
   /** Timeline element PIN type
    * @default none
    */
-  @Input() pinType: TimelinePINType = 'default';
+  @Input() pinType?: TimelinePINType | undefined = 'default';
   /** Timeline element PIN icon
    * @default code-circle
    */
-  @Input() pinIcon: IconName = 'code-circle';
+  @Input() pinIcon?: IconName | undefined = 'code-circle';
 
   /** Timeline element category title */
-  @Input() categoryTitle: string;
+  @Input() categoryTitle?: string | undefined;
   /** Timeline element category link */
-  @Input() categoryLink: string;
+  @Input() categoryLink?: string | undefined;
 
   /** Timeline element show detail link
    * @default false
@@ -51,5 +51,5 @@ export class ItTimelineItemComponent extends ItAbstractComponent {
   /** Timeline element detail link
    * @default #
    */
-  @Input() readMoreLink: string = '#';
+  @Input() readMoreLink: string | undefined = '#';
 }
