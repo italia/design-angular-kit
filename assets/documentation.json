@@ -16334,7 +16334,7 @@
         },
         {
             "name": "ItHeaderComponent",
-            "id": "component-ItHeaderComponent-f9eb433d46a79e5bcaa13681771ef9293746b53c657355359387fd761306e592712e71c0e3da212ba8999b4832d11628deb719d9980d67570e3859e1c3d23f36",
+            "id": "component-ItHeaderComponent-4732fb98c707c0e9dfe3efde5fa0076a0a14ecdaa04a59926bc729bc983484760bf11c8b9862b4183d7b8eaa3d28eebb9cacf12c8f8e7a5e17b3a179b25ee6f5",
             "file": "projects/design-angular-kit/src/lib/components/navigation/header/header.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -16359,7 +16359,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51,
+                    "line": 52,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -16377,7 +16377,7 @@
                     "defaultValue": "'none'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 42,
+                    "line": 43,
                     "type": "\"none\" | \"default\" | \"full\"",
                     "decorators": []
                 },
@@ -16386,7 +16386,7 @@
                     "name": "megamenu",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 50,
+                    "line": 51,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -16419,6 +16419,15 @@
                     "decorators": []
                 },
                 {
+                    "name": "slimTitleLink",
+                    "defaultValue": "'#'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "string | undefined",
+                    "decorators": []
+                },
+                {
                     "required": false,
                     "name": "smallHeader",
                     "defaultValue": "true",
@@ -16443,14 +16452,14 @@
                     "name": "loginClick",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 44,
+                    "line": 45,
                     "type": "EventEmitter<Event>"
                 },
                 {
                     "name": "searchClick",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 46,
+                    "line": 47,
                     "type": "EventEmitter<Event>"
                 }
             ],
@@ -16462,7 +16471,7 @@
                     "type": "ElementRef<HTMLButtonElement>",
                     "optional": true,
                     "description": "",
-                    "line": 48,
+                    "line": 49,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -16481,7 +16490,7 @@
                     "type": "HeaderSticky",
                     "optional": true,
                     "description": "",
-                    "line": 53,
+                    "line": 54,
                     "modifierKind": [
                         123
                     ]
@@ -16501,7 +16510,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 82,
+                    "line": 83,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -16532,7 +16541,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 88,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -16556,7 +16565,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -16573,7 +16582,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -16594,7 +16603,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 76,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -16625,7 +16634,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  OnChanges,\n  Output,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { ItNavBarModule } from '../navbar/navbar.module';\n\nimport { ItButtonDirective } from '../../core/button/button.directive';\nimport { inputToBoolean } from '../../../utils/coercion';\nimport { HeaderSticky } from 'bootstrap-italia';\n\n@Component({\n  standalone: true,\n  selector: 'it-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [TranslateModule, ItIconComponent, ItButtonDirective, ItNavBarModule],\n})\nexport class ItHeaderComponent implements AfterViewInit, OnChanges {\n  @Input({ transform: inputToBoolean }) light?: boolean;\n\n  @Input({ transform: inputToBoolean }) sticky?: boolean;\n\n  @Input({ transform: inputToBoolean }) showSlim?: boolean = true;\n\n  @Input({ transform: inputToBoolean }) smallHeader?: boolean = true;\n\n  @Input({ transform: inputToBoolean }) showSearch?: boolean = true;\n\n  @Input() slimTitle: string | undefined;\n\n  @Input() loginStyle: 'none' | 'default' | 'full' = 'none';\n\n  @Output() loginClick: EventEmitter<Event>;\n\n  @Output() searchClick: EventEmitter<Event>;\n\n  @ViewChild('headerWrapper') private headerWrapper?: ElementRef<HTMLButtonElement>;\n\n  @Input({ transform: inputToBoolean }) megamenu?: boolean;\n  @Input({ transform: inputToBoolean }) expand?: boolean = true;\n\n  private stickyHeader?: HeaderSticky;\n\n  constructor() {\n    this.loginClick = new EventEmitter<Event>();\n    this.searchClick = new EventEmitter<Event>();\n  }\n\n  ngAfterViewInit() {\n    this.updateListeners();\n  }\n\n  ngOnChanges(changes: SimpleChanges): void {\n    if (changes['sticky'] && changes['sticky'].currentValue == true && !changes['sticky'].firstChange) {\n      this.updateListeners();\n    }\n    if (changes['sticky'] && changes['sticky'].currentValue == false) {\n      this.stickyHeader?._elementObj?._unsetSticky();\n      this.stickyHeader?._elementObj?.dispose();\n      delete this.stickyHeader;\n      this.stickyHeader = undefined;\n    }\n  }\n\n  updateListeners() {\n    if (!this.stickyHeader && this.headerWrapper && this.sticky) {\n      this.stickyHeader = new HeaderSticky(this.headerWrapper.nativeElement);\n    }\n  }\n\n  protected emitLoginClick(event: Event): void {\n    event.preventDefault();\n    this.loginClick.emit(event);\n  }\n\n  protected emitSearchClick(event: Event): void {\n    event.preventDefault();\n    this.searchClick.emit(event);\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  OnChanges,\n  Output,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { ItNavBarModule } from '../navbar/navbar.module';\n\nimport { ItButtonDirective } from '../../core/button/button.directive';\nimport { inputToBoolean } from '../../../utils/coercion';\nimport { HeaderSticky } from 'bootstrap-italia';\n\n@Component({\n  standalone: true,\n  selector: 'it-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [TranslateModule, ItIconComponent, ItButtonDirective, ItNavBarModule],\n})\nexport class ItHeaderComponent implements AfterViewInit, OnChanges {\n  @Input({ transform: inputToBoolean }) light?: boolean;\n\n  @Input({ transform: inputToBoolean }) sticky?: boolean;\n\n  @Input({ transform: inputToBoolean }) showSlim?: boolean = true;\n\n  @Input({ transform: inputToBoolean }) smallHeader?: boolean = true;\n\n  @Input({ transform: inputToBoolean }) showSearch?: boolean = true;\n\n  @Input() slimTitle: string | undefined;\n  @Input() slimTitleLink: string | undefined = '#';\n\n  @Input() loginStyle: 'none' | 'default' | 'full' = 'none';\n\n  @Output() loginClick: EventEmitter<Event>;\n\n  @Output() searchClick: EventEmitter<Event>;\n\n  @ViewChild('headerWrapper') private headerWrapper?: ElementRef<HTMLButtonElement>;\n\n  @Input({ transform: inputToBoolean }) megamenu?: boolean;\n  @Input({ transform: inputToBoolean }) expand?: boolean = true;\n\n  private stickyHeader?: HeaderSticky;\n\n  constructor() {\n    this.loginClick = new EventEmitter<Event>();\n    this.searchClick = new EventEmitter<Event>();\n  }\n\n  ngAfterViewInit() {\n    this.updateListeners();\n  }\n\n  ngOnChanges(changes: SimpleChanges): void {\n    if (changes['sticky'] && changes['sticky'].currentValue == true && !changes['sticky'].firstChange) {\n      this.updateListeners();\n    }\n    if (changes['sticky'] && changes['sticky'].currentValue == false) {\n      this.stickyHeader?._elementObj?._unsetSticky();\n      this.stickyHeader?._elementObj?.dispose();\n      delete this.stickyHeader;\n      this.stickyHeader = undefined;\n    }\n  }\n\n  updateListeners() {\n    if (!this.stickyHeader && this.headerWrapper && this.sticky) {\n      this.stickyHeader = new HeaderSticky(this.headerWrapper.nativeElement);\n    }\n  }\n\n  protected emitLoginClick(event: Event): void {\n    event.preventDefault();\n    this.loginClick.emit(event);\n  }\n\n  protected emitSearchClick(event: Event): void {\n    event.preventDefault();\n    this.searchClick.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -16640,14 +16649,14 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 53
+                "line": 54
             },
             "extends": [],
             "implements": [
                 "AfterViewInit",
                 "OnChanges"
             ],
-            "templateData": "<header\n  #headerWrapper\n  class=\"it-header-wrapper\"\n  [class.it-header-sticky]=\"sticky\"\n  data-bs-position-type=\"fixed\"\n  data-bs-sticky-class-name=\"is-sticky\">\n  @if (showSlim) {\n    <div class=\"it-header-slim-wrapper\" [class.theme-light]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <div class=\"it-header-slim-wrapper-content\">\n              <a class=\"d-none d-lg-block navbar-brand\" href=\"#\">{{ slimTitle }}</a>\n              <div class=\"nav-mobile\">\n                <nav [attr.aria-label]=\"'it.navigation.secondary-navigation' | translate\">\n                  <a\n                    class=\"it-opener d-lg-none\"\n                    data-bs-toggle=\"collapse\"\n                    href=\"#menuC1\"\n                    role=\"button\"\n                    aria-expanded=\"false\"\n                    aria-controls=\"menuC1\">\n                    <span>{{ slimTitle }}</span>\n                    <it-icon name=\"expand\"></it-icon>\n                  </a>\n                  <div class=\"link-list-wrapper collapse\" id=\"menuC1\">\n                    <ng-content select=\"[slimLinkList]\"></ng-content>\n                  </div>\n                </nav>\n              </div>\n              <div class=\"it-header-slim-right-zone\">\n                <ng-content select=\"[slimRightZone]\"></ng-content>\n                @if (loginStyle === 'default') {\n                  <div class=\"it-access-top-wrapper\">\n                    <a class=\"btn btn-primary btn-sm\" (click)=\"emitLoginClick($event)\" href=\"#\">\n                      {{ 'it.navigation.login' | translate }}\n                    </a>\n                  </div>\n                }\n                @if (loginStyle === 'full') {\n                  <a itButton=\"primary\" class=\"btn-full btn-icon\" (click)=\"emitLoginClick($event)\" href=\"#\">\n                    <span class=\"rounded-icon\">\n                      <it-icon name=\"user\" color=\"primary\"></it-icon>\n                    </span>\n                    <span class=\"d-none d-lg-block\">{{ 'it.navigation.full-login' | translate }}</span>\n                  </a>\n                }\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  }\n  <div class=\"it-nav-wrapper\">\n    <div class=\"it-header-center-wrapper\" [class.it-small-header]=\"smallHeader\" [class.theme-light]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <div class=\"it-header-center-content-wrapper\">\n              <div class=\"it-brand-wrapper\">\n                <ng-content select=\"[brand]\"></ng-content>\n              </div>\n              <div class=\"it-right-zone\">\n                <ng-content select=\"[rightZone]\"></ng-content>\n\n                @if (showSearch) {\n                  <div class=\"it-search-wrapper\">\n                    <span class=\"d-none d-md-block\">{{ 'it.navigation.search' | translate }}</span>\n                    <a\n                      href=\"#\"\n                      class=\"search-link rounded-icon\"\n                      [attr.aria-label]=\"'it.navigation.website-search' | translate\"\n                      (click)=\"emitSearchClick($event)\">\n                      <it-icon name=\"search\"></it-icon>\n                    </a>\n                  </div>\n                }\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"it-header-navbar-wrapper\" [class.theme-light-desk]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <it-navbar [megamenu]=\"megamenu\" [expand]=\"expand\">\n              <ng-container navItems>\n                <ng-content select=\"[navItems]\"></ng-content>\n              </ng-container>\n            </it-navbar>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</header>\n"
+            "templateData": "<header\n  #headerWrapper\n  class=\"it-header-wrapper\"\n  [class.it-header-sticky]=\"sticky\"\n  data-bs-position-type=\"fixed\"\n  data-bs-sticky-class-name=\"is-sticky\">\n  @if (showSlim) {\n    <div class=\"it-header-slim-wrapper\" [class.theme-light]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <div class=\"it-header-slim-wrapper-content\">\n              <a class=\"d-none d-lg-block navbar-brand\" [href]=\"slimTitleLink\" [target]=\"slimTitleLink !== '#' ? '_blank' : '_self'\">\n                {{ slimTitle }}\n              </a>\n              <div class=\"nav-mobile\">\n                <nav [attr.aria-label]=\"'it.navigation.secondary-navigation' | translate\">\n                  <a\n                    class=\"it-opener d-lg-none\"\n                    data-bs-toggle=\"collapse\"\n                    href=\"#menuC1\"\n                    role=\"button\"\n                    aria-expanded=\"false\"\n                    aria-controls=\"menuC1\">\n                    <span>{{ slimTitle }}</span>\n                    <it-icon name=\"expand\"></it-icon>\n                  </a>\n                  <div class=\"link-list-wrapper collapse\" id=\"menuC1\">\n                    <ng-content select=\"[slimLinkList]\"></ng-content>\n                  </div>\n                </nav>\n              </div>\n              <div class=\"it-header-slim-right-zone\">\n                <ng-content select=\"[slimRightZone]\"></ng-content>\n                @if (loginStyle === 'default') {\n                  <div class=\"it-access-top-wrapper\">\n                    <a class=\"btn btn-primary btn-sm\" (click)=\"emitLoginClick($event)\" href=\"#\">\n                      {{ 'it.navigation.login' | translate }}\n                    </a>\n                  </div>\n                }\n                @if (loginStyle === 'full') {\n                  <a itButton=\"primary\" class=\"btn-full btn-icon\" (click)=\"emitLoginClick($event)\" href=\"#\">\n                    <span class=\"rounded-icon\">\n                      <it-icon name=\"user\" color=\"primary\"></it-icon>\n                    </span>\n                    <span class=\"d-none d-lg-block\">{{ 'it.navigation.full-login' | translate }}</span>\n                  </a>\n                }\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  }\n  <div class=\"it-nav-wrapper\">\n    <div class=\"it-header-center-wrapper\" [class.it-small-header]=\"smallHeader\" [class.theme-light]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <div class=\"it-header-center-content-wrapper\">\n              <div class=\"it-brand-wrapper\">\n                <ng-content select=\"[brand]\"></ng-content>\n              </div>\n              <div class=\"it-right-zone\">\n                <ng-content select=\"[rightZone]\"></ng-content>\n\n                @if (showSearch) {\n                  <div class=\"it-search-wrapper\">\n                    <span class=\"d-none d-md-block\">{{ 'it.navigation.search' | translate }}</span>\n                    <a\n                      href=\"#\"\n                      class=\"search-link rounded-icon\"\n                      [attr.aria-label]=\"'it.navigation.website-search' | translate\"\n                      (click)=\"emitSearchClick($event)\">\n                      <it-icon name=\"search\"></it-icon>\n                    </a>\n                  </div>\n                }\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"it-header-navbar-wrapper\" [class.theme-light-desk]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <it-navbar [megamenu]=\"megamenu\" [expand]=\"expand\">\n              <ng-container navItems>\n                <ng-content select=\"[navItems]\"></ng-content>\n              </ng-container>\n            </it-navbar>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</header>\n"
         },
         {
             "name": "ItIconComponent",
@@ -34608,7 +34617,7 @@
                 "linktype": "component",
                 "name": "ItHeaderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
