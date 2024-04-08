@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/italia/design-angular-kit/compare/v1.0.1...v1.0.2) (2024-04-08)
+
+
+### Bug Fixes
+
+* add missing slim title link to header ([d147d2a](https://github.com/italia/design-angular-kit/commit/d147d2a1bd80b6c0134c93fea64258c7fe5b6526))
+
 ## [1.0.1](https://github.com/italia/design-angular-kit/compare/v1.0.0...v1.0.1) (2024-03-22)
 
 
