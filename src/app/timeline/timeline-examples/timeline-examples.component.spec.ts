@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimelineExamplesComponent } from './timeline-examples.component';
 
-describe('AlertExamplesComponent', () => {
+describe('TimelineExamplesComponent', () => {
   let component: TimelineExamplesComponent;
   let fixture: ComponentFixture<TimelineExamplesComponent>;
 

@@ -60,8 +60,7 @@
       "back": "Back",
       "forward": "Forward",
       "rate-star": "Rate {{current}} out of {{total}} stars",
-      "rating-star": "Rating {{current}} out of {{total}} stars",
-      "today": "Today"
+      "rating-star": "Rating {{current}} out of {{total}} stars"
     },
     "form": {
       "caps-inserted": "CAPS LOCK entered",
@@ -106,7 +105,8 @@
     },
     "timeline": {
       "read-more": "Read more",
-      "read-more-on": "on {{title}}"
+      "read-more-on": "on {{title}}",
+      "today": "Today"
     },
     "utils": {
       "selected": "Selected",

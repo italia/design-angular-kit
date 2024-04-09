@@ -9,6 +9,6 @@ export class TimelineIndexComponent {
   component: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'ItTimelineComponent');
+    this.component = (<any>Documentation).components.find(component => component.name === 'ItTimelineContainerComponent');
   }
 }

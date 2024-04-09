@@ -6,6 +6,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TimelinePINType } from 'projects/design-angular-kit/src/lib/interfaces/core';
 import { IconName } from 'projects/design-angular-kit/src/lib/interfaces/icon';
 
+/**
+ * Timeline Item
+ * @description Represents a single event for Timeline component.
+ */
 @Component({
   standalone: true,
   selector: 'it-timeline-item',

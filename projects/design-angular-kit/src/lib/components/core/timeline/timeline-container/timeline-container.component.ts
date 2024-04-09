@@ -5,6 +5,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ItAbstractComponent } from 'projects/design-angular-kit/src/lib/abstracts/abstract.component';
 import { TimelineElement } from 'projects/design-angular-kit/src/lib/interfaces/core';
 
+/**
+ * Timeline
+ * @description Build timeline for chronological representation of events.
+ */
 @Component({
   standalone: true,
   selector: 'it-timeline-container',
