@@ -44,3 +44,6 @@ Thumbs.db
 # Generated files
 /**/*-examples.component.html
 /src/assets/documentation.json
+
+# Nx
+.nx
