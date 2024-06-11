@@ -25,6 +25,7 @@
       "email-invalid": "Enter a valid email",
       "tel-invalid": "Please enter a valid phone number format",
       "url-invalid": "Please enter a valid URL",
+      "plate-invalid": "Please enter a valid plate",
       "tax-code-invalid": "Enter a valid tax code",
       "vat-number-invalid": "Enter a valid VAT number",
       "cap-invalid": "Enter a valid zip code",
