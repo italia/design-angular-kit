@@ -34,7 +34,7 @@ export const CAP_REGEX = /^[0-9]{5}$/;
 /**
  * Italian Plate Regex
  */
-export const PLATE_REGEX = /^[ABCDEFGHJKLMNPRSTVWXYZ]{2}[0-9]{3}[ABCDEFGHJKLMNPRSTVWXYZ]{2}$/i;
+export const PLATE_REGEX = /^[A-Za-z]{2}\d{3}[A-Za-z]{2}$/i;
 
 /**
  * IBAN Regex
