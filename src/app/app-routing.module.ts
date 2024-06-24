@@ -67,6 +67,7 @@ const routes: Routes = [
       { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) },
       { path: 'autocomplete', loadChildren: () => import('src/app/autocomplete/autocomplete.module').then(m => m.AutocompleteModule) },
       { path: 'sidebar', loadChildren: () => import('src/app/sidebar/sidebar.module').then(m => m.SidebarModule) },
+      { path: 'timeline', loadChildren: () => import('src/app/timeline/timeline.module').then(m => m.TimelineModule) },
     ],
   },
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
