@@ -32,6 +32,11 @@ export const VAT_NUMBER_REGEX = /^[0-9]{11}$/;
 export const CAP_REGEX = /^[0-9]{5}$/;
 
 /**
+ * Italian Plate Regex
+ */
+export const PLATE_REGEX = /^[A-Za-z]{2}\d{3}[A-Za-z]{2}$/i;
+
+/**
  * IBAN Regex
  * https://blog.marketto.it/en/2018/06/validate-any-country-iban/
  */

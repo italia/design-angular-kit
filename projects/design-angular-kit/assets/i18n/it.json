@@ -25,6 +25,7 @@
       "email-invalid": "Inserisci un email valida",
       "tel-invalid": "Inserisci un formato telefonico valido",
       "url-invalid": "Inserisci un url valido",
+      "plate-invalid": "Inserisci una targa valida",
       "tax-code-invalid": "Inserisci un codice fiscale valido",
       "vat-number-invalid": "Inserisci una partita iva valida",
       "cap-invalid": "Inserisci un CAP valido",

@@ -165,6 +165,9 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
     if (this.hasError('invalidIban')) {
       return this._translateService.get('it.errors.iban-invalid');
     }
+    if (this.hasError('invalidPlate')) {
+      return this._translateService.get('it.errors.plate-invalid');
+    }
     if (this.hasError('invalidRegex')) {
       return this._translateService.get('it.errors.regex-invalid');
     }
