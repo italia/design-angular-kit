@@ -10,7 +10,8 @@
           [class.active]="tab.active"
           [class.disabled]="tab.disabled"
           [attr.href]="'#' + tab.id + '-tab'"
-          [attr.aria-controls]="tab.id + '-tab'">
+          [attr.aria-controls]="tab.id + '-tab'"
+          (click)="onTab(tab)">
           @if (tab.icon) {
             <it-icon [name]="tab.icon" class="me-2"></it-icon>
           }

@@ -4,8 +4,10 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  EventEmitter,
   Input,
   OnDestroy,
+  Output,
   QueryList,
   ViewChildren,
 } from '@angular/core';
@@ -48,7 +50,14 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
 
   @ViewChildren('tabNavLinks') private tabNavLinks?: QueryList<ElementRef<HTMLAnchorElement>>;
 
+  @Output() tabSelected = new EventEmitter<ItTabItemComponent>();
+
   private tabSubscriptions?: Array<Subscription>;
+
+  constructor() {
+    super();
+    this.tabSelected = new EventEmitter<ItTabItemComponent>();
+  }
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
@@ -88,5 +97,9 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
 
   ngOnDestroy(): void {
     this.tabSubscriptions?.forEach(sub => sub.unsubscribe());
+  }
+
+  onTab(tab?: ItTabItemComponent) {
+    this.tabSelected.emit(tab);
   }
 }
