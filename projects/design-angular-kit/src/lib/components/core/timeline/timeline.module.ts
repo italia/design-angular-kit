@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ItTimelineContainerComponent } from './timeline-container/timeline-container.component';
+import { ItTimelineComponent } from './timeline.component';
 import { ItTimelineItemComponent } from './timeline-item/timeline-item.component';
 
-const timelineComponents = [ItTimelineContainerComponent, ItTimelineItemComponent];
+const timelineComponents = [ItTimelineComponent, ItTimelineItemComponent];
 
 @NgModule({
   imports: timelineComponents,
