@@ -41,6 +41,9 @@ import { ItLanguageSwitcherComponent } from './components/utils/language-switche
 import { ItDateAgoPipe } from './pipes/date-ago.pipe';
 import { ItDurationPipe } from './pipes/duration.pipe';
 import { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';
+import { ItTimelineModule } from './components/core/timeline/timeline.module';
+import { ItTimelineContainerComponent } from './components/core/timeline/timeline-container/timeline-container.component';
+import { ItTimelineItemComponent } from './components/core/timeline/timeline-item/timeline-item.component';
 
 /**
  * Core components
@@ -72,6 +75,9 @@ const core = [
   ItTabModule,
   ItTableModule,
   ItTooltipDirective,
+  ItTimelineContainerComponent,
+  ItTimelineItemComponent,
+  ItTimelineModule,
 ];
 
 /**

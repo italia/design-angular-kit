@@ -103,6 +103,11 @@
       "aria-label-toggle": "Mostra/Nascondi la navigazione",
       "hide": "Nascondi la navigazione"
     },
+    "timeline": {
+      "read-more": "Leggi di più",
+      "read-more-on": "su {{title}}",
+      "today": "Oggi"
+    },
     "utils": {
       "selected": "Selezionata",
       "language-selection": "Selezione lingua: {{lang}}",

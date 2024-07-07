@@ -1,0 +1,21 @@
+<div class="it-timeline-wrapper">
+  <div class="row">
+    @for (element of timelineElements; track $index) {
+      <div class="col-12">
+        <it-timeline-item
+          [title]="element.title"
+          [text]="element.text"
+          [signature]="element.signature"
+          [pinType]="element.pin?.type"
+          [pinIcon]="element.pin?.icon"
+          [pinText]="element.pin?.text"
+          [eventDate]="element.eventDate"
+          [dateFormat]="dateFormat"
+          [categoryTitle]="element.category?.title"
+          [categoryLink]="element.category?.link"
+          [showReadMore]="element.link?.length"
+          [readMoreLink]="element.link"></it-timeline-item>
+      </div>
+    }
+  </div>
+</div>
