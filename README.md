@@ -63,9 +63,10 @@ npm install design-angular-kit --save
 
 Scegli la versione corrispondente alla tua versione Angular:
 
-| Angular | design-angular-kit    |
-|---------|-----------------------|
-| 17+     | v1.0.0 +              |
+| Angular | design-angular-kit |
+|---------|--------------------|
+| 18+     | v1.1.0 +           |
+| 17+     | v1.0.0 +           |
 
 ## Configurazione
 
