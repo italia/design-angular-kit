@@ -13,7 +13,7 @@
           [dateFormat]="dateFormat"
           [categoryTitle]="element.category?.title"
           [categoryLink]="element.category?.link"
-          [showReadMore]="element.link?.length"
+          [showReadMore]="!!element.link?.length"
           [readMoreLink]="element.link" />
       </div>
     }

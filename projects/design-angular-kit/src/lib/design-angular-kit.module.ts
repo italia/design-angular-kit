@@ -42,8 +42,6 @@ import { ItDateAgoPipe } from './pipes/date-ago.pipe';
 import { ItDurationPipe } from './pipes/duration.pipe';
 import { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';
 import { ItTimelineModule } from './components/core/timeline/timeline.module';
-import { ItTimelineComponent } from './components/core/timeline/timeline.component';
-import { ItTimelineItemComponent } from './components/core/timeline/timeline-item/timeline-item.component';
 
 /**
  * Core components
@@ -75,8 +73,6 @@ const core = [
   ItTabModule,
   ItTableModule,
   ItTooltipDirective,
-  ItTimelineComponent,
-  ItTimelineItemComponent,
   ItTimelineModule,
 ];
 

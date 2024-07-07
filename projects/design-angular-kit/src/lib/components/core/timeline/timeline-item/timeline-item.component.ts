@@ -72,7 +72,8 @@ export class ItTimelineItemComponent extends ItAbstractComponent {
    */
   @Input() categoryLink: string | undefined;
 
-  /** Timeline element show detail link
+  /**
+   * Timeline element show detail link
    * @default false
    */
   @Input({ transform: inputToBoolean })
