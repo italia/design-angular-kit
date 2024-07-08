@@ -42,7 +42,7 @@ export class ItPopoverDirective implements AfterViewInit, OnDestroy {
    */
   @Input() set popoverContainer(container: 'body' | string | undefined) {
     if (container) {
-      this.element.setAttribute('data-container', container);
+      this.element.setAttribute('data-bs-container', container);
     }
   }
 
