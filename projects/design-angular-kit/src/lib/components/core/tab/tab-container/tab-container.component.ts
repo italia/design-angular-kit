@@ -56,7 +56,6 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
 
   constructor() {
     super();
-    this.tabSelected = new EventEmitter<ItTabItemComponent>();
   }
 
   override ngAfterViewInit(): void {
@@ -99,7 +98,7 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
     this.tabSubscriptions?.forEach(sub => sub.unsubscribe());
   }
 
-  onTab(tab?: ItTabItemComponent) {
+  onTab(tab: ItTabItemComponent) {
     this.tabSelected.emit(tab);
   }
 }
