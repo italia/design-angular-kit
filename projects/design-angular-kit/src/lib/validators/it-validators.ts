@@ -5,6 +5,7 @@ import {
   IBAN_REGEX,
   ITALIAN_TAX_CODE_REGEX,
   PHONE_NUMBER_REGEX,
+  PLATE_REGEX,
   URL_REGEX,
   VAT_NUMBER_REGEX,
 } from '../utils/regex';
@@ -165,6 +166,13 @@ export class ItValidators {
    */
   public static get iban(): ValidatorFn {
     return ItValidators.customPattern(IBAN_REGEX, { invalidIban: true });
+  }
+
+  /**
+   * Italian plate validator
+   */
+  public static get plate(): ValidatorFn {
+    return ItValidators.customPattern(PLATE_REGEX, { invalidPlate: true });
   }
 
   /**
