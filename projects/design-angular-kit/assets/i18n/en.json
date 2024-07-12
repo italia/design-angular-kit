@@ -104,6 +104,11 @@
       "aria-label-toggle": "Show/Hide navigation",
       "hide": "Hide navigation"
     },
+    "timeline": {
+      "read-more": "Read more",
+      "read-more-on": "on {{title}}",
+      "today": "Today"
+    },
     "utils": {
       "selected": "Selected",
       "language-selection": "Language selection: {{lang}}",
