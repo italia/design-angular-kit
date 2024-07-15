@@ -1,3 +1,20 @@
+## [1.0.3](https://github.com/italia/design-angular-kit/compare/v1.0.2...v1.0.3) (2024-07-15)
+
+
+### Bug Fixes
+
+* **button:** added default button type ([ea19950](https://github.com/italia/design-angular-kit/commit/ea1995042dba4e882698300c08065d72330d6443)), closes [#355](https://github.com/italia/design-angular-kit/issues/355)
+* multiple initialization ([39fad60](https://github.com/italia/design-angular-kit/commit/39fad609eff01a63a5dfb3c5db70c57c1031505e))
+* **popover:** fixed popover container attribute ([6327e76](https://github.com/italia/design-angular-kit/commit/6327e764827e440a4372fbf06aa953b1c4f0f0c8)), closes [#352](https://github.com/italia/design-angular-kit/issues/352)
+* top on sticky header and add method for close NavBar on mobile ([d1df044](https://github.com/italia/design-angular-kit/commit/d1df044615b35c0f00c4c23a6f854a6941516b51))
+
+
+### Features
+
+* add regex for italian plate and set plate validators ([be076df](https://github.com/italia/design-angular-kit/commit/be076dffaf80174f4273af63cab9c693acd9ef95))
+* added output event ([f29bfd3](https://github.com/italia/design-angular-kit/commit/f29bfd3d55634c1c81943b06679521069336fe34))
+* **timeline:** added timeline component ([147b8f5](https://github.com/italia/design-angular-kit/commit/147b8f5089fc1edd8ce7dad6d6c510f2a1011a10))
+
 ## [1.0.2](https://github.com/italia/design-angular-kit/compare/v1.0.1...v1.0.2) (2024-04-08)
 
 
