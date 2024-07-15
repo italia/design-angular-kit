@@ -25,6 +25,7 @@
       "email-invalid": "Enter a valid email",
       "tel-invalid": "Please enter a valid phone number format",
       "url-invalid": "Please enter a valid URL",
+      "plate-invalid": "Please enter a valid plate",
       "tax-code-invalid": "Enter a valid tax code",
       "vat-number-invalid": "Enter a valid VAT number",
       "cap-invalid": "Enter a valid zip code",
@@ -102,6 +103,11 @@
       "aria-label-main": "Main navigation",
       "aria-label-toggle": "Show/Hide navigation",
       "hide": "Hide navigation"
+    },
+    "timeline": {
+      "read-more": "Read more",
+      "read-more-on": "on {{title}}",
+      "today": "Today"
     },
     "utils": {
       "selected": "Selected",
