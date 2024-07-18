@@ -8,7 +8,7 @@
 	],
 	"remoteUser": "root",
 	"postCreateCommand": "sh .devcontainer/scripts/postCreateCommand.sh",
-	"postStartCommand": "sh .devcontainer/scripts/postStartCommand.sh",
+	"postStartCommand": "/bin/bash -c '.devcontainer/scripts/postStartCommand.sh \"${containerWorkspaceFolder}\"'",
 	"customizations": {
 		"vscode": {
 			"extensions": [
