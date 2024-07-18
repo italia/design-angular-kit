@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "downlevelIteration": true,
     "importHelpers": true,
     "module": "es2020",
     "outDir": "./dist/out-tsc",
@@ -10,7 +9,6 @@
     "declaration": false,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "target": "ES2022",

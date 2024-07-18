@@ -34,7 +34,7 @@ jobs:
       - name: Build documentation
         run: |
           npm run build
-          cp dist/design-angular-kit-bundle/index.html dist/design-angular-kit-bundle/404.html
+          cp dist/design-angular-kit-bundle/browser/index.html dist/design-angular-kit-bundle/browser/404.html
 
       - name: Publish on gh-pages
         run: |
