@@ -10,7 +10,7 @@
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/angular-cli:2": {
-			"version": "17.1.2"
+			"version": "18.0.7"
 		},
 		"ghcr.io/devcontainers-contrib/features/cz-cli:1": {}
 	},
