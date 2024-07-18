@@ -21,6 +21,7 @@
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "sh .devcontainer/scripts/postCreateCommand.sh",
+	"postStartCommand": "sh .devcontainer/scripts/postStartCommand.sh",
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
@@ -32,7 +33,7 @@
 				"vivaxy.vscode-conventional-commits"
 			]
 		}
-	}
+	},
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	"remoteUser": "root"
 }
