@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/italia/design-angular-kit/compare/v1.0.3...v1.1.0) (2024-07-18)
+
+
+### Features
+
+* upgrade angular 18 and bootstrap italia ([4cb98e7](https://github.com/italia/design-angular-kit/commit/4cb98e73c9c1618b3d210dc54c82c6c48b0e1b77)), closes [#361](https://github.com/italia/design-angular-kit/issues/361)
+
+
+### BREAKING CHANGES
+
+* support Angular 18
+
 ## [1.0.3](https://github.com/italia/design-angular-kit/compare/v1.0.2...v1.0.3) (2024-07-15)
 
 
