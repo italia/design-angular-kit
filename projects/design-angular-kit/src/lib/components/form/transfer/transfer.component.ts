@@ -6,6 +6,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './transfer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransferComponent {
+export class ItTransferComponent {
   readonly title = 'transfer';
 }
