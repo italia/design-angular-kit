@@ -1,1 +1,10 @@
-<p>{{ title }} works!</p>
+<div class="form-group">
+  @if (label) {
+    <label [for]="id" [class.active]="!!control.value || !!placeholder">{{ label }}</label>
+  }
+  <div class="row">
+    <div class="col-xs-12 col-md-5"></div>
+    <div class="col-xs-12 col-md-2"></div>
+    <div class="col-xs-12 col-md-5"></div>
+  </div>
+</div>
