@@ -13,4 +13,5 @@ import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.compon
 })
 export class ItTransferComponent extends ItAbstractFormComponent {
   readonly title = 'transfer';
+  items = [{}, {}];
 }

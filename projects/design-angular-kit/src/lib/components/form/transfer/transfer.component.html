@@ -3,7 +3,40 @@
     <label [for]="id" [class.active]="!!control.value || !!placeholder">{{ label }}</label>
   }
   <div class="row">
-    <div class="col-xs-12 col-md-5"></div>
+    <div class="col-xs-12 col-md-5">
+      <div class="it-transfer-wrapper source">
+        <div class="transfer-header">
+          <div class="form-check" aria-describedby="">
+            <input type="checkbox" id="checkbox1" />
+            <label for="checkbox1">
+              <span>
+                <span class="num"> 6 </span>
+                <span> ITEMS</span>
+              </span>
+              <span class="descr">Source</span>
+            </label>
+          </div>
+          <!-- form check -->
+        </div>
+        <!-- transfer-header -->
+        <div class="transfer-scroll">
+          <div class="transfer-group">
+            @for (item of items; track $index; let index = $index) {
+              <div class="form-check" aria-describedby="">
+                <input type="checkbox" id="checkbox2" />
+                <label for="checkbox2">
+                  <span>
+                    <span>List item {{ index }}</span>
+                  </span>
+                </label>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+      <!-- it-transfer-wrapper -->
+    </div>
+    <!-- col -->
     <div class="col-xs-12 col-md-2"></div>
     <div class="col-xs-12 col-md-5"></div>
   </div>
