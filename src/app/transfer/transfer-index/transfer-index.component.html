@@ -2,6 +2,11 @@
 <p class="bd-lead">Componente che consente la creazione di liste di checkbox</p>
 <div [innerHTML]="component.description"></div>
 
-<div class="bd-example">
-  <it-transfer></it-transfer>
-</div>
+<it-tab-container>
+  <it-tab-item label="Esempi" active="true" class="pt-3">
+    <it-transfer-default-example></it-transfer-default-example>
+  </it-tab-item>
+  <!-- <it-tab-item label="API" class="pt-3">
+    <it-api-parameters [component]="component"></it-api-parameters>
+  </it-tab-item> -->
+</it-tab-container>
