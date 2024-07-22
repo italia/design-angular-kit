@@ -18,7 +18,7 @@
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-left"></use></svg>
         </a>
         <span class="visually-hidden">Etichetta for freccia sinistra</span>
-        <a class="reset" href="#" role="button" aria-label="Reset">
+        <a class="reset" [ngClass]="{ active: resetEnabled }" href="#" role="button" aria-label="Reset">
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-restore"></use></svg>
         </a>
         <span class="visually-hidden">Etichetta per icona di reset</span>

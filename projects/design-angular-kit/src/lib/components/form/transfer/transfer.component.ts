@@ -69,5 +69,7 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
       ...(this.sourceSelectedItems as TransferItemSelection<T>),
       ...(this.targetItems as TransferItemSelection<T>),
     ] as TransferItemSelection<T>;
+
+    this.resetEnabled = true;
   }
 }
