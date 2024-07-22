@@ -1,11 +1,11 @@
 <div class="it-transfer-wrapper source">
   <div class="transfer-header">
     <div class="form-check" aria-describedby="">
-      <input type="checkbox" id="checkbox1" />
+      <input type="checkbox" id="checkbox1" (click)="checkboxSelectAllHandler($event.target.checked)" />
       <label for="checkbox1">
         <span>
-          <span class="num"> 6 </span>
-          <span> ITEMS</span>
+          <span class="num"> {{ items.length }} </span>
+          <span> {{ items.length > 1 ? 'ITEMS' : 'ITEM' }} </span>
         </span>
         <span class="descr">Source</span>
       </label>
@@ -17,10 +17,10 @@
     <div class="transfer-group">
       @for (item of items; track $index; let index = $index) {
         <div class="form-check" aria-describedby="">
-          <input type="checkbox" id="checkbox2" />
-          <label for="checkbox2">
+          <input type="checkbox" id="{{ item.value }}" (click)="checkboxSelectionHandler(item, index)" />
+          <label for="{{ item.value }}">
             <span>
-              <span>List item {{ index }}</span>
+              <span>{{ item.text }}</span>
             </span>
           </label>
         </div>

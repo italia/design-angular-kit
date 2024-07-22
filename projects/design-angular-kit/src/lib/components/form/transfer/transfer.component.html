@@ -4,12 +4,28 @@
   }
   <div class="row">
     <div class="col-xs-12 col-md-5">
-      <it-transfer-list [items]="items"></it-transfer-list>
+      <it-transfer-list [items]="sourceItems" (itemsSelectionChange)="sourceSelectionChangeHandler($event)"></it-transfer-list>
     </div>
     <!-- col -->
-    <div class="col-xs-12 col-md-2"></div>
+    <div class="col-xs-12 col-md-2">
+      <!-- transfer buttons-->
+      <div class="it-transfer-buttons">
+        <a class="transfer" [ngClass]="{ active: transferEnabled }" role="button" aria-label="Sposta avanti">
+          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use></svg>
+        </a>
+        <span class="visually-hidden">Etichetta per freccia destra</span>
+        <a class="backtransfer" [ngClass]="{ active: backtransferEnabled }" href="#" role="button" aria-label="Sposta indietro">
+          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-left"></use></svg>
+        </a>
+        <span class="visually-hidden">Etichetta for freccia sinistra</span>
+        <a class="reset" href="#" role="button" aria-label="Reset">
+          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-restore"></use></svg>
+        </a>
+        <span class="visually-hidden">Etichetta per icona di reset</span>
+      </div>
+    </div>
     <div class="col-xs-12 col-md-5">
-      <it-transfer-list [items]="selectedItems"></it-transfer-list>
+      <it-transfer-list [items]="targetItems" (itemsSelectionChange)="targetSelectionChangeHandler($event)"></it-transfer-list>
     </div>
   </div>
 </div>
