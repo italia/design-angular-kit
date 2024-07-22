@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { ItTransferListComponent } from './transfer-list/transfer-list.component';
 
 /**
  * Transfer
@@ -9,9 +10,11 @@ import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.compon
   selector: 'it-transfer',
   standalone: true,
   templateUrl: './transfer.component.html',
+  imports: [ItTransferListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferComponent extends ItAbstractFormComponent {
   readonly title = 'transfer';
   items = [{}, {}];
+  selectedItems = [{}];
 }
