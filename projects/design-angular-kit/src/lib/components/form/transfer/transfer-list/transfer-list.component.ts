@@ -27,7 +27,7 @@ export class ItTransferListComponent<T> implements OnChanges {
 
   readonly title: string = inject(new HostAttributeToken('title'));
 
-  private readonly selected = new Set<T>();
+  readonly selected = new Set<T>();
 
   ngOnChanges(c: SimpleChanges) {
     this.resetSelectedWhenItemsChange(c);

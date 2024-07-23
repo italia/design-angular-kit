@@ -17,7 +17,7 @@
     <div class="transfer-group">
       @for (item of items; track item.value; let index = $index) {
         <div class="form-check" aria-describedby="">
-          <input type="checkbox" id="{{ item.value }}" (click)="checkboxSelectionHandler(item, index)" />
+          <input type="checkbox" id="{{ item.value }}" [checked]="selected.has(item)" (click)="checkboxSelectionHandler(item, index)" />
           <label for="{{ item.value }}">
             <span>
               <span>{{ item.text }}</span>
