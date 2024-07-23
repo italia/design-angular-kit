@@ -3,6 +3,11 @@ import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.compon
 import { ItTransferListComponent } from './transfer-list/transfer-list.component';
 import { NgClass } from '@angular/common';
 
+//Qs
+//Aria hidden?
+//state management with service?
+//interface?
+
 export interface TransferItem<ValueType> {
   text: string;
   value: ValueType;
@@ -62,7 +67,15 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
     this.targetSelectedItems = [...selectedItems];
   }
 
-  transferHandler() {
+  transferClickHandler() {
+    this.transfer();
+  }
+
+  transferKeyHandler() {
+    this.transfer();
+  }
+
+  private transfer() {
     const selectedItemsSet = new Set(this.sourceSelectedItems.map(i => i.value));
     this.sourceItems = this.sourceItems.filter(i => !selectedItemsSet.has(i.value as T));
     this.targetItems = [
@@ -71,5 +84,6 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
     ] as TransferItemSelection<T>;
 
     this.resetEnabled = true;
+    this.transferEnabled = false;
   }
 }

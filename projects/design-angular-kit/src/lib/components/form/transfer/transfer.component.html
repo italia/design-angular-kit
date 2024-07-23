@@ -10,7 +10,14 @@
     <div class="col-xs-12 col-md-2">
       <!-- transfer buttons-->
       <div class="it-transfer-buttons">
-        <a class="transfer" [ngClass]="{ active: transferEnabled }" role="button" aria-label="Sposta avanti">
+        <a
+          class="transfer"
+          [ngClass]="{ active: transferEnabled }"
+          (click)="transferClickHandler()"
+          (keyup)="transferKeyHandler()"
+          role="button"
+          aria-hidden="true"
+          aria-label="Sposta avanti">
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use></svg>
         </a>
         <span class="visually-hidden">Etichetta per freccia destra</span>
