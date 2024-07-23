@@ -15,7 +15,7 @@
   <!-- transfer-header -->
   <div class="transfer-scroll">
     <div class="transfer-group">
-      @for (item of items; track $index; let index = $index) {
+      @for (item of items; track item.value; let index = $index) {
         <div class="form-check" aria-describedby="">
           <input type="checkbox" id="{{ item.value }}" (click)="checkboxSelectionHandler(item, index)" />
           <label for="{{ item.value }}">
