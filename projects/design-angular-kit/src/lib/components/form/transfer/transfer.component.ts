@@ -75,9 +75,17 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
     this.transfer();
   }
 
+  backtransferClickHandler() {
+    this.backtransfer();
+  }
+
+  backtransferKeyHandler() {
+    this.backtransfer();
+  }
+
   private transfer() {
     const selectedItemsSet = new Set(this.sourceSelectedItems.map(i => i.value));
-    this.sourceItems = this.sourceItems.filter(i => !selectedItemsSet.has(i.value as T));
+    this.sourceItems = this.sourceItems.filter(i => !selectedItemsSet.has(i.value));
     this.targetItems = [
       ...(this.sourceSelectedItems as TransferItemSelection<T>),
       ...(this.targetItems as TransferItemSelection<T>),
@@ -85,5 +93,17 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
 
     this.resetEnabled = true;
     this.transferEnabled = false;
+  }
+
+  private backtransfer() {
+    const selectedItemsSet = new Set(this.targetSelectedItems.map(i => i.value));
+    this.targetItems = this.targetItems.filter(i => !selectedItemsSet.has(i.value));
+    this.sourceItems = [
+      ...(this.targetSelectedItems as TransferItemSelection<T>),
+      ...(this.sourceItems as TransferItemSelection<T>),
+    ] as TransferItemSelection<T>;
+
+    this.resetEnabled = true;
+    this.backtransferEnabled = false;
   }
 }
