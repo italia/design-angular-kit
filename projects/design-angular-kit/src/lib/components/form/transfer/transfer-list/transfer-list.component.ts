@@ -1,9 +1,10 @@
-import { EventEmitter, ChangeDetectionStrategy, Component, Input, Output } from '@angular/core';
+import { TitleCasePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostAttributeToken, inject, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'it-transfer-list',
   standalone: true,
-  imports: [],
+  imports: [TitleCasePipe],
   templateUrl: './transfer-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -13,6 +14,8 @@ export class ItTransferListComponent<T> {
 
   @Output()
   readonly itemsSelectionChange = new EventEmitter<T[]>();
+
+  public title: string = inject(new HostAttributeToken('title'));
 
   private readonly selected = new Set<T>();
 
