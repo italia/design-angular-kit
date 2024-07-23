@@ -1,8 +1,8 @@
 <div class="it-transfer-wrapper source">
   <div class="transfer-header">
     <div class="form-check" aria-describedby="">
-      <input type="checkbox" id="checkbox1" (click)="checkboxSelectAllHandler($event.target.checked)" />
-      <label for="checkbox1">
+      <input #selectAllCheckbox type="checkbox" id="checkbox{{ title }}" (click)="checkboxSelectAllHandler($event.target.checked)" />
+      <label for="checkbox{{ title }}">
         <span>
           <span class="num"> {{ items.length }} </span>
           <span> {{ items.length > 1 ? 'ITEMS' : 'ITEM' }} </span>

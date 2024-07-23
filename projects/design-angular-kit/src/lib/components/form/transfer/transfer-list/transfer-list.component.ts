@@ -2,6 +2,7 @@ import { TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   HostAttributeToken,
   inject,
@@ -9,6 +10,7 @@ import {
   OnChanges,
   Output,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -27,10 +29,18 @@ export class ItTransferListComponent<T> implements OnChanges {
 
   readonly title: string = inject(new HostAttributeToken('title'));
 
+  @ViewChild('selectAllCheckbox')
+  selectAllCheckboxRef: ElementRef<HTMLInputElement>;
+
   readonly selected = new Set<T>();
 
   ngOnChanges(c: SimpleChanges) {
     this.resetSelectedWhenItemsChange(c);
+
+    if (this.selectAllCheckboxRef) {
+      console.log(this.selectAllCheckboxRef);
+      this.selectAllCheckboxRef.nativeElement.checked = false;
+    }
   }
 
   checkboxSelectionHandler(item: T, index: number) {
