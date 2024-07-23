@@ -15,7 +15,7 @@ export class ItTransferListComponent<T> {
   @Output()
   readonly itemsSelectionChange = new EventEmitter<T[]>();
 
-  public title: string = inject(new HostAttributeToken('title'));
+  readonly title: string = inject(new HostAttributeToken('title'));
 
   private readonly selected = new Set<T>();
 
