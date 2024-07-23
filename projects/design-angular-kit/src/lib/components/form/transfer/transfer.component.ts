@@ -27,8 +27,6 @@ type TransferItemSelection<ValueType> = Array<TransferItem<ValueType>>;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {
-  readonly title = 'transfer';
-
   @Input()
   source = [];
 
@@ -45,9 +43,9 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
 
   resetEnabled = false;
 
-  private sourceSelectedItems: TransferItem<T>[];
+  private sourceSelectedItems: Set<TransferItem<T>>;
 
-  private targetSelectedItems: TransferItem<T>[];
+  private targetSelectedItems: Set<TransferItem<T>>;
 
   override ngOnInit() {
     super.ngOnInit();
@@ -57,14 +55,14 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   }
 
   sourceSelectionChangeHandler(selectedItems: TransferItem<T>[]) {
-    console.log(selectedItems);
+    console.log('source selected items', selectedItems);
     this.transferEnabled = Boolean(selectedItems.length);
-    this.sourceSelectedItems = [...selectedItems];
+    this.sourceSelectedItems = new Set([...selectedItems]);
   }
   targetSelectionChangeHandler(selectedItems: TransferItem<T>[]) {
-    console.log(selectedItems);
+    console.log('target selected items', selectedItems);
     this.backtransferEnabled = Boolean(selectedItems.length);
-    this.targetSelectedItems = [...selectedItems];
+    this.targetSelectedItems = new Set([...selectedItems]);
   }
 
   transferClickHandler() {
@@ -91,29 +89,29 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   }
 
   private transfer() {
-    const selectedItemsSet = new Set(this.sourceSelectedItems.map(i => i.value));
-    this.sourceItems = this.sourceItems.filter(i => !selectedItemsSet.has(i.value));
+    const selectedItemsSet = this.sourceSelectedItems; //new Set(this.sourceSelectedItems.map(i => i.value));
+    this.sourceItems = this.sourceItems.filter(i => !selectedItemsSet.has(i));
     const targetItems = [
-      ...(this.sourceSelectedItems as TransferItemSelection<T>),
+      ...(Array.from(this.sourceSelectedItems) as TransferItemSelection<T>),
       ...(this.targetItems as TransferItemSelection<T>),
     ] as TransferItemSelection<T>;
 
     this.targetItems = Array.from(new Set(targetItems));
-    this.sourceSelectedItems = [];
+    this.sourceSelectedItems.clear();
     this.resetEnabled = true;
     this.transferEnabled = false;
   }
 
   private backtransfer() {
-    const selectedItemsSet = new Set(this.targetSelectedItems.map(i => i.value));
-    this.targetItems = this.targetItems.filter(i => !selectedItemsSet.has(i.value));
+    const selectedItemsSet = this.targetSelectedItems; //new Set(this.targetSelectedItems.map(i => i.value));
+    this.targetItems = this.targetItems.filter(i => !selectedItemsSet.has(i));
     const sourceItems = [
-      ...(this.targetSelectedItems as TransferItemSelection<T>),
+      ...(Array.from(this.targetSelectedItems) as TransferItemSelection<T>),
       ...(this.sourceItems as TransferItemSelection<T>),
     ] as TransferItemSelection<T>;
 
     this.sourceItems = Array.from(new Set(sourceItems));
-    this.targetSelectedItems = [];
+    this.targetSelectedItems.clear();
     this.resetEnabled = true;
     this.backtransferEnabled = false;
   }

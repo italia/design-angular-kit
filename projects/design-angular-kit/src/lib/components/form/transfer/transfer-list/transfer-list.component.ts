@@ -1,5 +1,15 @@
 import { TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, HostAttributeToken, inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostAttributeToken,
+  inject,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'it-transfer-list',
@@ -8,7 +18,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, HostAttributeToken, i
   templateUrl: './transfer-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItTransferListComponent<T> {
+export class ItTransferListComponent<T> implements OnChanges {
   @Input()
   items: T[] = [];
 
@@ -18,6 +28,10 @@ export class ItTransferListComponent<T> {
   readonly title: string = inject(new HostAttributeToken('title'));
 
   private readonly selected = new Set<T>();
+
+  ngOnChanges(c: SimpleChanges) {
+    this.resetSelectedWhenItemsChange(c);
+  }
 
   checkboxSelectionHandler(item: T, index: number) {
     console.log(index);
@@ -40,5 +54,11 @@ export class ItTransferListComponent<T> {
     }
 
     this.itemsSelectionChange.emit(Array.from(this.selected));
+  }
+
+  private resetSelectedWhenItemsChange(c: SimpleChanges) {
+    if (c.items) {
+      this.selected.clear();
+    }
   }
 }
