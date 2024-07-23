@@ -83,6 +83,13 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
     this.backtransfer();
   }
 
+  resetClickHandler() {
+    this.reset();
+  }
+  resetKeyHandler() {
+    this.reset();
+  }
+
   private transfer() {
     const selectedItemsSet = new Set(this.sourceSelectedItems.map(i => i.value));
     this.sourceItems = this.sourceItems.filter(i => !selectedItemsSet.has(i.value));
@@ -105,5 +112,12 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
 
     this.resetEnabled = true;
     this.backtransferEnabled = false;
+  }
+
+  private reset() {
+    this.sourceItems = [...this.source];
+    this.targetItems = [...this.target];
+
+    this.resetEnabled = false;
   }
 }
