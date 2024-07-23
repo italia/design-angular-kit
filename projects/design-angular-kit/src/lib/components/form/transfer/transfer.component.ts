@@ -93,11 +93,13 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   private transfer() {
     const selectedItemsSet = new Set(this.sourceSelectedItems.map(i => i.value));
     this.sourceItems = this.sourceItems.filter(i => !selectedItemsSet.has(i.value));
-    this.targetItems = [
+    const targetItems = [
       ...(this.sourceSelectedItems as TransferItemSelection<T>),
       ...(this.targetItems as TransferItemSelection<T>),
     ] as TransferItemSelection<T>;
 
+    this.targetItems = Array.from(new Set(targetItems));
+    this.sourceSelectedItems = [];
     this.resetEnabled = true;
     this.transferEnabled = false;
   }
@@ -105,11 +107,13 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   private backtransfer() {
     const selectedItemsSet = new Set(this.targetSelectedItems.map(i => i.value));
     this.targetItems = this.targetItems.filter(i => !selectedItemsSet.has(i.value));
-    this.sourceItems = [
+    const sourceItems = [
       ...(this.targetSelectedItems as TransferItemSelection<T>),
       ...(this.sourceItems as TransferItemSelection<T>),
     ] as TransferItemSelection<T>;
 
+    this.sourceItems = Array.from(new Set(sourceItems));
+    this.targetSelectedItems = [];
     this.resetEnabled = true;
     this.backtransferEnabled = false;
   }
