@@ -4,8 +4,10 @@
       <input #selectAllCheckbox type="checkbox" id="checkbox{{ title }}" (click)="checkboxSelectAllHandler($event.target.checked)" />
       <label for="checkbox{{ title }}">
         <span>
-          <span class="num"> {{ items.length }} </span>
-          <span> {{ items.length > 1 ? 'ITEMS' : 'ITEM' }} </span>
+          @if (numberOfItems$ | async; as numberOfItems) {
+            <span class="num"> {{ numberOfItems.length }} </span>
+            <span> {{ numberOfItems.length > 1 ? 'ITEMS' : 'ITEM' }} </span>
+          }
         </span>
         <span class="descr">{{ title | titlecase }}</span>
       </label>
@@ -15,9 +17,9 @@
   <!-- transfer-header -->
   <div class="transfer-scroll">
     <div class="transfer-group">
-      @for (item of items; track item.value; let index = $index) {
+      @for (item of items$ | async; track item.value) {
         <div class="form-check" aria-describedby="">
-          <input type="checkbox" id="{{ item.value }}" [checked]="selected.has(item)" (click)="checkboxSelectionHandler(item, index)" />
+          <input type="checkbox" id="{{ item.value }}" [checked]="selected.has(item)" (click)="checkboxSelectionHandler(item)" />
           <label for="{{ item.value }}">
             <span>
               <span>{{ item.text }}</span>

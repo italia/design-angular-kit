@@ -1,19 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { AsyncPipe, NgClass } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, OnInit, Optional, Self } from '@angular/core';
+import { NgControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
+import { TransferStore } from './store/transfer.store';
 import { ItTransferListComponent } from './transfer-list/transfer-list.component';
-import { NgClass } from '@angular/common';
-
-//Qs
-//Aria hidden?
-//state management with service?
-//interface?
-
-export interface TransferItem<ValueType> {
-  text: string;
-  value: ValueType;
-}
-
-type TransferItemSelection<ValueType> = Array<TransferItem<ValueType>>;
 
 /**
  * Transfer
@@ -23,7 +14,8 @@ type TransferItemSelection<ValueType> = Array<TransferItem<ValueType>>;
   selector: 'it-transfer',
   standalone: true,
   templateUrl: './transfer.component.html',
-  imports: [ItTransferListComponent, NgClass],
+  imports: [ItTransferListComponent, NgClass, AsyncPipe],
+  providers: [TransferStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {
@@ -33,36 +25,25 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   @Input()
   target = [];
 
-  sourceItems: TransferItem<T>[];
+  readonly transferEnabled = this.store.transferEnabled;
 
-  targetItems: TransferItem<T>[];
+  readonly backtransferEnabled = this.store.backtransferEnabled;
 
-  transferEnabled = false;
+  readonly resetEnabled = this.store.resetEnabled;
 
-  backtransferEnabled = false;
-
-  resetEnabled = false;
-
-  private sourceSelectedItems: Set<TransferItem<T>>;
-
-  private targetSelectedItems: Set<TransferItem<T>>;
+  constructor(
+    @Self()
+    @Optional()
+    readonly _ngControl: NgControl,
+    readonly _translateService: TranslateService,
+    private readonly store: TransferStore<T>
+  ) {
+    super(_translateService, _ngControl);
+  }
 
   override ngOnInit() {
     super.ngOnInit();
-
-    this.sourceItems = [...this.source];
-    this.targetItems = [...this.target];
-  }
-
-  sourceSelectionChangeHandler(selectedItems: TransferItem<T>[]) {
-    console.log('source selected items', selectedItems);
-    this.transferEnabled = Boolean(selectedItems.length);
-    this.sourceSelectedItems = new Set([...selectedItems]);
-  }
-  targetSelectionChangeHandler(selectedItems: TransferItem<T>[]) {
-    console.log('target selected items', selectedItems);
-    this.backtransferEnabled = Boolean(selectedItems.length);
-    this.targetSelectedItems = new Set([...selectedItems]);
+    this.store.init({ source: [...this.source], target: [...this.target] });
   }
 
   transferClickHandler() {
@@ -89,37 +70,24 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   }
 
   private transfer() {
-    const selectedItemsSet = this.sourceSelectedItems; //new Set(this.sourceSelectedItems.map(i => i.value));
-    this.sourceItems = this.sourceItems.filter(i => !selectedItemsSet.has(i));
-    const targetItems = [
-      ...(Array.from(this.sourceSelectedItems) as TransferItemSelection<T>),
-      ...(this.targetItems as TransferItemSelection<T>),
-    ] as TransferItemSelection<T>;
-
-    this.targetItems = Array.from(new Set(targetItems));
-    this.sourceSelectedItems.clear();
-    this.resetEnabled = true;
-    this.transferEnabled = false;
+    this.store.transfer();
   }
 
   private backtransfer() {
-    const selectedItemsSet = this.targetSelectedItems; //new Set(this.targetSelectedItems.map(i => i.value));
-    this.targetItems = this.targetItems.filter(i => !selectedItemsSet.has(i));
-    const sourceItems = [
-      ...(Array.from(this.targetSelectedItems) as TransferItemSelection<T>),
-      ...(this.sourceItems as TransferItemSelection<T>),
-    ] as TransferItemSelection<T>;
-
-    this.sourceItems = Array.from(new Set(sourceItems));
-    this.targetSelectedItems.clear();
-    this.resetEnabled = true;
-    this.backtransferEnabled = false;
+    this.store.backtransfer();
+    // const selectedItemsSet = this.targetSelectedItems; //new Set(this.targetSelectedItems.map(i => i.value));
+    // this.targetItems = this.targetItems.filter(i => !selectedItemsSet.has(i));
+    // const sourceItems = [
+    //   ...(Array.from(this.targetSelectedItems) as TransferItemSelection<T>),
+    //   ...(this.sourceItems as TransferItemSelection<T>),
+    // ] as TransferItemSelection<T>;
+    // this.sourceItems = Array.from(new Set(sourceItems));
+    // this.targetSelectedItems.clear();
+    // this.resetEnabled = true;
+    // this.backtransferEnabled = false;
   }
 
   private reset() {
-    this.sourceItems = [...this.source];
-    this.targetItems = [...this.target];
-
-    this.resetEnabled = false;
+    this.store.reset();
   }
 }

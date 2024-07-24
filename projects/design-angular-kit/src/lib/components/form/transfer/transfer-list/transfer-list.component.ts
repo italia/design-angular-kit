@@ -1,69 +1,87 @@
-import { TitleCasePipe } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostAttributeToken,
-  inject,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { AsyncPipe, TitleCasePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ElementRef, HostAttributeToken, inject, SimpleChanges, ViewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';
+import { TransferStore } from '../store/transfer.store';
+import { SourceType, TransferItem } from '../transfer.model';
 
 @Component({
   selector: 'it-transfer-list',
   standalone: true,
-  imports: [TitleCasePipe],
+  imports: [AsyncPipe, TitleCasePipe],
   templateUrl: './transfer-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItTransferListComponent<T> implements OnChanges {
-  @Input()
-  items: T[] = [];
-
-  @Output()
-  readonly itemsSelectionChange = new EventEmitter<T[]>();
-
+export class ItTransferListComponent<T> {
   readonly title: string = inject(new HostAttributeToken('title'));
+
+  readonly sourceType = inject(new HostAttributeToken('sourceType')) as SourceType;
+
+  private readonly items = this.store.selectItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());
+
+  readonly numberOfItems$ = this.items.pipe(
+    map(items => ({ length: items.length })),
+    startWith({ length: 0 })
+  );
+
+  readonly items$ = this.items.pipe(
+    map(items =>
+      items.map(item => {
+        return item;
+      })
+    )
+  );
 
   @ViewChild('selectAllCheckbox')
   selectAllCheckboxRef: ElementRef<HTMLInputElement>;
 
-  readonly selected = new Set<T>();
+  readonly selected$ = this.store.selectSelectedItems(this.sourceType);
 
-  ngOnChanges(c: SimpleChanges) {
-    this.resetSelectedWhenItemsChange(c);
+  selected = new Set<TransferItem<T>>();
 
-    if (this.selectAllCheckboxRef) {
-      console.log(this.selectAllCheckboxRef);
-      this.selectAllCheckboxRef.nativeElement.checked = false;
-    }
+  constructor(private readonly store: TransferStore<T>) {
+    console.log(this.sourceType);
+    this.onItemsUpdate();
+    this.onSelectionUpdate();
   }
 
-  checkboxSelectionHandler(item: T, index: number) {
-    console.log(index);
-    if (this.selected.has(item)) {
-      this.selected.delete(item);
-    } else {
-      this.selected.add(item);
-    }
-
-    this.itemsSelectionChange.emit(Array.from(this.selected));
+  checkboxSelectionHandler(item: TransferItem<T>) {
+    this.store.checkboxSelection(item, this.sourceType);
   }
 
   checkboxSelectAllHandler(checked: boolean) {
-    // const target = event.target as EventTarget;
-    console.log(checked);
-    if (checked) {
-      this.items.forEach(item => this.selected.add(item));
-    } else {
-      this.selected.clear();
-    }
+    this.store.selectAllSelection(checked, this.sourceType);
+  }
 
-    this.itemsSelectionChange.emit(Array.from(this.selected));
+  private onItemsUpdate() {
+    this.items
+      .pipe(
+        takeUntilDestroyed(),
+        skip(1),
+        tap(() => {
+          console.log(this.sourceType, 'selectAllCheckboxRef');
+          // this.resetSelectedWhenItemsChange({ items } as SimpleChanges);
+          if (this.selectAllCheckboxRef) {
+            this.selectAllCheckboxRef.nativeElement.checked = false;
+          }
+        })
+      )
+      .subscribe();
+  }
+
+  private onSelectionUpdate() {
+    this.selected$
+      .pipe(
+        takeUntilDestroyed(),
+        tap(selected => {
+          // for (const item of selected.values()) {
+          //   !this.selected.has()
+          // }
+          console.log(this.sourceType, 'selectionUpdate', selected);
+          this.selected = selected;
+        })
+      )
+      .subscribe();
   }
 
   private resetSelectedWhenItemsChange(c: SimpleChanges) {
