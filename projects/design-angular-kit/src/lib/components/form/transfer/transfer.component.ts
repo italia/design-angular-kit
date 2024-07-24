@@ -28,10 +28,20 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
    */
   @Input() target = [];
 
+  /**
+   * Enable transfer button
+   * @default false
+   */
   readonly transferEnabled = this.store.transferEnabled;
-
+  /**
+   * Enable backtransfer button
+   * @default false
+   */
   readonly backtransferEnabled = this.store.backtransferEnabled;
-
+  /**
+   * Enable reset button
+   * @default false
+   */
   readonly resetEnabled = this.store.resetEnabled;
 
   constructor(

@@ -13,6 +13,10 @@ import { SourceType, TransferItem } from '../transfer.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferListComponent<T> {
+  /**
+   * Widget title
+   * @default false
+   */
   readonly title: string = inject(new HostAttributeToken('title'));
 
   readonly sourceType = inject(new HostAttributeToken('sourceType')) as SourceType;
@@ -23,7 +27,10 @@ export class ItTransferListComponent<T> {
     map(items => ({ length: items.length })),
     startWith({ length: 0 })
   );
-
+  /**
+   * Items of the list
+   * @default []
+   */
   readonly items$ = this.items.pipe(
     map(items =>
       items.map(item => {
@@ -34,9 +41,14 @@ export class ItTransferListComponent<T> {
 
   @ViewChild('selectAllCheckbox')
   selectAllCheckboxRef: ElementRef<HTMLInputElement>;
-
+  /**
+   * Selected items
+   */
   readonly selected$ = this.store.selectSelectedItems(this.sourceType);
 
+  /**
+   * Selected items binded with the view
+   */
   selected = new Set<TransferItem<T>>();
 
   constructor(private readonly store: TransferStore<T>) {
@@ -44,15 +56,22 @@ export class ItTransferListComponent<T> {
     this.onItemsUpdate();
     this.onSelectionUpdate();
   }
-
+  /**
+   * Checkbox selection click handler
+   */
   checkboxSelectionHandler(item: TransferItem<T>) {
     this.store.checkboxSelection(item, this.sourceType);
   }
-
+  /**
+   * Checkbox select all selection handler
+   */
   checkboxSelectAllHandler(checked: boolean) {
     this.store.selectAllSelection(checked, this.sourceType);
   }
 
+  /**
+   * Items update subscription
+   */
   private onItemsUpdate() {
     this.items
       .pipe(
@@ -68,7 +87,9 @@ export class ItTransferListComponent<T> {
       )
       .subscribe();
   }
-
+  /**
+   * Selection update subscription
+   */
   private onSelectionUpdate() {
     this.selected$
       .pipe(
