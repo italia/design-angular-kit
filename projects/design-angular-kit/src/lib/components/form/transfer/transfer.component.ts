@@ -19,11 +19,14 @@ import { ItTransferListComponent } from './transfer-list/transfer-list.component
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {
-  @Input()
-  source = [];
-
-  @Input()
-  target = [];
+  /**
+   * The source options (left side)
+   */
+  @Input() source = [];
+  /**
+   * The target options (right side)
+   */
+  @Input() target = [];
 
   readonly transferEnabled = this.store.transferEnabled;
 
@@ -46,25 +49,39 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
     this.store.init({ source: [...this.source], target: [...this.target] });
   }
 
+  /**
+   * Transfer button click handler
+   */
   transferClickHandler() {
     this.transfer();
   }
-
+  /**
+   * Transfer button keypress handler
+   */
   transferKeyHandler() {
     this.transfer();
   }
-
+  /**
+   * Backtransfer button click handler
+   */
   backtransferClickHandler() {
     this.backtransfer();
   }
-
+  /**
+   * Backtransfer button keypress handler
+   */
   backtransferKeyHandler() {
     this.backtransfer();
   }
-
+  /**
+   * Reset button click handler
+   */
   resetClickHandler() {
     this.reset();
   }
+  /**
+   * Reset button keypress handler
+   */
   resetKeyHandler() {
     this.reset();
   }
@@ -75,16 +92,6 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
 
   private backtransfer() {
     this.store.backtransfer();
-    // const selectedItemsSet = this.targetSelectedItems; //new Set(this.targetSelectedItems.map(i => i.value));
-    // this.targetItems = this.targetItems.filter(i => !selectedItemsSet.has(i));
-    // const sourceItems = [
-    //   ...(Array.from(this.targetSelectedItems) as TransferItemSelection<T>),
-    //   ...(this.sourceItems as TransferItemSelection<T>),
-    // ] as TransferItemSelection<T>;
-    // this.sourceItems = Array.from(new Set(sourceItems));
-    // this.targetSelectedItems.clear();
-    // this.resetEnabled = true;
-    // this.backtransferEnabled = false;
   }
 
   private reset() {
