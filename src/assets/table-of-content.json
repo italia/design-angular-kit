@@ -182,6 +182,10 @@
         {
           "label": "Sidebar",
           "link": "/componenti/sidebar"
+        },
+        {
+          "label": "Timeline",
+          "link": "/componenti/timeline"
         }
       ]
     }

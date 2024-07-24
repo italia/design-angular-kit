@@ -36,7 +36,17 @@ export class ItButtonDirective {
    * If button is disabled
    * @default false
    */
-  @Input({ transform: inputToBoolean }) @HostBinding('disabled') disabled?: boolean;
+  @Input({ transform: inputToBoolean })
+  @HostBinding('disabled')
+  disabled?: boolean;
+
+  /**
+   * The type attribute
+   * @default button
+   */
+  @Input()
+  @HostBinding('type')
+  type: 'button' | 'reset' | 'submit' = 'button';
 
   /**
    * The icon children

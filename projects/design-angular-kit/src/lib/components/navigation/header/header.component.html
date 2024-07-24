@@ -3,7 +3,8 @@
   class="it-header-wrapper"
   [class.it-header-sticky]="sticky"
   data-bs-position-type="fixed"
-  data-bs-sticky-class-name="is-sticky">
+  data-bs-sticky-class-name="is-sticky"
+  data-bs-target="#header-nav-wrapper">
   @if (showSlim) {
     <div class="it-header-slim-wrapper" [class.theme-light]="light">
       <div class="container">
@@ -84,7 +85,7 @@
         </div>
       </div>
     </div>
-    <div class="it-header-navbar-wrapper" [class.theme-light-desk]="light">
+    <div class="it-header-navbar-wrapper" [class.theme-light-desk]="light" id="header-nav-wrapper">
       <div class="container">
         <div class="row">
           <div class="col-12">

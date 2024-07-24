@@ -1,0 +1,11 @@
+<h1 class="bd-title">Timeline</h1>
+<p class="bd-lead">Componente per la visualizzazione cronologica di eventi.</p>
+<div [innerHTML]="component.description"></div>
+<it-tab-container>
+  <it-tab-item label="Esempi" active="true" class="pt-3">
+    <it-timeline-examples></it-timeline-examples>
+  </it-tab-item>
+  <it-tab-item label="API" class="pt-3">
+    <it-api-parameters [component]="component"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>

@@ -11,8 +11,7 @@
     }
   },
   "files": [
-    "main.ts",
-    "polyfills.ts"
+    "main.ts"
   ],
   "include": [
     "src/**/*.d.ts"

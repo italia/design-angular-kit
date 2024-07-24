@@ -63,6 +63,10 @@ export * from './lib/components/core/table/table.component';
 export * from './lib/components/core/table/sort/sort.directive';
 export * from './lib/components/core/table/sort/sort-header/sort-header.component';
 
+export * from './lib/components/core/timeline/timeline.module';
+export * from './lib/components/core/timeline/timeline.component';
+export * from './lib/components/core/timeline/timeline-item/timeline-item.component';
+
 export * from './lib/components/core/tooltip/tooltip.directive';
 
 // Forms components
