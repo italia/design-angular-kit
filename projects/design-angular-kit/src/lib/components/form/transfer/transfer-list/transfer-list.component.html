@@ -5,6 +5,7 @@
         #selectAllCheckbox
         type="checkbox"
         id="{{ instanceId }}checkbox{{ title }}"
+        [disabled]="selectAllDisabled | async"
         (click)="checkboxSelectAllHandler($event.target.checked)" />
       <label for="{{ instanceId }}checkbox{{ title }}">
         <span>

@@ -17,7 +17,6 @@ import { SourceType, TransferItem } from '../transfer.model';
 export class ItTransferListComponent<T> extends ItAbstractComponent {
   /**
    * Widget title
-   * @default false
    */
   readonly title: string = inject(new HostAttributeToken('title'));
 
@@ -29,6 +28,7 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
     map(items => ({ length: items.length })),
     startWith({ length: 0 })
   );
+  readonly selectAllDisabled = this.items.pipe(map(items => items.length === 0));
   /**
    * Items of the list
    * @default []
