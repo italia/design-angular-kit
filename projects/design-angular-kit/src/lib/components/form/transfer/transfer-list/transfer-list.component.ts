@@ -52,7 +52,6 @@ export class ItTransferListComponent<T> {
   selected = new Set<TransferItem<T>>();
 
   constructor(private readonly store: TransferStore<T>) {
-    console.log(this.sourceType);
     this.onItemsUpdate();
     this.onSelectionUpdate();
   }
@@ -78,8 +77,6 @@ export class ItTransferListComponent<T> {
         takeUntilDestroyed(),
         skip(1),
         tap(() => {
-          console.log(this.sourceType, 'selectAllCheckboxRef');
-          // this.resetSelectedWhenItemsChange({ items } as SimpleChanges);
           if (this.selectAllCheckboxRef) {
             this.selectAllCheckboxRef.nativeElement.checked = false;
           }
@@ -95,10 +92,6 @@ export class ItTransferListComponent<T> {
       .pipe(
         takeUntilDestroyed(),
         tap(selected => {
-          // for (const item of selected.values()) {
-          //   !this.selected.has()
-          // }
-          console.log(this.sourceType, 'selectionUpdate', selected);
           this.selected = selected;
         })
       )

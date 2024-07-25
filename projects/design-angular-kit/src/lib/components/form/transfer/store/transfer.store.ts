@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, of } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, map, of } from 'rxjs';
 import { SourceType, TransferItem } from '../transfer.model';
 import reducers from './transfer.reducers';
 import { SelectionState, State } from './transfer.state';
@@ -15,6 +15,11 @@ export class TransferStore<T> {
   private get state() {
     return this._state.value;
   }
+
+  readonly valueChanged = this._state.pipe(
+    map(state => state.current.target),
+    distinctUntilChanged()
+  );
 
   readonly selectItems = (sourceType: SourceType) => {
     if (sourceType === 'source') {
