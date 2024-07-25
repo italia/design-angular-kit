@@ -1,8 +1,12 @@
 <div class="it-transfer-wrapper source">
   <div class="transfer-header">
     <div class="form-check" aria-describedby="">
-      <input #selectAllCheckbox type="checkbox" id="checkbox{{ title }}" (click)="checkboxSelectAllHandler($event.target.checked)" />
-      <label for="checkbox{{ title }}">
+      <input
+        #selectAllCheckbox
+        type="checkbox"
+        id="{{ instanceId }}checkbox{{ title }}"
+        (click)="checkboxSelectAllHandler($event.target.checked)" />
+      <label for="{{ instanceId }}checkbox{{ title }}">
         <span>
           @if (numberOfItems$ | async; as numberOfItems) {
             <span class="num"> {{ numberOfItems.length }} </span>
@@ -19,8 +23,12 @@
     <div class="transfer-group">
       @for (item of items$ | async; track item.value) {
         <div class="form-check" aria-describedby="">
-          <input type="checkbox" id="{{ item.value }}" [checked]="selected.has(item)" (click)="checkboxSelectionHandler(item)" />
-          <label for="{{ item.value }}">
+          <input
+            type="checkbox"
+            id="{{ instanceId }}-{{ item.value }}"
+            [checked]="selected.has(item)"
+            (click)="checkboxSelectionHandler(item)" />
+          <label for="{{ instanceId }}-{{ item.value }}">
             <span>
               <span>{{ item.text }}</span>
             </span>

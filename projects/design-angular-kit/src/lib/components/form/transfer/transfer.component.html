@@ -2,6 +2,7 @@
   @if (label) {
     <label [for]="id" [class.active]="!!control.value || !!placeholder">{{ label }}</label>
   }
+  {{ control.value | json }}
   <div class="row">
     <div class="col-xs-12 col-md-5">
       <it-transfer-list sourceType="source" title="source"></it-transfer-list>

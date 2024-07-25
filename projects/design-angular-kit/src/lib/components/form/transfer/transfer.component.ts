@@ -1,7 +1,9 @@
-import { AsyncPipe, NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnInit, Optional, Self } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, OnInit, Optional, Self } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NgControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { tap } from 'rxjs';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { TransferStore } from './store/transfer.store';
 import { ItTransferListComponent } from './transfer-list/transfer-list.component';
@@ -14,7 +16,7 @@ import { ItTransferListComponent } from './transfer-list/transfer-list.component
   selector: 'it-transfer',
   standalone: true,
   templateUrl: './transfer.component.html',
-  imports: [ItTransferListComponent, NgClass, AsyncPipe],
+  imports: [ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule, JsonPipe],
   providers: [TransferStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -44,6 +46,8 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
    */
   readonly resetEnabled = this.store.resetEnabled;
 
+  private readonly destroyRef = inject(DestroyRef);
+
   constructor(
     @Self()
     @Optional()
@@ -57,6 +61,13 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   override ngOnInit() {
     super.ngOnInit();
     this.store.init({ source: [...this.source], target: [...this.target] });
+    this.store.valueChanged
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        tap(value => this.writeValue(value as T)),
+        tap(value => this.onChange(value as T))
+      )
+      .subscribe();
   }
 
   /**

@@ -1,3 +1,18 @@
 <div class="bd-example">
-  <it-transfer [source]="sourceItems" [target]="targetItems"></it-transfer>
+  <div class="row">
+    <div class="col">
+      <h5>NgModel</h5>
+      {{ transferModel | json }}
+      <it-transfer [(ngModel)]="transferModel" [source]="sourceItems" [target]="targetItems"></it-transfer>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h5>FormGroup</h5>
+      {{ formGroup.value.transfer | json }}
+      <form [formGroup]="formGroup">
+        <it-transfer formControlName="transfer" [source]="sourceItems" [target]="targetItems"></it-transfer>
+      </form>
+    </div>
+  </div>
 </div>

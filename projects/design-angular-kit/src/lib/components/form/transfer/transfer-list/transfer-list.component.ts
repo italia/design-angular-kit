@@ -1,8 +1,10 @@
 import { AsyncPipe, TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, HostAttributeToken, inject, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostAttributeToken, inject, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';
+import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { TransferStore } from '../store/transfer.store';
+
 import { SourceType, TransferItem } from '../transfer.model';
 
 @Component({
@@ -12,7 +14,7 @@ import { SourceType, TransferItem } from '../transfer.model';
   templateUrl: './transfer-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItTransferListComponent<T> {
+export class ItTransferListComponent<T> extends ItAbstractComponent {
   /**
    * Widget title
    * @default false
@@ -51,7 +53,10 @@ export class ItTransferListComponent<T> {
    */
   selected = new Set<TransferItem<T>>();
 
+  readonly instanceId = this.getInstanceId();
+
   constructor(private readonly store: TransferStore<T>) {
+    super();
     this.onItemsUpdate();
     this.onSelectionUpdate();
   }
@@ -98,9 +103,7 @@ export class ItTransferListComponent<T> {
       .subscribe();
   }
 
-  private resetSelectedWhenItemsChange(c: SimpleChanges) {
-    if (c.items) {
-      this.selected.clear();
-    }
+  private getInstanceId() {
+    return Math.floor(Math.random() * 100000000).toString();
   }
 }
