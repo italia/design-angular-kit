@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TransferListComponent } from './transfer-list.component';
+import { ItTransferListComponent } from './transfer-list.component';
 
-describe('TransferListComponent', () => {
-  let component: TransferListComponent;
-  let fixture: ComponentFixture<TransferListComponent>;
+describe('ItTransferListComponent', <T>() => {
+  let component: ItTransferListComponent<T>;
+  let fixture: ComponentFixture<ItTransferListComponent<T>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TransferListComponent],
+      imports: [ItTransferListComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TransferListComponent);
+    fixture = TestBed.createComponent(ItTransferListComponent<T>);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
