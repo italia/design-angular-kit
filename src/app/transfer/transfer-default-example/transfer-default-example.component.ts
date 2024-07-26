@@ -23,7 +23,8 @@ export class TransferDefaultExampleComponent {
     },
   ];
 
-  transferChangesHandler(event: TransferItem<number>[]) {
-    console.log('valueChanged: demo', event);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  transferChangesHandler(_: TransferItem<number>[]) {
+    // handle changing data
   }
 }

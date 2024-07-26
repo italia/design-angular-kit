@@ -1,7 +1,7 @@
 import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Optional, Output, Self } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NgControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControlName, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { tap } from 'rxjs';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
@@ -65,15 +65,8 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
 
   override ngOnInit() {
     super.ngOnInit();
-    this.store.init({ source: [...this.source], target: [...this.target] });
-    this.store.valueChanged
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        tap(value => this.writeValue(value as T)),
-        tap(value => this.onChange(value as T)),
-        tap(value => this.transferChanges.emit(value))
-      )
-      .subscribe();
+    this.storeInit();
+    this.onStoreValueChanged();
   }
 
   /**
@@ -123,5 +116,49 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
 
   private reset() {
     this.store.reset();
+  }
+
+  private storeInit() {
+    let target = [];
+    const ngControl = this._ngControl;
+    const isNgControlDefined = Boolean(this._ngControl);
+
+    // if ngControl is defined, take values from it. Input() target will be ignored
+    if (isNgControlDefined) {
+      console.debug('ngControl instanceof NgModel:', ngControl instanceof NgModel);
+      console.debug('ngControl instanceof FormControlName:', ngControl instanceof FormControlName);
+
+      // if ngControl is an ngModel (template-driven form use case), take values from it
+      if (ngControl instanceof NgModel) {
+        console.debug('ngControl instanceof NgModel');
+        const model = (ngControl as NgModel).model;
+        target = Array.isArray(model) ? model : [];
+      }
+
+      // if ngControl is an FormControlName (reactive form use case), take values from it
+      if (ngControl instanceof FormControlName) {
+        console.debug('ngControl instanceof FormControlName');
+        const model = (ngControl as FormControlName).control.value;
+        target = Array.isArray(model) ? model : [];
+      }
+
+      console.debug('ngControl is defined. Input() target will be ignored');
+    } else if (this.target && Array.isArray(this.target)) {
+      target = [...this.target];
+    }
+
+    console.debug('target:', this.target, 'formControl:', this.control.value, 'ngModel:', this._ngControl);
+    this.store.init({ source: [...this.source], target });
+  }
+
+  private onStoreValueChanged() {
+    this.store.valueChanged
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        tap(value => this.writeValue(value as T)),
+        tap(value => this.onChange(value as T)),
+        tap(value => this.transferChanges.emit(value))
+      )
+      .subscribe();
   }
 }
