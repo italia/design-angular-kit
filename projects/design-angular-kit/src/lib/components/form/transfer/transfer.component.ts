@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Optional, Output, Self } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControlName, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ import { TransferItem } from './transfer.model';
   selector: 'it-transfer',
   standalone: true,
   templateUrl: './transfer.component.html',
-  imports: [ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule, JsonPipe],
+  imports: [ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
   providers: [TransferStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
