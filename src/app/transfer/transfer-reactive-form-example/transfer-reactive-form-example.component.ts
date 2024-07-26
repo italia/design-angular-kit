@@ -3,10 +3,10 @@ import { FormBuilder } from '@angular/forms';
 import { TransferItem } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
-  selector: 'it-transfer-form-example',
-  templateUrl: './transfer-form-example.component.html',
+  selector: 'it-transfer-reactive-form-example',
+  templateUrl: './transfer-reactive-form-example.component.html',
 })
-export class TransferFormExampleComponent {
+export class TransferReactiveFormExampleComponent {
   readonly sourceItems: TransferItem<number>[] = [
     {
       text: 'Item 1',
@@ -23,8 +23,6 @@ export class TransferFormExampleComponent {
       value: 3,
     },
   ];
-
-  transferModel = this.targetItems;
 
   readonly formGroup = inject(FormBuilder).group({
     transfer: [this.targetItems],

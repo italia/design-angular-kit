@@ -1,0 +1,10 @@
+<h3>Esempio Trasfer con Template Form</h3>
+<div class="bd-example">
+  <div class="row">
+    <div class="col">
+      <h5>NgModel</h5>
+      {{ transferModel | json }}
+      <it-transfer [(ngModel)]="transferModel" [source]="sourceItems" [target]="targetItems"></it-transfer>
+    </div>
+  </div>
+</div>
