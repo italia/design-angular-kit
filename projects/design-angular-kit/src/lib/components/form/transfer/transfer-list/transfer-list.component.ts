@@ -18,9 +18,9 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
   /**
    * Widget title
    */
-  readonly title: string = inject(new HostAttributeToken('title'));
+  readonly title: string = inject(new HostAttributeToken('title'), { optional: true });
 
-  readonly sourceType = inject(new HostAttributeToken('sourceType')) as SourceType;
+  readonly sourceType = inject(new HostAttributeToken('sourceType'), { optional: true }) as SourceType;
 
   private readonly items = this.store.selectItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());
 

@@ -15,8 +15,8 @@ describe('ItTransferListComponent', <T>() => {
       providers: [
         TransferStore,
         TranslateService,
-        { provide: new HostAttributeToken('title'), useValue: 'title', multi: true },
-        { provide: new HostAttributeToken('sourceType'), useValue: 'source', multi: true },
+        { provide: new HostAttributeToken('title'), useValue: 'title' },
+        { provide: new HostAttributeToken('sourceType'), useValue: 'source' },
       ],
     }).compileComponents();
 
