@@ -31,7 +31,7 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
    */
   @Input() target = [];
   /**
-   * Event emitted when there is a transfer, a backtransfer or a rest
+   * Fired when there is a transfer, a backtransfer or a reset event
    */
   @Output() readonly transferChanges = new EventEmitter<TransferItem<T>[]>();
 
