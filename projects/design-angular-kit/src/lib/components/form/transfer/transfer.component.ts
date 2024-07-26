@@ -1,5 +1,5 @@
 import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, OnInit, Optional, Self } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Optional, Output, Self } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -7,6 +7,7 @@ import { tap } from 'rxjs';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { TransferStore } from './store/transfer.store';
 import { ItTransferListComponent } from './transfer-list/transfer-list.component';
+import { TransferItem } from './transfer.model';
 
 /**
  * Transfer
@@ -29,6 +30,8 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
    * The target options (right side)
    */
   @Input() target = [];
+
+  @Output() readonly transferChanges = new EventEmitter<TransferItem<T>[]>();
 
   /**
    * Enable transfer button
@@ -65,7 +68,8 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         tap(value => this.writeValue(value as T)),
-        tap(value => this.onChange(value as T))
+        tap(value => this.onChange(value as T)),
+        tap(value => this.transferChanges.emit(value))
       )
       .subscribe();
   }

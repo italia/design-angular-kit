@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
 import { TransferItem } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
@@ -24,13 +23,7 @@ export class TransferDefaultExampleComponent {
     },
   ];
 
-  transferModel = this.targetItems;
-
-  readonly formGroup = inject(FormBuilder).group({
-    transfer: [this.targetItems],
-  });
-
-  valueChangesHandler(event: Event) {
+  transferChangesHandler(event: TransferItem<number>[]) {
     console.log('valueChanged: demo', event);
   }
 }
