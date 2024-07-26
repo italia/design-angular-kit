@@ -3,7 +3,6 @@
   <div class="row">
     <div class="col">
       <h5>Esempio di default</h5>
-      {{ targetItems | json }}
       <it-transfer [source]="sourceItems" [target]="targetItems" (transferChanges)="transferChangesHandler($event)"></it-transfer>
     </div>
   </div>
