@@ -13,10 +13,10 @@
         <a
           class="transfer"
           role="button"
+          href="#"
           [ngClass]="{ active: transferEnabled | async }"
-          (click)="transferClickHandler()"
-          (keyup)="transferKeyHandler()"
-          aria-hidden="true"
+          (click)="transferClickHandler($event)"
+          (keypress)="transferKeyPressHandler($event)"
           aria-label="Sposta avanti">
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use></svg>
         </a>
@@ -24,21 +24,21 @@
         <a
           class="backtransfer"
           role="button"
+          href="#"
           [ngClass]="{ active: backtransferEnabled | async }"
-          (click)="backtransferClickHandler()"
-          (keyup)="backtransferKeyHandler()"
-          aria-hidden="true"
+          (click)="backtransferClickHandler($event)"
+          (keypress)="backtransferKeyPressHandler($event)"
           aria-label="Sposta indietro">
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-left"></use></svg>
         </a>
         <span class="visually-hidden">Etichetta for freccia sinistra</span>
         <a
           class="reset"
-          [ngClass]="{ active: resetEnabled | async }"
           role="button"
-          (click)="resetClickHandler()"
-          (keyup)="resetKeyHandler()"
-          aria-hidden="true"
+          href="#"
+          [ngClass]="{ active: resetEnabled | async }"
+          (click)="resetClickHandler($event)"
+          (keypress)="resetKeyPressHandler($event)"
           aria-label="Reset">
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-restore"></use></svg>
         </a>
