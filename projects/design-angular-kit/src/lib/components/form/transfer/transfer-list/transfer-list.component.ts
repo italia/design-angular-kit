@@ -1,11 +1,15 @@
 import { AsyncPipe, TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ElementRef, HostAttributeToken, inject, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';
+import { combineLatest, distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { TransferStore } from '../store/transfer.store';
 
 import { SourceType, TransferItem } from '../transfer.model';
+
+interface SelectableTransferItem<T> extends TransferItem<T> {
+  selected: boolean;
+}
 
 @Component({
   selector: 'it-transfer-list',
@@ -23,6 +27,7 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
   readonly sourceType = inject(new HostAttributeToken('sourceType'), { optional: true }) as SourceType;
 
   private readonly items = this.store.selectItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());
+  private readonly selected = this.store.selectSelectedItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());
 
   readonly numberOfItems$ = this.items.pipe(
     map(items => ({ length: items.length })),
@@ -33,9 +38,10 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
    * Items of the list
    * @default []
    */
-  readonly items$ = this.items.pipe(
-    map(items =>
-      items.map(item => {
+  readonly items$ = combineLatest([this.items, this.selected]).pipe(
+    map(([items, selected]) =>
+      items.map<SelectableTransferItem<T>>((item: SelectableTransferItem<T>) => {
+        item.selected = selected.has(item);
         return item;
       })
     )
@@ -43,22 +49,12 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
 
   @ViewChild('selectAllCheckbox')
   selectAllCheckboxRef: ElementRef<HTMLInputElement>;
-  /**
-   * Selected items
-   */
-  readonly selected$ = this.store.selectSelectedItems(this.sourceType);
-
-  /**
-   * Selected items binded with the view
-   */
-  selected = new Set<TransferItem<T>>();
 
   readonly instanceId = this.getInstanceId();
 
   constructor(private readonly store: TransferStore<T>) {
     super();
     this.onItemsUpdate();
-    this.onSelectionUpdate();
   }
   /**
    * Checkbox selection click handler
@@ -85,19 +81,6 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
           if (this.selectAllCheckboxRef) {
             this.selectAllCheckboxRef.nativeElement.checked = false;
           }
-        })
-      )
-      .subscribe();
-  }
-  /**
-   * Selection update subscription
-   */
-  private onSelectionUpdate() {
-    this.selected$
-      .pipe(
-        takeUntilDestroyed(),
-        tap(selected => {
-          this.selected = selected;
         })
       )
       .subscribe();

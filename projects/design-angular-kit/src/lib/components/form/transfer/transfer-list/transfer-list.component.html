@@ -27,7 +27,7 @@
           <input
             type="checkbox"
             id="{{ instanceId }}-{{ item.value }}"
-            [checked]="selected.has(item)"
+            [checked]="item.selected"
             (click)="checkboxSelectionHandler(item)" />
           <label for="{{ instanceId }}-{{ item.value }}">
             <span>
