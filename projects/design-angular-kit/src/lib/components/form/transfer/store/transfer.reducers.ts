@@ -11,7 +11,7 @@ const getSelectedMapByItems = <T>(checked: boolean, items: TransferItem<T>[]) =>
   return selected;
 };
 
-const toggleItemFromSet = <T>(set: Set<TransferItem<T>>, item: TransferItem<T>) => {
+const generateSelected = <T>(set: Set<TransferItem<T>>, item: TransferItem<T>) => {
   if (set.has(item)) {
     set.delete(item);
   } else {
@@ -96,10 +96,6 @@ const selectAllSource = <T>(state: State<T>, { checked }: { checked: boolean }) 
 
   return {
     ...state,
-    //   current: {
-    //     ...previousState.current,
-    //     source: Array.from(selected),
-    //   },
     selections: {
       ...state.selections,
       source: selected,
@@ -118,10 +114,6 @@ const selectAllTarget = <T>(state: State<T>, { checked }: { checked: boolean }) 
 
   return {
     ...state,
-    //   current: {
-    //     ...previousState.current,
-    //     target: Array.from(selected),
-    //   },
     selections: {
       ...state.selections,
       target: selected,
@@ -134,7 +126,7 @@ const selectAllTarget = <T>(state: State<T>, { checked }: { checked: boolean }) 
 };
 
 const selectionItemSource = <T>(previousState: State<T>, { item }: { item: TransferItem<T> }) => {
-  const selected = toggleItemFromSet(previousState.selections.source, item);
+  const selected = generateSelected(previousState.selections.source, item);
   const selectedItems = Array.from(selected);
   const transfer = Boolean(selectedItems.length);
   const source = new Set([...selectedItems]);
@@ -155,7 +147,7 @@ const selectionItemSource = <T>(previousState: State<T>, { item }: { item: Trans
 };
 
 const selectionItemTarget = <T>(previousState: State<T>, { item }: { item: TransferItem<T> }) => {
-  const selected = toggleItemFromSet(previousState.selections.target, item);
+  const selected = generateSelected(previousState.selections.target, item);
   const selectedItems = Array.from(selected);
   const backtransfer = Boolean(selectedItems.length);
   const target = new Set([...selectedItems]);
