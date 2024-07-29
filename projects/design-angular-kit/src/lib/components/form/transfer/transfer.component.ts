@@ -78,55 +78,42 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
    * Transfer button click handler
    */
   transferClickHandler(event: PointerEvent) {
-    event.preventDefault();
-    this.transfer();
+    this.buttonEventHandler(event, () => this.store.transfer());
   }
   /**
    * Transfer button keypress handler
    */
   transferKeyPressHandler(event: KeyboardEvent) {
-    event.preventDefault();
-    this.transfer();
+    this.buttonEventHandler(event, () => this.store.transfer());
   }
   /**
    * Backtransfer button click handler
    */
   backtransferClickHandler(event: PointerEvent) {
-    event.preventDefault();
-    this.backtransfer();
+    this.buttonEventHandler(event, () => this.store.backtransfer());
   }
   /**
    * Backtransfer button keypress handler
    */
   backtransferKeyPressHandler(event: KeyboardEvent) {
-    event.preventDefault();
-    this.backtransfer();
+    this.buttonEventHandler(event, () => this.store.backtransfer());
   }
   /**
    * Reset button click handler
    */
   resetClickHandler(event: PointerEvent) {
-    event.preventDefault();
-    this.reset();
+    this.buttonEventHandler(event, () => this.store.reset());
   }
   /**
    * Reset button keypress handler
    */
   resetKeyPressHandler(event: KeyboardEvent) {
+    this.buttonEventHandler(event, () => this.store.reset());
+  }
+
+  private buttonEventHandler(event: Event, updateStoreCb: () => void) {
     event.preventDefault();
-    this.reset();
-  }
-
-  private transfer() {
-    this.store.transfer();
-  }
-
-  private backtransfer() {
-    this.store.backtransfer();
-  }
-
-  private reset() {
-    this.store.reset();
+    updateStoreCb();
   }
 
   private storeInit() {
