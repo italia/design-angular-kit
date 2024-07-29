@@ -2,7 +2,7 @@ import { TransferItem, TransferItemSelection } from '../transfer.model';
 import { SelectionState, State } from './transfer.state';
 
 //#region private utility functions
-const getSelectedMapByItems = <T>(checked: boolean, items: TransferItem<T>[]) => {
+const generateSelectAll = <T>(checked: boolean, items: TransferItem<T>[]) => {
   const selected = new Set<TransferItem<T>>();
   if (checked) {
     items.forEach(item => selected.add(item));
@@ -11,7 +11,7 @@ const getSelectedMapByItems = <T>(checked: boolean, items: TransferItem<T>[]) =>
   return selected;
 };
 
-const generateSelected = <T>(set: Set<TransferItem<T>>, item: TransferItem<T>) => {
+const updateSelected = <T>(set: Set<TransferItem<T>>, item: TransferItem<T>) => {
   if (set.has(item)) {
     set.delete(item);
   } else {
@@ -91,7 +91,7 @@ const reset = <T>(state: State<T>) => {
 
 const selectAllSource = <T>(state: State<T>, { checked }: { checked: boolean }) => {
   const items = state.current.source;
-  const selected = getSelectedMapByItems(checked, items);
+  const selected = generateSelectAll(checked, items);
   const transfer = Boolean(selected.size);
 
   return {
@@ -109,7 +109,7 @@ const selectAllSource = <T>(state: State<T>, { checked }: { checked: boolean }) 
 
 const selectAllTarget = <T>(state: State<T>, { checked }: { checked: boolean }) => {
   const items = state.current.target;
-  const selected = getSelectedMapByItems(checked, items);
+  const selected = generateSelectAll(checked, items);
   const backtransfer = Boolean(selected.size);
 
   return {
@@ -126,7 +126,7 @@ const selectAllTarget = <T>(state: State<T>, { checked }: { checked: boolean }) 
 };
 
 const selectionItemSource = <T>(previousState: State<T>, { item }: { item: TransferItem<T> }) => {
-  const selected = generateSelected(previousState.selections.source, item);
+  const selected = updateSelected(previousState.selections.source, item);
   const selectedItems = Array.from(selected);
   const transfer = Boolean(selectedItems.length);
   const source = new Set([...selectedItems]);
@@ -147,7 +147,7 @@ const selectionItemSource = <T>(previousState: State<T>, { item }: { item: Trans
 };
 
 const selectionItemTarget = <T>(previousState: State<T>, { item }: { item: TransferItem<T> }) => {
-  const selected = generateSelected(previousState.selections.target, item);
+  const selected = updateSelected(previousState.selections.target, item);
   const selectedItems = Array.from(selected);
   const backtransfer = Boolean(selectedItems.length);
   const target = new Set([...selectedItems]);
