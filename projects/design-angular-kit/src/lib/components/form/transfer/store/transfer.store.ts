@@ -66,22 +66,22 @@ export class TransferStore<T> {
     this.updateState(reducers.resetFn());
   }
 
-  checkboxSelection(item: TransferItem<T>, sourceId: SourceType) {
-    if (sourceId === 'source') {
+  checkboxSelection(item: TransferItem<T>, sourceType: SourceType) {
+    if (sourceType === 'source') {
       this.updateState(reducers.selectionItemSourceFn({ item }));
     }
 
-    if (sourceId === 'target') {
+    if (sourceType === 'target') {
       this.updateState(reducers.selectionItemTargetFn({ item }));
     }
   }
 
-  selectAllSelection(checked: boolean, sourceId: SourceType) {
-    if (sourceId === 'source') {
+  selectAllSelection(checked: boolean, sourceType: SourceType) {
+    if (sourceType === 'source') {
       this.updateState(reducers.selectAllSourceFn({ checked }));
     }
 
-    if (sourceId === 'target') {
+    if (sourceType === 'target') {
       this.updateState(reducers.selectAllTargetFn({ checked }));
     }
   }
