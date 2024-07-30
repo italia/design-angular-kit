@@ -56,8 +56,8 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   constructor(
     @Self()
     @Optional()
-    readonly _ngControl: NgControl,
-    readonly _translateService: TranslateService,
+    override readonly _ngControl: NgControl,
+    override readonly _translateService: TranslateService,
     private readonly store: TransferStore<T>
   ) {
     super(_translateService, _ngControl);
@@ -77,7 +77,7 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   /**
    * Transfer button click handler
    */
-  transferClickHandler(event: PointerEvent) {
+  transferClickHandler(event: MouseEvent) {
     this.buttonEventHandler(event, () => this.store.transfer());
   }
   /**
@@ -89,7 +89,7 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   /**
    * Backtransfer button click handler
    */
-  backtransferClickHandler(event: PointerEvent) {
+  backtransferClickHandler(event: MouseEvent) {
     this.buttonEventHandler(event, () => this.store.backtransfer());
   }
   /**
@@ -101,7 +101,7 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   /**
    * Reset button click handler
    */
-  resetClickHandler(event: PointerEvent) {
+  resetClickHandler(event: MouseEvent) {
     this.buttonEventHandler(event, () => this.store.reset());
   }
   /**

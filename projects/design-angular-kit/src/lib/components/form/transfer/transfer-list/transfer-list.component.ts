@@ -22,7 +22,7 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
   /**
    * Widget title
    */
-  readonly title: string = inject(new HostAttributeToken('title'), { optional: true });
+  readonly title = inject(new HostAttributeToken('title'), { optional: true });
 
   readonly sourceType = inject(new HostAttributeToken('sourceType'), { optional: true }) as SourceType;
 
@@ -40,15 +40,15 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
    */
   readonly items$ = combineLatest([this.items, this.selected]).pipe(
     map(([items, selected]) =>
-      items.map<SelectableTransferItem<T>>((item: SelectableTransferItem<T>) => {
-        item.selected = selected.has(item);
-        return item;
+      items.map(item => {
+        (item as SelectableTransferItem<T>).selected = selected.has(item);
+        return item as SelectableTransferItem<T>;
       })
     )
   );
 
   @ViewChild('selectAllCheckbox')
-  selectAllCheckboxRef: ElementRef<HTMLInputElement>;
+  selectAllCheckboxRef!: ElementRef<HTMLInputElement>;
 
   readonly instanceId = this.getInstanceId();
 
@@ -65,7 +65,8 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
   /**
    * Checkbox select all selection handler
    */
-  checkboxSelectAllHandler(checked: boolean) {
+  checkboxSelectAllHandler(event: Event) {
+    const checked = ((event as PointerEvent).target as HTMLInputElement).checked;
     this.store.selectAllSelection(checked, this.sourceType);
   }
 

@@ -6,7 +6,7 @@
         type="checkbox"
         id="{{ instanceId }}checkbox{{ title }}"
         [disabled]="selectAllDisabled | async"
-        (click)="checkboxSelectAllHandler($event.target.checked)" />
+        (click)="checkboxSelectAllHandler($event)" />
       <label for="{{ instanceId }}checkbox{{ title }}">
         <span>
           @if (numberOfItems$ | async; as numberOfItems) {
