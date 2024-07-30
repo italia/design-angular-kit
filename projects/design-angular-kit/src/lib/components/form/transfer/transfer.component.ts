@@ -69,11 +69,6 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
     this.onStoreValueChanged();
   }
 
-  buttonHandler(event: Event) {
-    console.log(event);
-    event.preventDefault();
-  }
-
   /**
    * Transfer button click handler
    */

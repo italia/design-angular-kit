@@ -12,10 +12,6 @@ export class TransferStore<T> {
 
   private readonly targetItems = this._state.pipe(map(state => state.current.target));
 
-  private get state() {
-    return this._state.value;
-  }
-
   readonly valueChanged = this._state.pipe(
     map(state => state.current.target),
     distinctUntilChanged()
