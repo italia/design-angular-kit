@@ -6,7 +6,7 @@ import { TransferItem } from 'projects/design-angular-kit/src/public_api';
   templateUrl: './transfer-default-example.component.html',
 })
 export class TransferDefaultExampleComponent {
-  readonly sourceItems: TransferItem<number>[] = [
+  readonly options: TransferItem<number>[] = [
     {
       text: 'Item 1',
       value: 1,
@@ -16,7 +16,7 @@ export class TransferDefaultExampleComponent {
       value: 2,
     },
   ];
-  readonly targetItems: TransferItem<number>[] = [
+  readonly selected: TransferItem<number>[] = [
     {
       text: 'Item 3',
       value: 3,

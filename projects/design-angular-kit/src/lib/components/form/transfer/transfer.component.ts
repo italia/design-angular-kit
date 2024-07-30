@@ -23,13 +23,13 @@ import { TransferItem } from './transfer.model';
 })
 export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {
   /**
-   * The source options (left side)
+   * The select options (left side)
    */
-  @Input() source = [];
+  @Input() options = [];
   /**
-   * The target options (right side)
+   * The selected options (right side)
    */
-  @Input() target = [];
+  @Input() selected = [];
   /**
    * Fired when there is a transfer, a backtransfer or a reset event
    */
@@ -136,12 +136,12 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
       }
 
       console.debug('ngControl is defined. Input() target will be ignored');
-    } else if (this.target && Array.isArray(this.target)) {
-      target = [...this.target];
+    } else if (this.selected && Array.isArray(this.selected)) {
+      target = [...this.selected];
     }
 
-    console.debug('target:', this.target, 'formControl:', this.control.value, 'ngModel:', this._ngControl);
-    this.store.init({ source: [...this.source], target });
+    console.debug('target:', this.selected, 'formControl:', this.control.value, 'ngModel:', this._ngControl);
+    this.store.init({ source: [...this.options], target });
   }
 
   private onStoreValueChanged() {
