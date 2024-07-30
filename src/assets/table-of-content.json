@@ -186,6 +186,10 @@
         {
           "label": "Timeline",
           "link": "/componenti/timeline"
+        },
+        {
+          "label": "Navscroll",
+          "link": "/componenti/navscroll"
         }
       ]
     }
