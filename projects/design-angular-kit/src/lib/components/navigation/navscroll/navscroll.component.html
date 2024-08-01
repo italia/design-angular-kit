@@ -1,1 +1,81 @@
-<p>navscroll works!</p>
+<nav class="navbar it-navscroll-wrapper navbar-expand-lg it-bottom-navscroll it-left-side" data-bs-navscroll>
+  <button
+    class="custom-navbar-toggler"
+    type="button"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    data-bs-toggle="navbarcollapsible"
+    data-bs-target="#navbarNav">
+    <span class="it-list"></span>1. Introduzione
+  </button>
+  <div class="navbar-collapsable" id="navbarNav">
+    <div class="overlay"></div>
+    <div class="close-div visually-hidden">
+      <button class="btn close-menu" type="button"><span class="it-close"></span>Chiudi</button>
+    </div>
+    <button type="button" class="it-back-button btn w-100 text-start">
+      <svg class="icon icon-sm icon-primary align-top">
+        <use
+          href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"
+          xlink:href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"></use>
+      </svg>
+      <span>Indietro</span>
+    </button>
+    <div class="menu-wrapper">
+      <div class="link-list-wrapper">
+        <h3>header</h3>
+        <ul class="link-list">
+          <li class="nav-item active">
+            <a class="nav-link active" href="#"><span>1. Introduzione </span></a>
+            <ul class="link-list">
+              <li class="nav-link active">
+                <a class="nav-link active" href="#"><span>1.1 Elemento annidato (attivo) </span></a>
+                <ul class="tertiary link-list">
+                  <li class="nav-link">
+                    <a class="nav-link" href="#"><span>1.1.1 Elemento annidato </span></a>
+                  </li>
+                  <li class="nav-link">
+                    <a class="nav-link" href="#"><span>1.1.2 Elemento annidato </span></a>
+                  </li>
+                  <li class="nav-link">
+                    <a class="nav-link" href="#"><span>1.1.3 Elemento annidato </span></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-link">
+                <a class="nav-link" href="#"><span>1.2 Elemento annidato </span></a>
+              </li>
+              <li class="nav-link">
+                <a class="nav-link" href="#"><span>1.3 Elemento annidato </span></a>
+              </li>
+            </ul>
+            <a class="nav-link" href="#"><span>2. Sezione </span></a>
+            <ul class="link-list">
+              <li class="nav-link">
+                <a class="nav-link" href="#"><span>2.1 Elemento annidato </span></a>
+                <ul class="tertiary link-list">
+                  <li class="nav-link">
+                    <a class="nav-link" href="#"><span>2.1.1 Elemento annidato </span></a>
+                  </li>
+                  <li class="nav-link">
+                    <a class="nav-link" href="#"><span>2.1.2 Elemento annidato </span></a>
+                  </li>
+                  <li class="nav-link">
+                    <a class="nav-link" href="#"><span>2.1.3 Elemento annidato </span></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-link">
+                <a class="nav-link" href="#"><span>2.2 Elemento annidato </span></a>
+              </li>
+              <li class="nav-link">
+                <a class="nav-link" href="#"><span>2.3 Elemento annidato </span></a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
