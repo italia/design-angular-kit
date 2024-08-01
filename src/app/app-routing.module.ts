@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ItErrorPageComponent } from 'design-angular-kit/components/utils/error-page/error-page.component';
+import { NavscrollTbComponent } from './navscroll-tb.component';
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 
 const routes: Routes = [
@@ -71,6 +72,7 @@ const routes: Routes = [
       { path: 'navscroll', loadChildren: () => import('src/app/navscroll/navscroll.module').then(m => m.NavscrollModule) },
     ],
   },
+  { path: 'navscroll-tb', component: NavscrollTbComponent },
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },
   { path: 'error/server-error', component: ItErrorPageComponent, data: { errorCode: 500 } },

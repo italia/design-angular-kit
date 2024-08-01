@@ -1,18 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { TableOfContentComponent } from './table-of-content/table-of-content.component';
-import { TableOfContentItemComponent } from './table-of-content-item/table-of-content-item.component';
-import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
-import { LinkSortPipe } from './link-sort.pipe';
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { TranslateStore } from '@ngx-translate/core';
 import { DesignAngularKitModule } from 'design-angular-kit/design-angular-kit.module';
+import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LinkSortPipe } from './link-sort.pipe';
+import { NavscrollTbComponent } from './navscroll-tb.component';
+import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
+import { TableOfContentItemComponent } from './table-of-content-item/table-of-content-item.component';
+import { TableOfContentComponent } from './table-of-content/table-of-content.component';
 
 @NgModule({
-  declarations: [AppComponent, TableOfContentComponent, TableOfContentItemComponent, RouterDispatcherComponent, LinkSortPipe],
+  declarations: [
+    AppComponent,
+    TableOfContentComponent,
+    TableOfContentItemComponent,
+    RouterDispatcherComponent,
+    LinkSortPipe,
+    NavscrollTbComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, DesignAngularKitModule.forRoot()],
   providers: [
     TranslateStore,
