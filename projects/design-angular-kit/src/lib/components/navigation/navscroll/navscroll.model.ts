@@ -6,3 +6,7 @@ export interface NavscrollItem {
 }
 
 export type NavscrollItems = Array<NavscrollItem>;
+
+export interface NavscrollItemActive {
+  active: boolean;
+}

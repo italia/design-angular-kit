@@ -1,16 +1,26 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ItNavscrollItemComponent } from './navscroll-list-item.component';
-import { NavscrollItems } from './navscroll.model';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
+import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
+import { NavscrollItem } from './navscroll.model';
+import { NavscrollStore } from './navscroll.store';
 
 @Component({
   selector: 'it-navscroll',
   standalone: true,
-  imports: [ItNavscrollItemComponent],
+  imports: [ItNavscrollListItemsComponent, NgTemplateOutlet, RouterLink, RouterLinkActive, RouterLinkWithHref, AsyncPipe],
   templateUrl: './navscroll.component.html',
   styleUrl: './navscroll.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [NavscrollStore],
 })
-export class ItNavscrollComponent {
+export class ItNavscrollComponent implements OnInit {
   @Input() readonly header: string;
-  @Input() readonly items: Array<NavscrollItems>;
+  @Input() readonly items: Array<NavscrollItem>;
+
+  private store = inject(NavscrollStore);
+
+  ngOnInit(): void {
+    this.store.init(this.items);
+  }
 }
