@@ -15,7 +15,7 @@ function search(items: Set<NavscrollItem>, item: NavscrollItem) {
   return [item, ...ancestors];
 }
 
-export function flattenNavscrollItems(items: NavscrollItems): NavscrollItems {
+function flattenNavscrollItems(items: NavscrollItems): NavscrollItems {
   const result: NavscrollItems = [];
 
   function flatten(items: NavscrollItems): void {
@@ -33,10 +33,6 @@ export function flattenNavscrollItems(items: NavscrollItems): NavscrollItems {
 
 export class NavscrollStore {
   #state = new BehaviorSubject<NavscrollState>({ items: new Set<NavscrollItem>(), active: [], selected: undefined });
-
-  get state() {
-    return this.#state.value;
-  }
 
   init(navscrollItems: Array<NavscrollItem>) {
     const flattenItems = flattenNavscrollItems(navscrollItems);
@@ -58,10 +54,6 @@ export class NavscrollStore {
     const active = search(items, item);
 
     this.#state.next({ items, selected: item, active });
-  }
-
-  isActive(item: NavscrollItem) {
-    return this.state.active.includes(item);
   }
 
   isActive$(item: NavscrollItem) {
