@@ -43,6 +43,12 @@ export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {
     this._changeDetectorRef = inject(ChangeDetectorRef);
 
     this.valueChanges = new EventEmitter<void>();
+
+    const name = this.constructor.name.replace('Component', '');
+    let kebabName = name.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase());
+    kebabName = kebabName.replace('_-it-', '');
+    window['BOOTSTRAP_USED_COMPONENTS'] = window['BOOTSTRAP_USED_COMPONENTS'] ? window['BOOTSTRAP_USED_COMPONENTS'] : [];
+    window['BOOTSTRAP_USED_COMPONENTS'].indexOf(kebabName) === -1 ? window['BOOTSTRAP_USED_COMPONENTS'].push(kebabName) : '';
   }
 
   ngAfterViewInit(): void {
