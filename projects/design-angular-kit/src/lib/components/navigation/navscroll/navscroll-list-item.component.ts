@@ -1,5 +1,6 @@
-import { AsyncPipe, JsonPipe, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   Event,
   IsActiveMatchOptions,
@@ -10,15 +11,22 @@ import {
   RouterLinkWithHref,
   Scroll,
 } from '@angular/router';
-import { filter, tap } from 'rxjs';
+import { filter, Observable, tap } from 'rxjs';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
 
+const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
+  fragment: 'exact',
+  paths: 'exact',
+  queryParams: 'exact',
+  matrixParams: 'exact',
+};
+
 @Component({
   selector: 'it-navscroll-list-item',
   standalone: true,
-  imports: [NgTemplateOutlet, RouterLink, RouterLinkActive, RouterLinkWithHref, JsonPipe, ItNavscrollListItemsComponent, AsyncPipe],
+  imports: [NgTemplateOutlet, RouterLink, RouterLinkActive, RouterLinkWithHref, ItNavscrollListItemsComponent, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <a
@@ -29,7 +37,7 @@ import { NavscrollStore } from './navscroll.store';
       [routerLinkActiveOptions]="routerLinkActiveOptions"
       routerLinkWithHref
       #rtl="routerLinkActive"
-      [class.active]="isActive$() | async"
+      [class.active]="active$ | async"
       ariaCurrentWhenActive="page"
       ><span>{{ item.title }} {{ rtl.isActive }}</span></a
     >
@@ -43,20 +51,21 @@ export class ItNavscrollListItemComponent implements OnInit {
   @ViewChild('rtl')
   readonly rtl: any;
 
-  readonly routerLinkActiveOptions: IsActiveMatchOptions = {
-    fragment: 'exact',
-    paths: 'exact',
-    queryParams: 'exact',
-    matrixParams: 'exact',
-  };
+  readonly routerLinkActiveOptions = ROUTER_LINK_ACTIVE_OPTIONS;
 
-  private router = inject(Router);
-  private store = inject(NavscrollStore);
+  active$!: Observable<boolean>;
+
+  readonly #router = inject(Router);
+
+  readonly #store = inject(NavscrollStore);
+
+  readonly #destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    this.router.events
+    this.active$ = this.#store.isActive$(this.item);
+    this.#router.events
       .pipe(
-        // takeUntilDestroyed(),
+        takeUntilDestroyed(this.#destroyRef),
         filter((event: Event) => {
           const isNavigationEndEvent = event instanceof NavigationEnd;
           const isScrollEvent = event instanceof Scroll && (event as Scroll).routerEvent instanceof NavigationEnd;
@@ -66,16 +75,12 @@ export class ItNavscrollListItemComponent implements OnInit {
           if (this.rtl) {
             setTimeout(() => {
               if (this.rtl.isActive) {
-                this.store.setActive(this.item);
+                this.#store.setActive(this.item);
               }
             });
           }
         })
       )
       .subscribe();
-  }
-
-  isActive$() {
-    return this.store.isActive$(this.item);
   }
 }

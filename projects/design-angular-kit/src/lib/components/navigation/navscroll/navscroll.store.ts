@@ -57,6 +57,8 @@ export class NavscrollStore {
   }
 
   isActive$(item: NavscrollItem) {
+    console.log('isActive$');
+
     return this.#state.asObservable().pipe(map(state => state.active.includes(item)));
   }
 }
