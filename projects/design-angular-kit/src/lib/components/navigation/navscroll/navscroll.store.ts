@@ -36,12 +36,13 @@ export class NavscrollStore {
 
   init(navscrollItems: Array<NavscrollItem>) {
     const flattenItems = flattenNavscrollItems(navscrollItems);
-    const active = flattenItems && flattenItems.length && flattenItems[0];
-    console.log(active);
+    //the first item is selected by default
+    const selected = flattenItems && flattenItems.length && flattenItems[0];
+
     const state = {
       items: new Set(flattenItems),
-      active: [active],
-      selected: active,
+      active: [selected],
+      selected: selected,
     };
 
     this.#state.next(state);
