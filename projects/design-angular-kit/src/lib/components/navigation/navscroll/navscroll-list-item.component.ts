@@ -54,7 +54,6 @@ export class ItNavscrollListItemComponent implements OnInit {
   private store = inject(NavscrollStore);
 
   ngOnInit() {
-    this.router.events.pipe(tap(console.log)).subscribe();
     this.router.events
       .pipe(
         // takeUntilDestroyed(),
@@ -63,12 +62,10 @@ export class ItNavscrollListItemComponent implements OnInit {
           const isScrollEvent = event instanceof Scroll && (event as Scroll).routerEvent instanceof NavigationEnd;
           return isNavigationEndEvent || isScrollEvent;
         }),
-        tap((event: Event) => console.log((event as Scroll).routerEvent)),
         tap(() => {
           if (this.rtl) {
             setTimeout(() => {
               if (this.rtl.isActive) {
-                console.log('call to setActive');
                 this.store.setActive(this.item);
               }
             });

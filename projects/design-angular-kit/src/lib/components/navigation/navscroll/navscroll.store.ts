@@ -49,7 +49,6 @@ export class NavscrollStore {
   }
 
   setActive(item: NavscrollItem) {
-    console.log('setActive');
     const { items } = this.#state.value;
 
     const active = search(items, item);
