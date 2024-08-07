@@ -31,20 +31,6 @@ export function flattenNavscrollItems(items: NavscrollItems): NavscrollItems {
   return result;
 }
 
-export function flattenNavscrollItems2(items: NavscrollItems): NavscrollItems {
-  function flatten(items: NavscrollItems): NavscrollItems {
-    return items.reduce((acc: NavscrollItems, item: NavscrollItem) => {
-      acc.push(item);
-      if (item.childs && item.childs.length > 0) {
-        acc = acc.concat(flatten(item.childs));
-      }
-      return acc;
-    }, []);
-  }
-
-  return flatten(items);
-}
-
 export class NavscrollStore {
   #state = new BehaviorSubject<NavscrollState>({ items: new Set<NavscrollItem>(), active: [], selected: undefined });
 
