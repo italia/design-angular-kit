@@ -11,7 +11,7 @@ import {
   RouterLinkWithHref,
   Scroll,
 } from '@angular/router';
-import { filter, ReplaySubject, switchMap, tap } from 'rxjs';
+import { AsyncSubject, filter, switchMap, tap } from 'rxjs';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
@@ -53,7 +53,7 @@ export class ItNavscrollListItemComponent implements OnInit {
 
   readonly routerLinkActiveOptions = ROUTER_LINK_ACTIVE_OPTIONS;
 
-  readonly #initIsActive = new ReplaySubject<NavscrollItem>();
+  readonly #initIsActive = new AsyncSubject<NavscrollItem>();
 
   readonly active = this.#initIsActive.asObservable().pipe(switchMap(item => this.#store.isActive$(item)));
 
@@ -64,7 +64,7 @@ export class ItNavscrollListItemComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    this.#initIsActive.next(this.item);
+    this.#initIsActiveSub();
     this.#router.events
       .pipe(
         takeUntilDestroyed(this.#destroyRef),
@@ -80,5 +80,10 @@ export class ItNavscrollListItemComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  #initIsActiveSub() {
+    this.#initIsActive.next(this.item);
+    this.#initIsActive.complete();
   }
 }
