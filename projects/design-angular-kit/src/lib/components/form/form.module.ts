@@ -10,6 +10,7 @@ import { ItTextareaComponent } from './textarea/textarea.component';
 import { ItUploadDragDropComponent } from './upload-drag-drop/upload-drag-drop.component';
 import { ItUploadFileListComponent } from './upload-file-list/upload-file-list.component';
 import { ItAutocompleteComponent } from './autocomplete/autocomplete.component';
+import { ItTransferComponent } from './transfer/transfer.component';
 
 const formComponents = [
   ItAutocompleteComponent,
@@ -21,6 +22,7 @@ const formComponents = [
   ItRatingComponent,
   ItSelectComponent,
   ItTextareaComponent,
+  ItTransferComponent,
   ItUploadDragDropComponent,
   ItUploadFileListComponent,
 ];
