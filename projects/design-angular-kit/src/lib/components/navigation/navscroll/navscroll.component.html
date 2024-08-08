@@ -1,4 +1,9 @@
-<nav class="navbar it-navscroll-wrapper navbar-expand-lg it-bottom-navscroll it-left-side" data-bs-navscroll>
+<nav
+  class="navbar it-navscroll-wrapper navbar-expand-lg"
+  [class.it-top-navscroll]="alignment === 'top'"
+  [class.it-bottom-navscroll]="alignment === 'bottom'"
+  [class.it-left-side]="borderPosition === 'left'"
+  [class.it-right-side]="borderPosition === 'right'">
   <button
     class="custom-navbar-toggler"
     type="button"

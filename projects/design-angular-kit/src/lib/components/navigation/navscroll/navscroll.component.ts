@@ -17,6 +17,8 @@ import { NavscrollStore } from './navscroll.store';
 export class ItNavscrollComponent implements OnInit {
   @Input() readonly header: string;
   @Input() readonly items: Array<NavscrollItem>;
+  @Input() readonly borderPosition: 'left' | 'right' = 'left';
+  @Input() readonly alignment: 'top' | 'bottom' = 'top';
 
   private store = inject(NavscrollStore);
 
