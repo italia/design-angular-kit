@@ -34,6 +34,8 @@ function flattenNavscrollItems(items: NavscrollItems): NavscrollItems {
 export class NavscrollStore {
   #state = new BehaviorSubject<NavscrollState>({ items: new Set<NavscrollItem>(), active: [], selected: undefined });
 
+  selected = this.#state.asObservable().pipe(map(({ selected }) => selected));
+
   init(navscrollItems: Array<NavscrollItem>) {
     const flattenItems = flattenNavscrollItems(navscrollItems);
     //the first item is selected by default
