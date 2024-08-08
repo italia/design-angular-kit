@@ -74,12 +74,8 @@ export class ItNavscrollListItemComponent implements OnInit {
           return isNavigationEndEvent || isScrollEvent;
         }),
         tap(() => {
-          if (this.rtl) {
-            setTimeout(() => {
-              if (this.rtl.isActive) {
-                this.#store.setActive(this.item);
-              }
-            });
+          if (this.rtl?.isActive) {
+            this.#store.setActive(this.item);
           }
         })
       )
