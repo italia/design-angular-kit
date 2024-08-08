@@ -6,6 +6,10 @@ import { ItNavscrollListItemsComponent } from './navscroll-list-items.component'
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
 
+/**
+ * Navscroll
+ * @description Show a list of links to anchor of the document.
+ */
 @Component({
   selector: 'it-navscroll',
   standalone: true,
@@ -16,10 +20,30 @@ import { NavscrollStore } from './navscroll.store';
   providers: [NavscrollStore],
 })
 export class ItNavscrollComponent implements OnInit {
+  /**
+   * Header of the Navscroll
+   */
   @Input() readonly header: string;
+  /**
+   * A list of links
+   */
   @Input() readonly items: Array<NavscrollItem>;
+  /**
+   * Border position
+   * @default left
+   */
   @Input() readonly borderPosition: 'left' | 'right' = 'left';
+  /**
+   * Alignment
+   * @default top
+   */
   @Input() readonly alignment: 'top' | 'bottom' = 'top';
+
+  /**
+   * Theme
+   * @default light
+   */
+  @Input() readonly theme: 'light' | 'dark' = 'light';
 
   #store = inject(NavscrollStore);
 
