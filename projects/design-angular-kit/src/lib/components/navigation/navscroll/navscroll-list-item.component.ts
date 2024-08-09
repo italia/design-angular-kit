@@ -2,10 +2,10 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
-  Event,
   IsActiveMatchOptions,
   NavigationEnd,
   Router,
+  Event as RouterEvent,
   RouterLink,
   RouterLinkActive,
   RouterLinkWithHref,
@@ -29,9 +29,9 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
   imports: [RouterLink, RouterLinkActive, RouterLinkWithHref, ItNavscrollListItemsComponent, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <a
+    <!-- <a
       class="nav-link"
-      routerLink="./"
+      [routerLink]="[]"
       [fragment]="item.href"
       routerLinkActive
       [routerLinkActiveOptions]="routerLinkActiveOptions"
@@ -39,6 +39,18 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
       #rtl="routerLinkActive"
       [class.active]="active | async"
       ariaCurrentWhenActive="page"
+      ><span>{{ item.title }}</span></a
+    > -->
+    <a
+      class="nav-link"
+      [class.active]="active | async"
+      [routerLink]="[]"
+      routerLinkActive
+      [fragment]="item.href"
+      [routerLinkActiveOptions]="routerLinkActiveOptions"
+      ariaCurrentWhenActive="page"
+      #rtl="routerLinkActive"
+      (click)="clickHandler($event)"
       ><span>{{ item.title }}</span></a
     >
   `,
@@ -68,7 +80,7 @@ export class ItNavscrollListItemComponent implements OnInit {
     this.#router.events
       .pipe(
         takeUntilDestroyed(this.#destroyRef),
-        filter((event: Event) => {
+        filter((event: RouterEvent) => {
           const isNavigationEndEvent = event instanceof NavigationEnd;
           const isScrollEvent = event instanceof Scroll && (event as Scroll).routerEvent instanceof NavigationEnd;
           return isNavigationEndEvent || isScrollEvent;
@@ -80,6 +92,11 @@ export class ItNavscrollListItemComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  clickHandler(event: Event) {
+    event.preventDefault();
+    this.#router.navigate([], { fragment: this.item.href });
   }
 
   #initIsActiveSub() {

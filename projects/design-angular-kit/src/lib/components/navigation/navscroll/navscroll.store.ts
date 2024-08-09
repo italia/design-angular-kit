@@ -1,4 +1,4 @@
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, map } from 'rxjs';
 import { NavscrollItem, NavscrollItems } from './navscroll.model';
 
 interface NavscrollState {
@@ -34,7 +34,10 @@ function flattenNavscrollItems(items: NavscrollItems): NavscrollItems {
 export class NavscrollStore {
   #state = new BehaviorSubject<NavscrollState>({ items: new Set<NavscrollItem>(), active: [], selected: undefined });
 
-  selected = this.#state.asObservable().pipe(map(({ selected }) => selected));
+  selected = this.#state.asObservable().pipe(
+    map(({ selected }) => selected),
+    distinctUntilChanged()
+  );
 
   init(navscrollItems: Array<NavscrollItem>) {
     const flattenItems = flattenNavscrollItems(navscrollItems);
@@ -59,8 +62,6 @@ export class NavscrollStore {
   }
 
   isActive$(item: NavscrollItem) {
-    console.log('isActive$');
-
     return this.#state.asObservable().pipe(map(state => state.active.includes(item)));
   }
 }
