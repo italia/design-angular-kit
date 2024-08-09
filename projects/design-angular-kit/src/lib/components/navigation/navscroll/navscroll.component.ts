@@ -1,5 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, inject, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { map } from 'rxjs';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
@@ -45,11 +45,19 @@ export class ItNavscrollComponent implements OnInit {
    */
   @Input() readonly theme: 'light' | 'dark' = 'light';
 
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+  onScroll(event) {
+    console.log('onScroll', event);
+  }
+
   #store = inject(NavscrollStore);
+
+  #elementRef = inject(ElementRef);
 
   readonly selectedTitle = this.#store.selected.pipe(map(selected => selected?.title ?? ''));
 
   ngOnInit(): void {
+    console.log(this.#elementRef);
     this.#store.init(this.items);
   }
 }

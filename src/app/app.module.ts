@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgTemplateOutlet } from '@angular/common';
 import { TranslateStore } from '@ngx-translate/core';
 import { DesignAngularKitModule } from 'design-angular-kit/design-angular-kit.module';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
@@ -21,7 +22,7 @@ import { TableOfContentComponent } from './table-of-content/table-of-content.com
     LinkSortPipe,
     NavscrollTbComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, DesignAngularKitModule.forRoot()],
+  imports: [BrowserModule, AppRoutingModule, DesignAngularKitModule.forRoot(), NgTemplateOutlet],
   providers: [
     TranslateStore,
     {
