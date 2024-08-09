@@ -1,4 +1,4 @@
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -26,7 +26,7 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
 @Component({
   selector: 'it-navscroll-list-item',
   standalone: true,
-  imports: [NgTemplateOutlet, RouterLink, RouterLinkActive, RouterLinkWithHref, ItNavscrollListItemsComponent, AsyncPipe],
+  imports: [RouterLink, RouterLinkActive, RouterLinkWithHref, ItNavscrollListItemsComponent, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <a
