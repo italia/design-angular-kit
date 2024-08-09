@@ -24,7 +24,8 @@
             <div
               class="progress-bar it-navscroll-progressbar"
               role="progressbar"
-              aria-valuenow="0"
+              [style.width.%]="progressBarValue | async"
+              [attr.aria-valuenow]="progressBarValue | async"
               aria-valuemin="0"
               aria-valuemax="100"></div>
           </div>
@@ -44,6 +45,15 @@
             <div class="menu-wrapper">
               <div class="link-list-wrapper">
                 <h3>{{ header }}</h3>
+                <div class="progress">
+                  <div
+                    class="progress-bar it-navscroll-progressbar"
+                    role="progressbar"
+                    [style.width.%]="progressBarValue | async"
+                    [attr.aria-valuenow]="progressBarValue | async"
+                    aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
                 <it-navscroll-list-items [items]="items"></it-navscroll-list-items>
               </div>
             </div>

@@ -5,6 +5,7 @@ interface NavscrollState {
   items: Set<NavscrollItem>;
   active: Array<NavscrollItem>;
   selected: NavscrollItem;
+  progressBar: number;
 }
 
 function search(items: Set<NavscrollItem>, item: NavscrollItem) {
@@ -32,10 +33,22 @@ function flattenNavscrollItems(items: NavscrollItems): NavscrollItems {
 }
 
 export class NavscrollStore {
-  #state = new BehaviorSubject<NavscrollState>({ items: new Set<NavscrollItem>(), active: [], selected: undefined });
+  readonly #state = new BehaviorSubject<NavscrollState>({
+    items: new Set<NavscrollItem>(),
+    active: [],
+    selected: undefined,
+    progressBar: 0,
+  });
 
-  selected = this.#state.asObservable().pipe(
+  readonly #state$ = this.#state.asObservable();
+
+  readonly selected = this.#state$.pipe(
     map(({ selected }) => selected),
+    distinctUntilChanged()
+  );
+
+  readonly progressBar = this.#state$.pipe(
+    map(({ progressBar }) => progressBar),
     distinctUntilChanged()
   );
 
@@ -48,6 +61,7 @@ export class NavscrollStore {
       items: new Set(flattenItems),
       active: [selected],
       selected: selected,
+      progressBar: 0,
     };
 
     this.#state.next(state);
@@ -57,11 +71,23 @@ export class NavscrollStore {
     const { items } = this.#state.value;
 
     const active = search(items, item);
-
-    this.#state.next({ items, selected: item, active });
+    const state = this.#state.value;
+    this.#state.next({ ...state, items, selected: item, active });
   }
 
   isActive$(item: NavscrollItem) {
     return this.#state.asObservable().pipe(map(state => state.active.includes(item)));
+  }
+
+  updateProgressBar(container: HTMLElement) {
+    if (!container) {
+      return;
+    }
+    const offset = Math.abs(container.getBoundingClientRect().top);
+    const height = container.getBoundingClientRect().height;
+    const scrollAmount = (offset / height) * 100;
+    const scrollValue = Math.min(100, Math.max(0, scrollAmount));
+    const state = this.#state.value;
+    this.#state.next({ ...state, progressBar: scrollValue });
   }
 }

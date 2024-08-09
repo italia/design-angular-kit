@@ -1,5 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet, ViewportScroller } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, HostListener, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, HostListener, inject, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { delay, filter, map, tap } from 'rxjs';
@@ -47,8 +47,11 @@ export class ItNavscrollComponent implements OnInit {
   @Input() readonly theme: 'light' | 'dark' = 'light';
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
-  onScroll(event) {
-    console.log('onScroll', event);
+  onScroll() {
+    const sectionContainer = this.#elementRef.nativeElement.querySelector('.it-page-sections-container');
+    console.log('onScroll', sectionContainer);
+
+    this.#store.updateProgressBar(sectionContainer);
   }
 
   readonly #store = inject(NavscrollStore);
@@ -57,7 +60,11 @@ export class ItNavscrollComponent implements OnInit {
 
   readonly #destroyRef = inject(DestroyRef);
 
+  readonly #elementRef = inject(ElementRef);
+
   readonly selectedTitle = this.#store.selected.pipe(map(selected => selected?.title ?? ''));
+
+  readonly progressBarValue = this.#store.progressBar;
 
   ngOnInit(): void {
     this.#initViewScrollerSubscription();
