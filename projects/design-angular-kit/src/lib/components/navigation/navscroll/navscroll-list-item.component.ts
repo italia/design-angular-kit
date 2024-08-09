@@ -39,7 +39,7 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
       #rtl="routerLinkActive"
       [class.active]="active | async"
       ariaCurrentWhenActive="page"
-      ><span>{{ item.title }} {{ rtl.isActive }}</span></a
+      ><span>{{ item.title }}</span></a
     >
   `,
 })
