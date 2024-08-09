@@ -1,15 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet, ViewportScroller } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  DestroyRef,
-  HostListener,
-  inject,
-  Input,
-  NgZone,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, HostListener, inject, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { delay, filter, map, tap } from 'rxjs';
@@ -68,9 +58,6 @@ export class ItNavscrollComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef);
 
   readonly selectedTitle = this.#store.selected.pipe(map(selected => selected?.title ?? ''));
-
-  readonly #ngZone = inject(NgZone);
-  readonly #cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     this.#initViewScrollerSubscription();
