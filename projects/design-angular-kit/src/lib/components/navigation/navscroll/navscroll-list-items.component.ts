@@ -1,5 +1,5 @@
 import { JsonPipe, NgTemplateOutlet } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { ItNavscrollListItemComponent } from './navscroll-list-item.component';
 import { NavscrollItems } from './navscroll.model';
@@ -8,6 +8,7 @@ import { NavscrollItems } from './navscroll.model';
   selector: 'it-navscroll-list-items',
   standalone: true,
   imports: [NgTemplateOutlet, RouterLink, RouterLinkActive, RouterLinkWithHref, JsonPipe, ItNavscrollListItemComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ul class="link-list">
       @for (item of items; track item.href) {

@@ -1,8 +1,18 @@
 import { AsyncPipe, NgTemplateOutlet, ViewportScroller } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, HostListener, inject, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  HostListener,
+  inject,
+  Input,
+  NgZone,
+  OnInit,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
-import { filter, map, tap } from 'rxjs';
+import { delay, filter, map, tap } from 'rxjs';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
@@ -59,20 +69,28 @@ export class ItNavscrollComponent implements OnInit {
 
   readonly selectedTitle = this.#store.selected.pipe(map(selected => selected?.title ?? ''));
 
+  readonly #ngZone = inject(NgZone);
+  readonly #cdr = inject(ChangeDetectorRef);
+
   ngOnInit(): void {
+    this.#initViewScrollerSubscription();
+    this.#store.init(this.items);
+  }
+
+  #initViewScrollerSubscription() {
     this.#store.selected
       .pipe(
         takeUntilDestroyed(this.#destroyRef),
         filter(selected => Boolean(selected)),
+        delay(0), //WA
         tap({
           next: ({ href }) => {
             console.log('scroll to ', href);
-            setTimeout(() => this.#scroller.scrollToAnchor(href));
+            this.#scroller.scrollToAnchor(href);
           },
           complete: () => console.log('selected sub to scroll completed'),
         })
       )
       .subscribe();
-    this.#store.init(this.items);
   }
 }
