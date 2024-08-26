@@ -1,5 +1,15 @@
 import { AsyncPipe, NgTemplateOutlet, ViewportScroller } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, HostListener, inject, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  HostListener,
+  inject,
+  Input,
+  OnInit,
+  TemplateRef,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { delay, filter, map, tap } from 'rxjs';
@@ -46,11 +56,15 @@ export class ItNavscrollComponent implements OnInit {
    */
   @Input() readonly theme: 'light' | 'dark' = 'light';
 
+  /**
+   * Theme
+   */
+  @Input()
+  pageSectionsTemplate?: TemplateRef<any>;
+
   @HostListener('window:scroll', ['$event']) // for window scroll events
   onScroll() {
     const sectionContainer = this.#elementRef.nativeElement.querySelector('.it-page-sections-container');
-    console.log('onScroll', sectionContainer);
-
     this.#store.updateProgressBar(sectionContainer);
   }
 

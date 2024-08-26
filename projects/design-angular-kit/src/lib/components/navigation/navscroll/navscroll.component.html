@@ -62,12 +62,19 @@
       </div>
     </div>
     <div class="col-12 col-lg-8 it-page-sections-container">
-      @for (item of items; track item.href) {
-        <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item }"></ng-container>
-      }
+      <ng-container
+        *ngTemplateOutlet="pageSectionsTemplate ? pageSectionsTemplate : defaultPageSectionsTemplate; context: { items: items }">
+      </ng-container>
     </div>
   </div>
 </div>
+
+<ng-template #defaultPageSectionsTemplate let-items="items">
+  @for (item of items; track item.href) {
+    <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item }"></ng-container>
+  }
+</ng-template>
+
 <ng-template #paragraphTemplate let-item="item">
   <h2 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h2>
   <p>{{ item.text }}</p>
