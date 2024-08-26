@@ -71,14 +71,30 @@
 
 <ng-template #defaultPageSectionsTemplate let-items="items">
   @for (item of items; track item.href) {
-    <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item }"></ng-container>
+    <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item, level: 1 }"></ng-container>
   }
 </ng-template>
 
-<ng-template #paragraphTemplate let-item="item">
-  <h2 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h2>
+<ng-template #paragraphTemplate let-item="item" let-level="level" let-nextLevel="level+1">
+  @switch (level) {
+    @case (1) {
+      <h2 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h2>
+    }
+    @case (2) {
+      <h3 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h3>
+    }
+    @case (3) {
+      <h4 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h4>
+    }
+    @case (4) {
+      <h5 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h5>
+    }
+    @default {
+      <h6 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h6>
+    }
+  }
   <p>{{ item.text }}</p>
   @for (item of item.childs; track item.href) {
-    <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item }"></ng-container>
+    <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item, level: nextLevel }"></ng-container>
   }
 </ng-template>
