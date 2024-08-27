@@ -1,4 +1,4 @@
-import { AsyncPipe, NgTemplateOutlet, ViewportScroller } from '@angular/common';
+import { AsyncPipe, NgClass, NgTemplateOutlet, ViewportScroller } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,7 +24,16 @@ import { NavscrollStore } from './navscroll.store';
 @Component({
   selector: 'it-navscroll',
   standalone: true,
-  imports: [ItNavscrollListItemsComponent, AsyncPipe, NgTemplateOutlet, RouterLink, RouterLinkActive, RouterLinkWithHref, AsyncPipe],
+  imports: [
+    ItNavscrollListItemsComponent,
+    AsyncPipe,
+    NgTemplateOutlet,
+    RouterLink,
+    RouterLinkActive,
+    RouterLinkWithHref,
+    AsyncPipe,
+    NgClass,
+  ],
   templateUrl: './navscroll.component.html',
   styleUrl: './navscroll.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -68,6 +77,11 @@ export class ItNavscrollComponent implements OnInit {
     this.#store.updateProgressBar(sectionContainer);
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.#toggleZIndex();
+  }
+
   readonly #store = inject(NavscrollStore);
 
   readonly #scroller = inject(ViewportScroller);
@@ -80,9 +94,12 @@ export class ItNavscrollComponent implements OnInit {
 
   readonly progressBarValue = this.#store.progressBar;
 
+  protected isMobile: boolean;
+
   ngOnInit(): void {
     this.#initViewScrollerSubscription();
     this.#store.init(this.items);
+    this.#toggleZIndex();
   }
 
   #initViewScrollerSubscription() {
@@ -100,5 +117,11 @@ export class ItNavscrollComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  #toggleZIndex() {
+    const isLessThan992px = window.innerWidth < 992;
+    this.isMobile = isLessThan992px;
+    console.log(window.innerWidth, 'isMobile', this.isMobile);
   }
 }
