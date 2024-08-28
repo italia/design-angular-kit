@@ -66,7 +66,7 @@ export class ItNavscrollComponent implements OnInit {
   @Input() readonly theme: 'light' | 'dark' = 'light';
 
   /**
-   * Theme
+   * Custom template for the content section
    */
   @Input()
   pageSectionsTemplate?: TemplateRef<any>;
