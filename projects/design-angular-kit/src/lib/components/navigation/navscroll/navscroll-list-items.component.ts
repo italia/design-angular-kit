@@ -14,7 +14,9 @@ import { NavscrollItems } from './navscroll.model';
       @for (item of items; track item.href) {
         <li class="nav-item">
           <it-navscroll-list-item [item]="item"></it-navscroll-list-item>
-          <it-navscroll-list-items [items]="item.childs"></it-navscroll-list-items>
+          @if (item.childs?.length) {
+            <it-navscroll-list-items [items]="item.childs"></it-navscroll-list-items>
+          }
         </li>
       }
     </ul>
