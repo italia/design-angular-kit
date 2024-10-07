@@ -1,0 +1,9 @@
+.it-navscroll-sticky {
+  // data-bs-toggle="sticky"
+  position: sticky;
+  top: 0;
+}
+
+.it-navscroll-sticky-mobile {
+  z-index: 1020;
+}

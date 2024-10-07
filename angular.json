@@ -106,7 +106,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "design-angular-kit-bundle:build"
+            "buildTarget": "design-angular-kit-bundle:build",
+            "host": "127.0.0.1"
           },
           "configurations": {
             "production": {
