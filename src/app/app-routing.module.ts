@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ItErrorPageComponent } from 'design-angular-kit/components/utils/error-page/error-page.component';
+import { NavscrollTbComponent } from './navscroll-tb.component';
+import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'info', pathMatch: 'full' },
@@ -68,8 +69,10 @@ const routes: Routes = [
       { path: 'autocomplete', loadChildren: () => import('src/app/autocomplete/autocomplete.module').then(m => m.AutocompleteModule) },
       { path: 'sidebar', loadChildren: () => import('src/app/sidebar/sidebar.module').then(m => m.SidebarModule) },
       { path: 'timeline', loadChildren: () => import('src/app/timeline/timeline.module').then(m => m.TimelineModule) },
+      { path: 'navscroll', loadChildren: () => import('src/app/navscroll/navscroll.module').then(m => m.NavscrollModule) },
     ],
   },
+  { path: 'navscroll-tb', component: NavscrollTbComponent },
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },
   { path: 'error/server-error', component: ItErrorPageComponent, data: { errorCode: 500 } },

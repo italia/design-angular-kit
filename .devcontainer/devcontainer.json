@@ -1,38 +1,36 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
-	"name": "design-angular-kit",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-		"ghcr.io/devcontainers-contrib/features/angular-cli:2": {
-			"version": "18.0.7"
-		},
-		"ghcr.io/devcontainers-contrib/features/cz-cli:1": {}
-	},
-	"mounts": [
-		"source=design-angular-kit-bundle-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume" // deps volume
-	],
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sh .devcontainer/scripts/postCreateCommand.sh",
-	// Configure tool-specific properties.
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"angular.ng-template",
-				"cyrilletuzi.angular-schematics",
-				"esbenp.prettier-vscode",
-				"dbaeumer.vscode-eslint",
-				"vivaxy.vscode-conventional-commits"
-			]
-		}
-	}
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  "name": "design-angular-kit",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "mounts": [
+    "source=design-angular-kit-bundle-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume" // deps volume
+  ],
+  "remoteUser": "root",
+  "postCreateCommand": "sh .devcontainer/scripts/postCreateCommand.sh",
+  // "postStartCommand": "/bin/bash -c '.devcontainer/scripts/postStartCommand.sh \"${containerWorkspaceFolder}\"'",
+  "postStartCommand": "sh .devcontainer/scripts/postStartCommand.sh \"${containerWorkspaceFolder}\"",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "angular.ng-template",
+        "cyrilletuzi.angular-schematics",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "vivaxy.vscode-conventional-commits"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": "always"
+        }
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/angular-cli:2": {
+      "version": "18.0.7"
+    },
+    "ghcr.io/devcontainers-contrib/features/cz-cli:1": {}
+  }
 }
