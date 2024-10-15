@@ -23,5 +23,5 @@ import { NavscrollItems } from './navscroll.model';
   `,
 })
 export class ItNavscrollListItemsComponent {
-  @Input() readonly items: NavscrollItems;
+  @Input() items!: NavscrollItems;
 }

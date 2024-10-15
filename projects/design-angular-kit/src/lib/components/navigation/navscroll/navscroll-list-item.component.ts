@@ -44,7 +44,7 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
   `,
 })
 export class ItNavscrollListItemComponent implements OnInit {
-  @Input() readonly item!: NavscrollItem;
+  @Input() item!: NavscrollItem;
 
   @Output() readonly checkActive = new EventEmitter<NavscrollItem>();
 
