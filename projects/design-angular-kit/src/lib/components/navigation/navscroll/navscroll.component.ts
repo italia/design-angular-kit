@@ -44,11 +44,11 @@ export class ItNavscrollComponent implements OnInit {
   /**
    * Header of the Navscroll
    */
-  @Input() readonly header: string;
+  @Input() readonly header = '';
   /**
    * A list of links
    */
-  @Input() readonly items: Array<NavscrollItem>;
+  @Input() readonly items!: Array<NavscrollItem>;
   /**
    * Border position
    * @default left
@@ -84,7 +84,7 @@ export class ItNavscrollComponent implements OnInit {
   }
 
   @ViewChild('toggleButtonRef')
-  readonly toggleButtonRef: ElementRef<HTMLButtonElement>;
+  readonly toggleButtonRef!: ElementRef<HTMLButtonElement>;
 
   readonly #store = inject(NavscrollStore);
 
@@ -126,6 +126,7 @@ export class ItNavscrollComponent implements OnInit {
       .pipe(
         takeUntilDestroyed(this.#destroyRef),
         filter(selected => Boolean(selected)),
+        map(v => v as NavscrollItem),
         delay(0), //WA
         tap({
           next: ({ href }) => {
