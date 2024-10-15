@@ -1,36 +1,13 @@
 import { BehaviorSubject, distinctUntilChanged, map, Subject } from 'rxjs';
-import { NavscrollItem, NavscrollItems } from './navscroll.model';
+import { NavscrollItem } from './navscroll.model';
+import { flattenNavscrollItems, search } from './navscroll.utils';
 
 interface NavscrollState {
   items: Set<NavscrollItem>;
   active: Array<NavscrollItem>;
-  selected: NavscrollItem;
+  selected?: NavscrollItem;
   progressBar: number;
   isMobile: boolean;
-}
-
-function search(items: Set<NavscrollItem>, item: NavscrollItem) {
-  //ricerca
-  const nodes = Array.from(items);
-  const parent = nodes.find(i => i.childs.includes(item));
-  const ancestors = parent?.childs?.length ? search(items, parent) : [];
-  return [item, ...ancestors];
-}
-
-function flattenNavscrollItems(items: NavscrollItems): NavscrollItems {
-  const result: NavscrollItems = [];
-
-  function flatten(items: NavscrollItems): void {
-    for (const item of items) {
-      result.push(item);
-      if (item.childs && item.childs.length > 0) {
-        flatten(item.childs);
-      }
-    }
-  }
-
-  flatten(items);
-  return result;
 }
 
 export class NavscrollStore {
@@ -66,11 +43,11 @@ export class NavscrollStore {
   init(navscrollItems: Array<NavscrollItem>) {
     const flattenItems = flattenNavscrollItems(navscrollItems);
     //the first item is selected by default
-    const selected = flattenItems && flattenItems.length && flattenItems[0];
+    const selected = ((flattenItems && flattenItems.length && flattenItems[0]) as NavscrollItem) ?? undefined;
 
     const state = {
       items: new Set(flattenItems),
-      active: [selected],
+      active: selected ? [selected] : [],
       selected: selected,
       progressBar: 0,
       isMobile: false,
