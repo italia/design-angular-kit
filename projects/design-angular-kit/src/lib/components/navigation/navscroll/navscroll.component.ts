@@ -83,8 +83,8 @@ export class ItNavscrollComponent implements OnInit {
     this.#toggleZIndex();
   }
 
-  @ViewChild('buttonRef')
-  readonly buttonRef: ElementRef<HTMLButtonElement>;
+  @ViewChild('toggleButtonRef')
+  readonly toggleButtonRef: ElementRef<HTMLButtonElement>;
 
   readonly #store = inject(NavscrollStore);
 
@@ -106,7 +106,7 @@ export class ItNavscrollComponent implements OnInit {
         takeUntilDestroyed(),
         tap(() => {
           if (this.isMobile) {
-            this.buttonRef.nativeElement.click();
+            this.toggleButtonRef.nativeElement.click();
           }
         })
       )
