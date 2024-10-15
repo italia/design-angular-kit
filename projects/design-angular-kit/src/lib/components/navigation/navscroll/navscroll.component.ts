@@ -129,10 +129,8 @@ export class ItNavscrollComponent implements OnInit {
         delay(0), //WA
         tap({
           next: ({ href }) => {
-            console.log('scroll to', href);
             this.#scroller.scrollToAnchor(href);
           },
-          complete: () => console.log('selected sub to scroll completed'),
         })
       )
       .subscribe();
