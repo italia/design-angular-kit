@@ -9,6 +9,7 @@ import {
   Input,
   OnInit,
   TemplateRef,
+  ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
@@ -82,6 +83,9 @@ export class ItNavscrollComponent implements OnInit {
     this.#toggleZIndex();
   }
 
+  @ViewChild('buttonRef')
+  readonly buttonRef: ElementRef<HTMLButtonElement>;
+
   readonly #store = inject(NavscrollStore);
 
   readonly #scroller = inject(ViewportScroller);
@@ -95,6 +99,19 @@ export class ItNavscrollComponent implements OnInit {
   readonly progressBarValue = this.#store.progressBar;
 
   protected isMobile: boolean;
+
+  constructor() {
+    this.#store.menuItemSelected
+      .pipe(
+        takeUntilDestroyed(),
+        tap(() => {
+          if (this.isMobile) {
+            this.buttonRef.nativeElement.click();
+          }
+        })
+      )
+      .subscribe();
+  }
 
   ngOnInit(): void {
     this.#initViewScrollerSubscription();

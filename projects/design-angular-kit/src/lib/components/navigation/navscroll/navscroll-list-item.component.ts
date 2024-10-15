@@ -96,6 +96,7 @@ export class ItNavscrollListItemComponent implements OnInit {
 
   clickHandler(event: Event) {
     event.preventDefault();
+    this.#store.selectMenuItem();
     this.#router.navigate([], { fragment: this.item.href });
   }
 

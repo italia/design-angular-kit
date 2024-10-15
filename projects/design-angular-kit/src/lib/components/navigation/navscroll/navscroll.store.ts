@@ -1,4 +1,4 @@
-import { BehaviorSubject, distinctUntilChanged, map } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, map, Subject } from 'rxjs';
 import { NavscrollItem, NavscrollItems } from './navscroll.model';
 
 interface NavscrollState {
@@ -52,6 +52,10 @@ export class NavscrollStore {
     distinctUntilChanged()
   );
 
+  readonly #menuItemSelected = new Subject();
+
+  readonly menuItemSelected = this.#menuItemSelected.asObservable();
+
   init(navscrollItems: Array<NavscrollItem>) {
     const flattenItems = flattenNavscrollItems(navscrollItems);
     //the first item is selected by default
@@ -89,5 +93,9 @@ export class NavscrollStore {
     const scrollValue = Math.min(100, Math.max(0, scrollAmount));
     const state = this.#state.value;
     this.#state.next({ ...state, progressBar: scrollValue });
+  }
+
+  selectMenuItem() {
+    this.#menuItemSelected.next(undefined);
   }
 }
