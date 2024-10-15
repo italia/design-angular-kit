@@ -6,6 +6,7 @@ interface NavscrollState {
   active: Array<NavscrollItem>;
   selected: NavscrollItem;
   progressBar: number;
+  isMobile: boolean;
 }
 
 function search(items: Set<NavscrollItem>, item: NavscrollItem) {
@@ -38,6 +39,7 @@ export class NavscrollStore {
     active: [],
     selected: undefined,
     progressBar: 0,
+    isMobile: false,
   });
 
   readonly #state$ = this.#state.asObservable();
@@ -49,6 +51,11 @@ export class NavscrollStore {
 
   readonly progressBar = this.#state$.pipe(
     map(({ progressBar }) => progressBar),
+    distinctUntilChanged()
+  );
+
+  readonly isMobile = this.#state$.pipe(
+    map(({ isMobile }) => isMobile),
     distinctUntilChanged()
   );
 
@@ -66,6 +73,7 @@ export class NavscrollStore {
       active: [selected],
       selected: selected,
       progressBar: 0,
+      isMobile: false,
     };
 
     this.#state.next(state);
@@ -97,5 +105,12 @@ export class NavscrollStore {
 
   selectMenuItem() {
     this.#menuItemSelected.next(undefined);
+  }
+
+  setMobile({ innerWidth }: { innerWidth: number }) {
+    const isLessThan992px = innerWidth < 992;
+    const isMobile = isLessThan992px;
+    const state = this.#state.value;
+    this.#state.next({ ...state, isMobile });
   }
 }

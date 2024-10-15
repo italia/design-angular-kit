@@ -1,7 +1,7 @@
 <div class="container py-lg-5">
   <div class="row">
     <div class="col-12 col-lg-4">
-      <div class="it-navscroll-sticky" [ngClass]="{ 'it-navscroll-sticky-mobile': isMobile }" data-bs-stackable="true">
+      <div class="it-navscroll-sticky" [ngClass]="{ 'it-navscroll-sticky-mobile': isMobile | async }" data-bs-stackable="true">
         <nav
           class="navbar it-navscroll-wrapper navbar-expand-lg"
           [class.it-top-navscroll]="alignment === 'top'"

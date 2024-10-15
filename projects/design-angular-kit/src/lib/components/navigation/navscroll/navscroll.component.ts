@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
-import { delay, filter, map, tap } from 'rxjs';
+import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
@@ -80,7 +80,7 @@ export class ItNavscrollComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.#toggleZIndex();
+    this.#setMobile();
   }
 
   @ViewChild('toggleButtonRef')
@@ -98,14 +98,16 @@ export class ItNavscrollComponent implements OnInit {
 
   readonly progressBarValue = this.#store.progressBar;
 
-  protected isMobile: boolean;
+  readonly isMobile = this.#store.isMobile;
 
   constructor() {
     this.#store.menuItemSelected
       .pipe(
         takeUntilDestroyed(),
-        tap(() => {
-          if (this.isMobile) {
+        withLatestFrom(this.isMobile),
+        tap(v => {
+          const isMobile = v[1];
+          if (isMobile) {
             this.toggleButtonRef.nativeElement.click();
           }
         })
@@ -116,7 +118,7 @@ export class ItNavscrollComponent implements OnInit {
   ngOnInit(): void {
     this.#initViewScrollerSubscription();
     this.#store.init(this.items);
-    this.#toggleZIndex();
+    this.#setMobile();
   }
 
   #initViewScrollerSubscription() {
@@ -136,9 +138,7 @@ export class ItNavscrollComponent implements OnInit {
       .subscribe();
   }
 
-  #toggleZIndex() {
-    const isLessThan992px = window.innerWidth < 992;
-    this.isMobile = isLessThan992px;
-    console.log(window.innerWidth, 'isMobile', this.isMobile);
+  #setMobile() {
+    this.#store.setMobile(window);
   }
 }
