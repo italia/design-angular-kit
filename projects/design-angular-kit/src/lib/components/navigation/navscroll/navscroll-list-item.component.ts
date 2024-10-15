@@ -34,17 +34,17 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
       [class.active]="active | async"
       [routerLink]="[]"
       routerLinkActive
-      [fragment]="item.href"
+      [fragment]="item?.href"
       [routerLinkActiveOptions]="routerLinkActiveOptions"
       ariaCurrentWhenActive="page"
       #rtl="routerLinkActive"
       (click)="clickHandler($event)"
-      ><span>{{ item.title }}</span></a
+      ><span>{{ item?.title }}</span></a
     >
   `,
 })
 export class ItNavscrollListItemComponent implements OnInit {
-  @Input() readonly item: NavscrollItem;
+  @Input() readonly item!: NavscrollItem;
 
   @Output() readonly checkActive = new EventEmitter<NavscrollItem>();
 
