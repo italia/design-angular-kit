@@ -29,18 +29,6 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
   imports: [RouterLink, RouterLinkActive, RouterLinkWithHref, ItNavscrollListItemsComponent, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <!-- <a
-      class="nav-link"
-      [routerLink]="[]"
-      [fragment]="item.href"
-      routerLinkActive
-      [routerLinkActiveOptions]="routerLinkActiveOptions"
-      routerLinkWithHref
-      #rtl="routerLinkActive"
-      [class.active]="active | async"
-      ariaCurrentWhenActive="page"
-      ><span>{{ item.title }}</span></a
-    > -->
     <a
       class="nav-link"
       [class.active]="active | async"
