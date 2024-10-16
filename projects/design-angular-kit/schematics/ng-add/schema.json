@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "design-angular-kit-ng-add",
+    "title": "Design Angular Hit ng-add schematic"
+}

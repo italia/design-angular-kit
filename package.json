@@ -9,7 +9,7 @@
     "start": "npm run compodoc-compile && concurrently \"npm run nunjucks-compile -- -w --path .\" \"ng serve\"",
     "build": "npm run nunjucks-compile -- --path . && npm run compodoc-compile && ng build --base-href design-angular-kit",
     "build:lib": "ng build design-angular-kit",
-    "postbuild:lib": "tsc -p projects/design-angular-kit/tsconfig.schematics.json && copyfiles -f projects/design-angular-kit/schematics/*/schema.json projects/design-angular-kit/schematics/*/files/** projects/design-angular-kit/schematics/collection.json dist/design-angular-kit/",
+    "postbuild:lib": "tsc -p projects/design-angular-kit/tsconfig.schematics.json && node postbuildSchematics.js",
     "watch:lib": "ng build --configuration development --watch design-angular-kit",
     "test": "ng test design-angular-kit --browsers=ChromeHeadless --no-watch",
     "e2e": "npm run compodoc-compile && npm run nunjucks-compile && ng e2e",
