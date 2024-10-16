@@ -1,6 +1,5 @@
 var copyfiles = require('copyfiles');
 
-var flat = true;
 var callback = function(e)  {
     if(e) {
         console.error(e)
