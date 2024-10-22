@@ -41,5 +41,6 @@ describe(`ng add design-angular-kit - NgModule`, () => {
     // Check if the correct import statement was added
     const content = tree.readContent(modulePath);
     expect(content).toContain(`import { DesignAngularKitModule } from 'design-angular-kit';`);
+    expect(content).toContain(`DesignAngularKitModule.forRoot()`);
   });
 });
