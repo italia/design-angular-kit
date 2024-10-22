@@ -20,7 +20,8 @@
     "postversion": "npm version $npm_package_version --prefix projects/design-angular-kit/ --no-git-tag-version",
     "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle/browser -m 'chore: update documentation'",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
-    "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl"
+    "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
+    "schematics:test": "ts-node --project projects/design-angular-kit/tsconfig.schematics.json node_modules/jasmine/bin/jasmine projects/design-angular-kit/schematics/**/*.spec.ts"
   },
   "browserslist": [
     "extends browserslist-config-design-italia"
@@ -114,6 +115,7 @@
     "gh-pages": "^6.1.1",
     "husky": "^9.0.11",
     "is-ci": "^3.0.1",
+    "jasmine": "^5.4.0",
     "jasmine-core": "~5.1.2",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.3",

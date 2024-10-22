@@ -33,7 +33,7 @@
   },
   "schematics": "./schematics/collection.json",
   "ng-add": {
-    "save": "devDependencies"
+    "save": "dependencies"
   },
   "dependencies": {
     "tslib": "^2.6.3"
