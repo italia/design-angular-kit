@@ -29,6 +29,7 @@ function sortObjectByKeys(obj: Record<string, string>) {
 const semverWithPrefixRegex =
   /^[\^~]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
 
+/** Converts a semver string to SemVerObject */
 export function toSemVerObject(versionString: string) {
   const [semVer, major, minor, patch, prerelease, buildmetadata] = versionString.match(semverWithPrefixRegex) ?? [];
   return { semVer, major, minor, patch, prerelease, buildmetadata } satisfies SemVerObject;
