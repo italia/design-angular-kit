@@ -6,6 +6,6 @@ export default function (options: Schema): Rule {
   // Add an import `DesignAngularKitModule` from `design-angular-kit` to the root of the user's project.
   return addRootImport(
     options.project,
-    ({ code, external }) => code`${external('DesignAngularKitModule', 'design-angular-kit')}.forRoot()`
+    ({ code, external }) => code`${external('DesignAngularKitModule', 'design-angular-kit')}.forRoot(),\n`
   );
 }
