@@ -1,8 +1,8 @@
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 
-import { addPackageToPackageJson, getPackageVersionFromPackageJson, toSemVerObject } from './package-config';
 import { Schema } from './schema';
+import { addPackageToPackageJson, getPackageVersionFromPackageJson, toSemVerObject } from './utils';
 
 const fallbackMaterialVersionRange = `~0.0.0-PLACEHOLDER`;
 const packageName = 'design-angular-kit';

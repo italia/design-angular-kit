@@ -4,7 +4,15 @@ interface PackageJson {
   dependencies: Record<string, string>;
 }
 
-// interface SemVerObject {}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface SemVerObject {
+  semVer?: string;
+  major?: string;
+  minor?: string;
+  patch?: string;
+  prerelease?: string;
+  buildmetadata?: string;
+}
 
 function sortObjectByKeys(obj: Record<string, string>) {
   return Object.keys(obj)
@@ -23,7 +31,7 @@ const semverWithPrefixRegex =
 
 export function toSemVerObject(versionString: string) {
   const [semVer, major, minor, patch, prerelease, buildmetadata] = versionString.match(semverWithPrefixRegex) ?? [];
-  return { semVer, major, minor, patch, prerelease, buildmetadata };
+  return { semVer, major, minor, patch, prerelease, buildmetadata } satisfies SemVerObject;
 }
 
 /** Adds a package to the package.json in the given host tree. */

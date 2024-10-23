@@ -21,7 +21,9 @@ export default function (options: Schema): Rule {
     if (!mainFilePath || !host.read(mainFilePath)) {
       throw new SchematicsException('messages.noMainFile(projectName)');
     }
-
+    //those dependencies should be provided at application level instead of lib level. ref: provideDesignAngularKit
+    //provideAnimationsAsync(),
+    //provideHttpClient(),
     return chain([addDesignAngularKit({ mainFilePath, projectName })]);
   };
 }
