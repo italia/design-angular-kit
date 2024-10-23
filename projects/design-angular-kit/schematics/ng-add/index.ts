@@ -3,22 +3,10 @@ import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schema
 
 import { Schema } from './schema';
 import { addPackageToPackageJson, getPackageVersionFromPackageJson, toSemVerObject } from './utils';
+import { getPackageVersion } from './versions-helper';
 
 const fallbackMaterialVersionRange = `~0.0.0-PLACEHOLDER`;
 const packageName = 'design-angular-kit';
-
-const ANGULAR_VERSION_17 = '17';
-const ANGULAR_VERSION_18 = '18';
-
-const KIT_VERSION_1_0_0 = '1.0.0';
-const KIT_VERSION_1_1_0 = '1.1.0';
-const DEFAULT = 'DEFAULT';
-
-const versionsMap: Record<string, string> = {
-  [DEFAULT]: KIT_VERSION_1_0_0,
-  [ANGULAR_VERSION_17]: KIT_VERSION_1_0_0,
-  [ANGULAR_VERSION_18]: KIT_VERSION_1_1_0,
-};
 
 export default function (options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -31,18 +19,7 @@ export default function (options: Schema): Rule {
 
     const { major: angularMajorVersion } = toSemVerObject(angularDependencyVersion);
 
-    let version = versionsMap[DEFAULT];
-
-    switch (angularMajorVersion) {
-      case ANGULAR_VERSION_17:
-        version = versionsMap[ANGULAR_VERSION_17];
-        break;
-      case ANGULAR_VERSION_18:
-        version = versionsMap[ANGULAR_VERSION_18];
-        break;
-      default:
-        version = versionsMap[DEFAULT];
-    }
+    const version = getPackageVersion({ angularMajorVersion });
 
     // The CLI inserts `design-angular-kit` into the `package.json` before this schematic runs.
     // This means that we do not need to insert Design Angular Kit into `package.json` files again.
