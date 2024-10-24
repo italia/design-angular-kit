@@ -69,6 +69,7 @@ describe(`ng add design-angular-kit | setup-project - standalone`, () => {
       {
         name: defaultOptions.project,
         standalone: true,
+        style: 'scss',
       },
       appTree
     );
@@ -86,4 +87,16 @@ describe(`ng add design-angular-kit | setup-project - standalone`, () => {
     expect(content).toContain(`import { provideDesignAngularKit } from 'design-angular-kit';`);
     expect(content).toContain(`provideDesignAngularKit()`);
   });
+
+  // it('should add .scss import to project style file', async () => {
+  //   const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
+
+  //   // Check if the app.module.ts file exists
+  //   const styleFilePath = '/projects/test-project/src/styles.scss';
+  //   expect(tree.files).toContain(styleFilePath);
+
+  //   // Check if the correct import statement was added
+  //   const content = tree.readContent(styleFilePath);
+  //   expect(content).toContain(`@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss;'`);
+  // });
 });
