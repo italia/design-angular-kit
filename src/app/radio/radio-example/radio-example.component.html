@@ -7,25 +7,33 @@
   <h4>Risultato</h4>
 
   <div class="example-section">
-    <it-radio-button
-      *ngFor="let color of colors; let i = index"
-      [id]="'color-' + i"
-      [(ngModel)]="selectedColor"
-      [disabled]="disabled"
-      [value]="color"
-      [label]="color"></it-radio-button>
+    <fieldset>
+      <legend>Seleziona il tuo colore preferito</legend>
+      <it-radio-button
+        *ngFor="let color of colors; let i = index"
+        [id]="'color-' + i"
+        [(ngModel)]="selectedColor"
+        [disabled]="disabled"
+        [value]="color"
+        [label]="color"></it-radio-button>
+    </fieldset>
     <div class="example-selected-value">Colore selezionato: {{ selectedColor }}</div>
   </div>
 </div>
 
 <div class="bd-example">
   <h4>Radio con link</h4>
-  <it-radio-button [(ngModel)]="link" name="radio-link" value="bootstrap-italia">
-    <ng-container label>Label con <a href="https://italia.github.io/bootstrap-italia/">link</a></ng-container>
-  </it-radio-button>
-  <it-radio-button [(ngModel)]="link" name="radio-link" value="radio-button">
-    <ng-container label>Altra label con <a href="https://italia.github.io/bootstrap-italia/docs/form/radio-button/">link</a></ng-container>
-  </it-radio-button>
+  <fieldset>
+    <legend>Gruppo di radio</legend>
+    <it-radio-button [(ngModel)]="link" name="radio-link" value="bootstrap-italia">
+      <ng-container label>Label con <a href="https://italia.github.io/bootstrap-italia/">link</a></ng-container>
+    </it-radio-button>
+    <it-radio-button [(ngModel)]="link" name="radio-link" value="radio-button">
+      <ng-container label
+        >Altra label con <a href="https://italia.github.io/bootstrap-italia/docs/form/radio-button/">link</a></ng-container
+      >
+    </it-radio-button>
+  </fieldset>
 
   <div class="example-selected-value">
     Link selezionato: <strong>{{ link }}</strong>
@@ -36,10 +44,13 @@
   <h4>Radio in Reactive Form</h4>
   <p>Qual è il tuo sesso?</p>
   <form [formGroup]="genderFormGroup">
-    <it-radio-button formControlName="gender" value="MALE" label="Maschio"></it-radio-button>
-    <it-radio-button formControlName="gender" value="FEMALE" label="Femmina"></it-radio-button>
-    <it-radio-button formControlName="gender" value="OTHERS" label="Altro"></it-radio-button>
-    <it-radio-button formControlName="gender" value="UNDEFINED" label="Preferisco non dirlo"></it-radio-button>
+    <fieldset>
+      <legend>Gruppo di radio</legend>
+      <it-radio-button formControlName="gender" value="MALE" label="Maschio"></it-radio-button>
+      <it-radio-button formControlName="gender" value="FEMALE" label="Femmina"></it-radio-button>
+      <it-radio-button formControlName="gender" value="OTHERS" label="Altro"></it-radio-button>
+      <it-radio-button formControlName="gender" value="UNDEFINED" label="Preferisco non dirlo"></it-radio-button>
+    </fieldset>
   </form>
 
   <div class="example-selected-value">

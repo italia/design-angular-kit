@@ -1,16 +1,19 @@
 <h3>Configurazione checkbox</h3>
 
 <div class="bd-example">
-  <p class="example-section">
-    <it-checkbox [(ngModel)]="checked" label="Spuntato"></it-checkbox>
-    <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
-    <it-checkbox [(ngModel)]="indeterminate" label="Indeterminato"></it-checkbox>
-    <it-checkbox [(ngModel)]="link" label="Testo con link"></it-checkbox>
-  </p>
-
+  <div class="example-section">
+    <fieldset>
+      <legend>Gruppo di checkbox</legend>
+      <it-checkbox [(ngModel)]="checked" label="Spuntato"></it-checkbox>
+      <it-checkbox [(ngModel)]="disabled" label="Disabilitato"></it-checkbox>
+      <it-checkbox [(ngModel)]="indeterminate" label="Indeterminato"></it-checkbox>
+      <it-checkbox [(ngModel)]="link" label="Testo con link"></it-checkbox>
+    </fieldset>
+  </div>
+  <hr />
   <h4>Risultato</h4>
 
-  <p class="example-section">
+  <div class="example-section">
     <it-checkbox [(ngModel)]="checked" [indeterminate]="indeterminate" [disabled]="disabled">
       <ng-container label>
         <ng-container *ngIf="link; else simpleLabel">
@@ -19,5 +22,5 @@
         <ng-template #simpleLabel> Sono una checkbox </ng-template>
       </ng-container>
     </it-checkbox>
-  </p>
+  </div>
 </div>
