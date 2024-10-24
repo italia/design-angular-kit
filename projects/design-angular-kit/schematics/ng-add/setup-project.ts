@@ -27,14 +27,14 @@ export default function (options: Schema): Rule {
 }
 
 function addAnimations(): Rule {
-  //this dependencies should be provided at application level instead of lib level. ref: provideDesignAngularKit
+  //this dependency should be provided at application level instead of lib level. ref: provideDesignAngularKit
   //provideAnimationsAsync(),
   return (host: Tree, context: SchematicContext) => callRule(noop(), host, context);
 }
 
 function addHttpClient(): Rule {
-  //this dependencies should be provided at application level instead of lib level. ref: provideDesignAngularKit
-  //provideAnimationsAsync(),
+  //this dependency should be provided at application level instead of lib level. ref: provideDesignAngularKit
+  //provideHttpClient(),
   return (host: Tree, context: SchematicContext) => callRule(noop(), host, context);
 }
 
