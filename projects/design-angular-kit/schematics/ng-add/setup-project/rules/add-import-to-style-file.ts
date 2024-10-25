@@ -1,16 +1,16 @@
-import { JsonArray, JsonObject, workspaces } from '@angular-devkit/core';
+import { JsonArray, JsonObject, normalize, workspaces } from '@angular-devkit/core';
 import { Rule, SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics';
-import { getProjectStyleFile } from '@angular/cdk/schematics';
+
 import { readWorkspace, writeWorkspace } from '@schematics/angular/utility';
 import * as path from 'path';
 
 import { Schema } from '../../schema';
 
 const BOOTSTRAP_ITALIA_CSS_FILEPATH = 'node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css';
-const SUPPORTED_BOOTSTRAP_ITALIA_STYLE_IMPORTS: Record<string, string> = {
+const SUPPORTED_BOOTSTRAP_ITALIA_STYLE_MAP: Record<string, string> = {
   '.sass': `
   /* Importing Bootstrap SCSS file. */
-  @import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
+  @import 'bootstrap-italia/scss/bootstrap-italia'
   `,
   '.scss': `
   /* Importing Bootstrap SCSS file. */
@@ -18,10 +18,14 @@ const SUPPORTED_BOOTSTRAP_ITALIA_STYLE_IMPORTS: Record<string, string> = {
   `,
 };
 
-// if supported
-//  add to styles.scss
-// else
-//  add css to assets in angular.json
+/**
+ * if supported
+ *    add to styles.scss or to style.sass
+ * else
+ *  add css to assets in angular.json
+ * @param options
+ * @returns Rule
+ */
 export function addImportToStyleFile(options: Schema): Rule {
   return async (host: Tree, context: SchematicContext) => {
     const workspace = await readWorkspace(host);
@@ -34,7 +38,7 @@ export function addImportToStyleFile(options: Schema): Rule {
 
     const styleFilePath = getProjectStyleFile(project as any) || '';
     const styleFileExtension = path.extname(styleFilePath);
-    const styleFilePatch = SUPPORTED_BOOTSTRAP_ITALIA_STYLE_IMPORTS[styleFileExtension];
+    const styleFilePatch = SUPPORTED_BOOTSTRAP_ITALIA_STYLE_MAP[styleFileExtension];
 
     // found supported styles
     if (styleFilePatch) {
@@ -87,4 +91,37 @@ function getProjectTargetOptions(project: workspaces.ProjectDefinition, buildTar
   }
 
   throw new SchematicsException(`Cannot determine project target configuration for: ${buildTarget}.`);
+}
+
+// Regular expression that matches all possible Angular CLI default style files
+const defaultStyleFileRegex = /styles\.(c|le|sc|sa)ss/;
+
+// Regular expression that matches all files that have a proper stylesheet extension
+const validStyleFileRegex = /\.(c|le|sc|sa)ss/;
+
+function getProjectStyleFile(project: workspaces.ProjectDefinition, extension?: string): string | null {
+  const buildOptions = getProjectTargetOptions(project, 'build');
+
+  if (buildOptions.styles && Array.isArray(buildOptions.styles) && buildOptions.styles.length) {
+    const styles = buildOptions.styles.map(s => (typeof s === 'string' ? s : (s as JsonObject)!['input'])) as Array<string>;
+
+    // Look for the default style file that is generated for new projects by the Angular CLI. This
+    // default style file is usually called `styles.ext` unless it has been changed explicitly.
+    const defaultMainStylePath = styles.find(file => (extension ? file === `styles.${extension}` : defaultStyleFileRegex.test(file)));
+
+    if (defaultMainStylePath) {
+      return normalize(defaultMainStylePath);
+    }
+
+    // If no default style file could be found, use the first style file that matches the given
+    // extension. If no extension specified explicitly, we look for any file with a valid style
+    // file extension.
+    const fallbackStylePath = styles.find(file => (extension ? file.endsWith(`.${extension}`) : validStyleFileRegex.test(file)));
+
+    if (fallbackStylePath) {
+      return normalize(fallbackStylePath);
+    }
+  }
+
+  return null;
 }

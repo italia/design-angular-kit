@@ -76,7 +76,7 @@ describe('ng add design-angular-kit | setup-project - styles', () => {
     const { tree: appTree } = await createApp(runner, defaultOptions, { standalone: true, style: 'scss' });
     const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
 
-    // Check if the app.module.ts file exists
+    // Check if the styles.scss file exists
     const styleFilePath = '/projects/test-project/src/styles.scss';
     expect(tree.files).toContain(styleFilePath);
     // Check if the correct import statement was added
@@ -84,11 +84,23 @@ describe('ng add design-angular-kit | setup-project - styles', () => {
     expect(content).toContain(`@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';`);
   });
 
+  it('should add .sass import to project style file', async () => {
+    const { tree: appTree } = await createApp(runner, defaultOptions, { standalone: true, style: 'sass' });
+    const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
+
+    // Check if the styles.sass file exists
+    const styleFilePath = '/projects/test-project/src/styles.sass';
+    expect(tree.files).toContain(styleFilePath);
+    // Check if the correct import statement was added
+    const content = tree.readContent(styleFilePath);
+    expect(content).toContain(`@import 'bootstrap-italia/scss/bootstrap-italia'`);
+  });
+
   it('should add .css import to angular.json', async () => {
     const { tree: appTree } = await createApp(runner, defaultOptions, { standalone: true, style: 'css' });
     const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
 
-    // Check if the app.module.ts file exists
+    // Check if the angular.json file exists
     const angularJsonPath = '/angular.json';
     expect(tree.files).toContain(angularJsonPath);
     // Check if the correct import statement was added
