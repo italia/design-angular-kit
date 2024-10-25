@@ -1,37 +1,42 @@
-import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
+import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import * as path from 'path';
-import { Schema as SchematicOptions } from './schema';
+import { Schema } from './schema';
 
-describe(`ng add design-angular-kit | setup-project - NgModule`, () => {
+const createApp = async (
+  runner: SchematicTestRunner,
+  options: Schema,
+  { standalone, style }: { standalone: boolean; style: 'scss' | 'css' | 'sass' }
+) => {
+  let tree = await runner.runExternalSchematic('@schematics/angular', 'workspace', {
+    name: 'workspace',
+    version: '18.0.0',
+    newProjectRoot: 'projects',
+  });
+
+  tree = await runner.runExternalSchematic(
+    '@schematics/angular',
+    'application',
+    {
+      name: options.project,
+      standalone,
+      style,
+    },
+    tree
+  );
+
+  return { tree };
+};
+
+describe(`ng add design-angular-kit | setup-project - Library providing`, () => {
   const collectionPath = path.join(__dirname, '../collection.json');
   const runner = new SchematicTestRunner('schematics', collectionPath);
 
-  const defaultOptions: SchematicOptions = {
+  const defaultOptions: Schema = {
     project: 'test-project', // Set your default project name
   };
 
-  let appTree: UnitTestTree;
-
-  beforeEach(async () => {
-    // Simulate an Angular workspace project before running the schematic
-    appTree = await runner.runExternalSchematic('@schematics/angular', 'workspace', {
-      name: 'workspace',
-      version: '6.0.0',
-      newProjectRoot: 'projects',
-    });
-
-    appTree = await runner.runExternalSchematic(
-      '@schematics/angular',
-      'application',
-      {
-        name: defaultOptions.project,
-        standalone: false,
-      },
-      appTree
-    );
-  });
-
-  it('should add DesignAngularKitModule to the root module', async () => {
+  it('should add DesignAngularKitModule to the root module - NgModule app', async () => {
+    const { tree: appTree } = await createApp(runner, defaultOptions, { standalone: false, style: 'scss' });
     const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
 
     // Check if the app.module.ts file exists
@@ -43,39 +48,9 @@ describe(`ng add design-angular-kit | setup-project - NgModule`, () => {
     expect(content).toContain(`import { DesignAngularKitModule } from 'design-angular-kit';`);
     expect(content).toContain(`DesignAngularKitModule.forRoot()`);
   });
-});
 
-describe(`ng add design-angular-kit | setup-project - standalone`, () => {
-  const collectionPath = path.join(__dirname, '../collection.json');
-  const runner = new SchematicTestRunner('schematics', collectionPath);
-
-  const defaultOptions: SchematicOptions = {
-    project: 'test-project', // Set your default project name
-  };
-
-  let appTree: UnitTestTree;
-
-  beforeEach(async () => {
-    // Simulate an Angular workspace project before running the schematic
-    appTree = await runner.runExternalSchematic('@schematics/angular', 'workspace', {
-      name: 'workspace',
-      version: '6.0.0',
-      newProjectRoot: 'projects',
-    });
-
-    appTree = await runner.runExternalSchematic(
-      '@schematics/angular',
-      'application',
-      {
-        name: defaultOptions.project,
-        standalone: true,
-        style: 'scss',
-      },
-      appTree
-    );
-  });
-
-  it('should add provideDesignAngularKit() to the app config', async () => {
+  it('should add provideDesignAngularKit() to the app config - Standalone app', async () => {
+    const { tree: appTree } = await createApp(runner, defaultOptions, { standalone: true, style: 'scss' });
     const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
 
     // Check if the app.module.ts file exists
@@ -93,33 +68,12 @@ describe('ng add design-angular-kit | setup-project - styles', () => {
   const collectionPath = path.join(__dirname, '../collection.json');
   const runner = new SchematicTestRunner('schematics', collectionPath);
 
-  const defaultOptions: SchematicOptions = {
+  const defaultOptions: Schema = {
     project: 'test-project', // Set your default project name
   };
 
-  const createApp = async ({ standalone, style }: { standalone: boolean; style: 'scss' | 'css' | 'sass' }) => {
-    let tree = await runner.runExternalSchematic('@schematics/angular', 'workspace', {
-      name: 'workspace',
-      version: '18.0.0',
-      newProjectRoot: 'projects',
-    });
-
-    tree = await runner.runExternalSchematic(
-      '@schematics/angular',
-      'application',
-      {
-        name: defaultOptions.project,
-        standalone,
-        style,
-      },
-      tree
-    );
-
-    return { tree };
-  };
-
   it('should add .scss import to project style file', async () => {
-    const { tree: appTree } = await createApp({ standalone: true, style: 'scss' });
+    const { tree: appTree } = await createApp(runner, defaultOptions, { standalone: true, style: 'scss' });
     const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
 
     // Check if the app.module.ts file exists
@@ -131,7 +85,7 @@ describe('ng add design-angular-kit | setup-project - styles', () => {
   });
 
   it('should add .css import to angular.json', async () => {
-    const { tree: appTree } = await createApp({ standalone: true, style: 'css' });
+    const { tree: appTree } = await createApp(runner, defaultOptions, { standalone: true, style: 'css' });
     const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
 
     // Check if the app.module.ts file exists
