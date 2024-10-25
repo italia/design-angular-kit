@@ -87,8 +87,39 @@ describe(`ng add design-angular-kit | setup-project - standalone`, () => {
     expect(content).toContain(`import { provideDesignAngularKit } from 'design-angular-kit';`);
     expect(content).toContain(`provideDesignAngularKit()`);
   });
+});
+
+describe('ng add design-angular-kit | setup-project - styles', () => {
+  const collectionPath = path.join(__dirname, '../collection.json');
+  const runner = new SchematicTestRunner('schematics', collectionPath);
+
+  const defaultOptions: SchematicOptions = {
+    project: 'test-project', // Set your default project name
+  };
+
+  const createApp = async ({ standalone, style }: { standalone: boolean; style: 'scss' | 'css' | 'sass' }) => {
+    let tree = await runner.runExternalSchematic('@schematics/angular', 'workspace', {
+      name: 'workspace',
+      version: '18.0.0',
+      newProjectRoot: 'projects',
+    });
+
+    tree = await runner.runExternalSchematic(
+      '@schematics/angular',
+      'application',
+      {
+        name: defaultOptions.project,
+        standalone,
+        style,
+      },
+      tree
+    );
+
+    return { tree };
+  };
 
   it('should add .scss import to project style file', async () => {
+    const { tree: appTree } = await createApp({ standalone: true, style: 'scss' });
     const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
 
     // Check if the app.module.ts file exists
@@ -97,5 +128,17 @@ describe(`ng add design-angular-kit | setup-project - standalone`, () => {
     // Check if the correct import statement was added
     const content = tree.readContent(styleFilePath);
     expect(content).toContain(`@import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';`);
+  });
+
+  it('should add .css import to angular.json', async () => {
+    const { tree: appTree } = await createApp({ standalone: true, style: 'css' });
+    const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
+
+    // Check if the app.module.ts file exists
+    const angularJsonPath = '/angular.json';
+    expect(tree.files).toContain(angularJsonPath);
+    // Check if the correct import statement was added
+    const content = tree.readContent(angularJsonPath);
+    expect(content).toContain(`node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css`);
   });
 });

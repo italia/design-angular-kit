@@ -1,11 +1,12 @@
+import { JsonArray, JsonObject, workspaces } from '@angular-devkit/core';
 import { Rule, SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { getProjectStyleFile } from '@angular/cdk/schematics';
-import { readWorkspace } from '@schematics/angular/utility';
+import { readWorkspace, writeWorkspace } from '@schematics/angular/utility';
 import * as path from 'path';
 
 import { Schema } from '../../schema';
 
-// const BOOTSTRAP_ITALIA_CSS_FILEPATH = 'node_modules/bootstrap/dist/css/bootstrap.min.css';
+const BOOTSTRAP_ITALIA_CSS_FILEPATH = 'node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css';
 const SUPPORTED_BOOTSTRAP_ITALIA_STYLE_IMPORTS: Record<string, string> = {
   '.sass': `
   /* Importing Bootstrap SCSS file. */
@@ -45,8 +46,8 @@ export function addImportToStyleFile(options: Schema): Rule {
       }
 
       // just patching 'angular.json'
-      // addBootstrapToAngularJson(project as any);
-      // await writeWorkspace(host, workspace);
+      addBootstrapItaliaToAngularJson(project as any);
+      await writeWorkspace(host, workspace);
     }
   };
 }
@@ -60,4 +61,30 @@ function addBootstrapItaliaToStylesFile(styleFilePath: string, styleFilePatch: s
 
     host.commitUpdate(recorder);
   };
+}
+
+function addBootstrapItaliaToAngularJson(project: workspaces.ProjectDefinition) {
+  const targetOptions = getProjectTargetOptions(project, 'build');
+  const styles = targetOptions.styles as JsonArray | undefined;
+  if (!styles) {
+    targetOptions.styles = [BOOTSTRAP_ITALIA_CSS_FILEPATH];
+  } else {
+    const existingStyles = styles.map(s => (typeof s === 'string' ? s : (s as JsonObject)!['input'])) as Array<string>;
+
+    for (const [, stylePath] of existingStyles.entries()) {
+      if (stylePath === BOOTSTRAP_ITALIA_CSS_FILEPATH) {
+        return;
+      }
+    }
+    styles.unshift(BOOTSTRAP_ITALIA_CSS_FILEPATH);
+  }
+}
+
+function getProjectTargetOptions(project: workspaces.ProjectDefinition, buildTarget: string) {
+  const buildTargetObject = project.targets.get(buildTarget);
+  if (buildTargetObject && buildTargetObject.options) {
+    return buildTargetObject.options;
+  }
+
+  throw new SchematicsException(`Cannot determine project target configuration for: ${buildTarget}.`);
 }
