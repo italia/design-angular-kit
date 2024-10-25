@@ -37,7 +37,7 @@ export function addImportToStyleFile(options: Schema): Rule {
 
     // found supported styles
     if (styleFilePatch) {
-      return addBootstrapToStylesFile(styleFilePath, styleFilePatch);
+      return addBootstrapItaliaToStylesFile(styleFilePath, styleFilePatch);
     } else {
       // found some styles, but unsupported
       if (styleFileExtension !== '.css' && styleFileExtension !== '') {
@@ -51,7 +51,7 @@ export function addImportToStyleFile(options: Schema): Rule {
   };
 }
 
-function addBootstrapToStylesFile(styleFilePath: string, styleFilePatch: string): Rule {
+function addBootstrapItaliaToStylesFile(styleFilePath: string, styleFilePatch: string): Rule {
   return async (host: Tree) => {
     const styleContent = host.read(styleFilePath)!.toString('utf-8');
 
