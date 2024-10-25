@@ -30,19 +30,15 @@ export function addImportToStyleFile(options: Schema): Rule {
     if (!project) {
       throw new SchematicsException('messages.noProject(projectName)');
     }
-    console.log('addImportToStyleFile');
 
     const styleFilePath = getProjectStyleFile(project as any) || '';
     const styleFileExtension = path.extname(styleFilePath);
     const styleFilePatch = SUPPORTED_BOOTSTRAP_ITALIA_STYLE_IMPORTS[styleFileExtension];
-    console.log('addImportToStyleFile', styleFileExtension);
 
     // found supported styles
     if (styleFilePatch) {
       return addBootstrapToStylesFile(styleFilePath, styleFilePatch);
     } else {
-      console.log('addImportToStyleFile: unsupported');
-
       // found some styles, but unsupported
       if (styleFileExtension !== '.css' && styleFileExtension !== '') {
         context.logger.warn('messages.unsupportedStyles(styleFilePath)');
@@ -57,13 +53,11 @@ export function addImportToStyleFile(options: Schema): Rule {
 
 function addBootstrapToStylesFile(styleFilePath: string, styleFilePatch: string): Rule {
   return async (host: Tree) => {
-    console.log('addBootstrapToStylesFile cb');
     const styleContent = host.read(styleFilePath)!.toString('utf-8');
 
     const recorder = host.beginUpdate(styleFilePath);
     recorder.insertRight(styleContent.length, styleFilePatch);
 
     host.commitUpdate(recorder);
-    console.log('addBootstrapToStylesFile cb end');
   };
 }
