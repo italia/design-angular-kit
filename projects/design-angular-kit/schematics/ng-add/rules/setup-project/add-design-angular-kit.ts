@@ -28,7 +28,6 @@ export function addDesignAngularKit(options: Schema): Rule {
       ? addRootImport(projectName, ({ code, external }) => code`${external('DesignAngularKitModule', 'design-angular-kit')}.forRoot()\n`)
       : addRootProvider(projectName, ({ code, external }) => code`${external('provideDesignAngularKit', 'design-angular-kit')}()`);
 
-    // return firstValueFrom(callRule(rule, host, context).ma);
     return firstValueFrom(
       callRule(rule, host, context).pipe(
         map(() => {
