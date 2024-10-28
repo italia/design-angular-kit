@@ -10,11 +10,11 @@ import { getProjectTargetOptions } from './angular-json-helper';
 const BOOTSTRAP_ITALIA_CSS_FILEPATH = 'node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css';
 const SUPPORTED_BOOTSTRAP_ITALIA_STYLE_MAP: Record<string, string> = {
   '.sass': `
-  /* Importing Bootstrap SCSS file. */
+  /* Importazione libreria SCSS di bootstrap-italia */
   @import 'bootstrap-italia/scss/bootstrap-italia'
   `,
   '.scss': `
-  /* Importing Bootstrap SCSS file. */
+  /* Importazione libreria SCSS di bootstrap-italia */
   @import '../node_modules/bootstrap-italia/src/scss/bootstrap-italia.scss';
   `,
 };
