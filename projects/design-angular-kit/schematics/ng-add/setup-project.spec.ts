@@ -128,6 +128,10 @@ describe('ng add design-angular-kit | setup-project - assets', () => {
     const content = tree.readContent(angularJsonPath);
     //"./node_modules/bootstrap-italia/"
     expect(content).toContain(`./node_modules/bootstrap-italia/`);
-    console.log(content);
+    const angularJson = JSON.parse(content);
+    const assetsConfig = angularJson.projects[defaultOptions.project]?.architect?.build?.options?.assets?.find(
+      (item: { input: string }) => item.input === `./node_modules/bootstrap-italia/`
+    );
+    expect(assetsConfig).toBeDefined(assetsConfig);
   });
 });
