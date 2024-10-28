@@ -108,3 +108,26 @@ describe('ng add design-angular-kit | setup-project - styles', () => {
     expect(content).toContain(`node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css`);
   });
 });
+
+describe('ng add design-angular-kit | setup-project - assets', () => {
+  const collectionPath = path.join(__dirname, '../collection.json');
+  const runner = new SchematicTestRunner('schematics', collectionPath);
+
+  const defaultOptions: Schema = {
+    project: 'test-project', // Set your default project name
+  };
+
+  it('should add bootstrap italia assets to angular.json', async () => {
+    const { tree: appTree } = await createApp(runner, defaultOptions, { standalone: true, style: 'css' });
+    const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
+
+    // Check if the angular.json file exists
+    const angularJsonPath = '/angular.json';
+    expect(tree.files).toContain(angularJsonPath);
+    // Check if the correct import statement was added
+    const content = tree.readContent(angularJsonPath);
+    //"./node_modules/bootstrap-italia/"
+    expect(content).toContain(`./node_modules/bootstrap-italia/`);
+    console.log(content);
+  });
+});

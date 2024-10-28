@@ -5,6 +5,7 @@ import { readWorkspace, writeWorkspace } from '@schematics/angular/utility';
 import * as path from 'path';
 
 import { Schema } from '../../schema';
+import { getProjectTargetOptions } from './angular-json-helper';
 
 const BOOTSTRAP_ITALIA_CSS_FILEPATH = 'node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css';
 const SUPPORTED_BOOTSTRAP_ITALIA_STYLE_MAP: Record<string, string> = {
@@ -82,15 +83,6 @@ function addBootstrapItaliaToAngularJson(project: workspaces.ProjectDefinition) 
     }
     styles.unshift(BOOTSTRAP_ITALIA_CSS_FILEPATH);
   }
-}
-
-function getProjectTargetOptions(project: workspaces.ProjectDefinition, buildTarget: string) {
-  const buildTargetObject = project.targets.get(buildTarget);
-  if (buildTargetObject && buildTargetObject.options) {
-    return buildTargetObject.options;
-  }
-
-  throw new SchematicsException(`Cannot determine project target configuration for: ${buildTarget}.`);
 }
 
 // Regular expression that matches all possible Angular CLI default style files
