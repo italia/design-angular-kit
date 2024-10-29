@@ -4,7 +4,6 @@ interface PackageJson {
   dependencies: Record<string, string>;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface SemVerObject {
   semVer?: string;
   major?: string;
@@ -13,6 +12,9 @@ interface SemVerObject {
   prerelease?: string;
   buildmetadata?: string;
 }
+
+const SEMVER_WITH_PREFIX_REGEX =
+  /^[\^~]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
 
 function sortObjectByKeys(obj: Record<string, string>) {
   return Object.keys(obj)
@@ -26,12 +28,9 @@ function sortObjectByKeys(obj: Record<string, string>) {
     );
 }
 
-const semverWithPrefixRegex =
-  /^[\^~]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
-
-/** Converts a semver string to SemVerObject */
+/** Get a SemVerObject given a semver string */
 export function toSemVerObject(versionString: string) {
-  const [semVer, major, minor, patch, prerelease, buildmetadata] = versionString.match(semverWithPrefixRegex) ?? [];
+  const [semVer, major, minor, patch, prerelease, buildmetadata] = versionString.match(SEMVER_WITH_PREFIX_REGEX) ?? [];
   return { semVer, major, minor, patch, prerelease, buildmetadata } satisfies SemVerObject;
 }
 

@@ -15,6 +15,7 @@ const versionsMap: Record<string, string> = {
   [LATEST]: KIT_VERSION_1_1_0,
 };
 
+// Get Design Angular Kit package version given Angular major version
 export function getPackageVersion({ angularMajorVersion }: { angularMajorVersion: string }) {
   if (isNaN(+angularMajorVersion)) {
     throw new Error('Major version is not a number');
