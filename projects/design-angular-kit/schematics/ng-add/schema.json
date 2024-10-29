@@ -3,5 +3,13 @@
     "$id": "design-angular-kit-ng-add",
     "title": "Design Angular Hit ng-add schematic",
     "type": "object",
-    "properties": {}
+    "properties": {
+        "project": {
+            "type": "string",
+            "description": "Name of the project.",
+            "$default": {
+              "$source": "projectName"
+            }
+        }
+    }
 }
