@@ -1,10 +1,10 @@
-import { Rule, SchematicContext, SchematicsException, Tree, callRule } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree, callRule } from '@angular-devkit/schematics';
 import { isStandaloneApp } from '@angular/cdk/schematics';
 import { addRootImport, addRootProvider, readWorkspace } from '@schematics/angular/utility';
 import { getMainFilePath } from '@schematics/angular/utility/standalone/util';
 import { firstValueFrom, map } from 'rxjs';
 import { Schema } from '../../schema';
-import { NoProjectException } from './exceptions';
+import { NoMainFileException, NoProjectException } from './exceptions';
 
 export function addDesignAngularKit(options: Schema): Rule {
   return async (host: Tree, context: SchematicContext) => {
@@ -20,7 +20,7 @@ export function addDesignAngularKit(options: Schema): Rule {
     // 2. getting main file for project
     const mainFilePath = await getMainFilePath(host, projectName);
     if (!mainFilePath || !host.read(mainFilePath)) {
-      throw new SchematicsException('messages.noMainFile(projectName)');
+      throw new NoMainFileException(projectName);
     }
 
     const isNotStandaloneApp = !isStandaloneApp(host, mainFilePath);
