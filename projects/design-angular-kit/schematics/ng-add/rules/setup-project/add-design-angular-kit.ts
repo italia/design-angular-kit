@@ -4,6 +4,7 @@ import { addRootImport, addRootProvider, readWorkspace } from '@schematics/angul
 import { getMainFilePath } from '@schematics/angular/utility/standalone/util';
 import { firstValueFrom, map } from 'rxjs';
 import { Schema } from '../../schema';
+import { NoProjectException } from './exceptions';
 
 export function addDesignAngularKit(options: Schema): Rule {
   return async (host: Tree, context: SchematicContext) => {
@@ -13,7 +14,7 @@ export function addDesignAngularKit(options: Schema): Rule {
     // 1. getting project by name
     const project = workspace.projects.get(projectName);
     if (!project) {
-      throw new SchematicsException('messages.noProject(projectName)');
+      throw new NoProjectException(projectName);
     }
 
     // 2. getting main file for project

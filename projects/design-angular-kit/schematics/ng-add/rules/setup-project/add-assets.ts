@@ -1,9 +1,10 @@
 import { JsonArray, JsonObject, workspaces } from '@angular-devkit/core';
-import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
+import { Rule, Tree } from '@angular-devkit/schematics';
 import { readWorkspace, writeWorkspace } from '@schematics/angular/utility';
 
 import { Schema } from '../../schema';
 import { getProjectTargetOptions } from './angular-json-helper';
+import { NoProjectException } from './exceptions';
 
 const ASSETS_CONFIG = {
   glob: '**/*',
@@ -18,7 +19,7 @@ export function addAssets(options: Schema): Rule {
     const projectName = options.project || workspace.extensions.defaultProject!.toString();
     const project = workspace.projects.get(projectName);
     if (!project) {
-      throw new SchematicsException('messages.noProject(projectName)');
+      throw new NoProjectException(projectName);
     }
 
     addAssetsToAngularJson(project);

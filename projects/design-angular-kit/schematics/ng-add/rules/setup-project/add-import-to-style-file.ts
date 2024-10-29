@@ -1,11 +1,12 @@
 import { JsonArray, JsonObject, normalize, workspaces } from '@angular-devkit/core';
-import { Rule, SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 
 import { readWorkspace, writeWorkspace } from '@schematics/angular/utility';
 import * as path from 'path';
 
 import { Schema } from '../../schema';
 import { getProjectTargetOptions } from './angular-json-helper';
+import { NoProjectException } from './exceptions';
 
 const BOOTSTRAP_ITALIA_CSS_FILEPATH = 'node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css';
 const SUPPORTED_BOOTSTRAP_ITALIA_STYLE_MAP: Record<string, string> = {
@@ -34,7 +35,7 @@ export function addImportToStyleFile(options: Schema): Rule {
     const projectName = options.project || workspace.extensions.defaultProject!.toString();
     const project = workspace.projects.get(projectName);
     if (!project) {
-      throw new SchematicsException('messages.noProject(projectName)');
+      throw new NoProjectException(projectName);
     }
 
     const styleFilePath = getProjectStyleFile(project as any) || '';
