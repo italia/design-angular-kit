@@ -12,9 +12,7 @@ export default function (options: Schema): Rule {
     const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
     const isAProject = project.extensions['projectType'] === ProjectType.Application;
-    context.logger.warn(
-      `Design Angular Kit has been set in your workspace. No additional setup required.\nIf you intend to run the schematics on a specific project, please use -- project option `
-    );
+
     if (isAProject) {
       return chain([
         addAnimations(),
