@@ -71,7 +71,7 @@ Scegli la versione corrispondente alla tua versione Angular:
 In alternativa, puoi lanciar il comando
 
 ```sh
-ng add design-angular-kit
+ng add design-angular-kit --project <projectName>
 ```
 
 Eseguirà in serie:
