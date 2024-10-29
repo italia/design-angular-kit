@@ -5,8 +5,7 @@ import { Schema } from './schema';
 import { addPackageToPackageJson, getPackageVersionFromPackageJson, toSemVerObject } from './utils';
 import { getPackageVersion } from './versions-helper';
 
-const fallbackMaterialVersionRange = `~0.0.0-PLACEHOLDER`;
-const packageName = 'design-angular-kit';
+const DESIGN_ANGULAR_KIT_PACKAGE_NAME = 'design-angular-kit';
 
 export default function (options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -14,8 +13,8 @@ export default function (options: Schema): Rule {
     // of the CLI project. This tag should be preferred because all Angular dependencies should
     // have the same version tag if possible.
     const ngCoreVersionTag = getPackageVersionFromPackageJson(host, '@angular/core');
-    const designAngularKitVersionRange = getPackageVersionFromPackageJson(host, packageName);
-    const angularDependencyVersion = ngCoreVersionTag || `0.0.0-NG`;
+    const designAngularKitVersionRange = getPackageVersionFromPackageJson(host, DESIGN_ANGULAR_KIT_PACKAGE_NAME);
+    const angularDependencyVersion = ngCoreVersionTag || `18.0.0`;
 
     const { major: angularMajorVersion } = toSemVerObject(angularDependencyVersion);
 
@@ -27,10 +26,10 @@ export default function (options: Schema): Rule {
     // command, or Design Angular Kit is only listed a dev dependency. If that is the case, we insert a
     // version based on the current build version (substituted version placeholder).
     if (designAngularKitVersionRange === null) {
-      addPackageToPackageJson(host, packageName, version);
+      addPackageToPackageJson(host, DESIGN_ANGULAR_KIT_PACKAGE_NAME, version);
     }
 
-    addPackageToPackageJson(host, '@angular/cdk', angularDependencyVersion || fallbackMaterialVersionRange);
+    addPackageToPackageJson(host, '@angular/cdk', angularDependencyVersion);
     addPackageToPackageJson(host, '@angular/animations', angularDependencyVersion);
 
     const installTaskId = context.addTask(new NodePackageInstallTask());
