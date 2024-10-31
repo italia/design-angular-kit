@@ -7,22 +7,15 @@ import { DesignAngularKitModule } from 'design-angular-kit/design-angular-kit.mo
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EXAMPLES_MODULES } from './examples';
 import { LinkSortPipe } from './link-sort.pipe';
-import { NavscrollTbComponent } from './navscroll-tb.component';
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 import { TableOfContentItemComponent } from './table-of-content-item/table-of-content-item.component';
 import { TableOfContentComponent } from './table-of-content/table-of-content.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TableOfContentComponent,
-    TableOfContentItemComponent,
-    RouterDispatcherComponent,
-    LinkSortPipe,
-    NavscrollTbComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, DesignAngularKitModule.forRoot(), NgTemplateOutlet],
+  declarations: [AppComponent, TableOfContentComponent, TableOfContentItemComponent, RouterDispatcherComponent, LinkSortPipe],
+  imports: [BrowserModule, AppRoutingModule, DesignAngularKitModule.forRoot(), NgTemplateOutlet, ...EXAMPLES_MODULES],
   providers: [
     TranslateStore,
     {

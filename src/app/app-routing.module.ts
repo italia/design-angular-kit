@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ItErrorPageComponent } from 'design-angular-kit/components/utils/error-page/error-page.component';
-import { NavscrollTbComponent } from './navscroll-tb.component';
+import { EXAMPLES_ROUTES } from './examples/routes';
 import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 
 const routes: Routes = [
@@ -73,7 +73,7 @@ const routes: Routes = [
       { path: 'transfer', loadChildren: () => import('src/app/transfer/transfer.module').then(m => m.TransferModule) },
     ],
   },
-  { path: 'examples', component: RouterDispatcherComponent, children: [{ path: 'navscroll', component: NavscrollTbComponent }] },
+  { path: 'esempi', component: RouterDispatcherComponent, children: EXAMPLES_ROUTES },
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },
   { path: 'error/server-error', component: ItErrorPageComponent, data: { errorCode: 500 } },

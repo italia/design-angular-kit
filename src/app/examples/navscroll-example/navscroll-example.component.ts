@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
 import { NavscrollItems } from 'projects/design-angular-kit/src/public_api';
 
+const template = `
+<!-- 
+<ng-template #contentTemplate>
+  <h1>ciao</h1>
+</ng-template>
+
+<it-navscroll [header]="header" [items]="items" borderPosition="right" [pageSectionsTemplate]="contentTemplate"></it-navscroll> 
+-->
+<it-navscroll [header]="header" [items]="items" borderPosition="right"></it-navscroll>
+`;
+
 @Component({
-  selector: 'it-navscroll-tb',
-  templateUrl: './navscroll-tb.component.html',
+  template,
 })
-export class NavscrollTbComponent {
+export class NavscrollExampleComponent {
   readonly header = 'Default example';
   readonly items = [
     {
