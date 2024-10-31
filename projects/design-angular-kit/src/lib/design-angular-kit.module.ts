@@ -42,6 +42,7 @@ import { ItDateAgoPipe } from './pipes/date-ago.pipe';
 import { ItDurationPipe } from './pipes/duration.pipe';
 import { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';
 import { ItTimelineModule } from './components/core/timeline/timeline.module';
+import { ItSkiplinkComponent } from './components/navigation/skiplink/skiplink.component';
 
 /**
  * Core components
@@ -87,6 +88,7 @@ const navigation = [
   ItNavBarModule,
   ItSidebarComponent,
   ItMegamenuComponent,
+  ItSkiplinkComponent,
 ];
 
 /**

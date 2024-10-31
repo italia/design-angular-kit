@@ -186,6 +186,10 @@
         {
           "label": "Timeline",
           "link": "/componenti/timeline"
+        },
+        {
+          "label": "Skiplink",
+          "link": "/componenti/skiplink"
         }
       ]
     }

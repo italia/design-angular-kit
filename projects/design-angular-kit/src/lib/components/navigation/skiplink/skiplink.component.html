@@ -1,0 +1,7 @@
+<it-link class="visually-hidden-focusable" [href]="href" [externalLink]="externalLink">
+  <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+</it-link>
+
+<ng-template #linkContent>
+  <ng-content></ng-content>
+</ng-template>
