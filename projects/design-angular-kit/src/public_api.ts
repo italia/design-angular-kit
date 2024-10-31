@@ -80,6 +80,8 @@ export * from './lib/components/form/range/range.component';
 export * from './lib/components/form/rating/rating.component';
 export * from './lib/components/form/select/select.component';
 export * from './lib/components/form/textarea/textarea.component';
+export * from './lib/components/form/transfer/transfer.component';
+export * from './lib/components/form/transfer/transfer.model';
 export * from './lib/components/form/upload-drag-drop/upload-drag-drop.component';
 export * from './lib/components/form/upload-file-list/upload-file-list.component';
 

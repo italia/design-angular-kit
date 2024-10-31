@@ -70,6 +70,7 @@ const routes: Routes = [
       { path: 'sidebar', loadChildren: () => import('src/app/sidebar/sidebar.module').then(m => m.SidebarModule) },
       { path: 'timeline', loadChildren: () => import('src/app/timeline/timeline.module').then(m => m.TimelineModule) },
       { path: 'navscroll', loadChildren: () => import('src/app/navscroll/navscroll.module').then(m => m.NavscrollModule) },
+      { path: 'transfer', loadChildren: () => import('src/app/transfer/transfer.module').then(m => m.TransferModule) },
     ],
   },
   { path: 'navscroll-tb', component: NavscrollTbComponent },

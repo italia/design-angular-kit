@@ -1,10 +1,11 @@
 <h3>Configurazione toggle</h3>
 <div class="bd-example">
-  <p class="example-section">
+  <fieldset>
+    <legend>Seleziona le caratteristiche</legend>
     <it-checkbox [(ngModel)]="checked" label="Spuntato" toggle="true"></it-checkbox>
     <it-checkbox [(ngModel)]="disabled" label="Disabilitato" toggle="true"></it-checkbox>
-  </p>
-
+  </fieldset>
+  <hr />
   <h4>Risultato</h4>
   <p class="example-section">
     <it-checkbox [(ngModel)]="checked" [label]="label" [disabled]="disabled" toggle="true"></it-checkbox>

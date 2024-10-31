@@ -190,6 +190,10 @@
         {
           "label": "Navscroll",
           "link": "/componenti/navscroll"
+        },
+        {
+          "label": "Transfer",
+          "link": "/componenti/transfer"
         }
       ]
     }
