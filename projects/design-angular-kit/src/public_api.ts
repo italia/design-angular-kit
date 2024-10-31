@@ -100,6 +100,9 @@ export * from './lib/components/navigation/navbar/navbar-item/navbar-item.compon
 export * from './lib/components/navigation/navbar/navbar.module';
 export * from './lib/components/navigation/navbar/navbar/navbar.component';
 
+export * from './lib/components/navigation/navscroll/navscroll.component';
+export * from './lib/components/navigation/navscroll/navscroll.model';
+
 export * from './lib/components/navigation/sidebar/sidebar.component';
 
 // Utils components
