@@ -9,8 +9,8 @@ const template = `
 
 <it-navscroll [header]="header" [items]="items" borderPosition="right" [pageSectionsTemplate]="contentTemplate"></it-navscroll> 
 -->
-<p><a routerLink="/componenti/navscroll">Documentazione </a></p>
 <it-navscroll [header]="header" [items]="items" borderPosition="right"></it-navscroll>
+<p><a routerLink="/componenti/navscroll">Documentazione </a></p>
 `;
 
 @Component({
