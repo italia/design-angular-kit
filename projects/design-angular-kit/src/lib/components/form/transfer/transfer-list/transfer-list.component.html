@@ -1,0 +1,42 @@
+<div class="it-transfer-wrapper source">
+  <div class="transfer-header">
+    <div class="form-check" aria-describedby="">
+      <input
+        #selectAllCheckbox
+        type="checkbox"
+        id="{{ instanceId }}checkbox{{ title }}"
+        [disabled]="selectAllDisabled | async"
+        (click)="checkboxSelectAllHandler($event)" />
+      <label for="{{ instanceId }}checkbox{{ title }}">
+        <span>
+          @if (numberOfItems$ | async; as numberOfItems) {
+            <span class="num"> {{ numberOfItems.length }} </span>
+            <span> {{ numberOfItems.length > 1 ? 'ITEMS' : 'ITEM' }} </span>
+          }
+        </span>
+        <span class="descr">{{ title | titlecase }}</span>
+      </label>
+    </div>
+    <!-- form check -->
+  </div>
+  <!-- transfer-header -->
+  <div class="transfer-scroll">
+    <div class="transfer-group">
+      @for (item of items$ | async; track item.value) {
+        <div class="form-check" aria-describedby="">
+          <input
+            type="checkbox"
+            id="{{ instanceId }}-{{ item.value }}"
+            [checked]="item.selected"
+            (click)="checkboxSelectionHandler(item)" />
+          <label for="{{ instanceId }}-{{ item.value }}">
+            <span>
+              <span>{{ item.text }}</span>
+            </span>
+          </label>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+<!-- it-transfer-wrapper -->
