@@ -73,7 +73,7 @@ const routes: Routes = [
       { path: 'transfer', loadChildren: () => import('src/app/transfer/transfer.module').then(m => m.TransferModule) },
     ],
   },
-  { path: 'navscroll-tb', component: NavscrollTbComponent },
+  { path: 'examples', component: RouterDispatcherComponent, children: [{ path: 'navscroll', component: NavscrollTbComponent }] },
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },
   { path: 'error/server-error', component: ItErrorPageComponent, data: { errorCode: 500 } },
