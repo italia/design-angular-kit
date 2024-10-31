@@ -186,6 +186,10 @@
         {
           "label": "Timeline",
           "link": "/componenti/timeline"
+        },
+        {
+          "label": "Transfer",
+          "link": "/componenti/transfer"
         }
       ]
     }

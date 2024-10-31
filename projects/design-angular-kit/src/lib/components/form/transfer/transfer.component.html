@@ -1,0 +1,52 @@
+<div class="form-group">
+  @if (label) {
+    <label [for]="id" [class.active]="!!control.value">{{ label }}</label>
+  }
+  <div class="row">
+    <div class="col-xs-12 col-md-5">
+      <it-transfer-list sourceType="source" title="source"></it-transfer-list>
+    </div>
+    <!-- col -->
+    <div class="col-xs-12 col-md-2">
+      <!-- transfer buttons-->
+      <div class="it-transfer-buttons">
+        <a
+          class="transfer"
+          role="button"
+          href="#"
+          [ngClass]="{ active: transferEnabled | async }"
+          (click)="transferClickHandler($event)"
+          (keypress)="transferKeyPressHandler($event)"
+          aria-label="Sposta avanti">
+          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use></svg>
+        </a>
+        <span class="visually-hidden">Etichetta per freccia destra</span>
+        <a
+          class="backtransfer"
+          role="button"
+          href="#"
+          [ngClass]="{ active: backtransferEnabled | async }"
+          (click)="backtransferClickHandler($event)"
+          (keypress)="backtransferKeyPressHandler($event)"
+          aria-label="Sposta indietro">
+          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-left"></use></svg>
+        </a>
+        <span class="visually-hidden">Etichetta for freccia sinistra</span>
+        <a
+          class="reset"
+          role="button"
+          href="#"
+          [ngClass]="{ active: resetEnabled | async }"
+          (click)="resetClickHandler($event)"
+          (keypress)="resetKeyPressHandler($event)"
+          aria-label="Reset">
+          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-restore"></use></svg>
+        </a>
+        <span class="visually-hidden">Etichetta per icona di reset</span>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-5">
+      <it-transfer-list sourceType="target" title="target"></it-transfer-list>
+    </div>
+  </div>
+</div>
