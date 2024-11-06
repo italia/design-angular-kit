@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/italia/design-angular-kit/compare/v1.1.1...v1.1.2) (2024-11-06)
+
+
+### Bug Fixes
+
+* readonly input problem in navscroll ([fceffc5](https://github.com/italia/design-angular-kit/commit/fceffc5e8467085de760300d303845f73ceb9493))
+
 ## [1.1.1](https://github.com/italia/design-angular-kit/compare/v1.1.0...v1.1.1) (2024-10-31)
 
 
