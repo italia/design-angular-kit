@@ -44,27 +44,27 @@ export class ItNavscrollComponent implements OnInit {
   /**
    * Header of the Navscroll
    */
-  @Input() readonly header = '';
+  @Input() header = '';
   /**
    * A list of links
    */
-  @Input() readonly items!: Array<NavscrollItem>;
+  @Input() items!: Array<NavscrollItem>;
   /**
    * Border position
    * @default left
    */
-  @Input() readonly borderPosition: 'left' | 'right' = 'left';
+  @Input() borderPosition: 'left' | 'right' = 'left';
   /**
    * Alignment
    * @default top
    */
-  @Input() readonly alignment: 'top' | 'bottom' = 'top';
+  @Input() alignment: 'top' | 'bottom' = 'top';
 
   /**
    * Theme
    * @default light
    */
-  @Input() readonly theme: 'light' | 'dark' = 'light';
+  @Input() theme: 'light' | 'dark' = 'light';
 
   /**
    * Custom template for the content section
