@@ -21563,7 +21563,7 @@
         },
         {
             "name": "ItNavscrollComponent",
-            "id": "component-ItNavscrollComponent-ad1e34df7c3aa53e48a821fb3caad3489e0c5dbf4df7e4d2bc5abcd0ba4881571df5077dad538889593bc1f5f8d7c5da1842f5c776ca5a158fcd9fff2ce7e09e",
+            "id": "component-ItNavscrollComponent-e819b8e4ee67468efd5df9f8624d0ce521fde51a47d8b44f28ce8031f06eaa7988c2ff5c24c807599a0f5702bcbf6e7ed1ae7c9d833818eb44f10d6a965f1131",
             "file": "projects/design-angular-kit/src/lib/components/navigation/navscroll/navscroll.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -21591,15 +21591,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1513,
-                            "end": 1529,
+                            "pos": 1486,
+                            "end": 1502,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1514,
-                                "end": 1521,
+                                "pos": 1487,
+                                "end": 1494,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21622,15 +21622,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1404,
-                            "end": 1421,
+                            "pos": 1386,
+                            "end": 1403,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1405,
-                                "end": 1412,
+                                "pos": 1387,
+                                "end": 1394,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21654,7 +21654,7 @@
                     "rawdescription": "\n\nHeader of the Navscroll\n",
                     "description": "<p>Header of the Navscroll</p>\n",
                     "line": 47,
-                    "type": "\"\"",
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -21684,15 +21684,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1612,
-                            "end": 1630,
+                            "pos": 1576,
+                            "end": 1594,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1613,
-                                "end": 1620,
+                                "pos": 1577,
+                                "end": 1584,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -21960,7 +21960,7 @@
             "description": "<p>Navscroll</p>\n",
             "rawdescription": "\n\nNavscroll\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgClass, NgTemplateOutlet, ViewportScroller } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  DestroyRef,\n  ElementRef,\n  HostListener,\n  inject,\n  Input,\n  OnInit,\n  TemplateRef,\n  ViewChild,\n} from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';\nimport { delay, filter, map, tap, withLatestFrom } from 'rxjs';\nimport { ItNavscrollListItemsComponent } from './navscroll-list-items.component';\nimport { NavscrollItem } from './navscroll.model';\nimport { NavscrollStore } from './navscroll.store';\n\n/**\n * Navscroll\n * @description Show a list of links to anchor of the document.\n */\n@Component({\n  selector: 'it-navscroll',\n  standalone: true,\n  imports: [\n    ItNavscrollListItemsComponent,\n    AsyncPipe,\n    NgTemplateOutlet,\n    RouterLink,\n    RouterLinkActive,\n    RouterLinkWithHref,\n    AsyncPipe,\n    NgClass,\n  ],\n  templateUrl: './navscroll.component.html',\n  styleUrl: './navscroll.component.scss',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [NavscrollStore],\n})\nexport class ItNavscrollComponent implements OnInit {\n  /**\n   * Header of the Navscroll\n   */\n  @Input() readonly header = '';\n  /**\n   * A list of links\n   */\n  @Input() readonly items!: Array<NavscrollItem>;\n  /**\n   * Border position\n   * @default left\n   */\n  @Input() readonly borderPosition: 'left' | 'right' = 'left';\n  /**\n   * Alignment\n   * @default top\n   */\n  @Input() readonly alignment: 'top' | 'bottom' = 'top';\n\n  /**\n   * Theme\n   * @default light\n   */\n  @Input() readonly theme: 'light' | 'dark' = 'light';\n\n  /**\n   * Custom template for the content section\n   */\n  @Input()\n  pageSectionsTemplate?: TemplateRef<any>;\n\n  @HostListener('window:scroll', ['$event']) // for window scroll events\n  onScroll() {\n    const sectionContainer = this.#elementRef.nativeElement.querySelector('.it-page-sections-container');\n    this.#store.updateProgressBar(sectionContainer);\n  }\n\n  @HostListener('window:resize', ['$event'])\n  onResize() {\n    this.#setMobile();\n  }\n\n  @ViewChild('toggleButtonRef')\n  readonly toggleButtonRef!: ElementRef<HTMLButtonElement>;\n\n  readonly #store = inject(NavscrollStore);\n\n  readonly #scroller = inject(ViewportScroller);\n\n  readonly #destroyRef = inject(DestroyRef);\n\n  readonly #elementRef = inject(ElementRef);\n\n  readonly selectedTitle = this.#store.selected.pipe(map(selected => selected?.title ?? ''));\n\n  readonly progressBarValue = this.#store.progressBar;\n\n  readonly isMobile = this.#store.isMobile;\n\n  constructor() {\n    this.#store.menuItemSelected\n      .pipe(\n        takeUntilDestroyed(),\n        withLatestFrom(this.isMobile),\n        tap(v => {\n          const isMobile = v[1];\n          if (isMobile) {\n            this.toggleButtonRef.nativeElement.click();\n          }\n        })\n      )\n      .subscribe();\n  }\n\n  ngOnInit(): void {\n    this.#initViewScrollerSubscription();\n    this.#store.init(this.items);\n    this.#setMobile();\n  }\n\n  #initViewScrollerSubscription() {\n    this.#store.selected\n      .pipe(\n        takeUntilDestroyed(this.#destroyRef),\n        filter(selected => Boolean(selected)),\n        map(v => v as NavscrollItem),\n        delay(0), //WA\n        tap({\n          next: ({ href }) => {\n            this.#scroller.scrollToAnchor(href);\n          },\n        })\n      )\n      .subscribe();\n  }\n\n  #setMobile() {\n    this.#store.setMobile(window);\n  }\n}\n",
+            "sourceCode": "import { AsyncPipe, NgClass, NgTemplateOutlet, ViewportScroller } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  DestroyRef,\n  ElementRef,\n  HostListener,\n  inject,\n  Input,\n  OnInit,\n  TemplateRef,\n  ViewChild,\n} from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';\nimport { delay, filter, map, tap, withLatestFrom } from 'rxjs';\nimport { ItNavscrollListItemsComponent } from './navscroll-list-items.component';\nimport { NavscrollItem } from './navscroll.model';\nimport { NavscrollStore } from './navscroll.store';\n\n/**\n * Navscroll\n * @description Show a list of links to anchor of the document.\n */\n@Component({\n  selector: 'it-navscroll',\n  standalone: true,\n  imports: [\n    ItNavscrollListItemsComponent,\n    AsyncPipe,\n    NgTemplateOutlet,\n    RouterLink,\n    RouterLinkActive,\n    RouterLinkWithHref,\n    AsyncPipe,\n    NgClass,\n  ],\n  templateUrl: './navscroll.component.html',\n  styleUrl: './navscroll.component.scss',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [NavscrollStore],\n})\nexport class ItNavscrollComponent implements OnInit {\n  /**\n   * Header of the Navscroll\n   */\n  @Input() header = '';\n  /**\n   * A list of links\n   */\n  @Input() items!: Array<NavscrollItem>;\n  /**\n   * Border position\n   * @default left\n   */\n  @Input() borderPosition: 'left' | 'right' = 'left';\n  /**\n   * Alignment\n   * @default top\n   */\n  @Input() alignment: 'top' | 'bottom' = 'top';\n\n  /**\n   * Theme\n   * @default light\n   */\n  @Input() theme: 'light' | 'dark' = 'light';\n\n  /**\n   * Custom template for the content section\n   */\n  @Input()\n  pageSectionsTemplate?: TemplateRef<any>;\n\n  @HostListener('window:scroll', ['$event']) // for window scroll events\n  onScroll() {\n    const sectionContainer = this.#elementRef.nativeElement.querySelector('.it-page-sections-container');\n    this.#store.updateProgressBar(sectionContainer);\n  }\n\n  @HostListener('window:resize', ['$event'])\n  onResize() {\n    this.#setMobile();\n  }\n\n  @ViewChild('toggleButtonRef')\n  readonly toggleButtonRef!: ElementRef<HTMLButtonElement>;\n\n  readonly #store = inject(NavscrollStore);\n\n  readonly #scroller = inject(ViewportScroller);\n\n  readonly #destroyRef = inject(DestroyRef);\n\n  readonly #elementRef = inject(ElementRef);\n\n  readonly selectedTitle = this.#store.selected.pipe(map(selected => selected?.title ?? ''));\n\n  readonly progressBarValue = this.#store.progressBar;\n\n  readonly isMobile = this.#store.isMobile;\n\n  constructor() {\n    this.#store.menuItemSelected\n      .pipe(\n        takeUntilDestroyed(),\n        withLatestFrom(this.isMobile),\n        tap(v => {\n          const isMobile = v[1];\n          if (isMobile) {\n            this.toggleButtonRef.nativeElement.click();\n          }\n        })\n      )\n      .subscribe();\n  }\n\n  ngOnInit(): void {\n    this.#initViewScrollerSubscription();\n    this.#store.init(this.items);\n    this.#setMobile();\n  }\n\n  #initViewScrollerSubscription() {\n    this.#store.selected\n      .pipe(\n        takeUntilDestroyed(this.#destroyRef),\n        filter(selected => Boolean(selected)),\n        map(v => v as NavscrollItem),\n        delay(0), //WA\n        tap({\n          next: ({ href }) => {\n            this.#scroller.scrollToAnchor(href);\n          },\n        })\n      )\n      .subscribe();\n  }\n\n  #setMobile() {\n    this.#store.setMobile(window);\n  }\n}\n",
             "styleUrl": "./navscroll.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -37731,7 +37731,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "83b1dacd-5271-4810-af27-e81a1cf9000c",
+                        "destrucuredGroupId": "1ab576bc-48ac-4d42-ae2e-a64d7eb260e4",
                         "destructuredParameter": true
                     }
                 ],
@@ -37741,7 +37741,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "83b1dacd-5271-4810-af27-e81a1cf9000c",
+                        "destrucuredGroupId": "1ab576bc-48ac-4d42-ae2e-a64d7eb260e4",
                         "destructuredParameter": true,
                         "tagName": {
                             "text": "param"
@@ -40033,7 +40033,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "83b1dacd-5271-4810-af27-e81a1cf9000c",
+                            "destrucuredGroupId": "1ab576bc-48ac-4d42-ae2e-a64d7eb260e4",
                             "destructuredParameter": true
                         }
                     ],
@@ -40043,7 +40043,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "83b1dacd-5271-4810-af27-e81a1cf9000c",
+                            "destrucuredGroupId": "1ab576bc-48ac-4d42-ae2e-a64d7eb260e4",
                             "destructuredParameter": true,
                             "tagName": {
                                 "text": "param"
