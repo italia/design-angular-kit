@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Host, Input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../../utils/coercion';
-import { ItLinkComponent } from 'projects/design-angular-kit/src/public_api';
+import { ItLinkComponent, ItSkiplinkComponent } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   standalone: true,
@@ -29,4 +29,10 @@ export class ItSkiplinkItemComponent {
    * @default false
    */
   @Input({ transform: inputToBoolean }) externalLink?: boolean;
+  inNav: boolean;
+
+  constructor(@Host() parent: ItSkiplinkComponent) {
+    this.inNav = parent.nav ? true : false;
+    console.log(this.inNav);
+  }
 }

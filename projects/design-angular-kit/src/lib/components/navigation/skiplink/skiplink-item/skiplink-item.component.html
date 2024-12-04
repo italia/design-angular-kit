@@ -1,11 +1,11 @@
-<!-- <nav class="skiplinks" aria-label="Scorciatoie di navigazione">
-  <ul>
-    <li class="visually-hidden-focusable"><a href="#">Vai al menu</a></li>
-    <li class="visually-hidden-focusable" ><a href="#">Vai al contenuto</a></li>
-    <li class="visually-hidden-focusable" ><a href="#">Questa pagina ti è stata utile?</a></li>
-    <li class="visually-hidden-focusable" ><a href="#">Vai al piede</a></li>
-    <li class="visually-hidden-focusable" ><a href="https://form.agid.gov.it/view/xyz">Dichiarazione di accessibilità (link esterno su sito AgID)</a></li>
-  </ul>
-</nav> -->
-
-<a [href]="href" [externaLink]="externalLink"><ng-content></ng-content></a>
+@if (inNav) {
+  <li class="visually-hidden-focusable">
+    <it-link [href]="href" [externalLink]="externalLink">
+      <ng-content></ng-content>
+    </it-link>
+  </li>
+} @else {
+  <it-link class="visually-hidden-focusable" [href]="href" [externalLink]="externalLink">
+    <ng-content></ng-content>
+  </it-link>
+}
