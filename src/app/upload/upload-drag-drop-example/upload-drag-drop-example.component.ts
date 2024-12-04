@@ -5,6 +5,7 @@ import { ItUploadDragDropComponent } from 'design-angular-kit/components/form/up
 @Component({
   selector: 'it-upload-drag-drop-example',
   templateUrl: './upload-drag-drop-example.component.html',
+  standalone: false,
 })
 export class UploadDragDropExampleComponent {
   @ViewChild('uploadDragDropComponent') uploadDragDropComponent!: ItUploadDragDropComponent;

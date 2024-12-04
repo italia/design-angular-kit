@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-range-index',
   templateUrl: './range-index.component.html',
+  standalone: false,
 })
 export class RangeIndexComponent {
   component: any;

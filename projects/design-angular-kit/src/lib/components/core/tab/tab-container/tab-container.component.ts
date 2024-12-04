@@ -20,7 +20,6 @@ import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-tab-container',
   templateUrl: './tab-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -13,7 +13,6 @@ interface SelectableTransferItem<T> extends TransferItem<T> {
 
 @Component({
   selector: 'it-transfer-list',
-  standalone: true,
   imports: [AsyncPipe, TitleCasePipe],
   templateUrl: './transfer-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

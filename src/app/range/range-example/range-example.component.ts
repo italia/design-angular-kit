@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'it-range-example',
   templateUrl: './range-example.component.html',
+  standalone: false,
 })
 export class RangeExampleComponent {
   rangeValue = 50;

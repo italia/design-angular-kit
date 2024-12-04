@@ -14,6 +14,7 @@ import { IconColor, IconName, IconSize } from 'projects/design-angular-kit/src/p
       }
     `,
   ],
+  standalone: false,
 })
 export class ForwardExampleComponent {
   icon: IconName = 'expand';

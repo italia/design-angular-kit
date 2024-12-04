@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-dropdown-index',
   templateUrl: './dropdown-index.component.html',
   styleUrls: ['./dropdown-index.component.scss'],
+  standalone: false,
 })
 export class DropdownIndexComponent {
   component: any;

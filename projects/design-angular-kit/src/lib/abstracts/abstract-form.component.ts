@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { inputToBoolean } from '../utils/coercion';
 
-@Component({ template: '' })
+@Component({
+  template: '',
+})
 export abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
   /**
    * The label of form control

@@ -5,6 +5,7 @@ import { TableColor } from 'projects/design-angular-kit/src/lib/interfaces/core'
 @Component({
   selector: 'it-table-example',
   templateUrl: './table-example.component.html',
+  standalone: false,
 })
 export class TableExampleComponent {
   sortData(event: ItSortEvent) {

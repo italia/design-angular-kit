@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-dropdown-item',
   templateUrl: './dropdown-item.component.html',
   styleUrls: ['./dropdown-item.component.scss'],

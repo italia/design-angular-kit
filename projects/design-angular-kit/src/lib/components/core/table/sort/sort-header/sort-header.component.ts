@@ -37,7 +37,6 @@ import {
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[it-sort-header]',
   exportAs: 'itSortHeader',
-  standalone: true,
   imports: [ItIconComponent],
   templateUrl: './sort-header.component.html',
   styleUrls: ['./sort-header.component.scss'],

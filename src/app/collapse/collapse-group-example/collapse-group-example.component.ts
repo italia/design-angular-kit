@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-collapse-group-example',
   templateUrl: './collapse-group-example.component.html',
   styleUrls: ['./collapse-group-example.component.scss'],
+  standalone: false,
 })
 export class CollapseGroupExampleComponent {}

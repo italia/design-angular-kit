@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-checkbox-example-inline',
   templateUrl: './checkbox-example-inline.component.html',
   styleUrls: ['./checkbox-example-inline.component.scss'],
+  standalone: false,
 })
 export class CheckboxExampleInlineComponent {
   checked = true;

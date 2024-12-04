@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-collapse-example',
   templateUrl: './collapse-example.component.html',
   styleUrls: ['./collapse-example.component.scss'],
+  standalone: false,
 })
 export class CollapseExampleComponent {
   collapse = true;

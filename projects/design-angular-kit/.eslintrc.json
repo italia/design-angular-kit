@@ -9,6 +9,9 @@
         "*.ts"
       ],
       "rules": {
+        "@angular-eslint/prefer-standalone": [
+          "error"
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {

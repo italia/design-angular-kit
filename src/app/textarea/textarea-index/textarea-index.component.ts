@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-textarea-index',
   templateUrl: './textarea-index.component.html',
+  standalone: false,
 })
 export class TextareaIndexComponent {
   component: any;

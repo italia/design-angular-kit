@@ -19,6 +19,7 @@
       "rules": {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
+        "@angular-eslint/prefer-standalone": "off",
         "no-control-regex": "off",
         "@angular-eslint/component-selector": [
           "error",

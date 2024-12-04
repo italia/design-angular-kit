@@ -5,6 +5,7 @@ import { IconName } from 'design-angular-kit/interfaces/icon';
   selector: 'it-tabs-example',
   templateUrl: './tabs-example.component.html',
   styleUrls: ['./tabs-example.component.scss'],
+  standalone: false,
 })
 export class TabsExampleComponent {
   isDarkTheme = false;

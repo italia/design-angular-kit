@@ -5,7 +5,6 @@ import { RouterLink } from '@angular/router';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-link',
   templateUrl: './link.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-upload-index',
   templateUrl: './upload-index.component.html',
+  standalone: false,
 })
 export class UploadIndexComponent {
   fileListComponent: any;

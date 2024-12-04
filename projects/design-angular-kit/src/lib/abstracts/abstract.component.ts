@@ -12,7 +12,9 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-@Component({ template: '' })
+@Component({
+  template: '',
+})
 export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {
   /**
    * The element ID

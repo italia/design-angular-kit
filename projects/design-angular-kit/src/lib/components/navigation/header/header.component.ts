@@ -20,7 +20,6 @@ import { inputToBoolean } from '../../../utils/coercion';
 import { HeaderSticky } from 'bootstrap-italia';
 
 @Component({
-  standalone: true,
   selector: 'it-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

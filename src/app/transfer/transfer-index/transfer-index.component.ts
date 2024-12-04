@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-transfer-index',
   templateUrl: './transfer-index.component.html',
+  standalone: false,
 })
 export class TransferIndexComponent {
   component: any;

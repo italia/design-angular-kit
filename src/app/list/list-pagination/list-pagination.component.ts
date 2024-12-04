@@ -9,6 +9,7 @@ interface PaginatedData {
 @Component({
   selector: 'it-list-pagination',
   templateUrl: './list-pagination.component.html',
+  standalone: false,
 })
 export class ListPaginationComponent {
   private pages: Array<Array<string>> = [

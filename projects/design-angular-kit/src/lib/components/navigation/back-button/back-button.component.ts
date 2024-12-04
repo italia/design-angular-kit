@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-back-button',
   templateUrl: './back-button.component.html',
   exportAs: 'itBackButton',

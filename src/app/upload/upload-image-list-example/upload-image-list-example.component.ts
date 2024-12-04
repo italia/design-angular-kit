@@ -6,6 +6,7 @@ import { forkJoin } from 'rxjs';
 @Component({
   selector: 'it-upload-image-list-example',
   templateUrl: './upload-image-list-example.component.html',
+  standalone: false,
 })
 export class UploadImageListExampleComponent implements OnInit {
   uploadedImageList: Array<UploadFileListItem> = [];

@@ -14,6 +14,7 @@ const template = `
 `;
 
 @Component({
+  standalone: false,
   template,
 })
 export class NavscrollExampleComponent {

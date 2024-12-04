@@ -15,7 +15,6 @@ import { TransferItem } from './transfer.model';
  */
 @Component({
   selector: 'it-transfer',
-  standalone: true,
   templateUrl: './transfer.component.html',
   imports: [ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
   providers: [TransferStore],

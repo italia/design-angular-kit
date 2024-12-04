@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-list-link-icons',
   templateUrl: './list-link-icons.component.html',
   styleUrls: ['./list-link-icons.component.scss'],
+  standalone: false,
 })
 export class ListLinkIconsComponent {}

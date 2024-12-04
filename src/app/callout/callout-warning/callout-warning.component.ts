@@ -4,6 +4,7 @@ import { CalloutColor } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-callout-warning',
   templateUrl: './callout-warning.component.html',
+  standalone: false,
 })
 export class CalloutWarningComponent {
   text =

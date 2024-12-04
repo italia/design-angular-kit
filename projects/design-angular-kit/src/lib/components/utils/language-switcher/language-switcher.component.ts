@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { map, Observable, startWith } from 'rxjs';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { AvailableLanguage } from '../../../interfaces/utils';
 import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { map, Observable, startWith } from 'rxjs';
+import { AvailableLanguage } from '../../../interfaces/utils';
 import { ItDropdownModule } from '../../core/dropdown/dropdown.module';
 
 @Component({
-  standalone: true,
   selector: 'it-language-switcher',
   templateUrl: './language-switcher.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

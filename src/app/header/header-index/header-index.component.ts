@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-header-index',
   templateUrl: './header-index.component.html',
+  standalone: false,
 })
 export class HeaderIndexComponent {
   component: any;

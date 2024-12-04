@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-collapse-nested-example',
   templateUrl: './collapse-nested-example.component.html',
   styleUrls: ['./collapse-nested-example.component.scss'],
+  standalone: false,
 })
 export class CollapseNestedExampleComponent {
   shownComponent = '';

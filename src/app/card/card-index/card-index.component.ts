@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-card-index',
   templateUrl: './card-index.component.html',
+  standalone: false,
 })
 export class CardIndexComponent {
   component: any;
