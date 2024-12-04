@@ -1,0 +1,15 @@
+@if (nav) {
+  <nav class="skiplinks">
+    <ul>
+      <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+    </ul>
+  </nav>
+} @else {
+  <div class="skiplinks">
+    <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+  </div>
+}
+
+<ng-template #linkContent>
+  <ng-content></ng-content>
+</ng-template>

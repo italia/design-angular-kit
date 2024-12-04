@@ -105,6 +105,10 @@ export * from './lib/components/navigation/navscroll/navscroll.model';
 
 export * from './lib/components/navigation/sidebar/sidebar.component';
 
+export * from './lib/components/navigation/skiplink/skiplink/skiplink.component';
+export * from './lib/components/navigation/skiplink/skiplink-item/skiplink-item.component';
+export * from './lib/components/navigation/skiplink/skiplink.module';
+
 // Utils components
 export * from './lib/components/utils/error-page/error-page.component';
 export * from './lib/components/utils/icon/icon.component';
