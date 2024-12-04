@@ -1,0 +1,11 @@
+@if (nav) {
+  <nav class="skiplinks">
+    <ul>
+      <ng-content></ng-content>
+    </ul>
+  </nav>
+} @else {
+  <div class="skiplinks">
+    <ng-content></ng-content>
+  </div>
+}

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { inputToBoolean } from '../../../utils/coercion';
+import { inputToBoolean } from '../../../../utils/coercion';
 import { ItLinkComponent } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
@@ -14,19 +14,14 @@ import { ItLinkComponent } from 'projects/design-angular-kit/src/public_api';
 })
 export class ItSkiplinkComponent {
   /**
-   * The router link action
-   *
-   * Commands to pass to Router#createUrlTree.
-   * - array: commands to pass to Router#createUrlTree.
-   * - string: shorthand for array of commands with just the string, i.e. ['/route']
-   * - null|undefined: Disables the link by removing the href
+   * Aria label for `nav` mode
+   * @default 'Scorciatoie di navigazione'
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Input() href: any[] | string | null | undefined;
+  @Input() ariaLabel: string = 'Scorciatoie di navigazione';
 
   /**
-   * Is an external link (false to not use Angular router link)
+   * If `true` nav mode is enabled
    * @default false
    */
-  @Input({ transform: inputToBoolean }) externalLink?: boolean;
+  @Input({ transform: inputToBoolean }) nav?: boolean;
 }
