@@ -27,6 +27,14 @@
       "url": "https://www.net-serv.it/"
     }
   ],
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/my-lib/"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "dependencies"
+  },
   "dependencies": {
     "tslib": "^2.6.3"
   },
@@ -40,5 +48,9 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "bootstrap-italia": "^2.8.8"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "devDependencies": {
+    "copyfiles": "file:../../node_modules/copyfiles",
+    "typescript": "file:../../node_modules/typescript"
+  }
 }

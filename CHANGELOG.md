@@ -1,3 +1,26 @@
+## [1.1.2](https://github.com/italia/design-angular-kit/compare/v1.1.1...v1.1.2) (2024-11-06)
+
+
+### Bug Fixes
+
+* readonly input problem in navscroll ([fceffc5](https://github.com/italia/design-angular-kit/commit/fceffc5e8467085de760300d303845f73ceb9493))
+
+## [1.1.1](https://github.com/italia/design-angular-kit/compare/v1.1.0...v1.1.1) (2024-10-31)
+
+
+### Bug Fixes
+
+* dimmer primary color ([1b91fb2](https://github.com/italia/design-angular-kit/commit/1b91fb278acf6a90abd0a5dd2ff14f28005e2f38))
+* forward example component ([7a5adfa](https://github.com/italia/design-angular-kit/commit/7a5adfa3490d37ef9529f8a2c3ff0048e6c06caa))
+* groups for radios toggles and checkboxes ([1b65209](https://github.com/italia/design-angular-kit/commit/1b65209414a8fcdba00bb3ae5fd3b5031570f06c))
+
+
+### Features
+
+* add angular schematics ([7e81151](https://github.com/italia/design-angular-kit/commit/7e81151da547a6e167101749d1aeb0395da03515))
+* component transfer ([bb26b09](https://github.com/italia/design-angular-kit/commit/bb26b09f7199cfd34ddaa9c9a8a71229af326f45))
+* navscroll component ([15c8caa](https://github.com/italia/design-angular-kit/commit/15c8caa658923bb21cc60c561843aff73405b623))
+
 # [1.1.0](https://github.com/italia/design-angular-kit/compare/v1.0.3...v1.1.0) (2024-07-18)
 
 

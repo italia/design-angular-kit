@@ -190,6 +190,14 @@
         {
           "label": "Skiplink",
           "link": "/componenti/skiplink"
+        },
+        {
+          "label": "Navscroll",
+          "link": "/componenti/navscroll"
+        },
+        {
+          "label": "Transfer",
+          "link": "/componenti/transfer"
         }
       ]
     }
