@@ -33,6 +33,5 @@ export class ItSkiplinkItemComponent {
 
   constructor(@Host() parent: ItSkiplinkComponent) {
     this.inNav = parent.nav ? true : false;
-    console.log(this.inNav);
   }
 }
