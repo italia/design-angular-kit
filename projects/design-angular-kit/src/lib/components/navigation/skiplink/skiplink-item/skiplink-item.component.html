@@ -1,11 +1,15 @@
 @if (inNav) {
   <li class="visually-hidden-focusable">
     <it-link [href]="href" [externalLink]="externalLink">
-      <ng-content></ng-content>
+      <ng-container *ngTemplateOutlet="linkContent"></ng-container>
     </it-link>
   </li>
 } @else {
   <it-link class="visually-hidden-focusable" [href]="href" [externalLink]="externalLink">
-    <ng-content></ng-content>
+    <ng-container *ngTemplateOutlet="linkContent"></ng-container>
   </it-link>
 }
+
+<ng-template #linkContent>
+  <ng-content></ng-content>
+</ng-template>
