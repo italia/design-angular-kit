@@ -43,6 +43,7 @@ describe('schematics utils tests', () => {
       const actual = toSemVerObject(version);
       //assert
       expect(actual.semVer).toBe('18.1.2');
+      expect(actual.major).toBe('18');
     });
   });
 });
