@@ -65,6 +65,7 @@ Scegli la versione corrispondente alla tua versione Angular:
 
 | Angular | design-angular-kit |
 | ------- | ------------------ |
+| 19+     | v1.2.0 +           |
 | 18+     | v1.1.0 +           |
 | 17+     | v1.0.0 +           |
 
