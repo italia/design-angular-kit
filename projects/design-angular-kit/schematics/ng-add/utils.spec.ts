@@ -21,6 +21,7 @@ describe('schematics utils tests', () => {
       expect(actual.major).toBe('19');
       expect(actual.minor).toBe('0');
       expect(actual.patch).toBe('0');
+      expect(actual.semVer).toBe('~19.0.0');
     });
 
     it('should return toSemver object given ^ prefixed semantic version', () => {
@@ -32,6 +33,7 @@ describe('schematics utils tests', () => {
       expect(actual.major).toBe('18');
       expect(actual.minor).toBe('1');
       expect(actual.patch).toBe('2');
+      expect(actual.semVer).toBe('^18.1.2');
     });
 
     it('should return toSemver object given v-prefixed semantic version', () => {
