@@ -24,24 +24,9 @@ export function getPackageVersion({ angularMajorVersion }: { angularMajorVersion
     throw new Error('Major version is not a number');
   }
 
-  let version = versionsMap[DEFAULT];
-
-  switch (angularMajorVersion) {
-    case ANGULAR_VERSIONS.v17:
-      version = versionsMap[ANGULAR_VERSIONS.v17];
-      break;
-    case ANGULAR_VERSIONS.v18:
-      version = versionsMap[ANGULAR_VERSIONS.v18];
-      break;
-    case ANGULAR_VERSIONS.v19:
-      version = versionsMap[ANGULAR_VERSIONS.v19];
-      break;
-    default: {
-      if (Number(angularMajorVersion) > Number(ANGULAR_VERSIONS.v19)) {
-        version = versionsMap[LATEST];
-      }
-    }
+  if (Number(angularMajorVersion) > Number(ANGULAR_VERSIONS.v19)) {
+    return versionsMap[LATEST];
   }
 
-  return version;
+  return versionsMap[angularMajorVersion] ?? versionsMap[DEFAULT];
 }
