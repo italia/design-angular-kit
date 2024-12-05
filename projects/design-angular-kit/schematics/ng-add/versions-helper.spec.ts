@@ -1,6 +1,6 @@
 import { getPackageVersion } from './versions-helper';
 
-fdescribe('schematics versions helper tests', () => {
+describe('schematics versions helper tests', () => {
   it('should return v1.0.0 for Angular v17', () => {
     //arrange
     const angularMajorVersion = '17';
