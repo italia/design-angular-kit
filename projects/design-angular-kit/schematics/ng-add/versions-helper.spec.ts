@@ -16,7 +16,7 @@ describe('schematics versions helper tests', () => {
     //act
     const actual = getPackageVersion({ angularMajorVersion });
     //assert
-    expect(actual).toBe('1.1.0');
+    expect(actual).toBe('~1.1.0');
   });
 
   it('should return v1.1.0 for Angular v19', () => {
@@ -25,6 +25,6 @@ describe('schematics versions helper tests', () => {
     //act
     const actual = getPackageVersion({ angularMajorVersion });
     //assert
-    expect(actual).toBe('1.1.0');
+    expect(actual).toBe('~1.2.0');
   });
 });
