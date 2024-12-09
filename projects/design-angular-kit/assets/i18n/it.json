@@ -104,6 +104,18 @@
       "aria-label-toggle": "Mostra/Nascondi la navigazione",
       "hide": "Nascondi la navigazione"
     },
+    "transfer": {
+      "label-move-backward": "Etichetta sposta indietro",
+      "label-move-forward": "Etichetta sposta avanti",
+      "label-reset": "Etichetta reset",
+      "aria-label-move-backward": "Sposta indietro",
+      "aria-label-move-forward": "Sposta avanti",
+      "aria-label-reset": "Reset",
+      "source": "Sorgente",
+      "target": "Destinazione",
+      "item": "Elemento",
+      "items": "Elementi"
+    },
     "timeline": {
       "read-more": "Leggi di più",
       "read-more-on": "su {{title}}",

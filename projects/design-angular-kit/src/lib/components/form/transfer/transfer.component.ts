@@ -8,6 +8,7 @@ import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.compon
 import { TransferStore } from './store/transfer.store';
 import { ItTransferListComponent } from './transfer-list/transfer-list.component';
 import { TransferItem } from './transfer.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 /**
  * Transfer
@@ -17,7 +18,7 @@ import { TransferItem } from './transfer.model';
   selector: 'it-transfer',
   standalone: true,
   templateUrl: './transfer.component.html',
-  imports: [ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
+  imports: [TranslateModule, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
   providers: [TransferStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

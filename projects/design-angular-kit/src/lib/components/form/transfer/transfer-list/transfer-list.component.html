@@ -10,8 +10,8 @@
       <label for="{{ instanceId }}checkbox{{ title }}">
         <span>
           @if (numberOfItems$ | async; as numberOfItems) {
-            <span class="num"> {{ numberOfItems.length }} </span>
-            <span> {{ numberOfItems.length > 1 ? 'ITEMS' : 'ITEM' }} </span>
+            <span class="num"> {{ numberOfItems.length }}</span>
+            <span> {{ (numberOfItems.length > 1 ? 'it.transfer.items' : 'it.transfer.item') | translate }}</span>
           }
         </span>
         <span class="descr">{{ title | titlecase }}</span>

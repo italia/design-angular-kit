@@ -4,7 +4,7 @@
   }
   <div class="row">
     <div class="col-xs-12 col-md-5">
-      <it-transfer-list sourceType="source" title="source"></it-transfer-list>
+      <it-transfer-list sourceType="source" [title]="'it.transfer.source' | translate"></it-transfer-list>
     </div>
     <!-- col -->
     <div class="col-xs-12 col-md-2">
@@ -17,10 +17,10 @@
           [ngClass]="{ active: transferEnabled | async }"
           (click)="transferClickHandler($event)"
           (keypress)="transferKeyPressHandler($event)"
-          aria-label="Sposta avanti">
+          [attr.aria-label]="'it.transfer.aria-label-move-forward' | translate">
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use></svg>
         </a>
-        <span class="visually-hidden">Etichetta per freccia destra</span>
+        <span class="visually-hidden">{{ 'it.transfer.label-move-forward' | translate }}</span>
         <a
           class="backtransfer"
           role="button"
@@ -28,10 +28,10 @@
           [ngClass]="{ active: backtransferEnabled | async }"
           (click)="backtransferClickHandler($event)"
           (keypress)="backtransferKeyPressHandler($event)"
-          aria-label="Sposta indietro">
+          [attr.aria-label]="'it.transfer.aria-label-move-backward' | translate">
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-left"></use></svg>
         </a>
-        <span class="visually-hidden">Etichetta for freccia sinistra</span>
+        <span class="visually-hidden">{{ 'it.transfer.label-move-backward' | translate }}</span>
         <a
           class="reset"
           role="button"
@@ -39,14 +39,14 @@
           [ngClass]="{ active: resetEnabled | async }"
           (click)="resetClickHandler($event)"
           (keypress)="resetKeyPressHandler($event)"
-          aria-label="Reset">
+          [attr.aria-label]="'it.transfer.aria-label-reset' | translate">
           <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-restore"></use></svg>
         </a>
-        <span class="visually-hidden">Etichetta per icona di reset</span>
+        <span class="visually-hidden">{{ 'it.transfer.label-reset' | translate }}</span>
       </div>
     </div>
     <div class="col-xs-12 col-md-5">
-      <it-transfer-list sourceType="target" title="target"></it-transfer-list>
+      <it-transfer-list sourceType="target" [title]="'it.transfer.target' | translate"></it-transfer-list>
     </div>
   </div>
 </div>
