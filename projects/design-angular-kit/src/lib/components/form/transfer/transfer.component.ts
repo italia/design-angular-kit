@@ -9,6 +9,7 @@ import { TransferStore } from './store/transfer.store';
 import { ItTransferListComponent } from './transfer-list/transfer-list.component';
 import { TransferItem } from './transfer.model';
 import { TranslateModule } from '@ngx-translate/core';
+import { ItIconComponent } from 'projects/design-angular-kit/src/public_api';
 
 /**
  * Transfer
@@ -18,7 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'it-transfer',
   standalone: true,
   templateUrl: './transfer.component.html',
-  imports: [TranslateModule, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
+  imports: [ItIconComponent, TranslateModule, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
   providers: [TransferStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

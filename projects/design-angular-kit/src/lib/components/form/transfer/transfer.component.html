@@ -1,4 +1,4 @@
-<div class="form-group">
+<div>
   @if (label) {
     <label [for]="id" [class.active]="!!control.value">{{ label }}</label>
   }
@@ -18,7 +18,7 @@
           (click)="transferClickHandler($event)"
           (keypress)="transferKeyPressHandler($event)"
           [attr.aria-label]="'it.transfer.aria-label-move-forward' | translate">
-          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use></svg>
+          <it-icon name="arrow-right"></it-icon>
         </a>
         <span class="visually-hidden">{{ 'it.transfer.label-move-forward' | translate }}</span>
         <a
@@ -29,7 +29,7 @@
           (click)="backtransferClickHandler($event)"
           (keypress)="backtransferKeyPressHandler($event)"
           [attr.aria-label]="'it.transfer.aria-label-move-backward' | translate">
-          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-left"></use></svg>
+          <it-icon name="arrow-left"></it-icon>
         </a>
         <span class="visually-hidden">{{ 'it.transfer.label-move-backward' | translate }}</span>
         <a
@@ -40,7 +40,7 @@
           (click)="resetClickHandler($event)"
           (keypress)="resetKeyPressHandler($event)"
           [attr.aria-label]="'it.transfer.aria-label-reset' | translate">
-          <svg class="icon"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-restore"></use></svg>
+          <it-icon name="restore"></it-icon>
         </a>
         <span class="visually-hidden">{{ 'it.transfer.label-reset' | translate }}</span>
       </div>
