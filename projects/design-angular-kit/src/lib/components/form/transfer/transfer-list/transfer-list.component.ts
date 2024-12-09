@@ -4,7 +4,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { combineLatest, distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { TransferStore } from '../store/transfer.store';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { ItIconComponent } from 'projects/design-angular-kit/src/public_api';
 import { SourceType, TransferItem } from '../transfer.model';
 
 interface SelectableTransferItem<T> extends TransferItem<T> {
@@ -14,7 +15,7 @@ interface SelectableTransferItem<T> extends TransferItem<T> {
 @Component({
   selector: 'it-transfer-list',
   standalone: true,
-  imports: [AsyncPipe, TitleCasePipe],
+  imports: [ItIconComponent, TranslateModule, AsyncPipe, TitleCasePipe],
   templateUrl: './transfer-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
