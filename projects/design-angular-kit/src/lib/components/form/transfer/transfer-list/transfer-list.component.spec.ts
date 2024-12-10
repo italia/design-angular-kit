@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HostAttributeToken } from '@angular/core';
-import { TranslateService, TranslateStore } from '@ngx-translate/core';
 import { tb_base } from 'projects/design-angular-kit/src/test';
 import { TransferStore } from '../store/transfer.store';
 import { ItTransferListComponent } from './transfer-list.component';
@@ -14,12 +13,10 @@ describe('ItTransferListComponent', <T>() => {
     const { imports, providers } = tb_base;
 
     await TestBed.configureTestingModule({
-      imports: [...imports, ItTransferListComponent],
+      imports,
       providers: [
         ...providers,
         TransferStore,
-        TranslateStore,
-        TranslateService,
         { provide: new HostAttributeToken('title'), useValue: 'title' },
         { provide: new HostAttributeToken('sourceType'), useValue: 'source' },
       ],
