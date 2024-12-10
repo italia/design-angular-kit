@@ -19,7 +19,7 @@ import { ItIconComponent } from 'projects/design-angular-kit/src/public_api';
   selector: 'it-transfer',
   standalone: true,
   templateUrl: './transfer.component.html',
-  imports: [ItIconComponent, TranslateModule, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
+  imports: [TranslateModule, ItIconComponent, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
   providers: [TransferStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
