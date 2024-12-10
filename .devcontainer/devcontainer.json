@@ -6,7 +6,7 @@
   "mounts": [
     "source=design-angular-kit-bundle-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume" // deps volume
   ],
-  "remoteUser": "root",
+  // "remoteUser": "root",
   "postCreateCommand": "sh .devcontainer/scripts/postCreateCommand.sh",
   // "postStartCommand": "/bin/bash -c '.devcontainer/scripts/postStartCommand.sh \"${containerWorkspaceFolder}\"'",
   "postStartCommand": "sh .devcontainer/scripts/postStartCommand.sh \"${containerWorkspaceFolder}\"",
