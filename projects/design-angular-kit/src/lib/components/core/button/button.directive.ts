@@ -1,4 +1,4 @@
-import { ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';
+import { ContentChildren, Directive, Host, HostBinding, Input, Optional, QueryList } from '@angular/core';
 import { ButtonColor, ButtonSize } from '../../../interfaces/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItProgressButtonComponent } from '../progress-button/progress-button.component';
@@ -54,19 +54,7 @@ export class ItButtonDirective {
    */
   @ContentChildren(ItIconComponent) protected icons?: QueryList<ItIconComponent>;
 
-  private isFocus = false;
-
   constructor(@Optional() @Host() private progressButtonComponent: ItProgressButtonComponent) {}
-
-  @HostListener('focus')
-  protected onFocus() {
-    this.isFocus = true;
-  }
-
-  @HostListener('blur')
-  protected onBlur() {
-    this.isFocus = false;
-  }
 
   @HostBinding('class')
   protected get hostClasses(): string {
@@ -86,10 +74,6 @@ export class ItButtonDirective {
 
     if (this.disabled) {
       cssClass += ' disabled';
-    }
-
-    if (this.isFocus) {
-      cssClass += ' focus--mouse';
     }
 
     if (this.icons?.length && !this.progressButtonComponent) {
