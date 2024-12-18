@@ -952,12 +952,12 @@
         },
         {
             "name": "SelectableTransferItem",
-            "id": "interface-SelectableTransferItem-46a87063671e7082dc73bbe5b0393923af001c724ab69ba849163a657cbe51744420e6906cad7ccbca9d79a821890ba90c1444c212da1c14d14cdf9d3b978ba4",
+            "id": "interface-SelectableTransferItem-f3a471cd564a7a159c7dde3c4bf64f1bb55b70db486fd4ed16f68de5496030b7c10d687e4c9bc544ec2454cfc27a084a106fcbb893786172a6347a2a9f05cb41",
             "file": "projects/design-angular-kit/src/lib/components/form/transfer/transfer-list/transfer-list.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AsyncPipe, TitleCasePipe } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, ElementRef, HostAttributeToken, inject, ViewChild } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { combineLatest, distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\nimport { TransferStore } from '../store/transfer.store';\n\nimport { SourceType, TransferItem } from '../transfer.model';\n\ninterface SelectableTransferItem<T> extends TransferItem<T> {\n  selected: boolean;\n}\n\n@Component({\n  selector: 'it-transfer-list',\n  standalone: true,\n  imports: [AsyncPipe, TitleCasePipe],\n  templateUrl: './transfer-list.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItTransferListComponent<T> extends ItAbstractComponent {\n  /**\n   * Widget title\n   */\n  readonly title = inject(new HostAttributeToken('title'), { optional: true });\n\n  readonly sourceType = inject(new HostAttributeToken('sourceType'), { optional: true }) as SourceType;\n\n  private readonly items = this.store.selectItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());\n  private readonly selected = this.store.selectSelectedItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());\n\n  readonly numberOfItems$ = this.items.pipe(\n    map(items => ({ length: items.length })),\n    startWith({ length: 0 })\n  );\n  readonly selectAllDisabled = this.items.pipe(map(items => items.length === 0));\n  /**\n   * Items of the list\n   * @default []\n   */\n  readonly items$ = combineLatest([this.items, this.selected]).pipe(\n    map(([items, selected]) =>\n      items.map(item => {\n        (item as SelectableTransferItem<T>).selected = selected.has(item);\n        return item as SelectableTransferItem<T>;\n      })\n    )\n  );\n\n  @ViewChild('selectAllCheckbox')\n  selectAllCheckboxRef!: ElementRef<HTMLInputElement>;\n\n  readonly instanceId = this.getInstanceId();\n\n  constructor(private readonly store: TransferStore<T>) {\n    super();\n    this.onItemsUpdate();\n  }\n  /**\n   * Checkbox selection click handler\n   */\n  checkboxSelectionHandler(item: TransferItem<T>) {\n    this.store.checkboxSelection(item, this.sourceType);\n  }\n  /**\n   * Checkbox select all selection handler\n   */\n  checkboxSelectAllHandler(event: Event) {\n    const checked = ((event as PointerEvent).target as HTMLInputElement).checked;\n    this.store.selectAllSelection(checked, this.sourceType);\n  }\n\n  /**\n   * Items update subscription\n   */\n  private onItemsUpdate() {\n    this.items\n      .pipe(\n        takeUntilDestroyed(),\n        skip(1),\n        tap(() => {\n          if (this.selectAllCheckboxRef) {\n            this.selectAllCheckboxRef.nativeElement.checked = false;\n          }\n        })\n      )\n      .subscribe();\n  }\n\n  private getInstanceId() {\n    return Math.floor(Math.random() * 100000000).toString();\n  }\n}\n",
+            "sourceCode": "import { AsyncPipe, TitleCasePipe } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, ElementRef, HostAttributeToken, inject, ViewChild } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { combineLatest, distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\nimport { TransferStore } from '../store/transfer.store';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { SourceType, TransferItem } from '../transfer.model';\n\ninterface SelectableTransferItem<T> extends TransferItem<T> {\n  selected: boolean;\n}\n\n@Component({\n  selector: 'it-transfer-list',\n  standalone: true,\n  imports: [TranslateModule, AsyncPipe, TitleCasePipe],\n  templateUrl: './transfer-list.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItTransferListComponent<T> extends ItAbstractComponent {\n  /**\n   * Widget title\n   */\n  readonly title = inject(new HostAttributeToken('title'), { optional: true });\n\n  readonly sourceType = inject(new HostAttributeToken('sourceType'), { optional: true }) as SourceType;\n\n  private readonly items = this.store.selectItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());\n  private readonly selected = this.store.selectSelectedItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());\n\n  readonly numberOfItems$ = this.items.pipe(\n    map(items => ({ length: items.length })),\n    startWith({ length: 0 })\n  );\n  readonly selectAllDisabled = this.items.pipe(map(items => items.length === 0));\n  /**\n   * Items of the list\n   * @default []\n   */\n  readonly items$ = combineLatest([this.items, this.selected]).pipe(\n    map(([items, selected]) =>\n      items.map(item => {\n        (item as SelectableTransferItem<T>).selected = selected.has(item);\n        return item as SelectableTransferItem<T>;\n      })\n    )\n  );\n\n  @ViewChild('selectAllCheckbox')\n  selectAllCheckboxRef!: ElementRef<HTMLInputElement>;\n\n  readonly instanceId = this.getInstanceId();\n\n  constructor(private readonly store: TransferStore<T>) {\n    super();\n    this.onItemsUpdate();\n  }\n  /**\n   * Checkbox selection click handler\n   */\n  checkboxSelectionHandler(item: TransferItem<T>) {\n    this.store.checkboxSelection(item, this.sourceType);\n  }\n  /**\n   * Checkbox select all selection handler\n   */\n  checkboxSelectAllHandler(event: Event) {\n    const checked = ((event as PointerEvent).target as HTMLInputElement).checked;\n    this.store.selectAllSelection(checked, this.sourceType);\n  }\n\n  /**\n   * Items update subscription\n   */\n  private onItemsUpdate() {\n    this.items\n      .pipe(\n        takeUntilDestroyed(),\n        skip(1),\n        tap(() => {\n          if (this.selectAllCheckboxRef) {\n            this.selectAllCheckboxRef.nativeElement.checked = false;\n          }\n        })\n      )\n      .subscribe();\n  }\n\n  private getInstanceId() {\n    return Math.floor(Math.random() * 100000000).toString();\n  }\n}\n",
             "properties": [
                 {
                     "name": "selected",
@@ -5378,12 +5378,12 @@
         },
         {
             "name": "ItButtonDirective",
-            "id": "directive-ItButtonDirective-def845a5e7571f18d3303efac5c5e556421b31cf4cd66fa1ee92e28184050e383e1315b59b3e9c98bc6139709535922237f35cfa5c2eb1f099daf2f50eead45c",
+            "id": "directive-ItButtonDirective-243d530f4fedb421cb6bb0ef527f87af6a16baba29f0c4aac50bf2a91f0aa57f2a943d11dccec817ada8cd9040315499dbb6fd31f265248b2f611914c6ba8921",
             "file": "projects/design-angular-kit/src/lib/components/core/button/button.directive.ts",
             "type": "directive",
             "description": "<p>Button</p>\n",
             "rawdescription": "\n\nButton\n",
-            "sourceCode": "import { ContentChildren, Directive, Host, HostBinding, HostListener, Input, Optional, QueryList } from '@angular/core';\nimport { ButtonColor, ButtonSize } from '../../../interfaces/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { ItProgressButtonComponent } from '../progress-button/progress-button.component';\nimport { inputToBoolean } from '../../../utils/coercion';\n\n/**\n * Button\n * @description Bootstrap italia custom button styles\n */\n@Directive({\n  standalone: true,\n  selector: '[itButton]',\n  exportAs: 'itButton',\n})\nexport class ItButtonDirective {\n  /**\n   * Button color\n   * @default undefined\n   */\n  @Input('itButton') color: ButtonColor | undefined;\n\n  /**\n   * Button size\n   * @default undefined\n   */\n  @Input() size: ButtonSize | undefined;\n\n  /**\n   * Indicates whether the button occupies all the width available to it.\n   * @default undefined\n   */\n  @Input() block: ButtonSize | undefined;\n\n  /**\n   * If button is disabled\n   * @default false\n   */\n  @Input({ transform: inputToBoolean })\n  @HostBinding('disabled')\n  disabled?: boolean;\n\n  /**\n   * The type attribute\n   * @default button\n   */\n  @Input()\n  @HostBinding('type')\n  type: 'button' | 'reset' | 'submit' = 'button';\n\n  /**\n   * The icon children\n   * @default undefined\n   */\n  @ContentChildren(ItIconComponent) protected icons?: QueryList<ItIconComponent>;\n\n  private isFocus = false;\n\n  constructor(@Optional() @Host() private progressButtonComponent: ItProgressButtonComponent) {}\n\n  @HostListener('focus')\n  protected onFocus() {\n    this.isFocus = true;\n  }\n\n  @HostListener('blur')\n  protected onBlur() {\n    this.isFocus = false;\n  }\n\n  @HostBinding('class')\n  protected get hostClasses(): string {\n    let cssClass = 'btn';\n\n    if (this.color) {\n      cssClass += ` btn-${this.color}`;\n    }\n\n    if (this.size) {\n      cssClass += ` btn-${this.size}`;\n    }\n\n    if (this.block) {\n      cssClass += ' btn-block';\n    }\n\n    if (this.disabled) {\n      cssClass += ' disabled';\n    }\n\n    if (this.isFocus) {\n      cssClass += ' focus--mouse';\n    }\n\n    if (this.icons?.length && !this.progressButtonComponent) {\n      cssClass += ' btn-icon';\n    }\n\n    if (this.progressButtonComponent) {\n      cssClass += ' btn-progress';\n    }\n\n    return cssClass;\n  }\n}\n",
+            "sourceCode": "import { ContentChildren, Directive, Host, HostBinding, Input, Optional, QueryList } from '@angular/core';\nimport { ButtonColor, ButtonSize } from '../../../interfaces/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { ItProgressButtonComponent } from '../progress-button/progress-button.component';\nimport { inputToBoolean } from '../../../utils/coercion';\n\n/**\n * Button\n * @description Bootstrap italia custom button styles\n */\n@Directive({\n  standalone: true,\n  selector: '[itButton]',\n  exportAs: 'itButton',\n})\nexport class ItButtonDirective {\n  /**\n   * Button color\n   * @default undefined\n   */\n  @Input('itButton') color: ButtonColor | undefined;\n\n  /**\n   * Button size\n   * @default undefined\n   */\n  @Input() size: ButtonSize | undefined;\n\n  /**\n   * Indicates whether the button occupies all the width available to it.\n   * @default undefined\n   */\n  @Input() block: ButtonSize | undefined;\n\n  /**\n   * If button is disabled\n   * @default false\n   */\n  @Input({ transform: inputToBoolean })\n  @HostBinding('disabled')\n  disabled?: boolean;\n\n  /**\n   * The type attribute\n   * @default button\n   */\n  @Input()\n  @HostBinding('type')\n  type: 'button' | 'reset' | 'submit' = 'button';\n\n  /**\n   * The icon children\n   * @default undefined\n   */\n  @ContentChildren(ItIconComponent) protected icons?: QueryList<ItIconComponent>;\n\n  constructor(@Optional() @Host() private progressButtonComponent: ItProgressButtonComponent) {}\n\n  @HostBinding('class')\n  protected get hostClasses(): string {\n    let cssClass = 'btn';\n\n    if (this.color) {\n      cssClass += ` btn-${this.color}`;\n    }\n\n    if (this.size) {\n      cssClass += ` btn-${this.size}`;\n    }\n\n    if (this.block) {\n      cssClass += ' btn-block';\n    }\n\n    if (this.disabled) {\n      cssClass += ' disabled';\n    }\n\n    if (this.icons?.length && !this.progressButtonComponent) {\n      cssClass += ' btn-icon';\n    }\n\n    if (this.progressButtonComponent) {\n      cssClass += ' btn-progress';\n    }\n\n    return cssClass;\n  }\n}\n",
             "selector": "[itButton]",
             "providers": [],
             "exportAs": "itButton",
@@ -5396,15 +5396,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 884,
-                            "end": 906,
+                            "pos": 870,
+                            "end": 892,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 885,
-                                "end": 892,
+                                "pos": 871,
+                                "end": 878,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5427,15 +5427,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 990,
-                            "end": 1008,
+                            "pos": 976,
+                            "end": 994,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 991,
-                                "end": 998,
+                                "pos": 977,
+                                "end": 984,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5457,15 +5457,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 625,
-                            "end": 647,
+                            "pos": 611,
+                            "end": 633,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 626,
-                                "end": 633,
+                                "pos": 612,
+                                "end": 619,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5487,15 +5487,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 732,
-                            "end": 754,
+                            "pos": 718,
+                            "end": 740,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 733,
-                                "end": 740,
+                                "pos": 719,
+                                "end": 726,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5518,15 +5518,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1136,
-                            "end": 1155,
+                            "pos": 1122,
+                            "end": 1141,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1137,
-                                "end": 1144,
+                                "pos": 1123,
+                                "end": 1130,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5551,29 +5551,12 @@
                     "name": "class",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 72,
+                    "line": 60,
                     "type": "string",
                     "decorators": []
                 }
             ],
-            "hostListeners": [
-                {
-                    "name": "blur",
-                    "args": [],
-                    "argsDecorator": [],
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 67
-                },
-                {
-                    "name": "focus",
-                    "args": [],
-                    "argsDecorator": [],
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 62
-                }
-            ],
+            "hostListeners": [],
             "propertiesClass": [
                 {
                     "name": "icons",
@@ -5596,15 +5579,15 @@
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1277,
-                            "end": 1299,
+                            "pos": 1263,
+                            "end": 1285,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1278,
-                                "end": 1285,
+                                "pos": 1264,
+                                "end": 1271,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -5614,63 +5597,9 @@
                             "comment": "<p>undefined</p>\n"
                         }
                     ]
-                },
-                {
-                    "name": "isFocus",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 57,
-                    "modifierKind": [
-                        123
-                    ]
                 }
             ],
-            "methodsClass": [
-                {
-                    "name": "onBlur",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 67,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "decorators": [
-                        {
-                            "name": "HostListener",
-                            "stringifiedArguments": "'blur'"
-                        }
-                    ],
-                    "modifierKind": [
-                        170,
-                        124
-                    ]
-                },
-                {
-                    "name": "onFocus",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 62,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "decorators": [
-                        {
-                            "name": "HostListener",
-                            "stringifiedArguments": "'focus'"
-                        }
-                    ],
-                    "modifierKind": [
-                        170,
-                        124
-                    ]
-                }
-            ],
+            "methodsClass": [],
             "extends": [],
             "constructorObj": {
                 "name": "constructor",
@@ -5685,7 +5614,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 57,
+                "line": 55,
                 "jsdoctags": [
                     {
                         "name": "progressButtonComponent",
@@ -5705,7 +5634,7 @@
                         "name": "hostClasses",
                         "type": "string",
                         "returnType": "string",
-                        "line": 72
+                        "line": 60
                     }
                 }
             }
@@ -10597,7 +10526,7 @@
                     }
                 }
             },
-            "templateData": "<div class=\"form-group\" [class.autocomplete-wrapper-big]=\"big\">\n  @if (label) {\n    <label [for]=\"id\" [class.visually-hidden]=\"!isActiveLabel\" [class.active]=\"isActiveLabel\">\n      {{ label }}\n    </label>\n  }\n\n  <input\n    [id]=\"id\"\n    type=\"search\"\n    class=\"autocomplete\"\n    [placeholder]=\"placeholder\"\n    [formControl]=\"control\"\n    [class.is-invalid]=\"isInvalid\"\n    [class.is-valid]=\"isValid\"\n    (blur)=\"markAsTouched()\"\n    (keydown)=\"onKeyDown()\" />\n\n  <span class=\"autocomplete-icon\" aria-hidden=\"true\">\n    <it-icon [labelWaria]=\"labelWaria\" name=\"search\" size=\"sm\"></it-icon>\n  </span>\n\n  @if (autocompleteResults$ | async; as autocomplete) {\n    <ul class=\"autocomplete-list\" [class.autocomplete-list-show]=\"autocomplete.relatedEntries?.length && showAutocompletion\">\n      @for (entry of autocomplete.relatedEntries; track autocompleteItemTrackByValueFn($index, entry)) {\n        <li>\n          <a [href]=\"entry.link\" (click)=\"onEntryClick(entry, $event)\">\n            @if (entry.avatarSrcPath) {\n              <div class=\"avatar size-sm\">\n                <img [src]=\"entry.avatarSrcPath\" [alt]=\"entry.avatarAltText\" />\n              </div>\n            }\n            @if (entry.icon) {\n              <it-icon [name]=\"entry.icon\" size=\"sm\"></it-icon>\n            }\n            <span class=\"autocomplete-list-text\">\n              <span [innerHTML]=\"entry.value | itMarkMatchingText: autocomplete.searchedValue\"></span>\n              @if (entry.label) {\n                <em>{{ entry.label }}</em>\n              }\n            </span>\n          </a>\n        </li>\n      }\n    </ul>\n  }\n\n  @if (isInvalid) {\n    <div class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      @if (!customError.hasChildNodes()) {\n        {{ invalidMessage | async }}\n      }\n    </div>\n  }\n</div>\n"
+            "templateData": "<div class=\"form-group\" [class.autocomplete-wrapper-big]=\"big\">\n  @if (label) {\n    <label [for]=\"id\" [class.visually-hidden]=\"!isActiveLabel\" [class.active]=\"isActiveLabel\">\n      {{ label }}\n    </label>\n  }\n\n  <input\n    [id]=\"id\"\n    type=\"search\"\n    class=\"autocomplete form-control\"\n    [placeholder]=\"placeholder\"\n    [formControl]=\"control\"\n    [class.is-invalid]=\"isInvalid\"\n    [class.is-valid]=\"isValid\"\n    (blur)=\"markAsTouched()\"\n    (keydown)=\"onKeyDown()\" />\n\n  <span class=\"autocomplete-icon\" aria-hidden=\"true\">\n    <it-icon [labelWaria]=\"labelWaria\" name=\"search\" size=\"sm\"></it-icon>\n  </span>\n\n  @if (autocompleteResults$ | async; as autocomplete) {\n    <ul class=\"autocomplete-list\" [class.autocomplete-list-show]=\"autocomplete.relatedEntries?.length && showAutocompletion\">\n      @for (entry of autocomplete.relatedEntries; track autocompleteItemTrackByValueFn($index, entry)) {\n        <li>\n          <a [href]=\"entry.link\" (click)=\"onEntryClick(entry, $event)\">\n            @if (entry.avatarSrcPath) {\n              <div class=\"avatar size-sm\">\n                <img [src]=\"entry.avatarSrcPath\" [alt]=\"entry.avatarAltText\" />\n              </div>\n            }\n            @if (entry.icon) {\n              <it-icon [name]=\"entry.icon\" size=\"sm\"></it-icon>\n            }\n            <span class=\"autocomplete-list-text\">\n              <span [innerHTML]=\"entry.value | itMarkMatchingText: autocomplete.searchedValue\"></span>\n              @if (entry.label) {\n                <em>{{ entry.label }}</em>\n              }\n            </span>\n          </a>\n        </li>\n      }\n    </ul>\n  }\n\n  @if (isInvalid) {\n    <div class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      @if (!customError.hasChildNodes()) {\n        {{ invalidMessage | async }}\n      }\n    </div>\n  }\n</div>\n"
         },
         {
             "name": "ItAvatarDropdownComponent",
@@ -10694,7 +10623,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "// made because of bug with before triangle that goes up \n.link-list-wrapper{\n  z-index: 2;\n  position: relative;\n}\n\na {\n  cursor: pointer;\n}\n\n:host ::ng-deep .dropdown-toggle {\n  width: 100%;\n  height: 100%;\n  .icon {\n    display: none;\n  }\n}",
+                    "data": "// made because of bug with before triangle that goes up\n.link-list-wrapper {\n  z-index: 2;\n  position: relative;\n}\n\na {\n  cursor: pointer;\n}\n\n:host ::ng-deep .dropdown-toggle {\n  width: 100%;\n  height: 100%;\n  .icon {\n    display: none;\n  }\n}\n",
                     "styleUrl": "./avatar-dropdown.component.scss"
                 }
             ],
@@ -10801,7 +10730,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "// made because of bug with before triangle that goes up \n.link-list-wrapper{\n  z-index: 2;\n  position: relative;\n}\n\na {\n  cursor: pointer;\n}\n\n:host ::ng-deep .dropdown-toggle {\n  width: 100%;\n  height: 100%;\n  .icon {\n    display: none;\n  }\n}",
+                    "data": "// made because of bug with before triangle that goes up\n.link-list-wrapper {\n  z-index: 2;\n  position: relative;\n}\n\na {\n  cursor: pointer;\n}\n\n:host ::ng-deep .dropdown-toggle {\n  width: 100%;\n  height: 100%;\n  .icon {\n    display: none;\n  }\n}\n",
                     "styleUrl": "./avatar-dropdown.component.scss"
                 }
             ],
@@ -11221,7 +11150,7 @@
         },
         {
             "name": "ItBackToTopComponent",
-            "id": "component-ItBackToTopComponent-9769ea8cef25d58f5f36d35454b5063136affded482c989908a06a881a9c24bcfd78cc813967b53db2a74934972b76f8e71601f29e6e75da6ec4907253db07ab",
+            "id": "component-ItBackToTopComponent-c09bbc1ebade9c93dd15ca4658480fb34c1dc9d95a18e5d47fb17dbbd6245d2722fa7048ed999f8cad9c048f42d906f3415818e722408becf3c9cf5c18d8a6fc",
             "file": "projects/design-angular-kit/src/lib/components/navigation/back-to-top/back-to-top.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -11240,21 +11169,52 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "ariaLabel",
+                    "defaultValue": "'Torna su'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 717,
+                            "end": 740,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 718,
+                                "end": 725,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>&#39;Torna su&#39;</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nAria label for the component\n",
+                    "description": "<p>Aria label for the component</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
                     "required": false,
                     "name": "dark",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 951,
-                            "end": 969,
+                            "pos": 1066,
+                            "end": 1084,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 952,
-                                "end": 959,
+                                "pos": 1067,
+                                "end": 1074,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11266,7 +11226,7 @@
                     ],
                     "rawdescription": "\n\nButton usable button on a dark background\n",
                     "description": "<p>Button usable button on a dark background</p>\n",
-                    "line": 32,
+                    "line": 38,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -11277,15 +11237,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 813,
-                            "end": 831,
+                            "pos": 928,
+                            "end": 946,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 814,
-                                "end": 821,
+                                "pos": 929,
+                                "end": 936,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11297,7 +11257,7 @@
                     ],
                     "rawdescription": "\n\nShow shadow\n",
                     "description": "<p>Show shadow</p>\n",
-                    "line": 26,
+                    "line": 32,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -11308,15 +11268,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 706,
-                            "end": 724,
+                            "pos": 821,
+                            "end": 839,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 707,
-                                "end": 714,
+                                "pos": 822,
+                                "end": 829,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11328,7 +11288,7 @@
                     ],
                     "rawdescription": "\n\nShow small button\n",
                     "description": "<p>Show small button</p>\n",
-                    "line": 20,
+                    "line": 26,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -11369,7 +11329,7 @@
                     "type": "BackToTop",
                     "optional": true,
                     "description": "",
-                    "line": 34,
+                    "line": 40,
                     "modifierKind": [
                         123
                     ]
@@ -11381,7 +11341,7 @@
                     "type": "ElementRef<HTMLAnchorElement>",
                     "optional": true,
                     "description": "",
-                    "line": 36,
+                    "line": 42,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -11487,7 +11447,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 71,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEliminate component features\n",
@@ -11502,7 +11462,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 63,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHide the button\n",
@@ -11517,7 +11477,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -11533,7 +11493,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 70,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nActivates the scroll animation towards the Y coordinate indicated by the positionTop option\n",
@@ -11548,7 +11508,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nShow button\n",
@@ -11635,7 +11595,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { BackToTop } from 'bootstrap-italia';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { inputToBoolean } from '../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-back-to-top',\n  templateUrl: './back-to-top.component.html',\n  exportAs: 'itBackToTop',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [ItIconComponent],\n})\nexport class ItBackToTopComponent extends ItAbstractComponent implements AfterViewInit {\n  /**\n   * Show small button\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) small?: boolean;\n\n  /**\n   * Show shadow\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) shadow?: boolean;\n\n  /**\n   * Button usable button on a dark background\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) dark?: boolean;\n\n  private backToTop?: BackToTop;\n\n  @ViewChild('backToTop') private backToTopElement?: ElementRef<HTMLAnchorElement>;\n\n  override ngAfterViewInit() {\n    super.ngAfterViewInit();\n\n    if (this.backToTopElement) {\n      const element = this.backToTopElement.nativeElement;\n      this.backToTop = BackToTop.getOrCreateInstance(element);\n    }\n  }\n\n  /**\n   * Show button\n   */\n  public show(): void {\n    this.backToTop?.show();\n  }\n\n  /**\n   * Hide the button\n   */\n  public hide(): void {\n    this.backToTop?.hide();\n  }\n\n  /**\n   * Activates the scroll animation towards the Y coordinate indicated by the positionTop option\n   */\n  public scrollToTop(): void {\n    this.backToTop?.scrollToTop();\n  }\n\n  /**\n   * Eliminate component features\n   */\n  public dispose(): void {\n    this.backToTop?.dispose();\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { BackToTop } from 'bootstrap-italia';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\nimport { inputToBoolean } from '../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-back-to-top',\n  templateUrl: './back-to-top.component.html',\n  exportAs: 'itBackToTop',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [ItIconComponent],\n})\nexport class ItBackToTopComponent extends ItAbstractComponent implements AfterViewInit {\n  /**\n   * Aria label for the component\n   * @default 'Torna su'\n   */\n  @Input() ariaLabel: string = 'Torna su';\n\n  /**\n   * Show small button\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) small?: boolean;\n\n  /**\n   * Show shadow\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) shadow?: boolean;\n\n  /**\n   * Button usable button on a dark background\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) dark?: boolean;\n\n  private backToTop?: BackToTop;\n\n  @ViewChild('backToTop') private backToTopElement?: ElementRef<HTMLAnchorElement>;\n\n  override ngAfterViewInit() {\n    super.ngAfterViewInit();\n\n    if (this.backToTopElement) {\n      const element = this.backToTopElement.nativeElement;\n      this.backToTop = BackToTop.getOrCreateInstance(element);\n    }\n  }\n\n  /**\n   * Show button\n   */\n  public show(): void {\n    this.backToTop?.show();\n  }\n\n  /**\n   * Hide the button\n   */\n  public hide(): void {\n    this.backToTop?.hide();\n  }\n\n  /**\n   * Activates the scroll animation towards the Y coordinate indicated by the positionTop option\n   */\n  public scrollToTop(): void {\n    this.backToTop?.scrollToTop();\n  }\n\n  /**\n   * Eliminate component features\n   */\n  public dispose(): void {\n    this.backToTop?.dispose();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -11645,7 +11605,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<a\n  #backToTop\n  [id]=\"id\"\n  href=\"#\"\n  aria-hidden=\"true\"\n  class=\"back-to-top\"\n  [class.back-to-top-small]=\"small\"\n  [class.shadow]=\"shadow\"\n  [class.dark]=\"dark\">\n  <it-icon name=\"arrow-up\" [color]=\"dark ? 'secondary' : 'light'\"></it-icon>\n</a>\n"
+            "templateData": "<a\n  #backToTop\n  [id]=\"id\"\n  href=\"#\"\n  [attr.aria-label]=\"ariaLabel\"\n  class=\"back-to-top\"\n  [class.back-to-top-small]=\"small\"\n  [class.shadow]=\"shadow\"\n  [class.dark]=\"dark\">\n  <it-icon name=\"arrow-up\" [color]=\"dark ? 'secondary' : 'light'\"></it-icon>\n</a>\n"
         },
         {
             "name": "ItBreadcrumbComponent",
@@ -13026,7 +12986,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".card-body:empty {\n  display: none;\n}\n\n\n::ng-deep .row [class*=col-] {\n  .card, .card-wrapper {\n    height: 100%;\n  }\n}\n\n::ng-deep .card-wrapper.card-teaser-wrapper {\n  it-card {\n    flex-direction: row;\n    align-items: flex-start;\n    flex: 0 0 100%;\n    flex-wrap: wrap;\n    margin: 16px 0;\n  }\n\n  @media (min-width: 768px) { \n    it-card {\n      flex: 0 0 49%;\n    }\n  }\n}\n\n:host {\n  width: 100%;\n}",
+                    "data": ".card-body:empty {\n  display: none;\n}\n\n::ng-deep .row [class*='col-'] {\n  .card,\n  .card-wrapper {\n    height: 100%;\n  }\n}\n\n::ng-deep .card-wrapper.card-teaser-wrapper {\n  it-card {\n    flex-direction: row;\n    align-items: flex-start;\n    flex: 0 0 100%;\n    flex-wrap: wrap;\n    margin: 16px 0;\n  }\n\n  @media (min-width: 768px) {\n    it-card {\n      flex: 0 0 49%;\n    }\n  }\n}\n\n:host {\n  width: 100%;\n}\n",
                     "styleUrl": "./card.component.scss"
                 }
             ],
@@ -13394,7 +13354,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"@splidejs/splide/dist/css/splide.min\"; // Splide\n",
+                    "data": "@import '@splidejs/splide/dist/css/splide.min'; // Splide\n",
                     "styleUrl": "./carousel.component.scss"
                 }
             ],
@@ -17876,7 +17836,7 @@
                 "AfterViewInit",
                 "OnChanges"
             ],
-            "templateData": "<header\n  #headerWrapper\n  class=\"it-header-wrapper\"\n  [class.it-header-sticky]=\"sticky\"\n  data-bs-position-type=\"fixed\"\n  data-bs-sticky-class-name=\"is-sticky\"\n  data-bs-target=\"#header-nav-wrapper\">\n  @if (showSlim) {\n    <div class=\"it-header-slim-wrapper\" [class.theme-light]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <div class=\"it-header-slim-wrapper-content\">\n              <a class=\"d-none d-lg-block navbar-brand\" [href]=\"slimTitleLink\" [target]=\"slimTitleLink !== '#' ? '_blank' : '_self'\">\n                {{ slimTitle }}\n              </a>\n              <div class=\"nav-mobile\">\n                <nav [attr.aria-label]=\"'it.navigation.secondary-navigation' | translate\">\n                  <a\n                    class=\"it-opener d-lg-none\"\n                    data-bs-toggle=\"collapse\"\n                    href=\"#menuC1\"\n                    role=\"button\"\n                    aria-expanded=\"false\"\n                    aria-controls=\"menuC1\">\n                    <span>{{ slimTitle }}</span>\n                    <it-icon name=\"expand\"></it-icon>\n                  </a>\n                  <div class=\"link-list-wrapper collapse\" id=\"menuC1\">\n                    <ng-content select=\"[slimLinkList]\"></ng-content>\n                  </div>\n                </nav>\n              </div>\n              <div class=\"it-header-slim-right-zone\">\n                <ng-content select=\"[slimRightZone]\"></ng-content>\n                @if (loginStyle === 'default') {\n                  <div class=\"it-access-top-wrapper\">\n                    <a class=\"btn btn-primary btn-sm\" (click)=\"emitLoginClick($event)\" href=\"#\">\n                      {{ 'it.navigation.login' | translate }}\n                    </a>\n                  </div>\n                }\n                @if (loginStyle === 'full') {\n                  <a itButton=\"primary\" class=\"btn-full btn-icon\" (click)=\"emitLoginClick($event)\" href=\"#\">\n                    <span class=\"rounded-icon\">\n                      <it-icon name=\"user\" color=\"primary\"></it-icon>\n                    </span>\n                    <span class=\"d-none d-lg-block\">{{ 'it.navigation.full-login' | translate }}</span>\n                  </a>\n                }\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  }\n  <div class=\"it-nav-wrapper\">\n    <div class=\"it-header-center-wrapper\" [class.it-small-header]=\"smallHeader\" [class.theme-light]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <div class=\"it-header-center-content-wrapper\">\n              <div class=\"it-brand-wrapper\">\n                <ng-content select=\"[brand]\"></ng-content>\n              </div>\n              <div class=\"it-right-zone\">\n                <ng-content select=\"[rightZone]\"></ng-content>\n\n                @if (showSearch) {\n                  <div class=\"it-search-wrapper\">\n                    <span class=\"d-none d-md-block\">{{ 'it.navigation.search' | translate }}</span>\n                    <a\n                      href=\"#\"\n                      class=\"search-link rounded-icon\"\n                      [attr.aria-label]=\"'it.navigation.website-search' | translate\"\n                      (click)=\"emitSearchClick($event)\">\n                      <it-icon name=\"search\"></it-icon>\n                    </a>\n                  </div>\n                }\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"it-header-navbar-wrapper\" [class.theme-light-desk]=\"light\" id=\"header-nav-wrapper\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <it-navbar [megamenu]=\"megamenu\" [expand]=\"expand\">\n              <ng-container navItems>\n                <ng-content select=\"[navItems]\"></ng-content>\n              </ng-container>\n            </it-navbar>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</header>\n"
+            "templateData": "<header\n  #headerWrapper\n  class=\"it-header-wrapper\"\n  [class.it-header-sticky]=\"sticky\"\n  data-bs-position-type=\"fixed\"\n  data-bs-sticky-class-name=\"is-sticky\"\n  data-bs-target=\"#header-nav-wrapper\">\n  @if (showSlim) {\n    <div class=\"it-header-slim-wrapper\" [class.theme-light]=\"light\">\n      <div class=\"container-xxl\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <div class=\"it-header-slim-wrapper-content\">\n              <a class=\"d-none d-lg-block navbar-brand\" [href]=\"slimTitleLink\" [target]=\"slimTitleLink !== '#' ? '_blank' : '_self'\">\n                {{ slimTitle }}\n              </a>\n              <div class=\"nav-mobile\">\n                <nav [attr.aria-label]=\"'it.navigation.secondary-navigation' | translate\">\n                  <a\n                    class=\"it-opener d-lg-none\"\n                    data-bs-toggle=\"collapse\"\n                    href=\"#menuC1\"\n                    role=\"button\"\n                    aria-expanded=\"false\"\n                    aria-controls=\"menuC1\">\n                    <span>{{ slimTitle }}</span>\n                    <it-icon name=\"expand\"></it-icon>\n                  </a>\n                  <div class=\"link-list-wrapper collapse\" id=\"menuC1\">\n                    <ng-content select=\"[slimLinkList]\"></ng-content>\n                  </div>\n                </nav>\n              </div>\n              <div class=\"it-header-slim-right-zone\">\n                <ng-content select=\"[slimRightZone]\"></ng-content>\n                @if (loginStyle === 'default') {\n                  <div class=\"it-access-top-wrapper\">\n                    <a class=\"btn btn-primary btn-sm\" (click)=\"emitLoginClick($event)\" href=\"#\">\n                      {{ 'it.navigation.login' | translate }}\n                    </a>\n                  </div>\n                }\n                @if (loginStyle === 'full') {\n                  <a itButton=\"primary\" class=\"btn-full btn-icon\" (click)=\"emitLoginClick($event)\" href=\"#\">\n                    <span class=\"rounded-icon\">\n                      <it-icon name=\"user\" color=\"primary\"></it-icon>\n                    </span>\n                    <span class=\"d-none d-lg-block\">{{ 'it.navigation.full-login' | translate }}</span>\n                  </a>\n                }\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  }\n  <div class=\"it-nav-wrapper\">\n    <div class=\"it-header-center-wrapper\" [class.it-small-header]=\"smallHeader\" [class.theme-light]=\"light\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <div class=\"it-header-center-content-wrapper\">\n              <div class=\"it-brand-wrapper\">\n                <ng-content select=\"[brand]\"></ng-content>\n              </div>\n              <div class=\"it-right-zone\">\n                <ng-content select=\"[rightZone]\"></ng-content>\n\n                @if (showSearch) {\n                  <div class=\"it-search-wrapper\">\n                    <span class=\"d-none d-md-block\">{{ 'it.navigation.search' | translate }}</span>\n                    <a\n                      href=\"#\"\n                      class=\"search-link rounded-icon\"\n                      [attr.aria-label]=\"'it.navigation.website-search' | translate\"\n                      (click)=\"emitSearchClick($event)\">\n                      <it-icon name=\"search\"></it-icon>\n                    </a>\n                  </div>\n                }\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"it-header-navbar-wrapper\" [class.theme-light-desk]=\"light\" id=\"header-nav-wrapper\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-12\">\n            <it-navbar [megamenu]=\"megamenu\" [expand]=\"expand\">\n              <ng-container navItems>\n                <ng-content select=\"[navItems]\"></ng-content>\n              </ng-container>\n            </it-navbar>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</header>\n"
         },
         {
             "name": "ItIconComponent",
@@ -19227,7 +19187,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".form-group {\n  label {\n    z-index: 1000;\n  }\n\n  input:focus:not(.focus--mouse) {\n    box-shadow: inherit !important;\n    border-color: inherit !important;\n  }\n\n  .input-number {\n    .align-buttons{\n      height: 100%;\n    }\n  }\n\n  .input-group-text:empty {\n    display: none;\n  }\n\n  label.empty-prepend-label {\n    left: auto !important;\n    max-width: 100% !important;\n  }\n\n  label:not(.active):has(+ input:-webkit-autofill) {\n    transform: translateY(-75%);\n  }\n}\n\n",
+                    "data": ".form-group {\n  label {\n    z-index: 1000;\n  }\n\n  input:focus:not(.focus--mouse) {\n    box-shadow: inherit !important;\n    border-color: inherit !important;\n  }\n\n  .input-number {\n    .align-buttons {\n      height: 100%;\n    }\n  }\n\n  .input-group-text:empty {\n    display: none;\n  }\n\n  label.empty-prepend-label {\n    left: auto !important;\n    max-width: 100% !important;\n  }\n\n  label:not(.active):has(+ input:-webkit-autofill) {\n    transform: translateY(-75%);\n  }\n}\n",
                     "styleUrl": "./input.component.scss"
                 }
             ],
@@ -20396,7 +20356,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".metadata:empty, .it-rounded-icon:empty {\n  display: none;\n}\n\n:host ::ng-deep {\n  it-icon + .it-multiple {\n    display: none !important;\n  }\n  .list-item-title-icon-wrapper + .it-multiple {\n    display: none !important;\n  }\n  p + .it-multiple {\n    display: none !important;\n  }\n}",
+                    "data": ".metadata:empty,\n.it-rounded-icon:empty {\n  display: none;\n}\n\n:host ::ng-deep {\n  it-icon + .it-multiple {\n    display: none !important;\n  }\n  .list-item-title-icon-wrapper + .it-multiple {\n    display: none !important;\n  }\n  p + .it-multiple {\n    display: none !important;\n  }\n}\n",
                     "styleUrl": "./list-item.component.scss"
                 }
             ],
@@ -26461,7 +26421,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".form-range.double-color {\n  &::-webkit-slider-runnable-track {\n    background: linear-gradient(to right, var(--range-left-color) var(--range-percentage), var(--range-right-color) var(--range-percentage));\n  }\n\n  &::-moz-range-track {\n    background: linear-gradient(to right, var(--range-left-color) var(--range-percentage), var(--range-right-color) var(--range-percentage));\n  }\n}\n",
+                    "data": ".form-range.double-color {\n  &::-webkit-slider-runnable-track {\n    background: linear-gradient(\n      to right,\n      var(--range-left-color) var(--range-percentage),\n      var(--range-right-color) var(--range-percentage)\n    );\n  }\n\n  &::-moz-range-track {\n    background: linear-gradient(\n      to right,\n      var(--range-left-color) var(--range-percentage),\n      var(--range-right-color) var(--range-percentage)\n    );\n  }\n}\n",
                     "styleUrl": "./range.component.scss"
                 }
             ],
@@ -27323,7 +27283,7 @@
                 "OnInit",
                 "OnChanges"
             ],
-            "templateData": "<fieldset class=\"rating\" [class.rating-label]=\"!!label\" [class.rating-read-only]=\"control.disabled\">\n  <legend>\n    <span>{{ label }}</span>\n    <span class=\"visually-hidden\">\n      {{ 'it.core.rating-star' | translate: { current: control.value || 0, total: stars.length } }}\n    </span>\n  </legend>\n\n  @for (starValue of stars; track starValue) {\n    <input\n      [id]=\"id + '-' + starValue\"\n      type=\"radio\"\n      [name]=\"id\"\n      [value]=\"starValue\"\n      [attr.aria-hidden]=\"control.disabled\"\n      [formControl]=\"control\" />\n    <label class=\"full\" [for]=\"id + '-' + starValue\">\n      <it-icon name=\"star-full\" size=\"sm\"></it-icon>\n      <span class=\"visually-hidden\">\n        {{ 'it.core.rate-star' | translate: { current: starValue, total: stars.length } }}\n      </span>\n    </label>\n  }\n</fieldset>\n"
+            "templateData": "<fieldset class=\"rating\" [class.rating-label]=\"!!label\" [class.rating-read-only]=\"control.disabled\">\n  <legend>\n    <span>{{ label }}</span>\n    <span class=\"visually-hidden\">\n      {{ 'it.core.rating-star' | translate: { current: control.value || 0, total: stars.length } }}\n    </span>\n  </legend>\n\n  @for (starValue of stars; track starValue) {\n    <input\n      [id]=\"id + '-' + starValue\"\n      type=\"radio\"\n      [name]=\"id\"\n      [value]=\"starValue\"\n      [attr.aria-hidden]=\"control.disabled\"\n      [formControl]=\"control\" />\n    <label class=\"full\" [for]=\"id + '-' + starValue\">\n      <it-icon name=\"star-full\" size=\"sm\" aria-hidden=\"true\"></it-icon>\n      <span class=\"visually-hidden\">\n        {{ 'it.core.rate-star' | translate: { current: starValue, total: stars.length } }}\n      </span>\n    </label>\n  }\n</fieldset>\n"
         },
         {
             "name": "ItSelectComponent",
@@ -28353,6 +28313,249 @@
             "stylesData": "",
             "extends": [],
             "templateData": "@if (header) {\n  <h3>{{ header }}</h3>\n}\n<div class=\"sidebar-linklist-wrapper\">\n  <!--TODO: wrap ng-content with it-list -> inside content use a list of it-list-item directives-->\n  <ng-content></ng-content>\n</div>\n<div class=\"sidebar-linklist-wrapper linklist-secondary\">\n  <!--TODO: wrap ng-content with it-list -> inside content use a list of it-list-item directives-->\n  <ng-content select=\"[secondary]\"></ng-content>\n</div>\n"
+        },
+        {
+            "name": "ItSkiplinkComponent",
+            "id": "component-ItSkiplinkComponent-4dcdb1c40375d3ef9f1e5cf5f1addce849c649f54018d737250db141de21cf9b5d1e4e26848b14f4382c47b14abfd2fc6ff30af4e8166635b500a3cda2991da4",
+            "file": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink/skiplink.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "exportAs": "itSkipLink",
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-skiplink",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./skiplink.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "ariaLabel",
+                    "defaultValue": "'Scorciatoie di navigazione'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 648,
+                            "end": 689,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 649,
+                                "end": 656,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>&#39;Scorciatoie di navigazione&#39;</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nAria label for `nav` mode\n",
+                    "description": "<p>Aria label for <code>nav</code> mode</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "required": false,
+                    "name": "nav",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 800,
+                            "end": 818,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 801,
+                                "end": 808,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>false</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nIf `true` nav mode is enabled\n",
+                    "description": "<p>If <code>true</code> nav mode is enabled</p>\n",
+                    "line": 26,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgTemplateOutlet"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ItLinkComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\nimport { ItLinkComponent } from 'projects/design-angular-kit/src/public_api';\n\n@Component({\n  standalone: true,\n  selector: 'it-skiplink',\n  templateUrl: './skiplink.component.html',\n  exportAs: 'itSkipLink',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, TranslateModule, ItLinkComponent],\n})\nexport class ItSkiplinkComponent {\n  /**\n   * Aria label for `nav` mode\n   * @default 'Scorciatoie di navigazione'\n   */\n  @Input() ariaLabel: string = 'Scorciatoie di navigazione';\n\n  /**\n   * If `true` nav mode is enabled\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) nav?: boolean;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "@if (nav) {\n  <nav class=\"skiplinks\">\n    <ul>\n      <ng-container *ngTemplateOutlet=\"linkContent\"></ng-container>\n    </ul>\n  </nav>\n} @else {\n  <div class=\"skiplinks\">\n    <ng-container *ngTemplateOutlet=\"linkContent\"></ng-container>\n  </div>\n}\n\n<ng-template #linkContent>\n  <ng-content></ng-content>\n</ng-template>\n"
+        },
+        {
+            "name": "ItSkiplinkItemComponent",
+            "id": "component-ItSkiplinkItemComponent-cadca767f74035f4a91299aa4e2799faee0dfd74cac4cf343d5c754830c3946467bf1cb961b6963a2e29e2280f8c793f52508ea69906303caf12cb9c12ff42f8",
+            "file": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink-item/skiplink-item.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "exportAs": "itSkipLinkItem",
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-skiplink-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./skiplink-item.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "required": false,
+                    "name": "externalLink",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1139,
+                            "end": 1157,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 1140,
+                                "end": 1147,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>false</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nIs an external link (false to not use Angular router link)\n",
+                    "description": "<p>Is an external link (false to not use Angular router link)</p>\n",
+                    "line": 31,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "href",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe router link action\n\nCommands to pass to Router#createUrlTree.\n- array: commands to pass to Router#createUrlTree.\n- string: shorthand for array of commands with just the string, i.e. ['/route']\n- null|undefined: Disables the link by removing the href\n",
+                    "description": "<p>The router link action</p>\n<p>Commands to pass to Router#createUrlTree.</p>\n<ul>\n<li>array: commands to pass to Router#createUrlTree.</li>\n<li>string: shorthand for array of commands with just the string, i.e. [&#39;/route&#39;]</li>\n<li>null|undefined: Disables the link by removing the href</li>\n</ul>\n",
+                    "line": 25,
+                    "type": "any[] | string | null | undefined",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "inNav",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgTemplateOutlet"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ItLinkComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Host, Input } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\nimport { ItLinkComponent, ItSkiplinkComponent } from 'projects/design-angular-kit/src/public_api';\n\n@Component({\n  standalone: true,\n  selector: 'it-skiplink-item',\n  templateUrl: './skiplink-item.component.html',\n  exportAs: 'itSkipLinkItem',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, TranslateModule, ItLinkComponent],\n})\nexport class ItSkiplinkItemComponent {\n  /**\n   * The router link action\n   *\n   * Commands to pass to Router#createUrlTree.\n   * - array: commands to pass to Router#createUrlTree.\n   * - string: shorthand for array of commands with just the string, i.e. ['/route']\n   * - null|undefined: Disables the link by removing the href\n   */\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @Input() href: any[] | string | null | undefined;\n\n  /**\n   * Is an external link (false to not use Angular router link)\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) externalLink?: boolean;\n  inNav: boolean;\n\n  constructor(@Host() parent: ItSkiplinkComponent) {\n    this.inNav = parent.nav ? true : false;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "parent",
+                        "type": "ItSkiplinkComponent",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 32,
+                "jsdoctags": [
+                    {
+                        "name": "parent",
+                        "type": "ItSkiplinkComponent",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "@if (inNav) {\n  <li class=\"visually-hidden-focusable\">\n    <it-link [href]=\"href\" [externalLink]=\"externalLink\">\n      <ng-container *ngTemplateOutlet=\"linkContent\"></ng-container>\n    </it-link>\n  </li>\n} @else {\n  <it-link class=\"visually-hidden-focusable\" [href]=\"href\" [externalLink]=\"externalLink\">\n    <ng-container *ngTemplateOutlet=\"linkContent\"></ng-container>\n  </it-link>\n}\n\n<ng-template #linkContent>\n  <ng-content></ng-content>\n</ng-template>\n"
         },
         {
             "name": "ItSortHeaderComponent",
@@ -32089,7 +32292,7 @@
         },
         {
             "name": "ItTimelineItemComponent",
-            "id": "component-ItTimelineItemComponent-06a4596de75109f3e1e56a399ef61101d90dfcb07bd50f5691a8d687c4c8a57c6a061f1c0e60487089a476cf5356541319769b6e82afc6c128169ffdaef6990a",
+            "id": "component-ItTimelineItemComponent-101669c3ef5c9bd470d89452486191e19f8ca76215be82431768766ce4f3bf3710af6e7aae15a58e547140683b3eb79dd7852cc49734b33c65648f8c36ebd209",
             "file": "projects/design-angular-kit/src/lib/components/core/timeline/timeline-item/timeline-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -32107,12 +32310,23 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "categoryLabel",
+                    "defaultValue": "'Categoria evento: '",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nTimeline element category label\n",
+                    "description": "<p>Timeline element category label</p>\n",
+                    "line": 74,
+                    "type": "string | undefined",
+                    "decorators": []
+                },
+                {
                     "name": "categoryLink",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTimeline element category link\n",
                     "description": "<p>Timeline element category link</p>\n",
-                    "line": 73,
+                    "line": 89,
                     "type": "string | undefined",
                     "decorators": []
                 },
@@ -32122,7 +32336,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTimeline element category title\n",
                     "description": "<p>Timeline element category title</p>\n",
-                    "line": 68,
+                    "line": 84,
                     "type": "string | undefined",
                     "decorators": []
                 },
@@ -32155,6 +32369,17 @@
                     "description": "<p>Timeline element reference date format</p>\n",
                     "line": 46,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "dateLabel",
+                    "defaultValue": "'Data evento: '",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nTimeline element date label\n",
+                    "description": "<p>Timeline element date label</p>\n",
+                    "line": 79,
+                    "type": "string | undefined",
                     "decorators": []
                 },
                 {
@@ -32196,6 +32421,36 @@
                     "description": "<p>Timeline element PIN icon</p>\n",
                     "line": 63,
                     "type": "IconName | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "pinIconTitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 1777,
+                            "end": 1801,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 1778,
+                                "end": 1785,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "default"
+                            },
+                            "comment": "<p>code-circle</p>\n"
+                        }
+                    ],
+                    "rawdescription": "\n\nTimeline element PIN icon\n",
+                    "description": "<p>Timeline element PIN icon</p>\n",
+                    "line": 69,
+                    "type": "string | undefined",
                     "decorators": []
                 },
                 {
@@ -32248,15 +32503,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 2110,
-                            "end": 2124,
+                            "pos": 2450,
+                            "end": 2464,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 2111,
-                                "end": 2118,
+                                "pos": 2451,
+                                "end": 2458,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -32268,7 +32523,7 @@
                     ],
                     "rawdescription": "\nTimeline element detail link\n",
                     "description": "<p>Timeline element detail link</p>\n",
-                    "line": 85,
+                    "line": 101,
                     "type": "string | undefined",
                     "decorators": []
                 },
@@ -32280,15 +32535,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1975,
-                            "end": 1993,
+                            "pos": 2315,
+                            "end": 2333,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1976,
-                                "end": 1983,
+                                "pos": 2316,
+                                "end": 2323,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -32300,7 +32555,7 @@
                     ],
                     "rawdescription": "\n\nTimeline element show detail link\n",
                     "description": "<p>Timeline element show detail link</p>\n",
-                    "line": 80,
+                    "line": 96,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -32558,18 +32813,18 @@
             "description": "<p>Timeline Item</p>\n",
             "rawdescription": "\n\nTimeline Item\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\nimport { ItIconComponent } from '../../../utils/icon/icon.component';\nimport { DatePipe, NgClass } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { TimelinePINType } from '../../../../interfaces/core';\nimport { IconName } from '../../../../interfaces/icon';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n/**\n * Timeline Item\n * @description Represents a single event for Timeline component.\n */\n@Component({\n  standalone: true,\n  selector: 'it-timeline-item',\n  templateUrl: './timeline-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [ItIconComponent, DatePipe, TranslateModule, NgClass],\n})\nexport class ItTimelineItemComponent extends ItAbstractComponent {\n  /**\n   * Timeline element title\n   */\n  @Input({ required: true }) title!: string;\n\n  /**\n   * Timeline element text\n   */\n  @Input({ required: true }) text!: string;\n\n  /**\n   * Timeline element signature\n   */\n  @Input() signature: string | undefined;\n\n  /**\n   * Timeline element reference date\n   */\n  @Input() eventDate: Date | undefined;\n\n  /**\n   * Timeline element reference date format\n   * @default dd/MM/yyyy\n   */\n  @Input() dateFormat: string = 'dd/MM/yyyy';\n\n  /**\n   * Timeline element PIN text\n   */\n  @Input({ required: true }) pinText: string | undefined;\n\n  /**\n   * Timeline element PIN type\n   * @default none\n   */\n  @Input() pinType: TimelinePINType | undefined = 'default';\n\n  /**\n   * Timeline element PIN icon\n   * @default code-circle\n   */\n  @Input() pinIcon: IconName | undefined = 'code-circle';\n\n  /**\n   * Timeline element category title\n   */\n  @Input() categoryTitle: string | undefined;\n\n  /**\n   * Timeline element category link\n   */\n  @Input() categoryLink: string | undefined;\n\n  /**\n   * Timeline element show detail link\n   * @default false\n   */\n  @Input({ transform: inputToBoolean })\n  showReadMore: boolean = false;\n\n  /** Timeline element detail link\n   * @default #\n   */\n  @Input() readMoreLink: string | undefined = '#';\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\nimport { ItIconComponent } from '../../../utils/icon/icon.component';\nimport { DatePipe, NgClass } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { TimelinePINType } from '../../../../interfaces/core';\nimport { IconName } from '../../../../interfaces/icon';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n/**\n * Timeline Item\n * @description Represents a single event for Timeline component.\n */\n@Component({\n  standalone: true,\n  selector: 'it-timeline-item',\n  templateUrl: './timeline-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [ItIconComponent, DatePipe, TranslateModule, NgClass],\n})\nexport class ItTimelineItemComponent extends ItAbstractComponent {\n  /**\n   * Timeline element title\n   */\n  @Input({ required: true }) title!: string;\n\n  /**\n   * Timeline element text\n   */\n  @Input({ required: true }) text!: string;\n\n  /**\n   * Timeline element signature\n   */\n  @Input() signature: string | undefined;\n\n  /**\n   * Timeline element reference date\n   */\n  @Input() eventDate: Date | undefined;\n\n  /**\n   * Timeline element reference date format\n   * @default dd/MM/yyyy\n   */\n  @Input() dateFormat: string = 'dd/MM/yyyy';\n\n  /**\n   * Timeline element PIN text\n   */\n  @Input({ required: true }) pinText: string | undefined;\n\n  /**\n   * Timeline element PIN type\n   * @default none\n   */\n  @Input() pinType: TimelinePINType | undefined = 'default';\n\n  /**\n   * Timeline element PIN icon\n   * @default code-circle\n   */\n  @Input() pinIcon: IconName | undefined = 'code-circle';\n\n  /**\n   * Timeline element PIN icon\n   * @default code-circle\n   */\n  @Input() pinIconTitle: string | undefined;\n\n  /**\n   * Timeline element category label\n   */\n  @Input() categoryLabel: string | undefined = 'Categoria evento: ';\n\n  /**\n   * Timeline element date label\n   */\n  @Input() dateLabel: string | undefined = 'Data evento: ';\n\n  /**\n   * Timeline element category title\n   */\n  @Input() categoryTitle: string | undefined;\n\n  /**\n   * Timeline element category link\n   */\n  @Input() categoryLink: string | undefined;\n\n  /**\n   * Timeline element show detail link\n   * @default false\n   */\n  @Input({ transform: inputToBoolean })\n  showReadMore: boolean = false;\n\n  /** Timeline element detail link\n   * @default #\n   */\n  @Input() readMoreLink: string | undefined = '#';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [
                 "ItAbstractComponent"
             ],
-            "templateData": "<div class=\"timeline-element\">\n  @if (pinType === 'now') {\n    <span class=\"it-now-label d-none d-lg-flex\">{{ 'it.timeline.today' | translate }}</span>\n  }\n  <div class=\"it-pin-wrapper\" [ngClass]=\"{ 'it-evidence': pinType === 'evidence', 'it-now': pinType === 'now' }\">\n    <div class=\"pin-icon\">\n      @if (pinIcon) {\n        <it-icon [name]=\"pinIcon\"></it-icon>\n      } @else {\n        <it-icon name=\"code-circle\"></it-icon>\n      }\n    </div>\n    <div class=\"pin-text\">\n      <span>{{ pinText }}</span>\n    </div>\n  </div>\n  <div class=\"card-wrapper\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        @if ((categoryTitle && categoryLink) || eventDate) {\n          <div class=\"category-top\">\n            @if (categoryTitle) {\n              <a class=\"category\" [href]=\"categoryLink\">{{ categoryTitle }}</a>\n            }\n            @if (eventDate) {\n              <span class=\"data\">{{ eventDate | date: dateFormat }}</span>\n            }\n          </div>\n        }\n        <h5 class=\"card-title\">{{ title }}</h5>\n        <p class=\"card-text\">{{ text }}</p>\n        @if (signature) {\n          <span class=\"card-signature\">{{ signature }}</span>\n        }\n        @if (showReadMore) {\n          <a class=\"read-more\" [href]=\"readMoreLink\">\n            <span class=\"text\">{{ 'it.timeline.read-more' | translate }}</span>\n            <span class=\"visually-hidden\">{{ 'it.timeline.read-more-on' | translate: { title: title } }}</span>\n            <it-icon name=\"arrow-right\"></it-icon>\n          </a>\n        }\n      </div>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"timeline-element\">\n  @if (pinType === 'now') {\n    <span class=\"it-now-label d-none d-lg-flex\">{{ 'it.timeline.today' | translate }}</span>\n  }\n  <h3 class=\"it-pin-wrapper\" [ngClass]=\"{ 'it-evidence': pinType === 'evidence', 'it-now': pinType === 'now' }\">\n    <div class=\"pin-icon\">\n      @if (pinIcon) {\n        <it-icon [name]=\"pinIcon\" [title]=\"pinIconTitle\" [attr.role]=\"pinIconTitle ? 'img' : null\"></it-icon>\n      } @else {\n        <it-icon name=\"code-circle\"></it-icon>\n      }\n    </div>\n    <div class=\"pin-text\">\n      <span>{{ pinText }}</span>\n    </div>\n  </h3>\n  <div class=\"card-wrapper\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        @if ((categoryTitle && categoryLink) || eventDate) {\n          <div class=\"category-top\">\n            @if (categoryTitle) {\n              <span class=\"visually-hidden\">{{ categoryLabel }}</span>\n              <a class=\"category\" [href]=\"categoryLink\">{{ categoryTitle }}</a>\n            }\n            @if (eventDate) {\n              <span class=\"visually-hidden\">{{ dateLabel }}</span>\n              <span class=\"data\">{{ eventDate | date: dateFormat }}</span>\n            }\n          </div>\n        }\n        <h4 class=\"card-title\">{{ title }}</h4>\n        <p class=\"card-text\">{{ text }}</p>\n        @if (signature) {\n          <span class=\"card-signature\">{{ signature }}</span>\n        }\n        @if (showReadMore) {\n          <a class=\"read-more\" [href]=\"readMoreLink\">\n            <span class=\"text\">{{ 'it.timeline.read-more' | translate }}</span>\n            <span class=\"visually-hidden\">{{ 'it.timeline.read-more-on' | translate: { title: title } }}</span>\n            <it-icon name=\"arrow-right\"></it-icon>\n          </a>\n        }\n      </div>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "ItTransferComponent",
-            "id": "component-ItTransferComponent-8af9c8d1c9a053b2737717df17488e83a14267410b71926ecf1765446ba13f0207939680699296d6bf5fd7ee77ba8816e369e7a9abe96c4b373125963f4cb020",
+            "id": "component-ItTransferComponent-dce1aab12265c71c8ecbb58175d68c1b3865370245cb34320234bc2e2990527c46725bf4c35ea60aec6e52b247f6c067adb4dc8924aadc6cc42e9a53bf02512a",
             "file": "projects/design-angular-kit/src/lib/components/form/transfer/transfer.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -32597,7 +32852,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe select options (left side)\n",
                     "description": "<p>The select options (left side)</p>\n",
-                    "line": 28,
+                    "line": 30,
                     "type": "{}",
                     "decorators": []
                 },
@@ -32608,7 +32863,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe selected options (right side)\n",
                     "description": "<p>The selected options (right side)</p>\n",
-                    "line": 32,
+                    "line": 34,
                     "type": "{}",
                     "decorators": []
                 },
@@ -32696,7 +32951,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFired when there is a transfer, a backtransfer or a reset event\n",
                     "description": "<p>Fired when there is a transfer, a backtransfer or a reset event</p>\n",
-                    "line": 36,
+                    "line": 38,
                     "type": "EventEmitter"
                 },
                 {
@@ -32721,22 +32976,22 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Enable backtransfer button</p>\n",
-                    "line": 47,
+                    "line": 49,
                     "rawdescription": "\n\nEnable backtransfer button\n",
                     "modifierKind": [
                         148
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1634,
-                            "end": 1652,
+                            "pos": 1801,
+                            "end": 1819,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1635,
-                                "end": 1642,
+                                "pos": 1802,
+                                "end": 1809,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -32755,7 +33010,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 54,
+                    "line": 56,
                     "modifierKind": [
                         123,
                         148
@@ -32769,22 +33024,22 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Enable reset button</p>\n",
-                    "line": 52,
+                    "line": 54,
                     "rawdescription": "\n\nEnable reset button\n",
                     "modifierKind": [
                         148
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1756,
-                            "end": 1774,
+                            "pos": 1923,
+                            "end": 1941,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1757,
-                                "end": 1764,
+                                "pos": 1924,
+                                "end": 1931,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -32803,22 +33058,22 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Enable transfer button</p>\n",
-                    "line": 42,
+                    "line": 44,
                     "rawdescription": "\n\nEnable transfer button\n",
                     "modifierKind": [
                         148
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1513,
-                            "end": 1531,
+                            "pos": 1680,
+                            "end": 1698,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1514,
-                                "end": 1521,
+                                "pos": 1681,
+                                "end": 1688,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -32972,7 +33227,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 89,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nBacktransfer button click handler\n",
@@ -33002,7 +33257,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 93,
+                    "line": 95,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nBacktransfer button keypress handler\n",
@@ -33039,7 +33294,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 109,
+                    "line": 111,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -33073,7 +33328,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 66,
+                    "line": 68,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -33089,7 +33344,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 147,
+                    "line": 149,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -33109,7 +33364,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReset button click handler\n",
@@ -33139,7 +33394,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 105,
+                    "line": 107,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReset button keypress handler\n",
@@ -33162,7 +33417,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -33182,7 +33437,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTransfer button click handler\n",
@@ -33212,7 +33467,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 81,
+                    "line": 83,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTransfer button keypress handler\n",
@@ -33708,6 +33963,14 @@
             "standalone": true,
             "imports": [
                 {
+                    "name": "TranslateModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ItIconComponent",
+                    "type": "component"
+                },
+                {
                     "name": "ItTransferListComponent",
                     "type": "component"
                 },
@@ -33726,7 +33989,7 @@
             "description": "<p>Transfer</p>\n",
             "rawdescription": "\n\nTransfer\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Optional, Output, Self } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { FormControlName, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';\nimport { TranslateService } from '@ngx-translate/core';\nimport { tap } from 'rxjs';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { TransferStore } from './store/transfer.store';\nimport { ItTransferListComponent } from './transfer-list/transfer-list.component';\nimport { TransferItem } from './transfer.model';\n\n/**\n * Transfer\n * @description Component that allows the creation of checkbox lists.\n */\n@Component({\n  selector: 'it-transfer',\n  standalone: true,\n  templateUrl: './transfer.component.html',\n  imports: [ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],\n  providers: [TransferStore],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {\n  /**\n   * The select options (left side)\n   */\n  @Input() options = [];\n  /**\n   * The selected options (right side)\n   */\n  @Input() selected = [];\n  /**\n   * Fired when there is a transfer, a backtransfer or a reset event\n   */\n  @Output() readonly transferChanges = new EventEmitter<TransferItem<T>[]>();\n\n  /**\n   * Enable transfer button\n   * @default false\n   */\n  readonly transferEnabled = this.store.transferEnabled;\n  /**\n   * Enable backtransfer button\n   * @default false\n   */\n  readonly backtransferEnabled = this.store.backtransferEnabled;\n  /**\n   * Enable reset button\n   * @default false\n   */\n  readonly resetEnabled = this.store.resetEnabled;\n\n  private readonly destroyRef = inject(DestroyRef);\n\n  constructor(\n    @Self()\n    @Optional()\n    override readonly _ngControl: NgControl,\n    override readonly _translateService: TranslateService,\n    private readonly store: TransferStore<T>\n  ) {\n    super(_translateService, _ngControl);\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n    this.storeInit();\n    this.onStoreValueChanged();\n  }\n\n  /**\n   * Transfer button click handler\n   */\n  transferClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.transfer());\n  }\n  /**\n   * Transfer button keypress handler\n   */\n  transferKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.transfer());\n  }\n  /**\n   * Backtransfer button click handler\n   */\n  backtransferClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.backtransfer());\n  }\n  /**\n   * Backtransfer button keypress handler\n   */\n  backtransferKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.backtransfer());\n  }\n  /**\n   * Reset button click handler\n   */\n  resetClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.reset());\n  }\n  /**\n   * Reset button keypress handler\n   */\n  resetKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.reset());\n  }\n\n  private buttonEventHandler(event: Event, updateStoreCb: () => void) {\n    event.preventDefault();\n    updateStoreCb();\n  }\n\n  private storeInit() {\n    let target = [];\n    const ngControl = this._ngControl;\n    const isNgControlDefined = Boolean(this._ngControl);\n\n    // if ngControl is defined, take values from it. Input() target will be ignored\n    if (isNgControlDefined) {\n      console.debug('ngControl instanceof NgModel:', ngControl instanceof NgModel);\n      console.debug('ngControl instanceof FormControlName:', ngControl instanceof FormControlName);\n\n      // if ngControl is an ngModel (template-driven form use case), take values from it\n      if (ngControl instanceof NgModel) {\n        console.debug('ngControl instanceof NgModel');\n        const model = (ngControl as NgModel).model;\n        target = Array.isArray(model) ? model : [];\n      }\n\n      // if ngControl is an FormControlName (reactive form use case), take values from it\n      if (ngControl instanceof FormControlName) {\n        console.debug('ngControl instanceof FormControlName');\n        const model = (ngControl as FormControlName).control.value;\n        target = Array.isArray(model) ? model : [];\n      }\n\n      console.debug('ngControl is defined. Input() target will be ignored');\n    } else if (this.selected && Array.isArray(this.selected)) {\n      target = [...this.selected];\n    }\n\n    console.debug('target:', this.selected, 'formControl:', this.control.value, 'ngModel:', this._ngControl);\n    this.store.init({ source: [...this.options], target });\n  }\n\n  private onStoreValueChanged() {\n    this.store.valueChanged\n      .pipe(\n        takeUntilDestroyed(this.destroyRef),\n        tap(value => this.writeValue(value as T)),\n        tap(value => this.onChange(value as T)),\n        tap(value => this.transferChanges.emit(value))\n      )\n      .subscribe();\n  }\n}\n",
+            "sourceCode": "import { AsyncPipe, NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Optional, Output, Self } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { FormControlName, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';\nimport { TranslateService } from '@ngx-translate/core';\nimport { tap } from 'rxjs';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { TransferStore } from './store/transfer.store';\nimport { ItTransferListComponent } from './transfer-list/transfer-list.component';\nimport { TransferItem } from './transfer.model';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from 'projects/design-angular-kit/src/public_api';\n\n/**\n * Transfer\n * @description Component that allows the creation of checkbox lists.\n */\n@Component({\n  selector: 'it-transfer',\n  standalone: true,\n  templateUrl: './transfer.component.html',\n  imports: [TranslateModule, ItIconComponent, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],\n  providers: [TransferStore],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {\n  /**\n   * The select options (left side)\n   */\n  @Input() options = [];\n  /**\n   * The selected options (right side)\n   */\n  @Input() selected = [];\n  /**\n   * Fired when there is a transfer, a backtransfer or a reset event\n   */\n  @Output() readonly transferChanges = new EventEmitter<TransferItem<T>[]>();\n\n  /**\n   * Enable transfer button\n   * @default false\n   */\n  readonly transferEnabled = this.store.transferEnabled;\n  /**\n   * Enable backtransfer button\n   * @default false\n   */\n  readonly backtransferEnabled = this.store.backtransferEnabled;\n  /**\n   * Enable reset button\n   * @default false\n   */\n  readonly resetEnabled = this.store.resetEnabled;\n\n  private readonly destroyRef = inject(DestroyRef);\n\n  constructor(\n    @Self()\n    @Optional()\n    override readonly _ngControl: NgControl,\n    override readonly _translateService: TranslateService,\n    private readonly store: TransferStore<T>\n  ) {\n    super(_translateService, _ngControl);\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n    this.storeInit();\n    this.onStoreValueChanged();\n  }\n\n  /**\n   * Transfer button click handler\n   */\n  transferClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.transfer());\n  }\n  /**\n   * Transfer button keypress handler\n   */\n  transferKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.transfer());\n  }\n  /**\n   * Backtransfer button click handler\n   */\n  backtransferClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.backtransfer());\n  }\n  /**\n   * Backtransfer button keypress handler\n   */\n  backtransferKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.backtransfer());\n  }\n  /**\n   * Reset button click handler\n   */\n  resetClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.reset());\n  }\n  /**\n   * Reset button keypress handler\n   */\n  resetKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.reset());\n  }\n\n  private buttonEventHandler(event: Event, updateStoreCb: () => void) {\n    event.preventDefault();\n    updateStoreCb();\n  }\n\n  private storeInit() {\n    let target = [];\n    const ngControl = this._ngControl;\n    const isNgControlDefined = Boolean(this._ngControl);\n\n    // if ngControl is defined, take values from it. Input() target will be ignored\n    if (isNgControlDefined) {\n      console.debug('ngControl instanceof NgModel:', ngControl instanceof NgModel);\n      console.debug('ngControl instanceof FormControlName:', ngControl instanceof FormControlName);\n\n      // if ngControl is an ngModel (template-driven form use case), take values from it\n      if (ngControl instanceof NgModel) {\n        console.debug('ngControl instanceof NgModel');\n        const model = (ngControl as NgModel).model;\n        target = Array.isArray(model) ? model : [];\n      }\n\n      // if ngControl is an FormControlName (reactive form use case), take values from it\n      if (ngControl instanceof FormControlName) {\n        console.debug('ngControl instanceof FormControlName');\n        const model = (ngControl as FormControlName).control.value;\n        target = Array.isArray(model) ? model : [];\n      }\n\n      console.debug('ngControl is defined. Input() target will be ignored');\n    } else if (this.selected && Array.isArray(this.selected)) {\n      target = [...this.selected];\n    }\n\n    console.debug('target:', this.selected, 'formControl:', this.control.value, 'ngModel:', this._ngControl);\n    this.store.init({ source: [...this.options], target });\n  }\n\n  private onStoreValueChanged() {\n    this.store.valueChanged\n      .pipe(\n        takeUntilDestroyed(this.destroyRef),\n        tap(value => this.writeValue(value as T)),\n        tap(value => this.onChange(value as T)),\n        tap(value => this.transferChanges.emit(value))\n      )\n      .subscribe();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -33755,7 +34018,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 54,
+                "line": 56,
                 "jsdoctags": [
                     {
                         "name": "_ngControl",
@@ -33792,11 +34055,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"form-group\">\n  @if (label) {\n    <label [for]=\"id\" [class.active]=\"!!control.value\">{{ label }}</label>\n  }\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-5\">\n      <it-transfer-list sourceType=\"source\" title=\"source\"></it-transfer-list>\n    </div>\n    <!-- col -->\n    <div class=\"col-xs-12 col-md-2\">\n      <!-- transfer buttons-->\n      <div class=\"it-transfer-buttons\">\n        <a\n          class=\"transfer\"\n          role=\"button\"\n          href=\"#\"\n          [ngClass]=\"{ active: transferEnabled | async }\"\n          (click)=\"transferClickHandler($event)\"\n          (keypress)=\"transferKeyPressHandler($event)\"\n          aria-label=\"Sposta avanti\">\n          <svg class=\"icon\"><use href=\"/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right\"></use></svg>\n        </a>\n        <span class=\"visually-hidden\">Etichetta per freccia destra</span>\n        <a\n          class=\"backtransfer\"\n          role=\"button\"\n          href=\"#\"\n          [ngClass]=\"{ active: backtransferEnabled | async }\"\n          (click)=\"backtransferClickHandler($event)\"\n          (keypress)=\"backtransferKeyPressHandler($event)\"\n          aria-label=\"Sposta indietro\">\n          <svg class=\"icon\"><use href=\"/bootstrap-italia/dist/svg/sprites.svg#it-arrow-left\"></use></svg>\n        </a>\n        <span class=\"visually-hidden\">Etichetta for freccia sinistra</span>\n        <a\n          class=\"reset\"\n          role=\"button\"\n          href=\"#\"\n          [ngClass]=\"{ active: resetEnabled | async }\"\n          (click)=\"resetClickHandler($event)\"\n          (keypress)=\"resetKeyPressHandler($event)\"\n          aria-label=\"Reset\">\n          <svg class=\"icon\"><use href=\"/bootstrap-italia/dist/svg/sprites.svg#it-restore\"></use></svg>\n        </a>\n        <span class=\"visually-hidden\">Etichetta per icona di reset</span>\n      </div>\n    </div>\n    <div class=\"col-xs-12 col-md-5\">\n      <it-transfer-list sourceType=\"target\" title=\"target\"></it-transfer-list>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div>\n  @if (label) {\n    <label [for]=\"id\" [class.active]=\"!!control.value\">{{ label }}</label>\n  }\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-5\">\n      <it-transfer-list sourceType=\"source\" [title]=\"'it.transfer.source' | translate\"></it-transfer-list>\n    </div>\n    <!-- col -->\n    <div class=\"col-xs-12 col-md-2\">\n      <!-- transfer buttons-->\n      <div class=\"it-transfer-buttons\">\n        <a\n          class=\"transfer\"\n          role=\"button\"\n          href=\"#\"\n          [ngClass]=\"{ active: transferEnabled | async }\"\n          (click)=\"transferClickHandler($event)\"\n          (keypress)=\"transferKeyPressHandler($event)\"\n          [attr.aria-label]=\"'it.transfer.aria-label-move-forward' | translate\">\n          <it-icon name=\"arrow-right\"></it-icon>\n        </a>\n        <span class=\"visually-hidden\">{{ 'it.transfer.label-move-forward' | translate }}</span>\n        <a\n          class=\"backtransfer\"\n          role=\"button\"\n          href=\"#\"\n          [ngClass]=\"{ active: backtransferEnabled | async }\"\n          (click)=\"backtransferClickHandler($event)\"\n          (keypress)=\"backtransferKeyPressHandler($event)\"\n          [attr.aria-label]=\"'it.transfer.aria-label-move-backward' | translate\">\n          <it-icon name=\"arrow-left\"></it-icon>\n        </a>\n        <span class=\"visually-hidden\">{{ 'it.transfer.label-move-backward' | translate }}</span>\n        <a\n          class=\"reset\"\n          role=\"button\"\n          href=\"#\"\n          [ngClass]=\"{ active: resetEnabled | async }\"\n          (click)=\"resetClickHandler($event)\"\n          (keypress)=\"resetKeyPressHandler($event)\"\n          [attr.aria-label]=\"'it.transfer.aria-label-reset' | translate\">\n          <it-icon name=\"restore\"></it-icon>\n        </a>\n        <span class=\"visually-hidden\">{{ 'it.transfer.label-reset' | translate }}</span>\n      </div>\n    </div>\n    <div class=\"col-xs-12 col-md-5\">\n      <it-transfer-list sourceType=\"target\" [title]=\"'it.transfer.target' | translate\"></it-transfer-list>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "ItTransferListComponent",
-            "id": "component-ItTransferListComponent-46a87063671e7082dc73bbe5b0393923af001c724ab69ba849163a657cbe51744420e6906cad7ccbca9d79a821890ba90c1444c212da1c14d14cdf9d3b978ba4",
+            "id": "component-ItTransferListComponent-f3a471cd564a7a159c7dde3c4bf64f1bb55b70db486fd4ed16f68de5496030b7c10d687e4c9bc544ec2454cfc27a084a106fcbb893786172a6347a2a9f05cb41",
             "file": "projects/design-angular-kit/src/lib/components/form/transfer/transfer-list/transfer-list.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -33885,15 +34148,15 @@
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1601,
-                            "end": 1616,
+                            "pos": 1672,
+                            "end": 1687,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1602,
-                                "end": 1609,
+                                "pos": 1673,
+                                "end": 1680,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -34249,6 +34512,10 @@
             "standalone": true,
             "imports": [
                 {
+                    "name": "TranslateModule",
+                    "type": "module"
+                },
+                {
                     "name": "AsyncPipe",
                     "type": "pipe"
                 },
@@ -34260,7 +34527,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, TitleCasePipe } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, ElementRef, HostAttributeToken, inject, ViewChild } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { combineLatest, distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\nimport { TransferStore } from '../store/transfer.store';\n\nimport { SourceType, TransferItem } from '../transfer.model';\n\ninterface SelectableTransferItem<T> extends TransferItem<T> {\n  selected: boolean;\n}\n\n@Component({\n  selector: 'it-transfer-list',\n  standalone: true,\n  imports: [AsyncPipe, TitleCasePipe],\n  templateUrl: './transfer-list.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItTransferListComponent<T> extends ItAbstractComponent {\n  /**\n   * Widget title\n   */\n  readonly title = inject(new HostAttributeToken('title'), { optional: true });\n\n  readonly sourceType = inject(new HostAttributeToken('sourceType'), { optional: true }) as SourceType;\n\n  private readonly items = this.store.selectItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());\n  private readonly selected = this.store.selectSelectedItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());\n\n  readonly numberOfItems$ = this.items.pipe(\n    map(items => ({ length: items.length })),\n    startWith({ length: 0 })\n  );\n  readonly selectAllDisabled = this.items.pipe(map(items => items.length === 0));\n  /**\n   * Items of the list\n   * @default []\n   */\n  readonly items$ = combineLatest([this.items, this.selected]).pipe(\n    map(([items, selected]) =>\n      items.map(item => {\n        (item as SelectableTransferItem<T>).selected = selected.has(item);\n        return item as SelectableTransferItem<T>;\n      })\n    )\n  );\n\n  @ViewChild('selectAllCheckbox')\n  selectAllCheckboxRef!: ElementRef<HTMLInputElement>;\n\n  readonly instanceId = this.getInstanceId();\n\n  constructor(private readonly store: TransferStore<T>) {\n    super();\n    this.onItemsUpdate();\n  }\n  /**\n   * Checkbox selection click handler\n   */\n  checkboxSelectionHandler(item: TransferItem<T>) {\n    this.store.checkboxSelection(item, this.sourceType);\n  }\n  /**\n   * Checkbox select all selection handler\n   */\n  checkboxSelectAllHandler(event: Event) {\n    const checked = ((event as PointerEvent).target as HTMLInputElement).checked;\n    this.store.selectAllSelection(checked, this.sourceType);\n  }\n\n  /**\n   * Items update subscription\n   */\n  private onItemsUpdate() {\n    this.items\n      .pipe(\n        takeUntilDestroyed(),\n        skip(1),\n        tap(() => {\n          if (this.selectAllCheckboxRef) {\n            this.selectAllCheckboxRef.nativeElement.checked = false;\n          }\n        })\n      )\n      .subscribe();\n  }\n\n  private getInstanceId() {\n    return Math.floor(Math.random() * 100000000).toString();\n  }\n}\n",
+            "sourceCode": "import { AsyncPipe, TitleCasePipe } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, ElementRef, HostAttributeToken, inject, ViewChild } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { combineLatest, distinctUntilChanged, map, shareReplay, skip, startWith, tap } from 'rxjs';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\nimport { TransferStore } from '../store/transfer.store';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { SourceType, TransferItem } from '../transfer.model';\n\ninterface SelectableTransferItem<T> extends TransferItem<T> {\n  selected: boolean;\n}\n\n@Component({\n  selector: 'it-transfer-list',\n  standalone: true,\n  imports: [TranslateModule, AsyncPipe, TitleCasePipe],\n  templateUrl: './transfer-list.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItTransferListComponent<T> extends ItAbstractComponent {\n  /**\n   * Widget title\n   */\n  readonly title = inject(new HostAttributeToken('title'), { optional: true });\n\n  readonly sourceType = inject(new HostAttributeToken('sourceType'), { optional: true }) as SourceType;\n\n  private readonly items = this.store.selectItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());\n  private readonly selected = this.store.selectSelectedItems(this.sourceType).pipe(distinctUntilChanged(), shareReplay());\n\n  readonly numberOfItems$ = this.items.pipe(\n    map(items => ({ length: items.length })),\n    startWith({ length: 0 })\n  );\n  readonly selectAllDisabled = this.items.pipe(map(items => items.length === 0));\n  /**\n   * Items of the list\n   * @default []\n   */\n  readonly items$ = combineLatest([this.items, this.selected]).pipe(\n    map(([items, selected]) =>\n      items.map(item => {\n        (item as SelectableTransferItem<T>).selected = selected.has(item);\n        return item as SelectableTransferItem<T>;\n      })\n    )\n  );\n\n  @ViewChild('selectAllCheckbox')\n  selectAllCheckboxRef!: ElementRef<HTMLInputElement>;\n\n  readonly instanceId = this.getInstanceId();\n\n  constructor(private readonly store: TransferStore<T>) {\n    super();\n    this.onItemsUpdate();\n  }\n  /**\n   * Checkbox selection click handler\n   */\n  checkboxSelectionHandler(item: TransferItem<T>) {\n    this.store.checkboxSelection(item, this.sourceType);\n  }\n  /**\n   * Checkbox select all selection handler\n   */\n  checkboxSelectAllHandler(event: Event) {\n    const checked = ((event as PointerEvent).target as HTMLInputElement).checked;\n    this.store.selectAllSelection(checked, this.sourceType);\n  }\n\n  /**\n   * Items update subscription\n   */\n  private onItemsUpdate() {\n    this.items\n      .pipe(\n        takeUntilDestroyed(),\n        skip(1),\n        tap(() => {\n          if (this.selectAllCheckboxRef) {\n            this.selectAllCheckboxRef.nativeElement.checked = false;\n          }\n        })\n      )\n      .subscribe();\n  }\n\n  private getInstanceId() {\n    return Math.floor(Math.random() * 100000000).toString();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -34293,7 +34560,7 @@
             "extends": [
                 "ItAbstractComponent"
             ],
-            "templateData": "<div class=\"it-transfer-wrapper source\">\n  <div class=\"transfer-header\">\n    <div class=\"form-check\" aria-describedby=\"\">\n      <input\n        #selectAllCheckbox\n        type=\"checkbox\"\n        id=\"{{ instanceId }}checkbox{{ title }}\"\n        [disabled]=\"selectAllDisabled | async\"\n        (click)=\"checkboxSelectAllHandler($event)\" />\n      <label for=\"{{ instanceId }}checkbox{{ title }}\">\n        <span>\n          @if (numberOfItems$ | async; as numberOfItems) {\n            <span class=\"num\"> {{ numberOfItems.length }} </span>\n            <span> {{ numberOfItems.length > 1 ? 'ITEMS' : 'ITEM' }} </span>\n          }\n        </span>\n        <span class=\"descr\">{{ title | titlecase }}</span>\n      </label>\n    </div>\n    <!-- form check -->\n  </div>\n  <!-- transfer-header -->\n  <div class=\"transfer-scroll\">\n    <div class=\"transfer-group\">\n      @for (item of items$ | async; track item.value) {\n        <div class=\"form-check\" aria-describedby=\"\">\n          <input\n            type=\"checkbox\"\n            id=\"{{ instanceId }}-{{ item.value }}\"\n            [checked]=\"item.selected\"\n            (click)=\"checkboxSelectionHandler(item)\" />\n          <label for=\"{{ instanceId }}-{{ item.value }}\">\n            <span>\n              <span>{{ item.text }}</span>\n            </span>\n          </label>\n        </div>\n      }\n    </div>\n  </div>\n</div>\n<!-- it-transfer-wrapper -->\n"
+            "templateData": "<div class=\"it-transfer-wrapper source\">\n  <div class=\"transfer-header\">\n    <div class=\"form-check\">\n      <input\n        #selectAllCheckbox\n        type=\"checkbox\"\n        id=\"{{ instanceId }}checkbox{{ title }}\"\n        [disabled]=\"selectAllDisabled | async\"\n        (click)=\"checkboxSelectAllHandler($event)\" />\n      <label for=\"{{ instanceId }}checkbox{{ title }}\">\n        <span>\n          @if (numberOfItems$ | async; as numberOfItems) {\n            <span class=\"num\"> {{ numberOfItems.length }}</span>\n            <span> {{ (numberOfItems.length === 1 ? 'it.transfer.item' : 'it.transfer.items') | translate }}</span>\n          }\n        </span>\n        <span class=\"descr\">{{ title | titlecase }}</span>\n      </label>\n    </div>\n    <!-- form check -->\n  </div>\n  <!-- transfer-header -->\n  <div class=\"transfer-scroll\">\n    <div class=\"transfer-group\">\n      @for (item of items$ | async; track item.value) {\n        <div class=\"form-check\">\n          <input\n            type=\"checkbox\"\n            id=\"{{ instanceId }}-{{ item.value }}\"\n            [checked]=\"item.selected\"\n            (click)=\"checkboxSelectionHandler(item)\" />\n          <label for=\"{{ instanceId }}-{{ item.value }}\">\n            <span>\n              <span>{{ item.text }}</span>\n            </span>\n          </label>\n        </div>\n      }\n    </div>\n  </div>\n</div>\n<!-- it-transfer-wrapper -->\n"
         },
         {
             "name": "ItUploadDragDropComponent",
@@ -35634,7 +35901,7 @@
     "modules": [
         {
             "name": "DesignAngularKitModule",
-            "id": "module-DesignAngularKitModule-9ff880123b492cecc94b12b74bd2752d08f069b7edc44e246e44b4d307f0dbfdb10b0230914f1e191d66a265dc72efae7f5c47aead06f03af7d196d98fb096b2",
+            "id": "module-DesignAngularKitModule-a4de5eaf7a501e3a4a65dae486316b165a379b7b148eb4c6896d9aab1cc659079d5a5c768f8deb6ccddb8157658de913cbf51a38669bbb3f93fa6eacad86f3af",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -35646,7 +35913,7 @@
                     "optional": false,
                     "returnType": "ModuleWithProviders<DesignAngularKitModule>",
                     "typeParameters": [],
-                    "line": 124,
+                    "line": 126,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -35667,7 +35934,7 @@
                     "optional": false,
                     "returnType": "ModuleWithProviders<DesignAngularKitModule>",
                     "typeParameters": [],
-                    "line": 117,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -35687,7 +35954,7 @@
                     ]
                 }
             ],
-            "sourceCode": "import { ModuleWithProviders, NgModule } from '@angular/core';\nimport { ItAccordionComponent } from './components/core/accordion/accordion.component';\nimport { ItAlertComponent } from './components/core/alert/alert.component';\nimport { ItAvatarModule } from './components/core/avatar/avatar.module';\nimport { ItBadgeDirective } from './components/core/badge/badge.directive';\nimport { ItButtonDirective } from './components/core/button/button.directive';\nimport { ItCalloutComponent } from './components/core/callout/callout.component';\nimport { ItCardComponent } from './components/core/card/card.component';\nimport { ItCarouselModule } from './components/core/carousel/carousel.module';\nimport { ItChipComponent } from './components/core/chip/chip.component';\nimport { ItCollapseComponent } from './components/core/collapse/collapse.component';\nimport { ItDimmerModule } from './components/core/dimmer/dimmer.module';\nimport { ItDropdownModule } from './components/core/dropdown/dropdown.module';\nimport { ItForwardDirective } from './components/core/forward/forward.directive';\nimport { ItLinkComponent } from './components/core/link/link.component';\nimport { ItListModule } from './components/core/list/list.module';\nimport { ItModalComponent } from './components/core/modal/modal.component';\nimport { ItNotificationsComponent } from './components/core/notifications/notifications.component';\nimport { ItPaginationComponent } from './components/core/pagination/pagination.component';\nimport { ItPopoverDirective } from './components/core/popover/popover.directive';\nimport { ItProgressBarComponent } from './components/core/progress-bar/progress-bar.component';\nimport { ItProgressButtonComponent } from './components/core/progress-button/progress-button.component';\nimport { ItSpinnerComponent } from './components/core/spinner/spinner.component';\nimport { ItSteppersModule } from './components/core/steppers/steppers.module';\nimport { ItTabModule } from './components/core/tab/tab.module';\nimport { ItTableModule } from './components/core/table/table.module';\nimport { ItTimelineModule } from './components/core/timeline/timeline.module';\nimport { ItTooltipDirective } from './components/core/tooltip/tooltip.directive';\nimport { ItFormModule } from './components/form/form.module';\nimport { ItBackButtonComponent } from './components/navigation/back-button/back-button.component';\nimport { ItBackToTopComponent } from './components/navigation/back-to-top/back-to-top.component';\nimport { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';\nimport { ItHeaderComponent } from './components/navigation/header/header.component';\nimport { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';\nimport { ItNavBarModule } from './components/navigation/navbar/navbar.module';\nimport { ItNavscrollComponent } from './components/navigation/navscroll/navscroll.component';\nimport { ItSidebarComponent } from './components/navigation/sidebar/sidebar.component';\nimport { ItErrorPageComponent } from './components/utils/error-page/error-page.component';\nimport { ItIconComponent } from './components/utils/icon/icon.component';\nimport { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';\nimport { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';\nimport { ItDateAgoPipe } from './pipes/date-ago.pipe';\nimport { ItDurationPipe } from './pipes/duration.pipe';\nimport { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';\nimport { provideDesignAngularKit } from './provide-design-angular-kit';\n\n/**\n * Core components\n */\nconst core = [\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarModule,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableModule,\n  ItTooltipDirective,\n  ItTimelineModule,\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItNavscrollComponent,\n];\n\n/**\n * Utils components\n */\nconst utils = [ItErrorPageComponent, ItIconComponent, ItLanguageSwitcherComponent];\n\n/**\n * Library pipes\n */\nconst pipes = [ItDateAgoPipe, ItDurationPipe, ItMarkMatchingTextPipe];\n\nconst components = [\n  ...core, // Core components\n  ItFormModule, // Form components\n  ...navigation, // Navigation Components\n  ...utils, // Utils components\n  ...pipes, // Library pipes\n];\n\n@NgModule({\n  imports: components,\n  exports: components,\n})\nexport class DesignAngularKitModule {\n  public static forRoot(config?: DesignAngularKitConfig): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n      providers: [provideDesignAngularKit(config)],\n    };\n  }\n\n  public static forChild(): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n    };\n  }\n}\n",
+            "sourceCode": "import { ModuleWithProviders, NgModule } from '@angular/core';\nimport { ItAccordionComponent } from './components/core/accordion/accordion.component';\nimport { ItAlertComponent } from './components/core/alert/alert.component';\nimport { ItAvatarModule } from './components/core/avatar/avatar.module';\nimport { ItBadgeDirective } from './components/core/badge/badge.directive';\nimport { ItButtonDirective } from './components/core/button/button.directive';\nimport { ItCalloutComponent } from './components/core/callout/callout.component';\nimport { ItCardComponent } from './components/core/card/card.component';\nimport { ItCarouselModule } from './components/core/carousel/carousel.module';\nimport { ItChipComponent } from './components/core/chip/chip.component';\nimport { ItCollapseComponent } from './components/core/collapse/collapse.component';\nimport { ItDimmerModule } from './components/core/dimmer/dimmer.module';\nimport { ItDropdownModule } from './components/core/dropdown/dropdown.module';\nimport { ItForwardDirective } from './components/core/forward/forward.directive';\nimport { ItLinkComponent } from './components/core/link/link.component';\nimport { ItListModule } from './components/core/list/list.module';\nimport { ItModalComponent } from './components/core/modal/modal.component';\nimport { ItNotificationsComponent } from './components/core/notifications/notifications.component';\nimport { ItPaginationComponent } from './components/core/pagination/pagination.component';\nimport { ItPopoverDirective } from './components/core/popover/popover.directive';\nimport { ItProgressBarComponent } from './components/core/progress-bar/progress-bar.component';\nimport { ItProgressButtonComponent } from './components/core/progress-button/progress-button.component';\nimport { ItSpinnerComponent } from './components/core/spinner/spinner.component';\nimport { ItSteppersModule } from './components/core/steppers/steppers.module';\nimport { ItTabModule } from './components/core/tab/tab.module';\nimport { ItTableModule } from './components/core/table/table.module';\nimport { ItTimelineModule } from './components/core/timeline/timeline.module';\nimport { ItTooltipDirective } from './components/core/tooltip/tooltip.directive';\nimport { ItFormModule } from './components/form/form.module';\nimport { ItBackButtonComponent } from './components/navigation/back-button/back-button.component';\nimport { ItBackToTopComponent } from './components/navigation/back-to-top/back-to-top.component';\nimport { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';\nimport { ItHeaderComponent } from './components/navigation/header/header.component';\nimport { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';\nimport { ItNavBarModule } from './components/navigation/navbar/navbar.module';\nimport { ItNavscrollComponent } from './components/navigation/navscroll/navscroll.component';\nimport { ItSidebarComponent } from './components/navigation/sidebar/sidebar.component';\nimport { ItErrorPageComponent } from './components/utils/error-page/error-page.component';\nimport { ItIconComponent } from './components/utils/icon/icon.component';\nimport { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';\nimport { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';\nimport { ItDateAgoPipe } from './pipes/date-ago.pipe';\nimport { ItDurationPipe } from './pipes/duration.pipe';\nimport { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';\nimport { ItSkiplinkModule } from './components/navigation/skiplink/skiplink.module';\nimport { provideDesignAngularKit } from './provide-design-angular-kit';\n\n/**\n * Core components\n */\nconst core = [\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarModule,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableModule,\n  ItTooltipDirective,\n  ItTimelineModule,\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n];\n\n/**\n * Utils components\n */\nconst utils = [ItErrorPageComponent, ItIconComponent, ItLanguageSwitcherComponent];\n\n/**\n * Library pipes\n */\nconst pipes = [ItDateAgoPipe, ItDurationPipe, ItMarkMatchingTextPipe];\n\nconst components = [\n  ...core, // Core components\n  ItFormModule, // Form components\n  ...navigation, // Navigation Components\n  ...utils, // Utils components\n  ...pipes, // Library pipes\n];\n\n@NgModule({\n  imports: components,\n  exports: components,\n})\nexport class DesignAngularKitModule {\n  public static forRoot(config?: DesignAngularKitConfig): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n      providers: [provideDesignAngularKit(config)],\n    };\n  }\n\n  public static forChild(): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n    };\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -35807,6 +36074,9 @@
                         },
                         {
                             "name": "ItSidebarComponent"
+                        },
+                        {
+                            "name": "ItSkiplinkModule"
                         },
                         {
                             "name": "ItSpinnerComponent"
@@ -35938,6 +36208,9 @@
                         },
                         {
                             "name": "ItSidebarComponent"
+                        },
+                        {
+                            "name": "ItSkiplinkModule"
                         },
                         {
                             "name": "ItSpinnerComponent"
@@ -36440,6 +36713,56 @@
                         },
                         {
                             "name": "ItNavBarItemComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ItSkiplinkModule",
+            "id": "module-ItSkiplinkModule-ea0ff50cfc6b087c2363bf3bffc2d2d89508740a703f71799f656f36503aaa8a3107670b0d036fe670ae08272c670b4ad6f50aa49a671d85d9489b244c333956",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { ItSkiplinkComponent } from './skiplink/skiplink.component';\nimport { ItSkiplinkItemComponent } from './skiplink-item/skiplink-item.component';\n\nconst skiplinkComponents = [ItSkiplinkComponent, ItSkiplinkItemComponent];\n\n@NgModule({\n  imports: skiplinkComponents,\n  exports: skiplinkComponents,\n})\nexport class ItSkiplinkModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "ItSkiplinkComponent"
+                        },
+                        {
+                            "name": "ItSkiplinkItemComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ItSkiplinkComponent"
+                        },
+                        {
+                            "name": "ItSkiplinkItemComponent"
                         }
                     ]
                 },
@@ -37024,7 +37347,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItNavscrollComponent,\n]",
+                "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n]",
                 "rawdescription": "Navigation Components",
                 "description": "<p>Navigation Components</p>\n"
             },
@@ -37203,6 +37526,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "/^[\\^~]?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$/"
+            },
+            {
+                "name": "skiplinkComponents",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink.module.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[ItSkiplinkComponent, ItSkiplinkItemComponent]"
             },
             {
                 "name": "steppersComponents",
@@ -37731,7 +38064,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "1ab576bc-48ac-4d42-ae2e-a64d7eb260e4",
+                        "destrucuredGroupId": "9b2ac303-66da-47e6-b525-e094d678539c",
                         "destructuredParameter": true
                     }
                 ],
@@ -37741,7 +38074,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "1ab576bc-48ac-4d42-ae2e-a64d7eb260e4",
+                        "destrucuredGroupId": "9b2ac303-66da-47e6-b525-e094d678539c",
                         "destructuredParameter": true,
                         "tagName": {
                             "text": "param"
@@ -39180,7 +39513,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItNavscrollComponent,\n]",
+                    "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n]",
                     "rawdescription": "Navigation Components",
                     "description": "<p>Navigation Components</p>\n"
                 },
@@ -39387,6 +39720,18 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "/^[\\^~]?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$/"
+                }
+            ],
+            "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink.module.ts": [
+                {
+                    "name": "skiplinkComponents",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink.module.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[ItSkiplinkComponent, ItSkiplinkItemComponent]"
                 }
             ],
             "projects/design-angular-kit/src/lib/components/core/steppers/steppers.module.ts": [
@@ -40033,7 +40378,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "1ab576bc-48ac-4d42-ae2e-a64d7eb260e4",
+                            "destrucuredGroupId": "9b2ac303-66da-47e6-b525-e094d678539c",
                             "destructuredParameter": true
                         }
                     ],
@@ -40043,7 +40388,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "1ab576bc-48ac-4d42-ae2e-a64d7eb260e4",
+                            "destrucuredGroupId": "9b2ac303-66da-47e6-b525-e094d678539c",
                             "destructuredParameter": true,
                             "tagName": {
                                 "text": "param"
@@ -41355,9 +41700,9 @@
                 "type": "directive",
                 "linktype": "directive",
                 "name": "ItButtonDirective",
-                "coveragePercent": 50,
-                "coverageCount": "7/14",
-                "status": "medium"
+                "coveragePercent": 77,
+                "coverageCount": "7/9",
+                "status": "very-good"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/components/core/callout/callout.component.ts",
@@ -41705,8 +42050,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItTimelineItemComponent",
-                "coveragePercent": 77,
-                "coverageCount": "17/22",
+                "coveragePercent": 80,
+                "coverageCount": "20/25",
                 "status": "very-good"
             },
             {
@@ -42113,8 +42458,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItBackToTopComponent",
-                "coveragePercent": 57,
-                "coverageCount": "11/19",
+                "coveragePercent": 60,
+                "coverageCount": "12/20",
                 "status": "good"
             },
             {
@@ -42311,6 +42656,34 @@
                 "name": "ItSidebarComponent",
                 "coveragePercent": 57,
                 "coverageCount": "4/7",
+                "status": "good"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink-item/skiplink-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ItSkiplinkItemComponent",
+                "coveragePercent": 40,
+                "coverageCount": "2/5",
+                "status": "medium"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "skiplinkComponents",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink/skiplink.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ItSkiplinkComponent",
+                "coveragePercent": 66,
+                "coverageCount": "2/3",
                 "status": "good"
             },
             {

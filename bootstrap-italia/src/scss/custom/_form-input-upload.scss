@@ -37,14 +37,6 @@
       margin-right: 10px;
     }
   }
-
-  //focus state
-  &:focus {
-    & + label {
-      background-color: shade-color($primary, 10%);
-      outline: auto 5px -webkit-focus-ring-color;
-    }
-  }
 }
 
 //pictures wall version
@@ -198,7 +190,7 @@
       overflow: hidden;
       .upload-file-weight {
         color: $neutral-1-a7;
-        font-size: 0.75em;
+        // font-size: 0.75em;
         margin-left: 10px;
         display: none;
       }
@@ -478,7 +470,9 @@
     align-items: center;
     opacity: 0;
     transform: scale(0.6);
-    transition: opacity 0.2s, transform 0.5s cubic-bezier(0.75, -0.5, 0, 1.75);
+    transition:
+      opacity 0.2s,
+      transform 0.5s cubic-bezier(0.75, -0.5, 0, 1.75);
 
     svg {
       fill: $white;
