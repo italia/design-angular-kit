@@ -1,3 +1,22 @@
+## [1.1.3](https://github.com/italia/design-angular-kit/compare/v1.1.2...v1.1.3) (2024-12-18)
+
+
+### Bug Fixes
+
+* **a11y:** timeline improvements ([346bacd](https://github.com/italia/design-angular-kit/commit/346bacdaf06ee3a07eb587d887818c04a723e0ee))
+* add aria hidden to rating icons ([815f184](https://github.com/italia/design-angular-kit/commit/815f18452e99dfb93c1136a9b0b2ac642d38995f))
+* add form-control to autocomplete ([b8d5459](https://github.com/italia/design-angular-kit/commit/b8d545959b59753214e084fdfe22d4efa1b684f4))
+* add icons and translations to transfer component ([3a5ae08](https://github.com/italia/design-angular-kit/commit/3a5ae08a8c11edb33342dbbcd7c86f5e92b53cf0))
+* button focus ([8167c99](https://github.com/italia/design-angular-kit/commit/8167c996ee83abf56326ed83c476191266d0eed9))
+* improvements on back to top component ([62d50bb](https://github.com/italia/design-angular-kit/commit/62d50bb11fc0e9b64f54c19ac58e73642903a838))
+* use container-xxl for header component ([7843a4a](https://github.com/italia/design-angular-kit/commit/7843a4ad41413eb583a5bdaac1cf9df39fcc9b05))
+
+
+### Features
+
+* new list headers with multiple actions ([9e1f824](https://github.com/italia/design-angular-kit/commit/9e1f824681c4863c5b746886e4e497bf07dbbad0))
+* skiplink component ([d1d4114](https://github.com/italia/design-angular-kit/commit/d1d4114b157ea0fcca13859de791b7cdee7df640))
+
 ## [1.1.2](https://github.com/italia/design-angular-kit/compare/v1.1.1...v1.1.2) (2024-11-06)
 
 
