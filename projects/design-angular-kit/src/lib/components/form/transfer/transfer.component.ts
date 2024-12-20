@@ -9,7 +9,7 @@ import { TransferStore } from './store/transfer.store';
 import { ItTransferListComponent } from './transfer-list/transfer-list.component';
 import { TransferItem } from './transfer.model';
 import { TranslateModule } from '@ngx-translate/core';
-import { ItIconComponent } from 'projects/design-angular-kit/src/public_api';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 
 /**
  * Transfer
