@@ -28316,7 +28316,7 @@
         },
         {
             "name": "ItSkiplinkComponent",
-            "id": "component-ItSkiplinkComponent-4dcdb1c40375d3ef9f1e5cf5f1addce849c649f54018d737250db141de21cf9b5d1e4e26848b14f4382c47b14abfd2fc6ff30af4e8166635b500a3cda2991da4",
+            "id": "component-ItSkiplinkComponent-dcc031314d3dd72ddd0afdf89cb80df7bbf3269ac5cc61a1907414deb194c23dd1fbb54c9b96e36e43e1e03c017315b97527c9eb7e5d3b47597a32ebc93faea2",
             "file": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink/skiplink.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -28341,15 +28341,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 648,
-                            "end": 689,
+                            "pos": 639,
+                            "end": 680,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 649,
-                                "end": 656,
+                                "pos": 640,
+                                "end": 647,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -28372,15 +28372,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 800,
-                            "end": 818,
+                            "pos": 791,
+                            "end": 809,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 801,
-                                "end": 808,
+                                "pos": 792,
+                                "end": 799,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -28421,7 +28421,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\nimport { ItLinkComponent } from 'projects/design-angular-kit/src/public_api';\n\n@Component({\n  standalone: true,\n  selector: 'it-skiplink',\n  templateUrl: './skiplink.component.html',\n  exportAs: 'itSkipLink',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, TranslateModule, ItLinkComponent],\n})\nexport class ItSkiplinkComponent {\n  /**\n   * Aria label for `nav` mode\n   * @default 'Scorciatoie di navigazione'\n   */\n  @Input() ariaLabel: string = 'Scorciatoie di navigazione';\n\n  /**\n   * If `true` nav mode is enabled\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) nav?: boolean;\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\nimport { ItLinkComponent } from '../../../core/link/link.component';\n\n@Component({\n  standalone: true,\n  selector: 'it-skiplink',\n  templateUrl: './skiplink.component.html',\n  exportAs: 'itSkipLink',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, TranslateModule, ItLinkComponent],\n})\nexport class ItSkiplinkComponent {\n  /**\n   * Aria label for `nav` mode\n   * @default 'Scorciatoie di navigazione'\n   */\n  @Input() ariaLabel: string = 'Scorciatoie di navigazione';\n\n  /**\n   * If `true` nav mode is enabled\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) nav?: boolean;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -28430,7 +28430,7 @@
         },
         {
             "name": "ItSkiplinkItemComponent",
-            "id": "component-ItSkiplinkItemComponent-cadca767f74035f4a91299aa4e2799faee0dfd74cac4cf343d5c754830c3946467bf1cb961b6963a2e29e2280f8c793f52508ea69906303caf12cb9c12ff42f8",
+            "id": "component-ItSkiplinkItemComponent-842f05756bde92dd0b4bf6c05e0e17664cde2b28aeb2d875a1a583fff528bee6700ddd97104f82755d72a26b877e4776582fedd190218d0e5f478f007e5aaae7",
             "file": "projects/design-angular-kit/src/lib/components/navigation/skiplink/skiplink-item/skiplink-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -28455,15 +28455,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 1139,
-                            "end": 1157,
+                            "pos": 1179,
+                            "end": 1197,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1140,
-                                "end": 1147,
+                                "pos": 1180,
+                                "end": 1187,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -28475,7 +28475,7 @@
                     ],
                     "rawdescription": "\n\nIs an external link (false to not use Angular router link)\n",
                     "description": "<p>Is an external link (false to not use Angular router link)</p>\n",
-                    "line": 31,
+                    "line": 32,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -28485,7 +28485,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe router link action\n\nCommands to pass to Router#createUrlTree.\n- array: commands to pass to Router#createUrlTree.\n- string: shorthand for array of commands with just the string, i.e. ['/route']\n- null|undefined: Disables the link by removing the href\n",
                     "description": "<p>The router link action</p>\n<p>Commands to pass to Router#createUrlTree.</p>\n<ul>\n<li>array: commands to pass to Router#createUrlTree.</li>\n<li>string: shorthand for array of commands with just the string, i.e. [&#39;/route&#39;]</li>\n<li>null|undefined: Disables the link by removing the href</li>\n</ul>\n",
-                    "line": 25,
+                    "line": 26,
                     "type": "any[] | string | null | undefined",
                     "decorators": []
                 }
@@ -28499,7 +28499,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 33
                 }
             ],
             "methodsClass": [],
@@ -28524,7 +28524,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Host, Input } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\nimport { ItLinkComponent, ItSkiplinkComponent } from 'projects/design-angular-kit/src/public_api';\n\n@Component({\n  standalone: true,\n  selector: 'it-skiplink-item',\n  templateUrl: './skiplink-item.component.html',\n  exportAs: 'itSkipLinkItem',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, TranslateModule, ItLinkComponent],\n})\nexport class ItSkiplinkItemComponent {\n  /**\n   * The router link action\n   *\n   * Commands to pass to Router#createUrlTree.\n   * - array: commands to pass to Router#createUrlTree.\n   * - string: shorthand for array of commands with just the string, i.e. ['/route']\n   * - null|undefined: Disables the link by removing the href\n   */\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @Input() href: any[] | string | null | undefined;\n\n  /**\n   * Is an external link (false to not use Angular router link)\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) externalLink?: boolean;\n  inNav: boolean;\n\n  constructor(@Host() parent: ItSkiplinkComponent) {\n    this.inNav = parent.nav ? true : false;\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Host, Input } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\nimport { ItLinkComponent } from '../../../core/link/link.component';\nimport { ItSkiplinkComponent } from '../skiplink/skiplink.component';\n\n@Component({\n  standalone: true,\n  selector: 'it-skiplink-item',\n  templateUrl: './skiplink-item.component.html',\n  exportAs: 'itSkipLinkItem',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, TranslateModule, ItLinkComponent],\n})\nexport class ItSkiplinkItemComponent {\n  /**\n   * The router link action\n   *\n   * Commands to pass to Router#createUrlTree.\n   * - array: commands to pass to Router#createUrlTree.\n   * - string: shorthand for array of commands with just the string, i.e. ['/route']\n   * - null|undefined: Disables the link by removing the href\n   */\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @Input() href: any[] | string | null | undefined;\n\n  /**\n   * Is an external link (false to not use Angular router link)\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) externalLink?: boolean;\n  inNav: boolean;\n\n  constructor(@Host() parent: ItSkiplinkComponent) {\n    this.inNav = parent.nav ? true : false;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -28541,7 +28541,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 32,
+                "line": 33,
                 "jsdoctags": [
                     {
                         "name": "parent",
@@ -32824,7 +32824,7 @@
         },
         {
             "name": "ItTransferComponent",
-            "id": "component-ItTransferComponent-dce1aab12265c71c8ecbb58175d68c1b3865370245cb34320234bc2e2990527c46725bf4c35ea60aec6e52b247f6c067adb4dc8924aadc6cc42e9a53bf02512a",
+            "id": "component-ItTransferComponent-3731112411035b4ca33b5ef034785d2c49bc0715eb3cf2222bc438843c9732925aff604641596a87e382ccb3e84a962cfa2c5c6f49e7a6977720f5612caec127",
             "file": "projects/design-angular-kit/src/lib/components/form/transfer/transfer.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -32983,15 +32983,15 @@
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1801,
-                            "end": 1819,
+                            "pos": 1790,
+                            "end": 1808,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1802,
-                                "end": 1809,
+                                "pos": 1791,
+                                "end": 1798,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -33031,15 +33031,15 @@
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1923,
-                            "end": 1941,
+                            "pos": 1912,
+                            "end": 1930,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1924,
-                                "end": 1931,
+                                "pos": 1913,
+                                "end": 1920,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -33065,15 +33065,15 @@
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1680,
-                            "end": 1698,
+                            "pos": 1669,
+                            "end": 1687,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1681,
-                                "end": 1688,
+                                "pos": 1670,
+                                "end": 1677,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -33989,7 +33989,7 @@
             "description": "<p>Transfer</p>\n",
             "rawdescription": "\n\nTransfer\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Optional, Output, Self } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { FormControlName, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';\nimport { TranslateService } from '@ngx-translate/core';\nimport { tap } from 'rxjs';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { TransferStore } from './store/transfer.store';\nimport { ItTransferListComponent } from './transfer-list/transfer-list.component';\nimport { TransferItem } from './transfer.model';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from 'projects/design-angular-kit/src/public_api';\n\n/**\n * Transfer\n * @description Component that allows the creation of checkbox lists.\n */\n@Component({\n  selector: 'it-transfer',\n  standalone: true,\n  templateUrl: './transfer.component.html',\n  imports: [TranslateModule, ItIconComponent, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],\n  providers: [TransferStore],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {\n  /**\n   * The select options (left side)\n   */\n  @Input() options = [];\n  /**\n   * The selected options (right side)\n   */\n  @Input() selected = [];\n  /**\n   * Fired when there is a transfer, a backtransfer or a reset event\n   */\n  @Output() readonly transferChanges = new EventEmitter<TransferItem<T>[]>();\n\n  /**\n   * Enable transfer button\n   * @default false\n   */\n  readonly transferEnabled = this.store.transferEnabled;\n  /**\n   * Enable backtransfer button\n   * @default false\n   */\n  readonly backtransferEnabled = this.store.backtransferEnabled;\n  /**\n   * Enable reset button\n   * @default false\n   */\n  readonly resetEnabled = this.store.resetEnabled;\n\n  private readonly destroyRef = inject(DestroyRef);\n\n  constructor(\n    @Self()\n    @Optional()\n    override readonly _ngControl: NgControl,\n    override readonly _translateService: TranslateService,\n    private readonly store: TransferStore<T>\n  ) {\n    super(_translateService, _ngControl);\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n    this.storeInit();\n    this.onStoreValueChanged();\n  }\n\n  /**\n   * Transfer button click handler\n   */\n  transferClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.transfer());\n  }\n  /**\n   * Transfer button keypress handler\n   */\n  transferKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.transfer());\n  }\n  /**\n   * Backtransfer button click handler\n   */\n  backtransferClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.backtransfer());\n  }\n  /**\n   * Backtransfer button keypress handler\n   */\n  backtransferKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.backtransfer());\n  }\n  /**\n   * Reset button click handler\n   */\n  resetClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.reset());\n  }\n  /**\n   * Reset button keypress handler\n   */\n  resetKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.reset());\n  }\n\n  private buttonEventHandler(event: Event, updateStoreCb: () => void) {\n    event.preventDefault();\n    updateStoreCb();\n  }\n\n  private storeInit() {\n    let target = [];\n    const ngControl = this._ngControl;\n    const isNgControlDefined = Boolean(this._ngControl);\n\n    // if ngControl is defined, take values from it. Input() target will be ignored\n    if (isNgControlDefined) {\n      console.debug('ngControl instanceof NgModel:', ngControl instanceof NgModel);\n      console.debug('ngControl instanceof FormControlName:', ngControl instanceof FormControlName);\n\n      // if ngControl is an ngModel (template-driven form use case), take values from it\n      if (ngControl instanceof NgModel) {\n        console.debug('ngControl instanceof NgModel');\n        const model = (ngControl as NgModel).model;\n        target = Array.isArray(model) ? model : [];\n      }\n\n      // if ngControl is an FormControlName (reactive form use case), take values from it\n      if (ngControl instanceof FormControlName) {\n        console.debug('ngControl instanceof FormControlName');\n        const model = (ngControl as FormControlName).control.value;\n        target = Array.isArray(model) ? model : [];\n      }\n\n      console.debug('ngControl is defined. Input() target will be ignored');\n    } else if (this.selected && Array.isArray(this.selected)) {\n      target = [...this.selected];\n    }\n\n    console.debug('target:', this.selected, 'formControl:', this.control.value, 'ngModel:', this._ngControl);\n    this.store.init({ source: [...this.options], target });\n  }\n\n  private onStoreValueChanged() {\n    this.store.valueChanged\n      .pipe(\n        takeUntilDestroyed(this.destroyRef),\n        tap(value => this.writeValue(value as T)),\n        tap(value => this.onChange(value as T)),\n        tap(value => this.transferChanges.emit(value))\n      )\n      .subscribe();\n  }\n}\n",
+            "sourceCode": "import { AsyncPipe, NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Optional, Output, Self } from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { FormControlName, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';\nimport { TranslateService } from '@ngx-translate/core';\nimport { tap } from 'rxjs';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { TransferStore } from './store/transfer.store';\nimport { ItTransferListComponent } from './transfer-list/transfer-list.component';\nimport { TransferItem } from './transfer.model';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { ItIconComponent } from '../../utils/icon/icon.component';\n\n/**\n * Transfer\n * @description Component that allows the creation of checkbox lists.\n */\n@Component({\n  selector: 'it-transfer',\n  standalone: true,\n  templateUrl: './transfer.component.html',\n  imports: [TranslateModule, ItIconComponent, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],\n  providers: [TransferStore],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {\n  /**\n   * The select options (left side)\n   */\n  @Input() options = [];\n  /**\n   * The selected options (right side)\n   */\n  @Input() selected = [];\n  /**\n   * Fired when there is a transfer, a backtransfer or a reset event\n   */\n  @Output() readonly transferChanges = new EventEmitter<TransferItem<T>[]>();\n\n  /**\n   * Enable transfer button\n   * @default false\n   */\n  readonly transferEnabled = this.store.transferEnabled;\n  /**\n   * Enable backtransfer button\n   * @default false\n   */\n  readonly backtransferEnabled = this.store.backtransferEnabled;\n  /**\n   * Enable reset button\n   * @default false\n   */\n  readonly resetEnabled = this.store.resetEnabled;\n\n  private readonly destroyRef = inject(DestroyRef);\n\n  constructor(\n    @Self()\n    @Optional()\n    override readonly _ngControl: NgControl,\n    override readonly _translateService: TranslateService,\n    private readonly store: TransferStore<T>\n  ) {\n    super(_translateService, _ngControl);\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n    this.storeInit();\n    this.onStoreValueChanged();\n  }\n\n  /**\n   * Transfer button click handler\n   */\n  transferClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.transfer());\n  }\n  /**\n   * Transfer button keypress handler\n   */\n  transferKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.transfer());\n  }\n  /**\n   * Backtransfer button click handler\n   */\n  backtransferClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.backtransfer());\n  }\n  /**\n   * Backtransfer button keypress handler\n   */\n  backtransferKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.backtransfer());\n  }\n  /**\n   * Reset button click handler\n   */\n  resetClickHandler(event: MouseEvent) {\n    this.buttonEventHandler(event, () => this.store.reset());\n  }\n  /**\n   * Reset button keypress handler\n   */\n  resetKeyPressHandler(event: KeyboardEvent) {\n    this.buttonEventHandler(event, () => this.store.reset());\n  }\n\n  private buttonEventHandler(event: Event, updateStoreCb: () => void) {\n    event.preventDefault();\n    updateStoreCb();\n  }\n\n  private storeInit() {\n    let target = [];\n    const ngControl = this._ngControl;\n    const isNgControlDefined = Boolean(this._ngControl);\n\n    // if ngControl is defined, take values from it. Input() target will be ignored\n    if (isNgControlDefined) {\n      console.debug('ngControl instanceof NgModel:', ngControl instanceof NgModel);\n      console.debug('ngControl instanceof FormControlName:', ngControl instanceof FormControlName);\n\n      // if ngControl is an ngModel (template-driven form use case), take values from it\n      if (ngControl instanceof NgModel) {\n        console.debug('ngControl instanceof NgModel');\n        const model = (ngControl as NgModel).model;\n        target = Array.isArray(model) ? model : [];\n      }\n\n      // if ngControl is an FormControlName (reactive form use case), take values from it\n      if (ngControl instanceof FormControlName) {\n        console.debug('ngControl instanceof FormControlName');\n        const model = (ngControl as FormControlName).control.value;\n        target = Array.isArray(model) ? model : [];\n      }\n\n      console.debug('ngControl is defined. Input() target will be ignored');\n    } else if (this.selected && Array.isArray(this.selected)) {\n      target = [...this.selected];\n    }\n\n    console.debug('target:', this.selected, 'formControl:', this.control.value, 'ngModel:', this._ngControl);\n    this.store.init({ source: [...this.options], target });\n  }\n\n  private onStoreValueChanged() {\n    this.store.valueChanged\n      .pipe(\n        takeUntilDestroyed(this.destroyRef),\n        tap(value => this.writeValue(value as T)),\n        tap(value => this.onChange(value as T)),\n        tap(value => this.transferChanges.emit(value))\n      )\n      .subscribe();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -38064,7 +38064,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "9b2ac303-66da-47e6-b525-e094d678539c",
+                        "destrucuredGroupId": "e9832028-62f6-4cdf-8fad-c0bca1e960b9",
                         "destructuredParameter": true
                     }
                 ],
@@ -38074,7 +38074,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "9b2ac303-66da-47e6-b525-e094d678539c",
+                        "destrucuredGroupId": "e9832028-62f6-4cdf-8fad-c0bca1e960b9",
                         "destructuredParameter": true,
                         "tagName": {
                             "text": "param"
@@ -40378,7 +40378,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "9b2ac303-66da-47e6-b525-e094d678539c",
+                            "destrucuredGroupId": "e9832028-62f6-4cdf-8fad-c0bca1e960b9",
                             "destructuredParameter": true
                         }
                     ],
@@ -40388,7 +40388,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "9b2ac303-66da-47e6-b525-e094d678539c",
+                            "destrucuredGroupId": "e9832028-62f6-4cdf-8fad-c0bca1e960b9",
                             "destructuredParameter": true,
                             "tagName": {
                                 "text": "param"
