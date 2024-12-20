@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, Host, Input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../../utils/coercion';
-import { ItLinkComponent, ItSkiplinkComponent } from 'projects/design-angular-kit/src/public_api';
+import { ItLinkComponent } from '../../../core/link/link.component';
+import { ItSkiplinkComponent } from '../skiplink/skiplink.component';
 
 @Component({
   standalone: true,
