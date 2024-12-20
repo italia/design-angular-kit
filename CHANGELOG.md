@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/italia/design-angular-kit/compare/v1.1.3...v1.1.4) (2024-12-20)
+
+
+### Bug Fixes
+
+* components import ([e54bbb9](https://github.com/italia/design-angular-kit/commit/e54bbb9b50f9b62e7a48c7a7af81053c5aebb41a))
+
 ## [1.1.3](https://github.com/italia/design-angular-kit/compare/v1.1.2...v1.1.3) (2024-12-18)
 
 
