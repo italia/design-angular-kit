@@ -17,7 +17,8 @@
     "lint:fix": "ng lint --fix",
     "lint:format": "npx prettier --write .",
     "prepare": "is-ci || husky",
-    "postversion": "npm version $npm_package_version --prefix projects/design-angular-kit/ --no-git-tag-version",
+    "postversion": "echo \"You can now publish your version using 'git push --follow-tags'\"",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/wait-confirm && git add CHANGELOG.md",
     "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle/browser -m 'chore: update documentation'",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
@@ -98,9 +99,6 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@compodoc/compodoc": "^1.1.25",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^10.0.7",
     "@types/bootstrap": "^5.2.10",
     "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.13",
@@ -130,7 +128,6 @@
     "nunjucks-cli": "^1.0.0",
     "prettier": "^3.3.2",
     "prettier-eslint": "^16.3.0",
-    "semantic-release": "^24.0.0",
     "ts-node": "~10.9.2",
     "typescript": "~5.4.5"
   }
