@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -43,7 +44,7 @@ jobs:
         with:
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: italia/slack-notify-release-action@v0.2.0
+      - uses: italia/slack-notify-release-action@v0.4.0
         with:
           slack_token: ${{ secrets.SLACK_TOKEN }}
           channel_id: ${{ secrets.SLACK_CHANNEL }}
