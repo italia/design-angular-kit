@@ -77,7 +77,10 @@ export class NavscrollStore {
     const scrollAmount = (offset / height) * 100;
     const scrollValue = Math.min(100, Math.max(0, scrollAmount));
     const state = this.#state.value;
-    this.#state.next({ ...state, progressBar: scrollValue });
+    this.#state.next({
+      ...state,
+      progressBar: container.getBoundingClientRect().y > 0 ? 0 : scrollValue,
+    });
   }
 
   selectMenuItem() {
