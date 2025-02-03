@@ -9,13 +9,13 @@
     <span class="input-group-text" #prependText>
       <ng-content select="[prependText]"></ng-content>
     </span>
-
     @if (label) {
       <label
         [for]="id"
         [class.active]="isActiveLabel"
+        [class.input-symbol-label]="percentage || currency"
         [class.input-number-label]="type === 'number'"
-        [class.empty-prepend-label]="!prependText.clientWidth">
+        [class.empty-prepend-label]="!(percentage || currency) && !prependText.clientWidth">
         {{ label }}
       </label>
     }
