@@ -44,6 +44,16 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
   @Input({ transform: inputToBoolean }) dark?: boolean;
 
   /**
+   * Show items as cards
+   */
+  @Input({ transform: inputToBoolean }) cards?: boolean;
+
+  /**
+   * Show vertical navigation
+   */
+  @Input({ transform: inputToBoolean }) vertical?: boolean;
+
+  /**
    * The tab items
    */
   @ContentChildren(ItTabItemComponent) tabs?: QueryList<ItTabItemComponent>;

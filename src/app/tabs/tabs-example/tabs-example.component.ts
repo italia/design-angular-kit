@@ -11,7 +11,9 @@ export class TabsExampleComponent {
 
   isDisabled = false;
 
-  isPill = false;
+  isCard = false;
+
+  isVertical = false;
 
   tabs: Array<{
     label: string;

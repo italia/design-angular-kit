@@ -1,39 +1,51 @@
-@if (tabs) {
-  <ul class="nav nav-tabs" [class.auto]="auto" [class.nav-tabs-icon-text]="iconText" [class.nav-dark]="dark" role="tablist">
-    @for (tab of tabs; track tab.id) {
-      <li class="nav-item">
-        <a
-          #tabNavLinks
-          [id]="tab.id + '-tab-link'"
-          role="tab"
-          class="nav-link"
-          [class.active]="tab.active"
-          [class.disabled]="tab.disabled"
-          [attr.href]="'#' + tab.id + '-tab'"
-          [attr.aria-controls]="tab.id + '-tab'"
-          (click)="onTab(tab)">
-          @if (tab.icon) {
-            <it-icon [name]="tab.icon" class="me-2"></it-icon>
-          }
-          {{ tab.label }}
-        </a>
-      </li>
+<div class="row">
+  <div [class.col-4]="vertical" [class.col-md-3]="vertical" [class.col-12]="!vertical">
+    @if (tabs) {
+      <ul
+        class="nav nav-tabs"
+        [class.nav-tabs-cards]="cards"
+        [class.nav-tabs-vertical]="vertical"
+        [class.auto]="auto"
+        [class.nav-tabs-icon-text]="iconText"
+        [class.nav-dark]="dark"
+        role="tablist">
+        @for (tab of tabs; track tab.id) {
+          <li class="nav-item">
+            <a
+              #tabNavLinks
+              [id]="tab.id + '-tab-link'"
+              role="tab"
+              class="nav-link"
+              [class.active]="tab.active"
+              [class.disabled]="tab.disabled"
+              [attr.href]="'#' + tab.id + '-tab'"
+              [attr.aria-controls]="tab.id + '-tab'"
+              (click)="onTab(tab)">
+              @if (tab.icon) {
+                <it-icon [name]="tab.icon" class="me-2"></it-icon>
+              }
+              {{ tab.label }}
+            </a>
+          </li>
+        }
+      </ul>
     }
-  </ul>
-}
-
-@if (tabs) {
-  <div class="tab-content">
-    @for (tab of tabs; track tab.id) {
-      <div
-        [id]="tab.id + '-tab'"
-        class="tab-pane p-4 fade {{ tab.class ?? '' }}"
-        [class.active]="tab.active"
-        [class.show]="tab.active"
-        role="tabpanel"
-        [attr.aria-labelledby]="tab.id + '-tab-link'">
-        <ng-container *ngTemplateOutlet="tab.htmlContent"></ng-container>
+  </div>
+  <div [class.col-8]="vertical" [class.col-md-9]="vertical" [class.col-12]="!vertical">
+    @if (tabs) {
+      <div class="tab-content">
+        @for (tab of tabs; track tab.id) {
+          <div
+            [id]="tab.id + '-tab'"
+            class="tab-pane p-4 fade {{ tab.class ?? '' }}"
+            [class.active]="tab.active"
+            [class.show]="tab.active"
+            role="tabpanel"
+            [attr.aria-labelledby]="tab.id + '-tab-link'">
+            <ng-container *ngTemplateOutlet="tab.htmlContent"></ng-container>
+          </div>
+        }
       </div>
     }
   </div>
-}
+</div>
