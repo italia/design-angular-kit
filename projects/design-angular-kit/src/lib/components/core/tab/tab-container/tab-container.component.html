@@ -1,5 +1,14 @@
-<div class="row">
-  <div [class.col-4]="vertical" [class.col-md-3]="vertical" [class.col-12]="!vertical">
+<div
+  [class.row]="vertical"
+  [class.flex-row-reverse]="inverted && vertical"
+  [class.d-flex]="inverted && !vertical"
+  [class.flex-column-reverse]="inverted && !vertical">
+  <div
+    [class.col-5]="inverted && vertical"
+    [class.col-md-4]="inverted && vertical"
+    [class.col-lg-3]="inverted && vertical"
+    [class.col-4]="!inverted && vertical"
+    [class.col-md-3]="!inverted && vertical">
     @if (tabs) {
       <ul
         class="nav nav-tabs"
@@ -31,7 +40,12 @@
       </ul>
     }
   </div>
-  <div [class.col-8]="vertical" [class.col-md-9]="vertical" [class.col-12]="!vertical">
+  <div
+    [class.col-7]="inverted && vertical"
+    [class.col-md-8]="inverted && vertical"
+    [class.col-lg-9]="inverted && vertical"
+    [class.col-8]="!inverted && vertical"
+    [class.col-md-9]="!inverted && vertical">
     @if (tabs) {
       <div class="tab-content">
         @for (tab of tabs; track tab.id) {
