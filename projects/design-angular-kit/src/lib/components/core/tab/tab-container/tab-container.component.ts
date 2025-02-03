@@ -54,6 +54,11 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
   @Input({ transform: inputToBoolean }) vertical?: boolean;
 
   /**
+   * The tab position
+   */
+  @Input({ transform: inputToBoolean }) inverted: boolean;
+
+  /**
    * The tab items
    */
   @ContentChildren(ItTabItemComponent) tabs?: QueryList<ItTabItemComponent>;

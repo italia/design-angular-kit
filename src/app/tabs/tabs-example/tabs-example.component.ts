@@ -15,6 +15,8 @@ export class TabsExampleComponent {
 
   isVertical = false;
 
+  isInverted = false;
+
   tabs: Array<{
     label: string;
     content: string;
