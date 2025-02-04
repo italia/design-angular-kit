@@ -45,7 +45,7 @@
         }
         @if (editable) {
           <li class="nav-item">
-            <a href="" class="nav-tab-add" (click)="clickToAdd()" (keypress)="clickToAdd()"
+            <a href="#" class="nav-tab-add" (click)="clickToAdd($event)" (keypress)="clickToAdd()"
               ><span class="visually-hidden"> Aggiungi un tab</span></a
             >
           </li>
