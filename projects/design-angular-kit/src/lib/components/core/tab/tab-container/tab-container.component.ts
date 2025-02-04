@@ -130,7 +130,8 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
     this.tabClosed.emit(index);
   }
 
-  clickToAdd() {
+  clickToAdd($event) {
+    $event.preventDefault();
     this.tabAdded.emit();
   }
 }
