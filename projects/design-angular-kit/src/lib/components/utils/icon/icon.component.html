@@ -1,3 +1,6 @@
-<svg [attr.aria-hidden]="isAriaHidden" [attr.aria-label]="labelWaria" [class]="iconClass">
+<svg [attr.role]="role" [attr.aria-hidden]="isAriaHidden" [attr.aria-label]="title || labelWaria" [class]="iconClass">
+  @if (title || labelWaria) {
+    <title>{{ title || labelWaria }}</title>
+  }
   <use [attr.href]="iconHref" [attr.xlink:href]="iconHref"></use>
 </svg>
