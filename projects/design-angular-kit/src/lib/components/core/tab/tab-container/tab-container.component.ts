@@ -56,12 +56,12 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
   /**
    * The tab position
    */
-  @Input({ transform: inputToBoolean }) inverted: boolean;
+  @Input({ transform: inputToBoolean }) inverted?: boolean;
 
   /**
    * If tabs are editable
    */
-  @Input({ transform: inputToBoolean }) editable: boolean;
+  @Input({ transform: inputToBoolean }) editable?: boolean;
 
   /**
    * The tab items
@@ -126,11 +126,11 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
     this.tabSelected.emit(tab);
   }
 
-  clickToClose(index) {
+  clickToClose(index: number) {
     this.tabClosed.emit(index);
   }
 
-  clickToAdd($event) {
+  clickToAdd($event: Event) {
     $event.preventDefault();
     this.tabAdded.emit();
   }
