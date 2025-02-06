@@ -104,9 +104,9 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
       return true;
     }
 
-    if (this.type === 'number' && (!!this.currency || !!this.percentage)) {
-      return true;
-    }
+    // if (this.type === 'number' && (!!this.currency || !!this.percentage)) {
+    //   return true;
+    // }
 
     return this.type === 'date' || this.type === 'time' || this.type === 'color';
   }

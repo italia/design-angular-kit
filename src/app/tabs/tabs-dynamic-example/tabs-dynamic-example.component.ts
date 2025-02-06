@@ -7,15 +7,9 @@ import { Component } from '@angular/core';
 })
 export class TabsDynamicExampleComponent {
   tabs = ['Primo', 'Secondo', 'Terzo'];
-  selectedIndex = 0;
-  selectAfterAdding = false;
 
   addTab() {
     this.tabs.push('Nuovo');
-
-    if (this.selectAfterAdding) {
-      this.selectedIndex = this.tabs.length - 1;
-    }
   }
 
   removeTab(index: number) {

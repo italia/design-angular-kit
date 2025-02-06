@@ -39,6 +39,16 @@ export class ItIconComponent {
   @Input() svgClass: string | undefined;
 
   /**
+   * Title of the icon
+   */
+  @Input() title: string | undefined;
+
+  /**
+   * Custom Waria label
+   */
+  @Input() labelWaria: string | undefined;
+
+  /**
    * Return the icon href
    */
   protected get iconHref(): string {
@@ -71,13 +81,12 @@ export class ItIconComponent {
    */
   protected assetBasePath: string;
 
-  /**
-   * Custom Waria label
-   */
-  @Input() labelWaria: string | undefined;
-
   get isAriaHidden(): boolean {
-    return this.labelWaria == undefined;
+    return this.labelWaria == undefined && this.title == undefined;
+  }
+
+  get role(): string {
+    return this.labelWaria == undefined && this.title == undefined ? undefined : 'img';
   }
 
   constructor() {
