@@ -37,7 +37,7 @@
               {{ tab.label }}
             </a>
             @if (editable) {
-              <a class="nav-link-close" (click)="clickToClose(i)" (keypress)="clickToClose(i)" [disabled]="tab.disabled">
+              <a class="nav-link-close" (click)="clickToClose(i)" (keypress)="clickToClose(i)" [attr.disabled]="tab.disabled">
                 <it-icon name="close"></it-icon>
               </a>
             }
@@ -45,7 +45,7 @@
         }
         @if (editable) {
           <li class="nav-item">
-            <a href="#" class="nav-tab-add" (click)="clickToAdd($event)" (keypress)="clickToAdd()"
+            <a href="#" class="nav-tab-add" (click)="clickToAdd($event)" (keypress)="clickToAdd($event)"
               ><span class="visually-hidden"> Aggiungi un tab</span></a
             >
           </li>

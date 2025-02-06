@@ -85,8 +85,8 @@ export class ItIconComponent {
     return this.labelWaria == undefined && this.title == undefined;
   }
 
-  get role(): string {
-    return this.labelWaria == undefined && this.title == undefined ? undefined : 'img';
+  get role(): string | null {
+    return this.labelWaria == undefined && this.title == undefined ? null : 'img';
   }
 
   constructor() {
