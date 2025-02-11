@@ -1,55 +1,73 @@
-<nav class="navbar-institutional navbar navbar-expand-lg navbar-dark py-1 px-3">
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarsTop"
-    aria-controls="navbarsTop"
-    aria-expanded="false"
-    aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div>
-    <a class="navbar-brand" href="https://innovazione.gov.it/"
-      >Dipartimento <span class="d-none d-lg-inline">per la Trasformazione </span>Digitale</a
-    >
-    <span class="navbar-brand text-white"> + </span>
-    <a class="navbar-brand" href="http://www.agid.gov.it/">AgID</a>
-  </div>
-  <div class="collapse navbar-collapse" id="navbarsTop">
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item nav-item-w-divider">
-        <a class="nav-link" href="https://pianotriennale-ict.italia.it/">Piano Triennale</a>
+<it-header slimTitle="Dipartimento per la Trasformazione Digitale + AgID" slimTitleLink="/" [showSearch]="false" [sticky]="true">
+  <ng-container slimLinkList>
+    <ul class="link-list">
+      <li>
+        <a class="list-item" target="_blank" href="https://pianotriennale-ict.italia.it">Piano Triennale</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://developers.italia.it/">Developers</a>
+      <li>
+        <a class="list-item" target="_blank" href="https://developers.italia.it/">Developers</a>
       </li>
-      <li class="nav-item nav-item-w-divider">
-        <a class="nav-link" href="https://designers.italia.it/">Designers</a>
+      <li>
+        <a class="ist-item" target="_blank" href="https://designers.italia.it">Designers</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://forum.italia.it/">Forum</a>
+      <li>
+        <a class="list-item" target="_blank" href="https://forum.italia.it/">Forum</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://docs.italia.it/">Docs</a>
+      <li>
+        <a class="list-item" target="_blank" href="https://docs.italia.it/">Docs</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://github.com/italia/">GitHub</a>
+      <li>
+        <a class="list-item" target="_blank" href="https://github.com/italia/">GitHub</a>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-container brand>
+    <a href="#">
+      <it-icon name="designers-italia"></it-icon>
+      <div class="it-brand-text">
+        <div class="it-brand-title">Design Angular Kit</div>
+        <div class="it-brand-tagline d-none d-md-block">Il kit Angular per lo sviluppo di applicazioni web per la PA</div>
+      </div>
+    </a>
+  </ng-container>
+  <div class="it-socials d-none d-md-flex" rightZone>
+    <ul>
+      <li>
+        <a href="https://github.com/italia/design-angular-kit/releases/tag/v{{ version }}" aria-label="Ultima release" target="_blank">
+          <it-icon name="file"></it-icon><span style="color: white">v{{ version }}</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/italia/design-angular-kit/" aria-label="Github" target="_blank">
+          <it-icon name="github"></it-icon>
+        </a>
       </li>
     </ul>
   </div>
-</nav>
+  <ng-container navItems>
+    @for (item of tableOfContent; track item.label) {
+      <it-navbar-item>
+        <it-dropdown mode="nav">
+          <span button>{{ item.label }}</span>
+          <ng-container list>
+            @for (link of item.links; track link.label) {
+              <it-dropdown-item [externalLink]="false" [href]="link.link">{{ link.label }}</it-dropdown-item>
+            }
+          </ng-container>
+        </it-dropdown>
+      </it-navbar-item>
+    }
+  </ng-container>
+</it-header>
 <div class="container-fluid">
   <div class="row flex-xl-nowrap">
-    <div class="collapse" id="docsNav">
-      <it-table-of-content class="col-12 d-md-none"></it-table-of-content>
-    </div>
     <it-table-of-content class="d-none d-md-flex col-md-3 col-xl-2"></it-table-of-content>
     <main class="col-12 col-md-9 col-xl-10 py-md-3 px-md-3 bd-content">
       <router-outlet></router-outlet>
     </main>
   </div>
 </div>
+<it-back-to-top [shadow]="true"> </it-back-to-top>
 <footer class="bd-footer text-muted">
   <div class="container">
     <div class="py-4">
