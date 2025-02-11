@@ -52,7 +52,7 @@
   </div>
   <ng-container navItems>
     @for (item of tableOfContent; track item.label) {
-      <it-navbar-item>
+      <it-navbar-item class="d-md-none">
         <it-dropdown mode="nav">
           <span button>{{ item.label }}</span>
           <ng-container list>
