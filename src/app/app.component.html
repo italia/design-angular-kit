@@ -1,4 +1,10 @@
-<it-header slimTitle="Dipartimento per la Trasformazione Digitale + AgID" slimTitleLink="/" [showSearch]="false" [sticky]="true">
+<it-header
+  slimTitle="Dipartimento per la Trasformazione Digitale + AgID"
+  slimTitleLink="/"
+  [showSearch]="false"
+  [sticky]="true"
+  [expand]="true"
+  #headerEl>
   <ng-container slimLinkList>
     <ul class="link-list">
       <li>
@@ -51,7 +57,9 @@
           <span button>{{ item.label }}</span>
           <ng-container list>
             @for (link of item.links; track link.label) {
-              <it-dropdown-item [externalLink]="false" [href]="link.link">{{ link.label }}</it-dropdown-item>
+              <it-dropdown-item [externalLink]="false" [href]="link.link" (click)="headerEl.closeNavBar()">{{
+                link.label
+              }}</it-dropdown-item>
             }
           </ng-container>
         </it-dropdown>

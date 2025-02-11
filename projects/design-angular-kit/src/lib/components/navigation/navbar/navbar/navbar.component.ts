@@ -27,6 +27,18 @@ export class ItNavBarComponent implements AfterViewInit {
     }
   }
 
+  get isOpen() {
+    return this.navbar?._isShown;
+  }
+
+  open() {
+    this.navbar?.show(this.collapseButton?.nativeElement);
+  }
+
+  close() {
+    this.navbar?.hide();
+  }
+
   toggleCollapse() {
     this.navbar?.toggle(this.collapseButton?.nativeElement);
   }
