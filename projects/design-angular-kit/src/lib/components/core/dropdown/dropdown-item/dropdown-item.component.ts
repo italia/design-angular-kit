@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Host, Input } from '@angular/core';
 import { IconName } from '../../../../interfaces/icon';
 import { ItLinkComponent } from '../../link/link.component';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { inputToBoolean } from '../../../../utils/coercion';
+import { ItDropdownComponent } from '../dropdown/dropdown.component';
 
 @Component({
   standalone: true,
@@ -12,7 +13,7 @@ import { inputToBoolean } from '../../../../utils/coercion';
   templateUrl: './dropdown-item.component.html',
   styleUrls: ['./dropdown-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItIconComponent, TranslateModule, ItLinkComponent],
+  imports: [ItIconComponent, TranslateModule, ItLinkComponent, ItDropdownComponent],
 })
 export class ItDropdownItemComponent extends ItLinkComponent {
   /**
@@ -45,13 +46,26 @@ export class ItDropdownItemComponent extends ItLinkComponent {
   @Input() iconPosition: 'left' | 'right' = 'right';
 
   /**
+   * Dropdown mode
+   */
+  mode?: 'button' | 'link' | 'nav' = 'button';
+
+  /**
    * Change icon color if menu is dark
    * @default false
    */
   isDark: boolean = false;
 
+  constructor(@Host() parent: ItDropdownComponent) {
+    super();
+    this.mode = parent.mode;
+  }
+
   get linkClass(): string {
     let linkClass = `list-item ${this.active ? 'active' : 'dropdown-item'}`;
+    if (this.mode === 'nav') {
+      linkClass += ' nav-link';
+    }
     if (this.disabled) {
       linkClass += ' disabled';
     }
