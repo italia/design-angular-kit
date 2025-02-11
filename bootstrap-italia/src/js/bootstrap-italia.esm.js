@@ -1,3 +1,11 @@
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap Italia (https://italia.github.io/bootstrap-italia/)
+ * Authors: https://github.com/italia/bootstrap-italia/blob/main/AUTHORS
+ * Licensed under BSD-3-Clause license (https://github.com/italia/bootstrap-italia/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
 export { default as CarouselBI } from './plugins/carousel-bi'
 export { default as InputNumber } from './plugins/input-number'
 export { default as Dimmer } from './plugins/dimmer'
@@ -15,7 +23,7 @@ export { default as InputSearchAutocomplete } from './plugins/input-search-autoc
 export { default as InputPassword } from './plugins/input-password'
 export { default as ProgressDonut } from './plugins/progress-donut'
 export { default as UploadDragDrop } from './plugins/upload-dragdrop'
-export { default as BackToTop } from './plugins/backToTop'
+export { default as BackToTop } from './plugins/back-to-top'
 export { default as HistoryBack } from './plugins/history-back'
 export { default as Forward } from './plugins/forward'
 export { default as Masonry } from './plugins/masonry'

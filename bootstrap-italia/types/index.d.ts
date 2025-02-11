@@ -1,6 +1,6 @@
 import { Alert } from './plugins/alert'
 import { Accordion } from './plugins/accordion'
-import { BackToTop } from './plugins/backToTop'
+import { BackToTop } from './plugins/back-to-top'
 import { Button } from './plugins/button'
 import { Carousel } from './plugins/carousel'
 import { CarouselBI } from './plugins/carousel-bi'
@@ -36,6 +36,8 @@ import { Tooltip } from './plugins/tooltip'
 import { TrackFocus } from './plugins/track-focus'
 import { Transfer } from './plugins/transfer'
 import { UploadDragDrop } from './plugins/upload-dragdrop'
+import { VideoPlayer } from './plugins/video'
+
 import { loadFonts } from './plugins/fonts-loader'
 
 export {
@@ -78,5 +80,6 @@ export {
   TrackFocus,
   Transfer,
   UploadDragDrop,
+  VideoPlayer,
   loadFonts
 }

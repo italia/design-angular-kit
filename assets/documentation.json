@@ -759,12 +759,12 @@
         },
         {
             "name": "NavscrollState",
-            "id": "interface-NavscrollState-95735eae63e62c67fad9aa300d593a70c5ee0774297d5a8f8c6daf6f045f95436c9df5c1a160b2f32e2ba3c3aa3c229c4060a79a1035ab8dca245709e1c02e4b",
+            "id": "interface-NavscrollState-bb9996c7e3406aa4ffbf0054316e3276d21450c2c850d24004526c92a9d409798e8ef7ad8965917aaa7892f6ad3af0963e4c82d1bf2b1da747502d508b947b67",
             "file": "projects/design-angular-kit/src/lib/components/navigation/navscroll/navscroll.store.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { BehaviorSubject, distinctUntilChanged, map, Subject } from 'rxjs';\nimport { NavscrollItem } from './navscroll.model';\nimport { flattenNavscrollItems, search } from './navscroll.utils';\n\ninterface NavscrollState {\n  items: Set<NavscrollItem>;\n  active: Array<NavscrollItem>;\n  selected?: NavscrollItem;\n  progressBar: number;\n  isMobile: boolean;\n}\n\nexport class NavscrollStore {\n  readonly #state = new BehaviorSubject<NavscrollState>({\n    items: new Set<NavscrollItem>(),\n    active: [],\n    selected: undefined,\n    progressBar: 0,\n    isMobile: false,\n  });\n\n  readonly #state$ = this.#state.asObservable();\n\n  readonly selected = this.#state$.pipe(\n    map(({ selected }) => selected),\n    distinctUntilChanged()\n  );\n\n  readonly progressBar = this.#state$.pipe(\n    map(({ progressBar }) => progressBar),\n    distinctUntilChanged()\n  );\n\n  readonly isMobile = this.#state$.pipe(\n    map(({ isMobile }) => isMobile),\n    distinctUntilChanged()\n  );\n\n  readonly #menuItemSelected = new Subject();\n\n  readonly menuItemSelected = this.#menuItemSelected.asObservable();\n\n  init(navscrollItems: Array<NavscrollItem>) {\n    const flattenItems = flattenNavscrollItems(navscrollItems);\n    //the first item is selected by default\n    const selected = ((flattenItems && flattenItems.length && flattenItems[0]) as NavscrollItem) ?? undefined;\n\n    const state = {\n      items: new Set(flattenItems),\n      active: selected ? [selected] : [],\n      selected: selected,\n      progressBar: 0,\n      isMobile: false,\n    };\n\n    this.#state.next(state);\n  }\n\n  setActive(item: NavscrollItem) {\n    const { items } = this.#state.value;\n\n    const active = search(items, item);\n    const state = this.#state.value;\n    this.#state.next({ ...state, items, selected: item, active });\n  }\n\n  isActive$(item: NavscrollItem) {\n    return this.#state.asObservable().pipe(map(state => state.active.includes(item)));\n  }\n\n  updateProgressBar(container: HTMLElement) {\n    if (!container) {\n      return;\n    }\n    const offset = Math.abs(container.getBoundingClientRect().top);\n    const height = container.getBoundingClientRect().height;\n    const scrollAmount = (offset / height) * 100;\n    const scrollValue = Math.min(100, Math.max(0, scrollAmount));\n    const state = this.#state.value;\n    this.#state.next({ ...state, progressBar: scrollValue });\n  }\n\n  selectMenuItem() {\n    this.#menuItemSelected.next(undefined);\n  }\n\n  setMobile({ innerWidth }: { innerWidth: number }) {\n    const isLessThan992px = innerWidth < 992;\n    const isMobile = isLessThan992px;\n    const state = this.#state.value;\n    this.#state.next({ ...state, isMobile });\n  }\n}\n",
+            "sourceCode": "import { BehaviorSubject, distinctUntilChanged, map, Subject } from 'rxjs';\nimport { NavscrollItem } from './navscroll.model';\nimport { flattenNavscrollItems, search } from './navscroll.utils';\n\ninterface NavscrollState {\n  items: Set<NavscrollItem>;\n  active: Array<NavscrollItem>;\n  selected?: NavscrollItem;\n  progressBar: number;\n  isMobile: boolean;\n}\n\nexport class NavscrollStore {\n  readonly #state = new BehaviorSubject<NavscrollState>({\n    items: new Set<NavscrollItem>(),\n    active: [],\n    selected: undefined,\n    progressBar: 0,\n    isMobile: false,\n  });\n\n  readonly #state$ = this.#state.asObservable();\n\n  readonly selected = this.#state$.pipe(\n    map(({ selected }) => selected),\n    distinctUntilChanged()\n  );\n\n  readonly progressBar = this.#state$.pipe(\n    map(({ progressBar }) => progressBar),\n    distinctUntilChanged()\n  );\n\n  readonly isMobile = this.#state$.pipe(\n    map(({ isMobile }) => isMobile),\n    distinctUntilChanged()\n  );\n\n  readonly #menuItemSelected = new Subject();\n\n  readonly menuItemSelected = this.#menuItemSelected.asObservable();\n\n  init(navscrollItems: Array<NavscrollItem>) {\n    const flattenItems = flattenNavscrollItems(navscrollItems);\n    //the first item is selected by default\n    const selected = ((flattenItems && flattenItems.length && flattenItems[0]) as NavscrollItem) ?? undefined;\n\n    const state = {\n      items: new Set(flattenItems),\n      active: selected ? [selected] : [],\n      selected: selected,\n      progressBar: 0,\n      isMobile: false,\n    };\n\n    this.#state.next(state);\n  }\n\n  setActive(item: NavscrollItem) {\n    const { items } = this.#state.value;\n\n    const active = search(items, item);\n    const state = this.#state.value;\n    this.#state.next({ ...state, items, selected: item, active });\n  }\n\n  isActive$(item: NavscrollItem) {\n    return this.#state.asObservable().pipe(map(state => state.active.includes(item)));\n  }\n\n  updateProgressBar(container: HTMLElement) {\n    if (!container) {\n      return;\n    }\n    const offset = Math.abs(container.getBoundingClientRect().top);\n    const height = container.getBoundingClientRect().height;\n    const scrollAmount = (offset / height) * 100;\n    const scrollValue = Math.min(100, Math.max(0, scrollAmount));\n    const state = this.#state.value;\n    this.#state.next({\n      ...state,\n      progressBar: container.getBoundingClientRect().y > 0 ? 0 : scrollValue,\n    });\n  }\n\n  selectMenuItem() {\n    this.#menuItemSelected.next(undefined);\n  }\n\n  setMobile({ innerWidth }: { innerWidth: number }) {\n    const isLessThan992px = innerWidth < 992;\n    const isMobile = isLessThan992px;\n    const state = this.#state.value;\n    this.#state.next({ ...state, isMobile });\n  }\n}\n",
             "properties": [
                 {
                     "name": "active",
@@ -4755,12 +4755,12 @@
         },
         {
             "name": "NavscrollStore",
-            "id": "class-NavscrollStore-95735eae63e62c67fad9aa300d593a70c5ee0774297d5a8f8c6daf6f045f95436c9df5c1a160b2f32e2ba3c3aa3c229c4060a79a1035ab8dca245709e1c02e4b",
+            "id": "class-NavscrollStore-bb9996c7e3406aa4ffbf0054316e3276d21450c2c850d24004526c92a9d409798e8ef7ad8965917aaa7892f6ad3af0963e4c82d1bf2b1da747502d508b947b67",
             "file": "projects/design-angular-kit/src/lib/components/navigation/navscroll/navscroll.store.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { BehaviorSubject, distinctUntilChanged, map, Subject } from 'rxjs';\nimport { NavscrollItem } from './navscroll.model';\nimport { flattenNavscrollItems, search } from './navscroll.utils';\n\ninterface NavscrollState {\n  items: Set<NavscrollItem>;\n  active: Array<NavscrollItem>;\n  selected?: NavscrollItem;\n  progressBar: number;\n  isMobile: boolean;\n}\n\nexport class NavscrollStore {\n  readonly #state = new BehaviorSubject<NavscrollState>({\n    items: new Set<NavscrollItem>(),\n    active: [],\n    selected: undefined,\n    progressBar: 0,\n    isMobile: false,\n  });\n\n  readonly #state$ = this.#state.asObservable();\n\n  readonly selected = this.#state$.pipe(\n    map(({ selected }) => selected),\n    distinctUntilChanged()\n  );\n\n  readonly progressBar = this.#state$.pipe(\n    map(({ progressBar }) => progressBar),\n    distinctUntilChanged()\n  );\n\n  readonly isMobile = this.#state$.pipe(\n    map(({ isMobile }) => isMobile),\n    distinctUntilChanged()\n  );\n\n  readonly #menuItemSelected = new Subject();\n\n  readonly menuItemSelected = this.#menuItemSelected.asObservable();\n\n  init(navscrollItems: Array<NavscrollItem>) {\n    const flattenItems = flattenNavscrollItems(navscrollItems);\n    //the first item is selected by default\n    const selected = ((flattenItems && flattenItems.length && flattenItems[0]) as NavscrollItem) ?? undefined;\n\n    const state = {\n      items: new Set(flattenItems),\n      active: selected ? [selected] : [],\n      selected: selected,\n      progressBar: 0,\n      isMobile: false,\n    };\n\n    this.#state.next(state);\n  }\n\n  setActive(item: NavscrollItem) {\n    const { items } = this.#state.value;\n\n    const active = search(items, item);\n    const state = this.#state.value;\n    this.#state.next({ ...state, items, selected: item, active });\n  }\n\n  isActive$(item: NavscrollItem) {\n    return this.#state.asObservable().pipe(map(state => state.active.includes(item)));\n  }\n\n  updateProgressBar(container: HTMLElement) {\n    if (!container) {\n      return;\n    }\n    const offset = Math.abs(container.getBoundingClientRect().top);\n    const height = container.getBoundingClientRect().height;\n    const scrollAmount = (offset / height) * 100;\n    const scrollValue = Math.min(100, Math.max(0, scrollAmount));\n    const state = this.#state.value;\n    this.#state.next({ ...state, progressBar: scrollValue });\n  }\n\n  selectMenuItem() {\n    this.#menuItemSelected.next(undefined);\n  }\n\n  setMobile({ innerWidth }: { innerWidth: number }) {\n    const isLessThan992px = innerWidth < 992;\n    const isMobile = isLessThan992px;\n    const state = this.#state.value;\n    this.#state.next({ ...state, isMobile });\n  }\n}\n",
+            "sourceCode": "import { BehaviorSubject, distinctUntilChanged, map, Subject } from 'rxjs';\nimport { NavscrollItem } from './navscroll.model';\nimport { flattenNavscrollItems, search } from './navscroll.utils';\n\ninterface NavscrollState {\n  items: Set<NavscrollItem>;\n  active: Array<NavscrollItem>;\n  selected?: NavscrollItem;\n  progressBar: number;\n  isMobile: boolean;\n}\n\nexport class NavscrollStore {\n  readonly #state = new BehaviorSubject<NavscrollState>({\n    items: new Set<NavscrollItem>(),\n    active: [],\n    selected: undefined,\n    progressBar: 0,\n    isMobile: false,\n  });\n\n  readonly #state$ = this.#state.asObservable();\n\n  readonly selected = this.#state$.pipe(\n    map(({ selected }) => selected),\n    distinctUntilChanged()\n  );\n\n  readonly progressBar = this.#state$.pipe(\n    map(({ progressBar }) => progressBar),\n    distinctUntilChanged()\n  );\n\n  readonly isMobile = this.#state$.pipe(\n    map(({ isMobile }) => isMobile),\n    distinctUntilChanged()\n  );\n\n  readonly #menuItemSelected = new Subject();\n\n  readonly menuItemSelected = this.#menuItemSelected.asObservable();\n\n  init(navscrollItems: Array<NavscrollItem>) {\n    const flattenItems = flattenNavscrollItems(navscrollItems);\n    //the first item is selected by default\n    const selected = ((flattenItems && flattenItems.length && flattenItems[0]) as NavscrollItem) ?? undefined;\n\n    const state = {\n      items: new Set(flattenItems),\n      active: selected ? [selected] : [],\n      selected: selected,\n      progressBar: 0,\n      isMobile: false,\n    };\n\n    this.#state.next(state);\n  }\n\n  setActive(item: NavscrollItem) {\n    const { items } = this.#state.value;\n\n    const active = search(items, item);\n    const state = this.#state.value;\n    this.#state.next({ ...state, items, selected: item, active });\n  }\n\n  isActive$(item: NavscrollItem) {\n    return this.#state.asObservable().pipe(map(state => state.active.includes(item)));\n  }\n\n  updateProgressBar(container: HTMLElement) {\n    if (!container) {\n      return;\n    }\n    const offset = Math.abs(container.getBoundingClientRect().top);\n    const height = container.getBoundingClientRect().height;\n    const scrollAmount = (offset / height) * 100;\n    const scrollValue = Math.min(100, Math.max(0, scrollAmount));\n    const state = this.#state.value;\n    this.#state.next({\n      ...state,\n      progressBar: container.getBoundingClientRect().y > 0 ? 0 : scrollValue,\n    });\n  }\n\n  selectMenuItem() {\n    this.#menuItemSelected.next(undefined);\n  }\n\n  setMobile({ innerWidth }: { innerWidth: number }) {\n    const isLessThan992px = innerWidth < 992;\n    const isMobile = isLessThan992px;\n    const state = this.#state.value;\n    this.#state.next({ ...state, isMobile });\n  }\n}\n",
             "inputsClass": [],
             "outputsClass": [],
             "properties": [
@@ -4922,7 +4922,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 83,
+                    "line": 86,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4966,7 +4966,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 90,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -17840,7 +17840,7 @@
         },
         {
             "name": "ItIconComponent",
-            "id": "component-ItIconComponent-95033df0dbbe6f8a8b9322944329472eed1f59d8fc23db20c6cfff26be2175ec80c678ccfbc6235194f7906bcf3cd31962e3f0293009de65785ee93285fa9841",
+            "id": "component-ItIconComponent-52b9d9c6f9793ab86ef8654e15ac7e39a8c02ca6407395278be2c1b81a1ae86aee3255242296770561e1c7da8ea8b00047d24823d3e3cf78325b5daa61180ba5",
             "file": "projects/design-angular-kit/src/lib/components/utils/icon/icon.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -17875,7 +17875,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCustom Waria label\n",
                     "description": "<p>Custom Waria label</p>\n",
-                    "line": 77,
+                    "line": 49,
                     "type": "string | undefined",
                     "decorators": []
                 },
@@ -17941,6 +17941,16 @@
                     "line": 39,
                     "type": "string | undefined",
                     "decorators": []
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nTitle of the icon\n",
+                    "description": "<p>Title of the icon</p>\n",
+                    "line": 44,
+                    "type": "string | undefined",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -17952,22 +17962,22 @@
                     "type": "string",
                     "optional": false,
                     "description": "<p>The bootstrap-italia asset folder path</p>\n",
-                    "line": 72,
+                    "line": 82,
                     "rawdescription": "\n\nThe bootstrap-italia asset folder path\n",
                     "modifierKind": [
                         124
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 1614,
-                            "end": 1645,
+                            "pos": 1768,
+                            "end": 1799,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 1615,
-                                "end": 1622,
+                                "pos": 1769,
+                                "end": 1776,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -17989,7 +17999,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';\nimport { IconColor, IconName, IconSize } from '../../../interfaces/icon';\nimport { inputToBoolean } from '../../../utils/coercion';\nimport { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';\n\n@Component({\n  standalone: true,\n  selector: 'it-icon',\n  templateUrl: './icon.component.html',\n  styles: ':host {display: contents;}',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [],\n})\nexport class ItIconComponent {\n  /**\n   * The icon name\n   */\n  @Input({ required: true }) name!: IconName;\n\n  /**\n   * The icon size\n   */\n  @Input() size: IconSize | undefined;\n\n  /**\n   * The icon color\n   */\n  @Input() color: IconColor | undefined;\n\n  /**\n   * Create a padding proportional to the size of the surrounding icon.\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) padded?: boolean;\n\n  /**\n   * Custom class of svg\n   */\n  @Input() svgClass: string | undefined;\n\n  /**\n   * Return the icon href\n   */\n  protected get iconHref(): string {\n    return `${this.assetBasePath}/dist/svg/sprites.svg#it-${this.name}`;\n  }\n\n  /**\n   * Return the icon class\n   */\n  protected get iconClass(): string {\n    let iconClass = 'icon';\n    if (this.size) {\n      iconClass += ` icon-${this.size}`;\n    }\n    if (this.color) {\n      iconClass += ` icon-${this.color}`;\n    }\n    if (this.padded) {\n      iconClass += ` icon-padded`;\n    }\n    if (this.svgClass) {\n      iconClass += ` ${this.svgClass}`;\n    }\n    return iconClass;\n  }\n\n  /**\n   * The bootstrap-italia asset folder path\n   * @default ./bootstrap-italia\n   */\n  protected assetBasePath: string;\n\n  /**\n   * Custom Waria label\n   */\n  @Input() labelWaria: string | undefined;\n\n  get isAriaHidden(): boolean {\n    return this.labelWaria == undefined;\n  }\n\n  constructor() {\n    this.assetBasePath = inject(IT_ASSET_BASE_PATH);\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';\nimport { IconColor, IconName, IconSize } from '../../../interfaces/icon';\nimport { inputToBoolean } from '../../../utils/coercion';\nimport { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';\n\n@Component({\n  standalone: true,\n  selector: 'it-icon',\n  templateUrl: './icon.component.html',\n  styles: ':host {display: contents;}',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [],\n})\nexport class ItIconComponent {\n  /**\n   * The icon name\n   */\n  @Input({ required: true }) name!: IconName;\n\n  /**\n   * The icon size\n   */\n  @Input() size: IconSize | undefined;\n\n  /**\n   * The icon color\n   */\n  @Input() color: IconColor | undefined;\n\n  /**\n   * Create a padding proportional to the size of the surrounding icon.\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) padded?: boolean;\n\n  /**\n   * Custom class of svg\n   */\n  @Input() svgClass: string | undefined;\n\n  /**\n   * Title of the icon\n   */\n  @Input() title: string | undefined;\n\n  /**\n   * Custom Waria label\n   */\n  @Input() labelWaria: string | undefined;\n\n  /**\n   * Return the icon href\n   */\n  protected get iconHref(): string {\n    return `${this.assetBasePath}/dist/svg/sprites.svg#it-${this.name}`;\n  }\n\n  /**\n   * Return the icon class\n   */\n  protected get iconClass(): string {\n    let iconClass = 'icon';\n    if (this.size) {\n      iconClass += ` icon-${this.size}`;\n    }\n    if (this.color) {\n      iconClass += ` icon-${this.color}`;\n    }\n    if (this.padded) {\n      iconClass += ` icon-padded`;\n    }\n    if (this.svgClass) {\n      iconClass += ` ${this.svgClass}`;\n    }\n    return iconClass;\n  }\n\n  /**\n   * The bootstrap-italia asset folder path\n   * @default ./bootstrap-italia\n   */\n  protected assetBasePath: string;\n\n  get isAriaHidden(): boolean {\n    return this.labelWaria == undefined && this.title == undefined;\n  }\n\n  get role(): string | null {\n    return this.labelWaria == undefined && this.title == undefined ? null : 'img';\n  }\n\n  constructor() {\n    this.assetBasePath = inject(IT_ASSET_BASE_PATH);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ":host {display: contents;}\n",
@@ -17999,7 +18009,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 81
+                "line": 90
             },
             "extends": [],
             "accessors": {
@@ -18009,7 +18019,7 @@
                         "name": "iconHref",
                         "type": "string",
                         "returnType": "string",
-                        "line": 44,
+                        "line": 54,
                         "rawdescription": "\n\nReturn the icon href\n",
                         "description": "<p>Return the icon href</p>\n"
                     }
@@ -18020,7 +18030,7 @@
                         "name": "iconClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 51,
+                        "line": 61,
                         "rawdescription": "\n\nReturn the icon class\n",
                         "description": "<p>Return the icon class</p>\n"
                     }
@@ -18031,15 +18041,24 @@
                         "name": "isAriaHidden",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 79
+                        "line": 84
+                    }
+                },
+                "role": {
+                    "name": "role",
+                    "getSignature": {
+                        "name": "role",
+                        "type": "",
+                        "returnType": "string | null",
+                        "line": 88
                     }
                 }
             },
-            "templateData": "<svg [attr.aria-hidden]=\"isAriaHidden\" [attr.aria-label]=\"labelWaria\" [class]=\"iconClass\">\n  <use [attr.href]=\"iconHref\" [attr.xlink:href]=\"iconHref\"></use>\n</svg>\n"
+            "templateData": "<svg [attr.role]=\"role\" [attr.aria-hidden]=\"isAriaHidden\" [attr.aria-label]=\"title || labelWaria\" [class]=\"iconClass\">\n  @if (title || labelWaria) {\n    <title>{{ title || labelWaria }}</title>\n  }\n  <use [attr.href]=\"iconHref\" [attr.xlink:href]=\"iconHref\"></use>\n</svg>\n"
         },
         {
             "name": "ItInputComponent",
-            "id": "component-ItInputComponent-9e26f9fd1d6026d9fd75490bc87f9d82236420405295bb3efe50db9fbece64723d2fbe1fd794eed64f916cf4730fe3ca3c844798af73023b7efc9b0eba9728e8",
+            "id": "component-ItInputComponent-23fa1c0f94789d2739d641c9839fdea73a56ba8499224fffb5c5c15bcc67c241144fab06d2f457d6b0ebd67e363f27fbdb11a843f213e15bdcdb18d3e77e254f",
             "file": "projects/design-angular-kit/src/lib/components/form/input/input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -18648,8 +18667,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6394,
-                                "end": 6402,
+                                "pos": 6403,
+                                "end": 6411,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -18661,8 +18680,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "false",
                             "tagName": {
-                                "pos": 6388,
-                                "end": 6393,
+                                "pos": 6397,
+                                "end": 6402,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -19183,7 +19202,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { Observable } from 'rxjs';\nimport { AsyncPipe } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { inputToBoolean } from '../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [ReactiveFormsModule, TranslateModule, AsyncPipe],\n})\nexport class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder = '';\n\n  /**\n   * The input description\n   */\n  @Input() description: string | undefined;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   * @default undefined\n   */\n  @Input() readonly: boolean | 'plaintext' | undefined;\n\n  /**\n   * The max date value [Used only in type = 'date']\n   * @default '9999-12-31'\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() maxDate?: string = '9999-12-31';\n\n  /**\n   * The min date value [Used only in type = 'date']\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() minDate: string | undefined;\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max: number | undefined;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min: number | undefined;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step: number | 'any' | undefined;\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) currency?: boolean;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) percentage?: boolean;\n\n  /**\n   * The currency or percentage symbol [Used only if percentage or currency]\n   * @example '$'\n   */\n  @Input() symbol: string | undefined;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) adaptive?: boolean;\n\n  /**\n   * Input autocomplete attribute (Browser autocomplete)\n   * @default undefined\n   */\n  @Input() autocomplete: string | undefined;\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    if (this.type === 'number' && (!!this.currency || !!this.percentage)) {\n      return true;\n    }\n\n    return this.type === 'date' || this.type === 'time' || this.type === 'color';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  protected get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || !!this.readonly;\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min,\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max,\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', {\n        min: error.requiredLength,\n      });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', {\n        max: error.requiredLength,\n      });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidIban')) {\n      return this._translateService.get('it.errors.iban-invalid');\n    }\n    if (this.hasError('invalidPlate')) {\n      return this._translateService.get('it.errors.plate-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', {\n        pattern: error.requiredPattern,\n      });\n    }\n\n    return super.invalidMessage;\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (this.percentage) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => (this.min ? Validators.min(this.min)(control) : null));\n        validators.push((control: AbstractControl) => (this.max ? Validators.max(this.max)(control) : null));\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  protected incrementNumber(decrease = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = this.step === 'any' ? 1 : this.step ?? 1;\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';\nimport { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';\nimport { InputControlType } from '../../../interfaces/form';\nimport { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';\nimport { ItValidators } from '../../../validators/it-validators';\nimport { Observable } from 'rxjs';\nimport { AsyncPipe } from '@angular/common';\nimport { TranslateModule } from '@ngx-translate/core';\nimport { inputToBoolean } from '../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [ReactiveFormsModule, TranslateModule, AsyncPipe],\n})\nexport class ItInputComponent extends ItAbstractFormComponent<string | number | null | undefined> implements OnInit {\n  /**\n   * The input type\n   * @default text\n   */\n  @Input() type: InputControlType = 'text';\n\n  /**\n   * The input placeholder\n   */\n  @Input() placeholder = '';\n\n  /**\n   * The input description\n   */\n  @Input() description: string | undefined;\n\n  /**\n   * To prevent modification of the contained value.\n   * - <b>plaintext</b>: Readonly field in the form stylized as plain text\n   * @default undefined\n   */\n  @Input() readonly: boolean | 'plaintext' | undefined;\n\n  /**\n   * The max date value [Used only in type = 'date']\n   * @default '9999-12-31'\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() maxDate?: string = '9999-12-31';\n\n  /**\n   * The min date value [Used only in type = 'date']\n   * @example 'yyyy-mm-dd'\n   */\n  @Input() minDate: string | undefined;\n\n  /**\n   * The max value [Used only in type = 'number']\n   */\n  @Input() max: number | undefined;\n\n  /**\n   * The min value [Used only in type = 'number']\n   */\n  @Input() min: number | undefined;\n\n  /**\n   * The step value [Used only in type = 'number']\n   */\n  @Input() step: number | 'any' | undefined;\n\n  /**\n   * If is a currency number [Used only in type = 'number']\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) currency?: boolean;\n\n  /**\n   * If is a percentage number [Used only in type = 'number']\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) percentage?: boolean;\n\n  /**\n   * The currency or percentage symbol [Used only if percentage or currency]\n   * @example '$'\n   */\n  @Input() symbol: string | undefined;\n\n  /**\n   * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) adaptive?: boolean;\n\n  /**\n   * Input autocomplete attribute (Browser autocomplete)\n   * @default undefined\n   */\n  @Input() autocomplete: string | undefined;\n\n  get isActiveLabel(): boolean {\n    const value = this.control.value;\n    if ((!!value && value !== 0) || value === 0 || !!this.placeholder) {\n      return true;\n    }\n\n    // if (this.type === 'number' && (!!this.currency || !!this.percentage)) {\n    //   return true;\n    // }\n\n    return this.type === 'date' || this.type === 'time' || this.type === 'color';\n  }\n\n  /**\n   * Check is readonly field\n   */\n  protected get isReadonly(): boolean {\n    return this.readonly === 'plaintext' || !!this.readonly;\n  }\n\n  /**\n   * Return the invalid message string from TranslateService\n   */\n  override get invalidMessage(): Observable<string> {\n    if (this.hasError('min') && this.min) {\n      return this._translateService.get('it.errors.min-invalid', {\n        min: this.min,\n      });\n    }\n    if (this.hasError('max') && this.max) {\n      return this._translateService.get('it.errors.max-invalid', {\n        max: this.max,\n      });\n    }\n    if (this.hasError('minlength')) {\n      const error = this.getError('minlength');\n      return this._translateService.get('it.errors.min-length-invalid', {\n        min: error.requiredLength,\n      });\n    }\n    if (this.hasError('maxlength')) {\n      const error = this.getError('maxlength');\n      return this._translateService.get('it.errors.max-length-invalid', {\n        max: error.requiredLength,\n      });\n    }\n    if (this.hasError('email') || this.hasError('invalidEmail')) {\n      return this._translateService.get('it.errors.email-invalid');\n    }\n    if (this.hasError('invalidTel')) {\n      return this._translateService.get('it.errors.tel-invalid');\n    }\n    if (this.hasError('invalidUrl')) {\n      return this._translateService.get('it.errors.url-invalid');\n    }\n    if (this.hasError('invalidTaxCode')) {\n      return this._translateService.get('it.errors.tax-code-invalid');\n    }\n    if (this.hasError('invalidVatNumber')) {\n      return this._translateService.get('it.errors.vat-number-invalid');\n    }\n    if (this.hasError('invalidCap')) {\n      return this._translateService.get('it.errors.cap-invalid');\n    }\n    if (this.hasError('invalidIban')) {\n      return this._translateService.get('it.errors.iban-invalid');\n    }\n    if (this.hasError('invalidPlate')) {\n      return this._translateService.get('it.errors.plate-invalid');\n    }\n    if (this.hasError('invalidRegex')) {\n      return this._translateService.get('it.errors.regex-invalid');\n    }\n    if (this.hasError('pattern')) {\n      const error = this.getError('pattern');\n      return this._translateService.get('it.errors.pattern-invalid', {\n        pattern: error.requiredPattern,\n      });\n    }\n\n    return super.invalidMessage;\n  }\n\n  override ngOnInit() {\n    super.ngOnInit();\n\n    const validators: Array<ValidatorFn> = [];\n    switch (this.type) {\n      case 'number':\n        if (this.percentage) {\n          this.min = this.min || 0;\n          this.max = this.max || 100;\n        }\n\n        // Dynamic min/max validators\n        validators.push((control: AbstractControl) => (this.min ? Validators.min(this.min)(control) : null));\n        validators.push((control: AbstractControl) => (this.max ? Validators.max(this.max)(control) : null));\n        break;\n      case 'email':\n        validators.push(ItValidators.email);\n        break;\n      case 'tel':\n        validators.push(ItValidators.tel);\n        break;\n      case 'url':\n        validators.push(ItValidators.url);\n        break;\n    }\n\n    this.addValidators(validators);\n  }\n\n  /**\n   * Increment or decrease the input number value of step\n   * @param decrease true to decrease value\n   */\n  protected incrementNumber(decrease = false): void {\n    if (this.type !== 'number') {\n      return;\n    }\n    const step = this.step === 'any' ? 1 : this.step ?? 1;\n    let value = Number(this.control.value);\n    value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);\n    value = Math.round(value * 1e12) / 1e12; // prevent js decimal error\n\n    if (this.min !== undefined && value < this.min) {\n      value = this.min;\n    } else if (this.max !== undefined && value > this.max) {\n      value = this.max;\n    }\n\n    this.control.setValue(value);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -19231,7 +19250,7 @@
                     }
                 }
             },
-            "templateData": "<div class=\"form-group\">\n  <div\n    class=\"input-group\"\n    [class.disabled]=\"!control.enabled\"\n    [class.input-number]=\"type === 'number'\"\n    [class.input-number-currency]=\"currency\"\n    [class.input-number-percentage]=\"percentage\"\n    [class.input-number-adaptive]=\"adaptive\">\n    <span class=\"input-group-text\" #prependText>\n      <ng-content select=\"[prependText]\"></ng-content>\n    </span>\n\n    @if (label) {\n      <label\n        [for]=\"id\"\n        [class.active]=\"isActiveLabel\"\n        [class.input-number-label]=\"type === 'number'\"\n        [class.empty-prepend-label]=\"!prependText.clientWidth\">\n        {{ label }}\n      </label>\n    }\n\n    @if (type === 'number') {\n      @if (currency || percentage) {\n        <span class=\"input-group-text fw-semibold\">{{ symbol }}</span>\n      }\n      <input\n        type=\"number\"\n        [id]=\"id\"\n        [step]=\"step ?? null\"\n        [min]=\"min ?? ''\"\n        [max]=\"max ?? ''\"\n        [class.form-control]=\"readonly !== 'plaintext'\"\n        [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\"\n        [class.just-validate-success-field]=\"isValid\"\n        [formControl]=\"control\"\n        [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n      <span class=\"input-group-text align-buttons flex-column\">\n        <button type=\"button\" class=\"input-number-add\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber()\">\n          <span class=\"visually-hidden\">{{ 'it.form.increase-value' | translate }}</span>\n        </button>\n        <button type=\"button\" class=\"input-number-sub\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber(true)\">\n          <span class=\"visually-hidden\">{{ 'it.form.decrease-value' | translate }}</span>\n        </button>\n      </span>\n    } @else {\n      <input\n        [id]=\"id\"\n        [type]=\"type\"\n        [max]=\"type === 'date' ? maxDate : undefined\"\n        [min]=\"type === 'date' ? minDate : undefined\"\n        [class.form-control]=\"readonly !== 'plaintext'\"\n        [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\"\n        [class.just-validate-success-field]=\"isValid\"\n        [formControl]=\"control\"\n        [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n    }\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  @if (description) {\n    <small [id]=\"id + '-description'\" class=\"form-text\">{{ description }}</small>\n  }\n\n  @if (isInvalid) {\n    <div class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      @if (!customError.hasChildNodes()) {\n        {{ invalidMessage | async }}\n      }\n    </div>\n  }\n</div>\n"
+            "templateData": "<div class=\"form-group\">\n  <div\n    class=\"input-group\"\n    [class.disabled]=\"!control.enabled\"\n    [class.input-number]=\"type === 'number'\"\n    [class.input-number-currency]=\"currency\"\n    [class.input-number-percentage]=\"percentage\"\n    [class.input-number-adaptive]=\"adaptive\">\n    <span class=\"input-group-text\" #prependText>\n      <ng-content select=\"[prependText]\"></ng-content>\n    </span>\n    @if (label) {\n      <label\n        [for]=\"id\"\n        [class.active]=\"isActiveLabel\"\n        [class.input-symbol-label]=\"percentage || currency\"\n        [class.input-number-label]=\"type === 'number'\"\n        [class.empty-prepend-label]=\"!(percentage || currency) && !prependText.clientWidth\">\n        {{ label }}\n      </label>\n    }\n\n    @if (type === 'number') {\n      @if (currency || percentage) {\n        <span class=\"input-group-text fw-semibold\">{{ symbol }}</span>\n      }\n      <input\n        type=\"number\"\n        [id]=\"id\"\n        [step]=\"step ?? null\"\n        [min]=\"min ?? ''\"\n        [max]=\"max ?? ''\"\n        [class.form-control]=\"readonly !== 'plaintext'\"\n        [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\"\n        [class.just-validate-success-field]=\"isValid\"\n        [formControl]=\"control\"\n        [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n      <span class=\"input-group-text align-buttons flex-column\">\n        <button type=\"button\" class=\"input-number-add\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber()\">\n          <span class=\"visually-hidden\">{{ 'it.form.increase-value' | translate }}</span>\n        </button>\n        <button type=\"button\" class=\"input-number-sub\" [disabled]=\"!control.enabled\" (click)=\"incrementNumber(true)\">\n          <span class=\"visually-hidden\">{{ 'it.form.decrease-value' | translate }}</span>\n        </button>\n      </span>\n    } @else {\n      <input\n        [id]=\"id\"\n        [type]=\"type\"\n        [max]=\"type === 'date' ? maxDate : undefined\"\n        [min]=\"type === 'date' ? minDate : undefined\"\n        [class.form-control]=\"readonly !== 'plaintext'\"\n        [class.form-control-plaintext]=\"readonly === 'plaintext'\"\n        [class.is-invalid]=\"isInvalid\"\n        [class.just-validate-success-field]=\"isValid\"\n        [formControl]=\"control\"\n        [placeholder]=\"placeholder\"\n        [readonly]=\"isReadonly\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-describedby]=\"id + '-description'\"\n        (blur)=\"markAsTouched()\" />\n    }\n\n    <div class=\"input-group-append\">\n      <ng-content select=\"[append]\"></ng-content>\n\n      <div class=\"input-group-text\">\n        <ng-content select=\"[appendText]\"></ng-content>\n      </div>\n    </div>\n  </div>\n\n  @if (description) {\n    <small [id]=\"id + '-description'\" class=\"form-text\">{{ description }}</small>\n  }\n\n  @if (isInvalid) {\n    <div class=\"form-feedback just-validate-error-label\" [id]=\"id + '-error'\">\n      <div #customError>\n        <ng-content select=\"[error]\"></ng-content>\n      </div>\n      @if (!customError.hasChildNodes()) {\n        {{ invalidMessage | async }}\n      }\n    </div>\n  }\n</div>\n"
         },
         {
             "name": "ItLanguageSwitcherComponent",
@@ -29794,11 +29813,11 @@
                 "AfterViewInit",
                 "OnDestroy"
             ],
-            "templateData": "<div class=\"steppers\" [class.bg-dark]=\"dark\">\n  @if (showHeader) {\n    <div class=\"steppers-header\">\n      @if (steps) {\n        <ul>\n          @for (step of steps; track step.id; let i = $index) {\n            <li [class.confirmed]=\"i < activeStep\" [class.active]=\"i === activeStep\" [class.no-line]=\"i === activeStep && steppersNumber\">\n              @if (step.icon && !steppersNumber) {\n                <it-icon [labelWaria]=\"'it.core.confirmed' | translate\" [name]=\"step.icon\"></it-icon>\n              }\n              @if (steppersNumber) {\n                <span class=\"steppers-number\">\n                  @if (i < activeStep) {\n                    <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n                  } @else {\n                    <span class=\"visually-hidden\">{{ 'it.core.step' | translate }} </span>{{ i + 1 }}\n                  }\n                </span>\n              }\n              {{ step.label }}\n              @if (i < activeStep && !steppersNumber) {\n                <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n              }\n              @if (i === activeStep) {\n                <span class=\"visually-hidden\">{{ 'it.core.active' | translate }}</span>\n              }\n            </li>\n          }\n        </ul>\n      }\n      @if (steps) {\n        <span class=\"steppers-index\" aria-hidden=\"true\">\n          @if (!steppersNumber) {\n            {{ activeStep + 1 + '/' + steps.length }}\n          } @else {\n            @for (step of steps; track step.id; let i = $index) {\n              <span [class.active]=\"i === activeStep\">{{ i + 1 }}</span>\n            }\n          }\n        </span>\n      }\n    </div>\n  }\n\n  @if (steps?.get(activeStep); as step) {\n    <div class=\"steppers-content\" aria-live=\"polite\">\n      <ng-container *ngTemplateOutlet=\"step.htmlContent\"></ng-container>\n    </div>\n  }\n\n  @if (showBackButton || showSaveButton || showForwardButton || showConfirmButton || !!progressStyle) {\n    <nav class=\"steppers-nav\">\n      @if (showBackButton) {\n        <button\n          type=\"button\"\n          itButton=\"outline-primary\"\n          size=\"sm\"\n          class=\"steppers-btn-prev\"\n          [disabled]=\"disableBackButton\"\n          (click)=\"backClick.emit(activeStep)\">\n          <it-icon [labelWaria]=\"'it.core.back' | translate\" name=\"chevron-left\" color=\"primary\"></it-icon>\n          {{ 'it.core.back' | translate }}\n        </button>\n      }\n      @if (!!progressStyle && steps) {\n        @if (progressStyle === 'dots') {\n          <ul class=\"steppers-dots\">\n            @for (step of steps; track step; let i = $index) {\n              <li [class.done]=\"i < activeStep\">\n                <span class=\"visually-hidden\">\n                  {{ 'it.core.step-of' | translate: { current: activeStep + 1, available: steps?.length } }}\n                  {{ i < activeStep ? '- ' + ('it.core.confirmed' | translate) : '' }}\n                </span>\n              </li>\n            }\n          </ul>\n        } @else {\n          <div class=\"steppers-progress\">\n            <it-progress-bar [color]=\"progressColor\" [value]=\"(activeStep / (steps?.length || 1)) * 100\"></it-progress-bar>\n          </div>\n        }\n      }\n      @if (showSaveButton) {\n        <button\n          type=\"button\"\n          itButton=\"primary\"\n          size=\"sm\"\n          class=\"steppers-btn-save\"\n          [progress]=\"saveLoading\"\n          [disabled]=\"saveLoading || disableSaveButton\"\n          (click)=\"saveClick.emit(activeStep)\">\n          {{ 'it.general.save' | translate }}\n        </button>\n      }\n      @if (showForwardButton) {\n        <button\n          type=\"button\"\n          itButton=\"outline-primary\"\n          size=\"sm\"\n          class=\"steppers-btn-next\"\n          [disabled]=\"disableForwardButton\"\n          (click)=\"forwardClick.emit(activeStep)\">\n          {{ 'it.core.forward' | translate }}\n          <it-icon [labelWaria]=\"'it.core.forward' | translate\" name=\"chevron-right\" color=\"primary\"></it-icon>\n        </button>\n      }\n      @if (showConfirmButton) {\n        <button\n          type=\"button\"\n          itButton=\"primary\"\n          size=\"sm\"\n          class=\"steppers-btn-confirm d-lg-block\"\n          [progress]=\"confirmLoading\"\n          [disabled]=\"confirmLoading || disableConfirmButton\"\n          (click)=\"confirmClick.emit(activeStep)\">\n          {{ 'it.core.confirm' | translate }}\n        </button>\n      }\n    </nav>\n  }\n</div>\n\n<ng-template #checkIcon>\n  <it-icon [labelWaria]=\"'it.core.confirmed' | translate\" name=\"check\" class=\"steppers-success\"></it-icon>\n  <span class=\"visually-hidden\">{{ 'it.core.confirmed' | translate }}</span>\n</ng-template>\n"
+            "templateData": "<div class=\"steppers\" [class.bg-dark]=\"dark\">\n  @if (showHeader) {\n    <div class=\"steppers-header\">\n      @if (steps) {\n        <ul>\n          @for (step of steps; track step.id; let i = $index) {\n            <li [class.confirmed]=\"i < activeStep\" [class.active]=\"i === activeStep\" [class.no-line]=\"i === activeStep && steppersNumber\">\n              @if (step.icon && !steppersNumber) {\n                <it-icon [title]=\"step.iconTitle\" [name]=\"step.icon\"></it-icon>\n              }\n              @if (steppersNumber) {\n                <span class=\"steppers-number\">\n                  @if (i < activeStep) {\n                    <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n                  } @else {\n                    <span class=\"visually-hidden\">{{ 'it.core.step' | translate }} </span>{{ i + 1 }}\n                  }\n                </span>\n              }\n              {{ step.label }}\n              @if (i < activeStep && !steppersNumber) {\n                <ng-container *ngTemplateOutlet=\"checkIcon\"></ng-container>\n              }\n              @if (i === activeStep) {\n                <span class=\"visually-hidden\">{{ 'it.core.active' | translate }}</span>\n              }\n            </li>\n          }\n        </ul>\n      }\n      @if (steps) {\n        <span class=\"steppers-index\" aria-hidden=\"true\">\n          @if (!steppersNumber) {\n            {{ activeStep + 1 + '/' + steps.length }}\n          } @else {\n            @for (step of steps; track step.id; let i = $index) {\n              <span [class.active]=\"i === activeStep\">{{ i + 1 }}</span>\n            }\n          }\n        </span>\n      }\n    </div>\n  }\n\n  @if (steps?.get(activeStep); as step) {\n    <div class=\"steppers-content\" aria-live=\"polite\">\n      <ng-container *ngTemplateOutlet=\"step.htmlContent\"></ng-container>\n    </div>\n  }\n\n  @if (showBackButton || showSaveButton || showForwardButton || showConfirmButton || !!progressStyle) {\n    <nav class=\"steppers-nav\">\n      @if (showBackButton) {\n        <button\n          type=\"button\"\n          itButton=\"outline-primary\"\n          size=\"sm\"\n          class=\"steppers-btn-prev\"\n          [disabled]=\"disableBackButton\"\n          (click)=\"backClick.emit(activeStep)\">\n          <it-icon [labelWaria]=\"'it.core.back' | translate\" name=\"chevron-left\" color=\"primary\"></it-icon>\n          {{ 'it.core.back' | translate }}\n        </button>\n      }\n      @if (!!progressStyle && steps) {\n        @if (progressStyle === 'dots') {\n          <ul class=\"steppers-dots\">\n            @for (step of steps; track step; let i = $index) {\n              <li [class.done]=\"i < activeStep\">\n                <span class=\"visually-hidden\">\n                  {{ 'it.core.step-of' | translate: { current: activeStep + 1, available: steps?.length } }}\n                  {{ i < activeStep ? '- ' + ('it.core.confirmed' | translate) : '' }}\n                </span>\n              </li>\n            }\n          </ul>\n        } @else {\n          <div class=\"steppers-progress\">\n            <it-progress-bar [color]=\"progressColor\" [value]=\"(activeStep / (steps?.length || 1)) * 100\"></it-progress-bar>\n          </div>\n        }\n      }\n      @if (showSaveButton) {\n        <button\n          type=\"button\"\n          itButton=\"primary\"\n          size=\"sm\"\n          class=\"steppers-btn-save\"\n          [progress]=\"saveLoading\"\n          [disabled]=\"saveLoading || disableSaveButton\"\n          (click)=\"saveClick.emit(activeStep)\">\n          {{ 'it.general.save' | translate }}\n        </button>\n      }\n      @if (showForwardButton) {\n        <button\n          type=\"button\"\n          itButton=\"outline-primary\"\n          size=\"sm\"\n          class=\"steppers-btn-next\"\n          [disabled]=\"disableForwardButton\"\n          (click)=\"forwardClick.emit(activeStep)\">\n          {{ 'it.core.forward' | translate }}\n          <it-icon [labelWaria]=\"'it.core.forward' | translate\" name=\"chevron-right\" color=\"primary\"></it-icon>\n        </button>\n      }\n      @if (showConfirmButton) {\n        <button\n          type=\"button\"\n          itButton=\"primary\"\n          size=\"sm\"\n          class=\"steppers-btn-confirm d-lg-block\"\n          [progress]=\"confirmLoading\"\n          [disabled]=\"confirmLoading || disableConfirmButton\"\n          (click)=\"confirmClick.emit(activeStep)\">\n          {{ 'it.core.confirm' | translate }}\n        </button>\n      }\n    </nav>\n  }\n</div>\n\n<ng-template #checkIcon>\n  <it-icon [labelWaria]=\"'it.core.confirmed' | translate\" name=\"check\" class=\"steppers-success\"></it-icon>\n  <span class=\"visually-hidden\">{{ 'it.core.confirmed' | translate }}</span>\n</ng-template>\n"
         },
         {
             "name": "ItSteppersItemComponent",
-            "id": "component-ItSteppersItemComponent-4924d3622c3d23badbfe83821d3e4e1ead2049cb03682cbec1b75a653c69708612640e7d2e50fea1b96eb31e52701043740d19f450bcd64f4a9fd41ff23f5ef3",
+            "id": "component-ItSteppersItemComponent-ad86b07b8a44be3935171b70913d880b4acdf99ae2037af2229f2c692a3a25a9809c872dfbb89e42a1e60d1f4c288c020a51a7b207c1102d59f72ef27c8662ad",
             "file": "projects/design-angular-kit/src/lib/components/core/steppers/steppers-item/steppers-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -29823,6 +29842,16 @@
                     "description": "<p>The labels present in the header steps can be preceded by an icon.</p>\n",
                     "line": 21,
                     "type": "IconName | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "iconTitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe title for the icon.\n",
+                    "description": "<p>The title for the icon.</p>\n",
+                    "line": 26,
+                    "type": "string | undefined",
                     "decorators": []
                 },
                 {
@@ -29874,7 +29903,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "<p>The content of step</p>\n",
-                    "line": 27,
+                    "line": 32,
                     "rawdescription": "\n\nThe content of step\n",
                     "decorators": [
                         {
@@ -30061,7 +30090,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';\nimport { IconName } from '../../../../interfaces/icon';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\n\n@Component({\n  standalone: true,\n  selector: 'it-steppers-item',\n  templateUrl: './steppers-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [],\n})\nexport class ItSteppersItemComponent extends ItAbstractComponent {\n  /**\n   * The labels present in the header steps\n   */\n  @Input({ required: true }) label!: string;\n\n  /**\n   * The labels present in the header steps can be preceded by an icon.\n   */\n  @Input() icon: IconName | undefined;\n\n  /**\n   * The content of step\n   */\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';\nimport { IconName } from '../../../../interfaces/icon';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\n\n@Component({\n  standalone: true,\n  selector: 'it-steppers-item',\n  templateUrl: './steppers-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [],\n})\nexport class ItSteppersItemComponent extends ItAbstractComponent {\n  /**\n   * The labels present in the header steps\n   */\n  @Input({ required: true }) label!: string;\n\n  /**\n   * The labels present in the header steps can be preceded by an icon.\n   */\n  @Input() icon: IconName | undefined;\n\n  /**\n   * The title for the icon.\n   */\n  @Input() iconTitle: string | undefined;\n\n  /**\n   * The content of step\n   */\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -30072,7 +30101,7 @@
         },
         {
             "name": "ItTabContainerComponent",
-            "id": "component-ItTabContainerComponent-f1b3a33ad4b74e5397189b4d6ac5709c8fce7aebf44214b1f23aceda9985adefdcc9937cf4fabbb70793e4a638fa02c940915cfd9fedd68ab55b68f02dcc2844",
+            "id": "component-ItTabContainerComponent-72192c2ce39afba0f2c1933c191810711129381d20805885645d6d7558d50ed038af22c5e556ed33da5ab0edebc245416e4d0df1c6a8e517aa9181acce5c2f49",
             "file": "projects/design-angular-kit/src/lib/components/core/tab/tab-container/tab-container.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -30122,6 +30151,17 @@
                 },
                 {
                     "required": false,
+                    "name": "cards",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nShow items as cards\n",
+                    "description": "<p>Show items as cards</p>\n",
+                    "line": 49,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "required": false,
                     "name": "dark",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -30133,12 +30173,45 @@
                 },
                 {
                     "required": false,
+                    "name": "editable",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIf tabs are editable\n",
+                    "description": "<p>If tabs are editable</p>\n",
+                    "line": 64,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "required": false,
                     "name": "iconText",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTo obtain the correct margin between text and icon in the horizontally developed tab\n",
                     "description": "<p>To obtain the correct margin between text and icon in the horizontally developed tab</p>\n",
                     "line": 39,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "required": false,
+                    "name": "inverted",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe tab position\n",
+                    "description": "<p>The tab position</p>\n",
+                    "line": 59,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "required": false,
+                    "name": "vertical",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nShow vertical navigation\n",
+                    "description": "<p>Show vertical navigation</p>\n",
+                    "line": 54,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -30159,11 +30232,27 @@
             ],
             "outputsClass": [
                 {
+                    "name": "tabAdded",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 77,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "tabClosed",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "EventEmitter"
+                },
+                {
                     "name": "tabSelected",
                     "defaultValue": "new EventEmitter<ItTabItemComponent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53,
+                    "line": 73,
                     "type": "EventEmitter"
                 },
                 {
@@ -30187,7 +30276,7 @@
                     "type": "QueryList<ElementRef<HTMLAnchorElement>>",
                     "optional": true,
                     "description": "",
-                    "line": 51,
+                    "line": 71,
                     "decorators": [
                         {
                             "name": "ViewChildren",
@@ -30206,7 +30295,7 @@
                     "type": "QueryList<ItTabItemComponent>",
                     "optional": true,
                     "description": "<p>The tab items</p>\n",
-                    "line": 49,
+                    "line": 69,
                     "rawdescription": "\n\nThe tab items\n",
                     "decorators": [
                         {
@@ -30225,7 +30314,7 @@
                     "type": "Array<Subscription>",
                     "optional": true,
                     "description": "",
-                    "line": 55,
+                    "line": 79,
                     "modifierKind": [
                         123
                     ]
@@ -30319,12 +30408,68 @@
             ],
             "methodsClass": [
                 {
+                    "name": "clickToAdd",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 133,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "clickToClose",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 129,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -30340,7 +30485,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 97,
+                    "line": 121,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -30357,7 +30502,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 101,
+                    "line": 125,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -30453,7 +30598,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ContentChildren,\n  ElementRef,\n  EventEmitter,\n  Input,\n  OnDestroy,\n  Output,\n  QueryList,\n  ViewChildren,\n} from '@angular/core';\nimport { ItTabItemComponent } from '../tab-item/tab-item.component';\nimport { of, startWith, Subscription, switchMap, tap } from 'rxjs';\nimport { Tab } from 'bootstrap-italia';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { ItIconComponent } from '../../../utils/icon/icon.component';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-tab-container',\n  templateUrl: './tab-container.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [ItIconComponent, NgTemplateOutlet],\n})\nexport class ItTabContainerComponent extends ItAbstractComponent implements OnDestroy, AfterViewInit {\n  /**\n   * Tabs automatically occupy the entire available width\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) auto?: boolean;\n\n  /**\n   * To obtain the correct margin between text and icon in the horizontally developed tab\n   */\n  @Input({ transform: inputToBoolean }) iconText?: boolean;\n\n  /**\n   * Dark style\n   */\n  @Input({ transform: inputToBoolean }) dark?: boolean;\n\n  /**\n   * The tab items\n   */\n  @ContentChildren(ItTabItemComponent) tabs?: QueryList<ItTabItemComponent>;\n\n  @ViewChildren('tabNavLinks') private tabNavLinks?: QueryList<ElementRef<HTMLAnchorElement>>;\n\n  @Output() tabSelected = new EventEmitter<ItTabItemComponent>();\n\n  private tabSubscriptions?: Array<Subscription>;\n\n  constructor() {\n    super();\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    this.tabs?.changes\n      .pipe(\n        // When tabs changes (dynamic add/remove)\n        startWith(undefined),\n        tap(() => {\n          this.tabSubscriptions?.forEach(sub => sub.unsubscribe()); // Remove old subscriptions\n          this.tabSubscriptions = this.tabs?.map(tab =>\n            tab.valueChanges.subscribe(() => {\n              this._changeDetectorRef.detectChanges(); // DetectChanges when tab-item attributes changes\n            })\n          );\n          this._changeDetectorRef.detectChanges(); // Force update html render\n        }),\n        switchMap(() => this.tabNavLinks?.changes.pipe(startWith(undefined)) || of(undefined))\n      )\n      .subscribe(() => {\n        // Init tabs from bootstrap-italia\n        this.tabNavLinks?.forEach(tabNavLink => {\n          const triggerEl = tabNavLink.nativeElement,\n            tabTrigger = Tab.getOrCreateInstance(triggerEl);\n\n          if (triggerEl.getAttribute('tab-listener') !== 'true') {\n            triggerEl.addEventListener('click', event => {\n              event.preventDefault();\n              tabTrigger.show();\n              this._changeDetectorRef.detectChanges();\n            });\n            triggerEl.setAttribute('tab-listener', 'true'); // Prevents multiple insertion of the listener\n          }\n        });\n      });\n  }\n\n  ngOnDestroy(): void {\n    this.tabSubscriptions?.forEach(sub => sub.unsubscribe());\n  }\n\n  onTab(tab: ItTabItemComponent) {\n    this.tabSelected.emit(tab);\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ContentChildren,\n  ElementRef,\n  EventEmitter,\n  Input,\n  OnDestroy,\n  Output,\n  QueryList,\n  ViewChildren,\n} from '@angular/core';\nimport { ItTabItemComponent } from '../tab-item/tab-item.component';\nimport { of, startWith, Subscription, switchMap, tap } from 'rxjs';\nimport { Tab } from 'bootstrap-italia';\nimport { ItAbstractComponent } from '../../../../abstracts/abstract.component';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { ItIconComponent } from '../../../utils/icon/icon.component';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-tab-container',\n  templateUrl: './tab-container.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [ItIconComponent, NgTemplateOutlet],\n})\nexport class ItTabContainerComponent extends ItAbstractComponent implements OnDestroy, AfterViewInit {\n  /**\n   * Tabs automatically occupy the entire available width\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) auto?: boolean;\n\n  /**\n   * To obtain the correct margin between text and icon in the horizontally developed tab\n   */\n  @Input({ transform: inputToBoolean }) iconText?: boolean;\n\n  /**\n   * Dark style\n   */\n  @Input({ transform: inputToBoolean }) dark?: boolean;\n\n  /**\n   * Show items as cards\n   */\n  @Input({ transform: inputToBoolean }) cards?: boolean;\n\n  /**\n   * Show vertical navigation\n   */\n  @Input({ transform: inputToBoolean }) vertical?: boolean;\n\n  /**\n   * The tab position\n   */\n  @Input({ transform: inputToBoolean }) inverted?: boolean;\n\n  /**\n   * If tabs are editable\n   */\n  @Input({ transform: inputToBoolean }) editable?: boolean;\n\n  /**\n   * The tab items\n   */\n  @ContentChildren(ItTabItemComponent) tabs?: QueryList<ItTabItemComponent>;\n\n  @ViewChildren('tabNavLinks') private tabNavLinks?: QueryList<ElementRef<HTMLAnchorElement>>;\n\n  @Output() tabSelected = new EventEmitter<ItTabItemComponent>();\n\n  @Output() tabClosed = new EventEmitter();\n\n  @Output() tabAdded = new EventEmitter();\n\n  private tabSubscriptions?: Array<Subscription>;\n\n  constructor() {\n    super();\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    this.tabs?.changes\n      .pipe(\n        // When tabs changes (dynamic add/remove)\n        startWith(undefined),\n        tap(() => {\n          this.tabSubscriptions?.forEach(sub => sub.unsubscribe()); // Remove old subscriptions\n          this.tabSubscriptions = this.tabs?.map(tab =>\n            tab.valueChanges.subscribe(() => {\n              this._changeDetectorRef.detectChanges(); // DetectChanges when tab-item attributes changes\n            })\n          );\n          this._changeDetectorRef.detectChanges(); // Force update html render\n        }),\n        switchMap(() => this.tabNavLinks?.changes.pipe(startWith(undefined)) || of(undefined))\n      )\n      .subscribe(() => {\n        // Init tabs from bootstrap-italia\n        this.tabNavLinks?.forEach(tabNavLink => {\n          const triggerEl = tabNavLink.nativeElement,\n            tabTrigger = Tab.getOrCreateInstance(triggerEl);\n\n          if (triggerEl.getAttribute('tab-listener') !== 'true') {\n            triggerEl.addEventListener('click', event => {\n              event.preventDefault();\n              tabTrigger.show();\n              this._changeDetectorRef.detectChanges();\n            });\n            triggerEl.setAttribute('tab-listener', 'true'); // Prevents multiple insertion of the listener\n          }\n        });\n      });\n  }\n\n  ngOnDestroy(): void {\n    this.tabSubscriptions?.forEach(sub => sub.unsubscribe());\n  }\n\n  onTab(tab: ItTabItemComponent) {\n    this.tabSelected.emit(tab);\n  }\n\n  clickToClose(index: number) {\n    this.tabClosed.emit(index);\n  }\n\n  clickToAdd($event: Event) {\n    $event.preventDefault();\n    this.tabAdded.emit();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -30463,7 +30608,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 55
+                "line": 79
             },
             "extends": [
                 "ItAbstractComponent"
@@ -30472,7 +30617,7 @@
                 "OnDestroy",
                 "AfterViewInit"
             ],
-            "templateData": "@if (tabs) {\n  <ul class=\"nav nav-tabs\" [class.auto]=\"auto\" [class.nav-tabs-icon-text]=\"iconText\" [class.nav-dark]=\"dark\" role=\"tablist\">\n    @for (tab of tabs; track tab.id) {\n      <li class=\"nav-item\">\n        <a\n          #tabNavLinks\n          [id]=\"tab.id + '-tab-link'\"\n          role=\"tab\"\n          class=\"nav-link\"\n          [class.active]=\"tab.active\"\n          [class.disabled]=\"tab.disabled\"\n          [attr.href]=\"'#' + tab.id + '-tab'\"\n          [attr.aria-controls]=\"tab.id + '-tab'\"\n          (click)=\"onTab(tab)\">\n          @if (tab.icon) {\n            <it-icon [name]=\"tab.icon\" class=\"me-2\"></it-icon>\n          }\n          {{ tab.label }}\n        </a>\n      </li>\n    }\n  </ul>\n}\n\n@if (tabs) {\n  <div class=\"tab-content\">\n    @for (tab of tabs; track tab.id) {\n      <div\n        [id]=\"tab.id + '-tab'\"\n        class=\"tab-pane p-4 fade {{ tab.class ?? '' }}\"\n        [class.active]=\"tab.active\"\n        [class.show]=\"tab.active\"\n        role=\"tabpanel\"\n        [attr.aria-labelledby]=\"tab.id + '-tab-link'\">\n        <ng-container *ngTemplateOutlet=\"tab.htmlContent\"></ng-container>\n      </div>\n    }\n  </div>\n}\n"
+            "templateData": "<div\n  [class.row]=\"vertical\"\n  [class.flex-row-reverse]=\"inverted && vertical\"\n  [class.d-flex]=\"inverted && !vertical\"\n  [class.flex-column-reverse]=\"inverted && !vertical\">\n  <div\n    [class.col-5]=\"inverted && vertical\"\n    [class.col-md-4]=\"inverted && vertical\"\n    [class.col-lg-3]=\"inverted && vertical\"\n    [class.col-4]=\"!inverted && vertical\"\n    [class.col-md-3]=\"!inverted && vertical\">\n    @if (tabs) {\n      <ul\n        class=\"nav nav-tabs\"\n        [class.nav-tabs-editable]=\"editable\"\n        [class.nav-tabs-cards]=\"cards\"\n        [class.nav-tabs-vertical]=\"vertical\"\n        [class.auto]=\"auto\"\n        [class.nav-tabs-icon-text]=\"iconText\"\n        [class.nav-dark]=\"dark\"\n        role=\"tablist\">\n        @for (tab of tabs; track tab.id; let i = $index) {\n          <li class=\"nav-item\">\n            <a\n              #tabNavLinks\n              [id]=\"tab.id + '-tab-link'\"\n              role=\"tab\"\n              class=\"nav-link\"\n              [class.active]=\"tab.active\"\n              [class.disabled]=\"tab.disabled\"\n              [attr.href]=\"'#' + tab.id + '-tab'\"\n              [attr.aria-controls]=\"tab.id + '-tab'\"\n              (click)=\"onTab(tab)\">\n              @if (tab.icon) {\n                <it-icon [name]=\"tab.icon\" class=\"me-2\"></it-icon>\n              }\n              {{ tab.label }}\n            </a>\n            @if (editable) {\n              <a class=\"nav-link-close\" (click)=\"clickToClose(i)\" (keypress)=\"clickToClose(i)\" [attr.disabled]=\"tab.disabled\">\n                <it-icon name=\"close\"></it-icon>\n              </a>\n            }\n          </li>\n        }\n        @if (editable) {\n          <li class=\"nav-item\">\n            <a href=\"#\" class=\"nav-tab-add\" (click)=\"clickToAdd($event)\" (keypress)=\"clickToAdd($event)\"\n              ><span class=\"visually-hidden\"> Aggiungi un tab</span></a\n            >\n          </li>\n        }\n      </ul>\n    }\n  </div>\n  <div\n    [class.col-7]=\"inverted && vertical\"\n    [class.col-md-8]=\"inverted && vertical\"\n    [class.col-lg-9]=\"inverted && vertical\"\n    [class.col-8]=\"!inverted && vertical\"\n    [class.col-md-9]=\"!inverted && vertical\">\n    @if (tabs) {\n      <div class=\"tab-content\">\n        @for (tab of tabs; track tab.id) {\n          <div\n            [id]=\"tab.id + '-tab'\"\n            class=\"tab-pane p-4 fade {{ tab.class ?? '' }}\"\n            [class.active]=\"tab.active\"\n            [class.show]=\"tab.active\"\n            role=\"tabpanel\"\n            [attr.aria-labelledby]=\"tab.id + '-tab-link'\">\n            <ng-container *ngTemplateOutlet=\"tab.htmlContent\"></ng-container>\n          </div>\n        }\n      </div>\n    }\n  </div>\n</div>\n"
         },
         {
             "name": "ItTabItemComponent",
@@ -31949,7 +32094,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import 'bootstrap-italia/src/scss/functions';\n@import 'bootstrap-italia/src/scss/utilities/colors_vars';\n\ntextarea {\n  &.is-invalid {\n    border-color: $danger;\n  }\n\n  //&.is-valid {\n  //  border-color: $success;\n  //}\n}\n",
+                    "data": "@import 'bootstrap-italia/src/scss/base/functions';\n@import 'bootstrap-italia/src/scss/base/variables';\n\ntextarea {\n  &.is-invalid {\n    border-color: $danger;\n  }\n\n  //&.is-valid {\n  //  border-color: $success;\n  //}\n}\n",
                     "styleUrl": "./textarea.component.scss"
                 }
             ],
@@ -38064,7 +38209,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "e9832028-62f6-4cdf-8fad-c0bca1e960b9",
+                        "destrucuredGroupId": "2bd7cadd-d6c6-489b-934d-5734432f17d6",
                         "destructuredParameter": true
                     }
                 ],
@@ -38074,7 +38219,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "e9832028-62f6-4cdf-8fad-c0bca1e960b9",
+                        "destrucuredGroupId": "2bd7cadd-d6c6-489b-934d-5734432f17d6",
                         "destructuredParameter": true,
                         "tagName": {
                             "text": "param"
@@ -40378,7 +40523,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "e9832028-62f6-4cdf-8fad-c0bca1e960b9",
+                            "destrucuredGroupId": "2bd7cadd-d6c6-489b-934d-5734432f17d6",
                             "destructuredParameter": true
                         }
                     ],
@@ -40388,7 +40533,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "e9832028-62f6-4cdf-8fad-c0bca1e960b9",
+                            "destrucuredGroupId": "2bd7cadd-d6c6-489b-934d-5734432f17d6",
                             "destructuredParameter": true,
                             "tagName": {
                                 "text": "param"
@@ -41956,8 +42101,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItSteppersItemComponent",
-                "coveragePercent": 53,
-                "coverageCount": "7/13",
+                "coveragePercent": 57,
+                "coverageCount": "8/14",
                 "status": "good"
             },
             {
@@ -41975,8 +42120,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItTabContainerComponent",
-                "coveragePercent": 40,
-                "coverageCount": "8/20",
+                "coveragePercent": 42,
+                "coverageCount": "12/28",
                 "status": "medium"
             },
             {
@@ -42700,8 +42845,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItIconComponent",
-                "coveragePercent": 77,
-                "coverageCount": "7/9",
+                "coveragePercent": 80,
+                "coverageCount": "8/10",
                 "status": "very-good"
             },
             {
