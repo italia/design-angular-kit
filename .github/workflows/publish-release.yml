@@ -32,6 +32,7 @@ jobs:
           cp README.md dist/design-angular-kit/README.md
           cp .npmrc dist/design-angular-kit/.npmrc
       - name: Publish package to NPM
+        working-directory: dist/design-angular-kit
         run: npm publish
         continue-on-error: true
         env:
