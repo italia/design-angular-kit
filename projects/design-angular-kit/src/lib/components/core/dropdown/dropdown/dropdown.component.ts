@@ -120,6 +120,9 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
     super.ngAfterViewInit();
     this.setDarkItems();
     this.updateListeners();
+    this.items?.forEach(item => {
+      item.mode = this.mode;
+    });
   }
 
   /**
