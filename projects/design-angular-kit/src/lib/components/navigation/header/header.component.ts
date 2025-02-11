@@ -84,11 +84,11 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
   }
 
   openNavBar() {
-    this.itNavBarComponent.open();
+    this.itNavBarComponent?.open();
   }
 
   closeNavBar() {
-    this.itNavBarComponent.close();
+    this.itNavBarComponent?.close();
   }
 
   protected emitLoginClick(event: Event): void {
