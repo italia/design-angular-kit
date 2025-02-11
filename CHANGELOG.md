@@ -1,3 +1,23 @@
+# [1.2.0](https://github.com/italia/design-angular-kit/compare/v1.1.4...v1.2.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* link to add button ([afff14b](https://github.com/italia/design-angular-kit/commit/afff14b842402f572326758b35e0b62ca131df2d))
+* progress bar update on navscroll ([606e2e4](https://github.com/italia/design-angular-kit/commit/606e2e441ff356864a37f37445694be23c013632))
+* update scss and percentage and currency inputs ([fd2203f](https://github.com/italia/design-angular-kit/commit/fd2203f40bc63211c9579ee2b561d0eb6417caf1))
+
+
+### Features
+
+* **a11y:** add title to icons ([bc8f4c2](https://github.com/italia/design-angular-kit/commit/bc8f4c2f01362ace45dbc65387e8910f100dc68f))
+* add editable tabs ([4c3b99f](https://github.com/italia/design-angular-kit/commit/4c3b99fd6e8975255993c6b573f101db61dff1ad))
+* add icon title support to stepper items ([1101384](https://github.com/italia/design-angular-kit/commit/11013842b2dd6c09576df9be02b9ac4cc96914a8))
+* card tab ([e04756f](https://github.com/italia/design-angular-kit/commit/e04756f545235e6b944167140f4f001288ff2dfe))
+* tab position ([8ba6f1a](https://github.com/italia/design-angular-kit/commit/8ba6f1a3b7efdddd2d9acec4a8df20805e11cbd2))
+
+
+
 ## [1.1.4](https://github.com/italia/design-angular-kit/compare/v1.1.3...v1.1.4) (2024-12-20)
 
 
