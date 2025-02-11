@@ -15,7 +15,7 @@
       [attr.aria-hidden]="control.disabled"
       [formControl]="control" />
     <label class="full" [for]="id + '-' + starValue">
-      <it-icon name="star-full" size="sm"></it-icon>
+      <it-icon name="star-full" size="sm" aria-hidden="true"></it-icon>
       <span class="visually-hidden">
         {{ 'it.core.rate-star' | translate: { current: starValue, total: stars.length } }}
       </span>

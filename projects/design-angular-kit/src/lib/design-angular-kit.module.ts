@@ -42,6 +42,7 @@ import { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';
 import { ItDateAgoPipe } from './pipes/date-ago.pipe';
 import { ItDurationPipe } from './pipes/duration.pipe';
 import { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';
+import { ItSkiplinkModule } from './components/navigation/skiplink/skiplink.module';
 import { provideDesignAngularKit } from './provide-design-angular-kit';
 
 /**
@@ -88,6 +89,7 @@ const navigation = [
   ItNavBarModule,
   ItSidebarComponent,
   ItMegamenuComponent,
+  ItSkiplinkModule,
   ItNavscrollComponent,
 ];
 

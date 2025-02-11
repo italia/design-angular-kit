@@ -63,6 +63,22 @@ export class ItTimelineItemComponent extends ItAbstractComponent {
   @Input() pinIcon: IconName | undefined = 'code-circle';
 
   /**
+   * Timeline element PIN icon
+   * @default code-circle
+   */
+  @Input() pinIconTitle: string | undefined;
+
+  /**
+   * Timeline element category label
+   */
+  @Input() categoryLabel: string | undefined = 'Categoria evento: ';
+
+  /**
+   * Timeline element date label
+   */
+  @Input() dateLabel: string | undefined = 'Data evento: ';
+
+  /**
    * Timeline element category title
    */
   @Input() categoryTitle: string | undefined;

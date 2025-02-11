@@ -14,6 +14,12 @@ import { inputToBoolean } from '../../../utils/coercion';
 })
 export class ItBackToTopComponent extends ItAbstractComponent implements AfterViewInit {
   /**
+   * Aria label for the component
+   * @default 'Torna su'
+   */
+  @Input() ariaLabel: string = 'Torna su';
+
+  /**
    * Show small button
    * @default false
    */

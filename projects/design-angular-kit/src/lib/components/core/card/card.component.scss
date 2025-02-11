@@ -2,9 +2,9 @@
   display: none;
 }
 
-
-::ng-deep .row [class*=col-] {
-  .card, .card-wrapper {
+::ng-deep .row [class*='col-'] {
+  .card,
+  .card-wrapper {
     height: 100%;
   }
 }
@@ -18,7 +18,7 @@
     margin: 16px 0;
   }
 
-  @media (min-width: 768px) { 
+  @media (min-width: 768px) {
     it-card {
       flex: 0 0 49%;
     }

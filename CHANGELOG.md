@@ -1,3 +1,49 @@
+# [1.2.0](https://github.com/italia/design-angular-kit/compare/v1.1.4...v1.2.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* link to add button ([afff14b](https://github.com/italia/design-angular-kit/commit/afff14b842402f572326758b35e0b62ca131df2d))
+* progress bar update on navscroll ([606e2e4](https://github.com/italia/design-angular-kit/commit/606e2e441ff356864a37f37445694be23c013632))
+* update scss and percentage and currency inputs ([fd2203f](https://github.com/italia/design-angular-kit/commit/fd2203f40bc63211c9579ee2b561d0eb6417caf1))
+
+
+### Features
+
+* **a11y:** add title to icons ([bc8f4c2](https://github.com/italia/design-angular-kit/commit/bc8f4c2f01362ace45dbc65387e8910f100dc68f))
+* add editable tabs ([4c3b99f](https://github.com/italia/design-angular-kit/commit/4c3b99fd6e8975255993c6b573f101db61dff1ad))
+* add icon title support to stepper items ([1101384](https://github.com/italia/design-angular-kit/commit/11013842b2dd6c09576df9be02b9ac4cc96914a8))
+* card tab ([e04756f](https://github.com/italia/design-angular-kit/commit/e04756f545235e6b944167140f4f001288ff2dfe))
+* tab position ([8ba6f1a](https://github.com/italia/design-angular-kit/commit/8ba6f1a3b7efdddd2d9acec4a8df20805e11cbd2))
+
+
+
+## [1.1.4](https://github.com/italia/design-angular-kit/compare/v1.1.3...v1.1.4) (2024-12-20)
+
+
+### Bug Fixes
+
+* components import ([e54bbb9](https://github.com/italia/design-angular-kit/commit/e54bbb9b50f9b62e7a48c7a7af81053c5aebb41a))
+
+## [1.1.3](https://github.com/italia/design-angular-kit/compare/v1.1.2...v1.1.3) (2024-12-18)
+
+
+### Bug Fixes
+
+* **a11y:** timeline improvements ([346bacd](https://github.com/italia/design-angular-kit/commit/346bacdaf06ee3a07eb587d887818c04a723e0ee))
+* add aria hidden to rating icons ([815f184](https://github.com/italia/design-angular-kit/commit/815f18452e99dfb93c1136a9b0b2ac642d38995f))
+* add form-control to autocomplete ([b8d5459](https://github.com/italia/design-angular-kit/commit/b8d545959b59753214e084fdfe22d4efa1b684f4))
+* add icons and translations to transfer component ([3a5ae08](https://github.com/italia/design-angular-kit/commit/3a5ae08a8c11edb33342dbbcd7c86f5e92b53cf0))
+* button focus ([8167c99](https://github.com/italia/design-angular-kit/commit/8167c996ee83abf56326ed83c476191266d0eed9))
+* improvements on back to top component ([62d50bb](https://github.com/italia/design-angular-kit/commit/62d50bb11fc0e9b64f54c19ac58e73642903a838))
+* use container-xxl for header component ([7843a4a](https://github.com/italia/design-angular-kit/commit/7843a4ad41413eb583a5bdaac1cf9df39fcc9b05))
+
+
+### Features
+
+* new list headers with multiple actions ([9e1f824](https://github.com/italia/design-angular-kit/commit/9e1f824681c4863c5b746886e4e497bf07dbbad0))
+* skiplink component ([d1d4114](https://github.com/italia/design-angular-kit/commit/d1d4114b157ea0fcca13859de791b7cdee7df640))
+
 ## [1.1.2](https://github.com/italia/design-angular-kit/compare/v1.1.1...v1.1.2) (2024-11-06)
 
 

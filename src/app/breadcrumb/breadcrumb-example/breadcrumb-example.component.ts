@@ -19,15 +19,18 @@ export class BreadcrumbExampleComponent {
   separator = '/';
   isDark = false;
   items = [
-    { link: 'https://www.aol.com', label: 'Crumb 1', icon: this.icon },
-    { link: 'https://www.yahoo.com', label: 'Crumb 2', icon: this.icon },
-    { link: 'https://www.bing.com', label: 'Crumb 3', icon: this.icon },
+    { link: 'https://www.aol.com', label: 'Crumb 1', icon: this.icon, active: false },
+    { link: 'https://www.yahoo.com', label: 'Crumb 2', icon: this.icon, active: false },
+    { link: 'https://www.bing.com', label: 'Crumb 3', icon: this.icon, active: true },
   ];
 
   i = 4;
 
   insert() {
-    this.items.push({ link: `https://www.google.com`, label: `Crumb ${this.i}`, icon: this.icon });
+    for (const item of this.items) {
+      item.active = false;
+    }
+    this.items.push({ link: `https://www.google.com`, label: `Crumb ${this.i}`, icon: this.icon, active: true });
     this.i++;
   }
 

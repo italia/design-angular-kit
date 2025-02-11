@@ -104,6 +104,18 @@
       "aria-label-toggle": "Show/Hide navigation",
       "hide": "Hide navigation"
     },
+    "transfer": {
+      "label-move-backward": "Label move backward",
+      "label-move-forward": "Label move forward",
+      "label-reset": "Label reset",
+      "aria-label-move-backward": "Move backward",
+      "aria-label-move-forward": "Move forward",
+      "aria-label-reset": "Reset",
+      "source": "Source",
+      "target": "Destination",
+      "item": "Item",
+      "items": "Items"
+    },
     "timeline": {
       "read-more": "Read more",
       "read-more-on": "on {{title}}",
