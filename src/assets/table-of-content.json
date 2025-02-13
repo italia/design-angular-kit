@@ -12,6 +12,10 @@
       "link": "/componenti",
       "links": [
         {
+          "label": "Accordion",
+          "link": "/componenti/accordion"
+        },
+        {
           "label": "Avatar",
           "link": "/componenti/avatar"
         },

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'it-collapse-nested-example',
-  templateUrl: './collapse-nested-example.component.html',
-  styleUrls: ['./collapse-nested-example.component.scss'],
+  selector: 'it-accordion-nested-example',
+  templateUrl: './accordion-nested-example.component.html',
+  styleUrls: ['./accordion-nested-example.component.scss'],
 })
-export class CollapseNestedExampleComponent {
+export class AccordionNestedExampleComponent {
   shownComponent = '';
   hiddenComponent = '';
 
