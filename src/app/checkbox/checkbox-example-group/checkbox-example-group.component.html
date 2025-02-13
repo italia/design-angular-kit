@@ -1,22 +1,24 @@
 <h3>Gruppi</h3>
-<div class="bd-example">
-  <div class="example-section">
-    <fieldset>
+
+<div>
+  <div class="row">
+    <fieldset class="col-5">
       <legend>Gruppo di checkbox</legend>
-      <it-checkbox label="Prima checkbox raggruppata" group="true">
+      <it-checkbox label="Checkbox selezionato" checked group="true"> </it-checkbox>
+      <it-checkbox label="Checkbox non selezionato" group="true"> </it-checkbox>
+      <it-checkbox label="Checkbox disabilitato non selezionato" disabled group="true"> </it-checkbox>
+    </fieldset>
+    <div class="col-2"></div>
+    <fieldset class="col-5">
+      <legend>Gruppo di checkbox</legend>
+      <it-checkbox label="Checkbox selezionato" checked group="true">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero
       </it-checkbox>
-      <it-checkbox label="Seconda checkbox raggruppata" group="true">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Maecenas molestie liber
+      <it-checkbox label="Checkbox non selezionato" group="true">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero
       </it-checkbox>
-      <it-checkbox group="true">
-        <ng-container label>
-          Terza <a href="https://italia.github.io/bootstrap-italia/docs/form/checkbox/">checkbox</a> raggruppata</ng-container
-        >
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Maecenas molestie libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero
+      <it-checkbox label="Checkbox disabilitato non selezionato" disabled group="true">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero
       </it-checkbox>
     </fieldset>
   </div>
