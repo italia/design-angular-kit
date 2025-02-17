@@ -18,7 +18,7 @@
     "lint:format": "npx prettier --write .",
     "prepare": "is-ci || husky",
     "postversion": "echo \"You can now publish your version using 'git push --follow-tags'\"",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/wait-confirm && git add CHANGELOG.md",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/config-sync && node scripts/wait-confirm && git add .",
     "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle/browser -m 'chore: update documentation'",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
@@ -128,6 +128,7 @@
     "nunjucks-cli": "^1.0.0",
     "prettier": "^3.3.2",
     "prettier-eslint": "^16.3.0",
+    "replace-in-file": "^8.3.0",
     "ts-node": "~10.9.2",
     "typescript": "~5.4.5"
   }
