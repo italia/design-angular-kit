@@ -1,3 +1,12 @@
+## [1.2.2](https://github.com/italia/design-angular-kit/compare/v1.2.1...v1.2.2) (2025-02-17)
+
+
+### Bug Fixes
+
+* release process ([22efebd](https://github.com/italia/design-angular-kit/commit/22efebd55cfe58ec1d2f689e8c02b9dff9d2a5a0))
+
+
+
 ## [1.2.1](https://github.com/italia/design-angular-kit/compare/v1.2.0...v1.2.1) (2025-02-17)
 
 
