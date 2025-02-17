@@ -15,16 +15,29 @@
     "type": "git",
     "url": "https://github.com/italia/design-angular-kit.git"
   },
-  "author": {
-    "name": "Antonino Bonanno",
-    "email": "bonanno@net-serv.it",
-    "url": "https://github.com/AntoninoBonanno"
-  },
+  "author": "Presidenza del Consiglio dei Ministri",
   "contributors": [
     {
       "name": "Net Service Srl",
       "email": "areatecnica@net-serv.it",
       "url": "https://www.net-serv.it/"
+    },
+    {
+      "name": "Antonino Bonanno",
+      "email": "bonanno@net-serv.it",
+      "url": "https://github.com/AntoninoBonanno"
+    },
+    {
+      "name": "Alessio Napolitano",
+      "url": "https://github.com/alenap93"
+    },
+    {
+      "name": "Cristian Borelli",
+      "url": "https://github.com/cri99"
+    },
+    {
+      "name": "Design Angular Kit community",
+      "url": "https://github.com/italia/design-angular-kit/graphs/contributors"
     }
   ],
   "scripts": {
