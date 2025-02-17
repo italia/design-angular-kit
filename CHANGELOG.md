@@ -1,3 +1,27 @@
+## [1.2.2](https://github.com/italia/design-angular-kit/compare/v1.2.1...v1.2.2) (2025-02-17)
+
+
+### Bug Fixes
+
+* release process ([22efebd](https://github.com/italia/design-angular-kit/commit/22efebd55cfe58ec1d2f689e8c02b9dff9d2a5a0))
+
+
+
+## [1.2.1](https://github.com/italia/design-angular-kit/compare/v1.2.0...v1.2.1) (2025-02-17)
+
+
+### Bug Fixes
+
+* active link on router navigation ([7acfee2](https://github.com/italia/design-angular-kit/commit/7acfee240077d88e71b97e56453e6a0e7ad3cf8b))
+* disabled checbox and radio rendering ([5ca31a7](https://github.com/italia/design-angular-kit/commit/5ca31a7bdfbce414a2684e2dd660e77e48a810de))
+
+
+### Features
+
+* add open and close methods to navbar ([b8ae3e5](https://github.com/italia/design-angular-kit/commit/b8ae3e5be584eff48fec42c617b00a3a750c1699))
+
+
+
 # [1.2.0](https://github.com/italia/design-angular-kit/compare/v1.1.4...v1.2.0) (2025-02-11)
 
 

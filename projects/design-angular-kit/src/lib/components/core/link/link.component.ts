@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { NgTemplateOutlet } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
@@ -9,7 +9,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   selector: 'it-link',
   templateUrl: './link.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, NgTemplateOutlet],
+  imports: [RouterLink, RouterLinkActive, NgTemplateOutlet],
 })
 export class ItLinkComponent extends ItAbstractComponent implements AfterViewInit, OnChanges {
   /**
