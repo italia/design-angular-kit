@@ -68,6 +68,7 @@ export * from './lib/components/core/timeline/timeline.component';
 export * from './lib/components/core/timeline/timeline.module';
 
 export * from './lib/components/core/video-player/video-player.component';
+export * from './lib/components/core/video-player/video-player.model';
 export * from './lib/components/core/video-player/video-player.module';
 
 export * from './lib/components/core/tooltip/tooltip.directive';
