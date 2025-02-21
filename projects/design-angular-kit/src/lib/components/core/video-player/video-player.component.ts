@@ -4,18 +4,14 @@ import Player from 'video.js/dist/types/player';
 import { DEFAULT_CONFIG } from './video-player.config';
 import { ItVideoPlayerOptions } from './video-player.model';
 
+//https://italia.github.io/bootstrap-italia/docs/componenti/video-player/
+//https://videojs.com/guides/angular/
+//https://github.com/sankalpkataria/videojs-angular-demo/
+
 @Component({
   standalone: true,
   selector: 'it-video-player',
-  template: `
-    <video
-      #target
-      class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"
-      controls
-      muted
-      playsinline
-      preload="none"></video>
-  `,
+  template: ` <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video> `,
   encapsulation: ViewEncapsulation.None,
 })
 export class ItVideoPlayerComponent implements OnInit, OnDestroy {
@@ -26,7 +22,14 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   player: Player;
 
   ngOnInit() {
+    const v = this.target.nativeElement as HTMLVideoElement;
+    v.setAttribute('controls', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('preload', 'none');
+    v.setAttribute('muted', '');
+
     const config = { ...DEFAULT_CONFIG, ...this.options };
+
     this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
       console.log('onPlayerReady', this);
     });
