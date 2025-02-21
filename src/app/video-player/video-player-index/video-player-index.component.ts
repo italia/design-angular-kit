@@ -10,7 +10,7 @@ import Documentation from '../../../assets/documentation.json';
 
     <it-tab-container>
       <it-tab-item label="Esempi" active="true" class="pt-3">
-        <h1>TBD</h1>
+        <it-video-player-examples></it-video-player-examples>
       </it-tab-item>
       <it-tab-item label="API" class="pt-3">
         <h3>ItVideoPlayerComponent</h3>
