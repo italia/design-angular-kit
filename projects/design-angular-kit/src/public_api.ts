@@ -67,6 +67,9 @@ export * from './lib/components/core/timeline/timeline-item/timeline-item.compon
 export * from './lib/components/core/timeline/timeline.component';
 export * from './lib/components/core/timeline/timeline.module';
 
+export * from './lib/components/core/video-player/video-player.component';
+export * from './lib/components/core/video-player/video-player.module';
+
 export * from './lib/components/core/tooltip/tooltip.directive';
 
 // Forms components
@@ -105,9 +108,9 @@ export * from './lib/components/navigation/navscroll/navscroll.model';
 
 export * from './lib/components/navigation/sidebar/sidebar.component';
 
-export * from './lib/components/navigation/skiplink/skiplink/skiplink.component';
 export * from './lib/components/navigation/skiplink/skiplink-item/skiplink-item.component';
 export * from './lib/components/navigation/skiplink/skiplink.module';
+export * from './lib/components/navigation/skiplink/skiplink/skiplink.component';
 
 // Utils components
 export * from './lib/components/utils/error-page/error-page.component';
