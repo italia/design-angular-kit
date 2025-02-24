@@ -3,10 +3,16 @@ import { SharedModule } from '../shared/shared.module';
 import { VideoPlayerDefaultExampleComponent } from './video-player-default-example/video-player-default-example.component';
 import { VideoPlayerExamplesComponent } from './video-player-examples/video-player-examples.component';
 import { VideoPlayerIndexComponent } from './video-player-index/video-player-index.component';
+import { VideoPlayerPosterExampleComponent } from './video-player-poster-example/video-player-poster-example.component';
 import { VideoPlayerRoutingModule } from './video-player-routing.module';
 
 @NgModule({
-  declarations: [VideoPlayerIndexComponent, VideoPlayerExamplesComponent, VideoPlayerDefaultExampleComponent],
+  declarations: [
+    VideoPlayerIndexComponent,
+    VideoPlayerExamplesComponent,
+    VideoPlayerDefaultExampleComponent,
+    VideoPlayerPosterExampleComponent,
+  ],
   imports: [VideoPlayerRoutingModule, SharedModule],
 })
 export class VideoPlayerModule {}

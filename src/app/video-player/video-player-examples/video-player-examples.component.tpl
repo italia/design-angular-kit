@@ -11,3 +11,15 @@
 <it-video-player-default-example></it-video-player-default-example>
 
 <it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>
+
+{% set html %}
+  {% include "../video-player-poster-example/video-player-poster-example.component.html" %}
+{% endset %}
+
+{% set typescript %}
+  {% include "../video-player-poster-example/video-player-poster-example.component.ts" %}
+{% endset %}
+
+<it-video-player-poster-example></it-video-player-poster-example>
+
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>

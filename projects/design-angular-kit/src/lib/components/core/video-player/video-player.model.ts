@@ -5,6 +5,7 @@ interface ItVideoPlayerOptions {
   controls?: boolean;
   fluid?: boolean;
   muted?: boolean;
+  poster?: string;
   sources: {
     src: string;
     type: string;
