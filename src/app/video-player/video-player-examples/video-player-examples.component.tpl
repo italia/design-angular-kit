@@ -59,3 +59,15 @@
 <it-video-player-streaming-example></it-video-player-streaming-example>
 
 <it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>
+
+{% set html %}
+  {% include "../video-player-streaming-multi-example/video-player-streaming-multi-example.component.html" %}
+{% endset %}
+
+{% set typescript %}
+  {% include "../video-player-streaming-multi-example/video-player-streaming-multi-example.component.ts" %}
+{% endset %}
+
+<it-video-player-streaming-multi-example></it-video-player-streaming-multi-example>
+
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>

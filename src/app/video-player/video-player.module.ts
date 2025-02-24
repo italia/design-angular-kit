@@ -8,6 +8,7 @@ import { VideoPlayerIndexComponent } from './video-player-index/video-player-ind
 import { VideoPlayerPosterExampleComponent } from './video-player-poster-example/video-player-poster-example.component';
 import { VideoPlayerRoutingModule } from './video-player-routing.module';
 import { VideoPlayerStreamingExampleComponent } from './video-player-streaming-example/video-player-streaming-example.component';
+import { VideoPlayerStreamingMultiExampleComponent } from './video-player-streaming-multi-example/video-player-streaming-multi-example.component';
 
 const EXAMPLES = [
   VideoPlayerDefaultExampleComponent,
@@ -15,6 +16,7 @@ const EXAMPLES = [
   VideoPlayerCaptionsExampleComponent,
   VideoPlayerChaptersExampleComponent,
   VideoPlayerStreamingExampleComponent,
+  VideoPlayerStreamingMultiExampleComponent,
 ];
 
 @NgModule({
