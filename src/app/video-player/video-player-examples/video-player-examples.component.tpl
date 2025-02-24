@@ -47,3 +47,15 @@
 <it-video-player-chapters-example></it-video-player-chapters-example>
 
 <it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>
+
+{% set html %}
+  {% include "../video-player-streaming-example/video-player-streaming-example.component.html" %}
+{% endset %}
+
+{% set typescript %}
+  {% include "../video-player-streaming-example/video-player-streaming-example.component.ts" %}
+{% endset %}
+
+<it-video-player-streaming-example></it-video-player-streaming-example>
+
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>

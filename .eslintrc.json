@@ -2,7 +2,8 @@
   "root": true,
   "ignorePatterns": [
     "projects/**/*",
-    "src/**/*-examples.component.html"
+    "src/**/*-examples.component.html",
+    "/src/assets/video"
   ],
   "overrides": [
     {
