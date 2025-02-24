@@ -24,7 +24,7 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.setVideoOptions();
 
-    const config = { ...DEFAULT_CONFIG, ...this.options };
+    const config = { ...DEFAULT_CONFIG, ...this.options, tracks: this.options.captions };
 
     this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
       console.log('onPlayerReady', this);

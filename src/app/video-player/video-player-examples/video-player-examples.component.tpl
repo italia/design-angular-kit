@@ -23,3 +23,15 @@
 <it-video-player-poster-example></it-video-player-poster-example>
 
 <it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>
+
+{% set html %}
+  {% include "../video-player-track-example/video-player-track-example.component.html" %}
+{% endset %}
+
+{% set typescript %}
+  {% include "../video-player-track-example/video-player-track-example.component.ts" %}
+{% endset %}
+
+<it-video-player-track-example></it-video-player-track-example>
+
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>

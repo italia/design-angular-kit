@@ -5,6 +5,7 @@ import { VideoPlayerExamplesComponent } from './video-player-examples/video-play
 import { VideoPlayerIndexComponent } from './video-player-index/video-player-index.component';
 import { VideoPlayerPosterExampleComponent } from './video-player-poster-example/video-player-poster-example.component';
 import { VideoPlayerRoutingModule } from './video-player-routing.module';
+import { VideoPlayerTrackExampleComponent } from './video-player-track-example/video-player-track-example.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { VideoPlayerRoutingModule } from './video-player-routing.module';
     VideoPlayerExamplesComponent,
     VideoPlayerDefaultExampleComponent,
     VideoPlayerPosterExampleComponent,
+    VideoPlayerTrackExampleComponent,
   ],
   imports: [VideoPlayerRoutingModule, SharedModule],
 })
