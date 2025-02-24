@@ -22,11 +22,7 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   player: Player;
 
   ngOnInit() {
-    const v = this.target.nativeElement as HTMLVideoElement;
-    v.setAttribute('controls', '');
-    v.setAttribute('playsinline', '');
-    v.setAttribute('preload', 'none');
-    v.setAttribute('muted', '');
+    this.setVideoOptions();
 
     const config = { ...DEFAULT_CONFIG, ...this.options };
 
@@ -39,5 +35,22 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     if (this.player) {
       this.player.dispose();
     }
+  }
+
+  private setVideoOptions() {
+    const v = this.target.nativeElement as HTMLVideoElement;
+
+    const { controls, muted } = this.options;
+
+    if (controls) {
+      v.setAttribute('controls', '');
+    }
+
+    if (muted) {
+      v.setAttribute('muted', '');
+    }
+
+    v.setAttribute('preload', 'none');
+    v.setAttribute('playsinline', '');
   }
 }

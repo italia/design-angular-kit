@@ -1,8 +1,10 @@
 // See options: https://videojs.com/guides/options
 interface ItVideoPlayerOptions {
-  fluid: boolean;
-  aspectRatio: string;
-  autoplay: boolean;
+  aspectRatio?: string;
+  autoplay?: boolean;
+  controls?: boolean;
+  fluid?: boolean;
+  muted?: boolean;
   sources: {
     src: string;
     type: string;

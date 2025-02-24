@@ -21,6 +21,9 @@
       ],
       "settings": {
         "editor.formatOnSave": true,
+        "[html]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
         "editor.codeActionsOnSave": {
           "source.organizeImports": "always"
         }
