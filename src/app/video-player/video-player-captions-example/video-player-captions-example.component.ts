@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ItVideoPlayerOptions } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
-  selector: 'it-video-player-track-example',
-  templateUrl: './video-player-track-example.component.html',
+  selector: 'it-video-player-captions-example',
+  templateUrl: './video-player-captions-example.component.html',
 })
-export class VideoPlayerTrackExampleComponent {
+export class VideoPlayerCaptionsExampleComponent {
   readonly options = {
     autoplay: false,
     controls: true,

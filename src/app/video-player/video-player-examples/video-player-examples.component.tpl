@@ -25,13 +25,13 @@
 <it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>
 
 {% set html %}
-  {% include "../video-player-track-example/video-player-track-example.component.html" %}
+  {% include "../video-player-captions-example/video-player-captions-example.component.html" %}
 {% endset %}
 
 {% set typescript %}
-  {% include "../video-player-track-example/video-player-track-example.component.ts" %}
+  {% include "../video-player-captions-example/video-player-captions-example.component.ts" %}
 {% endset %}
 
-<it-video-player-track-example></it-video-player-track-example>
+<it-video-player-captions-example></it-video-player-captions-example>
 
 <it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>
