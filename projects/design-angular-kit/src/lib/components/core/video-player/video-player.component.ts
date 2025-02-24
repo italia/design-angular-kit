@@ -40,7 +40,7 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   private setVideoOptions() {
     const v = this.target.nativeElement as HTMLVideoElement;
 
-    const { controls, muted, poster } = this.options;
+    const { controls, muted, poster, fluid } = this.options;
 
     if (controls) {
       v.setAttribute('controls', '');
@@ -52,6 +52,10 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
 
     if (poster) {
       v.setAttribute('poster', poster);
+    }
+
+    if (fluid) {
+      v.setAttribute('fluid', '');
     }
 
     v.setAttribute('preload', 'none');
