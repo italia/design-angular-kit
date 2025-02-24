@@ -1,3 +1,5 @@
+import { ItVideoPlayerOptions } from './video-player.model';
+
 const itLang = {
   'Audio Player': 'Lettore audio',
   'Video Player': 'Lettore video',
@@ -93,4 +95,11 @@ const itLang = {
   'Skip backward {1} seconds': 'Indietro {1} secondi',
 };
 
-export const DEFAULT_CONFIG = { languages: { it: itLang }, language: 'it' } as const;
+const DEFAULT_CONFIG = { languages: { it: itLang }, language: 'it' } as const;
+
+export const mergeConfig = (options: ItVideoPlayerOptions) => {
+  const captions = options.captions ? options.captions.map(c => ({ ...c, kind: 'captions' })) : [];
+  const chapters = options.chapters ? options.chapters.map(c => ({ ...c, kind: 'chapters' })) : [];
+
+  return { ...DEFAULT_CONFIG, ...options, tracks: [...captions, ...chapters] };
+};

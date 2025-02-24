@@ -5,8 +5,6 @@ interface Source {
   type: string;
 }
 
-type Sources = Array<Source>;
-
 interface Caption {
   lang: string;
   src: string;
@@ -14,7 +12,16 @@ interface Caption {
   default?: true;
 }
 
+interface Chapter {
+  lang: string;
+  src: string;
+  label: string;
+  default?: true;
+}
+
+type Sources = Array<Source>;
 type Captions = Array<Caption>;
+type Chapters = Array<Chapter>;
 
 interface ItVideoPlayerOptions {
   aspectRatio?: string;
@@ -25,6 +32,7 @@ interface ItVideoPlayerOptions {
   poster?: string;
   sources: Sources;
   captions?: Captions;
+  chapters?: Chapters;
 }
 
 export type { ItVideoPlayerOptions };
