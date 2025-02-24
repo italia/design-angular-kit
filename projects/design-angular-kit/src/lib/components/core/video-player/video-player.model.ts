@@ -22,6 +22,7 @@ interface Chapter {
 type Sources = Array<Source>;
 type Captions = Array<Caption>;
 type Chapters = Array<Chapter>;
+type Preload = 'auto' | 'none' | 'metadata' | '';
 
 interface ItVideoPlayerOptions {
   aspectRatio?: string;
@@ -30,6 +31,7 @@ interface ItVideoPlayerOptions {
   fluid?: boolean;
   muted?: boolean;
   poster?: string;
+  preload?: Preload;
   sources: Sources;
   captions?: Captions;
   chapters?: Chapters;

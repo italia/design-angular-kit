@@ -10,6 +10,7 @@ export class VideoPlayerStreamingExampleComponent {
     autoplay: false,
     controls: true,
     fluid: true,
+    preload: 'auto',
     poster: '/assets/video/ElephantsDream.mp4-poster16.gif',
     sources: [{ src: '/assets/video/ElephantsDreamDASH/ElephantsDream.mp4.mpd', type: 'application/dash+xml' }],
     captions: [

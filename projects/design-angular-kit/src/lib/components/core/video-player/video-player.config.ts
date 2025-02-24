@@ -100,6 +100,7 @@ const DEFAULT_CONFIG = { languages: { it: itLang }, language: 'it' } as const;
 export const mergeConfig = (options: ItVideoPlayerOptions) => {
   const captions = options.captions ? options.captions.map(c => ({ ...c, kind: 'captions' })) : [];
   const chapters = options.chapters ? options.chapters.map(c => ({ ...c, kind: 'chapters' })) : [];
-
-  return { ...DEFAULT_CONFIG, ...options, tracks: [...captions, ...chapters] };
+  //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#preload
+  const preload = options.preload ?? 'metadata';
+  return { ...DEFAULT_CONFIG, ...options, preload, tracks: [...captions, ...chapters] };
 };
