@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsu
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
 import { configureTech, mergeConfig, Tech } from './video-player.config';
+import { cookies } from './video-player.cookie';
 import { ItVideoPlayerOptions } from './video-player.model';
 
 //https://italia.github.io/bootstrap-italia/docs/componenti/video-player/
@@ -36,7 +37,7 @@ enum ViewType {
             <div class="acceptoverlay-buttons bg-dark">
               <button type="button" class="btn btn-primary" (click)="loadYouTubeVideo()">Accetta</button>
               <div class="form-check">
-                <input id="chk-remember" type="checkbox" data-bs-accept-remember />
+                <input id="chk-remember" type="checkbox" #chkRemember />
                 <label for="chk-remember">Ricorda per tutti i video</label>
               </div>
             </div>
@@ -57,6 +58,7 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   @ViewChild('target', { static: false }) target: ElementRef<HTMLVideoElement>;
   @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef: ElementRef<HTMLDivElement>;
   @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef: ElementRef<HTMLDivElement>;
+  @ViewChild('chkRemember', { static: false }) chrRememberRef: ElementRef<HTMLInputElement>;
 
   @Input() options: ItVideoPlayerOptions;
 
@@ -88,11 +90,19 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   loadYouTubeVideo() {
     const config = mergeConfig(this.options);
     this.setPlayer(config);
+    this.rememberHandler();
+
     const classes = ['show'];
     this.acceptOverlayableRef.nativeElement.classList.remove(...classes);
 
     this.acceptOveralyRef.nativeElement.classList.remove(...classes);
     this.acceptOveralyRef.nativeElement.setAttribute('aria-hidden', 'true');
+  }
+
+  private rememberHandler() {
+    const remember = this.chrRememberRef.nativeElement.checked;
+    console.log(remember);
+    cookies.rememberChoice('youtube.com', remember);
   }
 
   private setPlayer(config: any) {
