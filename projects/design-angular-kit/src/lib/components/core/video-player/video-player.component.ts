@@ -23,6 +23,9 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     const config = mergeConfig(this.options);
+    if ((this.options as any).source) {
+      console.log('source', (this.options as any).source, config);
+    }
     await configureTech(config);
     this.setVideoAttributes(config);
 

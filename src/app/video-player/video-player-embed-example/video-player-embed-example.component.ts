@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItVideoPlayerOptions } from 'projects/design-angular-kit/src/public_api';
+import { ItEmbedVideoPlayerOptions } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-video-player-embed-example',
@@ -10,6 +10,6 @@ export class VideoPlayerEmbedExampleComponent {
     autoplay: false,
     controls: true,
     muted: true,
-    sources: [{ src: 'https://youtu.be/_0j7ZQ67KtY', type: 'video/youtube' }],
-  } satisfies ItVideoPlayerOptions;
+    source: { src: 'https://youtu.be/_0j7ZQ67KtY', type: 'video/youtube' },
+  } satisfies ItEmbedVideoPlayerOptions;
 }

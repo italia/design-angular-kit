@@ -1,4 +1,4 @@
-import { ItNativeVideoPlayerOptions, ItVideoPlayerOptions } from './video-player.model';
+import { ItEmbedVideoPlayerOptions, ItNativeVideoPlayerOptions, ItVideoPlayerOptions } from './video-player.model';
 
 const itLang = {
   'Audio Player': 'Lettore audio',
@@ -104,9 +104,9 @@ const DEFAULT_CONFIG = { languages: { it: itLang }, language: 'it' } as const;
 //   url?: string;
 // } & ItNativeVideoPlayerOptions;
 
-const hasYoutubeVideo = (options: ItNativeVideoPlayerOptions) => options.sources.some(s => s.type === 'video/youtube');
+const hasYoutubeVideo = (options: ItVideoPlayerOptions) => (options as ItEmbedVideoPlayerOptions).source?.type === 'video/youtube';
 
-export const configureTech = async (options: ItNativeVideoPlayerOptions) => {
+export const configureTech = async (options: ItVideoPlayerOptions) => {
   if (hasYoutubeVideo(options)) {
     (await import('videojs-youtube')).default;
   }
@@ -124,5 +124,7 @@ export const mergeConfig = (o: ItVideoPlayerOptions) => {
   //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#preload
   const preload = options.preload ?? 'metadata';
   const config = { ...DEFAULT_CONFIG, ...options, preload, techOrder, tracks: [...captions, ...chapters] };
-  return isYoutubeVideo ? { ...config, youtube: { ytControls: 2, rel: 0, fs: 0, modestbranding: 1 } } : config;
+  return isYoutubeVideo
+    ? { ...config, sources: [(o as ItEmbedVideoPlayerOptions).source], youtube: { ytControls: 2, rel: 0, fs: 0, modestbranding: 1 } }
+    : config;
 };
