@@ -8,6 +8,12 @@ import { ItVideoPlayerOptions } from './video-player.model';
 //https://videojs.com/guides/angular/
 //https://github.com/sankalpkataria/videojs-angular-demo/
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+enum ViewType {
+  Default = 'DEFAULT',
+  Overlay = 'OVERLAY',
+}
+
 @Component({
   standalone: true,
   selector: 'it-video-player',
