@@ -21,7 +21,30 @@ enum ViewType {
   selector: 'it-video-player',
   template: `@switch (viewType$ | async) {
     @case (viewTypes.Default) {
-      <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+      <div class="row">
+        <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+        <div class="vjs-transcription accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header " id="transcription-head1">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#transcription1"
+                aria-expanded="true"
+                aria-controls="transcription">
+                Trascrizione
+              </button>
+            </h2>
+            <div id="transcription1" class="accordion-collapse collapse" role="region" aria-labelledby="transcription-head1">
+              <div class="accordion-body">
+                Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis. Integer
+                eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     }
     @case (viewTypes.Overlay) {
       <div #acceptOverlayable class="acceptoverlayable">
