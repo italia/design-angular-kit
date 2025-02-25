@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
 import { configureTech, mergeConfig, Tech } from './video-player.config';
@@ -54,7 +54,7 @@ enum ViewType {
   }`,
   encapsulation: ViewEncapsulation.None,
 })
-export class ItVideoPlayerComponent implements OnInit, OnDestroy {
+export class ItVideoPlayerComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('target', { static: false }) target: ElementRef<HTMLVideoElement>;
   @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef: ElementRef<HTMLDivElement>;
   @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef: ElementRef<HTMLDivElement>;
@@ -74,11 +74,15 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     await configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
-    // if (this.viewType === ViewType.Default) {
     this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
       console.log('onPlayerReady', this);
     });
-    // }
+  }
+
+  ngAfterViewInit() {
+    if (this.viewType === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com')) {
+      this.hideOverlay();
+    }
   }
 
   ngOnDestroy() {
@@ -88,8 +92,6 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   }
 
   loadYouTubeVideo() {
-    // const config = mergeConfig(this.options);
-    // this.setPlayer(config);
     this.rememberHandler();
     this.hideOverlay();
   }
