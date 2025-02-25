@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
-import { configureTech, mergeConfig } from './video-player.config';
+import { configureTech, mergeConfig, Tech } from './video-player.config';
 import { ItVideoPlayerOptions } from './video-player.model';
 
 //https://italia.github.io/bootstrap-italia/docs/componenti/video-player/
@@ -26,7 +26,7 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     if ((this.options as any).source) {
       console.log('source', (this.options as any).source, config);
     }
-    await configureTech(config);
+    await configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
     this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {

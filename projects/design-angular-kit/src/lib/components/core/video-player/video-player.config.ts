@@ -97,17 +97,12 @@ const itLang = {
 
 const DEFAULT_CONFIG = { languages: { it: itLang }, language: 'it' } as const;
 
-// type ItVideoPlayerConfig = {
-//   languages: { [key: string]: { [key: string]: string } };
-//   language: 'it';
-//   tech?: string;
-//   url?: string;
-// } & ItNativeVideoPlayerOptions;
-
 const hasYoutubeVideo = (options: ItVideoPlayerOptions) => (options as ItEmbedVideoPlayerOptions).source?.type === 'video/youtube';
 
-export const configureTech = async (options: ItVideoPlayerOptions) => {
-  if (hasYoutubeVideo(options)) {
+export type Tech = 'html5' | 'youtube';
+
+export const configureTech = async ({ tech }: { tech: Tech }) => {
+  if (tech === 'youtube') {
     (await import('videojs-youtube')).default;
   }
 };
@@ -123,8 +118,13 @@ export const mergeConfig = (o: ItVideoPlayerOptions) => {
   const techOrder = [tech];
   //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#preload
   const preload = options.preload ?? 'metadata';
-  const config = { ...DEFAULT_CONFIG, ...options, preload, techOrder, tracks: [...captions, ...chapters] };
+  const config = { ...DEFAULT_CONFIG, ...options, preload, techOrder, tracks: [...captions, ...chapters], tech: 'html5' };
   return isYoutubeVideo
-    ? { ...config, sources: [(o as ItEmbedVideoPlayerOptions).source], youtube: { ytControls: 2, rel: 0, fs: 0, modestbranding: 1 } }
+    ? {
+        ...config,
+        sources: [(o as ItEmbedVideoPlayerOptions).source],
+        tech: 'youtube',
+        youtube: { ytControls: 2, rel: 0, fs: 0, modestbranding: 1 },
+      }
     : config;
 };
