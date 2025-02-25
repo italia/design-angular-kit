@@ -23,7 +23,7 @@ enum ViewType {
   template: `@switch (viewType$ | async) {
       @case (viewTypes.Default) {
         <div class="row">
-          <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+          <ng-container *ngTemplateOutlet="videoTemplate"></ng-container>
           <ng-container *ngTemplateOutlet="transcriptionTemplate"></ng-container>
         </div>
       }
@@ -48,7 +48,7 @@ enum ViewType {
             </div>
           </div>
           <div>
-            <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+            <ng-container *ngTemplateOutlet="videoTemplate"></ng-container>
             <ng-container *ngTemplateOutlet="transcriptionTemplate"></ng-container>
           </div>
         </div>
@@ -57,6 +57,10 @@ enum ViewType {
         <h1>No video provider</h1>
       }
     }
+    <ng-template #videoTemplate>
+      <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+    </ng-template>
+
     <ng-template #transcriptionTemplate>
       <div class="vjs-transcription accordion">
         <div class="accordion-item">
