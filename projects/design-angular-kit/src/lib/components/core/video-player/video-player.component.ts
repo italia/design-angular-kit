@@ -17,18 +17,34 @@ enum ViewType {
 @Component({
   standalone: true,
   selector: 'it-video-player',
-  template: ` <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video> `,
+  // template: ` <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video> `,
+  template: `@switch (viewType) {
+    @case (viewTypes.Default) {
+      <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+    }
+    @case (viewTypes.Overlay) {
+      <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+    }
+    @default {
+      <h1>No video provider</h1>
+    }
+  }`,
   encapsulation: ViewEncapsulation.None,
 })
 export class ItVideoPlayerComponent implements OnInit, OnDestroy {
-  @ViewChild('target', { static: true }) target: ElementRef;
+  @ViewChild('target', { static: false }) target: ElementRef;
 
   @Input() options: ItVideoPlayerOptions;
 
   player: Player;
 
+  readonly viewTypes = ViewType;
+
+  viewType?: ViewType;
+
   async ngOnInit() {
     const config = mergeConfig(this.options);
+    this.viewType = config.tech === 'youtube' ? ViewType.Overlay : ViewType.Default;
     await configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
