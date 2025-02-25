@@ -78,6 +78,7 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@types/video.js": "^7.3.58",
+    "@types/youtube": "^0.1.0",
     "bootstrap-italia": "^2.13.4",
     "core-js": "^3.37.1",
     "fp-ts": "^2.16.8",
