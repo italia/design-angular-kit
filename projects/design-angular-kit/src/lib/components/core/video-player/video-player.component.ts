@@ -91,7 +91,10 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     const config = mergeConfig(this.options);
     this.setPlayer(config);
     this.rememberHandler();
+    this.hideOverlay();
+  }
 
+  private hideOverlay() {
     const classes = ['show'];
     this.acceptOverlayableRef.nativeElement.classList.remove(...classes);
 
