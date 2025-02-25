@@ -74,11 +74,11 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     await configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
-    if (this.viewType === ViewType.Default) {
-      this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
-        console.log('onPlayerReady', this);
-      });
-    }
+    // if (this.viewType === ViewType.Default) {
+    this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
+      console.log('onPlayerReady', this);
+    });
+    // }
   }
 
   ngOnDestroy() {
@@ -88,8 +88,8 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   }
 
   loadYouTubeVideo() {
-    const config = mergeConfig(this.options);
-    this.setPlayer(config);
+    // const config = mergeConfig(this.options);
+    // this.setPlayer(config);
     this.rememberHandler();
     this.hideOverlay();
   }
