@@ -24,7 +24,7 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     const config = mergeConfig(this.options);
     await configureTech(config);
-    this.setVideoOptions(config);
+    this.setVideoAttributes(config);
 
     this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
       console.log('onPlayerReady', this);
@@ -37,7 +37,7 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     }
   }
 
-  private setVideoOptions(options: ItVideoPlayerOptions) {
+  private setVideoAttributes(options: ItVideoPlayerOptions) {
     const v = this.target.nativeElement as HTMLVideoElement;
 
     const { controls, muted, poster, fluid } = options;
