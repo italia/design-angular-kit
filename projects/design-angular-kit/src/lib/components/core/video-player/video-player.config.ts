@@ -1,4 +1,4 @@
-import { ItVideoPlayerOptions } from './video-player.model';
+import { ItNativeVideoPlayerOptions, ItVideoPlayerOptions } from './video-player.model';
 
 const itLang = {
   'Audio Player': 'Lettore audio',
@@ -97,10 +97,32 @@ const itLang = {
 
 const DEFAULT_CONFIG = { languages: { it: itLang }, language: 'it' } as const;
 
-export const mergeConfig = (options: ItVideoPlayerOptions) => {
+// type ItVideoPlayerConfig = {
+//   languages: { [key: string]: { [key: string]: string } };
+//   language: 'it';
+//   tech?: string;
+//   url?: string;
+// } & ItNativeVideoPlayerOptions;
+
+const hasYoutubeVideo = (options: ItNativeVideoPlayerOptions) => options.sources.some(s => s.type === 'video/youtube');
+
+export const configureTech = async (options: ItNativeVideoPlayerOptions) => {
+  if (hasYoutubeVideo(options)) {
+    (await import('videojs-youtube')).default;
+  }
+};
+
+export const mergeConfig = (o: ItVideoPlayerOptions) => {
+  const options = o as ItNativeVideoPlayerOptions;
   const captions = options.captions ? options.captions.map(c => ({ ...c, kind: 'captions' })) : [];
   const chapters = options.chapters ? options.chapters.map(c => ({ ...c, kind: 'chapters' })) : [];
+
+  const isYoutubeVideo = hasYoutubeVideo(options);
+
+  const tech = isYoutubeVideo ? 'youtube' : 'html5';
+  const techOrder = [tech];
   //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#preload
   const preload = options.preload ?? 'metadata';
-  return { ...DEFAULT_CONFIG, ...options, preload, tracks: [...captions, ...chapters] };
+  const config = { ...DEFAULT_CONFIG, ...options, preload, techOrder, tracks: [...captions, ...chapters] };
+  return isYoutubeVideo ? { ...config, youtube: { ytControls: 2, rel: 0, fs: 0, modestbranding: 1 } } : config;
 };

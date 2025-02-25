@@ -71,3 +71,16 @@
 <it-video-player-streaming-multi-example></it-video-player-streaming-multi-example>
 
 <it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>
+
+
+{% set html %}
+  {% include "../video-player-embed-example/video-player-embed-example.component.html" %}
+{% endset %}
+
+{% set typescript %}
+  {% include "../video-player-embed-example/video-player-embed-example.component.ts" %}
+{% endset %}
+
+<it-video-player-embed-example></it-video-player-embed-example>
+
+<it-source-display html="{$ sanitize(html) $}" typescript="{$ sanitize(typescript) $}"></it-source-display>

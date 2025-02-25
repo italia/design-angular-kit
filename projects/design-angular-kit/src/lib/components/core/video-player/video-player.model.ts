@@ -2,7 +2,7 @@
 
 interface Source {
   src: string;
-  type: string;
+  type: string | EmbedSourceType;
 }
 
 interface Caption {
@@ -24,7 +24,7 @@ type Captions = Array<Caption>;
 type Chapters = Array<Chapter>;
 type Preload = 'auto' | 'none' | 'metadata' | '';
 
-interface ItVideoPlayerOptions {
+interface ItNativeVideoPlayerOptions {
   aspectRatio?: string;
   autoplay?: boolean;
   controls?: boolean;
@@ -37,4 +37,10 @@ interface ItVideoPlayerOptions {
   chapters?: Chapters;
 }
 
-export type { ItVideoPlayerOptions };
+type EmbedSourceType = 'video/youtube';
+
+type ItEmbedVideoPlayerOptions = Omit<ItNativeVideoPlayerOptions, 'sources' | 'captions' | 'chapters'>;
+
+type ItVideoPlayerOptions = ItNativeVideoPlayerOptions | ItEmbedVideoPlayerOptions;
+
+export type { ItEmbedVideoPlayerOptions, ItNativeVideoPlayerOptions, ItVideoPlayerOptions };

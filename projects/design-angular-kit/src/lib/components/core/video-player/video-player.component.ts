@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
-import { mergeConfig } from './video-player.config';
+import { configureTech, mergeConfig } from './video-player.config';
 import { ItVideoPlayerOptions } from './video-player.model';
 
 //https://italia.github.io/bootstrap-italia/docs/componenti/video-player/
@@ -21,10 +21,10 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
 
   player: Player;
 
-  ngOnInit() {
-    this.setVideoOptions();
-
+  async ngOnInit() {
     const config = mergeConfig(this.options);
+    await configureTech(config);
+    this.setVideoOptions(config);
 
     this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
       console.log('onPlayerReady', this);
@@ -37,10 +37,10 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     }
   }
 
-  private setVideoOptions() {
+  private setVideoOptions(options: ItVideoPlayerOptions) {
     const v = this.target.nativeElement as HTMLVideoElement;
 
-    const { controls, muted, poster, fluid } = this.options;
+    const { controls, muted, poster, fluid } = options;
 
     if (controls) {
       v.setAttribute('controls', '');
