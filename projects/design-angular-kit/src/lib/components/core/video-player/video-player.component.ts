@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChi
 import { BehaviorSubject } from 'rxjs';
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
+import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { configureTech, mergeConfig, Tech } from './video-player.config';
 import { cookies } from './video-player.cookie';
 import { ItVideoPlayerConfig, ItVideoPlayerOptions } from './video-player.model';
@@ -25,18 +26,22 @@ enum ViewType {
         <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
         <div class="vjs-transcription accordion">
           <div class="accordion-item">
-            <h2 class="accordion-header " id="transcription-head1">
+            <h2 class="accordion-header " id="transcription-{{ id }}-head">
               <button
                 class="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#transcription1"
-                aria-expanded="true"
-                aria-controls="transcription">
+                [attr.data-bs-target]="'#transcription-' + id"
+                [attr.aria-controls]="'transcription-' + id"
+                aria-expanded="true">
                 Trascrizione
               </button>
             </h2>
-            <div id="transcription1" class="accordion-collapse collapse" role="region" aria-labelledby="transcription-head1">
+            <div
+              id="transcription-{{ id }}"
+              class="accordion-collapse collapse"
+              role="region"
+              [attr.aria-labelledby]="'transcription-' + id + '-head'">
               <div class="accordion-body">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis. Integer
                 eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -78,7 +83,7 @@ enum ViewType {
   imports: [AsyncPipe],
   encapsulation: ViewEncapsulation.None,
 })
-export class ItVideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ItVideoPlayerComponent extends ItAbstractComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() options: ItVideoPlayerOptions;
 
   @ViewChild('videoPlayer', { static: false }) videoPlayerRef: ElementRef<HTMLVideoElement>;
@@ -93,6 +98,10 @@ export class ItVideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy 
   readonly viewType$ = new BehaviorSubject<ViewType>(undefined);
   private get viewType() {
     return this.viewType$.value;
+  }
+
+  constructor() {
+    super();
   }
 
   async ngOnInit() {
