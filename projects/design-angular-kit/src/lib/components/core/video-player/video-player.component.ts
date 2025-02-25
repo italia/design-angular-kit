@@ -54,7 +54,7 @@ enum ViewType {
   }`,
   encapsulation: ViewEncapsulation.None,
 })
-export class ItVideoPlayerComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ItVideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('target', { static: false }) target: ElementRef<HTMLVideoElement>;
   @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef: ElementRef<HTMLDivElement>;
   @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef: ElementRef<HTMLDivElement>;
@@ -108,12 +108,6 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy, AfterViewInit 
     const remember = this.chrRememberRef.nativeElement.checked;
     console.log(remember);
     cookies.rememberChoice('youtube.com', remember);
-  }
-
-  private setPlayer(config: any) {
-    this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
-      console.log('onPlayerReady', this);
-    });
   }
 
   private setVideoAttributes(options: ItVideoPlayerOptions) {
