@@ -73,6 +73,31 @@ enum ViewType {
         </div>
         <div>
           <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+          <div class="vjs-transcription accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header " id="transcription-{{ id }}-head">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#transcription-' + id"
+                  [attr.aria-controls]="'transcription-' + id"
+                  aria-expanded="true">
+                  Trascrizione
+                </button>
+              </h2>
+              <div
+                id="transcription-{{ id }}"
+                class="accordion-collapse collapse"
+                role="region"
+                [attr.aria-labelledby]="'transcription-' + id + '-head'">
+                <div class="accordion-body">
+                  Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis. Integer
+                  eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     }
