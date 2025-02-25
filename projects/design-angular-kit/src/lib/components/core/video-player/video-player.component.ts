@@ -23,7 +23,29 @@ enum ViewType {
       <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
     }
     @case (viewTypes.Overlay) {
-      <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+      <div #acceptOverlayable class="acceptoverlayable">
+        <div #acceptOveraly class="acceptoverlay acceptoverlay-primary fade show">
+          <div class="acceptoverlay-inner">
+            <div class="acceptoverlay-icon">
+              <svg class="icon icon-xl"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-video"></use></svg>
+            </div>
+            <p>
+              Accetta i cookie di YouTube per vedere il video. Puoi gestire le preferenze nella
+              <a href="#" class="text-white">cookie policy</a>.
+            </p>
+            <div class="acceptoverlay-buttons bg-dark">
+              <button type="button" class="btn btn-primary" (click)="loadYouTubeVideo()">Accetta</button>
+              <div class="form-check">
+                <input id="chk-remember" type="checkbox" data-bs-accept-remember />
+                <label for="chk-remember">Ricorda per tutti i video</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+        </div>
+      </div>
     }
     @default {
       <h1>No video provider</h1>
@@ -32,7 +54,9 @@ enum ViewType {
   encapsulation: ViewEncapsulation.None,
 })
 export class ItVideoPlayerComponent implements OnInit, OnDestroy {
-  @ViewChild('target', { static: false }) target: ElementRef;
+  @ViewChild('target', { static: false }) target: ElementRef<HTMLVideoElement>;
+  @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef: ElementRef<HTMLDivElement>;
+  @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef: ElementRef<HTMLDivElement>;
 
   @Input() options: ItVideoPlayerOptions;
 
@@ -48,9 +72,11 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     await configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
-    this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
-      console.log('onPlayerReady', this);
-    });
+    if (this.viewType === ViewType.Default) {
+      this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
+        console.log('onPlayerReady', this);
+      });
+    }
   }
 
   ngOnDestroy() {
@@ -59,8 +85,24 @@ export class ItVideoPlayerComponent implements OnInit, OnDestroy {
     }
   }
 
+  loadYouTubeVideo() {
+    const config = mergeConfig(this.options);
+    this.setPlayer(config);
+    const classes = ['show'];
+    this.acceptOverlayableRef.nativeElement.classList.remove(...classes);
+
+    this.acceptOveralyRef.nativeElement.classList.remove(...classes);
+    this.acceptOveralyRef.nativeElement.setAttribute('aria-hidden', 'true');
+  }
+
+  private setPlayer(config: any) {
+    this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
+      console.log('onPlayerReady', this);
+    });
+  }
+
   private setVideoAttributes(options: ItVideoPlayerOptions) {
-    const v = this.target.nativeElement as HTMLVideoElement;
+    const v = this.target.nativeElement;
 
     const { controls, muted, poster, fluid } = options;
 
