@@ -44,4 +44,6 @@ type ItEmbedVideoPlayerOptions = Omit<ItNativeVideoPlayerOptions, 'sources' | 'c
 
 type ItVideoPlayerOptions = ItNativeVideoPlayerOptions | ItEmbedVideoPlayerOptions;
 
-export type { ItEmbedVideoPlayerOptions, ItNativeVideoPlayerOptions, ItVideoPlayerOptions };
+type ItVideoPlayerConfig = ItVideoPlayerOptions & { tech: string };
+
+export type { ItEmbedVideoPlayerOptions, ItNativeVideoPlayerOptions, ItVideoPlayerConfig, ItVideoPlayerOptions };

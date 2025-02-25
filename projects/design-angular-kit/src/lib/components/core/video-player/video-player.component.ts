@@ -1,9 +1,11 @@
+import { AsyncPipe } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
 import { configureTech, mergeConfig, Tech } from './video-player.config';
 import { cookies } from './video-player.cookie';
-import { ItVideoPlayerOptions } from './video-player.model';
+import { ItVideoPlayerConfig, ItVideoPlayerOptions } from './video-player.model';
 
 //https://italia.github.io/bootstrap-italia/docs/componenti/video-player/
 //https://videojs.com/guides/angular/
@@ -19,7 +21,7 @@ enum ViewType {
   standalone: true,
   selector: 'it-video-player',
   // template: ` <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video> `,
-  template: `@switch (viewType) {
+  template: `@switch (viewType$ | async) {
     @case (viewTypes.Default) {
       <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
     }
@@ -35,7 +37,7 @@ enum ViewType {
               <a href="#" class="text-white">cookie policy</a>.
             </p>
             <div class="acceptoverlay-buttons bg-dark">
-              <button type="button" class="btn btn-primary" (click)="loadYouTubeVideo()">Accetta</button>
+              <button type="button" class="btn btn-primary" (click)="acceptCookieHandler()">Accetta</button>
               <div class="form-check">
                 <input id="chk-remember" type="checkbox" #chkRemember />
                 <label for="chk-remember">Ricorda per tutti i video</label>
@@ -52,25 +54,29 @@ enum ViewType {
       <h1>No video provider</h1>
     }
   }`,
+  imports: [AsyncPipe],
   encapsulation: ViewEncapsulation.None,
 })
 export class ItVideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
+  @Input() options: ItVideoPlayerOptions;
+
   @ViewChild('target', { static: false }) target: ElementRef<HTMLVideoElement>;
   @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef: ElementRef<HTMLDivElement>;
   @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef: ElementRef<HTMLDivElement>;
   @ViewChild('chkRemember', { static: false }) chrRememberRef: ElementRef<HTMLInputElement>;
 
-  @Input() options: ItVideoPlayerOptions;
-
   player: Player;
 
   readonly viewTypes = ViewType;
 
-  viewType?: ViewType;
+  readonly viewType$ = new BehaviorSubject<ViewType>(undefined);
+  private get viewType() {
+    return this.viewType$.value;
+  }
 
   async ngOnInit() {
     const config = mergeConfig(this.options);
-    this.viewType = config.tech === 'youtube' ? ViewType.Overlay : ViewType.Default;
+    this.setViewType(config);
     await configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
@@ -91,9 +97,13 @@ export class ItVideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy 
     }
   }
 
-  loadYouTubeVideo() {
+  acceptCookieHandler() {
     this.rememberHandler();
     this.hideOverlay();
+  }
+
+  private setViewType(config: ItVideoPlayerConfig) {
+    this.viewType$.next(config.tech === 'youtube' ? ViewType.Overlay : ViewType.Default);
   }
 
   private hideOverlay() {
