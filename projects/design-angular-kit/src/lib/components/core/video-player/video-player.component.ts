@@ -11,7 +11,6 @@ import { ItVideoPlayerConfig, ItVideoPlayerOptions } from './video-player.model'
 //https://videojs.com/guides/angular/
 //https://github.com/sankalpkataria/videojs-angular-demo/
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 enum ViewType {
   Default = 'DEFAULT',
   Overlay = 'OVERLAY',
@@ -20,10 +19,9 @@ enum ViewType {
 @Component({
   standalone: true,
   selector: 'it-video-player',
-  // template: ` <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video> `,
   template: `@switch (viewType$ | async) {
     @case (viewTypes.Default) {
-      <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+      <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
     }
     @case (viewTypes.Overlay) {
       <div #acceptOverlayable class="acceptoverlayable">
@@ -46,7 +44,7 @@ enum ViewType {
           </div>
         </div>
         <div>
-          <video #target class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+          <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
         </div>
       </div>
     }
@@ -60,7 +58,7 @@ enum ViewType {
 export class ItVideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() options: ItVideoPlayerOptions;
 
-  @ViewChild('target', { static: false }) target: ElementRef<HTMLVideoElement>;
+  @ViewChild('videoPlayer', { static: false }) videoPlayerRef: ElementRef<HTMLVideoElement>;
   @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef: ElementRef<HTMLDivElement>;
   @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef: ElementRef<HTMLDivElement>;
   @ViewChild('chkRemember', { static: false }) chrRememberRef: ElementRef<HTMLInputElement>;
@@ -80,7 +78,7 @@ export class ItVideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy 
     await configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
-    this.player = videojs(this.target.nativeElement, config, function onPlayerReady() {
+    this.player = videojs(this.videoPlayerRef.nativeElement, config, function onPlayerReady() {
       console.log('onPlayerReady', this);
     });
   }
@@ -121,7 +119,7 @@ export class ItVideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   private setVideoAttributes(options: ItVideoPlayerOptions) {
-    const v = this.target.nativeElement;
+    const v = this.videoPlayerRef.nativeElement;
 
     const { controls, muted, poster, fluid } = options;
 
