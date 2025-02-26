@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-pagination-text-links-example',
   templateUrl: './pagination-text-links-example.component.html',
+  standalone: false,
 })
 export class PaginationTextLinksExampleComponent {
   currentPage: number = 25;

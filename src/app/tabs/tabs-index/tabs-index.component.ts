@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-tabs-index',
   templateUrl: './tabs-index.component.html',
   styleUrls: ['./tabs-index.component.scss'],
+  standalone: false,
 })
 export class TabsIndexComponent {
   tabGroupComponent: any;

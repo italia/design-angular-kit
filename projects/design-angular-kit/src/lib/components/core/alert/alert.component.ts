@@ -11,7 +11,6 @@ import { inputToBoolean } from '../../../utils/coercion';
  * @description You can provide feedback to the user via alert messages.
  */
 @Component({
-  standalone: true,
   selector: 'it-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],

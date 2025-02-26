@@ -12,7 +12,6 @@ import { inputToBoolean } from '../../../../utils/coercion';
  * @description Represents a single event for Timeline component.
  */
 @Component({
-  standalone: true,
   selector: 'it-timeline-item',
   templateUrl: './timeline-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

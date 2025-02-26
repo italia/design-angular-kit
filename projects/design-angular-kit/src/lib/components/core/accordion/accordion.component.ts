@@ -6,7 +6,6 @@ import { ItCollapseComponent } from '../collapse/collapse.component';
  * @description Build vertically collapsible accordions based on Collapse.
  */
 @Component({
-  standalone: true,
   selector: 'it-accordion',
   templateUrl: './accordion.component.html',
   exportAs: 'itAccordion',

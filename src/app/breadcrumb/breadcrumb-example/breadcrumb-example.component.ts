@@ -5,6 +5,7 @@ import { IconName } from 'design-angular-kit/interfaces/icon';
   selector: 'it-breadcrumb-example',
   templateUrl: './breadcrumb-example.component.html',
   styleUrls: ['./breadcrumb-example.component.scss'],
+  standalone: false,
 })
 export class BreadcrumbExampleComponent {
   get icon(): IconName {

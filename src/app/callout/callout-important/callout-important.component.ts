@@ -4,6 +4,7 @@ import { CalloutColor } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-callout-important',
   templateUrl: './callout-important.component.html',
+  standalone: false,
 })
 export class CalloutImportantComponent {
   text =

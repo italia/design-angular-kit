@@ -11,6 +11,7 @@ import { ItBadgeDirective } from './badge.directive';
       Testo di esempio <span [itBadge]="selectedColor" [rounded]="isRounded">{{ badgeText }}</span>
     </h5>
   `,
+  standalone: false,
 })
 class UnitTestComponent {
   @Input() set selectedColor(value: BadgeColor | undefined) {

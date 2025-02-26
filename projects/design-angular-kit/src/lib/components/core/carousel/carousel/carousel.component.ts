@@ -22,7 +22,6 @@ import { inputToBoolean } from '../../../../utils/coercion';
  * @description A presentation component for scrolling through elements, images or text slides.
  */
 @Component({
-  standalone: true,
   selector: 'it-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],

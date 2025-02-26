@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-tabs-dynamic-example',
   templateUrl: './tabs-dynamic-example.component.html',
   styleUrls: ['./tabs-dynamic-example.component.scss'],
+  standalone: false,
 })
 export class TabsDynamicExampleComponent {
   tabs = ['Primo', 'Secondo', 'Terzo'];

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'it-password-input-validation-example',
   templateUrl: './password-input-validation-example.component.html',
+  standalone: false,
 })
 export class PasswordInputValidationExampleComponent {
   formGroup: FormGroup;

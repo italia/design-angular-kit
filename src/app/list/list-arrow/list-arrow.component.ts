@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-list-arrow',
   templateUrl: './list-arrow.component.html',
   styleUrls: ['./list-arrow.component.scss'],
+  standalone: false,
 })
 export class ListArrowComponent {}

@@ -5,6 +5,7 @@ import { SelectControlGroup, SelectControlOption } from 'projects/design-angular
   selector: 'it-select-group-example',
   templateUrl: './select-group-example.component.html',
   styleUrls: ['./select-group-example.component.scss'],
+  standalone: false,
 })
 export class SelectGroupExampleComponent {
   selectedValue: number | string = '';

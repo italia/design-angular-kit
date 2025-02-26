@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'it-textarea-example',
   templateUrl: './textarea-example.component.html',
+  standalone: false,
 })
 export class TextareaExampleComponent {
   ngModelValue?: string;

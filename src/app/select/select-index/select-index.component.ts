@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-select-index',
   templateUrl: './select-index.component.html',
   styleUrls: ['./select-index.component.scss'],
+  standalone: false,
 })
 export class SelectIndexComponent {
   component: any;

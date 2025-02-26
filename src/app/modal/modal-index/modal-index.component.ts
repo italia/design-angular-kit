@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-modal-index',
   templateUrl: './modal-index.component.html',
+  standalone: false,
 })
 export class ModalIndexComponent {
   component: any;

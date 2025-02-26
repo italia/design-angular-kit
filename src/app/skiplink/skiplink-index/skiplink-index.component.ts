@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-skiplink-index',
   templateUrl: './skiplink-index.component.html',
+  standalone: false,
 })
 export class SkiplinkIndexComponent {
   component: any;

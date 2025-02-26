@@ -12,6 +12,7 @@ import { By } from '@angular/platform-browser';
       {{ label }}
     </button>
   </div>`,
+  standalone: false,
 })
 class SingleButtonComponent {
   disabled = false;

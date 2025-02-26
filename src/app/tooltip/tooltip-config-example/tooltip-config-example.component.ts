@@ -5,5 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './tooltip-config-example.component.html',
   styleUrls: ['./tooltip-config-example.component.scss'],
   providers: [],
+  standalone: false,
 })
 export class TooltipConfigExampleComponent {}

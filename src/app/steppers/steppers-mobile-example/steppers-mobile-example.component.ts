@@ -5,5 +5,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
   templateUrl: './steppers-mobile-example.component.html',
   styleUrls: ['steppers-mobile-example.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class SteppersMobileExampleComponent {}

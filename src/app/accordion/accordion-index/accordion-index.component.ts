@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-accordion-index',
   templateUrl: './accordion-index.component.html',
   styleUrls: ['./accordion-index.component.scss'],
+  standalone: false,
 })
 export class AccordionIndexComponent {
   accordionComponent: any;

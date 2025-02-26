@@ -5,6 +5,7 @@ import TableOfContent from '../../assets/table-of-content.json';
   selector: 'it-table-of-content',
   templateUrl: './table-of-content.component.html',
   styleUrls: ['./table-of-content.component.scss'],
+  standalone: false,
 })
 export class TableOfContentComponent {
   tableOfContent = (<any>TableOfContent).tableOfContent;

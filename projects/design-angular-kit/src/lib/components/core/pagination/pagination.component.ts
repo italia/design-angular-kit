@@ -9,7 +9,6 @@ import { ItInputComponent } from '../../form/input/input.component';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-pagination',
   templateUrl: './pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

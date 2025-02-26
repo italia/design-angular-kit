@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 @Component({
   selector: 'it-autocomplete-search-example',
   templateUrl: './autocomplete-search-example.component.html',
+  standalone: false,
 })
 export class AutocompleteSearchExampleComponent {
   private _autoCompleteData: AutocompleteItem[] = [

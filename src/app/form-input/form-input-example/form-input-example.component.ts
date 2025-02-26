@@ -6,6 +6,7 @@ import { InputControlType } from 'projects/design-angular-kit/src/public_api';
   templateUrl: './form-input-example.component.html',
   styleUrls: ['./form-input-example.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FormInputExampleComponent {
   i = 0;

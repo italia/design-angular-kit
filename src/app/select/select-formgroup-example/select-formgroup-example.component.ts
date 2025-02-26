@@ -5,6 +5,7 @@ import { SelectControlOption } from 'design-angular-kit/interfaces/form';
 @Component({
   selector: 'it-select-formgroup-example',
   templateUrl: './select-formgroup-example.component.html',
+  standalone: false,
 })
 export class SelectFormgroupExampleComponent {
   myForm: FormGroup;

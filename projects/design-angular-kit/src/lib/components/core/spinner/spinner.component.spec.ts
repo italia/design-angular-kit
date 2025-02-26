@@ -9,6 +9,7 @@ import { tb_base } from '../../../../test';
 @Component({
   selector: 'it-unit-test',
   template: ` <it-spinner [active]="active" [small]="small"></it-spinner> `,
+  standalone: false,
 })
 class UnitTestComponent {
   @Input({ transform: inputToBoolean }) set active(value: boolean | undefined) {

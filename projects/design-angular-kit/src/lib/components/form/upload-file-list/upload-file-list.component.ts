@@ -10,7 +10,6 @@ import { ItProgressBarComponent } from '../../core/progress-bar/progress-bar.com
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-upload-file-list',
   templateUrl: './upload-file-list.component.html',
   imports: [ItIconComponent, TranslateModule, ItTooltipDirective, ItProgressBarComponent],

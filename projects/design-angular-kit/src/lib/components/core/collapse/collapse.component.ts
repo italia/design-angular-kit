@@ -4,7 +4,6 @@ import { Collapse } from 'bootstrap-italia';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-collapse',
   templateUrl: './collapse.component.html',
   exportAs: 'itCollapse',

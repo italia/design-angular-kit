@@ -6,7 +6,6 @@ import { ItLinkComponent } from '../../../core/link/link.component';
 import { ItSkiplinkComponent } from '../skiplink/skiplink.component';
 
 @Component({
-  standalone: true,
   selector: 'it-skiplink-item',
   templateUrl: './skiplink-item.component.html',
   exportAs: 'itSkipLinkItem',

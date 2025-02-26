@@ -4,6 +4,7 @@ import { NavscrollItems } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-navscroll-default-example',
   templateUrl: './navscroll-default-example.component.html',
+  standalone: false,
 })
 export class NavscrollDefaultExampleComponent {
   readonly header = 'Default example';

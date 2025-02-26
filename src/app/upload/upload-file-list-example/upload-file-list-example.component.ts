@@ -6,6 +6,7 @@ import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'it-upload-file-list-example',
   templateUrl: './upload-file-list-example.component.html',
+  standalone: false,
 })
 export class UploadFileListExampleComponent {
   uploadedFileList: Array<UploadFileListItem> = [

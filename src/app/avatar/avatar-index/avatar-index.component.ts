@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-avatar-index',
   templateUrl: './avatar-index.component.html',
   styleUrls: ['./avatar-index.component.scss'],
+  standalone: false,
 })
 export class AvatarIndexComponent {
   directive: any;

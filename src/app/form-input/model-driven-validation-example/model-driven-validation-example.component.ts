@@ -6,6 +6,7 @@ import { ItValidators } from 'design-angular-kit/validators/it-validators';
   selector: 'it-model-driven-validation-example',
   templateUrl: './model-driven-validation-example.component.html',
   styleUrls: ['./model-driven-validation-example.component.scss'],
+  standalone: false,
 })
 export class ModelDrivenValidationExampleComponent {
   myForm: FormGroup;

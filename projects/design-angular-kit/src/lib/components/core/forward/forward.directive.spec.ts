@@ -10,6 +10,7 @@ import { By } from '@angular/platform-browser';
     <a href="#" [itForward]="refH3">second</a>
     <h3>Text H3</h3>
   `,
+  standalone: false,
 })
 class UnitTestComponent {
   @ViewChildren(ItForwardDirective) directives: QueryList<ItForwardDirective>;

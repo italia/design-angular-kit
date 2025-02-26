@@ -4,7 +4,6 @@ import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],

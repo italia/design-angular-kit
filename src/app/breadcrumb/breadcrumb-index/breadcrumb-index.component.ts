@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-breadcrumb-index',
   templateUrl: './breadcrumb-index.component.html',
   styleUrls: ['./breadcrumb-index.component.scss'],
+  standalone: false,
 })
 export class BreadcrumbIndexComponent {
   component: any;

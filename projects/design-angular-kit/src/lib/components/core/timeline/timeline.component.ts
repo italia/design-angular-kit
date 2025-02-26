@@ -10,7 +10,6 @@ import { TimelineElement } from '../../../interfaces/core';
  * @description Build timeline for chronological representation of events.
  */
 @Component({
-  standalone: true,
   selector: 'it-timeline',
   templateUrl: './timeline.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

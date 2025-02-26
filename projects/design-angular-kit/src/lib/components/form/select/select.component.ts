@@ -5,7 +5,6 @@ import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
   selector: 'it-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],

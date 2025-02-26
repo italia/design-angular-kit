@@ -6,7 +6,6 @@ import { ItButtonDirective } from '../../core/button/button.directive';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-error-page',
   templateUrl: './error-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

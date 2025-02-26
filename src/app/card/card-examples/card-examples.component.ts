@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-card-examples',
   templateUrl: './card-examples.component.html',
   styleUrls: ['./card-examples.component.scss'],
+  standalone: false,
 })
 export class CardExamplesComponent {}

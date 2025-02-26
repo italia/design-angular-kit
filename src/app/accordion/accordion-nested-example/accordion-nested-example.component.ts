@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-accordion-nested-example',
   templateUrl: './accordion-nested-example.component.html',
   styleUrls: ['./accordion-nested-example.component.scss'],
+  standalone: false,
 })
 export class AccordionNestedExampleComponent {
   shownComponent = '';

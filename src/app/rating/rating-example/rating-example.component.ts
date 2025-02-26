@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'it-rating-example',
   templateUrl: './rating-example.component.html',
+  standalone: false,
 })
 export class RatingExampleComponent {
   rating: number = 3;

@@ -6,7 +6,6 @@ import { AsyncPipe } from '@angular/common';
 import { ItDropdownModule } from '../../core/dropdown/dropdown.module';
 
 @Component({
-  standalone: true,
   selector: 'it-language-switcher',
   templateUrl: './language-switcher.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

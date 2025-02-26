@@ -5,6 +5,7 @@ import { ItModalComponent } from 'design-angular-kit/components/core/modal/modal
 @Component({
   selector: 'it-modal-radio-example',
   templateUrl: './modal-radio-example.component.html',
+  standalone: false,
 })
 export class ModalRadioExampleComponent {
   formGroup: FormGroup;

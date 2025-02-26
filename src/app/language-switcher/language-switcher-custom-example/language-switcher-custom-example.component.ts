@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'it-language-switcher-custom-example',
   templateUrl: './language-switcher-custom-example.component.html',
+  standalone: false,
 })
 export class LanguageSwitcherCustomExampleComponent {
   availableLanguages?: Array<AvailableLanguage>;

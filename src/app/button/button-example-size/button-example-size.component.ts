@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-button-example-size',
   templateUrl: './button-example-size.component.html',
   styleUrls: ['./button-example-size.component.scss'],
+  standalone: false,
 })
 export class ButtonExampleSizeComponent {}

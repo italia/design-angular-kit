@@ -7,7 +7,6 @@ import { ItSortHeaderComponent } from './sort-header/sort-header.component';
 import { ItSortEvent } from '../../../../interfaces/sortable-table';
 
 @Component({
-  standalone: true,
   template: ` <it-table itSort (sortChange)="sortData($event)">
     <ng-container thead>
       <tr>

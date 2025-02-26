@@ -4,6 +4,7 @@ import { DimmerColor } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-dimmer-primary',
   templateUrl: './dimmer-primary.component.html',
+  standalone: false,
 })
 export class DimmerPrimaryComponent {
   text =

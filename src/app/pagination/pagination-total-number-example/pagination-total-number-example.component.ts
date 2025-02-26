@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-pagination-total-number-example',
   templateUrl: './pagination-total-number-example.component.html',
+  standalone: false,
 })
 export class PaginationTotalNumberExampleComponent {
   currentPage: number = 25;

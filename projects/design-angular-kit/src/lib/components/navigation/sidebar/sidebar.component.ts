@@ -3,7 +3,6 @@ import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-sidebar',
-  standalone: true,
   imports: [],
   templateUrl: './sidebar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

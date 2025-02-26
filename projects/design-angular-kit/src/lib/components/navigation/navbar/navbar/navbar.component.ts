@@ -6,7 +6,6 @@ import { inputToBoolean } from '../../../../utils/coercion';
 import { NavBarCollapsible } from 'bootstrap-italia';
 
 @Component({
-  standalone: true,
   selector: 'it-navbar',
   templateUrl: './navbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

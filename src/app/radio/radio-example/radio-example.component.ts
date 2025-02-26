@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   selector: 'it-radio-example',
   templateUrl: './radio-example.component.html',
   styleUrls: ['./radio-example.component.scss'],
+  standalone: false,
 })
 export class RadioExampleComponent implements OnInit {
   colors = ['Rosso', 'Blu', 'Giallo'];

@@ -5,6 +5,7 @@ import { NotificationPosition, NotificationType } from 'design-angular-kit/inter
 @Component({
   selector: 'it-notifications-example',
   templateUrl: './notifications-example.component.html',
+  standalone: false,
 })
 export class NotificationsExampleComponent {
   withText = true;

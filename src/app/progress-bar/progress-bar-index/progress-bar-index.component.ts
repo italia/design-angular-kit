@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-progress-bar-index',
   templateUrl: './progress-bar-index.component.html',
   styleUrls: ['./progress-bar-index.component.scss'],
+  standalone: false,
 })
 export class ProgressBarIndexComponent {
   component: any;
