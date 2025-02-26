@@ -2,10 +2,10 @@
   @if (pinType === 'now') {
     <span class="it-now-label d-none d-lg-flex">{{ 'it.timeline.today' | translate }}</span>
   }
-  <div class="it-pin-wrapper" [ngClass]="{ 'it-evidence': pinType === 'evidence', 'it-now': pinType === 'now' }">
+  <h3 class="it-pin-wrapper" [ngClass]="{ 'it-evidence': pinType === 'evidence', 'it-now': pinType === 'now' }">
     <div class="pin-icon">
       @if (pinIcon) {
-        <it-icon [name]="pinIcon"></it-icon>
+        <it-icon [name]="pinIcon" [title]="pinIconTitle" [attr.role]="pinIconTitle ? 'img' : null"></it-icon>
       } @else {
         <it-icon name="code-circle"></it-icon>
       }
@@ -13,21 +13,23 @@
     <div class="pin-text">
       <span>{{ pinText }}</span>
     </div>
-  </div>
+  </h3>
   <div class="card-wrapper">
     <div class="card">
       <div class="card-body">
         @if ((categoryTitle && categoryLink) || eventDate) {
           <div class="category-top">
             @if (categoryTitle) {
+              <span class="visually-hidden">{{ categoryLabel }}</span>
               <a class="category" [href]="categoryLink">{{ categoryTitle }}</a>
             }
             @if (eventDate) {
+              <span class="visually-hidden">{{ dateLabel }}</span>
               <span class="data">{{ eventDate | date: dateFormat }}</span>
             }
           </div>
         }
-        <h5 class="card-title">{{ title }}</h5>
+        <h4 class="card-title">{{ title }}</h4>
         <p class="card-text">{{ text }}</p>
         @if (signature) {
           <span class="card-signature">{{ signature }}</span>

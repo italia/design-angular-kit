@@ -1,10 +1,10 @@
-import { APP_INITIALIZER, EnvironmentProviders, importProvidersFrom, makeEnvironmentProviders, Provider } from '@angular/core';
-import { DesignAngularKitConfig, IT_ASSET_BASE_PATH } from './interfaces/design-angular-kit-config';
-import { loadFonts } from 'bootstrap-italia';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { APP_INITIALIZER, EnvironmentProviders, importProvidersFrom, makeEnvironmentProviders, Provider } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { loadFonts } from 'bootstrap-italia';
+import { DesignAngularKitConfig, IT_ASSET_BASE_PATH } from './interfaces/design-angular-kit-config';
 
 /**
  * Configures DesignAngularKit library

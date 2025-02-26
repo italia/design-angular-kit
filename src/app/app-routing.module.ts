@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ItErrorPageComponent } from 'design-angular-kit/components/utils/error-page/error-page.component';
+import { EXAMPLES_ROUTES } from './examples/routes';
+import { RouterDispatcherComponent } from './router-dispatcher/router-dispatcher.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'info', pathMatch: 'full' },
@@ -31,6 +32,8 @@ const routes: Routes = [
       { path: 'button', loadChildren: () => import('src/app/button/button.module').then(m => m.ButtonModule) },
       { path: 'header', loadChildren: () => import('src/app/header/header.module').then(m => m.HeaderModule) },
       { path: 'collapse', loadChildren: () => import('src/app/collapse/collapse.module').then(m => m.CollapseModule) },
+      { path: 'accordion', loadChildren: () => import('src/app/accordion/accordion.module').then(m => m.AccordionModule) },
+
       { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
       { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
       { path: 'back-button', loadChildren: () => import('src/app/back-button/back-button.module').then(m => m.BackButtonModule) },
@@ -68,8 +71,12 @@ const routes: Routes = [
       { path: 'autocomplete', loadChildren: () => import('src/app/autocomplete/autocomplete.module').then(m => m.AutocompleteModule) },
       { path: 'sidebar', loadChildren: () => import('src/app/sidebar/sidebar.module').then(m => m.SidebarModule) },
       { path: 'timeline', loadChildren: () => import('src/app/timeline/timeline.module').then(m => m.TimelineModule) },
+      { path: 'skiplink', loadChildren: () => import('src/app/skiplink/skiplink.module').then(m => m.SkiplinkModule) },
+      { path: 'navscroll', loadChildren: () => import('src/app/navscroll/navscroll.module').then(m => m.NavscrollModule) },
+      { path: 'transfer', loadChildren: () => import('src/app/transfer/transfer.module').then(m => m.TransferModule) },
     ],
   },
+  { path: 'esempi', component: RouterDispatcherComponent, children: EXAMPLES_ROUTES },
   { path: 'error/not-found', component: ItErrorPageComponent, data: { errorCode: 404 } },
   { path: 'error/forbidden', component: ItErrorPageComponent, data: { errorCode: 403 } },
   { path: 'error/server-error', component: ItErrorPageComponent, data: { errorCode: 500 } },

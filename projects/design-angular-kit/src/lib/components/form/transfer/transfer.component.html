@@ -1,0 +1,52 @@
+<div>
+  @if (label) {
+    <label [for]="id" [class.active]="!!control.value">{{ label }}</label>
+  }
+  <div class="row">
+    <div class="col-xs-12 col-md-5">
+      <it-transfer-list sourceType="source" [title]="'it.transfer.source' | translate"></it-transfer-list>
+    </div>
+    <!-- col -->
+    <div class="col-xs-12 col-md-2">
+      <!-- transfer buttons-->
+      <div class="it-transfer-buttons">
+        <a
+          class="transfer"
+          role="button"
+          href="#"
+          [ngClass]="{ active: transferEnabled | async }"
+          (click)="transferClickHandler($event)"
+          (keypress)="transferKeyPressHandler($event)"
+          [attr.aria-label]="'it.transfer.aria-label-move-forward' | translate">
+          <it-icon name="arrow-right"></it-icon>
+        </a>
+        <span class="visually-hidden">{{ 'it.transfer.label-move-forward' | translate }}</span>
+        <a
+          class="backtransfer"
+          role="button"
+          href="#"
+          [ngClass]="{ active: backtransferEnabled | async }"
+          (click)="backtransferClickHandler($event)"
+          (keypress)="backtransferKeyPressHandler($event)"
+          [attr.aria-label]="'it.transfer.aria-label-move-backward' | translate">
+          <it-icon name="arrow-left"></it-icon>
+        </a>
+        <span class="visually-hidden">{{ 'it.transfer.label-move-backward' | translate }}</span>
+        <a
+          class="reset"
+          role="button"
+          href="#"
+          [ngClass]="{ active: resetEnabled | async }"
+          (click)="resetClickHandler($event)"
+          (keypress)="resetKeyPressHandler($event)"
+          [attr.aria-label]="'it.transfer.aria-label-reset' | translate">
+          <it-icon name="restore"></it-icon>
+        </a>
+        <span class="visually-hidden">{{ 'it.transfer.label-reset' | translate }}</span>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-5">
+      <it-transfer-list sourceType="target" [title]="'it.transfer.target' | translate"></it-transfer-list>
+    </div>
+  </div>
+</div>

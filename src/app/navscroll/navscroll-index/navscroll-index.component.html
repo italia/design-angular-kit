@@ -1,0 +1,12 @@
+<h1 class="bd-title">Navscroll</h1>
+<p class="bd-lead">Componente che presenta liste di link con ancore a sezioni della pagina in cui è contenuto.</p>
+<div [innerHTML]="component.description"></div>
+<p><a routerLink="/esempi/navscroll">Esempio funzionante </a></p>
+<it-tab-container>
+  <it-tab-item label="Esempi" active="true" class="pt-3">
+    <it-navscroll-examples></it-navscroll-examples>
+  </it-tab-item>
+  <it-tab-item label="API" class="pt-3">
+    <it-api-parameters [component]="component"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>

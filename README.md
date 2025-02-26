@@ -64,9 +64,24 @@ npm install design-angular-kit --save
 Scegli la versione corrispondente alla tua versione Angular:
 
 | Angular | design-angular-kit |
-|---------|--------------------|
+| ------- | ------------------ |
 | 18+     | v1.1.0 +           |
 | 17+     | v1.0.0 +           |
+
+In alternativa, puoi lanciar il comando
+
+```sh
+ng add design-angular-kit --project <projectName>
+```
+
+Eseguirà in serie:
+
+- scelta della corretta versione da installare
+- installazione della dipendenza
+- aggiunta della dipendenza al package.json
+- configurazione dell'applicazione
+
+Le istruzioni del paragrafo successivo, **Configurazione**, verranno eseguite automaticamente, eccetto per la personalizzazione della configurazione di _i18n_.
 
 ## Configurazione
 
@@ -84,49 +99,39 @@ poter inizializzare le funzionalità della libreria.
 import { provideDesignAngularKit } from 'design-angular-kit';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    ...
-    provideDesignAngularKit(),
-  ]
-}
+  providers: [...provideDesignAngularKit()],
+};
 ```
 
 #### Applicazione modulare
 
-È necessario importare `DesignAngularKitModule` all'interno del modulo principale dell'applicazione (solitamente denominato **AppModule**) 
+È necessario importare `DesignAngularKitModule` all'interno del modulo principale dell'applicazione (solitamente denominato **AppModule**)
 utilizzando il metodo `forRoot` per poter inizializzare le funzionalità della libreria e **importare tutti i componenti**.
 
 ```typescript
 import { DesignAngularKitModule } from 'design-angular-kit';
 
 @NgModule({
-  imports: [
-    ...
-    DesignAngularKitModule.forRoot()
-  ]
+  imports: [...DesignAngularKitModule.forRoot()],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 Utilizza il metodo `forChild` durante l'importazione del modulo `DesignAngularKitModule` in altri moduli dell'applicazione per **importare tutti i componenti** della libreria.
-
 
 ```typescript
 import { DesignAngularKitModule } from 'design-angular-kit';
 
 @NgModule({
-  imports: [
-    ...
-    DesignAngularKitModule.forChild()
-  ],
+  imports: [...DesignAngularKitModule.forChild()],
   exports: [DesignAngularKitModule],
 })
-export class SharedModule { }
+export class SharedModule {}
 ```
 
 #### Applicazione ibrida
 
-Se nella tua applicazione è presente il modulo **AppModule** ma vuoi utilizzare i nostri **componenti con la configurazione _standalone_**, 
+Se nella tua applicazione è presente il modulo **AppModule** ma vuoi utilizzare i nostri **componenti con la configurazione _standalone_**,
 utilizza la funzione `provideDesignAngularKit` all'interno del modulo principale dell'applicazione per poter inizializzare le funzionalità della libreria.
 
 ```typescript
@@ -134,11 +139,9 @@ import { provideDesignAngularKit } from 'design-angular-kit';
 
 @NgModule({
   imports: [],
-  providers: [
-    provideDesignAngularKit(),
-  ]
+  providers: [provideDesignAngularKit()],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 #### Parametri di configurazione
@@ -161,7 +164,7 @@ const initConfig: DesignAngularKitConfig | undefined = {
    * @default true
    */
   loadFont: boolean | undefined,
-  
+
   ...
 };
 
@@ -171,11 +174,12 @@ DesignAngularKitModule.forRoot(initConfig)
 ```
 
 ### Importazione stili bootstrap-italia
+
 Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS come mostrato nell'esempio qui sotto.
 
 ```scss
 // Importazione libreria SCSS di bootstrap-italia
-@import "bootstrap-italia/src/scss/bootstrap-italia";
+@import 'bootstrap-italia/src/scss/bootstrap-italia';
 ```
 
 <details>
@@ -189,7 +193,6 @@ tipico della libreria.
 L’utilizzo del blu #0066CC dovrebbe però essere riservato alle amministrazioni centrali dello
 Stato, e quindi ci si può trovare nella condizione di dover personalizzare i valori delle variabili
 colore di Bootstrap Italia, impostando nuovi valori per le proprie necessità.
-
 
 Questo colore e le altre tonalità vengono generate a partire dalla terna HSB, pertanto occorre modificare le variabili primary-h, primary-s e primary-b.
 Per avere la corrispondenza tra valore esadecimale del colore e HSB si può utilizzare il portale rgb.to, ad esempio https://rgb.to/0066CC.
@@ -213,6 +216,7 @@ $font-family-monospace: 'Custom Font', 'Courier New', Courier, monospace;
 // Importazione libreria SCSS di bootstrap-italia
 @import 'bootstrap-italia/src/scss/bootstrap-italia';
 ```
+
 </details>
 
 ### Supporto icone e assets
@@ -250,13 +254,13 @@ Modifica il tuo `angular.json` aggiungendo:
   ]
 }
 ```
+
 Puoi utilizzare le label localizzate della libreria `design-angular-kit` nella tua applicazione, ad esempio `{{'it.errors.required-field' | translate}}`. [Vedi le nostre label](projects/design-angular-kit/assets/i18n/it.json)
 
 #### Localizzazione esistente
 
 Se utilizzi già i file di localizzazione nella tua app, puoi utilizzare la libreria [ngx-translate-multi-http-loader](https://www.npmjs.com/package/ngx-translate-multi-http-loader)
 per caricare sia i file di localizzazione dell'app che quelli della libreria `design-angular-kit`
-
 
 **Utilizzando la funzione `provideDesignAngularKit`:**
 
@@ -269,16 +273,18 @@ import { provideDesignAngularKit } from 'design-angular-kit';
 provideDesignAngularKit({
   translateLoader: (itPrefix: string, itSuffix: string) => ({
     provide: TranslateLoader,
-    useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
-      { prefix: itPrefix, suffix: itSuffix }, // Load library translations first, so you can edit the keys in your localization file
-      { prefix: './assets/i18n/' }, // Your i18n location
-    ]),
-    deps: [HttpBackend]
+    useFactory: (http: HttpBackend) =>
+      new MultiTranslateHttpLoader(http, [
+        { prefix: itPrefix, suffix: itSuffix }, // Load library translations first, so you can edit the keys in your localization file
+        { prefix: './assets/i18n/' }, // Your i18n location
+      ]),
+    deps: [HttpBackend],
   }),
-})
+});
 ```
 
 **Utilizzando il modulo `DesignAngularKitModule`:**
+
 ```typescript
 import { HttpBackend } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
@@ -288,22 +294,24 @@ import { DesignAngularKitModule } from 'design-angular-kit';
 DesignAngularKitModule.forRoot({
   translateLoader: (itPrefix: string, itSuffix: string) => ({
     provide: TranslateLoader,
-    useFactory: (http: HttpBackend) => new MultiTranslateHttpLoader(http, [
-      { prefix: itPrefix, suffix: itSuffix }, // Load library translations first, so you can edit the keys in your localization file
-      { prefix: './assets/i18n/' }, // Your i18n location
-    ]),
-    deps: [HttpBackend]
+    useFactory: (http: HttpBackend) =>
+      new MultiTranslateHttpLoader(http, [
+        { prefix: itPrefix, suffix: itSuffix }, // Load library translations first, so you can edit the keys in your localization file
+        { prefix: './assets/i18n/' }, // Your i18n location
+      ]),
+    deps: [HttpBackend],
   }),
-})
+});
 ```
 
 #### Personalizzazione della localizzazione
 
 Se vuoi personalizzare le nostre label:
-- Non includere il supporto i18n nel tuo `angular.json` 
-    - Crea i tuoi file di localizzazione personalizzati nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste)
-    - Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
-    - Aggiungi nella configurazione iniziale della libreria il `translateLoader` custom, sostituendo la stringa `assets/bootstrap-italia/i18n/` all'attributo `itPrefix`  
+
+- Non includere il supporto i18n nel tuo `angular.json`
+  - Crea i tuoi file di localizzazione personalizzati nella tua cartella `assets/bootstrap-italia/i18n/` (crea il percorso se non esiste)
+  - Il json deve avere [questo formato](projects/design-angular-kit/assets/i18n/it.json).
+  - Aggiungi nella configurazione iniziale della libreria il `translateLoader` custom, sostituendo la stringa `assets/bootstrap-italia/i18n/` all'attributo `itPrefix`
 - Oppure, aggiungi le localizzazioni nei tuoi file json, sovrascrivendo le [chiavi del json della libreria](projects/design-angular-kit/assets/i18n/it.json).
 
 ### Utilizzo
@@ -317,13 +325,12 @@ import { ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule } from 'de
 
 @NgModule({
   imports: [
-    ItAlertComponent, 
-    ItPaginationComponent, 
-    ItBreadcrumbsModule // Include ItBreadcrumbComponent e ItBreadcrumbItemComponent 
+    ItAlertComponent,
+    ItPaginationComponent,
+    ItBreadcrumbsModule, // Include ItBreadcrumbComponent e ItBreadcrumbItemComponent
   ],
 })
-export class YourAppModule {
-}
+export class YourAppModule {}
 ```
 
 ```typescript
@@ -333,24 +340,23 @@ import { ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule } from 'de
   selector: 'app-product',
   standalone: true,
   imports: [ItAlertComponent, ItPaginationComponent, ItBreadcrumbsModule],
-  templateUrl: './product.component.html'
+  templateUrl: './product.component.html',
 })
-export class ProductComponent {
-}
+export class ProductComponent {}
 ```
 
 ## Come contribuire 💙
 
 👉🏻 È possibile contribuire alla libreria in vari modi:
 
-*   Con il proprio codice, prendendo in carico una issue tra quelle aperte e non già assegnate tra [le issue](https://github.com/italia/design-angular-kit/issues) di Angular Kit (è sufficiente anche un commento sulla issue per notificare la volontà di presa in carico).
-*   Attraverso la segnalazione di bug o miglioramenti al [repository ufficiale](https://github.com/italia/design-angular-kit/) di Angular Kit.
-*   Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C04H3C19D52/) di Slack.
+- Con il proprio codice, prendendo in carico una issue tra quelle aperte e non già assegnate tra [le issue](https://github.com/italia/design-angular-kit/issues) di Angular Kit (è sufficiente anche un commento sulla issue per notificare la volontà di presa in carico).
+- Attraverso la segnalazione di bug o miglioramenti al [repository ufficiale](https://github.com/italia/design-angular-kit/) di Angular Kit.
+- Scrivendoci sul [canale dedicato](https://developersitalia.slack.com/messages/C04H3C19D52/) di Slack.
 
 ## Come contribuire con il codice
 
 Vorresti dare una mano su Design Angular Kit? **Sei nel posto giusto!**
- 
+
 Se non l'hai già fatto, inizia spendendo qualche minuto per approfondire la tua conoscenza sulle
 [linee guida di design per i servizi web della PA](https://design-italia.readthedocs.io/it/stable/index.html),
 e fai riferimento alle [indicazioni su come contribuire a Design Angular Kit](https://github.com/italia/design-angular-kit/blob/main/CONTRIBUTING.md).
@@ -410,7 +416,7 @@ git clone https://github.com/italia/design-angular-kit.git
 
 3. Al caricamento, Visual Studio Code riconoscerà la presenta della configurazione di un Devcontainer. Aprire il progetto con il devcontainer. Altre info [qui](https://code.visualstudio.com/docs/devcontainers/create-dev-container).
 
-4. Visual Studio Code effettuerà il setup del container, andando ad installare la corretta versione di NodeJs, di npm e delle estensioni dell'IDE. Le dipendenze di progetto saranno installate nel processo di creazione del container. L'ambiente di sviuppo sarà pronto a setup ultimato. 
+4. Visual Studio Code effettuerà il setup del container, andando ad installare la corretta versione di NodeJs, di npm e delle estensioni dell'IDE. Le dipendenze di progetto saranno installate nel processo di creazione del container. L'ambiente di sviuppo sarà pronto a setup ultimato.
 
 5. Lanciare l'applicazione in locale
 
@@ -438,9 +444,9 @@ npm run test
 
 Un grazie speciale a chi ha reso possibile lo sviluppo di questa libreria
 
-[![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Alessio Napolitano](https://github.com/alenap93.png?size=100)](https://github.com/alenap93) |
---- | --- | --- |
-Antonino Bonanno | Cristian Borelli | Alessio Napolitano |
+| [![Antonino Bonanno](https://github.com/AntoninoBonanno.png?size=100)](https://github.com/AntoninoBonanno) | [![Cristian Borelli](https://github.com/cri99.png?size=100)](https://github.com/cri99) | [![Alessio Napolitano](https://github.com/alenap93.png?size=100)](https://github.com/alenap93) |
+| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Antonino Bonanno                                                                                           | Cristian Borelli                                                                       | Alessio Napolitano                                                                             |
 
 e grazie in particolare al team di [NetService](https://www.net-serv.it/):
 
@@ -448,7 +454,7 @@ e grazie in particolare al team di [NetService](https://www.net-serv.it/):
 
 ---
 
-Tutti i contributor (*made with [contributors-img](https://contrib.rocks)*)
+Tutti i contributor (_made with [contributors-img](https://contrib.rocks)_)
 
 <a href = "https://github.com/italia/design-angular-kit/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=italia/design-angular-kit"/>

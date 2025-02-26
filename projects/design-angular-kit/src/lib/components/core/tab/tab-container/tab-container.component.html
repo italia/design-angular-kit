@@ -1,39 +1,78 @@
-@if (tabs) {
-  <ul class="nav nav-tabs" [class.auto]="auto" [class.nav-tabs-icon-text]="iconText" [class.nav-dark]="dark" role="tablist">
-    @for (tab of tabs; track tab.id) {
-      <li class="nav-item">
-        <a
-          #tabNavLinks
-          [id]="tab.id + '-tab-link'"
-          role="tab"
-          class="nav-link"
-          [class.active]="tab.active"
-          [class.disabled]="tab.disabled"
-          [attr.href]="'#' + tab.id + '-tab'"
-          [attr.aria-controls]="tab.id + '-tab'"
-          (click)="onTab(tab)">
-          @if (tab.icon) {
-            <it-icon [name]="tab.icon" class="me-2"></it-icon>
-          }
-          {{ tab.label }}
-        </a>
-      </li>
+<div
+  [class.row]="vertical"
+  [class.flex-row-reverse]="inverted && vertical"
+  [class.d-flex]="inverted && !vertical"
+  [class.flex-column-reverse]="inverted && !vertical">
+  <div
+    [class.col-5]="inverted && vertical"
+    [class.col-md-4]="inverted && vertical"
+    [class.col-lg-3]="inverted && vertical"
+    [class.col-4]="!inverted && vertical"
+    [class.col-md-3]="!inverted && vertical">
+    @if (tabs) {
+      <ul
+        class="nav nav-tabs"
+        [class.nav-tabs-editable]="editable"
+        [class.nav-tabs-cards]="cards"
+        [class.nav-tabs-vertical]="vertical"
+        [class.auto]="auto"
+        [class.nav-tabs-icon-text]="iconText"
+        [class.nav-dark]="dark"
+        role="tablist">
+        @for (tab of tabs; track tab.id; let i = $index) {
+          <li class="nav-item">
+            <a
+              #tabNavLinks
+              [id]="tab.id + '-tab-link'"
+              role="tab"
+              class="nav-link"
+              [class.active]="tab.active"
+              [class.disabled]="tab.disabled"
+              [attr.href]="'#' + tab.id + '-tab'"
+              [attr.aria-controls]="tab.id + '-tab'"
+              (click)="onTab(tab)">
+              @if (tab.icon) {
+                <it-icon [name]="tab.icon" class="me-2"></it-icon>
+              }
+              {{ tab.label }}
+            </a>
+            @if (editable) {
+              <a class="nav-link-close" (click)="clickToClose(i)" (keypress)="clickToClose(i)" [attr.disabled]="tab.disabled">
+                <it-icon name="close"></it-icon>
+              </a>
+            }
+          </li>
+        }
+        @if (editable) {
+          <li class="nav-item">
+            <a href="#" class="nav-tab-add" (click)="clickToAdd($event)" (keypress)="clickToAdd($event)"
+              ><span class="visually-hidden"> Aggiungi un tab</span></a
+            >
+          </li>
+        }
+      </ul>
     }
-  </ul>
-}
-
-@if (tabs) {
-  <div class="tab-content">
-    @for (tab of tabs; track tab.id) {
-      <div
-        [id]="tab.id + '-tab'"
-        class="tab-pane p-4 fade {{ tab.class ?? '' }}"
-        [class.active]="tab.active"
-        [class.show]="tab.active"
-        role="tabpanel"
-        [attr.aria-labelledby]="tab.id + '-tab-link'">
-        <ng-container *ngTemplateOutlet="tab.htmlContent"></ng-container>
+  </div>
+  <div
+    [class.col-7]="inverted && vertical"
+    [class.col-md-8]="inverted && vertical"
+    [class.col-lg-9]="inverted && vertical"
+    [class.col-8]="!inverted && vertical"
+    [class.col-md-9]="!inverted && vertical">
+    @if (tabs) {
+      <div class="tab-content">
+        @for (tab of tabs; track tab.id) {
+          <div
+            [id]="tab.id + '-tab'"
+            class="tab-pane p-4 fade {{ tab.class ?? '' }}"
+            [class.active]="tab.active"
+            [class.show]="tab.active"
+            role="tabpanel"
+            [attr.aria-labelledby]="tab.id + '-tab-link'">
+            <ng-container *ngTemplateOutlet="tab.htmlContent"></ng-container>
+          </div>
+        }
       </div>
     }
   </div>
-}
+</div>

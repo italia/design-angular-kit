@@ -1,0 +1,101 @@
+<div class="container py-lg-5">
+  <div class="row">
+    <div class="col-12 col-lg-4">
+      <div class="it-navscroll-sticky" [ngClass]="{ 'it-navscroll-sticky-mobile': isMobile | async }" data-bs-stackable="true">
+        <nav
+          class="navbar it-navscroll-wrapper navbar-expand-lg"
+          [class.it-top-navscroll]="alignment === 'top'"
+          [class.it-bottom-navscroll]="alignment === 'bottom'"
+          [class.it-left-side]="borderPosition === 'left'"
+          [class.it-right-side]="borderPosition === 'right'"
+          [class.theme-dark-mobile]="theme === 'dark'"
+          [class.theme-dark-desktop]="theme === 'dark'">
+          <button
+            class="custom-navbar-toggler"
+            type="button"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            data-bs-toggle="navbarcollapsible"
+            data-bs-target="#navbarNav"
+            #toggleButtonRef>
+            <span class="it-list"></span>{{ selectedTitle | async }}
+          </button>
+          <div class="progress custom-navbar-progressbar">
+            <div
+              class="progress-bar it-navscroll-progressbar"
+              role="progressbar"
+              [style.width.%]="progressBarValue | async"
+              [attr.aria-valuenow]="progressBarValue | async"
+              aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+          <div class="navbar-collapsable" id="navbarNav">
+            <div class="overlay"></div>
+            <div class="close-div visually-hidden">
+              <button class="btn close-menu" type="button"><span class="it-close"></span>Chiudi</button>
+            </div>
+            <button type="button" class="it-back-button btn w-100 text-start">
+              <svg class="icon icon-sm icon-primary align-top">
+                <use
+                  href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"
+                  xlink:href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"></use>
+              </svg>
+              <span>Indietro</span>
+            </button>
+            <div class="menu-wrapper">
+              <div class="link-list-wrapper">
+                <h3>{{ header }}</h3>
+                <div class="progress">
+                  <div
+                    class="progress-bar it-navscroll-progressbar"
+                    role="progressbar"
+                    [style.width.%]="progressBarValue | async"
+                    [attr.aria-valuenow]="progressBarValue | async"
+                    aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
+                <it-navscroll-list-items [items]="items"></it-navscroll-list-items>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="col-12 col-lg-8 it-page-sections-container">
+      <ng-container
+        *ngTemplateOutlet="pageSectionsTemplate ? pageSectionsTemplate : defaultPageSectionsTemplate; context: { items: items }">
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #defaultPageSectionsTemplate let-items="items">
+  @for (item of items; track item.href) {
+    <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item, level: 1 }"></ng-container>
+  }
+</ng-template>
+
+<ng-template #paragraphTemplate let-item="item" let-level="level" let-nextLevel="level+1">
+  @switch (level) {
+    @case (1) {
+      <h2 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h2>
+    }
+    @case (2) {
+      <h3 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h3>
+    }
+    @case (3) {
+      <h4 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h4>
+    }
+    @case (4) {
+      <h5 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h5>
+    }
+    @default {
+      <h6 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h6>
+    }
+  }
+  <p>{{ item.text }}</p>
+  @for (item of item.childs; track item.href) {
+    <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item, level: nextLevel }"></ng-container>
+  }
+</ng-template>

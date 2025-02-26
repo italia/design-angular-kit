@@ -11,7 +11,7 @@ export type DimmerColor = '' | 'dimmer-primary';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('fade', [
-      transition(':enter', [style({ opacity: 0 }), animate('150ms', style({ opacity: 0.92 }))]),
+      transition(':enter', [style({ opacity: 0 }), animate('150ms', style({ opacity: 0.9 }))]),
       transition(':leave', [animate('150ms', style({ opacity: 0 }))]),
     ]),
   ],

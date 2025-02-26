@@ -7,12 +7,18 @@
     <it-checkbox [(ngModel)]="isDisabled" label="Disabilita tab custom"></it-checkbox>
   </p>
   <p class="example-section">
-    <it-checkbox [(ngModel)]="isPill" label="Navigazione con pill"></it-checkbox>
+    <it-checkbox [(ngModel)]="isCard" label="Navigazione a card"></it-checkbox>
+  </p>
+  <p class="example-section">
+    <it-checkbox [(ngModel)]="isVertical" label="Navigazione verticale"></it-checkbox>
+  </p>
+  <p class="example-section">
+    <it-checkbox [(ngModel)]="isInverted" label="Posizione invertita"></it-checkbox>
   </p>
 
   <h4 class="mt-5 mb-4">Risultato tabs</h4>
   <!--    TODO  [pill]="isPill"-->
-  <it-tab-container [dark]="isDarkTheme">
+  <it-tab-container [dark]="isDarkTheme" [cards]="isCard" [vertical]="isVertical" [inverted]="isInverted">
     <it-tab-item *ngFor="let tab of tabs; let i = index" [label]="tab.label" [icon]="tab.icon" [active]="i === 0">
       {{ tab.content }}
     </it-tab-item>
