@@ -3,7 +3,6 @@ import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-megamenu',
   templateUrl: './megamenu.component.html',
   styleUrls: ['./megamenu.component.scss'],

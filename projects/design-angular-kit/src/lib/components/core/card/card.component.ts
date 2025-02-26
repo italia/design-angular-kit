@@ -8,7 +8,6 @@ import { inputToBoolean } from '../../../utils/coercion';
  * @description A container of texts and images with many options and variations.
  */
 @Component({
-  standalone: true,
   selector: 'it-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],

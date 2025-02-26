@@ -4,6 +4,7 @@ import { CalloutColor } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-callout-note',
   templateUrl: './callout-note.component.html',
+  standalone: false,
 })
 export class CalloutNoteComponent {
   text =

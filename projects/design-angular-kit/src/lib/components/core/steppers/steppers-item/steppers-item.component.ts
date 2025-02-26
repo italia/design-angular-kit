@@ -3,7 +3,6 @@ import { IconName } from '../../../../interfaces/icon';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 
 @Component({
-  standalone: true,
   selector: 'it-steppers-item',
   templateUrl: './steppers-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

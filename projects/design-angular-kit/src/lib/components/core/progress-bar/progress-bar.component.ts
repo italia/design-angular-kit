@@ -4,7 +4,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-progress-bar',
   templateUrl: './progress-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

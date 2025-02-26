@@ -3,7 +3,6 @@ import { ProgressBarColor } from '../../../interfaces/core';
 import { ItProgressBarComponent } from '../progress-bar/progress-bar.component';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[itButton][progress]',
   templateUrl: './progress-button.component.html',

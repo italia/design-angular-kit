@@ -9,7 +9,6 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
  * @description Callouts can be used to highlight certain parts of the text that require particular attention. They may contain error messages, warnings, hints, etc.
  */
 @Component({
-  standalone: true,
   selector: 'it-callout',
   templateUrl: './callout.component.html',
   styles: [

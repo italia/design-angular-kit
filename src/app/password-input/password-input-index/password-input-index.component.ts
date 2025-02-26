@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-password-input-index',
   templateUrl: './password-input-index.component.html',
+  standalone: false,
 })
 export class PasswordInputIndexComponent {
   component: any;

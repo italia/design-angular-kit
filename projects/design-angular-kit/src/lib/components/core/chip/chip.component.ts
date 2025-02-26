@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
 
 @Component({
-  standalone: true,
   selector: 'it-chip',
   templateUrl: './chip.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

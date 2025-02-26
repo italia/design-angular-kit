@@ -5,7 +5,6 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-back-to-top',
   templateUrl: './back-to-top.component.html',
   exportAs: 'itBackToTop',

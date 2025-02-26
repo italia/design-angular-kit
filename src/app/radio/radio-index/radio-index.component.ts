@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-radio-index',
   templateUrl: './radio-index.component.html',
   styleUrls: ['./radio-index.component.scss'],
+  standalone: false,
 })
 export class RadioIndexComponent {
   component: any;

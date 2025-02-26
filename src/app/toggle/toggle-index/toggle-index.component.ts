@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-toggle-index',
   templateUrl: './toggle-index.component.html',
   styleUrls: ['./toggle-index.component.scss'],
+  standalone: false,
 })
 export class ToggleIndexComponent {
   component: any;

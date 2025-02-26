@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-rating-index',
   templateUrl: './rating-index.component.html',
+  standalone: false,
 })
 export class RatingIndexComponent {
   component: any;

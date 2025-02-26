@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-navscroll-index',
   templateUrl: './navscroll-index.component.html',
+  standalone: false,
 })
 export class NavscrollIndexComponent {
   component: any;

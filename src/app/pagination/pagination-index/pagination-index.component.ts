@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-pagination-index',
   templateUrl: './pagination-index.component.html',
+  standalone: false,
 })
 export class PaginationIndexComponent {
   component: any;

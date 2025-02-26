@@ -4,6 +4,7 @@ import { CalloutAppearance, CalloutColor } from 'projects/design-angular-kit/src
 @Component({
   selector: 'it-hightlights-danger',
   templateUrl: './hightlights-danger.component.html',
+  standalone: false,
 })
 export class HightlightsDangerComponent {
   appearance: CalloutAppearance = 'highlight';

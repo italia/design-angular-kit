@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-pagination-example',
   templateUrl: './pagination-example.component.html',
+  standalone: false,
 })
 export class PaginationExampleComponent {
   leftCurrentPage = 0;

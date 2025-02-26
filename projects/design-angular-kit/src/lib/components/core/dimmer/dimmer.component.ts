@@ -5,7 +5,6 @@ import { NgClass } from '@angular/common';
 export type DimmerColor = '' | 'dimmer-primary';
 
 @Component({
-  standalone: true,
   selector: 'it-dimmer',
   templateUrl: './dimmer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
