@@ -13,6 +13,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItNavBarModule } from '../navbar/navbar.module';
+import { ItNavBarComponent } from '../navbar/navbar/navbar.component';
 
 import { ItButtonDirective } from '../../core/button/button.directive';
 import { inputToBoolean } from '../../../utils/coercion';
@@ -48,6 +49,8 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
 
   @ViewChild('headerWrapper') private headerWrapper?: ElementRef<HTMLButtonElement>;
 
+  @ViewChild(ItNavBarComponent) private itNavBarComponent?: ItNavBarComponent;
+
   @Input({ transform: inputToBoolean }) megamenu?: boolean;
   @Input({ transform: inputToBoolean }) expand?: boolean = true;
 
@@ -80,6 +83,14 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
     }
   }
 
+  openNavBar() {
+    this.itNavBarComponent?.open();
+  }
+
+  closeNavBar() {
+    this.itNavBarComponent?.close();
+  }
+
   protected emitLoginClick(event: Event): void {
     event.preventDefault();
     this.loginClick.emit(event);
@@ -88,5 +99,9 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
   protected emitSearchClick(event: Event): void {
     event.preventDefault();
     this.searchClick.emit(event);
+  }
+
+  toggleCollapse() {
+    this.itNavBarComponent?.toggleCollapse();
   }
 }

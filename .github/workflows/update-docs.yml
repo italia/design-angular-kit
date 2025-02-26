@@ -12,7 +12,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,7 +33,7 @@ jobs:
       - name: Build documentation
         run: |
           npm run build
-          cp dist/design-angular-kit-bundle/index.html dist/design-angular-kit-bundle/404.html
+          cp dist/design-angular-kit-bundle/browser/index.html dist/design-angular-kit-bundle/browser/404.html
 
       - name: Publish on gh-pages
         run: |

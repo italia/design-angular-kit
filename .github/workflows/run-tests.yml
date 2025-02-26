@@ -24,4 +24,5 @@ jobs:
       - run: npm run build
       - run: npm run build:lib
       - run: npm run test
+      - run: npm run schematics:test
       - uses: codecov/codecov-action@v2

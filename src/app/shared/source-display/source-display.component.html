@@ -1,13 +1,13 @@
 <div class="source-display-container bd-example">
   <it-tab-container>
     <it-tab-item *ngIf="html" label="HTML" [active]="!!html">
-      <pre><code [highlight]="html"></code></pre>
+      <pre><code [highlight]="html" language="html"></code></pre>
     </it-tab-item>
     <it-tab-item *ngIf="typescript" label="TypeScript" [active]="!html && !!typescript">
-      <pre><code [highlight]="typescript"></code></pre>
+      <pre><code [highlight]="typescript" language="typescript"></code></pre>
     </it-tab-item>
     <it-tab-item *ngIf="scss" label="SCSS">
-      <pre><code [highlight]="scss"></code></pre>
+      <pre><code [highlight]="scss" language="scss"></code></pre>
     </it-tab-item>
   </it-tab-container>
 </div>

@@ -45,6 +45,11 @@ export class ItDropdownItemComponent extends ItLinkComponent {
   @Input() iconPosition: 'left' | 'right' = 'right';
 
   /**
+   * Dropdown mode
+   */
+  @Input() mode?: 'button' | 'link' | 'nav' = 'button';
+
+  /**
    * Change icon color if menu is dark
    * @default false
    */
@@ -52,6 +57,9 @@ export class ItDropdownItemComponent extends ItLinkComponent {
 
   get linkClass(): string {
     let linkClass = `list-item ${this.active ? 'active' : 'dropdown-item'}`;
+    if (this.mode === 'nav') {
+      linkClass += ' nav-link';
+    }
     if (this.disabled) {
       linkClass += ' disabled';
     }

@@ -1,0 +1,12 @@
+<h1 class="bd-title">Accordion</h1>
+<p class="bd-lead">Direttiva per l'interazione con elementi richiudibili</p>
+<div [innerHTML]="accordionComponent.description"></div>
+<it-tab-container>
+  <it-tab-item label="Esempi" active="true" class="pt-3">
+    <it-accordion-examples></it-accordion-examples>
+  </it-tab-item>
+  <it-tab-item label="API" class="pt-3">
+    <h2>Accordion</h2>
+    <it-api-parameters [component]="accordionComponent"></it-api-parameters>
+  </it-tab-item>
+</it-tab-container>

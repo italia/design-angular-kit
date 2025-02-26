@@ -1,3 +1,125 @@
+## [1.2.2](https://github.com/italia/design-angular-kit/compare/v1.2.1...v1.2.2) (2025-02-17)
+
+
+### Bug Fixes
+
+* release process ([22efebd](https://github.com/italia/design-angular-kit/commit/22efebd55cfe58ec1d2f689e8c02b9dff9d2a5a0))
+
+
+
+## [1.2.1](https://github.com/italia/design-angular-kit/compare/v1.2.0...v1.2.1) (2025-02-17)
+
+
+### Bug Fixes
+
+* active link on router navigation ([7acfee2](https://github.com/italia/design-angular-kit/commit/7acfee240077d88e71b97e56453e6a0e7ad3cf8b))
+* disabled checbox and radio rendering ([5ca31a7](https://github.com/italia/design-angular-kit/commit/5ca31a7bdfbce414a2684e2dd660e77e48a810de))
+
+
+### Features
+
+* add open and close methods to navbar ([b8ae3e5](https://github.com/italia/design-angular-kit/commit/b8ae3e5be584eff48fec42c617b00a3a750c1699))
+
+
+
+# [1.2.0](https://github.com/italia/design-angular-kit/compare/v1.1.4...v1.2.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* link to add button ([afff14b](https://github.com/italia/design-angular-kit/commit/afff14b842402f572326758b35e0b62ca131df2d))
+* progress bar update on navscroll ([606e2e4](https://github.com/italia/design-angular-kit/commit/606e2e441ff356864a37f37445694be23c013632))
+* update scss and percentage and currency inputs ([fd2203f](https://github.com/italia/design-angular-kit/commit/fd2203f40bc63211c9579ee2b561d0eb6417caf1))
+
+
+### Features
+
+* **a11y:** add title to icons ([bc8f4c2](https://github.com/italia/design-angular-kit/commit/bc8f4c2f01362ace45dbc65387e8910f100dc68f))
+* add editable tabs ([4c3b99f](https://github.com/italia/design-angular-kit/commit/4c3b99fd6e8975255993c6b573f101db61dff1ad))
+* add icon title support to stepper items ([1101384](https://github.com/italia/design-angular-kit/commit/11013842b2dd6c09576df9be02b9ac4cc96914a8))
+* card tab ([e04756f](https://github.com/italia/design-angular-kit/commit/e04756f545235e6b944167140f4f001288ff2dfe))
+* tab position ([8ba6f1a](https://github.com/italia/design-angular-kit/commit/8ba6f1a3b7efdddd2d9acec4a8df20805e11cbd2))
+
+
+
+## [1.1.4](https://github.com/italia/design-angular-kit/compare/v1.1.3...v1.1.4) (2024-12-20)
+
+
+### Bug Fixes
+
+* components import ([e54bbb9](https://github.com/italia/design-angular-kit/commit/e54bbb9b50f9b62e7a48c7a7af81053c5aebb41a))
+
+## [1.1.3](https://github.com/italia/design-angular-kit/compare/v1.1.2...v1.1.3) (2024-12-18)
+
+
+### Bug Fixes
+
+* **a11y:** timeline improvements ([346bacd](https://github.com/italia/design-angular-kit/commit/346bacdaf06ee3a07eb587d887818c04a723e0ee))
+* add aria hidden to rating icons ([815f184](https://github.com/italia/design-angular-kit/commit/815f18452e99dfb93c1136a9b0b2ac642d38995f))
+* add form-control to autocomplete ([b8d5459](https://github.com/italia/design-angular-kit/commit/b8d545959b59753214e084fdfe22d4efa1b684f4))
+* add icons and translations to transfer component ([3a5ae08](https://github.com/italia/design-angular-kit/commit/3a5ae08a8c11edb33342dbbcd7c86f5e92b53cf0))
+* button focus ([8167c99](https://github.com/italia/design-angular-kit/commit/8167c996ee83abf56326ed83c476191266d0eed9))
+* improvements on back to top component ([62d50bb](https://github.com/italia/design-angular-kit/commit/62d50bb11fc0e9b64f54c19ac58e73642903a838))
+* use container-xxl for header component ([7843a4a](https://github.com/italia/design-angular-kit/commit/7843a4ad41413eb583a5bdaac1cf9df39fcc9b05))
+
+
+### Features
+
+* new list headers with multiple actions ([9e1f824](https://github.com/italia/design-angular-kit/commit/9e1f824681c4863c5b746886e4e497bf07dbbad0))
+* skiplink component ([d1d4114](https://github.com/italia/design-angular-kit/commit/d1d4114b157ea0fcca13859de791b7cdee7df640))
+
+## [1.1.2](https://github.com/italia/design-angular-kit/compare/v1.1.1...v1.1.2) (2024-11-06)
+
+
+### Bug Fixes
+
+* readonly input problem in navscroll ([fceffc5](https://github.com/italia/design-angular-kit/commit/fceffc5e8467085de760300d303845f73ceb9493))
+
+## [1.1.1](https://github.com/italia/design-angular-kit/compare/v1.1.0...v1.1.1) (2024-10-31)
+
+
+### Bug Fixes
+
+* dimmer primary color ([1b91fb2](https://github.com/italia/design-angular-kit/commit/1b91fb278acf6a90abd0a5dd2ff14f28005e2f38))
+* forward example component ([7a5adfa](https://github.com/italia/design-angular-kit/commit/7a5adfa3490d37ef9529f8a2c3ff0048e6c06caa))
+* groups for radios toggles and checkboxes ([1b65209](https://github.com/italia/design-angular-kit/commit/1b65209414a8fcdba00bb3ae5fd3b5031570f06c))
+
+
+### Features
+
+* add angular schematics ([7e81151](https://github.com/italia/design-angular-kit/commit/7e81151da547a6e167101749d1aeb0395da03515))
+* component transfer ([bb26b09](https://github.com/italia/design-angular-kit/commit/bb26b09f7199cfd34ddaa9c9a8a71229af326f45))
+* navscroll component ([15c8caa](https://github.com/italia/design-angular-kit/commit/15c8caa658923bb21cc60c561843aff73405b623))
+
+# [1.1.0](https://github.com/italia/design-angular-kit/compare/v1.0.3...v1.1.0) (2024-07-18)
+
+
+### Features
+
+* upgrade angular 18 and bootstrap italia ([4cb98e7](https://github.com/italia/design-angular-kit/commit/4cb98e73c9c1618b3d210dc54c82c6c48b0e1b77)), closes [#361](https://github.com/italia/design-angular-kit/issues/361)
+
+
+### BREAKING CHANGES
+
+* support Angular 18
+
+## [1.0.3](https://github.com/italia/design-angular-kit/compare/v1.0.2...v1.0.3) (2024-07-15)
+
+
+### Bug Fixes
+
+* **button:** added default button type ([ea19950](https://github.com/italia/design-angular-kit/commit/ea1995042dba4e882698300c08065d72330d6443)), closes [#355](https://github.com/italia/design-angular-kit/issues/355)
+* multiple initialization ([39fad60](https://github.com/italia/design-angular-kit/commit/39fad609eff01a63a5dfb3c5db70c57c1031505e))
+* **popover:** fixed popover container attribute ([6327e76](https://github.com/italia/design-angular-kit/commit/6327e764827e440a4372fbf06aa953b1c4f0f0c8)), closes [#352](https://github.com/italia/design-angular-kit/issues/352)
+* top on sticky header and add method for close NavBar on mobile ([d1df044](https://github.com/italia/design-angular-kit/commit/d1df044615b35c0f00c4c23a6f854a6941516b51))
+
+
+### Features
+
+* add regex for italian plate and set plate validators ([be076df](https://github.com/italia/design-angular-kit/commit/be076dffaf80174f4273af63cab9c693acd9ef95))
+* added output event ([f29bfd3](https://github.com/italia/design-angular-kit/commit/f29bfd3d55634c1c81943b06679521069336fe34))
+* **timeline:** added timeline component ([147b8f5](https://github.com/italia/design-angular-kit/commit/147b8f5089fc1edd8ce7dad6d6c510f2a1011a10))
+
 ## [1.0.2](https://github.com/italia/design-angular-kit/compare/v1.0.1...v1.0.2) (2024-04-08)
 
 

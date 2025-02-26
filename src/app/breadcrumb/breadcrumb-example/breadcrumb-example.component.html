@@ -1,7 +1,7 @@
 <h3>Esempio Breadcrumb</h3>
 <div class="bd-example">
   <it-breadcrumb [dark]="isDark" [separator]="separator">
-    <it-breadcrumb-item *ngFor="let item of items" class="me-1" [href]="item.link" [iconName]="item.icon">
+    <it-breadcrumb-item *ngFor="let item of items" class="me-1" [href]="item.link" [iconName]="item.icon" [active]="item.active">
       {{ item.label }}
     </it-breadcrumb-item>
   </it-breadcrumb>

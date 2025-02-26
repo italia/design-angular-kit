@@ -21,6 +21,11 @@ export class ItSteppersItemComponent extends ItAbstractComponent {
   @Input() icon: IconName | undefined;
 
   /**
+   * The title for the icon.
+   */
+  @Input() iconTitle: string | undefined;
+
+  /**
    * The content of step
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

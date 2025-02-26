@@ -1,5 +1,5 @@
 @if (!externalLink) {
-  <a [id]="id" [class]="class" [routerLink]="(disabled ? null : href)!">
+  <a [id]="id" [class]="class" [routerLinkActive]="'active'" [routerLink]="(disabled ? null : href)!">
     <ng-container *ngTemplateOutlet="linkContent"></ng-container>
   </a>
 } @else {

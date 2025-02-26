@@ -62,8 +62,8 @@ maintenance:
 name: Design Angular Kit
 platforms:
   - web
-releaseDate: '2024-04-08'
+releaseDate: '2025-02-17'
 roadmap: 'https://github.com/italia/design-angular-kit/issues'
 softwareType: library
-softwareVersion: v1.0.2
+softwareVersion: v1.2.2
 url: 'https://github.com/italia/design-angular-kit'

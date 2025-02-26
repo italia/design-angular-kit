@@ -1,19 +1,10 @@
 <h3>Tabs Dinamiche</h3>
 <div class="bd-example">
-  <it-input type="number" [(ngModel)]="selectedIndex" label="indice del tab selezionato:"></it-input>
-
-  <button itButton="primary" (click)="addTab()">Aggiungi un nuovo tab</button>
-  <it-checkbox [(ngModel)]="selectAfterAdding" label="Seleziona il tab dopo averlo aggiunto"></it-checkbox>
-
   <div class="mt-5">
     <h4>Risultato tabs</h4>
-    <it-tab-container>
-      <it-tab-item [id]="'tab-' + index" *ngFor="let tab of tabs; let index = index" [label]="tab" [active]="selectedIndex === index">
+    <it-tab-container [cards]="true" [editable]="true" (tabClosed)="removeTab($event)" (tabAdded)="addTab()">
+      <it-tab-item [id]="'tab-' + index" *ngFor="let tab of tabs; let index = index" [label]="tab" [active]="index === 0">
         contenuto del {{ tab }} tab
-
-        <div class="container-fluid mt-3">
-          <button itButton="primary" [disabled]="tabs.length === 1" (click)="removeTab(index)">Cancella tab</button>
-        </div>
       </it-tab-item>
     </it-tab-container>
   </div>

@@ -1,7 +1,7 @@
 {
   "name": "design-angular-kit",
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
-  "version": "1.0.0-23",
+  "version": "1.2.2",
   "license": "BSD-3-Clause",
   "keywords": [
     "angular",
@@ -15,30 +15,55 @@
     "type": "git",
     "url": "https://github.com/italia/design-angular-kit.git"
   },
-  "author": {
-    "name": "Antonino Bonanno",
-    "email": "bonanno@net-serv.it",
-    "url": "https://github.com/AntoninoBonanno"
-  },
+  "author": "Presidenza del Consiglio dei Ministri",
   "contributors": [
     {
       "name": "Net Service Srl",
       "email": "areatecnica@net-serv.it",
       "url": "https://www.net-serv.it/"
+    },
+    {
+      "name": "Antonino Bonanno",
+      "email": "bonanno@net-serv.it",
+      "url": "https://github.com/AntoninoBonanno"
+    },
+    {
+      "name": "Alessio Napolitano",
+      "url": "https://github.com/alenap93"
+    },
+    {
+      "name": "Cristian Borelli",
+      "url": "https://github.com/cri99"
+    },
+    {
+      "name": "Design Angular Kit community",
+      "url": "https://github.com/italia/design-angular-kit/graphs/contributors"
     }
   ],
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/my-lib/"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "dependencies"
+  },
   "dependencies": {
-    "tslib": "^2.6.0"
+    "tslib": "^2.6.3"
   },
   "peerDependencies": {
-    "@angular/animations": "^17.0.0",
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "@angular/platform-browser": "^17.0.0",
-    "@angular/router": "^17.0.0",
+    "@angular/animations": "^18.0.0",
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/platform-browser": "^18.0.0",
+    "@angular/router": "^18.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
-    "bootstrap-italia": "^2.8.4"
+    "bootstrap-italia": "^2.13.4"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "devDependencies": {
+    "copyfiles": "file:../../node_modules/copyfiles",
+    "typescript": "file:../../node_modules/typescript"
+  }
 }

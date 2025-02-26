@@ -12,6 +12,10 @@
       "link": "/componenti",
       "links": [
         {
+          "label": "Accordion",
+          "link": "/componenti/accordion"
+        },
+        {
           "label": "Avatar",
           "link": "/componenti/avatar"
         },
@@ -182,6 +186,22 @@
         {
           "label": "Sidebar",
           "link": "/componenti/sidebar"
+        },
+        {
+          "label": "Timeline",
+          "link": "/componenti/timeline"
+        },
+        {
+          "label": "Skiplink",
+          "link": "/componenti/skiplink"
+        },
+        {
+          "label": "Navscroll",
+          "link": "/componenti/navscroll"
+        },
+        {
+          "label": "Transfer",
+          "link": "/componenti/transfer"
         }
       ]
     }

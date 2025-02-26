@@ -1,0 +1,47 @@
+<div class="timeline-element">
+  @if (pinType === 'now') {
+    <span class="it-now-label d-none d-lg-flex">{{ 'it.timeline.today' | translate }}</span>
+  }
+  <h3 class="it-pin-wrapper" [ngClass]="{ 'it-evidence': pinType === 'evidence', 'it-now': pinType === 'now' }">
+    <div class="pin-icon">
+      @if (pinIcon) {
+        <it-icon [name]="pinIcon" [title]="pinIconTitle" [attr.role]="pinIconTitle ? 'img' : null"></it-icon>
+      } @else {
+        <it-icon name="code-circle"></it-icon>
+      }
+    </div>
+    <div class="pin-text">
+      <span>{{ pinText }}</span>
+    </div>
+  </h3>
+  <div class="card-wrapper">
+    <div class="card">
+      <div class="card-body">
+        @if ((categoryTitle && categoryLink) || eventDate) {
+          <div class="category-top">
+            @if (categoryTitle) {
+              <span class="visually-hidden">{{ categoryLabel }}</span>
+              <a class="category" [href]="categoryLink">{{ categoryTitle }}</a>
+            }
+            @if (eventDate) {
+              <span class="visually-hidden">{{ dateLabel }}</span>
+              <span class="data">{{ eventDate | date: dateFormat }}</span>
+            }
+          </div>
+        }
+        <h4 class="card-title">{{ title }}</h4>
+        <p class="card-text">{{ text }}</p>
+        @if (signature) {
+          <span class="card-signature">{{ signature }}</span>
+        }
+        @if (showReadMore) {
+          <a class="read-more" [href]="readMoreLink">
+            <span class="text">{{ 'it.timeline.read-more' | translate }}</span>
+            <span class="visually-hidden">{{ 'it.timeline.read-more-on' | translate: { title: title } }}</span>
+            <it-icon name="arrow-right"></it-icon>
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</div>
