@@ -17,6 +17,10 @@ enum ViewType {
   Overlay = 'OVERLAY',
 }
 
+/**
+ * Video Player
+ * @description Component that allows playing a video.
+ */
 @Component({
   standalone: true,
   selector: 'it-video-player',
@@ -91,11 +95,17 @@ enum ViewType {
   encapsulation: ViewEncapsulation.None,
 })
 export class ItVideoPlayerComponent extends ItAbstractComponent implements OnInit, AfterViewInit, OnDestroy {
+  /**
+   * Options for video player configuration
+   */
   @Input() options: ItVideoPlayerOptions;
 
   @ViewChild('videoPlayer', { static: false }) videoPlayerRef: ElementRef<HTMLVideoElement>;
+
   @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef: ElementRef<HTMLDivElement>;
+
   @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef: ElementRef<HTMLDivElement>;
+
   @ViewChild('chkRemember', { static: false }) chrRememberRef: ElementRef<HTMLInputElement>;
 
   player: Player;
@@ -103,6 +113,7 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
   readonly viewTypes = ViewType;
 
   readonly viewType$ = new BehaviorSubject<ViewType>(undefined);
+
   private get viewType() {
     return this.viewType$.value;
   }
