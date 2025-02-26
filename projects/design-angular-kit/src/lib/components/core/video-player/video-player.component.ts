@@ -8,10 +8,6 @@ import { configureTech, mergeConfig, Tech } from './video-player.config';
 import { cookies } from './video-player.cookie';
 import { ItVideoPlayerConfig, ItVideoPlayerOptions } from './video-player.model';
 
-//https://italia.github.io/bootstrap-italia/docs/componenti/video-player/
-//https://videojs.com/guides/angular/
-//https://github.com/sankalpkataria/videojs-angular-demo/
-
 enum ViewType {
   Default = 'DEFAULT',
   Overlay = 'OVERLAY',
