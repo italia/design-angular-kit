@@ -5,6 +5,7 @@ import { IconName, IconNameArray } from 'design-angular-kit/interfaces/icon';
   selector: 'it-icon-list-example',
   templateUrl: './icon-list-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class IconListExampleComponent {
   iconGroups: Array<{ name?: string; icons: Readonly<Array<IconName>> }>;

@@ -3,7 +3,6 @@ import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-list',
   templateUrl: './list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

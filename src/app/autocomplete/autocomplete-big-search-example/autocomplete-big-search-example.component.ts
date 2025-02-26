@@ -4,5 +4,6 @@ import { AutocompleteSearchExampleComponent } from '../autocomplete-search-examp
 @Component({
   selector: 'it-autocomplete-big-search-example',
   templateUrl: './autocomplete-big-search-example.component.html',
+  standalone: false,
 })
 export class AutocompleteBigSearchExampleComponent extends AutocompleteSearchExampleComponent {}

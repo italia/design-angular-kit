@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-form-input-index',
   templateUrl: './form-input-index.component.html',
   styleUrls: ['./form-input-index.component.scss'],
+  standalone: false,
 })
 export class FormInputIndexComponent {
   component: any;

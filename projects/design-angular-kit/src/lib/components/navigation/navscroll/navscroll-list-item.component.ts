@@ -25,7 +25,6 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
 
 @Component({
   selector: 'it-navscroll-list-item',
-  standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterLinkWithHref, ItNavscrollListItemsComponent, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `

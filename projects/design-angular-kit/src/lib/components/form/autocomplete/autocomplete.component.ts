@@ -9,7 +9,6 @@ import { AutocompleteItem } from '../../../interfaces/form';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-autocomplete',
   templateUrl: './autocomplete.component.html',
   imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgTemplateOutlet, ReactiveFormsModule],

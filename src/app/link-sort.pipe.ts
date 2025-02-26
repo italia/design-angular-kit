@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'linksort',
+  standalone: false,
 })
 export class LinkSortPipe implements PipeTransform {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

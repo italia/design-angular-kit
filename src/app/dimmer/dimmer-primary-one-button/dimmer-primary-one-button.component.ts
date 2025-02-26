@@ -4,6 +4,7 @@ import { DimmerColor } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-dimmer-primary-one-button',
   templateUrl: './dimmer-primary-one-button.component.html',
+  standalone: false,
 })
 export class DimmerPrimaryOneButtonComponent {
   active = false;

@@ -5,6 +5,7 @@ import { ItNotificationService } from 'design-angular-kit/services/notification/
 @Component({
   selector: 'it-notifications-setup',
   templateUrl: './notifications-setup.component.html',
+  standalone: false,
 })
 export class NotificationsSetupComponent {
   duration = 8000;

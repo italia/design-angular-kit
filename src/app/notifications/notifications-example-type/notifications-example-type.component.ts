@@ -4,6 +4,7 @@ import { ItNotificationService } from 'design-angular-kit/services/notification/
 @Component({
   selector: 'it-notifications-example-type',
   templateUrl: './notifications-example-type.component.html',
+  standalone: false,
 })
 export class NotificationsExampleTypeComponent {
   private text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...';

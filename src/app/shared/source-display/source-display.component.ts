@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'it-source-display',
   templateUrl: './source-display.component.html',
   styleUrls: ['./source-display.component.scss'],
+  standalone: false,
 })
 export class SourceDisplayComponent implements OnInit {
   @Input() html: string;

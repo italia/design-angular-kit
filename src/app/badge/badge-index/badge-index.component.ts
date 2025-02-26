@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-badge-index',
   templateUrl: './badge-index.component.html',
   styleUrls: ['./badge-index.component.scss'],
+  standalone: false,
 })
 export class BadgeIndexComponent {
   directive: any;

@@ -4,6 +4,7 @@ import { IconName } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-chips-example',
   templateUrl: './chips-example.component.html',
+  standalone: false,
 })
 export class ChipsExampleComponent {
   el = {

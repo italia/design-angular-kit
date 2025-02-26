@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-header-example',
   templateUrl: './header-example.component.html',
   styleUrls: ['./header-example.component.scss'],
+  standalone: false,
 })
 export class HeaderExampleComponent {
   light = false;

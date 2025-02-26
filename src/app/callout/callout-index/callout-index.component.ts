@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-callout-index',
   templateUrl: './callout-index.component.html',
+  standalone: false,
 })
 export class CalloutIndexComponent {
   component?: any;

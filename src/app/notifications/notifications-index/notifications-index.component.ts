@@ -3,6 +3,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-notifications-index',
   templateUrl: './notifications-index.component.html',
+  standalone: false,
 })
 export class NotificationsIndexComponent {
   component: any;

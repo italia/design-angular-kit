@@ -4,6 +4,7 @@ import { finalize, Observable, of } from 'rxjs';
 @Component({
   selector: 'it-table-paginated',
   templateUrl: './table-paginated.component.html',
+  standalone: false,
 })
 export class TablePaginatedComponent implements OnInit {
   isLoading: boolean = false;

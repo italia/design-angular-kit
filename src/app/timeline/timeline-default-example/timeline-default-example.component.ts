@@ -4,6 +4,7 @@ import { TimelineElement } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-timeline-default-example',
   templateUrl: './timeline-default-example.component.html',
+  standalone: false,
 })
 export class TimelineDefaultExampleComponent {
   timelineElements: TimelineElement[] = [

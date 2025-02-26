@@ -9,7 +9,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],

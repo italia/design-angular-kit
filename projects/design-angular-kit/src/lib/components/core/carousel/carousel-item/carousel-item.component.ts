@@ -6,7 +6,6 @@ import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
  * @description element, image or text slide of carousel
  */
 @Component({
-  standalone: true,
   selector: 'it-carousel-item',
   templateUrl: './carousel-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

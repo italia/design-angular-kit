@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-dropdown-link-example',
   templateUrl: './dropdown-link-example.component.html',
+  standalone: false,
 })
 export class DropdownLinkExampleComponent {
   items = [

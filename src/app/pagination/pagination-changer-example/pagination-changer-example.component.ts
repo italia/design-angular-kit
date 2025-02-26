@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-pagination-changer-example',
   templateUrl: './pagination-changer-example.component.html',
+  standalone: false,
 })
 export class PaginationChangerExampleComponent {
   currentPage: number = 25;

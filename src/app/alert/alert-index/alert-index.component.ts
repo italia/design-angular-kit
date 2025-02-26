@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-alert-index',
   templateUrl: './alert-index.component.html',
+  standalone: false,
 })
 export class AlertIndexComponent {
   component: any;
