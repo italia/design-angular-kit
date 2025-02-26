@@ -1,3 +1,4 @@
+import videojs from 'video.js';
 import { ItEmbedVideoPlayerOptions, ItNativeVideoPlayerOptions, ItVideoPlayerOptions } from './video-player.model';
 
 const itLang = {
@@ -103,7 +104,7 @@ export type Tech = 'html5' | 'youtube';
 
 export const configureTech = async ({ tech }: { tech: Tech }) => {
   if (tech === 'youtube') {
-    (await import('videojs-youtube')).default;
+    (await import('bootstrap-italia/dist/plugins/util/youtube-video.js')).initYoutubePlugin(videojs);
   }
 };
 

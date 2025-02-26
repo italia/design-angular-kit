@@ -87,7 +87,6 @@
     "rxjs": "^7.8.1",
     "tslib": "^2.6.3",
     "video.js": "^8.21.0",
-    "videojs-youtube": "^3.0.1",
     "zone.js": "~0.14.7"
   },
   "devDependencies": {
