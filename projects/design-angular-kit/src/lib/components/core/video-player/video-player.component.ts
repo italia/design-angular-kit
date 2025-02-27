@@ -28,7 +28,7 @@ enum ViewType {
         </div>
       }
       @case (viewTypes.Overlay) {
-        <div #acceptOverlayable class="acceptoverlayable">
+        <div #acceptOverlayable class="acceptoverlayable show">
           <div #acceptOveraly class="acceptoverlay acceptoverlay-primary fade show">
             <div class="acceptoverlay-inner">
               <div class="acceptoverlay-icon">
