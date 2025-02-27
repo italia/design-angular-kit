@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
-import { configureTech, mergeConfig, Tech } from './video-player.config';
+import { Tech, VideoPlayerConfigService } from './video-player.config';
 import { cookies } from './video-player.cookie';
 import { ItVideoPlayerConfig, ItVideoPlayerOptions } from './video-player.model';
 
@@ -114,14 +114,14 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
     return this.viewType$.value;
   }
 
-  constructor() {
+  constructor(private config: VideoPlayerConfigService) {
     super();
   }
 
   async ngOnInit() {
-    const config = mergeConfig(this.options);
+    const config = this.config.mergeConfig(this.options);
     this.setViewType(config);
-    await configureTech(config as { tech: Tech });
+    await this.config.configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
     this.player = videojs(this.videoPlayerRef.nativeElement, config, function onPlayerReady() {
