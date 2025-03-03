@@ -1,10 +1,30 @@
-import { inject, Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
+import { tap } from 'rxjs';
+import videojs from 'video.js';
 import { VideoJsTranslation, VideoPlayerTranslations } from './video-player-i18n.model';
 
 @Injectable({ providedIn: 'root' })
-export class VideoPlayerI18n {
+export class VideoPlayerI18nService {
   readonly #translate = inject(TranslateService);
+
+  init(player: any, destroyRef: DestroyRef) {
+    this.#translate.onLangChange
+      .pipe(
+        takeUntilDestroyed(destroyRef),
+        tap({
+          next: e => {
+            const language = e.lang;
+            videojs.addLanguage(language, this.getTranslations());
+            player.language(language);
+          },
+        })
+      )
+      .subscribe(x => {
+        console.log('onLangChange', x);
+      });
+  }
 
   getLanguage() {
     const language = this.#translate.currentLang ?? 'it';
@@ -15,7 +35,7 @@ export class VideoPlayerI18n {
     };
   }
 
-  getTranslations() {
+  private getTranslations() {
     return mapToVideoJsTranslation(this.#translate.instant('it.video-player'));
   }
 }

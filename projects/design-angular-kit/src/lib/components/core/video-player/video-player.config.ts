@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { initYoutubePlugin } from 'bootstrap-italia/dist/plugins/util/youtube-video.js';
 import videojs from 'video.js';
-import { VideoPlayerI18n } from './video-player-i18n.service';
+import { VideoPlayerI18nService } from './video-player-i18n.service';
 import { ItEmbedVideoPlayerOptions, ItNativeVideoPlayerOptions, ItVideoPlayerOptions } from './video-player.model';
 
 const hasYoutubeVideo = (options: ItVideoPlayerOptions) => (options as ItEmbedVideoPlayerOptions).source?.type === 'video/youtube';
@@ -10,7 +10,7 @@ export type Tech = 'html5' | 'youtube';
 
 @Injectable({ providedIn: 'root' })
 export class VideoPlayerConfigService {
-  readonly #languageService = inject(VideoPlayerI18n);
+  readonly #languageService = inject(VideoPlayerI18nService);
 
   async configureTech({ tech }: { tech: Tech }) {
     if (tech === 'youtube') {
