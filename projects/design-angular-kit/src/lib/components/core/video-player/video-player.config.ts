@@ -10,7 +10,7 @@ export type Tech = 'html5' | 'youtube';
 
 @Injectable({ providedIn: 'root' })
 export class VideoPlayerConfigService {
-  readonly #languages = inject(VideoPlayerI18n).languages;
+  readonly #languageService = inject(VideoPlayerI18n);
 
   async configureTech({ tech }: { tech: Tech }) {
     if (tech === 'youtube') {
@@ -22,12 +22,8 @@ export class VideoPlayerConfigService {
     const options = o as ItNativeVideoPlayerOptions;
     const captions = options.captions ? options.captions.map(c => ({ ...c, kind: 'captions' })) : [];
     const chapters = options.chapters ? options.chapters.map(c => ({ ...c, kind: 'chapters' })) : [];
-    console.log(this.#languages);
     const isYoutubeVideo = hasYoutubeVideo(options);
-    const DEFAULT_CONFIG = {
-      languages: this.#languages,
-      language: 'it',
-    } as const;
+    const DEFAULT_CONFIG = this.#languageService.getLanguage();
     const tech = isYoutubeVideo ? 'youtube' : 'html5';
     const techOrder = [tech];
     //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#preload

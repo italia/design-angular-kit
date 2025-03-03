@@ -1,9 +1,11 @@
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, inject, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject, tap } from 'rxjs';
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
+import { VideoPlayerI18n } from './video-player-i18n.service';
 import { Tech, VideoPlayerConfigService } from './video-player.config';
 import { cookies } from './video-player.cookie';
 import { ItVideoPlayerConfig, ItVideoPlayerOptions } from './video-player.model';
@@ -58,7 +60,9 @@ enum ViewType {
       }
     }
     <ng-template #videoTemplate>
-      <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+      <div [lang]="lang$ | async">
+        <video #videoPlayer class="video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered"></video>
+      </div>
     </ng-template>
 
     <ng-template #transcriptionTemplate>
@@ -110,22 +114,45 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
 
   readonly viewType$ = new BehaviorSubject<ViewType>(undefined);
 
+  readonly lang$ = new BehaviorSubject('it');
+
+  readonly #translate = inject(TranslateService);
+
+  readonly #languageService = inject(VideoPlayerI18n);
+
   private get viewType() {
     return this.viewType$.value;
   }
 
   constructor(private config: VideoPlayerConfigService) {
     super();
+    this.#translate.onLangChange
+      .pipe(
+        tap({
+          next: e => {
+            const language = e.lang;
+            this.lang$.next(language);
+            console.log(this.#languageService.getLanguage());
+            videojs.addLanguage(language, this.#languageService.getTranslations());
+            console.log(this.player.languages());
+            this.player.language(language);
+          },
+        })
+      )
+      .subscribe(x => {
+        console.log('onLangChange', x);
+      });
   }
 
   async ngOnInit() {
     const config = this.config.mergeConfig(this.options);
+    console.log(config);
     this.setViewType(config);
     await this.config.configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
     this.player = videojs(this.videoPlayerRef.nativeElement, config, function onPlayerReady() {
-      console.log('onPlayerReady', this);
+      // console.log('onPlayerReady', this);
     });
   }
 

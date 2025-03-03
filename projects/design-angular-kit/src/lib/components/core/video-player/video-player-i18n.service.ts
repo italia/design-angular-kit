@@ -5,13 +5,19 @@ import { VideoJsTranslation, VideoPlayerTranslations } from './video-player-i18n
 @Injectable({ providedIn: 'root' })
 export class VideoPlayerI18n {
   readonly #translate = inject(TranslateService);
-  readonly languages = this.#translate
-    .getLangs()
-    .map<{ language: string; translations: VideoPlayerTranslations }>(language => ({
+
+  getLanguage() {
+    const language = this.#translate.currentLang ?? 'it';
+
+    return {
+      languages: { [language]: mapToVideoJsTranslation(this.#translate.instant('it.video-player')) },
       language,
-      translations: this.#translate.instant(language + '.video-player'),
-    }))
-    .reduce((p, { language, translations }) => ({ ...p, [language]: mapToVideoJsTranslation(translations) }), {});
+    };
+  }
+
+  getTranslations() {
+    return mapToVideoJsTranslation(this.#translate.instant('it.video-player'));
+  }
 }
 
 function mapToVideoJsTranslation(translations: VideoPlayerTranslations): VideoJsTranslation {
