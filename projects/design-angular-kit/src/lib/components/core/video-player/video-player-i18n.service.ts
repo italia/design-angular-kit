@@ -3,13 +3,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
 import { tap } from 'rxjs';
 import videojs from 'video.js';
+import Player from 'video.js/dist/types/player';
 import { VideoJsTranslation, VideoPlayerTranslations } from './video-player-i18n.model';
 
 @Injectable({ providedIn: 'root' })
 export class VideoPlayerI18nService {
   readonly #translate = inject(TranslateService);
 
-  init(player: any, destroyRef: DestroyRef) {
+  init(player: Player, destroyRef: DestroyRef) {
     this.#translate.onLangChange
       .pipe(
         takeUntilDestroyed(destroyRef),

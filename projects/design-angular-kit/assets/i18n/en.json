@@ -177,8 +177,8 @@
     "video-player": {
       "audio-player": "Lettore audio",
       "video-player": "Lettore video",
-      "play": "Playyy",
-      "pause": "Pausa",
+      "play": "Play",
+      "pause": "Pause",
       "replay": "Replay",
       "current-time": "Orario attuale",
       "duration": "Durata",

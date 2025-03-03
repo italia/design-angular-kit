@@ -124,7 +124,7 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
 
   readonly viewType$ = new BehaviorSubject<ViewType>(undefined);
 
-  readonly #languageService = inject(VideoPlayerI18nService);
+  readonly #i18nService = inject(VideoPlayerI18nService);
 
   readonly #destroyRef = inject(DestroyRef);
 
@@ -143,7 +143,7 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
     this.setVideoAttributes(config);
 
     const onPlayerReadyCb = () => {
-      this.#languageService.init(this.player, this.#destroyRef);
+      this.#i18nService.init(this.player, this.#destroyRef);
     };
 
     this.player = videojs(this.videoPlayerRef.nativeElement, config, onPlayerReadyCb.bind(this));
