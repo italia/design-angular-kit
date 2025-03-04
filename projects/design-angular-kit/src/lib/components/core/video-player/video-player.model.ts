@@ -27,7 +27,6 @@ type EmbedSourceType = 'video/youtube';
 type TAutoplay = 'muted' | 'play' | 'any';
 
 type ItNativeVideoPlayerOptions = {
-  aspectRatio?: string;
   autoplay?: boolean | TAutoplay;
   controls?: boolean;
   fluid?: boolean;

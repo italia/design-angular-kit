@@ -25,10 +25,6 @@ enum ViewType {
   Overlay = 'OVERLAY',
 }
 
-function transformOptions(o: ItVideoPlayerOptions) {
-  return { ...o, aspectRatio: '16:9' } satisfies ItVideoPlayerOptions;
-}
-
 /**
  * Video Player
  * @description Component that allows playing a video.
@@ -112,7 +108,7 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
   /**
    * Options for video player configuration
    */
-  @Input({ transform: transformOptions }) options!: ItVideoPlayerOptions;
+  @Input() options!: ItVideoPlayerOptions;
 
   @ViewChild('videoPlayer', { static: false }) videoPlayerRef?: ElementRef<HTMLVideoElement>;
 
