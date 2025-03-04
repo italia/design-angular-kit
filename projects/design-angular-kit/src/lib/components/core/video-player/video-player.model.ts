@@ -31,6 +31,7 @@ type ItNativeVideoPlayerOptions = {
   autoplay?: boolean | TAutoplay;
   controls?: boolean;
   fluid?: boolean;
+  loop?: boolean;
   muted?: boolean;
   poster?: string;
   preload?: Preload;

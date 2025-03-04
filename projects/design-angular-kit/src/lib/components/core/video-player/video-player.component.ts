@@ -25,6 +25,10 @@ enum ViewType {
   Overlay = 'OVERLAY',
 }
 
+function transformOptions(o: ItVideoPlayerOptions) {
+  return { ...o, aspectRatio: '16:9' } satisfies ItVideoPlayerOptions;
+}
+
 /**
  * Video Player
  * @description Component that allows playing a video.
@@ -108,7 +112,7 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
   /**
    * Options for video player configuration
    */
-  @Input() options!: ItVideoPlayerOptions;
+  @Input({ transform: transformOptions }) options!: ItVideoPlayerOptions;
 
   @ViewChild('videoPlayer', { static: false }) videoPlayerRef?: ElementRef<HTMLVideoElement>;
 
@@ -205,10 +209,18 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
     }
     const v = this.videoPlayerRef.nativeElement;
 
-    const { controls, muted, poster, fluid } = options;
+    const { autoplay, controls, loop, muted, poster, fluid } = options;
+
+    if (autoplay) {
+      v.setAttribute('autoplay', autoplay.toString());
+    }
 
     if (controls) {
       v.setAttribute('controls', '');
+    }
+
+    if (loop) {
+      v.setAttribute('loop', '');
     }
 
     if (muted) {
