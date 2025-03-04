@@ -46,4 +46,4 @@ type ItVideoPlayerOptions = ItNativeVideoPlayerOptions | ItEmbedVideoPlayerOptio
 
 type ItVideoPlayerConfig = ItVideoPlayerOptions & { tech: string };
 
-export type { ItEmbedVideoPlayerOptions, ItNativeVideoPlayerOptions, ItVideoPlayerConfig, ItVideoPlayerOptions };
+export type { Caption, Chapter, ItEmbedVideoPlayerOptions, ItNativeVideoPlayerOptions, ItVideoPlayerConfig, ItVideoPlayerOptions, Source };

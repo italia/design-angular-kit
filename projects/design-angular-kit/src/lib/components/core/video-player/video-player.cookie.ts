@@ -1,4 +1,8 @@
-const preferencesMap = { ck3: {} };
+const preferencesMap: {
+  ck3: {
+    [key: string]: boolean;
+  };
+} = { ck3: {} };
 const STORAGE_KEY = 'bs-ck3';
 /*
   Possible choices:
@@ -12,7 +16,7 @@ const rememberChoice = (service: string, remember: boolean) => {
 
 const isChoiceRemembered = (service: string) => {
   preferencesMap.ck3 = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  return preferencesMap.ck3[service] || false;
+  return Boolean(preferencesMap.ck3[service]) || false;
 };
 
 const clearAllRememberedChoices = () => {

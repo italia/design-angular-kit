@@ -108,21 +108,21 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
   /**
    * Options for video player configuration
    */
-  @Input() options: ItVideoPlayerOptions;
+  @Input() options!: ItVideoPlayerOptions;
 
-  @ViewChild('videoPlayer', { static: false }) videoPlayerRef: ElementRef<HTMLVideoElement>;
+  @ViewChild('videoPlayer', { static: false }) videoPlayerRef?: ElementRef<HTMLVideoElement>;
 
-  @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef: ElementRef<HTMLDivElement>;
+  @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef?: ElementRef<HTMLDivElement>;
 
-  @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef: ElementRef<HTMLDivElement>;
+  @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef?: ElementRef<HTMLDivElement>;
 
-  @ViewChild('chkRemember', { static: false }) chrRememberRef: ElementRef<HTMLInputElement>;
+  @ViewChild('chkRemember', { static: false }) chrRememberRef?: ElementRef<HTMLInputElement>;
 
-  player: Player;
+  player?: Player;
 
   readonly viewTypes = ViewType;
 
-  readonly viewType$ = new BehaviorSubject<ViewType>(undefined);
+  readonly viewType$ = new BehaviorSubject<ViewType | undefined>(undefined);
 
   readonly #i18nService = inject(VideoPlayerI18nService);
 
@@ -142,14 +142,21 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
     await this.config.configureTech(config as { tech: Tech });
     this.setVideoAttributes(config);
 
+    if (!this.videoPlayerRef) {
+      return;
+    }
+
     const onPlayerReadyCb = () => {
+      if (!this.player) {
+        return;
+      }
       this.#i18nService.init(this.player, this.#destroyRef);
     };
 
     this.player = videojs(this.videoPlayerRef.nativeElement, config, onPlayerReadyCb.bind(this));
   }
 
-  ngAfterViewInit() {
+  override ngAfterViewInit() {
     if (this.viewType === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com')) {
       this.hideOverlay();
     }
@@ -171,20 +178,31 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
   }
 
   private hideOverlay() {
+    if (!this.acceptOverlayableRef) {
+      return;
+    }
     const classes = ['show'];
     this.acceptOverlayableRef.nativeElement.classList.remove(...classes);
-
+    if (!this.acceptOveralyRef) {
+      return;
+    }
     this.acceptOveralyRef.nativeElement.classList.remove(...classes);
     this.acceptOveralyRef.nativeElement.setAttribute('aria-hidden', 'true');
   }
 
   private rememberHandler() {
+    if (!this.chrRememberRef) {
+      return;
+    }
     const remember = this.chrRememberRef.nativeElement.checked;
     console.log(remember);
     cookies.rememberChoice('youtube.com', remember);
   }
 
   private setVideoAttributes(options: ItVideoPlayerOptions) {
+    if (!this.videoPlayerRef) {
+      return;
+    }
     const v = this.videoPlayerRef.nativeElement;
 
     const { controls, muted, poster, fluid } = options;
