@@ -24,10 +24,11 @@ type Captions = Array<Caption>;
 type Chapters = Array<Chapter>;
 type Preload = 'auto' | 'none' | 'metadata' | '';
 type EmbedSourceType = 'video/youtube';
+type TAutoplay = 'muted' | 'play' | 'any';
 
 type ItNativeVideoPlayerOptions = {
   aspectRatio?: string;
-  autoplay?: boolean;
+  autoplay?: boolean | TAutoplay;
   controls?: boolean;
   fluid?: boolean;
   muted?: boolean;
