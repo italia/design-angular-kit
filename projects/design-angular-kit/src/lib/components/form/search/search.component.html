@@ -20,9 +20,9 @@
     <it-icon [labelWaria]="labelWaria" name="search" size="sm"></it-icon>
   </span>
 
-  @if (autocompleteResults$ | async; as autocomplete) {
+  @if (searchResults$ | async; as autocomplete) {
     <ul class="autocomplete-list" [class.autocomplete-list-show]="autocomplete.relatedEntries?.length && showAutocompletion">
-      @for (entry of autocomplete.relatedEntries; track autocompleteItemTrackByValueFn($index, entry)) {
+      @for (entry of autocomplete.relatedEntries; track searchItemTrackByValueFn($index, entry)) {
         <li>
           <a [href]="entry.link" (click)="onEntryClick(entry, $event)">
             @if (entry.avatarSrcPath) {

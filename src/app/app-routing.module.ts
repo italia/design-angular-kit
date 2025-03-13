@@ -68,7 +68,7 @@ const routes: Routes = [
       { path: 'carousel', loadChildren: () => import('src/app/carousel/carousel.module').then(m => m.CarouselModule) },
       { path: 'card', loadChildren: () => import('src/app/card/card.module').then(m => m.CardModule) },
       { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) },
-      { path: 'autocomplete', loadChildren: () => import('src/app/autocomplete/autocomplete.module').then(m => m.AutocompleteModule) },
+      { path: 'search', loadChildren: () => import('src/app/search/search.module').then(m => m.SearchModule) },
       { path: 'sidebar', loadChildren: () => import('src/app/sidebar/sidebar.module').then(m => m.SidebarModule) },
       { path: 'timeline', loadChildren: () => import('src/app/timeline/timeline.module').then(m => m.TimelineModule) },
       { path: 'skiplink', loadChildren: () => import('src/app/skiplink/skiplink.module').then(m => m.SkiplinkModule) },

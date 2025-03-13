@@ -74,7 +74,7 @@ export * from './lib/components/core/video-player/video-player.module';
 export * from './lib/components/core/tooltip/tooltip.directive';
 
 // Forms components
-export * from './lib/components/form/autocomplete/autocomplete.component';
+export * from './lib/components/form/search/search.component';
 export * from './lib/components/form/checkbox/checkbox.component';
 export * from './lib/components/form/form.module';
 export * from './lib/components/form/input/input.component';
