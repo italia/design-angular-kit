@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { CarouselType } from '../../../../interfaces/core';
 import { ItCarouselItemComponent } from '../carousel-item/carousel-item.component';
-import { CarouselBI } from 'bootstrap-italia';
+import { Carousel } from 'bootstrap-italia';
 import { startWith, Subscription } from 'rxjs';
 import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
@@ -25,7 +25,6 @@ import { inputToBoolean } from '../../../../utils/coercion';
   standalone: true,
   selector: 'it-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss'],
   exportAs: 'itCarousel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgTemplateOutlet],
@@ -75,7 +74,7 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
 
   @ContentChildren(ItCarouselItemComponent) protected items?: QueryList<ItCarouselItemComponent>;
 
-  private carousel?: CarouselBI;
+  private carousel?: Carousel;
 
   @ViewChild('carousel') private carouselDiv!: ElementRef<HTMLDivElement>;
 
@@ -89,7 +88,6 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
   constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
-    this.carousel = CarouselBI.getOrCreateInstance(this.carouselDiv.nativeElement);
     this.items?.changes
       .pipe(
         // When carousel items changes (dynamic add/remove)
@@ -104,6 +102,9 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
         );
         this._changeDetectorRef.detectChanges(); // Force update html render
       });
+    setTimeout(() => {
+      this.carousel = Carousel.getOrCreateInstance(this.carouselDiv.nativeElement);
+    }, 100);
   }
 
   ngOnDestroy(): void {
@@ -111,7 +112,7 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Removes CarouselBI features
+   * Removes Carousel features
    */
   public dispose(): void {
     this.carousel?.dispose();
