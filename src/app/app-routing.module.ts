@@ -74,6 +74,7 @@ const routes: Routes = [
       { path: 'skiplink', loadChildren: () => import('src/app/skiplink/skiplink.module').then(m => m.SkiplinkModule) },
       { path: 'navscroll', loadChildren: () => import('src/app/navscroll/navscroll.module').then(m => m.NavscrollModule) },
       { path: 'transfer', loadChildren: () => import('src/app/transfer/transfer.module').then(m => m.TransferModule) },
+      { path: 'video-player', loadChildren: () => import('src/app/video-player/video-player.module').then(m => m.VideoPlayerModule) },
     ],
   },
   { path: 'esempi', component: RouterDispatcherComponent, children: EXAMPLES_ROUTES },
