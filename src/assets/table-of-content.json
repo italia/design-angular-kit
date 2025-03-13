@@ -180,8 +180,8 @@
           "link": "/componenti/range"
         },
         {
-          "label": "Autocomplete",
-          "link": "/componenti/autocomplete"
+          "label": "Search",
+          "link": "/componenti/search"
         },
         {
           "label": "Sidebar",

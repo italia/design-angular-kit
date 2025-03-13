@@ -5,26 +5,26 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItMarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
-import { AutocompleteItem } from '../../../interfaces/form';
+import { SearchItem } from '../../../interfaces/form';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
-  selector: 'it-autocomplete',
-  templateUrl: './autocomplete.component.html',
+  selector: 'it-search',
+  templateUrl: './search.component.html',
   imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgTemplateOutlet, ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItAutocompleteComponent extends ItAbstractFormComponent<string | null | undefined> implements OnInit {
+export class ItSearchComponent extends ItAbstractFormComponent<string | null | undefined> implements OnInit {
   /**
-   * Indicates the list of searchable elements on which to base the input autocomplete system
+   * Indicates the list of searchable elements on which to base the input search system
    * If you need to retrieve items via API, can pass a function of Observable
    * @default undefined
    */
-  @Input({ required: true }) autocompleteData!: Array<AutocompleteItem> | ((search?: string | null) => Observable<Array<AutocompleteItem>>);
+  @Input({ required: true }) searchData!: Array<SearchItem> | ((search?: string | null) => Observable<Array<SearchItem>>);
 
   /**
-   * To get a large version of Autocomplete
+   * To get a large version of Search
    */
   @Input({ transform: inputToBoolean }) big?: boolean;
 
@@ -51,50 +51,50 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   @Input({ transform: inputToBoolean }) forceShowLabel: boolean = true;
 
   /**
-   * Fired when the Autocomplete Item has been selected
+   * Fired when the Search Item has been selected
    */
-  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();
+  @Output() searchSelectedEvent: EventEmitter<SearchItem> = new EventEmitter();
 
   protected showAutocompletion = false;
 
   /** Observable da cui vengono emessi i risultati dell'auto completamento */
-  protected autocompleteResults$: Observable<{
+  protected searchResults$: Observable<{
     searchedValue: string | undefined | null;
-    relatedEntries: Array<AutocompleteItem>;
+    relatedEntries: Array<SearchItem>;
   }> = new Observable();
 
   override ngOnInit() {
     super.ngOnInit();
-    this.autocompleteResults$ = this.getAutocompleteResults$();
+    this.searchResults$ = this.getSearchResults$();
   }
 
   /**
-   * Create the autocomplete list
+   * Create the search list
    */
-  private getAutocompleteResults$(): Observable<{
+  private getSearchResults$(): Observable<{
     searchedValue: string | null | undefined;
-    relatedEntries: Array<AutocompleteItem>;
+    relatedEntries: Array<SearchItem>;
   }> {
     return this.control.valueChanges.pipe(
       debounceTime(this.debounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters
       distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value
       switchMap(searchedValue => {
-        if (!this.autocompleteData) {
+        if (!this.searchData) {
           return of({
             searchedValue,
-            relatedEntries: <Array<AutocompleteItem>>[],
+            relatedEntries: <Array<SearchItem>>[],
           });
         }
 
-        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);
+        const autoCompleteData$ = Array.isArray(this.searchData) ? of(this.searchData) : this.searchData(searchedValue);
         return autoCompleteData$.pipe(
-          map(autocompleteData => {
+          map(searchData => {
             if (!searchedValue || typeof searchedValue === 'number') {
               return { searchedValue, relatedEntries: [] };
             }
 
             const lowercaseValue = searchedValue.toLowerCase();
-            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));
+            const relatedEntries = searchData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));
 
             return { searchedValue, relatedEntries };
           })
@@ -103,19 +103,19 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
     );
   }
 
-  protected onEntryClick(entry: AutocompleteItem, event: Event) {
-    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata
+  protected onEntryClick(entry: SearchItem, event: Event) {
+    // Se non è stato definito un link associato all'elemento dell'search, probabilmente il desiderata
     // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.
     if (!entry.link) {
       event.preventDefault();
     }
 
-    this.autocompleteSelectedEvent.next(entry);
+    this.searchSelectedEvent.next(entry);
     this.control.setValue(entry.value);
     this.showAutocompletion = false;
   }
 
-  protected autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {
+  protected searchItemTrackByValueFn(index: number, item: SearchItem) {
     return item.value;
   }
 

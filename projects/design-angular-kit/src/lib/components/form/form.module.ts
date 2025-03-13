@@ -9,11 +9,11 @@ import { ItSelectComponent } from './select/select.component';
 import { ItTextareaComponent } from './textarea/textarea.component';
 import { ItUploadDragDropComponent } from './upload-drag-drop/upload-drag-drop.component';
 import { ItUploadFileListComponent } from './upload-file-list/upload-file-list.component';
-import { ItAutocompleteComponent } from './autocomplete/autocomplete.component';
+import { ItSearchComponent } from './search/search.component';
 import { ItTransferComponent } from './transfer/transfer.component';
 
 const formComponents = [
-  ItAutocompleteComponent,
+  ItSearchComponent,
   ItCheckboxComponent,
   ItInputComponent,
   ItPasswordInputComponent,

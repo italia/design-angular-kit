@@ -56,7 +56,7 @@ export interface UploadFileListItem {
 /**
  * Elemento disponibile per l'autocompletamento del it-form-input
  */
-export interface AutocompleteItem<T = any> {
+export interface SearchItem<T = any> {
   /** Valore voce di autocompletamento */
   value: string;
   /** Opzionale. Path in cui ricercare l'immagine dell'avatar da posizionare a sinistra della voce di autocompletamento */
@@ -71,8 +71,8 @@ export interface AutocompleteItem<T = any> {
   link?: string;
 
   /**
-   * Attribute not used for autocomplete rendering.
-   * It can be useful to retrieve some extra information when selecting the autocomplete item
+   * Attribute not used for Search rendering.
+   * It can be useful to retrieve some extra information when selecting the Search item
    */
   additionalData?: T;
 }

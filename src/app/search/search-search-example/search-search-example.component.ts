@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { AutocompleteItem } from 'design-angular-kit/interfaces/form';
+import { SearchItem } from 'design-angular-kit/interfaces/form';
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'it-autocomplete-search-example',
-  templateUrl: './autocomplete-search-example.component.html',
+  selector: 'it-search-search-example',
+  templateUrl: './search-search-example.component.html',
 })
-export class AutocompleteSearchExampleComponent {
-  private _autoCompleteData: AutocompleteItem[] = [
+export class SearchSearchExampleComponent {
+  private _autoCompleteData: SearchItem[] = [
     {
       value: 'Luisa Neri',
       avatarSrcPath: 'https://randomuser.me/api/portraits/women/44.jpg',
@@ -40,10 +40,10 @@ export class AutocompleteSearchExampleComponent {
   ];
 
   /**
-   * Dynamic AutocompleteData (API) accepted by it-input
-   * @param search the autocomplete input string
+   * Dynamic SearchData (API) accepted by it-input
+   * @param search the search input string
    */
-  autocompleteUsers$ = (search?: string): Observable<Array<AutocompleteItem>> => {
+  searchUsers$ = (search?: string): Observable<Array<SearchItem>> => {
     if (!search) {
       return of([]);
     }
@@ -52,7 +52,7 @@ export class AutocompleteSearchExampleComponent {
     return of(this._autoCompleteData);
   };
 
-  onAutocompleteSelected(item: AutocompleteItem): void {
+  onSearchSelected(item: SearchItem): void {
     console.log(item);
   }
 }
