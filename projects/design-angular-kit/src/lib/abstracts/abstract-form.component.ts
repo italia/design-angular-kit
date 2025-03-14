@@ -1,4 +1,4 @@
-import { ControlValueAccessor, FormControl, NgControl, ValidatorFn } from '@angular/forms';
+import { ControlContainer, ControlValueAccessor, FormControl, FormGroup, NgControl, ValidatorFn } from '@angular/forms';
 import { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';
 import { ItAbstractComponent } from './abstract.component';
 import { Observable } from 'rxjs';
@@ -18,9 +18,9 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * - <b>false</b>: Never show validation color
    * - <b>only-valid</b>: Show only valid validation color
    * - <b>only-invalid</b>: Show only invalid validation color
-   * @default <b>true</b>: Always show the validation color
+   * @default <b>false</b>: Do not show the validation color by default
    */
-  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = true;
+  @Input() validationMode: boolean | 'only-valid' | 'only-invalid' = false;
 
   /**
    * Set the disabled state
@@ -36,7 +36,8 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
 
   constructor(
     protected readonly _translateService: TranslateService,
-    @Self() @Optional() protected readonly _ngControl: NgControl
+    @Self() @Optional() protected readonly _ngControl: NgControl,
+    @Optional() protected fgd?: ControlContainer
   ) {
     super();
     this.control = new FormControl();
@@ -85,6 +86,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
   ngOnInit(): void {
     if (this._ngControl?.control) {
       this.control.setValidators((this._ngControl.control as FormControl).validator);
+      this.setValidationModeWhenInAForm();
     }
   }
 
@@ -196,5 +198,15 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
       return this._ngControl.getError(errorCode, path);
     }
     return this.control.getError(errorCode, path);
+  }
+
+  // This function assurest that validation mode remains complaiant with the Design kit
+  // When the validation mode is `false` and input elements are wrapped in a `FormGroup`
+  // validation mode is automatically set to `true`.
+  private setValidationModeWhenInAForm() {
+    const isInAForm: boolean = this.fgd?.control instanceof FormGroup;
+    if (isInAForm && this.validationMode == false) {
+      this.validationMode = true;
+    }
   }
 }
