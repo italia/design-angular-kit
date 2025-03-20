@@ -155,7 +155,6 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
           delay(0),
           tap({
             next: value => {
-              console.log('subs');
               if (value && !this.player) {
                 this.initVideoPlayer();
               }
