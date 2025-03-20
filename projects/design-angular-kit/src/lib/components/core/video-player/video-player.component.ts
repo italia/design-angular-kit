@@ -202,6 +202,10 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
       this.i18nService.init(this.player, this.#destroyRef);
     };
 
+    if (!this.videoPlayerRef) {
+      throw Error('videoPlayerRef is undefined');
+    }
+
     this.player = videojs(this.videoPlayerRef.nativeElement, config, onPlayerReadyCb.bind(this));
   }
 
