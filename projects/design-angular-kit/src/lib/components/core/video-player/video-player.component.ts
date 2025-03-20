@@ -1,6 +1,7 @@
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   ElementRef,
@@ -11,7 +12,8 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BehaviorSubject, delay, tap } from 'rxjs';
 import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
@@ -53,16 +55,18 @@ enum ViewType {
               <div class="acceptoverlay-buttons bg-dark">
                 <button type="button" class="btn btn-primary" (click)="acceptCookieHandler()">Accetta</button>
                 <div class="form-check">
-                  <input id="chk-remember" type="checkbox" #chkRemember />
-                  <label for="chk-remember">Ricorda per tutti i video</label>
+                  <input id="chk-remember{{ id }}" type="checkbox" #chkRemember />
+                  <label for="chk-remember{{ id }}">Ricorda per tutti i video</label>
                 </div>
               </div>
             </div>
           </div>
-          <div>
-            <ng-container *ngTemplateOutlet="videoTemplate"></ng-container>
-            <ng-container *ngTemplateOutlet="transcriptionTemplate"></ng-container>
-          </div>
+          @if (cookieAccepted$ | async) {
+            <div>
+              <ng-container *ngTemplateOutlet="videoTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="transcriptionTemplate"></ng-container>
+            </div>
+          }
         </div>
       }
       @default {
@@ -103,6 +107,7 @@ enum ViewType {
     </ng-template> `,
   imports: [AsyncPipe, NgTemplateOutlet],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItVideoPlayerComponent extends ItAbstractComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
@@ -124,7 +129,9 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
 
   readonly viewType$ = new BehaviorSubject<ViewType | undefined>(undefined);
 
-  readonly #i18nService = inject(VideoPlayerI18nService);
+  readonly cookieAccepted$ = new BehaviorSubject(false);
+
+  protected readonly i18nService = inject(VideoPlayerI18nService);
 
   readonly #destroyRef = inject(DestroyRef);
 
@@ -140,20 +147,25 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
     const config = this.config.mergeConfig(this.options);
     this.setViewType(config);
     await this.config.configureTech(config as { tech: Tech });
-    this.setVideoAttributes(config);
 
     if (!this.videoPlayerRef) {
+      this.cookieAccepted$
+        .pipe(
+          takeUntilDestroyed(this.#destroyRef),
+          delay(0),
+          tap({
+            next: value => {
+              if (value && !this.player) {
+                this.initVideoPlayer();
+              }
+            },
+          })
+        )
+        .subscribe();
       return;
     }
 
-    const onPlayerReadyCb = () => {
-      if (!this.player) {
-        return;
-      }
-      this.#i18nService.init(this.player, this.#destroyRef);
-    };
-
-    this.player = videojs(this.videoPlayerRef.nativeElement, config, onPlayerReadyCb.bind(this));
+    this.initVideoPlayer();
   }
 
   override ngAfterViewInit() {
@@ -171,10 +183,35 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
   acceptCookieHandler() {
     this.rememberHandler();
     this.hideOverlay();
+    this.cookieAccepted$.next(true);
+  }
+
+  private initVideoPlayer() {
+    const config = this.config.mergeConfig(this.options);
+    this.setVideoAttributes(config);
+    this.setVideoPlayer();
+  }
+
+  private setVideoPlayer() {
+    const config = this.config.mergeConfig(this.options);
+    const onPlayerReadyCb = () => {
+      if (!this.player) {
+        return;
+      }
+      this.i18nService.init(this.player, this.#destroyRef);
+    };
+
+    if (!this.videoPlayerRef) {
+      throw Error('videoPlayerRef is undefined');
+    }
+
+    this.player = videojs(this.videoPlayerRef.nativeElement, config, onPlayerReadyCb.bind(this));
   }
 
   private setViewType(config: ItVideoPlayerConfig) {
     this.viewType$.next(config.tech === 'youtube' ? ViewType.Overlay : ViewType.Default);
+
+    this.cookieAccepted$.next(this.viewType === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com'));
   }
 
   private hideOverlay() {
@@ -195,7 +232,6 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
       return;
     }
     const remember = this.chrRememberRef.nativeElement.checked;
-    console.log(remember);
     cookies.rememberChoice('youtube.com', remember);
   }
 
