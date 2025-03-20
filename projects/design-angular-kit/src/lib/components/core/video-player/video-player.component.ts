@@ -53,8 +53,8 @@ enum ViewType {
               <div class="acceptoverlay-buttons bg-dark">
                 <button type="button" class="btn btn-primary" (click)="acceptCookieHandler()">Accetta</button>
                 <div class="form-check">
-                  <input id="chk-remember" type="checkbox" #chkRemember />
-                  <label for="chk-remember">Ricorda per tutti i video</label>
+                  <input id="chk-remember{{ id }}" type="checkbox" #chkRemember />
+                  <label for="chk-remember{{ id }}">Ricorda per tutti i video</label>
                 </div>
               </div>
             </div>
