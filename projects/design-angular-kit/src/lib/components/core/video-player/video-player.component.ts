@@ -195,7 +195,6 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
       return;
     }
     const remember = this.chrRememberRef.nativeElement.checked;
-    console.log(remember);
     cookies.rememberChoice('youtube.com', remember);
   }
 
