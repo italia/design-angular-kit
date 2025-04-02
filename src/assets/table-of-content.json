@@ -68,6 +68,10 @@
       "link": "/form",
       "links": [
         {
+          "label": "Autocomplete",
+          "link": "/form/autocomplete"
+        },
+        {
           "label": "Checkbox",
           "link": "/form/checkbox"
         },

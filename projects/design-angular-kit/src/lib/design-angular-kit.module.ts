@@ -39,6 +39,7 @@ import { ItSidebarComponent } from './components/navigation/sidebar/sidebar.comp
 import { ItSkiplinkModule } from './components/navigation/skiplink/skiplink.module';
 import { ItErrorPageComponent } from './components/utils/error-page/error-page.component';
 import { ItIconComponent } from './components/utils/icon/icon.component';
+import { ItAutocompleteComponent } from './components/form/autocomplete/autocomplete.component';
 import { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';
 import { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';
 import { ItDateAgoPipe } from './pipes/date-ago.pipe';
@@ -50,6 +51,7 @@ import { provideDesignAngularKit } from './provide-design-angular-kit';
  * Core components
  */
 const core = [
+  ItAutocompleteComponent,
   ItAccordionComponent,
   ItAlertComponent,
   ItAvatarModule,

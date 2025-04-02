@@ -11,6 +11,7 @@ import { ItUploadDragDropComponent } from './upload-drag-drop/upload-drag-drop.c
 import { ItUploadFileListComponent } from './upload-file-list/upload-file-list.component';
 import { ItSearchComponent } from './search/search.component';
 import { ItTransferComponent } from './transfer/transfer.component';
+import { ItAutocompleteComponent } from './autocomplete/autocomplete.component';
 
 const formComponents = [
   ItSearchComponent,
@@ -25,6 +26,7 @@ const formComponents = [
   ItTransferComponent,
   ItUploadDragDropComponent,
   ItUploadFileListComponent,
+  ItAutocompleteComponent,
 ];
 
 @NgModule({
