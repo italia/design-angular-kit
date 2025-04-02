@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItAutocompleteComponent } from './autocomplete.component';
 import { tb_base } from '../../../../test';
 
-describe('ItTextareaComponent', () => {
+describe('ItAutocompleteComponent', () => {
   let component: ItAutocompleteComponent;
   let fixture: ComponentFixture<ItAutocompleteComponent>;
 

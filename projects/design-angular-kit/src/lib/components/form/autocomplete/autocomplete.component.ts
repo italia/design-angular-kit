@@ -37,7 +37,11 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
    */
   @Input() readonly: boolean | 'plaintext' | undefined;
 
-  @Input() source: string[];
+  /**
+   * Autocomplete elements.
+   * @default []
+   */
+  @Input() source: string[] = [];
 
   @ViewChild('selectAutocomplete') private selectAutocompleteEl?: ElementRef<HTMLButtonElement>;
 
