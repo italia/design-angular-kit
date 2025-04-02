@@ -1,0 +1,18 @@
+<div class="form-group">
+  @if (label) {
+    <label [for]="id" [class.active]="!!control.value || !!placeholder">{{ label }}</label>
+  }
+  <div #selectAutocomplete [id]="id + 'Wrapper'" class="autocomplete-wrapper"></div>
+
+  @if (description) {
+    <small [id]="id + '-description'" class="form-text">{{ description }}</small>
+  }
+  @if (isInvalid) {
+    <div class="form-feedback just-validate-error-label" [id]="id + '-error'">
+      <div #customError><ng-content select="[error]"></ng-content></div>
+      @if (!customError.hasChildNodes()) {
+        {{ invalidMessage | async }}
+      }
+    </div>
+  }
+</div>
