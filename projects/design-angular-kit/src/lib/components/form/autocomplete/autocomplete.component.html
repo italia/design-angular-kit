@@ -1,6 +1,6 @@
 <div class="form-group">
   @if (label) {
-    <label [for]="id" [class.active]="!!control.value || !!placeholder">{{ label }}</label>
+    <label [for]="id" [class.active]="!!control.value">{{ label }}</label>
   }
   <div #selectAutocomplete name="region" [id]="id + 'Wrapper'" class="autocomplete-wrapper"></div>
 

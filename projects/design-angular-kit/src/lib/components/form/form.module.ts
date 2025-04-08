@@ -14,6 +14,7 @@ import { ItTransferComponent } from './transfer/transfer.component';
 import { ItAutocompleteComponent } from './autocomplete/autocomplete.component';
 
 const formComponents = [
+  ItAutocompleteComponent,
   ItSearchComponent,
   ItCheckboxComponent,
   ItInputComponent,
@@ -26,7 +27,6 @@ const formComponents = [
   ItTransferComponent,
   ItUploadDragDropComponent,
   ItUploadFileListComponent,
-  ItAutocompleteComponent,
 ];
 
 @NgModule({

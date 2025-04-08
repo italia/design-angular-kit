@@ -10,7 +10,6 @@ type functionSource = (query: string, populateResults: (results: string[]) => vo
   standalone: true,
   selector: 'it-autocomplete',
   templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, AsyncPipe],
 })
@@ -46,7 +45,7 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   /**
    * Default value
    */
-  @Input() defaultValue: string | undefined;
+  @Input() defaultValue: string | null = '';
 
   /**
    * Fired when value changes
@@ -57,9 +56,9 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
 
   private selectAutocomplete?: SelectAutocomplete;
 
-  private value: string | undefined;
-  private _interval: NodeJS.Timeout;
-  private _inputEl: HTMLElement;
+  private value: string | undefined = '';
+  private _interval: any = 0;
+  private _inputEl: HTMLElement | null = null;
 
   override ngOnInit() {
     super.ngOnInit();
@@ -77,7 +76,6 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
     this._interval = setInterval(() => {
       this._inputEl = document.getElementById(this.id);
       if (this._inputEl) {
-        this._inputEl.ATTRIBUTE_NODE;
         clearInterval(this._interval);
         this._initInputEl();
       }
@@ -85,7 +83,7 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   }
 
   private _setAndCheck(value: string) {
-    this.value = value == '' ? null : value;
+    this.value = value == '' ? undefined : value;
     this.markAsTouched();
     this.writeValue(this.value);
     this.onChange(this.value);
@@ -93,21 +91,23 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   }
 
   private _initInputEl() {
-    this._inputEl.onfocus = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
-    this._inputEl.onblur = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
-    this._inputEl.oninput = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+    if (this._inputEl) {
+      this._inputEl.onfocus = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+      this._inputEl.onblur = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+      this._inputEl.oninput = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+    }
   }
 
   private _checkValidityClasses() {
     if (this.isValid == false && this.isInvalid == false) {
-      this._inputEl.classList.remove('just-validate-success-field');
-      this._inputEl.classList.remove('is-invalid');
+      this._inputEl?.classList.remove('just-validate-success-field');
+      this._inputEl?.classList.remove('is-invalid');
     } else if (this.isValid == true) {
-      this._inputEl.classList.add('just-validate-success-field');
-      this._inputEl.classList.remove('is-invalid');
+      this._inputEl?.classList.add('just-validate-success-field');
+      this._inputEl?.classList.remove('is-invalid');
     } else if (this.isInvalid == true) {
-      this._inputEl.classList.add('is-invalid');
-      this._inputEl.classList.remove('just-validate-success-field');
+      this._inputEl?.classList.add('is-invalid');
+      this._inputEl?.classList.remove('just-validate-success-field');
     }
   }
 
@@ -122,7 +122,7 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
         required: this.required,
         minLength: this.minLength,
         defaultValue: this.defaultValue,
-        onConfirm: selectedElement => {
+        onConfirm: (selectedElement: string) => {
           this._setAndCheck(selectedElement);
           this.selected.emit(selectedElement);
         },
