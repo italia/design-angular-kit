@@ -44,6 +44,11 @@
         <it-input type="tel" label="Telefono" formControlName="phone" required></it-input>
       </div>
     </div>
+    <div class="row">
+      <div class="col-4">
+        <it-autocomplete label="Regione" formControlName="region" [source]="['Campania', 'Toscana']" required></it-autocomplete>
+      </div>
+    </div>
 
     <div class="d-flex justify-content-between">
       <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>

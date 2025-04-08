@@ -2,7 +2,7 @@
   @if (label) {
     <label [for]="id" [class.active]="!!control.value || !!placeholder">{{ label }}</label>
   }
-  <div #selectAutocomplete [id]="id + 'Wrapper'" class="autocomplete-wrapper"></div>
+  <div #selectAutocomplete name="region" [id]="id + 'Wrapper'" class="autocomplete-wrapper"></div>
 
   @if (description) {
     <small [id]="id + '-description'" class="form-text">{{ description }}</small>

@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
-import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectAutocomplete } from 'bootstrap-italia';
+
+type functionSource = (query: string, populateResults: (results: string[]) => void) => void;
 
 @Component({
   standalone: true,
@@ -15,15 +16,21 @@ import { SelectAutocomplete } from 'bootstrap-italia';
 })
 export class ItAutocompleteComponent extends ItAbstractFormComponent<string | null | undefined> {
   /**
-   * Textarea Rows
-   * @default 3
+   * Autocomplete elements.
+   * @default []
    */
-  @Input() rows?: number = 3;
+  @Input() source: string[] | functionSource = [];
 
   /**
-   * The textarea placeholder
+   * Autocomplete if required.
+   * @default false
    */
-  @Input() placeholder: string = '';
+  @Input() required: boolean = false;
+
+  /**
+   * Input field name
+   */
+  @Input() name: string | undefined;
 
   /**
    * The input description
@@ -31,21 +38,78 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   @Input() description: string | undefined;
 
   /**
-   * To prevent modification of the contained value.
-   * - <b>plaintext</b>: Readonly field in the form stylized as plain text
-   * @default undefined
+   * Prevents suggestions from appearing if fewer than N characters are typed
+   * @default 0
    */
-  @Input() readonly: boolean | 'plaintext' | undefined;
+  @Input() minLength: number = 0;
 
   /**
-   * Autocomplete elements.
-   * @default []
+   * Default value
    */
-  @Input() source: string[] = [];
+  @Input() defaultValue: string | undefined;
+
+  /**
+   * Fired when value changes
+   */
+  @Output() selected = new EventEmitter();
 
   @ViewChild('selectAutocomplete') private selectAutocompleteEl?: ElementRef<HTMLButtonElement>;
 
   private selectAutocomplete?: SelectAutocomplete;
+
+  private value: string | undefined;
+  private _interval: NodeJS.Timeout;
+  private _inputEl: HTMLElement;
+
+  override ngOnInit() {
+    super.ngOnInit();
+    if (!this.control.value && !!this.value) {
+      this.writeValue(this.value);
+      this.onChange(this.value);
+    }
+  }
+
+  clear() {
+    (this._inputEl as HTMLInputElement).value = '';
+  }
+
+  _findInput() {
+    this._interval = setInterval(() => {
+      this._inputEl = document.getElementById(this.id);
+      if (this._inputEl) {
+        this._inputEl.ATTRIBUTE_NODE;
+        clearInterval(this._interval);
+        this._initInputEl();
+      }
+    }, 500);
+  }
+
+  private _setAndCheck(value: string) {
+    this.value = value == '' ? null : value;
+    this.markAsTouched();
+    this.writeValue(this.value);
+    this.onChange(this.value);
+    this._checkValidityClasses();
+  }
+
+  private _initInputEl() {
+    this._inputEl.onfocus = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+    this._inputEl.onblur = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+    this._inputEl.oninput = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+  }
+
+  private _checkValidityClasses() {
+    if (this.isValid == false && this.isInvalid == false) {
+      this._inputEl.classList.remove('just-validate-success-field');
+      this._inputEl.classList.remove('is-invalid');
+    } else if (this.isValid == true) {
+      this._inputEl.classList.add('just-validate-success-field');
+      this._inputEl.classList.remove('is-invalid');
+    } else if (this.isInvalid == true) {
+      this._inputEl.classList.add('is-invalid');
+      this._inputEl.classList.remove('just-validate-success-field');
+    }
+  }
 
   override ngAfterViewInit() {
     if (this.selectAutocompleteEl) {
@@ -53,32 +117,17 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
       const element = this.selectAutocompleteEl.nativeElement;
       this.selectAutocomplete = new SelectAutocomplete(element, {
         id: this.id,
-        name: this.id,
+        name: this.name || this.id,
         source: this.source,
+        required: this.required,
+        minLength: this.minLength,
+        defaultValue: this.defaultValue,
+        onConfirm: selectedElement => {
+          this._setAndCheck(selectedElement);
+          this.selected.emit(selectedElement);
+        },
       });
+      this._findInput();
     }
-  }
-
-  /**
-   * Return the invalid message string from TranslateService
-   */
-  override get invalidMessage(): Observable<string> {
-    if (this.hasError('maxlength')) {
-      const error = this.getError('maxlength');
-      return this._translateService.get('it.errors.max-length-invalid', { max: error.requiredLength });
-    }
-    if (this.hasError('pattern')) {
-      const error = this.getError('pattern');
-      return this._translateService.get('it.errors.pattern-invalid', { pattern: error.requiredPattern });
-    }
-
-    return super.invalidMessage;
-  }
-
-  /**
-   * Check is readonly field
-   */
-  protected get isReadonly(): boolean {
-    return this.readonly === 'plaintext' || !!this.readonly;
   }
 }

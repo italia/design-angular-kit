@@ -3,11 +3,6 @@
     z-index: 1000;
   }
 
-  input:focus:not(.focus--mouse) {
-    box-shadow: inherit !important;
-    border-color: inherit !important;
-  }
-
   .input-number {
     .align-buttons {
       height: 100%;

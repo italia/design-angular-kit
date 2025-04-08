@@ -14,3 +14,18 @@
     html="{$ sanitize(html) $}"
     typescript="{$ sanitize(typescript) $}" >
 </it-source-display>
+
+{% set html_double %}
+  {% include "../autocomplete-double/autocomplete-double.component.html" %}
+{% endset %}
+
+{% set typescript_double %}
+  {% include "../autocomplete-double/autocomplete-double.component.ts" %}
+{% endset %}
+
+<it-autocomplete-double></it-autocomplete-double>
+
+<it-source-display
+    html="{$ sanitize(html_double) $}"
+    typescript="{$ sanitize(typescript_double) $}" >
+</it-source-display>
