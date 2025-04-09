@@ -78,6 +78,7 @@ export * from './lib/components/form/search/search.component';
 export * from './lib/components/form/checkbox/checkbox.component';
 export * from './lib/components/form/form.module';
 export * from './lib/components/form/input/input.component';
+export * from './lib/components/form/autocomplete/autocomplete.component';
 export * from './lib/components/form/password-input/password-input.component';
 export * from './lib/components/form/radio-button/radio-button.component';
 export * from './lib/components/form/range/range.component';

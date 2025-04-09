@@ -9,8 +9,31 @@ import { ItValidators } from 'design-angular-kit/validators/it-validators';
 })
 export class ModelDrivenValidationExampleComponent {
   myForm: FormGroup;
+  regions: string[] = [];
 
   constructor(private _fb: FormBuilder) {
+    this.regions = [
+      'Abruzzo',
+      'Basilicata',
+      'Calabria',
+      'Campania',
+      'Emilia Romagna',
+      'Friuli Venezia Giulia',
+      'Lazio',
+      'Liguria',
+      'Lombardia',
+      'Marche',
+      'Molise',
+      'Piemonte',
+      'Puglia',
+      'Sardegna',
+      'Sicilia',
+      'Toscana',
+      'Trentino Alto Adige',
+      'Umbria',
+      "Valle d'Aosta",
+      'Veneto',
+    ];
     const validators = [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('[ab]+')];
     this.myForm = this._fb.group({
       taxCode: [null, ItValidators.taxCode],
@@ -19,6 +42,7 @@ export class ModelDrivenValidationExampleComponent {
       email: [null],
       url: [null],
       phone: [null],
+      region: [null, ItValidators.includes(this.regions)],
       iban: [null, ItValidators.iban],
       myInput: ['', validators],
     });

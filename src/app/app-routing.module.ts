@@ -45,6 +45,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'form-input', pathMatch: 'full' },
       { path: 'form-input', loadChildren: () => import('src/app/form-input/form-input.module').then(m => m.FormInputModule) },
+      { path: 'autocomplete', loadChildren: () => import('src/app/autocomplete/autocomplete.module').then(m => m.AutocompleteModule) },
+
       { path: 'textarea', loadChildren: () => import('src/app/textarea/textarea.module').then(m => m.TextareaModule) },
       { path: 'checkbox', loadChildren: () => import('src/app/checkbox/checkbox.module').then(m => m.CheckboxModule) },
       { path: 'radio', loadChildren: () => import('src/app/radio/radio.module').then(m => m.RadioModule) },
