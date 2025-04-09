@@ -1,3 +1,32 @@
+# [1.3.0](https://github.com/italia/design-angular-kit/compare/v1.2.2...v1.3.0) (2025-04-09)
+
+
+### Bug Fixes
+
+* build ([31fd30d](https://github.com/italia/design-angular-kit/commit/31fd30dbd4031cb3e18b1b16960235f5743a8adc))
+* default source empty ([0838e0c](https://github.com/italia/design-angular-kit/commit/0838e0cec22800bc8d4b1ff0eefeb95d71640d32))
+* default validation ([abf2d72](https://github.com/italia/design-angular-kit/commit/abf2d725ce1ec2a08f1ca59265736dcb7318c7a7))
+* fixed the circular dependency on ItNavscrollListItemComponent ([8c0ad5a](https://github.com/italia/design-angular-kit/commit/8c0ad5a185964ad876536a9f0abc78bd742d1ada))
+* touched stuff ([8ea1e8c](https://github.com/italia/design-angular-kit/commit/8ea1e8c2900d6a7d901929e59dfb02436e897bc3))
+* various fixes on video player ([5a6d183](https://github.com/italia/design-angular-kit/commit/5a6d183d261cbab47147e0e343f1150e6d8f1348))
+
+
+### Features
+
+* add i18n ([3239437](https://github.com/italia/design-angular-kit/commit/32394374ba5a7a57a52d33ebd0915fe35c5f472f))
+* add includes validator ([e175acd](https://github.com/italia/design-angular-kit/commit/e175acd8bbe98831b5adb576fc56eb5fa55294b3))
+* add video player component ([fc6c44d](https://github.com/italia/design-angular-kit/commit/fc6c44d804fadbf153b5d46457e706e88f433d93))
+* first autocomplete structure and working example ([146094e](https://github.com/italia/design-angular-kit/commit/146094eb4d1e7c36e1ff8164d2dfc582003d7429))
+* more on autocomplete ([5f7ce10](https://github.com/italia/design-angular-kit/commit/5f7ce10a46734b23be43549c3aabb1eea6c67920))
+* search component is the new autocomplete ([bf1c0bc](https://github.com/italia/design-angular-kit/commit/bf1c0bc7cb90c364eee334f0846b9b14e77e5ab2))
+
+
+### BREAKING CHANGES
+
+* it-autocomplete is now it-search
+
+
+
 ## [1.2.2](https://github.com/italia/design-angular-kit/compare/v1.2.1...v1.2.2) (2025-02-17)
 
 
