@@ -48,6 +48,36 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   @Input() defaultValue: string | null = '';
 
   /**
+   * Function to set assistive hint label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() assistiveHintLabel: () => string = undefined;
+
+  /**
+   * Function to set label in case of no result. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() noResultsLabel: () => string = undefined;
+
+  /**
+   * Function to set label that alerts you that query's too short. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() statusQueryTooShortLabel: (minQueryLength: number) => string = undefined;
+
+  /**
+   * Function to set no results label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() statusNoResultsLabel: () => string = undefined;
+
+  /**
+   * Function to set selected option label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() statusSelectedOptionLabel: (selectedOption: string, length: number, index: number) => string = undefined;
+
+  /**
+   * Function to set status results label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() statusResultsLabel: (length: number, contentSelectedOption: string) => string = undefined;
+
+  /**
    * Fired when value changes
    */
   @Output() selected = new EventEmitter();
@@ -122,6 +152,12 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
         required: this.required,
         minLength: this.minLength,
         defaultValue: this.defaultValue,
+        tAssistiveHint: this.assistiveHintLabel,
+        tNoResults: this.noResultsLabel,
+        tStatusQueryTooShort: this.statusQueryTooShortLabel,
+        tStatusNoResults: this.statusNoResultsLabel,
+        tStatusSelectedOption: this.statusSelectedOptionLabel,
+        tStatusResults: this.statusResultsLabel,
         onConfirm: (selectedElement: string) => {
           this.markAsTouched();
           this._setAndCheck(selectedElement);
