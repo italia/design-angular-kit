@@ -8,32 +8,131 @@
       }]
     },
     {
+      "label": "Organizzare i contenuti",
+      "link": "/organizzare-i-contenuti",
+      "links": [
+        {
+          "label": "Lists",
+          "link": "/organizzare-i-contenuti/list"
+        },
+        {
+          "label": "Table",
+          "link": "/organizzare-i-contenuti/table"
+        }
+      ]
+    },
+    {
+      "label": "Menu di navigazione",
+      "link": "/menu-di-navigazione",
+      "links": [
+        {
+          "label": "Back To Top",
+          "link": "/menu-di-navigazione/back-to-top"
+        },
+        {
+          "label": "Breadcrumb",
+          "link": "/menu-di-navigazione/breadcrumb"
+        },
+        {
+          "label": "Header",
+          "link": "/menu-di-navigazione/header"
+        },
+        {
+          "label": "Back Button",
+          "link": "/menu-di-navigazione/back-button"
+        },
+        {
+          "label": "Forward",
+          "link": "/menu-di-navigazione/forward"
+        },
+        {
+          "label": "Megamenu",
+          "link": "/menu-di-navigazione/megamenu"
+        },
+        {
+          "label": "Sidebar",
+          "link": "/menu-di-navigazione/sidebar"
+        },
+        {
+          "label": "Skiplink",
+          "link": "/menu-di-navigazione/skiplink"
+        },
+        {
+          "label": "Navscroll",
+          "link": "/menu-di-navigazione/navscroll"
+        }
+      ]
+    },
+    {
+      "label": "Form",
+      "link": "/form",
+      "links": [
+        {
+          "label": "Autocomplete",
+          "link": "/form/autocomplete"
+        },
+        {
+          "label": "Checkbox",
+          "link": "/form/checkbox"
+        },
+        {
+          "label": "Toggle",
+          "link": "/form/toggle"
+        },
+        {
+          "label": "Radio button",
+          "link": "/form/radio"
+        },
+        {
+          "label": "Form Input",
+          "link": "/form/form-input"
+        },
+        {
+          "label": "Upload",
+          "link": "/form/upload"
+        },
+        {
+          "label": "Search",
+          "link": "/form/search"
+        },
+        {
+          "label": "Select",
+          "link": "/form/select"
+        },
+        {
+          "label": "Transfer",
+          "link": "/form/transfer"
+        },
+        {
+          "label": "Textarea",
+          "link": "/form/textarea"
+        },
+        {
+          "label": "Password Input",
+          "link": "/form/password-input"
+        }
+      ]
+    },
+    {
       "label": "Componenti",
       "link": "/componenti",
       "links": [
+        {
+          "label": "Accordion",
+          "link": "/componenti/accordion"
+        },
         {
           "label": "Avatar",
           "link": "/componenti/avatar"
         },
         {
-          "label": "Checkbox",
-          "link": "/componenti/checkbox"
-        },
-        {
           "label": "Progress Bar",
           "link": "/componenti/progress-bar"
         },
-        {
-          "label": "Toggle",
-          "link": "/componenti/toggle"
-        },
+
         {
           "label": "Popover",
           "link": "/componenti/popover"
-        },
-        {
-          "label": "Radio button",
-          "link": "/componenti/radio"
         },
         {
           "label": "Tooltip",
@@ -52,32 +151,12 @@
           "link": "/componenti/dropdown"
         },
         {
-          "label": "Breadcrumb",
-          "link": "/componenti/breadcrumb"
-        },
-        {
           "label": "Tabs",
           "link": "/componenti/tabs"
         },
         {
-          "label": "Header",
-          "link": "/componenti/header"
-        },
-        {
           "label": "Collapse",
           "link": "/componenti/collapse"
-        },
-        {
-          "label": "Form Input",
-          "link": "/componenti/form-input"
-        },
-        {
-          "label": "Back Button",
-          "link": "/componenti/back-button"
-        },
-        {
-          "label": "Back To Top",
-          "link": "/componenti/back-to-top"
         },
         {
           "label": "Card",
@@ -88,36 +167,16 @@
           "link": "/componenti/chip"
         },
         {
-          "label": "Forward",
-          "link": "/componenti/forward"
-        },
-        {
           "label": "Dimmer",
           "link": "/componenti/dimmer"
-        },
-        {
-          "label": "Lists",
-          "link": "/componenti/list"
         },
         {
           "label": "Callout",
           "link": "/componenti/callout"
         },
         {
-          "label": "Upload",
-          "link": "/componenti/upload"
-        },
-        {
           "label": "Steppers",
           "link": "/componenti/steppers"
-        },
-        {
-          "label": "Select",
-          "link": "/componenti/select"
-        },
-        {
-          "label": "Megamenu",
-          "link": "/componenti/megamenu"
         },
         {
           "label": "Notifications",
@@ -130,14 +189,6 @@
         {
           "label": "Pagination",
           "link": "/componenti/pagination"
-        },
-        {
-          "label": "Table",
-          "link": "/componenti/table"
-        },
-        {
-          "label": "Textarea",
-          "link": "/componenti/textarea"
         },
         {
           "label": "Alert",
@@ -164,10 +215,6 @@
           "link": "/componenti/language-switcher"
         },
         {
-          "label": "Password Input",
-          "link": "/componenti/password-input"
-        },
-        {
           "label": "Carousel",
           "link": "/componenti/carousel"
         },
@@ -176,28 +223,12 @@
           "link": "/componenti/range"
         },
         {
-          "label": "Autocomplete",
-          "link": "/componenti/autocomplete"
-        },
-        {
-          "label": "Sidebar",
-          "link": "/componenti/sidebar"
-        },
-        {
           "label": "Timeline",
           "link": "/componenti/timeline"
         },
         {
-          "label": "Skiplink",
-          "link": "/componenti/skiplink"
-        },
-        {
-          "label": "Navscroll",
-          "link": "/componenti/navscroll"
-        },
-        {
-          "label": "Transfer",
-          "link": "/componenti/transfer"
+          "label": "Video Player",
+          "link": "/componenti/video-player"
         }
       ]
     }
