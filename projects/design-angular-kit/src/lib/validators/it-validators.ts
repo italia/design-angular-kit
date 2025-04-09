@@ -133,6 +133,12 @@ export class ItValidators {
     return ItValidators.customPattern(PHONE_NUMBER_REGEX, { invalidTel: true });
   }
 
+  public static includes(possibleValues: string[]): ValidatorFn {
+    return formControl => {
+      return possibleValues?.includes(formControl.value) ? null : { invalidSelection: true };
+    };
+  }
+
   /**
    * URL validator
    */

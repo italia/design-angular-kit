@@ -9,21 +9,9 @@ import { ItValidators } from 'design-angular-kit/validators/it-validators';
 })
 export class ModelDrivenValidationExampleComponent {
   myForm: FormGroup;
-  regions: string[];
+  regions: string[] = [];
 
   constructor(private _fb: FormBuilder) {
-    const validators = [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('[ab]+')];
-    this.myForm = this._fb.group({
-      taxCode: [null, ItValidators.taxCode],
-      vat: [null, ItValidators.vatNumber],
-      cap: [null, ItValidators.cap],
-      email: [null],
-      url: [null],
-      phone: [null],
-      region: [null],
-      iban: [null, ItValidators.iban],
-      myInput: ['', validators],
-    });
     this.regions = [
       'Abruzzo',
       'Basilicata',
@@ -46,6 +34,18 @@ export class ModelDrivenValidationExampleComponent {
       "Valle d'Aosta",
       'Veneto',
     ];
+    const validators = [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('[ab]+')];
+    this.myForm = this._fb.group({
+      taxCode: [null, ItValidators.taxCode],
+      vat: [null, ItValidators.vatNumber],
+      cap: [null, ItValidators.cap],
+      email: [null],
+      url: [null],
+      phone: [null],
+      region: [null, ItValidators.includes(this.regions)],
+      iban: [null, ItValidators.iban],
+      myInput: ['', validators],
+    });
   }
 
   value = '';

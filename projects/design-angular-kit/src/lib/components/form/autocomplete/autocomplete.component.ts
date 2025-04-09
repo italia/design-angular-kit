@@ -50,32 +50,43 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
   /**
    * Function to set assistive hint label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
    */
-  @Input() assistiveHintLabel: () => string = undefined;
+  @Input() assistiveHintLabel: () => string = () =>
+    'Quando i risultati del completamento automatico sono disponibili, usa le frecce su e giù per rivedere e Invio per selezionare. Utenti di dispositivi touch, esplora tramite tocco o con gesti di scorrimento';
 
   /**
    * Function to set label in case of no result. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
    */
-  @Input() noResultsLabel: () => string = undefined;
+  @Input() noResultsLabel: () => string = () => 'Nessun risultato trovato';
 
   /**
    * Function to set label that alerts you that query's too short. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
    */
-  @Input() statusQueryTooShortLabel: (minQueryLength: number) => string = undefined;
+  @Input() statusQueryTooShortLabel: (minQueryLength: number) => string = minQueryLength =>
+    `Digita ${minQueryLength} o più caratteri per mostrare le opzioni di ricerca`;
 
   /**
    * Function to set no results label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
    */
-  @Input() statusNoResultsLabel: () => string = undefined;
+  @Input() statusNoResultsLabel: () => string = () => 'Nessun risultato di ricerca';
 
   /**
    * Function to set selected option label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
    */
-  @Input() statusSelectedOptionLabel: (selectedOption: string, length: number, index: number) => string = undefined;
+  @Input() statusSelectedOptionLabel: (selectedOption: string, length: number, index: number) => string = (selectedOption, length, index) =>
+    `${selectedOption} ${index + 1} di ${length} è sottolineato`;
 
   /**
    * Function to set status results label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
    */
-  @Input() statusResultsLabel: (length: number, contentSelectedOption: string) => string = undefined;
+  @Input() statusResultsLabel: (length: number, contentSelectedOption: string) => string = (length, contentSelectedOption) => {
+    const words = {
+      result: length === 1 ? 'risultato' : 'risultati',
+      is: length === 1 ? 'è' : 'sono',
+      available: length === 1 ? 'disponibile' : 'disponibili',
+    };
+
+    return `${length} ${words.result} ${words.is} ${words.available}. ${contentSelectedOption}`;
+  };
 
   /**
    * Fired when value changes
