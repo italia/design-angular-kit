@@ -84,21 +84,10 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
 
   private _setAndCheck(value: string) {
     this.value = value == '' ? undefined : value;
-    this.markAsTouched();
-    this.writeValue(this.value);
-    this.onChange(this.value);
-    this._checkValidityClasses();
-  }
-
-  private _initInputEl() {
-    if (this._inputEl) {
-      this._inputEl.onfocus = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
-      this._inputEl.onblur = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
-      this._inputEl.oninput = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+    if (this.control.touched) {
+      this.writeValue(this.value);
+      this.onChange(this.value);
     }
-  }
-
-  private _checkValidityClasses() {
     if (this.isValid == false && this.isInvalid == false) {
       this._inputEl?.classList.remove('just-validate-success-field');
       this._inputEl?.classList.remove('is-invalid');
@@ -108,6 +97,17 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
     } else if (this.isInvalid == true) {
       this._inputEl?.classList.add('is-invalid');
       this._inputEl?.classList.remove('just-validate-success-field');
+    }
+  }
+
+  private _initInputEl() {
+    if (this._inputEl) {
+      this._inputEl.onfocus = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+      this._inputEl.onblur = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+      this._inputEl.oninput = (ev: Event) => {
+        this.markAsTouched();
+        this._setAndCheck((ev.target as HTMLInputElement).value);
+      };
     }
   }
 
@@ -123,6 +123,7 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
         minLength: this.minLength,
         defaultValue: this.defaultValue,
         onConfirm: (selectedElement: string) => {
+          this.markAsTouched();
           this._setAndCheck(selectedElement);
           this.selected.emit(selectedElement);
         },
