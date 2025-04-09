@@ -1,3 +1,26 @@
+# [1.3.0](https://github.com/italia/design-angular-kit/compare/v1.2.2...v1.3.0) (2025-04-09)
+
+
+### Bug Fixes
+
+* default validation ([abf2d72](https://github.com/italia/design-angular-kit/commit/abf2d725ce1ec2a08f1ca59265736dcb7318c7a7))
+* fixed the circular dependency on ItNavscrollListItemComponent ([8c0ad5a](https://github.com/italia/design-angular-kit/commit/8c0ad5a185964ad876536a9f0abc78bd742d1ada))
+* various fixes on video player ([5a6d183](https://github.com/italia/design-angular-kit/commit/5a6d183d261cbab47147e0e343f1150e6d8f1348))
+
+
+### Features
+
+* add video player component ([fc6c44d](https://github.com/italia/design-angular-kit/commit/fc6c44d804fadbf153b5d46457e706e88f433d93))
+* autocomplete component ([9364412](https://github.com/italia/design-angular-kit/commit/9364412d9a7a8c57e40f5c2b6892e40630227e21))
+* search component is the new autocomplete ([bf1c0bc](https://github.com/italia/design-angular-kit/commit/bf1c0bc7cb90c364eee334f0846b9b14e77e5ab2))
+
+
+### BREAKING CHANGES
+
+* it-autocomplete is now it-search
+
+
+
 ## [1.2.2](https://github.com/italia/design-angular-kit/compare/v1.2.1...v1.2.2) (2025-02-17)
 
 
