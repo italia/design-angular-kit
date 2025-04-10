@@ -1,6 +1,6 @@
+import { Directive, HostBinding, Input } from '@angular/core';
 import { ColorsEnum } from '../../../enums/colors.enums';
 import { SizesEnum } from '../../../enums/sizes.enum';
-import { Directive, HostBinding, Input } from '@angular/core';
 
 @Directive({
   standalone: true,
