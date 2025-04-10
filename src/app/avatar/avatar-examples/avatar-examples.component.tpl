@@ -59,3 +59,17 @@
 
 <it-source-display html="{$ sanitize(dropdownHtml) $}" typescript="{$ sanitize(dropdownTypescript) $}" >
 </it-source-display>
+
+{% set extraTextHtml %}
+  {% include "../avatar-example-extra-text/avatar-example-extra-text.component.html" %}
+{% endset %}
+
+{% set extraTextTypescript %}
+  {% include "../avatar-example-extra-text/avatar-example-extra-text.component.ts" %}
+{% endset %}
+
+
+<it-avatar-example-extra-text></it-avatar-example-extra-text>
+
+<it-source-display html="{$ sanitize(extraTextHtml) $}" typescript="{$ sanitize(extraTextTypescript) $}" >
+</it-source-display>
