@@ -1,21 +1,24 @@
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
   ElementRef,
   inject,
+  Injector,
   Input,
-  OnDestroy,
+  NgZone,
   OnInit,
+  signal,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, delay, tap } from 'rxjs';
+import { toObservable } from '@angular/core/rxjs-interop';
+import { delay } from 'rxjs';
 import videojs from 'video.js';
-import Player from 'video.js/dist/types/player';
+import type Player from 'video.js/dist/types/player';
+
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { VideoPlayerI18nService } from './video-player-i18n.service';
 import { Tech, VideoPlayerConfigService } from './video-player.config';
@@ -34,7 +37,7 @@ enum ViewType {
 @Component({
   standalone: true,
   selector: 'it-video-player',
-  template: `@switch (viewType$ | async) {
+  template: `@switch (viewType()) {
       @case (viewTypes.Default) {
         <div class="row">
           <ng-container *ngTemplateOutlet="videoTemplate"></ng-container>
@@ -61,7 +64,7 @@ enum ViewType {
               </div>
             </div>
           </div>
-          @if (cookieAccepted$ | async) {
+          @if (cookieAccepted()) {
             <div>
               <ng-container *ngTemplateOutlet="videoTemplate"></ng-container>
               <ng-container *ngTemplateOutlet="transcriptionTemplate"></ng-container>
@@ -105,11 +108,11 @@ enum ViewType {
         </div>
       </div>
     </ng-template> `,
-  imports: [AsyncPipe, NgTemplateOutlet],
+  imports: [NgTemplateOutlet],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItVideoPlayerComponent extends ItAbstractComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ItVideoPlayerComponent extends ItAbstractComponent implements OnInit {
   /**
    * Options for video player configuration
    */
@@ -123,67 +126,60 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
 
   @ViewChild('chkRemember', { static: false }) chrRememberRef?: ElementRef<HTMLInputElement>;
 
-  player?: Player;
+  player: Player | null = null;
 
   readonly viewTypes = ViewType;
 
-  readonly viewType$ = new BehaviorSubject<ViewType | undefined>(undefined);
+  readonly viewType = signal<ViewType | undefined>(undefined);
 
-  readonly cookieAccepted$ = new BehaviorSubject(false);
+  readonly cookieAccepted = signal(false);
 
   protected readonly i18nService = inject(VideoPlayerI18nService);
 
   readonly #destroyRef = inject(DestroyRef);
 
-  private get viewType() {
-    return this.viewType$.value;
-  }
+  private ngZone = inject(NgZone);
+  private injector = inject(Injector);
 
   constructor(private config: VideoPlayerConfigService) {
     super();
+
+    afterNextRender(() => {
+      if (this.viewType() === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com')) {
+        this.hideOverlay();
+      }
+    });
+
+    this.#destroyRef.onDestroy(() => this.player?.dispose());
   }
 
   async ngOnInit() {
     const config = this.config.mergeConfig(this.options);
     this.setViewType(config);
-    await this.config.configureTech(config as { tech: Tech });
+    // Avoid running change detections while the script is being loaded.
+    await this.ngZone.runOutsideAngular(() => this.config.configureTech(config as { tech: Tech }));
 
     if (!this.videoPlayerRef) {
-      this.cookieAccepted$
-        .pipe(
-          takeUntilDestroyed(this.#destroyRef),
-          delay(0),
-          tap({
-            next: value => {
-              if (value && !this.player) {
-                this.initVideoPlayer();
-              }
-            },
-          })
-        )
-        .subscribe();
+      // Note: No need to pipe with `takeUntilDestroyed`; `toObservable` is
+      // completed by Angular when the `DestroyRef` from the injector is destroyed.
+      toObservable(this.cookieAccepted, { injector: this.injector })
+        .pipe(delay(0))
+        .subscribe(value => {
+          if (value && !this.player) {
+            this.initVideoPlayer();
+          }
+        });
+
       return;
     }
 
     this.initVideoPlayer();
   }
 
-  override ngAfterViewInit() {
-    if (this.viewType === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com')) {
-      this.hideOverlay();
-    }
-  }
-
-  ngOnDestroy() {
-    if (this.player) {
-      this.player.dispose();
-    }
-  }
-
   acceptCookieHandler() {
     this.rememberHandler();
     this.hideOverlay();
-    this.cookieAccepted$.next(true);
+    this.cookieAccepted.set(true);
   }
 
   private initVideoPlayer() {
@@ -201,17 +197,18 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
       this.i18nService.init(this.player, this.#destroyRef);
     };
 
-    if (!this.videoPlayerRef) {
+    const element = this.videoPlayerRef?.nativeElement;
+    if (!element) {
       throw Error('videoPlayerRef is undefined');
     }
 
-    this.player = videojs(this.videoPlayerRef.nativeElement, config, onPlayerReadyCb.bind(this));
+    this.player = this.ngZone.runOutsideAngular(() => videojs(element, config, onPlayerReadyCb));
   }
 
   private setViewType(config: ItVideoPlayerConfig) {
-    this.viewType$.next(config.tech === 'youtube' ? ViewType.Overlay : ViewType.Default);
+    this.viewType.set(config.tech === 'youtube' ? ViewType.Overlay : ViewType.Default);
 
-    this.cookieAccepted$.next(this.viewType === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com'));
+    this.cookieAccepted.set(this.viewType() === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com'));
   }
 
   private hideOverlay() {
