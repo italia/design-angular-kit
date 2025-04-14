@@ -1,3 +1,13 @@
+## [1.3.1](https://github.com/italia/design-angular-kit/compare/v1.3.0...v1.3.1) (2025-04-14)
+
+
+### Bug Fixes
+
+* import video player in main module ([4bff4af](https://github.com/italia/design-angular-kit/commit/4bff4afbfcd1a0890814cda46b4f653c48bd0043))
+* reduce change detection cycles in video player ([6d3a708](https://github.com/italia/design-angular-kit/commit/6d3a7086da1c798a0cf918566a6d86aaebc73d3c))
+
+
+
 # [1.3.0](https://github.com/italia/design-angular-kit/compare/v1.2.2...v1.3.0) (2025-04-09)
 
 
