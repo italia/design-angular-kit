@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { ItVideoPlayerComponent } from '../public_api';
+import { ItVideoPlayerComponent } from './components/core/video-player/video-player.component';
 import { ItAccordionComponent } from './components/core/accordion/accordion.component';
 import { ItAlertComponent } from './components/core/alert/alert.component';
 import { ItAvatarModule } from './components/core/avatar/avatar.module';
