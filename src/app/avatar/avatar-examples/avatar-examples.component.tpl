@@ -73,3 +73,35 @@
 
 <it-source-display html="{$ sanitize(extraTextHtml) $}" typescript="{$ sanitize(extraTextTypescript) $}" >
 </it-source-display>
+
+
+
+
+{% set presenceHtml %}
+  {% include "../avatar-example-presence/avatar-example-presence.component.html" %}
+{% endset %}
+
+{% set presenceTypescript %}
+  {% include "../avatar-example-presence/avatar-example-presence.component.ts" %}
+{% endset %}
+
+
+<it-avatar-example-presence></it-avatar-example-presence>
+
+<it-source-display html="{$ sanitize(presenceHtml) $}" typescript="{$ sanitize(presenceTypescript) $}" >
+</it-source-display>
+
+
+{% set statusHtml %}
+  {% include "../avatar-example-status/avatar-example-status.component.html" %}
+{% endset %}
+
+{% set statusTypescript %}
+  {% include "../avatar-example-status/avatar-example-status.component.ts" %}
+{% endset %}
+
+
+<it-avatar-example-status></it-avatar-example-status>
+
+<it-source-display html="{$ sanitize(statusHtml) $}" typescript="{$ sanitize(statusTypescript) $}" >
+</it-source-display>
