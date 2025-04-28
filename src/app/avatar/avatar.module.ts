@@ -13,6 +13,7 @@ import { AvatarRoutingModule } from './avatar-routing.module';
 import { AvatarExamplPresenceComponent } from './avatar-example-presence/avatar-example-presence.component';
 import { AvatarExampleStatusComponent } from './avatar-example-status/avatar-example-status.component';
 import { AvatarExampleIconComponent } from './avatar-example-icon/avatar-example-icon.component';
+import { AvatarExampleLinkComponent } from './avatar-example-link/avatar-example-link.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, SharedModule, AvatarRoutingModule],
@@ -27,6 +28,7 @@ import { AvatarExampleIconComponent } from './avatar-example-icon/avatar-example
     AvatarExamplPresenceComponent,
     AvatarExampleStatusComponent,
     AvatarExampleIconComponent,
+    AvatarExampleLinkComponent,
   ],
 })
 export class AvatarModule {}

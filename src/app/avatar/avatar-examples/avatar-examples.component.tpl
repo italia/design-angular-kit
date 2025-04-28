@@ -43,6 +43,21 @@
 </it-source-display>
 
 
+{% set linkHtml %}
+  {% include "../avatar-example-link/avatar-example-link.component.html" %}
+{% endset %}
+
+{% set linkTypescript %}
+  {% include "../avatar-example-link/avatar-example-link.component.ts" %}
+{% endset %}
+
+<it-avatar-example-link></it-avatar-example-link>
+
+<it-source-display html="{$ sanitize(linkHtml) $}" typescript="{$ sanitize(linkTypescript) $}" >
+</it-source-display>
+
+
+
 {% set groupHtml %}
   {% include "../avatar-example-group/avatar-example-group.component.html" %}
 {% endset %}
