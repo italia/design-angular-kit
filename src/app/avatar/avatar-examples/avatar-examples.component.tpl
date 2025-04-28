@@ -29,6 +29,19 @@
 </it-source-display>
 
 
+{% set iconHtml %}
+  {% include "../avatar-example-icon/avatar-example-icon.component.html" %}
+{% endset %}
+
+{% set iconTypescript %}
+  {% include "../avatar-example-icon/avatar-example-icon.component.ts" %}
+{% endset %}
+
+<it-avatar-example-icon></it-avatar-example-icon>
+
+<it-source-display html="{$ sanitize(iconHtml) $}" typescript="{$ sanitize(iconTypescript) $}" >
+</it-source-display>
+
 
 {% set groupHtml %}
   {% include "../avatar-example-group/avatar-example-group.component.html" %}

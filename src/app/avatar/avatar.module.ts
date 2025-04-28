@@ -12,6 +12,7 @@ import { AvatarIndexComponent } from './avatar-index/avatar-index.component';
 import { AvatarRoutingModule } from './avatar-routing.module';
 import { AvatarExamplPresenceComponent } from './avatar-example-presence/avatar-example-presence.component';
 import { AvatarExampleStatusComponent } from './avatar-example-status/avatar-example-status.component';
+import { AvatarExampleIconComponent } from './avatar-example-icon/avatar-example-icon.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, SharedModule, AvatarRoutingModule],
@@ -25,6 +26,7 @@ import { AvatarExampleStatusComponent } from './avatar-example-status/avatar-exa
     AvatarExampleDropdownComponent,
     AvatarExamplPresenceComponent,
     AvatarExampleStatusComponent,
+    AvatarExampleIconComponent,
   ],
 })
 export class AvatarModule {}
