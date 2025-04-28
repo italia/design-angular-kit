@@ -1,13 +1,20 @@
-<h3>Avatar con link</h3>
+<h3>Avatar con link e tooltip</h3>
 <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap bd-example">
-  <a itAvatar size="xl" href="#">
+  <a itAvatar size="xl" href="#" itTooltip="<strong>Anna Barbieri</strong><br/><em>Amministratore</em>" tooltipPlacement="left" tooltipHtml>
     <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
   </a>
-  <a itAvatar size="xl" href="#" color="red">
+  <a
+    itAvatar
+    size="xl"
+    href="#"
+    color="red"
+    itTooltip="<strong>Mario Rossi</strong><br/><em>Editor</em>"
+    tooltipPlacement="top"
+    tooltipHtml>
     <p aria-hidden="true">MR</p>
     <span class="visually-hidden">Mario Rossi</span>
   </a>
-  <a itAvatar size="xl" href="#">
+  <a itAvatar size="xl" href="#" itTooltip="<strong>Cerca</strong><br/><em>Archivio notizie</em>" tooltipPlacement="right" tooltipHtml>
     <it-icon name="search" title="Ricerca" color="secondary"></it-icon>
     <span class="visually-hidden">Cerca</span>
   </a>
