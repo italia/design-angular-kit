@@ -5,7 +5,6 @@ import { SharedModule } from './../shared/shared.module';
 import { AvatarExampleColorsComponent } from './avatar-example-colors/avatar-example-colors.component';
 import { AvatarExampleDropdownComponent } from './avatar-example-dropdown/avatar-example-dropdown.component';
 import { AvatarExampleExtraTextComponent } from './avatar-example-extra-text/avatar-example-extra-text.component';
-import { AvatarExampleGroupListCssOnlyComponent } from './avatar-example-group-list-css-only/avatar-example-group-list-css-only.component';
 import { AvatarExampleGroupListComponent } from './avatar-example-group-list/avatar-example-group-list.component';
 import { AvatarExampleGroupComponent } from './avatar-example-group/avatar-example-group.component';
 import { AvatarExampleIconComponent } from './avatar-example-icon/avatar-example-icon.component';
@@ -26,7 +25,6 @@ import { AvatarRoutingModule } from './avatar-routing.module';
     AvatarExampleColorsComponent,
     AvatarExampleExtraTextComponent,
     AvatarExampleGroupListComponent,
-    AvatarExampleGroupListCssOnlyComponent,
     AvatarExampleGroupComponent,
     AvatarExampleDropdownComponent,
     AvatarExamplPresenceComponent,
