@@ -12,6 +12,8 @@ export * from './lib/components/core/alert/alert.component';
 export * from './lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component';
 export * from './lib/components/core/avatar/avatar-extra-text.directive';
 export * from './lib/components/core/avatar/avatar-group/avatar-group.component';
+export * from './lib/components/core/avatar/avatar-presence.directive';
+export * from './lib/components/core/avatar/avatar-status.directive';
 export * from './lib/components/core/avatar/avatar-wrapper.directive';
 export * from './lib/components/core/avatar/avatar.directive';
 export * from './lib/components/core/avatar/avatar.module';
