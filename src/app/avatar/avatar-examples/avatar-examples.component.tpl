@@ -133,3 +133,30 @@
 
 <it-source-display html="{$ sanitize(statusHtml) $}" typescript="{$ sanitize(statusTypescript) $}" >
 </it-source-display>
+
+
+{% set groupListHtml %}
+  {% include "../avatar-example-group-list/avatar-example-group-list.component.html" %}
+{% endset %}
+
+{% set groupListTypescript %}
+  {% include "../avatar-example-group-list/avatar-example-group-list.component.ts" %}
+{% endset %}
+
+<it-avatar-example-group-list></it-avatar-example-group-list>
+
+<it-source-display html="{$ sanitize(groupListHtml) $}" typescript="{$ sanitize(groupListTypescript) $}" >
+</it-source-display>
+
+{% set groupListCssOnlyHtml %}
+  {% include "../avatar-example-group-list-css-only/avatar-example-group-list-css-only.component.html" %}
+{% endset %}
+
+{% set groupListCssOnlyTypescript %}
+  {% include "../avatar-example-group-list-css-only/avatar-example-group-list-css-only.component.ts" %}
+{% endset %}
+
+<it-avatar-example-group-list-css-only></it-avatar-example-group-list-css-only>
+
+<it-source-display html="{$ sanitize(groupListCssOnlyHtml) $}" typescript="{$ sanitize(groupListCssOnlyTypescript) $}" >
+</it-source-display>
