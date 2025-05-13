@@ -4,10 +4,10 @@ import { inputToBoolean } from '../../../../utils/coercion';
 
 @Directive({
   standalone: true,
-  selector: '[itAvatarLinkItem]',
-  exportAs: 'itAvatarLinkItem',
+  selector: '[itAvatarListItem]',
+  exportAs: 'itAvatarListItem',
 })
-export class ItAvatarLinkItemDirective {
+export class ItAvatarListItemDirective {
   @HostBinding('class')
   get hostClasses(): string {
     const cssClass = `list-item`;
