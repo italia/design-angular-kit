@@ -1,3 +1,12 @@
+## [1.3.2](https://github.com/italia/design-angular-kit/compare/v1.3.1...v1.3.2) (2025-05-13)
+
+
+### Bug Fixes
+
+* add missing icons ([64764ea](https://github.com/italia/design-angular-kit/commit/64764ea0d89021dccb317b409369d0c992356d18))
+
+
+
 ## [1.3.1](https://github.com/italia/design-angular-kit/compare/v1.3.0...v1.3.1) (2025-04-14)
 
 
