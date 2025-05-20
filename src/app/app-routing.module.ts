@@ -31,6 +31,7 @@ const routes: Routes = [
       { path: 'back-to-top', loadChildren: () => import('src/app/back-to-top/back-to-top.module').then(m => m.BackToTopModule) },
       { path: 'breadcrumb', loadChildren: () => import('src/app/breadcrumb/breadcrumb.module').then(m => m.BreadcrumbModule) },
       { path: 'header', loadChildren: () => import('src/app/header/header.module').then(m => m.HeaderModule) },
+      { path: 'footer', loadChildren: () => import('src/app/footer/footer.module').then(m => m.FooterModule) },
       { path: 'back-button', loadChildren: () => import('src/app/back-button/back-button.module').then(m => m.BackButtonModule) },
       { path: 'forward', loadChildren: () => import('src/app/forward/forward.module').then(m => m.ForwardModule) },
       { path: 'megamenu', loadChildren: () => import('src/app/megamenu/megamenu.module').then(m => m.MegamenuModule) },
