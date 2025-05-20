@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 
 @Component({
@@ -9,4 +9,4 @@ import { ItAbstractComponent } from '../../../abstracts/abstract.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
 })
-export class ItFooterComponent extends ItAbstractComponent implements AfterViewInit {}
+export class ItFooterComponent extends ItAbstractComponent {}
