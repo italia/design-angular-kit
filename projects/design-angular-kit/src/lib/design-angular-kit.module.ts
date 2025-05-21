@@ -32,6 +32,7 @@ import { ItBackButtonComponent } from './components/navigation/back-button/back-
 import { ItBackToTopComponent } from './components/navigation/back-to-top/back-to-top.component';
 import { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';
 import { ItHeaderComponent } from './components/navigation/header/header.component';
+import { ItFooterComponent } from './components/navigation/footer/footer.component';
 import { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';
 import { ItNavBarModule } from './components/navigation/navbar/navbar.module';
 import { ItNavscrollComponent } from './components/navigation/navscroll/navscroll.component';
@@ -88,6 +89,7 @@ const navigation = [
   ItBackToTopComponent,
   ItBreadcrumbsModule,
   ItHeaderComponent,
+  ItFooterComponent,
   ItNavBarModule,
   ItSidebarComponent,
   ItMegamenuComponent,

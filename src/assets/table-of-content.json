@@ -38,6 +38,10 @@
           "link": "/menu-di-navigazione/header"
         },
         {
+          "label": "Footer",
+          "link": "/menu-di-navigazione/footer"
+        },
+        {
           "label": "Back Button",
           "link": "/menu-di-navigazione/back-button"
         },
