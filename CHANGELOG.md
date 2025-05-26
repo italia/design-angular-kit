@@ -1,3 +1,13 @@
+# [1.4.0](https://github.com/italia/design-angular-kit/compare/v1.3.2...v1.4.0) (2025-05-26)
+
+
+### Features
+
+* new avatar variants ([59ab7d8](https://github.com/italia/design-angular-kit/commit/59ab7d8461750bfe5ea5c3bd317766a82e1c0321))
+* new footer component ([d95b8bf](https://github.com/italia/design-angular-kit/commit/d95b8bfeaec43d409a2144266a4919af3ae47d15))
+
+
+
 ## [1.3.2](https://github.com/italia/design-angular-kit/compare/v1.3.1...v1.3.2) (2025-05-13)
 
 

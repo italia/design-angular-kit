@@ -1,7 +1,7 @@
 {
   "name": "design-angular-kit",
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "license": "BSD-3-Clause",
   "keywords": [
     "angular",
