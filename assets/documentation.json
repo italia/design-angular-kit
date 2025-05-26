@@ -7053,12 +7053,12 @@
     "directives": [
         {
             "name": "ItAvatarDirective",
-            "id": "directive-ItAvatarDirective-1b8d1a23e1846f734f93a4c80f6dae18b33d66e93b49f349ddc552c129480fe22f6de5502d686d230b7e050b220c0d3146a773b854e131c7dd2115cdb72dac7f",
+            "id": "directive-ItAvatarDirective-554d133baf126fa86e0ee9438b39bf02cdfe73d2374ab3318992d4d652ecc469fd3c56e2cb073d6601e8f341121972469b0ab99a3883f2a33c34928616f9c0cd",
             "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { ColorsEnum } from '../../../enums/colors.enums';\nimport { SizesEnum } from '../../../enums/sizes.enum';\nimport { Directive, HostBinding, Input } from '@angular/core';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatar]',\n  exportAs: 'itAvatar',\n})\nexport class ItAvatarDirective {\n  /**\n   * Indica il colore dell'avatar. Può assumere i valori:\n   * <ul>\n   * <li> primary\n   * <li> secondary\n   * <li> green\n   * <li> orange\n   * <li> red\n   * </ul>\n   */\n  @Input()\n  get color(): string | undefined {\n    return this._color;\n  }\n  set color(value: string | undefined) {\n    const colorsKey = value as keyof typeof ColorsEnum;\n    if (ColorsEnum[colorsKey]) {\n      this._color = ColorsEnum[colorsKey];\n    } else {\n      this._color = undefined;\n    }\n  }\n  private _color?: ColorsEnum;\n  /**\n   * Indica la grandezza dell'avatar. Può assumere i valori:\n   * <ul>\n   * <li> xs\n   * <li> sm\n   * <li> lg\n   * <li> xl\n   * <li> xxl\n   * </ul>\n   */\n  @Input()\n  get size(): SizesEnum | undefined {\n    return this._size;\n  }\n  set size(value: string | undefined) {\n    const sizesKey = value as keyof typeof SizesEnum;\n    if (SizesEnum[sizesKey]) {\n      this._size = SizesEnum[sizesKey];\n    } else {\n      this._size = undefined;\n    }\n  }\n\n  private _size?: SizesEnum;\n\n  @HostBinding('class')\n  get hostClasses(): string {\n    let cssClass = 'avatar';\n\n    if (this.size) {\n      cssClass += ` ${this.size}`;\n    }\n\n    if (this.color) {\n      cssClass += ` avatar-${this.color}`;\n    }\n\n    return cssClass;\n  }\n}\n",
+            "sourceCode": "import { Directive, HostBinding, Input } from '@angular/core';\nimport { ColorsEnum } from '../../../enums/colors.enums';\nimport { SizesEnum } from '../../../enums/sizes.enum';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatar]',\n  exportAs: 'itAvatar',\n})\nexport class ItAvatarDirective {\n  /**\n   * Indica il colore dell'avatar. Può assumere i valori:\n   * <ul>\n   * <li> primary\n   * <li> secondary\n   * <li> green\n   * <li> orange\n   * <li> red\n   * </ul>\n   */\n  @Input()\n  get color(): string | undefined {\n    return this._color;\n  }\n  set color(value: string | undefined) {\n    const colorsKey = value as keyof typeof ColorsEnum;\n    if (ColorsEnum[colorsKey]) {\n      this._color = ColorsEnum[colorsKey];\n    } else {\n      this._color = undefined;\n    }\n  }\n  private _color?: ColorsEnum;\n  /**\n   * Indica la grandezza dell'avatar. Può assumere i valori:\n   * <ul>\n   * <li> xs\n   * <li> sm\n   * <li> lg\n   * <li> xl\n   * <li> xxl\n   * </ul>\n   */\n  @Input()\n  get size(): SizesEnum | undefined {\n    return this._size;\n  }\n  set size(value: string | undefined) {\n    const sizesKey = value as keyof typeof SizesEnum;\n    if (SizesEnum[sizesKey]) {\n      this._size = SizesEnum[sizesKey];\n    } else {\n      this._size = undefined;\n    }\n  }\n\n  private _size?: SizesEnum;\n\n  @HostBinding('class')\n  get hostClasses(): string {\n    let cssClass = 'avatar';\n\n    if (this.size) {\n      cssClass += ` ${this.size}`;\n    }\n\n    if (this.color) {\n      cssClass += ` avatar-${this.color}`;\n    }\n\n    return cssClass;\n  }\n}\n",
             "selector": "[itAvatar]",
             "providers": [],
             "exportAs": "itAvatar",
@@ -7212,6 +7212,356 @@
                         "type": "string",
                         "returnType": "string",
                         "line": 60
+                    }
+                }
+            }
+        },
+        {
+            "name": "ItAvatarExtraTextDirective",
+            "id": "directive-ItAvatarExtraTextDirective-e7dbfd66e8cc64700b57c5b6f3a036f8e06c8ba0b9632f703a31b9db2df08796c1cdc83638c6ed9f27374d3d6d1c12e4fcc6b0cc95ebcde416e72a2ca7bcd3e6",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-extra-text.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, HostBinding } from '@angular/core';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatarExtraText]',\n  exportAs: 'itAvatarExtraText',\n})\nexport class ItAvatarExtraTextDirective {\n  @HostBinding('class')\n  get hostClasses(): string {\n    const cssClass = 'extra-text';\n    return cssClass;\n  }\n}\n",
+            "selector": "[itAvatarExtraText]",
+            "providers": [],
+            "exportAs": "itAvatarExtraText",
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "extends": [],
+            "accessors": {
+                "hostClasses": {
+                    "name": "hostClasses",
+                    "getSignature": {
+                        "name": "hostClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 10
+                    }
+                }
+            }
+        },
+        {
+            "name": "ItAvatarListItemDirective",
+            "id": "directive-ItAvatarListItemDirective-146663942f25ee205184928d8d9c143d35971d48cbea8f1f7d4322304c870a737a1c439c25b1a5e2a8136c02383bd64e5ffb9023652d8ef26bb8d3354b375ff6",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport { Component, ContentChildren, Directive, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatarListItem]',\n  exportAs: 'itAvatarListItem',\n})\nexport class ItAvatarListItemDirective {\n  @HostBinding('class')\n  get hostClasses(): string {\n    const cssClass = `list-item`;\n    return cssClass;\n  }\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: `<ng-template let-linkListItem=\"linkList\">\n    <ng-content></ng-content>\n  </ng-template>`,\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  imports: [NgTemplateOutlet],\n  template: `\n    <ul [class]=\"linkList ? 'link-list avatar-group' : 'avatar-group-stacked'\">\n      @for (avatar of avatars; track avatar) {\n        <li>\n          <ng-container *ngTemplateOutlet=\"avatar._implicitContent; context: { linkList: linkList }\"></ng-container>\n        </li>\n      }\n    </ul>\n  `,\n})\nexport class ItAvatarGroupComponent {\n  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
+            "selector": "[itAvatarListItem]",
+            "providers": [],
+            "exportAs": "itAvatarListItem",
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "extends": [],
+            "accessors": {
+                "hostClasses": {
+                    "name": "hostClasses",
+                    "getSignature": {
+                        "name": "hostClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 12
+                    }
+                }
+            }
+        },
+        {
+            "name": "ItAvatarPresenceDirective",
+            "id": "directive-ItAvatarPresenceDirective-7bc228fa78255c2d5108fc2cae2b80b9658931f0c96baad50b5ccb779d5a2d32e9e0432537f6e826e9749e2aa4c6d95e7c5bcbc28ded57087114a64bbe5f68a8",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-presence.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, HostBinding, Input } from '@angular/core';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatarPresence]',\n  exportAs: 'itAvatarPresence',\n})\nexport class ItAvatarPresenceDirective {\n  /**\n   * Indica lo stato della presenza. Può assumere i valori:\n   * <ul>\n   * <li> active\n   * <li> busy\n   * <li> hidden\n   * </ul>\n   */\n  @Input()\n  get presence(): string | undefined {\n    return this._presence;\n  }\n  set presence(value: string | undefined) {\n    this._presence = value;\n  }\n  private _presence?: string;\n\n  @HostBinding('class')\n  get hostClasses(): string {\n    const cssClass = `avatar-presence ${this._presence}`;\n    return cssClass;\n  }\n}\n",
+            "selector": "[itAvatarPresence]",
+            "providers": [],
+            "exportAs": "itAvatarPresence",
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "presence",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIndica lo stato della presenza. Può assumere i valori:\n<ul>\n<li> active\n<li> busy\n<li> hidden\n</ul>\n",
+                    "description": "<p>Indica lo stato della presenza. Può assumere i valori:</p>\n<ul>\n<li> active\n<li> busy\n<li> hidden\n</ul>\n",
+                    "line": 18,
+                    "type": "string | undefined",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "_presence",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "extends": [],
+            "accessors": {
+                "presence": {
+                    "name": "presence",
+                    "setSignature": {
+                        "name": "presence",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 21,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "presence",
+                        "type": "",
+                        "returnType": "string | undefined",
+                        "line": 18,
+                        "rawdescription": "\n\nIndica lo stato della presenza. Può assumere i valori:\n<ul>\n<li> active\n<li> busy\n<li> hidden\n</ul>\n",
+                        "description": "<p>Indica lo stato della presenza. Può assumere i valori:</p>\n<ul>\n<li> active\n<li> busy\n<li> hidden\n</ul>\n"
+                    }
+                },
+                "hostClasses": {
+                    "name": "hostClasses",
+                    "getSignature": {
+                        "name": "hostClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 27
+                    }
+                }
+            }
+        },
+        {
+            "name": "ItAvatarStatusDirective",
+            "id": "directive-ItAvatarStatusDirective-571a98977c1cf4bea798ca977b22eab586097f57ababe41189c4abbb6f79ca1a57f94631c2436cbef05478ea24cbc9b7fed346daf93d0f37a0dfc0edc642be2e",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-status.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, HostBinding, Input } from '@angular/core';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatarStatus]',\n  exportAs: 'itAvatarStatus',\n})\nexport class ItAvatarStatusDirective {\n  /**\n   * Indica lo stato della presenza. Può assumere i valori:\n   * <ul>\n   * <li> approved\n   * <li> declined\n   * <li> notify\n   * </ul>\n   */\n  @Input()\n  get status(): string | undefined {\n    return this._status;\n  }\n  set status(value: string | undefined) {\n    this._status = value;\n  }\n  private _status?: string;\n\n  @HostBinding('class')\n  get hostClasses(): string {\n    const cssClass = `avatar-status ${this._status}`;\n    return cssClass;\n  }\n}\n",
+            "selector": "[itAvatarStatus]",
+            "providers": [],
+            "exportAs": "itAvatarStatus",
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "status",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIndica lo stato della presenza. Può assumere i valori:\n<ul>\n<li> approved\n<li> declined\n<li> notify\n</ul>\n",
+                    "description": "<p>Indica lo stato della presenza. Può assumere i valori:</p>\n<ul>\n<li> approved\n<li> declined\n<li> notify\n</ul>\n",
+                    "line": 18,
+                    "type": "string | undefined",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "_status",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "extends": [],
+            "accessors": {
+                "status": {
+                    "name": "status",
+                    "setSignature": {
+                        "name": "status",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 21,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "status",
+                        "type": "",
+                        "returnType": "string | undefined",
+                        "line": 18,
+                        "rawdescription": "\n\nIndica lo stato della presenza. Può assumere i valori:\n<ul>\n<li> approved\n<li> declined\n<li> notify\n</ul>\n",
+                        "description": "<p>Indica lo stato della presenza. Può assumere i valori:</p>\n<ul>\n<li> approved\n<li> declined\n<li> notify\n</ul>\n"
+                    }
+                },
+                "hostClasses": {
+                    "name": "hostClasses",
+                    "getSignature": {
+                        "name": "hostClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 27
+                    }
+                }
+            }
+        },
+        {
+            "name": "ItAvatarWrapperDirective",
+            "id": "directive-ItAvatarWrapperDirective-a792ef4cc6eab3cae605fbb4d6afc25ef3881bd2e9dff1083067722101ba8f6752be54e124ed25838c4f7da8f7620f7cbea94c8c7dc252bf9302f26aeade2100",
+            "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-wrapper.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, HostBinding, Input } from '@angular/core';\nimport { inputToBoolean } from '../../../utils/coercion';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatarWrapper]',\n  exportAs: 'itAvatarWrapper',\n})\nexport class ItAvatarWrapperDirective {\n  @Input({ transform: inputToBoolean }) extraText: boolean = false;\n\n  @HostBinding('class')\n  get hostClasses(): string {\n    let cssClass = 'avatar-wrapper';\n\n    if (this.extraText) {\n      cssClass += ' avatar-extra-text';\n    }\n\n    return cssClass;\n  }\n}\n",
+            "selector": "[itAvatarWrapper]",
+            "providers": [],
+            "exportAs": "itAvatarWrapper",
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "required": false,
+                    "name": "extraText",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "extends": [],
+            "accessors": {
+                "hostClasses": {
+                    "name": "hostClasses",
+                    "getSignature": {
+                        "name": "hostClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 13
                     }
                 }
             }
@@ -12777,7 +13127,7 @@
         },
         {
             "name": "ItAvatarGroupComponent",
-            "id": "component-ItAvatarGroupComponent-8e1cd7b09c867ede4e12c50422f580432eeea06e6a7be286d5819f114feb1368f8688422a914899e85da1f78c9b4e73032f26dd15a8558a0636112b33d99d4d4",
+            "id": "component-ItAvatarGroupComponent-146663942f25ee205184928d8d9c143d35971d48cbea8f1f7d4322304c870a737a1c439c25b1a5e2a8136c02383bd64e5ffb9023652d8ef26bb8d3354b375ff6",
             "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -12787,9 +13137,8 @@
             "selector": "it-avatar-group",
             "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./avatar-group.component.html"
-            ],
+            "template": "<ul [class]=\"linkList ? 'link-list avatar-group' : 'avatar-group-stacked'\">\n  @for (avatar of avatars; track avatar) {\n    <li>\n      <ng-container *ngTemplateOutlet=\"avatar._implicitContent; context: { linkList: linkList }\"></ng-container>\n    </li>\n  }\n</ul>\n",
+            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
@@ -12799,7 +13148,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 45,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -12813,7 +13162,7 @@
                     "type": "QueryList<ItAvatarGroupItemComponent>",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 47,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -12839,16 +13188,15 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: '<ng-template><ng-content></ng-content></ng-template>',\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  templateUrl: './avatar-group.component.html',\n  imports: [NgTemplateOutlet],\n})\nexport class ItAvatarGroupComponent {\n  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport { Component, ContentChildren, Directive, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatarListItem]',\n  exportAs: 'itAvatarListItem',\n})\nexport class ItAvatarListItemDirective {\n  @HostBinding('class')\n  get hostClasses(): string {\n    const cssClass = `list-item`;\n    return cssClass;\n  }\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: `<ng-template let-linkListItem=\"linkList\">\n    <ng-content></ng-content>\n  </ng-template>`,\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  imports: [NgTemplateOutlet],\n  template: `\n    <ul [class]=\"linkList ? 'link-list avatar-group' : 'avatar-group-stacked'\">\n      @for (avatar of avatars; track avatar) {\n        <li>\n          <ng-container *ngTemplateOutlet=\"avatar._implicitContent; context: { linkList: linkList }\"></ng-container>\n        </li>\n      }\n    </ul>\n  `,\n})\nexport class ItAvatarGroupComponent {\n  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<ul [class]=\"linkList ? 'link-list avatar-group' : 'avatar-group-stacked'\">\n  @for (avatar of avatars; track avatar) {\n    <li>\n      <ng-container *ngTemplateOutlet=\"avatar._implicitContent\"></ng-container>\n    </li>\n  }\n</ul>\n"
+            "extends": []
         },
         {
             "name": "ItAvatarGroupItemComponent",
-            "id": "component-ItAvatarGroupItemComponent-8e1cd7b09c867ede4e12c50422f580432eeea06e6a7be286d5819f114feb1368f8688422a914899e85da1f78c9b4e73032f26dd15a8558a0636112b33d99d4d4",
+            "id": "component-ItAvatarGroupItemComponent-146663942f25ee205184928d8d9c143d35971d48cbea8f1f7d4322304c870a737a1c439c25b1a5e2a8136c02383bd64e5ffb9023652d8ef26bb8d3354b375ff6",
             "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -12858,7 +13206,7 @@
             "selector": "it-avatar-item",
             "styleUrls": [],
             "styles": [],
-            "template": "<ng-template><ng-content></ng-content></ng-template>",
+            "template": "<ng-template let-linkListItem=\"linkList\">    <ng-content></ng-content>\n  </ng-template>",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -12872,7 +13220,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 12,
+                    "line": 27,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -12894,7 +13242,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: '<ng-template><ng-content></ng-content></ng-template>',\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  templateUrl: './avatar-group.component.html',\n  imports: [NgTemplateOutlet],\n})\nexport class ItAvatarGroupComponent {\n  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport { Component, ContentChildren, Directive, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Directive({\n  standalone: true,\n  selector: '[itAvatarListItem]',\n  exportAs: 'itAvatarListItem',\n})\nexport class ItAvatarListItemDirective {\n  @HostBinding('class')\n  get hostClasses(): string {\n    const cssClass = `list-item`;\n    return cssClass;\n  }\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-item',\n  template: `<ng-template let-linkListItem=\"linkList\">\n    <ng-content></ng-content>\n  </ng-template>`,\n})\nexport class ItAvatarGroupItemComponent {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;\n}\n\n@Component({\n  standalone: true,\n  selector: 'it-avatar-group',\n  imports: [NgTemplateOutlet],\n  template: `\n    <ul [class]=\"linkList ? 'link-list avatar-group' : 'avatar-group-stacked'\">\n      @for (avatar of avatars; track avatar) {\n        <li>\n          <ng-container *ngTemplateOutlet=\"avatar._implicitContent; context: { linkList: linkList }\"></ng-container>\n        </li>\n      }\n    </ul>\n  `,\n})\nexport class ItAvatarGroupComponent {\n  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;\n\n  @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -19542,6 +19890,239 @@
             "templateData": "<div class=\"container text-center mt-5\">\n  @if (errorCode && showErrorCode) {\n    <h1>{{ errorCode }}</h1>\n  }\n  <h2>\n    @if (!errorTitle && isDefaultErrorCode) {\n      {{ 'it.utils.error-page.' + errorCode + '.title' | translate }}\n    } @else {\n      {{ errorTitle || 'it.errors.generic' | translate }}\n    }\n  </h2>\n\n  <p class=\"mt-3 w-75 mx-auto\">\n    @if (!errorDescription && isDefaultErrorCode) {\n      {{ 'it.utils.error-page.' + errorCode + '.description' | translate }}\n    } @else {\n      {{ errorDescription || 'it.errors.generic-support-message' | translate }}\n    }\n  </p>\n\n  @if (showBackButton || showHomeButton) {\n    <div class=\"mt-5\">\n      @if (showBackButton) {\n        <it-back-button></it-back-button>\n      }\n      @if (showHomeButton) {\n        <a itButton=\"outline-primary\" class=\"ms-3\" routerLink=\"/\" title=\"{{ 'it.utils.error-page.go-to-homepage' | translate }}\">\n          {{ 'it.utils.error-page.go-to-homepage' | translate }}\n        </a>\n      }\n    </div>\n  }\n</div>\n"
         },
         {
+            "name": "ItFooterComponent",
+            "id": "component-ItFooterComponent-258b7ae67a3149a422e7b6fd189c342acf0ac3dd2900e9d71d0fa0fa2b03d93a26707edda532f0b881162a07fa417fcf78c5123f36acfe46c58e7a03e12d9a0e",
+            "file": "projects/design-angular-kit/src/lib/components/navigation/footer/footer.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "exportAs": "itFooter",
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "it-footer",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./footer.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "id",
+                    "defaultValue": "this.getDefaultId()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe element ID\n",
+                    "description": "<p>The element ID</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChanges",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFired when component input attributes was changed\n",
+                    "description": "<p>Fired when component input attributes was changed</p>\n",
+                    "line": 25,
+                    "type": "EventEmitter<void>",
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_changeDetectorRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ChangeDetectorRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "modifierKind": [
+                        124,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                },
+                {
+                    "name": "_elementRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "modifierKind": [
+                        124,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                },
+                {
+                    "name": "_renderer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Renderer2",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "modifierKind": [
+                        124,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                },
+                {
+                    "name": "instances",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "<p>Counter of active instances</p>\n",
+                    "line": 31,
+                    "rawdescription": "\n\nCounter of active instances\n",
+                    "modifierKind": [
+                        123,
+                        126
+                    ],
+                    "jsdoctags": [
+                        {
+                            "pos": 539,
+                            "end": 551,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 341,
+                            "tagName": {
+                                "pos": 540,
+                                "end": 547,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "private"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getDefaultId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGenerate unique id for components\n",
+                    "description": "<p>Generate unique id for components</p>\n",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 1317,
+                                "end": 1324,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "private"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\n\n@Component({\n  standalone: true,\n  selector: 'it-footer',\n  templateUrl: './footer.component.html',\n  exportAs: 'itFooter',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [],\n})\nexport class ItFooterComponent extends ItAbstractComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "ItAbstractComponent"
+            ],
+            "templateData": "<footer class=\"it-footer\">\n  <div class=\"it-footer-main\">\n    <div class=\"container\">\n      <section>\n        <div class=\"row clearfix\">\n          <div class=\"col-sm-12\">\n            <ng-content select=\"[header]\"></ng-content>\n          </div>\n        </div>\n      </section>\n      <section>\n        <ng-content select=\"[links]\"></ng-content>\n      </section>\n      <section class=\"py-4 border-white border-top\">\n        <ng-content select=\"[contacts]\"></ng-content>\n      </section>\n    </div>\n  </div>\n  <div class=\"it-footer-small-prints clearfix\">\n    <div class=\"container\">\n      <ul class=\"it-footer-small-prints-list list-inline mb-0 d-flex flex-column flex-md-row\">\n        <ng-content select=\"[small-links]\"></ng-content>\n      </ul>\n    </div>\n  </div>\n</footer>\n"
+        },
+        {
             "name": "ItHeaderComponent",
             "id": "component-ItHeaderComponent-af2479d321708436799806f1c168ce2114c06cc3f7420f30e65d941117eee285a25fb9465232d71427746dc374012d0d7edcc11758a14762ee248c5f22814ad6",
             "file": "projects/design-angular-kit/src/lib/components/navigation/header/header.component.ts",
@@ -22013,7 +22594,7 @@
         },
         {
             "name": "ItListItemComponent",
-            "id": "component-ItListItemComponent-942280269ea5a34e387e23885883dc2761455ba9ff94cef7cbbe917bdd13345d95178741e64c326466a11f2d43b8fa52d2524398a86b8212568a8778a35df29b",
+            "id": "component-ItListItemComponent-f1dacb998b52e41ba729e5ad862803376102762f12b2abb28da4b04612fc1fc061fa6b35016e3db1533d8653c94bc2a8a9d4dfb366b40575a74837713440fd45",
             "file": "projects/design-angular-kit/src/lib/components/core/list/list-item/list-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -22065,11 +22646,31 @@
                 },
                 {
                     "name": "avatar",
-                    "deprecated": false,
-                    "deprecationMessage": "",
+                    "deprecated": true,
+                    "deprecationMessage": "L'input 'avatar' è deprecato. Usa la documentazione del component Avatar per questo caso d'uso, facendo riferimento all'esempio Avatar con lista. Sarà rimosso nelle prossime versioni.",
+                    "jsdoctags": [
+                        {
+                            "pos": 1125,
+                            "end": 1324,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 338,
+                            "tagName": {
+                                "pos": 1126,
+                                "end": 1136,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "deprecated"
+                            },
+                            "comment": "<p>L&#39;input &#39;avatar&#39; è deprecato. Usa la documentazione del component Avatar per questo caso d&#39;uso, facendo riferimento all&#39;esempio Avatar con lista. Sarà rimosso nelle prossime versioni.</p>\n"
+                        }
+                    ],
                     "rawdescription": "\n\nThe avatar url\n",
                     "description": "<p>The avatar url</p>\n",
-                    "line": 45,
+                    "line": 48,
                     "type": "URL | undefined",
                     "decorators": []
                 },
@@ -22141,7 +22742,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe thumb image url\n",
                     "description": "<p>The thumb image url</p>\n",
-                    "line": 50,
+                    "line": 61,
                     "type": "URL | undefined",
                     "decorators": []
                 },
@@ -22280,6 +22881,18 @@
                 }
             ],
             "propertiesClass": [
+                {
+                    "name": "_avatar",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "URL | undefined",
+                    "optional": false,
+                    "description": "",
+                    "line": 42,
+                    "modifierKind": [
+                        123
+                    ]
+                },
                 {
                     "name": "_changeDetectorRef",
                     "deprecated": false,
@@ -22468,7 +23081,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';\nimport { ItLinkComponent } from '../../link/link.component';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { inputToBoolean } from '../../../../utils/coercion';\n\n@Component({\n  standalone: true,\n  selector: 'it-list-item',\n  templateUrl: './list-item.component.html',\n  styleUrls: ['./list-item.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, ItLinkComponent],\n})\nexport class ItListItemComponent extends ItLinkComponent {\n  constructor(private elRef: ElementRef) {\n    super();\n  }\n\n  /**\n   * Add active class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) active?: boolean;\n\n  /**\n   * Add large class\n   */\n  @Input() size?: 'large' | 'medium';\n\n  /**\n   * Add icon-left class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) iconLeft?: boolean;\n\n  /**\n   * Add icon-right class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) iconRight?: boolean;\n\n  /**\n   * The avatar url\n   */\n  @Input() avatar: URL | undefined;\n\n  /**\n   * The thumb image url\n   */\n  @Input() image: URL | undefined;\n\n  get itemClass(): string {\n    const inSidebar: boolean = this.elRef.nativeElement.closest('.sidebar-linklist-wrapper') ? true : false;\n    let itemClass = 'list-item';\n    if (this.disabled) {\n      itemClass += ` disabled`;\n    }\n    if (this.active) {\n      itemClass += ` active`;\n    }\n    if (this.size) {\n      itemClass += ` ${this.size}`;\n    }\n    if (this.iconLeft) {\n      itemClass += inSidebar ? ` left-icon` : ` icon-left`;\n    }\n    if (this.iconRight) {\n      itemClass += inSidebar ? ` right-icon` : ` icon-right`;\n    }\n    if (this.class) {\n      itemClass += ` ${this.class}`;\n    }\n    return itemClass;\n  }\n}\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';\nimport { inputToBoolean } from '../../../../utils/coercion';\nimport { ItLinkComponent } from '../../link/link.component';\n\n@Component({\n  standalone: true,\n  selector: 'it-list-item',\n  templateUrl: './list-item.component.html',\n  styleUrls: ['./list-item.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [NgTemplateOutlet, ItLinkComponent],\n})\nexport class ItListItemComponent extends ItLinkComponent {\n  constructor(private elRef: ElementRef) {\n    super();\n  }\n\n  /**\n   * Add active class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) active?: boolean;\n\n  /**\n   * Add large class\n   */\n  @Input() size?: 'large' | 'medium';\n\n  /**\n   * Add icon-left class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) iconLeft?: boolean;\n\n  /**\n   * Add icon-right class\n   * @default false\n   */\n  @Input({ transform: inputToBoolean }) iconRight?: boolean;\n\n  private _avatar: URL | undefined;\n  /**\n   * The avatar url\n   * @deprecated L'input 'avatar' è deprecato. Usa la documentazione del component Avatar per questo caso d'uso, facendo riferimento all'esempio Avatar con lista. Sarà rimosso nelle prossime versioni.\n   */\n  @Input()\n  get avatar(): URL | undefined {\n    console.warn(\n      `L'input 'avatar' è deprecato. Usa la documentazione del component Avatar per questo caso d'uso, facendo riferimento all'esempio Avatar con lista. Sarà rimosso nelle prossime versioni.`\n    );\n    return this._avatar;\n  }\n  set avatar(value: URL | undefined) {\n    this._avatar = value;\n  }\n\n  /**\n   * The thumb image url\n   */\n  @Input() image: URL | undefined;\n\n  get itemClass(): string {\n    const inSidebar: boolean = this.elRef.nativeElement.closest('.sidebar-linklist-wrapper') ? true : false;\n    let itemClass = 'list-item';\n    if (this.disabled) {\n      itemClass += ` disabled`;\n    }\n    if (this.active) {\n      itemClass += ` active`;\n    }\n    if (this.size) {\n      itemClass += ` ${this.size}`;\n    }\n    if (this.iconLeft) {\n      itemClass += inSidebar ? ` left-icon` : ` icon-left`;\n    }\n    if (this.iconRight) {\n      itemClass += inSidebar ? ` right-icon` : ` icon-right`;\n    }\n    if (this.class) {\n      itemClass += ` ${this.class}`;\n    }\n    return itemClass;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -22507,13 +23120,73 @@
                 "ItLinkComponent"
             ],
             "accessors": {
+                "avatar": {
+                    "name": "avatar",
+                    "setSignature": {
+                        "name": "avatar",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "URL | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 54,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "URL | undefined",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "avatar",
+                        "type": "",
+                        "returnType": "URL | undefined",
+                        "line": 48,
+                        "rawdescription": "\n\nThe avatar url\n",
+                        "description": "<p>The avatar url</p>\n",
+                        "deprecated": true,
+                        "deprecationMessage": "<p>L&#39;input &#39;avatar&#39; è deprecato. Usa la documentazione del component Avatar per questo caso d&#39;uso, facendo riferimento all&#39;esempio Avatar con lista. Sarà rimosso nelle prossime versioni.</p>\n",
+                        "jsdoctags": [
+                            {
+                                "pos": 1125,
+                                "end": 1324,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 338,
+                                "tagName": {
+                                    "pos": 1126,
+                                    "end": 1136,
+                                    "flags": 16842752,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 80,
+                                    "escapedText": "deprecated"
+                                },
+                                "comment": "<p>L&#39;input &#39;avatar&#39; è deprecato. Usa la documentazione del component Avatar per questo caso d&#39;uso, facendo riferimento all&#39;esempio Avatar con lista. Sarà rimosso nelle prossime versioni.</p>\n"
+                            }
+                        ]
+                    }
+                },
                 "itemClass": {
                     "name": "itemClass",
                     "getSignature": {
                         "name": "itemClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 52
+                        "line": 63
                     }
                 }
             },
@@ -39341,7 +40014,7 @@
         },
         {
             "name": "ItVideoPlayerComponent",
-            "id": "component-ItVideoPlayerComponent-e2ea6db157a9059434e274106fc8a7f0f800ef9b52d25bd12d2fa4204be2347174f30be70d09ab1115ab9ef556db39a5bc40945d472c85a1e130ca5d4cc096e5",
+            "id": "component-ItVideoPlayerComponent-58cb766a0fefd5efece25d5fc190f9ec7f89dd9ccdf6f713bad55122e52ad2f30d122d1bf0488d59befe31825f6efd96e5f4e3425341cc8f25f8d57583c72ee2",
             "file": "projects/design-angular-kit/src/lib/components/core/video-player/video-player.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -39354,7 +40027,7 @@
             "selector": "it-video-player",
             "styleUrls": [],
             "styles": [],
-            "template": "@switch (viewType$ | async) {      @case (viewTypes.Default) {\n        <div class=\"row\">\n          <ng-container *ngTemplateOutlet=\"videoTemplate\"></ng-container>\n          <ng-container *ngTemplateOutlet=\"transcriptionTemplate\"></ng-container>\n        </div>\n      }\n      @case (viewTypes.Overlay) {\n        <div #acceptOverlayable class=\"acceptoverlayable show\">\n          <div #acceptOveraly class=\"acceptoverlay acceptoverlay-primary fade show\">\n            <div class=\"acceptoverlay-inner\">\n              <div class=\"acceptoverlay-icon\">\n                <svg class=\"icon icon-xl\"><use href=\"/bootstrap-italia/dist/svg/sprites.svg#it-video\"></use></svg>\n              </div>\n              <p>\n                Accetta i cookie di YouTube per vedere il video. Puoi gestire le preferenze nella\n                <a href=\"#\" class=\"text-white\">cookie policy</a>.\n              </p>\n              <div class=\"acceptoverlay-buttons bg-dark\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"acceptCookieHandler()\">Accetta</button>\n                <div class=\"form-check\">\n                  <input id=\"chk-remember{{ id }}\" type=\"checkbox\" #chkRemember />\n                  <label for=\"chk-remember{{ id }}\">Ricorda per tutti i video</label>\n                </div>\n              </div>\n            </div>\n          </div>\n          @if (cookieAccepted$ | async) {\n            <div>\n              <ng-container *ngTemplateOutlet=\"videoTemplate\"></ng-container>\n              <ng-container *ngTemplateOutlet=\"transcriptionTemplate\"></ng-container>\n            </div>\n          }\n        </div>\n      }\n      @default {\n        <h1>No video provider</h1>\n      }\n    }\n    <ng-template #videoTemplate>\n      <div>\n        <video #videoPlayer class=\"video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered\"></video>\n      </div>\n    </ng-template>\n\n    <ng-template #transcriptionTemplate>\n      <div class=\"vjs-transcription accordion\">\n        <div class=\"accordion-item\">\n          <h2 class=\"accordion-header \" id=\"transcription-{{ id }}-head\">\n            <button\n              class=\"accordion-button collapsed\"\n              type=\"button\"\n              data-bs-toggle=\"collapse\"\n              [attr.data-bs-target]=\"'#transcription-' + id\"\n              [attr.aria-controls]=\"'transcription-' + id\"\n              aria-expanded=\"true\">\n              <ng-content select=\"[transcriptionTitle]\">Trascrizione</ng-content>\n            </button>\n          </h2>\n          <div\n            id=\"transcription-{{ id }}\"\n            class=\"accordion-collapse collapse\"\n            role=\"region\"\n            [attr.aria-labelledby]=\"'transcription-' + id + '-head'\">\n            <div class=\"accordion-body\">\n              <ng-content select=\"[transcriptionText]\">-</ng-content>\n            </div>\n          </div>\n        </div>\n      </div>\n    </ng-template>",
+            "template": "@switch (viewType()) {      @case (viewTypes.Default) {\n        <div class=\"row\">\n          <ng-container *ngTemplateOutlet=\"videoTemplate\"></ng-container>\n          <ng-container *ngTemplateOutlet=\"transcriptionTemplate\"></ng-container>\n        </div>\n      }\n      @case (viewTypes.Overlay) {\n        <div #acceptOverlayable class=\"acceptoverlayable show\">\n          <div #acceptOveraly class=\"acceptoverlay acceptoverlay-primary fade show\">\n            <div class=\"acceptoverlay-inner\">\n              <div class=\"acceptoverlay-icon\">\n                <svg class=\"icon icon-xl\"><use href=\"/bootstrap-italia/dist/svg/sprites.svg#it-video\"></use></svg>\n              </div>\n              <p>\n                Accetta i cookie di YouTube per vedere il video. Puoi gestire le preferenze nella\n                <a href=\"#\" class=\"text-white\">cookie policy</a>.\n              </p>\n              <div class=\"acceptoverlay-buttons bg-dark\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"acceptCookieHandler()\">Accetta</button>\n                <div class=\"form-check\">\n                  <input id=\"chk-remember{{ id }}\" type=\"checkbox\" #chkRemember />\n                  <label for=\"chk-remember{{ id }}\">Ricorda per tutti i video</label>\n                </div>\n              </div>\n            </div>\n          </div>\n          @if (cookieAccepted()) {\n            <div>\n              <ng-container *ngTemplateOutlet=\"videoTemplate\"></ng-container>\n              <ng-container *ngTemplateOutlet=\"transcriptionTemplate\"></ng-container>\n            </div>\n          }\n        </div>\n      }\n      @default {\n        <h1>No video provider</h1>\n      }\n    }\n    <ng-template #videoTemplate>\n      <div>\n        <video #videoPlayer class=\"video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered\"></video>\n      </div>\n    </ng-template>\n\n    <ng-template #transcriptionTemplate>\n      <div class=\"vjs-transcription accordion\">\n        <div class=\"accordion-item\">\n          <h2 class=\"accordion-header \" id=\"transcription-{{ id }}-head\">\n            <button\n              class=\"accordion-button collapsed\"\n              type=\"button\"\n              data-bs-toggle=\"collapse\"\n              [attr.data-bs-target]=\"'#transcription-' + id\"\n              [attr.aria-controls]=\"'transcription-' + id\"\n              aria-expanded=\"true\">\n              <ng-content select=\"[transcriptionTitle]\">Trascrizione</ng-content>\n            </button>\n          </h2>\n          <div\n            id=\"transcription-{{ id }}\"\n            class=\"accordion-collapse collapse\"\n            role=\"region\"\n            [attr.aria-labelledby]=\"'transcription-' + id + '-head'\">\n            <div class=\"accordion-body\">\n              <ng-content select=\"[transcriptionText]\">-</ng-content>\n            </div>\n          </div>\n        </div>\n      </div>\n    </ng-template>",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -39365,7 +40038,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nOptions for video player configuration\n",
                     "description": "<p>Options for video player configuration</p>\n",
-                    "line": 116,
+                    "line": 119,
                     "type": "ItVideoPlayerOptions",
                     "decorators": []
                 },
@@ -39407,7 +40080,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 136,
+                    "line": 139,
                     "modifierKind": [
                         148,
                         123
@@ -39420,7 +40093,7 @@
                     "type": "ElementRef<HTMLDivElement>",
                     "optional": true,
                     "description": "",
-                    "line": 120,
+                    "line": 123,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -39438,7 +40111,7 @@
                     "type": "ElementRef<HTMLDivElement>",
                     "optional": true,
                     "description": "",
-                    "line": 122,
+                    "line": 125,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -39456,7 +40129,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": true,
                     "description": "",
-                    "line": 124,
+                    "line": 127,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -39468,14 +40141,14 @@
                     ]
                 },
                 {
-                    "name": "cookieAccepted$",
-                    "defaultValue": "new BehaviorSubject(false)",
+                    "name": "cookieAccepted",
+                    "defaultValue": "signal(false)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 132,
+                    "line": 135,
                     "modifierKind": [
                         148
                     ]
@@ -39488,20 +40161,47 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 134,
+                    "line": 137,
                     "modifierKind": [
                         124,
                         148
                     ]
                 },
                 {
-                    "name": "player",
+                    "name": "injector",
+                    "defaultValue": "inject(Injector)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Player",
-                    "optional": true,
+                    "type": "",
+                    "optional": false,
                     "description": "",
-                    "line": 126
+                    "line": 142,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngZone",
+                    "defaultValue": "inject(NgZone)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 141,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "player",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Player | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 129
                 },
                 {
                     "name": "videoPlayerRef",
@@ -39510,7 +40210,7 @@
                     "type": "ElementRef<HTMLVideoElement>",
                     "optional": true,
                     "description": "",
-                    "line": 118,
+                    "line": 121,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -39522,14 +40222,14 @@
                     ]
                 },
                 {
-                    "name": "viewType$",
-                    "defaultValue": "new BehaviorSubject<ViewType | undefined>(undefined)",
+                    "name": "viewType",
+                    "defaultValue": "signal<ViewType | undefined>(undefined)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 130,
+                    "line": 133,
                     "modifierKind": [
                         148
                     ]
@@ -39542,7 +40242,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 128,
+                    "line": 131,
                     "modifierKind": [
                         148
                     ]
@@ -39641,7 +40341,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -39651,7 +40351,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 217,
+                    "line": 214,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39664,7 +40364,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 189,
+                    "line": 185,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39672,38 +40372,12 @@
                     ]
                 },
                 {
-                    "name": "ngAfterViewInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 171,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        164
-                    ],
-                    "inheritance": {
-                        "file": "ItAbstractComponent"
-                    }
-                },
-                {
-                    "name": "ngOnDestroy",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 177,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 146,
+                    "line": 156,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39716,7 +40390,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 230,
+                    "line": 227,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39736,7 +40410,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 238,
+                    "line": 235,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39760,7 +40434,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 195,
+                    "line": 191,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39780,7 +40454,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 211,
+                    "line": 208,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39831,6 +40505,19 @@
                     }
                 },
                 {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ItAbstractComponent"
+                    }
+                },
+                {
                     "name": "ngOnChanges",
                     "args": [
                         {
@@ -39869,17 +40556,13 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "AsyncPipe",
-                    "type": "pipe"
-                },
-                {
                     "name": "NgTemplateOutlet"
                 }
             ],
             "description": "<p>Video Player</p>\n",
             "rawdescription": "\n\nVideo Player\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgTemplateOutlet } from '@angular/common';\nimport {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  DestroyRef,\n  ElementRef,\n  inject,\n  Input,\n  OnDestroy,\n  OnInit,\n  ViewChild,\n  ViewEncapsulation,\n} from '@angular/core';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { BehaviorSubject, delay, tap } from 'rxjs';\nimport videojs from 'video.js';\nimport Player from 'video.js/dist/types/player';\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { VideoPlayerI18nService } from './video-player-i18n.service';\nimport { Tech, VideoPlayerConfigService } from './video-player.config';\nimport { cookies } from './video-player.cookie';\nimport { ItVideoPlayerConfig, ItVideoPlayerOptions } from './video-player.model';\n\nenum ViewType {\n  Default = 'DEFAULT',\n  Overlay = 'OVERLAY',\n}\n\n/**\n * Video Player\n * @description Component that allows playing a video.\n */\n@Component({\n  standalone: true,\n  selector: 'it-video-player',\n  template: `@switch (viewType$ | async) {\n      @case (viewTypes.Default) {\n        <div class=\"row\">\n          <ng-container *ngTemplateOutlet=\"videoTemplate\"></ng-container>\n          <ng-container *ngTemplateOutlet=\"transcriptionTemplate\"></ng-container>\n        </div>\n      }\n      @case (viewTypes.Overlay) {\n        <div #acceptOverlayable class=\"acceptoverlayable show\">\n          <div #acceptOveraly class=\"acceptoverlay acceptoverlay-primary fade show\">\n            <div class=\"acceptoverlay-inner\">\n              <div class=\"acceptoverlay-icon\">\n                <svg class=\"icon icon-xl\"><use href=\"/bootstrap-italia/dist/svg/sprites.svg#it-video\"></use></svg>\n              </div>\n              <p>\n                Accetta i cookie di YouTube per vedere il video. Puoi gestire le preferenze nella\n                <a href=\"#\" class=\"text-white\">cookie policy</a>.\n              </p>\n              <div class=\"acceptoverlay-buttons bg-dark\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"acceptCookieHandler()\">Accetta</button>\n                <div class=\"form-check\">\n                  <input id=\"chk-remember{{ id }}\" type=\"checkbox\" #chkRemember />\n                  <label for=\"chk-remember{{ id }}\">Ricorda per tutti i video</label>\n                </div>\n              </div>\n            </div>\n          </div>\n          @if (cookieAccepted$ | async) {\n            <div>\n              <ng-container *ngTemplateOutlet=\"videoTemplate\"></ng-container>\n              <ng-container *ngTemplateOutlet=\"transcriptionTemplate\"></ng-container>\n            </div>\n          }\n        </div>\n      }\n      @default {\n        <h1>No video provider</h1>\n      }\n    }\n    <ng-template #videoTemplate>\n      <div>\n        <video #videoPlayer class=\"video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered\"></video>\n      </div>\n    </ng-template>\n\n    <ng-template #transcriptionTemplate>\n      <div class=\"vjs-transcription accordion\">\n        <div class=\"accordion-item\">\n          <h2 class=\"accordion-header \" id=\"transcription-{{ id }}-head\">\n            <button\n              class=\"accordion-button collapsed\"\n              type=\"button\"\n              data-bs-toggle=\"collapse\"\n              [attr.data-bs-target]=\"'#transcription-' + id\"\n              [attr.aria-controls]=\"'transcription-' + id\"\n              aria-expanded=\"true\">\n              <ng-content select=\"[transcriptionTitle]\">Trascrizione</ng-content>\n            </button>\n          </h2>\n          <div\n            id=\"transcription-{{ id }}\"\n            class=\"accordion-collapse collapse\"\n            role=\"region\"\n            [attr.aria-labelledby]=\"'transcription-' + id + '-head'\">\n            <div class=\"accordion-body\">\n              <ng-content select=\"[transcriptionText]\">-</ng-content>\n            </div>\n          </div>\n        </div>\n      </div>\n    </ng-template> `,\n  imports: [AsyncPipe, NgTemplateOutlet],\n  encapsulation: ViewEncapsulation.None,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItVideoPlayerComponent extends ItAbstractComponent implements OnInit, AfterViewInit, OnDestroy {\n  /**\n   * Options for video player configuration\n   */\n  @Input() options!: ItVideoPlayerOptions;\n\n  @ViewChild('videoPlayer', { static: false }) videoPlayerRef?: ElementRef<HTMLVideoElement>;\n\n  @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef?: ElementRef<HTMLDivElement>;\n\n  @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef?: ElementRef<HTMLDivElement>;\n\n  @ViewChild('chkRemember', { static: false }) chrRememberRef?: ElementRef<HTMLInputElement>;\n\n  player?: Player;\n\n  readonly viewTypes = ViewType;\n\n  readonly viewType$ = new BehaviorSubject<ViewType | undefined>(undefined);\n\n  readonly cookieAccepted$ = new BehaviorSubject(false);\n\n  protected readonly i18nService = inject(VideoPlayerI18nService);\n\n  readonly #destroyRef = inject(DestroyRef);\n\n  private get viewType() {\n    return this.viewType$.value;\n  }\n\n  constructor(private config: VideoPlayerConfigService) {\n    super();\n  }\n\n  async ngOnInit() {\n    const config = this.config.mergeConfig(this.options);\n    this.setViewType(config);\n    await this.config.configureTech(config as { tech: Tech });\n\n    if (!this.videoPlayerRef) {\n      this.cookieAccepted$\n        .pipe(\n          takeUntilDestroyed(this.#destroyRef),\n          delay(0),\n          tap({\n            next: value => {\n              if (value && !this.player) {\n                this.initVideoPlayer();\n              }\n            },\n          })\n        )\n        .subscribe();\n      return;\n    }\n\n    this.initVideoPlayer();\n  }\n\n  override ngAfterViewInit() {\n    if (this.viewType === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com')) {\n      this.hideOverlay();\n    }\n  }\n\n  ngOnDestroy() {\n    if (this.player) {\n      this.player.dispose();\n    }\n  }\n\n  acceptCookieHandler() {\n    this.rememberHandler();\n    this.hideOverlay();\n    this.cookieAccepted$.next(true);\n  }\n\n  private initVideoPlayer() {\n    const config = this.config.mergeConfig(this.options);\n    this.setVideoAttributes(config);\n    this.setVideoPlayer();\n  }\n\n  private setVideoPlayer() {\n    const config = this.config.mergeConfig(this.options);\n    const onPlayerReadyCb = () => {\n      if (!this.player) {\n        return;\n      }\n      this.i18nService.init(this.player, this.#destroyRef);\n    };\n\n    if (!this.videoPlayerRef) {\n      throw Error('videoPlayerRef is undefined');\n    }\n\n    this.player = videojs(this.videoPlayerRef.nativeElement, config, onPlayerReadyCb.bind(this));\n  }\n\n  private setViewType(config: ItVideoPlayerConfig) {\n    this.viewType$.next(config.tech === 'youtube' ? ViewType.Overlay : ViewType.Default);\n\n    this.cookieAccepted$.next(this.viewType === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com'));\n  }\n\n  private hideOverlay() {\n    if (!this.acceptOverlayableRef) {\n      return;\n    }\n    const classes = ['show'];\n    this.acceptOverlayableRef.nativeElement.classList.remove(...classes);\n    if (!this.acceptOveralyRef) {\n      return;\n    }\n    this.acceptOveralyRef.nativeElement.classList.remove(...classes);\n    this.acceptOveralyRef.nativeElement.setAttribute('aria-hidden', 'true');\n  }\n\n  private rememberHandler() {\n    if (!this.chrRememberRef) {\n      return;\n    }\n    const remember = this.chrRememberRef.nativeElement.checked;\n    cookies.rememberChoice('youtube.com', remember);\n  }\n\n  private setVideoAttributes(options: ItVideoPlayerOptions) {\n    if (!this.videoPlayerRef) {\n      return;\n    }\n    const v = this.videoPlayerRef.nativeElement;\n\n    const { autoplay, controls, loop, muted, poster, fluid } = options;\n\n    if (autoplay) {\n      v.setAttribute('autoplay', autoplay.toString());\n    }\n\n    if (controls) {\n      v.setAttribute('controls', '');\n    }\n\n    if (loop) {\n      v.setAttribute('loop', '');\n    }\n\n    if (muted) {\n      v.setAttribute('muted', '');\n    }\n\n    if (poster) {\n      v.setAttribute('poster', poster);\n    }\n\n    if (fluid) {\n      v.setAttribute('fluid', '');\n    }\n\n    v.setAttribute('preload', 'none');\n    v.setAttribute('playsinline', '');\n  }\n}\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport {\n  afterNextRender,\n  ChangeDetectionStrategy,\n  Component,\n  DestroyRef,\n  ElementRef,\n  inject,\n  Injector,\n  Input,\n  NgZone,\n  OnInit,\n  signal,\n  ViewChild,\n  ViewEncapsulation,\n} from '@angular/core';\nimport { toObservable } from '@angular/core/rxjs-interop';\nimport { delay } from 'rxjs';\nimport videojs from 'video.js';\nimport type Player from 'video.js/dist/types/player';\n\nimport { ItAbstractComponent } from '../../../abstracts/abstract.component';\nimport { VideoPlayerI18nService } from './video-player-i18n.service';\nimport { Tech, VideoPlayerConfigService } from './video-player.config';\nimport { cookies } from './video-player.cookie';\nimport { ItVideoPlayerConfig, ItVideoPlayerOptions } from './video-player.model';\n\nenum ViewType {\n  Default = 'DEFAULT',\n  Overlay = 'OVERLAY',\n}\n\n/**\n * Video Player\n * @description Component that allows playing a video.\n */\n@Component({\n  standalone: true,\n  selector: 'it-video-player',\n  template: `@switch (viewType()) {\n      @case (viewTypes.Default) {\n        <div class=\"row\">\n          <ng-container *ngTemplateOutlet=\"videoTemplate\"></ng-container>\n          <ng-container *ngTemplateOutlet=\"transcriptionTemplate\"></ng-container>\n        </div>\n      }\n      @case (viewTypes.Overlay) {\n        <div #acceptOverlayable class=\"acceptoverlayable show\">\n          <div #acceptOveraly class=\"acceptoverlay acceptoverlay-primary fade show\">\n            <div class=\"acceptoverlay-inner\">\n              <div class=\"acceptoverlay-icon\">\n                <svg class=\"icon icon-xl\"><use href=\"/bootstrap-italia/dist/svg/sprites.svg#it-video\"></use></svg>\n              </div>\n              <p>\n                Accetta i cookie di YouTube per vedere il video. Puoi gestire le preferenze nella\n                <a href=\"#\" class=\"text-white\">cookie policy</a>.\n              </p>\n              <div class=\"acceptoverlay-buttons bg-dark\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"acceptCookieHandler()\">Accetta</button>\n                <div class=\"form-check\">\n                  <input id=\"chk-remember{{ id }}\" type=\"checkbox\" #chkRemember />\n                  <label for=\"chk-remember{{ id }}\">Ricorda per tutti i video</label>\n                </div>\n              </div>\n            </div>\n          </div>\n          @if (cookieAccepted()) {\n            <div>\n              <ng-container *ngTemplateOutlet=\"videoTemplate\"></ng-container>\n              <ng-container *ngTemplateOutlet=\"transcriptionTemplate\"></ng-container>\n            </div>\n          }\n        </div>\n      }\n      @default {\n        <h1>No video provider</h1>\n      }\n    }\n    <ng-template #videoTemplate>\n      <div>\n        <video #videoPlayer class=\"video-js vjs-theme-bootstrap-italia vjs-fluid vjs-big-play-centered\"></video>\n      </div>\n    </ng-template>\n\n    <ng-template #transcriptionTemplate>\n      <div class=\"vjs-transcription accordion\">\n        <div class=\"accordion-item\">\n          <h2 class=\"accordion-header \" id=\"transcription-{{ id }}-head\">\n            <button\n              class=\"accordion-button collapsed\"\n              type=\"button\"\n              data-bs-toggle=\"collapse\"\n              [attr.data-bs-target]=\"'#transcription-' + id\"\n              [attr.aria-controls]=\"'transcription-' + id\"\n              aria-expanded=\"true\">\n              <ng-content select=\"[transcriptionTitle]\">Trascrizione</ng-content>\n            </button>\n          </h2>\n          <div\n            id=\"transcription-{{ id }}\"\n            class=\"accordion-collapse collapse\"\n            role=\"region\"\n            [attr.aria-labelledby]=\"'transcription-' + id + '-head'\">\n            <div class=\"accordion-body\">\n              <ng-content select=\"[transcriptionText]\">-</ng-content>\n            </div>\n          </div>\n        </div>\n      </div>\n    </ng-template> `,\n  imports: [NgTemplateOutlet],\n  encapsulation: ViewEncapsulation.None,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ItVideoPlayerComponent extends ItAbstractComponent implements OnInit {\n  /**\n   * Options for video player configuration\n   */\n  @Input() options!: ItVideoPlayerOptions;\n\n  @ViewChild('videoPlayer', { static: false }) videoPlayerRef?: ElementRef<HTMLVideoElement>;\n\n  @ViewChild('acceptOveraly', { static: false }) acceptOveralyRef?: ElementRef<HTMLDivElement>;\n\n  @ViewChild('acceptOverlayable', { static: false }) acceptOverlayableRef?: ElementRef<HTMLDivElement>;\n\n  @ViewChild('chkRemember', { static: false }) chrRememberRef?: ElementRef<HTMLInputElement>;\n\n  player: Player | null = null;\n\n  readonly viewTypes = ViewType;\n\n  readonly viewType = signal<ViewType | undefined>(undefined);\n\n  readonly cookieAccepted = signal(false);\n\n  protected readonly i18nService = inject(VideoPlayerI18nService);\n\n  readonly #destroyRef = inject(DestroyRef);\n\n  private ngZone = inject(NgZone);\n  private injector = inject(Injector);\n\n  constructor(private config: VideoPlayerConfigService) {\n    super();\n\n    afterNextRender(() => {\n      if (this.viewType() === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com')) {\n        this.hideOverlay();\n      }\n    });\n\n    this.#destroyRef.onDestroy(() => this.player?.dispose());\n  }\n\n  async ngOnInit() {\n    const config = this.config.mergeConfig(this.options);\n    this.setViewType(config);\n    // Avoid running change detections while the script is being loaded.\n    await this.ngZone.runOutsideAngular(() => this.config.configureTech(config as { tech: Tech }));\n\n    if (!this.videoPlayerRef) {\n      // Note: No need to pipe with `takeUntilDestroyed`; `toObservable` is\n      // completed by Angular when the `DestroyRef` from the injector is destroyed.\n      toObservable(this.cookieAccepted, { injector: this.injector })\n        .pipe(delay(0))\n        .subscribe(value => {\n          if (value && !this.player) {\n            this.initVideoPlayer();\n          }\n        });\n\n      return;\n    }\n\n    this.initVideoPlayer();\n  }\n\n  acceptCookieHandler() {\n    this.rememberHandler();\n    this.hideOverlay();\n    this.cookieAccepted.set(true);\n  }\n\n  private initVideoPlayer() {\n    const config = this.config.mergeConfig(this.options);\n    this.setVideoAttributes(config);\n    this.setVideoPlayer();\n  }\n\n  private setVideoPlayer() {\n    const config = this.config.mergeConfig(this.options);\n    const onPlayerReadyCb = () => {\n      if (!this.player) {\n        return;\n      }\n      this.i18nService.init(this.player, this.#destroyRef);\n    };\n\n    const element = this.videoPlayerRef?.nativeElement;\n    if (!element) {\n      throw Error('videoPlayerRef is undefined');\n    }\n\n    this.player = this.ngZone.runOutsideAngular(() => videojs(element, config, onPlayerReadyCb));\n  }\n\n  private setViewType(config: ItVideoPlayerConfig) {\n    this.viewType.set(config.tech === 'youtube' ? ViewType.Overlay : ViewType.Default);\n\n    this.cookieAccepted.set(this.viewType() === ViewType.Overlay && cookies.isChoiceRemembered('youtube.com'));\n  }\n\n  private hideOverlay() {\n    if (!this.acceptOverlayableRef) {\n      return;\n    }\n    const classes = ['show'];\n    this.acceptOverlayableRef.nativeElement.classList.remove(...classes);\n    if (!this.acceptOveralyRef) {\n      return;\n    }\n    this.acceptOveralyRef.nativeElement.classList.remove(...classes);\n    this.acceptOveralyRef.nativeElement.setAttribute('aria-hidden', 'true');\n  }\n\n  private rememberHandler() {\n    if (!this.chrRememberRef) {\n      return;\n    }\n    const remember = this.chrRememberRef.nativeElement.checked;\n    cookies.rememberChoice('youtube.com', remember);\n  }\n\n  private setVideoAttributes(options: ItVideoPlayerOptions) {\n    if (!this.videoPlayerRef) {\n      return;\n    }\n    const v = this.videoPlayerRef.nativeElement;\n\n    const { autoplay, controls, loop, muted, poster, fluid } = options;\n\n    if (autoplay) {\n      v.setAttribute('autoplay', autoplay.toString());\n    }\n\n    if (controls) {\n      v.setAttribute('controls', '');\n    }\n\n    if (loop) {\n      v.setAttribute('loop', '');\n    }\n\n    if (muted) {\n      v.setAttribute('muted', '');\n    }\n\n    if (poster) {\n      v.setAttribute('poster', poster);\n    }\n\n    if (fluid) {\n      v.setAttribute('fluid', '');\n    }\n\n    v.setAttribute('preload', 'none');\n    v.setAttribute('playsinline', '');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -39896,7 +40579,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 140,
+                "line": 142,
                 "jsdoctags": [
                     {
                         "name": "config",
@@ -39913,27 +40596,14 @@
                 "ItAbstractComponent"
             ],
             "implements": [
-                "OnInit",
-                "AfterViewInit",
-                "OnDestroy"
-            ],
-            "accessors": {
-                "viewType": {
-                    "name": "viewType",
-                    "getSignature": {
-                        "name": "viewType",
-                        "type": "",
-                        "returnType": "",
-                        "line": 138
-                    }
-                }
-            }
+                "OnInit"
+            ]
         }
     ],
     "modules": [
         {
             "name": "DesignAngularKitModule",
-            "id": "module-DesignAngularKitModule-4ba4077695a6f5a3509d6098ffad5fb484f2944171b73133377a3687cb85b7b7724233da3eeabf4f47a0cf768899ddff87f5093ea5a8ba7d7458b1e756641586",
+            "id": "module-DesignAngularKitModule-c9242dae70b36d98e65ee83f2ceca3ea6a0dbd16afdd667ea4d87e8c6ac8ad3325109bdfee50a22110f3a8d625545b70d2a6f03efdfa7004b0918bd877aac1fe",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -39945,7 +40615,7 @@
                     "optional": false,
                     "returnType": "ModuleWithProviders<DesignAngularKitModule>",
                     "typeParameters": [],
-                    "line": 128,
+                    "line": 130,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39966,7 +40636,7 @@
                     "optional": false,
                     "returnType": "ModuleWithProviders<DesignAngularKitModule>",
                     "typeParameters": [],
-                    "line": 121,
+                    "line": 123,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -39986,7 +40656,7 @@
                     ]
                 }
             ],
-            "sourceCode": "import { ModuleWithProviders, NgModule } from '@angular/core';\nimport { ItVideoPlayerComponent } from '../public_api';\nimport { ItAccordionComponent } from './components/core/accordion/accordion.component';\nimport { ItAlertComponent } from './components/core/alert/alert.component';\nimport { ItAvatarModule } from './components/core/avatar/avatar.module';\nimport { ItBadgeDirective } from './components/core/badge/badge.directive';\nimport { ItButtonDirective } from './components/core/button/button.directive';\nimport { ItCalloutComponent } from './components/core/callout/callout.component';\nimport { ItCardComponent } from './components/core/card/card.component';\nimport { ItCarouselModule } from './components/core/carousel/carousel.module';\nimport { ItChipComponent } from './components/core/chip/chip.component';\nimport { ItCollapseComponent } from './components/core/collapse/collapse.component';\nimport { ItDimmerModule } from './components/core/dimmer/dimmer.module';\nimport { ItDropdownModule } from './components/core/dropdown/dropdown.module';\nimport { ItForwardDirective } from './components/core/forward/forward.directive';\nimport { ItLinkComponent } from './components/core/link/link.component';\nimport { ItListModule } from './components/core/list/list.module';\nimport { ItModalComponent } from './components/core/modal/modal.component';\nimport { ItNotificationsComponent } from './components/core/notifications/notifications.component';\nimport { ItPaginationComponent } from './components/core/pagination/pagination.component';\nimport { ItPopoverDirective } from './components/core/popover/popover.directive';\nimport { ItProgressBarComponent } from './components/core/progress-bar/progress-bar.component';\nimport { ItProgressButtonComponent } from './components/core/progress-button/progress-button.component';\nimport { ItSpinnerComponent } from './components/core/spinner/spinner.component';\nimport { ItSteppersModule } from './components/core/steppers/steppers.module';\nimport { ItTabModule } from './components/core/tab/tab.module';\nimport { ItTableModule } from './components/core/table/table.module';\nimport { ItTimelineModule } from './components/core/timeline/timeline.module';\nimport { ItTooltipDirective } from './components/core/tooltip/tooltip.directive';\nimport { ItFormModule } from './components/form/form.module';\nimport { ItBackButtonComponent } from './components/navigation/back-button/back-button.component';\nimport { ItBackToTopComponent } from './components/navigation/back-to-top/back-to-top.component';\nimport { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';\nimport { ItHeaderComponent } from './components/navigation/header/header.component';\nimport { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';\nimport { ItNavBarModule } from './components/navigation/navbar/navbar.module';\nimport { ItNavscrollComponent } from './components/navigation/navscroll/navscroll.component';\nimport { ItSidebarComponent } from './components/navigation/sidebar/sidebar.component';\nimport { ItSkiplinkModule } from './components/navigation/skiplink/skiplink.module';\nimport { ItErrorPageComponent } from './components/utils/error-page/error-page.component';\nimport { ItIconComponent } from './components/utils/icon/icon.component';\nimport { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';\nimport { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';\nimport { ItDateAgoPipe } from './pipes/date-ago.pipe';\nimport { ItDurationPipe } from './pipes/duration.pipe';\nimport { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';\nimport { provideDesignAngularKit } from './provide-design-angular-kit';\n\n/**\n * Core components\n */\nconst core = [\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarModule,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableModule,\n  ItTooltipDirective,\n  ItTimelineModule,\n  ItVideoPlayerComponent,\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n];\n\n/**\n * Utils components\n */\nconst utils = [ItErrorPageComponent, ItIconComponent, ItLanguageSwitcherComponent];\n\n/**\n * Library pipes\n */\nconst pipes = [ItDateAgoPipe, ItDurationPipe, ItMarkMatchingTextPipe];\n\nconst components = [\n  ...core, // Core components\n  ItFormModule, // Form components\n  ...navigation, // Navigation Components\n  ...utils, // Utils components\n  ...pipes, // Library pipes\n];\n\n@NgModule({\n  imports: components,\n  exports: components,\n})\nexport class DesignAngularKitModule {\n  public static forRoot(config?: DesignAngularKitConfig): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n      providers: [provideDesignAngularKit(config)],\n    };\n  }\n\n  public static forChild(): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n    };\n  }\n}\n",
+            "sourceCode": "import { ModuleWithProviders, NgModule } from '@angular/core';\nimport { ItVideoPlayerComponent } from './components/core/video-player/video-player.component';\nimport { ItAccordionComponent } from './components/core/accordion/accordion.component';\nimport { ItAlertComponent } from './components/core/alert/alert.component';\nimport { ItAvatarModule } from './components/core/avatar/avatar.module';\nimport { ItBadgeDirective } from './components/core/badge/badge.directive';\nimport { ItButtonDirective } from './components/core/button/button.directive';\nimport { ItCalloutComponent } from './components/core/callout/callout.component';\nimport { ItCardComponent } from './components/core/card/card.component';\nimport { ItCarouselModule } from './components/core/carousel/carousel.module';\nimport { ItChipComponent } from './components/core/chip/chip.component';\nimport { ItCollapseComponent } from './components/core/collapse/collapse.component';\nimport { ItDimmerModule } from './components/core/dimmer/dimmer.module';\nimport { ItDropdownModule } from './components/core/dropdown/dropdown.module';\nimport { ItForwardDirective } from './components/core/forward/forward.directive';\nimport { ItLinkComponent } from './components/core/link/link.component';\nimport { ItListModule } from './components/core/list/list.module';\nimport { ItModalComponent } from './components/core/modal/modal.component';\nimport { ItNotificationsComponent } from './components/core/notifications/notifications.component';\nimport { ItPaginationComponent } from './components/core/pagination/pagination.component';\nimport { ItPopoverDirective } from './components/core/popover/popover.directive';\nimport { ItProgressBarComponent } from './components/core/progress-bar/progress-bar.component';\nimport { ItProgressButtonComponent } from './components/core/progress-button/progress-button.component';\nimport { ItSpinnerComponent } from './components/core/spinner/spinner.component';\nimport { ItSteppersModule } from './components/core/steppers/steppers.module';\nimport { ItTabModule } from './components/core/tab/tab.module';\nimport { ItTableModule } from './components/core/table/table.module';\nimport { ItTimelineModule } from './components/core/timeline/timeline.module';\nimport { ItTooltipDirective } from './components/core/tooltip/tooltip.directive';\nimport { ItFormModule } from './components/form/form.module';\nimport { ItBackButtonComponent } from './components/navigation/back-button/back-button.component';\nimport { ItBackToTopComponent } from './components/navigation/back-to-top/back-to-top.component';\nimport { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';\nimport { ItHeaderComponent } from './components/navigation/header/header.component';\nimport { ItFooterComponent } from './components/navigation/footer/footer.component';\nimport { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';\nimport { ItNavBarModule } from './components/navigation/navbar/navbar.module';\nimport { ItNavscrollComponent } from './components/navigation/navscroll/navscroll.component';\nimport { ItSidebarComponent } from './components/navigation/sidebar/sidebar.component';\nimport { ItSkiplinkModule } from './components/navigation/skiplink/skiplink.module';\nimport { ItErrorPageComponent } from './components/utils/error-page/error-page.component';\nimport { ItIconComponent } from './components/utils/icon/icon.component';\nimport { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';\nimport { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';\nimport { ItDateAgoPipe } from './pipes/date-ago.pipe';\nimport { ItDurationPipe } from './pipes/duration.pipe';\nimport { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';\nimport { provideDesignAngularKit } from './provide-design-angular-kit';\n\n/**\n * Core components\n */\nconst core = [\n  ItAccordionComponent,\n  ItAlertComponent,\n  ItAvatarModule,\n  ItBadgeDirective,\n  ItButtonDirective,\n  ItCalloutComponent,\n  ItCardComponent,\n  ItCarouselModule,\n  ItChipComponent,\n  ItCollapseComponent,\n  ItDimmerModule,\n  ItDropdownModule,\n  ItForwardDirective,\n  ItLinkComponent,\n  ItListModule,\n  ItModalComponent,\n  ItNotificationsComponent,\n  ItPaginationComponent,\n  ItPopoverDirective,\n  ItProgressBarComponent,\n  ItProgressButtonComponent,\n  ItSpinnerComponent,\n  ItSteppersModule,\n  ItTabModule,\n  ItTableModule,\n  ItTooltipDirective,\n  ItTimelineModule,\n  ItVideoPlayerComponent,\n];\n\n/**\n * Navigation Components\n */\nconst navigation = [\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItFooterComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n];\n\n/**\n * Utils components\n */\nconst utils = [ItErrorPageComponent, ItIconComponent, ItLanguageSwitcherComponent];\n\n/**\n * Library pipes\n */\nconst pipes = [ItDateAgoPipe, ItDurationPipe, ItMarkMatchingTextPipe];\n\nconst components = [\n  ...core, // Core components\n  ItFormModule, // Form components\n  ...navigation, // Navigation Components\n  ...utils, // Utils components\n  ...pipes, // Library pipes\n];\n\n@NgModule({\n  imports: components,\n  exports: components,\n})\nexport class DesignAngularKitModule {\n  public static forRoot(config?: DesignAngularKitConfig): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n      providers: [provideDesignAngularKit(config)],\n    };\n  }\n\n  public static forChild(): ModuleWithProviders<DesignAngularKitModule> {\n    return {\n      ngModule: DesignAngularKitModule,\n    };\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -40052,6 +40722,9 @@
                         },
                         {
                             "name": "ItErrorPageComponent"
+                        },
+                        {
+                            "name": "ItFooterComponent"
                         },
                         {
                             "name": "ItFormModule"
@@ -40189,6 +40862,9 @@
                         },
                         {
                             "name": "ItErrorPageComponent"
+                        },
+                        {
+                            "name": "ItFooterComponent"
                         },
                         {
                             "name": "ItFormModule"
@@ -40282,13 +40958,13 @@
         },
         {
             "name": "ItAvatarModule",
-            "id": "module-ItAvatarModule-8a39e2e33090e260b893b5c8e8267f974491725df93cf9d5d78b28949d672361ecb0df8cb3c80d973cf6448b4766c73f45ff4fea889d96da09a7cca4471d328e",
+            "id": "module-ItAvatarModule-4cbf410679523d8af40408bac9c2006f27ac7b163ccab77d55cc35732506d21f51fe95efd2c6bcfb01a1c56a85a5d0179b552e65e25f2d98830a5a0ca982c602",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/design-angular-kit/src/lib/components/core/avatar/avatar.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { ItAvatarGroupComponent, ItAvatarGroupItemComponent } from './avatar-group/avatar-group.component';\nimport { ItAvatarDropdownComponent, ItAvatarDropdownItemComponent } from './avatar-dropdown/avatar-dropdown.component';\nimport { ItAvatarDirective } from './avatar.directive';\n\nconst avatarComponents = [\n  ItAvatarGroupItemComponent,\n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n];\n\n@NgModule({\n  imports: avatarComponents,\n  exports: avatarComponents,\n})\nexport class ItAvatarModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { ItAvatarDropdownComponent, ItAvatarDropdownItemComponent } from './avatar-dropdown/avatar-dropdown.component';\nimport { ItAvatarExtraTextDirective } from './avatar-extra-text.directive';\nimport { ItAvatarGroupComponent, ItAvatarGroupItemComponent, ItAvatarListItemDirective } from './avatar-group/avatar-group.component';\nimport { ItAvatarPresenceDirective } from './avatar-presence.directive';\nimport { ItAvatarStatusDirective } from './avatar-status.directive';\nimport { ItAvatarWrapperDirective } from './avatar-wrapper.directive';\nimport { ItAvatarDirective } from './avatar.directive';\n\nconst avatarComponents = [\n  ItAvatarGroupItemComponent,\n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n  ItAvatarExtraTextDirective,\n  ItAvatarWrapperDirective,\n  ItAvatarStatusDirective,\n  ItAvatarPresenceDirective,\n  ItAvatarListItemDirective,\n];\n\n@NgModule({\n  imports: avatarComponents,\n  exports: avatarComponents,\n})\nexport class ItAvatarModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -40311,10 +40987,25 @@
                             "name": "ItAvatarDropdownItemComponent"
                         },
                         {
+                            "name": "ItAvatarExtraTextDirective"
+                        },
+                        {
                             "name": "ItAvatarGroupComponent"
                         },
                         {
                             "name": "ItAvatarGroupItemComponent"
+                        },
+                        {
+                            "name": "ItAvatarListItemDirective"
+                        },
+                        {
+                            "name": "ItAvatarPresenceDirective"
+                        },
+                        {
+                            "name": "ItAvatarStatusDirective"
+                        },
+                        {
+                            "name": "ItAvatarWrapperDirective"
                         }
                     ]
                 },
@@ -40331,10 +41022,25 @@
                             "name": "ItAvatarDropdownItemComponent"
                         },
                         {
+                            "name": "ItAvatarExtraTextDirective"
+                        },
+                        {
                             "name": "ItAvatarGroupComponent"
                         },
                         {
                             "name": "ItAvatarGroupItemComponent"
+                        },
+                        {
+                            "name": "ItAvatarListItemDirective"
+                        },
+                        {
+                            "name": "ItAvatarPresenceDirective"
+                        },
+                        {
+                            "name": "ItAvatarStatusDirective"
+                        },
+                        {
+                            "name": "ItAvatarWrapperDirective"
                         }
                     ]
                 },
@@ -41101,7 +41807,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  ItAvatarGroupItemComponent,\n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n]"
+                "defaultValue": "[\n  ItAvatarGroupItemComponent,\n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n  ItAvatarExtraTextDirective,\n  ItAvatarWrapperDirective,\n  ItAvatarStatusDirective,\n  ItAvatarPresenceDirective,\n  ItAvatarListItemDirective,\n]"
             },
             {
                 "name": "backtransfer",
@@ -41329,7 +42035,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "[\n  'arrow-down',\n  'arrow-down-circle',\n  'arrow-down-triangle',\n  'arrow-left',\n  'arrow-left-circle',\n  'arrow-left-triangle',\n  'arrow-right',\n  'arrow-right-circle',\n  'arrow-right-triangle',\n  'arrow-up',\n  'arrow-up-circle',\n  'arrow-up-triangle',\n  'ban',\n  'bookmark',\n  'box',\n  'burger',\n  'calendar',\n  'camera',\n  'card',\n  'chart-line',\n  'check',\n  'check-circle',\n  'chevron-left',\n  'chevron-right',\n  'clip',\n  'clock',\n  'close',\n  'close-big',\n  'close-circle',\n  'code-circle',\n  'comment',\n  'copy',\n  'delete',\n  'download',\n  'error',\n  'exchange-circle',\n  'expand',\n  'external-link',\n  'flag',\n  'folder',\n  'fullscreen',\n  'funnel',\n  'hearing',\n  'help',\n  'help-circle',\n  'horn',\n  'inbox',\n  'info-circle',\n  'key',\n  'link',\n  'list',\n  'locked',\n  'logout',\n  'mail',\n  'mail-open',\n  'map-marker',\n  'map-marker-circle',\n  'map-marker-minus',\n  'map-marker-plus',\n  'maximize',\n  'maximize-alt',\n  'minimize',\n  'minus',\n  'minus-circle',\n  'more-actions',\n  'more-items',\n  'note',\n  'pa',\n  'password-invisible',\n  'password-visible',\n  'pencil',\n  'piattaforme',\n  'pin',\n  'plug',\n  'plus',\n  'plus-circle',\n  'presentation',\n  'print',\n  'refresh',\n  'restore',\n  'rss',\n  'rss-square',\n  'search',\n  'settings',\n  'share',\n  'software',\n  'star-full',\n  'star-outline',\n  'telephone',\n  'tool',\n  'unlocked',\n  'upload',\n  'user',\n  'video',\n  'warning',\n  'warning-circle',\n  'wifi',\n  'zoom-in',\n  'zoom-out',\n\n  // Files\n  'file',\n  'files',\n  'file-audio',\n  'file-compressed',\n  'file-csv',\n  'file-json',\n  'file-odp',\n  'file-ods',\n  'file-odt',\n  'file-pdf',\n  'file-pdf-ext',\n  'file-sheet',\n  'file-slides',\n  'file-ppt',\n  'file-txt',\n  'file-video',\n  'file-xml',\n\n  // Platforms\n  'behance',\n  'facebook',\n  'facebook-square',\n  'figma',\n  'figma-square',\n  'flickr',\n  'flickr-square',\n  'github',\n  'instagram',\n  'linkedin',\n  'linkedin-square',\n  'mastodon',\n  'mastodon-square',\n  'medium',\n  'medium-square',\n  'moodle',\n  'moodle-square',\n  'pinterest',\n  'pinterest-square',\n  'quora',\n  'quora-square',\n  'reddit',\n  'reddit-square',\n  'slack',\n  'slack-square',\n  'snapchat',\n  'snapchat-square',\n  'stackexchange',\n  'stackexchange-square',\n  'stackoverflow',\n  'stackoverflow-square',\n  'telegram',\n  'threads',\n  'threads-square',\n  'tiktok',\n  'tiktok-square',\n  'twitter',\n  'twitter-square',\n  'vimeo',\n  'vimeo-square',\n  'whatsapp',\n  'whatsapp-square',\n  'youtube',\n  'google',\n\n  // Extra\n  'designers-italia',\n  'team-digitale',\n] as const"
+                "defaultValue": "[\n  'arrow-down',\n  'arrow-down-circle',\n  'arrow-down-triangle',\n  'arrow-left',\n  'arrow-left-circle',\n  'arrow-left-triangle',\n  'arrow-right',\n  'arrow-right-circle',\n  'arrow-right-triangle',\n  'arrow-up',\n  'arrow-up-circle',\n  'arrow-up-triangle',\n  'ban',\n  'bluesky',\n  'bookmark',\n  'box',\n  'burger',\n  'calendar',\n  'camera',\n  'car',\n  'card',\n  'cart',\n  'chart-line',\n  'check',\n  'check-circle',\n  'chevron-left',\n  'chevron-right',\n  'clip',\n  'clock',\n  'close',\n  'close-big',\n  'close-circle',\n  'code-circle',\n  'comment',\n  'copy',\n  'delete',\n  'download',\n  'error',\n  'exchange-circle',\n  'expand',\n  'external-link',\n  'flag',\n  'folder',\n  'fullscreen',\n  'funnel',\n  'hearing',\n  'help',\n  'help-circle',\n  'horn',\n  'inbox',\n  'info-circle',\n  'key',\n  'link',\n  'list',\n  'locked',\n  'logout',\n  'mail',\n  'mail-open',\n  'map-marker',\n  'map-marker-circle',\n  'map-marker-minus',\n  'map-marker-plus',\n  'maximize',\n  'maximize-alt',\n  'minimize',\n  'minus',\n  'minus-circle',\n  'more-actions',\n  'more-items',\n  'note',\n  'pa',\n  'password-invisible',\n  'password-visible',\n  'pencil',\n  'piattaforme',\n  'pin',\n  'plug',\n  'plus',\n  'plus-circle',\n  'presentation',\n  'print',\n  'refresh',\n  'restore',\n  'rss',\n  'rss-square',\n  'search',\n  'settings',\n  'share',\n  'sign',\n  'software',\n  'star-full',\n  'star-outline',\n  'telephone',\n  'tool',\n  'unlocked',\n  'upload',\n  'user',\n  'video',\n  'warning',\n  'warning-circle',\n  'wifi',\n  'zoom-in',\n  'zoom-out',\n\n  // Files\n  'file',\n  'files',\n  'file-audio',\n  'file-compressed',\n  'file-csv',\n  'file-docx',\n  'file-json',\n  'file-image',\n  'file-odp',\n  'file-ods',\n  'file-odt',\n  'file-pdf',\n  'file-pdf-ext',\n  'file-sheet',\n  'file-slides',\n  'file-ppt',\n  'file-signed',\n  'file-txt',\n  'file-video',\n  'file-xlsx',\n  'file-xml',\n\n  // Platforms\n  'behance',\n  'android-square',\n  'android',\n  'apple-square',\n  'apple',\n  'facebook',\n  'facebook-square',\n  'figma',\n  'figma-square',\n  'flickr',\n  'flickr-square',\n  'github',\n  'instagram',\n  'linkedin',\n  'linkedin-square',\n  'mastodon',\n  'mastodon-square',\n  'medium',\n  'medium-square',\n  'moodle',\n  'moodle-square',\n  'pinterest',\n  'pinterest-square',\n  'quora',\n  'quora-square',\n  'reddit',\n  'reddit-square',\n  'slack',\n  'slack-square',\n  'snapchat',\n  'snapchat-square',\n  'stackexchange',\n  'stackexchange-square',\n  'stackoverflow',\n  'stackoverflow-square',\n  'telegram',\n  'threads',\n  'threads-square',\n  'tiktok',\n  'tiktok-square',\n  'twitter',\n  'twitter-square',\n  'vimeo',\n  'vimeo-square',\n  'whatsapp',\n  'whatsapp-square',\n  'youtube',\n  'google',\n  'spotify',\n\n  // Extra\n  'designers-italia',\n  'team-digitale',\n] as const"
             },
             {
                 "name": "init",
@@ -41475,7 +42181,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n]",
+                "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItFooterComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n]",
                 "rawdescription": "Navigation Components",
                 "description": "<p>Navigation Components</p>\n"
             },
@@ -42222,7 +42928,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "57afa8eb-9ca9-4595-98cd-e52326c3d592",
+                        "destrucuredGroupId": "959e3cf7-df5b-44f1-9f4e-aad1af86c0c2",
                         "destructuredParameter": true
                     }
                 ],
@@ -42232,7 +42938,7 @@
                         "type": "string",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "57afa8eb-9ca9-4595-98cd-e52326c3d592",
+                        "destrucuredGroupId": "959e3cf7-df5b-44f1-9f4e-aad1af86c0c2",
                         "destructuredParameter": true,
                         "tagName": {
                             "text": "param"
@@ -43465,7 +44171,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  ItAvatarGroupItemComponent,\n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n]"
+                    "defaultValue": "[\n  ItAvatarGroupItemComponent,\n  ItAvatarGroupComponent,\n  ItAvatarDropdownComponent,\n  ItAvatarDropdownItemComponent,\n  ItAvatarDirective,\n  ItAvatarExtraTextDirective,\n  ItAvatarWrapperDirective,\n  ItAvatarStatusDirective,\n  ItAvatarPresenceDirective,\n  ItAvatarListItemDirective,\n]"
                 }
             ],
             "projects/design-angular-kit/src/lib/components/form/transfer/store/transfer.reducers.ts": [
@@ -43917,7 +44623,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n]",
+                    "defaultValue": "[\n  ItBackButtonComponent,\n  ItBackToTopComponent,\n  ItBreadcrumbsModule,\n  ItHeaderComponent,\n  ItFooterComponent,\n  ItNavBarModule,\n  ItSidebarComponent,\n  ItMegamenuComponent,\n  ItSkiplinkModule,\n  ItNavscrollComponent,\n]",
                     "rawdescription": "Navigation Components",
                     "description": "<p>Navigation Components</p>\n"
                 },
@@ -44047,7 +44753,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "[\n  'arrow-down',\n  'arrow-down-circle',\n  'arrow-down-triangle',\n  'arrow-left',\n  'arrow-left-circle',\n  'arrow-left-triangle',\n  'arrow-right',\n  'arrow-right-circle',\n  'arrow-right-triangle',\n  'arrow-up',\n  'arrow-up-circle',\n  'arrow-up-triangle',\n  'ban',\n  'bookmark',\n  'box',\n  'burger',\n  'calendar',\n  'camera',\n  'card',\n  'chart-line',\n  'check',\n  'check-circle',\n  'chevron-left',\n  'chevron-right',\n  'clip',\n  'clock',\n  'close',\n  'close-big',\n  'close-circle',\n  'code-circle',\n  'comment',\n  'copy',\n  'delete',\n  'download',\n  'error',\n  'exchange-circle',\n  'expand',\n  'external-link',\n  'flag',\n  'folder',\n  'fullscreen',\n  'funnel',\n  'hearing',\n  'help',\n  'help-circle',\n  'horn',\n  'inbox',\n  'info-circle',\n  'key',\n  'link',\n  'list',\n  'locked',\n  'logout',\n  'mail',\n  'mail-open',\n  'map-marker',\n  'map-marker-circle',\n  'map-marker-minus',\n  'map-marker-plus',\n  'maximize',\n  'maximize-alt',\n  'minimize',\n  'minus',\n  'minus-circle',\n  'more-actions',\n  'more-items',\n  'note',\n  'pa',\n  'password-invisible',\n  'password-visible',\n  'pencil',\n  'piattaforme',\n  'pin',\n  'plug',\n  'plus',\n  'plus-circle',\n  'presentation',\n  'print',\n  'refresh',\n  'restore',\n  'rss',\n  'rss-square',\n  'search',\n  'settings',\n  'share',\n  'software',\n  'star-full',\n  'star-outline',\n  'telephone',\n  'tool',\n  'unlocked',\n  'upload',\n  'user',\n  'video',\n  'warning',\n  'warning-circle',\n  'wifi',\n  'zoom-in',\n  'zoom-out',\n\n  // Files\n  'file',\n  'files',\n  'file-audio',\n  'file-compressed',\n  'file-csv',\n  'file-json',\n  'file-odp',\n  'file-ods',\n  'file-odt',\n  'file-pdf',\n  'file-pdf-ext',\n  'file-sheet',\n  'file-slides',\n  'file-ppt',\n  'file-txt',\n  'file-video',\n  'file-xml',\n\n  // Platforms\n  'behance',\n  'facebook',\n  'facebook-square',\n  'figma',\n  'figma-square',\n  'flickr',\n  'flickr-square',\n  'github',\n  'instagram',\n  'linkedin',\n  'linkedin-square',\n  'mastodon',\n  'mastodon-square',\n  'medium',\n  'medium-square',\n  'moodle',\n  'moodle-square',\n  'pinterest',\n  'pinterest-square',\n  'quora',\n  'quora-square',\n  'reddit',\n  'reddit-square',\n  'slack',\n  'slack-square',\n  'snapchat',\n  'snapchat-square',\n  'stackexchange',\n  'stackexchange-square',\n  'stackoverflow',\n  'stackoverflow-square',\n  'telegram',\n  'threads',\n  'threads-square',\n  'tiktok',\n  'tiktok-square',\n  'twitter',\n  'twitter-square',\n  'vimeo',\n  'vimeo-square',\n  'whatsapp',\n  'whatsapp-square',\n  'youtube',\n  'google',\n\n  // Extra\n  'designers-italia',\n  'team-digitale',\n] as const"
+                    "defaultValue": "[\n  'arrow-down',\n  'arrow-down-circle',\n  'arrow-down-triangle',\n  'arrow-left',\n  'arrow-left-circle',\n  'arrow-left-triangle',\n  'arrow-right',\n  'arrow-right-circle',\n  'arrow-right-triangle',\n  'arrow-up',\n  'arrow-up-circle',\n  'arrow-up-triangle',\n  'ban',\n  'bluesky',\n  'bookmark',\n  'box',\n  'burger',\n  'calendar',\n  'camera',\n  'car',\n  'card',\n  'cart',\n  'chart-line',\n  'check',\n  'check-circle',\n  'chevron-left',\n  'chevron-right',\n  'clip',\n  'clock',\n  'close',\n  'close-big',\n  'close-circle',\n  'code-circle',\n  'comment',\n  'copy',\n  'delete',\n  'download',\n  'error',\n  'exchange-circle',\n  'expand',\n  'external-link',\n  'flag',\n  'folder',\n  'fullscreen',\n  'funnel',\n  'hearing',\n  'help',\n  'help-circle',\n  'horn',\n  'inbox',\n  'info-circle',\n  'key',\n  'link',\n  'list',\n  'locked',\n  'logout',\n  'mail',\n  'mail-open',\n  'map-marker',\n  'map-marker-circle',\n  'map-marker-minus',\n  'map-marker-plus',\n  'maximize',\n  'maximize-alt',\n  'minimize',\n  'minus',\n  'minus-circle',\n  'more-actions',\n  'more-items',\n  'note',\n  'pa',\n  'password-invisible',\n  'password-visible',\n  'pencil',\n  'piattaforme',\n  'pin',\n  'plug',\n  'plus',\n  'plus-circle',\n  'presentation',\n  'print',\n  'refresh',\n  'restore',\n  'rss',\n  'rss-square',\n  'search',\n  'settings',\n  'share',\n  'sign',\n  'software',\n  'star-full',\n  'star-outline',\n  'telephone',\n  'tool',\n  'unlocked',\n  'upload',\n  'user',\n  'video',\n  'warning',\n  'warning-circle',\n  'wifi',\n  'zoom-in',\n  'zoom-out',\n\n  // Files\n  'file',\n  'files',\n  'file-audio',\n  'file-compressed',\n  'file-csv',\n  'file-docx',\n  'file-json',\n  'file-image',\n  'file-odp',\n  'file-ods',\n  'file-odt',\n  'file-pdf',\n  'file-pdf-ext',\n  'file-sheet',\n  'file-slides',\n  'file-ppt',\n  'file-signed',\n  'file-txt',\n  'file-video',\n  'file-xlsx',\n  'file-xml',\n\n  // Platforms\n  'behance',\n  'android-square',\n  'android',\n  'apple-square',\n  'apple',\n  'facebook',\n  'facebook-square',\n  'figma',\n  'figma-square',\n  'flickr',\n  'flickr-square',\n  'github',\n  'instagram',\n  'linkedin',\n  'linkedin-square',\n  'mastodon',\n  'mastodon-square',\n  'medium',\n  'medium-square',\n  'moodle',\n  'moodle-square',\n  'pinterest',\n  'pinterest-square',\n  'quora',\n  'quora-square',\n  'reddit',\n  'reddit-square',\n  'slack',\n  'slack-square',\n  'snapchat',\n  'snapchat-square',\n  'stackexchange',\n  'stackexchange-square',\n  'stackoverflow',\n  'stackoverflow-square',\n  'telegram',\n  'threads',\n  'threads-square',\n  'tiktok',\n  'tiktok-square',\n  'twitter',\n  'twitter-square',\n  'vimeo',\n  'vimeo-square',\n  'whatsapp',\n  'whatsapp-square',\n  'youtube',\n  'google',\n  'spotify',\n\n  // Extra\n  'designers-italia',\n  'team-digitale',\n] as const"
                 }
             ],
             "projects/design-angular-kit/src/lib/interfaces/design-angular-kit-config.ts": [
@@ -44794,7 +45500,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "57afa8eb-9ca9-4595-98cd-e52326c3d592",
+                            "destrucuredGroupId": "959e3cf7-df5b-44f1-9f4e-aad1af86c0c2",
                             "destructuredParameter": true
                         }
                     ],
@@ -44804,7 +45510,7 @@
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "57afa8eb-9ca9-4595-98cd-e52326c3d592",
+                            "destrucuredGroupId": "959e3cf7-df5b-44f1-9f4e-aad1af86c0c2",
                             "destructuredParameter": true,
                             "tagName": {
                                 "text": "param"
@@ -45817,7 +46523,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 34,
+        "count": 33,
         "status": "medium",
         "files": [
             {
@@ -46260,6 +46966,15 @@
                 "status": "good"
             },
             {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-extra-text.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ItAvatarExtraTextDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -46275,6 +46990,42 @@
                 "name": "ItAvatarGroupItemComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-group/avatar-group.component.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ItAvatarListItemDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-presence.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ItAvatarPresenceDirective",
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-status.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ItAvatarStatusDirective",
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/core/avatar/avatar-wrapper.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ItAvatarWrapperDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -46466,8 +47217,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItListItemComponent",
-                "coveragePercent": 66,
-                "coverageCount": "14/21",
+                "coveragePercent": 63,
+                "coverageCount": "14/22",
                 "status": "good"
             },
             {
@@ -46734,8 +47485,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ItVideoPlayerComponent",
-                "coveragePercent": 19,
-                "coverageCount": "6/31",
+                "coveragePercent": 18,
+                "coverageCount": "6/32",
                 "status": "low"
             },
             {
@@ -47260,6 +48011,15 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
+            },
+            {
+                "filePath": "projects/design-angular-kit/src/lib/components/navigation/footer/footer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ItFooterComponent",
+                "coveragePercent": 40,
+                "coverageCount": "4/10",
+                "status": "medium"
             },
             {
                 "filePath": "projects/design-angular-kit/src/lib/components/navigation/header/header.component.ts",
