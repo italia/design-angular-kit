@@ -2,7 +2,7 @@ import { Rule, SchematicContext, Tree, callRule } from '@angular-devkit/schemati
 import { isStandaloneApp } from '@angular/cdk/schematics';
 import { addRootImport, addRootProvider, readWorkspace } from '@schematics/angular/utility';
 import { getMainFilePath } from '@schematics/angular/utility/standalone/util';
-import { firstValueFrom, map } from 'rxjs';
+import { firstValueFrom, map, OperatorFunction } from 'rxjs';
 import { Schema } from '../../schema';
 import { NoMainFileException, NoProjectException } from './exceptions';
 
@@ -29,7 +29,7 @@ export function addDesignAngularKit(options: Schema): Rule {
       ? addRootImport(projectName, ({ code, external }) => code`${external('DesignAngularKitModule', 'design-angular-kit')}.forRoot()\n`)
       : addRootProvider(projectName, ({ code, external }) => code`${external('provideDesignAngularKit', 'design-angular-kit')}()`);
 
-    return firstValueFrom(
+    return firstValueFrom<OperatorFunction<Tree, undefined>>(
       callRule(rule, host, context).pipe(
         map(() => {
           return (): Rule => () => {};

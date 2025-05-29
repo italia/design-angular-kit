@@ -88,6 +88,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.1.8",
+    "@angular-devkit/core": "^19.2.14",
     "@angular-eslint/builder": "19.1.0",
     "@angular-eslint/eslint-plugin": "19.1.0",
     "@angular-eslint/eslint-plugin-template": "19.1.0",
