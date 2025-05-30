@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-toggle-example',
   templateUrl: './toggle-example.component.html',
   styleUrls: ['./toggle-example.component.scss'],
+  standalone: false,
 })
 export class ToggleExampleComponent {
   checked = true;

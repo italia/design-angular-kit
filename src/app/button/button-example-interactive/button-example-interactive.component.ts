@@ -5,6 +5,7 @@ import { ButtonColor, ButtonSize } from 'design-angular-kit/interfaces/core';
   selector: 'it-button-example-interactive',
   templateUrl: './button-example-interactive.component.html',
   styleUrls: ['./button-example-interactive.component.scss'],
+  standalone: false,
 })
 export class ButtonExampleInteractiveComponent {
   disabled = false;

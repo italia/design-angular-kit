@@ -5,6 +5,7 @@ import { IconName } from 'design-angular-kit/interfaces/icon';
   selector: 'it-form-input-icon-example',
   templateUrl: './form-input-icon.component.html',
   styleUrls: ['./form-input-icon.component.scss'],
+  standalone: false,
 })
 export class FormInputIconExampleComponent {
   i = 0;

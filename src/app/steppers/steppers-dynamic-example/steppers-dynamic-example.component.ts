@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-steppers-dynamic-example',
   templateUrl: './steppers-dynamic-example.component.html',
+  standalone: false,
 })
 export class SteppersDynamicExampleComponent {
   /**

@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-progress-bar-bg',
   templateUrl: './progress-bar-bg.component.html',
   styleUrls: ['./progress-bar-bg.component.scss'],
+  standalone: false,
 })
 export class ProgressBarBgComponent {}

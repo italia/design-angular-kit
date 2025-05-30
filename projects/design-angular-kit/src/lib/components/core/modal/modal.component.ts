@@ -10,7 +10,6 @@ import { inputToBoolean } from '../../../utils/coercion';
  * @description To show featured content, notifications to users, or personalized content.
  */
 @Component({
-  standalone: true,
   selector: 'it-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],

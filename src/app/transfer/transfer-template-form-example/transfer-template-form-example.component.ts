@@ -4,6 +4,7 @@ import { TransferItem } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-transfer-template-form-example',
   templateUrl: './transfer-template-form-example.component.html',
+  standalone: false,
 })
 export class TransferTemplateFormExampleComponent {
   readonly options: TransferItem<number>[] = [

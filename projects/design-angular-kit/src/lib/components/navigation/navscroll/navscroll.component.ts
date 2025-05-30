@@ -24,7 +24,6 @@ import { NavscrollStore } from './navscroll.store';
  */
 @Component({
   selector: 'it-navscroll',
-  standalone: true,
   imports: [
     ItNavscrollListItemsComponent,
     AsyncPipe,

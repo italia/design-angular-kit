@@ -1,5 +1,12 @@
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { APP_INITIALIZER, EnvironmentProviders, importProvidersFrom, makeEnvironmentProviders, Provider } from '@angular/core';
+import {
+  EnvironmentProviders,
+  importProvidersFrom,
+  makeEnvironmentProviders,
+  Provider,
+  provideAppInitializer,
+  inject,
+} from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -29,15 +36,16 @@ export function provideDesignAngularKit(config?: DesignAngularKitConfig): Enviro
 
   if (config?.loadFont !== false) {
     // Add provider to initialize the bootstrap-italia font
-    providers.push({
-      provide: APP_INITIALIZER,
-      useFactory: () => {
-        return () => {
-          loadFonts(`${assetBasePath}/dist/fonts`);
-        };
-      },
-      multi: true,
-    });
+    providers.push(
+      provideAppInitializer(() => {
+        const initializerFn = (() => {
+          return () => {
+            loadFonts(`${assetBasePath}/dist/fonts`);
+          };
+        })();
+        return initializerFn();
+      })
+    );
   }
 
   // Add provider to initialize the TranslateModule
@@ -58,16 +66,16 @@ export function provideDesignAngularKit(config?: DesignAngularKitConfig): Enviro
   );
 
   // Add provider to initialize library default languages
-  providers.push({
-    provide: APP_INITIALIZER,
-    useFactory: (translateService: TranslateService) => {
-      return () => {
-        translateService.addLangs(['it', 'en']); // Adds 'it' and 'en' as available languages.
-      };
-    },
-    multi: true,
-    deps: [TranslateService],
-  });
+  providers.push(
+    provideAppInitializer(() => {
+      const initializerFn = ((translateService: TranslateService) => {
+        return () => {
+          translateService.addLangs(['it', 'en']); // Adds 'it' and 'en' as available languages.
+        };
+      })(inject(TranslateService));
+      return initializerFn();
+    })
+  );
 
   return makeEnvironmentProviders(providers);
 }

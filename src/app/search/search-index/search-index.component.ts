@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-search-index',
   templateUrl: './search-index.component.html',
+  standalone: false,
 })
 export class SearchIndexComponent {
   component: any;

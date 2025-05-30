@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-tooltip-index',
   templateUrl: './tooltip-index.component.html',
   styleUrls: ['./tooltip-index.component.scss'],
+  standalone: false,
 })
 export class TooltipIndexComponent {
   directive: any;

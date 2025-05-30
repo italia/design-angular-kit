@@ -19,7 +19,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
 
 @Component({
-  standalone: true,
   selector: 'it-upload-drag-drop',
   templateUrl: './upload-drag-drop.component.html',
   exportAs: 'itUploadDragDrop',

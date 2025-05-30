@@ -4,6 +4,7 @@ import { CalloutAppearance } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-callout-hightlights',
   templateUrl: './callout-hightlights.component.html',
+  standalone: false,
 })
 export class CalloutHightlightsComponent {
   appearance: CalloutAppearance = 'highlight';

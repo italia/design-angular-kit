@@ -6,7 +6,6 @@ import { NavscrollItems } from './navscroll.model';
 
 @Component({
   selector: 'it-navscroll-list-items',
-  standalone: true,
   imports: [NgTemplateOutlet, RouterLink, RouterLinkActive, RouterLinkWithHref, JsonPipe, ItNavscrollListItemComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `

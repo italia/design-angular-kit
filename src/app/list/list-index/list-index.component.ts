@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-list-index',
   templateUrl: './list-index.component.html',
+  standalone: false,
 })
 export class ListIndexComponent {
   component: any;

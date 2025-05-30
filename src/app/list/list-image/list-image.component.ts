@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-list-image',
   templateUrl: './list-image.component.html',
   styleUrls: ['./list-image.component.scss'],
+  standalone: false,
 })
 export class ListImageComponent {}

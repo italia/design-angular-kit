@@ -4,6 +4,7 @@ import { TransferItem } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-transfer-default-example',
   templateUrl: './transfer-default-example.component.html',
+  standalone: false,
 })
 export class TransferDefaultExampleComponent {
   readonly options: TransferItem<number>[] = [

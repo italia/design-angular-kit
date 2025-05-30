@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
   selector: 'it-template-driven-validation-example',
   templateUrl: './template-driven-validation-example.component.html',
   styleUrls: ['./template-driven-validation-example.component.scss'],
+  standalone: false,
 })
 export class TemplateDrivenValidationExampleComponent {
   value = '';

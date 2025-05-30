@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-popover-index',
   templateUrl: './popover-index.component.html',
   styleUrls: ['./popover-index.component.scss'],
+  standalone: false,
 })
 export class PopoverIndexComponent {
   directive: any;

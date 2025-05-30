@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-router-dispatcher',
   templateUrl: './router-dispatcher.component.html',
   styleUrls: ['./router-dispatcher.component.scss'],
+  standalone: false,
 })
 export class RouterDispatcherComponent {
   constructor() {}

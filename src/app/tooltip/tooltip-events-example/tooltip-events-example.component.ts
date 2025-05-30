@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-tooltip-events-example',
   templateUrl: './tooltip-events-example.component.html',
   styleUrls: ['./tooltip-events-example.component.scss'],
+  standalone: false,
 })
 export class TooltipEventsExampleComponent {
   showTime = '';

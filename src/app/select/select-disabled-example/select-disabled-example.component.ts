@@ -5,6 +5,7 @@ import { SelectControlOption } from 'projects/design-angular-kit/src/public_api'
   selector: 'it-select-disabled-example',
   templateUrl: './select-disabled-example.component.html',
   styleUrls: ['./select-disabled-example.component.scss'],
+  standalone: false,
 })
 export class SelectDisabledExampleComponent {
   selectOptions: Array<SelectControlOption> = [

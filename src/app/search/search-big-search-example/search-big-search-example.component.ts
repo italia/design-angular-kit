@@ -4,5 +4,6 @@ import { SearchSearchExampleComponent } from '../search-search-example/search-se
 @Component({
   selector: 'it-search-big-search-example',
   templateUrl: './search-big-search-example.component.html',
+  standalone: false,
 })
 export class SearchBigSearchExampleComponent extends SearchSearchExampleComponent {}

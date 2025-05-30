@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'it-error-page-route-example',
   templateUrl: './error-page-route-example.component.html',
+  standalone: false,
 })
 export class ErrorPageRouteExampleComponent {
   readonly notFound =

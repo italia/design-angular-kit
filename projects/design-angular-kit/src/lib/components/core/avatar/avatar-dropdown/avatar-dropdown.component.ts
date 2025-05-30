@@ -4,7 +4,6 @@ import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'it-avatar-dropdown-item',
   template: '<ng-template><ng-content></ng-content></ng-template>',
   styleUrls: ['./avatar-dropdown.component.scss'],
@@ -37,7 +36,6 @@ export class ItAvatarDropdownItemComponent {
 }
 
 @Component({
-  standalone: true,
   selector: 'it-avatar-dropdown',
   templateUrl: './avatar-dropdown.component.html',
   styleUrls: ['./avatar-dropdown.component.scss'],

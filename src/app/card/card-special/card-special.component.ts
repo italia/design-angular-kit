@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-card-special',
   templateUrl: './card-special.component.html',
   styleUrls: ['./card-special.component.scss'],
+  standalone: false,
 })
 export class CardSpecialComponent {}

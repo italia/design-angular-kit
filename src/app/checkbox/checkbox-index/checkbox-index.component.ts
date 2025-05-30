@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-checkbox-index',
   templateUrl: './checkbox-index.component.html',
   styleUrls: ['./checkbox-index.component.scss'],
+  standalone: false,
 })
 export class CheckboxIndexComponent {
   component: any;

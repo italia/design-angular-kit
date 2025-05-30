@@ -22,7 +22,6 @@ import { ItProgressButtonComponent } from '../../progress-button/progress-button
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-steppers-container',
   templateUrl: './steppers-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

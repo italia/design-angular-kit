@@ -5,6 +5,7 @@ import { ElementPlacement } from 'design-angular-kit/interfaces/core';
   selector: 'it-popover-interactive-example',
   templateUrl: './popover-interactive-example.component.html',
   styleUrls: ['./popover-interactive-example.component.scss'],
+  standalone: false,
 })
 export class PopoverInteractiveExampleComponent {
   placement: ElementPlacement = 'right';

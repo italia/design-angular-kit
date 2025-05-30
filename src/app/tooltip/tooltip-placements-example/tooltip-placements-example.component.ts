@@ -5,6 +5,7 @@ import { ElementPlacement } from 'design-angular-kit/interfaces/core';
   selector: 'it-tooltip-placements-example',
   templateUrl: './tooltip-placements-example.component.html',
   styleUrls: ['./tooltip-placements-example.component.scss'],
+  standalone: false,
 })
 export class TooltipPlacementsExampleComponent {
   currentPlacement: ElementPlacement = 'right';

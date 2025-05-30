@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-go-to-top-index',
   templateUrl: './footer-index.component.html',
+  standalone: false,
 })
 export class FooterIndexComponent {
   component: any;

@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-icon-index',
   templateUrl: './icon-index.component.html',
+  standalone: false,
 })
 export class IconIndexComponent {
   component: any;

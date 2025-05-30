@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-autocomplete-index',
   templateUrl: './autocomplete-index.component.html',
+  standalone: false,
   styleUrls: ['./autocomplete-index.component.scss'],
 })
 export class AutocompleteIndexComponent {

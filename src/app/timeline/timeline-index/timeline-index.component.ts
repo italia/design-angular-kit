@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-timeline-index',
   templateUrl: './timeline-index.component.html',
+  standalone: false,
 })
 export class TimelineIndexComponent {
   component: any;

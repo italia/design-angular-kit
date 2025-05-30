@@ -5,6 +5,7 @@ import { IconColor, IconName } from 'design-angular-kit/interfaces/icon';
   selector: 'it-button-example-icon',
   templateUrl: './button-example-icon.component.html',
   styleUrls: ['./button-example-icon.component.scss'],
+  standalone: false,
 })
 export class ButtonExampleIconComponent {
   block = false;

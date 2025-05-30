@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-button-index',
   templateUrl: './button-index.component.html',
   styleUrls: ['./button-index.component.scss'],
+  standalone: false,
 })
 export class ButtonIndexComponent {
   component: any;

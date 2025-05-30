@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-table-index',
   templateUrl: './table-index.component.html',
+  standalone: false,
 })
 export class TableIndexComponent {
   component: any;

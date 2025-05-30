@@ -15,7 +15,6 @@ import { distinctUntilChanged, startWith, Subscription } from 'rxjs';
 
 @Component({
   selector: 'it-range',
-  standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './range.component.html',
   styleUrls: ['./range.component.scss'],

@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-checkbox',
   templateUrl: './checkbox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -5,6 +5,7 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-collapse-index',
   templateUrl: './collapse-index.component.html',
   styleUrls: ['./collapse-index.component.scss'],
+  standalone: false,
 })
 export class CollapseIndexComponent {
   collapseComponent: any;

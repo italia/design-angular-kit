@@ -4,6 +4,7 @@ import { IconName, IconSize } from 'projects/design-angular-kit/src/public_api';
 @Component({
   selector: 'it-dimmer-example',
   templateUrl: './dimmer-example.component.html',
+  standalone: false,
 })
 export class DimmerExampleComponent {
   text =

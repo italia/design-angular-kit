@@ -4,7 +4,6 @@ import { inputToBoolean } from '../../../../utils/coercion';
 import { ItLinkComponent } from '../../link/link.component';
 
 @Component({
-  standalone: true,
   selector: 'it-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],

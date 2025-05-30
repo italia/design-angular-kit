@@ -4,6 +4,7 @@ import { ItEmbedVideoPlayerOptions } from 'projects/design-angular-kit/src/publi
 @Component({
   selector: 'it-video-player-embed-example',
   templateUrl: './video-player-embed-example.component.html',
+  standalone: false,
 })
 export class VideoPlayerEmbedExampleComponent {
   readonly options = {

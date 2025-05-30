@@ -4,7 +4,6 @@ import { IconName } from '../../../../interfaces/icon';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-tab-item',
   templateUrl: './tab-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-error-page-index',
   templateUrl: './error-page-index.component.html',
+  standalone: false,
 })
 export class ErrorPageIndexComponent {
   component: any;

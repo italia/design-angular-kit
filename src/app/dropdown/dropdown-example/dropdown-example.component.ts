@@ -5,6 +5,7 @@ import { ButtonColor, DropdownDirection } from 'design-angular-kit/interfaces/co
   selector: 'it-dropdown-example',
   templateUrl: './dropdown-example.component.html',
   styleUrls: ['./dropdown-example.component.scss'],
+  standalone: false,
 })
 export class DropdownExampleComponent {
   color?: ButtonColor;
