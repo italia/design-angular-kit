@@ -65,5 +65,8 @@
   "devDependencies": {
     "copyfiles": "file:../../node_modules/copyfiles",
     "typescript": "file:../../node_modules/typescript"
+  },
+  "overrides": {
+    "rxjs": "^7.8.2"
   }
 }

@@ -3,7 +3,7 @@ import { chain, Rule, SchematicContext, Tree } from '@angular-devkit/schematics'
 import { addAnimations, addAssets, addDesignAngularKit, addHttpClient, addImportToStyleFile, addLocalisation } from './rules/setup-project';
 import { Schema } from './schema';
 
-import { getProjectFromWorkspace } from '@angular/cdk/schematics/utils/get-project';
+import { getProjectFromWorkspace } from '@angular/cdk/schematics';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { ProjectType } from '@schematics/angular/utility/workspace-models';
 

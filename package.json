@@ -135,5 +135,8 @@
     "replace-in-file": "^8.3.0",
     "ts-node": "~10.9.2",
     "typescript": "~5.7.3"
+  },
+  "overrides": {
+    "rxjs": "^7.8.2"
   }
 }
