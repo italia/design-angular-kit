@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './autocomplete-examples.component.html',
   standalone: false,
   styleUrls: ['./autocomplete-examples.component.scss'],
+  standalone: false,
 })
 export class AutocompleteExamplesComponent {
   constructor() {}

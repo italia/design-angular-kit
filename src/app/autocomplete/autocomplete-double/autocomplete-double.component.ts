@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-autocomplete-double',
   templateUrl: './autocomplete-double.component.html',
   styleUrls: ['./autocomplete-double.component.scss'],
+  standalone: false,
 })
 export class AutocompleteDoubleComponent {
   categories = ['Frutta', 'Verdura'];
