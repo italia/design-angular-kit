@@ -1,55 +1,15 @@
-<div class="form-group" [class.autocomplete-wrapper-big]="big">
+<div class="form-group">
   @if (label) {
-    <label [for]="id" [class.visually-hidden]="!isActiveLabel" [class.active]="isActiveLabel">
-      {{ label }}
-    </label>
+    <label [for]="id" [class.active]="!!control.value">{{ label }}</label>
   }
+  <div #selectAutocomplete name="region" [id]="id + 'Wrapper'" class="autocomplete-wrapper"></div>
 
-  <input
-    [id]="id"
-    type="search"
-    class="autocomplete form-control"
-    [placeholder]="placeholder"
-    [formControl]="control"
-    [class.is-invalid]="isInvalid"
-    [class.is-valid]="isValid"
-    (blur)="markAsTouched()"
-    (keydown)="onKeyDown()" />
-
-  <span class="autocomplete-icon" aria-hidden="true">
-    <it-icon [labelWaria]="labelWaria" name="search" size="sm"></it-icon>
-  </span>
-
-  @if (autocompleteResults$ | async; as autocomplete) {
-    <ul class="autocomplete-list" [class.autocomplete-list-show]="autocomplete.relatedEntries?.length && showAutocompletion">
-      @for (entry of autocomplete.relatedEntries; track autocompleteItemTrackByValueFn($index, entry)) {
-        <li>
-          <a [href]="entry.link" (click)="onEntryClick(entry, $event)">
-            @if (entry.avatarSrcPath) {
-              <div class="avatar size-sm">
-                <img [src]="entry.avatarSrcPath" [alt]="entry.avatarAltText" />
-              </div>
-            }
-            @if (entry.icon) {
-              <it-icon [name]="entry.icon" size="sm"></it-icon>
-            }
-            <span class="autocomplete-list-text">
-              <span [innerHTML]="entry.value | itMarkMatchingText: autocomplete.searchedValue"></span>
-              @if (entry.label) {
-                <em>{{ entry.label }}</em>
-              }
-            </span>
-          </a>
-        </li>
-      }
-    </ul>
+  @if (description) {
+    <small [id]="id + '-description'" class="form-text">{{ description }}</small>
   }
-
   @if (isInvalid) {
     <div class="form-feedback just-validate-error-label" [id]="id + '-error'">
-      <div #customError>
-        <ng-content select="[error]"></ng-content>
-      </div>
+      <div #customError><ng-content select="[error]"></ng-content></div>
       @if (!customError.hasChildNodes()) {
         {{ invalidMessage | async }}
       }

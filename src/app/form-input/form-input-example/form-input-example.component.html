@@ -12,8 +12,7 @@
         [readonly]="readOnly"
         [type]="type !== 'password' ? type : 'text'"
         [(ngModel)]="value"
-        [description]="note">
-      </it-input>
+        [description]="note"></it-input>
       <it-password-input
         *ngIf="type === 'password'"
         [label]="label"

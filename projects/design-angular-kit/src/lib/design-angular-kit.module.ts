@@ -1,4 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ItVideoPlayerComponent } from './components/core/video-player/video-player.component';
 import { ItAccordionComponent } from './components/core/accordion/accordion.component';
 import { ItAlertComponent } from './components/core/alert/alert.component';
 import { ItAvatarModule } from './components/core/avatar/avatar.module';
@@ -31,10 +32,12 @@ import { ItBackButtonComponent } from './components/navigation/back-button/back-
 import { ItBackToTopComponent } from './components/navigation/back-to-top/back-to-top.component';
 import { ItBreadcrumbsModule } from './components/navigation/breadcrumbs/breadcrumbs.module';
 import { ItHeaderComponent } from './components/navigation/header/header.component';
+import { ItFooterComponent } from './components/navigation/footer/footer.component';
 import { ItMegamenuComponent } from './components/navigation/megamenu/megamenu.component';
 import { ItNavBarModule } from './components/navigation/navbar/navbar.module';
 import { ItNavscrollComponent } from './components/navigation/navscroll/navscroll.component';
 import { ItSidebarComponent } from './components/navigation/sidebar/sidebar.component';
+import { ItSkiplinkModule } from './components/navigation/skiplink/skiplink.module';
 import { ItErrorPageComponent } from './components/utils/error-page/error-page.component';
 import { ItIconComponent } from './components/utils/icon/icon.component';
 import { ItLanguageSwitcherComponent } from './components/utils/language-switcher/language-switcher.component';
@@ -42,7 +45,6 @@ import { DesignAngularKitConfig } from './interfaces/design-angular-kit-config';
 import { ItDateAgoPipe } from './pipes/date-ago.pipe';
 import { ItDurationPipe } from './pipes/duration.pipe';
 import { ItMarkMatchingTextPipe } from './pipes/mark-matching-text.pipe';
-import { ItSkiplinkModule } from './components/navigation/skiplink/skiplink.module';
 import { provideDesignAngularKit } from './provide-design-angular-kit';
 
 /**
@@ -76,6 +78,7 @@ const core = [
   ItTableModule,
   ItTooltipDirective,
   ItTimelineModule,
+  ItVideoPlayerComponent,
 ];
 
 /**
@@ -86,6 +89,7 @@ const navigation = [
   ItBackToTopComponent,
   ItBreadcrumbsModule,
   ItHeaderComponent,
+  ItFooterComponent,
   ItNavBarModule,
   ItSidebarComponent,
   ItMegamenuComponent,

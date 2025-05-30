@@ -10,7 +10,11 @@ export * from './lib/components/core/accordion/accordion.component';
 export * from './lib/components/core/alert/alert.component';
 
 export * from './lib/components/core/avatar/avatar-dropdown/avatar-dropdown.component';
+export * from './lib/components/core/avatar/avatar-extra-text.directive';
 export * from './lib/components/core/avatar/avatar-group/avatar-group.component';
+export * from './lib/components/core/avatar/avatar-presence.directive';
+export * from './lib/components/core/avatar/avatar-status.directive';
+export * from './lib/components/core/avatar/avatar-wrapper.directive';
 export * from './lib/components/core/avatar/avatar.directive';
 export * from './lib/components/core/avatar/avatar.module';
 
@@ -67,6 +71,10 @@ export * from './lib/components/core/timeline/timeline-item/timeline-item.compon
 export * from './lib/components/core/timeline/timeline.component';
 export * from './lib/components/core/timeline/timeline.module';
 
+export * from './lib/components/core/video-player/video-player.component';
+export * from './lib/components/core/video-player/video-player.model';
+export * from './lib/components/core/video-player/video-player.module';
+
 export * from './lib/components/core/tooltip/tooltip.directive';
 
 // Forms components
@@ -78,6 +86,7 @@ export * from './lib/components/form/password-input/password-input.component';
 export * from './lib/components/form/radio-button/radio-button.component';
 export * from './lib/components/form/range/range.component';
 export * from './lib/components/form/rating/rating.component';
+export * from './lib/components/form/search/search.component';
 export * from './lib/components/form/select/select.component';
 export * from './lib/components/form/textarea/textarea.component';
 export * from './lib/components/form/transfer/transfer.component';
@@ -94,6 +103,7 @@ export * from './lib/components/navigation/breadcrumbs/breadcrumb/breadcrumb.com
 export * from './lib/components/navigation/breadcrumbs/breadcrumbs.module';
 
 export * from './lib/components/navigation/header/header.component';
+export * from './lib/components/navigation/footer/footer.component';
 export * from './lib/components/navigation/megamenu/megamenu.component';
 
 export * from './lib/components/navigation/navbar/navbar-item/navbar-item.component';
@@ -105,9 +115,9 @@ export * from './lib/components/navigation/navscroll/navscroll.model';
 
 export * from './lib/components/navigation/sidebar/sidebar.component';
 
-export * from './lib/components/navigation/skiplink/skiplink/skiplink.component';
 export * from './lib/components/navigation/skiplink/skiplink-item/skiplink-item.component';
 export * from './lib/components/navigation/skiplink/skiplink.module';
+export * from './lib/components/navigation/skiplink/skiplink/skiplink.component';
 
 // Utils components
 export * from './lib/components/utils/error-page/error-page.component';

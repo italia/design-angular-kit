@@ -1,129 +1,180 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ItIconComponent } from '../../utils/icon/icon.component';
-import { ItMarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
-import { AutocompleteItem } from '../../../interfaces/form';
-import { inputToBoolean } from '../../../utils/coercion';
+import { AsyncPipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SelectAutocomplete } from 'bootstrap-italia';
+
+type functionSource = (query: string, populateResults: (results: string[]) => void) => void;
 
 @Component({
   selector: 'it-autocomplete',
   templateUrl: './autocomplete.component.html',
-  imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgTemplateOutlet, ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ReactiveFormsModule, AsyncPipe],
 })
-export class ItAutocompleteComponent extends ItAbstractFormComponent<string | null | undefined> implements OnInit {
+export class ItAutocompleteComponent extends ItAbstractFormComponent<string | null | undefined> {
   /**
-   * Indicates the list of searchable elements on which to base the input autocomplete system
-   * If you need to retrieve items via API, can pass a function of Observable
-   * @default undefined
+   * Autocomplete elements.
+   * @default []
    */
-  @Input({ required: true }) autocompleteData!: Array<AutocompleteItem> | ((search?: string | null) => Observable<Array<AutocompleteItem>>);
-
-  /**
-   * To get a large version of Autocomplete
-   */
-  @Input({ transform: inputToBoolean }) big?: boolean;
+  @Input() source: string[] | functionSource = [];
 
   /**
-   * Time span [ms] has passed without another source emission, to delay data filtering.
-   * Useful when the user is typing multiple letters
-   * @default 300 [ms]
+   * Autocomplete if required.
+   * @default false
    */
-  @Input() debounceTime = 300;
+  @Input() required: boolean = false;
 
   /**
-   * The input placeholder
+   * Input field name
    */
-  @Input() placeholder = '';
+  @Input() name: string | undefined;
 
   /**
-   * The input label even get labelWaria icon
+   * The input description
    */
-  @Input() labelWaria: string | undefined = undefined;
+  @Input() description: string | undefined;
 
   /**
-   * Show the label
+   * Prevents suggestions from appearing if fewer than N characters are typed
+   * @default 0
    */
-  @Input({ transform: inputToBoolean }) forceShowLabel: boolean = true;
+  @Input() minLength: number = 0;
 
   /**
-   * Fired when the Autocomplete Item has been selected
+   * Default value
    */
-  @Output() autocompleteSelectedEvent: EventEmitter<AutocompleteItem> = new EventEmitter();
+  @Input() defaultValue: string | null = '';
 
-  protected showAutocompletion = false;
+  /**
+   * Function to set assistive hint label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() assistiveHintLabel: () => string = () =>
+    'Quando i risultati del completamento automatico sono disponibili, usa le frecce su e giù per rivedere e Invio per selezionare. Utenti di dispositivi touch, esplora tramite tocco o con gesti di scorrimento';
 
-  /** Observable da cui vengono emessi i risultati dell'auto completamento */
-  protected autocompleteResults$: Observable<{
-    searchedValue: string | undefined | null;
-    relatedEntries: Array<AutocompleteItem>;
-  }> = new Observable();
+  /**
+   * Function to set label in case of no result. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() noResultsLabel: () => string = () => 'Nessun risultato trovato';
+
+  /**
+   * Function to set label that alerts you that query's too short. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() statusQueryTooShortLabel: (minQueryLength: number) => string = minQueryLength =>
+    `Digita ${minQueryLength} o più caratteri per mostrare le opzioni di ricerca`;
+
+  /**
+   * Function to set no results label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() statusNoResultsLabel: () => string = () => 'Nessun risultato di ricerca';
+
+  /**
+   * Function to set selected option label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() statusSelectedOptionLabel: (selectedOption: string, length: number, index: number) => string = (selectedOption, length, index) =>
+    `${selectedOption} ${index + 1} di ${length} è sottolineato`;
+
+  /**
+   * Function to set status results label. For more information https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file#internationalization
+   */
+  @Input() statusResultsLabel: (length: number, contentSelectedOption: string) => string = (length, contentSelectedOption) => {
+    const words = {
+      result: length === 1 ? 'risultato' : 'risultati',
+      is: length === 1 ? 'è' : 'sono',
+      available: length === 1 ? 'disponibile' : 'disponibili',
+    };
+
+    return `${length} ${words.result} ${words.is} ${words.available}. ${contentSelectedOption}`;
+  };
+
+  /**
+   * Fired when value changes
+   */
+  @Output() selected = new EventEmitter();
+
+  @ViewChild('selectAutocomplete') private selectAutocompleteEl?: ElementRef<HTMLButtonElement>;
+
+  private selectAutocomplete?: SelectAutocomplete;
+
+  private value: string | undefined = '';
+  private _interval: any = 0;
+  private _inputEl: HTMLElement | null = null;
 
   override ngOnInit() {
     super.ngOnInit();
-    this.autocompleteResults$ = this.getAutocompleteResults$();
-  }
-
-  /**
-   * Create the autocomplete list
-   */
-  private getAutocompleteResults$(): Observable<{
-    searchedValue: string | null | undefined;
-    relatedEntries: Array<AutocompleteItem>;
-  }> {
-    return this.control.valueChanges.pipe(
-      debounceTime(this.debounceTime), // Delay filter data after time span has passed without another source emission, useful when the user is typing multiple letters
-      distinctUntilChanged(), // Only if searchValue is distinct in comparison to the last value
-      switchMap(searchedValue => {
-        if (!this.autocompleteData) {
-          return of({
-            searchedValue,
-            relatedEntries: <Array<AutocompleteItem>>[],
-          });
-        }
-
-        const autoCompleteData$ = Array.isArray(this.autocompleteData) ? of(this.autocompleteData) : this.autocompleteData(searchedValue);
-        return autoCompleteData$.pipe(
-          map(autocompleteData => {
-            if (!searchedValue || typeof searchedValue === 'number') {
-              return { searchedValue, relatedEntries: [] };
-            }
-
-            const lowercaseValue = searchedValue.toLowerCase();
-            const relatedEntries = autocompleteData.filter(item => item.value?.toLowerCase().includes(lowercaseValue));
-
-            return { searchedValue, relatedEntries };
-          })
-        );
-      })
-    );
-  }
-
-  protected onEntryClick(entry: AutocompleteItem, event: Event) {
-    // Se non è stato definito un link associato all'elemento dell'autocomplete, probabilmente il desiderata
-    // non è effettuare la navigazione al default '#', pertanto in tal caso meglio annullare la navigazione.
-    if (!entry.link) {
-      event.preventDefault();
+    if (!this.control.value && !!this.value) {
+      this.writeValue(this.value);
+      this.onChange(this.value);
     }
-
-    this.autocompleteSelectedEvent.next(entry);
-    this.control.setValue(entry.value);
-    this.showAutocompletion = false;
   }
 
-  protected autocompleteItemTrackByValueFn(index: number, item: AutocompleteItem) {
-    return item.value;
+  clear() {
+    (this._inputEl as HTMLInputElement).value = '';
   }
 
-  protected onKeyDown() {
-    this.showAutocompletion = true;
+  _findInput() {
+    this._interval = setInterval(() => {
+      this._inputEl = document.getElementById(this.id);
+      if (this._inputEl) {
+        clearInterval(this._interval);
+        this._initInputEl();
+      }
+    }, 500);
   }
 
-  protected get isActiveLabel(): boolean {
-    const value = this.control.value;
-    return this.forceShowLabel && (!!value || !!this.placeholder);
+  private _setAndCheck(value: string) {
+    this.value = value == '' ? undefined : value;
+    if (this.control.touched) {
+      this.writeValue(this.value);
+      this.onChange(this.value);
+    }
+    if (this.isValid == false && this.isInvalid == false) {
+      this._inputEl?.classList.remove('just-validate-success-field');
+      this._inputEl?.classList.remove('is-invalid');
+    } else if (this.isValid == true) {
+      this._inputEl?.classList.add('just-validate-success-field');
+      this._inputEl?.classList.remove('is-invalid');
+    } else if (this.isInvalid == true) {
+      this._inputEl?.classList.add('is-invalid');
+      this._inputEl?.classList.remove('just-validate-success-field');
+    }
+  }
+
+  private _initInputEl() {
+    if (this._inputEl) {
+      this._inputEl.onfocus = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+      this._inputEl.onblur = (ev: Event) => this._setAndCheck((ev.target as HTMLInputElement).value);
+      this._inputEl.oninput = (ev: Event) => {
+        this.markAsTouched();
+        this._setAndCheck((ev.target as HTMLInputElement).value);
+      };
+    }
+  }
+
+  override ngAfterViewInit() {
+    if (this.selectAutocompleteEl) {
+      super.ngAfterViewInit();
+      const element = this.selectAutocompleteEl.nativeElement;
+      this.selectAutocomplete = new SelectAutocomplete(element, {
+        id: this.id,
+        name: this.name || this.id,
+        source: this.source,
+        required: this.required,
+        minLength: this.minLength,
+        defaultValue: this.defaultValue,
+        tAssistiveHint: this.assistiveHintLabel,
+        tNoResults: this.noResultsLabel,
+        tStatusQueryTooShort: this.statusQueryTooShortLabel,
+        tStatusNoResults: this.statusNoResultsLabel,
+        tStatusSelectedOption: this.statusSelectedOptionLabel,
+        tStatusResults: this.statusResultsLabel,
+        onConfirm: (selectedElement: string) => {
+          this.markAsTouched();
+          this._setAndCheck(selectedElement);
+          this.selected.emit(selectedElement);
+        },
+      });
+      this._findInput();
+    }
   }
 }

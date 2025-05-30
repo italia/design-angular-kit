@@ -1,0 +1,9 @@
+<h3>Ricerca con autocompletamento e dati</h3>
+
+<div class="bd-example">
+  <it-search
+    label="Cerca nel sito"
+    placeholder="Testo da cercare"
+    [searchData]="searchUsers$"
+    (searchSelectedEvent)="onSearchSelected($event)" />
+</div>

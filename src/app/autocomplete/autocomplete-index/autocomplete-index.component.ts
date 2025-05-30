@@ -5,11 +5,12 @@ import Documentation from '../../../assets/documentation.json';
   selector: 'it-autocomplete-index',
   templateUrl: './autocomplete-index.component.html',
   standalone: false,
+  styleUrls: ['./autocomplete-index.component.scss'],
 })
 export class AutocompleteIndexComponent {
-  component: any;
+  autocompleteComponent: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'ItAutocompleteComponent');
+    this.autocompleteComponent = (<any>Documentation).components.find(component => component.name === 'ItAutocompleteComponent');
   }
 }

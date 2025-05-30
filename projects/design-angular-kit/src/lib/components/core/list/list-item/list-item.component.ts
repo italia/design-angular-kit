@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
-import { ItLinkComponent } from '../../link/link.component';
 import { NgTemplateOutlet } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
 import { inputToBoolean } from '../../../../utils/coercion';
+import { ItLinkComponent } from '../../link/link.component';
 
 @Component({
   selector: 'it-list-item',
@@ -38,10 +38,21 @@ export class ItListItemComponent extends ItLinkComponent {
    */
   @Input({ transform: inputToBoolean }) iconRight?: boolean;
 
+  private _avatar: URL | undefined;
   /**
    * The avatar url
+   * @deprecated L'input 'avatar' è deprecato. Usa la documentazione del component Avatar per questo caso d'uso, facendo riferimento all'esempio Avatar con lista. Sarà rimosso nelle prossime versioni.
    */
-  @Input() avatar: URL | undefined;
+  @Input()
+  get avatar(): URL | undefined {
+    console.warn(
+      `L'input 'avatar' è deprecato. Usa la documentazione del component Avatar per questo caso d'uso, facendo riferimento all'esempio Avatar con lista. Sarà rimosso nelle prossime versioni.`
+    );
+    return this._avatar;
+  }
+  set avatar(value: URL | undefined) {
+    this._avatar = value;
+  }
 
   /**
    * The thumb image url

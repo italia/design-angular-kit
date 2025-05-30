@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Git pre-push hook"
+echo "Run Build"
+npm run build:lib

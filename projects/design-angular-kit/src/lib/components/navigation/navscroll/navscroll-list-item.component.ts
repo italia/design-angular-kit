@@ -12,7 +12,6 @@ import {
   Scroll,
 } from '@angular/router';
 import { AsyncSubject, filter, switchMap, tap } from 'rxjs';
-import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
 
@@ -25,7 +24,8 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
 
 @Component({
   selector: 'it-navscroll-list-item',
-  imports: [RouterLink, RouterLinkActive, RouterLinkWithHref, ItNavscrollListItemsComponent, AsyncPipe],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, RouterLinkWithHref, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <a
