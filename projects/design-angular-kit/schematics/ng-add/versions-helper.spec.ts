@@ -10,7 +10,7 @@ describe('schematics versions helper tests', () => {
     expect(actual).toBe('1.0.0');
   });
 
-  it('should return v1.1.0 for Angular v18', () => {
+  it('should return v1.4.0 for Angular v18', () => {
     //arrange
     const angularMajorVersion = '18';
     //act
@@ -19,7 +19,7 @@ describe('schematics versions helper tests', () => {
     expect(actual).toBe('~1.4.0');
   });
 
-  it('should return v1.1.0 for Angular v19', () => {
+  it('should return v1.5.0 for Angular v19', () => {
     //arrange
     const angularMajorVersion = '19';
     //act
