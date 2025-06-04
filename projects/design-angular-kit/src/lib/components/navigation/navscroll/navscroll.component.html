@@ -94,7 +94,11 @@
       <h6 class="it-page-section" id="{{ item.href }}">{{ item.title }}</h6>
     }
   }
-  <p>{{ item.text }}</p>
+  @if (item.html) {
+    <div [innerHTML]="item.html"></div>
+  } @else {
+    <p>{{ item.text }}</p>
+  }
   @for (item of item.childs; track item.href) {
     <ng-container *ngTemplateOutlet="paragraphTemplate; context: { item: item, level: nextLevel }"></ng-container>
   }

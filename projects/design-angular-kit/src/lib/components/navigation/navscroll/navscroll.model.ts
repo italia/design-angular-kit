@@ -1,9 +1,8 @@
-export interface NavscrollItem {
+export type NavscrollItem = ({ text: string; html?: never } | { html: string; text?: never }) & {
   title: string;
-  text: string;
   href: string;
   childs: NavscrollItems;
-}
+};
 
 export type NavscrollItems = Array<NavscrollItem>;
 
