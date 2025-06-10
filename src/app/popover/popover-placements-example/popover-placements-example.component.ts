@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-popover-placements-example',
   templateUrl: './popover-placements-example.component.html',
   styleUrls: ['./popover-placements-example.component.scss'],
+  standalone: false,
 })
 export class PopoverPlacementsExampleComponent {}

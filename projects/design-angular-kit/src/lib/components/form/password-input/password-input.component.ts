@@ -10,7 +10,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-password-input',
   templateUrl: './password-input.component.html',
   styleUrls: ['./password-input.component.scss'],

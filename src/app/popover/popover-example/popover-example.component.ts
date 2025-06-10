@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-popover-example',
   templateUrl: './popover-example.component.html',
   styleUrls: ['./popover-example.component.scss'],
+  standalone: false,
 })
 export class PopoverExampleComponent {}

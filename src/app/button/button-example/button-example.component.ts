@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'it-button-example',
   templateUrl: './button-example.component.html',
   styleUrls: ['./button-example.component.scss'],
+  standalone: false,
 })
 export class ButtonExampleComponent {
   color = 'primary';

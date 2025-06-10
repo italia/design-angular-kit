@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-list-examples',
   templateUrl: './list-examples.component.html',
   styleUrls: ['./list-examples.component.scss'],
+  standalone: false,
 })
 export class ListExamplesComponent {}

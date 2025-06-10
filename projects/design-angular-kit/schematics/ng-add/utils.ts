@@ -30,8 +30,17 @@ function sortObjectByKeys(obj: Record<string, string>) {
 
 /** Get a SemVerObject given a semver string */
 export function toSemVerObject(versionString: string) {
-  const [semVer, major, minor, patch, prerelease, buildmetadata] = versionString.match(SEMVER_WITH_PREFIX_REGEX) ?? [];
-  return { semVer, major, minor, patch, prerelease, buildmetadata } satisfies SemVerObject;
+  const version = versionString.startsWith('v') ? versionString.slice(1) : versionString;
+
+  const [semVer, major, minor, patch, prerelease, buildmetadata] = version.match(SEMVER_WITH_PREFIX_REGEX) ?? [];
+  return {
+    semVer,
+    major,
+    minor,
+    patch,
+    prerelease,
+    buildmetadata,
+  } satisfies SemVerObject;
 }
 
 /** Adds a package to the package.json in the given host tree. */

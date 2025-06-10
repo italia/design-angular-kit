@@ -17,7 +17,6 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
  */
 @Component({
   selector: 'it-transfer',
-  standalone: true,
   templateUrl: './transfer.component.html',
   imports: [TranslateModule, ItIconComponent, ItTransferListComponent, NgClass, AsyncPipe, ReactiveFormsModule],
   providers: [TransferStore],

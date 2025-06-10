@@ -4,6 +4,7 @@ import Documentation from '../../../assets/documentation.json';
 @Component({
   selector: 'it-dimmer-index',
   templateUrl: './dimmer-index.component.html',
+  standalone: false,
 })
 export class DimmerIndexComponent {
   component?: any;

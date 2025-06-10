@@ -4,6 +4,7 @@ import { ItVideoPlayerOptions } from 'projects/design-angular-kit/src/public_api
 @Component({
   selector: 'it-video-player-streaming-multi-example',
   templateUrl: './video-player-streaming-multi-example.component.html',
+  standalone: false,
 })
 export class VideoPlayerStreamingMultiExampleComponent {
   readonly options = {

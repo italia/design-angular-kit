@@ -4,7 +4,6 @@ import { inputToBoolean } from '../../../utils/coercion';
 import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
 
 @Component({
-  standalone: true,
   selector: 'it-icon',
   templateUrl: './icon.component.html',
   styles: ':host {display: contents;}',

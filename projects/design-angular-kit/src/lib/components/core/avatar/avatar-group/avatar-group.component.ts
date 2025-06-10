@@ -28,7 +28,6 @@ export class ItAvatarGroupItemComponent {
 }
 
 @Component({
-  standalone: true,
   selector: 'it-avatar-group',
   imports: [NgTemplateOutlet],
   template: `

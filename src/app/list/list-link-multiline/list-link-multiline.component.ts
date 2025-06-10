@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'it-list-link-multiline',
   templateUrl: './list-link-multiline.component.html',
   styleUrls: ['./list-link-multiline.component.scss'],
+  standalone: false,
 })
 export class ListLinkMultilineComponent {}

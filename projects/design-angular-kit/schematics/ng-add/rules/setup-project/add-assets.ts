@@ -14,7 +14,7 @@ const ASSETS_CONFIG = {
 
 export function addAssets(options: Schema): Rule {
   return async (host: Tree) => {
-    const workspace = await readWorkspace(host);
+    const workspace: any = await readWorkspace(host);
 
     const projectName = options.project || workspace.extensions.defaultProject!.toString();
     const project = workspace.projects.get(projectName);

@@ -8,6 +8,7 @@ import { AlertColor } from '../../../interfaces/core';
 @Component({
   selector: 'it-unit-test',
   template: ` <it-alert [color]="selectedColor" [dismissible]="isDismissible"> Questo è un alert di tipo "<b>primary</b>". </it-alert> `,
+  standalone: false,
 })
 class UnitTestComponent {
   @Input() set selectedColor(value: AlertColor | undefined) {

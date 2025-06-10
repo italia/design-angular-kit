@@ -5,7 +5,6 @@ import { inputToBoolean } from '../../../../utils/coercion';
 import { ItLinkComponent } from '../../../core/link/link.component';
 
 @Component({
-  standalone: true,
   selector: 'it-skiplink',
   templateUrl: './skiplink.component.html',
   exportAs: 'itSkipLink',

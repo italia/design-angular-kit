@@ -9,7 +9,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
@@ -218,7 +217,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
     if (this.type !== 'number') {
       return;
     }
-    const step = this.step === 'any' ? 1 : this.step ?? 1;
+    const step = this.step === 'any' ? 1 : (this.step ?? 1);
     let value = Number(this.control.value);
     value = (isNaN(value) ? 0 : value) + (decrease ? -step : step);
     value = Math.round(value * 1e12) / 1e12; // prevent js decimal error

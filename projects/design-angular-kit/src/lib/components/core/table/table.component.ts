@@ -3,7 +3,6 @@ import { TableColor, TableHeadColor, TableResponsive, VerticalAlignment } from '
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],

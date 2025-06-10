@@ -7,7 +7,6 @@ import { SelectAutocomplete } from 'bootstrap-italia';
 type functionSource = (query: string, populateResults: (results: string[]) => void) => void;
 
 @Component({
-  standalone: true,
   selector: 'it-autocomplete',
   templateUrl: './autocomplete.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

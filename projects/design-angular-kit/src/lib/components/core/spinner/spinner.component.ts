@@ -4,7 +4,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
-  standalone: true,
   selector: 'it-spinner',
   templateUrl: './spinner.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

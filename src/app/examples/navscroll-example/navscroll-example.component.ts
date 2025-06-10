@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { NavscrollItems } from 'projects/design-angular-kit/src/public_api';
 
 const template = `
-<!-- 
+<!--
 <ng-template #contentTemplate>
   <h1>ciao</h1>
 </ng-template>
 
-<it-navscroll [header]="header" [items]="items" borderPosition="right" [pageSectionsTemplate]="contentTemplate"></it-navscroll> 
+<it-navscroll [header]="header" [items]="items" borderPosition="right" [pageSectionsTemplate]="contentTemplate"></it-navscroll>
 -->
 <it-navscroll [header]="header" [items]="items" borderPosition="right"></it-navscroll>
 <p><a routerLink="/componenti/navscroll">Documentazione </a></p>
@@ -15,6 +15,8 @@ const template = `
 
 @Component({
   template,
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
+  standalone: false,
 })
 export class NavscrollExampleComponent {
   readonly header = 'Default example';
