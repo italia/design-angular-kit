@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   standalone: false,
 })
 export class RadioExampleComponent implements OnInit {
+  private _fb = inject(FormBuilder);
+
   colors = ['Rosso', 'Blu', 'Giallo'];
 
   selectedColor = 'Blu';
@@ -17,8 +19,6 @@ export class RadioExampleComponent implements OnInit {
   link?: string;
 
   genderFormGroup: FormGroup;
-
-  constructor(private _fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.genderFormGroup = this._fb.group({

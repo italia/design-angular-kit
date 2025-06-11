@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AvailableLanguage } from 'design-angular-kit/interfaces/utils';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -8,9 +8,11 @@ import { TranslateService } from '@ngx-translate/core';
   standalone: false,
 })
 export class LanguageSwitcherCustomExampleComponent {
+  private readonly translateService = inject(TranslateService);
+
   availableLanguages?: Array<AvailableLanguage>;
 
-  constructor(private readonly translateService: TranslateService) {
+  constructor() {
     this.availableLanguages = this.translateService.getLangs().map(lang => ({
       code: lang,
       label: lang,

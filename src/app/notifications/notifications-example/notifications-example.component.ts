@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ItNotificationService } from 'design-angular-kit/services/notification/notification.service';
 import { NotificationPosition, NotificationType } from 'design-angular-kit/interfaces/core';
 
@@ -8,6 +8,8 @@ import { NotificationPosition, NotificationType } from 'design-angular-kit/inter
   standalone: false,
 })
 export class NotificationsExampleComponent {
+  private readonly notificationService = inject(ItNotificationService);
+
   withText = true;
   type: NotificationType = NotificationType.Standard;
   duration?: number;
@@ -22,8 +24,6 @@ export class NotificationsExampleComponent {
   }
 
   private text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...';
-
-  constructor(private readonly notificationService: ItNotificationService) {}
 
   showNotification(): void {
     this.notificationService.addNotification({
