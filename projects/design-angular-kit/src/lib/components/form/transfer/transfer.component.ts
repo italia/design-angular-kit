@@ -1,5 +1,5 @@
 import { AsyncPipe, NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Optional, Output, Self } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControlName, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -23,6 +23,10 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {
+  override readonly _ngControl: NgControl;
+  override readonly _translateService: TranslateService;
+  private readonly store = inject<TransferStore<T>>(TransferStore);
+
   /**
    * The select options (left side)
    */
@@ -54,14 +58,14 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
 
   private readonly destroyRef = inject(DestroyRef);
 
-  constructor(
-    @Self()
-    @Optional()
-    override readonly _ngControl: NgControl,
-    override readonly _translateService: TranslateService,
-    private readonly store: TransferStore<T>
-  ) {
+  constructor() {
+    const _ngControl = inject(NgControl, { self: true, optional: true })!;
+    const _translateService = inject(TranslateService);
+
     super(_translateService, _ngControl);
+
+    this._ngControl = _ngControl;
+    this._translateService = _translateService;
   }
 
   override ngOnInit() {

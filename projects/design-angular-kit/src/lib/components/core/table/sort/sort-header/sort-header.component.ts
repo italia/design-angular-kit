@@ -5,12 +5,11 @@ import {
   Component,
   HostBinding,
   HostListener,
-  Inject,
   Input,
   OnDestroy,
   OnInit,
-  Optional,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { ItSortDirective } from '../sort.directive';
 import { merge, Subscription } from 'rxjs';
@@ -44,6 +43,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItSortHeaderComponent implements ItSortable, OnDestroy, OnInit {
+  private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+  readonly _sort = inject(ItSortDirective, { optional: true })!;
+
   /**
    * ID of this sort header. If used within the context of a CdkColumnDef, this will default to
    * the column's name.
@@ -72,12 +74,9 @@ export class ItSortHeaderComponent implements ItSortable, OnDestroy, OnInit {
   /** The direction the arrow should be facing according to the current state. */
   private _arrowDirection?: SortDirection;
 
-  constructor(
-    private readonly _changeDetectorRef: ChangeDetectorRef,
-    // `SortDirective` is not optionally injected, but just asserted manually w/ better error.
-    @Optional() public readonly _sort: ItSortDirective,
-    @Optional() @Inject(IT_SORT_DEFAULT_OPTIONS) defaultOptions?: ItSortDefaultOptions
-  ) {
+  constructor() {
+    const defaultOptions = inject<ItSortDefaultOptions>(IT_SORT_DEFAULT_OPTIONS, { optional: true });
+
     if (defaultOptions?.arrowPosition) {
       this.arrowPosition = defaultOptions?.arrowPosition;
     }

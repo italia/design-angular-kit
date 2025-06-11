@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { Location, NgTemplateOutlet } from '@angular/common';
 import { ItButtonDirective } from '../../core/button/button.directive';
 import { ItIconComponent } from '../../utils/icon/icon.component';
@@ -13,6 +13,8 @@ import { inputToBoolean } from '../../../utils/coercion';
   imports: [NgTemplateOutlet, ItButtonDirective, ItIconComponent, TranslateModule],
 })
 export class ItBackButtonComponent {
+  readonly _location = inject(Location);
+
   /**
    * Back button style
    * - <b>link</b>: use a link with icon and text
@@ -49,8 +51,6 @@ export class ItBackButtonComponent {
    * (errorCallback is your function, pass backCbFn to the component)
    */
   @Input() backFn?: (location: Location) => void;
-
-  constructor(public readonly _location: Location) {}
 
   /**
    * Go back function

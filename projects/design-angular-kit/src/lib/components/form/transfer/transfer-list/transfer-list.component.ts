@@ -18,6 +18,8 @@ interface SelectableTransferItem<T> extends TransferItem<T> {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferListComponent<T> extends ItAbstractComponent {
+  private readonly store = inject<TransferStore<T>>(TransferStore);
+
   /**
    * Widget title
    */
@@ -51,7 +53,7 @@ export class ItTransferListComponent<T> extends ItAbstractComponent {
 
   readonly instanceId = this.getInstanceId();
 
-  constructor(private readonly store: TransferStore<T>) {
+  constructor() {
     super();
     this.onItemsUpdate();
   }

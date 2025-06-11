@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 export type DimmerColor = '' | 'dimmer-primary';
@@ -17,6 +17,8 @@ export type DimmerColor = '' | 'dimmer-primary';
   imports: [NgClass],
 })
 export class ItDimmerComponent implements OnInit {
+  private elementRef = inject(ElementRef);
+
   /**
    * Dimmer status
    * @default false
@@ -40,8 +42,6 @@ export class ItDimmerComponent implements OnInit {
     return this._color;
   }
   private _color: DimmerColor = '';
-
-  constructor(private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.elementRef?.nativeElement?.parentElement?.classList?.add('dimmable');
