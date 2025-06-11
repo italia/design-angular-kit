@@ -23,8 +23,8 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {
-  protected _ngControl = inject(NgControl, { self: true, optional: true });
-  protected _translateService = inject(TranslateService);
+  protected override _ngControl = inject(NgControl, { self: true, optional: true });
+  protected override _translateService = inject(TranslateService);
   private readonly store = inject<TransferStore<T>>(TransferStore);
 
   /**
