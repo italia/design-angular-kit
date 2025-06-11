@@ -23,8 +23,8 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> implements OnInit {
-  override readonly _ngControl: NgControl;
-  override readonly _translateService: TranslateService;
+  protected _ngControl = inject(NgControl, { self: true, optional: true });
+  protected _translateService = inject(TranslateService);
   private readonly store = inject<TransferStore<T>>(TransferStore);
 
   /**
@@ -57,16 +57,6 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
   readonly resetEnabled = this.store.resetEnabled;
 
   private readonly destroyRef = inject(DestroyRef);
-
-  constructor() {
-    const _ngControl = inject(NgControl, { self: true, optional: true })!;
-    const _translateService = inject(TranslateService);
-
-    super(_translateService, _ngControl);
-
-    this._ngControl = _ngControl;
-    this._translateService = _translateService;
-  }
 
   override ngOnInit() {
     super.ngOnInit();
