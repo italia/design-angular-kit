@@ -5,13 +5,14 @@
       <it-chip [disabled]="true" [size]="size" label="Label disabilitata"></it-chip>
     </div>
     <div class="col-6 col-sm-auto">
-      <it-chip
-        *ngIf="el.first"
-        [disabled]="true"
-        [showCloseButton]="true"
-        [size]="size"
-        label="Label disabilitata"
-        (closeEvent)="close('first')"></it-chip>
+      @if (el.first) {
+        <it-chip
+          [disabled]="true"
+          [showCloseButton]="true"
+          [size]="size"
+          label="Label disabilitata"
+          (closeEvent)="close('first')"></it-chip>
+      }
     </div>
     <div class="col-6 col-sm-auto">
       <it-chip [disabled]="true" [icon]="iconGithub" [size]="size" label="Label disabilitata"></it-chip>

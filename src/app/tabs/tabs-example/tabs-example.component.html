@@ -19,9 +19,11 @@
   <h4 class="mt-5 mb-4">Risultato tabs</h4>
   <!--    TODO  [pill]="isPill"-->
   <it-tab-container [dark]="isDarkTheme" [cards]="isCard" [vertical]="isVertical" [inverted]="isInverted">
-    <it-tab-item *ngFor="let tab of tabs; let i = index" [label]="tab.label" [icon]="tab.icon" [active]="i === 0">
-      {{ tab.content }}
-    </it-tab-item>
+    @for (tab of tabs; track tab; let i = $index) {
+      <it-tab-item [label]="tab.label" [icon]="tab.icon" [active]="i === 0">
+        {{ tab.content }}
+      </it-tab-item>
+    }
     <it-tab-item label="custom" [disabled]="isDisabled" icon="settings">
       <h4>Titolo</h4>
       <p>Contenuto complesso <span itBadge="secondary">badge</span></p>

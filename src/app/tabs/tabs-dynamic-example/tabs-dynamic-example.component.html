@@ -3,9 +3,9 @@
   <div class="mt-5">
     <h4>Risultato tabs</h4>
     <it-tab-container [cards]="true" [editable]="true" (tabClosed)="removeTab($event)" (tabAdded)="addTab()">
-      <it-tab-item [id]="'tab-' + index" *ngFor="let tab of tabs; let index = index" [label]="tab" [active]="index === 0">
-        contenuto del {{ tab }} tab
-      </it-tab-item>
+      @for (tab of tabs; track tab; let index = $index) {
+        <it-tab-item [id]="'tab-' + index" [label]="tab" [active]="index === 0"> contenuto del {{ tab }} tab </it-tab-item>
+      }
     </it-tab-container>
   </div>
 </div>

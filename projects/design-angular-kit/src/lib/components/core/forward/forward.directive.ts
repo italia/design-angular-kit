@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Directive, HostListener, Inject, Input } from '@angular/core';
+import { Directive, HostListener, Inject, Input, DOCUMENT } from '@angular/core';
 
 @Directive({
   standalone: true,

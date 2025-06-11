@@ -8,6 +8,8 @@
 
     <button itButton="primary" [disabled]="!myForm.valid" (click)="save(myForm)">Salva</button>
 
-    <div *ngIf="savedValue">Salvato `{{ savedValue }}`</div>
+    @if (savedValue) {
+      <div>Salvato `{{ savedValue }}`</div>
+    }
   </form>
 </div>
