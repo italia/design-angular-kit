@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 /**
@@ -9,7 +9,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   name: 'itMarkMatchingText',
 })
 export class ItMarkMatchingTextPipe implements PipeTransform {
-  constructor(private readonly domSanitizer: DomSanitizer) {}
+  private readonly domSanitizer = inject(DomSanitizer);
 
   /**
    * Allows you to highlight text with the <mark> tag

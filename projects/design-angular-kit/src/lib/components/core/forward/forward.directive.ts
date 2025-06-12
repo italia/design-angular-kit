@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Directive, HostListener, Inject, Input } from '@angular/core';
+import { Directive, HostListener, Input, DOCUMENT, inject } from '@angular/core';
 
 @Directive({
   standalone: true,
@@ -7,6 +6,8 @@ import { Directive, HostListener, Inject, Input } from '@angular/core';
   host: { class: 'forward' },
 })
 export class ItForwardDirective {
+  private document = inject<Document>(DOCUMENT);
+
   /**
    * Indica, se HTMLElement, l'elemento a cui navigare, o se stringa, il selettore che selezionerà l'elemento a cui navigare.
    */
@@ -17,8 +18,6 @@ export class ItForwardDirective {
     return this._itForward;
   }
   private _itForward: HTMLElement | string | undefined = undefined;
-
-  constructor(@Inject(DOCUMENT) private document?: Document) {}
 
   @HostListener('click', ['$event'])
   onClick(event: any) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ItValidators } from 'design-angular-kit/validators/it-validators';
 
@@ -8,9 +8,11 @@ import { ItValidators } from 'design-angular-kit/validators/it-validators';
   standalone: false,
 })
 export class PasswordInputConfirmExampleComponent {
+  private readonly formBuilder = inject(FormBuilder);
+
   formGroup: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {
+  constructor() {
     this.formGroup = this.formBuilder.group(
       {
         password: [null],

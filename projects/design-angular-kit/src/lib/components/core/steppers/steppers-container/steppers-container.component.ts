@@ -9,6 +9,7 @@ import {
   OnDestroy,
   Output,
   QueryList,
+  inject,
 } from '@angular/core';
 import { ItSteppersItemComponent } from '../steppers-item/steppers-item.component';
 import { ProgressBarColor } from '../../../../interfaces/core';
@@ -28,6 +29,8 @@ import { inputToBoolean } from '../../../../utils/coercion';
   imports: [ItIconComponent, NgTemplateOutlet, TranslateModule, ItButtonDirective, ItProgressBarComponent, ItProgressButtonComponent],
 })
 export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
+  private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+
   /**
    * The active step index
    * @param index the step index
@@ -154,7 +157,7 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
 
   private stepsSubscriptions?: Array<Subscription>;
 
-  constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {
+  constructor() {
     this.backClick = new EventEmitter<number>();
     this.forwardClick = new EventEmitter<number>();
     this.confirmClick = new EventEmitter<number>();

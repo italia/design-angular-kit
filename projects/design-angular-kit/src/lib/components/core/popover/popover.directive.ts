@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
 import { ElementPlacement } from '../../../interfaces/core';
 import { Popover } from 'bootstrap-italia';
 import { inputToBoolean } from '../../../utils/coercion';
@@ -9,6 +9,8 @@ import { inputToBoolean } from '../../../utils/coercion';
   exportAs: 'itPopover',
 })
 export class ItPopoverDirective implements AfterViewInit, OnDestroy {
+  private readonly _elementRef = inject(ElementRef);
+
   /**
    * Define the popover content
    * @param content the popover content
@@ -94,7 +96,7 @@ export class ItPopoverDirective implements AfterViewInit, OnDestroy {
   private readonly element: HTMLElement;
   private popover?: Popover;
 
-  constructor(private readonly _elementRef: ElementRef) {
+  constructor() {
     this.element = this._elementRef.nativeElement;
   }
 

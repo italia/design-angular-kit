@@ -4,23 +4,25 @@
 <div class="bd-example">
   <div class="row">
     <div class="col-8">
-      <it-input
-        *ngIf="type !== 'password'"
-        [label]="label"
-        [placeholder]="placeholder"
-        [disabled]="disabled"
-        [readonly]="readOnly"
-        [type]="type !== 'password' ? type : 'text'"
-        [(ngModel)]="value"
-        [description]="note"></it-input>
-      <it-password-input
-        *ngIf="type === 'password'"
-        [label]="label"
-        [placeholder]="placeholder"
-        [disabled]="disabled"
-        [(ngModel)]="value"
-        showStrengthMeter="true"
-        [validationMode]="false"></it-password-input>
+      @if (type !== 'password') {
+        <it-input
+          [label]="label"
+          [placeholder]="placeholder"
+          [disabled]="disabled"
+          [readonly]="readOnly"
+          [type]="type !== 'password' ? type : 'text'"
+          [(ngModel)]="value"
+          [description]="note"></it-input>
+      }
+      @if (type === 'password') {
+        <it-password-input
+          [label]="label"
+          [placeholder]="placeholder"
+          [disabled]="disabled"
+          [(ngModel)]="value"
+          showStrengthMeter="true"
+          [validationMode]="false"></it-password-input>
+      }
     </div>
   </div>
 

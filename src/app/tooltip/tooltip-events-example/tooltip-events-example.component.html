@@ -16,8 +16,12 @@
   </p>
 
   <div class="tooltip-events mt-4">
-    <div *ngIf="shownTime">Ultima emissione dell'evento shown = {{ shownTime | date: 'long' }}</div>
+    @if (shownTime) {
+      <div>Ultima emissione dell'evento shown = {{ shownTime | date: 'long' }}</div>
+    }
 
-    <div *ngIf="hiddenTime">Ultima emissione dell'evento hidden = {{ hiddenTime | date: 'long' }}</div>
+    @if (hiddenTime) {
+      <div>Ultima emissione dell'evento hidden = {{ hiddenTime | date: 'long' }}</div>
+    }
   </div>
 </div>

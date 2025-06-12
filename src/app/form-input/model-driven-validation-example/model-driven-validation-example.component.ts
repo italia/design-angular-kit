@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { ItValidators } from 'design-angular-kit/validators/it-validators';
 
@@ -9,10 +9,12 @@ import { ItValidators } from 'design-angular-kit/validators/it-validators';
   standalone: false,
 })
 export class ModelDrivenValidationExampleComponent {
+  private _fb = inject(FormBuilder);
+
   myForm: FormGroup;
   regions: string[] = [];
 
-  constructor(private _fb: FormBuilder) {
+  constructor() {
     this.regions = [
       'Abruzzo',
       'Basilicata',

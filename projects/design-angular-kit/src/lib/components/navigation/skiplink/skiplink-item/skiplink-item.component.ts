@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Host, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../../utils/coercion';
@@ -31,7 +31,9 @@ export class ItSkiplinkItemComponent {
   @Input({ transform: inputToBoolean }) externalLink?: boolean;
   inNav: boolean;
 
-  constructor(@Host() parent: ItSkiplinkComponent) {
+  constructor() {
+    const parent = inject(ItSkiplinkComponent, { host: true });
+
     this.inNav = parent.nav ? true : false;
   }
 }

@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-6">
             <span><strong>Colore Badge</strong></span>
-            <ng-container *ngFor="let color of colors; let i = index">
+            @for (color of colors; track color; let i = $index) {
               <it-radio-button
                 [id]="'color-' + i"
                 name="color"
@@ -18,7 +18,7 @@
                 [value]="color"
                 [label]="color"
                 [(ngModel)]="selectedColor"></it-radio-button>
-            </ng-container>
+            }
           </div>
           <div class="col-6">
             <span for="isRounded"><strong>Badge arrotondato</strong></span>

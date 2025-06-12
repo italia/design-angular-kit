@@ -7,6 +7,7 @@ import {
   Input,
   OnDestroy,
   QueryList,
+  inject,
 } from '@angular/core';
 import { ItBreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
 import { startWith, Subscription } from 'rxjs';
@@ -23,6 +24,8 @@ import { inputToBoolean } from '../../../../utils/coercion';
   imports: [TranslateModule, ItIconComponent, ItLinkComponent, NgTemplateOutlet],
 })
 export class ItBreadcrumbComponent implements AfterViewInit, OnDestroy {
+  private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+
   /**
    * The character to use as separator
    * @default /
@@ -41,8 +44,6 @@ export class ItBreadcrumbComponent implements AfterViewInit, OnDestroy {
   @ContentChildren(ItBreadcrumbItemComponent) items?: QueryList<ItBreadcrumbItemComponent>;
 
   private itemSubscriptions?: Array<Subscription>;
-
-  constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     this.items?.changes

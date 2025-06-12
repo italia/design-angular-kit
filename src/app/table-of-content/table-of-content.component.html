@@ -1,8 +1,7 @@
 <div class="bd-sidebar sidebar-linklist-wrapper">
   <nav class="link-list-wrapper">
-    <it-table-of-content-item
-      [tocItem]="tocItem"
-      *ngFor="let tocItem of tableOfContent"
-      (click)="toggle($event, tocItem)"></it-table-of-content-item>
+    @for (tocItem of tableOfContent; track tocItem) {
+      <it-table-of-content-item [tocItem]="tocItem" (click)="toggle($event, tocItem)"></it-table-of-content-item>
+    }
   </nav>
 </div>

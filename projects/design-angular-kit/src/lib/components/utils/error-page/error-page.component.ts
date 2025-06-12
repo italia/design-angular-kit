@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItBackButtonComponent } from '../../navigation/back-button/back-button.component';
@@ -12,6 +12,8 @@ import { inputToBoolean } from '../../../utils/coercion';
   imports: [TranslateModule, RouterLink, ItBackButtonComponent, ItButtonDirective],
 })
 export class ItErrorPageComponent {
+  private readonly route = inject(ActivatedRoute);
+
   /**
    * The error code to show
    */
@@ -49,7 +51,7 @@ export class ItErrorPageComponent {
    */
   @Input({ transform: inputToBoolean }) showHomeButton?: boolean = true;
 
-  constructor(private readonly route: ActivatedRoute) {
+  constructor() {
     this.route.data.subscribe(data => {
       if (!this.errorCode && data['errorCode']) {
         this.errorCode = data['errorCode']; // Get errorCode from route data

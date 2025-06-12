@@ -42,7 +42,7 @@ describe('ItSortDirective', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ItSortDirective, ItSortHeaderComponent, TestComponent],
-      providers: tb_base.providers,
+      providers: [{ provide: ItSortDirective }, ...tb_base.providers],
     })
       .overrideComponent(TestComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },
@@ -58,7 +58,7 @@ describe('ItSortDirective', () => {
   });
 
   it('should create an instance', () => {
-    const directive = new ItSortDirective();
+    const directive = TestBed.inject(ItSortDirective);
     expect(directive).toBeTruthy();
   });
 

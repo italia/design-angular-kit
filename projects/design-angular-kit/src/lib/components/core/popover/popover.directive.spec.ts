@@ -10,12 +10,12 @@ export class MockElementRef extends ElementRef {
 describe('ItPopoverDirective', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [{ provide: ElementRef, useClass: MockElementRef }],
+      providers: [{ provide: ElementRef, useClass: MockElementRef }, ItPopoverDirective],
     }).compileComponents();
   });
 
   it('should create an instance', () => {
-    const directive = new ItPopoverDirective(TestBed.inject(ElementRef));
+    const directive = TestBed.inject(ItPopoverDirective);
     expect(directive).toBeTruthy();
   });
 });

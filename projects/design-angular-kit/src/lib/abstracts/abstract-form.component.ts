@@ -1,5 +1,5 @@
 import { ControlContainer, ControlValueAccessor, FormControl, FormGroup, NgControl, ValidatorFn } from '@angular/forms';
-import { Component, DoCheck, Input, OnInit, Optional, Self } from '@angular/core';
+import { Component, DoCheck, Input, OnInit, inject } from '@angular/core';
 import { ItAbstractComponent } from './abstract.component';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,6 +10,10 @@ import { inputToBoolean } from '../utils/coercion';
   standalone: false,
 })
 export abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
+  protected readonly _translateService = inject(TranslateService);
+  protected readonly _ngControl = inject(NgControl, { self: true, optional: true });
+  protected fgd? = inject(ControlContainer, { optional: true });
+
   /**
    * The label of form control
    */
@@ -37,11 +41,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    */
   protected control: FormControl<T>;
 
-  constructor(
-    protected readonly _translateService: TranslateService,
-    @Self() @Optional() protected readonly _ngControl: NgControl,
-    @Optional() protected fgd?: ControlContainer
-  ) {
+  constructor() {
     super();
     this.control = new FormControl();
     this._ngControl && (this._ngControl.valueAccessor = this);

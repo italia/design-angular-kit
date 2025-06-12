@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NotificationPosition } from 'design-angular-kit/interfaces/core';
 import { ItNotificationService } from 'design-angular-kit/services/notification/notification.service';
 
@@ -8,6 +8,8 @@ import { ItNotificationService } from 'design-angular-kit/services/notification/
   standalone: false,
 })
 export class NotificationsSetupComponent {
+  private readonly notificationService = inject(ItNotificationService);
+
   duration = 8000;
   isDismissible = true;
   position?: NotificationPosition;
@@ -33,8 +35,6 @@ export class NotificationsSetupComponent {
   get NotificationPosition(): typeof NotificationPosition {
     return NotificationPosition;
   }
-
-  constructor(private readonly notificationService: ItNotificationService) {}
 
   standardNotification(): void {
     this.notificationService.standard(

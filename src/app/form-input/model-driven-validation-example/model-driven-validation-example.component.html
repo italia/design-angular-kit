@@ -7,10 +7,18 @@
         <it-input label="Custom" formControlName="myInput" #myInput>
           <ng-container error>
             <!-- Custom errors-->
-            <div *ngIf="myInput.hasError('required')">Il campo è obbligatorio</div>
-            <div *ngIf="myInput.hasError('minlength')">Deve essere almeno di lunghezza 3</div>
-            <div *ngIf="myInput.hasError('maxlength')">Deve essere massimo di lunghezza 10</div>
-            <div *ngIf="myInput.hasError('pattern')">Non corrisponde al pattern [ab]+</div>
+            @if (myInput.hasError('required')) {
+              <div>Il campo è obbligatorio</div>
+            }
+            @if (myInput.hasError('minlength')) {
+              <div>Deve essere almeno di lunghezza 3</div>
+            }
+            @if (myInput.hasError('maxlength')) {
+              <div>Deve essere massimo di lunghezza 10</div>
+            }
+            @if (myInput.hasError('pattern')) {
+              <div>Non corrisponde al pattern [ab]+</div>
+            }
           </ng-container>
         </it-input>
       </div>
@@ -55,6 +63,8 @@
       <button itButton="secondary" type="button" (click)="markAllAsTouched()">Valida</button>
     </div>
 
-    <div *ngIf="savedValue">Salvato `{{ savedValue }}`</div>
+    @if (savedValue) {
+      <div>Salvato `{{ savedValue }}`</div>
+    }
   </form>
 </div>

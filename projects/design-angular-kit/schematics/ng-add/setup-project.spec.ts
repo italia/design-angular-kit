@@ -40,7 +40,7 @@ describe(`ng add design-angular-kit | setup-project - library providing`, () => 
     const tree = await runner.runSchematic('ng-add-setup-project', defaultOptions, appTree);
 
     // Check if the app.module.ts file exists
-    const modulePath = '/projects/test-project/src/app/app.module.ts';
+    const modulePath = '/projects/test-project/src/app/app-module.ts';
     expect(tree.files).toContain(modulePath);
 
     // Check if the correct import statement was added

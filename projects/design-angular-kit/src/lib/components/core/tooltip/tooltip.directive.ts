@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
 import { ElementPlacement } from '../../../interfaces/core';
 import { Tooltip } from 'bootstrap-italia';
 import { inputToBoolean } from '../../../utils/coercion';
@@ -9,6 +9,8 @@ import { inputToBoolean } from '../../../utils/coercion';
   exportAs: 'itTooltip',
 })
 export class ItTooltipDirective implements AfterViewInit, OnDestroy {
+  private readonly _elementRef = inject(ElementRef);
+
   /**
    * Define the tooltip title
    * @param title the tooltip title
@@ -64,7 +66,7 @@ export class ItTooltipDirective implements AfterViewInit, OnDestroy {
   private readonly element: HTMLElement;
   private tooltip?: Tooltip;
 
-  constructor(private readonly _elementRef: ElementRef) {
+  constructor() {
     this.element = this._elementRef.nativeElement;
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,11 +7,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   standalone: false,
 })
 export class RatingExampleComponent {
+  private readonly formBuilder = inject(FormBuilder);
+
   rating: number = 3;
 
   formGroup: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {
+  constructor() {
     this.formGroup = this.formBuilder.group({
       rating: [0],
     });

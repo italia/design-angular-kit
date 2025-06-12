@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { SelectControlOption } from 'design-angular-kit/interfaces/form';
 
@@ -8,11 +8,13 @@ import { SelectControlOption } from 'design-angular-kit/interfaces/form';
   standalone: false,
 })
 export class SelectFormgroupExampleComponent {
+  private _fb = inject(FormBuilder);
+
   myForm: FormGroup;
 
   options: Array<SelectControlOption> = [{ value: null, text: 'Seleziona un elemento', selected: true }];
 
-  constructor(private _fb: FormBuilder) {
+  constructor() {
     this.myForm = this._fb.group({
       select: [null, Validators.required],
     });

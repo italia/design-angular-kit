@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, inject } from '@angular/core';
 import { inputToBoolean } from '../../../../utils/coercion';
 import { ItLinkComponent } from '../../link/link.component';
 
@@ -11,9 +11,7 @@ import { ItLinkComponent } from '../../link/link.component';
   imports: [NgTemplateOutlet, ItLinkComponent],
 })
 export class ItListItemComponent extends ItLinkComponent {
-  constructor(private elRef: ElementRef) {
-    super();
-  }
+  private elRef = inject(ElementRef);
 
   /**
    * Add active class

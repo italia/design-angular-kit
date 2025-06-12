@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,11 +7,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   standalone: false,
 })
 export class TextareaExampleComponent {
+  private readonly formBuilder = inject(FormBuilder);
+
   ngModelValue?: string;
 
   formGroup: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {
+  constructor() {
     this.formGroup = this.formBuilder.group({
       textarea: [null, Validators.maxLength(50)],
     });

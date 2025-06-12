@@ -3,10 +3,12 @@
 
 <div class="bd-example">
   <it-list>
-    <it-list-item *ngFor="let val of selectedItem.data">
-      <it-icon name="user" color="primary" icon></it-icon>
-      <span class="text-primary">{{ val }}</span>
-    </it-list-item>
+    @for (val of selectedItem.data; track val) {
+      <it-list-item>
+        <it-icon name="user" color="primary" icon></it-icon>
+        <span class="text-primary">{{ val }}</span>
+      </it-list-item>
+    }
   </it-list>
 
   <div class="mt-4">

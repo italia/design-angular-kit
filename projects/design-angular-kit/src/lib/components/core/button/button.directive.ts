@@ -1,4 +1,4 @@
-import { ContentChildren, Directive, Host, HostBinding, Input, Optional, QueryList } from '@angular/core';
+import { ContentChildren, Directive, HostBinding, Input, QueryList, inject } from '@angular/core';
 import { ButtonColor, ButtonSize } from '../../../interfaces/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItProgressButtonComponent } from '../progress-button/progress-button.component';
@@ -14,6 +14,8 @@ import { inputToBoolean } from '../../../utils/coercion';
   exportAs: 'itButton',
 })
 export class ItButtonDirective {
+  private progressButtonComponent = inject(ItProgressButtonComponent, { optional: true, host: true })!;
+
   /**
    * Button color
    * @default undefined
@@ -53,8 +55,6 @@ export class ItButtonDirective {
    * @default undefined
    */
   @ContentChildren(ItIconComponent) protected icons?: QueryList<ItIconComponent>;
-
-  constructor(@Optional() @Host() private progressButtonComponent: ItProgressButtonComponent) {}
 
   @HostBinding('class')
   protected get hostClasses(): string {

@@ -9,6 +9,7 @@ import {
   OnDestroy,
   QueryList,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { CarouselType } from '../../../../interfaces/core';
 import { ItCarouselItemComponent } from '../carousel-item/carousel-item.component';
@@ -29,6 +30,8 @@ import { inputToBoolean } from '../../../../utils/coercion';
   imports: [NgTemplateOutlet],
 })
 export class ItCarouselComponent implements AfterViewInit, OnDestroy {
+  private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+
   /**
    * The callout title
    * @default undefined
@@ -83,8 +86,6 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
     const typeClass = 'it-carousel-landscape-abstract';
     return this.type === 'default' ? typeClass : typeClass + `-${this.type}`;
   }
-
-  constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     this.items?.changes
