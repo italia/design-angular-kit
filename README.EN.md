@@ -58,30 +58,8 @@ To play with the library, the [Playground Angular Kit](https://github.com/italia
 Design Angular Kit is available on NPM, to install on an existing application on which to test the library run command
 
 ```sh
-npm install design-angular-kit --save
+npm install design-angular-kit@angular18 --save
 ```
-
-Choose the version corresponding to your Angular version:
-
-| Angular | design-angular-kit |
-| ------- | ------------------ |
-| 18+     | v1.1.0 +           |
-| 17+     | v1.0.0 +           |
-
-Alternatively, you can run the command
-
-```sh
-ng add design-angular-kit --project <projectName>
-```
-
-He will consecutively perform:
-
-- choose the correct Angular version
-- install the dep
-- add the dep to package.json
-- application configuration
-
-The instruction of the next chapter, **Configuration**, will be executed automatically, except for the customization of \_i18n.
 
 ## Configuration
 
