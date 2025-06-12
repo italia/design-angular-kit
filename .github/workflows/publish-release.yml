@@ -33,7 +33,7 @@ jobs:
           cp .npmrc dist/design-angular-kit/.npmrc
       - name: Publish package to NPM
         working-directory: dist/design-angular-kit
-        run: npm publish
+        run: npm publish --tag angular19
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
