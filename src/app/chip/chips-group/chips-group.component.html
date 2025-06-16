@@ -5,19 +5,24 @@
       <it-chip label="Label"></it-chip>
     </div>
     <div class="col-6 col-sm-auto">
-      <it-chip *ngIf="el.first" [showCloseButton]="true" label="Label" (closeEvent)="close('first')"></it-chip>
+      @if (el.first) {
+        <it-chip [showCloseButton]="true" label="Label" (closeEvent)="close('first')"></it-chip>
+      }
     </div>
     <div class="col-6 col-sm-auto">
-      <it-chip *ngIf="el.second" [showCloseButton]="true" [icon]="iconGithub" label="Label" (closeEvent)="close('second')"></it-chip>
+      @if (el.second) {
+        <it-chip [showCloseButton]="true" [icon]="iconGithub" label="Label" (closeEvent)="close('second')"></it-chip>
+      }
     </div>
     <div class="col-6 col-sm-auto">
-      <it-chip
-        *ngIf="el.third"
-        [showCloseButton]="true"
-        [avatar]="'https://randomuser.me/api/portraits/men/46.jpg'"
-        [altAvatar]="'Mario Rossi'"
-        label="Label"
-        (closeEvent)="close('third')"></it-chip>
+      @if (el.third) {
+        <it-chip
+          [showCloseButton]="true"
+          [avatar]="'https://randomuser.me/api/portraits/men/46.jpg'"
+          [altAvatar]="'Mario Rossi'"
+          label="Label"
+          (closeEvent)="close('third')"></it-chip>
+      }
     </div>
   </div>
   <hr />
@@ -26,26 +31,25 @@
       <it-chip [size]="size" label="Label"></it-chip>
     </div>
     <div class="col-6 col-sm-auto">
-      <it-chip *ngIf="el.fourth" [showCloseButton]="true" [size]="size" label="Label" (closeEvent)="close('fourth')"></it-chip>
+      @if (el.fourth) {
+        <it-chip [showCloseButton]="true" [size]="size" label="Label" (closeEvent)="close('fourth')"></it-chip>
+      }
     </div>
     <div class="col-6 col-sm-auto">
-      <it-chip
-        *ngIf="el.fifth"
-        [showCloseButton]="true"
-        [icon]="iconGithub"
-        [size]="size"
-        label="Label"
-        (closeEvent)="close('fifth')"></it-chip>
+      @if (el.fifth) {
+        <it-chip [showCloseButton]="true" [icon]="iconGithub" [size]="size" label="Label" (closeEvent)="close('fifth')"></it-chip>
+      }
     </div>
     <div class="col-6 col-sm-auto">
-      <it-chip
-        *ngIf="el.sixth"
-        [showCloseButton]="true"
-        [avatar]="'https://randomuser.me/api/portraits/men/46.jpg'"
-        [size]="size"
-        [altAvatar]="'Mario Rossi'"
-        label="Label"
-        (closeEvent)="close('sixth')"></it-chip>
+      @if (el.sixth) {
+        <it-chip
+          [showCloseButton]="true"
+          [avatar]="'https://randomuser.me/api/portraits/men/46.jpg'"
+          [size]="size"
+          [altAvatar]="'Mario Rossi'"
+          label="Label"
+          (closeEvent)="close('sixth')"></it-chip>
+      }
     </div>
   </div>
 </div>

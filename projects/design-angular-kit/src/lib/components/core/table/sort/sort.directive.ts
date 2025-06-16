@@ -1,15 +1,4 @@
-import {
-  Directive,
-  EventEmitter,
-  Inject,
-  Input,
-  OnChanges,
-  OnDestroy,
-  Optional,
-  Output,
-  booleanAttribute,
-  HostBinding,
-} from '@angular/core';
+import { Directive, EventEmitter, Input, OnChanges, OnDestroy, Output, booleanAttribute, HostBinding, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import {
   IT_SORT_DEFAULT_OPTIONS,
@@ -25,6 +14,8 @@ import {
   exportAs: 'itSort',
 })
 export class ItSortDirective implements OnChanges, OnDestroy {
+  private _defaultOptions = inject<ItSortDefaultOptions>(IT_SORT_DEFAULT_OPTIONS, { optional: true });
+
   /** The id of the most recently sorted ItSortable. */
   @Input('itSortActive') active?: string;
 
@@ -66,12 +57,6 @@ export class ItSortDirective implements OnChanges, OnDestroy {
 
   /** Used to notify any child components listening to state changes. */
   readonly _stateChanges = new Subject<void>();
-
-  constructor(
-    @Optional()
-    @Inject(IT_SORT_DEFAULT_OPTIONS)
-    private _defaultOptions?: ItSortDefaultOptions
-  ) {}
 
   /**
    * Register function to be used by the contained ItSortables. Adds the ItSortable to the

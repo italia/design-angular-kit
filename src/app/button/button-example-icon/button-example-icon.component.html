@@ -2,9 +2,13 @@
 
 <div class="bd-example">
   <button itButton="primary" class="mb-5">
-    <it-icon *ngIf="iconPosition === 'start'" [name]="icon" [color]="iconColor" class="me-2"></it-icon>
+    @if (iconPosition === 'start') {
+      <it-icon [name]="icon" [color]="iconColor" class="me-2"></it-icon>
+    }
     Login
-    <it-icon *ngIf="iconPosition === 'end'" [name]="icon" [color]="iconColor" class="ms-2"></it-icon>
+    @if (iconPosition === 'end') {
+      <it-icon [name]="icon" [color]="iconColor" class="ms-2"></it-icon>
+    }
   </button>
 
   <div class="row">

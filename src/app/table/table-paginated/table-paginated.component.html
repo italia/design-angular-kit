@@ -10,36 +10,40 @@
     </ng-container>
 
     <ng-container tbody>
-      <tr *ngIf="isLoading; else showRows">
-        <td class="text-center" [attr.colspan]="tableHead.cells.length">
-          <it-spinner double="true"></it-spinner>
-        </td>
-      </tr>
-
-      <ng-template #showRows>
-        <tr *ngIf="!list.length; else dataRows">
-          <td class="text-center" [attr.colspan]="tableHead.cells.length">Nessun elemento</td>
+      @if (isLoading) {
+        <tr>
+          <td class="text-center" [attr.colspan]="tableHead.cells.length">
+            <it-spinner double="true"></it-spinner>
+          </td>
         </tr>
-        <ng-template #dataRows>
-          <tr *ngFor="let item of list">
-            <td>
-              <it-icon name="user" color="primary"></it-icon>
-            </td>
-            <td>
-              {{ item }}
-            </td>
+      } @else {
+        @if (!list.length) {
+          <tr>
+            <td class="text-center" [attr.colspan]="tableHead.cells.length">Nessun elemento</td>
           </tr>
-        </ng-template>
-      </ng-template>
+        } @else {
+          @for (item of list; track item) {
+            <tr>
+              <td>
+                <it-icon name="user" color="primary"></it-icon>
+              </td>
+              <td>
+                {{ item }}
+              </td>
+            </tr>
+          }
+        }
+      }
     </ng-container>
   </it-table>
 
-  <it-pagination
-    *ngIf="!isLoading && totalPages > 0"
-    alignment="center"
-    [currentPage]="currentPage"
-    [pageNumbers]="totalPages"
-    [currentChanger]="pageOffset"
-    (changerEvent)="changerEvent($event)"
-    (pageEvent)="getPage($event)"></it-pagination>
+  @if (!isLoading && totalPages > 0) {
+    <it-pagination
+      alignment="center"
+      [currentPage]="currentPage"
+      [pageNumbers]="totalPages"
+      [currentChanger]="pageOffset"
+      (changerEvent)="changerEvent($event)"
+      (pageEvent)="getPage($event)"></it-pagination>
+  }
 </div>

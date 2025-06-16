@@ -113,6 +113,8 @@ enum ViewType {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItVideoPlayerComponent extends ItAbstractComponent implements OnInit {
+  private config = inject(VideoPlayerConfigService);
+
   /**
    * Options for video player configuration
    */
@@ -141,7 +143,7 @@ export class ItVideoPlayerComponent extends ItAbstractComponent implements OnIni
   private ngZone = inject(NgZone);
   private injector = inject(Injector);
 
-  constructor(private config: VideoPlayerConfigService) {
+  constructor() {
     super();
 
     afterNextRender(() => {

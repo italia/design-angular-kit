@@ -23,6 +23,7 @@ describe('ItForwardDirective', () => {
     TestBed.configureTestingModule({
       declarations: [UnitTestComponent],
       imports: [ItForwardDirective],
+      providers: [{ provide: ItForwardDirective }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);
@@ -31,7 +32,7 @@ describe('ItForwardDirective', () => {
   }));
 
   it('should create an instance', () => {
-    const directive = new ItForwardDirective();
+    const directive = TestBed.inject(ItForwardDirective);
     expect(directive).toBeTruthy();
   });
 

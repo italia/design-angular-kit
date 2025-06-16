@@ -4,17 +4,23 @@
     <div class="col-5">
       <!-- Input con icona a sinistra tramite attributo -->
       <it-input [label]="label">
-        <it-icon *ngIf="icon" [name]="icon" size="sm" color="primary" prependText></it-icon>
+        @if (icon) {
+          <it-icon [name]="icon" size="sm" color="primary" prependText></it-icon>
+        }
       </it-input>
 
       <!-- Input con icona a sinistra tramite direttiva itTextSuffix -->
       <it-input [label]="label">
-        <it-icon *ngIf="icon" [name]="icon" size="sm" color="primary" appendText></it-icon>
+        @if (icon) {
+          <it-icon [name]="icon" size="sm" color="primary" appendText></it-icon>
+        }
       </it-input>
 
       <!-- Input con icona a sinistra tramite direttiva itTextSuffix e bottone a destra tramite direttiva itSuffix-->
       <it-input [label]="label">
-        <it-icon *ngIf="icon" [name]="icon" size="sm" color="primary" prependText></it-icon>
+        @if (icon) {
+          <it-icon [name]="icon" size="sm" color="primary" prependText></it-icon>
+        }
         <button itButton="primary" append>Invia</button>
       </it-input>
     </div>

@@ -10,11 +10,11 @@ export class MockElementRef extends ElementRef {
 describe('ItTooltipDirective', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [{ provide: ElementRef, useClass: MockElementRef }],
+      providers: [{ provide: ElementRef, useClass: MockElementRef }, ItTooltipDirective],
     }).compileComponents();
   });
   it('should create an instance', () => {
-    const directive = new ItTooltipDirective(TestBed.inject(ElementRef));
+    const directive = TestBed.inject(ItTooltipDirective);
     expect(directive).toBeTruthy();
   });
 });

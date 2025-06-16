@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ItNotificationService } from '../../../services/notification/notification.service';
 import { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';
@@ -16,6 +16,9 @@ import { inputToBoolean } from '../../../utils/coercion';
   imports: [ItIconComponent, TranslateModule],
 })
 export class ItNotificationsComponent implements OnDestroy {
+  private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly _notificationService = inject(ItNotificationService);
+
   /**
    * Default notifications duration (milliseconds)
    * @default 8000
@@ -37,10 +40,7 @@ export class ItNotificationsComponent implements OnDestroy {
   private notificationCount: number = 0;
   protected notifications: Array<Notification & { id: string }> = [];
 
-  constructor(
-    private readonly _changeDetectorRef: ChangeDetectorRef,
-    private readonly _notificationService: ItNotificationService
-  ) {
+  constructor() {
     this.subscription = this._notificationService.onNotification().subscribe(notification => {
       if (!notification.duration) {
         notification.duration = this.duration; // Add duration if not is set
