@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/italia/design-angular-kit/compare/v1.5.0...v1.6.0) (2025-06-16)
+
+
+### Features
+
+* add angular 20 support ([8008867](https://github.com/italia/design-angular-kit/commit/80088677f618ad5e05675ef5dfab34c15a10bc6c))
+
+
+
 # [1.5.0](https://github.com/italia/design-angular-kit/compare/v1.4.0...v1.5.0) (2025-06-11)
 
 
