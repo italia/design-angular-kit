@@ -1,3 +1,12 @@
+## [1.6.1](https://github.com/italia/design-angular-kit/compare/v1.6.0...v1.6.1) (2025-06-18)
+
+
+### Bug Fixes
+
+* package dependencies ([1f59a71](https://github.com/italia/design-angular-kit/commit/1f59a71fb7408de57008a8ed12f7bf3ae7e58043))
+
+
+
 # [1.6.0](https://github.com/italia/design-angular-kit/compare/v1.5.0...v1.6.0) (2025-06-16)
 
 
