@@ -10,7 +10,7 @@ export class NavscrollCustomTemplateExampleComponent {
   readonly items = [
     {
       title: 'Prima Sezione',
-      text: 'Testo prima sezione',
+      html: '<b>Testo prima sezione</b>',
       href: '#',
       childs: [
         {
