@@ -37,6 +37,8 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
 
   @Input({ transform: inputToBoolean }) showSearch?: boolean = true;
 
+  @Input() idCollapsable: string = 'menuCollapsable';
+
   @Input() slimTitle: string | undefined;
   @Input() slimTitleLink: string | undefined = '#';
 
@@ -78,7 +80,9 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
 
   updateListeners() {
     if (!this.stickyHeader && this.headerWrapper && this.sticky) {
-      this.stickyHeader = new HeaderSticky(this.headerWrapper.nativeElement);
+      setTimeout(() => {
+        this.stickyHeader = new HeaderSticky(this.headerWrapper.nativeElement);
+      }, 300);
     }
   }
 

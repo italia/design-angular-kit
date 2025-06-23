@@ -22,7 +22,9 @@ export class ItNavBarComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     if (this.collapseButton && this.collapseView) {
-      this.navbar = NavBarCollapsible.getOrCreateInstance(this.collapseView.nativeElement);
+      setTimeout(() => {
+        this.navbar = NavBarCollapsible.getOrCreateInstance(this.collapseView.nativeElement);
+      }, 300);
     }
   }
 
