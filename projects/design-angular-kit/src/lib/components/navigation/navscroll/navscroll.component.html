@@ -14,8 +14,7 @@
             class="custom-navbar-toggler"
             type="button"
             aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            [attr.aria-label]="'it.navigation.aria-label-toggle' | translate"
             data-bs-toggle="navbarcollapsible"
             data-bs-target="#navbarNav"
             #toggleButtonRef>
@@ -30,8 +29,7 @@
               aria-valuemin="0"
               aria-valuemax="100"></div>
           </div>
-          <div class="navbar-collapsable" id="navbarNav">
-            <div class="overlay"></div>
+          <div class="navbar-collapsable" id="navbarNav" tabindex="-1">
             <div class="close-div visually-hidden">
               <button class="btn close-menu" type="button"><span class="it-close"></span>Chiudi</button>
             </div>
@@ -43,7 +41,7 @@
               </svg>
               <span>Indietro</span>
             </button>
-            <div class="menu-wrapper">
+            <div class="menu-wrapper" tabindex="-1">
               <div class="link-list-wrapper">
                 <h3>{{ header }}</h3>
                 <div class="progress">
