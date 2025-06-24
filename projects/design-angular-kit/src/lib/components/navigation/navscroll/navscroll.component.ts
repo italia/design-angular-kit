@@ -17,6 +17,7 @@ import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
+import { TranslateModule } from '@ngx-translate/core';
 
 /**
  * Navscroll
@@ -31,6 +32,7 @@ import { NavscrollStore } from './navscroll.store';
     RouterLink,
     RouterLinkActive,
     RouterLinkWithHref,
+    TranslateModule,
     AsyncPipe,
     NgClass,
   ],

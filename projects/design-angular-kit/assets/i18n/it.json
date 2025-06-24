@@ -97,7 +97,8 @@
       "full-login": "Accedi all'area personale",
       "search": "Cerca",
       "website-search": "Cerca nel sito",
-      "navigation-path": "Percorso di navigazione"
+      "navigation-path": "Percorso di navigazione",
+      "aria-label-toggle": "Apri/Chiudi indice"
     },
     "navbar": {
       "aria-label-main": "Navigazione principale",

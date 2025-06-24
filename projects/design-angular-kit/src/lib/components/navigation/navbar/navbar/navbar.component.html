@@ -11,8 +11,7 @@
     [attr.aria-label]="'it.navbar.aria-label-toggle' | translate">
     <it-icon name="burger"></it-icon>
   </button>
-  <div #collapseView class="navbar-collapsable" style="display: none">
-    <div class="overlay" style="display: none"></div>
+  <div #collapseView class="navbar-collapsable" tabindex="-1">
     <div class="close-div">
       <button class="btn close-menu" type="button">
         <span class="visually-hidden">{{ 'it.navbar.hide' | translate }}</span>
