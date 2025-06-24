@@ -97,7 +97,8 @@
       "full-login": "Access the personal area",
       "search": "Search",
       "website-search": "Search in the site",
-      "navigation-path": "Navigation path"
+      "navigation-path": "Navigation path",
+      "aria-label-toggle": "Show/Hide Index of contents"
     },
     "navbar": {
       "aria-label-main": "Main navigation",
