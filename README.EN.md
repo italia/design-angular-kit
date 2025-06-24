@@ -67,7 +67,7 @@ Choose the version corresponding to your Angular version:
 | ------- | ------------------ | ------ | ---------------------------------------------------------------------------------- |
 | 20+     | v20.0.0 +          | main   | [link](https://italia.github.io/design-angular-kit/design-angular-kit#)            |
 | 19+     | v19.0.0 +          | v19    | [link](https://design-angular-kit-git-v18-dip-trasformazione-digitale.vercel.app/) |
-| 18+     | v18.0.0 +          | v18.   | [link](https://design-angular-kit-git-v19-dip-trasformazione-digitale.vercel.app/) |
+| 18+     | v18.0.0 +          | v18    | [link](https://design-angular-kit-git-v19-dip-trasformazione-digitale.vercel.app/) |
 
 ⚠️ Previous versions are no more maintained.
 
