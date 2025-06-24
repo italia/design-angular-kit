@@ -2,7 +2,7 @@ name: Generate new release
 on:
   push:
     tags:
-      - 'v1.6*'
+      - 'v20.*'
 jobs:
   release:
     runs-on: ubuntu-latest
