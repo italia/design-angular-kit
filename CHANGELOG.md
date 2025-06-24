@@ -1,3 +1,17 @@
+# [19.0.0](https://github.com/italia/design-angular-kit/compare/v1.5.0...v19.0.0) (2025-06-24)
+
+
+### Bug Fixes
+
+* navscroll, navbar, header and dropdown improvements ([446ac34](https://github.com/italia/design-angular-kit/commit/446ac340eb506204c1a2855f8a675cfb2d6210f8))
+
+
+### Features
+
+* **navbar:** add html support to navbar items ([373bb05](https://github.com/italia/design-angular-kit/commit/373bb0595e92e460766b3857c0af4dff33335949))
+
+
+
 # [1.5.0](https://github.com/italia/design-angular-kit/compare/v1.4.0...v1.5.0) (2025-06-11)
 
 
