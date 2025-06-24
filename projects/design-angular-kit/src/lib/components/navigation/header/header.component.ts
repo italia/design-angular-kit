@@ -81,7 +81,7 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
   updateListeners() {
     if (!this.stickyHeader && this.headerWrapper?.nativeElement != undefined && this.sticky) {
       setTimeout(() => {
-        this.stickyHeader = new HeaderSticky(this.headerWrapper.nativeElement);
+        this.stickyHeader = new HeaderSticky(this.headerWrapper!.nativeElement);
       }, 300);
     }
   }
