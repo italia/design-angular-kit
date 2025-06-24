@@ -19,14 +19,13 @@
                   <a
                     class="it-opener d-lg-none"
                     data-bs-toggle="collapse"
-                    href="#menuC1"
+                    [href]="'#' + idCollapsable"
                     role="button"
-                    aria-expanded="false"
-                    aria-controls="menuC1">
+                    [attr.aria-controls]="idCollapsable">
                     <span>{{ slimTitle }}</span>
                     <it-icon name="expand"></it-icon>
                   </a>
-                  <div class="link-list-wrapper collapse" id="menuC1">
+                  <div class="link-list-wrapper collapse" [id]="idCollapsable">
                     <ng-content select="[slimLinkList]"></ng-content>
                   </div>
                 </nav>
