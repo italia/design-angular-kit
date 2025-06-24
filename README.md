@@ -63,11 +63,11 @@ npm install design-angular-kit --save
 
 Scegli la versione corrispondente alla tua versione Angular:
 
-| Angular | design-angular-kit |
-| ------- | ------------------ |
-| 20+     | v1.6.0 +           |
-| 19+     | v1.5.0 +           |
-| 18+     | v1.4.0 +           |
+| Angular | Design Angular kit | Branch | Documentazione                                                                     |
+| ------- | ------------------ | ------ | ---------------------------------------------------------------------------------- |
+| 20+     | v20.0.0 +          | main   | [link](https://italia.github.io/design-angular-kit/design-angular-kit#)            |
+| 19+     | v19.0.0 +          | v19    | [link](https://design-angular-kit-git-v18-dip-trasformazione-digitale.vercel.app/) |
+| 18+     | v18.0.0 +          | v18.   | [link](https://design-angular-kit-git-v19-dip-trasformazione-digitale.vercel.app/) |
 
 ⚠️ Le versioni precendenti non sono più manutenute.
 
