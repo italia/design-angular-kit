@@ -22,28 +22,22 @@ export class ItCardComponent extends ItAbstractComponent {
   @Input({ transform: inputToBoolean }) teaser?: boolean;
 
   /**
-   * To create special cards
+   * To create inline cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) special?: boolean;
+  @Input({ transform: inputToBoolean }) inline?: boolean;
+
+  /**
+   * To create full height cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) fullHeight?: boolean;
 
   /**
    * Card with image
    * @default false
    */
   @Input({ transform: inputToBoolean }) hasImage?: boolean;
-
-  /**
-   * To add rounding effects
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) rounded?: boolean;
-
-  /**
-   * To add shadow effects
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) shadow?: boolean;
 
   /**
    * To add background and shadow

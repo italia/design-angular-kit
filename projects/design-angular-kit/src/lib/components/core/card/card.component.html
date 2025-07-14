@@ -1,35 +1,17 @@
 <ng-template #cardContent>
   <ng-content select="[beforeBody]"></ng-content>
-
-  <div class="card-body {{ bodyClass }}">
-    <ng-content></ng-content>
-  </div>
+  <ng-content></ng-content>
 </ng-template>
 
-@if (!special) {
-  <div
-    class="card {{ cardClass }}"
-    [class.card-img]="hasImage"
-    [class.card-teaser]="teaser"
-    [class.no-after]="hasImage"
-    [class.shadow]="shadow"
-    [class.card-bg]="background"
-    [class.card-big]="big"
-    [class.border-bottom-card]="borderBottom"
-    [class.rounded]="rounded">
-    <ng-container *ngTemplateOutlet="cardContent"></ng-container>
-  </div>
-} @else {
-  <a
-    class="card special-card {{ cardClass }}"
-    [class.card-img]="hasImage"
-    [class.card-teaser]="teaser"
-    [class.shadow]="shadow"
-    [class.card-bg]="background"
-    [class.card-big]="big"
-    [class.no-after]="hasImage"
-    [class.border-bottom-card]="borderBottom"
-    [class.rounded]="rounded">
-    <ng-container *ngTemplateOutlet="cardContent"></ng-container>
-  </a>
-}
+<article
+  class="it-card rounded shadow-sm border {{ cardClass }}"
+  [class.it-card-image]="hasImage"
+  [class.it-card-height-full]="fullHeight"
+  [class.it-card-inline]="inline"
+  [class.card-teaser]="teaser"
+  [class.no-after]="hasImage"
+  [class.card-bg]="background"
+  [class.card-big]="big"
+  [class.border-bottom-card]="borderBottom">
+  <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+</article>
