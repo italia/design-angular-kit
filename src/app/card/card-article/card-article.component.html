@@ -1,27 +1,759 @@
-<h3>Card articolo</h3>
+<h3>Card per contenuti editoriali</h3>
 <p></p>
 
 <div class="bd-example">
+  <h4>Card editoriali standard</h4>
   <div class="row">
-    <div class="col-12 col-lg-6">
-      <div class="card-wrapper">
-        <it-card>
-          <div class="category-top">
-            <a class="category" href="#">Categoria</a>
-            <span class="data">10/12/2023</span>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" fullHeight="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">
+          <a href="#">Titolo del contenuto</a>
+        </h3>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-16x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
           </div>
-          <h3 class="card-title big-heading h5">Lorem ipsum dolor sit amet, consectetur adipiscing elit…</h3>
-          <p class="card-text font-serif">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
           </p>
-          <span class="card-signature">di Federico De Paolis</span>
-          <a class="read-more" href="#">
-            <span class="text">Leggi di più</span>
-            <span class="visually-hidden">su Lorem ipsum dolor sit amet, consectetur adipiscing elit…</span>
-            <it-icon name="arrow-right"></it-icon>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <div class="it-card-taxonomy">
+            <a href="#" class="it-card-category it-card-link link-secondary"
+              ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+            >
+          </div>
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" fullHeight="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">
+          <a href="#">Titolo del contenuto</a>
+        </h3>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-16x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/nature/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <div class="it-card-taxonomy">
+            <ul class="it-card-chips chips-list" aria-label="Argomenti correlati: ">
+              <li class="list-item">
+                <a class="chip chip-simple chip-sm" href="#">
+                  <span class="chip-label"><span class="visually-hidden">Argomento: </span>Argomento 1</span>
+                </a>
+              </li>
+              <li class="list-item">
+                <a class="chip chip-simple chip-sm" href="#">
+                  <span class="chip-label"><span class="visually-hidden">Argomento: </span>Argomento 2</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">
+          <a href="#">Titolo del contenuto</a>
+        </h3>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <h4>Card editoriali featured</h4>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <article class="it-card it-card-image it-card-height-full rounded shadow-sm border">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo contenuto featured <span class="visually-hidden">(link esterno su piattaforma XYZ)</span>
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="file" color="primary"></it-icon>
+            </div>
           </a>
-        </it-card>
-      </div>
+        </h3>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-16x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Sottotitolo del contenuto</p>
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <div class="it-card-taxonomy">
+            <a href="#" class="it-card-category it-card-link link-secondary"
+              ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+            >
+          </div>
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </article>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <article class="it-card it-card-image it-card-height-full rounded shadow-sm border">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo contenuto featured <span class="visually-hidden">(link esterno su Designers Italia)</span>
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="designers-italia" color="primary"></it-icon>
+            </div>
+          </a>
+        </h3>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-16x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/nature/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Sottotitolo del contenuto</p>
+          <address class="it-card-signature">di Maria Verde</address>
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <div class="it-card-taxonomy">
+            <ul class="it-card-chips chips-list" aria-label="Argomenti correlati: ">
+              <li class="list-item">
+                <a class="chip chip-simple chip-sm" href="#">
+                  <span class="chip-label"><span class="visually-hidden">Argomento: </span>Argomento 1</span>
+                </a>
+              </li>
+              <li class="list-item">
+                <a class="chip chip-simple chip-sm" href="#">
+                  <span class="chip-label"><span class="visually-hidden">Argomento: </span>Argomento 2</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </article>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <article class="it-card rounded shadow-sm border">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo contenuto featured <span class="visually-hidden">(link esterno)</span>
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="external-link" color="primary"></it-icon>
+            </div>
+          </a>
+        </h3>
+        <!--card body content-->
+        <div class="it-card-body">
+          <address class="it-card-signature">di Maria Verde</address>
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </article>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card inline</h4>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-10 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" inline="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title">
+            <a href="#">Titolo contenuto editoriale</a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+              troncamento.
+            </p>
+          </div>
+          <footer class="it-card-related it-card-footer">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+            <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+          </footer>
+        </div>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-1x1">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-10 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" inline="true" reverse="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title">
+            <a href="#">Titolo contenuto editoriale</a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+              troncamento.
+            </p>
+          </div>
+          <footer class="it-card-related it-card-footer">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+            <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+          </footer>
+        </div>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-1x1">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/nature/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card per eventi</h4>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true">
+        <h3 class="it-card-title">
+          <a href="#">Titolo evento</a>
+        </h3>
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-16x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Dal 4 al 6 agosto</p>
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+          <footer class="it-card-related">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+            <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+          </footer>
+        </div>
+        <div class="it-card-footer" aria-label="Link correlati:">
+          <a href="#" class="it-card-link">Iscriviti all'evento</a>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" fullHeight="true">
+        <h3 class="it-card-title">
+          <a href="#">Titolo evento</a>
+        </h3>
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-16x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/nature/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Dal 4 al 6 novembre</p>
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <div class="it-card-footer" aria-label="Link correlati:">
+          <button itButton="outline-secondary">Compila il form di iscrizione</button>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card>
+        <h3 class="it-card-title">
+          <a href="#">Titolo evento</a>
+        </h3>
+        <div class="it-card-body">
+          <p class="it-card-subtitle">
+            <span class="visually-hidden">Data evento:</span> <time datetime="08-19">19 agosto</time>,
+            <span class="visually-hidden">Orario:</span> <time>11:30</time>–<time>13:00</time>
+          </p>
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+          <footer class="it-card-related">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+            <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+          </footer>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card per eventi inline</h4>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-10 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card inline="true" hasImage="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title">
+            <a href="#">Titolo evento</a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-subtitle">
+              <span class="visually-hidden">Data evento:</span> <time datetime="08-19">19 agosto</time>,
+              <span class="visually-hidden">Orario:</span> <time>11:30</time>–<time>13:00</time>
+            </p>
+            <p class="it-card-text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+              troncamento.
+            </p>
+          </div>
+          <footer class="it-card-related it-card-footer">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+            <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+          </footer>
+          <div class="it-card-footer" aria-label="Link correlati:">
+            <a href="#" class="it-card-link">Iscriviti all'evento</a>
+          </div>
+        </div>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-1x1">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-10 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card inline="true" hasImage="true" reverse="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title">
+            <a href="#">Titolo evento</a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-subtitle">Dal 4 al 6 agosto</p>
+            <p class="it-card-text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+              troncamento.
+            </p>
+          </div>
+          <footer class="it-card-related it-card-footer">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+            <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+          </footer>
+          <div class="it-card-footer" aria-label="Link correlati:">
+            <button type="button" class="btn btn-outline-secondary">Iscriviti</button>
+          </div>
+        </div>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-1x1">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/nature/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card per media (video, audio)</h4>
+
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" fullHeight="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo contenuto video
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="video" title="Tipo: Video" color="primary"></it-icon>
+            </div>
+          </a>
+        </h3>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-16x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <div class="it-card-taxonomy">
+            <a href="#" class="it-card-category it-card-link link-secondary"
+              ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+            >
+          </div>
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" fullHeight="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo contenuto video
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="video" title="Tipo: Video" color="primary"></it-icon>
+            </div>
+          </a>
+        </h3>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-16x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/nature/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <div class="it-card-taxonomy">
+            <ul class="it-card-chips chips-list" aria-label="Argomenti correlati: ">
+              <li class="list-item">
+                <a class="chip chip-simple chip-sm" href="#">
+                  <span class="chip-label"><span class="visually-hidden">Argomento: </span>Argomento 1</span>
+                </a>
+              </li>
+              <li class="list-item">
+                <a class="chip chip-simple chip-sm" href="#">
+                  <span class="chip-label"><span class="visually-hidden">Argomento: </span>Argomento 2</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card>
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo contenuto audio
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="horn" title="Tipo: Audio" color="primary"></it-icon>
+            </div>
+          </a>
+        </h3>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <div class="it-card-taxonomy">
+            <a href="#" class="it-card-category it-card-link link-secondary"
+              ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+            >
+          </div>
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card>
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo contenuto audio
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="horn" title="Tipo: Audio" color="primary"></it-icon>
+            </div>
+          </a>
+        </h3>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
+          </p>
+        </div>
+        <!--finally the card footer metadata-->
+        <footer class="it-card-related it-card-footer">
+          <div class="it-card-taxonomy">
+            <ul class="it-card-chips chips-list" aria-label="Argomenti correlati: ">
+              <li class="list-item">
+                <a class="chip chip-simple chip-sm" href="#">
+                  <span class="chip-label"><span class="visually-hidden">Argomento: </span>Argomento 1</span>
+                </a>
+              </li>
+              <li class="list-item">
+                <a class="chip chip-simple chip-sm" href="#">
+                  <span class="chip-label"><span class="visually-hidden">Argomento: </span>Argomento 2</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card per media video inline</h4>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-10 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" inline="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title it-card-title-icon">
+            <a href="#"
+              >Titolo contenuto video
+              <div class="it-card-title-icon-wrapper">
+                <it-icon name="video" title="Tipo: Video" color="primary"></it-icon>
+              </div>
+            </a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+              troncamento.
+            </p>
+          </div>
+          <footer class="it-card-related it-card-footer">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+            <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+          </footer>
+        </div>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-1x1">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-10 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" inline="true" reverse="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title it-card-title-icon">
+            <a href="#"
+              >Titolo contenuto video
+              <div class="it-card-title-icon-wrapper">
+                <it-icon name="video" title="Tipo: Video" color="primary"></it-icon>
+              </div>
+            </a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+              troncamento.
+            </p>
+          </div>
+          <footer class="it-card-related it-card-footer">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+            <time class="it-card-date" datetime="2025-04-22">22 aprile 2025</time>
+          </footer>
+        </div>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-1x1">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/nature/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
     </div>
   </div>
 </div>

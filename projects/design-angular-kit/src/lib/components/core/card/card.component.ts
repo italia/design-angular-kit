@@ -28,6 +28,12 @@ export class ItCardComponent extends ItAbstractComponent {
   @Input({ transform: inputToBoolean }) inline?: boolean;
 
   /**
+   * To create inline reverse cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) reverse?: boolean;
+
+  /**
    * To create full height cards
    * @default false
    */
