@@ -16,16 +16,22 @@ import { inputToBoolean } from '../../../utils/coercion';
 })
 export class ItCardComponent extends ItAbstractComponent {
   /**
-   * To create cards with short or "preview" content
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) teaser?: boolean;
-
-  /**
    * To create inline cards
    * @default false
    */
   @Input({ transform: inputToBoolean }) inline?: boolean;
+
+  /**
+   * To create banner cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) banner?: boolean;
+
+  /**
+   * To create profile cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) profile?: boolean;
 
   /**
    * To create inline reverse cards
@@ -46,22 +52,10 @@ export class ItCardComponent extends ItAbstractComponent {
   @Input({ transform: inputToBoolean }) hasImage?: boolean;
 
   /**
-   * To add background and shadow
+   * To add top border
    * @default false
    */
-  @Input({ transform: inputToBoolean }) background?: boolean;
-
-  /**
-   * To add bottom border
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) borderBottom?: boolean;
-
-  /**
-   * To render a big card
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) big?: boolean;
+  @Input({ transform: inputToBoolean }) borderTop?: boolean;
 
   /**
    * Custom card class
