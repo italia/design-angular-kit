@@ -15,6 +15,21 @@
 
 {% from "../../macro.template.njk" import sanitize as sanitize %}
 
+{% set fileListCustomLabelHtml %}
+  {% include "../upload-file-list-custom-label-example/upload-file-list-custom-label-example.component.html" %}
+{% endset %}
+
+{% set fileListCustomLabelTs %}
+  {% include "../upload-file-list-custom-label-example/upload-file-list-custom-label-example.component.ts" %}
+{% endset %}
+
+<it-upload-file-list-custom-label-example></it-upload-file-list-custom-label-example>
+
+<it-source-display html="{$ sanitize(fileListHtml) $}"  typescript="{$ sanitize(fileListTs) $}" >
+</it-source-display>
+
+{% from "../../macro.template.njk" import sanitize as sanitize %}
+
 {% set imageListHtml %}
   {% include "../upload-image-list-example/upload-image-list-example.component.html" %}
 {% endset %}
