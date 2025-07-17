@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { forkJoin, take, tap } from 'rxjs';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { UploadFileListItem } from '../../../interfaces/form';
-import { ItFileUtils } from '../../../utils/file-utils';
-import { forkJoin, take, tap } from 'rxjs';
-import { ItIconComponent } from '../../utils/icon/icon.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { ItTooltipDirective } from '../../core/tooltip/tooltip.directive';
-import { ItProgressBarComponent } from '../../core/progress-bar/progress-bar.component';
 import { inputToBoolean } from '../../../utils/coercion';
+import { ItFileUtils } from '../../../utils/file-utils';
+import { ItProgressBarComponent } from '../../core/progress-bar/progress-bar.component';
+import { ItTooltipDirective } from '../../core/tooltip/tooltip.directive';
+import { ItIconComponent } from '../../utils/icon/icon.component';
 
 @Component({
   selector: 'it-upload-file-list',
@@ -27,6 +27,11 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
    * @default *
    */
   @Input() accept: string = '*';
+
+  /**
+   * A label for the upload button
+   */
+  @Input({ required: false }) label?: string;
 
   /**
    * If upload multiple files
