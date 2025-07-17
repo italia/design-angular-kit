@@ -1,8 +1,13 @@
 @if (!hideLoadButton) {
   <input type="file" [id]="id" class="upload" [accept]="accept" [multiple]="multiple" (change)="onLoadFiles($event)" />
   <label [for]="id">
-    <it-icon name="upload" size="sm"></it-icon>
-    <span>{{ 'it.form.upload' | translate }}</span>
+    @if (label) {
+      <it-icon name="upload" size="sm"></it-icon>
+      <span>{{ label }}</span>
+    } @else {
+      <it-icon name="upload" size="sm"></it-icon>
+      <span>{{ 'it.form.upload' | translate }}</span>
+    }
   </label>
 }
 

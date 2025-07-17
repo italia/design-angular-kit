@@ -31,9 +31,9 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers-contrib/features/angular-cli:2": {
-      "version": "18.0.7"
+    "ghcr.io/devcontainers-extra/features/angular-cli:2": {
+      "version": "20.0.1"
     },
-    "ghcr.io/devcontainers-contrib/features/cz-cli:1": {}
+    "ghcr.io/devcontainers-extra/features/cz-cli:1": {}
   }
 }
