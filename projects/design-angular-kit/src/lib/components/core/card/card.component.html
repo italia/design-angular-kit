@@ -4,11 +4,16 @@
 </ng-template>
 
 <article
-  class="it-card rounded shadow-sm border {{ cardClass }}"
+  class="it-card rounded {{ cardClass }}"
+  [class.border]="border"
+  [class.shadow-sm]="shadow === 'sm'"
+  [class.shadow-lg]="shadow === 'lg'"
+  [class.shadow]="shadow === 'normal'"
   [class.it-card-image]="hasImage"
   [class.it-card-height-full]="fullHeight"
   [class.it-card-inline]="inline"
   [class.it-card-inline-reverse]="reverse"
+  [class.it-card-inline-mini]="mini"
   [class.it-card-banner]="banner"
   [class.it-card-profile]="profile"
   [class.it-card-border-top]="borderTop"

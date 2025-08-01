@@ -22,6 +22,18 @@ export class ItCardComponent extends ItAbstractComponent {
   @Input({ transform: inputToBoolean }) inline?: boolean;
 
   /**
+   * To create inline mini cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) mini?: boolean;
+
+  /**
+   * To add border
+   * @default true
+   */
+  @Input({ transform: inputToBoolean }) border: boolean = true;
+
+  /**
    * To create banner cards
    * @default false
    */
@@ -68,4 +80,12 @@ export class ItCardComponent extends ItAbstractComponent {
    * @default ''
    */
   @Input() bodyClass: string = '';
+
+  /**
+   * Shadow type
+   * @default 'sm'
+   */
+  @Input() shadow: 'sm' | 'lg' | 'normal' | 'none' = 'sm';
+
+  //'button' | 'reset' | 'submit' = 'button';
 }
