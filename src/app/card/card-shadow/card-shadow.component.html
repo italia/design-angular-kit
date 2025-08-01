@@ -1,22 +1,165 @@
-<h3>Card con ombreggiatura</h3>
+<h3>Card di presentazione</h3>
 <p></p>
 
 <div class="bd-example">
+  <h4>Card di presentazione semplice</h4>
   <div class="row">
-    <div class="col-12 col-lg-6">
-      <div class="card-wrapper">
-        <it-card background="true">
-          <h3 class="card-title h5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor…</h3>
-          <p class="card-text font-serif">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <a class="read-more" href="#">
-            <span class="text">Leggi di più</span>
-            <span class="visually-hidden">su Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor…</span>
-            <it-icon name="arrow-right"></it-icon>
-          </a>
-        </it-card>
-      </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card banner="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">
+          <a href="#">Titolo del contenuto</a>
+        </h3>
+        <!--card second child is the icon (optional)-->
+        <div class="it-card-banner-icon-wrapper">
+          <svg class="icon icon-secondary icon-xl" aria-hidden="true">
+            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chart-line"></use>
+          </svg>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Sottotitolo</p>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <h4>Card banner con azione</h4>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card banner="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">Titolo del contenuto</h3>
+        <!--card second child is the icon (optional)-->
+        <div class="it-card-banner-icon-wrapper">
+          <svg class="icon icon-secondary icon-xl" aria-hidden="true">
+            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chart-line"></use>
+          </svg>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Sottotitolo</p>
+        </div>
+        <div class="it-card-footer" aria-label="Link correlati:">
+          <a href="#">Scopri maggiori informazioni<span class="visually-hidden"> su Titolo del contenuto</span></a>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card banner="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">Titolo del contenuto</h3>
+        <!--card second child is the icon (optional)-->
+        <div class="it-card-banner-icon-wrapper">
+          <svg class="icon icon-secondary icon-xl" aria-hidden="true">
+            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chart-line"></use>
+          </svg>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Sottotitolo</p>
+        </div>
+        <div class="it-card-footer" aria-label="Link correlati:">
+          <button type="button" class="btn btn-outline-primary">
+            Apri il form di iscrizione <span class="visually-hidden">per Titolo del contenuto</span>
+          </button>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <h4>Card banner inline</h4>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card banner="true" inline="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title">
+            <a href="#">Titolo del contenuto</a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-subtitle">Sottotitolo</p>
+          </div>
+        </div>
+        <!--card second child is the icon (optional)-->
+        <div class="it-card-banner-icon-wrapper">
+          <svg class="icon icon-secondary icon-xl" aria-hidden="true">
+            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chart-line"></use>
+          </svg>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card banner="true" inline="true" reverse="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title">
+            <a href="#">Titolo del contenuto</a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-subtitle">Sottotitolo</p>
+          </div>
+        </div>
+        <!--card second child is the icon (optional)-->
+        <div class="it-card-banner-icon-wrapper">
+          <svg class="icon icon-secondary icon-xl" aria-hidden="true">
+            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chart-line"></use>
+          </svg>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card banner="true" mini="true" inline="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title">
+            <a href="#">Titolo del contenuto</a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-subtitle">Versione inline anche su mobile</p>
+          </div>
+        </div>
+        <!--card second child is the icon (optional)-->
+        <div class="it-card-banner-icon-wrapper">
+          <svg class="icon icon-secondary icon-xl" aria-hidden="true">
+            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chart-line"></use>
+          </svg>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card banner="true" mini="true" inline="true" reverse="true">
+        <!--card first child is all the card content: title (link) + body + footer -->
+        <div class="it-card-inline-content">
+          <h3 class="it-card-title">
+            <a href="#">Titolo del contenuto</a>
+          </h3>
+          <div class="it-card-body">
+            <p class="it-card-subtitle">Versione inline anche su mobile</p>
+          </div>
+        </div>
+        <!--card second child is the icon (optional)-->
+        <div class="it-card-banner-icon-wrapper">
+          <svg class="icon icon-secondary icon-xl" aria-hidden="true">
+            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chart-line"></use>
+          </svg>
+        </div>
+      </it-card>
+      <!--end it-card-->
     </div>
   </div>
 </div>
