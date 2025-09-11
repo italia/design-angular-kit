@@ -2,7 +2,7 @@
 # metadata file that makes public software easily discoverable.
 # More info at https://github.com/italia/publiccode.yml
 
-publiccodeYmlVersion: '0.2'
+publiccodeYmlVersion: 0.4.0
 name: Design Angular Kit
 url: https://github.com/italia/design-angular-kit
 landingURL: https://italia.github.io/design-angular-kit
@@ -18,7 +18,6 @@ developmentStatus: stable
 softwareType: library
 description:
   it:
-    genericName: Design Angular Kit
     shortDescription: La libreria Design Angular Kit è il modo più semplice e sicuro
       per costruire UI web moderne, inclusive e semplici da mantenere
       utilizzando Angular.
@@ -50,7 +49,6 @@ description:
 legal:
   license: BSD-3-Clause
   mainCopyrightOwner: Presidenza del Consiglio dei Ministri
-  authorsFile: https://github.com/italia/design-angular-kit/blob/main/AUTHORS
 maintenance:
   type: community
   contacts:
