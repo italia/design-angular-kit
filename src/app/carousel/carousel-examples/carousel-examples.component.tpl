@@ -47,39 +47,3 @@
 <it-carousel-image-above-example></it-carousel-image-above-example>
 
 <it-source-display html="{$ sanitize(htmlImageAbove) $}" typescript="{$ sanitize(typescriptImageAbove) $}"></it-source-display>
-
-{% set htmlSpecialCards %}
-  {% include "../carousel-special-cards-example/carousel-special-cards-example.component.html" %}
-{% endset %}
-
-{% set typescriptSpecialCards %}
-  {% include "../carousel-special-cards-example/carousel-special-cards-example.component.ts" %}
-{% endset %}
-
-<it-carousel-special-cards-example></it-carousel-special-cards-example>
-
-<it-source-display html="{$ sanitize(htmlSpecialCards) $}" typescript="{$ sanitize(typescriptSpecialCards) $}"></it-source-display>
-
-{% set htmlFullscreenImage %}
-  {% include "../carousel-fullscreen-image-example/carousel-fullscreen-image-example.component.html" %}
-{% endset %}
-
-{% set typescriptFullscreenImage %}
-  {% include "../carousel-fullscreen-image-example/carousel-fullscreen-image-example.component.ts" %}
-{% endset %}
-
-<it-carousel-fullscreen-image-example></it-carousel-fullscreen-image-example>
-
-<it-source-display html="{$ sanitize(htmlFullscreenImage) $}" typescript="{$ sanitize(typescriptFullscreenImage) $}"></it-source-display>
-
-{% set htmlFullscreenImageStandard %}
-  {% include "../carousel-fullscreen-image-standard-example/carousel-fullscreen-image-standard-example.component.html" %}
-{% endset %}
-
-{% set typescriptFullscreenImageStandard %}
-  {% include "../carousel-fullscreen-image-standard-example/carousel-fullscreen-image-standard-example.component.ts" %}
-{% endset %}
-
-<it-carousel-fullscreen-image-standard-example></it-carousel-fullscreen-image-standard-example>
-
-<it-source-display html="{$ sanitize(htmlFullscreenImageStandard) $}" typescript="{$ sanitize(typescriptFullscreenImageStandard) $}"></it-source-display>
