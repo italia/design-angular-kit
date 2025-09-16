@@ -46,6 +46,12 @@ export class ItCardComponent extends ItAbstractComponent {
   @Input({ transform: inputToBoolean }) profile?: boolean;
 
   /**
+   * To create rounded cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) rounded?: boolean;
+
+  /**
    * To create inline reverse cards
    * @default false
    */
