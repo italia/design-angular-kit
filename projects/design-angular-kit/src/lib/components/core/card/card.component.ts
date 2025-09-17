@@ -16,16 +16,52 @@ import { inputToBoolean } from '../../../utils/coercion';
 })
 export class ItCardComponent extends ItAbstractComponent {
   /**
-   * To create cards with short or "preview" content
+   * To create inline cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) teaser?: boolean;
+  @Input({ transform: inputToBoolean }) inline?: boolean;
 
   /**
-   * To create special cards
+   * To create inline mini cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) special?: boolean;
+  @Input({ transform: inputToBoolean }) mini?: boolean;
+
+  /**
+   * To add border
+   * @default true
+   */
+  @Input({ transform: inputToBoolean }) border: boolean = true;
+
+  /**
+   * To create banner cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) banner?: boolean;
+
+  /**
+   * To create profile cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) profile?: boolean;
+
+  /**
+   * To create rounded cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) rounded?: boolean;
+
+  /**
+   * To create inline reverse cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) reverse?: boolean;
+
+  /**
+   * To create full height cards
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) fullHeight?: boolean;
 
   /**
    * Card with image
@@ -34,34 +70,10 @@ export class ItCardComponent extends ItAbstractComponent {
   @Input({ transform: inputToBoolean }) hasImage?: boolean;
 
   /**
-   * To add rounding effects
+   * To add top border
    * @default false
    */
-  @Input({ transform: inputToBoolean }) rounded?: boolean;
-
-  /**
-   * To add shadow effects
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) shadow?: boolean;
-
-  /**
-   * To add background and shadow
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) background?: boolean;
-
-  /**
-   * To add bottom border
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) borderBottom?: boolean;
-
-  /**
-   * To render a big card
-   * @default false
-   */
-  @Input({ transform: inputToBoolean }) big?: boolean;
+  @Input({ transform: inputToBoolean }) borderTop?: boolean;
 
   /**
    * Custom card class
@@ -74,4 +86,12 @@ export class ItCardComponent extends ItAbstractComponent {
    * @default ''
    */
   @Input() bodyClass: string = '';
+
+  /**
+   * Shadow type
+   * @default 'sm'
+   */
+  @Input() shadow: 'sm' | 'lg' | 'normal' | 'none' = 'sm';
+
+  //'button' | 'reset' | 'submit' = 'button';
 }

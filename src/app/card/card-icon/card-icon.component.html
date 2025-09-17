@@ -1,23 +1,494 @@
-<h3>Card con icona</h3>
+<h3>Card informative e di servizio</h3>
 <p></p>
 
 <div class="bd-example">
+  <h4>Card per servizi e bandi</h4>
   <div class="row">
-    <div class="col-12 col-lg-6">
-      <div class="card-wrapper">
-        <it-card>
-          <div class="categoryicon-top">
-            <it-icon name="file"></it-icon>
-            <span class="text">Categoria<br />nome</span>
-          </div>
-          <a href="#">
-            <h3 class="card-title h5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor…</h3>
-          </a>
-          <p class="card-text font-serif">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card fullHeight="true">
+        <h4 class="it-card-title">
+          <a href="#">Titolo del servizio</a>
+        </h4>
+        <div class="it-card-body">
+          <p class="it-card-text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza
+            troncamento.
           </p>
-        </it-card>
-      </div>
+          <footer class="it-card-related">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+          </footer>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card fullHeight="true">
+        <h4 class="it-card-title">
+          <a href="#">Titolo del servizio</a>
+        </h4>
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Sottotitolo del servizio</p>
+          <footer class="it-card-related">
+            <div class="it-card-taxonomy">
+              <div class="chip chip-simple chip-sm chip-success">
+                <span class="visually-hidden">Stato del servizio: </span><span class="chip-label">Attivo</span>
+              </div>
+            </div>
+          </footer>
+        </div>
+        <div class="it-card-footer" aria-label="Link correlati:">
+          <a href="#" class="it-card-link">Requisiti per l'accesso</a>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card fullHeight="true">
+        <h4 class="it-card-title">
+          <a href="#">Titolo del bando</a>
+        </h4>
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Sottotitolo del bando</p>
+          <footer class="it-card-related">
+            <div class="it-card-taxonomy">
+              <div class="chip chip-simple chip-sm chip-success">
+                <span class="visually-hidden">Stato del bando: </span><span class="chip-label">Aperto</span>
+              </div>
+            </div>
+            <span class="it-card-date text-warning"
+              ><strong>Scadenza: </strong><time class="it-card-date text-warning" datetime="2025-10-12">31 gennaio, 2025</time></span
+            >
+          </footer>
+        </div>
+        <div class="it-card-footer" aria-label="Link correlati:">
+          <button itButton="outline-secondary">Compila il form di candidatura</button>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card per documenti e allegati</h4>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card>
+        <h4 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo del documento
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="file" color="primary"></it-icon>
+            </div>
+          </a>
+        </h4>
+        <div class="it-card-body">
+          <p class="it-card-text">Eventuale breve estratto descrittivo del documento.</p>
+          <footer class="it-card-related">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+          </footer>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card>
+        <h4 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo del documento
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="file" color="primary"></it-icon>
+            </div>
+          </a>
+        </h4>
+        <div class="it-card-body">
+          <p class="it-card-text">Eventuale breve estratto descrittivo del documento. Formato PDF (200Kb)</p>
+          <footer class="it-card-related">
+            <div class="it-card-taxonomy">
+              <a href="#" class="it-card-category it-card-link link-secondary"
+                ><span class="visually-hidden">Categoria correlata: </span>Categoria</a
+              >
+            </div>
+          </footer>
+        </div>
+        <div class="it-card-footer">
+          <span class="me-2">Scarica come:</span>
+          <a href="#" class="it-card-link">ODT (300Kb)<span class="visually-hidden">: Titolo del documento</span></a>
+          <a href="#" class="it-card-link">ODS (400Kb)<span class="visually-hidden">: Titolo del documento</span></a>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card>
+        <h4 class="it-card-title it-card-title-icon">
+          <a href="#"
+            >Titolo del file allegato <span class="visually-hidden">(Formato ODT, 200Kb)</span>
+            <div class="it-card-title-icon-wrapper">
+              <it-icon name="file-odt" color="primary"></it-icon>
+            </div>
+          </a>
+        </h4>
+        <div class="it-card-body">
+          <p class="it-card-text" aria-hidden="true">Formato ODT (200Kb)</p>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card per profili personali</h4>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card fullHeight="true" profile="true">
+        <div class="it-card-profile-header">
+          <div class="it-card-profile">
+            <h4 class="it-card-profile-name">
+              <a href="#">Nome Personale</a>
+            </h4>
+            <p class="it-card-profile-role">Ruolo nell'organizzazione</p>
+          </div>
+          <div itAvatar size="xl">
+            <p aria-hidden="true">NP</p>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card fullHeight="true" profile="true" borderTop="true">
+        <div class="it-card-profile-header">
+          <div class="it-card-profile">
+            <h4 class="it-card-profile-name">
+              <a href="#">Nome Personale</a>
+            </h4>
+            <p class="it-card-profile-role">Ruolo nell'organizzazione</p>
+          </div>
+          <div itAvatar size="xl">
+            <img src="https://randomuser.me/api/portraits/women/14.jpg" alt="Woman image" />
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card fullHeight="true" profile="true">
+        <div class="it-card-profile-header">
+          <div class="it-card-profile">
+            <h4 class="it-card-profile-name">
+              <a href="#">Nome Personale</a>
+            </h4>
+            <p class="it-card-profile-role">Ruolo nell'organizzazione</p>
+          </div>
+          <div itAvatar size="xl">
+            <p aria-hidden="true">NP</p>
+          </div>
+        </div>
+        <div class="it-card-body">
+          <dl class="it-card-description-list">
+            <div>
+              <dt>Area:</dt>
+              <dd><a class="it-card-link" href="#">Nome dell'area di appartenenza</a></dd>
+            </div>
+            <div>
+              <dt>Email:</dt>
+              <dd>me&#64;mail.com</dd>
+            </div>
+            <div>
+              <dt>Tel:</dt>
+              <dd>340.4050600</dd>
+            </div>
+            <div>
+              <dt>Indirizzo:</dt>
+              <dd>Via della città, 5 - 00100 Città</dd>
+            </div>
+          </dl>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card fullHeight="true" profile="true" borderTop="true">
+        <div class="it-card-profile-header">
+          <div class="it-card-profile">
+            <h4 class="it-card-profile-name">
+              <a href="#">Nome Personale</a>
+            </h4>
+            <p class="it-card-profile-role">Ruolo nell'organizzazione</p>
+          </div>
+          <div itAvatar size="xl">
+            <img src="https://randomuser.me/api/portraits/women/14.jpg" alt="Woman image" />
+          </div>
+        </div>
+        <div class="it-card-body">
+          <dl class="it-card-description-list">
+            <div>
+              <dt>Area:</dt>
+              <dd><a class="it-card-link" href="#">Nome dell'area di appartenenza</a></dd>
+            </div>
+            <div>
+              <dt>Email:</dt>
+              <dd>me&#64;mail.com</dd>
+            </div>
+            <div>
+              <dt>Tel:</dt>
+              <dd>340.4050600</dd>
+            </div>
+            <div>
+              <dt>Indirizzo:</dt>
+              <dd>Via della città, 5 - 00100 Città</dd>
+            </div>
+          </dl>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card per luoghi</h4>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card profile="true" fullHeight="true">
+        <div class="it-card-profile-header">
+          <div class="it-card-profile">
+            <h4 class="it-card-profile-name">
+              <a href="#">Toponimo o luogo</a>
+            </h4>
+            <p class="it-card-profile-type">Tipologia di luogo</p>
+          </div>
+          <div class="it-card-profile-image ratio ratio-1x1">
+            <div class="it-card-profile-image-icon-wrapper">
+              <it-icon name="pa" size="lg" color="primary"></it-icon>
+            </div>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card profile="true" fullHeight="true" borderTop="true">
+        <div class="it-card-profile-header">
+          <div class="it-card-profile">
+            <h4 class="it-card-profile-name">
+              <a href="#">Toponimo o luogo</a>
+            </h4>
+            <p class="it-card-profile-type">Tipologia di luogo</p>
+          </div>
+          <div class="it-card-profile-image ratio ratio-1x1">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/monument/320/320"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card profile="true" fullHeight="true">
+        <div class="it-card-profile-header">
+          <div class="it-card-profile">
+            <h4 class="it-card-profile-name">
+              <a href="#">Toponimo o luogo</a>
+            </h4>
+            <p class="it-card-profile-type">Tipologia di luogo</p>
+          </div>
+          <div class="it-card-profile-image ratio ratio-1x1">
+            <div class="it-card-profile-image-icon-wrapper">
+              <it-icon name="pa" size="lg" color="primary"></it-icon>
+            </div>
+          </div>
+        </div>
+        <div class="it-card-body">
+          <dl class="it-card-description-list">
+            <div>
+              <dt>Email:</dt>
+              <dd>me&#64;mail.com</dd>
+            </div>
+            <div>
+              <dt>Tel:</dt>
+              <dd>340.4050600</dd>
+            </div>
+            <div>
+              <dt>Indirizzo:</dt>
+              <dd>Via della città, 5 - 00100 Città</dd>
+            </div>
+          </dl>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card profile="true" fullHeight="true" borderTop="true">
+        <div class="it-card-profile-header">
+          <div class="it-card-profile">
+            <h4 class="it-card-profile-name">
+              <a href="#">Toponimo o luogo</a>
+            </h4>
+            <p class="it-card-profile-type">Tipologia di luogo</p>
+          </div>
+          <div class="it-card-profile-image ratio ratio-1x1">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/monument/320/320"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <div class="it-card-body">
+          <dl class="it-card-description-list">
+            <div>
+              <dt>Email:</dt>
+              <dd>me&#64;mail.com</dd>
+            </div>
+            <div>
+              <dt>Tel:</dt>
+              <dd>340.4050600</dd>
+            </div>
+            <div>
+              <dt>Indirizzo:</dt>
+              <dd>Via della città, 5 - 00100 Città</dd>
+            </div>
+          </dl>
+        </div>
+        <footer class="it-card-related it-card-footer border-top pt-3">
+          <div style="flex-grow: 1">
+            <it-icon name="map-marker" size="sm" color="secondary"></it-icon>
+            <strong>Distanza:</strong> 900 metri
+          </div>
+          <a href="#" target="_blank" class="it-card-link">
+            Apri in mappa
+            <span class="visually-hidden"> Toponimo o Luogo (si apre in una nuova finestra)</span>
+            <it-icon name="external-link" svgClass="ms-2" size="sm" color="secondary"></it-icon>
+          </a>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+
+  <h4>Card con liste di contenuti affini</h4>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" fullHeight="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">
+          <a href="#">Argomento Y</a>
+        </h3>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-21x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/nature/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">Descrizione breve dell'argomento in poche righe non troncate.</p>
+          <ul class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+            <li class="list-group-item"><a href="#">Titolo notizia affine</a></li>
+            <li class="list-group-item"><a href="#">Titolo media affine</a></li>
+            <li class="list-group-item"><a href="#">Altro titolo scheda affine</a></li>
+            <li class="list-group-item"><a href="#">Pagina profilo affine</a></li>
+          </ul>
+        </div>
+      </it-card>
+      <!--end it-card-->
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card hasImage="true" fullHeight="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">
+          <a href="#">Titolo evento</a>
+        </h3>
+        <!--card second child is the image (optional)-->
+        <div class="it-card-image-wrapper">
+          <div class="ratio ratio-21x9">
+            <figure class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/monument/800/600"
+                alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            </figure>
+          </div>
+        </div>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-subtitle">Dal 17 al 22 novembre</p>
+          <p class="it-card-text">Descrizione breve dell'evento in poche righe non troncate.</p>
+          <ul class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+            <li class="list-group-item"><a href="#">Gli artisti</a></li>
+            <li class="list-group-item"><a href="#">Il luogo</a></li>
+            <li class="list-group-item"><a href="#">Il programma dettagliato</a></li>
+          </ul>
+        </div>
+        <footer class="it-card-related it-card-footer border-top pt-3">
+          <div style="flex-grow: 1">
+            <a class="it-card-link" href="#">Iscriviti per rimanere aggiornato</a>
+          </div>
+          <a href="#" target="_blank" class="it-card-link">
+            Apri la mappa
+            <span class="visually-hidden"> di Titolo evento (si apre in una nuova finestra)</span>
+            <it-icon name="external-link" svgClass="ms-2" size="sm" color="secondary"></it-icon>
+          </a>
+        </footer>
+      </it-card>
+      <!--end it-card-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+      <!--start it-card-->
+      <it-card fullHeight="true">
+        <!--card first child is the title (link)-->
+        <h3 class="it-card-title">
+          <a href="#">Argomento X</a>
+        </h3>
+        <!--card body content-->
+        <div class="it-card-body">
+          <p class="it-card-text">Descrizione breve dell'argomento in poche righe non troncate.</p>
+          <ul class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+            <li class="list-group-item"><a href="#" class="it-card-link">Titolo notizia affine</a></li>
+            <li class="list-group-item"><a href="#" class="it-card-link">Titolo media affine</a></li>
+            <li class="list-group-item"><a href="#" class="it-card-link">Altro titolo scheda affine</a></li>
+            <li class="list-group-item"><a href="#" class="it-card-link">Pagina profilo affine</a></li>
+          </ul>
+        </div>
+      </it-card>
+      <!--end it-card-->
     </div>
   </div>
 </div>
