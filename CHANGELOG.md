@@ -1,3 +1,17 @@
+# [18.1.0](https://github.com/italia/design-angular-kit/compare/v18.0.0...v18.1.0) (2025-09-18)
+
+
+### Bug Fixes
+
+* custom label for upload button ([c0a0605](https://github.com/italia/design-angular-kit/commit/c0a060552c90175d2de3ac73b28a90191aaeb0b0))
+
+
+### Features
+
+* new cards ([680fb40](https://github.com/italia/design-angular-kit/commit/680fb4007d185fc28fee86b243f10e13ab887097))
+
+
+
 # [18.0.0](https://github.com/italia/design-angular-kit/compare/v1.4.0...v18.0.0) (2025-06-24)
 
 
