@@ -7,8 +7,8 @@ name: Design Angular Kit
 url: https://github.com/italia/design-angular-kit
 landingURL: https://italia.github.io/design-angular-kit
 isBasedOn: https://github.com/italia/bootstrap-italia
-softwareVersion: v20.0.0
-releaseDate: 2025-06-24
+softwareVersion: v20.1.0
+releaseDate: '2025-09-18'
 platforms:
   - web
 categories:
