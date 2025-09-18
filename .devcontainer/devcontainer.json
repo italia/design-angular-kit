@@ -32,7 +32,7 @@
   },
   "features": {
     "ghcr.io/devcontainers-extra/features/angular-cli:2": {
-      "version": "20.0.1"
+      "version": "18"
     },
     "ghcr.io/devcontainers-extra/features/cz-cli:1": {}
   }
