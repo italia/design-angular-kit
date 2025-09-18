@@ -17,7 +17,7 @@ export function addAssets(options: Schema): Rule {
     const workspace = await readWorkspace(host);
 
     const projectName = options.project || workspace.extensions.defaultProject!.toString();
-    const project = workspace.projects.get(projectName);
+    const project: any = workspace.projects.get(projectName);
     if (!project) {
       throw new NoProjectException(projectName);
     }
