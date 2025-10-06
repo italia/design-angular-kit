@@ -37,7 +37,7 @@ export class ItButtonDirective {
    * @default false
    */
   @Input({ transform: inputToBoolean })
-  @HostBinding('disabled')
+  @HostBinding('attr.aria-disabled')
   disabled?: boolean;
 
   /**
