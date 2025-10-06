@@ -122,9 +122,4 @@ export class ItSearchComponent extends ItAbstractFormComponent<string | null | u
   protected onKeyDown() {
     this.showAutocompletion = true;
   }
-
-  protected get isActiveLabel(): boolean {
-    const value = this.control.value;
-    return this.forceShowLabel && (!!value || !!this.placeholder);
-  }
 }
