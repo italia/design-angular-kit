@@ -21,7 +21,7 @@
         [class.is-valid]="isValid"
         [class.semi-checked]="indeterminate"
         [formControl]="control"
-        [attr.aria-describedby]="id + '-help'"
+        [attr.aria-describedby]="group ? id + '-help' : undefined"
         (click)="$event.stopPropagation()" />
       <label class="form-check-label" [for]="id">
         <ng-container *ngTemplateOutlet="htmlLabel"></ng-container>
