@@ -69,7 +69,7 @@
               <li [class.done]="i < activeStep">
                 <span class="visually-hidden">
                   {{ 'it.core.step-of' | translate: { current: activeStep + 1, available: steps?.length } }}
-                  {{ i < activeStep ? '- ' + ('it.core.confirmed' | translate) : '' }}
+                  {{ i < activeStep ? '- ' + (confirmedLabel ? confirmedLabel : ('it.core.confirmed' | translate)) : '' }}
                 </span>
               </li>
             }
@@ -113,7 +113,7 @@
           [progress]="confirmLoading"
           [disabled]="confirmLoading || disableConfirmButton"
           (click)="confirmClick.emit(activeStep)">
-          {{ 'it.core.confirm' | translate }}
+          {{ confirmedLabel ? confirmedLabel : ('it.core.confirmed' | translate) }}
         </button>
       }
     </nav>
@@ -121,6 +121,9 @@
 </div>
 
 <ng-template #checkIcon>
-  <it-icon [labelWaria]="'it.core.confirmed' | translate" name="check" class="steppers-success"></it-icon>
-  <span class="visually-hidden">{{ 'it.core.confirmed' | translate }}</span>
+  <it-icon
+    [labelWaria]="confirmedLabel ? confirmedLabel : ('it.core.confirmed' | translate)"
+    name="check"
+    class="steppers-success"></it-icon>
+  <span class="visually-hidden">{{ confirmedLabel ? confirmedLabel : ('it.core.confirmed' | translate) }}</span>
 </ng-template>

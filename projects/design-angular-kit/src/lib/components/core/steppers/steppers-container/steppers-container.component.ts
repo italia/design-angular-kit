@@ -32,6 +32,12 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
   private readonly _changeDetectorRef = inject(ChangeDetectorRef);
 
   /**
+   * The confirmed label if different from default
+   * @default null
+   */
+  @Input() confirmedLabel: string = null;
+
+  /**
    * The active step index
    * @param index the step index
    */
