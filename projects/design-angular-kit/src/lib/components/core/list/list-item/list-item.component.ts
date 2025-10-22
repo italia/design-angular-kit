@@ -83,5 +83,11 @@ export class ItListItemComponent extends ItLinkComponent implements OnInit {
 
   ngOnInit(): void {
     this.isHostElement = this.elRef.nativeElement.tagName.toLowerCase() === 'li';
+
+    if (!this.isHostElement) {
+      console.warn(
+        `L'utilizzo del componente attraverso il selettore it-list-item verrà deprecato in quanto non accessibile. Usa il selettore itListItem invece. Consulta la documentazione del component Lista.`
+      );
+    }
   }
 }
