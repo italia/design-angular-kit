@@ -1,5 +1,12 @@
 @if (isHostElement) {
-  <!-- <ng-container *ngTemplateOutlet="content"></ng-container> -->
+  <ng-container *ngTemplateOutlet="structure"></ng-container>
+} @else {
+  <li>
+    <ng-container *ngTemplateOutlet="structure"></ng-container>
+  </li>
+}
+
+<ng-template #structure>
   @if (!href) {
     <div [class]="itemClass">
       <ng-container *ngTemplateOutlet="content"></ng-container>
@@ -9,24 +16,7 @@
       <ng-container *ngTemplateOutlet="content"></ng-container>
     </it-link>
   }
-} @else {
-  <!-- 
-  <li>
-    <ng-container *ngTemplateOutlet="content"></ng-container>
-  </li>
-   -->
-  <li>
-    @if (!href) {
-      <div [class]="itemClass">
-        <ng-container *ngTemplateOutlet="content"></ng-container>
-      </div>
-    } @else {
-      <it-link [class]="itemClass" [href]="href" [externalLink]="!!externalLink" [disabled]="!!disabled">
-        <ng-container *ngTemplateOutlet="content"></ng-container>
-      </it-link>
-    }
-  </li>
-}
+</ng-template>
 
 <ng-template #content>
   <div class="it-rounded-icon">
