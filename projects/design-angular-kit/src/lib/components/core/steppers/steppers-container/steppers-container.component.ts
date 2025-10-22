@@ -32,7 +32,7 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
    * The confirmed label if different from default
    * @default null
    */
-  @Input() confirmedLabel: string = null;
+  @Input() confirmedLabel: string | null = null;
 
   /**
    * The active step index
