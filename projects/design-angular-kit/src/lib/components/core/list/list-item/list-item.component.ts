@@ -1,18 +1,18 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { inputToBoolean } from '../../../../utils/coercion';
 import { ItLinkComponent } from '../../link/link.component';
 
 @Component({
-  selector: 'it-list-item',
+  selector: 'it-list-item, li[itListItem]',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgTemplateOutlet, ItLinkComponent],
 })
-export class ItListItemComponent extends ItLinkComponent {
+export class ItListItemComponent extends ItLinkComponent implements OnInit {
   private elRef = inject(ElementRef);
-
+  protected isHostElement = false;
   /**
    * Add active class
    * @default false
@@ -79,5 +79,9 @@ export class ItListItemComponent extends ItLinkComponent {
       itemClass += ` ${this.class}`;
     }
     return itemClass;
+  }
+
+  ngOnInit(): void {
+    this.isHostElement = this.elRef.nativeElement.tagName.toLowerCase() === 'li';
   }
 }

@@ -149,3 +149,17 @@
 
 <it-source-display html="{$ sanitize(htmlpagination) $}" typescript="{$ sanitize(typescriptpagination) $}" >
 </it-source-display>
+
+{% set htmlhostattribute %}
+  {% include "../list-host-attribute/list-host-attribute.component.html" %}
+{% endset %}
+
+{% set typescripthostattribute %}
+  {% include "../list-host-attribute/list-host-attribute.component.ts" %}
+{% endset %}
+
+<it-list-host-attribute></it-list-host-attribute>
+
+<it-source-display html="{$ sanitize(htmlhostattribute) $}" typescript="{$ sanitize(typescripthostattribute) $}" >
+</it-source-display>
+
