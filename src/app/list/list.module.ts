@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ListArrowComponent } from './list-arrow/list-arrow.component';
 import { ListAvatarComponent } from './list-avatar/list-avatar.component';
 import { ListCollassibleComponent } from './list-collassible/list-collassible.component';
+import { ListHostAttributeWithLinkComponent } from './list-host-attribute-with-link/list-host-attribute-with-link.component';
 import { ListHostAttributeComponent } from './list-host-attribute/list-host-attribute.component';
 import { ListImageComponent } from './list-image/list-image.component';
 import { ListLinkIconsComponent } from './list-link-icons/list-link-icons.component';
@@ -34,6 +35,7 @@ import { ListToggleCheckboxComponent } from './list-toggle-checkbox/list-toggle-
     ListLinkIconsComponent,
     ListLinkMultilineComponent,
     ListHostAttributeComponent,
+    ListHostAttributeWithLinkComponent,
     ListPaginationComponent,
   ],
   imports: [CommonModule, FormsModule, SharedModule, ListRoutingModule],

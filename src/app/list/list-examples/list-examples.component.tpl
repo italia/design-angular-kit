@@ -163,3 +163,17 @@
 <it-source-display html="{$ sanitize(htmlhostattribute) $}" typescript="{$ sanitize(typescripthostattribute) $}" >
 </it-source-display>
 
+{% set htmlhostattributewithlink %}
+  {% include "../list-host-attribute-with-link/list-host-attribute-with-link.component.html" %}
+{% endset %}
+
+{% set typescripthostattributewithlink %}
+  {% include "../list-host-attribute-with-link/list-host-attribute-with-link.component.ts" %}
+{% endset %}
+
+<it-list-host-attribute-with-link></it-list-host-attribute-with-link>
+
+<it-source-display html="{$ sanitize(htmlhostattributewithlink) $}" typescript="{$ sanitize(typescripthostattributewithlink) $}" >
+</it-source-display>
+
+
