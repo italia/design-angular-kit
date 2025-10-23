@@ -8,7 +8,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
-  selector: 'it-dropdown-item',
+  selector: 'it-dropdown-item, li[itDropdownItem]',
   templateUrl: './dropdown-item.component.html',
   styleUrls: ['./dropdown-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
