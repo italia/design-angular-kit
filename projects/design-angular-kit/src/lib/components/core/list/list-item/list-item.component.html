@@ -1,35 +1,12 @@
-<li>
-  <ng-template #content>
-    <div class="it-rounded-icon">
-      <ng-content select="[icon]"></ng-content>
-    </div>
+@if (isHostElement) {
+  <ng-container *ngTemplateOutlet="structure"></ng-container>
+} @else {
+  <li>
+    <ng-container *ngTemplateOutlet="structure"></ng-container>
+  </li>
+}
 
-    @if (avatar) {
-      <div class="avatar size-lg">
-        <img [attr.src]="avatar" alt="avatar" />
-      </div>
-    }
-
-    @if (image) {
-      <div class="it-thumb">
-        <img [attr.src]="image" alt="thumb" />
-      </div>
-    }
-
-    <div class="it-right-zone">
-      <ng-content></ng-content>
-      <ng-content select="[action]"></ng-content>
-
-      <span class="it-multiple">
-        <span class="metadata">
-          <ng-content select="[metadata]"></ng-content>
-        </span>
-
-        <ng-content select="[multiple]"></ng-content>
-      </span>
-    </div>
-  </ng-template>
-
+<ng-template #structure>
   @if (!href) {
     <div [class]="itemClass">
       <ng-container *ngTemplateOutlet="content"></ng-container>
@@ -39,4 +16,35 @@
       <ng-container *ngTemplateOutlet="content"></ng-container>
     </it-link>
   }
-</li>
+</ng-template>
+
+<ng-template #content>
+  <div class="it-rounded-icon">
+    <ng-content select="[icon]"></ng-content>
+  </div>
+
+  @if (avatar) {
+    <div class="avatar size-lg">
+      <img [attr.src]="avatar" alt="avatar" />
+    </div>
+  }
+
+  @if (image) {
+    <div class="it-thumb">
+      <img [attr.src]="image" alt="thumb" />
+    </div>
+  }
+
+  <div class="it-right-zone">
+    <ng-content></ng-content>
+    <ng-content select="[action]"></ng-content>
+
+    <span class="it-multiple">
+      <span class="metadata">
+        <ng-content select="[metadata]"></ng-content>
+      </span>
+
+      <ng-content select="[multiple]"></ng-content>
+    </span>
+  </div>
+</ng-template>
