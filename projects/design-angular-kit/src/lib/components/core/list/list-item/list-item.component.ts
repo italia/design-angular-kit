@@ -1,21 +1,19 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { inputToBoolean } from '../../../../utils/coercion';
 import { ItLinkComponent } from '../../link/link.component';
 
 @Component({
   standalone: true,
-  selector: 'it-list-item',
+  selector: 'it-list-item, li[itListItem]',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgTemplateOutlet, ItLinkComponent],
 })
-export class ItListItemComponent extends ItLinkComponent {
-  constructor(private elRef: ElementRef) {
-    super();
-  }
-
+export class ItListItemComponent extends ItLinkComponent implements OnInit {
+  private elRef = inject(ElementRef);
+  protected isHostElement = false;
   /**
    * Add active class
    * @default false
@@ -82,5 +80,15 @@ export class ItListItemComponent extends ItLinkComponent {
       itemClass += ` ${this.class}`;
     }
     return itemClass;
+  }
+
+  ngOnInit(): void {
+    this.isHostElement = this.elRef.nativeElement.tagName.toLowerCase() === 'li';
+
+    if (!this.isHostElement) {
+      console.warn(
+        `L'utilizzo del componente attraverso il selettore it-list-item verrà deprecato in quanto non accessibile. Usa il selettore itListItem invece. Consulta la documentazione del component Lista.`
+      );
+    }
   }
 }
