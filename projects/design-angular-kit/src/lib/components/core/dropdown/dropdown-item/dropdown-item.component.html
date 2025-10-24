@@ -1,4 +1,12 @@
-<li>
+@if (isHostElement) {
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+} @else {
+  <li>
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </li>
+}
+
+<ng-template #content>
   @if (divider) {
     <span class="divider"></span>
   } @else {
@@ -15,4 +23,4 @@
       }
     </it-link>
   }
-</li>
+</ng-template>

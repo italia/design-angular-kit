@@ -1,19 +1,20 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IconName } from '../../../../interfaces/icon';
-import { ItLinkComponent } from '../../link/link.component';
-import { ItIconComponent } from '../../../utils/icon/icon.component';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, Input, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { IconName } from '../../../../interfaces/icon';
+import { ItIconComponent } from '../../../utils/icon/icon.component';
+import { ItLinkComponent } from '../../link/link.component';
 
+import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
-  selector: 'it-dropdown-item',
+  selector: 'it-dropdown-item, li[itDropdownItem]',
   templateUrl: './dropdown-item.component.html',
   styleUrls: ['./dropdown-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItIconComponent, TranslateModule, ItLinkComponent],
+  imports: [ItIconComponent, TranslateModule, ItLinkComponent, NgTemplateOutlet],
 })
-export class ItDropdownItemComponent extends ItLinkComponent {
+export class ItDropdownItemComponent extends ItLinkComponent implements OnInit {
   /**
    * Show divider
    * @default false
@@ -54,6 +55,9 @@ export class ItDropdownItemComponent extends ItLinkComponent {
    */
   isDark: boolean = false;
 
+  private elRef = inject(ElementRef);
+  protected isHostElement = false;
+
   get linkClass(): string {
     let linkClass = `list-item ${this.active ? 'active' : 'dropdown-item'}`;
     if (this.mode === 'nav') {
@@ -70,6 +74,16 @@ export class ItDropdownItemComponent extends ItLinkComponent {
     }
 
     return linkClass;
+  }
+
+  ngOnInit(): void {
+    this.isHostElement = this.elRef.nativeElement.tagName.toLowerCase() === 'li';
+
+    if (!this.isHostElement) {
+      console.warn(
+        `L'utilizzo del componente attraverso il selettore it-dropdown-item verrà deprecato in quanto non accessibile. Usa il selettore itDropdownItem invece. Consulta la documentazione del component Dropdown.`
+      );
+    }
   }
 
   setDark(dark: boolean): void {
