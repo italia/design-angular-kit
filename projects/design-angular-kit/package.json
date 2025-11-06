@@ -59,7 +59,7 @@
     "@angular/router": "^18.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
-    "bootstrap-italia": "^2.16.1"
+    "bootstrap-italia": "^2.17.0"
   },
   "sideEffects": false,
   "devDependencies": {
