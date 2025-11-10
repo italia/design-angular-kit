@@ -1,3 +1,22 @@
+# [20.2.0](https://github.com/italia/design-angular-kit/compare/v20.1.0...v20.2.0) (2025-11-10)
+
+
+### Bug Fixes
+
+* **a11y:** generates the correct semantic structure for dropdown ([6cf5aa1](https://github.com/italia/design-angular-kit/commit/6cf5aa1bc3c612ae7de55d4516b30f9dfbd756ae))
+* **a11y:** generates the correct semantic structure for lists ([781b476](https://github.com/italia/design-angular-kit/commit/781b4763a4beb9dea4c5223e9da3a63e7acc6c0c))
+* disabled button should only impact on aria attributes ([91043ac](https://github.com/italia/design-angular-kit/commit/91043aca88c76f97631b9d4be39d9233c9341494))
+* nullable string ([8c1a96f](https://github.com/italia/design-angular-kit/commit/8c1a96fa91be6ffeff8b64f44138b76485343572))
+* show label in search input if defined ([7f49df2](https://github.com/italia/design-angular-kit/commit/7f49df24c6a6c60ee61a267876acec9ec9fa6a00))
+* use checkbox description only when is in a group ([0f0d3c0](https://github.com/italia/design-angular-kit/commit/0f0d3c0ba5eeb469c65c2f12c8deb961e547d551))
+
+
+### Features
+
+* add confirmed label parameter for stepper container ([c72466d](https://github.com/italia/design-angular-kit/commit/c72466db67beb165fce39648f4de1548c60212ea))
+
+
+
 # [20.1.0](https://github.com/italia/design-angular-kit/compare/v20.0.0...v20.1.0) (2025-09-17)
 
 
