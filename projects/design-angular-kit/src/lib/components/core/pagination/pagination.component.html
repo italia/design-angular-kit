@@ -6,7 +6,7 @@
   @if (pages.length) {
     <ul class="pagination">
       <li class="page-item" [class.disabled]="currentPage < 1">
-        <a class="page-link" [class.text]="textLinks" href="#" (click)="pageChange($event, currentPage)">
+        <a class="page-link" [class.text]="textLinks" href="#" (click)="!(currentPage < 1) && pageChange($event, currentPage)">
           @if (!textLinks) {
             <it-icon name="chevron-left" color="primary"></it-icon>
           }
@@ -45,7 +45,7 @@
         @for (page of pages; track page) {
           <li class="page-item">
             @if (page === currentPage + 1) {
-              <a class="page-link" aria-current="page">
+              <a class="page-link" href="#" aria-current="page">
                 <span class="d-inline-block d-sm-none">{{ 'it.core.page' | translate }}</span> {{ page }}
               </a>
             } @else {
@@ -65,7 +65,11 @@
         }
       }
       <li class="page-item" [class.disabled]="currentPage >= pageNumbers - 1">
-        <a class="page-link" [class.text]="textLinks" href="#" (click)="pageChange($event, currentPage + 2)">
+        <a
+          class="page-link"
+          [class.text]="textLinks"
+          href="#"
+          (click)="!(currentPage >= pageNumbers - 1) && pageChange($event, currentPage + 2)">
           <span class="visually-hidden">
             {{ (textLinks ? 'it.core.page' : 'it.core.next-page') | translate }}
           </span>
