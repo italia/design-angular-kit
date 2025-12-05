@@ -10,7 +10,7 @@
           tabindex="0"
           [attr.aria-expanded]="itCollapse.isOpen()"
           (click)="itCollapse.toggle()"
-          (keydown)="itCollapse.toggle()">
+          (keydown.enter)="itCollapse.toggle()">
           <span class="list-item-title-icon-wrapper">
             <span class="list-item-title">Link lista 1</span>
             <it-icon name="expand" color="primary"></it-icon>
@@ -38,7 +38,7 @@
             tabindex="0"
             [attr.aria-expanded]="itCollapse2.isOpen()"
             (click)="itCollapse2.toggle()"
-            (keydown)="itCollapse2.toggle()">
+            (keydown.enter)="itCollapse2.toggle()">
             <span class="list-item-title-icon-wrapper">
               <span class="list-item-title">Link lista 2</span>
               <it-icon name="expand" color="primary"></it-icon>
@@ -67,7 +67,7 @@
             tabindex="0"
             [attr.aria-expanded]="itCollapse3.isOpen()"
             (click)="itCollapse3.toggle()"
-            (keydown)="itCollapse3.toggle()">
+            (keydown.enter)="itCollapse3.toggle()">
             <span class="list-item-title-icon-wrapper">
               <span class="list-item-title">Link lista 3</span>
               <it-icon name="expand" color="primary"></it-icon>
