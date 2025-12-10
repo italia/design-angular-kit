@@ -1,4 +1,4 @@
-import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing/index';
+import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import * as path from 'path';
 import { Schema as SchematicOptions } from './schema';
 
