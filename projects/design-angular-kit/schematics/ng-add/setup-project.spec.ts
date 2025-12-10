@@ -1,4 +1,4 @@
-import { SchematicTestRunner } from '@angular-devkit/schematics/testing/index.js';
+import { SchematicTestRunner } from '@angular-devkit/schematics/testing/index';
 import * as path from 'path';
 import { Schema } from './schema';
 
