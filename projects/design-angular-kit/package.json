@@ -3,6 +3,7 @@
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
   "version": "20.2.0",
   "license": "BSD-3-Clause",
+  "type": "module",
   "keywords": [
     "angular",
     "toolkit",
