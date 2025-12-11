@@ -8,6 +8,8 @@
   <br>
 </p>
 
+_⚠️‼ Questa version è deprecata a causa di un [bug di sicurezza su Angular](https://github.com/angular/angular/security/advisories/GHSA-58c5-g7wp-6w37). Si consiglia di usare una `versione >= 19` di questo kit e la versione di `Angular >= 19.2.16`‼⚠️_
+
 <p align="center">
   <a href="https://italia.github.io/design-angular-kit"><strong>italia.github.io/design-angular-kit</strong></a>
   <br>

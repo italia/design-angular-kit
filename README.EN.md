@@ -8,6 +8,8 @@
   <br>
 </p>
 
+_⚠️‼ This version is deprecated due to a [critical issue in Angular](https://github.com/angular/angular/security/advisories/GHSA-58c5-g7wp-6w37). We warmly recommend to use a `version >= 19` of this kit and `Angular >= 19.2.16`‼⚠️_
+
 <p align="center">
   <a href="https://italia.github.io/design-angular-kit"><strong>italia.github.io/design-angular-kit</strong></a>
   <br>
