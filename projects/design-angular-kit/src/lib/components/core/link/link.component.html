@@ -1,9 +1,9 @@
 @if (!externalLink) {
-  <a [id]="id" [class]="class" [routerLinkActive]="'active'" [routerLink]="(disabled ? null : href)!">
+  <a [id]="id" [class]="class" [routerLinkActive]="'active'" [routerLink]="(disabled ? null : href)!" style="cursor: pointer">
     <ng-container *ngTemplateOutlet="linkContent"></ng-container>
   </a>
 } @else {
-  <a [id]="id" [class]="class" [attr.href]="disabled ? null : href">
+  <a [id]="id" [class]="class" [attr.href]="disabled ? null : href" style="cursor: pointer">
     <ng-container *ngTemplateOutlet="linkContent"></ng-container>
   </a>
 }
