@@ -1,3 +1,14 @@
+## [18.2.1](https://github.com/italia/design-angular-kit/compare/v18.2.0...v18.2.1) (2025-12-11)
+
+
+### Bug Fixes
+
+* cursor pointer by default for it link component ([a5daa1e](https://github.com/italia/design-angular-kit/commit/a5daa1ec67422aa330e10b0818108ddb5cd8c766))
+* navigation with disabled items ([f23e422](https://github.com/italia/design-angular-kit/commit/f23e42276bf78bc42ac9036aaee8267dd8ca05bf))
+* nested siderbar navigation ([95edf28](https://github.com/italia/design-angular-kit/commit/95edf2823bc41842de9869af963e27cb430409b9))
+
+
+
 # [18.2.0](https://github.com/italia/design-angular-kit/compare/v18.1.0...v18.2.0) (2025-11-10)
 
 
