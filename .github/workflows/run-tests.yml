@@ -3,10 +3,10 @@ name: Run tests
 on:
   push:
     branches:
-      - main
+      - v20
   pull_request:
     branches:
-      - main
+      - v20
 
 jobs:
   run-build-and-tests:

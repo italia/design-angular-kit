@@ -3,10 +3,10 @@ name: Lint commits
 on:
   push:
     branches:
-      - main
+      - v20
   pull_request:
     branches:
-      - main
+      - v20
 
 jobs:
   lint-commits:

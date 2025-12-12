@@ -58,33 +58,8 @@ Per giocare con la libreria è disponibile il [Playground Angular Kit](https://g
 Design Angular Kit è disponibile su NPM, per installarlo su una applicazione esistente sulla quale provare la libreria esegui il comando
 
 ```sh
-npm install design-angular-kit --save
+npm install design-angular-kit@angular20 --save
 ```
-
-Scegli la versione corrispondente alla tua versione Angular:
-
-| Angular | Design Angular kit | Branch | Documentazione                                                                     |
-| ------- | ------------------ | ------ | ---------------------------------------------------------------------------------- |
-| 20+     | v20.0.0 +          | main   | [link](https://italia.github.io/design-angular-kit/design-angular-kit#)            |
-| 19+     | v19.0.0 +          | v19    | [link](https://design-angular-kit-git-v19-dip-trasformazione-digitale.vercel.app/) |
-| 18+     | v18.0.0 +          | v18    | [link](https://design-angular-kit-git-v18-dip-trasformazione-digitale.vercel.app/) |
-
-⚠️ Le versioni precendenti non sono più manutenute.
-
-In alternativa, puoi lanciar il comando
-
-```sh
-ng add design-angular-kit --project <projectName>
-```
-
-Eseguirà in serie:
-
-- scelta della corretta versione da installare
-- installazione della dipendenza
-- aggiunta della dipendenza al package.json
-- configurazione dell'applicazione
-
-Le istruzioni del paragrafo successivo, **Configurazione**, verranno eseguite automaticamente, eccetto per la personalizzazione della configurazione di _i18n_.
 
 ## Configurazione
 
