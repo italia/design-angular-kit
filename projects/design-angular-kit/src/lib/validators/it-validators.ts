@@ -190,7 +190,7 @@ export class ItValidators {
         if (control?.value) {
           new RegExp(control.value);
         }
-      } catch (e) {
+      } catch {
         return { invalidRegex: true };
       }
       return null;
