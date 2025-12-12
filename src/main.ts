@@ -1,6 +1,5 @@
-import { ApplicationRef, enableProdMode, isDevMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
+import { ApplicationRef, enableProdMode, isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { platformBrowser } from '@angular/platform-browser';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
@@ -9,7 +8,7 @@ if (environment.production) {
 }
 
 async function bootstrap() {
-  const { injector } = await platformBrowserDynamic().bootstrapModule(AppModule);
+  const { injector } = await platformBrowser().bootstrapModule(AppModule, { applicationProviders: [provideZoneChangeDetection()] });
 
   if (isDevMode()) {
     const { enableDebugTools } = await import('@angular/platform-browser');

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-const { version: appVersion } = require('../../package.json');
 import TableOfContent from '../assets/table-of-content.json';
+// eslint-disable-next-line
+const { version: appVersion } = require('../../package.json');
 
 @Component({
   selector: 'it-root',

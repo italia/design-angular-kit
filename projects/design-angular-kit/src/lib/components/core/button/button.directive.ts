@@ -1,8 +1,8 @@
 import { ContentChildren, Directive, HostBinding, Input, QueryList, inject } from '@angular/core';
 import { ButtonColor, ButtonSize } from '../../../interfaces/core';
+import { inputToBoolean } from '../../../utils/coercion';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItProgressButtonComponent } from '../progress-button/progress-button.component';
-import { inputToBoolean } from '../../../utils/coercion';
 
 /**
  * Button
@@ -47,7 +47,7 @@ export class ItButtonDirective {
    * @default button
    */
   @Input()
-  @HostBinding('type')
+  @HostBinding('attr.type')
   type: 'button' | 'reset' | 'submit' = 'button';
 
   /**
