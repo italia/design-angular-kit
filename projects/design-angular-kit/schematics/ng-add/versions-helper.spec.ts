@@ -1,48 +1,39 @@
 import { getPackageVersion } from './versions-helper';
 
 describe('schematics versions helper tests', () => {
-  it('should return v1.0.0 for Angular v17', () => {
-    //arrange
-    const angularMajorVersion = '17';
-    //act
-    const actual = getPackageVersion({ angularMajorVersion });
-    //assert
-    expect(actual).toBe('1.0.0');
-  });
-
-  it('should return v1.4.0 for Angular v18', () => {
+  it('should return ^18.0.0 for Angular v18', () => {
     //arrange
     const angularMajorVersion = '18';
     //act
     const actual = getPackageVersion({ angularMajorVersion });
     //assert
-    expect(actual).toBe('~1.4.0');
+    expect(actual).toBe('^18.0.0');
   });
 
-  it('should return v1.5.0 for Angular v19', () => {
+  it('should return ^19.0.0 for Angular v19', () => {
     //arrange
     const angularMajorVersion = '19';
     //act
     const actual = getPackageVersion({ angularMajorVersion });
     //assert
-    expect(actual).toBe('~1.5.0');
+    expect(actual).toBe('^19.0.0');
   });
 
-  it('should return default version for a past Angular version (previous to v17)', () => {
-    //arrange
-    const angularMajorVersion = '15';
-    //act
-    const actual = getPackageVersion({ angularMajorVersion });
-    //assert
-    expect(actual).toBe('1.0.0');
-  });
-
-  it('should return latest version for the next stable Angular version', () => {
+  it('should return ^20.0.0 for Angular v20', () => {
     //arrange
     const angularMajorVersion = '20';
     //act
     const actual = getPackageVersion({ angularMajorVersion });
     //assert
-    expect(actual).toBe('1.5.0');
+    expect(actual).toBe('^20.0.0');
+  });
+
+  it('should return ^21.0.0 for Angular v21', () => {
+    //arrange
+    const angularMajorVersion = '21';
+    //act
+    const actual = getPackageVersion({ angularMajorVersion });
+    //assert
+    expect(actual).toBe('^21.0.0');
   });
 });
