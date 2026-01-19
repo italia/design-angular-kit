@@ -1,3 +1,12 @@
+# [21.0.0](https://github.com/italia/design-angular-kit/compare/v20.2.1...v21.0.0) (2026-01-19)
+
+
+### Features
+
+* add support to angular 21 ([00e4b9b](https://github.com/italia/design-angular-kit/commit/00e4b9b4394267570df105cd920c19ea2713106a))
+
+
+
 ## [20.2.1](https://github.com/italia/design-angular-kit/compare/v20.2.0...v20.2.1) (2025-12-11)
 
 
