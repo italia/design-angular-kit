@@ -6,7 +6,7 @@ import { addPackageToPackageJson, getPackageVersionFromPackageJson, toSemVerObje
 import { getPackageVersion } from './versions-helper';
 
 const DESIGN_ANGULAR_KIT_PACKAGE_NAME = 'design-angular-kit';
-const NG_LATEST_VERSION = '19.0.0';
+const NG_LATEST_VERSION = '21.0.0';
 
 export default function (options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {

@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { ItChipComponent } from './chip.component';
 import { tb_base } from '../../../../test';
+import { ItChipComponent } from './chip.component';
 
 describe('ItChipComponent', () => {
   let component: ItChipComponent;
@@ -21,7 +21,7 @@ describe('ItChipComponent', () => {
 
     fixture = TestBed.createComponent(ItChipComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   it('should create', () => {

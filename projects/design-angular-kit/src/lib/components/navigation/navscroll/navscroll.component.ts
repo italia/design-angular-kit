@@ -13,11 +13,11 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
-import { TranslateModule } from '@ngx-translate/core';
 
 /**
  * Navscroll
@@ -73,13 +73,13 @@ export class ItNavscrollComponent implements OnInit {
   @Input()
   pageSectionsTemplate?: TemplateRef<any>;
 
-  @HostListener('window:scroll', ['$event']) // for window scroll events
+  @HostListener('window:scroll') // for window scroll events
   onScroll() {
     const sectionContainer = this.#elementRef.nativeElement.querySelector('.it-page-sections-container');
     this.#store.updateProgressBar(sectionContainer);
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize() {
     this.#setMobile();
   }

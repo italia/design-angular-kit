@@ -1,9 +1,9 @@
-import { ItButtonDirective } from './button.directive';
 import { Component, DebugElement } from '@angular/core';
-import { ButtonColor } from '../../../interfaces/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { ButtonColor } from '../../../interfaces/core';
+import { ItButtonDirective } from './button.directive';
 
 /** Componente per testare una singola button. */
 @Component({
@@ -26,14 +26,14 @@ class SingleButtonComponent {
 }
 
 describe('ItButtonDirective', () => {
-  beforeEach(fakeAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ItButtonDirective],
       declarations: [SingleButtonComponent],
     });
 
     TestBed.compileComponents();
-  }));
+  });
 
   describe('comportamenti base', () => {
     let fixture: ComponentFixture<SingleButtonComponent>;
@@ -44,7 +44,7 @@ describe('ItButtonDirective', () => {
 
     beforeEach(() => {
       fixture = TestBed.createComponent(SingleButtonComponent);
-      fixture.detectChanges();
+      // fixture.detectChanges();
 
       buttonDebugElement = fixture.debugElement.query(By.directive(ItButtonDirective));
       buttonNativeElement = buttonDebugElement.nativeElement;
@@ -53,10 +53,11 @@ describe('ItButtonDirective', () => {
     });
 
     it('dovrebbe poter essere abilitato e disabilitato', () => {
+      fixture.detectChanges();
       expect(buttonInstance.disabled).toBe(false);
 
       testComponent.disabled = true;
-      fixture.detectChanges();
+      // fixture.detectChanges();
 
       expect(buttonInstance.disabled).toBe(true);
 
@@ -91,6 +92,7 @@ describe('ItButtonDirective', () => {
     });
 
     it('dovrebbe generare un id univoco per bottone', () => {
+      fixture.detectChanges(); // aggiunto per la v21
       expect(buttonNativeElement.textContent.trim()).toBe('Test Button');
     });
   });

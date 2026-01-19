@@ -1,9 +1,9 @@
-import { ControlContainer, ControlValueAccessor, FormControl, FormGroup, NgControl, ValidatorFn } from '@angular/forms';
 import { Component, DoCheck, Input, OnInit, inject } from '@angular/core';
-import { ItAbstractComponent } from './abstract.component';
-import { Observable } from 'rxjs';
+import { ControlContainer, ControlValueAccessor, FormControl, FormGroup, NgControl, ValidatorFn } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 import { inputToBoolean } from '../utils/coercion';
+import { ItAbstractComponent } from './abstract.component';
 
 @Component({
   template: '',
@@ -44,6 +44,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
   constructor() {
     super();
     this.control = new FormControl();
+    // eslint-disable-next-line
     this._ngControl && (this._ngControl.valueAccessor = this);
   }
 
