@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ItAlertComponent } from './alert.component';
-import { By } from '@angular/platform-browser';
 import { Component, Input } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { AlertColor } from '../../../interfaces/core';
+import { ItAlertComponent } from './alert.component';
 
 @Component({
   selector: 'it-unit-test',
@@ -40,7 +40,7 @@ describe('ItAlertComponent', () => {
 
     fixture = TestBed.createComponent(UnitTestComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   it('should create', () => {

@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { ItCalloutComponent } from './callout.component';
 import { tb_base } from '../../../../test';
+import { ItCalloutComponent } from './callout.component';
 
 describe('ItCalloutComponent', () => {
   let component: ItCalloutComponent;
@@ -18,7 +18,7 @@ describe('ItCalloutComponent', () => {
 
     fixture = TestBed.createComponent(ItCalloutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   it('should create', () => {

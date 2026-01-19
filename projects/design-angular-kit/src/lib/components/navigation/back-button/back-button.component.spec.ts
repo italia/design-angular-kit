@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ItBackButtonComponent } from './back-button.component';
 import { tb_base } from '../../../../test';
+import { ItBackButtonComponent } from './back-button.component';
 
 describe('ItBackButtonComponent', () => {
   let component: ItBackButtonComponent;
   let fixture: ComponentFixture<ItBackButtonComponent>;
 
-  beforeEach(fakeAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule(tb_base)
       .overrideComponent(ItBackButtonComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },
@@ -17,14 +17,15 @@ describe('ItBackButtonComponent', () => {
 
     fixture = TestBed.createComponent(ItBackButtonComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+    //fixture.detectChanges();
+  });
 
   it('deve crearsi', () => {
     expect(component).toBeTruthy();
   });
 
   it('deve essere di default un bottone', () => {
+    fixture.detectChanges(); // aggiunto per la v21
     expect(component.buttonStyle).toBe('button');
     const buttonElement = fixture.debugElement.query(By.css('button'));
     expect(buttonElement).toBeTruthy();

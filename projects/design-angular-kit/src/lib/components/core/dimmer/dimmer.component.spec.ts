@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { By } from '@angular/platform-browser';
 import { ItDimmerComponent } from './dimmer.component';
 
 describe('ItDimmerComponent', () => {
@@ -20,7 +20,7 @@ describe('ItDimmerComponent', () => {
 
     fixture = TestBed.createComponent(ItDimmerComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   it('should create', () => {

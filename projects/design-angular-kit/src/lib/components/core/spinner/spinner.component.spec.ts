@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ItSpinnerComponent } from './spinner.component';
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { inputToBoolean } from '../../../utils/coercion';
 import { tb_base } from '../../../../test';
+import { inputToBoolean } from '../../../utils/coercion';
+import { ItSpinnerComponent } from './spinner.component';
 
 @Component({
   selector: 'it-unit-test',
@@ -42,7 +42,7 @@ describe('ItSpinnerComponent', () => {
 
     fixture = TestBed.createComponent(UnitTestComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
