@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angular/core';
-import { map, Observable, startWith } from 'rxjs';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { AvailableLanguage } from '../../../interfaces/utils';
 import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { map, Observable, startWith } from 'rxjs';
+import { AvailableLanguage } from '../../../interfaces/utils';
 import { ItDropdownModule } from '../../core/dropdown/dropdown.module';
 
 @Component({
@@ -31,7 +31,7 @@ export class ItLanguageSwitcherComponent implements OnInit {
     const translateService = this.translateService;
 
     this.currentLang$ = this.translateService.onLangChange.pipe(
-      startWith({ lang: translateService.currentLang }),
+      startWith({ lang: translateService.getCurrentLang() }),
       map(event => this.availableLanguages?.find(l => l.code === event.lang))
     );
   }

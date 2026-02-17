@@ -18,7 +18,7 @@ export class ItDateAgoPipe extends TranslatePipe implements PipeTransform {
    * @example 2 hours ago
    * @param value the Date or date string
    */
-  override transform(value: string | Date): string {
+  override transform(value: string | Date | null | undefined): string {
     if (!value) {
       return '';
     }
