@@ -80,7 +80,7 @@
     "@standard-schema/spec": "^1.0.0",
     "@types/video.js": "^7.3.58",
     "@types/youtube": "^0.1.0",
-    "bootstrap-italia": "^2.16.2",
+    "bootstrap-italia": "^2.17.4",
     "core-js": "^3.40.0",
     "fp-ts": "^2.16.9",
     "io-ts": "^2.2.22",
