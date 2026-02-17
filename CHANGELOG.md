@@ -1,3 +1,20 @@
+## <small>21.0.1 (2026-02-17)</small>
+
+* chore: update publiccode file ([a9529d8](https://github.com/italia/design-angular-kit/commit/a9529d8))
+* chore: upgrade release ci ([a143c18](https://github.com/italia/design-angular-kit/commit/a143c18))
+* chore(deps): add conventional changelog ([71edd54](https://github.com/italia/design-angular-kit/commit/71edd54))
+* chore(deps): bump modelcontextprotocol sdk and cli ([6f6ed2a](https://github.com/italia/design-angular-kit/commit/6f6ed2a))
+* fix: migrate ngx-translate to v17 ([99160df](https://github.com/italia/design-angular-kit/commit/99160df))
+* fix(deps): peer dependencies for version 21 ([15752db](https://github.com/italia/design-angular-kit/commit/15752db))
+* fix(deps): upgrade bootstrap italia ([e862b74](https://github.com/italia/design-angular-kit/commit/e862b74))
+* build(deps): bump @isaacs/brace-expansion from 5.0.0 to 5.0.1 ([4727b95](https://github.com/italia/design-angular-kit/commit/4727b95))
+* build(deps): bump hono from 4.11.4 to 4.11.7 ([bc0b01d](https://github.com/italia/design-angular-kit/commit/bc0b01d))
+* build(deps): bump lodash from 4.17.21 to 4.17.23 ([d4e2828](https://github.com/italia/design-angular-kit/commit/d4e2828))
+* build(deps): bump qs from 6.14.1 to 6.14.2 ([d2827d0](https://github.com/italia/design-angular-kit/commit/d2827d0))
+* build(deps): bump tar from 7.5.3 to 7.5.7 ([8c836cc](https://github.com/italia/design-angular-kit/commit/8c836cc))
+
+
+
 # [21.0.0](https://github.com/italia/design-angular-kit/compare/v20.2.1...v21.0.0) (2026-01-19)
 
 
