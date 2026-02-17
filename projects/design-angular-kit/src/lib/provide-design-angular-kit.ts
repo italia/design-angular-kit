@@ -1,15 +1,8 @@
-import { HttpClient, provideHttpClient } from '@angular/common/http';
-import {
-  EnvironmentProviders,
-  importProvidersFrom,
-  makeEnvironmentProviders,
-  Provider,
-  provideAppInitializer,
-  inject,
-} from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { EnvironmentProviders, inject, makeEnvironmentProviders, provideAppInitializer, Provider } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideTranslateService, TranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { loadFonts } from 'bootstrap-italia';
 import { DesignAngularKitConfig, IT_ASSET_BASE_PATH } from './interfaces/design-angular-kit-config';
 
@@ -52,17 +45,24 @@ export function provideDesignAngularKit(config?: DesignAngularKitConfig): Enviro
   const langPrefix = `${assetBasePath}/i18n/`;
   const langSuffix = `.json`; // TODO: add ?v${version} to prevent cache loading on version change
   providers.push(
-    importProvidersFrom(
-      TranslateModule.forRoot({
-        loader: config?.translateLoader?.(langPrefix, langSuffix) ?? {
-          provide: TranslateLoader,
-          useFactory: (http: HttpClient) => new TranslateHttpLoader(http, langPrefix, langSuffix),
-          deps: [HttpClient],
-        },
-        defaultLanguage: 'it',
-        useDefaultLang: true,
-      })
-    )
+    // Design Angular Kit < 21
+    // ngx-translate <= 16
+    // importProvidersFrom(
+    //   TranslateModule.forRoot({
+    //     loader: config?.translateLoader?.(langPrefix, langSuffix) ?? {
+    //       provide: TranslateLoader,
+    //       useFactory: (http: HttpClient) => new TranslateHttpLoader(http, langPrefix, langSuffix),
+    //       deps: [HttpClient],
+    //     },
+    //     fallbackLang: 'it'
+    //   })
+    // )
+    // Design Angular Kit  >= 21
+    // ngx-translate >= 17
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({ prefix: langPrefix, suffix: langSuffix }),
+      fallbackLang: 'it',
+    })
   );
 
   // Add provider to initialize library default languages

@@ -34,9 +34,9 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
    * @param value the number
    * @param type the number expressed type
    */
-  override transform(value: string | number | undefined, type: ItDurationPipeType): string {
+  override transform(value: string | number | undefined | null, type: ItDurationPipeType): string {
     let valueAdjust = Number(value);
-    if (isNaN(valueAdjust)) {
+    if (isNaN(valueAdjust) || value === null) {
       return '';
     }
 
