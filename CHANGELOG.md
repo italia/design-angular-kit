@@ -1,3 +1,9 @@
+## <small>21.0.2 (2026-02-18)</small>
+
+* fix(deps): dependencies high warnings ([41ba0f1](https://github.com/italia/design-angular-kit/commit/41ba0f1))
+
+
+
 ## <small>21.0.1 (2026-02-17)</small>
 
 * chore: update publiccode file ([a9529d8](https://github.com/italia/design-angular-kit/commit/a9529d8))
