@@ -20,7 +20,7 @@ export interface DesignAngularKitConfig {
   loadFont?: boolean;
 
   /**
-   * The TranslateModule loader
+   * The TranslateService loader
    * @param itPrefix the design-angular-kit i18n path
    * @param itSuffix the design-angular-kit i18n suffix
    * @default

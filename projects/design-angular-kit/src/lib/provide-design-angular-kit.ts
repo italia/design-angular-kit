@@ -41,27 +41,20 @@ export function provideDesignAngularKit(config?: DesignAngularKitConfig): Enviro
     );
   }
 
-  // Add provider to initialize the TranslateModule
+  // Add provider to initialize the TranslateService
   const langPrefix = `${assetBasePath}/i18n/`;
-  const langSuffix = `.json`; // TODO: add ?v${version} to prevent cache loading on version change
+  const langSuffix = `.json`;
   providers.push(
-    // Design Angular Kit < 21
-    // ngx-translate <= 16
-    // importProvidersFrom(
-    //   TranslateModule.forRoot({
-    //     loader: config?.translateLoader?.(langPrefix, langSuffix) ?? {
-    //       provide: TranslateLoader,
-    //       useFactory: (http: HttpClient) => new TranslateHttpLoader(http, langPrefix, langSuffix),
-    //       deps: [HttpClient],
-    //     },
-    //     fallbackLang: 'it'
-    //   })
-    // )
-    // Design Angular Kit  >= 21
-    // ngx-translate >= 17
     provideTranslateService({
-      loader: provideTranslateHttpLoader({ prefix: langPrefix, suffix: langSuffix }),
+      loader:
+        config?.translateLoader?.(langPrefix, langSuffix) ??
+        provideTranslateHttpLoader({
+          prefix: langPrefix,
+          suffix: langSuffix,
+          enforceLoading: true,
+        }),
       fallbackLang: 'it',
+      lang: 'it',
     })
   );
 
