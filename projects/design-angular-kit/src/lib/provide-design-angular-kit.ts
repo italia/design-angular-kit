@@ -60,7 +60,7 @@ export function provideDesignAngularKit(config?: DesignAngularKitConfig): Enviro
     // Design Angular Kit  >= 21
     // ngx-translate >= 17
     provideTranslateService({
-      loader: provideTranslateHttpLoader({ prefix: langPrefix, suffix: langSuffix }),
+      loader: config?.translateLoader?.(langPrefix, langSuffix) ?? provideTranslateHttpLoader({ prefix: langPrefix, suffix: langSuffix }),
       fallbackLang: 'it',
     })
   );
