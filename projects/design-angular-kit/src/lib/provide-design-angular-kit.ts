@@ -54,7 +54,7 @@ export function provideDesignAngularKit(config?: DesignAngularKitConfig): Enviro
           enforceLoading: true,
         }),
       fallbackLang: 'it',
-      lang: 'it'
+      lang: 'it',
     })
   );
 
