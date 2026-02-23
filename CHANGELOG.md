@@ -1,3 +1,10 @@
+## <small>21.0.3 (2026-02-23)</small>
+
+* chore(deps): bump hono from 4.11.9 to 4.12.0 ([e506c05](https://github.com/italia/design-angular-kit/commit/e506c05))
+* fix: fixing provideDesignAngularKit provider function ([a5fb7cc](https://github.com/italia/design-angular-kit/commit/a5fb7cc))
+
+
+
 ## <small>21.0.2 (2026-02-18)</small>
 
 * fix(deps): dependencies high warnings ([41ba0f1](https://github.com/italia/design-angular-kit/commit/41ba0f1))
