@@ -1,3 +1,14 @@
+## 21.1.0 (2026-03-05)
+
+* chore: update publiccode ([b0aa36e](https://github.com/italia/design-angular-kit/commit/b0aa36e))
+* chore(deps): bump @hono/node-server from 1.19.9 to 1.19.10 ([75c2e48](https://github.com/italia/design-angular-kit/commit/75c2e48))
+* chore(deps): bump hono from 4.12.0 to 4.12.2 ([f212fa2](https://github.com/italia/design-angular-kit/commit/f212fa2))
+* chore(deps): bump hono from 4.12.2 to 4.12.5 ([aec93cd](https://github.com/italia/design-angular-kit/commit/aec93cd))
+* chore(deps): bump immutable from 5.1.4 to 5.1.5 ([cf19a59](https://github.com/italia/design-angular-kit/commit/cf19a59))
+* chore(deps): bump rollup from 4.55.1 to 4.59.0 ([58b8a08](https://github.com/italia/design-angular-kit/commit/58b8a08))
+* chore(deps): bump tar ([54b1a65](https://github.com/italia/design-angular-kit/commit/54b1a65))
+* fix(deps): upgrade angular ([bb43d0e](https://github.com/italia/design-angular-kit/commit/bb43d0e))
+
 ## <small>21.0.3 (2026-02-23)</small>
 
 * chore(deps): bump hono from 4.11.9 to 4.12.0 ([e506c05](https://github.com/italia/design-angular-kit/commit/e506c05))
