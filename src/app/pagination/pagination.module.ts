@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { PaginationIndexComponent } from './pagination-index/pagination-index.component';
 import { PaginationRoutingModule } from './pagination-routing.module';
@@ -10,6 +11,7 @@ import { PaginationJumpExampleComponent } from './pagination-jump-example/pagina
 import { PaginationSimpleExampleComponent } from './pagination-simple-example/pagination-simple-example.component';
 import { PaginationTextLinksExampleComponent } from './pagination-text-links-example/pagination-text-links-example.component';
 import { PaginationTotalNumberExampleComponent } from './pagination-total-number-example/pagination-total-number-example.component';
+import { PaginationNgmodelExampleComponent } from './pagination-ngmodel-example/pagination-ngmodel-example.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { PaginationTotalNumberExampleComponent } from './pagination-total-number
     PaginationSimpleExampleComponent,
     PaginationTextLinksExampleComponent,
     PaginationTotalNumberExampleComponent,
+    PaginationNgmodelExampleComponent,
   ],
-  imports: [CommonModule, SharedModule, PaginationRoutingModule],
+  imports: [CommonModule, ReactiveFormsModule, SharedModule, PaginationRoutingModule],
 })
 export class PaginationModule {}
