@@ -29,12 +29,31 @@ class UnitTestComponent {
   private _dismissible: boolean = false;
 }
 
+@Component({
+  selector: 'it-unit-test-with-heading',
+  template: `
+    <it-alert [color]="'info'">
+      <span heading>Titolo di test</span>
+      Contenuto dell'alert.
+    </it-alert>
+  `,
+  standalone: false,
+})
+class UnitTestWithHeadingComponent {}
+
+@Component({
+  selector: 'it-unit-test-without-heading',
+  template: ` <it-alert [color]="'warning'"> Alert senza heading. </it-alert> `,
+  standalone: false,
+})
+class UnitTestWithoutHeadingComponent {}
+
 let component: UnitTestComponent;
 let fixture: ComponentFixture<UnitTestComponent>;
 describe('ItAlertComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent],
+      declarations: [UnitTestComponent, UnitTestWithHeadingComponent, UnitTestWithoutHeadingComponent],
       imports: [ItAlertComponent],
     }).compileComponents();
 
@@ -59,5 +78,49 @@ describe('ItAlertComponent', () => {
     fixture.detectChanges();
     const spanElement = fixture.debugElement.query(By.css('div.alert.alert-success'));
     expect(spanElement).toBeTruthy();
+  });
+
+  describe('Bug #547 — empty h4 heading', () => {
+    it('should hide the h4 element when no heading content is projected', () => {
+      const noHeadingFixture = TestBed.createComponent(UnitTestWithoutHeadingComponent);
+      noHeadingFixture.detectChanges();
+
+      const h4 = noHeadingFixture.debugElement.query(By.css('h4.alert-heading'));
+      expect(h4).toBeTruthy('h4 element should exist in DOM');
+      expect(h4.nativeElement.classList.contains('d-none')).toBeTrue();
+    });
+
+    it('should mark empty heading as aria-hidden for screen readers', () => {
+      const noHeadingFixture = TestBed.createComponent(UnitTestWithoutHeadingComponent);
+      noHeadingFixture.detectChanges();
+
+      const h4 = noHeadingFixture.debugElement.query(By.css('h4.alert-heading'));
+      expect(h4.nativeElement.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('should show the h4 element when heading content is projected', () => {
+      const withHeadingFixture = TestBed.createComponent(UnitTestWithHeadingComponent);
+      withHeadingFixture.detectChanges();
+
+      const h4 = withHeadingFixture.debugElement.query(By.css('h4.alert-heading'));
+      expect(h4).toBeTruthy('h4 element should exist in DOM');
+      expect(h4.nativeElement.classList.contains('d-none')).toBeFalse();
+    });
+
+    it('should not mark visible heading as aria-hidden', () => {
+      const withHeadingFixture = TestBed.createComponent(UnitTestWithHeadingComponent);
+      withHeadingFixture.detectChanges();
+
+      const h4 = withHeadingFixture.debugElement.query(By.css('h4.alert-heading'));
+      expect(h4.nativeElement.getAttribute('aria-hidden')).toBe('false');
+    });
+
+    it('should have visible heading text when heading is projected', () => {
+      const withHeadingFixture = TestBed.createComponent(UnitTestWithHeadingComponent);
+      withHeadingFixture.detectChanges();
+
+      const h4 = withHeadingFixture.debugElement.query(By.css('h4.alert-heading'));
+      expect(h4.nativeElement.textContent.trim()).toBe('Titolo di test');
+    });
   });
 });
