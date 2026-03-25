@@ -13,6 +13,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ItIconComponent, TranslateModule, LowerCasePipe, ItDropdownModule, ItInputComponent, ReactiveFormsModule],
+  host: { style: 'display: block' },
 })
 export class ItPaginationComponent implements OnChanges {
   /**
