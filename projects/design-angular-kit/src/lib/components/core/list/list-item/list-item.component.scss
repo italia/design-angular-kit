@@ -1,3 +1,11 @@
+// When used as <it-list-item> (custom element), make the host invisible
+// to the layout so the inner <li> acts as a direct child of the parent
+// <ul>. This preserves Bootstrap Italia CSS selectors and fixes @for
+// dynamic rendering inside sidebars and link-lists (#608).
+:host(:not(li)) {
+  display: contents;
+}
+
 .metadata:empty,
 .it-rounded-icon:empty {
   display: none;
