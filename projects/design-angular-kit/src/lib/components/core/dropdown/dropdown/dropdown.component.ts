@@ -105,6 +105,28 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
     return btnClass;
   }
 
+  /**
+   * Whether the current color is a solid (non-outline) variant that has a filled background.
+   * Outlined buttons have transparent backgrounds, so the expand icon must use
+   * the themed foreground color instead of 'light'.
+   */
+  get isOutlineVariant(): boolean {
+    return !!this.color?.startsWith('outline-');
+  }
+
+  /**
+   * The color for the expand icon inside the button.
+   * - solid color → 'light' (white icon on colored background)
+   * - outline color → 'primary' (themed icon on transparent background)
+   * - no color → 'primary'
+   */
+  get expandIconColor(): string {
+    if (!this.color) {
+      return 'primary';
+    }
+    return this.isOutlineVariant ? 'primary' : 'light';
+  }
+
   override ngOnChanges(changes: SimpleChanges): void {
     if (changes['dark'] && !changes['dark'].firstChange) {
       this.setDarkItems();
