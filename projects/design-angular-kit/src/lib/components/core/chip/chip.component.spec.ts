@@ -85,3 +85,57 @@ describe('ItChipComponent', () => {
     expect(imgElement).toBeTruthy();
   });
 });
+
+// #546 — booleanAttribute coercion tests
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'it-chip-bool-host',
+  template: `<it-chip showCloseButton disabled label="test"></it-chip>`,
+  imports: [ItChipComponent],
+})
+class BooleanHostComponent {}
+
+describe('ItChipComponent — booleanAttribute coercion (#546)', () => {
+  it('should coerce showCloseButton and disabled from attribute-only syntax', async () => {
+    await TestBed.configureTestingModule({
+      imports: [BooleanHostComponent],
+      providers: tb_base.providers,
+    })
+      .overrideComponent(ItChipComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default },
+      })
+      .compileComponents();
+
+    const fixture = TestBed.createComponent(BooleanHostComponent);
+    fixture.detectChanges();
+    const chip = fixture.debugElement.query(By.directive(ItChipComponent)).componentInstance as ItChipComponent;
+    expect(chip.showCloseButton).toBeTrue();
+    expect(chip.disabled).toBeTrue();
+  });
+
+  it('should coerce string "true" to true and string "false" to false', async () => {
+    @Component({
+      selector: 'it-chip-str-host',
+      template: `<it-chip [attr.showCloseButton]="'true'" showCloseButton="true" disabled="false" label="test"></it-chip>`,
+      imports: [ItChipComponent],
+    })
+    class StringCoercionHost {}
+
+    await TestBed.configureTestingModule({
+      imports: [StringCoercionHost],
+      providers: tb_base.providers,
+    })
+      .overrideComponent(ItChipComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default },
+      })
+      .compileComponents();
+
+    const fixture = TestBed.createComponent(StringCoercionHost);
+    fixture.detectChanges();
+    const chip = fixture.debugElement.query(By.directive(ItChipComponent)).componentInstance as ItChipComponent;
+    expect(chip.showCloseButton).toBeTrue();
+    // 'false' string coerced by booleanAttribute → false
+    expect(chip.disabled).toBeFalse();
+  });
+});
