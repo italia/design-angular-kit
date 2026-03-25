@@ -126,6 +126,7 @@ export * from './lib/components/utils/language-switcher/language-switcher.compon
 
 // Services
 export * from './lib/services/notification/notification.service';
+export * from './lib/services/icon-registry/icon-registry.service';
 
 // Pipes
 export * from './lib/pipes/date-ago.pipe';
