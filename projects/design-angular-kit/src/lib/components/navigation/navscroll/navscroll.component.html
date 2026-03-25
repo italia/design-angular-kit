@@ -43,17 +43,45 @@
             </button>
             <div class="menu-wrapper" tabindex="-1">
               <div class="link-list-wrapper">
-                <h3>{{ header }}</h3>
-                <div class="progress">
-                  <div
-                    class="progress-bar it-navscroll-progressbar"
-                    role="progressbar"
-                    [style.width.%]="progressBarValue | async"
-                    [attr.aria-valuenow]="progressBarValue | async"
-                    aria-valuemin="0"
-                    aria-valuemax="100"></div>
-                </div>
-                <it-navscroll-list-items [items]="items"></it-navscroll-list-items>
+                @if (headerAsAccordion) {
+                  <div class="accordion" [id]="accordionId">
+                    <div class="accordion-item">
+                      <h3 class="accordion-header" [id]="accordionId + '-heading'">
+                        <button
+                          class="accordion-button"
+                          [class.collapsed]="!accordionExpanded"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          [attr.data-bs-target]="'#' + accordionId + '-body'"
+                          [attr.aria-expanded]="accordionExpanded"
+                          [attr.aria-controls]="accordionId + '-body'">
+                          {{ header }}
+                        </button>
+                      </h3>
+                      <div
+                        [id]="accordionId + '-body'"
+                        class="accordion-collapse collapse"
+                        [class.show]="accordionExpanded"
+                        [attr.aria-labelledby]="accordionId + '-heading'">
+                        <div class="accordion-body">
+                          <it-navscroll-list-items [items]="items"></it-navscroll-list-items>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                } @else {
+                  <h3>{{ header }}</h3>
+                  <div class="progress">
+                    <div
+                      class="progress-bar it-navscroll-progressbar"
+                      role="progressbar"
+                      [style.width.%]="progressBarValue | async"
+                      [attr.aria-valuenow]="progressBarValue | async"
+                      aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                  <it-navscroll-list-items [items]="items"></it-navscroll-list-items>
+                }
               </div>
             </div>
           </div>
