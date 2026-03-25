@@ -14,7 +14,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
+import { delay, filter, map, skip, tap, withLatestFrom } from 'rxjs';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
@@ -128,6 +128,9 @@ export class ItNavscrollComponent implements OnInit {
         takeUntilDestroyed(this.#destroyRef),
         filter(selected => Boolean(selected)),
         map(v => v as NavscrollItem),
+        // Skip the programmatic selection from store.init() so the page
+        // does not scroll to the first section on initial load (#597).
+        skip(1),
         delay(0), //WA
         tap({
           next: ({ href }) => {
