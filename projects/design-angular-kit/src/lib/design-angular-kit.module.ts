@@ -12,6 +12,7 @@ import { ItChipComponent } from './components/core/chip/chip.component';
 import { ItCollapseComponent } from './components/core/collapse/collapse.component';
 import { ItDimmerModule } from './components/core/dimmer/dimmer.module';
 import { ItDropdownModule } from './components/core/dropdown/dropdown.module';
+import { ItFigureDirective } from './components/core/figure/figure.directive';
 import { ItForwardDirective } from './components/core/forward/forward.directive';
 import { ItLinkComponent } from './components/core/link/link.component';
 import { ItListModule } from './components/core/list/list.module';
@@ -63,6 +64,7 @@ const core = [
   ItCollapseComponent,
   ItDimmerModule,
   ItDropdownModule,
+  ItFigureDirective,
   ItForwardDirective,
   ItLinkComponent,
   ItListModule,
