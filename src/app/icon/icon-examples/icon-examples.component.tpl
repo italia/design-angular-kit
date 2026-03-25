@@ -63,3 +63,16 @@
 <it-icon-list-example></it-icon-list-example>
 
 <it-source-display html="{$ sanitize(htmlList) $}" typescript="{$ sanitize(typescriptList) $}"></it-source-display>
+
+
+{% set htmlRegistry %}
+  {% include "../icon-registry-example/icon-registry-example.component.html" %}
+{% endset %}
+
+{% set typescriptRegistry %}
+  {% include "../icon-registry-example/icon-registry-example.component.ts" %}
+{% endset %}
+
+<it-icon-registry-example></it-icon-registry-example>
+
+<it-source-display html="{$ sanitize(htmlRegistry) $}" typescript="{$ sanitize(typescriptRegistry) $}"></it-source-display>
