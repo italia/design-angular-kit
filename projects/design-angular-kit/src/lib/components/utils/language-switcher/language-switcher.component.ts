@@ -25,16 +25,7 @@ export class ItLanguageSwitcherComponent implements OnInit {
    */
   @Input() mode: 'button' | 'link' | 'nav' = 'link';
 
-  protected currentLang$: Observable<AvailableLanguage | undefined>;
-
-  constructor() {
-    const translateService = this.translateService;
-
-    this.currentLang$ = this.translateService.onLangChange.pipe(
-      startWith({ lang: translateService.getCurrentLang() }),
-      map(event => this.availableLanguages?.find(l => l.code === event.lang))
-    );
-  }
+  protected currentLang$!: Observable<AvailableLanguage | undefined>;
 
   ngOnInit(): void {
     if (!this.availableLanguages) {
@@ -45,8 +36,15 @@ export class ItLanguageSwitcherComponent implements OnInit {
         ...(lang === 'en' && { label: 'ENG' }),
       }));
     } else {
-      this.translateService.addLangs(this.availableLanguages.map(l => l.code)); // Adds custom languages
+      this.translateService.addLangs(this.availableLanguages.map(l => l.code));
     }
+
+    // Initialize after availableLanguages is resolved so the first
+    // emission from startWith can correctly match the active language.
+    this.currentLang$ = this.translateService.onLangChange.pipe(
+      startWith({ lang: this.translateService.getCurrentLang() }),
+      map(event => this.availableLanguages?.find(l => l.code === event.lang))
+    );
   }
 
   /**
