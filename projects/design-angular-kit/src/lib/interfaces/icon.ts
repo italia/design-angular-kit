@@ -1,6 +1,6 @@
 export type IconSize = 'xs' | 'sm' | 'lg' | 'xl';
 
-export type IconColor = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'light' | 'white';
+export type IconColor = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'light' | 'white' | (string & {});
 
 export type IconName = (typeof IconNameArray)[number];
 

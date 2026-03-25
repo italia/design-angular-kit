@@ -1,6 +1,6 @@
 import { IconName } from './icon';
 
-export type AlertColor = 'primary' | 'info' | 'success' | 'warning' | 'danger';
+export type AlertColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | (string & {});
 
 export type ButtonColor =
   | 'primary'
@@ -19,23 +19,24 @@ export type ButtonColor =
   | 'outline-light'
   | 'dark'
   | 'outline-dark'
-  | 'link';
+  | 'link'
+  | (string & {});
 
 export type ButtonSize = 'lg' | 'sm' | 'xs';
 export type ButtonType = 'submit' | 'button';
 
-export type CalloutColor = 'success' | 'warning' | 'danger' | 'important' | 'note';
+export type CalloutColor = 'success' | 'warning' | 'danger' | 'important' | 'note' | (string & {});
 export type CalloutAppearance = 'default' | 'highlight' | 'more';
 
-export type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
+export type ChipColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | (string & {});
 
 export type ElementPlacement = 'top' | 'bottom' | 'left' | 'right';
 
-export type ProgressBarColor = 'primary' | 'success' | 'warning' | 'danger' | 'info';
+export type ProgressBarColor = 'primary' | 'success' | 'warning' | 'danger' | 'info' | (string & {});
 
-export type BadgeColor = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+export type BadgeColor = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | (string & {});
 
-export type TableColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+export type TableColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | (string & {});
 
 export type TableHeadColor = 'light' | 'dark';
 
