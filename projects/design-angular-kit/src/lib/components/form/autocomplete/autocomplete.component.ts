@@ -108,6 +108,13 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
     }
   }
 
+  override writeValue(value: string | null | undefined): void {
+    super.writeValue(value);
+    if (!value && this._inputEl) {
+      this.clear();
+    }
+  }
+
   clear() {
     (this._inputEl as HTMLInputElement).value = '';
   }
