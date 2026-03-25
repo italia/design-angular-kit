@@ -10,6 +10,7 @@ import { IconSizeExampleComponent } from './icon-size-example/icon-size-example.
 import { IconListExampleComponent } from './icon-list-example/icon-list-example.component';
 import { IconColorExampleComponent } from './icon-color-example/icon-color-example.component';
 import { IconAlignmentExampleComponent } from './icon-alignment-example/icon-alignment-example.component';
+import { IconRegistryExampleComponent } from './icon-registry-example/icon-registry-example.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { IconAlignmentExampleComponent } from './icon-alignment-example/icon-ali
     IconListExampleComponent,
     IconColorExampleComponent,
     IconAlignmentExampleComponent,
+    IconRegistryExampleComponent,
   ],
   imports: [CommonModule, SharedModule, IconRoutingModule, FormsModule],
 })
