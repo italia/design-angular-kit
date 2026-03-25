@@ -25,3 +25,16 @@
 
 <it-source-display html="{$ sanitize(htmlDynamic) $}" typescript="{$ sanitize(typescriptDynamic) $}" >
 </it-source-display>
+
+{% set htmlFullHeight %}
+  {% include "../tabs-full-height-example/tabs-full-height-example.component.html" %}
+{% endset %}
+
+{% set typescriptFullHeight %}
+  {% include "../tabs-full-height-example/tabs-full-height-example.component.ts" %}
+{% endset %}
+
+<it-tabs-full-height-example></it-tabs-full-height-example>
+
+<it-source-display html="{$ sanitize(htmlFullHeight) $}" typescript="{$ sanitize(typescriptFullHeight) $}" >
+</it-source-display>
