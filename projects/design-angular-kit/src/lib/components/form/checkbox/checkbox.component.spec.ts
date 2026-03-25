@@ -18,4 +18,28 @@ describe('ItCheckboxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should NOT render aria-describedby on toggle checkbox when group is false', () => {
+    component.toggle = true;
+    component.group = false;
+    fixture.detectChanges();
+    const inputEl = (fixture.nativeElement as HTMLElement).querySelector('input[type="checkbox"]');
+    expect(inputEl?.getAttribute('aria-describedby')).toBeNull();
+  });
+
+  it('should render aria-describedby on toggle checkbox when group is true', () => {
+    fixture.componentRef.setInput('toggle', true);
+    fixture.componentRef.setInput('group', true);
+    fixture.detectChanges();
+    const inputEl = (fixture.nativeElement as HTMLElement).querySelector('input[type="checkbox"]');
+    expect(inputEl?.getAttribute('aria-describedby')).toBe(`${component.id}-help`);
+  });
+
+  it('should NOT render aria-describedby on standard checkbox when group is false', () => {
+    component.toggle = false;
+    component.group = false;
+    fixture.detectChanges();
+    const inputEl = (fixture.nativeElement as HTMLElement).querySelector('input[type="checkbox"]');
+    expect(inputEl?.getAttribute('aria-describedby')).toBeNull();
+  });
 });
