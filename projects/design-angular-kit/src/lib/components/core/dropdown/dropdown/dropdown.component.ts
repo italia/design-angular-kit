@@ -11,6 +11,7 @@ import {
   QueryList,
   SimpleChanges,
   ViewChild,
+  booleanAttribute,
 } from '@angular/core';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { ButtonColor, DropdownDirection } from '../../../../interfaces/core';
@@ -18,7 +19,6 @@ import { ItDropdownItemComponent } from '../dropdown-item/dropdown-item.componen
 import { Dropdown } from 'bootstrap-italia';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { NgTemplateOutlet } from '@angular/common';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   selector: 'it-dropdown',
@@ -51,19 +51,19 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
    * To get a dropdown menu as wide as the element containing the dropdown button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) fullWidth?: boolean;
+  @Input({ transform: booleanAttribute }) fullWidth?: boolean;
 
   /**
    * Contains a Megamenu element
    * @default false
    */
-  @Input({ transform: inputToBoolean }) megamenu?: boolean;
+  @Input({ transform: booleanAttribute }) megamenu?: boolean;
 
   /**
    * Dark menu style
    * @default false
    */
-  @Input({ transform: inputToBoolean }) dark?: boolean;
+  @Input({ transform: booleanAttribute }) dark?: boolean;
 
   /**
    * The dropdown items

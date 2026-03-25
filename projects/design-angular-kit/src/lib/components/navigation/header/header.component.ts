@@ -9,6 +9,7 @@ import {
   Output,
   SimpleChanges,
   ViewChild,
+  booleanAttribute,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
@@ -16,7 +17,6 @@ import { ItNavBarModule } from '../navbar/navbar.module';
 import { ItNavBarComponent } from '../navbar/navbar/navbar.component';
 
 import { ItButtonDirective } from '../../core/button/button.directive';
-import { inputToBoolean } from '../../../utils/coercion';
 import { HeaderSticky } from 'bootstrap-italia';
 
 @Component({
@@ -27,15 +27,15 @@ import { HeaderSticky } from 'bootstrap-italia';
   imports: [TranslateModule, ItIconComponent, ItButtonDirective, ItNavBarModule],
 })
 export class ItHeaderComponent implements AfterViewInit, OnChanges {
-  @Input({ transform: inputToBoolean }) light?: boolean;
+  @Input({ transform: booleanAttribute }) light?: boolean;
 
-  @Input({ transform: inputToBoolean }) sticky?: boolean;
+  @Input({ transform: booleanAttribute }) sticky?: boolean;
 
-  @Input({ transform: inputToBoolean }) showSlim?: boolean = true;
+  @Input({ transform: booleanAttribute }) showSlim?: boolean = true;
 
-  @Input({ transform: inputToBoolean }) smallHeader?: boolean = true;
+  @Input({ transform: booleanAttribute }) smallHeader?: boolean = true;
 
-  @Input({ transform: inputToBoolean }) showSearch?: boolean = true;
+  @Input({ transform: booleanAttribute }) showSearch?: boolean = true;
 
   @Input() idCollapsable: string = 'menuCollapsable';
 
@@ -52,8 +52,8 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
 
   @ViewChild(ItNavBarComponent) private itNavBarComponent?: ItNavBarComponent;
 
-  @Input({ transform: inputToBoolean }) megamenu?: boolean;
-  @Input({ transform: inputToBoolean }) expand?: boolean = true;
+  @Input({ transform: booleanAttribute }) megamenu?: boolean;
+  @Input({ transform: booleanAttribute }) expand?: boolean = true;
 
   private stickyHeader?: HeaderSticky;
 
