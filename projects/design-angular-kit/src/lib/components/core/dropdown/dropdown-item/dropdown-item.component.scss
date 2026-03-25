@@ -2,3 +2,14 @@
   pointer-events: none;
   cursor: default;
 }
+
+/* Icon-label spacing: icons with svgClass 'left' or 'right' need
+   margin toward the text label they sit beside.  Because `it-icon`
+   uses `display: contents`, the first visible child is the <svg>. */
+:host ::ng-deep svg.left {
+  margin-right: 8px;
+}
+
+:host ::ng-deep svg.right {
+  margin-left: 8px;
+}
