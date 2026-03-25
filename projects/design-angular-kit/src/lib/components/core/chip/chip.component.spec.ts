@@ -84,4 +84,35 @@ describe('ItChipComponent', () => {
     );
     expect(imgElement).toBeTruthy();
   });
+
+  it('should render a <div> wrapper when href is not set', () => {
+    component.label = 'Argomento';
+    fixture.detectChanges();
+    const divEl = fixture.debugElement.query(By.css('div.chip'));
+    const aEl = fixture.debugElement.query(By.css('a.chip'));
+    expect(divEl).toBeTruthy();
+    expect(aEl).toBeFalsy();
+  });
+
+  it('should render an <a> wrapper with the correct href when href is set', () => {
+    component.label = 'Argomento';
+    component.href = 'https://designers.italia.it';
+    fixture.detectChanges();
+    const aEl = fixture.debugElement.query(By.css('a.chip'));
+    const divEl = fixture.debugElement.query(By.css('div.chip'));
+    expect(aEl).toBeTruthy();
+    expect(aEl.nativeElement.getAttribute('href')).toBe('https://designers.italia.it');
+    expect(divEl).toBeFalsy();
+  });
+
+  it('should preserve chip classes when rendered as <a>', () => {
+    component.label = 'Link Chip';
+    component.href = '/test';
+    component.size = 'lg';
+    component.color = 'primary';
+    fixture.detectChanges();
+    const aEl = fixture.debugElement.query(By.css('a.chip'));
+    expect(aEl.nativeElement.classList.contains('chip-lg')).toBeTrue();
+    expect(aEl.nativeElement.classList.contains('chip-primary')).toBeTrue();
+  });
 });
