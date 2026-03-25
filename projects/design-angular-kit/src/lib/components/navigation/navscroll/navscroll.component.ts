@@ -15,6 +15,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
+import { inputToBoolean } from '../../../utils/coercion';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
@@ -42,10 +43,27 @@ import { NavscrollStore } from './navscroll.store';
   providers: [NavscrollStore],
 })
 export class ItNavscrollComponent implements OnInit {
+  static _nextId = 0;
+
+  readonly accordionId = `navscroll-accordion-${ItNavscrollComponent._nextId++}`;
   /**
    * Header of the Navscroll
    */
   @Input() header = '';
+
+  /**
+   * Render the header as a collapsible accordion toggle,
+   * allowing users to show/hide the navigation links.
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) headerAsAccordion?: boolean;
+
+  /**
+   * Whether the accordion starts expanded.
+   * Only applies when headerAsAccordion is true.
+   * @default true
+   */
+  @Input({ transform: inputToBoolean }) accordionExpanded: boolean = true;
   /**
    * A list of links
    */
