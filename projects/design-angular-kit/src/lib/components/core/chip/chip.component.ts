@@ -8,6 +8,7 @@ import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-confi
 @Component({
   selector: 'it-chip',
   templateUrl: './chip.component.html',
+  styleUrls: ['./chip.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, TranslateModule],
 })
