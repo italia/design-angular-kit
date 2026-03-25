@@ -52,6 +52,7 @@ export * from './lib/components/core/pagination/pagination.component';
 export * from './lib/components/core/popover/popover.directive';
 export * from './lib/components/core/progress-bar/progress-bar.component';
 export * from './lib/components/core/progress-button/progress-button.component';
+export * from './lib/components/core/ratio/ratio.directive';
 export * from './lib/components/core/spinner/spinner.component';
 
 export * from './lib/components/core/steppers/steppers-container/steppers-container.component';
