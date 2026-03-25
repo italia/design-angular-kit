@@ -183,8 +183,8 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * @returns whether the given error is present in the control at the given path.
    */
   public hasError(errorCode: string, path?: Array<string | number> | string): boolean {
-    if (this._ngControl) {
-      return this._ngControl.hasError(errorCode, path);
+    if (this._ngControl?.control) {
+      return this._ngControl.control.hasError(errorCode, path);
     }
     return this.control.hasError(errorCode, path);
   }
@@ -198,8 +198,8 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * null is returned.
    */
   public getError(errorCode: string, path?: Array<string | number> | string): any {
-    if (this._ngControl) {
-      return this._ngControl.getError(errorCode, path);
+    if (this._ngControl?.control) {
+      return this._ngControl.control.getError(errorCode, path);
     }
     return this.control.getError(errorCode, path);
   }
