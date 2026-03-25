@@ -29,6 +29,18 @@ class UnitTestComponent {
   private _dismissible: boolean = false;
 }
 
+@Component({
+  selector: 'it-heading-test',
+  template: `
+    <it-alert color="info">
+      <span heading>Attenzione</span>
+      Contenuto dell'alert.
+    </it-alert>
+  `,
+  imports: [ItAlertComponent],
+})
+class HeadingTestComponent {}
+
 let component: UnitTestComponent;
 let fixture: ComponentFixture<UnitTestComponent>;
 describe('ItAlertComponent', () => {
@@ -59,5 +71,42 @@ describe('ItAlertComponent', () => {
     fixture.detectChanges();
     const spanElement = fixture.debugElement.query(By.css('div.alert.alert-success'));
     expect(spanElement).toBeTruthy();
+  });
+
+  it('should hide empty h4.alert-heading when no heading content is projected', () => {
+    fixture.detectChanges();
+    const h4: HTMLHeadingElement = fixture.nativeElement.querySelector('h4.alert-heading');
+    expect(h4).toBeTruthy();
+    expect(h4.hidden).toBeTrue();
+  });
+
+  it('hidden h4 should not be visible in the DOM flow', () => {
+    fixture.detectChanges();
+    const h4: HTMLHeadingElement = fixture.nativeElement.querySelector('h4.alert-heading');
+    expect(h4.offsetHeight).toBe(0);
+  });
+});
+
+describe('ItAlertComponent with heading', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HeadingTestComponent, ItAlertComponent],
+    }).compileComponents();
+  });
+
+  it('should show h4.alert-heading when heading content is projected', () => {
+    const f = TestBed.createComponent(HeadingTestComponent);
+    f.detectChanges();
+    const h4: HTMLHeadingElement = f.nativeElement.querySelector('h4.alert-heading');
+    expect(h4).toBeTruthy();
+    expect(h4.hidden).toBeFalse();
+    expect(h4.textContent?.trim()).toBe('Attenzione');
+  });
+
+  it('should preserve alert-heading class when heading is present', () => {
+    const f = TestBed.createComponent(HeadingTestComponent);
+    f.detectChanges();
+    const h4: HTMLHeadingElement = f.nativeElement.querySelector('h4.alert-heading');
+    expect(h4.classList.contains('alert-heading')).toBeTrue();
   });
 });
