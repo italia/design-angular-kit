@@ -53,6 +53,11 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
   @Input({ transform: inputToBoolean }) vertical?: boolean;
 
   /**
+   * Apply background color to active tab in vertical mode (nav-tabs-vertical-background)
+   */
+  @Input({ transform: inputToBoolean }) verticalBackground?: boolean;
+
+  /**
    * The tab position
    */
   @Input({ transform: inputToBoolean }) inverted?: boolean;
