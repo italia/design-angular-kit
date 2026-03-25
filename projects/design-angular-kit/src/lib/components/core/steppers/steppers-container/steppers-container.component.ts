@@ -10,6 +10,7 @@ import {
   Output,
   QueryList,
   inject,
+  booleanAttribute,
 } from '@angular/core';
 import { ItSteppersItemComponent } from '../steppers-item/steppers-item.component';
 import { ProgressBarColor } from '../../../../interfaces/core';
@@ -20,7 +21,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ItButtonDirective } from '../../button/button.directive';
 import { ItProgressBarComponent } from '../../progress-bar/progress-bar.component';
 import { ItProgressButtonComponent } from '../../progress-button/progress-button.component';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   selector: 'it-steppers-container',
@@ -47,19 +47,19 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
    * Show the stepper header
    * @default true
    */
-  @Input({ transform: inputToBoolean }) showHeader: boolean = true;
+  @Input({ transform: booleanAttribute }) showHeader: boolean = true;
 
   /**
    * Dark style
    * @default false
    */
-  @Input({ transform: inputToBoolean }) dark?: boolean;
+  @Input({ transform: booleanAttribute }) dark?: boolean;
 
   /**
    * The labels present in the header steps can be anticipated by the relative ordinal number.
    * @efualt false
    */
-  @Input({ transform: inputToBoolean }) steppersNumber?: boolean;
+  @Input({ transform: booleanAttribute }) steppersNumber?: boolean;
 
   /**
    * The progress style
@@ -78,59 +78,59 @@ export class ItSteppersContainerComponent implements AfterViewInit, OnDestroy {
    * Show the back button
    * @default true
    */
-  @Input({ transform: inputToBoolean }) showBackButton: boolean = true;
+  @Input({ transform: booleanAttribute }) showBackButton: boolean = true;
 
   /**
    * Disable the back button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) disableBackButton?: boolean;
+  @Input({ transform: booleanAttribute }) disableBackButton?: boolean;
 
   /**
    * Show the forward button
    * @default true
    */
-  @Input({ transform: inputToBoolean }) showForwardButton: boolean = true;
+  @Input({ transform: booleanAttribute }) showForwardButton: boolean = true;
 
   /**
    * Disable the forward button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) disableForwardButton?: boolean;
+  @Input({ transform: booleanAttribute }) disableForwardButton?: boolean;
 
   /**
    * Show the confirm button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) showConfirmButton?: boolean;
+  @Input({ transform: booleanAttribute }) showConfirmButton?: boolean;
 
   /**
    * Disable the confirm button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) disableConfirmButton?: boolean;
+  @Input({ transform: booleanAttribute }) disableConfirmButton?: boolean;
 
   /**
    * Show the confirm button as indeterminate progress button
    */
-  @Input({ transform: inputToBoolean }) confirmLoading?: boolean;
+  @Input({ transform: booleanAttribute }) confirmLoading?: boolean;
 
   /**
    * Show the save button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) showSaveButton?: boolean;
+  @Input({ transform: booleanAttribute }) showSaveButton?: boolean;
 
   /**
    * Disable the save button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) disableSaveButton?: boolean;
+  @Input({ transform: booleanAttribute }) disableSaveButton?: boolean;
 
   /**
    * Show the save button as indeterminate progress button
    */
-  @Input({ transform: inputToBoolean }) saveLoading?: boolean;
+  @Input({ transform: booleanAttribute }) saveLoading?: boolean;
 
   /**
    * The stepper items

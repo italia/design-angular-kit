@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, booleanAttribute } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { tb_base } from '../../../../test';
-import { inputToBoolean } from '../../../utils/coercion';
 import { ItSpinnerComponent } from './spinner.component';
 
 @Component({
@@ -12,7 +11,7 @@ import { ItSpinnerComponent } from './spinner.component';
   standalone: false,
 })
 class UnitTestComponent {
-  @Input({ transform: inputToBoolean }) set active(value: boolean | undefined) {
+  @Input({ transform: booleanAttribute }) set active(value: boolean | undefined) {
     this._active = value;
   }
   get active(): boolean | undefined {

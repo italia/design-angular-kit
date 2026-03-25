@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, booleanAttribute } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-radio-button',
@@ -21,19 +20,19 @@ export class ItRadioButtonComponent extends ItAbstractFormComponent<string | num
    * If show radio inline
    * @default false
    */
-  @Input({ transform: inputToBoolean }) inline?: boolean;
+  @Input({ transform: booleanAttribute }) inline?: boolean;
 
   /**
    * If is radio group
    * @default false
    */
-  @Input({ transform: inputToBoolean }) group?: boolean;
+  @Input({ transform: booleanAttribute }) group?: boolean;
 
   /**
    * If is radio is checked
    * @default false
    */
-  @Input({ transform: inputToBoolean }) checked?: boolean;
+  @Input({ transform: booleanAttribute }) checked?: boolean;
 
   /**
    * Set the radio name manually.
@@ -54,7 +53,6 @@ export class ItRadioButtonComponent extends ItAbstractFormComponent<string | num
       // Retrieve parent name, prevent duplicate name inside FormArray or nested FormGroup
       let control = this._ngControl.control?.parent;
       while (control?.parent) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const controls: { [key: string]: any } = control?.parent?.controls || {};
         const parentName = Object.keys(controls).find(name => control === controls[name]) || null;
         if (!parentName) {

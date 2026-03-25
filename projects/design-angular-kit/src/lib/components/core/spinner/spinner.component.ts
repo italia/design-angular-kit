@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-spinner',
@@ -14,17 +13,17 @@ export class ItSpinnerComponent {
    * The spinner is active
    * @default true
    */
-  @Input({ transform: inputToBoolean }) active: boolean = true;
+  @Input({ transform: booleanAttribute }) active: boolean = true;
 
   /**
    * Show a small spinner
    * @default false
    */
-  @Input({ transform: inputToBoolean }) small?: boolean;
+  @Input({ transform: booleanAttribute }) small?: boolean;
 
   /**
    * Show the double animation
    * @default false
    */
-  @Input({ transform: inputToBoolean }) double?: boolean;
+  @Input({ transform: booleanAttribute }) double?: boolean;
 }
