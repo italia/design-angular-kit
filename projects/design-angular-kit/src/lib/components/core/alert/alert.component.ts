@@ -1,4 +1,14 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { AlertColor } from '../../../interfaces/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Alert } from 'bootstrap-italia';
@@ -41,12 +51,20 @@ export class ItAlertComponent extends ItAbstractComponent implements AfterViewIn
    */
   @Output() public closedEvent: EventEmitter<Event> = new EventEmitter();
 
+  /**
+   * Whether the heading slot has projected content.
+   * Drives the [class.d-none] and [attr.aria-hidden] bindings on the `<h4>`.
+   */
+  readonly hasHeading = signal(false);
+
   private alert?: Alert;
 
   @ViewChild('alertElement') private alertElement?: ElementRef<HTMLDivElement>;
+  @ViewChild('headingEl') private headingEl?: ElementRef<HTMLHeadingElement>;
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();
+    this._detectHeadingContent();
 
     if (this.alertElement) {
       const element = this.alertElement.nativeElement;
@@ -70,5 +88,20 @@ export class ItAlertComponent extends ItAbstractComponent implements AfterViewIn
    */
   public dispose(): void {
     this.alert?.dispose();
+  }
+
+  /**
+   * Checks whether the heading `<ng-content>` slot received real projected content.
+   * Ignores Angular comment nodes and whitespace-only text nodes.
+   */
+  private _detectHeadingContent(): void {
+    const el = this.headingEl?.nativeElement;
+    if (!el) {
+      return;
+    }
+    const hasContent = Array.from(el.childNodes).some(
+      node => node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && (node.textContent?.trim() ?? '') !== '')
+    );
+    this.hasHeading.set(hasContent);
   }
 }

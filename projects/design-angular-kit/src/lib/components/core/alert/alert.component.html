@@ -5,7 +5,7 @@
   [class.fade]="dismissible"
   [class.show]="dismissible"
   role="alert">
-  <h4 class="alert-heading">
+  <h4 class="alert-heading" #headingEl [class.d-none]="!hasHeading()" [attr.aria-hidden]="!hasHeading()">
     <ng-content select="[heading]"></ng-content>
   </h4>
 
