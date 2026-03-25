@@ -66,6 +66,12 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
   @Input({ transform: inputToBoolean }) dark?: boolean;
 
   /**
+   * Default icon position for all child dropdown items.
+   * Individual items can override this with their own iconPosition input.
+   */
+  @Input() iconPosition: 'left' | 'right' | undefined;
+
+  /**
    * The dropdown items
    */
   @ContentChildren(ItDropdownItemComponent) items?: QueryList<ItDropdownItemComponent>;
@@ -112,12 +118,16 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
     if (changes['mode'] && !changes['mode'].firstChange) {
       this.updateListeners();
     }
+    if (changes['iconPosition'] && !changes['iconPosition'].firstChange) {
+      this.setIconPositionItems();
+    }
     super.ngOnChanges(changes);
   }
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();
     this.setDarkItems();
+    this.setIconPositionItems();
     this.updateListeners();
     this.items?.forEach(item => {
       item.mode = this.mode;
@@ -132,6 +142,18 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
     if (this.dark !== undefined) {
       this.items?.forEach(item => {
         item.setDark(!!this.dark);
+      });
+    }
+  }
+
+  /**
+   * Propagate the parent iconPosition to child items that have no explicit override.
+   * @private
+   */
+  private setIconPositionItems(): void {
+    if (this.iconPosition !== undefined) {
+      this.items?.forEach(item => {
+        item.setInheritedIconPosition(this.iconPosition!);
       });
     }
   }
