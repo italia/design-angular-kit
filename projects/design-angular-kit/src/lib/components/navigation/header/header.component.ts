@@ -55,6 +55,13 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
   @Input({ transform: inputToBoolean }) megamenu?: boolean;
   @Input({ transform: inputToBoolean }) expand?: boolean = true;
 
+  /**
+   * Show the mobile hamburger menu and offcanvas sidebar.
+   * Set to false to hide the mobile navigation toggle.
+   * @default true
+   */
+  @Input({ transform: inputToBoolean }) showMobileMenu?: boolean = true;
+
   private stickyHeader?: HeaderSticky;
 
   constructor() {
