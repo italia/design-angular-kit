@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IconName } from '../../../interfaces/icon';
 import { ChipColor } from '../../../interfaces/core';
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
 
@@ -9,7 +9,7 @@ import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-confi
   selector: 'it-chip',
   templateUrl: './chip.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass, TranslateModule],
+  imports: [NgClass, NgTemplateOutlet, TranslateModule],
 })
 export class ItChipComponent {
   /**
@@ -115,6 +115,12 @@ export class ItChipComponent {
   }
 
   private _altAvatar: string = '';
+
+  /**
+   * The href for the chip link.
+   * When set, the chip renders as an &lt;a&gt; element instead of a &lt;div&gt;.
+   */
+  @Input() href: string | undefined;
 
   /**
    * Evento emesso al click sul bottone di chiusura
