@@ -35,3 +35,15 @@
 <it-dropdown-host-attribute></it-dropdown-host-attribute>
 
 <it-source-display html="{$ sanitize(htmlHostAttribute) $}" typescript="{$ sanitize(typescriptHostAttribute) $}"></it-source-display>
+
+{% set htmlItemClass %}
+  {% include "../dropdown-item-class/dropdown-item-class.component.html" %}
+{% endset %}
+
+{% set typescriptItemClass %}
+  {% include "../dropdown-item-class/dropdown-item-class.component.ts" %}
+{% endset %}
+
+<it-dropdown-item-class-example></it-dropdown-item-class-example>
+
+<it-source-display html="{$ sanitize(htmlItemClass) $}" typescript="{$ sanitize(typescriptItemClass) $}"></it-source-display>
