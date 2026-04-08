@@ -1,9 +1,20 @@
-import { ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { tb_base } from '../../../../test';
 import { ItChipComponent } from './chip.component';
+
+@Component({
+  selector: 'it-test-chip-group',
+  template: `
+    <it-chip label="Chip A"></it-chip>
+    <it-chip label="Chip B"></it-chip>
+    <it-chip label="Chip C"></it-chip>
+  `,
+  imports: [ItChipComponent],
+})
+class ChipGroupTestComponent {}
 
 describe('ItChipComponent', () => {
   let component: ItChipComponent;
@@ -83,5 +94,43 @@ describe('ItChipComponent', () => {
       By.css('img[alt="alt"][src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"]')
     );
     expect(imgElement).toBeTruthy();
+  });
+
+  describe('Bug #542 — unwanted margins', () => {
+    it('should have margin-top: 0px on the .chip element', () => {
+      component.label = 'Test chip';
+      fixture.detectChanges();
+      const chipEl = fixture.debugElement.query(By.css('.chip'));
+      expect(chipEl).toBeTruthy();
+      const style = getComputedStyle(chipEl.nativeElement);
+      expect(style.marginTop).toBe('0px');
+    });
+
+    it('should have margin-bottom: 0px on the .chip element', () => {
+      component.label = 'Test chip';
+      fixture.detectChanges();
+      const chipEl = fixture.debugElement.query(By.css('.chip'));
+      const style = getComputedStyle(chipEl.nativeElement);
+      expect(style.marginBottom).toBe('0px');
+    });
+
+    it('should have margin-right: 0px on .chip:not(:last-child)', () => {
+      const groupFixture = TestBed.createComponent(ChipGroupTestComponent);
+      groupFixture.detectChanges();
+      const chips = groupFixture.debugElement.queryAll(By.css('.chip'));
+      expect(chips.length).toBe(3);
+      const firstChipStyle = getComputedStyle(chips[0].nativeElement);
+      expect(firstChipStyle.marginRight).toBe('0px');
+    });
+
+    it('should have all margins at 0px on the large chip variant', () => {
+      component.label = 'Large chip';
+      component.size = 'lg';
+      fixture.detectChanges();
+      const chipEl = fixture.debugElement.query(By.css('.chip'));
+      const style = getComputedStyle(chipEl.nativeElement);
+      expect(style.marginTop).toBe('0px');
+      expect(style.marginBottom).toBe('0px');
+    });
   });
 });
