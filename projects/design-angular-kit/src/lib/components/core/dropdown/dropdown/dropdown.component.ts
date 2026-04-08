@@ -19,6 +19,7 @@ import { Dropdown } from 'bootstrap-italia';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../../utils/coercion';
+import { IconName, IconSize } from '../../../../interfaces/icon';
 
 @Component({
   selector: 'it-dropdown',
@@ -64,6 +65,31 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
    * @default false
    */
   @Input({ transform: inputToBoolean }) dark?: boolean;
+
+  /**
+   * When true, the dropdown menu is not rendered. Useful when you want the dropdown
+   * button appearance but handle the click action differently (e.g. opening a modal).
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) noMenu?: boolean;
+
+  /**
+   * The icon name displayed on the dropdown toggle button.
+   * @default 'expand'
+   */
+  @Input() iconName: IconName = 'expand';
+
+  /**
+   * The size of the dropdown toggle icon.
+   * @default 'sm'
+   */
+  @Input() iconSize: IconSize = 'sm';
+
+  /**
+   * When true, the icon does not rotate on dropdown open/close.
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) staticIcon?: boolean;
 
   /**
    * The dropdown items
@@ -137,7 +163,7 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
   }
 
   private updateListeners(): void {
-    if (this.dropdownButton) {
+    if (this.dropdownButton && !this.noMenu) {
       const element = this.dropdownButton.nativeElement;
       this.dropdown = Dropdown.getOrCreateInstance(element);
 
@@ -146,6 +172,14 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
       element.addEventListener('hide.bs.dropdown', event => this.hideEvent.emit(event));
       element.addEventListener('hidden.bs.dropdown', event => this.hiddenEvent.emit(event));
     }
+  }
+
+  /**
+   * Computed CSS class for the icon's SVG element.
+   * Returns 'icon-expand' for the rotation animation unless staticIcon is true.
+   */
+  get iconSvgClass(): string {
+    return this.staticIcon ? '' : 'icon-expand';
   }
 
   /**
