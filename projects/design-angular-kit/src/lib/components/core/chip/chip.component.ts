@@ -4,6 +4,7 @@ import { ChipColor } from '../../../interfaces/core';
 import { NgClass } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
+import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-chip',
@@ -28,7 +29,7 @@ export class ItChipComponent {
   /**
    * Indica se mostrate il pulante di chisura
    */
-  @Input() set showCloseButton(value: boolean) {
+  @Input({ transform: inputToBoolean }) set showCloseButton(value: boolean) {
     this._showCloseButton = value;
   }
 
@@ -67,7 +68,7 @@ export class ItChipComponent {
   /**
    * Indica se la chip è disabilitata
    */
-  @Input() set disabled(value: boolean) {
+  @Input({ transform: inputToBoolean }) set disabled(value: boolean) {
     this._disabled = value;
   }
 

@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { inputToBoolean } from '../../../utils/coercion';
 
 export type DimmerColor = '' | 'dimmer-primary';
 
@@ -23,7 +24,7 @@ export class ItDimmerComponent implements OnInit {
    * Dimmer status
    * @default false
    */
-  @Input() set active(value: boolean) {
+  @Input({ transform: inputToBoolean }) set active(value: boolean) {
     this._active = value;
   }
   get active() {
