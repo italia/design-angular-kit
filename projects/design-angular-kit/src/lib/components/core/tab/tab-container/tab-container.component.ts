@@ -24,6 +24,11 @@ import { inputToBoolean } from '../../../../utils/coercion';
   templateUrl: './tab-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ItIconComponent, NgTemplateOutlet],
+  host: {
+    '[class.d-flex]': 'fullHeight',
+    '[class.flex-column]': 'fullHeight && !vertical',
+    '[style.height]': 'fullHeight ? "100%" : null',
+  },
 })
 export class ItTabContainerComponent extends ItAbstractComponent implements OnDestroy, AfterViewInit {
   /**
@@ -51,6 +56,13 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
    * Show vertical navigation
    */
   @Input({ transform: inputToBoolean }) vertical?: boolean;
+
+  /**
+   * When used with vertical layout, makes the tab container
+   * occupy the full available vertical height.
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) fullHeight?: boolean;
 
   /**
    * The tab position
