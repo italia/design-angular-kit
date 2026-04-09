@@ -59,6 +59,13 @@ export class ItNavscrollComponent implements OnInit {
   @Input({ transform: inputToBoolean }) headerAsAccordion?: boolean;
 
   /**
+   * Hide the navigation bar when in mobile mode (viewport < 992px).
+   * Mandatory when navscroll is used in a mobile context or in combination with a sticky header.
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) hideNavigationOnMobile?: boolean;
+
+  /**
    * Whether the accordion starts expanded.
    * Only applies when headerAsAccordion is true.
    * @default true
@@ -118,6 +125,8 @@ export class ItNavscrollComponent implements OnInit {
   readonly progressBarValue = this.#store.progressBar;
 
   readonly isMobile = this.#store.isMobile;
+
+  readonly isNotMobile = this.#store.isMobile.pipe(map(v => !v));
 
   constructor() {
     this.#store.menuItemSelected

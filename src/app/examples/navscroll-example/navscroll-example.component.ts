@@ -9,7 +9,7 @@ const template = `
 
 <it-navscroll [header]="header" [items]="items" borderPosition="right" [pageSectionsTemplate]="contentTemplate"></it-navscroll>
 -->
-<it-navscroll [header]="header" [items]="items" borderPosition="right"></it-navscroll>
+<it-navscroll [header]="header" [items]="items" borderPosition="right" [hideOnMobile]="true"></it-navscroll>
 <p><a routerLink="/componenti/navscroll">Documentazione </a></p>
 `;
 
