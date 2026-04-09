@@ -35,6 +35,8 @@ export * from './lib/components/core/dimmer/dimmer-icon/dimmer-icon.component';
 export * from './lib/components/core/dimmer/dimmer.component';
 export * from './lib/components/core/dimmer/dimmer.module';
 
+export * from './lib/components/core/divider/divider.component';
+
 export * from './lib/components/core/dropdown/dropdown-item/dropdown-item.component';
 export * from './lib/components/core/dropdown/dropdown.module';
 export * from './lib/components/core/dropdown/dropdown/dropdown.component';
