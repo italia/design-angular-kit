@@ -2,5 +2,9 @@
   @if (title || labelWaria) {
     <title>{{ title || labelWaria }}</title>
   }
-  <use [attr.href]="iconHref" [attr.xlink:href]="iconHref"></use>
+  @if (isCustomInlineSvg) {
+    <g [innerHTML]="customSvgContent"></g>
+  } @else {
+    <use [attr.href]="iconHref" [attr.xlink:href]="iconHref"></use>
+  }
 </svg>
