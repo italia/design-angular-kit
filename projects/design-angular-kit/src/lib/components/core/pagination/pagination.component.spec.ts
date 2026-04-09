@@ -18,4 +18,10 @@ describe('ItPaginationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render host as display:block to allow margin utilities (#570, #571)', () => {
+    const host = fixture.nativeElement as HTMLElement;
+    const computed = getComputedStyle(host);
+    expect(computed.display).toBe('block');
+  });
 });
