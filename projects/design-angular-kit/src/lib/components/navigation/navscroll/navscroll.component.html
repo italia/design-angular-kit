@@ -1,6 +1,6 @@
 <div class="container py-lg-5">
   <div class="row">
-    @if (!hideNavigationOnMobile || (isNotMobile | async) === true) {
+    @if (!hideNavigationOnMobile || (isNotMobile | async)) {
       <div class="col-12 col-lg-4">
         <div class="it-navscroll-sticky" [ngClass]="{ 'it-navscroll-sticky-mobile': isMobile | async }" data-bs-stackable="true">
           <nav
