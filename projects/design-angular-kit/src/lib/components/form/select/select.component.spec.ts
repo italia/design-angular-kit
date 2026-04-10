@@ -19,4 +19,21 @@ describe('ItSelectComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should NOT render aria-describedby when description is not provided', () => {
+    component.description = undefined;
+    fixture.detectChanges();
+    const selectEl = (fixture.nativeElement as HTMLElement).querySelector('select');
+    expect(selectEl?.getAttribute('aria-describedby')).toBeNull();
+  });
+
+  it('should render aria-describedby when description is provided', () => {
+    fixture.componentRef.setInput('description', 'Select a value');
+    fixture.detectChanges();
+    const selectEl = (fixture.nativeElement as HTMLElement).querySelector('select');
+    const descEl = (fixture.nativeElement as HTMLElement).querySelector(`#${component.id}-description`);
+    expect(selectEl?.getAttribute('aria-describedby')).toBe(`${component.id}-description`);
+    expect(descEl).toBeTruthy();
+    expect(descEl?.textContent?.trim()).toBe('Select a value');
+  });
 });

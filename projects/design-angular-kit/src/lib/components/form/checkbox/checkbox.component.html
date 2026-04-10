@@ -8,7 +8,7 @@
             [id]="id"
             type="checkbox"
             [formControl]="control"
-            [attr.aria-describedby]="id + '-help'"
+            [attr.aria-describedby]="group ? id + '-help' : null"
             (click)="$event.stopPropagation()" />
           <span class="lever"></span>
         </label>
