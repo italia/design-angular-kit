@@ -34,4 +34,32 @@ describe('ItAutocompleteComponent', () => {
     const labelEl = (fixture.nativeElement as HTMLElement).querySelector('label');
     expect(labelEl).toBeNull();
   });
+  
+  it('should clear visual input value when writeValue receives null', () => {
+    // Simulate the internal _inputEl being set (as _findInput does after DOM init)
+    const fakeInput = document.createElement('input');
+    fakeInput.value = 'Roma';
+    (component as any)._inputEl = fakeInput;
+
+    component.writeValue(null);
+    expect(fakeInput.value).toBe('');
+  });
+
+  it('should clear visual input value when writeValue receives empty string', () => {
+    const fakeInput = document.createElement('input');
+    fakeInput.value = 'Milano';
+    (component as any)._inputEl = fakeInput;
+
+    component.writeValue('');
+    expect(fakeInput.value).toBe('');
+  });
+
+  it('should NOT clear visual input value when writeValue receives a non-empty string', () => {
+    const fakeInput = document.createElement('input');
+    fakeInput.value = 'Torino';
+    (component as any)._inputEl = fakeInput;
+
+    component.writeValue('Napoli');
+    expect(fakeInput.value).toBe('Torino');
+  });
 });

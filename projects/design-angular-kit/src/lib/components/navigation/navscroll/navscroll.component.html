@@ -1,65 +1,95 @@
 <div class="container py-lg-5">
   <div class="row">
-    <div class="col-12 col-lg-4">
-      <div class="it-navscroll-sticky" [ngClass]="{ 'it-navscroll-sticky-mobile': isMobile | async }" data-bs-stackable="true">
-        <nav
-          class="navbar it-navscroll-wrapper navbar-expand-lg"
-          [class.it-top-navscroll]="alignment === 'top'"
-          [class.it-bottom-navscroll]="alignment === 'bottom'"
-          [class.it-left-side]="borderPosition === 'left'"
-          [class.it-right-side]="borderPosition === 'right'"
-          [class.theme-dark-mobile]="theme === 'dark'"
-          [class.theme-dark-desktop]="theme === 'dark'">
-          <button
-            class="custom-navbar-toggler"
-            type="button"
-            aria-controls="navbarNav"
-            [attr.aria-label]="'it.navigation.aria-label-toggle' | translate"
-            data-bs-toggle="navbarcollapsible"
-            data-bs-target="#navbarNav"
-            #toggleButtonRef>
-            <span class="it-list"></span>{{ selectedTitle | async }}
-          </button>
-          <div class="progress custom-navbar-progressbar">
-            <div
-              class="progress-bar it-navscroll-progressbar"
-              role="progressbar"
-              [style.width.%]="progressBarValue | async"
-              [attr.aria-valuenow]="progressBarValue | async"
-              aria-valuemin="0"
-              aria-valuemax="100"></div>
-          </div>
-          <div class="navbar-collapsable" id="navbarNav" tabindex="-1">
-            <div class="close-div visually-hidden">
-              <button class="btn close-menu" type="button"><span class="it-close"></span>Chiudi</button>
-            </div>
-            <button type="button" class="it-back-button btn w-100 text-start">
-              <svg class="icon icon-sm icon-primary align-top">
-                <use
-                  href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"
-                  xlink:href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"></use>
-              </svg>
-              <span>Indietro</span>
+    @if (!hideNavigationOnMobile || (isNotMobile | async)) {
+      <div class="col-12 col-lg-4">
+        <div class="it-navscroll-sticky" [ngClass]="{ 'it-navscroll-sticky-mobile': isMobile | async }" data-bs-stackable="true">
+          <nav
+            class="navbar it-navscroll-wrapper navbar-expand-lg"
+            [class.it-top-navscroll]="alignment === 'top'"
+            [class.it-bottom-navscroll]="alignment === 'bottom'"
+            [class.it-left-side]="borderPosition === 'left'"
+            [class.it-right-side]="borderPosition === 'right'"
+            [class.theme-dark-mobile]="theme === 'dark'"
+            [class.theme-dark-desktop]="theme === 'dark'">
+            <button
+              class="custom-navbar-toggler"
+              type="button"
+              aria-controls="navbarNav"
+              [attr.aria-label]="'it.navigation.aria-label-toggle' | translate"
+              data-bs-toggle="navbarcollapsible"
+              data-bs-target="#navbarNav"
+              #toggleButtonRef>
+              <span class="it-list"></span>{{ selectedTitle | async }}
             </button>
-            <div class="menu-wrapper" tabindex="-1">
-              <div class="link-list-wrapper">
-                <h3>{{ header }}</h3>
-                <div class="progress">
-                  <div
-                    class="progress-bar it-navscroll-progressbar"
-                    role="progressbar"
-                    [style.width.%]="progressBarValue | async"
-                    [attr.aria-valuenow]="progressBarValue | async"
-                    aria-valuemin="0"
-                    aria-valuemax="100"></div>
+            <div class="progress custom-navbar-progressbar">
+              <div
+                class="progress-bar it-navscroll-progressbar"
+                role="progressbar"
+                [style.width.%]="progressBarValue | async"
+                [attr.aria-valuenow]="progressBarValue | async"
+                aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="navbar-collapsable" id="navbarNav" tabindex="-1">
+              <div class="close-div visually-hidden">
+                <button class="btn close-menu" type="button"><span class="it-close"></span>Chiudi</button>
+              </div>
+              <button type="button" class="it-back-button btn w-100 text-start">
+                <svg class="icon icon-sm icon-primary align-top">
+                  <use
+                    href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"
+                    xlink:href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"></use>
+                </svg>
+                <span>Indietro</span>
+              </button>
+              <div class="menu-wrapper" tabindex="-1">
+                <div class="link-list-wrapper">
+                  @if (headerAsAccordion) {
+                    <div class="accordion" [id]="accordionId">
+                      <div class="accordion-item">
+                        <h3 class="accordion-header" [id]="accordionId + '-heading'">
+                          <button
+                            class="accordion-button"
+                            [class.collapsed]="!accordionExpanded"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#' + accordionId + '-body'"
+                            [attr.aria-expanded]="accordionExpanded"
+                            [attr.aria-controls]="accordionId + '-body'">
+                            {{ header }}
+                          </button>
+                        </h3>
+                        <div
+                          [id]="accordionId + '-body'"
+                          class="accordion-collapse collapse"
+                          [class.show]="accordionExpanded"
+                          [attr.aria-labelledby]="accordionId + '-heading'">
+                          <div class="accordion-body">
+                            <it-navscroll-list-items [items]="items"></it-navscroll-list-items>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  } @else {
+                    <h3>{{ header }}</h3>
+                    <div class="progress">
+                      <div
+                        class="progress-bar it-navscroll-progressbar"
+                        role="progressbar"
+                        [style.width.%]="progressBarValue | async"
+                        [attr.aria-valuenow]="progressBarValue | async"
+                        aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    </div>
+                    <it-navscroll-list-items [items]="items"></it-navscroll-list-items>
+                  }
                 </div>
-                <it-navscroll-list-items [items]="items"></it-navscroll-list-items>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
-    </div>
+    }
     <div class="col-12 col-lg-8 it-page-sections-container">
       <ng-container
         *ngTemplateOutlet="pageSectionsTemplate ? pageSectionsTemplate : defaultPageSectionsTemplate; context: { items: items }">
