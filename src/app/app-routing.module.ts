@@ -80,6 +80,7 @@ const routes: Routes = [
       { path: 'chip', loadChildren: () => import('src/app/chip/chip.module').then(m => m.ChipModule) },
       { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
       { path: 'callout', loadChildren: () => import('src/app/callout/callout.module').then(m => m.CalloutModule) },
+      { path: 'breakpoint', loadChildren: () => import('src/app/breakpoint/breakpoint.module').then(m => m.BreakpointModule) },
       { path: 'steppers', loadChildren: () => import('src/app/steppers/steppers.module').then(m => m.SteppersModule) },
       { path: 'notifications', loadChildren: () => import('src/app/notifications/notifications.module').then(m => m.NotificationsModule) },
       { path: 'rating', loadChildren: () => import('src/app/rating/rating.module').then(m => m.RatingModule) },
