@@ -1,3 +1,28 @@
+# [21.2.0](https://github.com/italia/design-angular-kit/compare/v21.1.0...v21.2.0) (2026-04-13)
+
+
+### Bug Fixes
+
+* **a11y:** autocomplete listbox aria-labelledby points to label instead of input ([da0443b](https://github.com/italia/design-angular-kit/commit/da0443b1ae4247309dffed4167ee4587d00f347e))
+* **a11y:** make aria-describedby conditional across all form components ([e5560f7](https://github.com/italia/design-angular-kit/commit/e5560f72f7babebf18585ee1b7ac65f330ed5aec))
+* **alert:** hide empty h4.alert-heading when no heading content is projected ([#547](https://github.com/italia/design-angular-kit/issues/547)) ([a538339](https://github.com/italia/design-angular-kit/commit/a538339183f35db78ea13156c989cc6c10c26d75))
+* **autocomplete:** sync visual input with form control on reset ([c039b3a](https://github.com/italia/design-angular-kit/commit/c039b3a4feac7b0d902a375f9835da3797600d25))
+* **chip:** align text ([bf882ad](https://github.com/italia/design-angular-kit/commit/bf882ad7cee1cfd27e8ec41dfeca24d6eae074fd)), closes [#579](https://github.com/italia/design-angular-kit/issues/579)
+* **dropdown-item:** add icon-label spacing for left and right positions ([6124af7](https://github.com/italia/design-angular-kit/commit/6124af79c7c9b40cb52949a87c73bdbe76a2fc25)), closes [#604](https://github.com/italia/design-angular-kit/issues/604)
+* **forms:** show validation errors only on blur, not while typing ([81ae80b](https://github.com/italia/design-angular-kit/commit/81ae80b32cbadbd23078f1423383ca891fbabd8d)), closes [#588](https://github.com/italia/design-angular-kit/issues/588)
+* **header:** force repaint of active nav-link after route navigation ([2e44287](https://github.com/italia/design-angular-kit/commit/2e4428767a234e3ea74e68e3ef5076554e9870b6)), closes [#589](https://github.com/italia/design-angular-kit/issues/589)
+* **icon:** inherit parent text color when no color input is set ([b53ea23](https://github.com/italia/design-angular-kit/commit/b53ea2331c56fc3942cf05a23fa2421166b16a31))
+* **pagination:** use accessible dropdown li selector in changer ([a66fbf3](https://github.com/italia/design-angular-kit/commit/a66fbf3e0a744725ab24772620315fb06d7c02ee))
+
+
+### Features
+
+* **card:** add input to remove phantom bottom padding ([ed485cc](https://github.com/italia/design-angular-kit/commit/ed485cc5e360dbc8a51a4468c23d087ea694dd3c))
+* **navscroll:** add headerAsAccordion mode ([#511](https://github.com/italia/design-angular-kit/issues/511)) ([8ad785d](https://github.com/italia/design-angular-kit/commit/8ad785d172ae33784b5feaa8ed2fd850e914b731))
+* **navscroll:** add input to control navbar visibility on mobile ([f9cd5e0](https://github.com/italia/design-angular-kit/commit/f9cd5e09f7ee6e45042d70f22b3bafaedb115ba5))
+
+
+
 ## 21.1.0 (2026-03-05)
 
 * chore: update publiccode ([b0aa36e](https://github.com/italia/design-angular-kit/commit/b0aa36e))
