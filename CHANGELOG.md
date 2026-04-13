@@ -1,3 +1,29 @@
+# [20.3.0](https://github.com/italia/design-angular-kit/compare/v20.2.1...v20.3.0) (2026-04-13)
+
+
+### Bug Fixes
+
+* **a11y:** autocomplete listbox aria-labelledby points to label instead of input ([c91aed6](https://github.com/italia/design-angular-kit/commit/c91aed6b16caabf030885de7541b98312553a6c3))
+* **a11y:** make aria-describedby conditional across all form components ([7af29e1](https://github.com/italia/design-angular-kit/commit/7af29e1078c3599f484151f45b9f809f00f4d449))
+* **alert:** hide empty h4.alert-heading when no heading content is projected ([#547](https://github.com/italia/design-angular-kit/issues/547)) ([114296b](https://github.com/italia/design-angular-kit/commit/114296b242e63fc04412246c246af87e3e6a7882))
+* **autocomplete:** sync visual input with form control on reset ([95f625b](https://github.com/italia/design-angular-kit/commit/95f625b5003d8342f16ccee80e5cc6e5d3338bc5))
+* **chip:** align text ([ca0d210](https://github.com/italia/design-angular-kit/commit/ca0d2100ac2f86438c380ef483205d042638fee4)), closes [#579](https://github.com/italia/design-angular-kit/issues/579)
+* **deps:** upgrade bootstrap italia ([fad4f5f](https://github.com/italia/design-angular-kit/commit/fad4f5f85d34e777bbbdb246be817f3db6ea3557))
+* **dropdown-item:** add icon-label spacing for left and right positions ([015e6c9](https://github.com/italia/design-angular-kit/commit/015e6c93453eea80a233e600cd7e882701b5cb81)), closes [#604](https://github.com/italia/design-angular-kit/issues/604)
+* **forms:** show validation errors only on blur, not while typing ([6a7577d](https://github.com/italia/design-angular-kit/commit/6a7577d81979051f12359c70d19e659934d7f377)), closes [#588](https://github.com/italia/design-angular-kit/issues/588)
+* **header:** force repaint of active nav-link after route navigation ([0f81584](https://github.com/italia/design-angular-kit/commit/0f815846a61ca515ad8a0c210d701cd070fa4fe0)), closes [#589](https://github.com/italia/design-angular-kit/issues/589)
+* **icon:** inherit parent text color when no color input is set ([2c78d4e](https://github.com/italia/design-angular-kit/commit/2c78d4ed8b846323e208fdb8b6b13d9c31e293bd))
+* **pagination:** use accessible dropdown li selector in changer ([3b8b628](https://github.com/italia/design-angular-kit/commit/3b8b6284df75de5e4bb5d62e43ca41b763ec7011))
+
+
+### Features
+
+* **card:** add input to remove phantom bottom padding ([7fdaab6](https://github.com/italia/design-angular-kit/commit/7fdaab6cabae876002aaff69761cbe0aeaee5874))
+* **navscroll:** add headerAsAccordion mode ([#511](https://github.com/italia/design-angular-kit/issues/511)) ([e4565bb](https://github.com/italia/design-angular-kit/commit/e4565bbf66605c02445649714ab47b6233bd9549))
+* **navscroll:** add input to control navbar visibility on mobile ([4111537](https://github.com/italia/design-angular-kit/commit/4111537b60175bf5258456ccdb069652ae784e63))
+
+
+
 ## [20.2.1](https://github.com/italia/design-angular-kit/compare/v20.2.0...v20.2.1) (2025-12-11)
 
 
