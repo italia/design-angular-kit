@@ -34,7 +34,7 @@ describe('ItAutocompleteComponent', () => {
     const labelEl = (fixture.nativeElement as HTMLElement).querySelector('label');
     expect(labelEl).toBeNull();
   });
-  
+
   it('should clear visual input value when writeValue receives null', () => {
     // Simulate the internal _inputEl being set (as _findInput does after DOM init)
     const fakeInput = document.createElement('input');
