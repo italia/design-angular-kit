@@ -1,6 +1,15 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, ContentChildren, Directive, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';
-import { inputToBoolean } from '../../../../utils/coercion';
+import {
+  Component,
+  ContentChildren,
+  Directive,
+  HostBinding,
+  Input,
+  QueryList,
+  TemplateRef,
+  ViewChild,
+  booleanAttribute,
+} from '@angular/core';
 
 @Directive({
   standalone: true,
@@ -23,7 +32,6 @@ export class ItAvatarListItemDirective {
   </ng-template>`,
 })
 export class ItAvatarGroupItemComponent {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;
 }
 
@@ -41,7 +49,7 @@ export class ItAvatarGroupItemComponent {
   `,
 })
 export class ItAvatarGroupComponent {
-  @Input({ transform: inputToBoolean }) @HostBinding('class.link-list-wrapper') linkList = false;
+  @Input({ transform: booleanAttribute }) @HostBinding('class.link-list-wrapper') linkList = false;
 
   @ContentChildren(ItAvatarGroupItemComponent) avatars!: QueryList<ItAvatarGroupItemComponent>;
 }

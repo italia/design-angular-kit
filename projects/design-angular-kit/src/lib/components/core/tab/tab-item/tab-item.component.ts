@@ -1,7 +1,6 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild, booleanAttribute } from '@angular/core';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { IconName } from '../../../../interfaces/icon';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   selector: 'it-tab-item',
@@ -24,13 +23,13 @@ export class ItTabItemComponent extends ItAbstractComponent implements AfterView
    * Default active tab
    * @default false
    */
-  @Input({ transform: inputToBoolean }) active?: boolean;
+  @Input({ transform: booleanAttribute }) active?: boolean;
 
   /**
    * Default disabled tab
    * @default false
    */
-  @Input({ transform: inputToBoolean }) disabled?: boolean;
+  @Input({ transform: booleanAttribute }) disabled?: boolean;
 
   /**
    * Custom class

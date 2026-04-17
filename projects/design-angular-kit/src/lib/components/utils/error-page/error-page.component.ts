@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject, booleanAttribute } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItBackButtonComponent } from '../../navigation/back-button/back-button.component';
 import { ItButtonDirective } from '../../core/button/button.directive';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-error-page',
@@ -23,7 +22,7 @@ export class ItErrorPageComponent {
    * Show/Hide error code
    * @default true - show
    */
-  @Input({ transform: inputToBoolean }) showErrorCode?: boolean = true;
+  @Input({ transform: booleanAttribute }) showErrorCode?: boolean = true;
 
   /**
    * Custom error title
@@ -43,13 +42,13 @@ export class ItErrorPageComponent {
    * Show/Hide back button
    * @default true - show
    */
-  @Input({ transform: inputToBoolean }) showBackButton?: boolean = true;
+  @Input({ transform: booleanAttribute }) showBackButton?: boolean = true;
 
   /**
    * Show/Hide home button
    * @default true - show
    */
-  @Input({ transform: inputToBoolean }) showHomeButton?: boolean = true;
+  @Input({ transform: booleanAttribute }) showHomeButton?: boolean = true;
 
   constructor() {
     this.route.data.subscribe(data => {

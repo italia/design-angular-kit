@@ -1,7 +1,7 @@
 <h3>Tabella con paginazione</h3>
 
 <div class="bd-example">
-  <it-table striped="true">
+  <it-table striped>
     <ng-container thead>
       <tr #tableHead>
         <th scope="col" class="w-25">Icona</th>
@@ -13,7 +13,7 @@
       @if (isLoading) {
         <tr>
           <td class="text-center" [attr.colspan]="tableHead.cells.length">
-            <it-spinner double="true"></it-spinner>
+            <it-spinner double></it-spinner>
           </td>
         </tr>
       } @else {

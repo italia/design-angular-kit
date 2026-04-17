@@ -41,7 +41,7 @@ export class ItDurationPipe extends TranslatePipe implements PipeTransform {
     }
 
     switch (type) {
-      // eslint-disable-next-line no-fallthrough,@typescript-eslint/ban-ts-comment
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       case 'second':
         if (valueAdjust < 60) {
