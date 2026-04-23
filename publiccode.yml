@@ -1,73 +1,60 @@
-# This repository adheres to the publiccode.yml standard by including this
-# metadata file that makes public software easily discoverable.
-# More info at https://github.com/italia/publiccode.yml
-
-publiccodeYmlVersion: 0.4.0
+publiccodeYmlVersion: 0.5.0
 name: Design Angular Kit
+applicationSuite: Design system Italia
 url: https://github.com/italia/design-angular-kit
-landingURL: https://italia.github.io/design-angular-kit
-isBasedOn: https://github.com/italia/bootstrap-italia
-softwareVersion: v21.2.0
-releaseDate: '2026-04-13'
+softwareVersion: "v21.2.0 "
+releaseDate: 2026-04-13
 platforms:
   - web
 categories:
   - website-builder
-roadmap: https://github.com/italia/design-angular-kit/issues
+  - integrated-library-system
+  - it-development
+  - design
+organisation:
+  uri: https://github.com/italia
+  name: Dipartimento per la trasformazione digitale
+roadmap: https://github.com/orgs/italia/projects/17/views/5?filterQuery=repo%3Aitalia%2Fdesign-angular-kit
 developmentStatus: stable
 softwareType: library
+intendedAudience:
+  countries:
+    - IT
 description:
-  it:
-    shortDescription: La libreria Design Angular Kit è il modo più semplice e sicuro
-      per costruire UI web moderne, inclusive e semplici da mantenere
-      utilizzando Angular.
-    longDescription: >
-      La libreria **Design Angular Kit** è il modo più semplice e sicuro per
-
-      costruire interfacce web **moderne**, **inclusive** e **semplici da
-
-      mantenere** utilizzando il framework Angular.
-
-
-      Completamente **open-source**, costruita sulle fondamenta di 
-
-      [Bootstrap Italia 2.x](https://github.com/italia/bootstrap-italia
-      "Repository GitHub di Bootstrap Italia") 
-
-      di cui eredita tutte le funzionalità, componenti, griglie e classi di
-      utilità.
-    documentation: https://italia.github.io/design-angular-kit
+  it-IT:
+    shortDescription: Libreria di componenti Angular per sviluppare interfacce web
+      accessibili e coerenti per i siti e i servizi digitali della PA.
+    longDescription: Il Design Angular Kit, risorsa ufficiale del Design system
+      Italia, è una libreria di componenti sviluppati con Angular, pensata per
+      supportare la realizzazione di interfacce web per siti e servizi digitali
+      della Pubblica Amministrazione. Costruito sulle fondamenta di Bootstrap
+      Italia, ne eredita funzionalità, componenti, griglia e classi di utilità,
+      rendendoli disponibili in forma riutilizzabile all'interno di applicazioni
+      Angular. Il kit consente di sviluppare interfacce accessibili, inclusive e
+      semplici da mantenere, supportando la creazione di applicazioni web
+      dinamiche.
+    documentation: https://italia.github.io/design-angular-kit/
     features:
-      - responsive
-      - accessibility
-      - inclusion
-      - web development
-      - PNRR
-      - PNRR/Misura/1.4.1
-      - PNRR/Beneficiari/Comuni
-      - PNRR/Beneficiari/Scuole
+      - Componenti Angular pronti all'uso
+      - Basato su Bootstrap Italia
+      - Implementa lo UI Kit Italia
+      - Realizzazione di interfacce responsive e accessibili
+      - Integrazione in applicazioni Angular
+      - Riutilizzo dei componenti
+      - Conformità alle Linee guida di design per i siti internet e servizi
+        digitali della PA
 legal:
-  license: BSD-3-Clause
-  mainCopyrightOwner: Presidenza del Consiglio dei Ministri
+  license: BSD-3-Clause-Clear
 maintenance:
   type: community
   contacts:
     - name: Designers Italia
+      email: contatti@designers.italia.it
 localisation:
   localisationReady: false
   availableLanguages:
     - it
-it:
-  countryExtensionVersion: '0.2'
-  conforme:
-    lineeGuidaDesign: false
-    modelloInteroperabilita: false
-    misureMinimeSicurezza: false
-    gdpr: false
+IT:
+  countryExtensionVersion: "1.0"
   piattaforme:
-    spid: false
-    cie: false
     anpr: false
-    pagopa: false
-  riuso:
-    codiceIPA: pcm
