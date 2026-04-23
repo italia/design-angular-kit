@@ -1,0 +1,17 @@
+<h3>Single Pane Tab</h3>
+<p class="mb-4">
+  Con <code>[singlePane]="true"</code> le tab utilizzano un unico pannello condiviso. Solo il contenuto della tab attiva viene mostrato,
+  senza contenitori multipli.
+</p>
+
+<it-tab-container [singlePane]="true">
+  <it-tab label="Account" active>
+    <p>Contenuto del pannello Account. Questo è il pannello condiviso unico (singlePane).</p>
+  </it-tab>
+  <it-tab label="Impostazioni">
+    <p>Contenuto del pannello Impostazioni. Il pannello precedente viene sostituito.</p>
+  </it-tab>
+  <it-tab label="Notifiche" [disabled]="true">
+    <p>Questo pannello è disabilitato e non è selezionabile.</p>
+  </it-tab>
+</it-tab-container>

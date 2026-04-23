@@ -59,7 +59,13 @@
     [class.col-lg-9]="inverted && vertical"
     [class.col-8]="!inverted && vertical"
     [class.col-md-9]="!inverted && vertical">
-    @if (tabs) {
+    @if (singlePane) {
+      <div class="tab-content">
+        <div class="tab-pane p-4 fade active show" role="tabpanel">
+          <ng-content></ng-content>
+        </div>
+      </div>
+    } @else if (tabs) {
       <div class="tab-content">
         @for (tab of tabs; track tab.id) {
           <div
