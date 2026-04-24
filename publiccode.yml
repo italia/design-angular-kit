@@ -2,8 +2,8 @@ publiccodeYmlVersion: 0.5.0
 name: Design Angular Kit
 applicationSuite: Design system Italia
 url: https://github.com/italia/design-angular-kit
-softwareVersion: "v21.2.0 "
-releaseDate: 2026-04-13
+softwareVersion: v21.2.0
+releaseDate: '2026-04-13'
 platforms:
   - web
 categories:
