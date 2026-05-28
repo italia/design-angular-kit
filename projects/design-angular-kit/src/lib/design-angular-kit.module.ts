@@ -21,6 +21,7 @@ import { ItPaginationComponent } from './components/core/pagination/pagination.c
 import { ItPopoverDirective } from './components/core/popover/popover.directive';
 import { ItProgressBarComponent } from './components/core/progress-bar/progress-bar.component';
 import { ItProgressButtonComponent } from './components/core/progress-button/progress-button.component';
+import { ItRatioDirective } from './components/core/ratio/ratio.directive';
 import { ItSpinnerComponent } from './components/core/spinner/spinner.component';
 import { ItSteppersModule } from './components/core/steppers/steppers.module';
 import { ItTabModule } from './components/core/tab/tab.module';
@@ -72,6 +73,7 @@ const core = [
   ItPopoverDirective,
   ItProgressBarComponent,
   ItProgressButtonComponent,
+  ItRatioDirective,
   ItSpinnerComponent,
   ItSteppersModule,
   ItTabModule,
