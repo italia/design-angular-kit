@@ -1,8 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, booleanAttribute } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-link',
@@ -19,20 +18,20 @@ export class ItLinkComponent extends ItAbstractComponent implements AfterViewIni
    * - string: shorthand for array of commands with just the string, i.e. ['/route']
    * - null|undefined: Disables the link by removing the href
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   @Input() href: any[] | string | null | undefined;
 
   /**
    * Is an external link (false to not use Angular router link)
    * @default false
    */
-  @Input({ transform: inputToBoolean }) externalLink?: boolean;
+  @Input({ transform: booleanAttribute }) externalLink?: boolean;
 
   /**
    * Is disabled link
    * @default false
    */
-  @Input({ transform: inputToBoolean }) disabled?: boolean;
+  @Input({ transform: booleanAttribute }) disabled?: boolean;
 
   /**
    * Custom class

@@ -1,5 +1,4 @@
-import { Directive, HostBinding, Input } from '@angular/core';
-import { inputToBoolean } from '../../../utils/coercion';
+import { Directive, HostBinding, Input, booleanAttribute } from '@angular/core';
 
 @Directive({
   standalone: true,
@@ -7,7 +6,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   exportAs: 'itAvatarWrapper',
 })
 export class ItAvatarWrapperDirective {
-  @Input({ transform: inputToBoolean }) extraText: boolean = false;
+  @Input({ transform: booleanAttribute }) extraText: boolean = false;
 
   @HostBinding('class')
   get hostClasses(): string {

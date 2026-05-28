@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, booleanAttribute } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { InputControlType } from '../../../interfaces/form';
 import { AbstractControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
@@ -6,7 +6,6 @@ import { ItValidators } from '../../../validators/it-validators';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-input',
@@ -71,13 +70,13 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
    * If is a currency number [Used only in type = 'number']
    * @default false
    */
-  @Input({ transform: inputToBoolean }) currency?: boolean;
+  @Input({ transform: booleanAttribute }) currency?: boolean;
 
   /**
    * If is a percentage number [Used only in type = 'number']
    * @default false
    */
-  @Input({ transform: inputToBoolean }) percentage?: boolean;
+  @Input({ transform: booleanAttribute }) percentage?: boolean;
 
   /**
    * The currency or percentage symbol [Used only if percentage or currency]
@@ -89,7 +88,7 @@ export class ItInputComponent extends ItAbstractFormComponent<string | number | 
    * To make the numeric field automatically resize according to the value contained in it. [Used only in type = 'number']
    * @default false
    */
-  @Input({ transform: inputToBoolean }) adaptive?: boolean;
+  @Input({ transform: booleanAttribute }) adaptive?: boolean;
 
   /**
    * Input autocomplete attribute (Browser autocomplete)

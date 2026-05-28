@@ -6,6 +6,8 @@ export type BooleanInput = 'false' | 'true' | boolean | undefined;
  * Transforms a value (typically a string) to a boolean.
  * Intended to be used as a transform function of an input.
  *
+ * @deprecated Use Angular's built-in `booleanAttribute` from `@angular/core` instead.
+ *
  *  @usageNotes
  *  ```typescript
  *  @Input({ transform: booleanAttribute }) status?: boolean;

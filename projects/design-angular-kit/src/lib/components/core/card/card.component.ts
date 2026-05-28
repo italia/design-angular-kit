@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { NgTemplateOutlet } from '@angular/common';
-import { inputToBoolean } from '../../../utils/coercion';
 
 /**
  * Card
@@ -19,61 +18,61 @@ export class ItCardComponent extends ItAbstractComponent {
    * To create inline cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) inline?: boolean;
+  @Input({ transform: booleanAttribute }) inline?: boolean;
 
   /**
    * To create inline mini cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) mini?: boolean;
+  @Input({ transform: booleanAttribute }) mini?: boolean;
 
   /**
    * To add border
    * @default true
    */
-  @Input({ transform: inputToBoolean }) border: boolean = true;
+  @Input({ transform: booleanAttribute }) border: boolean = true;
 
   /**
    * To create banner cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) banner?: boolean;
+  @Input({ transform: booleanAttribute }) banner?: boolean;
 
   /**
    * To create profile cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) profile?: boolean;
+  @Input({ transform: booleanAttribute }) profile?: boolean;
 
   /**
    * To create rounded cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) rounded?: boolean;
+  @Input({ transform: booleanAttribute }) rounded?: boolean;
 
   /**
    * To create inline reverse cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) reverse?: boolean;
+  @Input({ transform: booleanAttribute }) reverse?: boolean;
 
   /**
    * To create full height cards
    * @default false
    */
-  @Input({ transform: inputToBoolean }) fullHeight?: boolean;
+  @Input({ transform: booleanAttribute }) fullHeight?: boolean;
 
   /**
    * Card with image
    * @default false
    */
-  @Input({ transform: inputToBoolean }) hasImage?: boolean;
+  @Input({ transform: booleanAttribute }) hasImage?: boolean;
 
   /**
    * To add top border
    * @default false
    */
-  @Input({ transform: inputToBoolean }) borderTop?: boolean;
+  @Input({ transform: booleanAttribute }) borderTop?: boolean;
 
   /**
    * Custom card class

@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   selector: 'it-list',
@@ -13,17 +12,17 @@ export class ItListComponent {
    * Add 'link-list' class for navigation menu
    * @default false
    */
-  @Input({ transform: inputToBoolean }) linkList?: boolean;
+  @Input({ transform: booleanAttribute }) linkList?: boolean;
 
   /**
    * Add 'link-sublist' class for navigation menu
    * @default false
    */
-  @Input({ transform: inputToBoolean }) linkSubList?: boolean;
+  @Input({ transform: booleanAttribute }) linkSubList?: boolean;
 
   /**
    * Add 'multiline' class for wrapper
    * @default false
    */
-  @Input({ transform: inputToBoolean }) multiline?: boolean;
+  @Input({ transform: booleanAttribute }) multiline?: boolean;
 }

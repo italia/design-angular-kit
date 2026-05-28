@@ -1,10 +1,19 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  booleanAttribute,
+} from '@angular/core';
 import { AlertColor } from '../../../interfaces/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Alert } from 'bootstrap-italia';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
-import { inputToBoolean } from '../../../utils/coercion';
 
 /**
  * Alert
@@ -29,7 +38,7 @@ export class ItAlertComponent extends ItAbstractComponent implements AfterViewIn
    * Inserts the close button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) dismissible?: boolean;
+  @Input({ transform: booleanAttribute }) dismissible?: boolean;
 
   /**
    * This event fires immediately when the instance's close method is called.

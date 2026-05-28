@@ -1,8 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild, booleanAttribute } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { ItButtonDirective } from '../../../core/button/button.directive';
-import { inputToBoolean } from '../../../../utils/coercion';
 import { NavBarCollapsible } from 'bootstrap-italia';
 
 @Component({
@@ -12,8 +11,8 @@ import { NavBarCollapsible } from 'bootstrap-italia';
   imports: [TranslateModule, ItIconComponent, ItButtonDirective],
 })
 export class ItNavBarComponent implements AfterViewInit {
-  @Input({ transform: inputToBoolean }) megamenu?: boolean;
-  @Input({ transform: inputToBoolean }) expand?: boolean = true;
+  @Input({ transform: booleanAttribute }) megamenu?: boolean;
+  @Input({ transform: booleanAttribute }) expand?: boolean = true;
 
   @ViewChild('collapseButton') private collapseButton?: ElementRef<HTMLButtonElement>;
   @ViewChild('collapseView') private collapseView?: ElementRef<HTMLButtonElement>;

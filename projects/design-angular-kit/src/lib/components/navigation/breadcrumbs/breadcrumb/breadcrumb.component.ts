@@ -8,6 +8,7 @@ import {
   OnDestroy,
   QueryList,
   inject,
+  booleanAttribute,
 } from '@angular/core';
 import { ItBreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
 import { startWith, Subscription } from 'rxjs';
@@ -15,7 +16,6 @@ import { NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { ItLinkComponent } from '../../../core/link/link.component';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   selector: 'it-breadcrumb',
@@ -36,7 +36,7 @@ export class ItBreadcrumbComponent implements AfterViewInit, OnDestroy {
    * Dark style
    * @default false
    */
-  @Input({ transform: inputToBoolean }) dark?: boolean;
+  @Input({ transform: booleanAttribute }) dark?: boolean;
 
   /**
    * The tab items

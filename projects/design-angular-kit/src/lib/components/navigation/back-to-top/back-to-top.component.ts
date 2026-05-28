@@ -1,8 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild, booleanAttribute } from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { BackToTop } from 'bootstrap-italia';
 import { ItIconComponent } from '../../utils/icon/icon.component';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-back-to-top',
@@ -22,19 +21,19 @@ export class ItBackToTopComponent extends ItAbstractComponent implements AfterVi
    * Show small button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) small?: boolean;
+  @Input({ transform: booleanAttribute }) small?: boolean;
 
   /**
    * Show shadow
    * @default false
    */
-  @Input({ transform: inputToBoolean }) shadow?: boolean;
+  @Input({ transform: booleanAttribute }) shadow?: boolean;
 
   /**
    * Button usable button on a dark background
    * @default false
    */
-  @Input({ transform: inputToBoolean }) dark?: boolean;
+  @Input({ transform: booleanAttribute }) dark?: boolean;
 
   private backToTop?: BackToTop;
 

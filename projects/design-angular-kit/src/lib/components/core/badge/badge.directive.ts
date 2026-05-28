@@ -1,6 +1,5 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, HostBinding, Input, booleanAttribute } from '@angular/core';
 import { BadgeColor } from '../../../interfaces/core';
-import { inputToBoolean } from '../../../utils/coercion';
 
 /**
  * Badge
@@ -22,7 +21,7 @@ export class ItBadgeDirective {
    * Show rounded badge
    * @default false
    */
-  @Input({ transform: inputToBoolean }) rounded?: boolean;
+  @Input({ transform: booleanAttribute }) rounded?: boolean;
 
   @HostBinding('class')
   protected get badgeClass(): string {
