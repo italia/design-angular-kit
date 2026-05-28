@@ -25,3 +25,16 @@
 
 <it-source-display html="{$ sanitize(htmlDynamic) $}" typescript="{$ sanitize(typescriptDynamic) $}" >
 </it-source-display>
+
+{% set htmlSinglePane %}
+  {% include "../tabs-single-pane-example/tabs-single-pane-example.component.html" %}
+{% endset %}
+
+{% set typescriptSinglePane %}
+  {% include "../tabs-single-pane-example/tabs-single-pane-example.component.ts" %}
+{% endset %}
+
+<it-tabs-single-pane-example></it-tabs-single-pane-example>
+
+<it-source-display html="{$ sanitize(htmlSinglePane) $}" typescript="{$ sanitize(typescriptSinglePane) $}" >
+</it-source-display>

@@ -63,6 +63,14 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
   @Input({ transform: inputToBoolean }) editable?: boolean;
 
   /**
+   * When true, renders N tab headers but a single shared content pane.
+   * Use `<ng-content>` inside the container to provide the shared content.
+   * Useful when tabs act as filters on the same view rather than navigation.
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) singlePane?: boolean;
+
+  /**
    * The tab items
    */
   @ContentChildren(ItTabItemComponent) tabs?: QueryList<ItTabItemComponent>;
