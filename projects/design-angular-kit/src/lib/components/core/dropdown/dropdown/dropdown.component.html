@@ -9,7 +9,7 @@
       aria-haspopup="true"
       aria-expanded="false">
       <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-      <it-icon svgClass="icon-expand" name="expand" size="sm" [color]="this.color ? 'light' : 'primary'"></it-icon>
+      <it-icon svgClass="icon-expand" name="expand" size="sm" [color]="expandIconColor"></it-icon>
     </button>
   } @else {
     <a
