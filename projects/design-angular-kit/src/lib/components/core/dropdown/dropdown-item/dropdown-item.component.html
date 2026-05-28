@@ -11,12 +11,12 @@
     <span class="divider"></span>
   } @else {
     <it-link [class]="linkClass" [id]="id" [href]="href" [externalLink]="externalLink" [disabled]="disabled">
-      @if (iconName && iconPosition === 'left') {
-        <it-icon size="sm" [name]="iconName" [color]="isDark ? 'light' : 'primary'" [svgClass]="iconPosition"></it-icon>
+      @if (iconName && resolvedIconPosition === 'left') {
+        <it-icon size="sm" [name]="iconName" [color]="isDark ? 'light' : 'primary'" [svgClass]="resolvedIconPosition"></it-icon>
       }
       <span><ng-content></ng-content></span>
-      @if (iconName && iconPosition === 'right') {
-        <it-icon size="sm" [name]="iconName" [color]="isDark ? 'light' : 'primary'" [svgClass]="iconPosition"></it-icon>
+      @if (iconName && resolvedIconPosition === 'right') {
+        <it-icon size="sm" [name]="iconName" [color]="isDark ? 'light' : 'primary'" [svgClass]="resolvedIconPosition"></it-icon>
       }
       @if (active) {
         <span class="visually-hidden">{{ 'it.core.active' | translate }}</span>
