@@ -5,11 +5,11 @@
       [id]="id"
       [class]="buttonClass"
       type="button"
-      data-bs-toggle="dropdown"
-      aria-haspopup="true"
+      [attr.data-bs-toggle]="noMenu ? null : 'dropdown'"
+      [attr.aria-haspopup]="noMenu ? null : 'true'"
       aria-expanded="false">
       <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-      <it-icon svgClass="icon-expand" name="expand" size="sm" [color]="this.color ? 'light' : 'primary'"></it-icon>
+      <it-icon [svgClass]="iconSvgClass" [name]="iconName" [size]="iconSize" [color]="this.color ? 'light' : 'primary'"></it-icon>
     </button>
   } @else {
     <a
@@ -21,24 +21,26 @@
       href="#"
       class="dropdown-toggle"
       role="button"
-      data-bs-toggle="dropdown"
-      aria-haspopup="true"
+      [attr.data-bs-toggle]="noMenu ? null : 'dropdown'"
+      [attr.aria-haspopup]="noMenu ? null : 'true'"
       aria-expanded="false">
       <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-      <it-icon svgClass="icon-expand" name="expand" size="sm"></it-icon>
+      <it-icon [svgClass]="iconSvgClass" [name]="iconName" [size]="iconSize"></it-icon>
     </a>
   }
 
-  <div class="dropdown-menu" [class.full-width]="fullWidth" [class.dark]="dark" [attr.aria-labelledby]="id">
-    <div class="link-list-wrapper">
-      <div class="link-list-heading">
-        <ng-content select="[listHeading]"></ng-content>
+  @if (!noMenu) {
+    <div class="dropdown-menu" [class.full-width]="fullWidth" [class.dark]="dark" [attr.aria-labelledby]="id">
+      <div class="link-list-wrapper">
+        <div class="link-list-heading">
+          <ng-content select="[listHeading]"></ng-content>
+        </div>
+        <ul class="link-list">
+          <ng-content select="[list]"></ng-content>
+        </ul>
       </div>
-      <ul class="link-list">
-        <ng-content select="[list]"></ng-content>
-      </ul>
     </div>
-  </div>
+  }
 </div>
 
 <ng-template #buttonContent>
