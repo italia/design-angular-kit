@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-12 mb-4">
+    <h4>ngModel</h4>
+    <p>Pagina corrente: {{ currentPage }}</p>
+    <it-pagination [pageNumbers]="10" [(ngModel)]="currentPage"></it-pagination>
+  </div>
+  <div class="col-12">
+    <h4>Reactive Forms</h4>
+    <p>Pagina corrente: {{ pageControl.value }}</p>
+    <it-pagination [pageNumbers]="10" [formControl]="pageControl"></it-pagination>
+  </div>
+</div>
