@@ -25,3 +25,16 @@
 
 <it-source-display html="{$ sanitize(htmlDynamic) $}" typescript="{$ sanitize(typescriptDynamic) $}" >
 </it-source-display>
+
+
+{% set htmlResponsive %}
+  {% include "../tabs-responsive-example/tabs-responsive-example.component.html" %}
+{% endset %}
+
+{% set typescriptResponsive %}
+  {% include "../tabs-responsive-example/tabs-responsive-example.component.ts" %}
+{% endset %}
+
+<it-tabs-responsive-example></it-tabs-responsive-example>
+
+<it-source-display html="{$ sanitize(htmlResponsive) $}" typescript="{$ sanitize(typescriptResponsive) $}"></it-source-display>

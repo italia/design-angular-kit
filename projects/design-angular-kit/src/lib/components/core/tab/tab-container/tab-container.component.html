@@ -1,20 +1,20 @@
 <div
-  [class.row]="vertical"
-  [class.flex-row-reverse]="inverted && vertical"
-  [class.d-flex]="inverted && !vertical"
-  [class.flex-column-reverse]="inverted && !vertical">
+  [class.row]="isVertical"
+  [class.flex-row-reverse]="inverted && isVertical"
+  [class.d-flex]="inverted && !isVertical"
+  [class.flex-column-reverse]="inverted && !isVertical">
   <div
-    [class.col-5]="inverted && vertical"
-    [class.col-md-4]="inverted && vertical"
-    [class.col-lg-3]="inverted && vertical"
-    [class.col-4]="!inverted && vertical"
-    [class.col-md-3]="!inverted && vertical">
+    [class.col-5]="inverted && isVertical"
+    [class.col-md-4]="inverted && isVertical"
+    [class.col-lg-3]="inverted && isVertical"
+    [class.col-4]="!inverted && isVertical"
+    [class.col-md-3]="!inverted && isVertical">
     @if (tabs) {
       <ul
         class="nav nav-tabs"
         [class.nav-tabs-editable]="editable"
         [class.nav-tabs-cards]="cards"
-        [class.nav-tabs-vertical]="vertical"
+        [class.nav-tabs-vertical]="isVertical"
         [class.auto]="auto"
         [class.nav-tabs-icon-text]="iconText"
         [class.nav-dark]="dark"
@@ -54,11 +54,11 @@
     }
   </div>
   <div
-    [class.col-7]="inverted && vertical"
-    [class.col-md-8]="inverted && vertical"
-    [class.col-lg-9]="inverted && vertical"
-    [class.col-8]="!inverted && vertical"
-    [class.col-md-9]="!inverted && vertical">
+    [class.col-7]="inverted && isVertical"
+    [class.col-md-8]="inverted && isVertical"
+    [class.col-lg-9]="inverted && isVertical"
+    [class.col-8]="!inverted && isVertical"
+    [class.col-md-9]="!inverted && isVertical">
     @if (tabs) {
       <div class="tab-content">
         @for (tab of tabs; track tab.id) {

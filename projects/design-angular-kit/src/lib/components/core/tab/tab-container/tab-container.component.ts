@@ -19,6 +19,17 @@ import { NgTemplateOutlet } from '@angular/common';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { inputToBoolean } from '../../../../utils/coercion';
 
+/** Bootstrap Italia breakpoint names and their minimum widths in px. */
+export type BootstrapBreakpoint = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+
+const BREAKPOINT_PX: Record<BootstrapBreakpoint, number> = {
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400,
+};
+
 @Component({
   selector: 'it-tab-container',
   templateUrl: './tab-container.component.html',
@@ -48,9 +59,25 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
   @Input({ transform: inputToBoolean }) cards?: boolean;
 
   /**
-   * Show vertical navigation
+   * Show vertical navigation.
+   * When used together with `verticalBreakpoint`, this acts as the initial state
+   * and becomes responsive — vertical above the breakpoint, horizontal below it.
    */
   @Input({ transform: inputToBoolean }) vertical?: boolean;
+
+  /**
+   * When set, the tab container switches from vertical to horizontal layout
+   * below the specified Bootstrap breakpoint.
+   * Requires `vertical` to be set to `true`.
+   *
+   * @example
+   * ```html
+   * <it-tab-container vertical verticalBreakpoint="md">
+   *   <!-- vertical on md+ screens, horizontal on smaller -->
+   * </it-tab-container>
+   * ```
+   */
+  @Input() verticalBreakpoint?: BootstrapBreakpoint;
 
   /**
    * The tab position
@@ -75,7 +102,18 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
 
   @Output() tabAdded = new EventEmitter();
 
+  /** Computed vertical state (respects responsive breakpoint). */
+  get isVertical(): boolean {
+    if (this.verticalBreakpoint && this.vertical) {
+      return this._isVerticalResponsive;
+    }
+    return !!this.vertical;
+  }
+
   private tabSubscriptions?: Array<Subscription>;
+  private _mediaQueryList?: MediaQueryList;
+  private _mediaHandler?: (e: MediaQueryListEvent) => void;
+  private _isVerticalResponsive = true;
 
   constructor() {
     super();
@@ -83,6 +121,8 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
+
+    this._setupResponsiveBreakpoint();
 
     this.tabs?.changes
       .pipe(
@@ -119,6 +159,7 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
 
   ngOnDestroy(): void {
     this.tabSubscriptions?.forEach(sub => sub.unsubscribe());
+    this._teardownResponsiveBreakpoint();
   }
 
   onTab(tab: ItTabItemComponent) {
@@ -132,5 +173,33 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
   clickToAdd($event: Event) {
     $event.preventDefault();
     this.tabAdded.emit();
+  }
+
+  private _setupResponsiveBreakpoint(): void {
+    if (!this.verticalBreakpoint || !this.vertical) {
+      return;
+    }
+
+    const minWidth = BREAKPOINT_PX[this.verticalBreakpoint];
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return;
+    }
+
+    this._mediaQueryList = window.matchMedia(`(min-width: ${minWidth}px)`);
+    this._isVerticalResponsive = this._mediaQueryList.matches;
+
+    this._mediaHandler = (e: MediaQueryListEvent) => {
+      this._isVerticalResponsive = e.matches;
+      this._changeDetectorRef.detectChanges();
+    };
+    this._mediaQueryList.addEventListener('change', this._mediaHandler);
+  }
+
+  private _teardownResponsiveBreakpoint(): void {
+    if (this._mediaQueryList && this._mediaHandler) {
+      this._mediaQueryList.removeEventListener('change', this._mediaHandler);
+      this._mediaQueryList = undefined;
+      this._mediaHandler = undefined;
+    }
   }
 }
