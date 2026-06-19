@@ -43,6 +43,10 @@ export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {
     this._changeDetectorRef = inject(ChangeDetectorRef);
 
     this.valueChanges = new EventEmitter<void>();
+
+    const name = this._elementRef.nativeElement.tagName.toLowerCase().replace('it-', '');
+    window['BOOTSTRAP_USED_COMPONENTS'] = window['BOOTSTRAP_USED_COMPONENTS'] ? window['BOOTSTRAP_USED_COMPONENTS'] : [];
+    window['BOOTSTRAP_USED_COMPONENTS'].indexOf(name) === -1 ? window['BOOTSTRAP_USED_COMPONENTS'].push(name) : '';
   }
 
   ngAfterViewInit(): void {
