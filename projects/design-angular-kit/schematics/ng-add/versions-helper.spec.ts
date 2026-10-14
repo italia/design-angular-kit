@@ -36,4 +36,13 @@ describe('schematics versions helper tests', () => {
     //assert
     expect(actual).toBe('^21.0.0');
   });
+
+  it('should return ^22.0.0 for Angular v22', () => {
+    //arrange
+    const angularMajorVersion = '22';
+    //act
+    const actual = getPackageVersion({ angularMajorVersion });
+    //assert
+    expect(actual).toBe('^22.0.0');
+  });
 });

@@ -21,7 +21,7 @@
     "documentation-deploy-to-gh-pages": "gh-pages -d dist/design-angular-kit-bundle/browser -m 'chore: update documentation'",
     "compodoc-compile": "compodoc -p projects/design-angular-kit/tsconfig.lib.json -e json -d src/assets",
     "nunjucks-compile": "nunjucks --options nunjucks.json src/app/**/*.tpl",
-    "schematics:test": "ts-node --project projects/design-angular-kit/tsconfig.schematics.json node_modules/jasmine/bin/jasmine projects/design-angular-kit/schematics/**/*.spec.ts"
+    "schematics:test": "tsc -p projects/design-angular-kit/tsconfig.schematics.json --outDir tmp/schematics-test && copyfiles -u 3 \"projects/design-angular-kit/schematics/collection.json\" \"projects/design-angular-kit/schematics/*/schema.json\" tmp/schematics-test && jasmine \"tmp/schematics-test/**/*.spec.js\""
   },
   "browserslist": [
     "extends browserslist-config-design-italia",
@@ -66,7 +66,7 @@
   "dependencies": {
     "@angular-devkit/schematics": "^22.2.1",
     "@angular/animations": "^22.2.1",
-    "@angular/cdk": "^21.0.3",
+    "@angular/cdk": "^22.2.1",
     "@angular/common": "^22.2.1",
     "@angular/compiler": "^22.2.1",
     "@angular/core": "^22.2.1",
