@@ -17,7 +17,7 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
             "outputPath": {
               "base": "dist/design-angular-kit-bundle"
@@ -57,13 +57,26 @@
               "mux.js/lib/tools/parse-sidx",
               "mux.js/lib/utils/clock",
               "safe-json-parse/tuple",
-              "videojs-vtt.js"
+              "videojs-vtt.js",
+              "@xmldom/xmldom"
             ],
             "extractLicenses": false,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
-            "browser": "src/main.ts"
+            "browser": "src/main.ts",
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": [
+                  "import",
+                  "if-function",
+                  "color-functions",
+                  "global-builtin",
+                  "slash-div",
+                  "abs-percent"
+                ]
+              }
+            }
           },
           "configurations": {
             "production": {
@@ -94,7 +107,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "options": {
             "buildTarget": "design-angular-kit-bundle:build",
             "host": "127.0.0.1"
@@ -110,15 +123,14 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@angular/build:extract-i18n",
           "options": {
             "buildTarget": "design-angular-kit-bundle:build"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
-            "main": "src/test.ts",
             "polyfills": [
               "zone.js",
               "zone.js/testing",
@@ -129,12 +141,23 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
             "codeCoverage": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": [
+                  "import",
+                  "if-function",
+                  "color-functions",
+                  "global-builtin",
+                  "slash-div",
+                  "abs-percent"
+                ]
+              }
+            }
           }
         },
         "lint": {
@@ -144,24 +167,6 @@
               "src/**/*.ts",
               "src/**/*.html"
             ]
-          }
-        }
-      }
-    },
-    "design-angular-kit-bundle-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "design-angular-kit-bundle:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "design-angular-kit-bundle:serve:production"
-            }
           }
         }
       }
@@ -179,7 +184,7 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/design-angular-kit/tsconfig.lib.json",
             "project": "projects/design-angular-kit/ng-package.json"
@@ -196,12 +201,35 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
-            "main": "projects/design-angular-kit/src/test.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing",
+              "@angular/localize/init"
+            ],
             "tsConfig": "projects/design-angular-kit/tsconfig.spec.json",
             "karmaConfig": "projects/design-angular-kit/karma.conf.js",
-            "codeCoverage": true
+            "codeCoverage": true,
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "./node_modules/bootstrap-italia/",
+                "output": "/bootstrap-italia/"
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": [
+                  "import",
+                  "if-function",
+                  "color-functions",
+                  "global-builtin",
+                  "slash-div",
+                  "abs-percent"
+                ]
+              }
+            }
           }
         },
         "lint": {

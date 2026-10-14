@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItMarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
@@ -12,7 +12,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   standalone: true,
   selector: 'it-search',
   templateUrl: './search.component.html',
-  imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, NgTemplateOutlet, ReactiveFormsModule],
+  imports: [AsyncPipe, ItIconComponent, ItMarkMatchingTextPipe, ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItSearchComponent extends ItAbstractFormComponent<string | null | undefined> implements OnInit {

@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { TransferItem } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-transfer-reactive-form-example',
   templateUrl: './transfer-reactive-form-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class TransferReactiveFormExampleComponent {

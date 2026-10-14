@@ -1,12 +1,10 @@
-import { JsonPipe, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { ItNavscrollListItemComponent } from './navscroll-list-item.component';
 import { NavscrollItems } from './navscroll.model';
 
 @Component({
   selector: 'it-navscroll-list-items',
-  imports: [NgTemplateOutlet, RouterLink, RouterLinkActive, RouterLinkWithHref, JsonPipe, ItNavscrollListItemComponent],
+  imports: [ItNavscrollListItemComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ul class="link-list">

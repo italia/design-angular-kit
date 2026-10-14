@@ -2,18 +2,15 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": [ "node" ],
-    "typeRoots": [ "../node_modules/@types" ],
+    "types": ["node"],
+    "typeRoots": ["../node_modules/@types"],
     "paths": {
-      "design-angular-kit/*": [
-        "projects/design-angular-kit/src/lib/*"
-      ]
+      "design-angular-kit/*": ["projects/design-angular-kit/src/lib/*"]
     }
   },
-  "files": [
-    "main.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "files": ["main.ts"],
+  "include": ["src/**/*.d.ts"],
+  "angularCompilerOptions": {
+    "strictTemplates": false
+  }
 }

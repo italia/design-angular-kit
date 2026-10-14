@@ -26,6 +26,7 @@ import { ItSortEvent } from '../../../../interfaces/sortable-table';
       </tr>
     </ng-container>
   </it-table>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ItSortDirective, ItSortHeaderComponent],
 })
 class TestComponent {

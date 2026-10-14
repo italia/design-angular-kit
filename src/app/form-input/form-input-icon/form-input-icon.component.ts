@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IconName } from 'design-angular-kit/interfaces/icon';
 
 @Component({
   selector: 'it-form-input-icon-example',
   templateUrl: './form-input-icon.component.html',
   styleUrls: ['./form-input-icon.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormInputIconExampleComponent {

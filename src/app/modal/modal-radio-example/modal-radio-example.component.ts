@@ -1,10 +1,11 @@
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ItModalComponent } from 'design-angular-kit/components/core/modal/modal.component';
 
 @Component({
   selector: 'it-modal-radio-example',
   templateUrl: './modal-radio-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ModalRadioExampleComponent {
@@ -12,7 +13,7 @@ export class ModalRadioExampleComponent {
 
   formGroup: FormGroup;
 
-  @ViewChild('radioModal') radioModal: ItModalComponent;
+  @ViewChild('radioModal') radioModal: ItModalComponent | undefined;
 
   constructor() {
     this.formGroup = this.formBuilder.group({
@@ -21,6 +22,6 @@ export class ModalRadioExampleComponent {
   }
 
   submit(): void {
-    this.radioModal.hide();
+    this.radioModal?.hide();
   }
 }

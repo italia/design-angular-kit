@@ -7,6 +7,7 @@ import { tb_base } from '../../../../test';
 @Component({
   selector: 'it-test-no-padding',
   template: `<it-card [noPadding]="noPadding" [hasImage]="true" shadow="normal"><h4 class="it-card-title">Title</h4></it-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ItCardComponent],
 })
 class NoPaddingHostComponent {

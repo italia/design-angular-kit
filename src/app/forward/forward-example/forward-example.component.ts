@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IconColor, IconName, IconSize } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
@@ -14,6 +14,7 @@ import { IconColor, IconName, IconSize } from 'projects/design-angular-kit/src/p
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ForwardExampleComponent {

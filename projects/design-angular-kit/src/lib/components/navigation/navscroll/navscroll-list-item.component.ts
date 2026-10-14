@@ -33,7 +33,7 @@ const ROUTER_LINK_ACTIVE_OPTIONS: IsActiveMatchOptions = {
       [class.active]="active | async"
       [routerLink]="[]"
       routerLinkActive
-      [fragment]="item?.href"
+      [fragment]="$safeNavigationMigration(item?.href)"
       [routerLinkActiveOptions]="routerLinkActiveOptions"
       ariaCurrentWhenActive="page"
       #rtl="routerLinkActive"

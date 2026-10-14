@@ -79,14 +79,14 @@ describe('ItBackButtonComponent', () => {
   });
 
   it('se passo una callback backFn, al click deve essere lanciata lei', () => {
-    component.backFn = () => {};
+    const backFn = jasmine.createSpy('backFn');
+    component.backFn = backFn;
     component.buttonStyle = 'link';
     fixture.detectChanges();
-    spyOn(component, 'backFn');
     const aElement = fixture.debugElement.query(By.css('a'));
     aElement.nativeElement.removeAttribute('href');
     fixture.detectChanges();
     aElement.nativeElement.click();
-    expect(component.backFn).toHaveBeenCalled();
+    expect(backFn).toHaveBeenCalled();
   });
 });

@@ -1,29 +1,22 @@
-import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import angular from "angular-eslint";
+import prettierRecommended from "eslint-plugin-prettier/recommended";
 import { defineConfig, globalIgnores } from "eslint/config";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
-});
+import tseslint from "typescript-eslint";
 
 export default defineConfig([
     globalIgnores(["src/**/*-examples.component.html", "src/assets/video"]),
     {
         files: ["**/*.ts"],
 
-        extends: compat.extends(
-            "eslint:recommended",
-            "plugin:@typescript-eslint/recommended",
-            "plugin:@angular-eslint/recommended",
-            "plugin:@angular-eslint/template/process-inline-templates",
-            "plugin:prettier/recommended",
-        ),
+        extends: [
+            js.configs.recommended,
+            tseslint.configs.recommended,
+            angular.configs.tsRecommended,
+            prettierRecommended,
+        ],
+
+        processor: angular.processInlineTemplates,
 
         rules: {
             "@typescript-eslint/no-explicit-any": "off",
@@ -38,6 +31,9 @@ export default defineConfig([
 
             "@angular-eslint/prefer-standalone": ["off"],
 
+            // The Angular 22 migration sets ChangeDetectionStrategy.Eager explicitly to preserve behavior
+            "@angular-eslint/prefer-on-push-component-change-detection": ["warn"],
+
             "prettier/prettier": ["error", {
                 printWidth: 140,
             }],
@@ -46,11 +42,11 @@ export default defineConfig([
     {
         files: ["**/*.html"],
 
-        extends: compat.extends(
-            "plugin:@angular-eslint/template/recommended",
-            "plugin:@angular-eslint/template/accessibility",
-            "plugin:prettier/recommended",
-        ),
+        extends: [
+            angular.configs.templateRecommended,
+            angular.configs.templateAccessibility,
+            prettierRecommended,
+        ],
 
         rules: {
             "prettier/prettier": ["error", {

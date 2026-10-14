@@ -6,13 +6,13 @@
           [title]="element.title"
           [text]="element.text"
           [signature]="element.signature"
-          [pinType]="element.pin?.type"
-          [pinIcon]="element.pin?.icon"
-          [pinText]="element.pin?.text"
+          [pinType]="$safeNavigationMigration(element.pin?.type)"
+          [pinIcon]="$safeNavigationMigration(element.pin?.icon)"
+          [pinText]="$safeNavigationMigration(element.pin?.text)"
           [eventDate]="element.eventDate"
           [dateFormat]="dateFormat"
-          [categoryTitle]="element.category?.title"
-          [categoryLink]="element.category?.link"
+          [categoryTitle]="$safeNavigationMigration(element.category?.title)"
+          [categoryLink]="$safeNavigationMigration(element.category?.link)"
           [showReadMore]="!!element.link?.length"
           [readMoreLink]="element.link" />
       </div>

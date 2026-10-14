@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NavscrollItems } from 'projects/design-angular-kit/src/public_api';
 
 const template = `
@@ -15,7 +15,8 @@ const template = `
 
 @Component({
   template,
-  // eslint-disable-next-line @angular-eslint/prefer-standalone
+
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class NavscrollExampleComponent {

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonColor, DropdownDirection } from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-dropdown-host-attribute',
   templateUrl: './dropdown-host-attribute.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class DropdownHostAttributeComponent {

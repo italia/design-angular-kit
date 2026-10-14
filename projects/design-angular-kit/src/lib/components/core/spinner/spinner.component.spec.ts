@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { tb_base } from '../../../../test';
 import { inputToBoolean } from '../../../utils/coercion';
@@ -9,6 +9,7 @@ import { ItSpinnerComponent } from './spinner.component';
 @Component({
   selector: 'it-unit-test',
   template: ` <it-spinner [active]="active" [small]="small"></it-spinner> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class UnitTestComponent {

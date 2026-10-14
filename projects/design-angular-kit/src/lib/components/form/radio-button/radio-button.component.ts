@@ -54,7 +54,6 @@ export class ItRadioButtonComponent extends ItAbstractFormComponent<string | num
       // Retrieve parent name, prevent duplicate name inside FormArray or nested FormGroup
       let control = this._ngControl.control?.parent;
       while (control?.parent) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const controls: { [key: string]: any } = control?.parent?.controls || {};
         const parentName = Object.keys(controls).find(name => control === controls[name]) || null;
         if (!parentName) {

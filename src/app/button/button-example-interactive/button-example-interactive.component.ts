@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonColor, ButtonSize } from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-button-example-interactive',
   templateUrl: './button-example-interactive.component.html',
   styleUrls: ['./button-example-interactive.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ButtonExampleInteractiveComponent {

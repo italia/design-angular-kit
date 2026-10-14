@@ -1,4 +1,4 @@
-import { Component, DoCheck, Input, OnInit, inject } from '@angular/core';
+import { Component, DoCheck, Input, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ControlContainer, ControlValueAccessor, FormControl, FormGroup, NgControl, ValidatorFn } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
@@ -7,6 +7,7 @@ import { ItAbstractComponent } from './abstract.component';
 
 @Component({
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export abstract class ItAbstractFormComponent<T = any> extends ItAbstractComponent implements OnInit, ControlValueAccessor, DoCheck {
@@ -209,7 +210,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
   // validation mode is automatically set to `true`.
   private setValidationModeWhenInAForm() {
     const isInAForm: boolean = this.fgd?.control instanceof FormGroup;
-    if (isInAForm && this.validationMode == false) {
+    if (isInAForm && !this.validationMode) {
       this.validationMode = true;
     }
   }

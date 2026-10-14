@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonColor, DropdownDirection } from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-dropdown-example',
   templateUrl: './dropdown-example.component.html',
   styleUrls: ['./dropdown-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class DropdownExampleComponent {
