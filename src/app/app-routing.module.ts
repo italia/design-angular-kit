@@ -98,6 +98,7 @@ const routes: Routes = [
       { path: 'range', loadChildren: () => import('src/app/range/range.module').then(m => m.RangeModule) },
       { path: 'timeline', loadChildren: () => import('src/app/timeline/timeline.module').then(m => m.TimelineModule) },
       { path: 'video-player', loadChildren: () => import('src/app/video-player/video-player.module').then(m => m.VideoPlayerModule) },
+      { path: 'ratio', loadChildren: () => import('src/app/ratio/ratio.module').then(m => m.RatioModule) },
     ],
   },
   { path: 'esempi', component: RouterDispatcherComponent, children: EXAMPLES_ROUTES },
