@@ -6,7 +6,7 @@ import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-confi
 @Component({
   selector: 'it-icon',
   templateUrl: './icon.component.html',
-  styles: ':host {display: contents;}',
+  styles: ':host {display: contents;} .icon-current-color { fill: currentColor; }',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
 })
@@ -64,6 +64,8 @@ export class ItIconComponent {
     }
     if (this.color) {
       iconClass += ` icon-${this.color}`;
+    } else {
+      iconClass += ' icon-current-color';
     }
     if (this.padded) {
       iconClass += ` icon-padded`;
