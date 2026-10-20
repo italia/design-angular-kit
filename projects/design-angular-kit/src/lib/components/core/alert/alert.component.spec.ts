@@ -73,6 +73,20 @@ describe('ItAlertComponent', () => {
     expect(spanElement).toBeTruthy();
   });
 
+  it('should accept a custom-generated color (e.g. primary-a1 from Bootstrap Italia HSB)', () => {
+    component.selectedColor = 'primary-a1';
+    fixture.detectChanges();
+    const el = fixture.debugElement.query(By.css('div.alert.alert-primary-a1'));
+    expect(el).toBeTruthy();
+  });
+
+  it('should accept an analogue custom color (e.g. analogue-1-a2)', () => {
+    component.selectedColor = 'analogue-1-a2';
+    fixture.detectChanges();
+    const el = fixture.debugElement.query(By.css('div.alert.alert-analogue-1-a2'));
+    expect(el).toBeTruthy();
+  });
+
   it('should hide empty h4.alert-heading when no heading content is projected', () => {
     fixture.detectChanges();
     const h4: HTMLHeadingElement = fixture.nativeElement.querySelector('h4.alert-heading');

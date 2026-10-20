@@ -40,3 +40,16 @@
 
 <it-source-display html="{$ sanitize(htmlClosing) $}" typescript="{$ sanitize(typescriptClosing) $}" >
 </it-source-display>
+
+{% set htmlCustomColor %}
+  {% include "../alert-custom-color-example/alert-custom-color-example.component.html" %}
+{% endset %}
+
+{% set typescriptCustomColor %}
+  {% include "../alert-custom-color-example/alert-custom-color-example.component.ts" %}
+{% endset %}
+
+<it-alert-custom-color-example></it-alert-custom-color-example>
+
+<it-source-display html="{$ sanitize(htmlCustomColor) $}" typescript="{$ sanitize(typescriptCustomColor) $}" >
+</it-source-display>
