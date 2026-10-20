@@ -8,7 +8,7 @@
       [class.is-invalid]="isInvalid"
       [class.is-valid]="isValid"
       [formControl]="control"
-      [attr.aria-describedby]="id + '-help'" />
+      [attr.aria-describedby]="group ? id + '-help' : null" />
 
     <label class="form-check-label" [for]="id">
       <div #customLabel>

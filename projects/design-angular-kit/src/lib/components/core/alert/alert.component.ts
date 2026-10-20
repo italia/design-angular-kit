@@ -44,9 +44,18 @@ export class ItAlertComponent extends ItAbstractComponent implements AfterViewIn
   private alert?: Alert;
 
   @ViewChild('alertElement') private alertElement?: ElementRef<HTMLDivElement>;
+  @ViewChild('headingEl') private headingEl?: ElementRef<HTMLHeadingElement>;
 
   override ngAfterViewInit() {
     super.ngAfterViewInit();
+
+    // Hide empty heading to prevent accessibility issues (#547)
+    if (this.headingEl?.nativeElement) {
+      const el = this.headingEl.nativeElement;
+      if (el.textContent?.trim() === '') {
+        el.hidden = true;
+      }
+    }
 
     if (this.alertElement) {
       const element = this.alertElement.nativeElement;

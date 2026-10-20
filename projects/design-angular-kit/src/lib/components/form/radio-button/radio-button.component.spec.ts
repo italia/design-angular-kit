@@ -18,4 +18,18 @@ describe('ItRadioButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should NOT render aria-describedby when group is false', () => {
+    component.group = false;
+    fixture.detectChanges();
+    const inputEl = (fixture.nativeElement as HTMLElement).querySelector('input[type="radio"]');
+    expect(inputEl?.getAttribute('aria-describedby')).toBeNull();
+  });
+
+  it('should render aria-describedby when group is true', () => {
+    fixture.componentRef.setInput('group', true);
+    fixture.detectChanges();
+    const inputEl = (fixture.nativeElement as HTMLElement).querySelector('input[type="radio"]');
+    expect(inputEl?.getAttribute('aria-describedby')).toBe(`${component.id}-help`);
+  });
 });
