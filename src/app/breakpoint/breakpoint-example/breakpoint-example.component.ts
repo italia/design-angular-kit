@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ItBreakpointService } from 'design-angular-kit';
+import { ItBreakpointService } from 'design-angular-kit/services/breakpoint.service';
 
 @Component({
   selector: 'it-breakpoint-example',
