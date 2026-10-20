@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ItIconRegistryService } from 'design-angular-kit';
+import { ItIconRegistryService } from 'design-angular-kit/services/icon-registry/icon-registry.service';
 
 @Component({
   selector: 'it-icon-registry-example',
