@@ -35,3 +35,15 @@
 <it-dropdown-host-attribute></it-dropdown-host-attribute>
 
 <it-source-display html="{$ sanitize(htmlHostAttribute) $}" typescript="{$ sanitize(typescriptHostAttribute) $}"></it-source-display>
+
+{% set htmlIconPosition %}
+  {% include "../dropdown-icon-position-example/dropdown-icon-position-example.component.html" %}
+{% endset %}
+
+{% set typescriptIconPosition %}
+  {% include "../dropdown-icon-position-example/dropdown-icon-position-example.component.ts" %}
+{% endset %}
+
+<it-dropdown-icon-position-example></it-dropdown-icon-position-example>
+
+<it-source-display html="{$ sanitize(htmlIconPosition) $}" typescript="{$ sanitize(typescriptIconPosition) $}"></it-source-display>
