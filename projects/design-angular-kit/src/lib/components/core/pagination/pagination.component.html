@@ -88,9 +88,15 @@
       <span button>{{ currentChanger }} / {{ 'it.core.page' | translate | lowercase }}</span>
       <ng-container list>
         @for (value of changerValues; track value) {
-          <it-dropdown-item href="#" externalLink="true" (click)="changerChange($event, value)">
+          <li
+            itDropdownItem
+            href="#"
+            externalLink="true"
+            tabindex="-1"
+            (click)="changerChange($event, value)"
+            (keyup.enter)="changerChange($event, value)">
             {{ value }} / {{ 'it.core.page' | translate | lowercase }}
-          </it-dropdown-item>
+          </li>
         }
       </ng-container>
     </it-dropdown>

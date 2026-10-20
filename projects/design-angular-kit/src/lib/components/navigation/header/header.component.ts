@@ -1,16 +1,22 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   OnChanges,
   Output,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { filter } from 'rxjs';
+
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItNavBarModule } from '../navbar/navbar.module';
 import { ItNavBarComponent } from '../navbar/navbar/navbar.component';
@@ -57,9 +63,34 @@ export class ItHeaderComponent implements AfterViewInit, OnChanges {
 
   private stickyHeader?: HeaderSticky;
 
+  private readonly router = inject(Router);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   constructor() {
     this.loginClick = new EventEmitter<Event>();
     this.searchClick = new EventEmitter<Event>();
+
+    /**
+     * Force a synchronous change-detection pass on the header tree after
+     * every router navigation.  `routerLinkActive` adds/removes the CSS
+     * `active` class via direct DOM manipulation, but the entire header
+     * component tree uses OnPush change detection combined with sticky
+     * positioning (HeaderSticky). Without an explicit CD cycle the browser
+     * may not repaint the active-state border until the user interacts
+     * with the page (see issue #589).
+     *
+     * As a UX improvement the mobile navbar is also auto-closed on
+     * navigation so users do not have to dismiss it manually.
+     */
+    this.router.events
+      .pipe(
+        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+        takeUntilDestroyed()
+      )
+      .subscribe(() => {
+        this.closeNavBar();
+        this.cdr.detectChanges();
+      });
   }
 
   ngAfterViewInit() {
