@@ -50,6 +50,11 @@ export class ItDropdownItemComponent extends ItLinkComponent implements OnInit {
   @Input() mode?: 'button' | 'link' | 'nav' = 'button';
 
   /**
+   * Custom CSS classes to apply to the inner link/button element
+   */
+  @Input() itemClass: string = '';
+
+  /**
    * Change icon color if menu is dark
    * @default false
    */
@@ -71,6 +76,9 @@ export class ItDropdownItemComponent extends ItLinkComponent implements OnInit {
     }
     if (this.iconName) {
       linkClass += ` ${this.iconPosition === 'right' ? 'right-icon' : 'left-icon'}`;
+    }
+    if (this.itemClass) {
+      linkClass += ` ${this.itemClass}`;
     }
 
     return linkClass;
