@@ -47,3 +47,30 @@ describe('ItDimmerComponent', () => {
     expect(dimmerPrimaryElement).toBeTruthy();
   });
 });
+
+// #546 — booleanAttribute coercion tests
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'it-dimmer-bool-host',
+  template: `<it-dimmer active></it-dimmer>`,
+  imports: [ItDimmerComponent],
+})
+class DimmerBooleanHost {}
+
+describe('ItDimmerComponent — booleanAttribute coercion (#546)', () => {
+  it('should coerce active from attribute-only syntax to true', async () => {
+    await TestBed.configureTestingModule({
+      imports: [DimmerBooleanHost, BrowserAnimationsModule],
+    })
+      .overrideComponent(ItDimmerComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default },
+      })
+      .compileComponents();
+
+    const fixture = TestBed.createComponent(DimmerBooleanHost);
+    fixture.detectChanges();
+    const dimmer = fixture.debugElement.query(By.directive(ItDimmerComponent)).componentInstance as ItDimmerComponent;
+    expect(dimmer.active).toBeTrue();
+  });
+});
