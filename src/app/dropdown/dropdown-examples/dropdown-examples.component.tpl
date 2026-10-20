@@ -35,3 +35,16 @@
 <it-dropdown-host-attribute></it-dropdown-host-attribute>
 
 <it-source-display html="{$ sanitize(htmlHostAttribute) $}" typescript="{$ sanitize(typescriptHostAttribute) $}"></it-source-display>
+
+
+{% set htmlNoMenu %}
+  {% include "../dropdown-no-menu-example/dropdown-no-menu-example.component.html" %}
+{% endset %}
+
+{% set typescriptNoMenu %}
+  {% include "../dropdown-no-menu-example/dropdown-no-menu-example.component.ts" %}
+{% endset %}
+
+<it-dropdown-no-menu-example></it-dropdown-no-menu-example>
+
+<it-source-display html="{$ sanitize(htmlNoMenu) $}" typescript="{$ sanitize(typescriptNoMenu) $}"></it-source-display>
