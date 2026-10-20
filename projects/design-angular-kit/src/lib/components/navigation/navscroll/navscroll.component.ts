@@ -1,6 +1,7 @@
 import { AsyncPipe, NgClass, NgTemplateOutlet, ViewportScroller } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  booleanAttribute,
   Component,
   DestroyRef,
   ElementRef,
@@ -42,10 +43,34 @@ import { NavscrollStore } from './navscroll.store';
   providers: [NavscrollStore],
 })
 export class ItNavscrollComponent implements OnInit {
+  static _nextId = 0;
+
+  readonly accordionId = `navscroll-accordion-${ItNavscrollComponent._nextId++}`;
   /**
    * Header of the Navscroll
    */
   @Input() header = '';
+
+  /**
+   * Render the header as a collapsible accordion toggle,
+   * allowing users to show/hide the navigation links.
+   * @default false
+   */
+  @Input({ transform: booleanAttribute }) headerAsAccordion?: boolean;
+
+  /**
+   * Hide the navigation bar when in mobile mode (viewport < 992px).
+   * Mandatory when navscroll is used in a mobile context or in combination with a sticky header.
+   * @default false
+   */
+  @Input({ transform: booleanAttribute }) hideNavigationOnMobile?: boolean;
+
+  /**
+   * Whether the accordion starts expanded.
+   * Only applies when headerAsAccordion is true.
+   * @default true
+   */
+  @Input({ transform: booleanAttribute }) accordionExpanded: boolean = true;
   /**
    * A list of links
    */
@@ -100,6 +125,8 @@ export class ItNavscrollComponent implements OnInit {
   readonly progressBarValue = this.#store.progressBar;
 
   readonly isMobile = this.#store.isMobile;
+
+  readonly isNotMobile = this.#store.isMobile.pipe(map(v => !v));
 
   constructor() {
     this.#store.menuItemSelected
