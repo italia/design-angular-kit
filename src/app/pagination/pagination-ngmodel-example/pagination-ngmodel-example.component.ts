@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'it-pagination-ngmodel-example',
   templateUrl: './pagination-ngmodel-example.component.html',
 })
