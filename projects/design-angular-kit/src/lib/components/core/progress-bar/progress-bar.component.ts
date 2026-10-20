@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { ProgressBarColor } from '../../../interfaces/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-progress-bar',
@@ -19,13 +18,13 @@ export class ItProgressBarComponent {
    * Show the progress label
    * @default false
    */
-  @Input({ transform: inputToBoolean }) showLabel?: boolean;
+  @Input({ transform: booleanAttribute }) showLabel?: boolean;
 
   /**
    * Show the progress as indeterminate
    * @default false
    */
-  @Input({ transform: inputToBoolean }) indeterminate?: boolean;
+  @Input({ transform: booleanAttribute }) indeterminate?: boolean;
 
   /**
    * The progress bar color

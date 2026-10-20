@@ -1,6 +1,7 @@
 import { AsyncPipe, NgClass, NgTemplateOutlet, ViewportScroller } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  booleanAttribute,
   Component,
   DestroyRef,
   ElementRef,
@@ -15,7 +16,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
-import { inputToBoolean } from '../../../utils/coercion';
 import { ItNavscrollListItemsComponent } from './navscroll-list-items.component';
 import { NavscrollItem } from './navscroll.model';
 import { NavscrollStore } from './navscroll.store';
@@ -56,21 +56,21 @@ export class ItNavscrollComponent implements OnInit {
    * allowing users to show/hide the navigation links.
    * @default false
    */
-  @Input({ transform: inputToBoolean }) headerAsAccordion?: boolean;
+  @Input({ transform: booleanAttribute }) headerAsAccordion?: boolean;
 
   /**
    * Hide the navigation bar when in mobile mode (viewport < 992px).
    * Mandatory when navscroll is used in a mobile context or in combination with a sticky header.
    * @default false
    */
-  @Input({ transform: inputToBoolean }) hideNavigationOnMobile?: boolean;
+  @Input({ transform: booleanAttribute }) hideNavigationOnMobile?: boolean;
 
   /**
    * Whether the accordion starts expanded.
    * Only applies when headerAsAccordion is true.
    * @default true
    */
-  @Input({ transform: inputToBoolean }) accordionExpanded: boolean = true;
+  @Input({ transform: booleanAttribute }) accordionExpanded: boolean = true;
   /**
    * A list of links
    */

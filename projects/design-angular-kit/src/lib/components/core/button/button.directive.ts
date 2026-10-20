@@ -1,6 +1,5 @@
-import { ContentChildren, Directive, HostBinding, Input, QueryList, inject } from '@angular/core';
+import { ContentChildren, Directive, HostBinding, Input, QueryList, inject, booleanAttribute } from '@angular/core';
 import { ButtonColor, ButtonSize } from '../../../interfaces/core';
-import { inputToBoolean } from '../../../utils/coercion';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItProgressButtonComponent } from '../progress-button/progress-button.component';
 
@@ -38,7 +37,7 @@ export class ItButtonDirective {
    * If button is disabled
    * @default false
    */
-  @Input({ transform: inputToBoolean })
+  @Input({ transform: booleanAttribute })
   @HostBinding('attr.aria-disabled')
   disabled?: boolean;
 

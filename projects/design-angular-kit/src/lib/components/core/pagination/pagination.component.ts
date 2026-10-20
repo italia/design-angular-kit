@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, booleanAttribute } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { LowerCasePipe } from '@angular/common';
@@ -6,7 +6,6 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItDropdownModule } from '../dropdown/dropdown.module';
 import { ItInputComponent } from '../../form/input/input.component';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-pagination',
@@ -41,14 +40,14 @@ export class ItPaginationComponent implements OnChanges {
    * Pagination in the "Simple mode" version is optimized for mobile devices.
    * @default false - disabled
    */
-  @Input({ transform: inputToBoolean }) simpleMode?: boolean;
+  @Input({ transform: booleanAttribute }) simpleMode?: boolean;
 
   /**
    * Enable/Disable text links
    * Chevron icons used as navigation links are replaced by text links such as “previous” and “next”.
    * @default false - disabled
    */
-  @Input({ transform: inputToBoolean }) textLinks?: boolean;
+  @Input({ transform: booleanAttribute }) textLinks?: boolean;
 
   /**
    * Current value of Changer
@@ -67,7 +66,7 @@ export class ItPaginationComponent implements OnChanges {
    * Hide/Show "Jump to page" input
    * @default false - hidden
    */
-  @Input({ transform: inputToBoolean }) showJumpToPage?: boolean;
+  @Input({ transform: booleanAttribute }) showJumpToPage?: boolean;
 
   /**
    * Fired when page is changed. Emit the new index of page
