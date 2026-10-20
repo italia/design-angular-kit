@@ -9,9 +9,16 @@ import { TabsExampleComponent } from './tabs-example/tabs-example.component';
 import { TabsExamplesComponent } from './tabs-examples/tabs-examples.component';
 import { TabsIndexComponent } from './tabs-index/tabs-index.component';
 import { TabsDynamicExampleComponent } from './tabs-dynamic-example/tabs-dynamic-example.component';
+import { TabsFullHeightExampleComponent } from './tabs-full-height-example/tabs-full-height-example.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule, TabsRoutingModule],
-  declarations: [TabsExampleComponent, TabsExamplesComponent, TabsIndexComponent, TabsDynamicExampleComponent],
+  declarations: [
+    TabsExampleComponent,
+    TabsExamplesComponent,
+    TabsIndexComponent,
+    TabsDynamicExampleComponent,
+    TabsFullHeightExampleComponent,
+  ],
 })
 export class TabsModule {}

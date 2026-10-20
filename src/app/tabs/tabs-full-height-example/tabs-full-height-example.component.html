@@ -1,0 +1,16 @@
+<h3>Full Height Tab</h3>
+<p class="mb-4">
+  Con <code>[fullHeight]="true"</code> il tab container si espande per occupare il 100% dell'altezza del genitore. Utile quando le tab
+  devono riempire l'intero spazio disponibile.
+</p>
+
+<div style="height: 300px; border: 1px dashed #b1b1b3; padding: 8px">
+  <it-tab-container [fullHeight]="true">
+    <it-tab label="Pannello A" active>
+      <p>Questo contenuto si espande verticalmente per riempire il contenitore padre.</p>
+    </it-tab>
+    <it-tab label="Pannello B">
+      <p>Anche questo pannello occupa tutta l'altezza disponibile.</p>
+    </it-tab>
+  </it-tab-container>
+</div>
