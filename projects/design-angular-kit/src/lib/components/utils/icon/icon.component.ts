@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { SafeHtml } from '@angular/platform-browser';
 import { IconColor, IconName, IconSize } from '../../../interfaces/icon';
 import { inputToBoolean } from '../../../utils/coercion';
 import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
+import { ItIconRegistryService } from '../../../services/icon-registry/icon-registry.service';
 
 @Component({
   selector: 'it-icon',
@@ -12,9 +14,14 @@ import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-confi
 })
 export class ItIconComponent {
   /**
-   * The icon name
+   * The icon name.
+   *
+   * Accepts built-in Bootstrap Italia icon names (e.g. `'arrow-down'`, `'search'`)
+   * or custom icon names registered via `ItIconRegistryService`.
+   *
+   * Custom icons registered in the registry take precedence over built-in sprite icons.
    */
-  @Input({ required: true }) name!: IconName;
+  @Input({ required: true }) name!: IconName | string;
 
   /**
    * The icon size
@@ -47,10 +54,30 @@ export class ItIconComponent {
    */
   @Input() labelWaria: string | undefined;
 
+  private readonly iconRegistry = inject(ItIconRegistryService);
+
   /**
-   * Return the icon href
+   * Whether the icon is a custom inline SVG from the registry.
+   */
+  protected get isCustomInlineSvg(): boolean {
+    return this.iconRegistry.getIconSvg(this.name) !== undefined;
+  }
+
+  /**
+   * The sanitized inline SVG content for custom icons.
+   */
+  protected get customSvgContent(): SafeHtml | undefined {
+    return this.iconRegistry.getIconSvg(this.name);
+  }
+
+  /**
+   * Return the icon href — either from a custom sprite registration or the built-in sprite.
    */
   protected get iconHref(): string {
+    const customSpriteHref = this.iconRegistry.getIconSpriteHref(this.name);
+    if (customSpriteHref) {
+      return customSpriteHref;
+    }
     return `${this.assetBasePath}/dist/svg/sprites.svg#it-${this.name}`;
   }
 
