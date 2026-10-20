@@ -1,5 +1,16 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  forwardRef,
+  inject,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { LowerCasePipe } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
@@ -13,12 +24,21 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ItIconComponent, TranslateModule, LowerCasePipe, ItDropdownModule, ItInputComponent, ReactiveFormsModule],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ItPaginationComponent),
+      multi: true,
+    },
+  ],
 })
-export class ItPaginationComponent implements OnChanges {
+export class ItPaginationComponent implements OnChanges, ControlValueAccessor {
+  private readonly _cdr = inject(ChangeDetectorRef);
+
   /**
    * Index of page (start 0)
    */
-  @Input({ required: true }) currentPage!: number;
+  @Input() currentPage!: number;
 
   /**
    * Max number of page (counter)
@@ -45,7 +65,7 @@ export class ItPaginationComponent implements OnChanges {
 
   /**
    * Enable/Disable text links
-   * Chevron icons used as navigation links are replaced by text links such as “previous” and “next”.
+   * Chevron icons used as navigation links are replaced by text links such as "previous" and "next".
    * @default false - disabled
    */
   @Input({ transform: inputToBoolean }) textLinks?: boolean;
@@ -91,16 +111,43 @@ export class ItPaginationComponent implements OnChanges {
    */
   protected jumpToPage: FormControl<number | null> = new FormControl<number | null>(null);
 
+  private _onChange: (value: number) => void = () => {};
+  private _onTouched: () => void = () => {};
+
   constructor() {
     this.jumpToPage.valueChanges
       .pipe(
-        debounceTime(300), // Delay filter data after time span has passed without another source emission
+        debounceTime(300),
         distinctUntilChanged(),
         filter(value => !!value && this.jumpToPage.valid)
       )
       .subscribe(value => {
-        this.pageEvent.emit(value! - 1);
+        const newPage = value! - 1;
+        this.currentPage = newPage;
+        this.pages = this.calculatePages();
+        this.pageEvent.emit(newPage);
+        this._onChange(newPage);
+        this._onTouched();
+        this._cdr.markForCheck();
       });
+  }
+
+  // ControlValueAccessor implementation
+  writeValue(value: number): void {
+    if (value != null) {
+      this.currentPage = value;
+      this.pages = this.calculatePages();
+      this.jumpToPage.setValue(null, { emitEvent: false });
+      this._cdr.markForCheck();
+    }
+  }
+
+  registerOnChange(fn: (value: number) => void): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this._onTouched = fn;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -141,7 +188,13 @@ export class ItPaginationComponent implements OnChanges {
    */
   protected pageChange(event: Event, newPage: number): void {
     event.preventDefault();
-    this.pageEvent.emit(newPage - 1); // emit new page index
+    const pageIndex = newPage - 1;
+    this.currentPage = pageIndex;
+    this.pages = this.calculatePages();
+    this.pageEvent.emit(pageIndex);
+    this._onChange(pageIndex);
+    this._onTouched();
+    this._cdr.markForCheck();
   }
 
   /**
@@ -151,6 +204,6 @@ export class ItPaginationComponent implements OnChanges {
    */
   protected changerChange(event: Event, value: number): void {
     event.preventDefault();
-    this.changerEvent.emit(value); // emit new changer value
+    this.changerEvent.emit(value);
   }
 }
