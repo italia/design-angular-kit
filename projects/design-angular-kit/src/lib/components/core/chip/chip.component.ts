@@ -11,6 +11,7 @@ import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-confi
   styleUrls: ['./chip.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, TranslateModule],
+  host: { style: 'display: inline-block; vertical-align: middle' },
 })
 export class ItChipComponent {
   /**
