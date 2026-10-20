@@ -10,6 +10,7 @@ import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-confi
   templateUrl: './chip.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, NgTemplateOutlet, TranslateModule],
+  host: { style: 'display: inline-block; vertical-align: middle' },
 })
 export class ItChipComponent {
   /**

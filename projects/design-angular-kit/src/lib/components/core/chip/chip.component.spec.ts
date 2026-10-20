@@ -115,4 +115,11 @@ describe('ItChipComponent', () => {
     expect(aEl.nativeElement.classList.contains('chip-lg')).toBeTrue();
     expect(aEl.nativeElement.classList.contains('chip-primary')).toBeTrue();
   });
+
+  it('should render host as inline-block with vertical-align middle for flex-parent centering (#579)', () => {
+    const host = fixture.nativeElement as HTMLElement;
+    const computed = getComputedStyle(host);
+    expect(computed.display).toBe('inline-block');
+    expect(computed.verticalAlign).toBe('middle');
+  });
 });
