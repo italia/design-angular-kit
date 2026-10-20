@@ -120,7 +120,7 @@ export class ItDropdownComponent extends ItAbstractComponent implements AfterVie
    * - outline color → 'primary' (themed icon on transparent background)
    * - no color → 'primary'
    */
-  get expandIconColor(): string {
+  get expandIconColor(): 'primary' | 'light' {
     if (!this.color) {
       return 'primary';
     }
