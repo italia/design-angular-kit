@@ -88,10 +88,16 @@ export class ItCardComponent extends ItAbstractComponent {
   @Input() bodyClass: string = '';
 
   /**
+   * Remove the default padding applied by Bootstrap Italia to the card.
+   * Useful for cards with minimal content (e.g. title + image only) where the
+   * default padding-bottom makes the content appear off-center.
+   * @default false
+   */
+  @Input({ transform: inputToBoolean }) noPadding?: boolean;
+
+  /**
    * Shadow type
    * @default 'sm'
    */
   @Input() shadow: 'sm' | 'lg' | 'normal' | 'none' = 'sm';
-
-  //'button' | 'reset' | 'submit' = 'button';
 }
