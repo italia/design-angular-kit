@@ -11,6 +11,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './chip.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, TranslateModule],
+  host: { style: 'display: inline-block; vertical-align: middle' },
 })
 export class ItChipComponent {
   /**

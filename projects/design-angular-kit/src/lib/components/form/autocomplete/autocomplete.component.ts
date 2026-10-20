@@ -109,6 +109,13 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
     }
   }
 
+  override writeValue(value: string | null | undefined): void {
+    super.writeValue(value);
+    if (!value && this._inputEl) {
+      this.clear();
+    }
+  }
+
   clear() {
     (this._inputEl as HTMLInputElement).value = '';
   }
@@ -149,6 +156,13 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
         this.markAsTouched();
         this._setAndCheck((ev.target as HTMLInputElement).value);
       };
+
+      // Fix aria-labelledby: bootstrap-italia sets it to the input's id,
+      // but it should point to the label element for proper accessible naming
+      if (this.label) {
+        const listbox = this.selectAutocompleteEl?.nativeElement.querySelector('ul[role="listbox"]');
+        listbox?.setAttribute('aria-labelledby', this.id + '-label');
+      }
     }
   }
 

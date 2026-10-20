@@ -84,6 +84,13 @@ describe('ItChipComponent', () => {
     );
     expect(imgElement).toBeTruthy();
   });
+
+  it('should render host as inline-block with vertical-align middle for flex-parent centering (#579)', () => {
+    const host = fixture.nativeElement as HTMLElement;
+    const computed = getComputedStyle(host);
+    expect(computed.display).toBe('inline-block');
+    expect(computed.verticalAlign).toBe('middle');
+  });
 });
 
 // #546 — booleanAttribute coercion tests
