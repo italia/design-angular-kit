@@ -38,7 +38,7 @@
         [placeholder]="placeholder"
         [readonly]="isReadonly"
         [autocomplete]="autocomplete"
-        [attr.aria-describedby]="id + '-description'"
+        [attr.aria-describedby]="description ? id + '-description' : null"
         (blur)="markAsTouched()" />
       <span class="input-group-text align-buttons flex-column">
         <button type="button" class="input-number-add" [disabled]="!control.enabled" (click)="incrementNumber()">
@@ -62,7 +62,7 @@
         [placeholder]="placeholder"
         [readonly]="isReadonly"
         [autocomplete]="autocomplete"
-        [attr.aria-describedby]="id + '-description'"
+        [attr.aria-describedby]="description ? id + '-description' : null"
         (blur)="markAsTouched()" />
     }
 
