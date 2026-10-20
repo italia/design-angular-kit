@@ -1,0 +1,11 @@
+// Reset unwanted margins applied by bootstrap-italia's .chip class.
+// The parent container should control spacing, not the chip itself.
+// Fixes #542.
+.chip {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  &:not(:last-child) {
+    margin-right: 0;
+  }
+}
