@@ -24,6 +24,22 @@
     }
     @if (isSuccess) {
       <p>{{ 'it.form.upload-complete' | translate }}</p>
+      <div class="mt-3">
+        <button
+          type="button"
+          itButton="primary"
+          size="sm"
+          class="me-2"
+          [attr.aria-label]="'it.form.upload-view' | translate"
+          (click)="viewFile()">
+          <it-icon name="password-visible" size="sm"></it-icon>
+          {{ 'it.form.upload-view' | translate }}
+        </button>
+        <button type="button" itButton="outline-primary" size="sm" [attr.aria-label]="'it.form.upload-clear' | translate" (click)="reset()">
+          <it-icon name="close" size="sm"></it-icon>
+          {{ 'it.form.upload-clear' | translate }}
+        </button>
+      </div>
     }
     @if (!isLoading && !isSuccess) {
       <p>
