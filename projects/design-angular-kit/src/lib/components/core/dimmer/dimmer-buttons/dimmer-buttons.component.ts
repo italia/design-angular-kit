@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   selector: 'it-dimmer-buttons',
@@ -12,7 +13,7 @@ export class ItDimmerButtonsComponent {
    * Indica se abbiamo 1 solo bottone
    * @default false
    */
-  @Input() set hasOneButton(value: boolean) {
+  @Input({ transform: inputToBoolean }) set hasOneButton(value: boolean) {
     this._hasOneButton = value;
   }
   get hasOneButton() {
