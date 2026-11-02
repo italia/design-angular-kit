@@ -101,11 +101,18 @@ describe('ItInputComponent — onBlur validation (#588)', () => {
 
   it('should show validation error ONLY after blur (touched)', () => {
     const nameCtrl = hostComponent.form.controls.name;
+    const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
 
-    // Simulate typing + blur
-    nameCtrl.setValue('ab');
-    nameCtrl.markAsDirty();
-    nameCtrl.markAsTouched();
+    input.value = 'ab';
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    expect(nameCtrl.invalid).toBeTrue();
+    expect(nameCtrl.dirty).toBeTrue();
+    expect(nameCtrl.touched).toBeFalse();
+    expect(fixture.nativeElement.querySelector('.is-invalid')).toBeNull();
+
+    input.dispatchEvent(new Event('blur'));
     fixture.detectChanges();
 
     const el: HTMLElement = fixture.nativeElement;
