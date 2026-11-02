@@ -17,13 +17,14 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
 import { NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { IT_ASSET_BASE_PATH } from '../../../interfaces/design-angular-kit-config';
+import { ItButtonDirective } from '../../core/button/button.directive';
 
 @Component({
   selector: 'it-upload-drag-drop',
   templateUrl: './upload-drag-drop.component.html',
   exportAs: 'itUploadDragDrop',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItIconComponent, TranslateModule, NgOptimizedImage],
+  imports: [ItIconComponent, TranslateModule, NgOptimizedImage, ItButtonDirective],
 })
 export class ItUploadDragDropComponent extends ItAbstractComponent implements AfterViewInit {
   /**
@@ -39,6 +40,11 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
    */
   @Output() fileStartUpload = new EventEmitter<File>();
 
+  /**
+   * Fired when filed is removed
+   */
+  @Output() fileRemoved = new EventEmitter<void>();
+
   protected isDragover: boolean = false;
   protected isLoading: boolean = false;
   protected isSuccess: boolean = false;
@@ -50,6 +56,7 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
   protected filename?: string;
   protected extension?: string;
   protected fileSize?: string;
+  protected uploadedFile?: File;
 
   /**
    * The bootstrap-italia asset folder path
@@ -127,6 +134,7 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
     this.filename = splitName[0];
     this.extension = splitName[1]?.toUpperCase();
     this.fileSize = ItFileUtils.getFileSizeString(file);
+    this.uploadedFile = file;
 
     this.fileStartUpload.emit(file);
   }
@@ -157,13 +165,26 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
   }
 
   /**
+   * View the uploaded file in a new browser tab
+   */
+  public viewFile(): void {
+    if (!this.uploadedFile) {
+      return;
+    }
+    const fileURL = URL.createObjectURL(this.uploadedFile);
+    window.open(fileURL, '_blank');
+  }
+
+  /**
    * Reset file uploader
    */
   public reset(): void {
     this.isLoading = false;
     this.isSuccess = false;
-    this.filename = this.extension = this.fileSize = undefined;
+    this.filename = this.extension = this.fileSize = this.uploadedFile = undefined;
     this.donut?.set(0);
     this._changeDetectorRef.detectChanges();
+
+    this.fileRemoved.emit();
   }
 }

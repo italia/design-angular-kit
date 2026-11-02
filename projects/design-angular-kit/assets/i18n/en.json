@@ -85,6 +85,8 @@
       "upload-complete": "Upload completed",
       "upload-or": "or",
       "upload-select-device": "select it from the device",
+      "upload-view": "View",
+      "upload-clear": "Clear",
       "uploaded-file": "File uploaded: {{name}}",
       "delete-file": "Delete file {{name}}"
     },
