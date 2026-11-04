@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SelectControlGroup, SelectControlOption } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-select-group-example',
   templateUrl: './select-group-example.component.html',
   styleUrls: ['./select-group-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class SelectGroupExampleComponent {

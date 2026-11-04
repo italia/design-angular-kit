@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 interface PaginatedData {
   currentPage: number;
@@ -9,6 +9,7 @@ interface PaginatedData {
 @Component({
   selector: 'it-list-pagination',
   templateUrl: './list-pagination.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ListPaginationComponent {

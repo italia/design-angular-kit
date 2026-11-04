@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import TableOfContent from '../assets/table-of-content.json';
-// eslint-disable-next-line
-const { version: appVersion } = require('../../package.json');
+import { version as appVersion } from '../../package.json';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'it-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

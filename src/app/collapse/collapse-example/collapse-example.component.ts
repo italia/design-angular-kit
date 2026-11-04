@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'it-collapse-example',
   templateUrl: './collapse-example.component.html',
   styleUrls: ['./collapse-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class CollapseExampleComponent {

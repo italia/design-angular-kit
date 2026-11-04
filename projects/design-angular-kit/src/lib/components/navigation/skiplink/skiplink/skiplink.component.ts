@@ -2,14 +2,13 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { inputToBoolean } from '../../../../utils/coercion';
-import { ItLinkComponent } from '../../../core/link/link.component';
 
 @Component({
   selector: 'it-skiplink',
   templateUrl: './skiplink.component.html',
   exportAs: 'itSkipLink',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgTemplateOutlet, TranslateModule, ItLinkComponent],
+  imports: [NgTemplateOutlet, TranslateModule],
 })
 export class ItSkiplinkComponent {
   /**

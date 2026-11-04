@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BadgeColor } from '../../../interfaces/core';
@@ -11,6 +11,7 @@ import { ItBadgeDirective } from './badge.directive';
       Testo di esempio <span [itBadge]="selectedColor" [rounded]="isRounded">{{ badgeText }}</span>
     </h5>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class UnitTestComponent {

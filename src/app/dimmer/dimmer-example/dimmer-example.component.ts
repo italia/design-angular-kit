@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IconName, IconSize } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
   selector: 'it-dimmer-example',
   templateUrl: './dimmer-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class DimmerExampleComponent {

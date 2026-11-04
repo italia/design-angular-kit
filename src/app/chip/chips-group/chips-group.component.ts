@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IconName } from 'projects/design-angular-kit/src/public_api';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'it-chips-group',
   templateUrl: './chips-group.component.html',
   standalone: false,
@@ -19,7 +20,7 @@ export class ChipsGroupComponent {
   iconGithub: IconName = 'github';
   size: '' | 'lg' = 'lg';
 
-  close(value: string): void {
+  close(value: keyof ChipsGroupComponent['el']): void {
     this.el[value] = false;
   }
 }

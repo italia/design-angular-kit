@@ -1,14 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ItNotificationService } from 'design-angular-kit/services/notification/notification.service';
 import { NotificationPosition, NotificationType } from 'design-angular-kit/interfaces/core';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'it-notifications-example',
   templateUrl: './notifications-example.component.html',
   standalone: false,
 })
 export class NotificationsExampleComponent {
-  private readonly notificationService = inject(ItNotificationService);
+  private readonly notificationService: ItNotificationService = inject(ItNotificationService);
 
   withText = true;
   type: NotificationType = NotificationType.Standard;
@@ -26,10 +27,11 @@ export class NotificationsExampleComponent {
   private text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...';
 
   showNotification(): void {
+    const message = this.withText ? this.text : undefined;
     this.notificationService.addNotification({
       type: this.type,
       title: 'Titolo Notifica',
-      message: this.withText && this.text,
+      message: message,
       dismissible: this.dismissible && this.dismissible === 'true',
       position: this.position,
       duration: this.duration,

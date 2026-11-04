@@ -1,7 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
-import { ItButtonDirective } from '../../../core/button/button.directive';
 import { inputToBoolean } from '../../../../utils/coercion';
 import { NavBarCollapsible } from 'bootstrap-italia';
 
@@ -9,7 +8,7 @@ import { NavBarCollapsible } from 'bootstrap-italia';
   selector: 'it-navbar',
   templateUrl: './navbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslateModule, ItIconComponent, ItButtonDirective],
+  imports: [TranslateModule, ItIconComponent],
 })
 export class ItNavBarComponent implements AfterViewInit {
   @Input({ transform: inputToBoolean }) megamenu?: boolean;

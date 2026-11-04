@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ItTimelineItemComponent } from './timeline-item/timeline-item.component';
-import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { TimelineElement } from '../../../interfaces/core';
@@ -13,7 +12,7 @@ import { TimelineElement } from '../../../interfaces/core';
   selector: 'it-timeline',
   templateUrl: './timeline.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItIconComponent, TranslateModule, ItTimelineItemComponent],
+  imports: [TranslateModule, ItTimelineItemComponent],
 })
 export class ItTimelineComponent extends ItAbstractComponent {
   /**

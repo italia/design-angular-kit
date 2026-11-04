@@ -28,10 +28,10 @@ import { ItNavBarItemComponent } from '../navbar/navbar-item/navbar-item.compone
 })
 class TestHostComponent {}
 
-@Component({ template: '<p>home</p>' })
+@Component({ changeDetection: ChangeDetectionStrategy.Eager, template: '<p>home</p>' })
 class HomeStubComponent {}
 
-@Component({ template: '<p>about</p>' })
+@Component({ changeDetection: ChangeDetectionStrategy.Eager, template: '<p>about</p>' })
 class AboutStubComponent {}
 
 describe('ItHeaderComponent', () => {

@@ -12,7 +12,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
 import { inputToBoolean } from '../../../utils/coercion';
@@ -26,17 +25,7 @@ import { NavscrollStore } from './navscroll.store';
  */
 @Component({
   selector: 'it-navscroll',
-  imports: [
-    ItNavscrollListItemsComponent,
-    AsyncPipe,
-    NgTemplateOutlet,
-    RouterLink,
-    RouterLinkActive,
-    RouterLinkWithHref,
-    TranslateModule,
-    AsyncPipe,
-    NgClass,
-  ],
+  imports: [ItNavscrollListItemsComponent, AsyncPipe, NgTemplateOutlet, TranslateModule, AsyncPipe, NgClass],
   templateUrl: './navscroll.component.html',
   styleUrl: './navscroll.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

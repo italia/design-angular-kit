@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import Documentation from '../../../assets/documentation.json';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'it-dropdown-index',
   templateUrl: './dropdown-index.component.html',
   styleUrls: ['./dropdown-index.component.scss'],
@@ -12,7 +13,7 @@ export class DropdownIndexComponent {
   subcomponent: any;
 
   constructor() {
-    this.component = (<any>Documentation).components.find(component => component.name === 'ItDropdownComponent');
-    this.subcomponent = (<any>Documentation).components.find(component => component.name === 'ItDropdownItemComponent');
+    this.component = (<any>Documentation).components.find((component: any) => component.name === 'ItDropdownComponent');
+    this.subcomponent = (<any>Documentation).components.find((component: any) => component.name === 'ItDropdownItemComponent');
   }
 }

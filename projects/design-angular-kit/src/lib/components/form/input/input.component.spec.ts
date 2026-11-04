@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { tb_base } from '../../../../test';
   selector: 'it-input-validation-host',
   standalone: true,
   imports: [ReactiveFormsModule, ItInputComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <form [formGroup]="form">
       <it-input formControlName="name" label="Name" validationMode="only-invalid"></it-input>

@@ -1,4 +1,4 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import { EnvironmentProviders, inject, makeEnvironmentProviders, provideAppInitializer, Provider } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideTranslateService, TranslateService } from '@ngx-translate/core';
@@ -24,7 +24,7 @@ export function provideDesignAngularKit(config?: DesignAngularKitConfig): Enviro
       useValue: assetBasePath,
     },
     provideAnimationsAsync(),
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
   ];
 
   if (config?.loadFont !== false) {

@@ -1,11 +1,12 @@
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UploadFileListItem } from 'design-angular-kit/interfaces/form';
 import { catchError, finalize, from, map, of, skipWhile, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'it-upload-file-list-custom-label-example',
   templateUrl: './upload-file-list-custom-label-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class UploadFileListCustomLabelExampleComponent {

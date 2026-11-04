@@ -4,6 +4,9 @@
     "outDir": "../../out-tsc/spec",
     "types": ["jasmine", "node"]
   },
-  "files": ["src/test.ts"],
-  "include": ["**/*.spec.ts", "**/*.d.ts"]
+  "files": [],
+  "include": ["**/*.spec.ts", "**/*.d.ts"],
+  "angularCompilerOptions": {
+    "strictTemplates": false
+  }
 }

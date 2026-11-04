@@ -3,7 +3,10 @@
   "dest": "../../dist/design-angular-kit",
   "deleteDestPath": false,
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "sass": {
+      "silenceDeprecations": ["import"]
+    }
   },
   "assets": ["assets/**/*.json"]
 }

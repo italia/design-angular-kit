@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'it-checkbox-example-group',
   templateUrl: './checkbox-example-group.component.html',
   styleUrls: ['./checkbox-example-group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class CheckboxExampleGroupComponent {

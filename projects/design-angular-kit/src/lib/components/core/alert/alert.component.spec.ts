@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { AlertColor } from '../../../interfaces/core';
 import { ItAlertComponent } from './alert.component';
@@ -8,6 +8,7 @@ import { ItAlertComponent } from './alert.component';
 @Component({
   selector: 'it-unit-test',
   template: ` <it-alert [color]="selectedColor" [dismissible]="isDismissible"> Questo è un alert di tipo "<b>primary</b>". </it-alert> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class UnitTestComponent {
@@ -37,6 +38,7 @@ class UnitTestComponent {
       Contenuto dell'alert.
     </it-alert>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ItAlertComponent],
 })
 class HeadingTestComponent {}

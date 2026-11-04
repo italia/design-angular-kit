@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SearchItem } from 'design-angular-kit/interfaces/form';
 import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'it-search-search-example',
   templateUrl: './search-search-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class SearchSearchExampleComponent {

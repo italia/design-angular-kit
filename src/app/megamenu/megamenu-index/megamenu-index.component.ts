@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import Documentation from '../../../assets/documentation.json';
 
 @Component({
   selector: 'it-megamenu-index',
   templateUrl: './megamenu-index.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class MegamenuIndexComponent {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: any;
 
   constructor() {

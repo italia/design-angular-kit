@@ -1,10 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { interval, map, take } from 'rxjs';
 import { ItUploadDragDropComponent } from 'design-angular-kit/components/form/upload-drag-drop/upload-drag-drop.component';
 
 @Component({
   selector: 'it-upload-drag-drop-example',
   templateUrl: './upload-drag-drop-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class UploadDragDropExampleComponent {

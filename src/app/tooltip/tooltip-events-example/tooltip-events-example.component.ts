@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'it-tooltip-events-example',
   templateUrl: './tooltip-events-example.component.html',
   styleUrls: ['./tooltip-events-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class TooltipEventsExampleComponent {

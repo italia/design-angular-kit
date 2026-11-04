@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { finalize, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'it-table-paginated',
   templateUrl: './table-paginated.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class TablePaginatedComponent implements OnInit {

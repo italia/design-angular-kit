@@ -1,3 +1,25 @@
+## 22.2.1 (2026-10-06)
+
+- upgrade Angular, Angular CLI, ng-packagr and angular-eslint from 21 to 22 (`22.2.x`), and TypeScript to 6
+- migrate every builder from the deprecated Webpack-based `@angular-devkit/build-angular` to `@angular/build`: `application`, `dev-server`, `extract-i18n`, `karma` and `ng-packagr`
+- remove the Protractor e2e project (`e2e/` folder, `e2e` script and `design-angular-kit-bundle-e2e` target), which is deprecated and has no `@angular/build` equivalent
+- drop the `@angular-devkit/build-angular`, `@types/jasminewd2` and `karma-coverage-istanbul-reporter` dependencies and add `@angular/build` explicitly
+- move ESLint to the flat `angular-eslint` presets, since the legacy `plugin:@angular-eslint/*` configs were removed, and use the Angular parser for HTML files in Prettier
+- add explicit type inference in the library and the demo app to fix strict-typing errors such as TS7006
+- fix `CardCtaComponent`, which was standalone by default and could not be declared in `CardModule` (NG6008), by adding `standalone: false`
+- fix the `ItForwardDirective` specs, which never asserted anything, so they now check `scrollIntoView` and `preventDefault` on click
+- remove unused component imports (NG8113) and unused `eslint-disable` directives
+- update the `ng add` schematics for Angular 22: `getPackageVersion` now maps Angular 22 (and newer) to `design-angular-kit@^22.0.0` instead of `^21.0.0`, the fallback `@angular/core` version in `ng-add` is `22.0.0`, and the library `peerDependencies` on `@angular/*` are `^22.0.0`
+- fix the `schematics:test` script, which failed with `ERR_UNSUPPORTED_DIR_IMPORT` because ts-node loaded the specs as ES modules: it now compiles the schematics with `tsc` and runs jasmine on the compiled files
+- make `tsconfig.schematics.json` compile on TypeScript 6 without `ignoreDeprecations`, by dropping `baseUrl` and moving to `module`/`moduleResolution` `node16` (TypeScript 6 deprecations); the output is still CommonJS
+- upgrade `@angular/cdk` to `^22.2.1`
+- update dependencies to fix vulnerabilities (28 down to 12): upgrade `@compodoc/compodoc`, `lint-staged`, `prettier-eslint` and `concurrently`, and override `shell-quote`
+- silence known third-party warnings: the Sass deprecations raised by `bootstrap-italia`, the `@xmldom/xmldom` CommonJS notice and the unsupported `samsung 30` browserslist entry
+- upgraded all libraries to fix the `npm audit` findings with high severity (all come from `braces <=3.0.3`)
+- components that explicitly set `ChangeDetectionStrategy.Eager` were left unchanged, so the `prefer-on-push-component-change-detection` lint warnings remain.
+
+
+
 # [21.2.0](https://github.com/italia/design-angular-kit/compare/v21.1.0...v21.2.0) (2026-04-13)
 
 

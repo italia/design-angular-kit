@@ -10,10 +10,12 @@ import {
   Output,
   Renderer2,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 @Component({
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export abstract class ItAbstractComponent implements AfterViewInit, OnChanges {

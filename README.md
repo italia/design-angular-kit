@@ -65,7 +65,8 @@ Scegli la versione corrispondente alla tua versione Angular:
 
 | Angular | Design Angular kit | Branch | Documentazione                                                                     |
 | ------- | ------------------ | ------ | ---------------------------------------------------------------------------------- |
-| 21+     | v21.0.0 +          | main   | [link](https://italia.github.io/design-angular-kit/design-angular-kit#)            |
+| 22+     | v22.0.0 +          | main   | [link](https://italia.github.io/design-angular-kit/design-angular-kit#)            |
+| 21+     | v21.0.0 +          | v21   | [link](https://design-angular-kit-git-v21-dip-trasformazione-digitale.vercel.app/            |
 | 20+     | v20.0.0 +          | v20   | [link](https://design-angular-kit-git-v20-dip-trasformazione-digitale.vercel.app/)            |
 | 19+     | v19.0.0 +          | v19    | [link](https://design-angular-kit-git-v19-dip-trasformazione-digitale.vercel.app/) |
 
@@ -190,10 +191,10 @@ Configura gli stili richiesti nel file `styles.scss`. Importa la libreria SCSS c
 
 Bootstrap Italia eredita ed estende tutte le variabili di default di Bootstrap, sovrascrivendo
 alcuni valori in fase di compilazione e impostandone di nuovi all’occorenza. Un esempio fra tutti è
-il valore del colore $primary che in Bootstrap Italia è rappresentato dal colore blu #0066CC,
+il valore del colore `$primary` che in Bootstrap Italia è rappresentato dal colore blu `#0066CC`,
 tipico della libreria.
 
-L’utilizzo del blu #0066CC dovrebbe però essere riservato alle amministrazioni centrali dello
+L’utilizzo del blu `#0066CC` dovrebbe però essere riservato alle amministrazioni centrali dello
 Stato, e quindi ci si può trovare nella condizione di dover personalizzare i valori delle variabili
 colore di Bootstrap Italia, impostando nuovi valori per le proprie necessità.
 

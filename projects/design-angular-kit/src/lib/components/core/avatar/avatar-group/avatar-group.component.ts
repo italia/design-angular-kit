@@ -1,5 +1,15 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, ContentChildren, Directive, HostBinding, Input, QueryList, TemplateRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  ContentChildren,
+  Directive,
+  HostBinding,
+  Input,
+  QueryList,
+  TemplateRef,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { inputToBoolean } from '../../../../utils/coercion';
 
 @Directive({
@@ -18,18 +28,19 @@ export class ItAvatarListItemDirective {
 @Component({
   standalone: true,
   selector: 'it-avatar-item',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `<ng-template let-linkListItem="linkList">
     <ng-content></ng-content>
   </ng-template>`,
 })
 export class ItAvatarGroupItemComponent {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;
 }
 
 @Component({
   selector: 'it-avatar-group',
   imports: [NgTemplateOutlet],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ul [class]="linkList ? 'link-list avatar-group' : 'avatar-group-stacked'">
       @for (avatar of avatars; track avatar) {
