@@ -116,25 +116,10 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing",
-              "@angular/localize/init"
-            ],
             "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "codeCoverage": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
+            "runner": "vitest"
           }
         },
         "lint": {
@@ -196,12 +181,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/design-angular-kit/src/test.ts",
-            "tsConfig": "projects/design-angular-kit/tsconfig.spec.json",
-            "karmaConfig": "projects/design-angular-kit/karma.conf.js",
-            "codeCoverage": true
+            "runner": "vitest",
+            "tsConfig": "projects/design-angular-kit/tsconfig.spec.json"
           }
         },
         "lint": {
