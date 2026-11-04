@@ -118,7 +118,7 @@ export class ItPaginationComponent implements OnChanges {
       return [this.currentPage];
     }
 
-    const length = this.pageNumbers > this.visiblePages ? this.visiblePages : this.pageNumbers;
+    const length = Math.min(this.pageNumbers, this.visiblePages);
 
     const halfVisiblePages = Math.floor(this.visiblePages / 2);
     let start = this.currentPage > halfVisiblePages && this.pageNumbers > this.visiblePages ? this.currentPage - halfVisiblePages + 1 : 1;
