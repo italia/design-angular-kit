@@ -2,13 +2,12 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControlName, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { tap } from 'rxjs';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { TransferStore } from './store/transfer.store';
 import { ItTransferListComponent } from './transfer-list/transfer-list.component';
 import { TransferItem } from './transfer.model';
-import { TranslateModule } from '@ngx-translate/core';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 
 /**
@@ -113,29 +112,21 @@ export class ItTransferComponent<T = any> extends ItAbstractFormComponent<T> imp
 
     // if ngControl is defined, take values from it. Input() target will be ignored
     if (isNgControlDefined) {
-      console.debug('ngControl instanceof NgModel:', ngControl instanceof NgModel);
-      console.debug('ngControl instanceof FormControlName:', ngControl instanceof FormControlName);
-
       // if ngControl is an ngModel (template-driven form use case), take values from it
       if (ngControl instanceof NgModel) {
-        console.debug('ngControl instanceof NgModel');
         const model = (ngControl as NgModel).model;
         target = Array.isArray(model) ? model : [];
       }
 
       // if ngControl is an FormControlName (reactive form use case), take values from it
       if (ngControl instanceof FormControlName) {
-        console.debug('ngControl instanceof FormControlName');
         const model = (ngControl as FormControlName).control.value;
         target = Array.isArray(model) ? model : [];
       }
-
-      console.debug('ngControl is defined. Input() target will be ignored');
     } else if (this.selected && Array.isArray(this.selected)) {
       target = [...this.selected];
     }
 
-    console.debug('target:', this.selected, 'formControl:', this.control.value, 'ngModel:', this._ngControl);
     this.store.init({ source: [...this.options], target });
   }
 
