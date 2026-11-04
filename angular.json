@@ -89,6 +89,12 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "test": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "aot": false
             }
           },
           "defaultConfiguration": "production"
@@ -118,8 +124,12 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
+            "buildTarget": "design-angular-kit-bundle:build:test",
             "tsConfig": "src/tsconfig.spec.json",
-            "runner": "vitest"
+            "runner": "vitest",
+            "setupFiles": [
+              "src/test-setup.ts"
+            ]
           }
         },
         "lint": {
@@ -183,8 +193,12 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
+            "buildTarget": "design-angular-kit-bundle:build:test",
+            "tsConfig": "projects/design-angular-kit/tsconfig.spec.json",
             "runner": "vitest",
-            "tsConfig": "projects/design-angular-kit/tsconfig.spec.json"
+            "setupFiles": [
+              "projects/design-angular-kit/src/test-setup.ts"
+            ]
           }
         },
         "lint": {
