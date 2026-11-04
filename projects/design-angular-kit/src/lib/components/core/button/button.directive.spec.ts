@@ -12,7 +12,7 @@ import { ItButtonDirective } from './button.directive';
       {{ label }}
     </button>
   </div>`,
-  standalone: false,
+  imports: [ItButtonDirective],
 })
 class SingleButtonComponent {
   disabled = false;
@@ -28,8 +28,7 @@ class SingleButtonComponent {
 describe('ItButtonDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ItButtonDirective],
-      declarations: [SingleButtonComponent],
+      imports: [FormsModule, ItButtonDirective, SingleButtonComponent],
     });
 
     TestBed.compileComponents();

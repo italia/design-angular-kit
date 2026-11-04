@@ -11,7 +11,7 @@ import { ItBadgeDirective } from './badge.directive';
       Testo di esempio <span [itBadge]="selectedColor" [rounded]="isRounded">{{ badgeText }}</span>
     </h5>
   `,
-  standalone: false,
+  imports: [ItBadgeDirective],
 })
 class UnitTestComponent {
   // Aggiungi questa proprietà mancante
@@ -39,8 +39,7 @@ describe('ItBadgeDirective', () => {
   let fixture: ComponentFixture<UnitTestComponent>;
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent],
-      imports: [ItBadgeDirective],
+      imports: [UnitTestComponent, ItBadgeDirective],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);
