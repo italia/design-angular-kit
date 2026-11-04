@@ -40,7 +40,7 @@ describe('ItProgressBarComponent', () => {
       component.indeterminate = true;
       fixture.detectChanges();
 
-      expect(getProgress().classList.contains('progress-indeterminate')).toBeTrue();
+      expect(getProgress().classList.contains('progress-indeterminate')).toBe(true);
     });
   });
 
@@ -69,7 +69,7 @@ describe('ItProgressBarComponent', () => {
       component.color = undefined;
       fixture.detectChanges();
 
-      expect(getProgress().classList.contains('progress-color')).toBeFalse();
+      expect(getProgress().classList.contains('progress-color')).toBe(false);
       expect(getProgressBar().className).not.toContain('bg-');
     });
 
@@ -77,7 +77,7 @@ describe('ItProgressBarComponent', () => {
       component.color = 'success';
       fixture.detectChanges();
 
-      expect(getProgress().classList.contains('progress-color')).toBeTrue();
+      expect(getProgress().classList.contains('progress-color')).toBe(true);
     });
 
     (['primary', 'success', 'danger', 'warning', 'info'] as const).forEach(color => {
@@ -85,7 +85,7 @@ describe('ItProgressBarComponent', () => {
         component.color = color;
         fixture.detectChanges();
 
-        expect(getProgressBar().classList.contains(`bg-${color}`)).toBeTrue();
+        expect(getProgressBar().classList.contains(`bg-${color}`)).toBe(true);
       });
     });
   });
@@ -129,9 +129,9 @@ describe('ItProgressBarComponent', () => {
 
       const progressBar = getProgressBar();
 
-      expect(progressBar.hasAttribute('aria-valuenow')).toBeFalse();
-      expect(progressBar.hasAttribute('aria-valuemin')).toBeFalse();
-      expect(progressBar.hasAttribute('aria-valuemax')).toBeFalse();
+      expect(progressBar.hasAttribute('aria-valuenow')).toBe(false);
+      expect(progressBar.hasAttribute('aria-valuemin')).toBe(false);
+      expect(progressBar.hasAttribute('aria-valuemax')).toBe(false);
     });
 
     it('should include visually-hidden text when label is shown', () => {
