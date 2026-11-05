@@ -36,7 +36,7 @@ describe('ItNavscrollComponent headerAsAccordion', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       ...tb_base,
-      imports: [...tb_base.imports, AccordionHostComponent],
+      imports: [AccordionHostComponent],
     })
       .overrideComponent(ItNavscrollComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },
@@ -61,12 +61,12 @@ describe('ItNavscrollComponent headerAsAccordion', () => {
   it('should start expanded by default (accordionExpanded=true)', () => {
     const body: HTMLElement = fixture.nativeElement.querySelector('.accordion-collapse');
     expect(body).toBeTruthy();
-    expect(body.classList.contains('show')).toBeTrue();
+    expect(body.classList.contains('show')).toBe(true);
   });
 
   it('should not have collapsed class on button when expanded', () => {
     const btn: HTMLElement = fixture.nativeElement.querySelector('.accordion-button');
-    expect(btn.classList.contains('collapsed')).toBeFalse();
+    expect(btn.classList.contains('collapsed')).toBe(false);
   });
 
   it('should collapse when accordionExpanded is false', () => {
@@ -76,10 +76,10 @@ describe('ItNavscrollComponent headerAsAccordion', () => {
     f2.detectChanges();
 
     const body: HTMLElement = f2.nativeElement.querySelector('.accordion-collapse');
-    expect(body.classList.contains('show')).toBeFalse();
+    expect(body.classList.contains('show')).toBe(false);
 
     const btn: HTMLElement = f2.nativeElement.querySelector('.accordion-button');
-    expect(btn.classList.contains('collapsed')).toBeTrue();
+    expect(btn.classList.contains('collapsed')).toBe(true);
   });
 
   it('should render navscroll list items inside the accordion body', () => {
@@ -108,7 +108,7 @@ describe('ItNavscrollComponent without accordion', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       ...tb_base,
-      imports: [...tb_base.imports, NoAccordionHostComponent],
+      imports: [NoAccordionHostComponent],
     })
       .overrideComponent(ItNavscrollComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },

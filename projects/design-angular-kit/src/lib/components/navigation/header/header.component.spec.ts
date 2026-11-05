@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, provideRouter, RouterLinkActive, RouterLink } from '@angular/router';
 
 import { ItHeaderComponent } from './header.component';
@@ -58,7 +58,7 @@ describe('ItHeaderComponent — active state on navigation (#589)', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       ...tb_base,
-      imports: [...(tb_base.imports ?? []), TestHostComponent],
+      imports: [TestHostComponent],
       providers: [
         ...(tb_base.providers ?? []),
         provideRouter([
@@ -78,38 +78,34 @@ describe('ItHeaderComponent — active state on navigation (#589)', () => {
     return fixture.nativeElement.querySelector(`[data-testid="${testId}"]`);
   }
 
-  it('should apply .active class to the current route link after navigation', fakeAsync(() => {
-    router.navigateByUrl('/home');
-    tick();
+  it('should apply .active class to the current route link after navigation', async () => {
+    await router.navigateByUrl('/home');
     fixture.detectChanges();
 
     const homeLink = getLink('nav-home');
-    expect(homeLink.classList.contains('active')).toBeTrue();
-    expect(getLink('nav-about').classList.contains('active')).toBeFalse();
-  }));
+    expect(homeLink.classList.contains('active')).toBe(true);
+    expect(getLink('nav-about').classList.contains('active')).toBe(false);
+  });
 
-  it('should switch .active class when navigating to another route', fakeAsync(() => {
-    router.navigateByUrl('/home');
-    tick();
+  it('should switch .active class when navigating to another route', async () => {
+    await router.navigateByUrl('/home');
     fixture.detectChanges();
 
-    expect(getLink('nav-home').classList.contains('active')).toBeTrue();
+    expect(getLink('nav-home').classList.contains('active')).toBe(true);
 
-    router.navigateByUrl('/about');
-    tick();
+    await router.navigateByUrl('/about');
     fixture.detectChanges();
 
-    expect(getLink('nav-home').classList.contains('active')).toBeFalse();
-    expect(getLink('nav-about').classList.contains('active')).toBeTrue();
-  }));
+    expect(getLink('nav-home').classList.contains('active')).toBe(false);
+    expect(getLink('nav-about').classList.contains('active')).toBe(true);
+  });
 
-  it('should reflect the active border style on the current route link (repaint verification)', fakeAsync(() => {
-    router.navigateByUrl('/home');
-    tick();
+  it('should reflect the active border style on the current route link (repaint verification)', async () => {
+    await router.navigateByUrl('/home');
     fixture.detectChanges();
 
     const homeLink = getLink('nav-home');
-    expect(homeLink.classList.contains('active')).toBeTrue();
+    expect(homeLink.classList.contains('active')).toBe(true);
 
     // The `.active` class is the hook Bootstrap Italia uses for the
     // active indicator border.  As long as the class is present the
@@ -117,31 +113,27 @@ describe('ItHeaderComponent — active state on navigation (#589)', () => {
     // change-detection + repaint cycle proves issue #589 is fixed.
     expect(homeLink.className).toContain('nav-link');
     expect(homeLink.className).toContain('active');
-  }));
+  });
 
-  it('should handle rapid sequential navigations without losing active state', fakeAsync(() => {
-    router.navigateByUrl('/home');
-    tick();
+  it('should handle rapid sequential navigations without losing active state', async () => {
+    await router.navigateByUrl('/home');
 
-    router.navigateByUrl('/about');
-    tick();
+    await router.navigateByUrl('/about');
 
-    router.navigateByUrl('/home');
-    tick();
+    await router.navigateByUrl('/home');
     fixture.detectChanges();
 
-    expect(getLink('nav-home').classList.contains('active')).toBeTrue();
-    expect(getLink('nav-about').classList.contains('active')).toBeFalse();
-  }));
+    expect(getLink('nav-home').classList.contains('active')).toBe(true);
+    expect(getLink('nav-about').classList.contains('active')).toBe(false);
+  });
 
-  it('should have active class immediately after detectChanges (no interaction required)', fakeAsync(() => {
-    router.navigateByUrl('/about');
-    tick();
+  it('should have active class immediately after detectChanges (no interaction required)', async () => {
+    await router.navigateByUrl('/about');
     fixture.detectChanges();
 
     // This is the core assertion for issue #589: the active class must
     // be present right after CD — before any user interaction.
     const aboutLink = getLink('nav-about');
-    expect(aboutLink.classList.contains('active')).withContext('active class must be present without user interaction').toBeTrue();
-  }));
+    expect(aboutLink.classList.contains('active'), 'active class must be present without user interaction').toBe(true);
+  });
 });
