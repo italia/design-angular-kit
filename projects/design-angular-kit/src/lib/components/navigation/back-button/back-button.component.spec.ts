@@ -17,7 +17,6 @@ describe('ItBackButtonComponent', () => {
 
     fixture = TestBed.createComponent(ItBackButtonComponent);
     component = fixture.componentInstance;
-    //fixture.detectChanges();
   });
 
   it('deve crearsi', () => {
@@ -60,7 +59,7 @@ describe('ItBackButtonComponent', () => {
   });
 
   it('il click deve triggerare il location.back() se bottone', () => {
-    spyOn(component._location, 'back').and.returnValue();
+    vi.spyOn(component._location, 'back').mockImplementation(() => undefined);
     fixture.detectChanges();
     const buttonElement = fixture.debugElement.query(By.css('button'));
     buttonElement.nativeElement.click();
@@ -68,7 +67,7 @@ describe('ItBackButtonComponent', () => {
   });
 
   it('il click deve triggerare il location.back() se link', () => {
-    spyOn(component._location, 'back').and.returnValue();
+    vi.spyOn(component._location, 'back').mockImplementation(() => undefined);
     component.buttonStyle = 'link';
     fixture.detectChanges();
     const aElement = fixture.debugElement.query(By.css('a'));
@@ -82,7 +81,7 @@ describe('ItBackButtonComponent', () => {
     component.backFn = () => {};
     component.buttonStyle = 'link';
     fixture.detectChanges();
-    spyOn(component, 'backFn');
+    vi.spyOn(component, 'backFn');
     const aElement = fixture.debugElement.query(By.css('a'));
     aElement.nativeElement.removeAttribute('href');
     fixture.detectChanges();
