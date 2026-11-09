@@ -10,13 +10,12 @@ import { RouterLink } from '@angular/router';
   imports: [NgTemplateOutlet],
 })
 export class ItAvatarDropdownItemComponent {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;
 
   /**
    * Indica il link che possiamo passare all'elemento
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   @Input() link: string | any[] | null | undefined;
 
   /**
