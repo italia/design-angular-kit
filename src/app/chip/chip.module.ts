@@ -10,6 +10,7 @@ import { ChipsColorsComponent } from './chips-colors/chips-colors.component';
 import { ChipsDisabledComponent } from './chips-disabled/chips-disabled.component';
 import { ChipsGroupComponent } from './chips-group/chips-group.component';
 import { ChipsExampleComponent } from './chips-example/chips-example.component';
+import { ChipsLinkComponent } from './chips-link/chips-link.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, FormsModule, ChipRoutingModule],
@@ -20,6 +21,7 @@ import { ChipsExampleComponent } from './chips-example/chips-example.component';
     ChipsDisabledComponent,
     ChipsGroupComponent,
     ChipsExampleComponent,
+    ChipsLinkComponent,
   ],
 })
 export class ChipModule {}
