@@ -4,21 +4,21 @@
 <div class="bd-example">
   <button type="button" itButton="primary" class="me-2" (click)="listModal.toggle()">Lancia modale con list</button>
 
-  <it-modal #listModal="itModal" closeButton="false" dialogLinkList="true">
+  <it-modal #listModal="itModal" closeButton="false" dialogLinkList>
     <ng-container modalTitle>
       <span>1.</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
     </ng-container>
 
-    <it-list linkList="true">
-      <it-list-item iconLeft="true" href="#" externalLink="true" (click)="listModal.hide()">
+    <it-list linkList>
+      <it-list-item iconLeft href="#" externalLink (click)="listModal.hide()">
         <it-icon name="chevron-right" color="primary"></it-icon>
         <span>Link lista 1</span>
       </it-list-item>
-      <it-list-item iconLeft="true" href="#" externalLink="true" (click)="listModal.hide()">
+      <it-list-item iconLeft href="#" externalLink (click)="listModal.hide()">
         <it-icon name="chevron-right" color="primary"></it-icon>
         <span>Link lista 2</span>
       </it-list-item>
-      <it-list-item iconLeft="true" href="#" externalLink="true" (click)="listModal.hide()">
+      <it-list-item iconLeft href="#" externalLink (click)="listModal.hide()">
         <it-icon name="chevron-right" color="primary"></it-icon>
         <span>Link lista 3</span>
       </it-list-item>

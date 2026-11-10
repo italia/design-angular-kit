@@ -15,13 +15,13 @@
 
       <ng-container list>
         @if (withHeading) {
-          <it-dropdown-item divider="true"></it-dropdown-item>
+          <it-dropdown-item divider></it-dropdown-item>
         }
 
         @for (item of items; track item) {
           <it-dropdown-item
             [href]="item.link"
-            externalLink="true"
+            externalLink
             [active]="item.active"
             [disabled]="item.disabled"
             [large]="item.large"

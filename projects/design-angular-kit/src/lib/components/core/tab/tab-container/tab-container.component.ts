@@ -10,6 +10,7 @@ import {
   Output,
   QueryList,
   ViewChildren,
+  booleanAttribute,
 } from '@angular/core';
 import { ItTabItemComponent } from '../tab-item/tab-item.component';
 import { of, startWith, Subscription, switchMap, tap } from 'rxjs';
@@ -17,7 +18,6 @@ import { Tab } from 'bootstrap-italia';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { NgTemplateOutlet } from '@angular/common';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   selector: 'it-tab-container',
@@ -30,37 +30,37 @@ export class ItTabContainerComponent extends ItAbstractComponent implements OnDe
    * Tabs automatically occupy the entire available width
    * @default false
    */
-  @Input({ transform: inputToBoolean }) auto?: boolean;
+  @Input({ transform: booleanAttribute }) auto?: boolean;
 
   /**
    * To obtain the correct margin between text and icon in the horizontally developed tab
    */
-  @Input({ transform: inputToBoolean }) iconText?: boolean;
+  @Input({ transform: booleanAttribute }) iconText?: boolean;
 
   /**
    * Dark style
    */
-  @Input({ transform: inputToBoolean }) dark?: boolean;
+  @Input({ transform: booleanAttribute }) dark?: boolean;
 
   /**
    * Show items as cards
    */
-  @Input({ transform: inputToBoolean }) cards?: boolean;
+  @Input({ transform: booleanAttribute }) cards?: boolean;
 
   /**
    * Show vertical navigation
    */
-  @Input({ transform: inputToBoolean }) vertical?: boolean;
+  @Input({ transform: booleanAttribute }) vertical?: boolean;
 
   /**
    * The tab position
    */
-  @Input({ transform: inputToBoolean }) inverted?: boolean;
+  @Input({ transform: booleanAttribute }) inverted?: boolean;
 
   /**
    * If tabs are editable
    */
-  @Input({ transform: inputToBoolean }) editable?: boolean;
+  @Input({ transform: booleanAttribute }) editable?: boolean;
 
   /**
    * The tab items

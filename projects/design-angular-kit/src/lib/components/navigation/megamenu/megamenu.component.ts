@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-megamenu',
@@ -19,11 +18,11 @@ export class ItMegamenuComponent {
    * To show Megamenu header
    * @default false
    */
-  @Input({ transform: inputToBoolean }) header?: boolean;
+  @Input({ transform: booleanAttribute }) header?: boolean;
 
   /**
    * To show Megamenu footer
    * @default false
    */
-  @Input({ transform: inputToBoolean }) footer?: boolean;
+  @Input({ transform: booleanAttribute }) footer?: boolean;
 }

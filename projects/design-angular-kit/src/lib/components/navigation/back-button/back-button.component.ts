@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject, booleanAttribute } from '@angular/core';
 import { Location, NgTemplateOutlet } from '@angular/common';
 import { ItButtonDirective } from '../../core/button/button.directive';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-back-button',
@@ -35,13 +34,13 @@ export class ItBackButtonComponent {
    * Show/Hide icon
    * @default true
    */
-  @Input({ transform: inputToBoolean }) showIcon: boolean = true;
+  @Input({ transform: booleanAttribute }) showIcon: boolean = true;
 
   /**
    * Show/Hide text
    * @default true
    */
-  @Input({ transform: inputToBoolean }) showText: boolean = true;
+  @Input({ transform: booleanAttribute }) showText: boolean = true;
 
   /**
    * Custom back logic <br/>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, inject, booleanAttribute } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ItNotificationService } from '../../../services/notification/notification.service';
 import { Notification, NotificationPosition, NotificationType } from '../../../interfaces/core';
@@ -6,7 +6,6 @@ import { Notification as BSNotification } from 'bootstrap-italia';
 import { IconName } from '../../../interfaces/icon';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-notifications',
@@ -34,7 +33,7 @@ export class ItNotificationsComponent implements OnDestroy {
    * Default notifications is dismissible
    * @default true
    */
-  @Input({ transform: inputToBoolean }) dismissible: boolean = true;
+  @Input({ transform: booleanAttribute }) dismissible: boolean = true;
 
   private subscription: Subscription;
   private notificationCount: number = 0;

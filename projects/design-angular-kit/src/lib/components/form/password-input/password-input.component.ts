@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild, booleanAttribute } from '@angular/core';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { ItValidators } from '../../../validators/it-validators';
 import { map, Observable } from 'rxjs';
@@ -7,7 +7,6 @@ import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { ItIconComponent } from '../../utils/icon/icon.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-password-input',
@@ -70,13 +69,13 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
    * Enable to show the strength meter
    * @default false
    */
-  @Input({ transform: inputToBoolean }) showStrengthMeter?: boolean;
+  @Input({ transform: booleanAttribute }) showStrengthMeter?: boolean;
 
   /**
    * Is the confirmation password field
    * @default false
    */
-  @Input({ transform: inputToBoolean }) confirmPasswordField?: boolean;
+  @Input({ transform: booleanAttribute }) confirmPasswordField?: boolean;
 
   /**
    * Input autocomplete attribute (Browser autocomplete)

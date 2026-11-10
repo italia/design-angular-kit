@@ -27,6 +27,6 @@ export class ItSteppersItemComponent extends ItAbstractComponent {
   /**
    * The content of step
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   @ViewChild(TemplateRef) public htmlContent!: TemplateRef<any>;
 }

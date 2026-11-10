@@ -1,8 +1,7 @@
-import { Component, DoCheck, Input, OnInit, inject } from '@angular/core';
+import { Component, DoCheck, Input, OnInit, inject, booleanAttribute } from '@angular/core';
 import { ControlContainer, ControlValueAccessor, FormControl, FormGroup, NgControl, ValidatorFn } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { inputToBoolean } from '../utils/coercion';
 import { ItAbstractComponent } from './abstract.component';
 
 @Component({
@@ -32,7 +31,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
   /**
    * Set the disabled state
    */
-  @Input({ transform: inputToBoolean }) set disabled(isDisabled: boolean) {
+  @Input({ transform: booleanAttribute }) set disabled(isDisabled: boolean) {
     this.setDisabledState(isDisabled);
   }
 

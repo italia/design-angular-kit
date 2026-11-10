@@ -1,7 +1,16 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  booleanAttribute,
+} from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Collapse } from 'bootstrap-italia';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   selector: 'it-collapse',
@@ -15,13 +24,13 @@ export class ItCollapseComponent extends ItAbstractComponent implements AfterVie
    * Enable multiple collapse
    * @default false
    */
-  @Input({ transform: inputToBoolean }) multi?: boolean;
+  @Input({ transform: booleanAttribute }) multi?: boolean;
 
   /**
    * Toggles the collapsible element on invocation
    * @default false
    */
-  @Input({ transform: inputToBoolean }) opened?: boolean;
+  @Input({ transform: booleanAttribute }) opened?: boolean;
 
   /**
    * Custom class

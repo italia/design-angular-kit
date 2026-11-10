@@ -10,13 +10,13 @@ import {
   QueryList,
   ViewChild,
   inject,
+  booleanAttribute,
 } from '@angular/core';
 import { CarouselType } from '../../../../interfaces/core';
 import { ItCarouselItemComponent } from '../carousel-item/carousel-item.component';
 import { Carousel } from 'bootstrap-italia';
 import { startWith, Subscription } from 'rxjs';
 import { NgTemplateOutlet } from '@angular/common';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 /**
  * Carousel
@@ -54,25 +54,25 @@ export class ItCarouselComponent implements AfterViewInit, OnDestroy {
    * True for full screen (landscape) viewing
    * @default false
    */
-  @Input({ transform: inputToBoolean }) fullCarousel?: boolean;
+  @Input({ transform: booleanAttribute }) fullCarousel?: boolean;
 
   /**
    * To indicate that the contained image is of a large type
    * @default false
    */
-  @Input({ transform: inputToBoolean }) bigImg?: boolean;
+  @Input({ transform: booleanAttribute }) bigImg?: boolean;
 
   /**
    * To indicate that the contained image is of a standard type
    * @default false
    */
-  @Input({ transform: inputToBoolean }) standardImage?: boolean;
+  @Input({ transform: booleanAttribute }) standardImage?: boolean;
 
   /**
    * Card line style
    * @default false
    */
-  @Input({ transform: inputToBoolean }) lined?: boolean;
+  @Input({ transform: booleanAttribute }) lined?: boolean;
 
   @ContentChildren(ItCarouselItemComponent) protected items?: QueryList<ItCarouselItemComponent>;
 
