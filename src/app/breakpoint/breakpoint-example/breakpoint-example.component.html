@@ -1,0 +1,29 @@
+<h4>Breakpoint corrente</h4>
+<div class="row mb-3">
+  <div class="col-12 col-md-6">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>currentBreakpoint()</th>
+          <td>
+            <strong>{{ currentBreakpoint() }}</strong>
+          </td>
+        </tr>
+        <tr>
+          <th>currentMinWidth()</th>
+          <td>{{ currentMinWidth() }}px</td>
+        </tr>
+        <tr>
+          <th>isAbove('lg')</th>
+          <td>{{ isDesktop() }}</td>
+        </tr>
+        <tr>
+          <th>isBelow('md')</th>
+          <td>{{ isMobile() }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<p>Ridimensiona la finestra del browser per vedere i valori aggiornarsi in tempo reale.</p>
