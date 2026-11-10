@@ -7,6 +7,7 @@ import { DropdownExampleComponent } from './dropdown-example/dropdown-example.co
 import { DropdownExamplesComponent } from './dropdown-examples/dropdown-examples.component';
 import { DropdownHostAttributeComponent } from './dropdown-host-attribute/dropdown-host-attribute.component';
 import { DropdownIndexComponent } from './dropdown-index/dropdown-index.component';
+import { DropdownItemClassExampleComponent } from './dropdown-item-class/dropdown-item-class.component';
 import { DropdownLinkExampleComponent } from './dropdown-link-example/dropdown-link-example.component';
 import { DropdownRoutingModule } from './dropdown-routing.module';
 
@@ -18,6 +19,7 @@ import { DropdownRoutingModule } from './dropdown-routing.module';
     DropdownIndexComponent,
     DropdownLinkExampleComponent,
     DropdownHostAttributeComponent,
+    DropdownItemClassExampleComponent,
   ],
 })
 export class DropdownModule {}
