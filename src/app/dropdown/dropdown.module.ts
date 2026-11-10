@@ -8,6 +8,7 @@ import { DropdownExamplesComponent } from './dropdown-examples/dropdown-examples
 import { DropdownHostAttributeComponent } from './dropdown-host-attribute/dropdown-host-attribute.component';
 import { DropdownIndexComponent } from './dropdown-index/dropdown-index.component';
 import { DropdownLinkExampleComponent } from './dropdown-link-example/dropdown-link-example.component';
+import { DropdownNoMenuExampleComponent } from './dropdown-no-menu-example/dropdown-no-menu-example.component';
 import { DropdownRoutingModule } from './dropdown-routing.module';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { DropdownRoutingModule } from './dropdown-routing.module';
     DropdownIndexComponent,
     DropdownLinkExampleComponent,
     DropdownHostAttributeComponent,
+    DropdownNoMenuExampleComponent,
   ],
 })
 export class DropdownModule {}
