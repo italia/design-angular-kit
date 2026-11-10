@@ -35,3 +35,15 @@
 <it-dropdown-host-attribute></it-dropdown-host-attribute>
 
 <it-source-display html="{$ sanitize(htmlHostAttribute) $}" typescript="{$ sanitize(typescriptHostAttribute) $}"></it-source-display>
+
+{% set htmlOutlined %}
+  {% include "../dropdown-outlined-example/dropdown-outlined-example.component.html" %}
+{% endset %}
+
+{% set typescriptOutlined %}
+  {% include "../dropdown-outlined-example/dropdown-outlined-example.component.ts" %}
+{% endset %}
+
+<it-dropdown-outlined-example></it-dropdown-outlined-example>
+
+<it-source-display html="{$ sanitize(htmlOutlined) $}" typescript="{$ sanitize(typescriptOutlined) $}"></it-source-display>
