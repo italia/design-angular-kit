@@ -76,3 +76,16 @@
 <it-pagination-total-number-example></it-pagination-total-number-example>
 
 <it-source-display html="{$ sanitize(htmlTotalNumber) $}" typescript="{$ sanitize(typescriptTotalNumber) $}"></it-source-display>
+
+
+{% set htmlNgmodel %}
+  {% include "../pagination-ngmodel-example/pagination-ngmodel-example.component.html" %}
+{% endset %}
+
+{% set typescriptNgmodel %}
+  {% include "../pagination-ngmodel-example/pagination-ngmodel-example.component.ts" %}
+{% endset %}
+
+<it-pagination-ngmodel-example></it-pagination-ngmodel-example>
+
+<it-source-display html="{$ sanitize(htmlNgmodel) $}" typescript="{$ sanitize(typescriptNgmodel) $}"></it-source-display>
