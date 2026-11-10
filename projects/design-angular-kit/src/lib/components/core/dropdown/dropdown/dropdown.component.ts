@@ -30,7 +30,22 @@ import { inputToBoolean } from '../../../../utils/coercion';
 })
 export class ItDropdownComponent extends ItAbstractComponent implements AfterViewInit, OnChanges {
   /**
-   * Dropdown mode
+   * Controls the rendering mode of the dropdown trigger element.
+   *
+   * - `'button'` (default): renders a `<button>` element styled with Bootstrap Italia button classes.
+   *   Supports the `[color]` input for contextual coloring (primary, secondary, danger, etc.).
+   *
+   * - `'link'`: renders an `<a>` element styled as a link-button (`btn btn-dropdown dropdown-toggle`).
+   *   Useful when the dropdown should look like a hyperlink rather than a button.
+   *
+   * - `'nav'`: renders an `<a>` element with the `nav-link` class and adds `nav-item` to the wrapper.
+   *   Designed for use inside navigation bars and headers (`<it-header>`).
+   *   This mode is also propagated to child `<it-dropdown-item>` components, which receive
+   *   the additional `nav-link` CSS class on their inner link.
+   *
+   * The mode is automatically propagated to all child `ItDropdownItemComponent` instances.
+   *
+   * @default 'button'
    */
   @Input() mode: 'button' | 'link' | 'nav' = 'button';
 

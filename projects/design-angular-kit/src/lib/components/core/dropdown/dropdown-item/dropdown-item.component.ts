@@ -45,7 +45,21 @@ export class ItDropdownItemComponent extends ItLinkComponent implements OnInit {
   @Input() iconPosition: 'left' | 'right' = 'right';
 
   /**
-   * Dropdown mode
+   * Controls the CSS class applied to the inner link element of this dropdown item.
+   *
+   * - `'button'` (default): the item is styled as a standard dropdown entry (`dropdown-item` or `active`).
+   *
+   * - `'link'`: same visual as `'button'`; no additional CSS class is added.
+   *   Use when the parent `<it-dropdown>` is in link mode.
+   *
+   * - `'nav'`: adds the `nav-link` class to the inner link, making the item suitable
+   *   for navigation bars and headers. Typically set automatically by the parent
+   *   `<it-dropdown>` when its own `mode` is `'nav'`.
+   *
+   * **Note:** you rarely need to set this manually — the parent `<it-dropdown>` component
+   * propagates its `mode` to all child items automatically.
+   *
+   * @default 'button'
    */
   @Input() mode?: 'button' | 'link' | 'nav' = 'button';
 
