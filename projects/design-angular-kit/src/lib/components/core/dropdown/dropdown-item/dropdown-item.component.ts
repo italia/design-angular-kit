@@ -40,9 +40,23 @@ export class ItDropdownItemComponent extends ItLinkComponent implements OnInit {
 
   /**
    * The icon position
-   * @default right
+   * When undefined, inherits from the parent it-dropdown; falls back to 'right'.
    */
-  @Input() iconPosition: 'left' | 'right' = 'right';
+  @Input() iconPosition: 'left' | 'right' | undefined;
+
+  /**
+   * The resolved icon position: explicit value → parent-inherited value → 'right'.
+   */
+  get resolvedIconPosition(): 'left' | 'right' {
+    return this.iconPosition ?? this._inheritedIconPosition ?? 'right';
+  }
+
+  /**
+   * Icon position inherited from the parent it-dropdown.
+   * Set by ItDropdownComponent via ContentChildren.
+   * @internal
+   */
+  _inheritedIconPosition: 'left' | 'right' | undefined;
 
   /**
    * Dropdown mode
@@ -70,7 +84,7 @@ export class ItDropdownItemComponent extends ItLinkComponent implements OnInit {
       linkClass += ' large';
     }
     if (this.iconName) {
-      linkClass += ` ${this.iconPosition === 'right' ? 'right-icon' : 'left-icon'}`;
+      linkClass += ` ${this.resolvedIconPosition === 'right' ? 'right-icon' : 'left-icon'}`;
     }
 
     return linkClass;
@@ -89,6 +103,13 @@ export class ItDropdownItemComponent extends ItLinkComponent implements OnInit {
   setDark(dark: boolean): void {
     if (this.isDark !== dark) {
       this.isDark = dark;
+      this._changeDetectorRef.detectChanges();
+    }
+  }
+
+  setInheritedIconPosition(position: 'left' | 'right'): void {
+    if (this._inheritedIconPosition !== position) {
+      this._inheritedIconPosition = position;
       this._changeDetectorRef.detectChanges();
     }
   }

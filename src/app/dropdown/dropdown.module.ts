@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DropdownExampleComponent } from './dropdown-example/dropdown-example.component';
 import { DropdownExamplesComponent } from './dropdown-examples/dropdown-examples.component';
 import { DropdownHostAttributeComponent } from './dropdown-host-attribute/dropdown-host-attribute.component';
+import { DropdownIconPositionExampleComponent } from './dropdown-icon-position-example/dropdown-icon-position-example.component';
 import { DropdownIndexComponent } from './dropdown-index/dropdown-index.component';
 import { DropdownLinkExampleComponent } from './dropdown-link-example/dropdown-link-example.component';
 import { DropdownRoutingModule } from './dropdown-routing.module';
@@ -18,6 +19,7 @@ import { DropdownRoutingModule } from './dropdown-routing.module';
     DropdownIndexComponent,
     DropdownLinkExampleComponent,
     DropdownHostAttributeComponent,
+    DropdownIconPositionExampleComponent,
   ],
 })
 export class DropdownModule {}
