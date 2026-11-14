@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RouterDispatcherComponent } from './router-dispatcher.component';
 
@@ -6,11 +6,11 @@ describe('RouterDispatcherComponent', () => {
   let component: RouterDispatcherComponent;
   let fixture: ComponentFixture<RouterDispatcherComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [RouterDispatcherComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RouterDispatcherComponent);

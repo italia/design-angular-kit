@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { tb_base } from '../../../../test';
@@ -9,7 +8,7 @@ import { ItSpinnerComponent } from './spinner.component';
 @Component({
   selector: 'it-unit-test',
   template: ` <it-spinner [active]="active" [small]="small"></it-spinner> `,
-  standalone: false,
+  imports: [ItSpinnerComponent],
 })
 class UnitTestComponent {
   @Input({ transform: inputToBoolean }) set active(value: boolean | undefined) {
@@ -35,35 +34,33 @@ let fixture: ComponentFixture<UnitTestComponent>;
 describe('ItSpinnerComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent],
-      imports: [ItSpinnerComponent],
+      imports: [UnitTestComponent, ItSpinnerComponent],
       providers: tb_base.providers,
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Dovrebbe avere spinner active', () => {
+  it('Spinner should be active', () => {
     component.active = true;
     fixture.detectChanges();
     const spanElement = fixture.debugElement.query(By.css('div.progress-spinner.progress-spinner-active'));
     expect(spanElement).toBeTruthy();
   });
 
-  it('Dovrebbe avere spinner non active', () => {
+  it('Spinner should not be active', () => {
     component.active = false;
     fixture.detectChanges();
     const spanElement = fixture.debugElement.query(By.css('div.progress-spinner'));
     expect(spanElement).toBeTruthy();
   });
 
-  it('Dovrebbe avere spinner small non active', () => {
+  it('Spinner should have small size and not be active', () => {
     component.active = false;
     component.small = true;
     fixture.detectChanges();
@@ -71,7 +68,7 @@ describe('ItSpinnerComponent', () => {
     expect(spanElement).toBeTruthy();
   });
 
-  it('Dovrebbe avere spinner small active', () => {
+  it('Spinner should have small size and be active', () => {
     component.active = true;
     component.small = true;
     fixture.detectChanges();

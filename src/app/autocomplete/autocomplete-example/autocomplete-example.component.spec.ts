@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AutocompleteExampleComponent } from './autocomplete-example.component';
 
@@ -6,11 +6,11 @@ describe('AutocompleteExampleComponent', () => {
   let component: AutocompleteExampleComponent;
   let fixture: ComponentFixture<AutocompleteExampleComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [AutocompleteExampleComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AutocompleteExampleComponent);

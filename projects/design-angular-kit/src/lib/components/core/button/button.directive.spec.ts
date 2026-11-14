@@ -5,14 +5,14 @@ import { By } from '@angular/platform-browser';
 import { ButtonColor } from '../../../interfaces/core';
 import { ItButtonDirective } from './button.directive';
 
-/** Componente per testare una singola button. */
+/** Componente per testare ItButtonDirective con un singolo bottone. */
 @Component({
   template: ` <div>
     <button [disabled]="disabled" [itButton]="color" (click)="onClick()">
       {{ label }}
     </button>
   </div>`,
-  standalone: false,
+  imports: [ItButtonDirective],
 })
 class SingleButtonComponent {
   disabled = false;
@@ -28,8 +28,7 @@ class SingleButtonComponent {
 describe('ItButtonDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ItButtonDirective],
-      declarations: [SingleButtonComponent],
+      imports: [FormsModule, ItButtonDirective, SingleButtonComponent],
     });
 
     TestBed.compileComponents();
@@ -44,8 +43,6 @@ describe('ItButtonDirective', () => {
 
     beforeEach(() => {
       fixture = TestBed.createComponent(SingleButtonComponent);
-      // fixture.detectChanges();
-
       buttonDebugElement = fixture.debugElement.query(By.directive(ItButtonDirective));
       buttonNativeElement = buttonDebugElement.nativeElement;
       buttonInstance = buttonDebugElement.componentInstance;
@@ -57,8 +54,6 @@ describe('ItButtonDirective', () => {
       expect(buttonInstance.disabled).toBe(false);
 
       testComponent.disabled = true;
-      // fixture.detectChanges();
-
       expect(buttonInstance.disabled).toBe(true);
 
       testComponent.disabled = false;

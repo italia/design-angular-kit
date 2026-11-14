@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormInputIconExampleComponent } from './form-input-icon.component';
 
@@ -6,11 +6,11 @@ describe('FormInputIconExampleComponent', () => {
   let component: FormInputIconExampleComponent;
   let fixture: ComponentFixture<FormInputIconExampleComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [FormInputIconExampleComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FormInputIconExampleComponent);

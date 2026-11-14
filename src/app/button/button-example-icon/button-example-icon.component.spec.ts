@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonExampleIconComponent } from './button-example-icon.component';
 
@@ -6,11 +6,11 @@ describe('ButtonExampleInteractiveComponent', () => {
   let component: ButtonExampleIconComponent;
   let fixture: ComponentFixture<ButtonExampleIconComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ButtonExampleIconComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ButtonExampleIconComponent);

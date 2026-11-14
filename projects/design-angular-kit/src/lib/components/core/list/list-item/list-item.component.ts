@@ -11,7 +11,7 @@ import { ItLinkComponent } from '../../link/link.component';
   imports: [NgTemplateOutlet, ItLinkComponent],
 })
 export class ItListItemComponent extends ItLinkComponent implements OnInit {
-  private elRef = inject(ElementRef);
+  private readonly elRef = inject(ElementRef);
   protected isHostElement = false;
   /**
    * Add active class
@@ -43,12 +43,14 @@ export class ItListItemComponent extends ItLinkComponent implements OnInit {
    */
   @Input()
   get avatar(): URL | undefined {
-    console.warn(
-      `L'input 'avatar' è deprecato. Usa la documentazione del component Avatar per questo caso d'uso, facendo riferimento all'esempio Avatar con lista. Sarà rimosso nelle prossime versioni.`
-    );
     return this._avatar;
   }
   set avatar(value: URL | undefined) {
+    if (value !== undefined) {
+      console.warn(
+        `L'input 'avatar' è deprecato. Usa la documentazione del component Avatar per questo caso d'uso, facendo riferimento all'esempio Avatar con lista. Sarà rimosso nelle prossime versioni.`
+      );
+    }
     this._avatar = value;
   }
 
@@ -58,7 +60,7 @@ export class ItListItemComponent extends ItLinkComponent implements OnInit {
   @Input() image: URL | undefined;
 
   get itemClass(): string {
-    const inSidebar: boolean = this.elRef.nativeElement.closest('.sidebar-linklist-wrapper') ? true : false;
+    const inSidebar = !!this.elRef.nativeElement.closest('.sidebar-linklist-wrapper');
     let itemClass = 'list-item';
     if (this.disabled) {
       itemClass += ` disabled`;

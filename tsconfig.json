@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "importHelpers": true,
     "module": "es2020",
     "outDir": "./dist/out-tsc",
@@ -13,8 +12,16 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "target": "ES2022",
+    "paths": {
+      "src/*": ["./src/*"],
+      "projects/*": ["./projects/*"]
+    },
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "node_modules"
+    ],
+    "types": [
+      "vitest/globals"
     ],
     "useDefineForClassFields": false
   }

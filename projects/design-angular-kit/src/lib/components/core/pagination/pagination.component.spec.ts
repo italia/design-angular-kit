@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ItPaginationComponent } from './pagination.component';
 import { tb_base } from '../../../../test';
 
@@ -30,7 +29,7 @@ describe('ItPaginationComponent', () => {
     if (dropdownUl) {
       const directChildren = Array.from(dropdownUl.children) as HTMLElement[];
       const nonLiChildren = directChildren.filter((el: HTMLElement) => el.tagName.toLowerCase() !== 'li');
-      expect(nonLiChildren.length).toBe(0, 'All direct children of <ul> must be <li> elements');
+      expect(nonLiChildren, 'All direct children of <ul> must be <li> elements').toHaveLength(0);
     }
   });
 });

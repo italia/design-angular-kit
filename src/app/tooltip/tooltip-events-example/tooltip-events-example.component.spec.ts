@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TooltipEventsExampleComponent } from './tooltip-events-example.component';
 
@@ -6,11 +6,11 @@ describe('TooltipEventsExampleComponent', () => {
   let component: TooltipEventsExampleComponent;
   let fixture: ComponentFixture<TooltipEventsExampleComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [TooltipEventsExampleComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TooltipEventsExampleComponent);

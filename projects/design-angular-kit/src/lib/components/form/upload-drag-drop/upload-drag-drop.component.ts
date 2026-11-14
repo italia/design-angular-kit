@@ -41,7 +41,7 @@ export class ItUploadDragDropComponent extends ItAbstractComponent implements Af
   @Output() fileStartUpload = new EventEmitter<File>();
 
   /**
-   * Fired when filed is removed
+   * Fired when the uploaded file is removed (e.g. via the "Clear" button or by calling `reset()`)
    */
   @Output() fileRemoved = new EventEmitter<void>();
 
