@@ -124,9 +124,7 @@ export abstract class ItAbstractFormComponent<T = any> extends ItAbstractCompone
    * Mark the control as touched
    */
   markAsTouched(): void {
-    if (!this.control.touched) {
-      this.onTouched();
-    }
+    this.onTouched();
   }
 
   /**

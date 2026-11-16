@@ -85,6 +85,8 @@
       "upload-complete": "Caricamento completato",
       "upload-or": "oppure",
       "upload-select-device": "selezionalo dal dispositivo",
+      "upload-view": "Visualizza",
+      "upload-clear": "Svuota",
       "uploaded-file": "File caricato: {{name}}",
       "delete-file": "Elimina file {{name}}"
     },
