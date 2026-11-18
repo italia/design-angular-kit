@@ -1,9 +1,8 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, booleanAttribute } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { forkJoin, take, tap } from 'rxjs';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { UploadFileListItem } from '../../../interfaces/form';
-import { inputToBoolean } from '../../../utils/coercion';
 import { ItFileUtils } from '../../../utils/file-utils';
 import { ItProgressBarComponent } from '../../core/progress-bar/progress-bar.component';
 import { ItTooltipDirective } from '../../core/tooltip/tooltip.directive';
@@ -37,19 +36,19 @@ export class ItUploadFileListComponent extends ItAbstractComponent implements On
    * If upload multiple files
    * @default true
    */
-  @Input({ transform: inputToBoolean }) multiple: boolean = true;
+  @Input({ transform: booleanAttribute }) multiple: boolean = true;
 
   /**
    * If is file list image
    * @default false
    */
-  @Input({ transform: inputToBoolean }) images?: boolean;
+  @Input({ transform: booleanAttribute }) images?: boolean;
 
   /**
    * Hide the load button
    * @default false
    */
-  @Input({ transform: inputToBoolean }) hideLoadButton?: boolean;
+  @Input({ transform: booleanAttribute }) hideLoadButton?: boolean;
 
   /**
    * Fired when upload new files

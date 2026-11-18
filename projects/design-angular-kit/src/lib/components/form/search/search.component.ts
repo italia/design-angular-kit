@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, booleanAttribute } from '@angular/core';
 import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -6,7 +6,6 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
 import { ItMarkMatchingTextPipe } from '../../../pipes/mark-matching-text.pipe';
 import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.component';
 import { SearchItem } from '../../../interfaces/form';
-import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
   standalone: true,
@@ -26,7 +25,7 @@ export class ItSearchComponent extends ItAbstractFormComponent<string | null | u
   /**
    * To get a large version of Search
    */
-  @Input({ transform: inputToBoolean }) big?: boolean;
+  @Input({ transform: booleanAttribute }) big?: boolean;
 
   /**
    * Time span [ms] has passed without another source emission, to delay data filtering.
@@ -48,7 +47,7 @@ export class ItSearchComponent extends ItAbstractFormComponent<string | null | u
   /**
    * Show the label
    */
-  @Input({ transform: inputToBoolean }) forceShowLabel: boolean = true;
+  @Input({ transform: booleanAttribute }) forceShowLabel: boolean = true;
 
   /**
    * Fired when the Search Item has been selected

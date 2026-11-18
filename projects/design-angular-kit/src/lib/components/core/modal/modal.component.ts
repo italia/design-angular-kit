@@ -1,9 +1,18 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  booleanAttribute,
+} from '@angular/core';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
 import { Modal } from 'bootstrap-italia';
 import { TranslateModule } from '@ngx-translate/core';
 import { Modal as BSModal } from 'bootstrap';
-import { inputToBoolean } from '../../../utils/coercion';
 
 /**
  * Modal windows
@@ -22,37 +31,37 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
    * Show/Hide close button on header
    * @default true
    */
-  @Input({ transform: inputToBoolean }) closeButton: boolean = true;
+  @Input({ transform: booleanAttribute }) closeButton: boolean = true;
 
   /**
    * To correctly format the contents of the modal with icon
    * @default false
    */
-  @Input({ transform: inputToBoolean }) alertModal?: boolean;
+  @Input({ transform: booleanAttribute }) alertModal?: boolean;
 
   /**
    * To correctly format the contents of the modal with Link List
    * @default false
    */
-  @Input({ transform: inputToBoolean }) dialogLinkList?: boolean;
+  @Input({ transform: booleanAttribute }) dialogLinkList?: boolean;
 
   /**
    * Modal type Popconfirm can be used for short confirmation messages.
    * @default false
    */
-  @Input({ transform: inputToBoolean }) popconfirm?: boolean;
+  @Input({ transform: booleanAttribute }) popconfirm?: boolean;
 
   /**
    * You can choose to use a scroll inside the modal, keeping the header and footer of the modal always visible
    * @default false
    */
-  @Input({ transform: inputToBoolean }) scrollable?: boolean;
+  @Input({ transform: booleanAttribute }) scrollable?: boolean;
 
   /**
    * To have modals that appear with fades
    * @default true
    */
-  @Input({ transform: inputToBoolean }) fade?: boolean = true;
+  @Input({ transform: booleanAttribute }) fade?: boolean = true;
 
   /**
    * Modal alignment
@@ -79,19 +88,19 @@ export class ItModalComponent extends ItAbstractComponent implements AfterViewIn
    * Puts the focus on the modal when initialized.
    * @default true
    */
-  @Input({ transform: inputToBoolean }) focus: boolean = true;
+  @Input({ transform: booleanAttribute }) focus: boolean = true;
 
   /**
    * Closes the modal when escape key is pressed.
    * @default true
    */
-  @Input({ transform: inputToBoolean }) keyboard: boolean = true;
+  @Input({ transform: booleanAttribute }) keyboard: boolean = true;
 
   /**
    * To better distinguish the footer element with a shadow
    * @default false
    */
-  @Input({ transform: inputToBoolean }) footerShadow?: boolean;
+  @Input({ transform: booleanAttribute }) footerShadow?: boolean;
 
   /**
    * Modal options

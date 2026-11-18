@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { inputToBoolean } from '../../../../utils/coercion';
 import { ItLinkComponent } from '../../../core/link/link.component';
 
 @Component({
@@ -22,5 +21,5 @@ export class ItSkiplinkComponent {
    * If `true` nav mode is enabled
    * @default false
    */
-  @Input({ transform: inputToBoolean }) nav?: boolean;
+  @Input({ transform: booleanAttribute }) nav?: boolean;
 }

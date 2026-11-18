@@ -1,6 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, inject } from '@angular/core';
-import { inputToBoolean } from '../../../../utils/coercion';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, inject, booleanAttribute } from '@angular/core';
 import { ItLinkComponent } from '../../link/link.component';
 
 @Component({
@@ -17,7 +16,7 @@ export class ItListItemComponent extends ItLinkComponent implements OnInit {
    * Add active class
    * @default false
    */
-  @Input({ transform: inputToBoolean }) active?: boolean;
+  @Input({ transform: booleanAttribute }) active?: boolean;
 
   /**
    * Add large class
@@ -28,13 +27,13 @@ export class ItListItemComponent extends ItLinkComponent implements OnInit {
    * Add icon-left class
    * @default false
    */
-  @Input({ transform: inputToBoolean }) iconLeft?: boolean;
+  @Input({ transform: booleanAttribute }) iconLeft?: boolean;
 
   /**
    * Add icon-right class
    * @default false
    */
-  @Input({ transform: inputToBoolean }) iconRight?: boolean;
+  @Input({ transform: booleanAttribute }) iconRight?: boolean;
 
   private _avatar: URL | undefined;
   /**

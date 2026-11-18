@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, Input, OnInit, booleanAttribute } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IconName } from '../../../../interfaces/icon';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { ItLinkComponent } from '../../link/link.component';
 
 import { NgTemplateOutlet } from '@angular/common';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 @Component({
   selector: 'it-dropdown-item, li[itDropdownItem]',
@@ -19,19 +18,19 @@ export class ItDropdownItemComponent extends ItLinkComponent implements OnInit {
    * Show divider
    * @default false
    */
-  @Input({ transform: inputToBoolean }) divider?: boolean;
+  @Input({ transform: booleanAttribute }) divider?: boolean;
 
   /**
    * Active item
    * @default false
    */
-  @Input({ transform: inputToBoolean }) active?: boolean;
+  @Input({ transform: booleanAttribute }) active?: boolean;
 
   /**
    * To increase the size of links
    * @default false
    */
-  @Input({ transform: inputToBoolean }) large?: boolean;
+  @Input({ transform: booleanAttribute }) large?: boolean;
 
   /**
    * The name of icon to show

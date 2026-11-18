@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { ItAbstractComponent } from '../../../../abstracts/abstract.component';
 import { ItIconComponent } from '../../../utils/icon/icon.component';
 import { DatePipe, NgClass } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { TimelinePINType } from '../../../../interfaces/core';
 import { IconName } from '../../../../interfaces/icon';
-import { inputToBoolean } from '../../../../utils/coercion';
 
 /**
  * Timeline Item
@@ -91,7 +90,7 @@ export class ItTimelineItemComponent extends ItAbstractComponent {
    * Timeline element show detail link
    * @default false
    */
-  @Input({ transform: inputToBoolean })
+  @Input({ transform: booleanAttribute })
   showReadMore: boolean = false;
 
   /** Timeline element detail link
