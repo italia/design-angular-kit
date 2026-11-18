@@ -52,14 +52,14 @@
     "tslib": "^2.6.3"
   },
   "peerDependencies": {
-    "@angular/animations": "^19.2.17",
-    "@angular/common": "^19.2.17",
-    "@angular/core": "^19.2.17",
-    "@angular/platform-browser": "^19.2.17",
-    "@angular/router": "^19.2.17",
+    "@angular/animations": "^19.2.25",
+    "@angular/common": "^19.2.25",
+    "@angular/core": "^19.2.25",
+    "@angular/platform-browser": "^19.2.25",
+    "@angular/router": "^19.2.25",
     "@ngx-translate/core": "^16.0.0",
     "@ngx-translate/http-loader": "^16.0.0",
-    "bootstrap-italia": "^2.17.4"
+    "bootstrap-italia": "^2.18.3"
   },
   "sideEffects": false,
   "devDependencies": {
