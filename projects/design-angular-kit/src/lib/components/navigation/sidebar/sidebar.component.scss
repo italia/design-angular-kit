@@ -1,0 +1,28 @@
+// Hide secondary section divider when no secondary content is projected (#608).
+// :not(:has(*)) matches when the wrapper contains zero element children.
+.sidebar-linklist-wrapper.linklist-secondary:not(:has(*)) {
+  display: none;
+}
+
+// Dark-mode icon colour inheritance (#608).
+// Icons must follow text colour (white) and must NOT turn blue on hover.
+:host(.theme-dark) ::ng-deep {
+  .sidebar-linklist-wrapper {
+    .list-item,
+    a {
+      it-icon,
+      svg {
+        color: inherit;
+        fill: currentColor;
+      }
+
+      &:hover {
+        it-icon,
+        svg {
+          color: inherit;
+          fill: currentColor;
+        }
+      }
+    }
+  }
+}
