@@ -1,3 +1,20 @@
+# [20.4.0](https://github.com/italia/design-angular-kit/compare/v20.3.0...v20.4.0) (2026-11-18)
+
+
+### Bug Fixes
+
+* **forms:** propagate touched state on blur ([31931e8](https://github.com/italia/design-angular-kit/commit/31931e843f852d1cb9f0ebae7d0ed651d4cd4ac1))
+* **pagination:** add display block to host element ([e581193](https://github.com/italia/design-angular-kit/commit/e581193b81c25dc75ae9c4b1e41846e9b6ae0e51))
+* **sidebar:** fix for layout, empty secondary divider, dark mode icons, active state ([3ef4899](https://github.com/italia/design-angular-kit/commit/3ef4899cefa49949386f204ab3a8e68ce6e0c5a7))
+* **tab-container:** align vertical tabs with bsi design specs ([d93d16a](https://github.com/italia/design-angular-kit/commit/d93d16ad78c058982ce8c17dd03c9ca2bdee1916))
+
+
+### Features
+
+* **upload:** add preview and remove actions for drag & drop upload ([8d10ae2](https://github.com/italia/design-angular-kit/commit/8d10ae2c2af3966007a75028f2715e2361a01c48))
+
+
+
 # [20.3.0](https://github.com/italia/design-angular-kit/compare/v20.2.1...v20.3.0) (2026-04-13)
 
 
