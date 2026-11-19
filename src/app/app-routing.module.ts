@@ -79,6 +79,7 @@ const routes: Routes = [
       { path: 'dropdown', loadChildren: () => import('src/app/dropdown/dropdown.module').then(m => m.DropdownModule) },
       { path: 'chip', loadChildren: () => import('src/app/chip/chip.module').then(m => m.ChipModule) },
       { path: 'dimmer', loadChildren: () => import('src/app/dimmer/dimmer.module').then(m => m.DimmerModule) },
+      { path: 'divider', loadChildren: () => import('src/app/divider/divider.module').then(m => m.DividerModule) },
       { path: 'callout', loadChildren: () => import('src/app/callout/callout.module').then(m => m.CalloutModule) },
       { path: 'steppers', loadChildren: () => import('src/app/steppers/steppers.module').then(m => m.SteppersModule) },
       { path: 'notifications', loadChildren: () => import('src/app/notifications/notifications.module').then(m => m.NotificationsModule) },
