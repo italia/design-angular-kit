@@ -21,7 +21,7 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
    * The field is required
    * @default true
    */
-  @Input() required: boolean = true;
+  @Input({ transform: inputToBoolean }) required: boolean = true;
 
   /**
    * The password minimum length
@@ -33,25 +33,25 @@ export class ItPasswordInputComponent extends ItAbstractFormComponent<string | n
    * The password must contain at least one number
    * @default true
    */
-  @Input() useNumber: boolean = true;
+  @Input({ transform: inputToBoolean }) useNumber: boolean = true;
 
   /**
    * The password must contain at least one uppercase character
    * @default true
    */
-  @Input() useCapitalCase: boolean = true;
+  @Input({ transform: inputToBoolean }) useCapitalCase: boolean = true;
 
   /**
    * The password must contain at least one lowercase character
    * @default true
    */
-  @Input() useSmallCase: boolean = true;
+  @Input({ transform: inputToBoolean }) useSmallCase: boolean = true;
 
   /**
    * The password must contain at least one special character
    * @default true
    */
-  @Input() useSpecialCharacters: boolean = true;
+  @Input({ transform: inputToBoolean }) useSpecialCharacters: boolean = true;
 
   /**
    * The input placeholder
