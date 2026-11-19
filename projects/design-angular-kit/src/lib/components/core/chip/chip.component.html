@@ -1,11 +1,29 @@
-<div
-  class="chip"
-  [ngClass]="[
-    !showCloseButton ? 'chip-simple' : 'alert',
-    size === 'lg' ? 'chip-lg' : '',
-    color ? 'chip-' + color : '',
-    disabled ? 'chip-disabled' : '',
-  ]">
+@if (href) {
+  <a
+    [attr.href]="href"
+    class="chip"
+    [ngClass]="[
+      !showCloseButton ? 'chip-simple' : 'alert',
+      size === 'lg' ? 'chip-lg' : '',
+      color ? 'chip-' + color : '',
+      disabled ? 'chip-disabled' : '',
+    ]">
+    <ng-container *ngTemplateOutlet="chipContent"></ng-container>
+  </a>
+} @else {
+  <div
+    class="chip"
+    [ngClass]="[
+      !showCloseButton ? 'chip-simple' : 'alert',
+      size === 'lg' ? 'chip-lg' : '',
+      color ? 'chip-' + color : '',
+      disabled ? 'chip-disabled' : '',
+    ]">
+    <ng-container *ngTemplateOutlet="chipContent"></ng-container>
+  </div>
+}
+
+<ng-template #chipContent>
   @if (icon) {
     <svg class="icon icon-xs">
       <use [attr.href]="iconHref" [attr.xlink:href]="iconHref"></use>
@@ -23,4 +41,4 @@
       <span class="visually-hidden">{{ 'it.core.remove' | translate }} {{ label }}</span>
     </button>
   }
-</div>
+</ng-template>
