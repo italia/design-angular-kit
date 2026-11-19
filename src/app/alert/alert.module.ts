@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AlertColorExampleComponent } from './alert-color-example/alert-color-example.component';
 import { AlertAdditionalContentExampleComponent } from './alert-additional-content-example/alert-additional-content-example.component';
 import { AlertClosingExampleComponent } from './alert-closing-example/alert-closing-example.component';
+import { AlertCustomColorExampleComponent } from './alert-custom-color-example/alert-custom-color-example.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AlertClosingExampleComponent } from './alert-closing-example/alert-clos
     AlertColorExampleComponent,
     AlertAdditionalContentExampleComponent,
     AlertClosingExampleComponent,
+    AlertCustomColorExampleComponent,
   ],
   imports: [CommonModule, SharedModule, AlertRoutingModule],
 })
