@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { tb_base } from '../../../../test';
@@ -18,19 +18,18 @@ describe('ItCalloutComponent', () => {
 
     fixture = TestBed.createComponent(ItCalloutComponent);
     component = fixture.componentInstance;
-    //fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('if i set a color, that class will be on div with class callout', fakeAsync(() => {
+  it('if i set a color, that class will be on div with class callout', () => {
     component.color = 'note';
     fixture.detectChanges();
     const divPrimaryElement = fixture.debugElement.query(By.css('div.callout.note'));
     expect(divPrimaryElement).toBeTruthy();
-  }));
+  });
 
   it('if i set a appearance, that class will be on div with class callout with prefix callout-*', () => {
     component.appearance = 'more';
@@ -96,43 +95,17 @@ describe('ItCalloutComponent', () => {
     expect(useElement).toBeTruthy();
   });
 
-  it('if i set color to success with a label, the component show icon: check-circle', () => {
-    component.color = 'success';
+  it.each([
+    ['success', 'check-circle'],
+    ['warning', 'help-circle'],
+    ['danger', 'close-circle'],
+    ['important', 'info-circle'],
+    ['note', 'info-circle'],
+  ] as const)('if i set color to %s with a label, the component show icon: %s', (color, iconName) => {
+    component.color = color;
     component.label = 'label';
     fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-check-circle'));
-    expect(useElement).toBeTruthy();
-  });
-
-  it('if i set color to warning with a label, the component show icon: help-circle', () => {
-    component.color = 'warning';
-    component.label = 'label';
-    fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-help-circle'));
-    expect(useElement).toBeTruthy();
-  });
-
-  it('if i set color to danger with a label, the component show icon: close-circle', () => {
-    component.color = 'danger';
-    component.label = 'label';
-    fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-close-circle'));
-    expect(useElement).toBeTruthy();
-  });
-
-  it('if i set color to important with a label, the component show icon: info-circle', () => {
-    component.color = 'important';
-    component.label = 'label';
-    fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
-    expect(useElement).toBeTruthy();
-  });
-
-  it('if i set color to note with a label, the component show icon: info-circle', () => {
-    component.color = 'note';
-    component.label = 'label';
-    fixture.detectChanges();
-    const useElement = fixture.debugElement.query(By.css('use[href="./bootstrap-italia/dist/svg/sprites.svg#it-info-circle'));
+    const useElement = fixture.debugElement.query(By.css(`use[href="./bootstrap-italia/dist/svg/sprites.svg#it-${iconName}"]`));
     expect(useElement).toBeTruthy();
   });
 });

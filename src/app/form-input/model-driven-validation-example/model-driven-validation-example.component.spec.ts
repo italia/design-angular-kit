@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ModelDrivenValidationExampleComponent } from './model-driven-validation-example.component';
@@ -7,12 +7,12 @@ describe('ModelDrivenValidationExampleComponent', () => {
   let component: ModelDrivenValidationExampleComponent;
   let fixture: ComponentFixture<ModelDrivenValidationExampleComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ModelDrivenValidationExampleComponent],
       imports: [FormsModule, ReactiveFormsModule],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ModelDrivenValidationExampleComponent);

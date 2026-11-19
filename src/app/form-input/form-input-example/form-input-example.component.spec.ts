@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormInputExampleComponent } from './form-input-example.component';
 
@@ -6,11 +6,11 @@ describe('FormInputExampleComponent', () => {
   let component: FormInputExampleComponent;
   let fixture: ComponentFixture<FormInputExampleComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [FormInputExampleComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FormInputExampleComponent);

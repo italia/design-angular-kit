@@ -36,7 +36,7 @@ describe('ItCardComponent noPadding', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       ...tb_base,
-      imports: [...(tb_base as any).imports, NoPaddingHostComponent],
+      imports: [NoPaddingHostComponent],
     })
       .overrideComponent(ItCardComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },
@@ -49,7 +49,7 @@ describe('ItCardComponent noPadding', () => {
 
   it('should not apply p-0 class by default', () => {
     const article: HTMLElement = hostFixture.nativeElement.querySelector('article.it-card');
-    expect(article.classList.contains('p-0')).toBeFalse();
+    expect(article.classList.contains('p-0')).toBe(false);
   });
 
   it('should apply p-0 class when noPadding is true', () => {
@@ -58,7 +58,7 @@ describe('ItCardComponent noPadding', () => {
     f2.detectChanges();
 
     const article: HTMLElement = f2.nativeElement.querySelector('article.it-card');
-    expect(article.classList.contains('p-0')).toBeTrue();
+    expect(article.classList.contains('p-0')).toBe(true);
   });
 
   it('should remove p-0 class when noPadding toggles back to false', () => {
@@ -68,7 +68,7 @@ describe('ItCardComponent noPadding', () => {
 
     // Verify p-0 is applied first
     let article: HTMLElement = f2.nativeElement.querySelector('article.it-card');
-    expect(article.classList.contains('p-0')).toBeTrue();
+    expect(article.classList.contains('p-0')).toBe(true);
 
     // Toggle back — create fresh fixture to avoid ExpressionChanged
     const f3 = TestBed.createComponent(NoPaddingHostComponent);
@@ -76,7 +76,7 @@ describe('ItCardComponent noPadding', () => {
     f3.detectChanges();
 
     article = f3.nativeElement.querySelector('article.it-card');
-    expect(article.classList.contains('p-0')).toBeFalse();
+    expect(article.classList.contains('p-0')).toBe(false);
   });
 
   it('should coerce string "true" to boolean', () => {
@@ -85,7 +85,7 @@ describe('ItCardComponent noPadding', () => {
     f2.detectChanges();
 
     const article: HTMLElement = f2.nativeElement.querySelector('article.it-card');
-    expect(article.classList.contains('p-0')).toBeTrue();
+    expect(article.classList.contains('p-0')).toBe(true);
   });
 
   it('should preserve other card classes when noPadding is set', () => {
@@ -94,10 +94,10 @@ describe('ItCardComponent noPadding', () => {
     f2.detectChanges();
 
     const article: HTMLElement = f2.nativeElement.querySelector('article.it-card');
-    expect(article.classList.contains('it-card')).toBeTrue();
-    expect(article.classList.contains('rounded')).toBeTrue();
-    expect(article.classList.contains('shadow')).toBeTrue();
-    expect(article.classList.contains('it-card-image')).toBeTrue();
-    expect(article.classList.contains('p-0')).toBeTrue();
+    expect(article.classList.contains('it-card')).toBe(true);
+    expect(article.classList.contains('rounded')).toBe(true);
+    expect(article.classList.contains('shadow')).toBe(true);
+    expect(article.classList.contains('it-card-image')).toBe(true);
+    expect(article.classList.contains('p-0')).toBe(true);
   });
 });

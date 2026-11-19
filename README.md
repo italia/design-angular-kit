@@ -3,7 +3,7 @@
 <p align="center">
   <img src=".github/angular_design_kit.png" alt="angular-logo" width="120px" height="120px"/>
   <br>
-  <i>Design Angular Kit è un toolkit basato su Bootstrap Italia 
+  <i>Design Angular Kit è un toolkit basato su Bootstrap Italia
     <br> per la creazione di applicazioni web sviluppate con Angular.</i>
   <br>
 </p>
@@ -198,7 +198,7 @@ Stato, e quindi ci si può trovare nella condizione di dover personalizzare i va
 colore di Bootstrap Italia, impostando nuovi valori per le proprie necessità.
 
 Questo colore e le altre tonalità vengono generate a partire dalla terna HSB, pertanto occorre modificare le variabili primary-h, primary-s e primary-b.
-Per avere la corrispondenza tra valore esadecimale del colore e HSB si può utilizzare il portale rgb.to, ad esempio https://rgb.to/0066CC.
+Per avere la corrispondenza tra valore esadecimale del colore e HSB si può utilizzare il portale rgb.to, ad esempio <https://rgb.to/0066CC>.
 
 Di seguito un esempio di file `styles.scss` con la personalizzazione dei colori.
 Le personalizzazioni delle variabili devono sempre essere effettuate prima dell'importazione del file `bootstrap-italia.scss`
@@ -373,27 +373,27 @@ I requisiti minimi del tuo ambiente locale devono essere:
 A questo punto, è necessario impostare il tuo ambiente locale per la compilazione dei file sorgente e la generazione
 della documentazione:
 
-1. Clonare il progetto
+- Clonare il progetto
 
-```
+```bash
 git clone https://github.com/italia/design-angular-kit.git
 ```
 
-2. Nella cartella di progetto installare le dipendenze
+- Nella cartella di progetto installare le dipendenze
 
-```
+```bash
 npm i
 ```
 
-3. Lanciare l'applicazione in locale
+- Lanciare l'applicazione in locale
 
-```
+```bash
 npm run start
 ```
 
-4. Per eseguire i test di unità eseguire il comando
+- Per eseguire gli unit test (basati su [Vitest](https://vitest.dev/), tramite il builder `@angular/build:unit-test`; non è più richiesto Karma/Chrome) eseguire il comando
 
-```
+```bash
 npm run test
 ```
 
@@ -411,25 +411,25 @@ A questo punto, è necessario impostare seguire i seguenti step:
 
 1. Clonare il progetto
 
-```
+```bash
 git clone https://github.com/italia/design-angular-kit.git
 ```
 
-2. Aprire la cartella di progetto con Visual Studio Code
+1. Aprire la cartella di progetto con Visual Studio Code
 
-3. Al caricamento, Visual Studio Code riconoscerà la presenta della configurazione di un Devcontainer. Aprire il progetto con il devcontainer. Altre info [qui](https://code.visualstudio.com/docs/devcontainers/create-dev-container).
+2. Al caricamento, Visual Studio Code riconoscerà la presenta della configurazione di un Devcontainer. Aprire il progetto con il devcontainer. Altre info [qui](https://code.visualstudio.com/docs/devcontainers/create-dev-container).
 
-4. Visual Studio Code effettuerà il setup del container, andando ad installare la corretta versione di NodeJs, di npm e delle estensioni dell'IDE. Le dipendenze di progetto saranno installate nel processo di creazione del container. L'ambiente di sviuppo sarà pronto a setup ultimato.
+3. Visual Studio Code effettuerà il setup del container, andando ad installare la corretta versione di NodeJs, di npm e delle estensioni dell'IDE. Le dipendenze di progetto saranno installate nel processo di creazione del container. L'ambiente di sviuppo sarà pronto a setup ultimato.
 
-5. Lanciare l'applicazione in locale
+4. Lanciare l'applicazione in locale
 
-```
+```bash
 npm run start
 ```
 
-6. Per eseguire i test di unità eseguire il comando
+Per eseguire gli unit test (basati su [Vitest](https://vitest.dev/), tramite il builder `@angular/build:unit-test`; non è più richiesto Karma/Chrome) eseguire il comando
 
-```
+```bash
 npm run test
 ```
 

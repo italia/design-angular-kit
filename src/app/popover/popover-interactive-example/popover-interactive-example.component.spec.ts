@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PopoverInteractiveExampleComponent } from './popover-interactive-example.component';
 
@@ -6,11 +6,11 @@ describe('PopoverInteractiveExampleComponent', () => {
   let component: PopoverInteractiveExampleComponent;
   let fixture: ComponentFixture<PopoverInteractiveExampleComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [PopoverInteractiveExampleComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PopoverInteractiveExampleComponent);
