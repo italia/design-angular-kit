@@ -148,3 +148,6 @@ export * from './lib/utils/regex';
 
 // Validators
 export * from './lib/validators/it-validators';
+
+// Services
+export * from './lib/services/breakpoint.service';
