@@ -58,33 +58,8 @@ To play with the library, the [Playground Angular Kit](https://github.com/italia
 Design Angular Kit is available on NPM, to install on an existing application on which to test the library run command
 
 ```sh
-npm install design-angular-kit --save
+npm install design-angular-kit@angular21 --save
 ```
-
-Choose the version corresponding to your Angular version:
-
-| Angular | Design Angular kit | Branch | Documentation                                                                      |
-| ------- | ------------------ | ------ | ---------------------------------------------------------------------------------- |
-| 21+     | v21.0.0 +          | main   | [link](https://italia.github.io/design-angular-kit/design-angular-kit#)            |
-| 20+     | v20.0.0 +          | v20    | [link](https://design-angular-kit-git-v20-dip-trasformazione-digitale.vercel.app/) |
-| 19+     | v19.0.0 +          | v19    | [link](https://design-angular-kit-git-v19-dip-trasformazione-digitale.vercel.app/) |
-
-⚠️ Previous versions are no more maintained.
-
-Alternatively, you can run the command
-
-```sh
-ng add design-angular-kit --project <projectName>
-```
-
-He will consecutively perform:
-
-- choose the correct Angular version
-- install the dep
-- add the dep to package.json
-- application configuration
-
-The instruction of the next chapter, **Configuration**, will be executed automatically, except for the customization of \_i18n.
 
 ## Configuration
 
