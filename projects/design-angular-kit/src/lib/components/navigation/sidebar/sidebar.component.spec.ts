@@ -153,8 +153,8 @@ describe('ItSidebarComponent', () => {
 
     it('should mark first item as active', () => {
       const items = fixture.nativeElement.querySelectorAll('.list-item');
-      expect(items[0].classList.contains('active')).toBeTrue();
-      expect(items[1].classList.contains('active')).toBeFalse();
+      expect(items[0].classList.contains('active')).toBe(true);
+      expect(items[1].classList.contains('active')).toBe(false);
     });
 
     it('should produce same number of list-items and same active classes as static rendering', async () => {
@@ -228,12 +228,12 @@ describe('ItSidebarComponent', () => {
 
     it('should apply theme-dark class to host when dark=true', () => {
       const host: HTMLElement = fixture.nativeElement.querySelector('it-sidebar');
-      expect(host.classList.contains('theme-dark')).toBeTrue();
+      expect(host.classList.contains('theme-dark')).toBe(true);
     });
 
     it('should apply sidebar-wrapper class to host', () => {
       const host: HTMLElement = fixture.nativeElement.querySelector('it-sidebar');
-      expect(host.classList.contains('sidebar-wrapper')).toBeTrue();
+      expect(host.classList.contains('sidebar-wrapper')).toBe(true);
     });
   });
 
@@ -257,13 +257,13 @@ describe('ItSidebarComponent', () => {
 
     it('should apply active class to the first list-item', () => {
       const items = fixture.nativeElement.querySelectorAll('.list-item');
-      expect(items[0].classList.contains('active')).toBeTrue();
+      expect(items[0].classList.contains('active')).toBe(true);
     });
 
     it('should NOT apply active class to non-active items', () => {
       const items = fixture.nativeElement.querySelectorAll('.list-item');
-      expect(items[1].classList.contains('active')).toBeFalse();
-      expect(items[2].classList.contains('active')).toBeFalse();
+      expect(items[1].classList.contains('active')).toBe(false);
+      expect(items[2].classList.contains('active')).toBe(false);
     });
 
     it('should render items inside <li> elements within the link-list', () => {
@@ -320,13 +320,13 @@ describe('ItSidebarComponent', () => {
     it('should add it-line-right-side when withRightLine=true', () => {
       fixture.componentInstance.withRightLine = true;
       fixture.detectChanges();
-      expect(fixture.nativeElement.classList.contains('it-line-right-side')).toBeTrue();
+      expect(fixture.nativeElement.classList.contains('it-line-right-side')).toBe(true);
     });
 
     it('should add it-line-left-side when withLeftLine=true', () => {
       fixture.componentInstance.withLeftLine = true;
       fixture.detectChanges();
-      expect(fixture.nativeElement.classList.contains('it-line-left-side')).toBeTrue();
+      expect(fixture.nativeElement.classList.contains('it-line-left-side')).toBe(true);
     });
   });
 });
