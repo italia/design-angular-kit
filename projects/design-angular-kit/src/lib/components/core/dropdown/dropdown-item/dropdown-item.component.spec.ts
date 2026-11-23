@@ -7,8 +7,10 @@ import { tb_base } from '../../../../../test';
 describe('ItDropdownItemComponent', () => {
   let component: ItDropdownItemComponent;
   let fixture: ComponentFixture<ItDropdownItemComponent>;
+  let warnSpy: ReturnType<typeof vi.spyOn>;
 
   beforeEach(async () => {
+    warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
     await TestBed.configureTestingModule(tb_base)
       .overrideComponent(ItDropdownItemComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
       .compileComponents();
@@ -17,9 +19,19 @@ describe('ItDropdownItemComponent', () => {
     component = fixture.componentInstance;
   });
 
+  afterEach(() => {
+    warnSpy.mockRestore();
+  });
+
   it('should create', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
+  });
+
+  it('should warn about the deprecated it-dropdown-item element selector', () => {
+    fixture.detectChanges();
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+    expect(warnSpy.mock.calls[0][0]).toContain('it-dropdown-item');
   });
 
   it('should render icon on the left when iconName and iconPosition=left', () => {
@@ -27,7 +39,7 @@ describe('ItDropdownItemComponent', () => {
     component.iconPosition = 'left';
     fixture.detectChanges();
     const icons = fixture.nativeElement.querySelectorAll('it-icon');
-    expect(icons.length).toBe(1);
+    expect(icons).toHaveLength(1);
   });
 
   it('should render icon on the right when iconPosition=right', () => {
@@ -35,13 +47,13 @@ describe('ItDropdownItemComponent', () => {
     component.iconPosition = 'right';
     fixture.detectChanges();
     const icons = fixture.nativeElement.querySelectorAll('it-icon');
-    expect(icons.length).toBe(1);
+    expect(icons).toHaveLength(1);
   });
 
   it('should not render icon when iconName is not set', () => {
     fixture.detectChanges();
     const icons = fixture.nativeElement.querySelectorAll('it-icon');
-    expect(icons.length).toBe(0);
+    expect(icons).toHaveLength(0);
   });
 
   it('should apply left spacing class to SVG when iconPosition is left', () => {

@@ -19,7 +19,7 @@ export class ItLinkComponent extends ItAbstractComponent implements AfterViewIni
    * - string: shorthand for array of commands with just the string, i.e. ['/route']
    * - null|undefined: Disables the link by removing the href
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   @Input() href: any[] | string | null | undefined;
 
   /**

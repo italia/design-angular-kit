@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { tb_base } from '../../../../test';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewportScroller } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
@@ -37,15 +37,14 @@ describe('ItNavscrollComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should NOT auto-scroll to first section on initial load', fakeAsync(() => {
-    const scrollSpy = spyOn(scroller, 'scrollToAnchor');
+  it('should NOT auto-scroll to first section on initial load', () => {
+    const scrollSpy = vi.spyOn(scroller, 'scrollToAnchor').mockImplementation(() => {});
     component.items = makeItems();
     fixture.detectChanges();
-    tick(100);
 
     // The programmatic init selection must NOT trigger scrollToAnchor
     expect(scrollSpy).not.toHaveBeenCalled();
-  }));
+  });
 
   it('should render all section headings', () => {
     component.items = makeItems();
@@ -111,7 +110,7 @@ describe('ItNavscrollComponent headerAsAccordion', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       ...tb_base,
-      imports: [...tb_base.imports, AccordionHostComponent],
+      imports: [AccordionHostComponent],
     })
       .overrideComponent(ItNavscrollComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },
@@ -136,12 +135,12 @@ describe('ItNavscrollComponent headerAsAccordion', () => {
   it('should start expanded by default (accordionExpanded=true)', () => {
     const body: HTMLElement = fixture.nativeElement.querySelector('.accordion-collapse');
     expect(body).toBeTruthy();
-    expect(body.classList.contains('show')).toBeTrue();
+    expect(body.classList.contains('show')).toBe(true);
   });
 
   it('should not have collapsed class on button when expanded', () => {
     const btn: HTMLElement = fixture.nativeElement.querySelector('.accordion-button');
-    expect(btn.classList.contains('collapsed')).toBeFalse();
+    expect(btn.classList.contains('collapsed')).toBe(false);
   });
 
   it('should collapse when accordionExpanded is false', () => {
@@ -151,10 +150,10 @@ describe('ItNavscrollComponent headerAsAccordion', () => {
     f2.detectChanges();
 
     const body: HTMLElement = f2.nativeElement.querySelector('.accordion-collapse');
-    expect(body.classList.contains('show')).toBeFalse();
+    expect(body.classList.contains('show')).toBe(false);
 
     const btn: HTMLElement = f2.nativeElement.querySelector('.accordion-button');
-    expect(btn.classList.contains('collapsed')).toBeTrue();
+    expect(btn.classList.contains('collapsed')).toBe(true);
   });
 
   it('should render navscroll list items inside the accordion body', () => {
@@ -183,7 +182,7 @@ describe('ItNavscrollComponent without accordion', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       ...tb_base,
-      imports: [...tb_base.imports, NoAccordionHostComponent],
+      imports: [NoAccordionHostComponent],
     })
       .overrideComponent(ItNavscrollComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },

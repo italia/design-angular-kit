@@ -23,7 +23,6 @@ export class ItAvatarListItemDirective {
   </ng-template>`,
 })
 export class ItAvatarGroupItemComponent {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;
 }
 

@@ -21,7 +21,6 @@ describe('ItChipComponent', () => {
 
     fixture = TestBed.createComponent(ItChipComponent);
     component = fixture.componentInstance;
-    //fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -29,7 +28,7 @@ describe('ItChipComponent', () => {
   });
 
   it('click on close button should trigger close.emit()', () => {
-    spyOn(component.closeEvent, 'emit').and.returnValue();
+    vi.spyOn(component.closeEvent, 'emit').mockImplementation(() => undefined);
     component.showCloseButton = true;
     fixture.detectChanges();
     const buttonElement = fixture.debugElement.query(By.css('button'));
@@ -38,7 +37,7 @@ describe('ItChipComponent', () => {
   });
 
   it('click on close button DISABLED should NOT trigger close.emit()', () => {
-    spyOn(component.closeEvent, 'emit').and.returnValue();
+    vi.spyOn(component.closeEvent, 'emit').mockImplementation(() => undefined);
     component.showCloseButton = true;
     component.disabled = true;
     fixture.detectChanges();
@@ -50,7 +49,6 @@ describe('ItChipComponent', () => {
   it('can set label', () => {
     component.label = 'label';
     fixture.detectChanges();
-    // const spanElement = fixture.debugElement.query(By.css('.chip-label'));
     expect(component).toBeTruthy();
   });
 

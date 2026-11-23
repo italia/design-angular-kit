@@ -3,15 +3,19 @@
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
     "types": [
-      "jasmine",
+      "vitest/globals",
       "node"
-    ]
+    ],
+    "paths": {
+      "src/*": ["./*"],
+      "projects/*": ["../projects/*"],
+      "design-angular-kit/*": ["../projects/design-angular-kit/src/lib/*"]
+    },
+    "typeRoots": ["../node_modules/@types", "../node_modules"]
   },
-  "files": [
-    "test.ts"
-  ],
   "include": [
     "**/*.spec.ts",
+    "test-setup.ts",
     "**/*.d.ts"
   ]
 }

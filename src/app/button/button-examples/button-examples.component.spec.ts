@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonExamplesComponent } from './button-examples.component';
 
@@ -6,11 +6,11 @@ describe('ButtonExamplesComponent', () => {
   let component: ButtonExamplesComponent;
   let fixture: ComponentFixture<ButtonExamplesComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ButtonExamplesComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ButtonExamplesComponent);

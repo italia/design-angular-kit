@@ -65,6 +65,14 @@ Di seguito i tipi da utilizzare **esclusivamente** quando viene effettuata una m
 - **chore**: altri cambiamenti che non modificano file src o test
 - **revert**: revert di un commit precedente
 
+#### Test di unità
+
+I test di unità sono basati su [Vitest](https://vitest.dev/) (con ambiente `jsdom`) e vengono eseguiti tramite il builder Angular `@angular/build:unit-test`. Karma e Jasmine non sono più utilizzati per i test della libreria.
+
+- `npm run test` esegue i test della libreria una sola volta (`ng test design-angular-kit --no-watch`)
+- I file `*.spec.ts` usano le API di Vitest (`vi.spyOn`, `vi.fn`, ...) al posto di `jasmine.*`
+- Il setup comune (polyfill `jsdom` per SVG e `matchMedia`) si trova in `projects/design-angular-kit/src/test-setup.ts`
+
 #### Strumenti utili 
 
 Di seguito gli strumenti che possono essere usati per aiutare i contributor e ottenere messaggi di commit validi:

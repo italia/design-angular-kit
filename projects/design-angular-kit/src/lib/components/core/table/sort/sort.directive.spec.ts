@@ -29,9 +29,7 @@ import { ItSortEvent } from '../../../../interfaces/sortable-table';
   imports: [ItSortDirective, ItSortHeaderComponent],
 })
 class TestComponent {
-  sortData(event: ItSortEvent) {
-    console.log(event);
-  }
+  sortData = vi.fn<(event: ItSortEvent) => void>();
 }
 
 describe('ItSortDirective', () => {
@@ -64,7 +62,6 @@ describe('ItSortDirective', () => {
 
   it('should emit sort event', () => {
     const th = des[0].nativeElement as HTMLTableColElement;
-    spyOn(component, 'sortData');
     th.dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(component.sortData).toHaveBeenCalledWith({ active: 'name', direction: 'asc' });

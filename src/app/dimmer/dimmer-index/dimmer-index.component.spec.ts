@@ -1,15 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DimmerIndexComponent } from './dimmer-index.component';
 
 describe('DimmerIndexComponent', () => {
   let component: DimmerIndexComponent;
   let fixture: ComponentFixture<DimmerIndexComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [DimmerIndexComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DimmerIndexComponent);

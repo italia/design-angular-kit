@@ -8,7 +8,7 @@ import { ItAlertComponent } from './alert.component';
 @Component({
   selector: 'it-unit-test',
   template: ` <it-alert [color]="selectedColor" [dismissible]="isDismissible"> Questo è un alert di tipo "<b>primary</b>". </it-alert> `,
-  standalone: false,
+  imports: [ItAlertComponent],
 })
 class UnitTestComponent {
   @Input() set selectedColor(value: AlertColor | undefined) {
@@ -46,8 +46,7 @@ let fixture: ComponentFixture<UnitTestComponent>;
 describe('ItAlertComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent],
-      imports: [ItAlertComponent],
+      imports: [UnitTestComponent, ItAlertComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);
@@ -77,7 +76,7 @@ describe('ItAlertComponent', () => {
     fixture.detectChanges();
     const h4: HTMLHeadingElement = fixture.nativeElement.querySelector('h4.alert-heading');
     expect(h4).toBeTruthy();
-    expect(h4.hidden).toBeTrue();
+    expect(h4.hidden).toBe(true);
   });
 
   it('hidden h4 should not be visible in the DOM flow', () => {
@@ -99,7 +98,7 @@ describe('ItAlertComponent with heading', () => {
     f.detectChanges();
     const h4: HTMLHeadingElement = f.nativeElement.querySelector('h4.alert-heading');
     expect(h4).toBeTruthy();
-    expect(h4.hidden).toBeFalse();
+    expect(h4.hidden).toBe(false);
     expect(h4.textContent?.trim()).toBe('Attenzione');
   });
 
@@ -107,6 +106,6 @@ describe('ItAlertComponent with heading', () => {
     const f = TestBed.createComponent(HeadingTestComponent);
     f.detectChanges();
     const h4: HTMLHeadingElement = f.nativeElement.querySelector('h4.alert-heading');
-    expect(h4.classList.contains('alert-heading')).toBeTrue();
+    expect(h4.classList.contains('alert-heading')).toBe(true);
   });
 });
