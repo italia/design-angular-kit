@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -103,7 +103,7 @@ describe('ItLanguageSwitcherComponent', () => {
   });
 
   describe('language switching', () => {
-    it('should update displayed language when changeLanguage is called', fakeAsync(() => {
+    it('should update displayed language when changeLanguage is called', () => {
       const translateService = TestBed.inject(TranslateService);
       translateService.addLangs(['it', 'en']);
       translateService.use('it');
@@ -117,14 +117,13 @@ describe('ItLanguageSwitcherComponent', () => {
 
       // Switch language
       freshFixture.componentInstance.changeLanguage('en');
-      tick();
       freshFixture.detectChanges();
 
       buttonText = el.querySelector('.dropdown span:not(.visually-hidden)')?.textContent?.trim();
       expect(buttonText).toBe('ENG');
-    }));
+    });
 
-    it('should mark the active language in the dropdown list', fakeAsync(() => {
+    it('should mark the active language in the dropdown list', () => {
       const translateService = TestBed.inject(TranslateService);
       translateService.addLangs(['it', 'en']);
       translateService.use('it');
@@ -135,6 +134,6 @@ describe('ItLanguageSwitcherComponent', () => {
       const el: HTMLElement = freshFixture.nativeElement;
       const items = el.querySelectorAll('it-dropdown-item');
       expect(items.length).toBe(2);
-    }));
+    });
   });
 });

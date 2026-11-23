@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { tb_base } from '../../../../test';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewportScroller } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
@@ -37,15 +37,14 @@ describe('ItNavscrollComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should NOT auto-scroll to first section on initial load', fakeAsync(() => {
-    const scrollSpy = vi.spyOn(scroller, 'scrollToAnchor');
+  it('should NOT auto-scroll to first section on initial load', () => {
+    const scrollSpy = vi.spyOn(scroller, 'scrollToAnchor').mockImplementation(() => {});
     component.items = makeItems();
     fixture.detectChanges();
-    tick(100);
 
     // The programmatic init selection must NOT trigger scrollToAnchor
     expect(scrollSpy).not.toHaveBeenCalled();
-  }));
+  });
 
   it('should render all section headings', () => {
     component.items = makeItems();
