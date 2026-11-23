@@ -54,7 +54,7 @@ describe('ItTabContainerComponent vertical design specs', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       ...tb_base,
-      imports: [...(tb_base.imports || []), ItTabVerticalHostComponent],
+      imports: [ItTabVerticalHostComponent],
     })
       .overrideComponent(ItTabContainerComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },

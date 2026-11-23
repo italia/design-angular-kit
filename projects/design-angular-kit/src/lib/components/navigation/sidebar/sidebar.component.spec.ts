@@ -129,7 +129,7 @@ describe('ItSidebarComponent', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         ...tb_base,
-        imports: [...(tb_base.imports ?? []), ForLoopSidebarHost, StaticSidebarHost],
+        imports: [ForLoopSidebarHost, StaticSidebarHost],
       })
         .overrideComponent(ItSidebarComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
         .overrideComponent(ItListComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
@@ -182,7 +182,7 @@ describe('ItSidebarComponent', () => {
     it('should hide secondary wrapper when no [secondary] content is projected', async () => {
       await TestBed.configureTestingModule({
         ...tb_base,
-        imports: [...(tb_base.imports ?? []), NoSecondarySidebarHost],
+        imports: [NoSecondarySidebarHost],
       })
         .overrideComponent(ItSidebarComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
         .compileComponents();
@@ -197,7 +197,7 @@ describe('ItSidebarComponent', () => {
     it('should keep secondary wrapper visible when [secondary] content is projected', async () => {
       await TestBed.configureTestingModule({
         ...tb_base,
-        imports: [...(tb_base.imports ?? []), WithSecondarySidebarHost],
+        imports: [WithSecondarySidebarHost],
       })
         .overrideComponent(ItSidebarComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
         .compileComponents();
@@ -218,7 +218,7 @@ describe('ItSidebarComponent', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         ...tb_base,
-        imports: [...(tb_base.imports ?? []), DarkSidebarHost],
+        imports: [DarkSidebarHost],
       })
         .overrideComponent(ItSidebarComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
         .compileComponents();
@@ -245,7 +245,7 @@ describe('ItSidebarComponent', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         ...tb_base,
-        imports: [...(tb_base.imports ?? []), StaticSidebarHost],
+        imports: [StaticSidebarHost],
       })
         .overrideComponent(ItSidebarComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
         .overrideComponent(ItListComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
@@ -278,7 +278,7 @@ describe('ItSidebarComponent', () => {
     it('should render h3 when header is set', async () => {
       await TestBed.configureTestingModule({
         ...tb_base,
-        imports: [...(tb_base.imports ?? []), StaticSidebarHost],
+        imports: [StaticSidebarHost],
       })
         .overrideComponent(ItSidebarComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
         .compileComponents();
@@ -294,7 +294,7 @@ describe('ItSidebarComponent', () => {
     it('should NOT render h3 when header is not set', async () => {
       await TestBed.configureTestingModule({
         ...tb_base,
-        imports: [...(tb_base.imports ?? []), StaticSidebarHost],
+        imports: [StaticSidebarHost],
       })
         .overrideComponent(ItSidebarComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
         .compileComponents();

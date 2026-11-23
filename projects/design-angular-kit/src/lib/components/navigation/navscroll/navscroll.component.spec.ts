@@ -38,7 +38,7 @@ describe('ItNavscrollComponent', () => {
   });
 
   it('should NOT auto-scroll to first section on initial load', fakeAsync(() => {
-    const scrollSpy = spyOn(scroller, 'scrollToAnchor');
+    const scrollSpy = vi.spyOn(scroller, 'scrollToAnchor');
     component.items = makeItems();
     fixture.detectChanges();
     tick(100);
