@@ -16,6 +16,7 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "lint:format": "npx prettier --write .",
+    "check:angular-cli": "node scripts/check-angular-cli-major.js",
     "prepare": "is-ci || husky",
     "postversion": "echo \"You can now publish your version using 'git push --follow-tags'\"",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && node scripts/config-sync && node scripts/wait-confirm && git add .",

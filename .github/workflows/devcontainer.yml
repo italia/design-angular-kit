@@ -5,6 +5,8 @@ on:
     paths:
       - '.devcontainer/**'
       - '.github/workflows/devcontainer.yml'
+      - 'package.json'
+      - 'scripts/check-angular-cli-major.js'
 
 permissions:
   contents: read
@@ -19,5 +21,6 @@ jobs:
           push: never
           runCmd: |
             npm ci
+            npm run check:angular-cli
             npm run lint
             npm run test
