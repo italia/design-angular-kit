@@ -6,6 +6,10 @@
   "mounts": [
     "source=design-angular-kit-bundle-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume" // deps volume
   ],
+  "remoteEnv": {
+    "CLAUDE_CODE_OAUTH_TOKEN": "${localEnv:CLAUDE_CODE_OAUTH_TOKEN}",
+    "GH_TOKEN": "${localEnv:GH_TOKEN}"
+  },
   "postCreateCommand": "sh .devcontainer/scripts/postCreateCommand.sh",
   "postStartCommand": "sh .devcontainer/scripts/postStartCommand.sh \"${containerWorkspaceFolder}\"",
   "customizations": {
@@ -47,6 +51,9 @@
       "installDockerComposeSwitch": true,
       "version": "latest",
       "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers-extra/features/claude-code:2": {
+      "version": "latest"
     }
   }
 }
