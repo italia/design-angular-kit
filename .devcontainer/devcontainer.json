@@ -52,6 +52,10 @@
       "version": "latest",
       "dockerDashComposeVersion": "v2"
     },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    },
     "ghcr.io/devcontainers-extra/features/claude-code:2": {
       "version": "latest"
     }
