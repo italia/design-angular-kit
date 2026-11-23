@@ -39,6 +39,7 @@ export * from './lib/components/core/dropdown/dropdown-item/dropdown-item.compon
 export * from './lib/components/core/dropdown/dropdown.module';
 export * from './lib/components/core/dropdown/dropdown/dropdown.component';
 
+export * from './lib/components/core/figure/figure.directive';
 export * from './lib/components/core/forward/forward.directive';
 export * from './lib/components/core/link/link.component';
 
