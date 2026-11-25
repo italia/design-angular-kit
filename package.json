@@ -2,7 +2,7 @@
   "name": "design-angular-kit-bundle",
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
   "author": "Presidenza del Consiglio dei Ministri",
-  "version": "22.2.0",
+  "version": "22.3.0",
   "license": "BSD-3-Clause",
   "scripts": {
     "ng": "ng",
@@ -68,7 +68,7 @@
   "dependencies": {
     "@angular-devkit/schematics": "^22.3.0",
     "@angular/animations": "^22.3.0",
-    "@angular/cdk": "^22.2.5",
+    "@angular/cdk": "^22.3.0",
     "@angular/common": "^22.3.0",
     "@angular/compiler": "^22.3.0",
     "@angular/core": "^22.3.0",
