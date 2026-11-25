@@ -133,7 +133,7 @@ for (const standalone of [true, false]) {
       const assetsConfig = angularJson.projects[defaultOptions.project]?.architect?.build?.options?.assets?.find(
         (item: { input: string }) => item.input === `./node_modules/bootstrap-italia/`
       );
-      expect(assetsConfig).toBeDefined(assetsConfig);
+      expect(assetsConfig).toBeDefined();
     });
   });
 
@@ -160,7 +160,7 @@ for (const standalone of [true, false]) {
       const assetsConfig = angularJson.projects[defaultOptions.project]?.architect?.build?.options?.assets?.find(
         (item: { input: string }) => item.input === `./node_modules/design-angular-kit/assets/i18n`
       );
-      expect(assetsConfig).toBeDefined(assetsConfig);
+      expect(assetsConfig).toBeDefined();
     });
   });
 }

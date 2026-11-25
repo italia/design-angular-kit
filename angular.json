@@ -184,7 +184,8 @@
             "buildTarget": "design-angular-kit-bundle:build:test",
             "tsConfig": "projects/design-angular-kit/tsconfig.spec.json",
             "runner": "vitest",
-            "setupFiles": ["projects/design-angular-kit/src/test-setup.ts"]
+            "setupFiles": ["projects/design-angular-kit/src/test-setup.ts"],
+            "exclude": ["projects/design-angular-kit/schematics/**"]
           }
         },
         "lint": {

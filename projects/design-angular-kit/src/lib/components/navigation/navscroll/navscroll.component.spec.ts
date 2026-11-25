@@ -82,7 +82,6 @@ describe('ItNavscrollComponent', () => {
   selector: 'it-test-accordion-host',
   standalone: true,
   imports: [ItNavscrollComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <it-navscroll header="Indice della pagina" [items]="items" [headerAsAccordion]="true" [accordionExpanded]="expanded"> </it-navscroll>
   `,
@@ -99,7 +98,6 @@ class AccordionHostComponent {
   selector: 'it-test-no-accordion-host',
   standalone: true,
   imports: [ItNavscrollComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
   template: ` <it-navscroll header="Standard Header" [items]="items"> </it-navscroll> `,
 })
 class NoAccordionHostComponent {

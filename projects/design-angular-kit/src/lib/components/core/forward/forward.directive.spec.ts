@@ -1,5 +1,5 @@
 import { ItForwardDirective } from './forward.directive';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -10,7 +10,6 @@ import { By } from '@angular/platform-browser';
     <a id="secondA" href="#" [itForward]="refH3">second</a>
     <h3 id="idH3" #refH3>Text H3</h3>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ItForwardDirective],
 })
 class UnitTestComponent {}

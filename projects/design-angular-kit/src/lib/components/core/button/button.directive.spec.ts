@@ -1,4 +1,4 @@
-import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -12,7 +12,6 @@ import { ItButtonDirective } from './button.directive';
       {{ label }}
     </button>
   </div>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ItButtonDirective],
 })
 class SingleButtonComponent {
