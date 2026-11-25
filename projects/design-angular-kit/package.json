@@ -3,6 +3,9 @@
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
   "version": "21.3.0",
   "license": "BSD-3-Clause",
+  "exports": {
+    ".": "./src/public_api.ts"
+  },
   "keywords": [
     "angular",
     "toolkit",
@@ -47,9 +50,6 @@
   "schematics": "./schematics/collection.json",
   "ng-add": {
     "save": "dependencies"
-  },
-  "dependencies": {
-    "tslib": "^2.6.3"
   },
   "peerDependencies": {
     "@angular/animations": "^22.0.0",

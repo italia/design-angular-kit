@@ -23,10 +23,7 @@
               "base": "dist/design-angular-kit-bundle"
             },
             "index": "src/index.html",
-            "polyfills": [
-              "zone.js",
-              "@angular/localize/init"
-            ],
+            "polyfills": ["zone.js", "@angular/localize/init"],
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -42,10 +39,7 @@
                 "output": "/bootstrap-italia/i18n/"
               }
             ],
-            "styles": [
-              "node_modules/highlight.js/styles/github.css",
-              "src/styles.scss"
-            ],
+            "styles": ["node_modules/highlight.js/styles/github.css", "src/styles.scss"],
             "allowedCommonJsDependencies": [
               "progressbar.js",
               "accessible-autocomplete",
@@ -67,14 +61,7 @@
             "browser": "src/main.ts",
             "stylePreprocessorOptions": {
               "sass": {
-                "silenceDeprecations": [
-                  "import",
-                  "if-function",
-                  "color-functions",
-                  "global-builtin",
-                  "slash-div",
-                  "abs-percent"
-                ]
+                "silenceDeprecations": ["import", "if-function", "color-functions", "global-builtin", "slash-div", "abs-percent"]
               }
             }
           },
@@ -140,25 +127,20 @@
             "buildTarget": "design-angular-kit-bundle:build:test",
             "tsConfig": "src/tsconfig.spec.json",
             "runner": "vitest",
-            "setupFiles": [
-              "src/test-setup.ts"
-            ]
+            "setupFiles": ["src/test-setup.ts"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     },
     "design-angular-kit": {
       "root": "projects/design-angular-kit",
-      "sourceRoot": "projects/design-angular-kit/src",
+      "sourceRoot": "projects/design-angular-kit",
       "projectType": "library",
       "prefix": "it",
       "schematics": {
@@ -169,18 +151,29 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular/build:ng-packagr",
+          "builder": "@angular/build:library",
           "options": {
             "tsConfig": "projects/design-angular-kit/tsconfig.lib.json",
-            "project": "projects/design-angular-kit/ng-package.json"
+            "outputPath": "dist/design-angular-kit",
+            "assets": [
+              {
+                "glob": "assets/**/*.json",
+                "input": "projects/design-angular-kit"
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": ["import"]
+              }
+            },
+            "deleteOutputPath": false
           },
           "configurations": {
             "production": {
-              "project": "projects/design-angular-kit/ng-package.prod.json",
               "tsConfig": "projects/design-angular-kit/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/design-angular-kit/tsconfig.lib.json"
+              "compilationMode": "full"
             }
           },
           "defaultConfiguration": "production"
@@ -191,18 +184,13 @@
             "buildTarget": "design-angular-kit-bundle:build:test",
             "tsConfig": "projects/design-angular-kit/tsconfig.spec.json",
             "runner": "vitest",
-            "setupFiles": [
-              "projects/design-angular-kit/src/test-setup.ts"
-            ]
+            "setupFiles": ["projects/design-angular-kit/src/test-setup.ts"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/design-angular-kit/**/*.ts",
-              "projects/design-angular-kit/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/design-angular-kit/**/*.ts", "projects/design-angular-kit/**/*.html"]
           }
         }
       }
@@ -210,9 +198,7 @@
   },
   "cli": {
     "analytics": false,
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ]
+    "schematicCollections": ["@angular-eslint/schematics"]
   },
   "schematics": {
     "@schematics/angular:component": {
