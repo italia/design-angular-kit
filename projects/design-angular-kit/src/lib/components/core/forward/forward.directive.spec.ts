@@ -1,6 +1,3 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { ItForwardDirective } from './forward.directive';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -41,23 +38,25 @@ describe('ItForwardDirective', () => {
 
   it('should trigger this.document.querySelector(...)?.scrollIntoView() if i pass a string', () => {
     const h3: HTMLElement = fixture.nativeElement.querySelector('#idH3');
-    const spy = spyOn(h3, 'scrollIntoView').and.stub();
+    const spy = vi.fn();
+    h3.scrollIntoView = spy; // jsdom does not implement scrollIntoView
 
     const click = new MouseEvent('click', { cancelable: true });
     fixture.debugElement.query(By.css('#firstA')).nativeElement.dispatchEvent(click);
 
-    expect(spy).toHaveBeenCalledOnceWith(scrollOptions as ScrollIntoViewOptions);
-    expect(click.defaultPrevented).toBeTrue();
+    expect(spy).toHaveBeenCalledExactlyOnceWith(scrollOptions as ScrollIntoViewOptions);
+    expect(click.defaultPrevented).toBe(true);
   });
 
   it('should trigger this.itForward.scrollIntoView() if i pass an HTMLElement', () => {
     const h3: HTMLElement = fixture.nativeElement.querySelector('#idH3');
-    const spy = spyOn(h3, 'scrollIntoView').and.stub();
+    const spy = vi.fn();
+    h3.scrollIntoView = spy; // jsdom does not implement scrollIntoView
 
     const click = new MouseEvent('click', { cancelable: true });
     fixture.debugElement.query(By.css('#secondA')).nativeElement.dispatchEvent(click);
 
-    expect(spy).toHaveBeenCalledOnceWith(scrollOptions as ScrollIntoViewOptions);
-    expect(click.defaultPrevented).toBeTrue();
+    expect(spy).toHaveBeenCalledExactlyOnceWith(scrollOptions as ScrollIntoViewOptions);
+    expect(click.defaultPrevented).toBe(true);
   });
 });

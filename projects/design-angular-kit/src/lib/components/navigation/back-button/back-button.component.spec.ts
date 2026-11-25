@@ -78,7 +78,7 @@ describe('ItBackButtonComponent', () => {
   });
 
   it('se passo una callback backFn, al click deve essere lanciata lei', () => {
-    const backFn = jasmine.createSpy('backFn');
+    const backFn = vi.fn();
     component.backFn = backFn;
     component.buttonStyle = 'link';
     fixture.detectChanges();
