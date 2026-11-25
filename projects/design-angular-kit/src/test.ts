@@ -1,6 +1,6 @@
 // Shared TestBed configuration for specs (the karma builder initializes the test environment)
 
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { importProvidersFrom } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IT_ASSET_BASE_PATH } from './lib/interfaces/design-angular-kit-config';
@@ -17,8 +17,8 @@ console.warn = (...args: unknown[]) => {
 console.debug = () => {};
 
 export const tb_base = {
-  imports: [RouterTestingModule], //FormsModule,ReactiveFormsModule
   providers: [
+    provideRouter([]),
     importProvidersFrom(TranslateModule.forRoot()),
     {
       provide: IT_ASSET_BASE_PATH,

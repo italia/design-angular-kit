@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccordionIndexComponent } from './accordion-index.component';
 
@@ -6,11 +6,11 @@ describe('AccordionIndexComponent', () => {
   let component: AccordionIndexComponent;
   let fixture: ComponentFixture<AccordionIndexComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [AccordionIndexComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AccordionIndexComponent);

@@ -3,7 +3,7 @@
 <p align="center">
   <img src=".github/angular_design_kit.png" alt="angular-logo" width="120px" height="120px"/>
   <br>
-  <i>Design Angular Kit is a toolkit based on Bootstrap Italia 
+  <i>Design Angular Kit is a toolkit based on Bootstrap Italia
     <br> for the creation of web applications developed with Angular.</i>
   <br>
 </p>
@@ -66,11 +66,10 @@ Choose the version corresponding to your Angular version:
 | Angular | Design Angular kit | Branch | Documentation                                                                      |
 | ------- | ------------------ | ------ | ---------------------------------------------------------------------------------- |
 | 21+     | v21.0.0 +          | main   | [link](https://italia.github.io/design-angular-kit/design-angular-kit#)            |
-| 20+     | v20.0.0 +          | v20   | [link](https://design-angular-kit-git-v20-dip-trasformazione-digitale.vercel.app/)            |
+| 20+     | v20.0.0 +          | v20    | [link](https://design-angular-kit-git-v20-dip-trasformazione-digitale.vercel.app/) |
 | 19+     | v19.0.0 +          | v19    | [link](https://design-angular-kit-git-v19-dip-trasformazione-digitale.vercel.app/) |
 
 ⚠️ Previous versions are no more maintained.
-
 
 Alternatively, you can run the command
 
@@ -199,7 +198,7 @@ State, and thus one may find oneself in the position of having to customise the 
 colour of Bootstrap Italy, setting new values for their own needs.
 
 This colour and the other tones are generated from the HSB triad, so the variables primary-h, primary-s and primary-b must be modified.
-To obtain the correspondence between the hexadecimal value of the colour and HSB, one can use the rgb.to portal, e.g. https://rgb.to/0066CC.
+To obtain the correspondence between the hexadecimal value of the colour and HSB, one can use the rgb.to portal, e.g. <https://rgb.to/0066CC>.
 
 Below is an example of a `styles.scss` file with colour customisation.
 Variable customisations must always be made before importing the `bootstrap-italia.scss` file.
@@ -374,27 +373,27 @@ The minimum requirements of your local environment must be:
 At this point, you need to set up your local environment for compiling source files and generating
 of the documentation:
 
-1. Cloning the project
+- Clone the project
 
-```
+```bash
 git clone https://github.com/italia/design-angular-kit.git
 ```
 
-2. In the project folder, install the dependencies
+- Install the dependencies in the project folder
 
-```
+```bash
 npm i
 ```
 
-3. Launch the application locally
+- Launch the application locally
 
-```
+```bash
 npm run start
 ```
 
-4. To perform unit tests, run the command
+- To perform unit tests (based on [Vitest](https://vitest.dev/) via the `@angular/build:unit-test` builder; Karma/Jasmine are deprecated), run the command
 
-```
+```bash
 npm run test
 ```
 
@@ -410,27 +409,27 @@ Start Visual Studio Code and install Microsoft's Dev Containers extension (ms-vs
 
 At this point, the following steps must be set up:
 
-1. Cloning the project
+- Clone the project
 
-```
+```bash
 git clone https://github.com/italia/design-angular-kit.git
 ```
 
-2. Open the project folder with Visual Studio Code
+- Open the project folder with Visual Studio Code
 
-3. Upon loading, Visual Studio Code will recognise the presentation of a devcontainer configuration. Open the project with the devcontainer. More info [here](https://code.visualstudio.com/docs/devcontainers/create-dev-container).
+- Upon loading, Visual Studio Code will recognise the presentation of a devcontainer configuration. Open the project with the devcontainer. More info [here](https://code.visualstudio.com/docs/devcontainers/create-dev-container).
 
-4. Visual Studio Code will perform the container setup, installing the correct version of NodeJs, npm and the IDE extensions. The project dependencies will be installed in the container creation process. The development environment will be ready once the setup is complete.
+- Visual Studio Code will perform the container setup, installing the correct version of NodeJs, npm and the IDE extensions. The project dependencies will be installed in the container creation process. The development environment will be ready once the setup is complete.
 
-5. Launch the application locally
+- Launch the application locally
 
-```
+```bash
 npm run start
 ```
 
-6. To perform unit tests, run the command
+- To perform unit tests (based on [Vitest](https://vitest.dev/) via the `@angular/build:unit-test` builder; Karma/Chrome are no longer required), run the command
 
-```
+```bash
 npm run test
 ```
 

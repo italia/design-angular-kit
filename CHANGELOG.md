@@ -20,6 +20,25 @@
 
 
 
+# [21.3.0](https://github.com/italia/design-angular-kit/compare/v21.2.0...v21.3.0) (2026-11-18)
+
+
+### Bug Fixes
+
+* **forms:** propagate touched state on blur ([9857742](https://github.com/italia/design-angular-kit/commit/9857742c68f08fedc4b7b12c395a13951a2da633))
+* **language-switcher:** current language initialization ([5f6e293](https://github.com/italia/design-angular-kit/commit/5f6e293d5faa5d099057fc0f7999091d0006d1a5))
+* **navscroll:** do not auto scroll to first section on page load ([7b181c2](https://github.com/italia/design-angular-kit/commit/7b181c21f36142a0f5fd97cd3dbccecd2c12e2e8))
+* **pagination:** add display block to host element ([59b5bf5](https://github.com/italia/design-angular-kit/commit/59b5bf57d74f7fd2e6e94cda4a74e809357ad8d6))
+* **sidebar:** fix for layout, empty secondary divider, dark mode icons, active state ([5fdfd8d](https://github.com/italia/design-angular-kit/commit/5fdfd8d291c76398865fb5e30eb76aeaa7ef80dd))
+* **tab-container:** align vertical tabs with bsi design specs ([0111274](https://github.com/italia/design-angular-kit/commit/01112743fada5979642a78850c656b92175a2688))
+
+
+### Features
+
+* **upload:** add preview and remove actions for drag & drop upload ([500c43e](https://github.com/italia/design-angular-kit/commit/500c43e0c4034f4789879d55b8d3aac066dd0850))
+
+
+
 # [21.2.0](https://github.com/italia/design-angular-kit/compare/v21.1.0...v21.2.0) (2026-04-13)
 
 

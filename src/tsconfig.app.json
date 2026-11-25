@@ -5,6 +5,8 @@
     "types": ["node"],
     "typeRoots": ["../node_modules/@types"],
     "paths": {
+      "src/*": ["./*"],
+      "projects/*": ["../projects/*"],
       "design-angular-kit/*": ["projects/design-angular-kit/src/lib/*"]
     }
   },

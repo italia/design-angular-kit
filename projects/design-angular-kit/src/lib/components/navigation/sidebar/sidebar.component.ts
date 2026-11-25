@@ -5,6 +5,7 @@ import { inputToBoolean } from '../../../utils/coercion';
   selector: 'it-sidebar',
   imports: [],
   templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItSidebarComponent {

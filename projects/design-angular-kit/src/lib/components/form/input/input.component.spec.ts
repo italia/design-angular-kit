@@ -73,7 +73,7 @@ describe('ItInputComponent — onBlur validation (#588)', () => {
   let hostComponent: ItInputValidationHostComponent;
 
   beforeEach(async () => {
-    const config = { ...tb_base, imports: [...(tb_base.imports || []), ItInputValidationHostComponent] };
+    const config = { ...tb_base, imports: [ItInputValidationHostComponent] };
     await TestBed.configureTestingModule(config).compileComponents();
 
     fixture = TestBed.createComponent(ItInputValidationHostComponent);
@@ -93,9 +93,9 @@ describe('ItInputComponent — onBlur validation (#588)', () => {
     const errorDiv = el.querySelector('.form-feedback.just-validate-error-label');
     const invalidInput = el.querySelector('.is-invalid');
 
-    expect(nameCtrl.invalid).toBeTrue();
-    expect(nameCtrl.dirty).toBeTrue();
-    expect(nameCtrl.touched).toBeFalse();
+    expect(nameCtrl.invalid).toBe(true);
+    expect(nameCtrl.dirty).toBe(true);
+    expect(nameCtrl.touched).toBe(false);
     expect(errorDiv).toBeNull();
     expect(invalidInput).toBeNull();
   });
@@ -108,9 +108,9 @@ describe('ItInputComponent — onBlur validation (#588)', () => {
     input.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    expect(nameCtrl.invalid).toBeTrue();
-    expect(nameCtrl.dirty).toBeTrue();
-    expect(nameCtrl.touched).toBeFalse();
+    expect(nameCtrl.invalid).toBe(true);
+    expect(nameCtrl.dirty).toBe(true);
+    expect(nameCtrl.touched).toBe(false);
     expect(fixture.nativeElement.querySelector('.is-invalid')).toBeNull();
 
     input.dispatchEvent(new Event('blur'));
@@ -120,8 +120,8 @@ describe('ItInputComponent — onBlur validation (#588)', () => {
     const errorDiv = el.querySelector('.form-feedback.just-validate-error-label');
     const invalidInput = el.querySelector('.is-invalid');
 
-    expect(nameCtrl.invalid).toBeTrue();
-    expect(nameCtrl.touched).toBeTrue();
+    expect(nameCtrl.invalid).toBe(true);
+    expect(nameCtrl.touched).toBe(true);
     expect(errorDiv).toBeTruthy();
     expect(invalidInput).toBeTruthy();
   });
@@ -138,7 +138,7 @@ describe('ItInputComponent — onBlur validation (#588)', () => {
     const errorDiv = el.querySelector('.form-feedback.just-validate-error-label');
     const invalidInput = el.querySelector('.is-invalid');
 
-    expect(nameCtrl.valid).toBeTrue();
+    expect(nameCtrl.valid).toBe(true);
     expect(errorDiv).toBeNull();
     expect(invalidInput).toBeNull();
   });

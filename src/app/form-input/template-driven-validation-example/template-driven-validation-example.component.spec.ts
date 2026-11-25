@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TemplateDrivenValidationExampleComponent } from './template-driven-validation-example.component';
 
@@ -6,11 +6,11 @@ describe('TemplateDrivenValidationExampleComponent', () => {
   let component: TemplateDrivenValidationExampleComponent;
   let fixture: ComponentFixture<TemplateDrivenValidationExampleComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [TemplateDrivenValidationExampleComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TemplateDrivenValidationExampleComponent);

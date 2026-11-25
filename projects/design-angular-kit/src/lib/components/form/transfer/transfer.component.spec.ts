@@ -9,10 +9,9 @@ describe('ItTransferComponent', () => {
   let fixture: ComponentFixture<ItTransferComponent>;
 
   beforeEach(async () => {
-    const { imports, providers } = tb_base;
+    const { providers } = tb_base;
 
     await TestBed.configureTestingModule({
-      imports,
       providers: [...providers, TransferStore],
     }).compileComponents();
 

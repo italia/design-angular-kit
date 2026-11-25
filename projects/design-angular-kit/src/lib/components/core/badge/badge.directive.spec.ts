@@ -12,7 +12,7 @@ import { ItBadgeDirective } from './badge.directive';
     </h5>
   `,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  imports: [ItBadgeDirective],
 })
 class UnitTestComponent {
   // Aggiungi questa proprietà mancante
@@ -40,8 +40,7 @@ describe('ItBadgeDirective', () => {
   let fixture: ComponentFixture<UnitTestComponent>;
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [UnitTestComponent],
-      imports: [ItBadgeDirective],
+      imports: [UnitTestComponent, ItBadgeDirective],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UnitTestComponent);

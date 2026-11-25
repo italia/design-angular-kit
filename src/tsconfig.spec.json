@@ -2,11 +2,20 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
-    "types": ["jasmine", "node"]
+    "types": [
+      "vitest/globals",
+      "node"
+    ],
+    "paths": {
+      "src/*": ["./*"],
+      "projects/*": ["../projects/*"],
+      "design-angular-kit/*": ["../projects/design-angular-kit/src/lib/*"]
+    },
+    "typeRoots": ["../node_modules/@types", "../node_modules"]
   },
-  "files": [],
-  "include": ["**/*.spec.ts", "**/*.d.ts"],
-  "angularCompilerOptions": {
-    "strictTemplates": false
-  }
+  "include": [
+    "**/*.spec.ts",
+    "test-setup.ts",
+    "**/*.d.ts"
+  ]
 }

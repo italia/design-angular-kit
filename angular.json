@@ -102,6 +102,12 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "test": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "aot": false
             }
           },
           "defaultConfiguration": "production"
@@ -129,35 +135,14 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing",
-              "@angular/localize/init"
-            ],
+            "buildTarget": "design-angular-kit-bundle:build:test",
             "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.scss"
-            ],
-            "codeCoverage": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "stylePreprocessorOptions": {
-              "sass": {
-                "silenceDeprecations": [
-                  "import",
-                  "if-function",
-                  "color-functions",
-                  "global-builtin",
-                  "slash-div",
-                  "abs-percent"
-                ]
-              }
-            }
+            "runner": "vitest",
+            "setupFiles": [
+              "src/test-setup.ts"
+            ]
           }
         },
         "lint": {
@@ -201,35 +186,14 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing",
-              "@angular/localize/init"
-            ],
+            "buildTarget": "design-angular-kit-bundle:build:test",
             "tsConfig": "projects/design-angular-kit/tsconfig.spec.json",
-            "karmaConfig": "projects/design-angular-kit/karma.conf.js",
-            "codeCoverage": true,
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "./node_modules/bootstrap-italia/",
-                "output": "/bootstrap-italia/"
-              }
-            ],
-            "stylePreprocessorOptions": {
-              "sass": {
-                "silenceDeprecations": [
-                  "import",
-                  "if-function",
-                  "color-functions",
-                  "global-builtin",
-                  "slash-div",
-                  "abs-percent"
-                ]
-              }
-            }
+            "runner": "vitest",
+            "setupFiles": [
+              "projects/design-angular-kit/src/test-setup.ts"
+            ]
           }
         },
         "lint": {
