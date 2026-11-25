@@ -3,6 +3,7 @@ import { ItAbstractFormComponent } from '../../../abstracts/abstract-form.compon
 import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectAutocomplete } from 'bootstrap-italia';
+import { inputToBoolean } from '../../../utils/coercion';
 
 type functionSource = (query: string, populateResults: (results: string[]) => void) => void;
 
@@ -23,7 +24,7 @@ export class ItAutocompleteComponent extends ItAbstractFormComponent<string | nu
    * Autocomplete if required.
    * @default false
    */
-  @Input() required: boolean = false;
+  @Input({ transform: inputToBoolean }) required: boolean = false;
 
   /**
    * Input field name
