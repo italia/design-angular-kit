@@ -15,11 +15,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: devcontainers/ci@v0.3
         with:
           push: never
           runCmd: |
+            node --version
             npm ci
             npm run check:angular-cli
             npm run lint
