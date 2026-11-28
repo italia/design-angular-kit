@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { ItValidators } from 'design-angular-kit/validators/it-validators';
 
@@ -6,6 +6,7 @@ import { ItValidators } from 'design-angular-kit/validators/it-validators';
   selector: 'it-model-driven-validation-example',
   templateUrl: './model-driven-validation-example.component.html',
   styleUrls: ['./model-driven-validation-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ModelDrivenValidationExampleComponent {

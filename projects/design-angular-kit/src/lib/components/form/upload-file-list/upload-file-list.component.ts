@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { forkJoin, take, tap } from 'rxjs';
 import { ItAbstractComponent } from '../../../abstracts/abstract.component';
@@ -12,6 +12,7 @@ import { ItIconComponent } from '../../utils/icon/icon.component';
 @Component({
   selector: 'it-upload-file-list',
   templateUrl: './upload-file-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ItIconComponent, TranslateModule, ItTooltipDirective, ItProgressBarComponent],
 })
 export class ItUploadFileListComponent extends ItAbstractComponent implements OnInit, OnChanges {

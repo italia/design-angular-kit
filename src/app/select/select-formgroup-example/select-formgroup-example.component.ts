@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { SelectControlOption } from 'design-angular-kit/interfaces/form';
 
 @Component({
   selector: 'it-select-formgroup-example',
   templateUrl: './select-formgroup-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class SelectFormgroupExampleComponent {

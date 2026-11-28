@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IconColor, IconName } from 'design-angular-kit/interfaces/icon';
 
 @Component({
   selector: 'it-button-example-icon',
   templateUrl: './button-example-icon.component.html',
   styleUrls: ['./button-example-icon.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ButtonExampleIconComponent {

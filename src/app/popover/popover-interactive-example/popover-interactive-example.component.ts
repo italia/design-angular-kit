@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ElementPlacement } from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-popover-interactive-example',
   templateUrl: './popover-interactive-example.component.html',
   styleUrls: ['./popover-interactive-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class PopoverInteractiveExampleComponent {

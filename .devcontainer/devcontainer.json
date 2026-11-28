@@ -10,6 +10,10 @@
     "CLAUDE_CODE_OAUTH_TOKEN": "${localEnv:CLAUDE_CODE_OAUTH_TOKEN}",
     "GH_TOKEN": "${localEnv:GH_TOKEN}"
   },
+  "overrideFeatureInstallOrder": [
+    "ghcr.io/devcontainers/features/node",
+    "ghcr.io/devcontainers-extra/features/angular-cli"
+  ],
   "postCreateCommand": "sh .devcontainer/scripts/postCreateCommand.sh",
   "postStartCommand": "sh .devcontainer/scripts/postStartCommand.sh \"${containerWorkspaceFolder}\"",
   "customizations": {
@@ -35,8 +39,11 @@
     }
   },
   "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24.22.3"
+    },
     "ghcr.io/devcontainers-extra/features/angular-cli:2": {
-      "version": "21"
+      "version": "22"
     },
     "ghcr.io/devcontainers-extra/features/cz-cli:1": {
       "version": "latest"

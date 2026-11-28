@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ItValidators } from 'design-angular-kit/validators/it-validators';
 
 @Component({
   selector: 'it-password-input-confirm-example',
   templateUrl: './password-input-confirm-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class PasswordInputConfirmExampleComponent {

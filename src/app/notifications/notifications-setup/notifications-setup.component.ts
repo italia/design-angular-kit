@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NotificationPosition } from 'design-angular-kit/interfaces/core';
 import { ItNotificationService } from 'design-angular-kit/services/notification/notification.service';
 
 @Component({
   selector: 'it-notifications-setup',
   templateUrl: './notifications-setup.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class NotificationsSetupComponent {

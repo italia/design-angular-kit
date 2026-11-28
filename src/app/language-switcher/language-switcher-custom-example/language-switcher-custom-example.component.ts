@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AvailableLanguage } from 'design-angular-kit/interfaces/utils';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'it-language-switcher-custom-example',
   templateUrl: './language-switcher-custom-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class LanguageSwitcherCustomExampleComponent {

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'it-autocomplete-example',
   templateUrl: './autocomplete-example.component.html',
   styleUrls: ['./autocomplete-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class AutocompleteExampleComponent {

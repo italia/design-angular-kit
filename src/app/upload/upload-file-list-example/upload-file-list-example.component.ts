@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UploadFileListItem } from 'design-angular-kit/interfaces/form';
 import { catchError, finalize, from, map, of, skipWhile, switchMap, tap } from 'rxjs';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
@@ -6,6 +6,7 @@ import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'it-upload-file-list-example',
   templateUrl: './upload-file-list-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class UploadFileListExampleComponent {

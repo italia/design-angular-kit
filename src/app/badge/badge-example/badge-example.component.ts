@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BadgeColor } from 'design-angular-kit/interfaces/core';
 
 @Component({
   selector: 'it-badge-example',
   templateUrl: './badge-example.component.html',
   styleUrls: ['./badge-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class BadgeExampleComponent {

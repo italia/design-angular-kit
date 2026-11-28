@@ -3,6 +3,9 @@
   "description": "Un toolkit Angular conforme alle linee guida di design per i servizi web della PA",
   "version": "21.3.0",
   "license": "BSD-3-Clause",
+  "exports": {
+    ".": "./src/public_api.ts"
+  },
   "keywords": [
     "angular",
     "toolkit",
@@ -48,15 +51,12 @@
   "ng-add": {
     "save": "dependencies"
   },
-  "dependencies": {
-    "tslib": "^2.6.3"
-  },
   "peerDependencies": {
-    "@angular/animations": "^21.2.1",
-    "@angular/common": "^21.2.25",
-    "@angular/core": "^21.2.25",
-    "@angular/platform-browser": "^21.2.25",
-    "@angular/router": "^21.2.25",
+    "@angular/animations": "^22.0.0",
+    "@angular/common": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
+    "@angular/router": "^22.0.0",
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "bootstrap-italia": "^2.18.3"

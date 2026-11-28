@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ItSortEvent } from 'projects/design-angular-kit/src/lib/interfaces/sortable-table';
 import { TableColor } from 'projects/design-angular-kit/src/lib/interfaces/core';
 
 @Component({
   selector: 'it-table-example',
   templateUrl: './table-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class TableExampleComponent {

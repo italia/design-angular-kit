@@ -78,7 +78,8 @@ describe('ItBackButtonComponent', () => {
   });
 
   it('se passo una callback backFn, al click deve essere lanciata lei', () => {
-    component.backFn = () => {};
+    const backFn = vi.fn();
+    component.backFn = backFn;
     component.buttonStyle = 'link';
     fixture.detectChanges();
     vi.spyOn(component, 'backFn');
@@ -86,6 +87,6 @@ describe('ItBackButtonComponent', () => {
     aElement.nativeElement.removeAttribute('href');
     fixture.detectChanges();
     aElement.nativeElement.click();
-    expect(component.backFn).toHaveBeenCalled();
+    expect(backFn).toHaveBeenCalled();
   });
 });

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'it-template-driven-validation-example',
   templateUrl: './template-driven-validation-example.component.html',
   styleUrls: ['./template-driven-validation-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class TemplateDrivenValidationExampleComponent {

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
 import { inputToBoolean } from '../../../utils/coercion';
 
 @Component({
@@ -7,7 +6,6 @@ import { inputToBoolean } from '../../../utils/coercion';
   templateUrl: './megamenu.component.html',
   styleUrls: ['./megamenu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgTemplateOutlet],
 })
 export class ItMegamenuComponent {
   /**

@@ -6,7 +6,7 @@
     <div class="col-sm-12 col-md-6">
       <form [formGroup]="formGroup">
         <it-range label="Esempio FormGroup" [min]="0" [max]="1000" [step]="2" formControlName="range">
-          Valore selezionato: {{ formGroup.get('range').value }}
+          Valore selezionato: {{ formGroup.get('range')?.value }}
         </it-range>
       </form>
     </div>

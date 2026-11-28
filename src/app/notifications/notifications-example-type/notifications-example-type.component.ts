@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ItNotificationService } from 'design-angular-kit/services/notification/notification.service';
 
 @Component({
   selector: 'it-notifications-example-type',
   templateUrl: './notifications-example-type.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class NotificationsExampleTypeComponent {
